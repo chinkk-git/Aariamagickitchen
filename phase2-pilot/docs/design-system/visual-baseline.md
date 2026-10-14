@@ -8,7 +8,7 @@ The pilot home now follows the storyboard composition: warm kitchen backdrop, ce
 
 ## Artwork provenance and review
 
-The recipe cards, details and completion screens now use image crops taken directly from the user-provided Phase 2 prototype for Rainbow Yogurt Parfait and Mini Pizza Toast. The logo crop comes directly from the approved identity manifest. Character portraits and kitchen art are unmodified crops from that manifest. These assets preserve recognizable source content; the rendered application still needs the user's visual acceptance. Cooking steps remain action-specific illustrations pending visual review.
+The recipe cards, details and completion screens now use image crops taken directly from the user-provided Phase 2 prototype for Rainbow Yogurt Parfait and Mini Pizza Toast. The logo crop comes directly from the approved identity manifest. Character portraits and kitchen art are unmodified crops from that manifest. These assets preserve recognizable source content; the rendered application still needs the user's visual acceptance. Cooking steps now use their own action-specific images with a larger family scene on the toast steps and a larger friends scene on the parfait steps. The coral framed scene card follows the supplied step examples and keeps the approved character artwork visible beside the food. These composites still need visual review.
 
 ## Tokens
 
