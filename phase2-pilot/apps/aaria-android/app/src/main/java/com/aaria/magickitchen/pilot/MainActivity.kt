@@ -27,4 +27,21 @@ class MainActivity : Activity() {
             loadDataWithBaseURL(
                 "https://appassets.androidplatform.net/",
                 assets.open("index.html").bufferedReader().use { it.readText() },
-                "text/htm
+                "text/html",
+                "UTF-8",
+                null
+            )
+        }
+        setContentView(webView)
+    }
+
+    override fun onDestroy() {
+        webView.destroy()
+        super.onDestroy()
+    }
+
+    @Deprecated("Android routes back navigation through the WebView before exiting the pilot.")
+    override fun onBackPressed() {
+        if (webView.canGoBack()) webView.goBack() else super.onBackPressed()
+    }
+}

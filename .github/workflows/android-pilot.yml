@@ -52,4 +52,15 @@ jobs:
         working-directory: phase2-pilot
         run: |
           mkdir -p apps/aaria-android/app/src/main/assets
-          cp dist/Aaria_Phase2_Pilot_Web_Preview.html apps/aar
+          cp dist/Aaria_Phase2_Pilot_Web_Preview.html apps/aaria-android/app/src/main/assets/index.html
+
+      - name: Assemble debug APK
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+
+      - name: Upload installable APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-phase2-pilot-debug-apk
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30

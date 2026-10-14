@@ -39,4 +39,15 @@ assets = {
 }
 
 manifest = []
-for name, (x1, y1, x2, y2, pur
+for name, (x1, y1, x2, y2, purpose) in assets.items():
+    path = OUT / f"{name}.jpg"
+    crop = im.crop((x1, y1, x2, y2))
+    crop.save(path, "JPEG", quality=94, optimize=True)
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    manifest.append({"id": f"reference.{name}.v1", "version": "1.0.0", "purpose": purpose,
+                     "path": str(path.relative_to(ROOT)), "dimensions": f"{crop.width}x{crop.height}",
+                     "format": "JPEG", "identity": "Aaria" if name.startswith("pose-") else None,
+                     "recipeOrStep": name if name.startswith(("dish-", "step-")) else None,
+                     "sha256": digest, "reviewStatus": "APPROVED_REFERENCE_ARTWORK — CROPPED, UNMODIFIED"})
+
+print(json.dumps(manifest, indent=2))

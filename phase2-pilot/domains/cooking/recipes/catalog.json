@@ -228,4 +228,66 @@
         "dataSource": "USDA FoodData Central records must be mapped to the exact bread, sauce, cheese and topping forms before calculation.",
         "calculationMethod": "Not calculated yet. Brand-specific bread and sauce variation must be resolved.",
         "verificationStatus": "BLOCKED — nutrition values not verified; independent review pending",
-        "
+        "reviewDate": null
+      },
+      "steps": [
+        {
+          "title": "Add the sauce",
+          "instruction": "Place the bread on a clean preparation surface. Spread the pizza sauce over the top, leaving a small edge.",
+          "safety": "Keep the bread on a stable board. Wash hands first.",
+          "art": "toast-sauce"
+        },
+        {
+          "title": "Add cheese and toppings",
+          "instruction": "Sprinkle mozzarella evenly over the sauce. Add a few pepper pieces and olives if you like.",
+          "safety": "Check ingredient labels for allergens. Keep toppings small and easy to bite.",
+          "art": "toast-toppings"
+        },
+        {
+          "title": "Ask an adult to air-fry it",
+          "instruction": "An adult places the toast in the air fryer and chooses the appliance instructions for a small piece of bread with cheese. Appliance models vary, so the adult checks it closely.",
+          "safety": "ADULT ONLY: preheating, placing food in, removing food and handling the hot basket. Do not set a universal time or temperature.",
+          "art": "toast-airfryer"
+        },
+        {
+          "title": "Cool, then enjoy",
+          "instruction": "An adult moves the toast to a cool plate. Wait until the cheese and bread are comfortably cool before taking a bite.",
+          "safety": "Hot cheese and equipment can burn. The adult checks the food and serves it when safe.",
+          "art": "toast-finish"
+        }
+      ],
+      "substitutions": [
+        {
+          "from": "bell-pepper",
+          "to": "corn",
+          "status": "UNVERIFIED — nutrition and allergen recalculation required"
+        },
+        {
+          "from": "mozzarella",
+          "to": "omit",
+          "status": "Nutrition and recipe integrity recalculation required"
+        }
+      ],
+      "safetyRules": [
+        "Follow the specific appliance's manufacturer instructions.",
+        "A supervising adult operates and handles the air fryer and hot basket.",
+        "Cool food before serving; check temperature before eating."
+      ],
+      "artworkIds": [
+        "dish.pizza-toast.v1",
+        "step.toast.sauce.v1",
+        "step.toast.toppings.v1",
+        "step.toast.airfryer.v1",
+        "step.toast.finish.v1"
+      ],
+      "review": {
+        "nutrition": "PENDING",
+        "allergy": "PENDING",
+        "foodSafety": "PENDING",
+        "childExperience": "PENDING",
+        "artwork": "GENERATED PILOT FOOD PHOTOGRAPHY + STEP ILLUSTRATIONS — USER VISUAL APPROVAL PENDING"
+      },
+      "publicationStatus": "TEST PILOT ONLY — NOT CERTIFIED FOR PUBLIC RELEASE"
+    }
+  ]
+}

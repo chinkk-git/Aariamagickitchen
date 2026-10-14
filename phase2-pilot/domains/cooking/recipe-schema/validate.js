@@ -11,4 +11,9 @@ export function validateRecipe(recipe) {
   return errors;
 }
 export function nutritionIsVerified(recipe) {
-  return nutriti
+  return nutritionKeys.every(key => Number.isFinite(recipe.nutrition?.perServing?.[key])) && recipe.nutrition?.verificationStatus?.startsWith('VERIFIED');
+}
+export function matchRecipes(catalog, pantryIds) {
+  const pantry=new Set(pantryIds);
+  return catalog.recipes.filter(r => r.ingredients.filter(i=>!i.optional).every(i=>pantry.has(i.id)));
+}

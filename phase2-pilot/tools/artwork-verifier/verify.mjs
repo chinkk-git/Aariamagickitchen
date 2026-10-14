@@ -9,4 +9,5 @@ for(const asset of manifest.assets){
  if(ids.has(asset.id))errors.push(`duplicate asset id ${asset.id}`);ids.add(asset.id);
  try{const bytes=await readFile(resolve(root,asset.path));const hash=createHash('sha256').update(bytes).digest('hex');if(hash!==asset.sha256)errors.push(`checksum mismatch ${asset.id}`)}catch{errors.push(`missing asset source ${asset.path}`)}
 }
-for(const recipe of catalog.recipes)for(const id of recipe.artworkIds)if(!ids.has(id))errors.push(`${recipe.id} has no mani
+for(const recipe of catalog.recipes)for(const id of recipe.artworkIds)if(!ids.has(id))errors.push(`${recipe.id} has no manifest record for ${id}`);
+if(errors.length){console.error(errors.join('\n'));process.exitCode=1}else console.log(`PASS: ${manifest.assets.length} artwork records; source paths and checksums match; recipe references resolve. Pilot food photography and step illustrations remain pending visual approval.`);

@@ -42,4 +42,20 @@ test('shared core packages stay independent of the cooking domain',async()=>{
 });
 test('standalone preview embeds every supplied reference-pack image',async()=>{
   const root=resolve(new URL('..',import.meta.url).pathname);
-  execFileSync(process.execP
+  execFileSync(process.execPath,[resolve(root,'tools/build/bundle-preview.mjs')],{stdio:'pipe'});
+  const html=await readFile(resolve(root,'dist/Aaria_Phase2_Pilot_Web_Preview.html'),'utf8');
+  const manifest=JSON.parse(await readFile(resolve(root,'packages/assets/manifest.json'),'utf8'));
+  const referenceAssets=manifest.assets.filter(a=>a.path.startsWith('packages/assets/reference-pack/'));
+  for(const asset of referenceAssets){
+    const source=await readFile(resolve(root,asset.path));
+    const dataUri=`data:image/jpeg;base64,${source.toString('base64')}`;
+    assert.ok(html.includes(dataUri),`standalone preview is missing ${asset.id}`);
+  }
+  for(const asset of manifest.assets.filter(a=>a.id.startsWith('dish.'))){
+    const source=await readFile(resolve(root,asset.path));
+    const dataUri=`data:image/jpeg;base64,${source.toString('base64')}`;
+    assert.ok(html.includes(dataUri),`standalone preview is missing finished-dish photo ${asset.id}`);
+  }
+  assert.ok(!html.includes('../../packages/assets/reference-pack/'),'preview still contains unresolved reference-pack paths');
+  assert.ok(!html.includes('../../packages/assets/recipe-art/'),'preview still contains unresolved recipe-art paths');
+});
