@@ -29,8 +29,17 @@ test('ingredient selection changes the finished-dish illustration',()=>{
   assert.notEqual(foodArt('rainbow-yogurt-parfait',['yogurt']).includes('circle cx="190"'),foodArt('rainbow-yogurt-parfait',['yogurt','strawberries']).includes('circle cx="190"'));
   assert.notEqual(foodArt('mini-pizza-toast',['bread','pizza-sauce']).includes('circle cx="178"'),foodArt('mini-pizza-toast',['bread','pizza-sauce','bell-pepper']).includes('circle cx="178"'));
 });
-test('each recipe step has a distinct, recipe-matched illustration',()=>{
-  for(const r of catalog.recipes){const arts=r.steps.map((_,i)=>stepArt(r.id,i,r.ingredients.map(x=>x.id)));assert.equal(arts.length,4);assert.ok(arts.every(x=>x.includes('<svg')&&x.includes('aria-label')));assert.equal(new Set(arts).size,4)}
+test('each recipe step has a distinct, recipe-matched artwork image',async()=>{
+  const root=resolve(new URL('..',import.meta.url).pathname);
+  for(const r of catalog.recipes){
+    const arts=r.steps.map((_,i)=>stepArt(r.id,i,r.ingredients.map(x=>x.id)));
+    assert.equal(arts.length,4);
+    assert.ok(arts.every(x=>x.includes('<img')&&x.includes('alt=')));
+    const names=arts.map(x=>x.match(/cooking-steps\/([a-z-]+)\.jpg/)?.[1]);
+    assert.ok(names.every(Boolean),`${r.id} has a step with no mapped image`);
+    assert.equal(new Set(names).size,4,`${r.id} reuses a step image`);
+    for(const name of names)await readFile(resolve(root,`packages/assets/cooking-steps/${name}.jpg`));
+  }
 });
 test('shared route parser rejects unknown route names',()=>{
   assert.deepEqual(parseHash('#/cook/mini-pizza-toast',routes),{name:'cook',id:'mini-pizza-toast'});
@@ -55,6 +64,11 @@ test('standalone preview embeds every supplied reference-pack image',async()=>{
     const source=await readFile(resolve(root,asset.path));
     const dataUri=`data:image/jpeg;base64,${source.toString('base64')}`;
     assert.ok(html.includes(dataUri),`standalone preview is missing finished-dish photo ${asset.id}`);
+  }
+  for(const asset of manifest.assets.filter(a=>a.id.startsWith('step.'))){
+    const source=await readFile(resolve(root,asset.path));
+    const dataUri=`data:image/jpeg;base64,${source.toString('base64')}`;
+    assert.ok(html.includes(dataUri),`standalone preview is missing cooking-step artwork ${asset.id}`);
   }
   assert.ok(!html.includes('../../packages/assets/reference-pack/'),'preview still contains unresolved reference-pack paths');
   assert.ok(!html.includes('../../packages/assets/recipe-art/'),'preview still contains unresolved recipe-art paths');

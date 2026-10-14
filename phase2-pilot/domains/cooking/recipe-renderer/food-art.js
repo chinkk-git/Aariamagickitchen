@@ -2,6 +2,16 @@ const palettes = {
   parfait:{dish:'parfait',tone:'#f5cdd3',base:'#fff3e3'},
   'mini-pizza-toast':{dish:'toast',tone:'#ef7180',base:'#ffe5b8'}
 };
+const stepImages={
+  'parfait-wash':'../../packages/assets/cooking-steps/parfait-wash.jpg',
+  'parfait-yogurt':'../../packages/assets/cooking-steps/parfait-yogurt.jpg',
+  'parfait-layers':'../../packages/assets/cooking-steps/parfait-layers.jpg',
+  'parfait-finish':'../../packages/assets/cooking-steps/parfait-finish.jpg',
+  'toast-sauce':'../../packages/assets/cooking-steps/toast-sauce.jpg',
+  'toast-toppings':'../../packages/assets/cooking-steps/toast-toppings.jpg',
+  'toast-airfryer':'../../packages/assets/cooking-steps/toast-airfryer.jpg',
+  'toast-finish':'../../packages/assets/cooking-steps/toast-finish.jpg'
+};
 export function foodArt(recipeId, selected=[]) {
   const p=palettes[recipeId]||palettes.parfait;
   if(p.dish==='parfait') {
@@ -15,18 +25,9 @@ export function foodArt(recipeId, selected=[]) {
 
 export function stepArt(recipeId, index, selected=[]) {
   const isToast=recipeId==='mini-pizza-toast';
-  const scenes=isToast?[
-    '<rect x="120" y="118" width="240" height="140" rx="32" fill="#d8a769"/><rect x="136" y="132" width="208" height="112" rx="25" fill="#e35e53"/><path d="M160 172q40-28 80 0t80 0" fill="none" stroke="#f4bd62" stroke-width="18" stroke-linecap="round"/><path d="M152 105q72-25 140 0" fill="none" stroke="#8b6958" stroke-width="8" stroke-linecap="round"/>',
-    '<rect x="110" y="118" width="260" height="148" rx="36" fill="#c98c55"/><rect x="128" y="136" width="224" height="112" rx="26" fill="#e76055"/><path d="M136 180q47-25 91 0t99 0v47H136z" fill="#fff1ca"/><g fill="#75a36d"><circle cx="182" cy="158" r="13"/><circle cx="276" cy="221" r="12"/></g><g fill="#554442"><circle cx="291" cy="160" r="11"/><circle cx="218" cy="216" r="10"/></g>',
-    '<rect x="110" y="106" width="260" height="177" rx="35" fill="#37363b"/><rect x="132" y="126" width="216" height="132" rx="24" fill="#25262b"/><rect x="158" y="153" width="164" height="82" rx="20" fill="#d9a86b"/><path d="M187 147v-38M291 147v-38" stroke="#a9aaa9" stroke-width="11" stroke-linecap="round"/><circle cx="240" cy="272" r="7" fill="#ef7180"/>',
-    '<ellipse cx="240" cy="258" rx="155" ry="24" fill="#e5d5cc"/><path d="M104 160q4 94 136 94t136-94" fill="#fff" stroke="#dccfc4" stroke-width="8"/><rect x="145" y="112" width="190" height="130" rx="26" fill="#c98951"/><rect x="160" y="125" width="160" height="101" rx="22" fill="#df6257"/><path d="M166 177q43-24 79 0t69 0v33H166z" fill="#fff0c5"/>'
-  ]:[
-    '<path d="M75 210h330" stroke="#927b68" stroke-width="12" stroke-linecap="round"/><path d="M115 205q18-86 126-86t126 86z" fill="#e4eff0" stroke="#a8babb" stroke-width="8"/><path d="M143 187q16-48 44-39m22 38q12-45 38-44m23 44q12-42 35-36" fill="none" stroke="#e04e62" stroke-width="18" stroke-linecap="round"/><path d="M105 93q35-31 71 0" fill="none" stroke="#8cb6d2" stroke-width="9" stroke-linecap="round"/><circle cx="135" cy="72" r="7" fill="#8cb6d2"/><circle cx="160" cy="60" r="6" fill="#8cb6d2"/>',
-    '<path d="M99 228q12-101 141-101t141 101" fill="#d7a674"/><path d="M122 213q12-67 118-67t118 67" fill="#fff6e9"/><path d="M156 184q18-24 36 0m35-5q14-22 31 0m29 7q18-25 34 0" fill="none" stroke="#d3a16a" stroke-width="14" stroke-linecap="round"/><path d="M288 72v78m-11-7 11 10 11-10" stroke="#856e5b" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
-    '<path d="M94 233q13-111 146-111t146 111" fill="#d5a06c"/><path d="M116 215q10-73 124-73t124 73" fill="#fff4e4"/><g fill="#e65469"><circle cx="158" cy="180" r="13"/><circle cx="234" cy="157" r="12"/><circle cx="301" cy="190" r="14"/></g><g fill="#627da9"><circle cx="198" cy="198" r="13"/><circle cx="270" cy="177" r="12"/></g><path d="M122 74q24-25 48 0m0 0q23-25 47 0" fill="none" stroke="#9277b5" stroke-width="8" stroke-linecap="round"/>',
-    '<path d="M120 228h240" stroke="#a9988c" stroke-width="12" stroke-linecap="round"/><path d="M142 215q6-73 98-73t98 73z" fill="#fff" stroke="#e6d8d0" stroke-width="7"/><path d="M155 198q15-42 85-42t85 42z" fill="#fff0de"/><g fill="#d9a36d"><rect x="191" y="155" width="15" height="10" rx="4"/><rect x="226" y="148" width="14" height="10" rx="4"/><rect x="258" y="160" width="14" height="10" rx="4"/></g><path d="M333 116q24 18 2 39" fill="none" stroke="#f3af88" stroke-width="8" stroke-linecap="round"/>'
-  ];
-  const bg=isToast?'#f7e2c7':'#f9e8dc';
-  const labels=isToast?['Sauce the toast','Cheese & toppings','Adult uses the air fryer','Cool on a plate']:['Rinse the berries','Spoon in yogurt','Layer the fruit','Granola to finish'];
-  return `<svg class="food-art-svg" viewBox="0 0 480 330" role="img" aria-label="${labels[index]||'Cooking step'}"><defs><filter id="step-shadow"><feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#745541" flood-opacity=".13"/></filter></defs><rect width="480" height="330" rx="28" fill="${bg}"/><circle cx="382" cy="76" r="50" fill="#fff9ef" opacity=".78"/><path d="M0 275q103-22 203 0t277 0v55H0" fill="#fff8ee" opacity=".76"/><g filter="url(#step-shadow)">${scenes[Math.max(0,Math.min(index,3))]}</g><g fill="#f2c64d"><path d="M77 106l6 13 14 1-10 9 3 14-13-8-12 8 4-14-11-9 14-1z"/><circle cx="399" cy="208" r="7"/></g></svg>`;
+  const names=isToast?['toast-sauce','toast-toppings','toast-airfryer','toast-finish']:['parfait-wash','parfait-yogurt','parfait-layers','parfait-finish'];
+  const labels=isToast?['Spread pizza sauce on whole-wheat bread','Sprinkle mozzarella and add small pepper and olive pieces','An adult safely places the mini pizza toast in the air fryer','Cool the cooked mini pizza toast on a plate']:['Rinse strawberries and blueberries under cool running water','Spoon plain Greek yogurt into a clear cup','Layer yogurt with strawberries and blueberries','Top the finished parfait with granola and berries'];
+  const name=names[Math.max(0,Math.min(index,names.length-1))];
+  const label=labels[Math.max(0,Math.min(index,labels.length-1))];
+  return `<img class="step-photo" src="${stepImages[name]}" alt="${label}">`;
 }

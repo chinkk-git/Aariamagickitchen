@@ -18,6 +18,9 @@ const assets={
   '../../packages/assets/characters/friends.jpg':await dataUri('packages/assets/characters/friends.jpg'),
   '../../packages/assets/recipe-art/rainbow-yogurt-parfait-hero.jpg':await dataUri('packages/assets/recipe-art/rainbow-yogurt-parfait-hero.jpg'),
   '../../packages/assets/recipe-art/mini-pizza-toast-hero.jpg':await dataUri('packages/assets/recipe-art/mini-pizza-toast-hero.jpg'),
+  ...Object.fromEntries(await Promise.all(['parfait-wash','parfait-yogurt','parfait-layers','parfait-finish','toast-sauce','toast-toppings','toast-airfryer','toast-finish'].map(async name=>[
+    `../../packages/assets/cooking-steps/${name}.jpg`,await dataUri(`packages/assets/cooking-steps/${name}.jpg`)
+  ]))),
   "url('../../packages/assets/backgrounds/kitchen-day.jpg')":`url("${await dataUri('packages/assets/backgrounds/kitchen-day.jpg')}")`
 };
 // Secondary screens use the supplied artwork pack too. Inline every image so

@@ -134,3 +134,9 @@ body[data-screen="detail"] .topbar{display:none}
 body[data-screen="recipes"] .prototype-filters{scrollbar-width:none}
 body[data-screen="recipes"] .prototype-filters::-webkit-scrollbar{display:none}
 @media(max-width:390px){.detail-ingredient-grid{gap:5px}.detail-ingredient{min-height:84px}.prototype-detail-photo{height:clamp(170px,29vh,240px)}}
+.step-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:inherit}
+.step-tip{display:flex;align-items:center;gap:11px;margin:12px 0;padding:9px 12px;border:1px solid #f0d9d1;border-radius:16px;background:linear-gradient(110deg,#fff5e8,#fff0f2)}
+.step-tip img{width:48px;height:48px;flex:0 0 48px;object-fit:cover;object-position:center 24%;border:2px solid white;border-radius:50%;box-shadow:var(--shadow)}
+.step-tip p{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
+.step-tip b{color:#cf315e}
+@media(orientation:landscape) and (max-height:560px){.step-tip{margin:6px 0;padding:6px 9px}.step-tip img{width:38px;height:38px;flex-basis:38px}.step-tip p{font-size:12px}}

@@ -64,3 +64,11 @@ jobs:
           path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 30
+
+      - name: Upload standalone web preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-phase2-pilot-web-preview
+          path: phase2-pilot/dist/Aaria_Phase2_Pilot_Web_Preview.html
+          if-no-files-found: error
+          retention-days: 30
