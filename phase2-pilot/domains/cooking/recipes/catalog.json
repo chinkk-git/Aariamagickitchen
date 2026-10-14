@@ -131,10 +131,10 @@
       ],
       "artworkIds": [
         "dish.parfait.v1",
-        "step.parfait.wash.v1",
-        "step.parfait.yogurt.v1",
-        "step.parfait.layers.v1",
-        "step.parfait.finish.v1"
+        "step.parfait.wash.v2",
+        "step.parfait.yogurt.v2",
+        "step.parfait.layers.v2",
+        "step.parfait.finish.v2"
       ],
       "review": {
         "nutrition": "PENDING",
@@ -275,10 +275,10 @@
       ],
       "artworkIds": [
         "dish.pizza-toast.v1",
-        "step.toast.sauce.v1",
-        "step.toast.toppings.v1",
-        "step.toast.airfryer.v1",
-        "step.toast.finish.v1"
+        "step.toast.sauce.v2",
+        "step.toast.toppings.v2",
+        "step.toast.airfryer.v2",
+        "step.toast.finish.v2"
       ],
       "review": {
         "nutrition": "PENDING",

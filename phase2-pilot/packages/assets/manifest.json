@@ -1,5 +1,5 @@
 {
-  "manifestVersion": "1.0.0",
+  "manifestVersion": "1.1.0",
   "sourceReference": "reference.visual-manifest.v1",
   "assets": [
     {
@@ -124,92 +124,92 @@
       "reviewStatus": "APPROVED PROTOTYPE CROP — APPLICATION REVIEW PENDING"
     },
     {
-      "id": "step.parfait.wash.v1",
-      "version": "1.0.0",
+      "id": "step.parfait.wash.v2",
+      "version": "2.0.0",
       "purpose": "Rinse strawberries and blueberries under cool running water",
       "path": "packages/assets/cooking-steps/parfait-wash.jpg",
-      "dimensions": "600x450",
+      "dimensions": "800x800",
       "format": "JPEG",
       "identity": null,
-      "sha256": "7e2db4f1d10525744e90f672e4156158fe91e8b226bd3347647c7d6fbb65f83b",
-      "reviewStatus": "Generated to match approved visual reference — human artwork review pending"
+      "sha256": "6bb40a8ebf861eaab513f18137a39bc85dfc4eb9203b23824ef387603748e56e",
+      "reviewStatus": "Generated storyboard artwork — human artwork review pending"
     },
     {
-      "id": "step.parfait.yogurt.v1",
-      "version": "1.0.0",
+      "id": "step.parfait.yogurt.v2",
+      "version": "2.0.0",
       "purpose": "Spoon plain Greek yogurt into a clear cup",
       "path": "packages/assets/cooking-steps/parfait-yogurt.jpg",
-      "dimensions": "600x450",
+      "dimensions": "800x800",
       "format": "JPEG",
       "identity": null,
-      "sha256": "c379011cd5d26707b6d35fa3d7053cc86727323000cabdb533a6ab16c883a7e5",
-      "reviewStatus": "Generated to match approved visual reference — human artwork review pending"
+      "sha256": "b2b021940d90fe15124d163c64e716f2e85be3034f650afb93b6bbbf3ad5a089",
+      "reviewStatus": "Generated storyboard artwork — human artwork review pending"
     },
     {
-      "id": "step.parfait.layers.v1",
-      "version": "1.0.0",
+      "id": "step.parfait.layers.v2",
+      "version": "2.0.0",
       "purpose": "Layer yogurt with strawberries and blueberries",
       "path": "packages/assets/cooking-steps/parfait-layers.jpg",
-      "dimensions": "600x450",
+      "dimensions": "800x800",
       "format": "JPEG",
       "identity": null,
-      "sha256": "b4462c43a5ac8ef56bcb56526a6a3fa91ae696f3da080f91535d9341608dcd2f",
-      "reviewStatus": "Generated to match approved visual reference — human artwork review pending"
+      "sha256": "93ec1dc0d05274cd8a76dfb9ff378e112a95a8f081ce4db7e70912a3ce238293",
+      "reviewStatus": "Generated storyboard artwork — human artwork review pending"
     },
     {
-      "id": "step.parfait.finish.v1",
-      "version": "1.0.0",
+      "id": "step.parfait.finish.v2",
+      "version": "2.0.0",
       "purpose": "Finish the parfait with granola, berries and optional honey",
       "path": "packages/assets/cooking-steps/parfait-finish.jpg",
-      "dimensions": "600x450",
+      "dimensions": "800x800",
       "format": "JPEG",
       "identity": null,
-      "sha256": "d0893767db538caa3357a841ba7207aa961d1f1daa00d5020f6e3cf7b252b362",
-      "reviewStatus": "Generated to match approved visual reference — human artwork review pending"
+      "sha256": "26d766d37fcca99311cdff6394eddb7b2784325e78bf74f4407f05c22e095c27",
+      "reviewStatus": "Generated storyboard artwork — human artwork review pending"
     },
     {
-      "id": "step.toast.sauce.v1",
-      "version": "1.0.0",
+      "id": "step.toast.sauce.v2",
+      "version": "2.0.0",
       "purpose": "Spread pizza sauce on whole-wheat bread",
       "path": "packages/assets/cooking-steps/toast-sauce.jpg",
-      "dimensions": "600x450",
+      "dimensions": "800x800",
       "format": "JPEG",
       "identity": null,
-      "sha256": "8e4884e97c4984cea8bedccbb96f878c2cdf4c0f36540823a89c91c178c0dffc",
-      "reviewStatus": "Generated to match approved visual reference — human artwork review pending"
+      "sha256": "4bffe9bfb3f4689828bc255b67159b589b403933bc45e87cc560b88adcdfc95b",
+      "reviewStatus": "Generated storyboard artwork — human artwork review pending"
     },
     {
-      "id": "step.toast.toppings.v1",
-      "version": "1.0.0",
+      "id": "step.toast.toppings.v2",
+      "version": "2.0.0",
       "purpose": "Add mozzarella, bell pepper and olive pieces",
       "path": "packages/assets/cooking-steps/toast-toppings.jpg",
-      "dimensions": "600x338",
+      "dimensions": "800x800",
       "format": "JPEG",
       "identity": null,
-      "sha256": "82e4645ddfdae59f4a9238e3cd299f00a0c2164861215ced3c69cd3ac1b0a80c",
-      "reviewStatus": "Generated to match approved visual reference — human artwork review pending"
+      "sha256": "21959c8c0629247796f468c273200181b7d3db302c47e4ec237c7a5f1c27e71e",
+      "reviewStatus": "Generated storyboard artwork — human artwork review pending"
     },
     {
-      "id": "step.toast.airfryer.v1",
-      "version": "1.0.0",
+      "id": "step.toast.airfryer.v2",
+      "version": "2.0.0",
       "purpose": "Adult safely places the toast in the air fryer",
       "path": "packages/assets/cooking-steps/toast-airfryer.jpg",
-      "dimensions": "600x450",
+      "dimensions": "800x800",
       "format": "JPEG",
       "identity": null,
-      "sha256": "792116dd80dec15e731c2bfa2aa673e9b260044370474375cb227a47ff868a67",
-      "reviewStatus": "Generated to match approved visual reference — human artwork review pending"
+      "sha256": "4b1b9814372d6d78360f87e8e3998912d3a32e7209cdf54a4e9dbe73b50f60e7",
+      "reviewStatus": "Generated storyboard artwork — human artwork review pending"
     },
     {
-      "id": "step.toast.finish.v1",
-      "version": "1.0.0",
+      "id": "step.toast.finish.v2",
+      "version": "2.0.0",
       "purpose": "Cool the cooked mini pizza toast on a plate",
       "path": "packages/assets/cooking-steps/toast-finish.jpg",
-      "dimensions": "600x450",
+      "dimensions": "800x800",
       "format": "JPEG",
       "identity": null,
-      "sha256": "b0552c37cd43fccd462c60fe3a1840f1cd29a8e2ec9bc9981b58067846886645",
-      "reviewStatus": "Generated to match approved visual reference — human artwork review pending"
+      "sha256": "cd73ff26d46ecf1e1c2a5f2d3b393ef5cb268cca4d400a41847ab1d211ce79bb",
+      "reviewStatus": "Generated storyboard artwork — human artwork review pending"
     },
     {
       "id": "reference.pose-happy.v1",
