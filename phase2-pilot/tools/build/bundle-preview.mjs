@@ -2,7 +2,7 @@ import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
 const root=resolve(new URL('../..',import.meta.url).pathname);
 const read=path=>readFile(resolve(root,path),'utf8');
-const dataUri=async path=>`data:${path.toLowerCase().endsWith('.png')?'image/png':'image/jpeg'};base64,${(await readFile(resolve(root,path))).toString('base64')}`;
+const dataUri=async path=>{const lower=path.toLowerCase();const mime=lower.endsWith('.png')?'image/png':lower.endsWith('.webp')?'image/webp':'image/jpeg';return `data:${mime};base64,${(await readFile(resolve(root,path))).toString('base64')}`};
 const [template,tokens,base,styles,router,validator,art,app,catalog]=await Promise.all([
  read('apps/aaria-kitchen/index.html'),read('packages/theme/tokens.css'),read('packages/ui/base.css'),read('apps/aaria-kitchen/styles.css'),
  read('packages/navigation/hash-router.js'),read('domains/cooking/recipe-schema/validate.js'),read('domains/cooking/recipe-renderer/food-art.js'),read('apps/aaria-kitchen/app.js'),read('domains/cooking/recipes/catalog.json')
@@ -21,7 +21,8 @@ const assets={
   ...Object.fromEntries(await Promise.all(['parfait-wash','parfait-yogurt','parfait-layers','parfait-finish','toast-sauce','toast-toppings','toast-airfryer','toast-finish'].map(async name=>[
     `../../packages/assets/cooking-steps/${name}.jpg`,await dataUri(`packages/assets/cooking-steps/${name}.jpg`)
   ]))),
-  "url('../../packages/assets/backgrounds/kitchen-day.jpg')":`url("${await dataUri('packages/assets/backgrounds/kitchen-day.jpg')}")`
+  "url('../../packages/assets/backgrounds/kitchen-day.jpg')":`url("${await dataUri('packages/assets/backgrounds/kitchen-day.jpg')}")`,
+  "url('../../packages/assets/reference-pack/index-kitchen-crew-sprite.webp')":`url("${await dataUri('packages/assets/reference-pack/index-kitchen-crew-sprite.webp')}")`
 };
 // Secondary screens use the supplied artwork pack too. Inline every image so
 // offline file:// previews and the Android WebView retain the complete set.
@@ -48,3 +49,4 @@ const inline=html.match(/<script type="module">([\s\S]*?)<\/script>/)?.[1];
 if(!inline)throw new Error('Bundled JavaScript was not emitted.');
 await writeFile(resolve(root,'dist/bundle-check.mjs'),inline);
 console.log(`Built standalone preview: ${Buffer.byteLength(html)} bytes`);
+

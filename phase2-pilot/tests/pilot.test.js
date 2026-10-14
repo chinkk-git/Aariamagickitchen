@@ -57,7 +57,8 @@ test('standalone preview embeds every supplied reference-pack image',async()=>{
   const referenceAssets=manifest.assets.filter(a=>a.path.startsWith('packages/assets/reference-pack/'));
   for(const asset of referenceAssets){
     const source=await readFile(resolve(root,asset.path));
-    const dataUri=`data:image/jpeg;base64,${source.toString('base64')}`;
+    const mime=asset.path.toLowerCase().endsWith('.webp')?'image/webp':'image/jpeg';
+    const dataUri=`data:${mime};base64,${source.toString('base64')}`;
     assert.ok(html.includes(dataUri),`standalone preview is missing ${asset.id}`);
   }
   for(const asset of manifest.assets.filter(a=>a.id.startsWith('dish.'))){
@@ -73,3 +74,4 @@ test('standalone preview embeds every supplied reference-pack image',async()=>{
   assert.ok(!html.includes('../../packages/assets/reference-pack/'),'preview still contains unresolved reference-pack paths');
   assert.ok(!html.includes('../../packages/assets/recipe-art/'),'preview still contains unresolved recipe-art paths');
 });
+

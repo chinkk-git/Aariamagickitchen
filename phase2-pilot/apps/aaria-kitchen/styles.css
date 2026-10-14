@@ -140,3 +140,13 @@ body[data-screen="recipes"] .prototype-filters::-webkit-scrollbar{display:none}
 .step-tip p{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
 .step-tip b{color:#cf315e}
 @media(orientation:landscape) and (max-height:560px){.step-tip{margin:6px 0;padding:6px 9px}.step-tip img{width:38px;height:38px;flex-basis:38px}.step-tip p{font-size:12px}}
+
+
+/* Approved crew artwork from the attached index.html, shown inside every cooking step. */
+.step-crew-overlay{position:absolute;right:14px;bottom:14px;z-index:2;display:flex;align-items:center;gap:8px;max-width:calc(100% - 76px);padding:6px 10px 6px 6px;border:2px solid rgba(255,255,255,.96);border-radius:18px;background:rgba(255,253,249,.96);box-shadow:0 8px 22px rgba(62,38,49,.2);backdrop-filter:blur(5px)}
+.step-crew-picture{flex:0 0 58px;width:58px;height:76px;border-radius:12px;background-image:url('../../packages/assets/reference-pack/index-kitchen-crew-sprite.webp');background-repeat:no-repeat;background-size:400% auto;background-position:66.667% center;box-shadow:0 2px 8px rgba(42,25,36,.16)}
+.step-crew-overlay.friends .step-crew-picture{background-position:100% center}
+.step-crew-copy{display:grid;gap:3px;min-width:0;color:#573247}
+.step-crew-copy b{font-size:12px;line-height:1.1;white-space:nowrap}
+.step-crew-copy small{font-size:10px;line-height:1.1;color:#78606d}
+@media(max-width:600px){.step-crew-overlay{right:10px;bottom:10px;gap:6px;max-width:calc(100% - 68px);padding:5px 8px 5px 5px;border-radius:15px}.step-crew-picture{flex-basis:48px;width:48px;height:64px;border-radius:10px}.step-crew-copy b{font-size:11px}.step-crew-copy small{font-size:9px}}

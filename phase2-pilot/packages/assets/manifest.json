@@ -532,6 +532,18 @@
       "identity": null,
       "sha256": "fde079ce55fd4379e6d477fbdfb024462c86741e6de9a233ead7d93b66bb467a",
       "reviewStatus": "APPROVED DESIGN REFERENCE — ORIGINAL FILE"
+    },
+    {
+      "id": "reference.kitchen-crew-sprite.from-index.v1",
+      "version": "1.0.0",
+      "purpose": "Approved Aaria, family, and friends scenes reused inside pilot cooking-step artwork",
+      "path": "packages/assets/reference-pack/index-kitchen-crew-sprite.webp",
+      "dimensions": "1024x341; four panel sprite",
+      "format": "WebP",
+      "identity": "Aaria, Mommy, Daddy, Friends",
+      "recipeOrStep": "Shared cooking-step crew art; family panel for Mini Pizza Toast, friends panel for Rainbow Yogurt Parfait",
+      "sha256": "5ecfe67325cdd0466a3ea8efa021759f999d9801f35a0b5b2082ee9ea66fd264",
+      "reviewStatus": "REUSED UNMODIFIED FROM USER-PROVIDED index.html"
     }
   ]
 }
