@@ -1,0 +1,10 @@
+{
+  "name": "aaria-magical-kitchen-phase2-pilot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "validate:recipes": "node tools/recipe-validator/validate.mjs",
+    "validate:artwork": "node tools/artwork-verifier/verify.mjs",
+    "build

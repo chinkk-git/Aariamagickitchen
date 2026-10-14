@@ -1,0 +1,7 @@
+:root {
+  color-scheme: light;
+  --cream:#fff8ee; --cream-deep:#faecdb; --sage:#8ca68b; --sage-deep:#66836b;
+  --pink:#f8cbd4; --coral:#ef6d7d; --lavender:#b7a5e6; --brown:#886b5b;
+  --blue:#d7e9ff; --yellow:#fff0b2; --gold:#f4c542; --ink:#282b2f;
+  --muted:#666773; --white:#fff; --line:#eadfd5; --shadow:0 10px 26px #69503a18;
+  --radius-xl:28px; --radius-lg:20px; --radius-md:14px; --radius-sm:10px

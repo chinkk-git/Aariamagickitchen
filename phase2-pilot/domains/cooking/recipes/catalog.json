@@ -1,0 +1,231 @@
+{
+  "catalogVersion": "0.1.0-pilot",
+  "status": "PILOT_CONTENT_REVIEW_REQUIRED",
+  "recipes": [
+    {
+      "id": "rainbow-yogurt-parfait",
+      "title": "Rainbow Yogurt Parfait",
+      "category": "No-cook creations",
+      "ageRange": "8–10",
+      "difficulty": "Easy",
+      "estimatedHandsOnMinutes": 10,
+      "durationStatus": "ESTIMATE — not timed in usability testing; excludes any waiting/cooling",
+      "servings": 1,
+      "description": "Build colorful layers of creamy yogurt, fresh berries and a little crunch.",
+      "ingredients": [
+        {
+          "id": "yogurt",
+          "name": "Plain Greek yogurt",
+          "quantity": 170,
+          "unit": "g",
+          "allergens": [
+            "milk"
+          ],
+          "optional": false
+        },
+        {
+          "id": "strawberries",
+          "name": "Strawberries",
+          "quantity": 60,
+          "unit": "g",
+          "allergens": [],
+          "optional": false
+        },
+        {
+          "id": "blueberries",
+          "name": "Blueberries",
+          "quantity": 40,
+          "unit": "g",
+          "allergens": [],
+          "optional": false
+        },
+        {
+          "id": "granola",
+          "name": "Granola",
+          "quantity": 15,
+          "unit": "g",
+          "allergens": [
+            "may contain wheat, nuts or other allergens; check package"
+          ],
+          "optional": true
+        },
+        {
+          "id": "honey",
+          "name": "Honey",
+          "quantity": 5,
+          "unit": "g",
+          "allergens": [],
+          "optional": true
+        }
+      ],
+      "equipment": [
+        "Clear cup or small bowl",
+        "Spoon",
+        "Colander"
+      ],
+      "allergens": [
+        "Milk (yogurt)",
+        "Granola may contain wheat, nuts or other allergens; check the specific package label"
+      ],
+      "crossContact": "Check every package label and use clean utensils and surfaces. Granola ingredients vary by brand.",
+      "adultHelp": "An adult should help with washing produce, checking labels and any cutting. No heat is used.",
+      "nutrition": {
+        "perServing": {
+          "servingSize": "1 assembled cup",
+          "kcal": null,
+          "proteinG": null,
+          "carbohydrateG": null,
+          "totalFatG": null,
+          "saturatedFatG": null,
+          "fiberG": null,
+          "sugarG": null,
+          "sodiumMg": null
+        },
+        "dataSource": "USDA FoodData Central records must be mapped to the exact ingredient forms and quantities before calculation.",
+        "calculationMethod": "Not calculated yet. Ingredient-level mapping and arithmetic verification are pending.",
+        "verificationStatus": "BLOCKED — nutrition values not verified; independent review pending",
+        "reviewDate": null
+      },
+      "steps": [
+        {
+          "title": "Wash up and rinse the berries",
+          "instruction": "Wash your hands with soap and water. An adult can help rinse the strawberries and blueberries under cool running water, then pat them dry.",
+          "safety": "Use clean hands, a clean colander and clean surfaces.",
+          "art": "parfait-wash"
+        },
+        {
+          "title": "Spoon in the yogurt",
+          "instruction": "Add a spoonful of plain yogurt to the bottom of your cup. Smooth it gently so the next layer shows.",
+          "safety": "Keep the yogurt chilled until you are ready to build your cup.",
+          "art": "parfait-yogurt"
+        },
+        {
+          "title": "Make berry layers",
+          "instruction": "Add a few strawberries and blueberries, then another spoonful of yogurt. Repeat to make your own color pattern.",
+          "safety": "Ask an adult to cut any large strawberries with a suitable knife.",
+          "art": "parfait-layers"
+        },
+        {
+          "title": "Finish with a little crunch",
+          "instruction": "Sprinkle granola on top. Add a tiny drizzle of honey if you like, then enjoy right away.",
+          "safety": "Check the granola label for allergens. Honey is optional.",
+          "art": "parfait-finish"
+        }
+      ],
+      "substitutions": [
+        {
+          "from": "blueberries",
+          "to": "raspberries",
+          "status": "UNVERIFIED — nutrition and allergen recalculation required"
+        },
+        {
+          "from": "honey",
+          "to": "omit",
+          "status": "Nutrition recalculation required"
+        }
+      ],
+      "safetyRules": [
+        "Rinse fruit under running water.",
+        "Refrigerate dairy ingredients until preparation.",
+        "Wash hands and surfaces before preparing food."
+      ],
+      "artworkIds": [
+        "dish.parfait.v1",
+        "step.parfait.wash.v1",
+        "step.parfait.yogurt.v1",
+        "step.parfait.layers.v1",
+        "step.parfait.finish.v1"
+      ],
+      "review": {
+        "nutrition": "PENDING",
+        "allergy": "PENDING",
+        "foodSafety": "PENDING",
+        "childExperience": "PENDING",
+        "artwork": "GENERATED PILOT FOOD PHOTOGRAPHY + STEP ILLUSTRATIONS — USER VISUAL APPROVAL PENDING"
+      },
+      "publicationStatus": "TEST PILOT ONLY — NOT CERTIFIED FOR PUBLIC RELEASE"
+    },
+    {
+      "id": "mini-pizza-toast",
+      "title": "Mini Pizza Toast",
+      "category": "Air fryer favorites",
+      "ageRange": "8–10",
+      "difficulty": "Easy",
+      "estimatedHandsOnMinutes": 8,
+      "durationStatus": "ESTIMATE — not timed in usability testing; excludes adult-controlled appliance time",
+      "servings": 1,
+      "description": "Turn a slice of toast into a little cheesy pizza with colorful toppings.",
+      "ingredients": [
+        {
+          "id": "bread",
+          "name": "Whole-wheat bread",
+          "quantity": 1,
+          "unit": "slice",
+          "allergens": [
+            "wheat"
+          ],
+          "optional": false
+        },
+        {
+          "id": "pizza-sauce",
+          "name": "Pizza sauce",
+          "quantity": 2,
+          "unit": "tbsp",
+          "allergens": [],
+          "optional": false
+        },
+        {
+          "id": "mozzarella",
+          "name": "Shredded mozzarella",
+          "quantity": 28,
+          "unit": "g",
+          "allergens": [
+            "milk"
+          ],
+          "optional": false
+        },
+        {
+          "id": "bell-pepper",
+          "name": "Bell pepper pieces",
+          "quantity": 15,
+          "unit": "g",
+          "allergens": [],
+          "optional": true
+        },
+        {
+          "id": "olive",
+          "name": "Sliced olives",
+          "quantity": 10,
+          "unit": "g",
+          "allergens": [],
+          "optional": true
+        }
+      ],
+      "equipment": [
+        "Air fryer",
+        "Air-fryer-safe tray or basket",
+        "Spoon",
+        "Heat-safe tongs"
+      ],
+      "allergens": [
+        "Wheat (bread)",
+        "Milk (mozzarella)"
+      ],
+      "crossContact": "Check bread, sauce and cheese labels. Use clean utensils and a clean preparation surface.",
+      "adultHelp": "Adult required for every air-fryer operation: preheating, loading, removing the toast and handling the hot basket or tray. Let the toast cool before eating.",
+      "nutrition": {
+        "perServing": {
+          "servingSize": "1 mini pizza toast",
+          "kcal": null,
+          "proteinG": null,
+          "carbohydrateG": null,
+          "totalFatG": null,
+          "saturatedFatG": null,
+          "fiberG": null,
+          "sugarG": null,
+          "sodiumMg": null
+        },
+        "dataSource": "USDA FoodData Central records must be mapped to the exact bread, sauce, cheese and topping forms before calculation.",
+        "calculationMethod": "Not calculated yet. Brand-specific bread and sauce variation must be resolved.",
+        "verificationStatus": "BLOCKED — nutrition values not verified; independent review pending",
+        "

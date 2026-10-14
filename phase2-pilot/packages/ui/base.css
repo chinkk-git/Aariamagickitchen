@@ -1,0 +1,4 @@
+/* Domain-neutral baseline. Product-specific type, palette and components live in each app. */
+*,*::before,*::after{box-sizing:border-box}
+button,input{font:inherit}
+button:focus-visible,in

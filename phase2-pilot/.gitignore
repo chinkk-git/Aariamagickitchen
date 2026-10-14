@@ -1,0 +1,5 @@
+node_modules/
+apps/aaria-android/.gradle/
+apps/aaria-android/app/build/
+apps/aaria-android/local.properties
+apps/aaria-android/app/src/
