@@ -89,25 +89,25 @@
       "steps": [
         {
           "title": "Wash up and rinse the berries",
-          "instruction": "Wash your hands with soap and water. An adult can help rinse the strawberries and blueberries under cool running water, then pat them dry.",
+          "instruction": "Wash your hands. Rinse the berries and pat them dry.",
           "safety": "Use clean hands, a clean colander and clean surfaces.",
           "art": "parfait-wash"
         },
         {
           "title": "Spoon in the yogurt",
-          "instruction": "Add a spoonful of plain yogurt to the bottom of your cup. Smooth it gently so the next layer shows.",
+          "instruction": "Spoon yogurt into the cup to start a layer.",
           "safety": "Keep the yogurt chilled until you are ready to build your cup.",
           "art": "parfait-yogurt"
         },
         {
           "title": "Make berry layers",
-          "instruction": "Add a few strawberries and blueberries, then another spoonful of yogurt. Repeat to make your own color pattern.",
+          "instruction": "Add berries and yogurt in layers. Repeat to make a pattern.",
           "safety": "Ask an adult to cut any large strawberries with a suitable knife.",
           "art": "parfait-layers"
         },
         {
           "title": "Finish with a little crunch",
-          "instruction": "Sprinkle granola on top. Add a tiny drizzle of honey if you like, then enjoy right away.",
+          "instruction": "Top with granola and a little honey, if you like.",
           "safety": "Check the granola label for allergens. Honey is optional.",
           "art": "parfait-finish"
         }
@@ -233,25 +233,25 @@
       "steps": [
         {
           "title": "Add the sauce",
-          "instruction": "Place the bread on a clean preparation surface. Spread the pizza sauce over the top, leaving a small edge.",
+          "instruction": "Spread sauce over the bread, leaving a small edge.",
           "safety": "Keep the bread on a stable board. Wash hands first.",
           "art": "toast-sauce"
         },
         {
           "title": "Add cheese and toppings",
-          "instruction": "Sprinkle mozzarella evenly over the sauce. Add a few pepper pieces and olives if you like.",
+          "instruction": "Sprinkle on mozzarella. Add pepper and olives if you like.",
           "safety": "Check ingredient labels for allergens. Keep toppings small and easy to bite.",
           "art": "toast-toppings"
         },
         {
           "title": "Ask an adult to air-fry it",
-          "instruction": "An adult places the toast in the air fryer and chooses the appliance instructions for a small piece of bread with cheese. Appliance models vary, so the adult checks it closely.",
+          "instruction": "Ask an adult to air-fry it. They should follow the appliance instructions and check it closely.",
           "safety": "ADULT ONLY: preheating, placing food in, removing food and handling the hot basket. Do not set a universal time or temperature.",
           "art": "toast-airfryer"
         },
         {
           "title": "Cool, then enjoy",
-          "instruction": "An adult moves the toast to a cool plate. Wait until the cheese and bread are comfortably cool before taking a bite.",
+          "instruction": "Ask an adult to move it to a cool plate. Wait until it’s cool before eating.",
           "safety": "Hot cheese and equipment can burn. The adult checks the food and serves it when safe.",
           "art": "toast-finish"
         }
