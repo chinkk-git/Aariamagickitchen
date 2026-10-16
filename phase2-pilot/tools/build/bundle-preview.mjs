@@ -26,9 +26,9 @@ const assets={
 };
 // Secondary screens use the supplied artwork pack too. Inline every image so
 // offline file:// previews and the Android WebView retain the complete set.
-const referenceImages=(await readdir(resolve(root,'packages/assets/reference-pack'))).filter(name=>name.endsWith('.jpg'));
+const referenceImages=(await readdir(resolve(root,'packages/assets/reference-pack'))).filter(name=>/\.(?:jpg|jpeg|png|webp)$/i.test(name));
 const referenceImageData=Object.fromEntries(await Promise.all(referenceImages.map(async name=>[
-  name.replace(/\.jpg$/,''),await dataUri(`packages/assets/reference-pack/${name}`)
+  name.replace(/\.(?:jpg|jpeg|png|webp)$/i,''),await dataUri(`packages/assets/reference-pack/${name}`)
 ])));
 let appWithReferenceImages=app.replace(
   "const refAsset=(name)=>`../../packages/assets/reference-pack/${name}.jpg`;",
