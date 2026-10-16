@@ -8,6 +8,7 @@ import android.webkit.JavascriptInterface
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
@@ -44,6 +45,25 @@ class MainActivity : Activity() {
                 }
             }
             webViewClient = object : WebViewClient() {
+                override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
+                    val uri = request.url
+                    if (uri.host != "appassets.androidplatform.net") return null
+                    val assetPath = uri.path?.removePrefix("/")?.takeIf { it.isNotBlank() } ?: return null
+                    val mimeType = when {
+                        assetPath.endsWith(".html", ignoreCase = true) -> "text/html"
+                        assetPath.endsWith(".js", ignoreCase = true) -> "application/javascript"
+                        assetPath.endsWith(".css", ignoreCase = true) -> "text/css"
+                        assetPath.endsWith(".png", ignoreCase = true) -> "image/png"
+                        assetPath.endsWith(".jpg", ignoreCase = true) || assetPath.endsWith(".jpeg", ignoreCase = true) -> "image/jpeg"
+                        else -> "application/octet-stream"
+                    }
+                    return try {
+                        WebResourceResponse(mimeType, "UTF-8", assets.open(assetPath))
+                    } catch (_: Exception) {
+                        null
+                    }
+                }
+
                 override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                     val uri = request.url
                     if (uri.scheme == "https" && uri.host == "appassets.androidplatform.net") return false
@@ -68,13 +88,7 @@ class MainActivity : Activity() {
                     }
                 }
             }
-            loadDataWithBaseURL(
-                "https://appassets.androidplatform.net/",
-                assets.open("index.html").bufferedReader().use { it.readText() },
-                "text/html",
-                "UTF-8",
-                null
-            )
+            loadUrl("https://appassets.androidplatform.net/assets/index.html")
         }
         setContentView(webView)
     }
