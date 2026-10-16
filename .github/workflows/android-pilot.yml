@@ -6,8 +6,16 @@ on:
     branches:
       - feature/platform-v2
     paths:
-      - 'phase2-pilot/**'
-      - '.github/workflows/android-pilot.yml'
+      - 'phase2-pilot/apps/aaria-kitchen/**'
+      - 'phase2-pilot/apps/aaria-android/**'
+      - 'phase2-pilot/domains/cooking/**'
+      - 'phase2-pilot/packages/**'
+      - 'phase2-pilot/tools/build/**'
+      - 'phase2-pilot/tools/artwork-verifier/**'
+      - 'phase2-pilot/tools/recipe-validator/**'
+      - 'phase2-pilot/tests/**'
+      - 'phase2-pilot/package.json'
+      - 'phase2-pilot/package-lock.json'
 
 permissions:
   contents: read
@@ -18,14 +26,6 @@ jobs:
     steps:
       - name: Check out pilot branch
         uses: actions/checkout@v4
-
-      - name: Check out approved 95-recipe app source
-        uses: actions/checkout@v4
-        with:
-          ref: 95f86ccbfe1222d8b263a6a83810b3c46d793c7e
-          path: approved-full-source
-          sparse-checkout: index.html
-          sparse-checkout-cone-mode: false
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -56,54 +56,8 @@ jobs:
           node --check apps/aaria-kitchen/app.js
           node --check dist/bundle-check.mjs
 
-      - name: Validate and install approved full app in Android shell
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import json
-          source = Path('approved-full-source/index.html').read_text()
-          marker = 'const RECIPES='
-          start = source.index(marker) + len(marker)
-          while source[start].isspace(): start += 1
-          stack, in_string, escaped = [], False, False
-          for pos in range(start, len(source)):
-              char = source[pos]
-              if in_string:
-                  if escaped: escaped = False
-                  elif char == chr(92): escaped = True
-                  elif char == '"': in_string = False
-                  continue
-              if char == '"': in_string = True
-              elif char in '[{': stack.append(char)
-              elif char in ']}':
-                  stack.pop()
-                  if not stack:
-                      recipes = json.loads(source[start:pos + 1])
-                      break
-          assert len(recipes) == 95, f'Expected 95 recipes, found {len(recipes)}'
-          family = sum(r.get('category') == 'Cooking with Mommy & Daddy' for r in recipes)
-          friends = sum(r.get('category') == 'Cooking with Friends' for r in recipes)
-          solo = len(recipes) - family - friends
-          assert (solo, family, friends) == (65, 15, 15), f'Unexpected artwork groups: {(solo, family, friends)}'
-          for token in ('quiz', 'grocery', 'weekly', 'nutrition', 'capture="environment"'):
-              assert token.lower() in source.lower(), f'Missing expected feature marker: {token}'
-          assets = Path('phase2-pilot/apps/aaria-android/app/src/main/assets')
-          assets.mkdir(parents=True, exist_ok=True)
-          (assets / 'index.html').write_text(source)
-          first_close = source.find('</script>')
-          second_open = source.find('<script', first_close + len('</script>'))
-          script_start = source.find('>', second_open) + 1
-          script_end = source.find('</script', script_start)
-          assert first_close > 0 and second_open > 0 and script_end > script_start, 'Full app script not found'
-          Path('/tmp/aaria-full-app.js').write_text(source[script_start:script_end])
-          print(f'Embedded approved source with {len(recipes)} recipes (65 solo, 15 family, 15 friends)')
-          PY
-          test "$(git -C approved-full-source hash-object index.html)" = "ece8232e8b76e24ac0e46a0e02df4b86577c6c28"
-          node --check /tmp/aaria-full-app.js
-          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/share-polyfill.js
-          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
-          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/avatar-adapter.js
-
+      - name: Install standalone pilot preview into Android shell
+        run: mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets && cp phase2-pilot/dist/Aaria_Phase2_Pilot_Web_Preview.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
       - name: Assemble debug APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
 
@@ -115,10 +69,3 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Upload embedded full app source
-        uses: actions/upload-artifact@v4
-        with:
-          name: aaria-magical-kitchen-embedded-web-app
-          path: phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
-          if-no-files-found: error
-          retention-days: 30
