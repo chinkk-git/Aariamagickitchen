@@ -11,6 +11,8 @@
     "serve": "python3 -m http.server 4173",
     "validate:rollout": "node tools/recipe-pipeline/validate.mjs",
     "plan:artwork": "node tools/recipe-pipeline/plan-artwork.mjs",
-    "audit:legacy": "node tools/recipe-pipeline/audit-legacy-source.mjs --input ../index.html --quiz-bank tools/recipe-pipeline/quiz-bank.json --output dist/legacy-source-audit.json"
+    "audit:legacy": "node tools/recipe-pipeline/audit-legacy-source.mjs --input ../index.html --quiz-bank tools/recipe-pipeline/quiz-bank.json --output dist/legacy-source-audit.json",
+    "migrate:legacy": "node tools/recipe-pipeline/migrate-legacy-recipes.mjs --input ../index.html --output dist/full-catalog-draft.json --quiz-output dist/full-quiz-bank-draft.json",
+    "verify:cast": "node tools/recipe-pipeline/verify-cast-assignment.mjs --catalog dist/full-catalog-draft.json"
   }
 }
