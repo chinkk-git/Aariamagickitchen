@@ -100,7 +100,8 @@ jobs:
           PY
           test "$(git -C approved-full-source hash-object index.html)" = "ece8232e8b76e24ac0e46a0e02df4b86577c6c28"
           node --check /tmp/aaria-full-app.js
-          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/share-polyfill.js\n          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/share-polyfill.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
 
       - name: Assemble debug APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
