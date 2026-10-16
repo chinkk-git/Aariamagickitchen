@@ -13,7 +13,7 @@ import java.io.FileNotFoundException
 class ShareImageProvider : ContentProvider() {
     override fun onCreate() = true
 
-    override fun getType(uri: Uri): String = "image/jpeg"
+    override fun getType(uri: Uri): String = if (uri.lastPathSegment?.endsWith(".png") == true) "image/png" else "image/jpeg"
 
     override fun query(uri: Uri, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor {
         val file = sharedFile(uri)
@@ -37,7 +37,7 @@ class ShareImageProvider : ContentProvider() {
 
     private fun sharedFile(uri: Uri): File {
         val base = File(requireNotNull(context).cacheDir, "shared-posts").canonicalFile
-        val name = uri.lastPathSegment?.takeIf { it.matches(Regex("[a-f0-9-]{36}\\.jpg")) }
+        val name = uri.lastPathSegment?.takeIf { it.matches(Regex("[a-f0-9-]{36}\\.(jpg|png)")) }
             ?: throw FileNotFoundException("Invalid shared image")
         val file = File(base, name).canonicalFile
         if (!file.path.startsWith(base.path + File.separator) || !file.isFile) throw FileNotFoundException("Image not found")

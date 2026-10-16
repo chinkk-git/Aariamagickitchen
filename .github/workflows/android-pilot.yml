@@ -19,6 +19,14 @@ jobs:
       - name: Check out pilot branch
         uses: actions/checkout@v4
 
+      - name: Check out approved 95-recipe app source
+        uses: actions/checkout@v4
+        with:
+          ref: 95f86ccbfe1222d8b263a6a83810b3c46d793c7e
+          path: approved-full-source
+          sparse-checkout: index.html
+          sparse-checkout-cone-mode: false
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -48,11 +56,41 @@ jobs:
           node --check apps/aaria-kitchen/app.js
           node --check dist/bundle-check.mjs
 
-      - name: Install standalone web pilot in Android shell
-        working-directory: phase2-pilot
+      - name: Validate and install approved full app in Android shell
         run: |
-          mkdir -p apps/aaria-android/app/src/main/assets
-          cp dist/Aaria_Phase2_Pilot_Web_Preview.html apps/aaria-android/app/src/main/assets/index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, re
+          source = Path('approved-full-source/index.html').read_text()
+          marker = 'const RECIPES='
+          start = source.index(marker) + len(marker)
+          while source[start].isspace(): start += 1
+          stack, in_string, escaped = [], False, False
+          for pos in range(start, len(source)):
+              char = source[pos]
+              if in_string:
+                  if escaped: escaped = False
+                  elif char == chr(92): escaped = True
+                  elif char == '"': in_string = False
+                  continue
+              if char == '"': in_string = True
+              elif char in '[{': stack.append(char)
+              elif char in ']}':
+                  stack.pop()
+                  if not stack:
+                      recipes = json.loads(source[start:pos + 1])
+                      break
+          assert len(recipes) == 95, f'Expected 95 recipes, found {len(recipes)}'
+          for feature in ('function shareGroceryList', 'async function shareCook', 'groceryMessage', 'DAYS'):
+              assert feature in source, f'Missing feature code: {feature}'
+          Path('phase2-pilot/apps/aaria-android/app/src/main/assets').mkdir(parents=True, exist_ok=True)
+          Path('phase2-pilot/apps/aaria-android/app/src/main/assets/index.html').write_text(source)
+          scripts = re.findall(r'<script\\b[^>]*>(.*?)</script\\s*>', source, re.S | re.I)
+          assert len(scripts) >= 2, 'Expected embedded app scripts'
+          Path('/tmp/aaria-full-app.js').write_text(scripts[1])
+          print(f'Embedded approved source with {len(recipes)} recipes')
+          PY
+          node --check /tmp/aaria-full-app.js
 
       - name: Assemble debug APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
@@ -65,10 +103,10 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Upload standalone web preview
+      - name: Upload embedded full app source
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-phase2-pilot-web-preview
-          path: phase2-pilot/dist/Aaria_Phase2_Pilot_Web_Preview.html
+          name: aaria-magical-kitchen-embedded-web-app
+          path: phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           if-no-files-found: error
           retention-days: 30
