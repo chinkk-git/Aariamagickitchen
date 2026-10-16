@@ -59,3 +59,14 @@ npm run validate:rollout -- --mode full
 ```
 
 `pilot` mode verifies the two-recipe APK sample. `full` mode enforces the complete 95-recipe and character-allocation targets.
+
+
+## Recipe cast and artwork pairing
+
+The migration and artwork plan use one fixed cast per recipe theme:
+
+- **Aaria recipes:** Aaria only.
+- **Family recipes:** Aaria, Mommy and Daddy together.
+- **Friends recipes:** Aaria with Sophia, Liam and Emma together.
+
+Each hero and step brief carries the matching approved avatar asset IDs. Steps keep the same recipe cast, while the pose and cooking action change to match that individual step. Artwork briefs preserve the approved likeness and prohibit hats, caps and sunglasses. `npm run verify:cast` checks the full migration draft against this mapping before artwork work begins.
