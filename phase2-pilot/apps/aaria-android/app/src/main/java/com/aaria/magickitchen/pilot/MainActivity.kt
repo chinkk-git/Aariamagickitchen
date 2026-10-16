@@ -54,6 +54,7 @@ class MainActivity : Activity() {
                         assetPath.endsWith(".js", ignoreCase = true) -> "application/javascript"
                         assetPath.endsWith(".css", ignoreCase = true) -> "text/css"
                         assetPath.endsWith(".png", ignoreCase = true) -> "image/png"
+                        assetPath.endsWith(".webp", ignoreCase = true) -> "image/webp"
                         assetPath.endsWith(".jpg", ignoreCase = true) || assetPath.endsWith(".jpeg", ignoreCase = true) -> "image/jpeg"
                         else -> "application/octet-stream"
                     }
@@ -82,7 +83,7 @@ class MainActivity : Activity() {
                 override fun onPageFinished(view: WebView, url: String?) {
                     super.onPageFinished(view, url)
                     if (url?.startsWith("https://appassets.androidplatform.net/") == true) {
-                        listOf("share-polyfill.js", "quiz-adapter.js").forEach { script ->
+                        listOf("share-polyfill.js", "quiz-adapter.js", "avatar-adapter.js").forEach { script ->
                             view.evaluateJavascript(assets.open(script).bufferedReader().use { it.readText() }, null)
                         }
                     }

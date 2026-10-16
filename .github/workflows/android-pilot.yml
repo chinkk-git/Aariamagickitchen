@@ -102,6 +102,7 @@ jobs:
           node --check /tmp/aaria-full-app.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/share-polyfill.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/avatar-adapter.js
 
       - name: Assemble debug APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
