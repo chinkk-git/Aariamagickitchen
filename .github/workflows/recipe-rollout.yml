@@ -10,7 +10,7 @@ on:
       batch:
         description: Artwork batch number (10 recipes per batch); use all for a full plan
         type: string
-        default: "1"
+        default: "all"
   push:
     paths:
       - 'phase2-pilot/domains/cooking/recipes/**'
@@ -42,7 +42,7 @@ jobs:
           npm run validate:artwork
           npm run validate:rollout -- --mode "${{ inputs.mode || 'pilot' }}"
       - name: Generate artwork batch plan
-        run: npm run plan:artwork -- --batch "${{ inputs.batch || '1' }}" --batch-size 10
+        run: npm run plan:artwork -- --catalog dist/full-catalog-draft.json --batch "${{ inputs.batch || 'all' }}" --batch-size 10
       - name: Build offline preview used by the APK
         run: npm run build:preview
       - uses: actions/upload-artifact@v4
