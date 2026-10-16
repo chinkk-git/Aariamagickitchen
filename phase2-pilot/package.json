@@ -8,6 +8,8 @@
     "validate:recipes": "node tools/recipe-validator/validate.mjs",
     "validate:artwork": "node tools/artwork-verifier/verify.mjs",
     "build:preview": "node tools/build/bundle-preview.mjs",
-    "serve": "python3 -m http.server 4173"
+    "serve": "python3 -m http.server 4173",
+    "validate:rollout": "node tools/recipe-pipeline/validate.mjs",
+    "plan:artwork": "node tools/recipe-pipeline/plan-artwork.mjs"
   }
 }

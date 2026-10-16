@@ -1,0 +1,53 @@
+name: Recipe rollout checks
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Validate the two-recipe pilot or full 95-recipe catalog
+        type: choice
+        options: [pilot, full]
+        default: pilot
+      batch:
+        description: Artwork batch number (10 recipes per batch); use all for a full plan
+        type: string
+        default: "1"
+  push:
+    paths:
+      - 'phase2-pilot/domains/cooking/recipes/**'
+      - 'phase2-pilot/packages/assets/**'
+      - 'phase2-pilot/tools/recipe-pipeline/**'
+      - 'phase2-pilot/tests/**'
+      - 'phase2-pilot/package.json'
+      - '.github/workflows/recipe-rollout.yml'
+permissions:
+  contents: read
+jobs:
+  validate-and-plan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: phase2-pilot
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+      - name: Validate recipe records and feature checklist
+        run: |
+          npm test
+          npm run validate:recipes
+          npm run validate:artwork
+          npm run validate:rollout -- --mode "${{ inputs.mode || 'pilot' }}"
+      - name: Generate artwork batch plan
+        run: npm run plan:artwork -- --batch "${{ inputs.batch || '1' }}" --batch-size 10
+      - name: Build offline preview used by the APK
+        run: npm run build:preview
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recipe-rollout-audit-${{ github.run_number }}
+          path: |
+            phase2-pilot/dist/recipe-pipeline-audit.json
+            phase2-pilot/dist/recipe-artwork-plan.csv
+            phase2-pilot/dist/recipe-feature-matrix.json
+            phase2-pilot/dist/Aaria_Phase2_Pilot_Web_Preview.html
+          if-no-files-found: error

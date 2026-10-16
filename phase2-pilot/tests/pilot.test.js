@@ -75,3 +75,19 @@ test('standalone preview embeds every supplied reference-pack image',async()=>{
   assert.ok(!html.includes('../../packages/assets/recipe-art/'),'preview still contains unresolved recipe-art paths');
 });
 
+
+
+test('recipe feature rollout profile preserves quiz, photo, grocery and nutrition gates',async()=>{
+  const profile=JSON.parse(await readFile(new URL('../tools/recipe-pipeline/release-profile.json',import.meta.url),'utf8'));
+  const bank=JSON.parse(await readFile(new URL('../tools/recipe-pipeline/quiz-bank.json',import.meta.url),'utf8'));
+  assert.equal(profile.quizQuestionCountPerRecipe,3);
+  for(const [id,questions] of Object.entries(bank.recipes)){assert.equal(questions.length,3,id);for(const q of questions){assert.ok(q.choices[q.answerIndex]);assert.ok(q.explanation)}}
+  assert.equal(profile.photoPost.parentConfirmationBeforeExternalShare,true);
+  assert.equal(profile.photoPost.automaticUpload,false);
+  assert.equal(profile.groceryList.shareAsPrefilledWhatsAppMessage,true);
+  assert.equal(profile.groceryList.userConfirmsSendInWhatsApp,true);
+  assert.equal(profile.groceryList.parentPhoneNumbersHardCodedOrUploaded,false);
+  assert.equal(profile.weeklyPlanner.requiresVerifiedNutrition,true);
+  assert.equal(profile.weeklyPlanner.requiresIndependentNutritionReview,true);
+  assert.equal(profile.weeklyPlanner.claimCompleteNutritionalCoverageBeforeReview,false);
+});
