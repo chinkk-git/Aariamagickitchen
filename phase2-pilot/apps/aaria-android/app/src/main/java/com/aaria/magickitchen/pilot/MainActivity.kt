@@ -84,6 +84,20 @@ class MainActivity : Activity() {
 
 class ShareBridge(private val activity: Activity) {
     @JavascriptInterface
+    fun openWhatsApp(phone: String, message: String) {
+        val digits = phone.filter { it.isDigit() }
+        if (digits.length !in 8..15 || message.length > 4000) return
+        activity.runOnUiThread {
+            try {
+                val uri = Uri.parse("https://wa.me/$digits?text=${Uri.encode(message)}")
+                activity.startActivity(Intent(Intent.ACTION_VIEW, uri))
+            } catch (_: Exception) {
+                android.widget.Toast.makeText(activity, "WhatsApp could not be opened.", android.widget.Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    @JavascriptInterface
     fun sharePost(dataUrl: String, title: String) {
         val prefix = "data:image/jpeg;base64,"
         if (!dataUrl.startsWith(prefix)) return
