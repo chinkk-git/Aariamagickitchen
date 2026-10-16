@@ -91,3 +91,15 @@ test('recipe feature rollout profile preserves quiz, photo, grocery and nutritio
   assert.equal(profile.weeklyPlanner.requiresIndependentNutritionReview,true);
   assert.equal(profile.weeklyPlanner.claimCompleteNutritionalCoverageBeforeReview,false);
 });
+
+
+test('pilot exposes per-recipe quizzes and a local-first finish-photo sharing flow',async()=>{
+  const app=await readFile(new URL('../apps/aaria-kitchen/app.js',import.meta.url),'utf8');
+  const quiz=await readFile(new URL('../domains/cooking/quizzes/quiz-bank.js',import.meta.url),'utf8');
+  assert.ok(app.includes("case'quiz':quiz(state.route.id)"));
+  assert.ok(app.includes('capture="environment"'));
+  assert.ok(app.includes('adult-share-confirm'));
+  assert.ok(app.includes('AariaNative.sharePost'));
+  assert.ok(quiz.includes('rainbow-yogurt-parfait'));
+  assert.ok(quiz.includes('mini-pizza-toast'));
+});
