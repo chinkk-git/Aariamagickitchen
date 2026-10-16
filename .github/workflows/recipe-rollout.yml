@@ -36,6 +36,7 @@ jobs:
         run: |
           npm test
           npm run validate:recipes
+          npm run audit:legacy
           npm run validate:artwork
           npm run validate:rollout -- --mode "${{ inputs.mode || 'pilot' }}"
       - name: Generate artwork batch plan
@@ -47,6 +48,7 @@ jobs:
           name: recipe-rollout-audit-${{ github.run_number }}
           path: |
             phase2-pilot/dist/recipe-pipeline-audit.json
+            phase2-pilot/dist/legacy-source-audit.json
             phase2-pilot/dist/recipe-artwork-plan.csv
             phase2-pilot/dist/recipe-feature-matrix.json
             phase2-pilot/dist/Aaria_Phase2_Pilot_Web_Preview.html

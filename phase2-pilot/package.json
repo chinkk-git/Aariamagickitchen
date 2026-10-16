@@ -10,6 +10,7 @@
     "build:preview": "node tools/build/bundle-preview.mjs",
     "serve": "python3 -m http.server 4173",
     "validate:rollout": "node tools/recipe-pipeline/validate.mjs",
-    "plan:artwork": "node tools/recipe-pipeline/plan-artwork.mjs"
+    "plan:artwork": "node tools/recipe-pipeline/plan-artwork.mjs",
+    "audit:legacy": "node tools/recipe-pipeline/audit-legacy-source.mjs --input ../index.html --quiz-bank tools/recipe-pipeline/quiz-bank.json --output dist/legacy-source-audit.json"
   }
 }
