@@ -143,9 +143,7 @@ body[data-screen="recipes"] .prototype-filters::-webkit-scrollbar{display:none}
 
 
 /* Approved family/friends scenes now appear as part of each recipe's visible artwork. */
-.crew-scene-picture{display:block;width:100%;aspect-ratio:1;border:3px solid #fff;border-radius:16px;background-image:url('../../packages/assets/reference-pack/index-kitchen-crew-sprite.webp');background-repeat:no-repeat;background-size:400% auto;background-position:66.667% center;box-shadow:0 4px 12px rgba(42,25,36,.2)}
-.family .crew-scene-picture{background-position:66.667% center}
-.friends .crew-scene-picture{background-position:100% center}
+.crew-scene-picture{display:grid;place-items:center;width:100%;aspect-ratio:1;border:3px solid #fff;border-radius:16px;background:linear-gradient(145deg,#fff9ec,#f9dce5);overflow:hidden;box-shadow:0 4px 12px rgba(42,25,36,.2)}.crew-portrait-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:3px;width:100%;padding:5px}.crew-portrait{width:38%;aspect-ratio:1;object-fit:cover;object-position:center 32%;border:2px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(42,25,36,.18)}.cast-1 .crew-portrait{width:64%}.cast-3 .crew-portrait{width:39%}.cast-4 .crew-portrait{width:39%}
 .crew-scene-label{display:block;width:max-content;max-width:100%;margin-top:5px;padding:5px 9px;border:1px solid #fff;border-radius:999px;background:#fffdf2ed;color:#573247;font-size:10px;font-weight:800;line-height:1.1;box-shadow:0 2px 7px rgba(42,25,36,.14)}
 .dish-art .recipe-crew-art{position:absolute;left:8px;bottom:8px;z-index:2;width:clamp(70px,22vw,94px);padding:4px;border:1px solid #fff;border-radius:19px;background:linear-gradient(145deg,#fffaf1f5,#fff0f8f5);box-shadow:0 4px 14px rgba(42,25,36,.2)}
 .dish-art .recipe-crew-art .crew-scene-picture{border-radius:14px}

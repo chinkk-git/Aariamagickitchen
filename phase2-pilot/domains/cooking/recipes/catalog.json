@@ -143,7 +143,20 @@
         "childExperience": "PENDING",
         "artwork": "GENERATED PILOT FOOD PHOTOGRAPHY + STEP ILLUSTRATIONS — USER VISUAL APPROVAL PENDING"
       },
-      "publicationStatus": "TEST PILOT ONLY — NOT CERTIFIED FOR PUBLIC RELEASE"
+      "publicationStatus": "TEST PILOT ONLY — NOT CERTIFIED FOR PUBLIC RELEASE",
+      "artworkGroup": "friends",
+      "mainCharacters": [
+        "Aaria",
+        "Sophia",
+        "Liam",
+        "Emma"
+      ],
+      "characterAssetIds": [
+        "character.aaria.v1",
+        "character.sophia.v1",
+        "character.liam.v1",
+        "character.emma.v1"
+      ]
     },
     {
       "id": "mini-pizza-toast",
@@ -287,7 +300,18 @@
         "childExperience": "PENDING",
         "artwork": "GENERATED PILOT FOOD PHOTOGRAPHY + STEP ILLUSTRATIONS — USER VISUAL APPROVAL PENDING"
       },
-      "publicationStatus": "TEST PILOT ONLY — NOT CERTIFIED FOR PUBLIC RELEASE"
+      "publicationStatus": "TEST PILOT ONLY — NOT CERTIFIED FOR PUBLIC RELEASE",
+      "artworkGroup": "family",
+      "mainCharacters": [
+        "Aaria",
+        "Mommy",
+        "Daddy"
+      ],
+      "characterAssetIds": [
+        "character.aaria.v1",
+        "character.mommy.v1",
+        "character.daddy.v1"
+      ]
     }
   ]
 }
