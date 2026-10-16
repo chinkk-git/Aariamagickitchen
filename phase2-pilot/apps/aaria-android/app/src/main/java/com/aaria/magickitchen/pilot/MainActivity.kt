@@ -88,7 +88,7 @@ class MainActivity : Activity() {
                     }
                 }
             }
-            loadUrl("https://appassets.androidplatform.net/assets/index.html")
+            loadUrl("https://appassets.androidplatform.net/index.html")
         }
         setContentView(webView)
     }
