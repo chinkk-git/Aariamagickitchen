@@ -1,5 +1,6 @@
 import {readFile, mkdir, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
+import {artworkCastBrief, castForArtworkGroup} from './cast-assignment.js';
 const root=resolve(new URL('../..',import.meta.url).pathname);
 const arg=(name,fallback)=>{const i=process.argv.indexOf(name);return i<0?fallback:process.argv[i+1]};
 const batchSize=Math.max(1,Number(arg('--batch-size','10'))||10);
