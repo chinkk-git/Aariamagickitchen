@@ -13,20 +13,25 @@ const [catalog,manifest,featureMatrix]=await Promise.all([
 ]);
 const byId=new Map(manifest.assets.map(a=>[a.id,a]));
 const csv=x=>`"${String(x??'').replaceAll('"','""')}"`;
-const rows=[['recipe_id','recipe_title','artwork_group','slot','step_number','step_title','asset_id','asset_path','review_status']];
+const rows=[['recipe_id','recipe_title','artwork_group','slot','step_number','step_title','asset_id','asset_path','character_names','character_asset_ids','artwork_brief','review_status']];
 const batchNumber=batch==='all'?0:Number(batch);
 if(batch!=='all'&&(!Number.isInteger(batchNumber)||batchNumber<1))throw new Error('--batch must be a positive integer or all.');
 const start=batch==='all'?0:(batchNumber-1)*batchSize;
 const selected= batch==='all'?catalog.recipes:catalog.recipes.slice(start,start+batchSize);
 for(const recipe of selected){
+  const group=recipe.artworkGroup||'aaria';
+  const cast=castForArtworkGroup(group);
+  const names=cast.map(person=>person.name).join(' + ');
+  const characterIds=cast.map(person=>person.assetId).join(' ');
   const ids=recipe.artworkIds||[];
   const hero=ids.find(id=>id.startsWith('dish.'));
   const h=byId.get(hero);
-  rows.push([recipe.id,recipe.title,recipe.artworkGroup||'','hero','','',hero||'',h?.path||'',h?.reviewStatus||'MISSING']);
+  rows.push([recipe.id,recipe.title,group,'hero','','',hero||'',h?.path||'',names,characterIds,artworkCastBrief(group,`making ${recipe.title}`),h?.reviewStatus||'MISSING']);
   for(const [i,step] of recipe.steps.entries()){
     const assetId=ids.find(id=>id.startsWith('step.')&&id.endsWith(`${step.art.replaceAll('-','.')}.v1`))||ids[i+1]||'';
     const a=byId.get(assetId);
-    rows.push([recipe.id,recipe.title,recipe.artworkGroup||'','step',i+1,step.title,assetId,a?.path||'',a?.reviewStatus||'MISSING']);
+    const brief=step.artworkBrief||artworkCastBrief(group,`${step.title}: ${step.instruction}`);
+    rows.push([recipe.id,recipe.title,group,'step',i+1,step.title,assetId,a?.path||'',names,characterIds,brief,a?.reviewStatus||'MISSING']);
   }
 }
 await mkdir(resolve(root,'dist'),{recursive:true});
