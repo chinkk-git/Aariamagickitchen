@@ -60,7 +60,7 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import json, re
+          import json
           source = Path('approved-full-source/index.html').read_text()
           marker = 'const RECIPES='
           start = source.index(marker) + len(marker)
@@ -81,16 +81,26 @@ jobs:
                       recipes = json.loads(source[start:pos + 1])
                       break
           assert len(recipes) == 95, f'Expected 95 recipes, found {len(recipes)}'
-          for feature in ('function shareGroceryList', 'async function shareCook', 'groceryMessage', 'DAYS'):
-              assert feature in source, f'Missing feature code: {feature}'
-          Path('phase2-pilot/apps/aaria-android/app/src/main/assets').mkdir(parents=True, exist_ok=True)
-          Path('phase2-pilot/apps/aaria-android/app/src/main/assets/index.html').write_text(source)
-          scripts = re.findall(r'<script\\b[^>]*>(.*?)</script\\s*>', source, re.S | re.I)
-          assert len(scripts) >= 2, 'Expected embedded app scripts'
-          Path('/tmp/aaria-full-app.js').write_text(scripts[1])
-          print(f'Embedded approved source with {len(recipes)} recipes')
+          family = sum(r.get('category') == 'Cooking with Mommy & Daddy' for r in recipes)
+          friends = sum(r.get('category') == 'Cooking with Friends' for r in recipes)
+          solo = len(recipes) - family - friends
+          assert (solo, family, friends) == (65, 15, 15), f'Unexpected artwork groups: {(solo, family, friends)}'
+          for token in ('quiz', 'grocery', 'weekly', 'nutrition', 'capture="environment"'):
+              assert token.lower() in source.lower(), f'Missing expected feature marker: {token}'
+          assets = Path('phase2-pilot/apps/aaria-android/app/src/main/assets')
+          assets.mkdir(parents=True, exist_ok=True)
+          (assets / 'index.html').write_text(source)
+          first_close = source.find('</script>')
+          second_open = source.find('<script', first_close + len('</script>'))
+          script_start = source.find('>', second_open) + 1
+          script_end = source.find('</script', script_start)
+          assert first_close > 0 and second_open > 0 and script_end > script_start, 'Full app script not found'
+          Path('/tmp/aaria-full-app.js').write_text(source[script_start:script_end])
+          print(f'Embedded approved source with {len(recipes)} recipes (65 solo, 15 family, 15 friends)')
           PY
+          test "$(git -C approved-full-source hash-object index.html)" = "ece8232e8b76e24ac0e46a0e02df4b86577c6c28"
           node --check /tmp/aaria-full-app.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/share-polyfill.js
 
       - name: Assemble debug APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
