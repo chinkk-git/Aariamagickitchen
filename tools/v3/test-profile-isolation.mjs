@@ -43,4 +43,27 @@ assert.deepEqual(JSON.parse(JSON.stringify(result.unknownLegacyField)), { curren
 assert.equal(result.customFlag, false);
 assert.equal(result.customCount, 0);
 assert.deepEqual(JSON.parse(JSON.stringify(result.newerFeature)), { enabled: true });
+const persistStart = runtime.indexOf('function v3PersistProfileState(){');
+const persistEnd = runtime.indexOf('\\nfunction v3EmptyProfileValue', persistStart);
+assert(persistStart >= 0 && persistEnd > persistStart, 'profile persistence helper must be present');
+const profileStore = new Map();
+const persistenceContext = vm.createContext({
+  window: {},
+  localStorage: { getItem: key => profileStore.get(key) ?? null, setItem: (key, value) => profileStore.set(key, value) },
+  v3ProfileState: { activeId: 'profile-new', profiles: [
+    { id: 'profile-new', name: 'Aaria', chefId: 'CHEF_A', snapshot: {} },
+    { id: 'profile-existing', name: 'Guest', chefId: 'CHEF_B', snapshot: { done: [9] } }
+  ] },
+  state: { done: [4], favorites: ['recipe-1'] },
+  v3ParseProfileState: raw => { try { const value = JSON.parse(raw || '{}'); return Array.isArray(value.profiles) ? value : { profiles: [] }; } catch { return { profiles: [] }; } }
+});
+vm.runInContext(runtime.slice(persistStart, persistEnd), persistenceContext);
+vm.runInContext('v3PersistProfileState()', persistenceContext);
+const savedProfiles = JSON.parse(profileStore.get('myMagicalKitchenProfilesV1'));
+assert.equal(savedProfiles.activeId, 'profile-new');
+assert.deepEqual(savedProfiles.profiles.map(profile => profile.id), ['profile-new', 'profile-existing']);
+assert.deepEqual(savedProfiles.profiles[0].snapshot, { done: [4], favorites: ['recipe-1'] });
+assert.deepEqual(savedProfiles.profiles[1].snapshot, { done: [9] });
+console.log('Profile persistence and snapshot isolation checks passed.');
+
 console.log('Profile snapshot reset isolation checks passed.');
