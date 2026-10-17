@@ -29,12 +29,26 @@ const layer = html.match(/<script id="aaria-v3-layer">([\s\S]*?)<\/script>/)?.[1
 if (!layer) throw new Error('The V3 feature layer is missing.');
 new vm.Script(layer, { filename: 'aaria-v3-layer.js' });
 for (const marker of [
-  'V3_INGREDIENT_ATLAS', 'ingredientPicture=function', 'batchIngredientPicture=function',
+  'V3_INGREDIENT_ATLAS', 'ingredientPicture=function', 'function v3IngredientFallback',
   'v3-ingredient-art', 'v3-hidden-camera-input', 'v3-quiz-card',
   'v3CreateWeek', 'v3ShowGroceryRecipients', 'take-dish-photo',
   'AariaNative.sharePost', 'Cozinha mágica da Aaria'
 ]) {
   if (!html.includes(marker)) throw new Error(`V3 feature check failed: ${marker}`);
+}
+if (!html.includes('function batchIngredientPicture(text)')) {
+  throw new Error('The production ingredient-specific SVG renderer was replaced.');
+}
+if (!html.includes('background-size:400% 120.7%') ||
+    !html.includes('.v3-action-art .friends-art{background-position:100% center}')) {
+  throw new Error('The four home adventure illustrations are not configured as visible sprite crops.');
+}
+const homeArtRule = html.match(/\.home-action \.action-illustration,\.home-drawer-link \.drawer-illustration,\.v3-action \.action-illustration\{([^}]+)\}/)?.[1];
+if (!homeArtRule?.includes('background-image:url("data:image/')) {
+  throw new Error('V3 home adventure cards have no assigned artwork image.');
+}
+if (layer.includes('batchIngredientPicture=function')) {
+  throw new Error('V3 must preserve the ingredient-specific renderer.');
 }
 for (const id of [78, 89, 93, 94]) {
   if (!html.includes(`NEW_RECIPE_ART[${id}]`) && !layer.includes(`"${id}"`)) {
