@@ -51,6 +51,7 @@ jobs:
       - name: Validate Android adapters
         run: |
           node --check tools/v3/runtime.js
+          node tools/v3/test-profile-isolation.mjs
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/avatar-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/mobile-fixes.js
