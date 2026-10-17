@@ -186,3 +186,6 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 - The signed-release workflow on `main` still pins `56e08ba321535645953bcc216bfd485125cb922b`; automatic review rejected moving protected `main` to this not-yet-hosted-CI/device-validated candidate. Candidate remains in draft PR #2.
 
 - Follow-up commit `5db762cd18ab8dbd2a2347fca49f64d52d072308` routes `shouldOverrideUrlLoading` through an explicit subframe policy and adds a unit test proving all subframes are rejected while main-frame routing remains available. The Android unit test has been added but is not yet hosted/device verified.
+
+
+- Local verification for the final candidate: `node --check` passes for the V3 transformer and validator; synthetic CSP tests accept the intended policy and reject wildcard/data script sources and remote frames; `test-profile-isolation.mjs` passes both snapshot isolation and localStorage persistence cases. Android/JVM execution, actual V2 HTML transform and phone/WebView behavior are not confirmed by this local check.
