@@ -83,3 +83,8 @@ Run [39074229018](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/3
 ## Run #7 V3 build evidence (2026-10-17)
 
 Run #7 passed the V3 transform/validation step and protected signing certificate fingerprint check. It failed before APK assembly because Android unit tests inherited only `ANDROID_KEYSTORE_PATH` from the staging step; Gradle correctly rejected incomplete signing configuration. Workflow commit `5f0a937707ba4f8c941b7f32d06458776935b962` moves unit tests before keystore staging. R022 and R025 remain IN PROGRESS until this corrected signed build passes signature and package checks, then the phone launch/upgrade test succeeds.
+
+
+## Signed V3 workflow run #8 (2026-10-17)
+
+User-provided GitHub Actions screenshot shows run #8 succeeded on `main` commit `5f0a937707ba4f8c941b7f32d06458776935b962` in 2m13s and published one artifact. The workflow gates include generated V3 HTML validation, Android unit tests before keystore staging, APK V3 marker check, and trusted signer verification. This verifies the CI build path, not phone launch or update behavior. R022/R025 remain IN PROGRESS pending on-device install/update and launch checks.
