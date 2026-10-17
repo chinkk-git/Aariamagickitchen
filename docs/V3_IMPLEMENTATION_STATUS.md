@@ -118,3 +118,13 @@ Artifacts: debug APK [12111133727](https://github.com/chinkk-git/Aariamagickitch
 - Local Node execution of the helper and checked-in regression assertions passed. The change is **not yet CI-verified**: no workflow run for the latest branch head has been confirmed.
 - Implementation commits: helper `f2bf706`; test `d2188cd`; workflow `f477afe`; corrected nested reset expectation `4468132`. These are development-branch commits, not a release.
 - Remaining evidence: CI on latest PR head, runtime/WebView integration, and real-device profile switching. Requirements R005 and R028 remain IN PROGRESS.
+
+
+## Profile-switch CI result (2026-10-17)
+
+This entry supersedes the preceding note that CI was unconfirmed. GitHub Actions run [39062236604](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062236604) completed successfully on code commit `44681326da2079d5fee3841eccd7c85b574a7191`. The adapter-validation step included the new profile-reset regression script; Android unit tests, HTML validation, APK assembly and both artifact uploads also passed.
+
+- Debug APK artifact [12111467878](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062236604/artifacts/12111467878), GitHub artifact digest `sha256:b80ab62513081fb6768aeaa3debdb1268d8eb683df5bd19d920f3e30cd02ce99`.
+- HTML test artifact [12112145804](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062236604/artifacts/12112145804), GitHub artifact digest `sha256:6cc7c9244eb5d5afc25191a0b02f00921f1713463cf12b33fb3ba7a69734f27b`.
+- Both artifacts expire 2026-11-16. The APK is debug-signed; the HTML is an internal test artifact, not a public V3 release.
+- Real-device migration/isolation and production signer continuity remain unverified.
