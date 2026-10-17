@@ -48,6 +48,20 @@ class SignedContentPackVerifierTest {
         rejects("path traversal") { SignedContentPackVerifier.verifyAndStage(archive("content/../escape.json", "[]".toByteArray(), 4), createTempDir(), pair.public, "test-key", 5, 3, 1000) }
     }
 
+    @Test fun rejectsImagePayloadWithIncorrectMagicBytes() {
+        rejects("invalid image bytes") {
+            SignedContentPackVerifier.verifyAndStage(
+                archive("content/artwork.webp", "not-an-image".toByteArray(), 4, mediaType = "image/webp"),
+                createTempDir(),
+                pair.public,
+                "test-key",
+                5,
+                3,
+                1000
+            )
+        }
+    }
+
     @Test fun rejectsTrailingDataInSignedJson() {
         val data = "[] trailing".toByteArray()
         rejects("trailing JSON") {
@@ -94,7 +108,8 @@ class SignedContentPackVerifierTest {
         expiresAt: Long = 2000,
         minApp: Int = 1,
         mediaType: String = "application/json",
-        zipDataOverride: ByteArray = data
+        zipDataOverride: ByteArray = data,
+        role: String = if (mediaType.startsWith("image/")) "artwork" else "recipe-data"
     ): ByteArray {
         val hash = MessageDigest.getInstance("SHA-256").digest(data).joinToString("") { "%02x".format(it) }
         val payload = JSONObject()
@@ -103,7 +118,7 @@ class SignedContentPackVerifierTest {
             .put("minAppVersion", minApp)
             .put("maxAppVersion", 10)
             .put("expiresAt", expiresAt)
-            .put("entries", JSONArray().put(JSONObject().put("path", path).put("mediaType", mediaType).put("bytes", data.size).put("sha256", hash).put("role", "recipe-data")))
+            .put("entries", JSONArray().put(JSONObject().put("path", path).put("mediaType", mediaType).put("bytes", data.size).put("sha256", hash).put("role", role)))
             .toString().toByteArray(Charsets.UTF_8)
         val signer = Signature.getInstance("SHA256withRSA").apply { initSign(pair.private); update(payload) }
         val wrapper = JSONObject().put("keyId", "test-key").put("payload", Base64.getEncoder().encodeToString(payload)).put("signature", Base64.getEncoder().encodeToString(signer.sign())).toString().toByteArray(Charsets.UTF_8)
