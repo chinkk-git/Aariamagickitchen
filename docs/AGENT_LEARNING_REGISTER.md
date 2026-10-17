@@ -76,3 +76,5 @@ undefined
 
 
 | Production signer pipeline validation | The owner configured a new production key and reported that an earlier signed update worked; a new hosted verification was needed for the chooser-fix source. | Ran signed workflow using immutable source `56e08ba321535645953bcc216bfd485125cb922b`; staging fingerprint, unit tests, HTML packaging, APK signature/trusted-certificate checks, and upload all passed. | GitHub Actions [run 39080069478](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478); signed APK artifact `12118841013`. | Hosted evidence verified; owner phone install/upgrade and chooser test remain pending. | This signed artifact predates the CSP/subframe hardening candidate. |
+
+Extracted the APK payload from signed artifact 12118841013 for direct delivery; SHA-256 `8999c844d84329055f28ab8d6c26f1d60f3a25bc4b32c634ec8eb9615421fab5`. The workflow had already passed trusted-certificate verification; device upgrade test remains pending.
