@@ -41,7 +41,7 @@ Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2
 | 2026-10-17 | WebView hardening, documentation, and merge | PR #1 squash merge `c8e490fbd45e0631f51ccfff69a27d769028a10f` to `feature/platform-v3`; source commit `ee02895aaff8b9f30dd5dbb269076b35896ce61b` | WebView policy, shared appassets URL policy, five unit tests, CI gate, and eight governed V3 docs | Run 39057437535 passed HTML validation/packaging, adapter syntax tests, five URL-policy tests, and assembleDebug; debug APK + HTML artifacts 12110495010/12110216216 are downloadable through 2026-11-16. Independent source review found no regression in app routes/bridge/share/camera/file-picker flows. | Production signer and installed APK unverified; bridge/device integration pending; content updater, migration and anti-rollback not implemented. Debug certificate identities differ; full signature verification unavailable. | Recover trusted installed/release APK and production signer lineage; then implement migration and signed content/update rollback.
 
 ## Current next actions
-1. Inspect the actual shipped HTML or obtain a verified app-data export to establish the legacy storage key, schema, and representative migration fixture; no candidate key is verified yet.
+1. Validate the statically confirmed `aariaPrivateKitchenV4` source key/schema against a representative installed-data export; add migration fixtures and DB tests before trusting preservation.
 2. Add WebView bridge-origin and navigation integration/device tests; retain phone/tablet and existing-route regression coverage.
 3. Implement idempotent transactional legacy-profile migration with backup, integrity checks, and failure recovery.
 4. Implement authenticated data-only content packs, atomic activation, and replay/downgrade protection; then signed APK upgrade handling and What's New.
@@ -52,7 +52,7 @@ Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2
 Use `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, `VERIFIED`, or `PARTIAL EVIDENCE`. Never promote to VERIFIED without concrete evidence. No user review needed for routine work; escalate only unavoidable external actions, new product decisions or unsafe conditions.
 
 ## Security/update architecture addendum
-`V3_ANDROID_SECURITY_UPDATE_ARCHITECTURE.md` was supplied in the ZIP. WebView source hardening and helper tests are implemented on the branch; device/integration gates remain open. Signed content verification, APK continuity, profile migration, rollback, and Play Protect ON upgrade tests remain NOT STARTED.
+`V3_ANDROID_SECURITY_UPDATE_ARCHITECTURE.md` is mandatory. WebView hardening and helper tests are implemented; device/integration gates remain open. Signed-pack verifier/activation and profile migration scaffolding are IN PROGRESS; production APK continuity is BLOCKED; content key provisioning, migration fixtures, rollback/device testing and Play Protect ON upgrade tests remain open.
 
 
 ## Artifact readiness note (2026-10-17)
