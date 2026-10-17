@@ -164,7 +164,7 @@ class MainActivity : Activity() {
                     // Load the production index.html as-is. Android only supplies the native file chooser.
                 }
             }
-            loadUrl("https://appassets.androidplatform.net/index.html")
+            loadUrl("https://appassets.androidplatform.net/phase2-pilot/apps/aaria-kitchen/index.html")
         }
         setContentView(webView)
     }
