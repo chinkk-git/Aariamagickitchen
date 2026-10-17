@@ -14,6 +14,13 @@ Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2
 
 Earlier paragraphs in this status file that say the production signer is missing, signing is blocked, or no signed release has been produced are historical records and are superseded by this milestone. Keep their original evidence but do not treat them as current status.
 
+
+### Latest rollback and chooser work — pilot CI
+
+- Run [39080934453](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080934453) passed after changing activation failure handling to retain the pending recovery marker until recovery can inspect disk state.
+- Run [39080945482](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080945482) passed a regression proving catalog reads recover a completed swap before serving the content.
+- Run [39080987371](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080987371) passed the profile-flow regression: legacy chef choice updates the profile and visible header without synchronously rerendering the whole kitchen. This is a code-level mitigation; the owner’s phone screenshot remains the authoritative failing report until a new signed APK is retested on device.
+
 ## Confirmed repository audit (GitHub, 2026-10-17)
 - Audited `feature/platform-v3` at commit `b057f8603f7950f5e5b5699732a346ee9e453f25` (tree contains 179 entries). The existing pilot is under `phase2-pilot/`; the root `docs/` directory and all eight requested V3 documents were absent from that branch before this work.
 - The branch contains the Kotlin WebView shell at `phase2-pilot/apps/aaria-android/`, Android workflow `.github/workflows/android-pilot.yml`, recipe tests and a two-recipe pilot. Workflow config builds a **debug APK**; this is not evidence of a signed release APK or device/security acceptance.
