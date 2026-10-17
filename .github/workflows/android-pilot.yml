@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - feature/platform-v3
+      - codex/v3-webview-hardening-20261017
     paths:
       - 'index.html'
       - '.github/workflows/android-pilot.yml'
@@ -59,6 +60,9 @@ jobs:
           mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
           cp dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           sha256sum dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+
+      - name: Test WebView asset origin policy
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
 
       - name: Assemble installable APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug

@@ -3,18 +3,31 @@ package com.aaria.magickitchen.pilot
 import android.app.Activity
 import android.content.ClipData
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.webkit.JavascriptInterface
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import java.io.ByteArrayInputStream
 import java.io.File
 import java.util.UUID
+
+private fun localErrorResponse(statusCode: Int, reasonPhrase: String): WebResourceResponse =
+    WebResourceResponse(
+        "text/plain",
+        "UTF-8",
+        statusCode,
+        reasonPhrase,
+        mapOf("Cache-Control" to "no-store"),
+        ByteArrayInputStream(ByteArray(0))
+    )
 
 class MainActivity : Activity() {
     private lateinit var webView: WebView
@@ -25,11 +38,16 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WebView.setWebContentsDebuggingEnabled((applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0)
         webView = WebView(this).apply {
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
             settings.allowFileAccess = false
             settings.allowContentAccess = false
+            settings.allowFileAccessFromFileURLs = false
+            settings.allowUniversalAccessFromFileURLs = false
+            settings.mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
+            settings.safeBrowsingEnabled = true
             settings.javaScriptCanOpenWindowsAutomatically = false
             settings.setSupportMultipleWindows(false)
             addJavascriptInterface(ShareBridge(this@MainActivity), "AariaNative")
@@ -86,8 +104,16 @@ class MainActivity : Activity() {
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
                     val uri = request.url
-                    if (uri.host != "appassets.androidplatform.net") return null
-                    val assetPath = uri.path?.removePrefix("/")?.takeIf { it.isNotBlank() } ?: return null
+                    if (!AppAssetsUrlPolicy.isAppAssetsHost(uri.host)) return null
+                    if (!AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo, uri.encodedAuthority)) {
+                        return localErrorResponse(403, "Forbidden")
+                    }
+
+                    val assetPath = when (val result = AppAssetsUrlPolicy.classifyAssetPath(uri.path)) {
+                        is AssetPathResult.Valid -> result.path
+                        AssetPathResult.NotFound -> return localErrorResponse(404, "Not Found")
+                        AssetPathResult.Forbidden -> return localErrorResponse(403, "Forbidden")
+                    }
                     val mimeType = when {
                         assetPath.endsWith(".html", ignoreCase = true) -> "text/html"
                         assetPath.endsWith(".js", ignoreCase = true) -> "application/javascript"
@@ -100,13 +126,15 @@ class MainActivity : Activity() {
                     return try {
                         WebResourceResponse(mimeType, "UTF-8", assets.open(assetPath))
                     } catch (_: Exception) {
-                        null
+                        localErrorResponse(404, "Not Found")
                     }
                 }
 
                 override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                     val uri = request.url
-                    if (uri.scheme == "https" && uri.host == "appassets.androidplatform.net") return false
+                    if (AppAssetsUrlPolicy.isAppAssetsHost(uri.host)) {
+                        return !AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo, uri.encodedAuthority)
+                    }
                     if (uri.scheme == "https" || uri.scheme == "http" || uri.scheme == "whatsapp") {
                         return try {
                             startActivity(Intent(Intent.ACTION_VIEW, uri))
