@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import vm from 'node:vm';
+import { validateCspPolicy } from './csp-policy.mjs';
 
 const file = process.argv[2] || 'dist/Aaria_Magical_Kitchen_V3.html';
 const html = fs.readFileSync(file, 'utf8');
@@ -26,19 +27,7 @@ const ids = new Set(recipes.map(recipe => Number(recipe.id)));
 if (recipes.length !== 95 || ids.size !== 95) throw new Error(`Expected 95 recipes with unique IDs, got ${recipes.length}/${ids.size}.`);
 
 const csp = html.match(/<meta\s+http-equiv="Content-Security-Policy"\s+content="([^"]+)"\s*\/?\s*>/i)?.[1];
-if (!csp) throw new Error('The generated V3 document has no Content Security Policy.');
-const directives = {};
-for (const part of csp.split(';')) {
-  const [name, ...sources] = part.trim().split(/\s+/);
-  if (!name) continue;
-  if (Object.hasOwn(directives, name)) throw new Error(`V3 CSP contains duplicate ${name} directive.`);
-  directives[name] = sources;
-}
-if (!directives['script-src']?.includes("'self'") || directives['script-src'].some(source => !["'self'", "'unsafe-inline'"].includes(source))) throw new Error('V3 CSP must allow only packaged-origin and required inline scripts.');
-if (!directives['connect-src'] || directives['connect-src'].some(source => source !== "'self'")) throw new Error('V3 CSP must restrict script network connections to the packaged origin.');
-for (const directive of ['frame-src', 'child-src', 'object-src']) if (!directives[directive]?.includes("'none'")) throw new Error(`V3 CSP must disable ${directive}.`);
-if (!directives['base-uri']?.includes("'self'")) throw new Error('V3 CSP must restrict base-uri to the packaged origin.');
-if (!directives['form-action']?.includes("'self'")) throw new Error('V3 CSP must restrict form-action to the packaged origin.');
+validateCspPolicy(csp);
 const layer = html.match(/<script id="aaria-v3-layer">([\s\S]*?)<\/script>/)?.[1];
 if (!layer) throw new Error('The V3 feature layer is missing.');
 new vm.Script(layer, { filename: 'aaria-v3-layer.js' });
