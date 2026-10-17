@@ -1,5 +1,5 @@
 # V3 Android Security, Update Reception and Migration Architecture
-Status: mandatory engineering specification; source audit completed for `feature/platform-v3` at `b057f8603f7950f5e5b5699732a346ee9e453f25`; implementation and tests pending.
+Status: mandatory engineering specification supplied in the updated documentation ZIP. Baseline audit: `feature/platform-v3` @ `b057f8603f7950f5e5b5699732a346ee9e453f25`. Partial implementation evidence: WebView hardening commit `ee02895aaff8b9f30dd5dbb269076b35896ce61b`; other update/migration gates remain open.
 
 ## Security boundary and threat model
 Protect child profiles, local progress, trusted content, release provenance, and APK signing identity against tampered downloads, compromised mirrors, stale/replayed manifests, path traversal, malicious embedded content, data corruption, and downgrade attacks. No child accounts or analytics by default. Do not store signing private keys or production credentials in Git. Separate GitHub publishing credentials from application trust keys. Use platform-backed secret handling and least privilege.
@@ -52,3 +52,12 @@ Audited `feature/platform-v3` at `b057f8603f7950f5e5b5699732a346ee9e453f25`. Rel
 - Immediate implementation order: record and verify the installed package/signer baseline; add WebView hardening and regression tests; implement transactional profile migration; specify and test authenticated data-only packs with monotonic rollback state; configure protected release signing and test a user-confirmed signed upgrade.
 
 Re-audit the source and run the threat-model negative-test matrix before marking any security gate complete.
+
+
+## Implementation evidence update (2026-10-17)
+
+- WebView source hardening is implemented on `codex/v3-webview-hardening-20261017`: explicit mixed-content prohibition, Safe Browsing, file URL access disabled, debugging restricted to debuggable builds, exact appassets HTTPS authority and path validation shared across navigation and resource callbacks, and local error responses for unsafe/missing assets.
+- Five URL-policy JUnit tests run before APK assembly. GitHub Actions run [39057437535](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535) passed tests and `assembleDebug`. Independent source review found no regression to existing sharing, camera/file-picker, appassets, or external handoff paths.
+- Not verified: WebView bridge behavior across frames, device integration, CSP, and release-mode runtime behavior. The native bridge and broad external HTTP(S)/WhatsApp handoff remain subjects for dedicated integration/security review.
+- CI debug APK signer continuity is disproven across runs 39036629623 and 39057437535: certificate fingerprints differ. Fingerprints were extracted from v2 signing blocks, but `apksigner` was unavailable; this is certificate identity evidence, not full APK signature verification. It says nothing conclusive about the installed APK or production signing lineage.
+- Secure content pack verification/atomic activation/anti-replay, APK update manager and trusted production signer, transactional profile migration, and Play Protect ON upgrade testing remain unimplemented. Do not produce or distribute a production upgrade until the existing installed/release signer and protected production key lineage are recovered and verified.
