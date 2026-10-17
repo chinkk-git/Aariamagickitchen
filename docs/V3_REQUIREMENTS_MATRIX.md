@@ -28,7 +28,7 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 
 | R023 | Content manifest authenticated with bundled public key | WP05 | tamper/wrong-key/replay tests | IN PROGRESS — RSA verifier and tamper/wrong-key/replay tests pass in CI; trusted public key/key ID are not provisioned in the app. |
 | R024 | Content packs reject scripts, traversal and decompression bombs | WP05 | negative security tests | IN PROGRESS — executable extension/path traversal/size protections tested; dedicated decompression-bomb/device tests remain open. |
-| R025 | APK signer/package/version continuity and adult confirmation | WP06 | package/version source; release APK signer lineage; installed APK comparison; upgrade/device tests | IN PROGRESS — package/version inspected; two CI debug artifact certificates differ (runs 39036629623 and 39057437535); production/installed signer and upgrade remain unverified. Certificate fingerprints were extracted from v2 blocks but APK signatures were not fully verified (`apksigner` unavailable). |
+| R025 | APK signer/package/version continuity and adult confirmation | WP06 | package/version source; release APK signer lineage; installed APK comparison; upgrade/device tests | BLOCKED — package/version inspected; protected release-signing workflow and Gradle config are prepared, but installed signer and existing production key lineage remain unverified and unavailable. Debug certificate differences do not identify the installed production signer. |
 | R026 | Atomic update activation and rollback | WP05 | crash/disk-full tests | IN PROGRESS — activation/recovery implementation and failure test added; crash/process-death/disk-full/device evidence pending. |
 | R027 | WebView release hardening and least privilege | WP02 | `MainActivity.kt`, `AppAssetsUrlPolicy.kt`, `AppAssetsUrlPolicyTest.kt`; CI run 39057437535; bridge/navigation device tests | IN PROGRESS — mixed content, Safe Browsing, file URL access, debuggable-only inspection, and exact appassets origin/path policy implemented; five unit tests and CI pass. Bridge-origin/runtime/device review remains open. |
 | R028 | Transactional Aaria-to-multiprofile migration | WP00/WP04 | idempotency/integrity tests | IN PROGRESS — Robolectric SQLite tests pass for idempotency, retry, unknown fields and database isolation (CI 39061031142). Runtime profile switching now clears prior-profile fields absent from the incoming snapshot; regression script passes locally and in CI run 39062236604. Installed-app/device crash and recovery tests remain. |
@@ -48,3 +48,10 @@ CI run 39060387158 passed the latest code head bb2176911a2b1a5061454a9e9500a0499
 ## Profile-switch regression CI evidence
 
 CI run 39062236604 passed the profile snapshot reset regression in the adapter-validation step on code commit `44681326da2079d5fee3841eccd7c85b574a7191`. Device validation is still pending.
+
+
+## Production signing gate update (2026-10-17)
+
+The release build path is implemented in Gradle and `.github/workflows/android-release.yml`. It requires all keystore inputs from protected GitHub Actions secrets and a trusted signer fingerprint from repository variable `ANDROID_SIGNER_SHA256`; `apksigner` must verify the generated APK and the certificate fingerprint must match before artifact upload. Release tasks fail closed when Gradle signing inputs are missing.
+
+This resolves the repository-side configuration gap only. It does not resolve signer continuity: no production keystore, installed signer evidence or verified key lineage is available in the repository/session. R025, R014 and R022 remain BLOCKED or not accepted until the existing signer is established, a signed APK passes fingerprint verification, and a user-confirmed upgrade preserves app data on a device. Do not generate a replacement signer or share private signing material in chat.
