@@ -67,10 +67,10 @@ home=function v3Home(){
  const favs=(state.favorites||[]).map(find).filter(Boolean);
  const picks=(favs.length?favs:recent.length?recent:RECIPES.slice(0,6)).slice(0,6);
  const pt=state.language==='pt-BR';
- const title=pt?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
+ const title=pt?'Minha Cozinha Mágica':'My Magical Kitchen';
  const aaria=avatar('v3-hero-avatar');
  return `<section class="v3-home" aria-label="${title}">
-  <header class="v3-home-top"><div class="v3-brand"><span class="v3-brand-mark" aria-hidden="true">✨</span><span>${title}<small>${pt?'Cozinhar · Criar · Explorar · Brilhar':'Cook · Create · Explore · Shine'}</small></span></div><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
+  <header class="v3-home-top"><div class="v3-brand"><span class="v3-brand-mark" aria-hidden="true">✨</span><span>${title}<small>${pt?'Sua cozinha · Suas criações · Sua magia':'Your Kitchen. Your Creations. Your Magic.'}</small></span></div><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
   <section class="v3-hero"><div class="v3-hero-copy"><span class="v3-eyebrow">${pt?'✨ SUA PRÓXIMA AVENTURA':'✨ YOUR NEXT KITCHEN QUEST'}</span><h1>${pt?'Vamos preparar algo mágico!':'Make something magical today.'}</h1><p>${pt?'Escolha uma receita, experimente algo novo e crie do seu jeito.':'Pick a recipe, try a new skill, and make it your own.'}</p><button class="v3-primary" data-nav="library">${pt?'Escolher uma receita':'Choose a recipe'} <span aria-hidden="true">→</span></button></div><div class="v3-hero-art">${aaria}</div></section>
   <section class="v3-progress" aria-label="${pt?'Seu progresso':'Your progress'}"><div class="v3-progress-card"><span>📖</span><div><strong>95 ${pt?'receitas':'recipes'}</strong><small>${pt?'para descobrir':'ready to explore'}</small></div></div><div class="v3-progress-card"><span>⭐</span><div><strong>${stats.stars}</strong><small>${pt?'estrelas de chef':'chef stars'}</small></div></div><div class="v3-progress-card"><span>🏅</span><div><strong>${stats.completed}</strong><small>${pt?'receitas feitas':'recipes completed'}</small></div></div></section>
   <div class="v3-section-head"><div><h2>${pt?'O que parece divertido?':'What sounds fun?'}</h2><p>${pt?'Escolha uma aventura para hoje.':'Choose a kitchen adventure.'}</p></div></div>
@@ -191,5 +191,88 @@ window.aariaHandleNativeDishPhoto=async(id,dataUrl)=>{
  try{const blob=await(await fetch(dataUrl)).blob();if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=blob;const post=await makeCookPost(find(id),blob);sharePostBlobs[id]=post;sharePostUrls[id]=URL.createObjectURL(post);render();notice('Your cooking post is ready! 💖');}
  catch(e){console.error('Could not prepare the camera photo.',e);notice('Could not prepare that photo. Please try again.');}
 };
-if(document.title.includes('Cozinha Mágica da Aaria'))document.title='Cozinha mágica da Aaria';
+document.title=state.language==='pt-BR'?'Minha Cozinha Mágica':'My Magical Kitchen';
+render();
+
+// V3 local child profiles. APK builds persist the profile roster and snapshots in app-private SQLite;
+// standalone preview falls back to a versioned localStorage envelope.
+let v3ProfileState = { profiles: [], activeId: null, profile: null };
+let v3ProfileInitComplete = false;
+let v3ProfileSaveWrapped = false;
+function v3ParseProfileState(raw){try{const x=JSON.parse(raw||'{}');return x&&Array.isArray(x.profiles)?x:{profiles:[],activeId:null,snapshot:{}}}catch{return {profiles:[],activeId:null,snapshot:{}}}}
+function v3PersistProfileState(){if(window.AariaNative?.saveProfileSnapshot&&v3ProfileState.activeId){window.AariaNative.saveProfileSnapshot(v3ProfileState.activeId,JSON.stringify(state));return}try{const box=v3ParseProfileState(localStorage.getItem('myMagicalKitchenProfilesV1'));const p=box.profiles.find(x=>x.id===v3ProfileState.activeId);if(p){p.snapshot=state;box.activeId=p.id;localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify(box))}}catch{}}
+function v3SetActiveProfile(result){
+ const r=typeof result==='string'?v3ParseProfileState(result):result;
+ v3ProfileState.profiles=r.profiles||[];v3ProfileState.activeId=r.activeId||null;
+ const active=v3ProfileState.profiles.find(p=>p.id===v3ProfileState.activeId)||null;
+ v3ProfileState.profile=active;
+ if(r.snapshot&&Object.keys(r.snapshot).length)state={...state,...r.snapshot};
+ if(active){try{localStorage.setItem('aariaPrivateKitchenV4',JSON.stringify(state))}catch{}}
+ v3ProfileInitComplete=true;
+ if(!v3ProfileSaveWrapped){const original=save;save=function v3ProfileSave(){original();v3PersistProfileState()};v3ProfileSaveWrapped=true}
+}
+function v3InitProfiles(){
+ let result=null;
+ if(window.AariaNative?.initializeProfiles){try{result=window.AariaNative.initializeProfiles(JSON.stringify(state))}catch(e){console.error('Profile initialization failed',e)}}
+ if(result){const parsed=v3ParseProfileState(result);if(!parsed.error){v3SetActiveProfile(parsed);if(!v3ProfileState.profiles.length)v3OpenProfileEditor('first-run');else if(v3ProfileState.profile?.chefId==='LEGACY_AARIA')v3OpenProfileEditor('legacy');return}}
+ let box=v3ParseProfileState(localStorage.getItem('myMagicalKitchenProfilesV1'));
+ if(!box.profiles.length){
+  const legacyHasData=Object.entries(state||{}).some(([k,v])=>k!=='language'&&(Array.isArray(v)?v.length>0:(v&&typeof v==='object'?Object.keys(v).length>0:!!v)));
+  if(legacyHasData){box.profiles=[{id:'legacy-aaria-v4',name:'Aaria',chefId:'LEGACY_AARIA',snapshot:state}];box.activeId='legacy-aaria-v4'}
+ }
+ v3ProfileState.profiles=box.profiles;v3ProfileState.activeId=box.activeId||null;
+ v3ProfileState.profile=box.profiles.find(p=>p.id===box.activeId)||null;
+ if(v3ProfileState.profile?.snapshot)state={...state,...v3ProfileState.profile.snapshot};
+ v3ProfileInitComplete=true;
+ if(!v3ProfileSaveWrapped){const original=save;save=function v3ProfileSave(){original();v3PersistProfileState()};v3ProfileSaveWrapped=true}
+ if(!v3ProfileState.profiles.length)v3OpenProfileEditor('first-run');else if(v3ProfileState.profile?.chefId==='LEGACY_AARIA')v3OpenProfileEditor('legacy');
+}
+const v3ProfileCss=`<style id="v3-profile-style">
+.v3-profile-trigger{border:0;border-radius:15px;background:#fff;color:#4e376c;padding:9px 12px;font:800 13px inherit;box-shadow:0 3px 12px #4e376c18;cursor:pointer;min-height:44px}
+.v3-profile-backdrop{position:fixed;inset:0;z-index:10000;background:#21142fb8;display:grid;place-items:center;padding:18px}
+.v3-profile-dialog{width:min(100%,480px);max-height:min(92dvh,760px);overflow:auto;background:#fffdf9;color:#34264f;border:1px solid #eadff1;border-radius:25px;padding:22px;box-shadow:0 24px 70px #1d0c3566}
+.v3-profile-dialog h2{margin:0 0 7px;font-size:25px;line-height:1.15}.v3-profile-dialog p{color:#655978;line-height:1.45;margin:0 0 16px}
+.v3-profile-dialog label{display:grid;gap:6px;font-weight:800;margin:14px 0}.v3-profile-dialog input{min-height:48px;border:1px solid #cfc0d9;border-radius:13px;padding:10px 12px;font:inherit;color:#34264f}
+.v3-chef-options,.v3-profile-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.v3-chef-choice,.v3-profile-choice,.v3-profile-action{min-height:60px;border:2px solid #e2d5eb;border-radius:16px;background:#fff;color:#4e376c;font:800 15px inherit;cursor:pointer;padding:10px}
+.v3-chef-choice[aria-pressed="true"],.v3-profile-choice[aria-current="true"]{border-color:#a7418c;background:#fff0f8;box-shadow:0 0 0 3px #e9c1dc66}
+.v3-profile-choice{display:grid;text-align:left;gap:3px}.v3-profile-choice small{color:#716481;font-weight:600}
+.v3-profile-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.v3-profile-actions button{flex:1}
+.v3-profile-primary{background:#694a9a;color:white;border-color:#694a9a}.v3-profile-error{min-height:22px;color:#a52f45;font-weight:700}
+@media(max-width:420px){.v3-profile-dialog{padding:18px}.v3-chef-options,.v3-profile-list{grid-template-columns:1fr}}
+</style>`;
+if(!document.getElementById('v3-profile-style'))document.head.insertAdjacentHTML('beforeend',v3ProfileCss);
+function v3OpenProfileEditor(mode='menu'){
+ document.getElementById('v3ProfileDialog')?.remove();
+ const pt=state.language==='pt-BR',active=v3ProfileState.profile,legacy=mode==='legacy',first=mode==='first-run',adding=mode==='add';
+ const heading=legacy?(pt?'Escolha seu chef':'Choose your chef'):first?(pt?'Bem-vinda à sua cozinha':'Welcome to My Magical Kitchen'):adding?(pt?'Novo perfil':'Add a chef profile'):(pt?'Perfis da cozinha':'Kitchen profiles');
+ const intro=legacy?(pt?'Seu progresso da cozinha da Aaria foi preservado. Escolha um dos dois chefs para continuar com os mesmos dados.':'Aaria’s existing kitchen progress is preserved. Pick one of the two chefs to continue with that saved data.'):first?(pt?'Escolha um nome e um chef. Você pode alterar isso depois.':'Choose a name and a chef. You can change them later.'):adding?(pt?'Cada chef tem seu próprio progresso e favoritos neste aparelho.':'Each chef gets separate progress and favourites on this device.'):'';
+ const rows=!first&&!legacy&&!adding?`<div class="v3-profile-list">${v3ProfileState.profiles.map(p=>`<button class="v3-profile-choice" data-v3-profile-select="${safe(p.id)}" aria-current="${p.id===v3ProfileState.activeId}"><strong>${safe(p.name)}</strong><small>${p.chefId==='CHEF_B'?'Chef B':p.chefId==='CHEF_A'?'Chef A':'Choose a chef'}</small></button>`).join('')}</div><div class="v3-profile-actions"><button class="v3-profile-action" data-v3-profile-add>${pt?'Adicionar perfil':'Add profile'}</button><button class="v3-profile-action" data-v3-profile-close>${pt?'Concluído':'Done'}</button></div>`:'';
+ const name=legacy?active?.name||'Aaria':'';
+ const chooser=(first||legacy||adding)?`<label>${pt?'Nome ou apelido':'Name or nickname'}<input id="v3ProfileName" maxlength="24" autocomplete="nickname" value="${safe(name)}" aria-label="${pt?'Nome ou apelido':'Name or nickname'}"></label><div class="v3-chef-options" role="group" aria-label="${pt?'Escolha um chef':'Choose a chef'}"><button type="button" class="v3-chef-choice" data-v3-chef="CHEF_A" aria-pressed="false">✨ Chef A</button><button type="button" class="v3-chef-choice" data-v3-chef="CHEF_B" aria-pressed="false">🌟 Chef B</button></div><div class="v3-profile-error" id="v3ProfileError" role="status" aria-live="polite"></div><div class="v3-profile-actions"><button class="v3-profile-action v3-profile-primary" data-v3-profile-continue>${pt?'Entrar na cozinha':'Continue to kitchen'}</button>${!first&&!legacy?`<button class="v3-profile-action" data-v3-profile-close>${pt?'Cancelar':'Cancel'}</button>`:''}</div>`:'';
+ document.body.insertAdjacentHTML('beforeend',`<div class="v3-profile-backdrop" id="v3ProfileDialog"><section class="v3-profile-dialog" role="dialog" aria-modal="true" aria-labelledby="v3ProfileTitle"><span class="v3-eyebrow">✨ ${pt?'MINHA COZINHA MÁGICA':'MY MAGICAL KITCHEN'}</span><h2 id="v3ProfileTitle">${heading}</h2><p>${intro}</p>${rows}${chooser}</section></div>`);
+ document.querySelector('#v3ProfileDialog [data-v3-chef]')?.focus();
+}
+function v3FreshSnapshot(){return {weeks:{},done:[],checks:{},stories:[],favorites:[],grocerySelected:[],language:state.language||'en-GB'}}
+function v3ApplyProfileResult(raw){const r=v3ParseProfileState(raw);if(r.error)throw new Error(r.error);v3SetActiveProfile(r);try{localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles:v3ProfileState.profiles,activeId:v3ProfileState.activeId}))}catch{};render()}
+function v3CreateOrSelectChef(name,chefId){
+ const profile=v3ProfileState.profile;
+ if(profile?.chefId==='LEGACY_AARIA'){if(window.AariaNative?.chooseProfileChef&&!window.AariaNative.chooseProfileChef(profile.id,chefId))throw new Error('Could not save avatar choice');profile.chefId=chefId;v3ProfileState.profile=profile;v3PersistProfileState();render();return}
+ const clean=String(name||'').trim();if(!clean||clean.length>24)throw new Error('Enter a name between 1 and 24 characters');
+ if(window.AariaNative?.createProfile){const raw=window.AariaNative.createProfile(clean,chefId,JSON.stringify(v3FreshSnapshot()));v3ApplyProfileResult(raw);return}
+ const id='profile-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),fresh=v3FreshSnapshot();
+ v3ProfileState.profiles.push({id,name:clean,chefId,snapshot:fresh});v3ProfileState.activeId=id;v3ProfileState.profile=v3ProfileState.profiles.find(x=>x.id===id);state=fresh;v3PersistProfileState();render();
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.hasAttribute('data-v3-profile-open')){v3OpenProfileEditor('menu');return}
+ if(b.dataset.v3Chef){document.querySelectorAll('[data-v3-chef]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));return}
+ if(b.hasAttribute('data-v3-profile-continue')){const chef=document.querySelector('[data-v3-chef][aria-pressed="true"]')?.dataset.v3Chef,name=document.getElementById('v3ProfileName')?.value||'';try{if(!chef)throw new Error(state.language==='pt-BR'?'Escolha um dos dois chefs.':'Choose one of the two chefs.');v3CreateOrSelectChef(name,chef);document.getElementById('v3ProfileDialog')?.remove()}catch(err){const box=document.getElementById('v3ProfileError');if(box)box.textContent=err.message}return}
+ if(b.hasAttribute('data-v3-profile-add')){v3OpenProfileEditor('add');return}
+ if(b.dataset.v3ProfileSelect){if(b.dataset.v3ProfileSelect===v3ProfileState.activeId){document.getElementById('v3ProfileDialog')?.remove();return}try{v3PersistProfileState();const raw=window.AariaNative?.activateProfile?window.AariaNative.activateProfile(b.dataset.v3ProfileSelect):(()=>{const box=v3ParseProfileState(localStorage.getItem('myMagicalKitchenProfilesV1'));box.profiles.forEach(p=>{if(p.id===v3ProfileState.activeId)p.snapshot=state});box.activeId=b.dataset.v3ProfileSelect;localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify(box));const p=box.profiles.find(x=>x.id===box.activeId);return JSON.stringify({profiles:box.profiles,activeId:box.activeId,snapshot:p?.snapshot||{}})})();v3ApplyProfileResult(raw);if(v3ProfileState.profile?.chefId==='LEGACY_AARIA')v3OpenProfileEditor('legacy');else document.getElementById('v3ProfileDialog')?.remove()}catch(err){console.error('Profile switch failed',err)}return}
+ if(b.hasAttribute('data-v3-profile-close')){document.getElementById('v3ProfileDialog')?.remove();return}
+});
+const v3RenderWithProfiles=render;
+render=function v3RenderWithProfiles(){v3RenderWithProfiles();if(!v3ProfileInitComplete||view!=='home')return;const header=document.querySelector('#screen .v3-home-top');if(header&&!header.querySelector('[data-v3-profile-open]')){const button=document.createElement('button');button.className='v3-profile-trigger';button.type='button';button.setAttribute('data-v3-profile-open','');button.setAttribute('aria-label','Switch kitchen profile');button.textContent=`👩‍🍳 ${v3ProfileState.profile?.name||'Choose profile'} ▾`;header.insertBefore(button,header.lastElementChild)}};
+v3InitProfiles();
 render();
