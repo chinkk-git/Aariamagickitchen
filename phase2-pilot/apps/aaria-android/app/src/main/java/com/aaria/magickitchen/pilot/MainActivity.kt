@@ -15,8 +15,19 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import java.io.ByteArrayInputStream
 import java.io.File
 import java.util.UUID
+
+private fun localErrorResponse(statusCode: Int, reasonPhrase: String): WebResourceResponse =
+    WebResourceResponse(
+        "text/plain",
+        "UTF-8",
+        statusCode,
+        reasonPhrase,
+        mapOf("Cache-Control" to "no-store"),
+        ByteArrayInputStream(ByteArray(0))
+    )
 
 class MainActivity : Activity() {
     private lateinit var webView: WebView
@@ -93,8 +104,16 @@ class MainActivity : Activity() {
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
                     val uri = request.url
-                    if (uri.scheme != "https" || uri.host != "appassets.androidplatform.net" || uri.port != -1 || uri.userInfo != null) return null
-                    val assetPath = uri.path?.removePrefix("/")?.takeIf { it.isNotBlank() } ?: return null
+                    if (!AppAssetsUrlPolicy.isAppAssetsHost(uri.host)) return null
+                    if (!AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo)) {
+                        return localErrorResponse(403, "Forbidden")
+                    }
+
+                    val assetPath = when (val result = AppAssetsUrlPolicy.classifyAssetPath(uri.path)) {
+                        is AssetPathResult.Valid -> result.path
+                        AssetPathResult.NotFound -> return localErrorResponse(404, "Not Found")
+                        AssetPathResult.Forbidden -> return localErrorResponse(403, "Forbidden")
+                    }
                     val mimeType = when {
                         assetPath.endsWith(".html", ignoreCase = true) -> "text/html"
                         assetPath.endsWith(".js", ignoreCase = true) -> "application/javascript"
@@ -107,13 +126,15 @@ class MainActivity : Activity() {
                     return try {
                         WebResourceResponse(mimeType, "UTF-8", assets.open(assetPath))
                     } catch (_: Exception) {
-                        null
+                        localErrorResponse(404, "Not Found")
                     }
                 }
 
                 override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                     val uri = request.url
-                    if (uri.scheme == "https" && uri.host == "appassets.androidplatform.net") return false
+                    if (AppAssetsUrlPolicy.isAppAssetsHost(uri.host)) {
+                        return !AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo)
+                    }
                     if (uri.scheme == "https" || uri.scheme == "http" || uri.scheme == "whatsapp") {
                         return try {
                             startActivity(Intent(Intent.ACTION_VIEW, uri))
