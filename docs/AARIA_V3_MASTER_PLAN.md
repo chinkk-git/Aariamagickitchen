@@ -131,3 +131,8 @@ The current APK remains debug-signed. The codebase contains no production signin
 ## 16.5 Migration safety progress (2026-10-17)
 
 The profile migration parser was hardened in commit `81fdd93710e6ad19ca292655c9393d05c725e3f4`: invalid, oversized, trailing and non-object JSON is rejected before migration completion can be recorded; unknown nested fields are preserved. CI run [39060716858](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39060716858) passed Android tests and debug APK/HTML assembly. SQLite transaction/recovery and installed-data fixture tests remain open. This is a bounded engineering step, not completion of WP00/WP04.
+
+
+## 16.6 SQLite profile migration evidence (2026-10-17)
+
+Robolectric-backed SQLite tests in commit `e5425c6539c93492c241814bf380755b3f9439ae` pass in CI run [39061031142](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142). They verify idempotent legacy migration, retry after malformed input, preservation of unknown fields, and isolation between two profiles. This does not establish migration behavior on the user's installed app data or Android devices. Release signing, content publisher trust, backup/restore and device QA remain open.
