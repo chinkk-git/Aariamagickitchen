@@ -38,7 +38,8 @@ class AndroidContentPackRepository(
                 check(prefs.edit().putInt(KEY_VERSION, version).remove(KEY_PENDING).commit()) { "Could not persist accepted content version" }
             }
         } catch (error: Exception) {
-            prefs.edit().remove(KEY_PENDING).commit()
+            // Keep KEY_PENDING for startup recovery. The swap may have reached disk even if
+            // a later preference commit or rollback operation failed.
             throw error
         }
         return JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
@@ -54,16 +55,17 @@ class AndroidContentPackRepository(
             if (previous.exists()) previous.deleteRecursively()
         } else {
             if (previous.exists()) {
-                if (active.exists()) active.deleteRecursively()
-                previous.renameTo(active)
+                if (active.exists()) check(active.deleteRecursively()) { "Could not remove incomplete active content" }
+                check(previous.renameTo(active)) { "Could not restore previous verified content; recovery remains pending" }
             }
-            prefs.edit().remove(KEY_PENDING).commit()
+            check(prefs.edit().remove(KEY_PENDING).commit()) { "Could not clear content recovery marker" }
         }
     }
 
     fun activeContentDirectory(): File? = active.takeIf { it.isDirectory }
 
     fun openContentAsset(appAssetPath: String): InputStream? = runCatching {
+        recoverInterruptedActivation()
         if (!appAssetPath.startsWith("content/")) return null
         val contentRoot = File(active, "content").canonicalFile
         val file = File(contentRoot, appAssetPath.removePrefix("content/")).canonicalFile
