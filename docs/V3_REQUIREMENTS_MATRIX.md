@@ -7,7 +7,7 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 | R002 | Audience 8–12 inclusive language | WP00/WP09 | content review | NOT STARTED |
 | R003 | Onboarding name + CHEF_A/CHEF_B only | WP00 | UI + persistence tests | IN PROGRESS — text-first profile UI and two chef choices added; visual assets, persistence integration tests and first-run/legacy device flows remain open. |
 | R004 | No gender field collected | WP00 | schema/privacy audit | NOT STARTED |
-| R005 | Multiple isolated local profiles | WP00/WP04 | profile isolation tests | IN PROGRESS — Robolectric SQLite isolation tests pass in CI 39061031142. A runtime merge could retain fields missing from a switched-to snapshot; the profile apply path now clears prior values before overlaying incoming data. A local Node regression check passes; latest branch workflow/device verification remains pending. |
+| R005 | Multiple isolated local profiles | WP00/WP04 | profile isolation tests | IN PROGRESS — Robolectric SQLite isolation tests pass in CI 39061031142. A runtime merge could retain fields missing from a switched-to snapshot; the profile apply path now clears prior values before overlaying incoming data. CI run 39062236604 passed the adapter-validation step including the new Node regression script; real-device verification remains pending. |
 | R006 | Legacy Aaria data migration | WP00/WP04 | verified source key/schema, representative fixture, idempotency/integrity checks | IN PROGRESS — key `aariaPrivateKitchenV4` confirmed in root source; Robolectric tests pass for idempotency, malformed retry and unknown-field preservation (CI 39061031142); installed-data comparison and device recovery remain. |
 | R007 | Fixed supporting cast M1/D1/F1–F4 | WP03 | character reference and scene QA | NOT STARTED |
 | R008 | Both chef variants in applicable scenes | WP03 | scene registry completeness | NOT STARTED |
@@ -31,7 +31,7 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 | R025 | APK signer/package/version continuity and adult confirmation | WP06 | package/version source; release APK signer lineage; installed APK comparison; upgrade/device tests | IN PROGRESS — package/version inspected; two CI debug artifact certificates differ (runs 39036629623 and 39057437535); production/installed signer and upgrade remain unverified. Certificate fingerprints were extracted from v2 blocks but APK signatures were not fully verified (`apksigner` unavailable). |
 | R026 | Atomic update activation and rollback | WP05 | crash/disk-full tests | IN PROGRESS — activation/recovery implementation and failure test added; crash/process-death/disk-full/device evidence pending. |
 | R027 | WebView release hardening and least privilege | WP02 | `MainActivity.kt`, `AppAssetsUrlPolicy.kt`, `AppAssetsUrlPolicyTest.kt`; CI run 39057437535; bridge/navigation device tests | IN PROGRESS — mixed content, Safe Browsing, file URL access, debuggable-only inspection, and exact appassets origin/path policy implemented; five unit tests and CI pass. Bridge-origin/runtime/device review remains open. |
-| R028 | Transactional Aaria-to-multiprofile migration | WP00/WP04 | idempotency/integrity tests | IN PROGRESS — Robolectric SQLite tests pass for idempotency, retry, unknown fields and database isolation (CI 39061031142). Runtime profile switching now clears prior-profile fields absent from the incoming snapshot; local Node regression check passes. Latest branch CI, installed-app/device crash and recovery tests remain. |
+| R028 | Transactional Aaria-to-multiprofile migration | WP00/WP04 | idempotency/integrity tests | IN PROGRESS — Robolectric SQLite tests pass for idempotency, retry, unknown fields and database isolation (CI 39061031142). Runtime profile switching now clears prior-profile fields absent from the incoming snapshot; regression script passes locally and in CI run 39062236604. Installed-app/device crash and recovery tests remain. |
 
 ## Evidence boundary
 
@@ -44,3 +44,7 @@ Draft PR #2 contains the profile/content foundation. The installable artifact fr
 
 
 CI run 39060387158 passed the latest code head bb2176911a2b1a5061454a9e9500a0499c0897f0 and published development artifacts 12111033320 (debug APK) and 12111286874 (HTML).
+
+## Profile-switch regression CI evidence
+
+CI run 39062236604 passed the profile snapshot reset regression in the adapter-validation step on code commit `44681326da2079d5fee3841eccd7c85b574a7191`. Device validation is still pending.
