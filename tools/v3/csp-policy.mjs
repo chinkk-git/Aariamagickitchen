@@ -8,7 +8,7 @@ export function validateCspPolicy(csp) {
     directives[name] = sources;
   }
   if (!directives['script-src']?.includes("'self'") || directives['script-src'].some(source => !["'self'", "'unsafe-inline'"].includes(source))) {
-    throw new Error('V3 CSP must allow only packaged-origin and required inline scripts.');
+    throw new Error('V3 CSP script-src must allow only packaged-origin and required inline scripts.');
   }
   if (!directives['connect-src'] || directives['connect-src'].some(source => source !== "'self'")) {
     throw new Error('V3 CSP must restrict script network connections to the packaged origin.');
