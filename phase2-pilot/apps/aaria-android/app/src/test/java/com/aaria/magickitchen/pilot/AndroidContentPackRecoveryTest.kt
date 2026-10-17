@@ -2,6 +2,7 @@ package com.aaria.magickitchen.pilot
 
 import android.app.Application
 import android.content.Context
+import android.util.Base64
 import java.io.File
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -32,6 +33,17 @@ class AndroidContentPackRecoveryTest {
     @After fun tearDown() {
         root.deleteRecursively()
         preferences.edit().clear().commit()
+    }
+
+    @Test fun refusesInstallationWhenPublisherTrustAssetsAreAbsent() {
+        val repository = AndroidContentPackRepository(app, null, null)
+        val encoded = Base64.encodeToString(byteArrayOf(1), Base64.NO_WRAP)
+        try {
+            repository.installBase64(encoded)
+            throw AssertionError("Installation must fail closed without a publisher trust root")
+        } catch (expected: IllegalStateException) {
+            assertTrue(expected.message.orEmpty().contains("publisher key is not provisioned"))
+        }
     }
 
     @Test fun completesVersionCommitAfterNewActiveDirectoryWasSwapped() {
