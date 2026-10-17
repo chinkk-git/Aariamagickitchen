@@ -22,3 +22,8 @@ Read and implement `docs/V3_ANDROID_SECURITY_UPDATE_ARCHITECTURE.md` before buil
 ## Current verified starting point (2026-10-17)
 
 The V3 documents are committed on the working branch; implementation branch `codex/v3-webview-hardening-20261017` contains WebView hardening and passing URL-policy unit tests (CI run 39057437535). The audited baseline had no persisted agent profiles; task-scoped independent audits do not constitute a durable autonomous cluster. Two CI debug APK certificate fingerprints differ; production/installed signer continuity remains unknown. CI run 39057437535 has test artifacts 12110495010 (debug APK) and 12110216216 (HTML), available through 2026-11-16. A proposed legacy-storage key/schema is not verified from the shipped HTML or installed data; confirm it before migration. Continue from the live status and requirements registers. Prioritize trusted signer recovery, transactional profile migration, authenticated data-only content updates and anti-rollback. Do not claim device, release, migration or updater acceptance without evidence.
+
+
+
+## Current continuation checkpoint — 2026-10-17
+The owner reports the new APK signing key is configured and the signed update test succeeded. Continue from branch `codex/v3-completion-core-20261017`, latest known head `56e08ba321535645953bcc216bfd485125cb922b`. Fixes on this branch address the phone-reported recursive profile-render crash and standalone HTML profile persistence. Local Node syntax and profile reset/persistence tests pass; hosted CI for the latest head and a fresh signed APK from that exact source are still required. Do not use the older signed artifact to claim the chooser fix. Keep the approved V2 baseline and content publisher trust-root work distinct from APK signing.
