@@ -11,7 +11,7 @@ export function validateCspPolicy(csp) {
     throw new Error('V3 CSP script-src must allow only packaged-origin and required inline scripts.');
   }
   if (!directives['connect-src'] || directives['connect-src'].some(source => source !== "'self'")) {
-    throw new Error('V3 CSP must restrict script network connections to the packaged origin.');
+    throw new Error('V3 CSP connect-src must restrict script network connections to the packaged origin.');
   }
   for (const directive of ['frame-src', 'child-src', 'object-src']) {
     if (!directives[directive]?.includes("'none'")) throw new Error(`V3 CSP must disable ${directive}.`);
