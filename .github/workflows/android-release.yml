@@ -85,7 +85,7 @@ jobs:
           fi
           echo "Staged keystore certificate fingerprint validated: $actual"
 
-      - name: Assemble signed release APK"
+      - name: Assemble signed release APK
         env:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
@@ -101,10 +101,16 @@ jobs:
           apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           test -x "$apksigner"
           "$apksigner" verify --verbose "$apk"
-          actual="$("$apksigner" verify --print-certs "$apk" | awk -F ': ' '/Signer #1 certificate SHA-256 digest:/ {print $2; exit}' | tr -d ':' | tr '[:upper:]' '[:lower:]')"
+          cert_output="$("$apksigner" verify --print-certs "$apk" 2>&1)"
+          actual="$(printf '%s\n' "$cert_output" | sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest: *//p' | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
           expected="${EXPECTED_SIGNER_SHA256//:/}"
           expected="${expected,,}"
-          if [[ -z "$actual" || "$actual" != "$expected" ]]; then
+          if [[ -z "$actual" ]]; then
+            details="$(printf '%s\n' "$cert_output" | grep -E 'Signer #1|SHA-256 digest' | tr '\n' ';' || true)"
+            echo "::error::Could not extract APK signer certificate fingerprint from apksigner output. $details"
+            exit 1
+          fi
+          if [[ "$actual" != "$expected" ]]; then
             echo "::error::APK signer does not match the trusted certificate fingerprint. Expected $expected; found $actual."
             exit 1
           fi
