@@ -64,6 +64,26 @@ assert.equal(savedProfiles.activeId, 'profile-new');
 assert.deepEqual(savedProfiles.profiles.map(profile => profile.id), ['profile-new', 'profile-existing']);
 assert.deepEqual(savedProfiles.profiles[0].snapshot, { done: [4], favorites: ['recipe-1'] });
 assert.deepEqual(savedProfiles.profiles[1].snapshot, { done: [9] });
+const legacyCalls = [];
+const legacyTrigger = { textContent: '' };
+const legacyProfile = { id: 'legacy-aaria-v4', name: 'Aaria', chefId: 'LEGACY_AARIA' };
+const legacyContext = vm.createContext({
+  window: { AariaNative: { chooseProfileChef: (id, chef) => { legacyCalls.push(['choose', id, chef]); return true; } } },
+  document: { querySelector: selector => selector === '[data-v3-profile-open]' ? legacyTrigger : null },
+  v3ProfileState: { profile: legacyProfile },
+  v3PersistProfileState: () => legacyCalls.push(['persist']),
+  render: () => legacyCalls.push(['render'])
+});
+const legacyStart = runtime.indexOf('function v3CreateOrSelectChef(');
+const legacyEnd = runtime.indexOf('\ndocument.addEventListener(\'click\'', legacyStart);
+assert(legacyStart >= 0 && legacyEnd > legacyStart, 'legacy chef-selection function must be present');
+vm.runInContext(runtime.slice(legacyStart, legacyEnd), legacyContext);
+vm.runInContext("v3CreateOrSelectChef('Aaria', 'CHEF_A')", legacyContext);
+assert.equal(legacyProfile.chefId, 'CHEF_A');
+assert.deepEqual(legacyCalls, [['choose', 'legacy-aaria-v4', 'CHEF_A'], ['persist']]);
+assert.equal(legacyTrigger.textContent, '👩‍🍳 Aaria ▾');
+console.log('Legacy chef selection persists without rerendering the existing kitchen.');
+
 console.log('Profile persistence and snapshot isolation checks passed.');
 
 console.log('Profile snapshot reset isolation checks passed.');
