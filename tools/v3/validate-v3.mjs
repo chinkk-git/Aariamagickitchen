@@ -25,9 +25,9 @@ const recipes = vm.runInNewContext(`(${html.slice(start, end)})`);
 const ids = new Set(recipes.map(recipe => Number(recipe.id)));
 if (recipes.length !== 95 || ids.size !== 95) throw new Error(`Expected 95 recipes with unique IDs, got ${recipes.length}/${ids.size}.`);
 
-const csp = html.match(/<meta\\s+http-equiv=["']Content-Security-Policy["']\\s+content=["']([^"']+)["']\\s*\\/?\\s*>/i)?.[1];
+const csp = html.match(/<meta\s+http-equiv=["']Content-Security-Policy["']\s+content=["']([^"']+)["']\s*\/?\s*>/i)?.[1];
 if (!csp) throw new Error('The generated V3 document has no Content Security Policy.');
-const directives = Object.fromEntries(csp.split(';').map(part => part.trim().split(/\\s+/)).filter(parts => parts.length).map(parts => [parts[0], parts.slice(1)]));
+const directives = Object.fromEntries(csp.split(';').map(part => part.trim().split(/\s+/)).filter(parts => parts.length).map(parts => [parts[0], parts.slice(1)]));
 if (!directives['script-src']?.includes("'self'") || directives['script-src'].includes('*') || directives['script-src'].some(source => /^https?:/i.test(source))) throw new Error('V3 CSP must limit executable scripts to the packaged origin and required inline V2/V3 code.');
 for (const directive of ['frame-src', 'object-src']) if (!directives[directive]?.includes("'none'")) throw new Error(`V3 CSP must disable ${directive}.`);
 if (!directives['base-uri']?.includes("'self'")) throw new Error('V3 CSP must restrict base-uri to the packaged origin.');
