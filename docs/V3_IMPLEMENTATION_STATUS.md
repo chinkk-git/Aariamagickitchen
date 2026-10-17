@@ -1,5 +1,5 @@
 # V3 Implementation Status — My Magical Kitchen
-Updated: 2026-10-17 | Evidence-based ledger | Current implementation branch: `codex/v3-webview-hardening-20261017` @ `ee02895aaff8b9f30dd5dbb269076b35896ce61b`
+Updated: 2026-10-17 | Evidence-based ledger | Merged to `feature/platform-v3` via PR #1 at `c8e490fbd45e0631f51ccfff69a27d769028a10f`
 
 ## Confirmed repository audit (GitHub, 2026-10-17)
 - Audited `feature/platform-v3` at commit `b057f8603f7950f5e5b5699732a346ee9e453f25` (tree contains 179 entries). The existing pilot is under `phase2-pilot/`; the root `docs/` directory and all eight requested V3 documents were absent from that branch before this work.
@@ -37,15 +37,14 @@ Updated: 2026-10-17 | Evidence-based ledger | Current implementation branch: `co
 | Date | Work session | Branch / commit | Changed artifacts | Tests / evidence | Defects / blockers | Next action |
 |---|---|---|---|---|---|---|
 | 2026-10-17 | V3 docs bootstrap and source audit | `codex/v3-docs-security-audit-20261017` @ `f18d42469005e09f551364416cd034a3200affc0` | Eight root `docs/` files; initial docs review corrections | Repository tree/source audit; baseline CI 39036629623 successful (debug only). | Device, release signing, updates and migration open; no durable agent profiles. | Continue with isolated reviewed implementation |
-| 2026-10-17 | WebView hardening and signing evidence | `codex/v3-webview-hardening-20261017` @ `ee02895aaff8b9f30dd5dbb269076b35896ce61b` | MainActivity policy, shared appassets URL policy, five unit tests, test dependency and CI test gate | Run 39057437535 success: HTML validation/packaging, syntax tests, five URL-policy tests, assembleDebug. Independent source review found no regression in existing app routes/bridge/share/camera/file-picker flows. Debug signer cert fingerprints differ across the two runs; full cryptographic APK signature verification unavailable. | Production signer / installed APK unverified; bridge integration/device tests pending; content updater, profile migration and anti-rollback not implemented. | Recover trusted installed/release APK and signer identity; then implement transactional migration and signed content/update rollback.
+| 2026-10-17 | WebView hardening, documentation, and merge | PR #1 squash merge `c8e490fbd45e0631f51ccfff69a27d769028a10f` to `feature/platform-v3`; source commit `ee02895aaff8b9f30dd5dbb269076b35896ce61b` | WebView policy, shared appassets URL policy, five unit tests, CI gate, and eight governed V3 docs | Run 39057437535 passed HTML validation/packaging, adapter syntax tests, five URL-policy tests, and assembleDebug. Independent source review found no regression in app routes/bridge/share/camera/file-picker flows. | Production signer and installed APK unverified; bridge/device integration pending; content updater, migration and anti-rollback not implemented. Debug certificate identities differ; full signature verification unavailable. | Recover trusted installed/release APK and production signer lineage; then implement migration and signed content/update rollback.
 
 ## Current next actions
-1. Open and review the implementation PR from `codex/v3-webview-hardening-20261017` to `feature/platform-v3`; merge only with required CI and review gates satisfied.
-2. Obtain the original installed/release APK or trusted signer fingerprint and protected production key lineage; debug artifact certificates are not a substitute.
-3. Add WebView bridge-origin and navigation integration/device tests; retain phone/tablet and existing-route regression coverage.
-4. Implement idempotent transactional legacy-profile migration with backup, integrity checks, and failure recovery.
-5. Implement authenticated data-only content packs, atomic activation, and replay/downgrade protection; then signed APK upgrade handling and What's New.
-6. Add persistent agent role prompts and handoff/evidence contracts; current agents were task-scoped only.
+1. Obtain the original installed/release APK or trusted signer fingerprint and protected production key lineage; debug artifact certificates are not a substitute.
+2. Add WebView bridge-origin and navigation integration/device tests; retain phone/tablet and existing-route regression coverage.
+3. Implement idempotent transactional legacy-profile migration with backup, integrity checks, and failure recovery.
+4. Implement authenticated data-only content packs, atomic activation, and replay/downgrade protection; then signed APK upgrade handling and What's New.
+5. Add persistent agent role prompts and handoff/evidence contracts; current agents were task-scoped only.
 
 ## Completion rules
 Use `NOT STARTED`, `IN PROGRESS`, `BLOCKED`, `VERIFIED`, or `PARTIAL EVIDENCE`. Never promote to VERIFIED without concrete evidence. No user review needed for routine work; escalate only unavoidable external actions, new product decisions or unsafe conditions.
