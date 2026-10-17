@@ -69,6 +69,23 @@ jobs:
 
       - name: Assemble installable APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+      - name: Verify unsigned release builds are refused
+        shell: bash
+        run: |
+          set +e
+          gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleRelease > "$RUNNER_TEMP/release-signing-guard.log" 2>&1
+          result=$?
+          set -e
+          if [[ "$result" -eq 0 ]]; then
+            echo "::error::assembleRelease unexpectedly succeeded without trusted signing inputs."
+            exit 1
+          fi
+          if ! grep -Fq "Refusing to build an unsigned release APK; configure the existing trusted signing key." "$RUNNER_TEMP/release-signing-guard.log"; then
+            cat "$RUNNER_TEMP/release-signing-guard.log"
+            echo "::error::assembleRelease failed for a reason other than the expected signing guard."
+            exit 1
+          fi
+
 
       - name: Upload installable V3 APK
         uses: actions/upload-artifact@v4
