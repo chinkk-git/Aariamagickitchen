@@ -35,9 +35,12 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 
 ## Evidence boundary
 
-`IN PROGRESS` means partial work/evidence exists, not acceptance. CI run 39060262205 passed HTML validation, Android unit tests (including profile policy and signed-pack verifier tests), and debug APK assembly; artifacts 12111410525/12110882719 are available through 2026-11-16. Current head bb2176911a2b1a5061454a9e9500a0499c0897f0 adds a strict JSON trailing-data test after that green run and remains unverified by CI. No device tests were run. Production APK signer continuity is BLOCKED on trusted signer/key evidence; content publisher key provisioning is also outstanding.
+`IN PROGRESS` means partial work/evidence exists, not acceptance. CI run 39060262205 passed HTML validation, Android unit tests (including profile policy and signed-pack verifier tests), and debug APK assembly; artifacts 12111410525/12110882719 are available through 2026-11-16. Current code head bb2176911a2b1a5061454a9e9500a0499c0897f0 passed CI run 39060387158, including the strict JSON trailing-data test. No device tests were run. Production APK signer continuity is BLOCKED on trusted signer/key evidence; content publisher key provisioning is also outstanding.
 
 
 ## Current pause gate (2026-10-17)
 
 Draft PR #2 contains the profile/content foundation. The installable artifact from CI is debug-signed and cannot establish an upgrade over the existing app. Before resuming release/update implementation, identify the installed APK signer and secure the existing production signing key lineage outside chat. The content-pack verifier deliberately fails closed until a trusted publisher public key/key ID is bundled; provisioning that trust root and protecting its private signing key is a separate external security action.
+
+
+CI run 39060387158 passed the latest code head bb2176911a2b1a5061454a9e9500a0499c0897f0 and published development artifacts 12111033320 (debug APK) and 12111286874 (HTML).
