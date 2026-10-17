@@ -32,3 +32,10 @@ The eight docs paths and independent documentation review are verified. The WebV
 
 
 | 2026-10-17 | SQLite migration and profile isolation | Parser-only tests left transaction/idempotency and cross-profile preservation unverified. | Added Robolectric-backed ProfileStore tests for legacy migration retry, marker safety after malformed input, unknown-field preservation, and snapshot isolation across two profiles. | CI run 39061031142 passed `testDebugUnitTest`, `assembleDebug`, HTML validation and artifact publication. | CI verifies simulated SQLite behavior; no installed-data or real-device reviewer evidence yet. | Profile migration integration test coverage improved; device/backup/restore gates remain. | `e5425c6539c93492c241814bf380755b3f9439ae` |
+
+
+## Profile snapshot isolation regression (2026-10-17)
+
+| Date | Incident/task | Root cause and evidence | Change made | Regression test | Reviewer | Metric before/after | Commit |
+|---|---|---|---|---|---|---|---|
+| 2026-10-17 | Runtime profile switch could retain prior-profile values | `v3SetActiveProfile` merged a switched-to snapshot over the current state. Any key omitted from the incoming snapshot could retain the previous profile's value. | Clear existing profile-state values before overlaying the target snapshot; retain the incoming snapshot, including unknown fields. | Added `tools/v3/test-profile-isolation.mjs`, wired into CI. Local Node check passed; branch CI/device result pending. | No independent review yet | Regression scenario: stale values retained → reset by type and incoming snapshot applied; automated branch CI not yet confirmed | `f2bf706` helper; `d2188cd` test; `f477afe` workflow; `4468132` assertion correction |
