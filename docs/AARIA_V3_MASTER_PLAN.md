@@ -112,3 +112,10 @@ Implement and test `docs/V3_ANDROID_SECURITY_UPDATE_ARCHITECTURE.md` as a bindin
 ## 16.2 Implementation continuation evidence (2026-10-17)
 
 The WebView pilot was hardened on `codex/v3-webview-hardening-20261017` at `ee02895aaff8b9f30dd5dbb269076b35896ce61b`. CI run 39057437535 passed the new appassets URL-policy tests and debug build. This does not satisfy device, release-signing, content-update, migration, or anti-rollback acceptance. Two CI debug APK artifact certificates differ; the installed APK and trusted production signer remain unknown. The immediate security prerequisite is to recover the original installed/release APK or trusted signer fingerprint and protected production key lineage before planning an upgrade. Continue migration and authenticated data-only update implementation after establishing appropriate data/identity baselines. The autonomous agent work in this session was task-scoped audit/review; durable agent profiles and continuous execution have not been established.
+
+
+## 16.3 Development artifact readiness (2026-10-17)
+
+GitHub Actions run 39057437535 passed HTML validation/packaging, adapter syntax checks, five WebView URL-policy tests, and debug APK assembly. It published the generated HTML archive [12110216216](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110216216) and debug APK archive [12110495010](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110495010), with artifact digests recorded in `V3_IMPLEMENTATION_STATUS.md`. Both archives are available until 2026-11-16. The APK is debug-signed and intended for development testing; it is not proof of continuity with the installed app or production release readiness.
+
+Migration remains unstarted until the actual shipped HTML or a verified installed-data export confirms the source key/schema and a representative fixture. One independent audit reported a candidate key, but another reviewer could not verify it from the available source; preserve this uncertainty rather than encoding an assumption. Production signer lineage and device tests remain required gates.
