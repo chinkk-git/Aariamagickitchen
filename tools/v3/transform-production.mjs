@@ -93,6 +93,7 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 .v3-contact-form input{min-height:44px;padding:8px 11px;border:1px solid #cfc0d9;border-radius:11px;font:inherit;color:var(--v3-ink)}
 .v3-photo-camera{display:block;width:100%;margin-bottom:8px;border:0;border-radius:13px;background:#66469a;color:#fff;font:inherit;font-weight:850;cursor:pointer}
 .cook-photo-pick{min-height:46px}
+.v3-hidden-camera-input{position:fixed;left:-10000px;width:1px;height:1px;opacity:0}
 .storybook-ingredient-icon{display:grid;place-items:center;min-height:66px}
 .storybook-ingredient-icon .v3-ingredient-art{width:min(76px,100%);aspect-ratio:1;border-radius:18px}
 .ref-ingredient-icon{display:grid;place-items:center;width:60px;height:58px}
