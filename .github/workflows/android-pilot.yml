@@ -1,23 +1,24 @@
-name: Aaria production Android APK
+name: Aaria V3 Android APK and HTML
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - feature/platform-v2
+      - feature/platform-v3
     paths:
       - 'index.html'
       - '.github/workflows/android-pilot.yml'
       - 'phase2-pilot/apps/aaria-android/**'
+      - 'tools/v3/**'
 
 permissions:
   contents: read
 
 jobs:
-  build-production-apk:
+  build-v3:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out production app
+      - name: Check out V3 app source
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -39,58 +40,41 @@ jobs:
         with:
           gradle-version: '8.10.2'
 
-      - name: Validate production catalog and app adapters
+      - name: Build V3 HTML from production and validate all recipes
+        run: |
+          node --check tools/v3/transform-production.mjs
+          node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3.html
+          node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3.html
+
+      - name: Validate Android adapters
         run: |
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/avatar-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/mobile-fixes.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/share-polyfill.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/grocery-whatsapp.js
-          node <<'NODE'
-          const fs = require('fs');
-          const vm = require('vm');
-          const html = fs.readFileSync('index.html', 'utf8');
-          const match = html.match(/(?:const|let)\s+RECIPES\s*=\s*/);
-          if (!match) throw new Error('Recipe catalog not found in production index.html');
-          const start = match.index + match[0].length;
-          if (html[start] !== '[') throw new Error('Recipe catalog is not an array');
-          let depth = 0, quote = '', escaped = false, end = -1;
-          for (let i = start; i < html.length; i++) {
-            const c = html[i];
-            if (quote) {
-              if (escaped) escaped = false;
-              else if (c === '\\') escaped = true;
-              else if (c === quote) quote = '';
-              continue;
-            }
-            if (c === '"' || c === "'" || c === '`') { quote = c; continue; }
-            if (c === '[') depth++;
-            else if (c === ']' && --depth === 0) { end = i + 1; break; }
-          }
-          if (end < 0) throw new Error('Could not parse recipe catalog');
-          const recipes = vm.runInNewContext('(' + html.slice(start, end) + ')');
-          const ids = new Set(recipes.map(r => Number(r.id)));
-          const artwork = (html.match(/data:image\//g) || []).length;
-          if (recipes.length !== 95 || ids.size !== 95) {
-            throw new Error(`Expected 95 unique recipes, found ${recipes.length} recipes / ${ids.size} IDs`);
-          }
-          if (artwork < 100) throw new Error(`Expected embedded production artwork; found only ${artwork} data images`);
-          console.log(`Production catalog verified: ${recipes.length} recipes, ${artwork} embedded artwork references.`);
-          NODE
 
-      - name: Package production index.html into offline Android assets
+      - name: Package V3 HTML into offline Android assets
         run: |
           mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
-          cp index.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
-          sha256sum index.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          cp dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          sha256sum dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
 
       - name: Assemble installable APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
 
-      - name: Upload installable production APK
+      - name: Upload installable V3 APK
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-magical-kitchen-production-apk
+          name: aaria-magical-kitchen-v3-apk
           path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload replaceable V3 HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3-html
+          path: dist/Aaria_Magical_Kitchen_V3.html
           if-no-files-found: error
           retention-days: 30
