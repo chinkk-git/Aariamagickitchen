@@ -99,3 +99,10 @@ This is prepared infrastructure, not proof of a valid signer or a release build.
 
 
 CI run [39062826879](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062826879) passed after the release signing Gradle configuration was added. Run [39062992988](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062992988) passed; its `Verify unsigned release builds are refused` step confirmed that unsigned release assembly fails with the expected signing guard. It also published [debug APK artifact 12111849096](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062992988/artifacts/12111849096), SHA-256 `96c87003b4a82eaa30317b57a2455afcfd92a84f406ff9be4cdb177c24225438` and [HTML test artifact 12111729532](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062992988/artifacts/12111729532), SHA-256 `27203e329dfccaf8fa5ba6bd2f8e793c633dc50202463d32f2c3ac1282b812c8`. The APK is debug-signed. This evidence does not verify the production signer or create a signed release APK.
+
+
+## User-supplied APK signer inspection (2026-10-17)
+
+Local inspection of attached `Aaria_Magical_Kitchen_V3.apk` found application ID `com.aaria.magickitchen.pilot`, version code 5/name 1.0.1 and a v2 signing-block certificate with subject `CN=Android Debug, O=Android, C=US`. Certificate SHA-256: `B5:EC:1E:57:50:BE:5B:C2:34:7F:8E:59:1C:C8:9E:67:FE:E7:13:24:3C:6D:C8:48:6A:6F:FE:10:00:0B:EB:1D`; APK SHA-256: `977fe6daf7eb703bf160b40e984d48cc13df353a7ae23cc4a591633e53098180`.
+
+This identifies the supplied file as debug-signed, not the production signer. An APK does not contain its private signing key. The attached file has not been proven byte-for-byte identical to the installed copy, and a full `apksigner` verification could not be run in the analysis environment. Do not treat this as continuity evidence or uninstall the currently installed app. Resolve the installed-app signer and data-preserving transition before creating or installing a production-signed APK.
