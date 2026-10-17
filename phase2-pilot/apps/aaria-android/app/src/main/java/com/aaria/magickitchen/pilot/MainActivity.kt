@@ -92,7 +92,7 @@ class MainActivity : Activity() {
             webViewClient = object : WebViewClient() {
                 override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
                     val uri = request.url
-                    if (uri.host != "appassets.androidplatform.net") return null
+                    if (uri.scheme != "https" || uri.host != "appassets.androidplatform.net" || uri.port != -1 || uri.userInfo != null) return null
                     val assetPath = uri.path?.removePrefix("/")?.takeIf { it.isNotBlank() } ?: return null
                     val mimeType = when {
                         assetPath.endsWith(".html", ignoreCase = true) -> "text/html"
