@@ -1,5 +1,5 @@
 # V3 Requirements Traceability Matrix
-States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/evidence during implementation. Audit basis: `feature/platform-v3` commit `b057f8603f7950f5e5b5699732a346ee9e453f25`; source inspection only, no Android build/device verification.
+States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/evidence during implementation. Audit basis: `feature/platform-v3` commit `b057f8603f7950f5e5b5699732a346ee9e453f25`; implementation evidence on `codex/v3-webview-hardening-20261017` @ `ee02895aaff8b9f30dd5dbb269076b35896ce61b`; run 39057437535 passed unit tests and debug build, with no device tests.
 
 | ID | Requirement | Responsible area | Required evidence | State |
 |---|---|---|---|---|
@@ -28,11 +28,11 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 
 | R023 | Content manifest authenticated with bundled public key | WP05 | tamper/wrong-key/replay tests | NOT STARTED |
 | R024 | Content packs reject scripts, traversal and decompression bombs | WP05 | negative security tests | NOT STARTED |
-| R025 | APK signer/package/version continuity and adult confirmation | WP06 | source has applicationId `com.aaria.magickitchen.pilot`, versionCode 5; workflow builds debug APK; release signing/upgrade tests absent | IN PROGRESS — identity/version source inspected; signer continuity unverified |
+| R025 | APK signer/package/version continuity and adult confirmation | WP06 | package/version source; release APK signer lineage; installed APK comparison; upgrade/device tests | IN PROGRESS — package/version inspected; two CI debug artifact certificates differ (runs 39036629623 and 39057437535); production/installed signer and upgrade remain unverified. Certificate fingerprints were extracted from v2 blocks but APK signatures were not fully verified (`apksigner` unavailable). |
 | R026 | Atomic update activation and rollback | WP05 | crash/disk-full tests | NOT STARTED |
-| R027 | WebView release hardening and least privilege | WP02 | `MainActivity.kt` source audit; explicit Safe Browsing, mixed-content, navigation allowlist and release security tests still needed | IN PROGRESS — partial settings inspected; release gate open |
+| R027 | WebView release hardening and least privilege | WP02 | `MainActivity.kt`, `AppAssetsUrlPolicy.kt`, `AppAssetsUrlPolicyTest.kt`; CI run 39057437535; bridge/navigation device tests | IN PROGRESS — mixed content, Safe Browsing, file URL access, debuggable-only inspection, and exact appassets origin/path policy implemented; five unit tests and CI pass. Bridge-origin/runtime/device review remains open. |
 | R028 | Transactional Aaria-to-multiprofile migration | WP00/WP04 | idempotency/integrity tests | NOT STARTED |
 
 ## Evidence boundary
 
-The `IN PROGRESS` labels above mean source-level work/evidence exists; they do not mean a requirement passed. `feature/platform-v3` includes a debug-APK workflow and an Android pilot, but this session did not run CI, build, or device tests. Content update authentication, profile migration, anti-rollback, and signed upgrade behavior remain `NOT STARTED` until implementation and tests are linked.
+`IN PROGRESS` means partial work/evidence exists, not acceptance. CI run 39057437535 passed the WebView URL-policy unit tests and debug build; no device tests were run. Content authentication, migration, anti-rollback, and signed upgrade behavior remain `NOT STARTED` until implemented and tested.
