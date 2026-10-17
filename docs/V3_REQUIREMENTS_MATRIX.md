@@ -95,6 +95,10 @@ User-provided GitHub Actions screenshot shows run #8 succeeded on `main` commit 
 Owner reports the configured permanent APK key successfully updated the installed app. The phone screenshot then exposed the profile chooser recursion crash. Runtime fix and regression tests are on source commit `56e08ba321535645953bcc216bfd485125cb922b`; the main signed-release workflow now pins that exact source at workflow commit `eaa4263fc131547ca24b5cdc1bea0aff2a6dfc28`. The next workflow run and corrected phone retest are still required before R003, R014, R022 or R025 can be marked VERIFIED. Content-pack publisher trust is separate and remains open under R012/R023.
 
 ## WebView security follow-up — 2026-10-17
-| R027 | CSP script/frame/object restrictions and WebView subframe navigation blocking | WP02 | generated-HTML validator; Android WebView frame/navigation test; hosted CI; phone regression | IN PROGRESS — candidate source `5db762cd18ab8dbd2a2347fca49f64d52d072308` injects CSP, validates core directives, and rejects subframe navigation. Local/hosted WebView integration tests and device checks are pending. |
+| R027 | CSP script/frame/object restrictions and WebView subframe navigation blocking | WP02 | generated-HTML validator; Android WebView frame/navigation test; hosted CI; phone regression | IN PROGRESS — candidate source `524e85a33f874ac9c12e8b4e7943b7dad4c9b294` injects CSP, validates core directives, and rejects subframe navigation. Local/hosted WebView integration tests and device checks are pending. |
 
-The candidate includes a direct `AppAssetsUrlPolicyTest` for subframe rejection versus main-frame routing (`5db762cd18ab8dbd2a2347fca49f64d52d072308`). Unit test execution, WebView instrumentation and phone checks remain pending.
+The candidate includes a direct `AppAssetsUrlPolicyTest` for subframe rejection versus main-frame routing (`524e85a33f874ac9c12e8b4e7943b7dad4c9b294`). Unit test execution, WebView instrumentation and phone checks remain pending.
+
+
+## Independent WebView review follow-up — 2026-10-17
+R027 candidate source is `524e85a33f874ac9c12e8b4e7943b7dad4c9b294`. Added `connect-src 'self'`, `child-src 'none'`, duplicate-directive rejection, and negative validator cases for wildcard/data script sources, remote connections/frames, and duplicate directives. Local checks pass; Android CI, full resource inventory and real WebView/device tests are pending. Image/style/font/media sources remain insufficiently constrained until the approved baseline is audited; R027 stays IN PROGRESS. 
