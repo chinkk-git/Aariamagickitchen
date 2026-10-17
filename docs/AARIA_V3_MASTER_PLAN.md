@@ -99,11 +99,16 @@ Only confirmed Android test: user successfully installed an APK on one Android p
 - `main` at `95f86ccbfe1222d8b263a6a83810b3c46d793c7e` contains the legacy `index.html`, infomercial HTML and WhatsApp preview image. The V3 Android/pilot work is on `feature/platform-v3` at `b057f8603f7950f5e5b5699732a346ee9e453f25`; keep these baselines distinct.
 - The V3 branch contains the pilot Android shell, tooling and CI, but no root `docs/` directory or persisted agent profiles were located in its 179-entry tree. No claim is made about files outside the audited repository tree.
 - Existing CI run 39036629623 completed successfully on that head and builds a debug APK. This does not establish release signing continuity, security acceptance, or device readiness.
-- Source audit found partial WebView restrictions, while explicit release hardening, authenticated content update/rollback, migration and anti-rollback implementations/tests were not located. See `V3_IMPLEMENTATION_STATUS.md` and `V3_ANDROID_SECURITY_UPDATE_ARCHITECTURE.md`.
-- A docs-only branch from `feature/platform-v3` is the starting point for this documentation update. Do not merge to `main` or alter application assets as part of the docs bootstrap.
+- Initial source audit found partial WebView restrictions. Subsequent implementation branch `codex/v3-webview-hardening-20261017` adds WebView hardening and five passing URL-policy unit tests (CI run 39057437535); see live status and architecture records for evidence and remaining device gates. Authenticated content updates, rollback/anti-rollback, transactional migration and release signing remain unimplemented.
+- Documentation was added on an isolated branch and WebView hardening began from it. Continue through a PR to `feature/platform-v3`; do not merge to `main` or disturb legacy app assets.
 
 ## 17. Definition of done
 Every work package has linked code/artifacts, reproducible build, passing automated tests, independent review, device tests where applicable, regression evidence, updated requirements matrix and status, and documented lessons. No fake PASS, no silently dropped requirements, no unchecked character substitutions. The cluster reports verified outputs and genuine blockers, not routine requests for approval.
 
 ## 18. Mandatory security/update engineering addendum
 Implement and test `docs/V3_ANDROID_SECURITY_UPDATE_ARCHITECTURE.md` as a binding specification for signed content manifests, safe data-only packs, signer-preserving APK updates, transactional migrations, Play Protect ON testing, WebView hardening, anti-rollback, key management and failure recovery. The security reviewer must verify these gates before release.
+
+
+## 16.2 Implementation continuation evidence (2026-10-17)
+
+The WebView pilot was hardened on `codex/v3-webview-hardening-20261017` at `ee02895aaff8b9f30dd5dbb269076b35896ce61b`. CI run 39057437535 passed the new appassets URL-policy tests and debug build. This does not satisfy device, release-signing, content-update, migration, or anti-rollback acceptance. Two CI debug APK artifact certificates differ; the installed APK and trusted production signer remain unknown. The immediate security prerequisite is to recover the original installed/release APK or trusted signer fingerprint and protected production key lineage before planning an upgrade. Continue migration and authenticated data-only update implementation after establishing appropriate data/identity baselines. The autonomous agent work in this session was task-scoped audit/review; durable agent profiles and continuous execution have not been established.
