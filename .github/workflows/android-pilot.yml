@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - feature/platform-v3
+      - codex/v3-webview-hardening-20261017
     paths:
       - 'index.html'
       - '.github/workflows/android-pilot.yml'
