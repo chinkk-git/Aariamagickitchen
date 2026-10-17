@@ -180,12 +180,18 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 
 
 ## WebView CSP and subframe hardening — 2026-10-17
-- Candidate code head `5db762cd18ab8dbd2a2347fca49f64d52d072308` injects a Content-Security-Policy meta tag immediately after the production document's opening `<head>`. It limits executable scripts to the packaged origin plus required inline V2/V3 code, disables frames and plugin objects, and restricts base/form targets. The V3 validator now rejects missing or loosened core directives.
+- Candidate code head `524e85a33f874ac9c12e8b4e7943b7dad4c9b294` injects a Content-Security-Policy meta tag immediately after the production document's opening `<head>`. It limits executable scripts to the packaged origin plus required inline V2/V3 code, disables frames and plugin objects, and restricts base/form targets. The V3 validator now rejects missing or loosened core directives.
 - Android `MainActivity` blocks subframe navigations before routing URLs; top-level approved appassets and existing external-link flow remain.
 - These changes reduce the JavaScript bridge exposure from remote/nested frames without changing the legacy inline application scripts. A dedicated WebView instrumentation test, packaged HTML run, hosted CI and phone regression are still pending. No claim of complete origin isolation is made; migrating from `addJavascriptInterface` to an origin-restricted message bridge remains planned.
 - The signed-release workflow on `main` still pins `56e08ba321535645953bcc216bfd485125cb922b`; automatic review rejected moving protected `main` to this not-yet-hosted-CI/device-validated candidate. Candidate remains in draft PR #2.
 
-- Follow-up commit `5db762cd18ab8dbd2a2347fca49f64d52d072308` routes `shouldOverrideUrlLoading` through an explicit subframe policy and adds a unit test proving all subframes are rejected while main-frame routing remains available. The Android unit test has been added but is not yet hosted/device verified.
+- Follow-up commit `524e85a33f874ac9c12e8b4e7943b7dad4c9b294` routes `shouldOverrideUrlLoading` through an explicit subframe policy and adds a unit test proving all subframes are rejected while main-frame routing remains available. The Android unit test has been added but is not yet hosted/device verified.
 
 
 - Local verification for the final candidate: `node --check` passes for the V3 transformer and validator; synthetic CSP tests accept the intended policy and reject wildcard/data script sources and remote frames; `test-profile-isolation.mjs` passes both snapshot isolation and localStorage persistence cases. Android/JVM execution, actual V2 HTML transform and phone/WebView behavior are not confirmed by this local check.
+
+
+## Independent WebView review follow-up — 2026-10-17
+- Candidate source is now `524e85a33f874ac9c12e8b4e7943b7dad4c9b294`. The generated policy also restricts script network connections to the packaged origin and disables child frames; the validator rejects duplicate directives and remote/wildcard script or connection sources. Local Node syntax checks, intended-policy acceptance, wildcard/data/remote/duplicate-policy rejection, and profile isolation/persistence regressions pass.
+- Independent review found no concrete incompatibility in the subframe guard with the inline single-document model. Remaining evidence: run the Android unit tests in CI; exercise actual WebView callbacks, CSP, external top-level links and chooser/profile behavior on device.
+- The baseline HTML source was not available for complete resource inventory, so CSP still does not constrain every style/image/font/media source. Keep R027 IN PROGRESS until baseline compatibility and resource policy are verified. 
