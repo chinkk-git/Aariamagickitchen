@@ -29,7 +29,7 @@ const layer = html.match(/<script id="aaria-v3-layer">([\s\S]*?)<\/script>/)?.[1
 if (!layer) throw new Error('The V3 feature layer is missing.');
 new vm.Script(layer, { filename: 'aaria-v3-layer.js' });
 for (const marker of [
-  'V3_INGREDIENT_ATLAS', 'v3-ingredient-art', 'v3-quiz-card',
+  'V3_INGREDIENT_ATLAS', 'v3-ingredient-art', 'v3-hidden-camera-input', 'v3-quiz-card',
   'v3CreateWeek', 'v3ShowGroceryRecipients', 'take-dish-photo',
   'AariaNative.sharePost', 'Cozinha mágica da Aaria'
 ]) {
