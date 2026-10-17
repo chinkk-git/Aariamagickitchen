@@ -80,6 +80,24 @@ class AndroidContentPackRecoveryTest {
         assertFalse(previous.exists())
     }
 
+    @Test fun catalogReadRecoversCompletedSwapBeforeServingPackData() {
+        val active = File(root, "active").apply { mkdirs() }
+        val previous = File(root, "previous").apply { mkdirs() }
+        File(active, "pack-version.txt").writeText("8")
+        File(active, "content").mkdirs()
+        File(active, "content/catalog.json").writeText("[{\"id\":8}]")
+        File(previous, "pack-version.txt").writeText("7")
+        preferences.edit().putInt("last_accepted_content_version", 7)
+            .putInt("pending_content_activation_version", 8).commit()
+
+        val catalog = AndroidContentPackRepository(app, null, null).readRecipeCatalog()
+
+        assertEquals("[{\"id\":8}]", catalog)
+        assertEquals(8, preferences.getInt("last_accepted_content_version", -1))
+        assertEquals(-1, preferences.getInt("pending_content_activation_version", -1))
+        assertFalse(previous.exists())
+    }
+
     @Test fun keepsExistingGoodContentWhenCrashHappenedBeforeDirectorySwap() {
         val active = File(root, "active").apply { mkdirs() }
         File(active, "pack-version.txt").writeText("7")
