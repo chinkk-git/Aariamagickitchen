@@ -29,3 +29,8 @@ For each significant incident, record root cause, proof, failed test, fix, new r
 - Repository tree audit: 179 entries on `feature/platform-v3`; no root agent profile files were present in the audited tree.
 - This session used independent, read-only Android security and governance review tasks. Their results must be recorded after receipt; task-scoped agents do not persist after the active work session.
 - Durable activation requires version-controlled role prompts, explicit least-privilege authority, workflow/handoff implementation, CI gates, and evidence that the cycle runs. Until then, WP11 remains `IN PROGRESS`, not complete.
+
+
+
+## Current task-scoped review evidence — 2026-10-17
+An independent reviewer inspected the phone-reported chooser failure and confirmed the self-recursive renderer root cause and code-level correction at `133fbb4b35fb06789b13ffd1b5d0b83508d0c5df`. The reviewer also identified the standalone HTML profile roster persistence gap; that remediation and a Node regression test were added. The reviewer explicitly notes that source-pattern tests do not substitute for a DOM/WebView smoke test. This is a task-scoped review, not evidence that a persistent nine-agent runtime is installed or continuously executing. CI and phone retest remain gates; no routine user approval is required for the authorized implementation work.
