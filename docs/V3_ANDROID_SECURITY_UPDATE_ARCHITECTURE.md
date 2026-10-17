@@ -125,8 +125,12 @@ APK signing trust and content-update trust are distinct controls. The owner-repo
 
 
 ## WebView bridge containment follow-up — 2026-10-17
-Candidate source `5db762cd18ab8dbd2a2347fca49f64d52d072308` injects a CSP at the start of `<head>` with script-src limited to packaged-origin and required inline code; `frame-src` and `object-src` are denied; `base-uri` and `form-action` are restricted to self. Android navigation rejects every non-main-frame navigation before appassets and external-link routing. This keeps inline V2/V3 behavior intact while reducing remote-frame access to the legacy JavaScript interface.
+Candidate source `524e85a33f874ac9c12e8b4e7943b7dad4c9b294` injects a CSP at the start of `<head>` with script-src limited to packaged-origin and required inline code; `frame-src` and `object-src` are denied; `base-uri` and `form-action` are restricted to self. Android navigation rejects every non-main-frame navigation before appassets and external-link routing. This keeps inline V2/V3 behavior intact while reducing remote-frame access to the legacy JavaScript interface.
 
 Remaining hardening: exercise CSP and frame attempts in Android WebView instrumentation tests; verify all V2 scripts/resources against the policy; replace `addJavascriptInterface` with `WebViewCompat.addWebMessageListener` restricted to the exact packaged origin and main frame, with typed commands. Do not claim the interface itself is origin-bound until that migration is complete.
 
 The subframe guard is factored as `AppAssetsUrlPolicy.shouldBlockSubframeNavigation` and is covered by a JVM unit test. It verifies the navigation decision only; it does not replace a WebView instrumentation test for iframe injection, script execution, CSP enforcement, or bridge isolation.
+
+
+## Independent WebView review follow-up — 2026-10-17
+The policy now includes `connect-src 'self'` and `child-src 'none'`; its validator rejects duplicate directives and disallowed remote/wildcard script and connection sources. Local synthetic checks pass for valid policy and negative cases. Resource compatibility remains only partially assessed: style, image, font and media directives are not yet constrained because the full approved V2 baseline resource inventory has not been verified. Complete that audit, choose precise required sources, then enforce default/resource directives without losing approved artwork or styling. 
