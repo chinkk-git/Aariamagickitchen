@@ -1,5 +1,5 @@
 # V3 Requirements Traceability Matrix
-States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/evidence during implementation. Audit basis: `feature/platform-v3` commit `b057f8603f7950f5e5b5699732a346ee9e453f25`; implementation evidence on `codex/v3-webview-hardening-20261017` @ `ee02895aaff8b9f30dd5dbb269076b35896ce61b`; run 39057437535 passed unit tests and debug build, with no device tests.
+States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/evidence during implementation. Audit basis: `feature/platform-v3` baseline `b057f8603f7950f5e5b5699732a346ee9e453f25`; changes merged via PR #1 at `c8e490fbd45e0631f51ccfff69a27d769028a10f`. Run 39057437535 passed unit tests and debug build; no device tests.
 
 | ID | Requirement | Responsible area | Required evidence | State |
 |---|---|---|---|---|
