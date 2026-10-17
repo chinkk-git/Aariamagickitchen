@@ -108,3 +108,13 @@ Artifacts: debug APK [12111133727](https://github.com/chinkk-git/Aariamagickitch
 - Debug APK [12111133727](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142/artifacts/12111133727), SHA-256 `528648fdca4831c44b5dde5e2e4f99a2e69468ad3dea1eef8adc6184185ce706`; HTML test artifact [12111930308](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142/artifacts/12111930308), SHA-256 `f9041f97934ec9a1079ed8681da637055d7f9ad8dd07a1d1085db24a450ea973`. Both expire 2026-11-16. APK is debug-signed; HTML is a test artifact, not a public V3 deliverable.
 - Draft PR #2 evidence refreshed: https://github.com/chinkk-git/Aariamagickitchen/pull/2.
 - External security inputs still required: trusted existing APK signer/key lineage and content-publisher trust root. Keep the baseline and existing user data protected; do not bypass Android installer or Play Protect warnings.
+
+
+## Profile-switch data isolation follow-up (2026-10-17)
+
+- Found a runtime isolation risk in `v3SetActiveProfile`: shallow-merging an incoming snapshot into the previous profile's state left prior values in keys missing from the new snapshot.
+- Added `v3ProfileStateFor` to clear the previous state's arrays and nested values before applying the incoming profile snapshot. Incoming unknown fields remain intact; language is retained when omitted.
+- Added `tools/v3/test-profile-isolation.mjs` to exercise cleared progress, nested contacts, boolean/numeric fields, unknown-field reset, and incoming unknown-field preservation. Wired it into the Android CI validation workflow.
+- Local Node execution of the helper and checked-in regression assertions passed. The change is **not yet CI-verified**: no workflow run for the latest branch head has been confirmed.
+- Implementation commits: helper `f2bf706`; test `d2188cd`; workflow `f477afe`; corrected nested reset expectation `4468132`. These are development-branch commits, not a release.
+- Remaining evidence: CI on latest PR head, runtime/WebView integration, and real-device profile switching. Requirements R005 and R028 remain IN PROGRESS.
