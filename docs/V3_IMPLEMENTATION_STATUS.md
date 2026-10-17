@@ -1,5 +1,5 @@
 # V3 Implementation Status — My Magical Kitchen
-Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2, branch `codex/v3-completion-core-20261017` @ `6116d9b6709efd51a1172c335a17940c616ea151`; base `feature/platform-v3` @ `235a121ef08ee1931d1cfb5578bc2017197e4e09`
+Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2, branch `codex/v3-completion-core-20261017` @ `f399cc74b229cf8efb7257b1596084384f7e47fd`; base `feature/platform-v3` @ `235a121ef08ee1931d1cfb5578bc2017197e4e09`
 
 
 ## Current milestone — 2026-10-17 (supersedes earlier signing blockers below)
