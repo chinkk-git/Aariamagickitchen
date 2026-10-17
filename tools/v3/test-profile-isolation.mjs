@@ -29,7 +29,7 @@ context.template = prior;
 context.snapshot = incoming;
 const result = vm.runInContext('v3ProfileStateFor(template, snapshot)', context);
 
-assert.deepEqual(JSON.parse(JSON.stringify(result.weeks)), {});
+assert.deepEqual(JSON.parse(JSON.stringify(result.weeks)), { week1: { day1: false } });
 assert.deepEqual(JSON.parse(JSON.stringify(result.done)), []);
 assert.deepEqual(JSON.parse(JSON.stringify(result.favorites)), ['recipe-new']);
 assert.equal(result.language, 'pt-BR');
