@@ -62,7 +62,8 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 .v3-action-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .v3-action{display:flex;min-width:0;min-height:156px;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px;padding:12px;border:1px solid var(--v3-line);border-radius:20px;background:#fff;text-align:left;color:var(--v3-ink);box-shadow:var(--v3-shadow);cursor:pointer}
 .v3-action-art{display:grid;place-items:center;width:100%;height:82px;overflow:hidden;border-radius:13px;background:linear-gradient(135deg,#f8e4f2,#e6f3f7)}
-.v3-action-art .action-illustration{width:96%;height:100%;background-position:center;background-size:contain;background-repeat:no-repeat}
+.v3-action-art .action-illustration{display:block;width:96%;height:100%;aspect-ratio:496/548;flex:none;border-radius:13px;background-size:400% 120.7%;background-repeat:no-repeat;background-position:center}
+.v3-action-art .gift-art{background-position:0% center}.v3-action-art .wheel-art{background-position:33.3333% center}.v3-action-art .family-art{background-position:66.6667% center}.v3-action-art .friends-art{background-position:100% center}
 .v3-action strong{font-size:14px;line-height:1.15}
 .v3-action small{color:#766b80;font-size:11px;line-height:1.25}
 .v3-rail{display:grid;grid-auto-columns:minmax(145px,1fr);grid-auto-flow:column;gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
@@ -103,6 +104,9 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 .v3-food-4{background-position:0% 33.333%}.v3-food-5{background-position:33.333% 33.333%}.v3-food-6{background-position:66.667% 33.333%}.v3-food-7{background-position:100% 33.333%}
 .v3-food-8{background-position:0% 66.667%}.v3-food-9{background-position:33.333% 66.667%}.v3-food-10{background-position:66.667% 66.667%}.v3-food-11{background-position:100% 66.667%}
 .v3-food-12{background-position:0% 100%}.v3-food-13{background-position:33.333% 100%}.v3-food-14{background-position:66.667% 100%}.v3-food-15{background-position:100% 100%}
+.ref-tools .ref-tool{background:linear-gradient(155deg,#fff 0%,#fffafd 100%);border-color:#f0dfef}
+.ref-tools .ref-tool span.tool-illustration{box-sizing:border-box;width:52px;height:44px;display:grid;place-items:center;border:1px solid #f2e4f1;border-radius:14px;background:linear-gradient(145deg,#fff7fb,#f5efff);filter:drop-shadow(0 2px 2px #67487a17)}
+.ref-tools .ref-tool .kitchen-icon,.ref-tools .ref-tool .ref-tool-svg{width:44px;height:38px;filter:drop-shadow(0 2px 1px #50335612)}
 @media(max-width:700px){.page{padding:12px;padding-bottom:calc(96px + env(safe-area-inset-bottom))}.v3-home{gap:14px}.v3-hero{grid-template-columns:minmax(0,1fr) minmax(95px,.43fr);padding:18px;border-radius:22px}.v3-hero-art{min-height:112px}.v3-hero-avatar{height:140px;width:120px}.v3-progress{gap:6px}.v3-progress-card{gap:6px;padding:9px 7px;border-radius:14px}.v3-progress-card>span{font-size:18px}.v3-progress-card strong{font-size:12px}.v3-progress-card small{font-size:10px}.v3-action-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.v3-action{min-height:142px;padding:10px;border-radius:17px}.v3-action-art{height:75px}.v3-rail{grid-auto-columns:minmax(138px,42vw)}.bottom{height:64px;min-height:64px}.bottom .tab{font-size:11px}}
 @media(max-width:380px){.v3-hero{grid-template-columns:minmax(0,1fr) 84px;padding:15px}.v3-hero-avatar{width:92px;height:120px}.v3-hero h1{font-size:27px}.v3-progress-card small{display:none}}
 @media(max-height:520px) and (orientation:landscape){#screen.home-page{padding:10px 16px 92px}.v3-home{gap:10px}.v3-hero{grid-template-columns:minmax(0,1fr) 160px;padding:14px 20px}.v3-hero-art{min-height:84px}.v3-hero-avatar{height:105px;width:130px}.v3-hero p{margin:6px 0 10px}.v3-progress-card{padding:7px 10px}.v3-action-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.v3-action{min-height:108px;padding:8px}.v3-action-art{height:47px}.v3-rail{grid-auto-columns:150px}}
@@ -117,9 +121,15 @@ const runtime = runtimeTemplate
 
 
 let outputHtml = html;
+const homeArtSelector = '.home-action .action-illustration,.home-drawer-link .drawer-illustration{';
+if (!outputHtml.includes(homeArtSelector)) throw new Error('Production home artwork selector missing.');
+outputHtml = outputHtml.replace(homeArtSelector, '.home-action .action-illustration,.home-drawer-link .drawer-illustration,.v3-action .action-illustration{');
 const ingredientFnMarker='const ingredientPicture=v=>';
 if (!outputHtml.includes(ingredientFnMarker)) throw new Error('Could not find ingredient icon renderer in production HTML.');
 outputHtml = outputHtml.replace(ingredientFnMarker, 'let ingredientPicture=v=>');
+const bellPepperRule = "else if(/pepper|capsicum/.test(t)&&!/salt/.test(t))";
+if (!outputHtml.includes(bellPepperRule)) throw new Error('Could not find the production bell-pepper illustration rule.');
+outputHtml = outputHtml.replace(bellPepperRule, `else if(/black pepper|peppercorn|ground pepper/.test(t)){kind='Black pepper';body='<ellipse cx="32" cy="26" rx="24" ry="10" fill="#d9d5d2"/><path d="M8 28c2 17 13 23 24 23s22-6 24-23Z" fill="#eeeaf0" stroke="#b1a1bf" stroke-width="2"/><g fill="#312d34"><circle cx="20" cy="23" r="2"/><circle cx="29" cy="19" r="2"/><circle cx="39" cy="24" r="2"/><circle cx="31" cy="27" r="2"/><circle cx="44" cy="20" r="1.5"/></g>';}${bellPepperRule}`);
 outputHtml = outputHtml.replaceAll('Cozinha Mágica da Aaria', 'Cozinha mágica da Aaria');
 outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}</style><script id="aaria-v3-layer">${runtime}</script></body>`);
 if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could not append the V3 layer to the production HTML.');
