@@ -69,7 +69,23 @@ jobs:
           chmod 600 "$key_file"
           echo "ANDROID_KEYSTORE_PATH=$key_file" >> "$GITHUB_ENV"
 
-      - name: Assemble signed release APK
+      - name: Validate staged signing certificate fingerprint
+        shell: bash
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          set -euo pipefail
+          actual="$(keytool -exportcert -keystore "$ANDROID_KEYSTORE_PATH" -storetype PKCS12 -storepass "$ANDROID_KEYSTORE_PASSWORD" -alias "$ANDROID_KEY_ALIAS" | sha256sum | awk '{print toupper($1)}')"
+          expected="${EXPECTED_SIGNER_SHA256//:/}"
+          expected="${expected^^}"
+          if [[ "$actual" != "$expected" ]]; then
+            echo "::error::Staged keystore certificate fingerprint mismatch. Expected $expected; found $actual."
+            exit 1
+          fi
+          echo "Staged keystore certificate fingerprint validated: $actual"
+
+      - name: Assemble signed release APK"
         env:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
@@ -89,7 +105,7 @@ jobs:
           expected="${EXPECTED_SIGNER_SHA256//:/}"
           expected="${expected,,}"
           if [[ -z "$actual" || "$actual" != "$expected" ]]; then
-            echo "::error::APK signer does not match the trusted certificate fingerprint."
+            echo "::error::APK signer does not match the trusted certificate fingerprint. Expected $expected; found $actual."
             exit 1
           fi
 
