@@ -3,6 +3,11 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
 const runtime = fs.readFileSync(new URL('./runtime.js', import.meta.url), 'utf8');
+// Regression guard: the profile-aware render wrapper must call the prior renderer,
+// not its own named function (which previously overflowed the stack on profile setup).
+assert.match(runtime, /const v3RenderBeforeProfileControls\\s*=\\s*render;[\\s\\S]*?render\\s*=\\s*function\\s*\\(\\)\\s*\\{\\s*v3RenderBeforeProfileControls\\(\\);/);
+assert.doesNotMatch(runtime, /const v3RenderWithProfiles\\s*=\\s*render;[\\s\\S]*?render\\s*=\\s*function v3RenderWithProfiles\\s*\\(\\)\\s*\\{\\s*v3RenderWithProfiles\\(\\);/);
+
 const start = runtime.indexOf('function v3EmptyProfileValue');
 const end = runtime.indexOf('\nfunction v3SetActiveProfile', start);
 assert(start >= 0 && end > start, 'profile reset helper must be present before profile application');
