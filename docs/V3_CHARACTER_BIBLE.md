@@ -32,3 +32,8 @@ All are recurring fictional characters, culturally inclusive and non-stereotyped
 - Banana roll-ups: chosen chef + MOM_M1.
 - Veggie nachos: chosen chef + DAD_D1; adult manages hot appliance.
 - Fruit smoothie: chosen chef + selected FRIEND_F1–F4; adult handles/supervises blender.
+
+
+
+## V3 profile chooser implementation note — 2026-10-17
+The profile chooser must present the two approved chef identities, `CHEF_A` and `CHEF_B`, without changing their fixed visual definitions or substituting new character concepts. The current phone screenshot shows text-and-emoji buttons only; those controls are a functional selector, not approved character artwork. Avatar artwork, accessible names, selected-state clarity, and phone/tablet visual review remain required before the chooser is accepted. Legacy Aaria progress must remain attached to the migrated profile when either chef identity is selected.
