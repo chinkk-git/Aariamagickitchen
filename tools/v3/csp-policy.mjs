@@ -2,7 +2,7 @@ export function validateCspPolicy(csp) {
   if (typeof csp !== 'string' || !csp.trim()) throw new Error('The generated V3 document has no Content Security Policy.');
   const directives = {};
   for (const part of csp.split(';')) {
-    const [name, ...sources] = part.trim().split(/\\s+/);
+    const [name, ...sources] = part.trim().split(/\s+/);
     if (!name) continue;
     if (Object.hasOwn(directives, name)) throw new Error(`V3 CSP contains duplicate ${name} directive.`);
     directives[name] = sources;
