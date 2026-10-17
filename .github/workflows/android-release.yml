@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           # Immutable V3 build snapshot; do not replace with a mutable branch.
-          ref: 6116d9b6709efd51a1172c335a17940c616ea151
+          ref: 56e08ba321535645953bcc216bfd485125cb922b
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
