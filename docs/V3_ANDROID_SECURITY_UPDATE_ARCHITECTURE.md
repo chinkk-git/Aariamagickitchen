@@ -1,4 +1,13 @@
 # V3 Android Security, Update Reception and Migration Architecture
+
+## Current execution evidence and limits (2026-10-17)
+
+Signed run [39080069478](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478) passed protected signer fingerprint verification, APK signature verification, V3 page packaging and upload. Artifact [12118841013](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478/artifacts/12118841013) is a signed candidate; the owner reports that an APK update test succeeded. The owner’s subsequent phone screenshot still shows a stack overflow in the legacy chef chooser, so usability acceptance is open and a new signed artifact is required after fixing/retesting that path.
+
+Draft Android pilot runs [39080611176](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080611176) and [39080621336](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080621336) pass JVM coverage for fail-closed missing publisher trust assets and invalid image magic bytes. These are not device tests. Publisher key/key ID, feed/downloader and adult activation flow remain absent. Content version state is app-private SharedPreferences and can be reset by clearing app data; expiry depends on the device clock. Do not describe either as hardware-backed anti-rollback or trusted-time enforcement.
+
+The signed run predates the draft CSP/subframe hardening candidate. Full V2 resource inventory, origin-restricted bridge migration, WebView instrumentation, process-kill/disk-full activation testing, and phone/tablet validation remain release gates.
+
 Status: mandatory engineering specification supplied in the updated documentation ZIP. Baseline audit: `feature/platform-v3` @ `b057f8603f7950f5e5b5699732a346ee9e453f25`. Partial implementation evidence: WebView hardening commit `ee02895aaff8b9f30dd5dbb269076b35896ce61b`; other update/migration gates remain open.
 
 ## Security boundary and threat model
