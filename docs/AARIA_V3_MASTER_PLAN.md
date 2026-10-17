@@ -166,3 +166,14 @@ The security candidate now includes a unit test for explicit subframe navigation
 
 ## Independent WebView review follow-up — 2026-10-17
 Independent review confirmed the inline-script and subframe changes are coherent with the single-document V2/V3 model, and identified unrestricted network connections plus duplicate CSP directives. Candidate `524e85a33f874ac9c12e8b4e7943b7dad4c9b294` now limits script connections to self, disables child frames, rejects duplicate directives, and has local negative tests. Complete the actual V2 resource inventory before restricting image/style/font/media categories, then run hosted Android tests and real-device WebView/profile acceptance. 
+
+
+## Execution checkpoint — 2026-10-17 (current evidence)
+
+This section reconciles later verified work with older “signing blocked / no release artifact” notes in the plan. Those older notes remain historical audit records, not current blockers.
+
+**Completed and evidenced:** the permanent release signer is configured in GitHub; signed Actions run [39080069478](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478) verified the trusted certificate and APK signature, packaged the V3 HTML and uploaded artifact 12118841013. The owner reports a successful update test. Profile storage/migration scaffolding, content-pack verification/activation recovery, and WebView policy foundations are implemented in draft PR #2. Pilot runs [39080611176](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080611176) and [39080621336](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080621336) pass unit/build checks, including fail-closed missing publisher trust assets and invalid image-byte rejection.
+
+**Still in progress:** the phone shows “Maximum call stack size exceeded” in the legacy chef chooser, so fix and retest onboarding/chooser before a new signed candidate; confirm saved progress during update. Content update delivery has no bundled publisher public key/key ID, feed/downloader, parent approval/activation flow, catalog runtime integration, offline scheduler or What's New tour. Existing replay/version checks are app-private and device-clock based, not hardware-backed anti-rollback or trusted-time enforcement. Complete process-kill/disk-full recovery and real legacy-data validation. Audit the full baseline resource inventory, finish WebView bridge-origin hardening and device tests. Complete approved cast/artwork/recipe review, cooking-safety/allergen/accessibility review, no-timer audit, and phone/tablet/offline/baseline regression.
+
+The currently signed artifact predates the draft CSP/subframe changes and does not constitute a complete V3 family release. Continue implementation in draft PR #2 and preserve the protected feature/platform-v3 baseline. Do not claim release readiness until the chooser bug and required device/security acceptance gates are closed.
