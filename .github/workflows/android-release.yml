@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           # Immutable V3 build snapshot; do not replace with a mutable branch.
-          ref: 32c5398bba5d55502b2499dd32ae0af69cc6f48b
+          ref: 6450dd0fa604de02d713009be1cd94b7aac62a52
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -91,6 +91,24 @@ jobs:
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleRelease
+
+      - name: Verify packaged V3 WebView assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="phase2-pilot/apps/aaria-android/app/build/outputs/apk/release/app-release.apk"
+          required_entries=(
+            "assets/phase2-pilot/apps/aaria-kitchen/index.html"
+            "assets/phase2-pilot/apps/aaria-kitchen/app.js"
+            "assets/phase2-pilot/domains/cooking/recipes/load-catalog.js"
+            "assets/phase2-pilot/packages/ui/base.css"
+          )
+          for entry in "${required_entries[@]}"; do
+            if ! unzip -Z1 "$apk" | grep -Fxq "$entry"; then
+              echo "::error::Required WebView asset is missing from APK: $entry"
+              exit 1
+            fi
+          done
 
       - name: Verify APK signature and trusted certificate
         shell: bash
