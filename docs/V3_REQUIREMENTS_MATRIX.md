@@ -58,3 +58,8 @@ This resolves the repository-side configuration gap only. It does not resolve si
 
 
 CI run [39062826879](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062826879) passed after adding the release signing Gradle configuration. A follow-up run [39062992988](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062992988) is in progress to prove release assembly is refused when trusted signing inputs are absent. Neither run creates a production-signed APK; R025 remains blocked on the existing signer and protected key lineage.
+
+
+## Unsigned release fail-closed test (2026-10-17)
+
+CI run [39062992988](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062992988) passed. The `Verify unsigned release builds are refused` step confirmed the release task fails for the expected missing-signing-input reason; the debug APK and HTML test artifact were still built and uploaded. [debug APK artifact 12111849096](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062992988/artifacts/12111849096), SHA-256 `96c87003b4a82eaa30317b57a2455afcfd92a84f406ff9be4cdb177c24225438`; [HTML test artifact 12111729532](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062992988/artifacts/12111729532), SHA-256 `27203e329dfccaf8fa5ba6bd2f8e793c633dc50202463d32f2c3ac1282b812c8`. The run does not verify or produce the existing production signer.
