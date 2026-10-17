@@ -114,3 +114,5 @@ Run [39078143249](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/3
 
 ## Production signed run evidence — 2026-10-17
 Signed-release run [39080069478](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478) succeeded. It validated protected signer fingerprint continuity, Android unit tests, V3 HTML packaged in the APK, APK signature/trusted certificate, and artifact upload. Signed APK artifact ID: `12118841013`. The workflow checked out immutable source `56e08ba321535645953bcc216bfd485125cb922b`, which includes the profile chooser fix. R022/R025 remain IN PROGRESS until the owner installs this exact artifact over the signed app and confirms chooser behavior and saved data. This artifact predates the draft CSP/subframe candidate; remaining security and roadmap gates are tracked separately.
+
+APK payload SHA-256 for artifact 12118841013: `8999c844d84329055f28ab8d6c26f1d60f3a25bc4b32c634ec8eb9615421fab5`. Owner phone install/upgrade testing remains required.
