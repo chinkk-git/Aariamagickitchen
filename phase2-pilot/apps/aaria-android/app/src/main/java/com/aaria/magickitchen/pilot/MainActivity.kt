@@ -83,7 +83,7 @@ class MainActivity : Activity() {
                 override fun onPageFinished(view: WebView, url: String?) {
                     super.onPageFinished(view, url)
                     if (url?.startsWith("https://appassets.androidplatform.net/") == true) {
-                        listOf("share-polyfill.js", "quiz-adapter.js", "avatar-adapter.js").forEach { script ->
+                        listOf("share-polyfill.js", "quiz-adapter.js", "grocery-whatsapp.js").forEach { script ->
                             view.evaluateJavascript(assets.open(script).bufferedReader().use { it.readText() }, null)
                         }
                     }
