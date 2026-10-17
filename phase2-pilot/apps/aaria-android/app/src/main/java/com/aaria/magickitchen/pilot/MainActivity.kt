@@ -105,7 +105,7 @@ class MainActivity : Activity() {
                 override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
                     val uri = request.url
                     if (!AppAssetsUrlPolicy.isAppAssetsHost(uri.host)) return null
-                    if (!AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo)) {
+                    if (!AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo, uri.encodedAuthority)) {
                         return localErrorResponse(403, "Forbidden")
                     }
 
@@ -133,7 +133,7 @@ class MainActivity : Activity() {
                 override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                     val uri = request.url
                     if (AppAssetsUrlPolicy.isAppAssetsHost(uri.host)) {
-                        return !AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo)
+                        return !AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo, uri.encodedAuthority)
                     }
                     if (uri.scheme == "https" || uri.scheme == "http" || uri.scheme == "whatsapp") {
                         return try {
