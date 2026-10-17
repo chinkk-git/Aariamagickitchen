@@ -3,7 +3,7 @@ Updated: 2026-10-17 | Evidence-based ledger | Source: feature/platform-v3 reposi
 
 ## Confirmed repository audit (GitHub, 2026-10-17)
 - Audited `feature/platform-v3` at commit `b057f8603f7950f5e5b5699732a346ee9e453f25` (tree contains 179 entries). The existing pilot is under `phase2-pilot/`; the root `docs/` directory and all eight requested V3 documents were absent from that branch before this work.
-- The branch contains the Kotlin WebView shell at `phase2-pilot/apps/aaria-android/`, Android workflow `.github/workflows/android-pilot.yml`, recipe tests and a two-recipe pilot. Workflow config builds a **debug APK**; this is not evidence of a signed release APK or successful CI run.
+- The branch contains the Kotlin WebView shell at `phase2-pilot/apps/aaria-android/`, Android workflow `.github/workflows/android-pilot.yml`, recipe tests and a two-recipe pilot. Workflow config builds a **debug APK**; this is not evidence of a signed release APK or device/security acceptance.
 - Repository tree inspection found no persisted agent-profile directory or files. No claim is made that nine agents were installed. Task-scoped independent audit/review agents were engaged for this work session; they do not constitute a continuously running cluster.
 - `MainActivity.kt` enables JavaScript and DOM storage, disables file/content access, and exposes `AariaNative` sharing methods. This is a source inspection only. Explicit mixed-content policy, Safe Browsing configuration, narrow internal-navigation allowlisting, and runtime security tests were not verified.
 - `app/build.gradle.kts` sets application ID `com.aaria.magickitchen.pilot`, `versionCode` 5 and `versionName` 1.0.1. The Android workflow builds `assembleDebug`; release keystore/signing continuity is not configured or verified in inspected files.
@@ -35,11 +35,11 @@ Updated: 2026-10-17 | Evidence-based ledger | Source: feature/platform-v3 reposi
 ## Required run ledger (append on each Work session)
 | Date | Work session | Branch / commit | Changed artifacts | Tests / evidence | Defects / blockers | Next action |
 |---|---|---|---|---|---|---|
-| 2026-10-17 | V3 docs and S0 source audit | Working branch pending commit | Eight root `docs/` files; no application source changes | GitHub tree/source inspection; audited-head CI run 39036629623 completed successfully (debug APK/HTML pipeline only). No build/test run from this docs change; no device test. | Release signing/update/migration/WebView gates remain open; no persistent agent profiles found. | Complete docs commit and verify all eight tracked paths; start security hardening in a separate reviewed change |
+| 2026-10-17 | V3 docs and S0 source audit | `codex/v3-docs-security-audit-20261017` @ `7782696666380b8e47d80ca69c1e9370be6ea759` | Eight root `docs/` files; no application source changes | GitHub tree/source inspection; audited-head CI run 39036629623 completed successfully (debug APK/HTML pipeline only). No build/test run from this docs change; no device test. | Release signing/update/migration/WebView gates remain open; no persistent agent profiles found. | Verify all eight tracked paths on the working branch; start security hardening in a separate reviewed change |
 
 ## Current next actions
 1. Commit all eight V3 documents on a dedicated branch from `feature/platform-v3`; preserve existing app files and record exact commit evidence.
-2. Independently review the audited Android shell and docs; inspect the actual agent definitions, if any, before claiming a persistent cluster.
+2. Review the audited Android shell and inspect actual agent definitions, if any, before claiming a persistent cluster; docs review is complete.
 3. Protect the baseline and establish requirements-to-test traceability.
 4. Start the security-critical Android foundation work only after recording the installed package/signer baseline and establishing regression tests.
 5. Prioritize WebView hardening, migration design/tests, signed data-only content updates and rollback protection; then signed APK continuity.

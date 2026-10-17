@@ -3,7 +3,7 @@ Evidence-based learning register. First verified process finding recorded 2026-1
 
 | Date | Incident/task | Root cause and evidence | Change made | Regression test | Reviewer | Metric before/after | Commit |
 |---|---|---|---|---|---|---|---|
-| 2026-10-17 | V3 docs/bootstrap audit | The V3 requirements package was only in the uploaded ZIP; audited `feature/platform-v3` tree (179 entries, SHA `b057f8603f7950f5e5b5699732a346ee9e453f25`) had no root `docs/` directory. | Add the eight governed V3 docs under root `docs/`; record source audit and evidence boundaries. | GitHub tree check: verify all eight required paths exist and no application files changed in docs commit; reviewer check pending. | Independent governance reviewer confirmed repository inventory and docs review; final GitHub tree check pending | Root V3 docs: 0 → 8; no app source changed | Commit pending |
+| 2026-10-17 | V3 docs/bootstrap audit | The V3 requirements package was only in the uploaded ZIP; audited `feature/platform-v3` tree (179 entries, SHA `b057f8603f7950f5e5b5699732a346ee9e453f25`) had no root `docs/` directory. | Add the eight governed V3 docs under root `docs/`; record source audit and evidence boundaries. | GitHub tree check: verify all eight required paths exist and no application files changed in docs commit; reviewer check pending. | Independent governance reviewer confirmed repository inventory and docs review; GitHub tree check pending | Root V3 docs: 0 → 8; no app source changed | Initial docs commit: `7782696666380b8e47d80ca69c1e9370be6ea759`; ledger update commit pending |
 
 ## Rules
 - Log evidence, not speculation.
