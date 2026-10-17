@@ -3,30 +3,59 @@ const V3_ART=__V3_ART_JSON__;
 const V3_INGREDIENT_ATLAS=__V3_INGREDIENT_ATLAS_JSON__;
 function v3IngredientClass(value){
  const t=String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
- if(/strawber|berry|blueber|raspber/.test(t))return 0;
+ // Only use a sprite when the atlas actually depicts that ingredient. This
+ // deliberately avoids broad substitutions such as peas -> spinach or oil -> milk.
+ if(/strawber/.test(t))return 0;
  if(/banana/.test(t))return 1;
  if(/mango/.test(t))return 2;
- if(/apple|pear/.test(t))return 3;
+ if(/apple/.test(t))return 3;
  if(/carrot/.test(t))return 4;
- if(/tomato|salsa/.test(t))return 5;
- if(/broccoli|cauliflower/.test(t))return 6;
- if(/spinach|lettuce|kale|leafy/.test(t))return 7;
- if(/corn|maize/.test(t))return 8;
- if(/egg/.test(t))return 9;
- if(/cheese|paneer/.test(t))return 10;
- if(/milk|yogurt|yoghurt|curd|cream/.test(t))return 11;
- if(/bread|toast|roti|tortilla|pita|wrap/.test(t))return 12;
- if(/flour|oat|rice|pasta|noodle|semolina|suji|poha|cereal/.test(t))return 13;
- if(/chickpea|garbanzo|bean|lentil|hummus/.test(t))return 14;
- if(/chicken|turkey|meat|fish|salmon|tuna|prawn|shrimp/.test(t))return 15;
- if(/fruit|peach|orange|grape|pineapple|watermelon|lemon|lime/.test(t))return 2;
- if(/vegetable|veggie|zucchini|courgette|cucumber|potato|onion|pepper|capsicum|pea|avocado/.test(t))return 7;
- if(/butter|oil|ghee/.test(t))return 11;
- return 14;
+ if(/tomato/.test(t))return 5;
+ if(/broccoli/.test(t))return 6;
+ if(/spinach/.test(t))return 7;
+ if(/\bcorn\b|maize/.test(t))return 8;
+ if(/\beggs?\b/.test(t))return 9;
+ if(/cheese/.test(t))return 10;
+ if(/\bmilk\b/.test(t))return 11;
+ if(/\bbread\b|toast/.test(t))return 12;
+ if(/\bflour\b/.test(t))return 13;
+ if(/chickpea|garbanzo/.test(t))return 14;
+ if(/\bchicken\b/.test(t)&&!/cooked|nugget|roast|grilled/.test(t))return 15;
+ return -1;
 }
-function v3IngredientArt(value){const idx=v3IngredientClass(value);return `<span class="v3-ingredient-art v3-food-${idx}" role="img" aria-label="${safe(value)}"></span>`}
+function v3IngredientFallback(value){
+ const t=String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ if(/\bblack pepper\b|\bpeppercorn|\bsalt\b/.test(t))return '🧂';
+ if(/\boil\b|olive oil|ghee/.test(t))return '🫒';
+ if(/\brice\b|poha|puffed rice/.test(t))return '🍚';
+ if(/\bpeas?\b/.test(t))return '🫛';
+ if(/ketchup|tomato sauce|salsa/.test(t))return '🍅';
+ if(/paneer/.test(t))return '🧀';
+ if(/yogh?urt|curd|cream/.test(t))return '🥣';
+ if(/\bmilk\b/.test(t))return '🥛';
+ if(/butter/.test(t))return '🧈';
+ if(/onion/.test(t))return '🧅';
+ if(/garlic/.test(t))return '🧄';
+ if(/cucumber|courgette|zucchini/.test(t))return '🥒';
+ if(/potato/.test(t))return '🥔';
+ if(/lettuce|kale|leafy greens|cabbage/.test(t))return '🥬';
+ if(/capsicum|bell pepper/.test(t))return '🫑';
+ if(/chilli|chili|paprika/.test(t))return '🌶️';
+ if(/cinnamon|spice|masala/.test(t))return '🧂';
+ if(/flour|oat|semolina|suji|pasta|noodle|cereal/.test(t))return '🌾';
+ if(/fish|salmon|tuna|prawn|shrimp/.test(t))return '🐟';
+ if(/turkey|meat|beef/.test(t))return '🍖';
+ return '🧺';
+}
+function v3IngredientArt(value){
+ const idx=v3IngredientClass(value);
+ if(idx<0)return `<span aria-hidden="true">${v3IngredientFallback(value)}</span>`;
+ return `<span class="v3-ingredient-art v3-food-${idx}" role="img" aria-label="${safe(value)}"></span>`;
+}
+// The production batch renderer has hand-drawn, ingredient-specific SVGs for
+// the full recipe catalogue. Keep it intact; the small atlas is only a fallback
+// for the older recipe card renderer, where exact atlas matches are available.
 ingredientPicture=function v3IngredientPicture(value){return v3IngredientArt(value)};
-batchIngredientPicture=function v3BatchIngredientPicture(value){return v3IngredientArt(value)};
 for(const [id,a] of Object.entries(V3_ART)){
   NEW_RECIPE_ART[id]={...(NEW_RECIPE_ART[id]||{}),atlas:a.atlas,storyboard:a.atlas,hero:a.hero,cellAspect:a.aspect,status:'approved'};
   BATCH_META[id]={...(BATCH_META[id]||{}),stepCells:[1,2,3,4]};
