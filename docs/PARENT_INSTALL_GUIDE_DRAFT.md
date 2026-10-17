@@ -33,6 +33,11 @@
 - Existing profiles or progress disappear after the update.
 - The installation asks for permissions unrelated to the documented app behavior.
 
+
+## One-time transition from the currently installed debug APK
+
+The owner confirmed that no saved app data needs migration. The supplied/current APK was identified as debug-signed; the first release signed with the new permanent key cannot update that installation in place. Keep the existing app installed until the new signed APK is built and verified. Before installing that first release, explain that uninstalling the debug build clears its local app data; the owner has accepted this clean-install path. After that first install, future APK releases must use the same `aaria-v3-release` signing key and must be tested as in-place updates. Do not use this exception to bypass a malware-specific Play Protect warning.
+
 ## Release-specific information to add before publication
 
 - Official release page: **Not available yet**
