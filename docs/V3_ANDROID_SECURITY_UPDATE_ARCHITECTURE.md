@@ -77,3 +77,8 @@ PR #2 adds an RSA SHA-256 signed content-pack verifier with exact payload signat
 A SQLite profile store and idempotent migration marker have been added. Root `index.html` statically identifies localStorage key `aariaPrivateKitchenV4`; migration has not been validated against an installed data export or tested with database fixtures, crash recovery, malformed state or multiple-profile isolation. This is partial implementation only.
 
 APK signing continuity remains blocked: only debug builds are configured and prior CI debug certificate identities differed. The currently installed package signer and protected production key lineage are unknown. Do not create a new production key or distribute an in-place upgrade until the trusted existing identity is established. The CI artifacts are development APK/HTML, not family release output.
+
+
+## Migration parser validation update (2026-10-17)
+
+Commit `81fdd93710e6ad19ca292655c9393d05c725e3f4` adds strict validation of legacy profile snapshots before database migration begins. Malformed/trailing/non-object/oversized values are rejected; unknown nested fields are retained in the parsed snapshot. CI run 39060716858 passed these unit tests and debug build. This is parser-level evidence only; SQLite transactionality, crash recovery, installed user-data preservation, multi-profile isolation and device migration remain open.
