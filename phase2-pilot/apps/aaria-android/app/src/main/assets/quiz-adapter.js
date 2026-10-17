@@ -137,6 +137,90 @@
     }
   }
 
+  const originalCreateWeek = typeof createWeek === "function" ? createWeek : null;
+
+  function createNutritionAwareWeek() {
+    try {
+      if (typeof nutritionValue !== "function" || typeof NUTRIENT_COLUMNS === "undefined") {
+        return originalCreateWeek ? originalCreateWeek() : { ids: [], locks: [] };
+      }
+      const keys = NUTRIENT_COLUMNS.map(column => column[0]);
+      const profiles = recipes().map(recipe => {
+        try {
+          const result = nutritionValue(recipe);
+          const values = {};
+          keys.forEach(key => {
+            const range = result.per[key];
+            const value = Array.isArray(range)
+              ? (Number(range[0]) + Number(range[1])) / 2
+              : Number(range);
+            values[key] = Number.isFinite(value) ? value : null;
+          });
+          return { recipe, values, missing: (result.missing || []).length };
+        } catch (_) {
+          return { recipe, values: Object.fromEntries(keys.map(key => [key, null])), missing: 99 };
+        }
+      });
+      const median = values => {
+        const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
+        if (!sorted.length) return 0;
+        const middle = Math.floor(sorted.length / 2);
+        return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+      };
+      const targets = {};
+      const scales = {};
+      keys.forEach(key => {
+        const known = profiles.map(profile => profile.values[key]).filter(Number.isFinite);
+        targets[key] = median(known);
+        scales[key] = Math.max(median(known.map(value => Math.abs(value - targets[key]))), Math.abs(targets[key]) * 0.2, 1);
+      });
+
+      const remaining = [...profiles];
+      const picked = [];
+      const sums = Object.fromEntries(keys.map(key => [key, 0]));
+      const categories = new Map();
+      const methods = new Map();
+      while (picked.length < 7 && remaining.length) {
+        const scored = remaining.map(profile => {
+          let score = 0;
+          keys.forEach(key => {
+            const value = profile.values[key];
+            const projectedMean = (sums[key] + (Number.isFinite(value) ? value : targets[key])) / (picked.length + 1);
+            score += Math.abs(projectedMean - targets[key]) / scales[key];
+          });
+          score /= Math.max(keys.length, 1);
+          const category = profile.recipe.category || "Other";
+          const method = profile.recipe.method || "Other";
+          score += (categories.get(category) || 0) * 0.08;
+          score += (methods.get(method) || 0) * 0.045;
+          score += Math.min(profile.missing, 8) * 0.012;
+          score += Math.random() * 0.09;
+          return { profile, score };
+        }).sort((a, b) => a.score - b.score);
+        const choicePool = scored.slice(0, Math.min(8, scored.length));
+        const chosen = choicePool[Math.floor(Math.random() * choicePool.length)].profile;
+        picked.push(chosen.recipe.id);
+        keys.forEach(key => {
+          const value = chosen.values[key];
+          sums[key] += Number.isFinite(value) ? value : targets[key];
+        });
+        const category = chosen.recipe.category || "Other";
+        const method = chosen.recipe.method || "Other";
+        categories.set(category, (categories.get(category) || 0) + 1);
+        methods.set(method, (methods.get(method) || 0) + 1);
+        remaining.splice(remaining.indexOf(chosen), 1);
+      }
+      return {
+        ids: picked,
+        locks: [false, false, false, false, false, false, false]
+      };
+    } catch (_) {
+      return originalCreateWeek ? originalCreateWeek() : { ids: [], locks: [] };
+    }
+  }
+
+  try { if (typeof createWeek === "function") createWeek = createNutritionAwareWeek; } catch (_) {}
+
   function updateNutritionNote() {
     let inWeek = false;
     try { inWeek = typeof view !== "undefined" && view === "week"; } catch (_) {}
@@ -150,7 +234,7 @@
       note = document.createElement("aside");
       note.id = "aaria-nutrition-review";
       note.setAttribute("role", "note");
-      note.textContent = "Nutrition values are not fully verified across these recipes. Treat the shuffled week as fun meal ideas, not a nutrition-balanced plan. Ask a parent to review the meals before using this as a weekly menu.";
+      note.textContent = "This week is mixed using the app’s ingredient-based nutrient estimates and recipe variety. Some estimates are incomplete, and the plan is not tailored to Aaria’s personal needs. Ask a grown-up to review portions, ingredients and allergies.";
     }
     list.before(note);
   }
