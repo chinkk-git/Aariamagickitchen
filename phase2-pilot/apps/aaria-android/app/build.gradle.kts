@@ -54,6 +54,42 @@ android {
     }
 }
 
+val phase2PilotRoot = rootProject.file("../../")
+val packagedPilotAssets = layout.buildDirectory.dir("generated/phase2PilotAssets")
+
+val syncPhase2PilotAssets by tasks.registering(org.gradle.api.tasks.Sync::class) {
+    from(phase2PilotRoot) {
+        include("apps/aaria-kitchen/**")
+        include("domains/**")
+        include("packages/**")
+        into("phase2-pilot")
+    }
+    into(packagedPilotAssets)
+}
+
+android.sourceSets.getByName("main").assets.srcDir(packagedPilotAssets)
+
+val verifyPhase2PilotAssets by tasks.registering {
+    dependsOn(syncPhase2PilotAssets)
+    doLast {
+        val output = packagedPilotAssets.get().asFile
+        val requiredAssets = listOf(
+            "phase2-pilot/apps/aaria-kitchen/index.html",
+            "phase2-pilot/apps/aaria-kitchen/app.js",
+            "phase2-pilot/domains/cooking/recipes/load-catalog.js",
+            "phase2-pilot/packages/ui/base.css"
+        )
+        val missingAssets = requiredAssets.filterNot { output.resolve(it).isFile }
+        if (missingAssets.isNotEmpty()) {
+            throw GradleException("Required V3 WebView assets were not packaged: ${missingAssets.joinToString()}")
+        }
+    }
+}
+
+tasks.named("preBuild").configure {
+    dependsOn(verifyPhase2PilotAssets)
+}
+
 dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.json:json:20240303")
