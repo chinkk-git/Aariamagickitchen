@@ -201,12 +201,27 @@ let v3ProfileInitComplete = false;
 let v3ProfileSaveWrapped = false;
 function v3ParseProfileState(raw){try{const x=JSON.parse(raw||'{}');return x&&Array.isArray(x.profiles)?x:{profiles:[],activeId:null,snapshot:{}}}catch{return {profiles:[],activeId:null,snapshot:{}}}}
 function v3PersistProfileState(){if(window.AariaNative?.saveProfileSnapshot&&v3ProfileState.activeId){window.AariaNative.saveProfileSnapshot(v3ProfileState.activeId,JSON.stringify(state));return}try{const box=v3ParseProfileState(localStorage.getItem('myMagicalKitchenProfilesV1'));const p=box.profiles.find(x=>x.id===v3ProfileState.activeId);if(p){p.snapshot=state;box.activeId=p.id;localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify(box))}}catch{}}
+function v3EmptyProfileValue(value,key){
+ if(Array.isArray(value))return [];
+ if(value&&typeof value==='object'){const empty={};for(const [childKey,childValue] of Object.entries(value))empty[childKey]=v3EmptyProfileValue(childValue,childKey);return empty}
+ if(key==='language')return value||'en-GB';
+ if(typeof value==='boolean')return false;
+ if(typeof value==='number')return 0;
+ if(typeof value==='string')return '';
+ return null;
+}
+function v3ProfileStateFor(template,snapshot){
+ const cleared={};
+ for(const [key,value] of Object.entries(template||{}))cleared[key]=v3EmptyProfileValue(value,key);
+ const incoming=snapshot&&typeof snapshot==='object'&&!Array.isArray(snapshot)?snapshot:{};
+ return {...cleared,...incoming};
+}
 function v3SetActiveProfile(result){
  const r=typeof result==='string'?v3ParseProfileState(result):result;
  v3ProfileState.profiles=r.profiles||[];v3ProfileState.activeId=r.activeId||null;
  const active=v3ProfileState.profiles.find(p=>p.id===v3ProfileState.activeId)||null;
  v3ProfileState.profile=active;
- if(r.snapshot&&Object.keys(r.snapshot).length)state={...state,...r.snapshot};
+ state=v3ProfileStateFor(state,r.snapshot);
  if(active){try{localStorage.setItem('aariaPrivateKitchenV4',JSON.stringify(state))}catch{}}
  v3ProfileInitComplete=true;
  if(!v3ProfileSaveWrapped){const original=save;save=function v3ProfileSave(){original();v3PersistProfileState()};v3ProfileSaveWrapped=true}
