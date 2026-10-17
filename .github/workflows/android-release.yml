@@ -21,7 +21,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           # Immutable V3 build snapshot; do not replace with a mutable branch.
-          ref: dc4709a42e7e8cf73f4531644cbc8bf1081c9102
+          ref: 6116d9b6709efd51a1172c335a17940c616ea151
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -85,6 +90,9 @@ jobs:
           fi
           echo "Staged keystore certificate fingerprint validated: $actual"
 
+      - name: Run Android unit tests
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
+
       - name: Assemble signed release APK
         env:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
@@ -99,7 +107,7 @@ jobs:
           apk="phase2-pilot/apps/aaria-android/app/build/outputs/apk/release/app-release.apk"
           entry="assets/index.html"
           if ! unzip -Z1 "$apk" | grep -Fxq "$entry"; then
-            echo "::error::Reviewed standalone index.html is missing from the APK."
+            echo "::error::Generated V3 index.html is missing from the APK."
             exit 1
           fi
           packaged_bytes="$(unzip -p "$apk" "$entry" | wc -c)"
