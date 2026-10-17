@@ -1,4 +1,4 @@
-# V3 Requirements Traceability Matrix
+| R028 | Transactional Aaria-to-multiprofile migration | WP00/WP04 | idempotency/integrity tests | IN PROGRESS — SQLite migration/isolation tests pass and the local HTML persistence path now has a regression test. The phone legacy chooser crash was fixed in branch; hosted CI, real saved-data audit and device recovery remain. |
 States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/evidence during implementation. Audit basis: `feature/platform-v3` baseline `b057f8603f7950f5e5b5699732a346ee9e453f25`; changes merged via PR #1 at `c8e490fbd45e0631f51ccfff69a27d769028a10f`. Run 39057437535 passed unit tests and debug build; no device tests.
 
 | ID | Requirement | Responsible area | Required evidence | State |
