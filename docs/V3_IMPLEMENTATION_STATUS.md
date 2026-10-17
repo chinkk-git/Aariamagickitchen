@@ -1,5 +1,5 @@
 # V3 Implementation Status — My Magical Kitchen
-Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2, branch `codex/v3-completion-core-20261017` @ `bb2176911a2b1a5061454a9e9500a0499c0897f0`; base `feature/platform-v3` @ `235a121ef08ee1931d1cfb5578bc2017197e4e09`
+Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2, branch `codex/v3-completion-core-20261017` @ `c806cbb2b8375909e48d304b1d2be2596fab0788`; base `feature/platform-v3` @ `235a121ef08ee1931d1cfb5578bc2017197e4e09`
 
 ## Confirmed repository audit (GitHub, 2026-10-17)
 - Audited `feature/platform-v3` at commit `b057f8603f7950f5e5b5699732a346ee9e453f25` (tree contains 179 entries). The existing pilot is under `phase2-pilot/`; the root `docs/` directory and all eight requested V3 documents were absent from that branch before this work.
@@ -27,11 +27,11 @@ Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2
 | WP03 | Character bible, supporting cast, artwork/recipe defects | NOT STARTED | Inventory all scene assets |
 | WP04 | Room/DataStore and backup/restore | IN PROGRESS | SQLite profile tables and migration marker added. Robolectric SQLite tests pass for idempotent migration, malformed-input retry, unknown-field preservation and two-profile isolation in CI run 39061031142. Installed-data, device, backup/restore and crash-recovery tests remain open. |
 | WP05 | Authenticated data-only content updates | IN PROGRESS | RSA signature/hash/schema/path/version/expiry verifier and atomic activation repository plus negative tests added. CI runs 39060387158 and 39060716858 passed relevant verifier tests. Trusted publisher public key is absent, installer fails closed; no feed/downloader, user activation flow, catalog/runtime integration or device test. |
-| WP06 | Signed APK upgrade manager | BLOCKED | Existing workflow is debug-only; no release signing configuration or installed signer evidence. Cannot establish in-place upgrade continuity until existing signer identity and protected production key lineage are supplied/verified. |
+| WP06 | Signed APK upgrade manager | BLOCKED | Protected release-signing workflow and Gradle configuration are prepared; existing installed signer and protected production key are still unavailable, so no safe in-place upgrade can be built or verified. |
 | WP07 | What's New tours | NOT STARTED | Tour schema and replay tests |
 | WP08 | Parent guide and Play Protect test matrix | PARTIAL EVIDENCE | Installation observed; upgrade pending |
 | WP09 | Safety, accessibility, QA and device coverage | NOT STARTED | Establish test matrix |
-| WP10 | CI, signing, release distribution | IN PROGRESS | CI run 39061031142 passed on code commit `e5425c6539c93492c241814bf380755b3f9439ae`, including Robolectric SQLite migration/isolation tests and debug APK/HTML artifacts. No release signer/provenance; prior debug signer certificates differ. |
+| WP10 | CI, signing, release distribution | IN PROGRESS | Debug CI and tests pass. Signed release Gradle config and manual protected release workflow are prepared; production signer inputs/provenance and end-to-end signed-release run remain unavailable. |
 | WP11 | Autonomous agents and learning loop | IN PROGRESS | Session-scoped independent audit/review engaged; no persisted agent profiles found. Define and version role prompts/workflow before claiming durable cluster activation. |
 
 ## Required run ledger (append on each Work session)
@@ -128,3 +128,15 @@ This entry supersedes the preceding note that CI was unconfirmed. GitHub Actions
 - HTML test artifact [12112145804](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062236604/artifacts/12112145804), GitHub artifact digest `sha256:6cc7c9244eb5d5afc25191a0b02f00921f1713463cf12b33fb3ba7a69734f27b`.
 - Both artifacts expire 2026-11-16. The APK is debug-signed; the HTML is an internal test artifact, not a public V3 release.
 - Real-device migration/isolation and production signer continuity remain unverified.
+
+
+## Production APK signing gate — prepared path (2026-10-17)
+
+The repository contains no verified production keystore, installed APK signer evidence, or GitHub release record. Do not generate a replacement production key: it would not preserve upgrade continuity. The code-side release path is now prepared:
+
+- `app/build.gradle.kts` accepts only the complete protected input set (`ANDROID_KEYSTORE_PATH`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`) and refuses an `assembleRelease`/`bundleRelease` request when signing is incomplete.
+- `.github/workflows/android-release.yml` is a manual workflow. It reads a base64 keystore and credentials from GitHub Actions secrets, requires repository variable `ANDROID_SIGNER_SHA256`, builds the release APK, verifies the APK signature using Android `apksigner`, compares the SHA-256 certificate fingerprint to the trusted variable, and only then uploads the APK.
+- CI run [39062826879](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39062826879) is validating the Gradle signing configuration on commit `9c701d8885f135f58eb82764eb046d9ba84834b5`; result was still running at this ledger update. The release workflow is manual and has not been run because production credentials are not available to this session.
+- **Still blocked:** this path does not identify or recreate the existing signer. The owner must provide the existing keystore/key through protected GitHub Actions secrets and the matching verified signer fingerprint through a repository variable, or provide equivalent managed-signing access with verified lineage. The installed/release APK and signer lineage must be checked before an upgrade claim.
+- Required protected names: secrets `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`; repository variable `ANDROID_SIGNER_SHA256` (64 hexadecimal SHA-256 fingerprint, colons optional). Never send the private key or passwords in chat or commit them to Git.
+- No signed release APK has been produced. The existing debug APKs remain development-only artifacts; the production signing and upgrade gates remain BLOCKED.
