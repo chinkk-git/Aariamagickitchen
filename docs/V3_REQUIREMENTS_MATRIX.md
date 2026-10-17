@@ -8,7 +8,7 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 | R003 | Onboarding name + CHEF_A/CHEF_B only | WP00 | UI + persistence tests | NOT STARTED |
 | R004 | No gender field collected | WP00 | schema/privacy audit | NOT STARTED |
 | R005 | Multiple isolated local profiles | WP00/WP04 | profile isolation tests | NOT STARTED |
-| R006 | Legacy Aaria data migration | WP00/WP04 | migration comparison | NOT STARTED |
+| R006 | Legacy Aaria data migration | WP00/WP04 | verified shipped-source key/schema, representative fixture, idempotency/integrity checks | NOT STARTED — actual storage key/schema and fixture are not confirmed from the shipped HTML or installed data |
 | R007 | Fixed supporting cast M1/D1/F1–F4 | WP03 | character reference and scene QA | NOT STARTED |
 | R008 | Both chef variants in applicable scenes | WP03 | scene registry completeness | NOT STARTED |
 | R009 | Correct ingredients and finished dishes | WP03 | recipe-to-artwork QA | NOT STARTED |
@@ -35,4 +35,4 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 
 ## Evidence boundary
 
-`IN PROGRESS` means partial work/evidence exists, not acceptance. CI run 39057437535 passed the WebView URL-policy unit tests and debug build; no device tests were run. Content authentication, migration, anti-rollback, and signed upgrade behavior remain `NOT STARTED` until implemented and tested.
+`IN PROGRESS` means partial work/evidence exists, not acceptance. CI run 39057437535 passed the WebView URL-policy unit tests and debug build; debug APK and HTML artifacts 12110495010/12110216216 are available through 2026-11-16. No device tests were run. Content authentication, migration, anti-rollback, and signed upgrade behavior remain `NOT STARTED` until implemented and tested.
