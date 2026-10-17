@@ -106,3 +106,7 @@ R027 candidate source is `524e85a33f874ac9c12e8b4e7943b7dad4c9b294`. Added `conn
 
 ## CSP regression automation follow-up — 2026-10-17
 R027 now has persistent Node regression coverage in `tools/v3/test-csp-policy.mjs`, with its policy logic shared by the generated-HTML validator and the test. The Android pilot workflow runs it automatically on push/dispatch. Local CSP, profile persistence/isolation, and Node syntax checks pass on the current draft branch. The resulting hosted workflow, full HTML transform, Android unit tests, CSP compatibility with baseline resources, and real-device behavior are still pending; R027 remains IN PROGRESS.
+
+
+## Android pilot run 105 evidence — 2026-10-17
+Run [39078143249](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39078143249) passed on candidate code `78374426c82a63c38993feb4c6fee899bd529abe`: generated HTML validation, CSP/profile regression checks, Android WebView asset policy JVM tests, debug APK assembly, and fail-closed unsigned release check. It uploaded debug APK artifact [12117857547](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39078143249) and HTML artifact [12117643371](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39078143249). This is CI evidence only; production signer release and owner-phone install/upgrade/data/WebView checks remain pending. R027 remains IN PROGRESS pending actual device testing and approved baseline resource-policy audit.
