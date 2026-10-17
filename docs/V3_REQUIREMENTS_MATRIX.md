@@ -102,3 +102,7 @@ The candidate includes a direct `AppAssetsUrlPolicyTest` for subframe rejection 
 
 ## Independent WebView review follow-up — 2026-10-17
 R027 candidate source is `524e85a33f874ac9c12e8b4e7943b7dad4c9b294`. Added `connect-src 'self'`, `child-src 'none'`, duplicate-directive rejection, and negative validator cases for wildcard/data script sources, remote connections/frames, and duplicate directives. Local checks pass; Android CI, full resource inventory and real WebView/device tests are pending. Image/style/font/media sources remain insufficiently constrained until the approved baseline is audited; R027 stays IN PROGRESS. 
+
+
+## CSP regression automation follow-up — 2026-10-17
+R027 now has persistent Node regression coverage in `tools/v3/test-csp-policy.mjs`, with its policy logic shared by the generated-HTML validator and the test. The Android pilot workflow runs it automatically on push/dispatch. Local CSP, profile persistence/isolation, and Node syntax checks pass on the current draft branch. The resulting hosted workflow, full HTML transform, Android unit tests, CSP compatibility with baseline resources, and real-device behavior are still pending; R027 remains IN PROGRESS.
