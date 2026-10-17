@@ -145,7 +145,7 @@ class MainActivity : Activity() {
                 override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                     // JavaScript interfaces are visible to every frame in Android WebView.
                     // The app only uses the main document, so block subframes before URL routing.
-                    if (!request.isForMainFrame) return true
+                    if (AppAssetsUrlPolicy.shouldBlockSubframeNavigation(request.isForMainFrame)) return true
                     val uri = request.url
                     if (AppAssetsUrlPolicy.isAppAssetsHost(uri.host)) {
                         return !AppAssetsUrlPolicy.isTrustedOrigin(uri.scheme, uri.host, uri.port, uri.userInfo, uri.encodedAuthority)
