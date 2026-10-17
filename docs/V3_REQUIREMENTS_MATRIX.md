@@ -7,15 +7,15 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 | R002 | Audience 8–12 inclusive language | WP00/WP09 | content review | NOT STARTED |
 | R003 | Onboarding name + CHEF_A/CHEF_B only | WP00 | UI + persistence tests | IN PROGRESS — text-first profile UI and two chef choices added; visual assets, persistence integration tests and first-run/legacy device flows remain open. |
 | R004 | No gender field collected | WP00 | schema/privacy audit | NOT STARTED |
-| R005 | Multiple isolated local profiles | WP00/WP04 | profile isolation tests | IN PROGRESS — SQLite profile/snapshot storage, create/switch bridge and UI are added; database isolation/runtime tests not yet present. |
-| R006 | Legacy Aaria data migration | WP00/WP04 | verified source key/schema, representative fixture, idempotency/integrity checks | IN PROGRESS — root index confirms key `aariaPrivateKitchenV4`; parser tests preserve unknown fields and reject malformed/trailing/oversized input (CI 39060716858); SQLite transaction/installed-state preservation still lack tests. |
+| R005 | Multiple isolated local profiles | WP00/WP04 | profile isolation tests | IN PROGRESS — SQLite create/switch/snapshot tests now pass under Robolectric CI 39061031142; WebView/runtime and real-device isolation tests remain. |
+| R006 | Legacy Aaria data migration | WP00/WP04 | verified source key/schema, representative fixture, idempotency/integrity checks | IN PROGRESS — key `aariaPrivateKitchenV4` confirmed in root source; Robolectric tests pass for idempotency, malformed retry and unknown-field preservation (CI 39061031142); installed-data comparison and device recovery remain. |
 | R007 | Fixed supporting cast M1/D1/F1–F4 | WP03 | character reference and scene QA | NOT STARTED |
 | R008 | Both chef variants in applicable scenes | WP03 | scene registry completeness | NOT STARTED |
 | R009 | Correct ingredients and finished dishes | WP03 | recipe-to-artwork QA | NOT STARTED |
 | R010 | Landscape and tablet layouts | WP02/WP03 | device screenshots/tests | NOT STARTED |
 | R011 | Offline recipes and progress | WP04 | airplane-mode tests | NOT STARTED |
-| R012 | Authenticated data-only content packs | WP05 | signature/hash/security tests | IN PROGRESS — verifier/negative tests pass in CI 39060387158 and 39060716858; publisher public key is not provisioned, so production installs fail closed. |
-| R013 | Atomic activation and rollback | WP05 | fault injection | IN PROGRESS — staged directory swap and failed-activation restore test pass in CI 39060716858; crash/disk-full/restart tests remain open. |
+| R012 | Authenticated data-only content packs | WP05 | signature/hash/security tests | IN PROGRESS — verifier/negative tests pass in CI 39061031142; publisher public key is not provisioned, so content installation fails closed. |
+| R013 | Atomic activation and rollback | WP05 | fault injection | IN PROGRESS — staged directory swap and failed-activation restore test pass in CI 39061031142; crash/disk-full/restart tests remain open. |
 | R014 | Signed APK upgrades preserve data | WP06 | device upgrade test | NOT STARTED |
 | R015 | Play Protect ON and parent guide | WP08 | real-device evidence | PARTIAL EVIDENCE |
 | R016 | Accurate What's New for each update | WP07 | tour and replay tests | NOT STARTED |
@@ -31,11 +31,11 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 | R025 | APK signer/package/version continuity and adult confirmation | WP06 | package/version source; release APK signer lineage; installed APK comparison; upgrade/device tests | IN PROGRESS — package/version inspected; two CI debug artifact certificates differ (runs 39036629623 and 39057437535); production/installed signer and upgrade remain unverified. Certificate fingerprints were extracted from v2 blocks but APK signatures were not fully verified (`apksigner` unavailable). |
 | R026 | Atomic update activation and rollback | WP05 | crash/disk-full tests | IN PROGRESS — activation/recovery implementation and failure test added; crash/process-death/disk-full/device evidence pending. |
 | R027 | WebView release hardening and least privilege | WP02 | `MainActivity.kt`, `AppAssetsUrlPolicy.kt`, `AppAssetsUrlPolicyTest.kt`; CI run 39057437535; bridge/navigation device tests | IN PROGRESS — mixed content, Safe Browsing, file URL access, debuggable-only inspection, and exact appassets origin/path policy implemented; five unit tests and CI pass. Bridge-origin/runtime/device review remains open. |
-| R028 | Transactional Aaria-to-multiprofile migration | WP00/WP04 | idempotency/integrity tests | IN PROGRESS — parser and preservation tests pass (CI 39060716858); SQLite transaction/isolation/idempotency and device migration tests remain open. |
+| R028 | Transactional Aaria-to-multiprofile migration | WP00/WP04 | idempotency/integrity tests | IN PROGRESS — Robolectric SQLite tests pass for idempotency, retry, unknown fields and profile isolation (CI 39061031142); installed-app/device crash and recovery tests remain. |
 
 ## Evidence boundary
 
-`IN PROGRESS` means partial work/evidence exists, not acceptance. CI run 39060716858 passed HTML validation, Android unit tests (including profile/migration parser and signed-pack verifier tests), and debug APK assembly; artifacts 12111825146/12111670590 are available through 2026-11-16. Current code head 81fdd93710e6ad19ca292655c9393d05c725e3f4 passed CI run 39060716858, including malformed/trailing migration snapshot rejection. No device tests were run. Production APK signer continuity is BLOCKED on trusted signer/key evidence; content publisher key provisioning is also outstanding.
+`IN PROGRESS` means partial work/evidence exists, not acceptance. CI run 39061031142 passed HTML validation, Android unit tests (including Robolectric SQLite migration/isolation and signed-pack verifier tests), and debug APK assembly; artifacts 12111133727/12111930308 are available through 2026-11-16. Current code head e5425c6539c93492c241814bf380755b3f9439ae passed CI run 39061031142 with SQLite migration/isolation coverage. No device tests were run. Production APK signer continuity is BLOCKED on trusted signer/key evidence; content publisher key provisioning is also outstanding.
 
 
 ## Current pause gate (2026-10-17)
