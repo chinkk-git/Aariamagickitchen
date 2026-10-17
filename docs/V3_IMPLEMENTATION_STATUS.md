@@ -79,3 +79,32 @@ Artifacts: debug APK [12111825146](https://github.com/chinkk-git/Aariamagickitch
 Robolectric database tests were added in code commit `e5425c6539c93492c241814bf380755b3f9439ae`. CI run [39061031142](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142) passed the Android unit-test step and debug APK/HTML build. Tests cover one-time migration/retry, preservation of unknown legacy fields, malformed input not consuming the migration marker, and state isolation when switching profiles. This remains simulated Android SQLite evidence; no installed-data export, phone/tablet migration, backup/restore, process-death or Play Protect upgrade test was run.
 
 Artifacts: debug APK [12111133727](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142/artifacts/12111133727), SHA-256 `528648fdca4831c44b5dde5e2e4f99a2e69468ad3dea1eef8adc6184185ce706`; HTML [12111930308](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142/artifacts/12111930308), SHA-256 `f9041f97934ec9a1079ed8681da637055d7f9ad8dd07a1d1085db24a450ea973`. Both expire 2026-11-16. APK is debug-signed.
+
+
+## Current master-plan checklist (supersedes earlier snapshots; 2026-10-17)
+
+### Roadmap phases
+
+| Phase | State | Checklist |
+|---|---|---|
+| S0 — Audit, baseline, agents, requirements, asset discovery | IN PROGRESS | [x] Protected baseline audited and retained. [x] Eight governed V3 documents established. [x] Requirements traceability started. [ ] Durable agent profiles/roles validated. [ ] Full approved-asset inventory and evidence-backed asset baseline. |
+| S1 — Branding, onboarding, profiles, Android foundation | IN PROGRESS | [x] Android WebView hardening foundation and profile storage/migration scaffold. [x] Two chef identifiers and text-first profile UI scaffold. [x] Migration parser and SQLite tests pass in CI. [ ] Full branded UI and visual onboarding. [ ] Validate migration against real installed Aaria data, backup/restore, crash recovery, and device upgrade. |
+| S2 — Character bible and representative recipe pilot | NOT STARTED | [ ] Lock CHEF_A/CHEF_B and M1/D1/F1–F4 references. [ ] Both chef variants and cast/scene registry. [ ] Independent end-to-end recipe/art QA. |
+| S3 — Artwork remediation and responsive QA | NOT STARTED | [ ] Inventory and repair all recipe/ingredient/dish/step artwork. [ ] Verify landscape, portrait, phone, tablet and offline behavior. |
+| S4 — Authenticated content packs and rollback | IN PROGRESS | [x] Signed data-only verifier, validation, replay protections, staging/activation foundations, and negative tests. [ ] Provision trusted publisher public key/key ID. [ ] Feed/download/scheduling and parent activation flow. [ ] Catalog/runtime integration. [ ] Crash, disk-full, restart, downgrade and device tests. |
+| S5 — Signed APK updates, parent guidance, What's New | BLOCKED / IN PROGRESS | [x] Parent installation guide draft created at [PARENT_INSTALL_GUIDE_DRAFT.md](PARENT_INSTALL_GUIDE_DRAFT.md). [ ] Complete guide with trusted release URL, signer/checksum and device support. [ ] Verify existing APK signer and protected production signing-key lineage. [ ] Signed upgrade manager, data-preservation test and What's New tour/replay. |
+| S6 — Device QA, safety, accessibility, family release | NOT STARTED | [ ] Phone/tablet integration tests with Play Protect ON. [ ] Safety/allergen/accessibility and no-timer audits. [ ] Existing-feature regression and reproducible release provenance. [ ] Verified signed family APK release. |
+
+### Requirement register summary (details remain in V3_REQUIREMENTS_MATRIX.md)
+
+- IN PROGRESS: R003 onboarding; R005 profile isolation; R006 legacy migration; R012 authenticated data-only content packs; R013/R026 activation and rollback; R020/R021 agent governance and learning; R023/R024 manifest authentication and unsafe-pack rejection; R025 signer/package/version continuity; R027 WebView hardening; R028 transactional migration.
+- PARTIAL EVIDENCE: R015 Play Protect and parent installation guidance (user reported one install with Play Protect on; guide draft is not device validation).
+- NOT STARTED: R001 full-app branding; R002 inclusive-language review; R004 privacy/schema audit; R007–R011 character/artwork/layout/offline acceptance; R014 signed APK upgrade/data preservation; R016 What's New tours; R017 cooking safety/allergen review; R018 no-timer audit; R019 baseline regression; R022 verified family release.
+- No requirement is VERIFIED end-to-end. CI proves automated checks on a debug build only; it does not prove device behavior or production release readiness.
+
+### Latest continuation evidence
+
+- CI run [39061031142](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142) passed HTML validation, adapter checks, Android unit tests (including Robolectric migration/profile-isolation and signed-pack tests), debug APK assembly, and artifact upload on code commit `e5425c6539c93492c241814bf380755b3f9439ae`.
+- Debug APK [12111133727](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142/artifacts/12111133727), SHA-256 `528648fdca4831c44b5dde5e2e4f99a2e69468ad3dea1eef8adc6184185ce706`; HTML test artifact [12111930308](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142/artifacts/12111930308), SHA-256 `f9041f97934ec9a1079ed8681da637055d7f9ad8dd07a1d1085db24a450ea973`. Both expire 2026-11-16. APK is debug-signed; HTML is a test artifact, not a public V3 deliverable.
+- Draft PR #2 evidence refreshed: https://github.com/chinkk-git/Aariamagickitchen/pull/2.
+- External security inputs still required: trusted existing APK signer/key lineage and content-publisher trust root. Keep the baseline and existing user data protected; do not bypass Android installer or Play Protect warnings.
