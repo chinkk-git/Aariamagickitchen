@@ -102,7 +102,7 @@ jobs:
           test -x "$apksigner"
           "$apksigner" verify --verbose "$apk"
           cert_output="$("$apksigner" verify --print-certs "$apk" 2>&1)"
-          actual="$(printf '%s\n' "$cert_output" | sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest: *//p' | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
+          actual="$(printf '%s\n' "$cert_output" | sed -nE 's/^[[:space:]]*(Signer #1 certificate SHA-256 digest:|V[0-9]+ Signer: certificate SHA-256 digest:) *//p' | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
           expected="${EXPECTED_SIGNER_SHA256//:/}"
           expected="${expected,,}"
           if [[ -z "$actual" ]]; then
