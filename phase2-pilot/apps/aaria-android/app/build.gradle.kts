@@ -42,8 +42,8 @@ android {
         applicationId = "com.aaria.magickitchen.pilot"
         minSdk = 26
         targetSdk = 34
-        versionCode = 5
-        versionName = "1.0.1"
+        versionCode = 6
+        versionName = "1.0.2"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -54,40 +54,33 @@ android {
     }
 }
 
-val phase2PilotRoot = rootProject.file("../../")
-val packagedPilotAssets = layout.buildDirectory.dir("generated/phase2PilotAssets")
+val reviewedWebIndex = rootProject.file("../../../index.html")
+val packagedWebAssets = layout.buildDirectory.dir("generated/reviewedWebAssets")
 
-val syncPhase2PilotAssets by tasks.registering(org.gradle.api.tasks.Sync::class) {
-    from(phase2PilotRoot) {
-        include("apps/aaria-kitchen/**")
-        include("domains/**")
-        include("packages/**")
-        into("phase2-pilot")
+val copyReviewedWebIndex by tasks.registering(org.gradle.api.tasks.Copy::class) {
+    from(reviewedWebIndex)
+    into(packagedWebAssets)
+    doFirst {
+        if (!reviewedWebIndex.isFile || reviewedWebIndex.length() < 1_000_000L) {
+            throw GradleException("The reviewed standalone index.html is missing or unexpectedly small.")
+        }
     }
-    into(packagedPilotAssets)
 }
 
-android.sourceSets.getByName("main").assets.srcDir(packagedPilotAssets)
+android.sourceSets.getByName("main").assets.srcDir(packagedWebAssets)
 
-val verifyPhase2PilotAssets by tasks.registering {
-    dependsOn(syncPhase2PilotAssets)
+val verifyReviewedWebIndex by tasks.registering {
+    dependsOn(copyReviewedWebIndex)
     doLast {
-        val output = packagedPilotAssets.get().asFile
-        val requiredAssets = listOf(
-            "phase2-pilot/apps/aaria-kitchen/index.html",
-            "phase2-pilot/apps/aaria-kitchen/app.js",
-            "phase2-pilot/domains/cooking/recipes/load-catalog.js",
-            "phase2-pilot/packages/ui/base.css"
-        )
-        val missingAssets = requiredAssets.filterNot { output.resolve(it).isFile }
-        if (missingAssets.isNotEmpty()) {
-            throw GradleException("Required V3 WebView assets were not packaged: ${missingAssets.joinToString()}")
+        val packagedIndex = packagedWebAssets.get().file("index.html").asFile
+        if (!packagedIndex.isFile || packagedIndex.length() < 1_000_000L) {
+            throw GradleException("The reviewed standalone index.html was not packaged for Android WebView.")
         }
     }
 }
 
 tasks.named("preBuild").configure {
-    dependsOn(verifyPhase2PilotAssets)
+    dependsOn(verifyReviewedWebIndex)
 }
 
 dependencies {
