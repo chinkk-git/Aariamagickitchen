@@ -1,9 +1,11 @@
 package com.aaria.magickitchen.pilot
 
 import android.app.Activity
+import android.content.ClipData
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.webkit.JavascriptInterface
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
@@ -11,14 +13,19 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import java.io.File
+import java.util.UUID
 
 class MainActivity : Activity() {
     private lateinit var webView: WebView
     private var fileChooserCallback: ValueCallback<Array<Uri>>? = null
+    private var pendingCaptureUri: Uri? = null
+    private var pendingCaptureFile: File? = null
     private val fileChooserRequest = 4312
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         webView = WebView(this).apply {
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
@@ -34,7 +41,40 @@ class MainActivity : Activity() {
                     fileChooserParams: FileChooserParams
                 ): Boolean {
                     fileChooserCallback?.onReceiveValue(null)
+                    pendingCaptureFile?.delete()
+                    pendingCaptureFile = null
+                    pendingCaptureUri = null
                     fileChooserCallback = filePathCallback
+
+                    if (fileChooserParams.isCaptureEnabled) {
+                        try {
+                            val directory = File(cacheDir, "shared-posts").apply { mkdirs() }
+                            val file = File(directory, UUID.randomUUID().toString() + ".jpg")
+                            val uri = Uri.parse("content://$packageName.share/capture/${file.name}")
+                            val camera = Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
+                                putExtra(MediaStore.EXTRA_OUTPUT, uri)
+                                clipData = ClipData.newRawUri("Aaria dish photo", uri)
+                                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                            }
+                            if (camera.resolveActivity(packageManager) != null) {
+                                pendingCaptureFile = file
+                                pendingCaptureUri = uri
+                                packageManager.queryIntentActivities(camera, 0).forEach {
+                                    grantUriPermission(
+                                        it.activityInfo.packageName,
+                                        uri,
+                                        Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                                    )
+                                }
+                                startActivityForResult(camera, fileChooserRequest)
+                                return true
+                            }
+                        } catch (_: Exception) {
+                            pendingCaptureFile?.delete()
+                            pendingCaptureFile = null
+                            pendingCaptureUri = null
+                        }
+                    }
                     return try {
                         startActivityForResult(fileChooserParams.createIntent(), fileChooserRequest)
                         true
@@ -83,7 +123,7 @@ class MainActivity : Activity() {
                 override fun onPageFinished(view: WebView, url: String?) {
                     super.onPageFinished(view, url)
                     if (url?.startsWith("https://appassets.androidplatform.net/") == true) {
-                        listOf("share-polyfill.js", "quiz-adapter.js", "grocery-whatsapp.js").forEach { script ->
+                        listOf("avatar-adapter.js", "share-polyfill.js", "quiz-adapter.js", "grocery-whatsapp.js", "mobile-fixes.js").forEach { script ->
                             view.evaluateJavascript(assets.open(script).bufferedReader().use { it.readText() }, null)
                         }
                     }
@@ -96,9 +136,18 @@ class MainActivity : Activity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == fileChooserRequest) {
-            val result = WebChromeClient.FileChooserParams.parseResult(resultCode, data)
+            val captureUri = pendingCaptureUri
+            val captureFile = pendingCaptureFile
+            val result = if (resultCode == RESULT_OK && captureUri != null && captureFile?.isFile == true && captureFile.length() > 0L) {
+                arrayOf(captureUri)
+            } else {
+                if (captureFile != null) captureFile.delete()
+                WebChromeClient.FileChooserParams.parseResult(resultCode, data)
+            }
             fileChooserCallback?.onReceiveValue(result)
             fileChooserCallback = null
+            pendingCaptureUri = null
+            pendingCaptureFile = null
             return
         }
         super.onActivityResult(requestCode, resultCode, data)
@@ -106,6 +155,10 @@ class MainActivity : Activity() {
 
     override fun onDestroy() {
         fileChooserCallback?.onReceiveValue(null)
+        pendingCaptureFile?.delete()
+        fileChooserCallback = null
+        pendingCaptureFile = null
+        pendingCaptureUri = null
         webView.destroy()
         super.onDestroy()
     }
@@ -114,8 +167,6 @@ class MainActivity : Activity() {
     override fun onBackPressed() {
         if (webView.canGoBack()) webView.goBack() else super.onBackPressed()
     }
-
-
 }
 
 class ShareBridge(private val activity: Activity) {
@@ -153,9 +204,9 @@ class ShareBridge(private val activity: Activity) {
         if (bytes.isEmpty() || bytes.size > 15 * 1024 * 1024) return
         activity.runOnUiThread {
             try {
-                val directory = java.io.File(activity.cacheDir, "shared-posts").apply { mkdirs() }
-                val name = java.util.UUID.randomUUID().toString() + extension
-                java.io.File(directory, name).writeBytes(bytes)
+                val directory = File(activity.cacheDir, "shared-posts").apply { mkdirs() }
+                val name = UUID.randomUUID().toString() + extension
+                File(directory, name).writeBytes(bytes)
                 val uri = Uri.parse("content://${activity.packageName}.share/post/$name")
                 val share = Intent(Intent.ACTION_SEND).apply {
                     type = mimeType

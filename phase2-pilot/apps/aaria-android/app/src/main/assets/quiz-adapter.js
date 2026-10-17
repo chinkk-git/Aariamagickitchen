@@ -236,10 +236,21 @@
       note.setAttribute("role", "note");
       note.textContent = "This week is mixed using the app’s ingredient-based nutrient estimates and recipe variety. Some estimates are incomplete, and the plan is not tailored to Aaria’s personal needs. Ask a grown-up to review portions, ingredients and allergies.";
     }
-    list.before(note);
+    if (note.parentNode !== list.parentNode || note.nextElementSibling !== list) {
+      list.parentNode.insertBefore(note, list);
+    }
   }
 
-  const observer = new MutationObserver(() => { update(); updateNutritionNote(); });
+  let updateQueued = false;
+  const observer = new MutationObserver(() => {
+    if (updateQueued) return;
+    updateQueued = true;
+    requestAnimationFrame(() => {
+      updateQueued = false;
+      update();
+      updateNutritionNote();
+    });
+  });
   observer.observe(document.documentElement, { childList: true, subtree: true });
   update();
   updateNutritionNote();

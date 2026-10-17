@@ -41,7 +41,9 @@ jobs:
 
       - name: Validate production catalog and app adapters
         run: |
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/avatar-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/mobile-fixes.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/share-polyfill.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/grocery-whatsapp.js
           node <<'NODE'

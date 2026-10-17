@@ -16,7 +16,7 @@ class ShareImageProvider : ContentProvider() {
     override fun getType(uri: Uri): String = if (uri.lastPathSegment?.endsWith(".png") == true) "image/png" else "image/jpeg"
 
     override fun query(uri: Uri, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor {
-        val file = sharedFile(uri)
+        val file = sharedFile(uri, allowMissingCapture = true)
         val columns = projection ?: arrayOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE)
         return MatrixCursor(columns, 1).apply {
             addRow(columns.map { column ->
@@ -30,17 +30,28 @@ class ShareImageProvider : ContentProvider() {
     }
 
     override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor {
-        if (mode != "r") throw SecurityException("Read-only share access")
+        val capture = uri.pathSegments.firstOrNull() == "capture"
+        if (capture && mode == "w") {
+            val file = sharedFile(uri, allowMissingCapture = true)
+            return ParcelFileDescriptor.open(
+                file,
+                ParcelFileDescriptor.MODE_WRITE_ONLY or ParcelFileDescriptor.MODE_CREATE or ParcelFileDescriptor.MODE_TRUNCATE
+            )
+        }
+        if (mode != "r" || capture) throw SecurityException("Invalid shared image access")
         val file = sharedFile(uri)
         return ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
     }
 
-    private fun sharedFile(uri: Uri): File {
+    private fun sharedFile(uri: Uri, allowMissingCapture: Boolean = false): File {
         val base = File(requireNotNull(context).cacheDir, "shared-posts").canonicalFile
         val name = uri.lastPathSegment?.takeIf { it.matches(Regex("[a-f0-9-]{36}\\.(jpg|png)")) }
             ?: throw FileNotFoundException("Invalid shared image")
+        val capture = uri.pathSegments.firstOrNull() == "capture"
+        if (capture != allowMissingCapture && capture) throw FileNotFoundException("Invalid capture path")
         val file = File(base, name).canonicalFile
-        if (!file.path.startsWith(base.path + File.separator) || !file.isFile) throw FileNotFoundException("Image not found")
+        if (!file.path.startsWith(base.path + File.separator)) throw FileNotFoundException("Invalid shared image")
+        if (!file.isFile && !allowMissingCapture) throw FileNotFoundException("Image not found")
         return file
     }
 
