@@ -31,6 +31,7 @@ private fun localErrorResponse(statusCode: Int, reasonPhrase: String): WebResour
 
 class MainActivity : Activity() {
     private lateinit var webView: WebView
+    private val contentPacks by lazy { AndroidContentPackRepository(this) }
     private var fileChooserCallback: ValueCallback<Array<Uri>>? = null
     private var pendingCaptureUri: Uri? = null
     private var pendingCaptureFile: File? = null
@@ -114,6 +115,17 @@ class MainActivity : Activity() {
                         AssetPathResult.NotFound -> return localErrorResponse(404, "Not Found")
                         AssetPathResult.Forbidden -> return localErrorResponse(403, "Forbidden")
                     }
+                    if (assetPath.startsWith("content/")) {
+                        val stream = contentPacks.openContentAsset(assetPath) ?: return localErrorResponse(404, "Not Found")
+                        val contentType = when {
+                            assetPath.endsWith(".json", ignoreCase = true) -> "application/json"
+                            assetPath.endsWith(".webp", ignoreCase = true) -> "image/webp"
+                            assetPath.endsWith(".png", ignoreCase = true) -> "image/png"
+                            assetPath.endsWith(".jpg", ignoreCase = true) || assetPath.endsWith(".jpeg", ignoreCase = true) -> "image/jpeg"
+                            else -> return localErrorResponse(403, "Forbidden")
+                        }
+                        return WebResourceResponse(contentType, "UTF-8", 200, "OK", mapOf("Cache-Control" to "no-store", "X-Content-Type-Options" to "nosniff"), stream)
+                    }
                     val mimeType = when {
                         assetPath.endsWith(".html", ignoreCase = true) -> "text/html"
                         assetPath.endsWith(".js", ignoreCase = true) -> "application/javascript"
@@ -193,6 +205,46 @@ class MainActivity : Activity() {
 }
 
 class ShareBridge(private val activity: Activity) {
+    private val profileStore by lazy { ProfileStore(activity) }
+    private val contentPackRepository by lazy { AndroidContentPackRepository(activity) }
+
+    @JavascriptInterface
+    fun installVerifiedContentPack(base64Zip: String): String = bridgeResult {
+        contentPackRepository.installBase64(base64Zip).toString()
+    }
+
+    @JavascriptInterface
+    fun getActiveRecipeCatalog(): String = contentPackRepository.readRecipeCatalog()
+
+    @JavascriptInterface
+    fun initializeProfiles(legacySnapshot: String): String = bridgeResult {
+        profileStore.initialize(legacySnapshot).toString()
+    }
+
+    @JavascriptInterface
+    fun createProfile(name: String, chefId: String, snapshot: String): String = bridgeResult {
+        profileStore.createProfile(name, chefId, snapshot).toString()
+    }
+
+    @JavascriptInterface
+    fun activateProfile(profileId: String): String = bridgeResult {
+        profileStore.activateProfile(profileId).toString()
+    }
+
+    @JavascriptInterface
+    fun saveProfileSnapshot(profileId: String, snapshot: String): Boolean =
+        runCatching { profileStore.saveSnapshot(profileId, snapshot) }.getOrDefault(false)
+
+    @JavascriptInterface
+    fun chooseProfileChef(profileId: String, chefId: String): Boolean =
+        runCatching { profileStore.chooseChef(profileId, chefId) }.getOrDefault(false)
+
+    private inline fun bridgeResult(block: () -> String): String = try {
+        block()
+    } catch (error: Exception) {
+        "{\"error\":\"${error.javaClass.simpleName}\"}"
+    }
+
     @JavascriptInterface
     fun shareText(title: String, message: String) {
         if (message.length > 12000 || title.length > 240) return

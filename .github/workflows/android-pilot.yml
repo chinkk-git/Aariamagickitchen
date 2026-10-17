@@ -6,6 +6,7 @@ on:
     branches:
       - feature/platform-v3
       - codex/v3-webview-hardening-20261017
+      - codex/v3-completion-core-20261017
     paths:
       - 'index.html'
       - '.github/workflows/android-pilot.yml'
@@ -49,6 +50,8 @@ jobs:
 
       - name: Validate Android adapters
         run: |
+          node --check tools/v3/runtime.js
+          node tools/v3/test-profile-isolation.mjs
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/avatar-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/mobile-fixes.js

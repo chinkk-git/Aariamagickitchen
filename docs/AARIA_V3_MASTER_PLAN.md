@@ -119,3 +119,20 @@ The WebView pilot was hardened on `codex/v3-webview-hardening-20261017` at `ee02
 GitHub Actions run 39057437535 passed HTML validation/packaging, adapter syntax checks, five WebView URL-policy tests, and debug APK assembly. It published the generated HTML archive [12110216216](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110216216) and debug APK archive [12110495010](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110495010), with artifact digests recorded in `V3_IMPLEMENTATION_STATUS.md`. Both archives are available until 2026-11-16. The APK is debug-signed and intended for development testing; it is not proof of continuity with the installed app or production release readiness.
 
 Migration remains unstarted until the actual shipped HTML or a verified installed-data export confirms the source key/schema and a representative fixture. One independent audit reported a candidate key, but another reviewer could not verify it from the available source; preserve this uncertainty rather than encoding an assumption. Production signer lineage and device tests remain required gates.
+
+
+## 16.4 Bounded implementation evidence and key gate (2026-10-17)
+
+Draft PR #2 (`codex/v3-completion-core-20261017`) adds profile storage/migration scaffolding, signed data-only pack verification and atomic activation foundations. The root `index.html` source statically confirms localStorage key `aariaPrivateKitchenV4`; this does not replace validation against installed user data. CI run 39060124410 exposed a missing generated BuildConfig; enabling BuildConfig led to passing run 39060262205 on c9c5c842bf18c60e381370b3e1dcdff52ff597f3. That run published debug APK and HTML artifacts (12111410525 and 12110882719). Follow-up run 39060387158 passed on branch code head bb2176911a2b1a5061454a9e9500a0499c0897f0, including strict JSON parsing, and published development artifacts 12111033320/12111286874.
+
+The current APK remains debug-signed. The codebase contains no production signing configuration or trusted installed APK signer evidence, and no content publisher key is provisioned. Do not generate a replacement production key or claim APK upgrade continuity. Resume after the owner establishes the existing APK signer/key lineage through a trusted channel and provisions the content publisher trust root; then rerun CI on the current branch head and complete device/migration/update tests. PR #2 remains draft and is not merged.
+
+
+## 16.5 Migration safety progress (2026-10-17)
+
+The profile migration parser was hardened in commit `81fdd93710e6ad19ca292655c9393d05c725e3f4`: invalid, oversized, trailing and non-object JSON is rejected before migration completion can be recorded; unknown nested fields are preserved. CI run [39060716858](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39060716858) passed Android tests and debug APK/HTML assembly. SQLite transaction/recovery and installed-data fixture tests remain open. This is a bounded engineering step, not completion of WP00/WP04.
+
+
+## 16.6 SQLite profile migration evidence (2026-10-17)
+
+Robolectric-backed SQLite tests in commit `e5425c6539c93492c241814bf380755b3f9439ae` pass in CI run [39061031142](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142). They verify idempotent legacy migration, retry after malformed input, preservation of unknown fields, and isolation between two profiles. This does not establish migration behavior on the user's installed app data or Android devices. Release signing, content publisher trust, backup/restore and device QA remain open.

@@ -3,8 +3,14 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 android {
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
     namespace = "com.aaria.magickitchen.pilot"
     compileSdk = 35
+    buildFeatures {
+        buildConfig = true
+    }
     defaultConfig {
         applicationId = "com.aaria.magickitchen.pilot"
         minSdk = 26
@@ -23,4 +29,6 @@ android {
 
 dependencies {
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20240303")
+    testImplementation("org.robolectric:robolectric:4.14")
 }
