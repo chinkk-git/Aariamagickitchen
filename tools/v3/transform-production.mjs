@@ -132,7 +132,7 @@ if (!outputHtml.includes(bellPepperRule)) throw new Error('Could not find the pr
 outputHtml = outputHtml.replace(bellPepperRule, `else if(/black pepper|peppercorn|ground pepper/.test(t)){kind='Black pepper';body='<ellipse cx="32" cy="26" rx="24" ry="10" fill="#d9d5d2"/><path d="M8 28c2 17 13 23 24 23s22-6 24-23Z" fill="#eeeaf0" stroke="#b1a1bf" stroke-width="2"/><g fill="#312d34"><circle cx="20" cy="23" r="2"/><circle cx="29" cy="19" r="2"/><circle cx="39" cy="24" r="2"/><circle cx="31" cy="27" r="2"/><circle cx="44" cy="20" r="1.5"/></g>';}${bellPepperRule}`);
 outputHtml = outputHtml.replaceAll('Cozinha Mágica da Aaria', 'Cozinha mágica da Aaria');
 const csp = "script-src 'self' 'unsafe-inline' data:; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'";
-const headTag = outputHtml.match(/<head\\b[^>]*>/i)?.[0];
+const headTag = outputHtml.match(/<head\b[^>]*>/i)?.[0];
 if (!headTag) throw new Error('Production HTML must have a <head> for the V3 security policy.');
 outputHtml = outputHtml.replace(headTag, `${headTag}<meta http-equiv="Content-Security-Policy" content="${csp}">`);
 outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}</style><script id="aaria-v3-layer">${runtime}</script></body>`);
