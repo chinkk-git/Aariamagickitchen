@@ -272,7 +272,13 @@ function v3FreshSnapshot(){return {weeks:{},done:[],checks:{},stories:[],favorit
 function v3ApplyProfileResult(raw){const r=v3ParseProfileState(raw);if(r.error)throw new Error(r.error);v3SetActiveProfile(r);try{localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles:v3ProfileState.profiles,activeId:v3ProfileState.activeId}))}catch{};render()}
 function v3CreateOrSelectChef(name,chefId){
  const profile=v3ProfileState.profile;
- if(profile?.chefId==='LEGACY_AARIA'){if(window.AariaNative?.chooseProfileChef&&!window.AariaNative.chooseProfileChef(profile.id,chefId))throw new Error('Could not save avatar choice');profile.chefId=chefId;v3ProfileState.profile=profile;v3PersistProfileState();render();return}
+ if(profile?.chefId==='LEGACY_AARIA'){
+  if(window.AariaNative?.chooseProfileChef&&!window.AariaNative.chooseProfileChef(profile.id,chefId))throw new Error('Could not save avatar choice');
+  profile.chefId=chefId;v3ProfileState.profile=profile;v3PersistProfileState();
+  const trigger=document.querySelector('[data-v3-profile-open]');
+  if(trigger)trigger.textContent=`👩‍🍳 ${profile.name||'Aaria'} ▾`;
+  return;
+ }
  const clean=String(name||'').trim();if(!clean||clean.length>24)throw new Error('Enter a name between 1 and 24 characters');
  if(window.AariaNative?.createProfile){const raw=window.AariaNative.createProfile(clean,chefId,JSON.stringify(v3FreshSnapshot()));v3ApplyProfileResult(raw);return}
  const id='profile-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),fresh=v3FreshSnapshot();
