@@ -44,7 +44,7 @@ assert.equal(result.customFlag, false);
 assert.equal(result.customCount, 0);
 assert.deepEqual(JSON.parse(JSON.stringify(result.newerFeature)), { enabled: true });
 const persistStart = runtime.indexOf('function v3PersistProfileState(){');
-const persistEnd = runtime.indexOf('\\nfunction v3EmptyProfileValue', persistStart);
+const persistEnd = runtime.indexOf('\nfunction v3EmptyProfileValue', persistStart);
 assert(persistStart >= 0 && persistEnd > persistStart, 'profile persistence helper must be present');
 const profileStore = new Map();
 const persistenceContext = vm.createContext({
