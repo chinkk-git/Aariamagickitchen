@@ -143,3 +143,6 @@ The subframe guard is factored as `AppAssetsUrlPolicy.shouldBlockSubframeNavigat
 
 ## Independent WebView review follow-up — 2026-10-17
 The policy now includes `connect-src 'self'` and `child-src 'none'`; its validator rejects duplicate directives and disallowed remote/wildcard script and connection sources. Local synthetic checks pass for valid policy and negative cases. Resource compatibility remains only partially assessed: style, image, font and media directives are not yet constrained because the full approved V2 baseline resource inventory has not been verified. Complete that audit, choose precise required sources, then enforce default/resource directives without losing approved artwork or styling. 
+
+
+The activation failure path now retains its pending marker for recovery instead of clearing it immediately. Pilot runs [39080934453](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080934453) and [39080945482](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080945482) passed the corresponding rollback-marker and recovery-before-catalog-read tests. This improves interrupted-swap recovery but does not prove filesystem atomicity under power loss, disk exhaustion or device crashes.
