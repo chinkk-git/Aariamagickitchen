@@ -126,6 +126,10 @@ jobs:
             echo "::error::Packaged index.html is unexpectedly small: $packaged_bytes bytes."
             exit 1
           fi
+          if ! unzip -p "$apk" "$entry" | grep -Fq "AARIA_V3_BUILD_2026_10"; then
+            echo "::error::APK contains the baseline page without the generated V3 layer."
+            exit 1
+          fi
 
       - name: Verify APK signature and trusted certificate
         shell: bash
