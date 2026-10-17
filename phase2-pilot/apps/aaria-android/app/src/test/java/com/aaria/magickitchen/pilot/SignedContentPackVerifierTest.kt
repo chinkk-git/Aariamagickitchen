@@ -48,6 +48,21 @@ class SignedContentPackVerifierTest {
         rejects("path traversal") { SignedContentPackVerifier.verifyAndStage(archive("content/../escape.json", "[]".toByteArray(), 4), createTempDir(), pair.public, "test-key", 5, 3, 1000) }
     }
 
+    @Test fun rejectsTrailingDataInSignedJson() {
+        val data = "[] trailing".toByteArray()
+        rejects("trailing JSON") {
+            SignedContentPackVerifier.verifyAndStage(
+                archive("content/recipes.json", data, 4),
+                createTempDir(),
+                pair.public,
+                "test-key",
+                5,
+                3,
+                1000
+            )
+        }
+    }
+
     @Test fun rejectsHashMismatchWithoutLeavingStagedFiles() {
         val temp = createTempDir(prefix = "pack-hash-")
         val stage = File(temp, "stage")

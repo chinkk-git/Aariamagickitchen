@@ -165,8 +165,10 @@ object SignedContentPackVerifier {
     private fun validateBytes(bytes: ByteArray, mediaType: String) {
         when (mediaType) {
             "application/json" -> {
-                val value = JSONTokener(bytes.toString(Charsets.UTF_8)).nextValue()
+                val tokener = JSONTokener(bytes.toString(Charsets.UTF_8))
+                val value = tokener.nextValue()
                 require(value is JSONObject || value is JSONArray) { "Content JSON must be an object or array" }
+                require(tokener.nextClean() == '\u0000') { "Content JSON has trailing data" }
             }
             "image/png" -> require(bytes.size >= 8 && bytes.copyOfRange(0, 8).contentEquals(byteArrayOf(0x89.toByte(), 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a))) { "Invalid PNG header" }
             "image/jpeg" -> require(bytes.size >= 3 && bytes[0] == 0xff.toByte() && bytes[1] == 0xd8.toByte() && bytes[2] == 0xff.toByte()) { "Invalid JPEG header" }
