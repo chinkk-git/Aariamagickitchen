@@ -76,7 +76,7 @@ PR #2 adds an RSA SHA-256 signed content-pack verifier with exact payload signat
 
 A SQLite profile store and idempotent migration marker have been added. Root `index.html` statically identifies localStorage key `aariaPrivateKitchenV4`; migration has not been validated against an installed data export or tested with database fixtures, crash recovery, malformed state or multiple-profile isolation. This is partial implementation only.
 
-APK signing continuity remains blocked: only debug builds are configured and prior CI debug certificate identities differed. The currently installed package signer and protected production key lineage are unknown. Do not create a new production key or distribute an in-place upgrade until the trusted existing identity is established. The CI artifacts are development APK/HTML, not family release output.
+APK signing continuity remains blocked: a protected release-signing configuration and manual GitHub Actions workflow are prepared, but the currently installed package signer and protected production key lineage are unknown. The workflow requires the existing keystore from protected Actions secrets and compares the resulting APK certificate fingerprint to repository variable `ANDROID_SIGNER_SHA256` before upload. Do not create a new production key or distribute an in-place upgrade until the trusted existing identity is established. The CI APK/HTML artifacts are development outputs, not family release output.
 
 
 ## Migration parser validation update (2026-10-17)
@@ -87,3 +87,12 @@ Commit `81fdd93710e6ad19ca292655c9393d05c725e3f4` adds strict validation of lega
 ## SQLite migration test update (2026-10-17)
 
 CI run 39061031142 passed Robolectric-backed SQLite tests for legacy migration idempotency, malformed-input retry, preservation of unknown fields and two-profile state isolation. This is local simulated Android database evidence; installed-data export comparison, device/process-death recovery, backup/restore and signed-upgrade preservation remain unverified.
+
+
+## Protected release signing implementation (2026-10-17)
+
+The Gradle release build accepts `ANDROID_KEYSTORE_PATH`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, and `ANDROID_KEY_PASSWORD`. Partial configuration is rejected, and release APK/AAB tasks fail closed if no complete signing config exists.
+
+The manual workflow `.github/workflows/android-release.yml` retrieves the base64 keystore and credentials from protected GitHub Actions secrets (`ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`). It requires repository variable `ANDROID_SIGNER_SHA256`, decodes the keystore only on the ephemeral runner, builds `assembleRelease`, runs `apksigner verify`, and refuses artifact upload unless the signing certificate matches the trusted fingerprint. The pipeline does not create or rotate a key.
+
+This is prepared infrastructure, not proof of a valid signer or a release build. The GitHub integration available in this session can edit repository files but cannot read or provision Actions secrets. The owner must place the existing production key and its matching fingerprint into GitHub's protected settings and confirm that the fingerprint matches the installed/release APK lineage. Afterward run the workflow and complete an Android installer upgrade test with Play Protect enabled and saved-profile verification. Never transmit private key material through chat or Git.
