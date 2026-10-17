@@ -82,3 +82,8 @@ APK signing continuity remains blocked: only debug builds are configured and pri
 ## Migration parser validation update (2026-10-17)
 
 Commit `81fdd93710e6ad19ca292655c9393d05c725e3f4` adds strict validation of legacy profile snapshots before database migration begins. Malformed/trailing/non-object/oversized values are rejected; unknown nested fields are retained in the parsed snapshot. CI run 39060716858 passed these unit tests and debug build. This is parser-level evidence only; SQLite transactionality, crash recovery, installed user-data preservation, multi-profile isolation and device migration remain open.
+
+
+## SQLite migration test update (2026-10-17)
+
+CI run 39061031142 passed Robolectric-backed SQLite tests for legacy migration idempotency, malformed-input retry, preservation of unknown fields and two-profile state isolation. This is local simulated Android database evidence; installed-data export comparison, device/process-death recovery, backup/restore and signed-upgrade preservation remain unverified.
