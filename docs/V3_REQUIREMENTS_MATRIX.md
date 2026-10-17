@@ -93,3 +93,6 @@ User-provided GitHub Actions screenshot shows run #8 succeeded on `main` commit 
 
 ## Post-run #8 device and crash evidence — 2026-10-17
 Owner reports the configured permanent APK key successfully updated the installed app. The phone screenshot then exposed the profile chooser recursion crash. Runtime fix and regression tests are on source commit `56e08ba321535645953bcc216bfd485125cb922b`; the main signed-release workflow now pins that exact source at workflow commit `eaa4263fc131547ca24b5cdc1bea0aff2a6dfc28`. The next workflow run and corrected phone retest are still required before R003, R014, R022 or R025 can be marked VERIFIED. Content-pack publisher trust is separate and remains open under R012/R023.
+
+## WebView security follow-up — 2026-10-17
+| R027 | CSP script/frame/object restrictions and WebView subframe navigation blocking | WP02 | generated-HTML validator; Android WebView frame/navigation test; hosted CI; phone regression | IN PROGRESS — candidate source `b4fb9c6176ac5b8e8ae5ced359ce4396803c45e8` injects CSP, validates core directives, and rejects subframe navigation. Local/hosted WebView integration tests and device checks are pending. |
