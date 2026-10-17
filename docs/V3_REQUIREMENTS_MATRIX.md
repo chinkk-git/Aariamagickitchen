@@ -88,3 +88,8 @@ Run #7 passed the V3 transform/validation step and protected signing certificate
 ## Signed V3 workflow run #8 (2026-10-17)
 
 User-provided GitHub Actions screenshot shows run #8 succeeded on `main` commit `5f0a937707ba4f8c941b7f32d06458776935b962` in 2m13s and published one artifact. The workflow gates include generated V3 HTML validation, Android unit tests before keystore staging, APK V3 marker check, and trusted signer verification. This verifies the CI build path, not phone launch or update behavior. R022/R025 remain IN PROGRESS pending on-device install/update and launch checks.
+
+
+
+## Post-run #8 device and crash evidence — 2026-10-17
+Owner reports the configured permanent APK key successfully updated the installed app. The phone screenshot then exposed the profile chooser recursion crash. Runtime fix and regression tests are on source commit `56e08ba321535645953bcc216bfd485125cb922b`; the main signed-release workflow now pins that exact source at workflow commit `eaa4263fc131547ca24b5cdc1bea0aff2a6dfc28`. The next workflow run and corrected phone retest are still required before R003, R014, R022 or R025 can be marked VERIFIED. Content-pack publisher trust is separate and remains open under R012/R023.
