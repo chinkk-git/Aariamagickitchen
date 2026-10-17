@@ -121,11 +121,7 @@ class MainActivity : Activity() {
 
                 override fun onPageFinished(view: WebView, url: String?) {
                     super.onPageFinished(view, url)
-                    if (url?.startsWith("https://appassets.androidplatform.net/") == true) {
-                        listOf("avatar-adapter.js", "share-polyfill.js", "quiz-adapter.js", "grocery-whatsapp.js", "mobile-fixes.js").forEach { script ->
-                            view.evaluateJavascript(assets.open(script).bufferedReader().use { it.readText() }, null)
-                        }
-                    }
+                    // Load the production index.html as-is. Android only supplies the native file chooser.
                 }
             }
             loadUrl("https://appassets.androidplatform.net/index.html")
