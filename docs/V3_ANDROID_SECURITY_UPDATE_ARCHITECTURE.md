@@ -68,3 +68,12 @@ Re-audit the source and run the threat-model negative-test matrix before marking
 - CI run 39057437535 produced a debug APK archive [12110495010](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110495010) and generated HTML archive [12110216216](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110216216), available until 2026-11-16. These are test artifacts, not a signed family release.
 - The legacy storage key and schema have not been verified from the actual shipped HTML or installed app data. A candidate key was reported by one audit but could not be confirmed by an independent review; treat the discrepancy as unresolved and do not migrate/delete data until a verified source or export fixture is available.
 - Production signer/installed APK continuity, phone/tablet testing, authenticated data-only content updates, anti-rollback and migration remain release gates.
+
+
+## Follow-up implementation evidence and unresolved trust roots (2026-10-17)
+
+PR #2 adds an RSA SHA-256 signed content-pack verifier with exact payload signature verification, strict manifest keys, hash/type/path/size/version/expiry checks, replay rejection and staged activation with recovery state. CI run 39060262205 passed the tests and debug build on c9c5c842bf18c60e381370b3e1dcdff52ff597f3. A subsequent change at branch head bb2176911a2b1a5061454a9e9500a0499c0897f0 rejects trailing bytes after JSON values; this head still requires CI. The repository does not provision `content-pack-publisher.x509` or key ID, so the installer fails closed pending an owner-controlled trust root. Fetching, user activation flow, catalog/runtime integration, WorkManager scheduling, key rotation and device recovery testing are not implemented.
+
+A SQLite profile store and idempotent migration marker have been added. Root `index.html` statically identifies localStorage key `aariaPrivateKitchenV4`; migration has not been validated against an installed data export or tested with database fixtures, crash recovery, malformed state or multiple-profile isolation. This is partial implementation only.
+
+APK signing continuity remains blocked: only debug builds are configured and prior CI debug certificate identities differed. The currently installed package signer and protected production key lineage are unknown. Do not create a new production key or distribute an in-place upgrade until the trusted existing identity is established. The CI artifacts are development APK/HTML, not family release output.
