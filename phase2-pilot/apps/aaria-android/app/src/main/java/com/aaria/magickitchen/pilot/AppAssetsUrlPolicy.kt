@@ -11,8 +11,15 @@ internal object AppAssetsUrlPolicy {
 
     fun isAppAssetsHost(host: String?): Boolean = host == HOST
 
-    fun isTrustedOrigin(scheme: String?, host: String?, port: Int, userInfo: String?): Boolean =
-        scheme == "https" && isAppAssetsHost(host) && port == -1 && userInfo == null
+    fun isTrustedOrigin(
+        scheme: String?,
+        host: String?,
+        port: Int,
+        userInfo: String?,
+        encodedAuthority: String?
+    ): Boolean =
+        scheme == "https" && isAppAssetsHost(host) && port == -1 && userInfo == null &&
+            encodedAuthority == HOST
 
     fun classifyAssetPath(path: String?): AssetPathResult {
         if (path == null || path.isEmpty() || path == "/") return AssetPathResult.NotFound
