@@ -8,12 +8,44 @@ import org.junit.Test
 class AppAssetsUrlPolicyTest {
     @Test
     fun acceptsOnlyTheExactHttpsOriginWithoutAuthorityExtras() {
-        assertTrue(AppAssetsUrlPolicy.isTrustedOrigin("https", AppAssetsUrlPolicy.HOST, -1, null))
-        assertFalse(AppAssetsUrlPolicy.isTrustedOrigin("http", AppAssetsUrlPolicy.HOST, -1, null))
-        assertFalse(AppAssetsUrlPolicy.isTrustedOrigin("https", "appassets.androidplatform.net.evil", -1, null))
-        assertFalse(AppAssetsUrlPolicy.isTrustedOrigin("https", AppAssetsUrlPolicy.HOST, 443, null))
-        assertFalse(AppAssetsUrlPolicy.isTrustedOrigin("https", AppAssetsUrlPolicy.HOST, 8443, null))
-        assertFalse(AppAssetsUrlPolicy.isTrustedOrigin("https", AppAssetsUrlPolicy.HOST, -1, "attacker"))
+        assertTrue(
+            AppAssetsUrlPolicy.isTrustedOrigin(
+                "https", AppAssetsUrlPolicy.HOST, -1, null, AppAssetsUrlPolicy.HOST
+            )
+        )
+        assertFalse(
+            AppAssetsUrlPolicy.isTrustedOrigin(
+                "http", AppAssetsUrlPolicy.HOST, -1, null, AppAssetsUrlPolicy.HOST
+            )
+        )
+        assertFalse(
+            AppAssetsUrlPolicy.isTrustedOrigin(
+                "https", "appassets.androidplatform.net.evil", -1, null,
+                "appassets.androidplatform.net.evil"
+            )
+        )
+        assertFalse(
+            AppAssetsUrlPolicy.isTrustedOrigin(
+                "https", AppAssetsUrlPolicy.HOST, 443, null, "${AppAssetsUrlPolicy.HOST}:443"
+            )
+        )
+        assertFalse(
+            AppAssetsUrlPolicy.isTrustedOrigin(
+                "https", AppAssetsUrlPolicy.HOST, 8443, null, "${AppAssetsUrlPolicy.HOST}:8443"
+            )
+        )
+        assertFalse(
+            AppAssetsUrlPolicy.isTrustedOrigin(
+                "https", AppAssetsUrlPolicy.HOST, -1, "attacker",
+                "attacker@${AppAssetsUrlPolicy.HOST}"
+            )
+        )
+        assertFalse(
+            AppAssetsUrlPolicy.isTrustedOrigin(
+                "https", AppAssetsUrlPolicy.HOST, -1, null,
+                "${AppAssetsUrlPolicy.HOST}:invalid"
+            )
+        )
     }
 
     @Test
