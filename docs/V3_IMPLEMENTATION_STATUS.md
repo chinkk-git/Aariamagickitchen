@@ -1,5 +1,5 @@
 # V3 Implementation Status — My Magical Kitchen
-Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2, branch `codex/v3-completion-core-20261017` @ `c806cbb2b8375909e48d304b1d2be2596fab0788`; base `feature/platform-v3` @ `235a121ef08ee1931d1cfb5578bc2017197e4e09`
+Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2, branch `codex/v3-completion-core-20261017` @ `6116d9b6709efd51a1172c335a17940c616ea151`; base `feature/platform-v3` @ `235a121ef08ee1931d1cfb5578bc2017197e4e09`
 
 ## Confirmed repository audit (GitHub, 2026-10-17)
 - Audited `feature/platform-v3` at commit `b057f8603f7950f5e5b5699732a346ee9e453f25` (tree contains 179 entries). The existing pilot is under `phase2-pilot/`; the root `docs/` directory and all eight requested V3 documents were absent from that branch before this work.
@@ -157,3 +157,9 @@ A PKCS#12 RSA-3072 release keystore was generated for alias `aaria-v3-release`; 
 
 
 The protected manual APK workflow was merged to `main` in commit `89f4c19d353364e5952c5dd8bcacfa22bf31f914`. It uses the `android-production-signing` environment, pins the Android build source to `32c5398bba5d55502b2499dd32ae0af69cc6f48b`, and is still unrun. Owner setup of the four environment secrets and the `ANDROID_SIGNER_SHA256` environment variable is required before its manual dispatch can produce an APK.
+
+## Signed APK V3 integration correction (2026-10-17)
+
+The user-installed signed APK came from GitHub Actions run [39074229018](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39074229018). The run succeeded at secret/fingerprint validation, release APK assembly, packaged-page presence, APK signature verification against the configured trusted certificate, and artifact upload. Its artifact was **not the intended V3 implementation**: the workflow pinned source commit `dc4709a42e7e8cf73f4531644cbc8bf1081c9102`, checked only that `assets/index.html` existed and was large, and did not run `tools/v3/transform-production.mjs`. The user observed `ERR_HTTP_RESPONSE_CODE_FAILURE` at the appassets index page after installation. Thus run 39074229018 is signed-build evidence only; it is not V3 app-launch or content evidence.
+
+The approved implementation model is the V2 production `index.html` baseline transformed with the V3 layer, packaged into the existing hardened Android WebView shell. Commit `6116d9b6709efd51a1172c335a17940c616ea151` on PR #2 contains the V3 implementation and sets app versionCode 7/versionName 1.0.3, preserving the package ID and exceeding the prior signed pilot versionCode 6. Main workflow commit `d638ec9204712981dd52bc74a8c65be86cecc39d` now pins that reviewed source, runs the V3 transformer and validator plus Android unit tests, packages the generated page, and checks for the V3 build marker in the APK. This corrected workflow has **not yet run**. The next evidence gate is a successful signed run, followed by on-device launch/feature and update-preservation checks; no V3 delivery claim is made before those checks.
