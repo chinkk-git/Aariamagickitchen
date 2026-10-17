@@ -195,3 +195,10 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 - Candidate source is now `524e85a33f874ac9c12e8b4e7943b7dad4c9b294`. The generated policy also restricts script network connections to the packaged origin and disables child frames; the validator rejects duplicate directives and remote/wildcard script or connection sources. Local Node syntax checks, intended-policy acceptance, wildcard/data/remote/duplicate-policy rejection, and profile isolation/persistence regressions pass.
 - Independent review found no concrete incompatibility in the subframe guard with the inline single-document model. Remaining evidence: run the Android unit tests in CI; exercise actual WebView callbacks, CSP, external top-level links and chooser/profile behavior on device.
 - The baseline HTML source was not available for complete resource inventory, so CSP still does not constrain every style/image/font/media source. Keep R027 IN PROGRESS until baseline compatibility and resource policy are verified. 
+
+
+## Persistent CSP regression checks — 2026-10-17
+- Extracted the core CSP policy check into `tools/v3/csp-policy.mjs`; added `tools/v3/test-csp-policy.mjs` for valid, missing, wildcard/data script, remote connect/frame, missing child-frame directive, and duplicate-directive cases.
+- Wired the regression script into `.github/workflows/android-pilot.yml` before Android unit tests.
+- The first local run caught an over-escaped whitespace parser in the extracted helper. Corrected the parser and made rejection messages explicit; CSP policy tests and profile persistence/isolation tests now pass locally, along with Node syntax checks for runtime/transformer/validator.
+- These are local Node checks from current PR branch contents. The push-triggered Android workflow result, actual generated V2-to-V3 HTML build, Android/JVM tests, and phone/WebView regression remain unverified. Do not use this candidate as the family APK until hosted tests and device checks pass.
