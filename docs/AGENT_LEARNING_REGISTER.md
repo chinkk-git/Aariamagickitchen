@@ -73,3 +73,6 @@ undefined
 
 
 | CSP and profile regression CI | Local tests passed, but hosted end-to-end validation was still needed. | Android pilot run 105 built the transformed HTML, ran CSP/profile and Android URL-policy tests, assembled a debug APK, verified unsigned release rejection, and uploaded HTML/APK artifacts. | GitHub Actions [run 39078143249](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39078143249) completed successfully. | Independent review findings remain tracked; owner phone verification remains pending. | Debug artifacts only; no production-signed release or device claim. |
+
+
+| Production signer pipeline validation | The owner configured a new production key and reported that an earlier signed update worked; a new hosted verification was needed for the chooser-fix source. | Ran signed workflow using immutable source `56e08ba321535645953bcc216bfd485125cb922b`; staging fingerprint, unit tests, HTML packaging, APK signature/trusted-certificate checks, and upload all passed. | GitHub Actions [run 39080069478](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478); signed APK artifact `12118841013`. | Hosted evidence verified; owner phone install/upgrade and chooser test remain pending. | This signed artifact predates the CSP/subframe hardening candidate. |
