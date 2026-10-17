@@ -70,3 +70,6 @@ undefined
 
 
 | CSP regression extraction | A local run of the first extracted policy test caught an over-escaped whitespace pattern that made a valid CSP policy fail parsing. | Corrected the parser, clarified directive-specific errors, and wired the persistent Node regression test into the Android pilot workflow. | `test-csp-policy.mjs` covers positive policy and missing/unsafe/duplicate directive cases; CSP and profile-isolation tests now pass locally. | Independent WebView review informed the policy scope; automated workflow/device validation remains pending. | Current draft PR branch; push-triggered Android workflow and device smoke test not yet confirmed. |
+
+
+| CSP and profile regression CI | Local tests passed, but hosted end-to-end validation was still needed. | Android pilot run 105 built the transformed HTML, ran CSP/profile and Android URL-policy tests, assembled a debug APK, verified unsigned release rejection, and uploaded HTML/APK artifacts. | GitHub Actions [run 39078143249](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39078143249) completed successfully. | Independent review findings remain tracked; owner phone verification remains pending. | Debug artifacts only; no production-signed release or device claim. |
