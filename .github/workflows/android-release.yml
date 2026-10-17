@@ -55,6 +55,9 @@ jobs:
           cp dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           grep -Fq 'AARIA_V3_BUILD_2026_10' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
 
+      - name: Run Android unit tests
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
+
       - name: Validate signing inputs and stage keystore
         shell: bash
         env:
@@ -100,9 +103,6 @@ jobs:
             exit 1
           fi
           echo "Staged keystore certificate fingerprint validated: $actual"
-
-      - name: Run Android unit tests
-        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
 
       - name: Assemble signed release APK
         env:
