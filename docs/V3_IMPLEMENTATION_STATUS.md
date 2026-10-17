@@ -1,6 +1,19 @@
 # V3 Implementation Status — My Magical Kitchen
 Updated: 2026-10-17 | Evidence-based ledger | Active implementation: draft PR #2, branch `codex/v3-completion-core-20261017` @ `6116d9b6709efd51a1172c335a17940c616ea151`; base `feature/platform-v3` @ `235a121ef08ee1931d1cfb5578bc2017197e4e09`
 
+
+## Current milestone — 2026-10-17 (supersedes earlier signing blockers below)
+
+- **Production signing setup is complete.** Signed workflow run [39080069478](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478) verified the protected signer certificate, APK signature, V3 HTML package marker and release artifact upload. Artifact: [12118841013](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478/artifacts/12118841013). The owner reports an APK update test succeeded.
+- **A device bug is still open.** The owner’s phone screenshot shows “Maximum call stack size exceeded” in the legacy chef chooser after the update. The draft source includes a recursion fix and tests, but the phone result means the current chooser path is not accepted; reproduce and fix it, then repeat the on-device chooser and saved-progress checks. Do not describe the chooser as device-verified.
+- **Latest draft tests:** pilot workflow runs [106](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080611176) and [107](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080621336) passed after adding checks for fail-closed behavior when the content-publisher key is absent and for invalid signed image bytes. The artifacts are debug/test builds, not a signed family release.
+- **Content updates remain fail-closed:** the app has no provisioned publisher public key/key ID, feed/downloader, adult activation flow or integrated catalog/tour rendering. Publisher trust-root and key-rotation decisions require external owner security action. SharedPreferences version tracking is not hardware-backed rollback resistance; expiry relies on device time.
+- **Migration:** SQLite/idempotency/profile isolation tests pass, but no representative installed legacy-data comparison or device crash recovery has been completed. Atomic activation has selected injected recovery tests; process-kill, disk-full and hardware/filesystem recovery coverage remains open.
+- **WebView:** generated-page CSP and subframe blocking passed pilot run 105. Resource inventory, bridge origin restriction/migration and WebView instrumentation/device tests remain open. Run 39080069478 predates this CSP/subframe draft, so no current signed artifact includes those changes.
+- **Remaining master-plan delivery:** integrate authenticated content updates and per-update What's New, complete approved artwork/recipe and child-safety review, verify no-timer and baseline preservation, and run phone/tablet/accessibility/offline regression. Draft PR #2 remains the reviewed implementation vehicle; it is not a V3 release.
+
+Earlier paragraphs in this status file that say the production signer is missing, signing is blocked, or no signed release has been produced are historical records and are superseded by this milestone. Keep their original evidence but do not treat them as current status.
+
 ## Confirmed repository audit (GitHub, 2026-10-17)
 - Audited `feature/platform-v3` at commit `b057f8603f7950f5e5b5699732a346ee9e453f25` (tree contains 179 entries). The existing pilot is under `phase2-pilot/`; the root `docs/` directory and all eight requested V3 documents were absent from that branch before this work.
 - The branch contains the Kotlin WebView shell at `phase2-pilot/apps/aaria-android/`, Android workflow `.github/workflows/android-pilot.yml`, recipe tests and a two-recipe pilot. Workflow config builds a **debug APK**; this is not evidence of a signed release APK or device/security acceptance.
