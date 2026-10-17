@@ -61,3 +61,10 @@ Re-audit the source and run the threat-model negative-test matrix before marking
 - Not verified: WebView bridge behavior across frames, device integration, CSP, and release-mode runtime behavior. The native bridge and broad external HTTP(S)/WhatsApp handoff remain subjects for dedicated integration/security review.
 - CI debug APK signer continuity is disproven across runs 39036629623 and 39057437535: certificate fingerprints differ. Fingerprints were extracted from v2 signing blocks, but `apksigner` was unavailable; this is certificate identity evidence, not full APK signature verification. It says nothing conclusive about the installed APK or production signing lineage.
 - Secure content pack verification/atomic activation/anti-replay, APK update manager and trusted production signer, transactional profile migration, and Play Protect ON upgrade testing remain unimplemented. Do not produce or distribute a production upgrade until the existing installed/release signer and protected production key lineage are recovered and verified.
+
+
+## Current artifact and migration evidence (2026-10-17)
+
+- CI run 39057437535 produced a debug APK archive [12110495010](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110495010) and generated HTML archive [12110216216](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110216216), available until 2026-11-16. These are test artifacts, not a signed family release.
+- The legacy storage key and schema have not been verified from the actual shipped HTML or installed app data. A candidate key was reported by one audit but could not be confirmed by an independent review; treat the discrepancy as unresolved and do not migrate/delete data until a verified source or export fixture is available.
+- Production signer/installed APK continuity, phone/tablet testing, authenticated data-only content updates, anti-rollback and migration remain release gates.
