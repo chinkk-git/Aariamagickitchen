@@ -42,8 +42,8 @@ android {
         applicationId = "com.aaria.magickitchen.pilot"
         minSdk = 26
         targetSdk = 34
-        versionCode = 5
-        versionName = "1.0.1"
+        versionCode = 7
+        versionName = "1.0.3"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
