@@ -27,3 +27,6 @@ The V3 documents are committed on the working branch; implementation branch `cod
 
 ## Current continuation checkpoint — 2026-10-17
 The owner reports the new APK signing key is configured and the signed update test succeeded. Continue from branch `codex/v3-completion-core-20261017`, latest known head `56e08ba321535645953bcc216bfd485125cb922b`. Fixes on this branch address the phone-reported recursive profile-render crash and standalone HTML profile persistence. Local Node syntax and profile reset/persistence tests pass; hosted CI for the latest head and a fresh signed APK from that exact source are still required. Do not use the older signed artifact to claim the chooser fix. Keep the approved V2 baseline and content publisher trust-root work distinct from APK signing.
+
+
+The main release workflow now pins code commit `56e08ba321535645953bcc216bfd485125cb922b` at workflow commit `eaa4263fc131547ca24b5cdc1bea0aff2a6dfc28`. The GitHub integration cannot dispatch Actions in this session. Start [the signed-release workflow](https://github.com/chinkk-git/Aariamagickitchen/actions/workflows/android-release.yml) from the phone; it runs the branch's profile regressions, V3 transform, Android tests and signer/package gates. Then install that artifact and retest the legacy chooser and progress.
