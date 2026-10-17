@@ -61,6 +61,9 @@ jobs:
           cp dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           sha256sum dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
 
+      - name: Test WebView asset origin policy
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
+
       - name: Assemble installable APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
 
