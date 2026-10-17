@@ -44,6 +44,17 @@ jobs:
         with:
           gradle-version: '8.10.2'
 
+      - name: Build and validate V3 HTML from the approved V2 baseline
+        run: |
+          set -euo pipefail
+          node --check tools/v3/transform-production.mjs
+          node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3.html
+          node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3.html
+          node tools/v3/test-profile-isolation.mjs
+          mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
+          cp dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          grep -Fq 'AARIA_V3_BUILD_2026_10' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+
       - name: Validate signing inputs and stage keystore
         shell: bash
         env:
@@ -100,7 +111,7 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleRelease
 
-      - name: Verify reviewed standalone page is packaged
+      - name: Verify generated V3 page is packaged
         shell: bash
         run: |
           set -euo pipefail
