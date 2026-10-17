@@ -140,3 +140,10 @@ The repository contains no verified production keystore, installed APK signer ev
 - **Still blocked:** this path does not identify or recreate the existing signer. The owner must provide the existing keystore/key through protected GitHub Actions secrets and the matching verified signer fingerprint through a repository variable, or provide equivalent managed-signing access with verified lineage. The installed/release APK and signer lineage must be checked before an upgrade claim.
 - Required protected names: secrets `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`; repository variable `ANDROID_SIGNER_SHA256` (64 hexadecimal SHA-256 fingerprint, colons optional). Never send the private key or passwords in chat or commit them to Git.
 - No signed release APK has been produced. The existing debug APKs remain development-only artifacts; the production signing and upgrade gates remain BLOCKED.
+
+
+## User-supplied APK inspection (2026-10-17)
+
+Inspected the attached `Aaria_Magical_Kitchen_V3.apk` locally. APK SHA-256: `977fe6daf7eb703bf160b40e984d48cc13df353a7ae23cc4a591633e53098180`. Its Android manifest reports application ID `com.aaria.magickitchen.pilot`, version code 5, version name 1.0.1. The APK Signing Block contains a v2 signer certificate whose subject is `CN=Android Debug, O=Android, C=US`; extracted certificate SHA-256 fingerprint: `B5:EC:1E:57:50:BE:5B:C2:34:7F:8E:59:1C:C8:9E:67:FE:E7:13:24:3C:6D:C8:48:6A:6F:FE:10:00:0B:EB:1D`.
+
+This is debug signing evidence, not a production key or a recoverable private key. The APK contains a public certificate, not the private signing keystore. The user said the app is installed and that this APK came from a previously provided link, but this inspection alone does not prove the attached bytes are exactly the installed copy. No `apksigner` executable was available in this analysis environment, so independent full APK signature verification was not performed. Keep the app installed; do not claim safe in-place upgrade or request uninstall. Production signing continuity remains BLOCKED pending a verified signing/migration path.
