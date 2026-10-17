@@ -5,6 +5,9 @@ plugins {
 android {
     namespace = "com.aaria.magickitchen.pilot"
     compileSdk = 35
+    buildFeatures {
+        buildConfig = true
+    }
     defaultConfig {
         applicationId = "com.aaria.magickitchen.pilot"
         minSdk = 26
