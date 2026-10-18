@@ -77,12 +77,12 @@ jobs:
           set -euo pipefail
           image="system-images;android-35;google_apis;x86_64"
           sdkmanager --install "$image"
-          printf 'no\\n' | avdmanager create avd --force -n aaria-v3-ci -k "$image" --device pixel_2
+          printf 'no\n' | avdmanager create avd --force -n aaria-v3-ci -k "$image" --device pixel_2
           "$ANDROID_HOME/emulator/emulator" -avd aaria-v3-ci -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -wipe-data >"$RUNNER_TEMP/aaria-emulator.log" 2>&1 &
           adb wait-for-device
           booted=0
           for attempt in $(seq 1 60); do
-            if [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\\r')" == "1" ]]; then booted=1; break; fi
+            if [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" == "1" ]]; then booted=1; break; fi
             sleep 5
           done
           if [[ "$booted" != "1" ]]; then
@@ -97,7 +97,7 @@ jobs:
           adb install -r "$apk"
           adb logcat -c
           adb shell am start -W -n com.aaria.magickitchen.pilot/.MainActivity
-          pid="$(adb shell pidof -s com.aaria.magickitchen.pilot | tr -d '\\r')"
+          pid="$(adb shell pidof -s com.aaria.magickitchen.pilot | tr -d '\r')"
           if [[ -z "$pid" ]]; then
             adb logcat -d
             echo "::error::V3 app process did not remain alive after launch."
