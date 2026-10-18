@@ -21,6 +21,11 @@ Earlier paragraphs in this status file that say the production signer is missing
 - Run [39080945482](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080945482) passed a regression proving catalog reads recover a completed swap before serving the content.
 - Run [39080987371](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080987371) passed the profile-flow regression: legacy chef choice updates the profile and visible header without synchronously rerendering the whole kitchen. This is a code-level mitigation; the owner’s phone screenshot remains the authoritative failing report until a new signed APK is retested on device.
 
+
+### Signed-candidate workflow readiness
+
+Draft PR #2 now contains a candidate workflow that checks out the exact dispatched commit, transforms and validates the approved V2 baseline into V3 HTML, runs CSP/profile and Android unit tests before staging signing material, verifies the packaged V3 marker and trusted APK certificate, and uploads signed APK and standalone HTML artifacts. Workflow YAML syntax was validated locally. It has not been dispatched. The connected GitHub API has no workflow-dispatch operation, and the available browser session is signed out. The verified Actions page is [android-release.yml](https://github.com/chinkk-git/Aariamagickitchen/actions/workflows/android-release.yml); run it using the draft branch `codex/v3-completion-core-20261017` to create the next candidate.
+
 ## Confirmed repository audit (GitHub, 2026-10-17)
 - Audited `feature/platform-v3` at commit `b057f8603f7950f5e5b5699732a346ee9e453f25` (tree contains 179 entries). The existing pilot is under `phase2-pilot/`; the root `docs/` directory and all eight requested V3 documents were absent from that branch before this work.
 - The branch contains the Kotlin WebView shell at `phase2-pilot/apps/aaria-android/`, Android workflow `.github/workflows/android-pilot.yml`, recipe tests and a two-recipe pilot. Workflow config builds a **debug APK**; this is not evidence of a signed release APK or device/security acceptance.
