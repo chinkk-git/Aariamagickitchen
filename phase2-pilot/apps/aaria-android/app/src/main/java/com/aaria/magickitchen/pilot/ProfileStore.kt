@@ -173,6 +173,26 @@ internal object LegacyProfileMigration {
     }
 }
 
+internal object NativeBridgeInputPolicy {
+    const val MAX_SHARED_IMAGE_BYTES = 15 * 1024 * 1024
+    const val MAX_SHARED_TITLE_CHARS = 240
+    private const val PNG_PREFIX = "data:image/png;base64,"
+    private const val JPEG_PREFIX = "data:image/jpeg;base64,"
+
+    fun isSharePostWithinLimits(dataUrl: String, title: String): Boolean {
+        val prefix = when {
+            dataUrl.startsWith(PNG_PREFIX) -> PNG_PREFIX
+            dataUrl.startsWith(JPEG_PREFIX) -> JPEG_PREFIX
+            else -> return false
+        }
+        val maxEncodedLength = ((MAX_SHARED_IMAGE_BYTES + 2) / 3) * 4 + prefix.length
+        return dataUrl.length <= maxEncodedLength && title.length <= MAX_SHARED_TITLE_CHARS
+    }
+
+    fun maxEncodedShareDataUrlLength(prefixLength: Int): Int =
+        ((MAX_SHARED_IMAGE_BYTES + 2) / 3) * 4 + prefixLength
+}
+
 internal object ProfilePolicy {
     fun normalizedName(input: String): String? {
         val value = input.trim().replace(Regex("[\\u0000-\\u001f\\u007f]"), "")
