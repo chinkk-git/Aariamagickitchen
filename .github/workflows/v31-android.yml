@@ -11,6 +11,7 @@ on:
       - 'phase2-pilot/**'
       - 'content/**'
       - 'docs/**'
+      - '.github/scripts/**'
       - '.github/workflows/v31-android.yml'
 
 permissions:
