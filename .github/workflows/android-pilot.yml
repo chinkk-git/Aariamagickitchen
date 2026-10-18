@@ -77,10 +77,12 @@ jobs:
           set -euo pipefail
           image="system-images;android-35;google_apis;x86_64"
           sdkmanager --install "$image"
+          export ANDROID_AVD_HOME="$HOME/.android/avd"
+          mkdir -p "$ANDROID_AVD_HOME"
           # Avoid --device here: hosted SDK images may omit the device catalog,
           # which can leave avdmanager without creating the named AVD.
           printf 'no\n' | avdmanager create avd --force -n aaria-v3-ci -k "$image"
-          if [[ ! -s "$HOME/.android/avd/aaria-v3-ci.ini" ]]; then
+          if [[ ! -s "$ANDROID_AVD_HOME/aaria-v3-ci.ini" ]]; then
             avdmanager list avd
             echo "::error::avdmanager did not create the expected AVD."
             exit 1
@@ -91,8 +93,8 @@ jobs:
           if [[ -e /dev/kvm ]]; then ls -l /dev/kvm; else echo "/dev/kvm is unavailable"; fi
           "$ANDROID_HOME/emulator/emulator" -accel-check || true
           avdmanager list avd
-          cat "$HOME/.android/avd/aaria-v3-ci.ini"
-          cat "$HOME/.android/avd/aaria-v3-ci.avd/config.ini"
+          cat "$ANDROID_AVD_HOME/aaria-v3-ci.ini"
+          cat "$ANDROID_AVD_HOME/aaria-v3-ci.avd/config.ini"
           echo "::endgroup::"
           adb version
           adb devices -l
