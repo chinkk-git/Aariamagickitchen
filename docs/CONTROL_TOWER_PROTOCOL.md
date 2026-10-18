@@ -43,3 +43,6 @@ At the start of each active Work session: read this file from `main` and the rep
 
 ## Session rotation (mandatory)
 The durable execution/recovery protocol is [SESSION_PROTOCOL.md](control-tower/SESSION_PROTOCOL.md). Read the current [V3 handover](control-tower/V3_HANDOVER.md) or [V3.1 handover](control-tower/V31_HANDOVER.md) on session start, checkpoint after commits/CI/blockers, and rotate before chats become unresponsive. A handover is a point-in-time snapshot: verify current GitHub head and CI. Only one active writer per branch; GitHub issue ACK is coordination, not a technical lock. No background automation or new paid runner is implied.
+
+## Adaptive session health
+All Control Tower, V3 and V3.1 sessions follow [Balanced Adaptive Session Lifecycle](control-tower/ADAPTIVE_SESSION_LIFECYCLE.md). Review after 20 substantial tasks or 50 observed tool events, and immediately on responsiveness or reliability symptoms. This is not a fixed-period rotation. Rotation requires an evidence-backed checkpoint and manual confirmation; no exact context occupancy measurement or unattended chat restart is available. The [short-session protocol](control-tower/SESSION_PROTOCOL.md) governs recovery and branch concurrency.
