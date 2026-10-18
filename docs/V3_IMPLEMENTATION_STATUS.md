@@ -252,3 +252,11 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 - **In progress:** authenticated content delivery still needs a trusted publisher key/key ID, feed/downloader and adult activation/catalog UI. Profile migration and the chooser fix need real-device validation against the owner’s saved state. WebView still needs a complete V2 resource inventory, an origin-restricted bridge and device regression. The latest signed-family candidate must be manually dispatched from the branch before it can be installed and checked.
 - **Remaining product roadmap:** implement “What’s New” tours; finish recipe/artwork and child-safety/allergen review; verify no-timer and approved-baseline preservation; complete accessibility, offline, phone/tablet and failure-recovery regression; then run full release acceptance. These are open plan items, not included in run #114.
 - Run #114 produces a debug APK and validated HTML only. It is not the production-signed V3 release and does not establish device acceptance.
+
+
+## Content-pack archive-set regression — CI run 115
+
+- Added a signed ZIP fixture with a valid declared recipe plus an undeclared extra payload and asserted rejection occurs before the staging directory is created.
+- Pilot run [39082241731](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731) passed on exact source `53dfd150df68c52b480b40bfbb9fb5195689ab76`, including V3 transform/validation, CSP/profile checks, Android tests, debug APK assembly and unsigned-release refusal.
+- Artifacts: [debug APK 12119461755](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731/artifacts/12119461755) and [V3 HTML 12119297506](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731/artifacts/12119297506). The APK remains debug-signed and is not suitable for updating the production installation.
+- R024 remains in progress: duplicate ZIP-name and high-ratio decompression tests, content-publisher trust/feed integration and device activation are still open.
