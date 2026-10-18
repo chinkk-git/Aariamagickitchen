@@ -23,7 +23,7 @@ for (const [chef, item] of Object.entries(expected)) {
   assert.equal(createHash('sha256').update(bytes).digest('hex'), item.sha256, chef + ' artwork differs from the approved crop');
   assert.ok(html.includes(sourceTemplates[chef]), chef + ' chooser runtime template is missing');
 }
-const profileArt = html.match(/const V3_PROFILE_ART=(\{[^;]+\});/);
+const profileArt = html.match(/const V3_PROFILE_ART=(\{[\s\S]*?\});/);
 assert.ok(profileArt, 'Approved chef portraits are not embedded in the generated V3 runtime');
 const embedded = JSON.parse(profileArt[1]);
 for (const [chef, item] of Object.entries(expected)) {
