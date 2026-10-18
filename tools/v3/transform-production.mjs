@@ -38,6 +38,22 @@ const art = Object.fromEntries([
     aspect: 543 / 724,
     status: 'pending-review'
   }],
+  [3, {
+    variants: {
+      CHEF_A: { atlas: readAsset('recipe-3-chef-a-storyboard.webp.b64'), hero: readAsset('recipe-3-chef-a-hero.webp.b64') },
+      CHEF_B: { atlas: readAsset('recipe-3-chef-b-storyboard.webp.b64'), hero: readAsset('recipe-3-chef-b-hero.webp.b64') }
+    },
+    aspect: 420 / 700,
+    status: 'pending-review'
+  }],
+  [4, {
+    variants: {
+      CHEF_A: { atlas: readAsset('recipe-4-chef-a-storyboard.webp.b64'), hero: readAsset('recipe-4-chef-a-hero.webp.b64') },
+      CHEF_B: { atlas: readAsset('recipe-4-chef-b-storyboard.webp.b64'), hero: readAsset('recipe-4-chef-b-hero.webp.b64') }
+    },
+    aspect: 480 / 640,
+    status: 'pending-review'
+  }],
   ...[78, 89, 93, 94].map(id => [id, {
     atlas: readAsset(`recipe-${id}-storyboard.webp.b64`),
     hero: readAsset(`recipe-${id}-hero.webp.b64`),

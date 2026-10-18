@@ -34,7 +34,7 @@ new vm.Script(layer, { filename: 'aaria-v3-layer.js' });
 const artMatch = layer.match(/const V3_ART=(\{[\s\S]*?\});/);
 if (!artMatch) throw new Error('V3 recipe artwork registry is missing.');
 const v3Art = JSON.parse(artMatch[1]);
-for (const id of ['1', '2']) {
+for (const id of ['1', '2', '3', '4']) {
   const art = v3Art[id];
   for (const chef of ['CHEF_A', 'CHEF_B']) {
     if (!art?.variants?.[chef]?.atlas?.startsWith('data:image/webp;base64,') ||
@@ -42,13 +42,14 @@ for (const id of ['1', '2']) {
       throw new Error(`Recipe ${id} is missing artwork for ${chef}.`);
     }
   }
-  if (Math.abs(art.aspect - 543 / 724) > 0.002 || art.status !== 'pending-review') {
+  const expectedAspect = id === '3' ? 420 / 700 : id === '4' ? 480 / 640 : 543 / 724;
+  if (Math.abs(art.aspect - expectedAspect) > 0.002 || art.status !== 'pending-review') {
     throw new Error(`Recipe ${id} artwork bundle is incomplete or has unexpected review status.`);
   }
 }
 if (!layer.includes("v3ProfileState.profile?.chefId==='CHEF_B'?'CHEF_B':'CHEF_A'") ||
     !layer.includes('v3SyncRecipeArt();v3RenderBeforeProfileControls();') ||
-    !layer.includes('?[0,1,2,3]:')) {
+    !layer.includes('?[0,1,2,3]:') || !layer.includes('?[0,1,2,3,4]:')) {
   throw new Error('Profile-selected chef artwork or four-step scene mapping is missing.');
 }
 const syncStart = layer.indexOf('function v3SyncRecipeArt(){');
@@ -96,7 +97,7 @@ if (!homeArtRule?.includes('background-image:url("data:image/')) {
 if (layer.includes('batchIngredientPicture=function')) {
   throw new Error('V3 must preserve the ingredient-specific renderer.');
 }
-for (const id of [1, 2, 78, 89, 93, 94]) {
+for (const id of [1, 2, 3, 4, 78, 89, 93, 94]) {
   if (!html.includes(`NEW_RECIPE_ART[${id}]`) && !layer.includes(`"${id}"`)) {
     throw new Error(`Recipe ${id} artwork was not added to the V3 layer.`);
   }

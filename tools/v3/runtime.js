@@ -60,7 +60,7 @@ ingredientPicture=function v3IngredientPicture(value){return v3IngredientArt(val
 for(const [id,a] of Object.entries(V3_ART)){
   const initial=a.variants?.CHEF_A||a;
   NEW_RECIPE_ART[id]={...(NEW_RECIPE_ART[id]||{}),atlas:initial.atlas,storyboard:initial.atlas,hero:initial.hero,profileVariants:a.variants||null,cellAspect:a.aspect,status:a.status||'approved'};
-  const stepCells=[1,2].includes(Number(id))?[0,1,2,3]:[1,2,3,4];
+  const stepCells=Number(id)===3?[0,1,2,3,4]:[1,2,3,4].includes(Number(id))?[0,1,2,3]:[1,2,3,4];
   BATCH_META[id]={...(BATCH_META[id]||{}),stepCells};
 }
 
