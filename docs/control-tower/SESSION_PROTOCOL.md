@@ -48,3 +48,6 @@ HANDOVER: docs/control-tower/V3_HANDOVER.md or V31_HANDOVER.md
 
 ## Gates and cost controls
 Preserve all 95 original recipes, child protection A08, child experience A09, offline Android, UK English/pt-BR, signed update/profile/rollback security and approved characters. Do not introduce paid services, scheduled polling, external runners or new GitHub Actions workflows without a quota/cost check. Existing workflows can be run by active Work sessions; GitHub Actions usage may consume included quota. Do not auto-merge or modify signing credentials.
+
+## Adaptive lifecycle override (Balanced)
+The [Adaptive Session Lifecycle Policy](ADAPTIVE_SESSION_LIFECYCLE.md) supersedes any time-based rotation recommendation above. Review after **20 substantial tasks** or **50 observed tool activity events**, or immediately on degraded responsiveness/context reliability. These are review triggers, **not mandatory rotation limits**. Record evidence-based pressure and checkpoint readiness; offer Continue / Prepare checkpoint / Rotate to new chat, with manual user confirmation. No exact context utilisation is measurable. This applies to CT, V3 and V3.1. A frozen chat uses emergency GitHub-based recovery and may have UNKNOWN local changes. Checkpoint instructions remain mandatory at natural milestones; no unattended background worker is created.
