@@ -260,3 +260,11 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 - Pilot run [39082241731](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731) passed on exact source `53dfd150df68c52b480b40bfbb9fb5195689ab76`, including V3 transform/validation, CSP/profile checks, Android tests, debug APK assembly and unsigned-release refusal.
 - Artifacts: [debug APK 12119461755](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731/artifacts/12119461755) and [V3 HTML 12119297506](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731/artifacts/12119297506). The APK remains debug-signed and is not suitable for updating the production installation.
 - R024 remains in progress: duplicate ZIP-name and high-ratio decompression tests, content-publisher trust/feed integration and device activation are still open.
+
+
+## Duplicate ZIP-path regression — CI run 116
+
+- Added a malformed signed archive fixture by changing the extra ZIP member name to collide with a declared path while keeping the ZIP structure intact. The verifier rejects the duplicate before staging.
+- Pilot run [39082636745](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745) passed on source `807520cff9594d2ae7e8d574e5c3231a31297b80`, including the full Android pilot checks.
+- Artifacts: [debug APK 12119193578](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12119193578) and [HTML 12118969797](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12118969797). The APK is debug-signed.
+- R024 still needs a high-ratio decompression case, publisher feed/trust integration, and device validation.
