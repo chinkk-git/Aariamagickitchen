@@ -94,7 +94,23 @@ jobs:
           profile: pixel_3a
           disable-animations: true
           script: |
-            set -euo pipefail
+            set -eu
+            on_exit() {
+              result=$?
+              trap - EXIT
+              if [ "$result" -ne 0 ]; then
+                mkdir -p artifacts/v31-diagnostics
+                printf 'android_smoke_exit_code=%s\n' "$result" > artifacts/v31-diagnostics/smoke-exit.txt
+                adb logcat -d -t 12000 > artifacts/v31-diagnostics/logcat.txt 2>&1 || true
+                adb shell dumpsys activity activities > artifacts/v31-diagnostics/activity.txt 2>&1 || true
+                adb shell dumpsys window windows > artifacts/v31-diagnostics/windows.txt 2>&1 || true
+                adb shell screencap -p /sdcard/v31-failure.png >/dev/null 2>&1 || true
+                adb pull /sdcard/v31-failure.png artifacts/v31-diagnostics/failure-screen.png >/dev/null 2>&1 || true
+                cp -R artifacts/v31-android-screenshots artifacts/v31-diagnostics/partial-screenshots >/dev/null 2>&1 || true
+              fi
+              exit "$result"
+            }
+            trap on_exit EXIT
             mkdir -p artifacts/v31-android-screenshots
             adb install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
             adb shell am start -n com.aaria.magickitchen.pilot/.MainActivity
@@ -178,25 +194,37 @@ jobs:
             file artifacts/v31-android-screenshots/*.png
 
       - name: Upload installable V3.1 preview APK
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: aaria-magical-kitchen-v3.1-preview-apk
           path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Upload offline V3.1 HTML evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: aaria-magical-kitchen-v3.1-html
           path: dist/Aaria_Magical_Kitchen_V3_1.html
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Upload Android screenshot evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: aaria-magical-kitchen-v3.1-android-screenshots
           path: artifacts/v31-android-screenshots/*.png
-          if-no-files-found: error
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload Android smoke diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.1-android-diagnostics
+          path: artifacts/v31-diagnostics/**
+          if-no-files-found: warn
           retention-days: 30
