@@ -270,7 +270,7 @@ function v3OpenProfileEditor(mode='menu'){
  document.body.insertAdjacentHTML('beforeend',`<div class="v3-profile-backdrop" id="v3ProfileDialog"><section class="v3-profile-dialog" role="dialog" aria-modal="true" aria-labelledby="v3ProfileTitle"><span class="v3-eyebrow">✨ ${pt?'MINHA COZINHA MÁGICA':'MY MAGICAL KITCHEN'}</span><h2 id="v3ProfileTitle">${heading}</h2><p>${intro}</p>${rows}${chooser}</section></div>`);
  document.querySelector('#v3ProfileDialog [data-v3-chef]')?.focus();
 }
-function v3FreshSnapshot(){return {weeks:{},done:[],checks:{},stories:[],favorites:[],grocerySelected:[],language:state.language||'en-GB'}}
+function v3FreshSnapshot(){const defaults={weeks:{},done:[],checks:{},stories:[],favorites:[],grocerySelected:[],language:state.language||'en-GB'};return v3ProfileStateFor(state,defaults)}
 function v3ApplyProfileResult(raw){const r=v3ParseProfileState(raw);if(r.error)throw new Error(r.error);v3SetActiveProfile(r);try{localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles:v3ProfileState.profiles,activeId:v3ProfileState.activeId}))}catch{};render()}
 function v3CreateOrSelectChef(name,chefId){
  const profile=v3ProfileState.profile;
