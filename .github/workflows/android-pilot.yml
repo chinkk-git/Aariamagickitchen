@@ -79,7 +79,17 @@ jobs:
           sdkmanager --install "$image"
           printf 'no\n' | avdmanager create avd --force -n aaria-v3-ci -k "$image" --device pixel_2
           "$ANDROID_HOME/emulator/emulator" -avd aaria-v3-ci -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -wipe-data >"$RUNNER_TEMP/aaria-emulator.log" 2>&1 &
-          adb wait-for-device
+          emulator_pid=$!
+          if ! timeout 300 adb wait-for-device; then
+            cat "$RUNNER_TEMP/aaria-emulator.log"
+            echo "::error::Android emulator did not expose an ADB device within 5 minutes."
+            exit 1
+          fi
+          if ! kill -0 "$emulator_pid" 2>/dev/null; then
+            cat "$RUNNER_TEMP/aaria-emulator.log"
+            echo "::error::Android emulator exited before ADB became available."
+            exit 1
+          fi
           booted=0
           for attempt in $(seq 1 60); do
             if [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" == "1" ]]; then booted=1; break; fi
