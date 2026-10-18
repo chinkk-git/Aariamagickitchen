@@ -13,8 +13,8 @@ const expected = {
   CHEF_B: { file: 'approved-chef-b.webp.b64', sha256: 'c0176f9ff6dd4b60e282cb96b64e4754ff97128625cce5f622ebf07f6bacd9fb', label: 'Chef B' }
 };
 const sourceTemplates = {
-  CHEF_A: 'data-v3-chef="CHEF_A" aria-pressed="false"><img class="v3-chef-portrait" src="\${V3_PROFILE_ART.chefA}" alt=""><span>✨ Chef A</span></button>',
-  CHEF_B: 'data-v3-chef="CHEF_B" aria-pressed="false"><img class="v3-chef-portrait" src="\${V3_PROFILE_ART.chefB}" alt=""><span>🌟 Chef B</span></button>'
+  CHEF_A: 'data-v3-chef="CHEF_A" aria-pressed="false"><img class="v3-chef-portrait" src="${V3_PROFILE_ART.chefA}" alt=""><span>✨ Chef A</span></button>',
+  CHEF_B: 'data-v3-chef="CHEF_B" aria-pressed="false"><img class="v3-chef-portrait" src="${V3_PROFILE_ART.chefB}" alt=""><span>🌟 Chef B</span></button>'
 };
 for (const [chef, item] of Object.entries(expected)) {
   const encoded = fs.readFileSync(path.join(here, 'artwork', item.file), 'utf8').replace(/\s/g, '');
