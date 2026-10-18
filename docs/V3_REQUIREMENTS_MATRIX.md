@@ -8,9 +8,9 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 | R004 | No gender field collected | WP00 | schema/privacy audit | NOT STARTED |
 | R005 | Multiple isolated local profiles | WP00/WP04 | profile isolation tests | IN PROGRESS — Robolectric SQLite isolation tests pass in CI 39061031142. A runtime merge could retain fields missing from a switched-to snapshot; the profile apply path now clears prior values before overlaying incoming data. CI run 39062236604 passed the adapter-validation step including the new Node regression script; real-device verification remains pending. |
 | R006 | Legacy Aaria data migration | WP00/WP04 | verified source key/schema, representative fixture, idempotency/integrity checks | IN PROGRESS — key `aariaPrivateKitchenV4` confirmed in root source; Robolectric tests pass for idempotency, malformed retry and unknown-field preservation (CI 39061031142); installed-data comparison and device recovery remain. |
-| R007 | Fixed supporting cast M1/D1/F1–F4 | WP03 | character reference and scene QA | IN PROGRESS — Library audit located a Daddy portrait and several recipe-scene images, but the complete cast reference set and APK integration are not evidenced; audited branch still lacks a verified cast/scene registry. |
-| R008 | Both chef variants in applicable scenes | WP03 | scene registry completeness | NOT STARTED |
-| R009 | Correct ingredients and finished dishes | WP03 | recipe-to-artwork QA | NOT STARTED |
+| R007 | Fixed supporting cast M1/D1/F1–F4 | WP03 | character reference and scene QA | IN PROGRESS — owner-approved reference sheet visibly includes M1/M2, D1/D2, and Friends F1–F4; individual asset registry and APK integration remain open. |
+| R008 | Both chef variants in applicable scenes | WP03 | scene registry completeness | IN PROGRESS — approved sheet includes both main-chef designs and example scenes, but per-scene dual-variant completeness is not demonstrated. |
+| R009 | Correct ingredients and finished dishes | WP03 | recipe-to-artwork QA | IN PROGRESS — approved sample sequences exist for three recipes; catalog-wide ingredient/action/dish matching and safety review remain open. |
 | R010 | Landscape and tablet layouts | WP02/WP03 | device screenshots/tests | NOT STARTED |
 | R011 | Offline recipes and progress | WP04 | airplane-mode tests | NOT STARTED |
 | R012 | Authenticated data-only content packs | WP05 | signature/hash/security tests | IN PROGRESS — signed-pack verifier tests pass; pilot run [39080611176](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080611176) additionally proves installation fails closed when publisher trust assets are absent. Publisher key/key ID, feed/downloader, adult approval and runtime catalog integration remain absent. |
@@ -141,3 +141,6 @@ R024 gains hosted regression evidence from [run 39082636745](https://github.com/
 
 
 Artwork evidence note (2026-10-17): Library discovery located separate generated assets, including girl-chef poses, a Daddy portrait and recipe storyboards. These are source candidates only. The V3 transform references four recipe-art entries (78, 89, 93, 94) and an ingredient atlas; it does not establish full cast/scene integration, both-chef variants, or QA. R008 and R009 remain NOT STARTED until registry, variant coverage and recipe-art checks are implemented and evidenced.
+
+
+Approved artwork evidence (2026-10-17): Owner supplied the approved 1536×1024 composite reference sheet showing both main-chef designs, M1/M2, D1/D2, F1–F4, and sample Mommy/Banana Roll-Ups, Daddy/Rainbow Veggie Nachos, and Friends/Fruit Smoothie scenes. This supersedes the prior audit's statement that no boy-chef reference had been located. The reference is not yet separately asset-registered or packaged in the APK; broad recipe coverage and both variants per scene remain unverified.
