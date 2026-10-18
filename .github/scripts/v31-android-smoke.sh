@@ -16,6 +16,7 @@ on_exit() {
 }
 trap on_exit EXIT
 adb_timeout() { timeout --kill-after=10s 90s adb "$@"; }
+adb_poll_timeout() { timeout --kill-after=2s 5s adb "$@"; }
 mkdir -p artifacts/v31-android-screenshots
 echo 'Waiting for emulator ADB'
 adb_timeout wait-for-device
@@ -24,8 +25,8 @@ adb_timeout install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/deb
 echo 'Starting V3.1 Android activity'
 adb_timeout shell am start -n com.aaria.magickitchen.pilot/.MainActivity
 socket=""
-for attempt in $(seq 1 45); do
-  socket=$(adb_timeout shell cat /proc/net/unix | grep -o 'webview_devtools_remote_[0-9]*' | head -1 || true)
+for attempt in $(seq 1 30); do
+  socket=$(adb_poll_timeout shell cat /proc/net/unix | grep -o 'webview_devtools_remote_[0-9]*' | head -1 || true)
   [ -n "$socket" ] && break
   sleep 2
 done

@@ -88,6 +88,7 @@ jobs:
           unzip -p "$apk" assets/index.html | grep -Fq 'ne_110m_admin_0_countries'
 
       - name: Launch Android APK and capture home/map screenshots
+        timeout-minutes: 15
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 35
