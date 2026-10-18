@@ -276,3 +276,11 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 - Added JVM tests for the accepted and rejected boundaries, unsupported MIME type and oversized title. Existing WebView origin/path/CSP/profile/content-pack tests remain in the same Android pilot workflow.
 - Pilot run [39083638168](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168) passed on exact source `9ef44f1ffe2da57a94554d4f73611a047516a92f`. Debug APK artifact [12119168709](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168/artifacts/12119168709); generated HTML artifact [12119792034](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168/artifacts/12119792034). Both expire 2026-11-17. APK is debug-signed, not suitable for upgrading the production-signed installation.
 - R027 stays IN PROGRESS: the size guard limits one bridge operation but does not replace the global `addJavascriptInterface` with an origin-restricted asynchronous bridge. V2 resource inventory and real-device WebView/chooser/profile tests also remain open.
+
+
+## High-ratio archive rejection — CI run 120
+
+- Made the oversized-entry regression explicitly exercise a ZIP compression ratio above 100:1 while the expanded entry exceeds the 12 MiB cap. It asserts rejection occurs before staging.
+- Pilot run [39083839601](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601) passed on exact source `90f6ab655ec070b1a11cdc8e50dd740192b0a48f`, including the full Android pilot suite.
+- Artifacts: [debug APK 12119644017](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601/artifacts/12119644017) and [generated HTML 12120345126](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601/artifacts/12120345126). They expire 2026-11-17; the APK is debug-signed.
+- This closes the high-ratio archive fixture gap in R024, but not the feed/trust-root integration or device activation and rollback acceptance.
