@@ -2,6 +2,7 @@
 const V3_ART=__V3_ART_JSON__;
 const V3_INGREDIENT_ATLAS=__V3_INGREDIENT_ATLAS_JSON__;
 const V3_PROFILE_ART=__V3_PROFILE_ART_JSON__;
+const V31_WORLD_GEOGRAPHY=__V31_WORLD_GEOGRAPHY_JSON__;
 function v3IngredientClass(value){
  const t=String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  // Only use a sprite when the atlas actually depicts that ingredient. This
@@ -70,24 +71,54 @@ home=function v3Home(){
  const favs=(state.favorites||[]).map(find).filter(Boolean);
  const picks=(favs.length?favs:recent.length?recent:RECIPES.slice(0,6)).slice(0,6);
  const pt=state.language==='pt-BR';
- const title=pt?'Minha Cozinha Mágica':'My Magical Kitchen';
+ const title=pt?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  const aaria=avatar('v3-hero-avatar');
  return `<section class="v3-home" aria-label="${title}">
-  <header class="v3-home-top"><div class="v3-brand"><span class="v3-brand-mark" aria-hidden="true">✨</span><span>${title}<small>${pt?'Sua cozinha · Suas criações · Sua magia':'Your Kitchen. Your Creations. Your Magic.'}</small></span></div><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
-  <section class="v3-hero"><div class="v3-hero-copy"><span class="v3-eyebrow">${pt?'✨ SUA PRÓXIMA AVENTURA':'✨ YOUR NEXT KITCHEN QUEST'}</span><h1>${pt?'Vamos preparar algo mágico!':'Make something magical today.'}</h1><p>${pt?'Escolha uma receita, experimente algo novo e crie do seu jeito.':'Pick a recipe, try a new skill, and make it your own.'}</p><button class="v3-primary" data-nav="library">${pt?'Escolher uma receita':'Choose a recipe'} <span aria-hidden="true">→</span></button></div><div class="v3-hero-art">${aaria}</div></section>
-  <section class="v3-progress" aria-label="${pt?'Seu progresso':'Your progress'}"><div class="v3-progress-card"><span>📖</span><div><strong>95 ${pt?'receitas':'recipes'}</strong><small>${pt?'para descobrir':'ready to explore'}</small></div></div><div class="v3-progress-card"><span>⭐</span><div><strong>${stats.stars}</strong><small>${pt?'estrelas de chef':'chef stars'}</small></div></div><div class="v3-progress-card"><span>🏅</span><div><strong>${stats.completed}</strong><small>${pt?'receitas feitas':'recipes completed'}</small></div></div></section>
-  <div class="v3-section-head"><div><h2>${pt?'O que parece divertido?':'What sounds fun?'}</h2><p>${pt?'Escolha uma aventura para hoje.':'Choose a kitchen adventure.'}</p></div></div>
-  <section class="v3-action-grid" aria-label="${pt?'Aventuras':'Kitchen adventures'}">
-   <button class="v3-action" data-action="open-wheel"><span class="v3-action-art"><span class="action-illustration gift-art" aria-hidden="true"></span></span><strong>${pt?'Surpresa!':'Surprise me'}</strong><small>${pt?'Sorteie uma receita.':'Spin for a recipe to try.'}</small></button>
-   <button class="v3-action" data-action="open-week-wheel"><span class="v3-action-art"><span class="action-illustration wheel-art" aria-hidden="true"></span></span><strong>${pt?'Minha semana':'My magical week'}</strong><small>${pt?'Ideias variadas para a semana.':'A fun mix to review together.'}</small></button>
-   <button class="v3-action" data-nav="family"><span class="v3-action-art"><span class="action-illustration family-art" aria-hidden="true"></span></span><strong>${pt?'Cozinhar em família':'Cook with family'}</strong><small>${pt?'Receitas para fazer juntos.':'Mommy, Daddy and Aaria.'}</small></button>
-   <button class="v3-action" data-nav="friends"><span class="v3-action-art"><span class="action-illustration friends-art" aria-hidden="true"></span></span><strong>${pt?'Cozinhar com amigos':'Cook with friends'}</strong><small>${pt?'Compartilhe a diversão.':'Make something together.'}</small></button>
-  </section>
-  <div class="v3-section-head"><div><h2>${pt?'Comece com uma favorita':'Start with a favourite'}</h2><p>${pt?'Seu próximo prato está esperando.':'Three ways to cook, one magical kitchen.'}</p></div><button class="text-link" data-nav="library">${pt?'Ver as 95 receitas':'See all 95'} →</button></div>
+  <header class="v3-home-top"><div class="v3-brand"><span class="v3-brand-mark" aria-hidden="true">✨</span><span>${title}<small>${pt?'Sua cozinha · Suas criações · Sua magia':'Your kitchen · Your creations · Your magic'}</small></span></div><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
+  <section class="v31-home-hero"><div class="v31-hero-copy"><span class="v3-eyebrow">${pt?'✨ AVENTURAS NA COZINHA':'✨ LITTLE KITCHEN ADVENTURES'}</span><h1>${pt?'O que vamos criar hoje?':'What shall we make today?'}</h1><p>${pt?'Escolha uma receita ou explore sabores do mundo.':'Pick a recipe or explore flavours around the world.'}</p><div class="v31-primary-actions"><button class="v3-primary" data-nav="library">${pt?'Vamos cozinhar':'Let’s Cook'} <span aria-hidden="true">→</span></button><button class="v31-world-primary" data-v31-open-world>${pt?'Explorar o mundo':'Explore the World'} <span aria-hidden="true">🌍</span></button></div></div><div class="v31-hero-art">${aaria}<span class="v31-sparkle v31-sparkle-a" aria-hidden="true">✦</span><span class="v31-sparkle v31-sparkle-b" aria-hidden="true">✧</span></div></section>
+  <section class="v31-shortcuts" aria-label="${pt?'Atalhos da cozinha':'Kitchen shortcuts'}"><button class="v31-shortcut v31-surprise" data-action="open-wheel"><span aria-hidden="true">🎁</span><span><strong>${pt?'Surpresa!':'Surprise Me'}</strong><small>${pt?'Uma receita escolhida na roda':'Spin for a recipe'}</small></span></button><button class="v31-shortcut v31-planner" data-nav="week"><span aria-hidden="true">🗓️</span><span><strong>${pt?'Meu planejador':'My Planner'}</strong><small>${pt?'Planeje a semana em família':'Plan a fun week together'}</small></span></button></section>
+  <div class="v3-section-head"><div><h2>${pt?'Receita em destaque':'Featured recipe'}</h2><p>${pt?'Uma ideia deliciosa para começar.':'A delicious idea to get started.'}</p></div><button class="text-link" data-nav="library">${pt?'Ver todas':'Browse all'} →</button></div>
   <section class="v3-rail" aria-label="${pt?'Receitas em destaque':'Featured recipes'}">${picks.map(homeTile).join('')}</section>
-  <nav class="v3-quick-links" aria-label="${pt?'Mais atividades':'More activities'}"><button data-nav="rewards">🏆 ${pt?'Prêmios':'Awards'}</button><button data-nav="stories">🧚 ${pt?'Histórias e música':'Stories and music'}</button><button data-action="groceries-choose">🛒 ${pt?'Lista de compras':'Grocery list'}</button></nav>
+  <section class="v31-world-shelf"><div class="v3-section-head"><div><h2>${pt?'Aventuras de comida pelo mundo':'World Food Adventures'}</h2><p>${pt?'Conheça um lugar novo, um sabor de cada vez.':'Meet a new place, one flavour at a time.'}</p></div><button class="text-link" data-v31-open-world>${pt?'Explorar':'Explore'} →</button></div><button class="v31-world-card" data-v31-open-world><span class="v31-world-globe" aria-hidden="true">🌏</span><span><strong>${pt?'Seu passaporte culinário':'Your food explorer passport'}</strong><small>${pt?'Sete destinos para descobrir no mapa':'Seven destinations to discover on the map'}</small></span><span class="v31-country-flags" aria-hidden="true">🇮🇳 🇮🇹 🇨🇳 🇯🇵 🇲🇽 🇻🇳 🇬🇷</span><span class="v31-card-arrow" aria-hidden="true">→</span></button></section>
+  <section class="v31-collection-links"><div class="v3-section-head"><div><h2>${pt?'Cozinhe junto':'Cook together'}</h2><p>${pt?'Com as pessoas que você gosta.':'With the people you love.'}</p></div></div><div class="v31-collection-grid"><button data-nav="family">👨‍👩‍👧 <strong>${pt?'Com a família':'With Family'}</strong></button><button data-nav="friends">🧑‍🍳 <strong>${pt?'Com amigos':'With Friends'}</strong></button></div></section>
+  <nav class="v3-quick-links" aria-label="${pt?'Mais atividades':'More activities'}"><button data-nav="rewards">🏆 ${pt?'Prêmios':'Awards'} · ${stats.badges}</button><button data-nav="stories">🧚 ${pt?'Histórias e música':'Stories and music'}</button><button data-action="groceries-choose">🛒 ${pt?'Lista de compras':'Shopping list'}</button><button data-nav="settings">⚙️ ${pt?'Configurações':'Settings'}</button></nav>
  </section>`;
 };
+
+const V31_APPROVED_INDIA_RECIPE_IDS=[51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74];
+const V31_WORLD_DESTINATIONS=[
+ {code:'IND',iso:'IND',en:'India',pt:'Índia',flag:'🇮🇳',factEn:'Explore existing Indian recipes from Aaria’s original kitchen collection.',factPt:'Explore receitas indianas existentes da coleção original da cozinha da Aaria.',reviewStatus:'approved-reference'},
+ {code:'ITA',iso:'ITA',en:'Italy',pt:'Itália',flag:'🇮🇹',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
+ {code:'CHN',iso:'CHN',en:'China',pt:'China',flag:'🇨🇳',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
+ {code:'JPN',iso:'JPN',en:'Japan',pt:'Japão',flag:'🇯🇵',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
+ {code:'MEX',iso:'MEX',en:'Mexico',pt:'México',flag:'🇲🇽',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
+ {code:'VNM',iso:'VNM',en:'Vietnam',pt:'Vietnã',flag:'🇻🇳',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
+ {code:'GRC',iso:'GRC',en:'Greece',pt:'Grécia',flag:'🇬🇷',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'}
+];
+const V31_DESTINATION_BY_ISO=Object.fromEntries(V31_WORLD_DESTINATIONS.map(x=>[x.code,x]));
+let v31SelectedCountry='IND';
+function v31MapPoint(coord){const lon=Number(coord[0]),lat=Math.max(-85,Math.min(85,Number(coord[1])));return [((lon+180)/360*1000).toFixed(1),((85-lat)/170*500).toFixed(1)]}
+function v31RingPath(ring){if(!Array.isArray(ring)||ring.length<4)return '';return ring.map((point,i)=>{const [x,y]=v31MapPoint(point);return `${i?'L':'M'}${x} ${y}`}).join(' ')+'Z'}
+function v31GeometryPath(geometry){if(!geometry)return '';const polys=geometry.type==='Polygon'?[geometry.coordinates]:geometry.type==='MultiPolygon'?geometry.coordinates:[];return polys.map(poly=>poly.map(v31RingPath).filter(Boolean).join(' ')).filter(Boolean).join(' ')}
+function v31Flag(code){const country=V31_DESTINATION_BY_ISO[code];return country?.flag||'🌍'}
+function v31MapSvg(){
+ const features=V31_WORLD_GEOGRAPHY.features||[];
+ const paths=features.map(feature=>{const p=feature.properties||{},code=p.ISO_A3_EH||p.ISO_A3||p.ADM0_A3||'',name=p.ADMIN||p.NAME||'Country',d=v31GeometryPath(feature.geometry),available=!!V31_DESTINATION_BY_ISO[code];if(!d)return '';return `<path class="v31-land${available?' v31-destination':''}${available&&v31SelectedCountry===code?' is-selected':''}" d="${d}"${available?` data-v31-country="${safe(code)}" data-v31-name="${safe(name)}" tabindex="0" role="button" aria-pressed="${v31SelectedCountry===code}" aria-label="${safe(name)} · ${state.language==='pt-BR'?'Destino disponível':'Adventure available'}"`:' aria-hidden="true"'}/>`}).join('');
+ return `<div class="v31-map-wrap${v31MapPanMode?' is-pan-mode':''}"><svg class="v31-world-map" viewBox="0 0 1000 500" role="group" aria-label="${state.language==='pt-BR'?'Mapa interativo do mundo':'Interactive world map'}"><defs><linearGradient id="v31-ocean" x2="0" y2="1"><stop stop-color="#dff4f5"/><stop offset="1" stop-color="#c8e7ed"/></linearGradient></defs><rect width="1000" height="500" rx="30" fill="url(#v31-ocean)"/><g class="v31-graticule" aria-hidden="true"><path d="M0 125H1000M0 250H1000M0 375H1000M250 0V500M500 0V500M750 0V500"/></g><g class="v31-countries">${paths}</g></svg></div>`;
+}
+function v31DestinationIllustration(code){
+ const label=V31_DESTINATION_BY_ISO[code]?.en||'World food';
+ return `<svg viewBox="0 0 110 100" class="v31-destination-illustration" role="img" aria-label="${safe(label+' food adventure illustration')}"><ellipse cx="55" cy="88" rx="39" ry="6" fill="#67517a" opacity=".12"/><path d="M22 31q33-24 66 0v43q-33 24-66 0Z" fill="#fffaf0" stroke="#7d5b99" stroke-width="3"/><path d="M30 36q25-17 50 0v31q-25 17-50 0Z" fill="#f2eafd"/><path d="M55 34v39" stroke="#d0bfdc" stroke-width="2"/><path d="M38 47q7-8 14 0t-1 12q-8 4-13-2Z" fill="#8bbd78"/><path d="M63 45h11v15H63z" fill="#f0c267"/><path d="M38 68q8-8 16-1" fill="none" stroke="#e47d68" stroke-width="4" stroke-linecap="round"/><path d="M67 68q6-5 11 0" fill="none" stroke="#8eb8d1" stroke-width="4" stroke-linecap="round"/><path d="M55 11v9m-5-5h10" stroke="#d79b32" stroke-width="3" stroke-linecap="round"/></svg>`;
+}
+let v31MapZoom=1,v31PanX=0,v31PanY=0,v31MapPanMode=false,v31MapDrag=null,v31MapSuppressClick=false;
+function v31ApplyMapTransform(){if(v31MapZoom<=1)v31MapPanMode=false;const wrap=document.querySelector('.v31-map-wrap');if(!wrap)return;wrap.classList.toggle('is-pan-mode',v31MapPanMode);wrap.style.setProperty('--v31-zoom',String(v31MapZoom));wrap.style.setProperty('--v31-pan-x',`${v31PanX}px`);wrap.style.setProperty('--v31-pan-y',`${v31PanY}px`);const toggle=document.querySelector('[data-v31-pan-toggle]');if(toggle){toggle.disabled=v31MapZoom<=1;toggle.setAttribute('aria-label',state.language==='pt-BR'?(v31MapZoom<=1?'Aumente o zoom para mover o mapa.':v31MapPanMode?'Mover mapa ativado. Arraste o mapa; toque em Concluir para rolar a página.':'Mover mapa. Ative para arrastar em todas as direções.'):(v31MapZoom<=1?'Zoom in before moving the map.':v31MapPanMode?'Map movement on. Drag the map; choose Done to scroll the page.':'Move map. Turn on to drag in every direction.'))}}
+function v31WorldPage(){
+ const pt=state.language==='pt-BR',c=V31_WORLD_DESTINATIONS.find(x=>x.code===v31SelectedCountry)||V31_WORLD_DESTINATIONS[0];
+ const countries=V31_WORLD_DESTINATIONS.map(x=>`<button class="v31-country-choice${x.code===c.code?' is-selected':''}" aria-pressed="${x.code===c.code}" data-v31-country="${x.code}" data-v31-country-choice data-v31-search-name="${safe((pt?x.pt:x.en).toLowerCase())}"><span>${x.flag}</span><span>${pt?x.pt:x.en}</span></button>`).join('');
+ const indiaRecipes=c.code==='IND'?V31_APPROVED_INDIA_RECIPE_IDS.map(id=>find(id)).filter(Boolean):[];
+ const adventureContent=indiaRecipes.length?`<div class="v31-approved-recipes"><span class="v31-preview-tag">${pt?'RECEITAS ORIGINAIS APROVADAS':'APPROVED ORIGINAL RECIPES'}</span><p>${pt?'Receitas do catálogo original, sem alterar seus IDs ou funcionamento.':'Recipes from the original catalog; their IDs and existing features stay unchanged.'}</p><div>${indiaRecipes.map(r=>`<button data-v31-approved-recipe="${r.id}">${safe(pt?translateText(r.title,'pt-BR'):r.title)} <span aria-hidden="true">→</span></button>`).join('')}</div></div>`:`<div class="v31-recipe-preview"><span class="v31-preview-tag">${pt?'REVISÃO PENDENTE':'REVIEW PENDING'}</span><h3>${pt?'Novas aventuras culinárias em revisão':'New cooking adventures under review'}</h3><p class="v31-review-note">${pt?'Receitas novas só aparecerão após a revisão de segurança infantil, alergênicos, nutrição, cultura e duplicatas.':'New recipes will appear after child-safety, allergen, nutrition, cultural and duplicate reviews.'}</p></div>`;
+ return `<section class="v31-world-page"><header class="v31-world-header"><button class="v31-back" data-v31-back aria-label="${pt?'Voltar para início':'Back home'}">←</button><div><span class="v3-eyebrow">${pt?'PASSAPORTE CULINÁRIO':'FOOD EXPLORER PASSPORT'}</span><h1 tabindex="-1">${pt?'Aventuras pelo mundo':'World Food Adventures'}</h1><p>${pt?'Explore destinos e sabores com sua família.':'Explore destinations and flavours with your family.'}</p></div><div class="v31-passport-count" aria-label="${pt?'Sete destinos culinários':'Seven food destinations'}">📔 <strong>7 ${pt?'destinos':'places'}</strong></div></header><div class="v31-world-layout"><section class="v31-map-panel" aria-label="${pt?'Mapa':'Map'}"><div class="v31-map-title"><strong>${pt?'Escolha um destino':'Choose a destination'}</strong><small>${pt?'Toque no mapa ou use a lista.':'Tap the map or use the country list.'}</small></div><div class="v31-map-controls" aria-label="${pt?'Controles de zoom do mapa':'Map zoom controls'}"><button data-v31-zoom="out" aria-label="${pt?'Diminuir zoom':'Zoom out'}">−</button><button data-v31-zoom="reset" aria-label="${pt?'Redefinir mapa':'Reset map'}">↺</button><button data-v31-zoom="in" aria-label="${pt?'Aumentar zoom':'Zoom in'}">+</button><button data-v31-pan-toggle aria-pressed="${v31MapPanMode}" aria-label="${pt?'Mover mapa. Ative para arrastar em todas as direções.':'Move map. Turn on to drag in every direction.'}">${pt?(v31MapPanMode?'Concluir':'Mover mapa'):(v31MapPanMode?'Done':'Move map')}</button></div>${v31MapSvg()}<label class="v31-country-select-label">${pt?'Buscar destino':'Search destinations'}<input type="search" data-v31-country-search placeholder="${pt?'Digite um país':'Type a country'}" autocomplete="off"></label><p class="v31-search-result" data-v31-search-result aria-live="polite"></p><label class="v31-country-select-label">${pt?'Lista de destinos':'Destination list'}<select data-v31-country-select aria-label="${pt?'Escolha um país':'Choose a country'}">${V31_WORLD_DESTINATIONS.map(x=>`<option value="${x.code}"${x.code===c.code?' selected':''}>${x.flag} ${pt?x.pt:x.en}</option>`).join('')}</select></label></section><aside class="v31-destination-card" aria-live="polite"><div class="v31-destination-banner"><span class="v31-destination-flag" aria-hidden="true">${c.flag}</span>${v31DestinationIllustration(c.code)}</div><span class="v3-eyebrow">${pt?'DESTINO':'DESTINATION'}</span><h2>${pt?c.pt:c.en}</h2><p class="v31-food-fact">${pt?c.factPt:c.factEn}</p>${adventureContent}</aside></div><section class="v31-country-list"><h2>${pt?'Destinos disponíveis':'Available destinations'}</h2><div>${countries}</div><p class="v31-no-results" data-v31-no-results hidden>${pt?'Nenhum destino encontrado. Apague a busca para ver todos.':'No destinations found. Clear your search to see all.'}</p></section><p class="v31-map-source">${pt?'Mapa offline: Natural Earth, escala 1:110m.':'Offline map: Natural Earth, 1:110m scale.'} ${pt?'Fronteiras simplificadas e possivelmente disputadas; mapa para exploração, não navegação.':'Boundaries are simplified and may be disputed; for exploration, not navigation.'}</p></section>`;
+}
 
 const v3OriginalCreateWeek=createWeek;
 createWeek=function v3CreateWeek(){
@@ -161,11 +192,28 @@ function v3OpenQuiz(id){
 
 const v3BaseRender=render;
 render=function v3Render(){
+ document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
+ if(view==='world'){
+  const active=document.activeElement,previousView=window.v31PreviousView||'home';
+  const focusCode=active?.closest?.('[data-v31-country]')?.dataset.v31Country||'';
+  const focusType=active?.matches?.('[data-v31-country-select]')?'select':active?.matches?.('[data-v31-country-search]')?'search':active?.closest?.('.v31-map-pin')?'pin':active?.closest?.('.v31-country-choice')?'list':active?.matches?.('.v31-land')?'map':'';
+  const screen=document.querySelector('#screen');if(screen){screen.className='page v31-world-screen';screen.innerHTML=v31WorldPage()}
+  const app=document.querySelector('.app');app?.classList.remove('home-dashboard');app?.classList.toggle('reduce-motion',!!state.reducedMotion);
+  document.body.classList.remove('v3-screen-home');document.querySelectorAll('.bottom .tab').forEach(b=>{b.classList.toggle('active',b.dataset.nav==='world');if(b.dataset.nav==='world')b.lastChild.textContent=state.language==='pt-BR'?'Mundo':'World'});
+  v31ApplyMapTransform();
+  const selector=focusType==='select'?'[data-v31-country-select]':focusType==='search'?'[data-v31-country-search]':focusType==='pin'?`.v31-map-pin[data-v31-country="${focusCode}"]`:focusType==='list'?`.v31-country-choice[data-v31-country="${focusCode}"]`:focusType==='map'?`.v31-land[data-v31-country="${focusCode}"]`:'';
+  if(selector)document.querySelector(selector)?.focus({preventScroll:true});else if(previousView!=='world')document.querySelector('.v31-world-header h1')?.focus({preventScroll:true});
+  window.v31PreviousView='world';
+  return;
+ }
+ window.v31PreviousView=view;
  v3BaseRender();
+ document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  document.body.classList.toggle('v3-screen-home',view==='home');
  if(view==='recipe'&&selected){const screen=document.querySelector('#screen');if(screen&&!screen.querySelector('.v3-quiz-card'))screen.insertAdjacentHTML('beforeend',v3QuizCard(selected));}
 };
 
+document.addEventListener('click',e=>{if(e.target.closest?.('.bottom .tab[data-nav="world"]'))window.v31WorldOpenedFromNav=true},true);
 document.addEventListener('click',async e=>{
  const button=e.target.closest('button');if(button?.dataset.v3Quiz){v3OpenQuiz(Number(button.dataset.v3Quiz));return}
  if(button?.hasAttribute('data-v3-dismiss')){button.closest('.v3-modal-backdrop')?.remove();return}
@@ -187,6 +235,25 @@ document.addEventListener('click',async e=>{
   document.querySelector(`[data-share-photo="${id}"][capture]`)?.click();return;
  }
 });
+document.addEventListener('click',e=>{
+ if(v31MapSuppressClick){v31MapSuppressClick=false;e.preventDefault();return}
+ const target=e.target.closest('[data-v31-country]');
+ if(target){v31SelectedCountry=target.dataset.v31Country;render();return}
+ const button=e.target.closest('button');if(!button)return;
+ if(button.dataset.v31ApprovedRecipe){openRecipe(Number(button.dataset.v31ApprovedRecipe));return}
+ if(button.hasAttribute('data-v31-open-world')){window.v31WorldOpenedFromNav=false;window.v31WorldOpenerIndex=[...document.querySelectorAll('[data-v31-open-world]')].indexOf(button);goto('world');return}
+ if(button.hasAttribute('data-v31-back')){goto('home');if(window.v31WorldOpenedFromNav)document.querySelector('.bottom .tab[data-nav="world"]')?.focus({preventScroll:true});else{const openers=[...document.querySelectorAll('[data-v31-open-world]')];(openers[window.v31WorldOpenerIndex]||openers[0])?.focus({preventScroll:true})}window.v31WorldOpenedFromNav=false;return}
+ if(button.hasAttribute('data-v31-pan-toggle')){v31MapPanMode=!v31MapPanMode;v31ApplyMapTransform();button.setAttribute('aria-pressed',String(v31MapPanMode));button.setAttribute('aria-label',state.language==='pt-BR'?(v31MapPanMode?'Mover mapa ativado. Arraste o mapa; toque em Concluir para rolar a página.':'Mover mapa. Ative para arrastar em todas as direções.'):(v31MapPanMode?'Map movement on. Drag the map; choose Done to scroll the page.':'Move map. Turn on to drag in every direction.'));button.textContent=state.language==='pt-BR'?(v31MapPanMode?'Concluir':'Mover mapa'):(v31MapPanMode?'Done':'Move map');return}
+ if(button.dataset.v31Zoom){if(button.dataset.v31Zoom==='in')v31MapZoom=Math.min(2.5,v31MapZoom+.25);else if(button.dataset.v31Zoom==='out')v31MapZoom=Math.max(1,v31MapZoom-.25);else{v31MapZoom=1;v31PanX=0;v31PanY=0}const rect=document.querySelector('.v31-map-wrap')?.getBoundingClientRect();if(rect){const maxX=Math.max(0,(v31MapZoom-1)*rect.width/2),maxY=Math.max(0,(v31MapZoom-1)*rect.height/2);v31PanX=Math.max(-maxX,Math.min(maxX,v31PanX));v31PanY=Math.max(-maxY,Math.min(maxY,v31PanY))}v31ApplyMapTransform();return}
+});
+document.addEventListener('change',e=>{const select=e.target;if(select.matches('[data-v31-country-select]')){v31SelectedCountry=select.value;render()}});
+document.addEventListener('input',e=>{const input=e.target;if(!input.matches('[data-v31-country-search]'))return;const query=input.value.trim().toLocaleLowerCase(),choices=[...document.querySelectorAll('[data-v31-country-choice]')];let count=0;choices.forEach(button=>{button.hidden=!!query&&!button.dataset.v31SearchName.includes(query);if(!button.hidden)count++});const noResults=document.querySelector('[data-v31-no-results]'),result=document.querySelector('[data-v31-search-result]');if(noResults)noResults.hidden=count>0;if(result)result.textContent=query?(state.language==='pt-BR'?`${count} destino(s) encontrado(s).`:`${count} destination(s) found.`):''});
+document.addEventListener('keydown',e=>{const path=e.target.closest?.('[data-v31-country]');if(path&&['Enter',' '].includes(e.key)){e.preventDefault();v31SelectedCountry=path.dataset.v31Country;render()}});
+document.addEventListener('pointerdown',e=>{const wrap=e.target.closest?.('.v31-map-wrap');if(!wrap||!v31MapPanMode||e.button!==0)return;v31MapDrag={id:e.pointerId,x:e.clientX,y:e.clientY,panX:v31PanX,panY:v31PanY,moved:false}});
+document.addEventListener('pointermove',e=>{if(!v31MapDrag||v31MapDrag.id!==e.pointerId)return;const dx=e.clientX-v31MapDrag.x,dy=e.clientY-v31MapDrag.y;if(Math.abs(dx)+Math.abs(dy)>5)v31MapDrag.moved=true;if(v31MapDrag.moved){const rect=document.querySelector('.v31-map-wrap')?.getBoundingClientRect();const maxX=rect?Math.max(0,(v31MapZoom-1)*rect.width/2):Infinity,maxY=rect?Math.max(0,(v31MapZoom-1)*rect.height/2):Infinity;v31PanX=Math.max(-maxX,Math.min(maxX,v31MapDrag.panX+dx));v31PanY=Math.max(-maxY,Math.min(maxY,v31MapDrag.panY+dy));v31ApplyMapTransform()}});
+document.addEventListener('pointerup',e=>{if(!v31MapDrag||v31MapDrag.id!==e.pointerId)return;v31MapSuppressClick=v31MapDrag.moved;v31MapDrag=null});
+document.addEventListener('pointercancel',()=>{v31MapDrag=null});
+window.addEventListener('hashchange',()=>{if(!location.hash&&view!=='home'){view='home';render()}});
 document.addEventListener('change',e=>{
  const input=e.target;if(input.matches('[data-v3-parent]')){state.parentContacts??={mommy:'',daddy:''};state.parentContacts[input.dataset.v3Parent]=input.value.trim();save();notice('Family contact saved on this device.');}
 });
@@ -194,7 +261,7 @@ window.aariaHandleNativeDishPhoto=async(id,dataUrl)=>{
  try{const blob=await(await fetch(dataUrl)).blob();if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=blob;const post=await makeCookPost(find(id),blob);sharePostBlobs[id]=post;sharePostUrls[id]=URL.createObjectURL(post);render();notice('Your cooking post is ready! 💖');}
  catch(e){console.error('Could not prepare the camera photo.',e);notice('Could not prepare that photo. Please try again.');}
 };
-document.title=state.language==='pt-BR'?'Minha Cozinha Mágica':'My Magical Kitchen';
+document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
 render();
 
 // V3 local child profiles. APK builds persist the profile roster and snapshots in app-private SQLite;

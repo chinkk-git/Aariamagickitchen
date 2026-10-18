@@ -1,0 +1,202 @@
+name: Aaria V3.1 Android preview APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/v3.1-home-redesign
+    paths:
+      - 'index.html'
+      - 'tools/v3/**'
+      - 'phase2-pilot/**'
+      - 'content/**'
+      - 'docs/**'
+      - '.github/workflows/v31-android.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aaria-v31-android-preview
+  cancel-in-progress: false
+
+jobs:
+  build-v31-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out isolated V3.1 source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.10.2'
+
+      - name: Run repository regression and V3.1 data gates
+        working-directory: phase2-pilot
+        run: |
+          npm test
+          npm run validate:recipes
+          npm run validate:v31
+
+      - name: Build offline V3.1 HTML and validate all original recipes
+        run: |
+          set -euo pipefail
+          node --check tools/v3/transform-production.mjs
+          node --check tools/v3/runtime.js
+          node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_1.html
+          node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3_1.html
+          node tools/v3/test-approved-chef-art.mjs dist/Aaria_Magical_Kitchen_V3_1.html
+          node tools/v3/test-csp-policy.mjs
+          node tools/v3/test-profile-isolation.mjs
+          node tools/v3/validate-v31.mjs
+          mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
+          cp dist/Aaria_Magical_Kitchen_V3_1.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          grep -Fq 'AARIA_V3_BUILD_2026_10' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          grep -Fq 'World Food Adventures' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          sha256sum dist/Aaria_Magical_Kitchen_V3_1.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+
+      - name: Run Android unit tests
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
+
+      - name: Assemble installable Android preview APK
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+
+      - name: Verify packaged offline V3.1 experience
+        run: |
+          set -euo pipefail
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          unzip -Z1 "$apk" | grep -Fxq 'assets/index.html'
+          unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
+          unzip -p "$apk" assets/index.html | grep -Fq 'ne_110m_admin_0_countries'
+
+      - name: Launch Android APK and capture home/map screenshots
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_3a
+          disable-animations: true
+          script: |
+            set -euo pipefail
+            mkdir -p artifacts/v31-android-screenshots
+            adb install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+            adb shell am start -n com.aaria.magickitchen.pilot/.MainActivity
+            socket=""
+            for attempt in $(seq 1 45); do
+              socket=$(adb shell cat /proc/net/unix | grep -o 'webview_devtools_remote_[0-9]*' | head -1 || true)
+              [ -n "$socket" ] && break
+              sleep 2
+            done
+            test -n "$socket"
+            adb forward tcp:9222 "localabstract:$socket"
+            node --input-type=module <<'NODE'
+            const {execFileSync} = await import('node:child_process');
+            const {readFileSync, statSync} = await import('node:fs');
+            const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+            let target;
+            for (let attempt=0; attempt<60 && !target; attempt++) {
+              try {
+                const targets = await (await fetch('http://127.0.0.1:9222/json')).json();
+                target = targets.find(item => item.type === 'page' && item.webSocketDebuggerUrl);
+              } catch {}
+              if (!target) await pause(1000);
+            }
+            if (!target) throw new Error('Android WebView page target was not found');
+            const ws = new WebSocket(target.webSocketDebuggerUrl);
+            await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, {once:true}); ws.addEventListener('error', reject, {once:true}); });
+            let seq = 0;
+            const pending = new Map();
+            ws.addEventListener('message', event => {
+              const message = JSON.parse(event.data);
+              if (!message.id || !pending.has(message.id)) return;
+              const {resolve, reject} = pending.get(message.id); pending.delete(message.id);
+              message.error ? reject(new Error(message.error.message)) : resolve(message.result);
+            });
+            async function evaluate(expression) {
+              const id = ++seq;
+              const result = new Promise((resolve, reject) => pending.set(id, {resolve, reject}));
+              ws.send(JSON.stringify({id, method:'Runtime.evaluate', params:{expression, returnByValue:true, awaitPromise:true}}));
+              const response = await result;
+              if (response.exceptionDetails) throw new Error(response.exceptionDetails.text || 'WebView evaluation failed');
+              return response.result?.value;
+            }
+            let ready = false;
+            for (let attempt=0; attempt<60 && !ready; attempt++) {
+              ready = await evaluate(`!!document.querySelector('#v3ProfileDialog') || !!document.querySelector('[data-v3-profile-open]')`);
+              if (!ready) await pause(1000);
+            }
+            if (!ready) throw new Error('Android WebView did not reach profile setup or a ready home within 60 seconds');
+            await evaluate(`(() => { const dialog=document.querySelector('#v3ProfileDialog'); if(!dialog) return 'existing-profile'; const name=dialog.querySelector('#v3ProfileName'); const chef=dialog.querySelector('[data-v3-chef="CHEF_A"]'); const submit=dialog.querySelector('[data-v3-profile-continue]'); if(!name||!chef||!submit) throw Error('unexpected first-run profile setup'); name.value='Preview Chef'; chef.click(); submit.click(); return 'profile-created'; })()`);
+            const home = await evaluate(`!!document.querySelector('.v3-home') && !document.querySelector('#v3ProfileDialog')`);
+            if (!home) throw new Error('Home screen did not appear after test profile setup');
+            console.log('Android home screen loaded with the test profile');
+            execFileSync('adb', ['shell','screencap','-p','/sdcard/v31-home.png']);
+            execFileSync('adb', ['pull','/sdcard/v31-home.png','artifacts/v31-android-screenshots/v31-home-portrait.png']);
+            if (statSync('artifacts/v31-android-screenshots/v31-home-portrait.png').size < 10000) throw new Error('Home screenshot is unexpectedly small');
+            await evaluate(`document.querySelector('[data-v31-open-world]').click()`);
+            const world = await evaluate(`document.querySelector('.v31-world-page h1')?.innerText || ''`);
+            if (!world.includes('World Food Adventures')) throw new Error('World route did not load; got: ' + world);
+            console.log('World route verified:', world);
+            execFileSync('adb', ['shell','screencap','-p','/sdcard/v31-world.png']);
+            execFileSync('adb', ['pull','/sdcard/v31-world.png','artifacts/v31-android-screenshots/v31-world-portrait.png']);
+            execFileSync('adb', ['shell','settings','put','system','accelerometer_rotation','0']);
+            execFileSync('adb', ['shell','settings','put','system','user_rotation','1']);
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            const landscape = await evaluate(`document.querySelector('.v31-world-page h1')?.innerText || ''`);
+            if (!landscape.includes('World Food Adventures')) throw new Error('World route was lost during orientation change');
+            execFileSync('adb', ['shell','screencap','-p','/sdcard/v31-world-landscape.png']);
+            execFileSync('adb', ['pull','/sdcard/v31-world-landscape.png','artifacts/v31-android-screenshots/v31-world-landscape.png']);
+            const image = readFileSync('artifacts/v31-android-screenshots/v31-world-landscape.png');
+            const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
+            if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
+            for (const [file, landscapeExpected] of [['v31-home-portrait.png',false],['v31-world-portrait.png',false],['v31-world-landscape.png',true]]) {
+              const path = `artifacts/v31-android-screenshots/${file}`;
+              if (statSync(path).size < 10000) throw new Error(`Screenshot is unexpectedly small: ${file}`);
+              const png = readFileSync(path), w = png.readUInt32BE(16), h = png.readUInt32BE(20);
+              if (landscapeExpected ? w<=h : w>=h) throw new Error(`Unexpected orientation for ${file}: ${w}x${h}`);
+            }
+            console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
+            ws.close();
+            NODE
+            file artifacts/v31-android-screenshots/*.png
+
+      - name: Upload installable V3.1 preview APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.1-preview-apk
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload offline V3.1 HTML evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.1-html
+          path: dist/Aaria_Magical_Kitchen_V3_1.html
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload Android screenshot evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.1-android-screenshots
+          path: artifacts/v31-android-screenshots/*.png
+          if-no-files-found: error
+          retention-days: 30

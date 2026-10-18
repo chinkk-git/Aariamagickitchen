@@ -4,7 +4,7 @@ Date: 2026-10-18
 Branch: feature/v3.1-home-redesign
 
 ## Approved direction
-The user selected the generated two-screen concept as the desired V3.1 look and feel: left = Aaria's Magical Kitchen home, right = World Food Adventure map and India / Mango Lassi Magic. Treat this as a visual reference for layout, visual hierarchy, colour, card design and destination flow, **not** a source of code, accurate geographic borders, licensed production assets or automatically approved character likeness. Reference image filename: `V3_1_Home_World_Visual_Reference.png` (image to be attached in repository under `docs/assets/` before visual implementation is signed off).
+The user selected the generated two-screen concept as the desired V3.1 look and feel: left = Aaria's Magical Kitchen home, right = World Food Adventure map and a destination card. The latest implementation direction maps India to existing approved recipes and pilots new recipes for Italy and China. Treat the earlier generated India/Mango Lassi panel as layout inspiration only, not current recipe scope or approved content. Treat the reference as visual guidance for hierarchy, colour, card design and destination flow, **not** as a source of code, accurate geographic borders, licensed production assets or automatically approved character likeness. Reference image filename: `V3_1_Home_World_Visual_Reference.png` (image to be attached in repository under `docs/assets/` before visual implementation is signed off).
 
 ## Screen 1 — Home
 - Header with branded logo, approved Aaria illustration, compact profile and settings access.
@@ -18,7 +18,7 @@ The user selected the generated two-screen concept as the desired V3.1 look and 
 ## Screen 2 — World Food Adventure
 - Header, country explorer map, destination hotspots, country list alternative for accessibility.
 - Country detail card with flag, country name, cultural fact, accurate final-dish image, no-cook/air-fryer classification, duration, servings and adult-assist indicators.
-- India / Mango Lassi Magic is the initial content pilot. The recipe remains draft pending A08 safety, nutrition, allergens and cultural QA; standard recipe includes milk and requires adult blender supervision.
+- Current pilot scope follows the latest V3.1 direction: India surfaces existing approved recipes by original IDs; Italy and China are the new-recipe pilot countries. Include a Chinese noodle dish and a suitable air-fryer or no-cook option. Do not ship recipe records until they pass duplicate, nutrition, allergen, safety, cultural and artwork checks.
 - Passport stamp rewards stored locally per profile; no external child data transmission.
 - Discover more destinations/recipes by continent, with EN-GB and pt-BR copy.
 - Illustrated map artwork must be re-created as geographically sensible, legally redistributable layers; do not use the generated map as a precise boundary dataset.
@@ -26,7 +26,7 @@ The user selected the generated two-screen concept as the desired V3.1 look and 
 
 ## Technical build approach (APK-first)
 1. Inspect the actual V3 Android project before selecting UI technology. **Do not assume Jetpack Compose is already used**; implement in the existing supported architecture, or document and approve a migration. Avoid replacing a stable native implementation with WebView-only delivery.
-2. Break image into implementation specifications and independently recreated assets: kitchen background, Aaria hero, brand treatment, tile icons, featured dish, map landmasses, country pins, passport, Mango Lassi card, regional recipe cards, navigation icons.
+2. Break image into implementation specifications and independently recreated assets: kitchen background, approved Aaria hero, brand treatment, tile icons, featured dish, map landmasses, country pins, India/Italy/China recipe cards and navigation icons.
 3. Prefer editable, layered SVG/vector for UI/map hotspots and separate raster artwork for painterly backgrounds/food; avoid screenshot-as-background with invisible click targets.
 4. Implement adaptive portrait/landscape/tablet constraints, density-independent spacing, accessible text scaling, edge-to-edge insets, image aspect-ratio preservation, memory-safe image decoding and offline fallbacks.
 5. Use locally bundled assets and on-device data for core experience; no paid map API or runtime AI inference. If map engine is required, evaluate open-source MapLibre + offline data/licensing, but a custom vector interactive map is preferable for this illustrated concept.
@@ -34,7 +34,7 @@ The user selected the generated two-screen concept as the desired V3.1 look and 
 7. Add world recipes as unique audited records, not replacements of the existing 95. Reuse recipe rendering and shopping-list infrastructure.
 8. Keep new assets traceable: source, prompt/reference, rights, owner, review status, file size, aspect ratio, locale, recipe ID, content hash.
 9. CI: screenshot tests for home/map/detail on reference phone and tablet resolutions, portrait/landscape; contrast/touch/accessibility; offline; navigation; functional regression; no broken images; A08/A09 gates.
-10. The existing project multi-agent cluster must build a small end-to-end APK pilot (home, map, India detail, Mango Lassi recipe, passport reward), then expand only after visual/functional evidence. Do not claim pixel-perfect across all device aspect ratios.
+10. The existing project multi-agent cluster must build a small end-to-end APK pilot (home, map, existing India recipe links, new Italy/China recipe entries), then expand only after visual/functional evidence. Do not claim pixel-perfect across all device aspect ratios.
 
 ## Zero-cost mandate
 Use only free/open-source development and production tools (Android Studio, existing app stack, Inkscape, Krita, GIMP, optional Lottie). No required subscriptions, paid API credits, paid map tiles, cloud inference or unverified free trials. Verify redistribution licences of every image, map dataset, font and sound. GitHub Actions free-tier limits must be respected; no automatic billable overages.
