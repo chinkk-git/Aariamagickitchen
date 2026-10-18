@@ -67,3 +67,6 @@ Use self-contained HTML/CSS mockups in a dedicated prototypes/ folder, not produ
 - World map must use properly licensed accurate boundaries in production, accessible country list as fallback, responsive landscape/portrait, low-bandwidth/offline behaviour and no paid APIs.
 - Pilot acceptance: map selection, filters, country fact, recipe detail, stamp reward, offline operation, accessibility and Android back behaviour work without breaking V3 functionality. A08/A09 release-blocking gates apply.
 - An independent self-contained HTML concept prototype was generated for user review on 2026-10-18 (Aaria_V3_1_Home_World_Prototype.html). It uses schematic illustrations and sample data, and is not a production APK or approved final art. Integrate prototype into repository only after source transfer and verification.
+
+## Visual target and engineering guide (2026-10-18)
+The user selected a detailed two-screen generated concept (home + world map) as the V3.1 visual target. See [V3.1 Visual Implementation Guide](V3_1_VISUAL_IMPLEMENTATION_GUIDE.md) for screen decomposition, artwork/character fidelity, APK-first implementation, map interactions, zero-cost tools, security and A08/A09 acceptance gates. The reference PNG is pending binary upload to `docs/assets/V3_1_Home_World_Visual_Reference.png`; do not claim it is present until verified.
