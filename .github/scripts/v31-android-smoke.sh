@@ -9,8 +9,7 @@ on_exit() {
     timeout --kill-after=2s 15s adb logcat -d -t 12000 > artifacts/v31-diagnostics/logcat.txt 2>&1 || true
     timeout --kill-after=2s 15s adb shell dumpsys activity activities > artifacts/v31-diagnostics/activity.txt 2>&1 || true
     timeout --kill-after=2s 15s adb shell dumpsys window windows > artifacts/v31-diagnostics/windows.txt 2>&1 || true
-    timeout --kill-after=2s 15s adb shell screencap -p /sdcard/v31-failure.png >/dev/null 2>&1 || true
-    timeout --kill-after=2s 15s adb pull /sdcard/v31-failure.png artifacts/v31-diagnostics/failure-screen.png >/dev/null 2>&1 || true
+    timeout --kill-after=2s 15s adb exec-out screencap -p > artifacts/v31-diagnostics/failure-screen.png 2>/dev/null || true
     cp -R artifacts/v31-android-screenshots artifacts/v31-diagnostics/partial-screenshots >/dev/null 2>&1 || true
   fi
   exit "$result"
@@ -54,11 +53,15 @@ await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, {o
 console.log('WebView DevTools WebSocket opened');
 let seq = 0;
 const pending = new Map();
+let pageLoaded = false;
+let resolvePageLoaded;
+const pageLoadEvent = new Promise(resolve => { resolvePageLoaded = resolve; });
 ws.addEventListener('message', async event => {
   let payload=event.data;
   if(typeof payload!=='string')payload=typeof payload?.text==='function'?await payload.text():Buffer.from(payload).toString('utf8');
   let message;
   try{message=JSON.parse(payload)}catch(error){console.error('Could not parse DevTools message:',String(error));return}
+  if(message.method==='Page.loadEventFired'){pageLoaded=true;resolvePageLoaded(true);return}
   if (!message.id || !pending.has(message.id)) return;
   const {resolve, reject, timer} = pending.get(message.id); pending.delete(message.id); clearTimeout(timer);
   message.error ? reject(new Error(message.error.message)) : resolve(message.result);
@@ -68,7 +71,7 @@ ws.addEventListener('error', () => {for(const {reject,timer} of pending.values()
 async function evaluate(expression) {
   const id = ++seq;
   const result = new Promise((resolve, reject) => {
-    const timer=setTimeout(()=>{pending.delete(id);reject(new Error(`DevTools command ${id} timed out: ${expression.slice(0,100)}`))},10000);
+    const timer=setTimeout(()=>{pending.delete(id);reject(new Error(`DevTools command ${id} timed out: ${expression.slice(0,100)}`))},30000);
     pending.set(id, {resolve, reject, timer});
   });
   ws.send(JSON.stringify({id, method:'Runtime.evaluate', params:{expression, returnByValue:true, awaitPromise:true}}));
@@ -76,8 +79,22 @@ async function evaluate(expression) {
   if (response.exceptionDetails) throw new Error(response.exceptionDetails.text || 'WebView evaluation failed');
   return response.result?.value;
 }
+async function command(method, params={}) {
+  const id=++seq;
+  const result=new Promise((resolve,reject)=>{
+    const timer=setTimeout(()=>{pending.delete(id);reject(new Error(`DevTools ${method} timed out`))},10000);
+    pending.set(id,{resolve,reject,timer});
+  });
+  ws.send(JSON.stringify({id,method,params}));
+  return await result;
+}
+await command('Page.enable');
+await command('Runtime.enable');
+console.log('Waiting for WebView page-load signal');
+const loaded=pageLoaded||await Promise.race([pageLoadEvent,pause(90000).then(()=>false)]);
+console.log(loaded?'WebView page-load event received':'WebView page-load event not observed; probing current document');
 await evaluate('true');
-console.log('DevTools Runtime.evaluate responds');
+console.log('DevTools Runtime.evaluate responds after the page-load wait');
 let ready = false;
 for (let attempt=0; attempt<60 && !ready; attempt++) {
   ready = await evaluate(`!!document.querySelector('#v3ProfileDialog') || !!document.querySelector('[data-v3-profile-open]')`);
