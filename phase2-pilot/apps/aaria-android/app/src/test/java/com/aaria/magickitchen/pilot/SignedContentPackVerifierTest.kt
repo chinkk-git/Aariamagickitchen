@@ -126,13 +126,15 @@ class SignedContentPackVerifierTest {
         temp.deleteRecursively()
     }
 
-    @Test fun rejectsOversizedEntryBeforeCreatingStageDirectory() {
+    @Test fun rejectsHighRatioOversizedEntryBeforeCreatingStageDirectory() {
         val temp = createTempDir(prefix = "pack-oversize-")
         val stage = File(temp, "stage")
         val data = ByteArray(12 * 1024 * 1024 + 1) { 'x'.code.toByte() }
+        val compressedArchive = archive("content/recipes.json", data, 4)
+        assertTrue("fixture must exercise a high compression ratio", data.size > compressedArchive.size * 100)
         rejects("entry exceeds limit") {
             SignedContentPackVerifier.verifyAndStage(
-                archive("content/recipes.json", data, 4),
+                compressedArchive,
                 stage,
                 pair.public,
                 "test-key",
