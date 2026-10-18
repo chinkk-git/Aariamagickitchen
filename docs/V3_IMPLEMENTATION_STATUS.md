@@ -284,3 +284,11 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 - Pilot run [39083839601](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601) passed on exact source `90f6ab655ec070b1a11cdc8e50dd740192b0a48f`, including the full Android pilot suite.
 - Artifacts: [debug APK 12119644017](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601/artifacts/12119644017) and [generated HTML 12120345126](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601/artifacts/12120345126). They expire 2026-11-17; the APK is debug-signed.
 - This closes the high-ratio archive fixture gap in R024, but not the feed/trust-root integration or device activation and rollback acceptance.
+
+
+## Signed V3 candidate — workflow run 11
+
+- Signed-release run [39084778835](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39084778835) succeeded on branch `codex/v3-completion-core-20261017`, dispatched source `2b724135c891bd88942033c528075effdc68eb63`.
+- Passed V3 HTML generation/validation, Android unit tests, protected signing-input and certificate fingerprint checks, signed APK assembly, packaged V3 page verification, trusted APK signature verification, and artifact upload.
+- Artifacts: [signed V3 APK candidate 12119608874](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39084778835/artifacts/12119608874) and [generated V3 HTML 12119763598](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39084778835/artifacts/12119763598). Artifacts expire 2026-11-17.
+- This is the latest signed candidate and supersedes the incorrect main-branch dispatch for device testing. It is not yet accepted on-device. Preserve the installed app and verify installation/update, both chef choices, saved profile progress and the previously reported chooser crash before marking device acceptance.
