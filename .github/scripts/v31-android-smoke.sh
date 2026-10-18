@@ -52,6 +52,8 @@ console.log('Connected WebView target:', target.title || '(untitled)', target.ur
 const ws = new WebSocket(target.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, {once:true}); ws.addEventListener('error', reject, {once:true}); });
 console.log('WebView DevTools WebSocket opened');
+console.log('Allowing the offline kitchen page to finish initializing');
+await pause(60000);
 let seq = 0;
 const pending = new Map();
 let pageLoaded = false;
@@ -83,7 +85,7 @@ async function evaluate(expression) {
 async function command(method, params={}) {
   const id=++seq;
   const result=new Promise((resolve,reject)=>{
-    const timer=setTimeout(()=>{pending.delete(id);reject(new Error(`DevTools ${method} timed out`))},10000);
+    const timer=setTimeout(()=>{pending.delete(id);reject(new Error(`DevTools ${method} timed out`))},30000);
     pending.set(id,{resolve,reject,timer});
   });
   ws.send(JSON.stringify({id,method,params}));
