@@ -78,6 +78,31 @@ class SignedContentPackVerifierTest {
         }
     }
 
+    @Test fun rejectsDuplicateArchivePathsBeforeCreatingStageDirectory() {
+        val temp = createTempDir(prefix = "pack-duplicate-path-")
+        val stage = File(temp, "stage")
+        val archive = archive(
+            "content/recipes.json",
+            "[]".toByteArray(),
+            4,
+            extraEntries = listOf("content/payload.json" to "{}".toByteArray())
+        )
+        val duplicatePathArchive = replaceAscii(archive, "content/payload.json", "content/recipes.json")
+        rejects("duplicate archive path") {
+            SignedContentPackVerifier.verifyAndStage(
+                duplicatePathArchive,
+                stage,
+                pair.public,
+                "test-key",
+                5,
+                3,
+                1000
+            )
+        }
+        assertFalse(stage.exists())
+        temp.deleteRecursively()
+    }
+
     @Test fun rejectsUndeclaredArchiveEntryBeforeCreatingStageDirectory() {
         val temp = createTempDir(prefix = "pack-extra-entry-")
         val stage = File(temp, "stage")
@@ -189,6 +214,26 @@ class SignedContentPackVerifierTest {
         assertEquals("known-good", File(active, "sentinel.txt").readText())
         assertFalse(previous.exists())
         root.deleteRecursively()
+    }
+
+    private fun replaceAscii(source: ByteArray, from: String, to: String): ByteArray {
+        val search = from.toByteArray(Charsets.US_ASCII)
+        val replacement = to.toByteArray(Charsets.US_ASCII)
+        require(search.size == replacement.size) { "ZIP filename replacement must preserve byte length" }
+        val result = source.copyOf()
+        var replacements = 0
+        var index = 0
+        while (index <= result.size - search.size) {
+            if (result.copyOfRange(index, index + search.size).contentEquals(search)) {
+                replacement.copyInto(result, index)
+                replacements++
+                index += search.size
+            } else {
+                index++
+            }
+        }
+        require(replacements >= 2) { "Expected ZIP local and central filename records" }
+        return result
     }
 
     private fun archive(
