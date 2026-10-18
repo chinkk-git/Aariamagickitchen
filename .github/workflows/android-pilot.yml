@@ -47,6 +47,7 @@ jobs:
           node --check tools/v3/transform-production.mjs
           node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3.html
           node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3.html
+          node tools/v3/test-approved-chef-art.mjs dist/Aaria_Magical_Kitchen_V3.html
 
       - name: Validate Android adapters
         run: |
