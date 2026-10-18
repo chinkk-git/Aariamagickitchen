@@ -40,3 +40,6 @@ At the start of each active Work session: read this file from `main` and the rep
 - World Adventure production content requires an audit of all 95 existing recipes, then duplicate/schema/nutrition/allergen/artwork checks.
 - Integration must preserve V3 security/profile/update architecture and pass both automated and device smoke tests.
 - No automatic merging, release signing key changes or deployment without required platform/security approvals.
+
+## Session rotation (mandatory)
+The durable execution/recovery protocol is [SESSION_PROTOCOL.md](control-tower/SESSION_PROTOCOL.md). Read the current [V3 handover](control-tower/V3_HANDOVER.md) or [V3.1 handover](control-tower/V31_HANDOVER.md) on session start, checkpoint after commits/CI/blockers, and rotate before chats become unresponsive. A handover is a point-in-time snapshot: verify current GitHub head and CI. Only one active writer per branch; GitHub issue ACK is coordination, not a technical lock. No background automation or new paid runner is implied.
