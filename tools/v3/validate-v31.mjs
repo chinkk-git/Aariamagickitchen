@@ -48,7 +48,8 @@ for (const [iso, country] of destinations) {
   if (!geography.features.some(feature => feature.properties?.ADMIN === country && (feature.properties?.ISO_A3_EH === iso || feature.properties?.ISO_A3 === iso))) fail(`Offline map is missing ${country}.`);
 }
 const destinationBlock = runtime.slice(runtime.indexOf('const V31_WORLD_DESTINATIONS=['), runtime.indexOf('const V31_DESTINATION_BY_ISO='));
-if (!destinationBlock || (destinationBlock.match(/reviewStatus:'draft'/g) || []).length !== 6 || !destinationBlock.includes("reviewStatus:'approved-reference'") || /reviewStatus:'pilot'|recipeIds:\[9[678]/.test(destinationBlock)) fail('India must map existing recipes while all six new-country shelves stay draft until their release gates pass.');
+if (!destinationBlock || (destinationBlock.match(/reviewStatus:'draft'/g) || []).length !== 6 || !destinationBlock.includes("reviewStatus:'approved-reference'") || /reviewStatus:'pilot'/.test(destinationBlock)) fail('India must map existing recipes while all six new-country shelves stay draft until their release gates pass.');
+if (!destinationBlock.includes("code:'ITA'") || !destinationBlock.includes('recipeIds:[96]') || !destinationBlock.includes("code:'CHN'") || !destinationBlock.includes('recipeIds:[97,98]')) fail('The Italy and China draft shelves must reference only their matching review-pilot recipe IDs.');
 const approvedIndiaIds = [51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74];
 const mappedIds = runtime.match(/V31_APPROVED_INDIA_RECIPE_IDS=\[([^\]]+)\]/)?.[1].split(',').map(Number) || [];
 if (mappedIds.join(',') !== approvedIndiaIds.join(',')) fail('India must reference the verified original Indian recipe IDs without creating new records.');

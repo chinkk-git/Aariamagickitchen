@@ -104,8 +104,8 @@ home=function v3Home(){
 const V31_APPROVED_INDIA_RECIPE_IDS=[51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74];
 const V31_WORLD_DESTINATIONS=[
  {code:'IND',iso:'IND',en:'India',pt:'Índia',flag:'🇮🇳',factEn:'Explore existing Indian recipes from Aaria’s original kitchen collection.',factPt:'Explore receitas indianas existentes da coleção original da cozinha da Aaria.',reviewStatus:'approved-reference'},
- {code:'ITA',iso:'ITA',en:'Italy',pt:'Itália',flag:'🇮🇹',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
- {code:'CHN',iso:'CHN',en:'China',pt:'China',flag:'🇨🇳',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
+ {code:'ITA',iso:'ITA',en:'Italy',pt:'Itália',flag:'🇮🇹',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',recipeIds:[96],reviewStatus:'draft'},
+ {code:'CHN',iso:'CHN',en:'China',pt:'China',flag:'🇨🇳',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',recipeIds:[97,98],reviewStatus:'draft'},
  {code:'JPN',iso:'JPN',en:'Japan',pt:'Japão',flag:'🇯🇵',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
  {code:'MEX',iso:'MEX',en:'Mexico',pt:'México',flag:'🇲🇽',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
  {code:'VNM',iso:'VNM',en:'Vietnam',pt:'Vietnã',flag:'🇻🇳',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
