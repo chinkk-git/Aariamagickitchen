@@ -93,6 +93,12 @@ class MainActivity : Activity() {
                             pendingCaptureUri = null
                         }
                     }
+                    if (fileChooserParams.isCaptureEnabled) {
+                        // Camera-only requests must never fall through to a photo picker or gallery.
+                        fileChooserCallback?.onReceiveValue(null)
+                        fileChooserCallback = null
+                        return true
+                    }
                     return try {
                         startActivityForResult(fileChooserParams.createIntent(), fileChooserRequest)
                         true
