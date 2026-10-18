@@ -17,9 +17,32 @@ on_exit() {
 trap on_exit EXIT
 adb_timeout() { timeout --kill-after=10s 90s adb "$@"; }
 adb_poll_timeout() { timeout --kill-after=2s 5s adb "$@"; }
+ANDROID_SERIAL=${ANDROID_SERIAL:-emulator-5554}
+export ANDROID_SERIAL
+wait_for_booted_device() {
+  echo "Waiting for $ANDROID_SERIAL to be online and fully booted"
+  for attempt in $(seq 1 90); do
+    state=$(adb_poll_timeout devices 2>/dev/null | awk -v serial="$ANDROID_SERIAL" '$1 == serial { print $2; exit }' || true)
+    if [ "$state" = offline ]; then
+      echo "$ANDROID_SERIAL is offline; requesting ADB reconnect (attempt $attempt/90)"
+      adb_poll_timeout reconnect device >/dev/null 2>&1 || true
+    elif [ "$state" = device ]; then
+      booted=$(adb_poll_timeout -s "$ANDROID_SERIAL" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' || true)
+      if [ "$booted" = 1 ]; then
+        echo "$ANDROID_SERIAL is online and fully booted"
+        return 0
+      fi
+    fi
+    sleep 2
+  done
+  adb_poll_timeout devices -l || true
+  echo "Timed out waiting for $ANDROID_SERIAL to become online and fully booted" >&2
+  return 1
+}
 mkdir -p artifacts/v31-android-screenshots
 echo 'Waiting for emulator ADB'
 adb_timeout wait-for-device
+wait_for_booted_device
 echo 'Installing V3.1 APK'
 adb_timeout install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
 echo 'Starting V3.1 Android activity'
@@ -52,8 +75,8 @@ console.log('Connected WebView target:', target.title || '(untitled)', target.ur
 const ws = new WebSocket(target.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, {once:true}); ws.addEventListener('error', reject, {once:true}); });
 console.log('WebView DevTools WebSocket opened');
-console.log('Allowing the offline kitchen page to finish initializing');
-await pause(60000);
+console.log('Allowing the offline kitchen page to settle briefly');
+await pause(8000);
 let seq = 0;
 const pending = new Map();
 let pageLoaded = false;
@@ -127,18 +150,21 @@ adb(['pull','/sdcard/v31-world-landscape.png','artifacts/v31-android-screenshots
 const image = readFileSync('artifacts/v31-android-screenshots/v31-world-landscape.png');
 const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
 if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
-for (const [file, landscapeExpected] of [['v31-home-portrait.png',false],['v31-world-portrait.png',false],['v31-world-landscape.png',true]]) {
-  const path = `artifacts/v31-android-screenshots/${file}`;
-  if (statSync(path).size < 10000) throw new Error(`Screenshot is unexpectedly small: ${file}`);
-  const png = readFileSync(path), w = png.readUInt32BE(16), h = png.readUInt32BE(20);
-  if (landscapeExpected ? w<=h : w>=h) throw new Error(`Unexpected orientation for ${file}: ${w}x${h}`);
-}
 console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
 const indiaCount = await evaluate(`document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length`);
 if (indiaCount !== 18) throw new Error(`India destination should expose its 18 original recipes; found ${indiaCount}`);
 await evaluate(`document.querySelector('[data-v31-approved-recipe="51"]').click()`);
 const recipeTitle = await evaluate(`document.querySelector('.ref-hero h1')?.innerText || ''`);
 if (recipeTitle !== 'Masala Cheese Toast') throw new Error(`India recipe did not open; got: ${recipeTitle}`);
+adb(['shell','screencap','-p','/sdcard/v31-recipe.png']);
+adb(['pull','/sdcard/v31-recipe.png','artifacts/v31-android-screenshots/v31-recipe-portrait.png']);
+if (statSync('artifacts/v31-android-screenshots/v31-recipe-portrait.png').size < 10000) throw new Error('Recipe screenshot is unexpectedly small');
+for (const [file, landscapeExpected] of [['v31-home-portrait.png',false],['v31-world-portrait.png',false],['v31-recipe-portrait.png',false],['v31-world-landscape.png',true]]) {
+  const path = `artifacts/v31-android-screenshots/${file}`;
+  if (statSync(path).size < 10000) throw new Error(`Screenshot is unexpectedly small: ${file}`);
+  const png = readFileSync(path), w = png.readUInt32BE(16), h = png.readUInt32BE(20);
+  if (landscapeExpected ? w<=h : w>=h) throw new Error(`Unexpected orientation for ${file}: ${w}x${h}`);
+}
 await evaluate(`document.querySelector('[data-v3-quiz="51"]')?.click()`);
 const quizVisible = await evaluate(`!!document.querySelector('#v3QuizDialog')`);
 if (!quizVisible) throw new Error('India recipe ingredient quiz did not open');

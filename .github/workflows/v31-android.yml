@@ -94,7 +94,9 @@ jobs:
           api-level: 35
           arch: x86_64
           profile: pixel_3a
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
           disable-animations: true
+          disable-linux-hw-accel: false
           script: bash .github/scripts/v31-android-smoke.sh
       - name: Upload installable V3.1 preview APK
         if: always()
