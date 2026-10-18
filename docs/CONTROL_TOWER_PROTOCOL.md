@@ -46,3 +46,6 @@ The durable execution/recovery protocol is [SESSION_PROTOCOL.md](control-tower/S
 
 ## Adaptive session health
 All Control Tower, V3 and V3.1 sessions follow [Balanced Adaptive Session Lifecycle](control-tower/ADAPTIVE_SESSION_LIFECYCLE.md). Review after 20 substantial tasks or 50 observed tool events, and immediately on responsiveness or reliability symptoms. This is not a fixed-period rotation. Rotation requires an evidence-backed checkpoint and manual confirmation; no exact context occupancy measurement or unattended chat restart is available. The [short-session protocol](control-tower/SESSION_PROTOCOL.md) governs recovery and branch concurrency.
+
+## Control Tower self-recovery
+The Control Tower chat is also replaceable. Use [CT_BOOTSTRAP.md](control-tower/CT_BOOTSTRAP.md) and [CT_HANDOVER.md](control-tower/CT_HANDOVER.md) to recover a new coordination chat. These files are durable snapshots, not an automated health-monitoring service.
