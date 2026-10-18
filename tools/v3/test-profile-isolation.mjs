@@ -42,6 +42,29 @@ assert.deepEqual(JSON.parse(JSON.stringify(result.parentContacts)), { mommy: '',
 assert.deepEqual(JSON.parse(JSON.stringify(result.unknownLegacyField)), { currentProfileValue: 'preserved' });
 assert.equal(result.customFlag, false);
 assert.equal(result.customCount, 0);
+
+// New profiles must reset every field in the live production state schema, not
+// only the fields known when V3 was first written. This keeps older app renderers
+// from encountering missing nested defaults after a profile is created.
+const freshStart = runtime.indexOf('function v3FreshSnapshot(){');
+const freshEnd = runtime.indexOf('\\nfunction v3ApplyProfileResult', freshStart);
+assert(freshStart >= 0 && freshEnd > freshStart, 'fresh profile snapshot builder must exist');
+context.state = {
+  weeks: { '2026-10-12': { ids: [3, 4], locks: [true, false] } },
+  done: [3], checks: { '3': true }, stories: ['saved-story'],
+  favorites: [3], grocerySelected: [3], language: 'pt-BR',
+  legacyExtension: { step: 3, enabled: true, list: [3] }
+};
+vm.runInContext(runtime.slice(freshStart, freshEnd), context);
+const freshSnapshot = vm.runInContext('v3FreshSnapshot()', context);
+assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.weeks)), {});
+assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.done)), []);
+assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.checks)), {});
+assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.stories)), []);
+assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.favorites)), []);
+assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.grocerySelected)), []);
+assert.equal(freshSnapshot.language, 'pt-BR');
+assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.legacyExtension)), { step: 0, enabled: false, list: [] });
 assert.deepEqual(JSON.parse(JSON.stringify(result.newerFeature)), { enabled: true });
 const persistStart = runtime.indexOf('function v3PersistProfileState(){');
 const persistEnd = runtime.indexOf('\nfunction v3EmptyProfileValue', persistStart);
