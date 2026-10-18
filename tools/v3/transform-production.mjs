@@ -23,6 +23,10 @@ const art = Object.fromEntries([78, 89, 93, 94].map(id => [id, {
   aspect: id === 94 ? 412 / 624 : 502 / 507
 }]));
 const ingredientAtlas = readAsset('ingredients-storybook-atlas.webp.b64');
+const profileArt = {
+  chefA: readAsset('approved-chef-a.webp.b64'),
+  chefB: readAsset('approved-chef-b.webp.b64')
+};
 
 const styles = String.raw`
 /* ${marker} */
@@ -117,7 +121,8 @@ const runtimeTemplate = fs.readFileSync(path.join(here, 'runtime.js'), 'utf8');
 const runtime = runtimeTemplate
   .replaceAll('__AARIA_V3_MARKER__', marker)
   .replace('__V3_ART_JSON__', JSON.stringify(art))
-  .replace('__V3_INGREDIENT_ATLAS_JSON__', JSON.stringify(ingredientAtlas));
+  .replace('__V3_INGREDIENT_ATLAS_JSON__', JSON.stringify(ingredientAtlas))
+  .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt));
 
 
 let outputHtml = html;
