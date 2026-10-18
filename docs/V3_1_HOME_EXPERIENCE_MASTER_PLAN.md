@@ -70,3 +70,6 @@ Use self-contained HTML/CSS mockups in a dedicated prototypes/ folder, not produ
 
 ## Visual target and engineering guide (2026-10-18)
 The user selected a detailed two-screen generated concept (home + world map) as the V3.1 visual target. See [V3.1 Visual Implementation Guide](V3_1_VISUAL_IMPLEMENTATION_GUIDE.md) for screen decomposition, artwork/character fidelity, APK-first implementation, map interactions, zero-cost tools, security and A08/A09 acceptance gates. The reference PNG is pending binary upload to `docs/assets/V3_1_Home_World_Visual_Reference.png`; do not claim it is present until verified.
+
+## Delivery ownership — existing autonomous agents
+There is no external development team. The existing project multi-agent cluster owns all V3.1 planning, visual asset creation, Android implementation, QA, remediation, A08/A09 safety and UX gates, security/release verification and continuous learning. See [Autonomous execution model](V3_1_VISUAL_IMPLEMENTATION_GUIDE.md#autonomous-project-agent-execution-model-mandatory). Preserve established agent identities and skills; do not introduce a separate team or require routine user reviews. Documentation commits do not constitute agent execution or APK completion.
