@@ -58,8 +58,10 @@ function v3IngredientArt(value){
 // for the older recipe card renderer, where exact atlas matches are available.
 ingredientPicture=function v3IngredientPicture(value){return v3IngredientArt(value)};
 for(const [id,a] of Object.entries(V3_ART)){
-  NEW_RECIPE_ART[id]={...(NEW_RECIPE_ART[id]||{}),atlas:a.atlas,storyboard:a.atlas,hero:a.hero,cellAspect:a.aspect,status:'approved'};
-  BATCH_META[id]={...(BATCH_META[id]||{}),stepCells:[1,2,3,4]};
+  const initial=a.variants?.CHEF_A||a;
+  NEW_RECIPE_ART[id]={...(NEW_RECIPE_ART[id]||{}),atlas:initial.atlas,storyboard:initial.atlas,hero:initial.hero,profileVariants:a.variants||null,cellAspect:a.aspect,status:a.status||'approved'};
+  const stepCells=[1,2].includes(Number(id))?[0,1,2,3]:[1,2,3,4];
+  BATCH_META[id]={...(BATCH_META[id]||{}),stepCells};
 }
 
 home=function v3Home(){
@@ -295,8 +297,16 @@ document.addEventListener('click',e=>{
  if(b.dataset.v3ProfileSelect){if(b.dataset.v3ProfileSelect===v3ProfileState.activeId){document.getElementById('v3ProfileDialog')?.remove();return}try{v3PersistProfileState();const raw=window.AariaNative?.activateProfile?window.AariaNative.activateProfile(b.dataset.v3ProfileSelect):(()=>{const box=v3ParseProfileState(localStorage.getItem('myMagicalKitchenProfilesV1'));box.profiles.forEach(p=>{if(p.id===v3ProfileState.activeId)p.snapshot=state});box.activeId=b.dataset.v3ProfileSelect;localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify(box));const p=box.profiles.find(x=>x.id===box.activeId);return JSON.stringify({profiles:box.profiles,activeId:box.activeId,snapshot:p?.snapshot||{}})})();v3ApplyProfileResult(raw);if(v3ProfileState.profile?.chefId==='LEGACY_AARIA')v3OpenProfileEditor('legacy');else document.getElementById('v3ProfileDialog')?.remove()}catch(err){console.error('Profile switch failed',err)}return}
  if(b.hasAttribute('data-v3-profile-close')){document.getElementById('v3ProfileDialog')?.remove();return}
 });
+function v3SyncRecipeArt(){
+ const chefId=v3ProfileState.profile?.chefId==='CHEF_B'?'CHEF_B':'CHEF_A';
+ for(const [id,a] of Object.entries(V3_ART)){
+  const variant=a.variants?.[chefId]||a.variants?.CHEF_A||a;
+  NEW_RECIPE_ART[id]={...(NEW_RECIPE_ART[id]||{}),atlas:variant.atlas,storyboard:variant.atlas,hero:variant.hero,profileVariants:a.variants||null,cellAspect:a.aspect,status:a.status||'approved'};
+ }
+}
 const v3RenderBeforeProfileControls=render;
-render=function(){v3RenderBeforeProfileControls();if(!v3ProfileInitComplete||view!=='home')return;const header=document.querySelector('#screen .v3-home-top');if(header&&!header.querySelector('[data-v3-profile-open]')){const button=document.createElement('button');button.className='v3-profile-trigger';button.type='button';button.setAttribute('data-v3-profile-open','');button.setAttribute('aria-label','Switch kitchen profile');button.textContent=`👩‍🍳 ${v3ProfileState.profile?.name||'Choose profile'} ▾`;header.insertBefore(button,header.lastElementChild)}};
+render=function(){v3SyncRecipeArt();v3RenderBeforeProfileControls();if(!v3ProfileInitComplete||view!=='home')return;const header=document.querySelector('#screen .v3-home-top');if(header&&!header.querySelector('[data-v3-profile-open]')){const button=document.createElement('button');button.className='v3-profile-trigger';button.type='button';button.setAttribute('data-v3-profile-open','');button.setAttribute('aria-label','Switch kitchen profile');button.textContent=`👩‍🍳 ${v3ProfileState.profile?.name||'Choose profile'} ▾`;header.insertBefore(button,header.lastElementChild)}};
 v3InitProfiles();
 render();
+
 

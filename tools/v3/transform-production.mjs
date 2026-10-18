@@ -17,11 +17,30 @@ function readAsset(name) {
   return `data:image/webp;base64,${value}`;
 }
 
-const art = Object.fromEntries([78, 89, 93, 94].map(id => [id, {
-  atlas: readAsset(`recipe-${id}-storyboard.webp.b64`),
-  hero: readAsset(`recipe-${id}-hero.webp.b64`),
-  aspect: id === 94 ? 412 / 624 : 502 / 507
-}]));
+const art = Object.fromEntries([
+  [1, {
+    variants: {
+      CHEF_A: { atlas: readAsset('recipe-1-chef-a-storyboard.webp.b64'), hero: readAsset('recipe-1-chef-a-hero.webp.b64') },
+      CHEF_B: { atlas: readAsset('recipe-1-chef-b-storyboard.webp.b64'), hero: readAsset('recipe-1-chef-b-hero.webp.b64') }
+    },
+    aspect: 543 / 724,
+    status: 'pending-review'
+  }],
+  [2, {
+    variants: {
+      CHEF_A: { atlas: readAsset('recipe-2-chef-a-storyboard.webp.b64'), hero: readAsset('recipe-2-chef-a-hero.webp.b64') },
+      CHEF_B: { atlas: readAsset('recipe-2-chef-b-storyboard.webp.b64'), hero: readAsset('recipe-2-chef-b-hero.webp.b64') }
+    },
+    aspect: 543 / 724,
+    status: 'pending-review'
+  }],
+  ...[78, 89, 93, 94].map(id => [id, {
+    atlas: readAsset(`recipe-${id}-storyboard.webp.b64`),
+    hero: readAsset(`recipe-${id}-hero.webp.b64`),
+    aspect: id === 94 ? 412 / 624 : 502 / 507,
+    status: 'approved'
+  }])
+]);
 const ingredientAtlas = readAsset('ingredients-storybook-atlas.webp.b64');
 const profileArt = {
   chefA: readAsset('approved-chef-a.webp.b64'),
@@ -145,3 +164,4 @@ if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could 
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, outputHtml);
 console.log(`Built ${output} (${outputHtml.length.toLocaleString()} chars) from ${input}`);
+
