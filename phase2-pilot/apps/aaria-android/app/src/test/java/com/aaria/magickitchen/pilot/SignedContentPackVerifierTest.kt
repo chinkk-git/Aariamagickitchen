@@ -53,7 +53,7 @@ class SignedContentPackVerifierTest {
         val roleStage = File(mismatchedRole, "stage")
         rejects("role/media mismatch") {
             SignedContentPackVerifier.verifyAndStage(
-                archive("content/artwork.webp", validWebp(), 4, mediaType = "image/webp", role = "recipe-data"),
+                archive("content/artwork.webp", "not-an-image".toByteArray(), 4, mediaType = "image/webp", role = "recipe-data"),
                 roleStage,
                 pair.public,
                 "test-key",
