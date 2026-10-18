@@ -178,6 +178,12 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 .v31-preview-button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:46px;margin-top:9px;padding:9px 12px;border:0;border-radius:13px;background:#6748a0;color:#fff;font:inherit;font-weight:900;cursor:pointer}
 .v31-passport-stamp{margin-top:10px;padding:9px 10px;border:1px dashed #d7c98f;border-radius:12px;background:#fffbed;color:#6c5a2c;font-size:12px;text-align:center}
 .v31-passport-stamp.earned{border-style:solid;border-color:#b4d8c5;background:#ebf8ef;color:#2f7054}
+.v31-passport{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px;border:1px solid #e5dced;border-radius:20px;background:linear-gradient(100deg,#fffaf0,#f3fbf6);box-shadow:var(--v3-shadow)}
+.v31-passport h2{margin:0 0 6px;font-size:17px}
+.v31-passport p{margin:0;color:#71667c;font-size:13px;line-height:1.4}
+.v31-stamp{display:inline-flex;align-items:center;min-height:38px;margin:3px;padding:6px 11px;border:1px solid #b4d8c5;border-radius:999px;background:#ebf8ef;color:#2f7054;font-size:13px;font-weight:900}
+.v31-passport button{min-height:44px;padding:8px 12px;border:1px solid #d8cbdf;border-radius:12px;background:#fff;color:#554366;font:inherit;font-weight:800;cursor:pointer}
+.v31-passport button:disabled{opacity:.55;cursor:not-allowed}
 .v31-country-list h2{margin:0 0 10px;font-size:17px}
 .v31-country-list>div{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 .v31-country-choice{display:flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:6px 9px;border:1px solid var(--v3-line);border-radius:13px;background:#fff;color:var(--v3-ink);font:inherit;font-size:12px;font-weight:800;cursor:pointer}
@@ -263,6 +269,7 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 @media(max-height:520px) and (orientation:landscape){.v31-home-hero{grid-template-columns:minmax(0,1fr) 180px;min-height:190px;padding:14px 22px}.v31-hero-art .v3-hero-avatar{height:150px;width:150px}.v31-shortcut{min-height:60px}.v31-world-layout{grid-template-columns:minmax(0,1.4fr) minmax(270px,.8fr)}.v31-country-list>div{grid-template-columns:repeat(5,minmax(0,1fr))}.v31-world-page{gap:10px}}
 @media(max-width:380px){.v3-hero{grid-template-columns:minmax(0,1fr) 84px;padding:15px}.v3-hero-avatar{width:92px;height:120px}.v3-hero h1{font-size:27px}.v3-progress-card small{display:none}}
 @media(max-height:520px) and (orientation:landscape){#screen.home-page{padding:10px 16px 92px}.v3-home{gap:10px}.v3-hero{grid-template-columns:minmax(0,1fr) 160px;padding:14px 20px}.v3-hero-art{min-height:84px}.v3-hero-avatar{height:105px;width:130px}.v3-hero p{margin:6px 0 10px}.v3-progress-card{padding:7px 10px}.v3-action-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.v3-action{min-height:108px;padding:8px}.v3-action-art{height:47px}.v3-rail{grid-auto-columns:150px}}
+@media(max-width:700px){.v31-passport{align-items:flex-start;flex-direction:column}.v31-passport button{align-self:flex-start}}
 @media(prefers-reduced-motion:reduce){.v3-action,.v3-primary{scroll-behavior:auto;transition:none!important}}
 `;
 

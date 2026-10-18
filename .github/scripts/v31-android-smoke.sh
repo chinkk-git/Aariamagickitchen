@@ -134,6 +134,29 @@ for (const [file, landscapeExpected] of [['v31-home-portrait.png',false],['v31-w
   if (landscapeExpected ? w<=h : w>=h) throw new Error(`Unexpected orientation for ${file}: ${w}x${h}`);
 }
 console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
+const indiaCount = await evaluate(`document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length`);
+if (indiaCount !== 18) throw new Error(`India destination should expose its 18 original recipes; found ${indiaCount}`);
+await evaluate(`document.querySelector('[data-v31-approved-recipe="51"]').click()`);
+const recipeTitle = await evaluate(`document.querySelector('.ref-hero h1')?.innerText || ''`);
+if (recipeTitle !== 'Masala Cheese Toast') throw new Error(`India recipe did not open; got: ${recipeTitle}`);
+await evaluate(`document.querySelector('[data-v3-quiz="51"]')?.click()`);
+const quizVisible = await evaluate(`!!document.querySelector('#v3QuizDialog')`);
+if (!quizVisible) throw new Error('India recipe ingredient quiz did not open');
+await evaluate(`document.querySelector('#v3QuizDialog [data-v3-answer][data-v3-right="1"]')?.click()`);
+const quizFeedback = await evaluate(`document.querySelector('#v3QuizDialog .v3-quiz-feedback')?.innerText || ''`);
+if (!quizFeedback.includes('That’s right')) throw new Error(`India recipe quiz did not accept the correct answer: ${quizFeedback}`);
+await evaluate(`document.querySelector('#v3QuizDialog [data-v3-dismiss]')?.click()`);
+await evaluate(`document.querySelector('.ref-next')?.click()`);
+await evaluate(`document.querySelector('.ref-next.finish-step')?.click()`);
+await evaluate(`document.querySelector('.bottom .tab[data-nav="world"]')?.click()`);
+const stampCount = await evaluate(`document.querySelector('.v31-passport-count strong')?.innerText || ''`);
+if (!stampCount.includes('1/7')) throw new Error(`Finishing an India recipe should award a local passport stamp; got: ${stampCount}`);
+const indiaStamp = await evaluate(`!!document.querySelector('.v31-passport .v31-stamp')?.innerText.includes('India')`);
+if (!indiaStamp) throw new Error('India stamp is missing from the food passport');
+await evaluate(`document.querySelector('[data-v31-passport-reset]')?.click()`);
+const resetCount = await evaluate(`document.querySelector('.v31-passport-count strong')?.innerText || ''`);
+if (!resetCount.includes('0/7')) throw new Error(`Passport reset did not clear local stamps: ${resetCount}`);
+console.log('Android World Adventure verified: India recipes → recipe → quiz → local passport stamp/reset');
 ws.close();
 NODE
 file artifacts/v31-android-screenshots/*.png
