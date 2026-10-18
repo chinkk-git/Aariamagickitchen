@@ -71,6 +71,44 @@ jobs:
 
       - name: Assemble installable APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+      - name: Install and launch APK in Android emulator
+        shell: bash
+        run: |
+          set -euo pipefail
+          image="system-images;android-35;google_apis;x86_64"
+          sdkmanager --install "$image"
+          printf 'no\\n' | avdmanager create avd --force -n aaria-v3-ci -k "$image" --device pixel_2
+          "$ANDROID_HOME/emulator/emulator" -avd aaria-v3-ci -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -wipe-data >"$RUNNER_TEMP/aaria-emulator.log" 2>&1 &
+          adb wait-for-device
+          booted=0
+          for attempt in $(seq 1 60); do
+            if [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\\r')" == "1" ]]; then booted=1; break; fi
+            sleep 5
+          done
+          if [[ "$booted" != "1" ]]; then
+            cat "$RUNNER_TEMP/aaria-emulator.log"
+            echo "::error::Android emulator did not finish booting."
+            exit 1
+          fi
+          adb shell settings put global window_animation_scale 0
+          adb shell settings put global transition_animation_scale 0
+          adb shell settings put global animator_duration_scale 0
+          apk="phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk"
+          adb install -r "$apk"
+          adb logcat -c
+          adb shell am start -W -n com.aaria.magickitchen.pilot/.MainActivity
+          pid="$(adb shell pidof -s com.aaria.magickitchen.pilot | tr -d '\\r')"
+          if [[ -z "$pid" ]]; then
+            adb logcat -d
+            echo "::error::V3 app process did not remain alive after launch."
+            exit 1
+          fi
+          if adb logcat -d -s AndroidRuntime:E | grep -Fq "FATAL EXCEPTION"; then
+            adb logcat -d -s AndroidRuntime:E
+            echo "::error::V3 app crashed during emulator startup."
+            exit 1
+          fi
+
       - name: Verify unsigned release builds are refused
         shell: bash
         run: |
