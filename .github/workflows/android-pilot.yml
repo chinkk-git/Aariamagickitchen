@@ -77,7 +77,14 @@ jobs:
           set -euo pipefail
           image="system-images;android-35;google_apis;x86_64"
           sdkmanager --install "$image"
-          printf 'no\n' | avdmanager create avd --force -n aaria-v3-ci -k "$image" --device pixel_2
+          # Avoid --device here: hosted SDK images may omit the device catalog,
+          # which can leave avdmanager without creating the named AVD.
+          printf 'no\\n' | avdmanager create avd --force -n aaria-v3-ci -k "$image"
+          if [[ ! -s "$HOME/.android/avd/aaria-v3-ci.ini" ]]; then
+            avdmanager list avd
+            echo "::error::avdmanager did not create the expected AVD."
+            exit 1
+          fi
           "$ANDROID_HOME/emulator/emulator" -avd aaria-v3-ci -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -wipe-data >"$RUNNER_TEMP/aaria-emulator.log" 2>&1 &
           emulator_pid=$!
           if ! timeout 300 adb wait-for-device; then
@@ -138,6 +145,7 @@ jobs:
 
 
       - name: Upload installable V3 APK
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: aaria-magical-kitchen-v3-apk
@@ -146,6 +154,7 @@ jobs:
           retention-days: 30
 
       - name: Upload replaceable V3 HTML
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: aaria-magical-kitchen-v3-html
