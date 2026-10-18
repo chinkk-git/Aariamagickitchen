@@ -110,7 +110,7 @@ console.log('Legacy chef selection persists without rerendering the existing kit
 
 // Corrupt/partial profile records must not crash activation or erase intact snapshots.
 const parserStart = runtime.indexOf('function v3ParseProfileState(raw){');
-const parserEnd = runtime.indexOf('\\nfunction v3PersistProfileState', parserStart);
+const parserEnd = runtime.indexOf('\nfunction v3PersistProfileState', parserStart);
 assert(parserStart >= 0 && parserEnd > parserStart, 'profile parser must be available for recovery tests');
 const parserContext = vm.createContext({});
 vm.runInContext(runtime.slice(parserStart, parserEnd), parserContext);
@@ -130,7 +130,9 @@ assert.equal(recovered.activeId, 'chef-one', 'stale active ID must recover to fi
 assert.deepEqual(JSON.parse(JSON.stringify(recovered.profiles[0].snapshot)), { done: [3], favorites: [7] });
 assert.deepEqual(JSON.parse(JSON.stringify(recovered.profiles[1].snapshot)), {});
 assert.deepEqual(JSON.parse(JSON.stringify(vm.runInContext(`v3ParseProfileState('not-json')`, parserContext))), { profiles: [], activeId: null, snapshot: {} });
-assert.deepEqual(JSON.parse(JSON.stringify(vm.runInContext('v3ParseProfileState(arguments[0])', parserContext, { arguments: [recovered] }))), JSON.parse(JSON.stringify(recovered));
+parserContext.incoming = recovered;
+const objectRecovery = vm.runInContext('v3ParseProfileState(incoming)', parserContext);
+assert.deepEqual(JSON.parse(JSON.stringify(objectRecovery)), JSON.parse(JSON.stringify(recovered)));
 
 console.log('Profile persistence and snapshot isolation checks passed.');
 
