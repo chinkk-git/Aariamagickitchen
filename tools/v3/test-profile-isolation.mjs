@@ -64,6 +64,7 @@ assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.stories)), []);
 assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.favorites)), []);
 assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.grocerySelected)), []);
 assert.equal(freshSnapshot.language, 'pt-BR');
+assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.avatarAssignments)), {});
 assert.deepEqual(JSON.parse(JSON.stringify(freshSnapshot.legacyExtension)), { step: 0, enabled: false, list: [] });
 assert.deepEqual(JSON.parse(JSON.stringify(result.newerFeature)), { enabled: true });
 const persistStart = runtime.indexOf('function v3PersistProfileState(){');
@@ -110,3 +111,4 @@ console.log('Legacy chef selection persists without rerendering the existing kit
 console.log('Profile persistence and snapshot isolation checks passed.');
 
 console.log('Profile snapshot reset isolation checks passed.');
+

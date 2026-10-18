@@ -222,7 +222,7 @@ function v3SetActiveProfile(result){
  v3ProfileState.profiles=r.profiles||[];v3ProfileState.activeId=r.activeId||null;
  const active=v3ProfileState.profiles.find(p=>p.id===v3ProfileState.activeId)||null;
  v3ProfileState.profile=active;
- state=v3ProfileStateFor(state,r.snapshot);
+ state=v3ProfileStateFor(state,r.snapshot);state.avatarAssignments??={};
  if(active){try{localStorage.setItem('aariaPrivateKitchenV4',JSON.stringify(state))}catch{}}
  v3ProfileInitComplete=true;
  if(!v3ProfileSaveWrapped){const original=save;save=function v3ProfileSave(){original();v3PersistProfileState()};v3ProfileSaveWrapped=true}
@@ -270,7 +270,7 @@ function v3OpenProfileEditor(mode='menu'){
  document.body.insertAdjacentHTML('beforeend',`<div class="v3-profile-backdrop" id="v3ProfileDialog"><section class="v3-profile-dialog" role="dialog" aria-modal="true" aria-labelledby="v3ProfileTitle"><span class="v3-eyebrow">✨ ${pt?'MINHA COZINHA MÁGICA':'MY MAGICAL KITCHEN'}</span><h2 id="v3ProfileTitle">${heading}</h2><p>${intro}</p>${rows}${chooser}</section></div>`);
  document.querySelector('#v3ProfileDialog [data-v3-chef]')?.focus();
 }
-function v3FreshSnapshot(){const defaults={weeks:{},done:[],checks:{},stories:[],favorites:[],grocerySelected:[],language:state.language||'en-GB'};return v3ProfileStateFor(state,defaults)}
+function v3FreshSnapshot(){const defaults={weeks:{},done:[],checks:{},stories:[],favorites:[],grocerySelected:[],avatarAssignments:{},language:state.language||'en-GB'};return v3ProfileStateFor(state,defaults)}
 function v3ApplyProfileResult(raw){const r=v3ParseProfileState(raw);if(r.error)throw new Error(r.error);v3SetActiveProfile(r);try{localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles:v3ProfileState.profiles,activeId:v3ProfileState.activeId}))}catch{};render()}
 function v3CreateOrSelectChef(name,chefId){
  const profile=v3ProfileState.profile;
@@ -299,3 +299,4 @@ const v3RenderBeforeProfileControls=render;
 render=function(){v3RenderBeforeProfileControls();if(!v3ProfileInitComplete||view!=='home')return;const header=document.querySelector('#screen .v3-home-top');if(header&&!header.querySelector('[data-v3-profile-open]')){const button=document.createElement('button');button.className='v3-profile-trigger';button.type='button';button.setAttribute('data-v3-profile-open','');button.setAttribute('aria-label','Switch kitchen profile');button.textContent=`👩‍🍳 ${v3ProfileState.profile?.name||'Choose profile'} ▾`;header.insertBefore(button,header.lastElementChild)}};
 v3InitProfiles();
 render();
+
