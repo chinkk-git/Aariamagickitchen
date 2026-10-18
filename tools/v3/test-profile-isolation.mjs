@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 const runtime = fs.readFileSync(new URL('./runtime.js', import.meta.url), 'utf8');
 // Regression guard: the profile-aware render wrapper must call the prior renderer,
 // not its own named function (which previously overflowed the stack on profile setup).
-assert.ok(runtime.includes('const v3RenderBeforeProfileControls=render;') && runtime.includes('render=function(){v3RenderBeforeProfileControls();'), 'profile wrapper must invoke the pre-profile renderer');
+assert.ok(runtime.includes('const v3RenderBeforeProfileControls=render;') && /render=function\(\)\{(?:v3SyncRecipeArt\(\);)?v3RenderBeforeProfileControls\(\);/.test(runtime), 'profile wrapper must sync profile art before invoking the pre-profile renderer');
 assert.ok(!runtime.includes('function v3RenderWithProfiles(){v3RenderWithProfiles();'), 'profile wrapper must not call itself recursively');
 
 const start = runtime.indexOf('function v3EmptyProfileValue');
