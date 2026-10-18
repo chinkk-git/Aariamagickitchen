@@ -133,3 +133,8 @@ R024 has additional hosted evidence in pilot run [39081529933](https://github.co
 ## Archive-set rejection update — run 115
 
 Pilot run [39082241731](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731) passed a new signed-pack test rejecting undeclared ZIP payloads before staging. This adds exact archive-set coverage to R024. Duplicate ZIP-name/decompression-bomb edge cases, authenticated feed integration and on-device activation remain unverified; R024 stays IN PROGRESS. The run also passed V3 transform/CSP/profile checks, Android unit tests, debug APK build and unsigned-release refusal. Debug APK [12119461755](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731/artifacts/12119461755); HTML [12119297506](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731/artifacts/12119297506).
+
+
+## Duplicate ZIP-path test — run 116
+
+R024 gains hosted regression evidence from [run 39082636745](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745): a correctly structured signed archive containing a duplicate ZIP path is rejected before staging. Run #116 passed the Android pilot suite on source `807520cff9594d2ae7e8d574e5c3231a31297b80`. Decompression-bomb limits at expanded-pack scale, publisher feed integration and device activation remain open, so R024 stays IN PROGRESS. Artifacts: debug APK [12119193578](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12119193578), HTML [12118969797](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12118969797).
