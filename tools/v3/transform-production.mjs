@@ -12,9 +12,13 @@ const marker = 'AARIA_V3_BUILD_2026_10';
 if (html.includes(marker)) throw new Error('Input already contains the V3 build layer. Start from production index.html.');
 
 function readAsset(name) {
-  const value = fs.readFileSync(path.join(here, 'artwork', name), 'utf8').replace(/\s/g, '');
-  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(value)) throw new Error(`Invalid base64 artwork: ${name}`);
-  return `data:image/webp;base64,${value}`;
+  const bytes = fs.readFileSync(path.join(here, 'artwork', name));
+  const text = bytes.toString('ascii').replace(/\s/g, '');
+  if (/^[A-Za-z0-9+/]+={0,2}$/.test(text)) return `data:image/webp;base64,${text}`;
+  if (bytes.subarray(0, 4).toString('ascii') === 'RIFF' && bytes.subarray(8, 12).toString('ascii') === 'WEBP') {
+    return `data:image/webp;base64,${bytes.toString('base64')}`;
+  }
+  throw new Error(`Invalid WebP artwork: ${name}`);
 }
 
 const art = Object.fromEntries([
