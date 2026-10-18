@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -11,6 +12,7 @@ const transform = fs.readFileSync(path.join(here, 'transform-production.mjs'), '
 const source = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const geography = JSON.parse(fs.readFileSync(path.join(here, 'data/ne_110m_admin_0_countries.geojson'), 'utf8'));
 const dataNotes = fs.readFileSync(path.join(here, 'data/README.md'), 'utf8');
+const pilot = JSON.parse(fs.readFileSync(path.join(here, 'data/world-adventure-pilot.json'), 'utf8'));
 
 function extractRecipes(html) {
   const marker = 'const RECIPES=';
@@ -46,7 +48,7 @@ for (const [iso, country] of destinations) {
   if (!geography.features.some(feature => feature.properties?.ADMIN === country && (feature.properties?.ISO_A3_EH === iso || feature.properties?.ISO_A3 === iso))) fail(`Offline map is missing ${country}.`);
 }
 const destinationBlock = runtime.slice(runtime.indexOf('const V31_WORLD_DESTINATIONS=['), runtime.indexOf('const V31_DESTINATION_BY_ISO='));
-if (!destinationBlock || (destinationBlock.match(/reviewStatus:'draft'/g) || []).length !== 6 || !destinationBlock.includes("reviewStatus:'approved-reference'")) fail('The six new-country shelves must remain drafts while India points to existing recipes.');
+if (!destinationBlock || (destinationBlock.match(/reviewStatus:'draft'/g) || []).length !== 6 || !destinationBlock.includes("reviewStatus:'approved-reference'") || /reviewStatus:'pilot'|recipeIds:\[9[678]/.test(destinationBlock)) fail('India must map existing recipes while all six new-country shelves stay draft until their release gates pass.');
 const approvedIndiaIds = [51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74];
 const mappedIds = runtime.match(/V31_APPROVED_INDIA_RECIPE_IDS=\[([^\]]+)\]/)?.[1].split(',').map(Number) || [];
 if (mappedIds.join(',') !== approvedIndiaIds.join(',')) fail('India must reference the verified original Indian recipe IDs without creating new records.');
@@ -54,7 +56,7 @@ for (const id of approvedIndiaIds) if (!ids.includes(id)) fail(`India map refere
 const recipesById = new Map(recipes.map(recipe => [recipe.id, recipe]));
 for (let id = 51; id <= 65; id++) if (recipesById.get(id)?.category !== 'Indian') fail(`India map ID ${id} is not categorized as an original Indian recipe.`);
 for (const [id, title] of [[69, 'Vegetable Biryani'], [72, 'Paneer Butter Masala'], [74, 'Mini Vegetable Samosas']]) if (recipesById.get(id)?.title !== title) fail(`India map ID ${id} no longer matches the verified recipe title.`);
-if (/data-v31-(?:stamp)=|ingredients(?:En|Pt)|steps(?:En|Pt)|worldPassport/i.test(runtime)) fail('Unreviewed destination recipe steps or passport rewards must not be available in runtime data or actions.');
+if (/data-v31-(?:stamp)=|worldPassport/i.test(runtime)) fail('Unreviewed passport rewards must not be available in runtime data or actions.');
 if (!runtime.includes('data-v31-approved-recipe') || !runtime.includes('openRecipe(Number(button.dataset.v31ApprovedRecipe))')) fail('Original Indian recipes must open through the existing recipe flow.');
 if (/Mango Lassi Magic|Little Pizza Bites|Brazil|Mini Pão de Queijo/i.test(runtime)) fail('Superseded V3.1 recipe candidates must not be presented as approved destinations.');
 for (const [token, label] of [
@@ -68,7 +70,8 @@ for (const [token, label] of [
   ['prefers-reduced-motion', 'reduced-motion support'],
   ['.v31-world-map', 'pan and zoom map styling']
 ]) if (!runtime.includes(token) && !transform.includes(token)) fail(`Missing ${label}.`);
-if (!runtime.includes('pointermove') || !runtime.includes('v31PanX') || !runtime.includes('data-v31-pan-toggle') || !runtime.includes('v31MapPanMode') || !runtime.includes('toggle.disabled=v31MapZoom<=1') || !runtime.includes('if(v31MapZoom<=1)v31MapPanMode=false')) fail('Explicit two-axis map pan mode must be disabled until zoomed in and clear itself at 1×.');
+if (!runtime.includes('pointermove') || !runtime.includes('v31PanX') || !runtime.includes('data-v31-pan-toggle') || !runtime.includes('v31MapPanMode') || !runtime.includes('toggle.disabled=v31MapZoom<=1') || !runtime.includes('if(v31MapZoom<=1){v31MapPanMode=false;v31MapDrag=null}')) fail('Explicit two-axis map pan mode must be disabled until zoomed in and clear itself at 1×.');
+if (!runtime.includes("toggle.setAttribute('aria-pressed',String(v31MapPanMode))") || !runtime.includes("v31MapDrag=null")) fail('When zoom returns to 1×, the map must exit pan mode, release drag state, and synchronize the control’s accessible pressed state.');
 if (runtime.includes('setPointerCapture') || !runtime.includes('Math.max(-maxX') || !runtime.includes('Math.max(-maxY') || !runtime.includes('Math.min(maxX,v31PanX)') || !runtime.includes('Math.min(maxY,v31PanY)')) fail('Map taps must retain their country targets and panning must stay within bounds after drag and zoom.');
 if (!runtime.includes('aria-live="polite"') || !runtime.includes('focus({preventScroll:true})')) fail('Accessible status or focus restoration is missing.');
 if (!runtime.includes('aria-pressed="${v31SelectedCountry===code}"') || !runtime.includes('aria-pressed="${x.code===c.code}"')) fail('Selected map and destination states must be announced to assistive technology.');
@@ -80,7 +83,46 @@ if (!transform.includes('.v31-world-map{') || !transform.includes('touch-action:
 if (!runtime.includes('Boundaries are simplified and may be disputed')) fail('The map must explain disputed/simplified borders.');
 if (!runtime.includes('Fronteiras simplificadas e possivelmente disputadas')) fail('The Portuguese map must explain disputed/simplified borders.');
 if (!transform.includes(".replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))") || !runtime.includes('V31_WORLD_GEOGRAPHY=__V31_WORLD_GEOGRAPHY_JSON__')) fail('Offline country data injection is missing.');
+if (!transform.includes(".replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))") || !runtime.includes('V31_WORLD_ADVENTURE=__V31_WORLD_ADVENTURE_JSON__')) fail('Offline adventure recipe data injection is missing.');
+if (!transform.includes("['a08', 'a09', 'duplicates', 'artwork', 'productionSchema'].every(key => worldAdventureSource.releaseGates?.[key] === 'approved')") || !transform.includes('recipes: pilotReleaseApproved ? worldAdventureSource.recipes : []')) fail('Review-pilot recipes must stay outside the offline production runtime until all release gates are approved.');
+if (!pilot || pilot.status !== 'review-pilot' || pilot.baseRecipeCount !== 95 || !Array.isArray(pilot.recipes) || pilot.recipes.map(x=>x.id).join(',') !== '96,97,98') fail('Pilot data must be separate from the immutable 95-record production catalog and contain only IDs 96–98.');
+const pilotTitles=new Set();
+for (const recipe of pilot.recipes) {
+  if (!recipe.record?.title || !recipe.record?.ingredients?.length || recipe.record.steps?.length !== 6 || recipe.pt?.steps?.length !== 6 || recipe.record.steps.some((step,i)=>!step || !recipe.pt.steps[i])) fail(`Pilot recipe ${recipe.id} must have six bilingual production steps.`);
+  if (!recipe.record.allergens?.length || !recipe.record.safety || !recipe.record.nutrition?.perServing || !recipe.nutritionPlan?.entries?.length || !recipe.duplicateAudit?.original95) fail(`Pilot recipe ${recipe.id} is missing a safety, allergen, nutrition or duplicate audit field.`);
+  if (pilotTitles.has(recipe.record.title.toLowerCase())) fail('Pilot recipe titles must be unique.');
+  pilotTitles.add(recipe.record.title.toLowerCase());
+  const expected=recipe.record.id;
+  if (![96,97,98].includes(expected) || !['ITA','CHN'].includes(recipe.countryCode)) fail(`Pilot recipe ${expected} has an unsupported ID or country.`);
+  if (!recipe.artwork?.atlas || !recipe.artwork?.hero || recipe.artwork.reviewStatus !== 'A09 visual staging passed; runtime and final artwork review pending') fail(`Pilot artwork for ${expected} must remain clearly marked pending independent approval.`);
+  for (const filename of [recipe.artwork.atlas,recipe.artwork.hero,recipe.artwork.source]) if(!fs.existsSync(path.join(here,'artwork/world-adventures',filename))) fail(`Missing local offline artwork file ${filename}.`);
+  const artworkSource=fs.readFileSync(path.join(here,'artwork/world-adventures',recipe.artwork.source));
+  const isPng=artworkSource.subarray(1,4).toString('ascii')==='PNG'&&artworkSource.readUInt32BE(16)===1536&&artworkSource.readUInt32BE(20)===1024;
+  const isWebp=artworkSource.subarray(0,4).toString('ascii')==='RIFF'&&artworkSource.subarray(8,12).toString('ascii')==='WEBP'&&artworkSource.subarray(12,16).toString('ascii')==='VP8 '&&(artworkSource.readUInt16LE(26)&0x3fff)===1536&&(artworkSource.readUInt16LE(28)&0x3fff)===1024;
+  if ((!isPng&&!isWebp) || crypto.createHash('sha256').update(artworkSource).digest('hex') !== recipe.artwork.sourceSha256) fail(`Pilot artwork source/checksum/dimensions do not match for ${expected}.`);
+  const nutrition=recipe.record.nutrition.perServing;
+  if(!Number.isFinite(nutrition.kcal)||!Number.isFinite(nutrition.proteinG)||!recipe.record.nutrition?.source?.includes('FoodData Central')) fail(`Pilot recipe ${expected} needs sourced nutrition values.`);
+  const nutrientKeys={kcal:'kcal',protein:'proteinG',carbs:'carbohydrateG',fat:'totalFatG',satfat:'saturatedFatG',fiber:'fiberG',sugars:'sugarG',sodium:'sodiumMg'};
+  const totals=Object.fromEntries(Object.keys(nutrientKeys).map(key=>[key,0]));
+  for(const entry of recipe.nutritionPlan.entries){
+    if(entry.water||!entry.key)continue;
+    const ref=pilot.nutritionRefs[entry.key.replace(/^v31_/,'')];
+    if(!ref)fail(`Pilot recipe ${expected} has an unmapped nutrition ingredient ${entry.key}.`);
+    for(const key of Object.keys(totals))totals[key]+=ref.nutrients[key]*(entry.grams[0]+entry.grams[1])/2/100;
+  }
+  const servings=(recipe.nutritionPlan.yield[0]+recipe.nutritionPlan.yield[1])/2;
+  const precisions={kcal:0,protein:1,carbs:1,fat:1,satfat:1,fiber:1,sugars:1,sodium:0};
+  for(const [key,field] of Object.entries(nutrientKeys)){
+    const expectedValue=Number((totals[key]/servings).toFixed(precisions[key]));
+    if(Number(nutrition[field])!==expectedValue)fail(`Pilot recipe ${expected} ${field} (${nutrition[field]}) does not reconcile to ingredients and FDC reference data (${expectedValue}).`);
+  }
+  const usedFdcIds=new Set(recipe.nutritionPlan.entries.filter(e=>e.key).map(e=>pilot.nutritionRefs[e.key.replace(/^v31_/,'')].fdcId));
+  if([...usedFdcIds].some(id=>!recipe.nutritionSourceUrls?.some(url=>url.includes(`food-details/${id}/nutrients`))))fail(`Pilot recipe ${expected} is missing a direct FDC record URL.`);
+  if (/pizza/i.test(`${recipe.record.title} ${recipe.record.description}`)) fail('Pizza is not an eligible Italy/China pilot recipe.');
+}
+if (!runtime.includes('RECIPES.push(r)') || !runtime.includes('BATCH_ATLASES[id]=art.atlas') || !runtime.includes('data-v31-approved-recipe="${p.id}"')) fail('Offline pilot recipes and their scene atlases must enter the existing interactive recipe flow.');
+if (!transform.includes('readWorldAdventureAsset') || !transform.includes("artwork/world-adventures")) fail('World pilot artwork must be embedded locally into the offline Android build.');
 if (!transform.includes('wheel|world')) fail('Android back navigation does not recognize the World screen.');
 if (!dataNotes.includes('public domain') || !dataNotes.includes('not suitable for navigation')) fail('Map source/licensing limitations are not documented.');
 if (/https?:\/\/(?:api\.mapbox\.com|maps\.googleapis\.com|tile\.openstreetmap\.org|api\.maptiler\.com)/i.test(runtime)) fail('Runtime map/recipe data must not depend on remote map services.');
-console.log(`PASS: ${recipes.length} original recipes preserved; ${geography.features.length} offline countries; seven destinations mapped; ${approvedIndiaIds.length} original Indian recipes linked; six new-country shelves remain blocked.`);
+console.log(`PASS: ${recipes.length} original recipes preserved unchanged; ${geography.features.length} offline countries; India links ${approvedIndiaIds.length} original recipes; Italy/China have 3 bilingual review candidates held outside runtime; six new-country shelves remain blocked.`);

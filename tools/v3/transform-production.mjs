@@ -67,6 +67,29 @@ const profileArt = {
   chefB: readAsset('approved-chef-b.webp.b64')
 };
 const worldGeography = JSON.parse(fs.readFileSync(path.join(here, 'data/ne_110m_admin_0_countries.geojson'), 'utf8'));
+const worldAdventureSource = JSON.parse(fs.readFileSync(path.join(here, 'data/world-adventure-pilot.json'), 'utf8'));
+const pilotReleaseApproved = ['a08', 'a09', 'duplicates', 'artwork', 'productionSchema'].every(key => worldAdventureSource.releaseGates?.[key] === 'approved');
+// Keep review-pilot recipe records and their art out of the offline production
+// runtime until every independent release gate is explicitly approved.
+const worldAdventure = {
+  ...worldAdventureSource,
+  recipes: pilotReleaseApproved ? worldAdventureSource.recipes : [],
+  nutritionRefs: pilotReleaseApproved ? worldAdventureSource.nutritionRefs : {}
+};
+const worldAdventureArt = Object.fromEntries(worldAdventure.recipes.map(recipe => [recipe.id, {
+  atlas: readWorldAdventureAsset(recipe.artwork.atlas),
+  hero: readWorldAdventureAsset(recipe.artwork.hero),
+  status: recipe.artwork.reviewStatus
+}]));
+
+function readWorldAdventureAsset(name) {
+  const file = path.join(here, 'artwork/world-adventures', name);
+  const bytes = fs.readFileSync(file);
+  if (bytes.subarray(0, 4).toString('ascii') !== 'RIFF' || bytes.subarray(8, 12).toString('ascii') !== 'WEBP') {
+    throw new Error(`Invalid WebP adventure artwork: ${name}`);
+  }
+  return `data:image/webp;base64,${bytes.toString('base64')}`;
+}
 
 const styles = String.raw`
 /* ${marker} */
@@ -148,6 +171,7 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 .v31-recipe-preview{padding:13px;border:1px solid #e6d8ed;border-radius:17px;background:#fffafd}
 .v31-preview-tag{display:inline-flex;padding:5px 8px;border-radius:9px;background:#fff1ca;color:#6b4b10;font-size:9px;font-weight:950;letter-spacing:.08em}
 .v31-recipe-preview h3{margin:8px 0 2px;color:var(--v3-plum);font-size:19px}
+.v31-adventure-recipes{display:grid;gap:9px;padding:12px;border:1px solid #e6d8ed;border-radius:17px;background:#fffafd}.v31-adventure-recipes>p{margin:0;color:#675a79;font-size:12px;line-height:1.4}.v31-adventure-recipe{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;overflow:hidden;padding:9px;border:1px solid #eee2ef;border-radius:14px;background:#fff}.v31-adventure-recipe>img{width:92px;height:100%;min-height:116px;max-height:150px;border-radius:11px;object-fit:cover}.v31-adventure-recipe h3{margin:0;color:var(--v3-plum);font-size:15px;line-height:1.2}.v31-adventure-recipe p{margin:5px 0;color:#675a79;font-size:11px;line-height:1.35}.v31-adventure-recipe small{display:block;color:#786d82;font-size:10px;line-height:1.3}
 .v31-recipe-preview>p{margin:4px 0;color:#675a79;font-size:12px;line-height:1.4}
 .v31-review-note{padding:8px;border-radius:10px;background:#fff5dd;color:#664b1c!important}
 .v31-allergen-note{font-weight:800}
@@ -248,9 +272,11 @@ const runtime = runtimeTemplate
   .replace('__V3_ART_JSON__', JSON.stringify(art))
   .replace('__V3_INGREDIENT_ATLAS_JSON__', JSON.stringify(ingredientAtlas))
   .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt))
-  .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography));
+  .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))
+  .replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))
+  .replace('__V31_WORLD_ADVENTURE_ART_JSON__', JSON.stringify(worldAdventureArt));
 
-if (runtime.includes('__V31_WORLD_GEOGRAPHY_JSON__')) throw new Error('Could not embed the offline country-boundary dataset.');
+if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__/.test(runtime)) throw new Error('Could not embed the offline world adventure data and artwork.');
 
 
 let outputHtml = html;
