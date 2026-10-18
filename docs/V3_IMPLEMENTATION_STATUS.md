@@ -298,3 +298,10 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 
 The owner supplied and approved the composite reference sheet in this conversation. It visibly contains the girl and boy main-chef designs, Mommy examples M1/M2, Daddy examples D1/D2, Friends F1–F4, and sample scene sequences for Banana Roll-Ups with Mommy, Rainbow Veggie Nachos with Daddy, and Fruit Smoothie with Friends. This corrects the earlier audit statement that no B1 master reference was located. The attachment is a 1536×1024 composite reference; it is not yet a set of separately registered production assets in GitHub or verified inside the APK. Continue with asset extraction/traceability and recipe/variant review; do not treat the composite itself as proof that all recipes or both-chef variants are packaged.
 
+## Signed V3 candidate — run 39087561238 (2026-10-18)
+
+- Completed successfully on branch `codex/v3-completion-core-20261017`, exact source `9f1fdd6345d7b784249504a9838657d26e777e41`.
+- Hosted gates passed: V3 transform/validation from the approved V2 baseline, Android unit tests, protected signer staging and fingerprint check, signed APK assembly, packaged V3 marker, trusted APK signature verification, and both uploads.
+- Signed APK artifact [12121437165](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39087561238/artifacts/12121437165), workflow archive SHA-256 `b5199d3086e65706aa8137b2b9f57fd464364e7c0c9dcc83ea7562fb44fa7759`. Extracted `app-release.apk` SHA-256: `36f9ed4d22dd653c2ee946ae626e8c4be88d7778e2823d780123b47ef470e47f`.
+- Generated V3 HTML artifact [12121059255](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39087561238/artifacts/12121059255), workflow archive SHA-256 `a841ec0e7cb57becf97b3b93901b6308b23332dd5129b5653bf8689eee91a48e`.
+- Artifacts expire 2026-11-17. This is a signed candidate, not full V3 acceptance: phone install/update, chooser crash remediation, saved-profile continuity, all approved art integration, content publisher trust/feed, What's New, and full security/device gates remain open.
