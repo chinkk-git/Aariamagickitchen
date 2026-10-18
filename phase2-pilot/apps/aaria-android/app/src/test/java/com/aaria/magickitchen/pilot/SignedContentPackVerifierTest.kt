@@ -48,6 +48,36 @@ class SignedContentPackVerifierTest {
         rejects("path traversal") { SignedContentPackVerifier.verifyAndStage(archive("content/../escape.json", "[]".toByteArray(), 4), createTempDir(), pair.public, "test-key", 5, 3, 1000) }
     }
 
+    @Test fun rejectsRoleMediaMismatchAndActiveImageContent() {
+        val mismatchedRole = createTempDir(prefix = "pack-role-mismatch-")
+        val roleStage = File(mismatchedRole, "stage")
+        rejects("role/media mismatch") {
+            SignedContentPackVerifier.verifyAndStage(
+                archive("content/artwork.webp", validWebp(), 4, mediaType = "image/webp", role = "recipe-data"),
+                roleStage,
+                pair.public,
+                "test-key",
+                5,
+                3,
+                1000
+            )
+        }
+        assertFalse(roleStage.exists())
+        mismatchedRole.deleteRecursively()
+
+        rejects("active SVG content") {
+            SignedContentPackVerifier.verifyAndStage(
+                archive("content/artwork.svg", "<svg/>".toByteArray(), 4, mediaType = "image/svg+xml", role = "artwork"),
+                createTempDir(prefix = "pack-svg-"),
+                pair.public,
+                "test-key",
+                5,
+                3,
+                1000
+            )
+        }
+    }
+
     @Test fun rejectsOversizedEntryBeforeCreatingStageDirectory() {
         val temp = createTempDir(prefix = "pack-oversize-")
         val stage = File(temp, "stage")
