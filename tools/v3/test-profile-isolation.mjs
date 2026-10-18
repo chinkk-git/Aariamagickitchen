@@ -47,7 +47,7 @@ assert.equal(result.customCount, 0);
 // only the fields known when V3 was first written. This keeps older app renderers
 // from encountering missing nested defaults after a profile is created.
 const freshStart = runtime.indexOf('function v3FreshSnapshot(){');
-const freshEnd = runtime.indexOf('\\nfunction v3ApplyProfileResult', freshStart);
+const freshEnd = runtime.indexOf('\nfunction v3ApplyProfileResult', freshStart);
 assert(freshStart >= 0 && freshEnd > freshStart, 'fresh profile snapshot builder must exist');
 context.state = {
   weeks: { '2026-10-12': { ids: [3, 4], locks: [true, false] } },
