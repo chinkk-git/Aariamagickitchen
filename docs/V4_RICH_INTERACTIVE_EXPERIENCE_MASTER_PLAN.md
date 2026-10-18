@@ -1,5 +1,5 @@
 # Aaria's Magical Kitchen — V4 Rich Interactive Experience Master Plan
-Status: PROPOSED / planning baseline (not implemented)
+Status: PROPOSED / ZERO-COST MANDATORY planning baseline (not implemented)
 Date: 2026-10-18
 Target: Android APK (phone/tablet); ages 8–10; British English and pt-BR.
 Branch: feature/v4-rich-experience-plan
@@ -81,3 +81,13 @@ WP1 design system + character consistency; WP2 95-recipe art audit; WP3 Rive/Lot
 
 ## 10. Change control
 No V4 work should modify V3 production or release signing configuration without separate tested change control. Track implementation in requirements/status/learning registers, mark every item as planned/in-progress/verified with links to evidence. This document authorises planning only; no assets, APK or media features are claimed as delivered.
+
+## 11. Mandatory zero-cost policy (approved 2026-10-18)
+- Total required spending for V4 development tooling, production asset generation, runtime services, and distribution must be **R$0**. Do not activate billable services, subscriptions, credit-based APIs, paid licenses, or free trials that expire into payment. No card requirement, paid API keys, or in-app purchases.
+- Prefer locally installed, free/open-source tools: Krita, GIMP, Inkscape for images; Blender, Synfig, OpenToonz for animations; Kdenlive for editing; Audacity for audio; Lottie-compatible open assets and SVG/CSS/Android animations; Android TextToSpeech for narration; Android Media3 for playback.
+- Rive, Runway, Canva, HeyGen, ElevenLabs and other previously proposed services are **not approved production dependencies** unless a documented audit confirms genuinely free, sustainable use and licensing for this precise distribution scenario. Replace them with zero-cost options where possible.
+- Assets must have verified rights for app redistribution and modification. Record licenses, attribution obligations and source/provenance; prefer self-authored or CC0 content. Avoid unverified 'royalty-free' claims.
+- No required paid hosting, cloud inference, storage, CDN or network calls. Bundle essential media and use offline-first playback; content updates must remain optional and secure. GitHub Actions/Pages and repository storage have quotas and policy restrictions: verify current limits and ensure jobs stop before billable overage. Public repository availability does not guarantee unlimited free bandwidth.
+- No child-facing payments, advertisements, subscriptions, monetisation prompts or paid unlocks. Preserve parental controls, safety gates, signing and secure updates.
+- Add ZERO-COST GATE to every agent work package: capture exact tool/license/version, expected recurring cost, hosting/bandwidth dependency, free-tier quota and fallback. Reject any implementation with a mandatory nonzero cost or unknown license.
+- Acceptance: V4 APK and all core features work offline with no paid account or credit card; CI/build and media-production processes have a documented zero-cost path; all dependencies and assets have a verified license inventory. Where zero-cost availability cannot be confirmed, mark BLOCKED rather than assuming it.
