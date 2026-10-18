@@ -48,6 +48,43 @@ class SignedContentPackVerifierTest {
         rejects("path traversal") { SignedContentPackVerifier.verifyAndStage(archive("content/../escape.json", "[]".toByteArray(), 4), createTempDir(), pair.public, "test-key", 5, 3, 1000) }
     }
 
+    @Test fun rejectsOversizedEntryBeforeCreatingStageDirectory() {
+        val temp = createTempDir(prefix = "pack-oversize-")
+        val stage = File(temp, "stage")
+        val data = ByteArray(12 * 1024 * 1024 + 1) { 'x'.code.toByte() }
+        rejects("entry exceeds limit") {
+            SignedContentPackVerifier.verifyAndStage(
+                archive("content/recipes.json", data, 4),
+                stage,
+                pair.public,
+                "test-key",
+                5,
+                3,
+                1000
+            )
+        }
+        assertFalse(stage.exists())
+        temp.deleteRecursively()
+    }
+
+    @Test fun rejectsUnsupportedMediaTypeAndTruncatedArchive() {
+        rejects("unsupported media type") {
+            SignedContentPackVerifier.verifyAndStage(
+                archive("content/recipes.json", "[]".toByteArray(), 4, mediaType = "text/html"),
+                createTempDir(),
+                pair.public,
+                "test-key",
+                5,
+                3,
+                1000
+            )
+        }
+        val truncated = archive("content/recipes.json", "[]".toByteArray(), 4).copyOf(16)
+        rejects("truncated archive") {
+            SignedContentPackVerifier.verifyAndStage(truncated, createTempDir(), pair.public, "test-key", 5, 3, 1000)
+        }
+    }
+
     @Test fun rejectsImagePayloadWithIncorrectMagicBytes() {
         rejects("invalid image bytes") {
             SignedContentPackVerifier.verifyAndStage(
