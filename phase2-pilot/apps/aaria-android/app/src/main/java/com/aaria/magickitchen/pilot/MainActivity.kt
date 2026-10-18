@@ -267,6 +267,7 @@ class ShareBridge(private val activity: Activity) {
 
     @JavascriptInterface
     fun sharePost(dataUrl: String, title: String) {
+        if (!NativeBridgeInputPolicy.isSharePostWithinLimits(dataUrl, title)) return
         val prefix = when {
             dataUrl.startsWith("data:image/png;base64,") -> "data:image/png;base64,"
             dataUrl.startsWith("data:image/jpeg;base64,") -> "data:image/jpeg;base64,"
