@@ -202,7 +202,23 @@ render();
 let v3ProfileState = { profiles: [], activeId: null, profile: null };
 let v3ProfileInitComplete = false;
 let v3ProfileSaveWrapped = false;
-function v3ParseProfileState(raw){try{const x=JSON.parse(raw||'{}');return x&&Array.isArray(x.profiles)?x:{profiles:[],activeId:null,snapshot:{}}}catch{return {profiles:[],activeId:null,snapshot:{}}}}
+function v3ParseProfileState(raw){
+ try{
+  const x=typeof raw==='string'?JSON.parse(raw||'{}'):raw;
+  if(!x||typeof x!=='object'||!Array.isArray(x.profiles))return {profiles:[],activeId:null,snapshot:{}};
+  const seen=new Set(),profiles=[];
+  for(const p of x.profiles){
+   if(!p||typeof p!=='object'||Array.isArray(p)||typeof p.id!=='string')continue;
+   const id=p.id.trim();if(!id||seen.has(id))continue;seen.add(id);
+   const snapshot=p.snapshot&&typeof p.snapshot==='object'&&!Array.isArray(p.snapshot)?p.snapshot:{};
+   profiles.push({...p,id,snapshot});
+  }
+  const requested=typeof x.activeId==='string'?x.activeId:null;
+  const activeId=profiles.some(p=>p.id===requested)?requested:(profiles[0]?.id||null);
+  const snapshot=x.snapshot&&typeof x.snapshot==='object'&&!Array.isArray(x.snapshot)?x.snapshot:{};
+  return {...x,profiles,activeId,snapshot};
+ }catch{return {profiles:[],activeId:null,snapshot:{}}}
+}
 function v3PersistProfileState(){if(window.AariaNative?.saveProfileSnapshot&&v3ProfileState.activeId){window.AariaNative.saveProfileSnapshot(v3ProfileState.activeId,JSON.stringify(state));return}try{const profiles=(v3ProfileState.profiles||[]).map(p=>({...p,snapshot:p.id===v3ProfileState.activeId?state:p.snapshot}));localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles,activeId:v3ProfileState.activeId||null}))}catch{}}
 function v3EmptyProfileValue(value,key){
  if(Array.isArray(value))return [];
@@ -220,7 +236,7 @@ function v3ProfileStateFor(template,snapshot){
  return {...cleared,...incoming};
 }
 function v3SetActiveProfile(result){
- const r=typeof result==='string'?v3ParseProfileState(result):result;
+ const r=v3ParseProfileState(result);
  v3ProfileState.profiles=r.profiles||[];v3ProfileState.activeId=r.activeId||null;
  const active=v3ProfileState.profiles.find(p=>p.id===v3ProfileState.activeId)||null;
  v3ProfileState.profile=active;
