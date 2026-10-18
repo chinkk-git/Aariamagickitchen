@@ -79,7 +79,7 @@ jobs:
           sdkmanager --install "$image"
           # Avoid --device here: hosted SDK images may omit the device catalog,
           # which can leave avdmanager without creating the named AVD.
-          avdmanager create avd --force -n aaria-v3-ci -k "$image"
+          printf 'no\n' | avdmanager create avd --force -n aaria-v3-ci -k "$image"
           if [[ ! -s "$HOME/.android/avd/aaria-v3-ci.ini" ]]; then
             avdmanager list avd
             echo "::error::avdmanager did not create the expected AVD."
