@@ -268,3 +268,11 @@ The user-provided screenshot of signed-release run #7 confirms checkout, Node/JD
 - Pilot run [39082636745](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745) passed on source `807520cff9594d2ae7e8d574e5c3231a31297b80`, including the full Android pilot checks.
 - Artifacts: [debug APK 12119193578](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12119193578) and [HTML 12118969797](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12118969797). The APK is debug-signed.
 - R024 still needs a high-ratio decompression case, publisher feed/trust integration, and device validation.
+
+
+## WebView share bridge size guard — CI run 119
+
+- Native `sharePost` now validates allowed PNG/JPEG data-URL prefixes, an encoded size corresponding to at most 15 MiB of decoded image data, and a 240-character title before allocating decoded image bytes.
+- Added JVM tests for the accepted and rejected boundaries, unsupported MIME type and oversized title. Existing WebView origin/path/CSP/profile/content-pack tests remain in the same Android pilot workflow.
+- Pilot run [39083638168](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168) passed on exact source `9ef44f1ffe2da57a94554d4f73611a047516a92f`. Debug APK artifact [12119168709](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168/artifacts/12119168709); generated HTML artifact [12119792034](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168/artifacts/12119792034). Both expire 2026-11-17. APK is debug-signed, not suitable for upgrading the production-signed installation.
+- R027 stays IN PROGRESS: the size guard limits one bridge operation but does not replace the global `addJavascriptInterface` with an origin-restricted asynchronous bridge. V2 resource inventory and real-device WebView/chooser/profile tests also remain open.
