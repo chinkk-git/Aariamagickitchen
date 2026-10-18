@@ -95,6 +95,8 @@ for (const recipe of pilot.recipes) {
   pilotTitles.add(recipe.record.title.toLowerCase());
   const expected=recipe.record.id;
   if (![96,97,98].includes(expected) || !['ITA','CHN'].includes(recipe.countryCode)) fail(`Pilot recipe ${expected} has an unsupported ID or country.`);
+  if (expected===97 && (!recipe.record.fact?.includes('not presented as a traditional dish') || !recipe.pt?.fact?.includes('não é apresentada como um prato tradicional'))) fail('China noodle soup facts must avoid unsupported regional-tradition claims in both locales.');
+  if (expected===98 && (!recipe.record.fact?.includes('global family cooking adaptation') || !recipe.pt?.fact?.includes('adaptação culinária global'))) fail('Air-fryer tofu must remain clearly framed as a global adaptation in both locales.');
   if (!recipe.artwork?.atlas || !recipe.artwork?.hero || recipe.artwork.reviewStatus !== 'A09 visual staging passed; runtime and final artwork review pending') fail(`Pilot artwork for ${expected} must remain clearly marked pending independent approval.`);
   for (const filename of [recipe.artwork.atlas,recipe.artwork.hero,recipe.artwork.source]) if(!fs.existsSync(path.join(here,'artwork/world-adventures',filename))) fail(`Missing local offline artwork file ${filename}.`);
   const artworkSource=fs.readFileSync(path.join(here,'artwork/world-adventures',recipe.artwork.source));
@@ -118,7 +120,7 @@ for (const recipe of pilot.recipes) {
     if(Number(nutrition[field])!==expectedValue)fail(`Pilot recipe ${expected} ${field} (${nutrition[field]}) does not reconcile to ingredients and FDC reference data (${expectedValue}).`);
   }
   const usedFdcIds=new Set(recipe.nutritionPlan.entries.filter(e=>e.key).map(e=>pilot.nutritionRefs[e.key.replace(/^v31_/,'')].fdcId));
-  if([...usedFdcIds].some(id=>!recipe.nutritionSourceUrls?.some(url=>url.includes(`food-details/${id}/nutrients`))))fail(`Pilot recipe ${expected} is missing a direct FDC record URL.`);
+  if([...usedFdcIds].some(id=>!recipe.nutritionSourceUrls?.some(url=>url===`https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=DEMO_KEY`)))fail(`Pilot recipe ${expected} is missing its direct USDA FoodData Central API record URL.`);
   if (/pizza/i.test(`${recipe.record.title} ${recipe.record.description}`)) fail('Pizza is not an eligible Italy/China pilot recipe.');
 }
 if (!runtime.includes('RECIPES.push(r)') || !runtime.includes('BATCH_ATLASES[id]=art.atlas') || !runtime.includes('data-v31-approved-recipe="${p.id}"')) fail('Offline pilot recipes and their scene atlases must enter the existing interactive recipe flow.');
