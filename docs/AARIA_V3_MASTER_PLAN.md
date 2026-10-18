@@ -197,3 +197,8 @@ The remainder of WP00–WP11 stays active: dispatch and device-test the latest s
 ### Archive-set validation checkpoint — 2026-10-18
 
 Added a signed content-pack regression proving an archive containing undeclared payload data is rejected before staging. Pilot run [39082241731](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731) passed on source `53dfd150df68c52b480b40bfbb9fb5195689ab76`, including V3 HTML/CSP/profile checks, Android unit tests, debug APK assembly and unsigned-release refusal. This is incremental WP05/R024 progress; publisher key/feed, activation UI, duplicate ZIP-name and decompression-bomb cases, plus device validation remain open. The artifact is debug-signed and not a release.
+
+
+### Duplicate ZIP member checkpoint — 2026-10-18
+
+WP05/R024 now includes a hosted regression for a structurally valid signed ZIP with a duplicate path; the verifier rejects it before staging. Pilot run [39082636745](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745) passed on source `807520cff9594d2ae7e8d574e5c3231a31297b80`. The APK/HTML artifacts [12119193578](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12119193578) and [12118969797](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12118969797) are development outputs; the APK is debug-signed. Decompression-bomb scale, publisher trust/feed, activation UI, and device verification remain open.
