@@ -34,7 +34,7 @@ The user selected the generated two-screen concept as the desired V3.1 look and 
 7. Add world recipes as unique audited records, not replacements of the existing 95. Reuse recipe rendering and shopping-list infrastructure.
 8. Keep new assets traceable: source, prompt/reference, rights, owner, review status, file size, aspect ratio, locale, recipe ID, content hash.
 9. CI: screenshot tests for home/map/detail on reference phone and tablet resolutions, portrait/landscape; contrast/touch/accessibility; offline; navigation; functional regression; no broken images; A08/A09 gates.
-10. Build a small end-to-end APK pilot (home, map, India detail, Mango Lassi recipe, passport reward), then expand only after visual/functional evidence. Do not claim pixel-perfect across all device aspect ratios.
+10. The existing project multi-agent cluster must build a small end-to-end APK pilot (home, map, India detail, Mango Lassi recipe, passport reward), then expand only after visual/functional evidence. Do not claim pixel-perfect across all device aspect ratios.
 
 ## Zero-cost mandate
 Use only free/open-source development and production tools (Android Studio, existing app stack, Inkscape, Krita, GIMP, optional Lottie). No required subscriptions, paid API credits, paid map tiles, cloud inference or unverified free trials. Verify redistribution licences of every image, map dataset, font and sound. GitHub Actions free-tier limits must be respected; no automatic billable overages.
@@ -50,3 +50,16 @@ Use only free/open-source development and production tools (Android Studio, exis
 
 ## Delivery boundaries
 This guide is committed independently of production code. The PNG must be added to `docs/assets/V3_1_Home_World_Visual_Reference.png` and linked here once the actual binary upload is verified. Do not mark the image uploaded merely because this document names it.
+
+## Autonomous project-agent execution model (mandatory)
+The project has **no external development team**. The existing Aaria's Magical Kitchen autonomous agent cluster is the sole delivery organisation. Reuse its existing agent identities, profiles, skills, governance, planner/executor/reviewer separation and evidence registers; do not create a competing cluster or assume humans will implement the plan.
+
+- Planner agent: inspect current V3 baseline, decompose V3.1 into dependency-ordered work packages, define acceptance tests and risk gates.
+- Visual/artwork agent roles: analyse the approved concept, inspect the approved character bible and original artwork, produce independent home/map/recipe assets with traceable provenance and consistent characters.
+- Android implementation agent roles: implement functional APK-first screens using the actual repository architecture, integrate world map, existing 95 recipes and newly validated international recipe records without regressions.
+- Independent reviewer and QA agents: perform screenshot comparisons, static checks, automated tests and real-device/emulator verification; report and remediate defects rather than declaring success from generated images alone.
+- A08 Child Protection & Precautions: mandatory release-blocking safety, allergens, privacy, parental sharing and child-content gate.
+- A09 Child Experience Tester (ages 8–10): mandatory release-blocking usability, navigation, language and accessibility gate.
+- Security/release/governance agent roles: preserve signing continuity, signed content packs, secure updates, profile migration, rollback protection and evidence-backed CI release.
+
+**Execution contract:** agents independently plan → implement → test → review → remediate → update requirements/status/learning registers. No routine user approvals or manual work handoffs; escalate only genuine blockers, platform permissions, irreversible external security actions or mandatory explicit consent. Existing V3 must remain protected while work occurs in the isolated V3.1 branch. A document commit is not proof the cluster is running or that an APK was built; report actual executions, commits and CI evidence only.
