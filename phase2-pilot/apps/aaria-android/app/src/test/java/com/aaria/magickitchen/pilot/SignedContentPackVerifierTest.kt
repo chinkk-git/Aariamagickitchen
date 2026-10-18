@@ -78,6 +78,29 @@ class SignedContentPackVerifierTest {
         }
     }
 
+    @Test fun rejectsUndeclaredArchiveEntryBeforeCreatingStageDirectory() {
+        val temp = createTempDir(prefix = "pack-extra-entry-")
+        val stage = File(temp, "stage")
+        rejects("undeclared archive entry") {
+            SignedContentPackVerifier.verifyAndStage(
+                archive(
+                    "content/recipes.json",
+                    "[]".toByteArray(),
+                    4,
+                    extraEntries = listOf("content/extra.json" to "{}".toByteArray())
+                ),
+                stage,
+                pair.public,
+                "test-key",
+                5,
+                3,
+                1000
+            )
+        }
+        assertFalse(stage.exists())
+        temp.deleteRecursively()
+    }
+
     @Test fun rejectsOversizedEntryBeforeCreatingStageDirectory() {
         val temp = createTempDir(prefix = "pack-oversize-")
         val stage = File(temp, "stage")
@@ -176,7 +199,8 @@ class SignedContentPackVerifierTest {
         minApp: Int = 1,
         mediaType: String = "application/json",
         zipDataOverride: ByteArray = data,
-        role: String = if (mediaType.startsWith("image/")) "artwork" else "recipe-data"
+        role: String = if (mediaType.startsWith("image/")) "artwork" else "recipe-data",
+        extraEntries: List<Pair<String, ByteArray>> = emptyList()
     ): ByteArray {
         val hash = MessageDigest.getInstance("SHA-256").digest(data).joinToString("") { "%02x".format(it) }
         val payload = JSONObject()
@@ -193,6 +217,9 @@ class SignedContentPackVerifierTest {
             ZipOutputStream(bytes).use { zip ->
                 zip.putNextEntry(ZipEntry("manifest.json")); zip.write(wrapper); zip.closeEntry()
                 zip.putNextEntry(ZipEntry(path)); zip.write(zipDataOverride); zip.closeEntry()
+                for ((extraPath, extraData) in extraEntries) {
+                    zip.putNextEntry(ZipEntry(extraPath)); zip.write(extraData); zip.closeEntry()
+                }
             }
             bytes.toByteArray()
         }
