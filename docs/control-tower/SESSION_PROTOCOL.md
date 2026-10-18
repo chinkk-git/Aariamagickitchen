@@ -51,3 +51,6 @@ Preserve all 95 original recipes, child protection A08, child experience A09, of
 
 ## Adaptive lifecycle override (Balanced)
 The [Adaptive Session Lifecycle Policy](ADAPTIVE_SESSION_LIFECYCLE.md) supersedes any time-based rotation recommendation above. Review after **20 substantial tasks** or **50 observed tool activity events**, or immediately on degraded responsiveness/context reliability. These are review triggers, **not mandatory rotation limits**. Record evidence-based pressure and checkpoint readiness; offer Continue / Prepare checkpoint / Rotate to new chat, with manual user confirmation. No exact context utilisation is measurable. This applies to CT, V3 and V3.1. A frozen chat uses emergency GitHub-based recovery and may have UNKNOWN local changes. Checkpoint instructions remain mandatory at natural milestones; no unattended background worker is created.
+
+## Control Tower chat rotation
+For a fresh Control Tower conversation read [CT_BOOTSTRAP.md](CT_BOOTSTRAP.md) and [CT_HANDOVER.md](CT_HANDOVER.md) from `main`, verify live issues/CI, and start a new CT session ID. No GitHub development branch rotation occurs. The same balanced adaptive review and manual confirmation apply.
