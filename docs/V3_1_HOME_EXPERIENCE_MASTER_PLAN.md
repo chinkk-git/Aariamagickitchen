@@ -57,3 +57,13 @@ Age 8–10 usability gate A09, child protection A08, reduced motion, contrast, s
 - Prototype B: discovery-first with featured dish and editorial card grid.
 - Prototype C: adventure-first with illustrated stations and visible cooking CTA.
 Use self-contained HTML/CSS mockups in a dedicated prototypes/ folder, not production index.html. Mockups are design demonstrations, not working recipe data integrations.
+
+## New V3.1 segment — World Food Adventure (approved concept 2026-10-18)
+- Dedicated home entry point and accessible, touch-friendly interactive world map, country navigation, country flags, short culturally accurate food facts and an optional food explorer passport with local collectible stamps.
+- Only easy, quick, kid-safe no-cook and air-fryer recipes. Label 'no-cook assembly' distinctly when ingredients require pre-cooking. No raw unsafe ingredients, no misleading cultural claims, and adult-assist gates for hot appliances, blades and allergen risks.
+- Initial destination candidates: India (Mango Lassi Magic), Italy (Mini Pizza Bites), Mexico (Guacamole Fiesta), Japan (Onigiri Rice Shapes using pre-cooked safely handled rice), Brazil (Mini Pão de Queijo). These are drafts; each requires independent recipe, nutrition, allergen, safety and cultural review before publication.
+- Each recipe must have unique ID, accurate ingredient amounts, yield, cooking/prep duration, EN-GB and pt-BR copy, child steps, adult-assist flags, allergens, validated nutrition sources, approved character and dish artwork, geographic provenance, and audit evidence.
+- New World Food Adventure recipes are additional records; never silently overwrite the original 95. Check duplicates and maintain compatibility with search, favourites, shopping list, weekly planner, offline packs, quizzes, camera sharing and profile migration.
+- World map must use properly licensed accurate boundaries in production, accessible country list as fallback, responsive landscape/portrait, low-bandwidth/offline behaviour and no paid APIs.
+- Pilot acceptance: map selection, filters, country fact, recipe detail, stamp reward, offline operation, accessibility and Android back behaviour work without breaking V3 functionality. A08/A09 release-blocking gates apply.
+- An independent self-contained HTML concept prototype was generated for user review on 2026-10-18 (Aaria_V3_1_Home_World_Prototype.html). It uses schematic illustrations and sample data, and is not a production APK or approved final art. Integrate prototype into repository only after source transfer and verification.
