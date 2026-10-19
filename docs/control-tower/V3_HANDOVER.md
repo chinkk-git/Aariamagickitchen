@@ -1,55 +1,58 @@
 # V3 — Verified recovery handover
-Snapshot: 2026-10-19 01:06 UTC | Owner: V3 | Issue: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4)
+Snapshot: 2026-10-19 01:12 UTC | Owner: V3 | Issue: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4)
 
 ## Read first
 [Session protocol](SESSION_PROTOCOL.md) · [Adaptive lifecycle policy](ADAPTIVE_SESSION_LIFECYCLE.md) · [Control Tower contract](../CONTROL_TOWER_PROTOCOL.md) · [Integration #7](https://github.com/chinkk-git/Aariamagickitchen/issues/7). Re-verify GitHub state on every new session.
 
 ## Repository state
 - Repo: `chinkk-git/Aariamagickitchen`
-- Assigned implementation branch: `codex/v3-completion-core-20261017`. Existing branch preserved; no V3.1 changes or merge.
-- Latest branch head: `5285ab70660f3e7d53febb63465893c475bc4810`; commit parent `a3e1067c0d4f60845c3ac3621a0feb452dca0bb3`.
-- Session `V3-20261019-0148-UTC` posted RECOVERY ACK to Issue #4. Recent Issue #4 comments showed no competing V3 writer.
-- New V3-03 change: local snapshot fallback now records per-profile native-save-pending IDs; on next native profile initialization/activation, restore pending local snapshot before display, retry SQLite save, and retain/clear the marker according to retry result. Removed a second localStorage write that discarded the marker. Regression exercises stale native progress/favourites, repeated retry failure and later success.
-- [Draft PR #2](https://github.com/chinkk-git/Aariamagickitchen/pull/2) remains open/draft V3 -> `feature/platform-v3`, not approved or merged.
+- Assigned branch: `codex/v3-completion-core-20261017`. No V3.1 edits or merge.
+- Current branch head: `5eff7b8f5288291fcc32aa437336ce37529549c8` (parent-install guide documentation only); latest app code: `5285ab70660f3e7d53febb63465893c475bc4810`.
+- Session `V3-20261019-0148-UTC` posted RECOVERY ACK. Recent Issue #4 comments showed no competing writer.
+- App fix `5285ab7`: profile JS now records per-profile native-save-pending IDs, restores a pending local snapshot over stale native initialization, retries persistence at startup/profile activation, and retains/clears the marker based on the result. Regression covers stale native progress/favorites, repeated failure, and eventual recovery.
+- Parent guide commit `5eff7b8`: requires a parent/guardian to personally initiate and approve APK installs/updates, clarifies Android's confirmation is not parental evidence, and states no in-app update feed or parent-verification gate exists.
+- [Draft PR #2](https://github.com/chinkk-git/Aariamagickitchen/pull/2) remains open/draft to `feature/platform-v3`; no merge.
 
-## CI and artifacts
-- New-head [run 39183621624](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624) is queued on `5285ab7`; no CI or new-head artifact result yet.
-- Local checks on the exact committed files passed: profile isolation regression; `node --check`; V3 transform; 95 recipes/95 IDs; approved Chef A/B source checksums; CSP policy; phase2-pilot Node tests (12/12); recipe validator; artwork validator; `git diff --check`.
-- Gradle/Android SDK are not installed in this work runtime; Android unit tests and APK/emulator run are NOT RUN locally. Await hosted CI.
-- Last green exact-head CI before this change: [run 39181546014](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39181546014) at `a3e1067`.
-- Last available APK artifact: [12156651628](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39181546014/artifacts/12156651628), 23,130,318 bytes, ZIP SHA-256 `f8ec9d965963ca80f01840731ff31b59ceb087e589dfc84176a45add35d785cf`, package `com.aaria.magickitchen.pilot`, versionCode 7, versionName 1.0.3; debug APK, not signed release candidate and built from prior head.
-- Prior-head emulator diagnostics [12156601773](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39181546014/artifacts/12156601773) and HTML [12156601789](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39181546014/artifacts/12156601789). Prior evidence: install Success; cold MainActivity launch/status ok; rotation-setting process check; Back to launcher; airplane-mode force-stop then cold offline startup. Hosted emulator only, no physical-device claim. Do not attribute this evidence to `5285ab7` until new CI passes.
+## CI and artifact evidence
+- [Workflow run 39183621624](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624) completed success on app-code SHA `5285ab70660f3e7d53febb63465893c475bc4810`. Branch head then advanced only by doc commit `5eff7b8`; android-pilot path filters exclude that doc.
+- Passed: 95-recipe/ID and approved artwork checks; profile adapter and failed-native-save recovery regression; Android JVM/WebView tests; APK assembly; strict install/launch emulator gate; unsigned-release refusal; all artifact uploads.
+- APK artifact [12157382105](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624/artifacts/12157382105), 23,130,686 bytes, artifact ZIP SHA-256 `a80d5e70cd5cef030912a820a4fe62e0c6c79c77bbeaa6e6b1777699a84c644b`. Package `com.aaria.magickitchen.pilot`, versionCode 7, versionName 1.0.3. Debug-signed; not a signed release candidate.
+- HTML artifact [12157765144](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624/artifacts/12157765144), ZIP digest `b2a25f5d136b1c139e2bbaf0d03be4e8fd7cf7c1c4a2959d7732d69b57bb5cd5`.
+- Emulator diagnostics [12157347383](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624/artifacts/12157347383), ZIP digest `17f054e6f5d4c88e50dc23b4e54cae60ec696fc67413daa5d59273cf36406a14`.
+- Emulator at app code SHA `5285ab7`: adb install Success; MainActivity Status=ok, LaunchState=COLD; Android Back returned to Nexus Launcher; airplane mode state=1; after force-stop, offline MainActivity Status=ok, LaunchState=COLD. All workflow steps passed. This is fresh install/start evidence, **not** a signed upgrade, profile before/after migration comparison, or physical-device test.
+- Previous emulator root cause was runner denied access to /dev/kvm (root:kvm 0660); ephemeral runner-group permission and accel-check fixed it. Old protected broadcast and strict-pipefail test harness issues are corrected.
 
 ## Delivery checklist
-- V3-01 IN PROGRESS: provenance and installable debug APK verified at prior head; current-head signed release, fingerprint and same-signer upgrade blocked on protected signing access.
-- V3-02 VERIFIED at prior head in hosted emulator CI; current-head rerun pending. Physical phone/tablet and visual layout checks pending.
-- V3-03 IN PROGRESS: Aaria migration idempotency, malformed recovery, two-profile isolation, favourites/progress tests exist. New failure-recovery fix at `5285ab7`; hosted CI pending. Real same-signer upgrade and before/after state comparison require signed APK/device.
-- V3-04/05 IN PROGRESS: signed manifest/key-ID/hash/expiry/version/replay/data-only/path/size tests and atomic rollback/recovery tests exist. Publisher trust root is absent; signed pack install, disk-full and actual device-crash evidence pending. Fail closed without trust root.
-- V3-06 BLOCKED: protected release-signing dispatch/access, signer continuity and parent-confirmed install/update evidence unavailable; parent install guide remains draft.
-- V3-07 PARTIAL: WebView origin/CSP/navigation and camera-only picker boundary tests pass; external navigation/share/camera interaction matrix pending.
-- V3-08 VERIFIED source/test/CI at prior head: user-opened, skippable/replayable three-step EN-GB/pt-BR tour; no cooking interruption. New-head CI pending.
-- V3-09 IN PROGRESS: recipe/art validation passes locally and at prior CI; full primary-flow interaction matrix and A08/A09 review/signoff pending.
-- V3-10 IN PROGRESS: independent review and evidence matrix remain.
-- NOT CLAIMED: signed current-head APK, signer continuity, physical-device verification, current-head emulator pass, full disk-full rollback proof, final A08/A09 signoff.
+- V3-01 IN PROGRESS: installable debug APK and provenance current; signed current-head candidate/fingerprint/same-signer continuity blocked on protected signing access and dispatch.
+- V3-02 VERIFIED in hosted emulator for app code `5285ab7`; physical phone/tablet and visual layout remain.
+- V3-03 IN PROGRESS: legacy Aaria idempotency/malformed recovery, two-profile isolation, favorites/progress, native failure fallback/recovery tests pass CI. Real same-signer upgrade and before/after installed-profile state comparison pending signed APK/device.
+- V3-04 IN PROGRESS: content signature/key-ID/hash/app-version/expiry/anti-replay/data-only/path/size tests exist; trust-root absence fails closed. Publisher key/ID provisioning and signed install pending.
+- V3-05 IN PROGRESS: staged activation, monotonic version commit, rollback and startup recovery tests exist; disk-full/process-death filesystem/device evidence pending.
+- V3-06 BLOCKED: protected signing access/dispatch, signer continuity and parent-supervised update evidence unavailable. Parent-install guide is explicit; no app-level parent verification or update feed.
+- V3-07 PARTIAL: origin/CSP/navigation and camera-only picker guards pass tests; interactive external navigation/share/camera matrix pending.
+- V3-08 VERIFIED source/test/CI at `5285ab7`: user-opened, skippable/replayable EN-GB/pt-BR tour; no cooking interruption.
+- V3-09 IN PROGRESS: 95 recipes/art and core CI pass; full primary-flow matrix, A08 child-safety review and A09 ages 8–10 usability/accessibility sign-off pending.
+- V3-10 IN PROGRESS: independent review and complete evidence matrix remain.
+- Not claimed: current-head signed APK, signer continuity, same-signer upgrade, physical-device test, signed publisher pack install, disk-full rollback, final A08/A09 signoff.
 
 ## Session/lifecycle checkpoint
 SESSION_ID: V3-20261019-0148-UTC
-HEALTH_REVIEW_AT_UTC: 2026-10-19T01:06:00Z
-TASKS_OBSERVED: branch recovery; V3-03 defect review/fix/test/checkpoint. Best-effort task-level count.
+HEALTH_REVIEW_AT_UTC: 2026-10-19T01:12:00Z
+TASKS_OBSERVED: V3-03 recovery defect/test/CI; V3-06 parent guide; V3-01/02 artifact and emulator evidence review; V3-10 checkpoint. Best-effort count.
 TOOL_EVENTS_OBSERVED: UNKNOWN
 RESPONSIVENESS: normal
 CONTEXT_RELIABILITY: normal
-RECOVERY_FRICTION: low; ACK, exact branch SHA, issue checkpoint, queued CI and local tests recorded
+RECOVERY_FRICTION: low; ACK, exact branch SHA, green code CI, artifact and issue checkpoint recorded
 PRESSURE_SCORE: UNKNOWN (event counter unavailable)
 CONFIDENCE: medium
 DECISION: CONTINUE
 CHECKPOINT: READY
-BRANCH_HEADS: V3 `5285ab70660f3e7d53febb63465893c475bc4810`; V3.1 not modified
-ISSUES_AND_CI: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4); [new-head run 39183621624](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624)
-NEXT: inspect new-head CI; continue V3-04/05 tests and parent install guide review without weakening signer or publisher trust.
+BRANCH_HEADS: V3 `5eff7b8f5288291fcc32aa437336ce37529549c8`; V3.1 untouched
+ISSUES_AND_CI: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4); [run 39183621624](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624)
+NEXT: continue V3-04/05 and V3-07–09 source/test review that does not depend on secrets or physical devices.
 USER_ROTATION_CONFIRMATION: pending (no rotation proposed)
 
 ## Next actions
-1. Inspect [run 39183621624](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624); record exact-head test, APK and emulator results.
-2. Continue focused V3-04/05 security and recovery review; keep signing, publisher-key, physical device, parent confirmation and A08/A09 gaps visible.
-3. Keep V3.1 and integration branches untouched; do not merge.
+1. Continue independent V3-04/05 rollback/signature review and document any concrete defect with focused tests.
+2. Keep protected signing, publisher trust root, physical device, parent-supervised installation and A08/A09 sign-off as explicit open gates.
+3. Preserve V3.1/integration branches; no merge.
