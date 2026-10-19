@@ -362,7 +362,7 @@
           "ladle"
         ],
         "ingredients": [
-          "250 g cooked egg noodles, prepared by an adult",
+          "250 g cooked plain egg noodles, cooked without added salt and prepared by an adult",
           "120 g pak choi, washed",
           "80 g fresh shiitake mushrooms, washed and sliced by an adult",
           "10 g fresh ginger, peeled and thinly sliced by an adult",
@@ -399,7 +399,7 @@
             "sugarG": 1.1,
             "sodiumMg": 122
           },
-          "source": "USDA FoodData Central SR Legacy FDC 168926, 170390, 169242, 169231, 169230, 173468; ingredient-weight calculation in this file. Water contributes no nutrients.",
+          "source": "USDA FoodData Central SR Legacy FDC 168926 (unenriched egg noodles, cooked without added salt), 170390, 169242, 169231, 169230, 173468; ingredient-weight calculation in this file. Packaged noodle products may differ, and water contributes no nutrients.",
           "calculationStatus": "Calculated directly from the FDC nutrient references and listed ingredient weights in this pilot file; independent nutrition review pending."
         }
       },
@@ -414,7 +414,7 @@
           "Um adulto serve a sopa em tigelas rasas, longe do fogão. Deixe esfriar até uma temperatura segura antes de comer."
         ],
         "ingredients": [
-          "250 g de macarrão com ovo cozido e preparado por um adulto",
+          "250 g de macarrão simples com ovo cozido sem sal adicionado e preparado por um adulto",
           "120 g de pak choi lavado",
           "80 g de cogumelos shiitake frescos, lavados e fatiados por um adulto",
           "10 g de gengibre fresco, descascado e fatiado por um adulto",
@@ -434,7 +434,7 @@
         "serving": "1 small bowl",
         "entries": [
           {
-            "text": "250 g cooked egg noodles, without added salt",
+            "text": "250 g cooked plain egg noodles, cooked without added salt",
             "key": "v31_egg_noodles",
             "grams": [
               250,
