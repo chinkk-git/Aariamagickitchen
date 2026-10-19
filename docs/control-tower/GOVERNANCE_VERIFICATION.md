@@ -28,3 +28,9 @@ Status: partial validation, 2026-10-18. Do not mistake this for full production 
 5. After review, merge this governance-only branch to main; update Control Tower bootstrap references if needed.
 
 No V3/V3.1 branch or application source edits. A08/A09 and A10 retry constraints remain authoritative.
+
+## Additional validation checkpoint — 2026-10-18
+- Validator strengthened on governance branch at commit `e37e5865a493233c9f1fcc83f2b6df36427ef088`: explicit A08/A09/security PASS, device PASS, known signer class, artwork visual nonapplicability rationale and production signer/upgrade/rollback/parent-confirmation gates. An independently constructed equivalent local validator passed 14 scenarios; the exact committed script has not been executed in GitHub CI. Do not represent this as CI green.
+- V3.1 branch source `tools/v3/validate-v31.mjs` confirms exactly 95 original recipe IDs and uniqueness are asserted. This is a catalogue invariant, not 95 approved art bundles.
+- V3.1 `tools/v3/data/world-adventure-pilot.json` identifies new recipe IDs 96+ as review-pilot; its artwork metadata says independent final scene approval pending. Keep draft IDs outside the original 95 coverage denominator.
+- Full per-ID/per-asset inventory, integrated APK render, screenshot comparison and independent A08/A09 approval remain NOT VERIFIED. No fabricated coverage counts or production promotion.
