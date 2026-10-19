@@ -80,6 +80,7 @@ jobs:
           mkdir -p "$key_dir"
           keytool -genkeypair -noprompt -keystore "$key_dir/debug.keystore" -storepass android -keypass android -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=V3 CI Debug,O=Aaria,C=US"
           export V3_CI_DEBUG_KEYSTORE="$key_dir/debug.keystore"
+          echo "V3_CI_DEBUG_KEYSTORE=$key_dir/debug.keystore" >> "$GITHUB_ENV"
           python3 - "$gradle_file" <<'PY'
           import pathlib, sys
           path = pathlib.Path(sys.argv[1])
