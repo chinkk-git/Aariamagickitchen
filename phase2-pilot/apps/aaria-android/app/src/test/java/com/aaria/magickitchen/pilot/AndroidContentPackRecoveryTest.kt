@@ -39,6 +39,28 @@ class AndroidContentPackRecoveryTest {
         preferences.edit().clear().commit()
     }
 
+    @Test fun deniedParentApprovalNeverActivatesContent() {
+        var activationCalled = false
+        try {
+            activateAfterParentConfirmation(false) {
+                activationCalled = true
+                "activated"
+            }
+            throw AssertionError("Denied parent approval must reject activation")
+        } catch (_: SecurityException) { }
+        assertFalse(activationCalled)
+    }
+
+    @Test fun acceptedParentApprovalActivatesExactlyOnce() {
+        var activationCount = 0
+        val result = activateAfterParentConfirmation(true) {
+            activationCount += 1
+            "activated"
+        }
+        assertEquals("activated", result)
+        assertEquals(1, activationCount)
+    }
+
     @Test fun refusesInstallationWhenPublisherTrustAssetsAreAbsent() {
         val repository = AndroidContentPackRepository(app, null, null)
         val encoded = Base64.encodeToString(byteArrayOf(1), Base64.NO_WRAP)
