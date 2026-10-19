@@ -87,6 +87,24 @@ class ProfileStoreDatabaseTest {
         assertTrue(restored.getJSONObject("snapshot").getJSONObject("weeks").getJSONObject("week-1").getBoolean("day-1"))
     }
 
+    @Test fun chefChoiceCannotMutateInactiveProfile() {
+        val first = store.createProfile("First", "CHEF_A", "{}")
+        val firstId = first.getString("activeId")
+        val second = store.createProfile("Second", "CHEF_B", "{}")
+        val secondId = second.getString("activeId")
+
+        assertFalse(store.chooseChef(firstId, "CHEF_B"))
+        val stillSecond = store.initialize("{}")
+        assertEquals("CHEF_B", stillSecond.getJSONArray("profiles").getJSONObject(1).getString("chefId"))
+
+        val activeFirst = store.activateProfile(firstId)
+        assertTrue(store.chooseChef(activeFirst.getString("activeId"), "CHEF_B"))
+        val updatedFirst = store.initialize("{}")
+        assertEquals("CHEF_B", updatedFirst.getJSONArray("profiles").getJSONObject(0).getString("chefId"))
+        assertEquals("CHEF_B", updatedFirst.getJSONArray("profiles").getJSONObject(1).getString("chefId"))
+        assertEquals(secondId, updatedFirst.getJSONArray("profiles").getJSONObject(1).getString("id"))
+    }
+
     companion object {
         private const val DB_NAME = "my_magical_kitchen_v3.db"
     }
