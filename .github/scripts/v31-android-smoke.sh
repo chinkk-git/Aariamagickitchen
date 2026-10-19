@@ -21,17 +21,26 @@ ANDROID_SERIAL=${ANDROID_SERIAL:-emulator-5554}
 export ANDROID_SERIAL
 wait_for_booted_device() {
   echo "Waiting for $ANDROID_SERIAL to be online and fully booted"
+  stable=0
   for attempt in $(seq 1 90); do
     state=$(adb_poll_timeout devices 2>/dev/null | awk -v serial="$ANDROID_SERIAL" '$1 == serial { print $2; exit }' || true)
     if [ "$state" = offline ]; then
       echo "$ANDROID_SERIAL is offline; requesting ADB reconnect (attempt $attempt/90)"
       adb_poll_timeout reconnect device >/dev/null 2>&1 || true
+      stable=0
     elif [ "$state" = device ]; then
       booted=$(adb_poll_timeout -s "$ANDROID_SERIAL" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' || true)
       if [ "$booted" = 1 ]; then
-        echo "$ANDROID_SERIAL is online and fully booted"
-        return 0
+        stable=$((stable + 1))
+        if [ "$stable" -ge 5 ]; then
+          echo "$ANDROID_SERIAL is online and fully booted across five consecutive checks"
+          return 0
+        fi
+      else
+        stable=0
       fi
+    else
+      stable=0
     fi
     sleep 2
   done
@@ -49,12 +58,15 @@ echo 'Starting V3.1 Android activity'
 adb_timeout shell am start -n com.aaria.magickitchen.pilot/.MainActivity
 socket=""
 for attempt in $(seq 1 30); do
-  socket=$(adb_poll_timeout shell cat /proc/net/unix | grep -o 'webview_devtools_remote_[0-9]*' | head -1 || true)
+  app_pid=$(adb_poll_timeout shell pidof com.aaria.magickitchen.pilot 2>/dev/null | tr -d '\r' | awk '{print $1}' || true)
+  if [ -n "$app_pid" ]; then
+    socket=$(adb_poll_timeout shell cat /proc/net/unix 2>/dev/null | grep -o "webview_devtools_remote_${app_pid}" | head -1 || true)
+  fi
   [ -n "$socket" ] && break
   sleep 2
 done
 test -n "$socket"
-echo "Forwarding WebView DevTools socket: $socket"
+echo "Forwarding app-owned WebView DevTools socket: $socket (app PID $app_pid)"
 adb_timeout forward tcp:9222 "localabstract:$socket"
 timeout --kill-after=10s 240s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
@@ -77,24 +89,25 @@ async function waitForRotation(expected) {
   for (let attempt=0; attempt<30; attempt++) {
     try {
       const status = adb(['shell','dumpsys','window']).toString('utf8');
-      last = status.match(/mRotation=(\d)/)?.[1] || 'unknown';
+      const rotation = status.match(/mRotation=(\d)/)?.[1] || status.match(/mRotation=ROTATION_(0|90|180|270)/)?.[1];
+      last = rotation === '90' ? '1' : rotation === '180' ? '2' : rotation === '270' ? '3' : rotation || 'unknown';
       if (last === String(expected)) return;
     } catch {}
     await pause(1000);
   }
   throw new Error(`Android display did not reach rotation ${expected}; last observed: ${last}`);
 }
-console.log('Waiting for Android WebView debugging target');
+console.log('Waiting for the app-owned Android WebView debugging target');
 let target;
 for (let attempt=0; attempt<60 && !target; attempt++) {
   try {
     const targets = await (await fetch('http://127.0.0.1:9222/json')).json();
-    target = targets.find(item => item.type === 'page' && item.webSocketDebuggerUrl);
+    target = targets.find(item => item.type === 'page' && item.webSocketDebuggerUrl && (item.url?.includes('/android_asset/index.html') || item.title?.includes('Magical Kitchen')));
   } catch {}
   if (!target) await pause(1000);
 }
 if (!target) throw new Error('Android WebView page target was not found');
-console.log('Connected WebView target:', target.title || '(untitled)', target.url || '(no URL)');
+console.log('Connected app WebView target:', target.title || '(untitled)', target.url || '(no URL)');
 const ws = new WebSocket(target.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, {once:true}); ws.addEventListener('error', reject, {once:true}); });
 console.log('WebView DevTools WebSocket opened');
@@ -102,15 +115,11 @@ console.log('Allowing the offline kitchen page to settle briefly');
 await pause(8000);
 let seq = 0;
 const pending = new Map();
-let pageLoaded = false;
-let resolvePageLoaded;
-const pageLoadEvent = new Promise(resolve => { resolvePageLoaded = resolve; });
 ws.addEventListener('message', async event => {
   let payload=event.data;
   if(typeof payload!=='string')payload=typeof payload?.text==='function'?await payload.text():Buffer.from(payload).toString('utf8');
   let message;
   try{message=JSON.parse(payload)}catch(error){console.error('Could not parse DevTools message:',String(error));return}
-  if(message.method==='Page.loadEventFired'){pageLoaded=true;resolvePageLoaded(true);return}
   if (!message.id || !pending.has(message.id)) return;
   const {resolve, reject, timer} = pending.get(message.id); pending.delete(message.id); clearTimeout(timer);
   message.error ? reject(new Error(message.error.message)) : resolve(message.result);
@@ -137,13 +146,9 @@ async function command(method, params={}) {
   ws.send(JSON.stringify({id,method,params}));
   return await result;
 }
-await command('Page.enable');
 await command('Runtime.enable');
-console.log('Waiting for WebView page-load signal');
-const loaded=pageLoaded||await Promise.race([pageLoadEvent,pause(90000).then(()=>false)]);
-console.log(loaded?'WebView page-load event received':'WebView page-load event not observed; probing current document');
 await evaluate('true');
-console.log('DevTools Runtime.evaluate responds after the page-load wait');
+console.log('DevTools Runtime.evaluate responds on the app-owned target');
 let ready = false;
 for (let attempt=0; attempt<60 && !ready; attempt++) {
   ready = await evaluate(`!!document.querySelector('#v3ProfileDialog') || !!document.querySelector('[data-v3-profile-open]')`);
@@ -151,8 +156,8 @@ for (let attempt=0; attempt<60 && !ready; attempt++) {
 }
 if (!ready) throw new Error('Android WebView did not reach profile setup or a ready home within 60 seconds');
 await evaluate(`(() => { const dialog=document.querySelector('#v3ProfileDialog'); if(!dialog) return 'existing-profile'; const name=dialog.querySelector('#v3ProfileName'); const chef=dialog.querySelector('[data-v3-chef="CHEF_A"]'); const submit=dialog.querySelector('[data-v3-profile-continue]'); if(!name||!chef||!submit) throw Error('unexpected first-run profile setup'); name.value='Preview Chef'; chef.click(); submit.click(); return 'profile-created'; })()`);
-const home = await evaluate(`!!document.querySelector('.v3-home') && !document.querySelector('#v3ProfileDialog')`);
-if (!home) throw new Error('Home screen did not appear after test profile setup');
+const homeState = await waitForVisible('.v31-home-hero h1', 'Home heading');
+if (!homeState.screen.includes('home-page') || await evaluate(`!!document.querySelector('#v3ProfileDialog')`)) throw new Error(`Home screen did not become the active page after test profile setup: ${JSON.stringify(homeState)}`);
 console.log('Android home screen loaded with the test profile');
 adb(['shell','screencap','-p','/sdcard/v31-home.png']);
 adb(['pull','/sdcard/v31-home.png','artifacts/v31-android-screenshots/v31-home-portrait.png']);
