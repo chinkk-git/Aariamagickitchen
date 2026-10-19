@@ -29,6 +29,23 @@ private fun localErrorResponse(statusCode: Int, reasonPhrase: String): WebResour
         ByteArrayInputStream(ByteArray(0))
     )
 
+internal fun resolveChooserResult(
+    cameraCaptureUri: Uri?,
+    cameraCaptureFile: File?,
+    resultCode: Int,
+    resultOkCode: Int,
+    pickerResult: Array<Uri>?
+): Array<Uri>? {
+    if (cameraCaptureUri == null) return pickerResult
+    return if (resultCode == resultOkCode && cameraCaptureFile?.isFile == true && cameraCaptureFile.length() > 0L) {
+        arrayOf(cameraCaptureUri)
+    } else {
+        // A camera-only request must not fall through to a URI supplied by a picker or
+        // by a camera app when capture was canceled or did not produce the requested file.
+        null
+    }
+}
+
 class MainActivity : Activity() {
     private lateinit var webView: WebView
     private val contentPacks by lazy { AndroidContentPackRepository(this) }
@@ -182,12 +199,9 @@ class MainActivity : Activity() {
         if (requestCode == fileChooserRequest) {
             val captureUri = pendingCaptureUri
             val captureFile = pendingCaptureFile
-            val result = if (resultCode == RESULT_OK && captureUri != null && captureFile?.isFile == true && captureFile.length() > 0L) {
-                arrayOf(captureUri)
-            } else {
-                if (captureFile != null) captureFile.delete()
-                WebChromeClient.FileChooserParams.parseResult(resultCode, data)
-            }
+            val pickerResult = if (captureUri == null) WebChromeClient.FileChooserParams.parseResult(resultCode, data) else null
+            val result = resolveChooserResult(captureUri, captureFile, resultCode, RESULT_OK, pickerResult)
+            if (captureUri != null && result == null) captureFile?.delete()
             fileChooserCallback?.onReceiveValue(result)
             fileChooserCallback = null
             pendingCaptureUri = null
