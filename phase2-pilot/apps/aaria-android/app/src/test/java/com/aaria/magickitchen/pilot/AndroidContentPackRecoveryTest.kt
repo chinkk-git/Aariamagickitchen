@@ -65,7 +65,7 @@ class AndroidContentPackRecoveryTest {
         val repository = AndroidContentPackRepository(app, null, null)
         val encoded = Base64.encodeToString(byteArrayOf(1), Base64.NO_WRAP)
         try {
-            repository.installBase64(encoded, { _, _ -> false }, { false })
+            repository.installBase64(encoded, { _, _ -> false }, { false }, { activate -> activate() })
             throw AssertionError("Installation must fail closed without a publisher trust root")
         } catch (expected: IllegalStateException) {
             assertTrue(expected.message.orEmpty().contains("publisher key is not provisioned"))
