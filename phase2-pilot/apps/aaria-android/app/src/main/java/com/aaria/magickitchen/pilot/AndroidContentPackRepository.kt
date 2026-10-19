@@ -22,32 +22,44 @@ class AndroidContentPackRepository(
     private val active = File(root, "active")
     private val previous = File(root, "previous")
 
-    @Synchronized
-    fun installBase64(encoded: String): JSONObject {
-        require(encoded.length <= MAX_BASE64_CHARS) { "Content pack is too large" }
-        val key = publisherKey ?: throw IllegalStateException("Trusted content publisher key is not provisioned")
-        val keyId = publisherKeyId?.takeIf { it.isNotBlank() } ?: throw IllegalStateException("Trusted content publisher key ID is not provisioned")
-        recoverInterruptedActivation()
-        val bytes = Base64.decode(encoded, Base64.DEFAULT)
-        val lastVersion = prefs.getInt(KEY_VERSION, 0)
-        val stage = File(root, "staged-${System.nanoTime()}")
+    fun installBase64(encoded: String, parentApproval: (Int, Int) -> Boolean): JSONObject {
+        val pack = synchronized(this) {
+            require(encoded.length <= MAX_BASE64_CHARS) { "Content pack is too large" }
+            val key = publisherKey ?: throw IllegalStateException("Trusted content publisher key is not provisioned")
+            val keyId = publisherKeyId?.takeIf { it.isNotBlank() } ?: throw IllegalStateException("Trusted content publisher key ID is not provisioned")
+            recoverInterruptedActivation()
+            val bytes = Base64.decode(encoded, Base64.DEFAULT)
+            val lastVersion = prefs.getInt(KEY_VERSION, 0)
+            val stage = File(root, "staged-${System.nanoTime()}")
+            SignedContentPackVerifier.verifyAndStage(bytes, stage, key, keyId, BuildConfig.VERSION_CODE, lastVersion)
+        }
         try {
-            val pack = SignedContentPackVerifier.verifyAndStage(bytes, stage, key, keyId, BuildConfig.VERSION_CODE, lastVersion)
-            check(prefs.edit().putInt(KEY_PENDING, pack.version).commit()) { "Could not persist activation recovery marker" }
-            try {
-                SignedContentPackVerifier.activate(pack, active, previous) { version ->
-                    check(prefs.edit().putInt(KEY_VERSION, version).remove(KEY_PENDING).commit()) { "Could not persist accepted content version" }
-                }
-            } catch (error: Exception) {
-                // Keep KEY_PENDING for startup recovery. The swap may have reached disk even if
-                // a later preference commit or rollback operation failed.
-                throw error
+            // Prompt only after the signed package has been fully verified. Do not hold the
+            // activation monitor while a parent responds; catalog reads remain available.
+            if (!parentApproval(pack.version, pack.files.size)) {
+                throw SecurityException("Parent or guardian did not approve this content update")
             }
-            return JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
+            synchronized(this) {
+                recoverInterruptedActivation()
+                check(pack.version > prefs.getInt(KEY_VERSION, 0)) { "Content replay or concurrent activation rejected" }
+                val stageRoot = root.canonicalFile
+                val stage = pack.stagingDirectory.canonicalFile
+                check(stage.parentFile == stageRoot && stage.name.startsWith("staged-") && stage.isDirectory) {
+                    "Verified staging data is no longer available"
+                }
+                check(prefs.edit().putInt(KEY_PENDING, pack.version).commit()) { "Could not persist activation recovery marker" }
+                try {
+                    SignedContentPackVerifier.activate(pack, active, previous) { version ->
+                        check(prefs.edit().putInt(KEY_VERSION, version).remove(KEY_PENDING).commit()) { "Could not persist accepted content version" }
+                    }
+                } catch (error: Exception) {
+                    // Keep KEY_PENDING for startup recovery if the swap reached disk.
+                    throw error
+                }
+                JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
+            }
         } finally {
-            // Also remove partially staged data after validation or activation failure. If the
-            // stage was atomically renamed to active, this path no longer exists.
-            if (stage.exists()) stage.deleteRecursively()
+            if (pack.stagingDirectory.exists()) pack.stagingDirectory.deleteRecursively()
         }
     }
 
