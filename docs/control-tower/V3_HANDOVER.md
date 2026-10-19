@@ -1,5 +1,5 @@
 # V3 — Verified recovery handover
-Snapshot: 2026-10-19 01:33 UTC | Owner: V3 | Issue: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4)
+Snapshot: 2026-10-19 | Owner: V3 | Issue: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4)
 
 ## Read first
 [Session protocol](SESSION_PROTOCOL.md) · [Adaptive lifecycle policy](ADAPTIVE_SESSION_LIFECYCLE.md) · [Control Tower contract](../CONTROL_TOWER_PROTOCOL.md) · [Integration #7](https://github.com/chinkk-git/Aariamagickitchen/issues/7). Re-verify GitHub state on every new session.
@@ -75,3 +75,12 @@ USER_ROTATION_CONFIRMATION: pending (no rotation proposed)
 - V3-04/05 logic tests pass; publisher trust root and device-level disk-full/power-loss rollback evidence pending. V3-06 blocked by protected release signer/fingerprint/dispatch and in-app parent confirmation. V3-07 partial; V3-08 verified; V3-09 recipe/art inventory checks pass, A08/A09 review/signoff pending; V3-10 independent review pending.
 - Environment checkpoint: GitHub connector offers no push-run listing/dispatch for this branch; browser surface is unauthenticated. No run was fabricated. Continue when exact-head CI evidence becomes available; meanwhile continue only independent safe tests/review.
 - Adaptive lifecycle: activity threshold remains reached (>50 observed events), responsiveness/context normal, checkpoint ready, decision PREPARE. Continue from this checkpoint; no branch rotation/merge.
+
+## Latest checkpoint — 2026-10-19 | Session V3-20261019-0315-UTC
+- This section supersedes stale prior status entries above. Recovery ACK is Issue #4 comment 6265304773. A04 accountable, A07 supports, A02 remains existing sole V3 writer; recent routing found no competing writer. No V3.1 edits or merge.
+- Remote and clean clone confirm `codex/v3-completion-core-20261017` HEAD `bf43641a8f06c7d1ef6fcdc93943d40295c00008`. Issue #4 checkpoint 6265337831 records V3-03..10 task status/evidence.
+- CI 39191541530 SUCCESS at exact HEAD. Same-signer hosted emulator fixture: v6 install Success, profile seeded, in-place v7 install Success; both launch Status=ok. SHA-256 signer `6b2449fe7c3895892e7910a20a5cf3d9e3e05f76e4de62520edce751994e7b73`; v6/v7 profile DB images match SHA-256 `1256ec2eec23c7c10f1f7ec61d330ce75822b0fd9f8ae4c47e864faa97df6872`, and workflow asserts favorite, completed IDs, weekly progress. This is generated debug-fixture evidence, not production APK/legacy profile or physical device.
+- APK artifact 12159944523; ZIP SHA-256 `da42655924672c2cb166e8ff64070e206721611cbe45d6562bc9d9b5766943e6`; debug APK v7 only. Diagnostics 12160625860; ZIP SHA-256 `a8e40fe73073fe74b020278e7fc09e59362d9899aabb2e485cb40eefcb5ff9ad`.
+- V3-01 production signed candidate, V3-04 publisher trust root, V3-05 device fault injection, V3-06 protected signer/in-app parent gate remain blocked. V3-07 partial; V3-08 verified; V3-09 A08/A09 review pending; V3-10 A03 independent review pending.
+- Local Node validations passed: 95 recipes/95 IDs, approved chef art checksums, CSP, profile isolation/reset, tour replay/skip review, and adapter syntax. Local Gradle unit tests NOT RUN: Gradle CLI unavailable; hosted Android CI passed its unit test step.
+- Next: continue V3-04/05/07 regression work where code-only tests permit; obtain protected signer/publisher inputs, historical production APK/device evidence, A03 review, and A08/A09 sign-off. No production signer or physical device claim.
