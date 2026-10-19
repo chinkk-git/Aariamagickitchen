@@ -31,24 +31,33 @@ class AndroidContentPackRepository(
         val bytes = Base64.decode(encoded, Base64.DEFAULT)
         val lastVersion = prefs.getInt(KEY_VERSION, 0)
         val stage = File(root, "staged-${System.nanoTime()}")
-        val pack = SignedContentPackVerifier.verifyAndStage(bytes, stage, key, keyId, BuildConfig.VERSION_CODE, lastVersion)
-        check(prefs.edit().putInt(KEY_PENDING, pack.version).commit()) { "Could not persist activation recovery marker" }
         try {
-            SignedContentPackVerifier.activate(pack, active, previous) { version ->
-                check(prefs.edit().putInt(KEY_VERSION, version).remove(KEY_PENDING).commit()) { "Could not persist accepted content version" }
+            val pack = SignedContentPackVerifier.verifyAndStage(bytes, stage, key, keyId, BuildConfig.VERSION_CODE, lastVersion)
+            check(prefs.edit().putInt(KEY_PENDING, pack.version).commit()) { "Could not persist activation recovery marker" }
+            try {
+                SignedContentPackVerifier.activate(pack, active, previous) { version ->
+                    check(prefs.edit().putInt(KEY_VERSION, version).remove(KEY_PENDING).commit()) { "Could not persist accepted content version" }
+                }
+            } catch (error: Exception) {
+                // Keep KEY_PENDING for startup recovery. The swap may have reached disk even if
+                // a later preference commit or rollback operation failed.
+                throw error
             }
-        } catch (error: Exception) {
-            // Keep KEY_PENDING for startup recovery. The swap may have reached disk even if
-            // a later preference commit or rollback operation failed.
-            throw error
+            return JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
+        } finally {
+            // Also remove partially staged data after validation or activation failure. If the
+            // stage was atomically renamed to active, this path no longer exists.
+            if (stage.exists()) stage.deleteRecursively()
         }
-        return JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
     }
 
     @Synchronized
     fun recoverInterruptedActivation() {
         val pending = prefs.getInt(KEY_PENDING, -1)
-        if (pending < 0) return
+        if (pending < 0) {
+            discardAbandonedStages()
+            return
+        }
         val activeVersion = active.takeIf { it.isDirectory }?.resolve("pack-version.txt")?.takeIf { it.isFile }?.readText()?.trim()?.toIntOrNull()
         if (activeVersion == pending) {
             check(prefs.edit().putInt(KEY_VERSION, pending).remove(KEY_PENDING).commit())
@@ -59,6 +68,15 @@ class AndroidContentPackRepository(
                 check(previous.renameTo(active)) { "Could not restore previous verified content; recovery remains pending" }
             }
             check(prefs.edit().remove(KEY_PENDING).commit()) { "Could not clear content recovery marker" }
+        }
+        discardAbandonedStages()
+    }
+
+    private fun discardAbandonedStages() {
+        root.listFiles()?.filter { it.name.startsWith("staged-") }?.forEach { stage ->
+            // Cleanup is best effort: inability to reclaim stale temporary space must not
+            // invalidate or hide the last known-good active content.
+            runCatching { stage.deleteRecursively() }
         }
     }
 

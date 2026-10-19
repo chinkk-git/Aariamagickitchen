@@ -117,6 +117,21 @@ class AndroidContentPackRecoveryTest {
         assertEquals("known-good", File(active, "sentinel.txt").readText())
     }
 
+    @Test fun removesAbandonedStagingWithoutChangingKnownGoodContent() {
+        val active = File(root, "active").apply { mkdirs() }
+        File(active, "pack-version.txt").writeText("7")
+        File(active, "sentinel.txt").writeText("known-good")
+        val abandonedStage = File(root, "staged-interrupted").apply { mkdirs() }
+        File(abandonedStage, "partial.bin").writeBytes(ByteArray(32) { 1 })
+
+        AndroidContentPackRepository(app, null, null).recoverInterruptedActivation()
+
+        assertFalse("Abandoned temporary content should be reclaimed", abandonedStage.exists())
+        assertEquals("7", File(active, "pack-version.txt").readText())
+        assertEquals("known-good", File(active, "sentinel.txt").readText())
+        assertEquals(-1, preferences.getInt("pending_content_activation_version", -1))
+    }
+
     @Test fun contentReadsWaitForActivationCriticalSection() {
         val repository = AndroidContentPackRepository(app, null, null)
         val content = File(root, "active/content").apply { mkdirs() }
