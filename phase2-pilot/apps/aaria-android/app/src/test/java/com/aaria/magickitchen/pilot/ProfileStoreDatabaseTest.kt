@@ -94,15 +94,21 @@ class ProfileStoreDatabaseTest {
         val secondId = second.getString("activeId")
 
         assertFalse(store.chooseChef(firstId, "CHEF_B"))
+        fun chefFor(snapshot: org.json.JSONObject, id: String): String {
+            val profiles = snapshot.getJSONArray("profiles")
+            return (0 until profiles.length()).map { profiles.getJSONObject(it) }
+                .first { it.getString("id") == id }.getString("chefId")
+        }
+
         val stillSecond = store.initialize("{}")
-        assertEquals("CHEF_B", stillSecond.getJSONArray("profiles").getJSONObject(1).getString("chefId"))
+        assertEquals("CHEF_B", chefFor(stillSecond, secondId))
+        assertEquals("CHEF_A", chefFor(stillSecond, firstId))
 
         val activeFirst = store.activateProfile(firstId)
         assertTrue(store.chooseChef(activeFirst.getString("activeId"), "CHEF_B"))
         val updatedFirst = store.initialize("{}")
-        assertEquals("CHEF_B", updatedFirst.getJSONArray("profiles").getJSONObject(0).getString("chefId"))
-        assertEquals("CHEF_B", updatedFirst.getJSONArray("profiles").getJSONObject(1).getString("chefId"))
-        assertEquals(secondId, updatedFirst.getJSONArray("profiles").getJSONObject(1).getString("id"))
+        assertEquals("CHEF_B", chefFor(updatedFirst, firstId))
+        assertEquals("CHEF_B", chefFor(updatedFirst, secondId))
     }
 
     companion object {
