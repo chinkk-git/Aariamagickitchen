@@ -85,7 +85,7 @@ home=function v3Home(){
   </section>
   <div class="v3-section-head"><div><h2>${pt?'Comece com uma favorita':'Start with a favourite'}</h2><p>${pt?'Seu próximo prato está esperando.':'Three ways to cook, one magical kitchen.'}</p></div><button class="text-link" data-nav="library">${pt?'Ver as 95 receitas':'See all 95'} →</button></div>
   <section class="v3-rail" aria-label="${pt?'Receitas em destaque':'Featured recipes'}">${picks.map(homeTile).join('')}</section>
-  <nav class="v3-quick-links" aria-label="${pt?'Mais atividades':'More activities'}"><button data-nav="rewards">🏆 ${pt?'Prêmios':'Awards'}</button><button data-nav="stories">🧚 ${pt?'Histórias e música':'Stories and music'}</button><button data-action="groceries-choose">🛒 ${pt?'Lista de compras':'Grocery list'}</button></nav>
+  <nav class="v3-quick-links" aria-label="${pt?'Mais atividades':'More activities'}"><button data-nav="rewards">🏆 ${pt?'Prêmios':'Awards'}</button><button data-nav="stories">🧚 ${pt?'Histórias e música':'Stories and music'}</button><button data-action="groceries-choose">🛒 ${pt?'Lista de compras':'Grocery list'}</button><button data-v3-tour-open>✨ ${pt?'Novidades':'What’s new'}</button></nav>
  </section>`;
 };
 
@@ -119,7 +119,7 @@ const v3OriginalSettings=settingsPage;
 settingsPage=function v3Settings(){
  const html=v3OriginalSettings(),pt=state.language==='pt-BR';
  state.parentContacts??={mommy:'',daddy:''};
- const form=`<section class="v3-contact-form"><h2>${pt?'Contatos da família':'Family WhatsApp contacts'}</h2><p>${pt?'Os números ficam salvos somente neste aparelho. Inclua o código do país.':'Numbers stay on this device. Enter the country code, for example +55.'}</p><label>${pt?'Mamãe':'Mommy'}<input type="tel" inputmode="tel" autocomplete="tel" data-v3-parent="mommy" value="${safe(state.parentContacts.mommy||'')}" placeholder="+55 11 99999-9999"></label><label>${pt?'Papai':'Daddy'}<input type="tel" inputmode="tel" autocomplete="tel" data-v3-parent="daddy" value="${safe(state.parentContacts.daddy||'')}" placeholder="+55 11 99999-9999"></label><small>${pt?'O WhatsApp abre a mensagem pronta; um adulto confere e envia.':'WhatsApp opens a drafted message. A parent reviews and taps Send.'}</small></section>`;
+ const form=`<section class="v3-contact-form"><h2>${pt?'Contatos da família':'Family WhatsApp contacts'}</h2><p>${pt?'Os números ficam salvos somente neste aparelho. Inclua o código do país.':'Numbers stay on this device. Enter the country code, for example +55.'}</p><label>${pt?'Mamãe':'Mommy'}<input type="tel" inputmode="tel" autocomplete="tel" data-v3-parent="mommy" value="${safe(state.parentContacts.mommy||'')}" placeholder="+55 11 99999-9999"></label><label>${pt?'Papai':'Daddy'}<input type="tel" inputmode="tel" autocomplete="tel" data-v3-parent="daddy" value="${safe(state.parentContacts.daddy||'')}" placeholder="+55 11 99999-9999"></label><small>${pt?'O WhatsApp abre a mensagem pronta; um adulto confere e envia.':'WhatsApp opens a drafted message. A parent reviews and taps Send.'}</small><button type="button" data-v3-tour-open>${pt?'Rever as novidades da cozinha':'Replay the V3 kitchen tour'}</button></section>`;
   const at=html.lastIndexOf('</section>');return at<0?html+form:html.slice(0,at)+form+html.slice(at);
 };
 
@@ -159,6 +159,28 @@ function v3OpenQuiz(id){
  document.body.insertAdjacentHTML('beforeend',`<div class="v3-modal-backdrop" id="v3QuizDialog"><section class="v3-modal" role="dialog" aria-modal="true" aria-labelledby="v3QuizTitle"><span class="v3-eyebrow">${r.emoji} ${pt?'DESAFIO DA RECEITA':'RECIPE CHALLENGE'}</span><h2 id="v3QuizTitle">${safe(question)}</h2><p>${label}</p><div class="v3-modal-options">${ordered.map((x,i)=>`<button data-v3-answer="${i}" data-v3-right="${i===right?1:0}">${safe(x)}</button>`).join('')}</div><p class="v3-quiz-feedback" aria-live="polite"></p><button class="v3-close" data-v3-dismiss>${pt?'Fechar':'Close'}</button></section></div>`);
 }
 
+function v3WhatsNewCopy(index,pt){
+ const steps=pt?[
+  {title:'Bem-vinda à cozinha V3!',body:'Explore as 95 receitas. Escolha uma com um adulto, que pode conferir ingredientes e alergias.'},
+  {title:'Planeje e brinque',body:'Sorteie uma receita, veja a semana mágica, ganhe estrelas, ou monte uma lista de compras. Peça a um adulto para revisar planos e mensagens.'},
+  {title:'Faça do seu jeito',body:'Cada chef pode ter um perfil separado. Favoritos e progresso ficam naquele perfil. Você pode rever este passeio em Configurações.'}
+ ]:[
+  {title:'Welcome to your V3 kitchen!',body:'Explore all 95 recipes. Choose one with an adult, who can check ingredients and allergies.'},
+  {title:'Plan and play',body:'Spin for a recipe, explore your magical week, collect stars, or make a shopping list. Ask an adult to review plans and messages.'},
+  {title:'Make it yours',body:'Each chef can have a separate profile. Favourites and progress stay with that profile. Replay this tour from Settings whenever you like.'}
+ ];
+ return Number.isInteger(index)&&index>=0&&index<steps.length?steps[index]:null;
+}
+let v3WhatsNewOpener=null;
+function v3OpenWhatsNew(index=0){
+ const pt=state.language==='pt-BR',step=v3WhatsNewCopy(index,pt);if(!step)return;
+ document.querySelector('#v3WhatsNew')?.remove();
+ const back=index>0?'<button type="button" data-v3-tour-step="'+(index-1)+'">'+(pt?'Voltar':'Back')+'</button>':'';
+ const forward=index<2?'<button type="button" data-v3-tour-step="'+(index+1)+'">'+(pt?'Próximo':'Next')+'</button>':'<button type="button" data-v3-tour-close>'+(pt?'Concluir':'Finish')+'</button>';
+ document.body.insertAdjacentHTML('beforeend',`<div class="v3-modal-backdrop" id="v3WhatsNew"><section class="v3-modal" role="dialog" aria-modal="true" aria-labelledby="v3WhatsNewTitle"><span class="v3-eyebrow">${pt?'✨ NOVIDADES DA COZINHA':'✨ WHAT’S NEW IN V3'}</span><h2 id="v3WhatsNewTitle">${step.title}</h2><p>${step.body}</p><p aria-live="polite">${index+1} ${pt?'de':'of'} 3</p><div class="v3-modal-options">${back}${forward}<button type="button" data-v3-tour-close>${pt?'Pular passeio':'Skip tour'}</button></div></section></div>`);
+ document.querySelector('#v3WhatsNewTitle')?.focus();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('v3WhatsNew')){document.getElementById('v3WhatsNew').remove();v3WhatsNewOpener?.focus();}});
 const v3BaseRender=render;
 render=function v3Render(){
  v3BaseRender();
@@ -167,7 +189,7 @@ render=function v3Render(){
 };
 
 document.addEventListener('click',async e=>{
- const button=e.target.closest('button');if(button?.dataset.v3Quiz){v3OpenQuiz(Number(button.dataset.v3Quiz));return}
+ const button=e.target.closest('button');if(button?.hasAttribute('data-v3-tour-open')){v3WhatsNewOpener=button;v3OpenWhatsNew(0);return}if(button?.hasAttribute('data-v3-tour-close')){document.querySelector('#v3WhatsNew')?.remove();v3WhatsNewOpener?.focus();return}if(button?.dataset.v3TourStep!==undefined){v3OpenWhatsNew(Number(button.dataset.v3TourStep));return}if(button?.dataset.v3Quiz){v3OpenQuiz(Number(button.dataset.v3Quiz));return}
  if(button?.hasAttribute('data-v3-dismiss')){button.closest('.v3-modal-backdrop')?.remove();return}
  if(button?.dataset.v3Answer!==undefined){
   const modal=button.closest('.v3-modal'),feedback=modal?.querySelector('.v3-quiz-feedback');
