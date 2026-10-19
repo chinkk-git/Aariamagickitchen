@@ -10,6 +10,10 @@
 4. Keep Google Play Protect enabled. Android may show an unfamiliar-developer warning for an app distributed outside Google Play. Continue only if the release and signer have been independently verified from the official release information.
 5. If Play Protect identifies malware or blocks the APK for a security reason, cancel installation and do not override the warning. Report the release for investigation.
 
+## Parent or guardian confirmation
+
+A parent or guardian must review the release information and personally initiate and approve every APK installation or update in Android's installer. The system installer confirmation is not itself proof of parental approval. Do not ask a child to download or approve an update, change device security settings, or dismiss a Play Protect warning. V3 currently has no in-app update feed or parent-verification gate; this release process is a supervised manual install.
+
 ## Install or update
 
 1. Open the verified APK on the Android device.
