@@ -175,6 +175,22 @@ async function waitForOrientation(landscapeExpected) {
   }
   throw new Error(`Android display did not reach ${landscapeExpected ? 'landscape' : 'portrait'} orientation; last observed rotation: ${last}`);
 }
+async function waitForWebViewOrientation(landscapeExpected) {
+  let last = null;
+  let stable = 0;
+  for (let attempt = 0; attempt < 30; attempt++) {
+    last = await evaluate(`() => ({innerWidth, innerHeight, visualWidth: visualViewport?.width ?? null, visualHeight: visualViewport?.height ?? null, orientation: screen.orientation?.type ?? 'unknown'})()`);
+    const viewportIsLandscape = last.innerWidth > last.innerHeight && (last.visualWidth === null || last.visualWidth > last.visualHeight);
+    const matches = viewportIsLandscape === landscapeExpected;
+    stable = matches ? stable + 1 : 0;
+    if (stable >= 3) {
+      console.log(`WebView viewport settled in ${landscapeExpected ? 'landscape' : 'portrait'}: ${JSON.stringify(last)}`);
+      return last;
+    }
+    await pause(500);
+  }
+  throw new Error(`Android display rotated but WebView viewport did not settle in ${landscapeExpected ? 'landscape' : 'portrait'}; last viewport: ${JSON.stringify(last)}`);
+}
 async function rotateTo(expected) {
   const landscapeExpected = expected % 2 === 1;
   for (let attempt=0; attempt<4; attempt++) {
@@ -258,6 +274,7 @@ console.log('Visible World route verified:', worldState.text);
 const worldDigest = await captureScreenshot('v31-world-portrait.png', 'World', homeDigest);
 if (homeDigest === worldDigest) throw new Error('World screenshot is byte-identical to Home; route transition was not captured');
 await rotateTo(1);
+await waitForWebViewOrientation(true);
 const landscape = await waitForVisible('.v31-world-header h1', 'World heading after rotation');
 if (!landscape.screen.includes('v31-world-screen') || !landscape.text.includes('World Food Adventures')) throw new Error('World route was lost during orientation change');
 await captureScreenshot('v31-world-landscape.png', 'World landscape', worldDigest);
@@ -266,6 +283,7 @@ const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
 if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
 console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
 await rotateTo(0);
+await waitForWebViewOrientation(false);
 const portraitWorld = await waitForVisible('.v31-world-header h1', 'World heading after returning to portrait');
 if (!portraitWorld.screen.includes('v31-world-screen') || !portraitWorld.text.includes('World Food Adventures')) throw new Error('World route was lost while returning to portrait orientation');
 const indiaCount = await evaluate(`document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length`);
