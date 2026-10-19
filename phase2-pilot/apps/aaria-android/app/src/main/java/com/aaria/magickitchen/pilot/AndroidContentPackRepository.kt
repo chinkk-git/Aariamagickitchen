@@ -10,6 +10,11 @@ import java.security.KeyFactory
 import java.security.PublicKey
 import java.security.spec.X509EncodedKeySpec
 
+internal fun <T> activateAfterParentConfirmation(approved: Boolean, activate: () -> T): T {
+    if (!approved) throw SecurityException("Parent or guardian did not approve this content update")
+    return activate()
+}
+
 /** App-private storage and monotonic activation state for verified content packs. */
 class AndroidContentPackRepository(
     context: Context,
@@ -36,10 +41,8 @@ class AndroidContentPackRepository(
         try {
             // Prompt only after the signed package has been fully verified. Do not hold the
             // activation monitor while a parent responds; catalog reads remain available.
-            if (!parentApproval(pack.version, pack.files.size)) {
-                throw SecurityException("Parent or guardian did not approve this content update")
-            }
-            synchronized(this) {
+            activateAfterParentConfirmation(parentApproval(pack.version, pack.files.size)) {
+                synchronized(this) {
                 recoverInterruptedActivation()
                 check(pack.version > prefs.getInt(KEY_VERSION, 0)) { "Content replay or concurrent activation rejected" }
                 val stageRoot = root.canonicalFile
@@ -57,6 +60,7 @@ class AndroidContentPackRepository(
                     throw error
                 }
                 JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
+                }
             }
         } finally {
             if (pack.stagingDirectory.exists()) pack.stagingDirectory.deleteRecursively()
