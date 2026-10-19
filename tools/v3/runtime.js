@@ -205,7 +205,7 @@ let v3ProfileSaveWrapped = false;
 function v3ParseProfileState(raw){
  try{
   const x=typeof raw==='string'?JSON.parse(raw||'{}'):raw;
-  if(!x||typeof x!=='object'||!Array.isArray(x.profiles))return {profiles:[],activeId:null,snapshot:{}};
+  if(!x||typeof x!=='object'||!Array.isArray(x.profiles))return {profiles:[],activeId:null,snapshot:{},...(typeof x?.error==='string'?{error:x.error}:{})};
   const seen=new Set(),profiles=[];
   for(const p of x.profiles){
    if(!p||typeof p!=='object'||Array.isArray(p)||typeof p.id!=='string')continue;
