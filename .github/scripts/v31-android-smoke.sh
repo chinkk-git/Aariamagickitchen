@@ -48,10 +48,43 @@ wait_for_booted_device() {
   echo "Timed out waiting for $ANDROID_SERIAL to become online and fully booted" >&2
   return 1
 }
+wait_for_stable_launcher() {
+  echo 'Warming Android HOME and waiting for Quickstep to settle before the app launch'
+  adb_timeout shell am start -W -a android.intent.action.MAIN -c android.intent.category.HOME
+  stable=0
+  restarted=0
+  for attempt in $(seq 1 45); do
+    windows=$(adb_poll_timeout shell dumpsys window windows 2>/dev/null || true)
+    activities=$(adb_poll_timeout shell dumpsys activity activities 2>/dev/null || true)
+    if printf '%s' "$windows" | grep -Eqi 'Window\{[^}]*Application Not Responding|WindowStateAnimator\{[^}]*Application Not Responding'; then
+      stable=0
+      if [ "$restarted" -eq 0 ]; then
+        echo 'Quickstep showed an ANR during HOME warmup; restarting launcher before app smoke'
+        adb_timeout shell am force-stop com.android.launcher3
+        adb_timeout shell am start -W -a android.intent.action.MAIN -c android.intent.category.HOME
+        restarted=1
+      fi
+    elif printf '%s' "$activities" | grep -Eq 'ResumedActivity: ActivityRecord.*com\.android\.launcher3/.uioverrides\.QuickstepLauncher'; then
+      stable=$((stable + 1))
+      if [ "$stable" -ge 3 ]; then
+        echo 'Quickstep HOME stayed resumed across three checks with no ANR window'
+        return 0
+      fi
+    else
+      stable=0
+    fi
+    sleep 2
+  done
+  printf 'launcher_preflight=failed\nrestarted=%s\n' "$restarted" > artifacts/v31-diagnostics/launcher-preflight.txt
+  echo 'Android HOME did not reach a stable Quickstep foreground without ANR' >&2
+  return 1
+}
 mkdir -p artifacts/v31-android-screenshots
+mkdir -p artifacts/v31-diagnostics
 echo 'Waiting for emulator ADB'
 adb_timeout wait-for-device
 wait_for_booted_device
+wait_for_stable_launcher
 echo 'Installing V3.1 APK'
 adb_timeout install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
 echo 'Starting V3.1 Android activity'
@@ -84,15 +117,22 @@ async function waitForVisible(selector, label) {
   }
   throw new Error(`${label} did not become visible in #screen; last state: ${last}`);
 }
+async function assertNoAndroidAnr(label) {
+  const windows = adb(['shell','dumpsys','window','windows']).toString('utf8');
+  const anrWindow = windows.match(/Window\{[^}\n]*Application Not Responding[^}\n]*\}/i)?.[0];
+  if (anrWindow) throw new Error(`${label}: Android displayed a system ANR overlay (${anrWindow})`);
+}
 async function captureScreenshot(name, label, previousDigest = null) {
   const output = `artifacts/v31-android-screenshots/${name}`;
   const pending = `${output}.pending`;
   const remote = `/sdcard/${name}`;
   for (let attempt = 0; attempt < 20; attempt++) {
+    await assertNoAndroidAnr(label);
     await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
     await pause(500);
     adb(['shell','screencap','-p',remote]);
     adb(['pull',remote,pending]);
+    await assertNoAndroidAnr(label);
     if (statSync(pending).size >= 10000) {
       const digest = createHash('sha256').update(readFileSync(pending)).digest('hex');
       if (!previousDigest || digest !== previousDigest) {
