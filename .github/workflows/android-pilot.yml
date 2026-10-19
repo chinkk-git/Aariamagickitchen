@@ -193,7 +193,7 @@ jobs:
           fi
           adb shell am force-stop "$package"
           sleep 1
-          stopped_pid="$(adb shell pidof -s "$package" | tr -d '\r')"
+          stopped_pid="$(adb shell pidof -s "$package" | tr -d '\r' || true)"
           if [[ -n "$stopped_pid" ]]; then
             echo "::error::V3 app process remained active after force-stop before offline cold launch."
             exit 1
@@ -205,7 +205,7 @@ jobs:
           fi
           offline_pid=""
           for attempt in $(seq 1 30); do
-            offline_pid="$(adb shell pidof -s "$package" | tr -d '\r')"
+            offline_pid="$(adb shell pidof -s "$package" | tr -d '\r' || true)"
             if [[ -n "$offline_pid" ]]; then break; fi
             sleep 1
           done
