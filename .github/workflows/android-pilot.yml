@@ -191,8 +191,21 @@ jobs:
           current_cert_report="$diagnostics/current-apk-certificate.txt"
           "$apksigner" verify --print-certs "$upgrade_apk" 2>&1 | tee "$fixture_cert_report"
           "$apksigner" verify --print-certs "$apk" 2>&1 | tee "$current_cert_report"
-          fixture_signer="$(sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest:[[:space:]]*//p' "$fixture_cert_report" | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
-          current_signer="$(sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest:[[:space:]]*//p' "$current_cert_report" | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
+          extract_signer_sha256() {
+            python3 - "$1" <<'PY'
+          import pathlib, re, sys
+          report = pathlib.Path(sys.argv[1]).read_text(errors="replace")
+          matches = re.findall(r"^\s*(?:Signer #\d+ certificate|V\d+ Signer: certificate) SHA-256 digest:\s*([0-9a-fA-F:]+)\s*$", report, re.MULTILINE)
+          if len(matches) != 1:
+              raise SystemExit(f"Expected exactly one apksigner SHA-256 signer line; found {len(matches)}")
+          fingerprint = matches[0].replace(":", "").lower()
+          if not re.fullmatch(r"[0-9a-f]{64}", fingerprint):
+              raise SystemExit("Apksigner signer fingerprint is not 32-byte SHA-256 hex")
+          print(fingerprint)
+          PY
+          }
+          fixture_signer="$(extract_signer_sha256 "$fixture_cert_report")"
+          current_signer="$(extract_signer_sha256 "$current_cert_report")"
           printf 'fixture_signer_sha256=%s\ncurrent_signer_sha256=%s\n' "$fixture_signer" "$current_signer" | tee "$diagnostics/upgrade-signing.txt"
           if [[ ! "$fixture_signer" =~ ^[0-9a-f]{64}$ || ! "$current_signer" =~ ^[0-9a-f]{64}$ ]]; then
             echo "::error::Could not parse a SHA-256 signer fingerprint from both APKs."
