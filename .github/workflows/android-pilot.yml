@@ -90,8 +90,19 @@ jobs:
           echo "::group::Runner and emulator diagnostics"
           free -h
           nproc
-          if [[ -e /dev/kvm ]]; then ls -l /dev/kvm; else echo "/dev/kvm is unavailable"; fi
-          "$ANDROID_HOME/emulator/emulator" -accel-check || true
+          id
+          if [[ ! -e /dev/kvm ]]; then
+            echo "::error::KVM device is unavailable on this runner."
+            exit 1
+          fi
+          ls -l /dev/kvm
+          sudo chgrp "$(id -gn)" /dev/kvm
+          sudo chmod g+rw /dev/kvm
+          ls -l /dev/kvm
+          if ! "$ANDROID_HOME/emulator/emulator" -accel-check; then
+            echo "::error::Runner user still cannot use KVM after the scoped device permission fix."
+            exit 1
+          fi
           avdmanager list avd
           cat "$ANDROID_AVD_HOME/aaria-v3-ci.ini"
           cat "$ANDROID_AVD_HOME/aaria-v3-ci.avd/config.ini"
