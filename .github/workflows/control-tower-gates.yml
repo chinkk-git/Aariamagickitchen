@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate task and release manifest
-        run: python3 control-tower/validate.py
+        run: |\n          python3 control-tower/validate.py\n          python3 control-tower/test_orchestration.py\n          python3 control-tower/test_release_gates.py
       - name: Publish summary
         if: always()
         run: |
