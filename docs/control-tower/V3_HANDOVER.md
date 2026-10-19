@@ -1,5 +1,5 @@
 # V3 — Verified recovery handover
-Snapshot: 2026-10-19 01:12 UTC | Owner: V3 | Issue: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4)
+Snapshot: 2026-10-19 01:15 UTC | Owner: V3 | Issue: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4)
 
 ## Read first
 [Session protocol](SESSION_PROTOCOL.md) · [Adaptive lifecycle policy](ADAPTIVE_SESSION_LIFECYCLE.md) · [Control Tower contract](../CONTROL_TOWER_PROTOCOL.md) · [Integration #7](https://github.com/chinkk-git/Aariamagickitchen/issues/7). Re-verify GitHub state on every new session.
@@ -7,14 +7,16 @@ Snapshot: 2026-10-19 01:12 UTC | Owner: V3 | Issue: [#4](https://github.com/chin
 ## Repository state
 - Repo: `chinkk-git/Aariamagickitchen`
 - Assigned branch: `codex/v3-completion-core-20261017`. No V3.1 edits or merge.
-- Current branch head: `5eff7b8f5288291fcc32aa437336ce37529549c8` (parent-install guide documentation only); latest app code: `5285ab70660f3e7d53febb63465893c475bc4810`.
+- Current branch head: `6b7fae2ae95c0853915fafc19a29332646fe386c`; app runtime fix: `5285ab70660f3e7d53febb63465893c475bc4810`; latest commit adds a Robolectric SQLite store-recreation test. Parent-install guide docs commit: `5eff7b8f5288291fcc32aa437336ce37529549c8`.
 - Session `V3-20261019-0148-UTC` posted RECOVERY ACK. Recent Issue #4 comments showed no competing writer.
 - App fix `5285ab7`: profile JS now records per-profile native-save-pending IDs, restores a pending local snapshot over stale native initialization, retries persistence at startup/profile activation, and retains/clears the marker based on the result. Regression covers stale native progress/favorites, repeated failure, and eventual recovery.
 - Parent guide commit `5eff7b8`: requires a parent/guardian to personally initiate and approve APK installs/updates, clarifies Android's confirmation is not parental evidence, and states no in-app update feed or parent-verification gate exists.
+- V3-03 test commit `6b7fae2`: verifies favourites, completed recipes and weekly progress survive closing/recreating the SQLite profile helper; current CI pending.
 - [Draft PR #2](https://github.com/chinkk-git/Aariamagickitchen/pull/2) remains open/draft to `feature/platform-v3`; no merge.
 
 ## CI and artifact evidence
-- [Workflow run 39183621624](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624) completed success on app-code SHA `5285ab70660f3e7d53febb63465893c475bc4810`. Branch head then advanced only by doc commit `5eff7b8`; android-pilot path filters exclude that doc.
+- [Workflow run 39184100139](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39184100139) is in progress at current head `6b7fae2ae95c0853915fafc19a29332646fe386c` (profile DB test; APK/emulator result pending).
+- Prior [run 39183621624](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624) completed success on runtime SHA `5285ab70660f3e7d53febb63465893c475bc4810`; branch then had a doc-only commit `5eff7b8`, excluded by pilot path filters.
 - Passed: 95-recipe/ID and approved artwork checks; profile adapter and failed-native-save recovery regression; Android JVM/WebView tests; APK assembly; strict install/launch emulator gate; unsigned-release refusal; all artifact uploads.
 - APK artifact [12157382105](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624/artifacts/12157382105), 23,130,686 bytes, artifact ZIP SHA-256 `a80d5e70cd5cef030912a820a4fe62e0c6c79c77bbeaa6e6b1777699a84c644b`. Package `com.aaria.magickitchen.pilot`, versionCode 7, versionName 1.0.3. Debug-signed; not a signed release candidate.
 - HTML artifact [12157765144](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624/artifacts/12157765144), ZIP digest `b2a25f5d136b1c139e2bbaf0d03be4e8fd7cf7c1c4a2959d7732d69b57bb5cd5`.
@@ -47,9 +49,9 @@ PRESSURE_SCORE: UNKNOWN (event counter unavailable)
 CONFIDENCE: medium
 DECISION: CONTINUE
 CHECKPOINT: READY
-BRANCH_HEADS: V3 `5eff7b8f5288291fcc32aa437336ce37529549c8`; V3.1 untouched
-ISSUES_AND_CI: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4); [run 39183621624](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39183621624)
-NEXT: continue V3-04/05 and V3-07–09 source/test review that does not depend on secrets or physical devices.
+BRANCH_HEADS: V3 `6b7fae2ae95c0853915fafc19a29332646fe386c`; V3.1 untouched
+ISSUES_AND_CI: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4); [current run 39184100139](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39184100139)
+NEXT: inspect run 39184100139; then continue V3-04/05 and V3-07–09 source/test review that does not depend on secrets or physical devices.
 USER_ROTATION_CONFIRMATION: pending (no rotation proposed)
 
 ## Next actions
