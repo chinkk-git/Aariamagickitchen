@@ -46,3 +46,12 @@ Single writer per development branch. Control Tower/A10 writes coordination only
 
 ## Cost-free preference
 Use the existing hourly ChatGPT automation; no new paid services, automation slots, cron-based GitHub watchdog or CI run merely to check status. Any actual CI retry uses GitHub Actions quota and is conditional on no incremental charge. Monitoring does not imply guaranteed Work-session uptime.
+
+## Session state vs GitHub evidence — mandatory three-way classification
+For each of V3 and V3.1, report **session status separately from CI/GitHub activity**:
+
+1. **SESSION RUNNING — CONFIRMED:** recent direct evidence from the actual ChatGPT Work session or explicit fresh user confirmation, with source and timestamp. User confirmation expires as a live heartbeat when no longer current; do not extrapolate indefinitely.
+2. **GITHUB ACTIVITY DETECTED — SESSION UNVERIFIED:** recent commit, Actions run, issue comment or artifact, but no direct Work-session observation. Green CI is evidence of CI execution, not proof an autonomous Work session is running.
+3. **SESSION STATUS UNKNOWN:** no sufficiently recent direct Work-session evidence and no sufficiently recent GitHub activity. Lack of GitHub activity does not prove a stopped session.
+
+The >30-minute warning and >60-minute suspected-stall thresholds concern observable **evidence freshness**, never definitive Work-session termination. State the GitHub/CI condition independently. Do not call a session 'active' from CI or GitHub alone. Hourly user-facing heartbeat stays at 1–3 short lines; the on-demand A10 dashboard includes per-stream classification, source, time and any recovery action. Never launch or replace a Work writer solely on CI status.
