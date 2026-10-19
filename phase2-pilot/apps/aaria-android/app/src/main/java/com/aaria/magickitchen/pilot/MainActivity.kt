@@ -54,11 +54,23 @@ internal fun resolveChooserResult(
 
 class MainActivity : Activity() {
     private lateinit var webView: WebView
+    @Volatile internal var isForegroundForApproval: Boolean = false
+        private set
     private val contentPacks by lazy { AndroidContentPackRepository(this) }
     private var fileChooserCallback: ValueCallback<Array<Uri>>? = null
     private var pendingCaptureUri: Uri? = null
     private var pendingCaptureFile: File? = null
     private val fileChooserRequest = 4312
+
+    override fun onResume() {
+        super.onResume()
+        isForegroundForApproval = true
+    }
+
+    override fun onPause() {
+        isForegroundForApproval = false
+        super.onPause()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -237,6 +249,9 @@ class ShareBridge(private val activity: Activity) {
     private val profileStore by lazy { ProfileStore(activity) }
     private val contentPackRepository by lazy { AndroidContentPackRepository(activity) }
 
+    private fun isApprovalActivityForeground(): Boolean =
+        activity is MainActivity && activity.isForegroundForApproval
+
     private fun confirmParentContentUpdate(version: Int, fileCount: Int): Boolean {
         // A WebView JavaScript bridge call runs off the UI thread. Fail closed if that changes.
         if (Looper.myLooper() == Looper.getMainLooper()) return false
@@ -244,7 +259,7 @@ class ShareBridge(private val activity: Activity) {
         val approved = AtomicBoolean(false)
         val dialog = AtomicReference<AlertDialog?>()
         activity.runOnUiThread {
-            if (activity.isFinishing || activity.isDestroyed) {
+            if (activity.isFinishing || activity.isDestroyed || !isApprovalActivityForeground()) {
                 completed.countDown()
             } else {
                 dialog.set(
@@ -261,7 +276,7 @@ class ShareBridge(private val activity: Activity) {
         }
         val deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(60)
         while (completed.count > 0 && System.nanoTime() < deadline) {
-            if (activity.isFinishing || activity.isDestroyed) {
+            if (activity.isFinishing || activity.isDestroyed || !isApprovalActivityForeground()) {
                 activity.runOnUiThread { dialog.getAndSet(null)?.dismiss() }
                 return false
             }
@@ -271,12 +286,12 @@ class ShareBridge(private val activity: Activity) {
             activity.runOnUiThread { dialog.getAndSet(null)?.dismiss() }
             return false
         }
-        return approved.get() && !activity.isFinishing && !activity.isDestroyed
+        return approved.get() && !activity.isFinishing && !activity.isDestroyed && isApprovalActivityForeground()
     }
 
     @JavascriptInterface
     fun installVerifiedContentPack(base64Zip: String): String = bridgeResult {
-        contentPackRepository.installBase64(base64Zip) { version, fileCount -> confirmParentContentUpdate(version, fileCount) }.toString()
+        contentPackRepository.installBase64(base64Zip, { version, fileCount -> confirmParentContentUpdate(version, fileCount) }, { isApprovalActivityForeground() && !activity.isFinishing && !activity.isDestroyed }).toString()
     }
 
     @JavascriptInterface
