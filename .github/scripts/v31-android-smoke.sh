@@ -151,6 +151,10 @@ const image = readFileSync('artifacts/v31-android-screenshots/v31-world-landscap
 const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
 if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
 console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
+adb(['shell','settings','put','system','user_rotation','0']);
+await pause(2000);
+const portraitWorld = await evaluate(`document.querySelector('.v31-world-page h1')?.innerText || ''`);
+if (!portraitWorld.includes('World Food Adventures')) throw new Error('World route was lost while returning to portrait orientation');
 const indiaCount = await evaluate(`document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length`);
 if (indiaCount !== 18) throw new Error(`India destination should expose its 18 original recipes; found ${indiaCount}`);
 await evaluate(`document.querySelector('[data-v31-approved-recipe="51"]').click()`);
