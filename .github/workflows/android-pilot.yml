@@ -69,8 +69,31 @@ jobs:
       - name: Test WebView asset origin policy
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
 
+      - name: Build a lower-version same-signer upgrade fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          gradle_file="phase2-pilot/apps/aaria-android/app/build.gradle.kts"
+          backup="$RUNNER_TEMP/v3-app-build.gradle.kts"
+          cp "$gradle_file" "$backup"
+          restore_gradle_file() { cp "$backup" "$gradle_file"; }
+          trap restore_gradle_file EXIT
+          python3 - "$gradle_file" <<'PY'
+          import pathlib, sys
+          path = pathlib.Path(sys.argv[1])
+          source = path.read_text()
+          if source.count("versionCode = 7") != 1:
+              raise SystemExit("Expected exactly one V3 versionCode = 7 for the upgrade fixture")
+          path.write_text(source.replace("versionCode = 7", "versionCode = 6"))
+          PY
+          gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+          mkdir -p "$RUNNER_TEMP/v3-upgrade-fixture"
+          cp phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk "$RUNNER_TEMP/v3-upgrade-fixture/app-debug-v6.apk"
+          cp "$backup" "$gradle_file"
+          trap - EXIT
+
       - name: Assemble installable APK
-        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android clean assembleDebug
       - name: Install and launch APK in Android emulator
         shell: bash
         run: |
@@ -140,10 +163,88 @@ jobs:
           adb devices -l | tee "$diagnostics/adb-ready.txt"
           adb shell getprop | tee "$diagnostics/boot-properties.txt"
           apk="phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk"
+          upgrade_apk="$RUNNER_TEMP/v3-upgrade-fixture/app-debug-v6.apk"
+          package="com.aaria.magickitchen.pilot"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          test -x "$apksigner"
+          fixture_signer="$("$apksigner" verify --print-certs "$upgrade_apk" 2>&1 | sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest: *//p' | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
+          current_signer="$("$apksigner" verify --print-certs "$apk" 2>&1 | sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest: *//p' | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
+          if [[ -z "$fixture_signer" || "$fixture_signer" != "$current_signer" ]]; then
+            echo "::error::Lower-version upgrade fixture and current debug APK do not share a signer."
+            exit 1
+          fi
+          printf 'fixture_version_code=6\ncurrent_version_code=7\nshared_debug_signer_sha256=%s\n' "$fixture_signer" | tee "$diagnostics/upgrade-signing.txt"
+          adb install "$upgrade_apk" | tee "$diagnostics/upgrade-fixture-install.txt"
+          old_version="$(adb shell dumpsys package "$package" | grep -m1 'versionCode=')"
+          printf '%s\n' "$old_version" | tee "$diagnostics/upgrade-version-before.txt"
+          if [[ "$old_version" != *"versionCode=6"* ]]; then
+            echo "::error::Installed upgrade fixture does not report versionCode 6."
+            exit 1
+          fi
+          profile_fixture="$RUNNER_TEMP/v3-upgrade-profile.db"
+          python3 - "$profile_fixture" <<'PY'
+          import sqlite3, sys
+          db = sqlite3.connect(sys.argv[1])
+          db.executescript("""
+          PRAGMA user_version=1;
+          CREATE TABLE profiles (id TEXT PRIMARY KEY NOT NULL, name TEXT NOT NULL, chef_id TEXT NOT NULL, created_at INTEGER NOT NULL);
+          CREATE TABLE profile_state (profile_id TEXT PRIMARY KEY NOT NULL REFERENCES profiles(id) ON DELETE CASCADE, snapshot TEXT NOT NULL, updated_at INTEGER NOT NULL);
+          CREATE TABLE app_meta (key TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL);
+          """)
+          db.execute("INSERT INTO profiles VALUES (?,?,?,?)", ("upgrade-profile", "Aaria", "CHEF_A", 1))
+          db.execute("INSERT INTO profile_state VALUES (?,?,?)", ("upgrade-profile", '{"favorites":["upgrade-favorite"],"done":[1,95],"weeks":{"week-1":{"day-1":true}}}', 1))
+          db.executemany("INSERT INTO app_meta VALUES (?,?)", [("legacy_v4_migration_complete", "1"), ("active_profile_id", "upgrade-profile")])
+          db.commit()
+          db.close()
+          PY
+          adb shell run-as "$package" mkdir -p databases
+          adb push "$profile_fixture" /data/local/tmp/aaria-v3-upgrade-profile.db
+          adb shell run-as "$package" cp /data/local/tmp/aaria-v3-upgrade-profile.db databases/my_magical_kitchen_v3.db
+          adb shell run-as "$package" chmod 600 databases/my_magical_kitchen_v3.db
+          adb shell am start -W -n "$package/.MainActivity" | tee "$diagnostics/upgrade-fixture-launch.txt"
+          if ! grep -Fq "Status: ok" "$diagnostics/upgrade-fixture-launch.txt"; then
+            echo "::error::Lower-version upgrade fixture failed to start."
+            exit 1
+          fi
+          adb shell am force-stop "$package"
+          adb exec-out run-as "$package" cat databases/my_magical_kitchen_v3.db > "$diagnostics/profile-before-upgrade.db"
+          python3 - "$diagnostics/profile-before-upgrade.db" <<'PY'
+          import json, sqlite3, sys
+          db = sqlite3.connect(sys.argv[1])
+          row = db.execute("SELECT snapshot FROM profile_state WHERE profile_id='upgrade-profile'").fetchone()
+          assert row is not None, "pre-upgrade profile missing"
+          state = json.loads(row[0])
+          assert state["favorites"] == ["upgrade-favorite"] and state["done"] == [1, 95], "pre-upgrade state mismatch"
+          PY
+          adb install -r "$apk" | tee "$diagnostics/current-apk-upgrade-install.txt"
+          new_version="$(adb shell dumpsys package "$package" | grep -m1 'versionCode=')"
+          printf '%s\n' "$new_version" | tee "$diagnostics/upgrade-version-after.txt"
+          if [[ "$new_version" != *"versionCode=7"* ]]; then
+            echo "::error::APK upgrade did not advance the installed app to versionCode 7."
+            exit 1
+          fi
+          adb shell am start -W -n "$package/.MainActivity" | tee "$diagnostics/upgraded-app-launch.txt"
+          if ! grep -Fq "Status: ok" "$diagnostics/upgraded-app-launch.txt"; then
+            echo "::error::Upgraded V3 APK failed to start."
+            exit 1
+          fi
+          adb shell am force-stop "$package"
+          adb exec-out run-as "$package" cat databases/my_magical_kitchen_v3.db > "$diagnostics/profile-after-upgrade.db"
+          python3 - "$diagnostics/profile-after-upgrade.db" <<'PY'
+          import json, sqlite3, sys
+          db = sqlite3.connect(sys.argv[1])
+          row = db.execute("SELECT snapshot FROM profile_state WHERE profile_id='upgrade-profile'").fetchone()
+          assert row is not None, "profile missing after APK upgrade"
+          state = json.loads(row[0])
+          assert state["favorites"] == ["upgrade-favorite"] and state["done"] == [1, 95], "favorites/progress changed after APK upgrade"
+          assert state["weeks"]["week-1"]["day-1"] is True, "weekly progress changed after APK upgrade"
+          print("Same-signer debug APK upgrade v6→v7 preserved favorites, completed recipe IDs and weekly progress.")
+          PY
+          adb uninstall "$package"
           adb install -r "$apk"
           adb logcat -c
-          adb shell am start -W -n com.aaria.magickitchen.pilot/.MainActivity
-          pid="$(adb shell pidof -s com.aaria.magickitchen.pilot | tr -d '\r')"
+          adb shell am start -W -n "$package/.MainActivity"
+          pid="$(adb shell pidof -s "$package" | tr -d '\r')"
           if [[ -z "$pid" ]]; then
             adb logcat -d
             echo "::error::V3 app process did not remain alive after launch."
@@ -156,7 +257,6 @@ jobs:
           fi
           adb shell pidof -s com.aaria.magickitchen.pilot | tee "$diagnostics/app-pid.txt"
           adb logcat -d -s AndroidRuntime:E | tee "$diagnostics/android-runtime-errors.txt"
-          package="com.aaria.magickitchen.pilot"
           adb shell settings put system accelerometer_rotation 0
           for rotation in 0 1; do
             adb shell settings put system user_rotation "$rotation"
