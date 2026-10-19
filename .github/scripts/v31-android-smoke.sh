@@ -70,7 +70,7 @@ echo "Forwarding app-owned WebView DevTools socket: $socket (app PID $app_pid)"
 adb_timeout forward tcp:9222 "localabstract:$socket"
 timeout --kill-after=10s 240s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
-const {readFileSync, statSync} = await import('node:fs');
+const {readFileSync, statSync, renameSync, unlinkSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const adb = args => execFileSync('timeout', ['--kill-after=10s','60s','adb',...args]);
@@ -83,6 +83,27 @@ async function waitForVisible(selector, label) {
     await pause(250);
   }
   throw new Error(`${label} did not become visible in #screen; last state: ${last}`);
+}
+async function captureScreenshot(name, label, previousDigest = null) {
+  const output = `artifacts/v31-android-screenshots/${name}`;
+  const pending = `${output}.pending`;
+  const remote = `/sdcard/${name}`;
+  for (let attempt = 0; attempt < 20; attempt++) {
+    await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
+    await pause(500);
+    adb(['shell','screencap','-p',remote]);
+    adb(['pull',remote,pending]);
+    if (statSync(pending).size >= 10000) {
+      const digest = createHash('sha256').update(readFileSync(pending)).digest('hex');
+      if (!previousDigest || digest !== previousDigest) {
+        renameSync(pending, output);
+        return digest;
+      }
+    }
+    try { unlinkSync(pending); } catch {}
+    await pause(1000);
+  }
+  throw new Error(`${label} screenshot framebuffer did not refresh to a distinct image after the route became active`);
 }
 async function currentRotation() {
   let last = 'unknown';
@@ -188,25 +209,18 @@ if (!homeState.screen.includes('home-page') || await evaluate(`!!document.queryS
 await rotateTo(0);
 await waitForVisible('.v31-home-hero h1', 'Home heading after portrait normalization');
 console.log('Android home screen loaded with the test profile');
-adb(['shell','screencap','-p','/sdcard/v31-home.png']);
-adb(['pull','/sdcard/v31-home.png','artifacts/v31-android-screenshots/v31-home-portrait.png']);
+const homeDigest = await captureScreenshot('v31-home-portrait.png', 'Home');
 if (statSync('artifacts/v31-android-screenshots/v31-home-portrait.png').size < 10000) throw new Error('Home screenshot is unexpectedly small');
 await evaluate(`document.querySelector('[data-v31-open-world]').click()`);
 const worldState = await waitForVisible('.v31-world-header h1', 'World Adventure heading');
 if (!worldState.screen.includes('v31-world-screen') || !worldState.text.includes('World Food Adventures')) throw new Error('World route did not replace the active screen; got: ' + JSON.stringify(worldState));
-await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
 console.log('Visible World route verified:', worldState.text);
-adb(['shell','screencap','-p','/sdcard/v31-world.png']);
-adb(['pull','/sdcard/v31-world.png','artifacts/v31-android-screenshots/v31-world-portrait.png']);
-const homeDigest = createHash('sha256').update(readFileSync('artifacts/v31-android-screenshots/v31-home-portrait.png')).digest('hex');
-const worldDigest = createHash('sha256').update(readFileSync('artifacts/v31-android-screenshots/v31-world-portrait.png')).digest('hex');
+const worldDigest = await captureScreenshot('v31-world-portrait.png', 'World', homeDigest);
 if (homeDigest === worldDigest) throw new Error('World screenshot is byte-identical to Home; route transition was not captured');
 await rotateTo(1);
 const landscape = await waitForVisible('.v31-world-header h1', 'World heading after rotation');
 if (!landscape.screen.includes('v31-world-screen') || !landscape.text.includes('World Food Adventures')) throw new Error('World route was lost during orientation change');
-await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
-adb(['shell','screencap','-p','/sdcard/v31-world-landscape.png']);
-adb(['pull','/sdcard/v31-world-landscape.png','artifacts/v31-android-screenshots/v31-world-landscape.png']);
+await captureScreenshot('v31-world-landscape.png', 'World landscape', worldDigest);
 const image = readFileSync('artifacts/v31-android-screenshots/v31-world-landscape.png');
 const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
 if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
@@ -219,9 +233,7 @@ if (indiaCount !== 18) throw new Error(`India destination should expose its 18 o
 await evaluate(`document.querySelector('[data-v31-approved-recipe="51"]').click()`);
 const recipe = await waitForVisible('.ref-hero h1', 'India recipe heading');
 if (recipe.text !== 'Masala Cheese Toast') throw new Error(`India recipe did not replace the active screen; got: ${JSON.stringify(recipe)}`);
-await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
-adb(['shell','screencap','-p','/sdcard/v31-recipe.png']);
-adb(['pull','/sdcard/v31-recipe.png','artifacts/v31-android-screenshots/v31-recipe-portrait.png']);
+await captureScreenshot('v31-recipe-portrait.png', 'Recipe', worldDigest);
 if (statSync('artifacts/v31-android-screenshots/v31-recipe-portrait.png').size < 10000) throw new Error('Recipe screenshot is unexpectedly small');
 for (const [left,right,label] of [['v31-home-portrait.png','v31-recipe-portrait.png','Recipe'],['v31-world-portrait.png','v31-recipe-portrait.png','Recipe']]) {
   const a=createHash('sha256').update(readFileSync(`artifacts/v31-android-screenshots/${left}`)).digest('hex');
