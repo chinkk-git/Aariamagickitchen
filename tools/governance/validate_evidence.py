@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Offline governance evidence validator. Stdlib only; no GitHub calls or secrets."""
 import json
+import re
 import sys
 
 STATES = {"queued", "in-progress", "blocked", "review", "verified"}
@@ -19,19 +20,33 @@ def validate(record):
         if k in record and record[k] not in RESULTS:
             errors.append("invalid " + k)
     if record.get("status") == "verified":
-        if not record.get("head_sha") or len(record["head_sha"]) != 40:
+        if not isinstance(record.get("head_sha"), str) or not re.fullmatch(r"[a-fA-F0-9]{40}", record["head_sha"]):
             errors.append("verified requires full commit SHA")
         if record.get("ci_conclusion") != "success" or not record.get("ci_url"):
             errors.append("verified requires successful linked CI")
+        if record.get("device_test") != "pass":
+            errors.append("verified requires device pass")
+        if not record.get("apk_artifact"):
+            errors.append("verified requires APK artifact")
+        if record.get("apk_signer_class") not in ("debug", "production"):
+            errors.append("verified requires known signer class")
         if record.get("regression") != "pass":
             errors.append("verified requires regression pass")
-        for k in ("device_test", "visual_review", "a08", "a09", "security_gates"):
-            if record.get(k) in ("fail", "not-run", "pending", None):
-                errors.append("verified blocked by " + k)
+        for k in ("a08", "a09", "security_gates"):
+            if record.get(k) != "pass":
+                errors.append("verified requires explicit " + k + " pass")
+        if record.get("visual_review") not in ("pass", "not-applicable"):
+            errors.append("verified requires visual review pass or justified nonapplicability")
+        if record.get("visual_review") == "not-applicable" and not record.get("visual_na_rationale"):
+            errors.append("visual nonapplicability requires rationale")
         if record.get("blockers"):
             errors.append("verified cannot have blockers")
-        if record.get("apk_signer_class") == "debug" and record.get("production_release"):
-            errors.append("debug signer cannot verify production release")
+        if record.get("production_release"):
+            if record.get("apk_signer_class") != "production":
+                errors.append("production release requires production signer")
+            for k in ("signing_continuity", "upgrade_test", "rollback_test", "parent_update_confirmation"):
+                if record.get(k) != "pass":
+                    errors.append("production release requires " + k + " pass")
     return errors
 
 def selftest():
@@ -39,15 +54,21 @@ def selftest():
                 ci_url="https://github.com/example/actions/runs/1",
                 ci_conclusion="success", apk_artifact="debug-apk",
                 apk_signer_class="debug", device_test="pass", regression="pass",
-                visual_review="not-applicable", a08="pass", a09="pass",
+                visual_review="not-applicable", visual_na_rationale="No visual changes", a08="pass", a09="pass",
                 security_gates="pass", blockers="", next="handoff", status="verified")
     assert not validate(base)
     for changes in ({"device_test":"not-run"},{"a08":"pending"},
                     {"ci_conclusion":"failure"},{"blockers":"missing approval"},
-                    {"production_release":True}):
+                    {"production_release":True}, {"a09":"not-applicable"},
+                    {"security_gates":"not-applicable"}, {"visual_na_rationale":""},
+                    {"apk_artifact":""}, {"head_sha":"invalid"}, {"regression":"not-run"}):
         assert validate({**base, **changes}), changes
     assert not validate({**base, "status":"review", "device_test":"not-run"})
-    print("PASS: 7 offline evidence-validation scenarios")
+    release = {**base, "production_release":True, "apk_signer_class":"production",
+               "signing_continuity":"pass", "upgrade_test":"pass",
+               "rollback_test":"pass", "parent_update_confirmation":"pass"}
+    assert not validate(release)
+    print("PASS: 14 offline evidence-validation scenarios")
 
 if __name__ == "__main__":
     if len(sys.argv) == 2 and sys.argv[1] == "--selftest":
