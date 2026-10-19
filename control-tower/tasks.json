@@ -65,7 +65,7 @@
       "id": "CT-TEST-LEASE",
       "issue": 11,
       "owner": "v3",
-      "status": "READY",
+      "status": "CLAIMED",
       "depends_on": [],
       "target_branch": "control-tower/lease-acceptance-20261019",
       "acceptance": [
@@ -73,7 +73,12 @@
       ],
       "evidence": [],
       "blocker": null,
-      "lease": null
+      "lease": {
+        "worker": "v3",
+        "token": "cttest-20261019-claim-a",
+        "claimed_at": "2026-10-19T23:38:48.377Z",
+        "expires_at": "2026-10-19T23:53:48.377Z"
+      }
     }
   ],
   "release": {
