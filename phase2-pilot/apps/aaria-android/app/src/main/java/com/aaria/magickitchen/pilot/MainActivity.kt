@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.net.Uri
 import android.os.Bundle
+import android.os.Build
 import android.os.Looper
 import android.provider.MediaStore
 import android.webkit.JavascriptInterface
@@ -17,6 +18,8 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 import java.io.ByteArrayInputStream
 import java.io.File
 import java.util.UUID
@@ -62,6 +65,7 @@ class MainActivity : Activity() {
     private var pendingCaptureUri: Uri? = null
     private var pendingCaptureFile: File? = null
     private val fileChooserRequest = 4312
+    private var backInvokedCallback: OnBackInvokedCallback? = null
 
     internal fun <T> withApprovalForeground(block: () -> T): T = synchronized(approvalLifecycleLock) {
         check(isForegroundForApproval && !isFinishing && !isDestroyed) {
@@ -219,6 +223,18 @@ class MainActivity : Activity() {
             loadUrl("https://appassets.androidplatform.net/index.html")
         }
         setContentView(webView)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            backInvokedCallback = OnBackInvokedCallback { handleBackNavigation() }.also { callback ->
+                onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                    callback
+                )
+            }
+        }
+    }
+
+    private fun handleBackNavigation() {
+        if (webView.canGoBack()) webView.goBack() else finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -243,13 +259,17 @@ class MainActivity : Activity() {
         fileChooserCallback = null
         pendingCaptureFile = null
         pendingCaptureUri = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            backInvokedCallback?.let { onBackInvokedDispatcher.unregisterOnBackInvokedCallback(it) }
+            backInvokedCallback = null
+        }
         webView.destroy()
         super.onDestroy()
     }
 
     @Deprecated("Android routes back navigation through the WebView before exiting the pilot.")
     override fun onBackPressed() {
-        if (webView.canGoBack()) webView.goBack() else super.onBackPressed()
+        handleBackNavigation()
     }
 }
 
