@@ -381,7 +381,7 @@
         "extras": [
           "Check egg noodle packet instructions and allergen labels. No optional ingredients are included in the nutrition calculation."
         ],
-        "fact": "This is a mild home-style adaptation for the China adventure, made with cooked egg noodles, shiitake mushrooms and pak choi; it is not presented as a traditional dish from one region.",
+        "fact": "Suzhou is known for noodles served in savoury soup. This mild family adaptation pairs cooked egg noodles, shiitake and pak choi; it is not a traditional Suzhou recipe.",
         "safety": "Contains wheat/gluten and egg. An adult handles the knife, boiling water, hob, saucepan and serving. Stay back while an adult uses knives or hot equipment. Keep children away from the hob and hot bowls. Use cooked noodles prepared by an adult; keep perishable ingredients chilled and refrigerate leftovers within two hours. Check noodle labels and avoid allergen cross-contact.",
         "allergens": [
           "wheat/gluten",
@@ -423,7 +423,7 @@
           "1 litro de água potável"
         ],
         "description": "Uma sopa suave feita com macarrão com ovo cozido, cogumelos shiitake e pak choi.",
-        "fact": "Esta é uma adaptação suave e caseira para a aventura pela China, feita com macarrão com ovo cozido, cogumelos shiitake e pak choi; não é apresentada como um prato tradicional de uma região específica.",
+        "fact": "Suzhou é conhecida por macarrão servido em sopa saborosa. Esta adaptação suave para famílias combina macarrão com ovo já cozido, shiitake e pak choi; não é uma receita tradicional de Suzhou.",
         "safety": "Contém trigo/glúten e ovo. Um adulto cuida da faca, da água fervente, do fogão, da panela e de servir. Fique afastado enquanto um adulto usa facas ou equipamentos quentes. Mantenha as crianças longe do fogão e das tigelas quentes. Use macarrão cozido por um adulto; mantenha os ingredientes perecíveis refrigerados e guarde as sobras na geladeira em até duas horas. Confira os rótulos e evite contato cruzado com alergênicos."
       },
       "nutritionPlan": {
@@ -507,7 +507,8 @@
       },
       "culturalSources": [
         "https://www.sipac.gov.cn/szgyyqenglish/202112ssmjcnr/202201/7d95105361384f63bc8af9ea616b628a.shtml",
-        "https://www.fohb.gov.cn/info/2022-08/20220818144000_304.html"
+        "https://www.fohb.gov.cn/info/2022-08/20220818144000_304.html",
+        "https://english.suzhou.gov.cn/szsenglish/szcuisine/202411/7485ed47cfad49848955e2e9f1a1f88d.shtml"
       ],
       "safetySources": [
         "https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety",

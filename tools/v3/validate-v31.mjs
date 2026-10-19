@@ -95,7 +95,7 @@ for (const recipe of pilot.recipes) {
   pilotTitles.add(recipe.record.title.toLowerCase());
   const expected=recipe.record.id;
   if (![96,97,98].includes(expected) || !['ITA','CHN'].includes(recipe.countryCode)) fail(`Pilot recipe ${expected} has an unsupported ID or country.`);
-  if (expected===97 && (!recipe.record.fact?.includes('not presented as a traditional dish') || !recipe.pt?.fact?.includes('não é apresentada como um prato tradicional'))) fail('China noodle soup facts must avoid unsupported regional-tradition claims in both locales.');
+  if (expected===97 && (!recipe.record.fact?.includes('not a traditional Suzhou recipe') || !recipe.pt?.fact?.includes('não é uma receita tradicional de Suzhou') || !recipe.culturalSources?.some(url=>url.startsWith('https://english.suzhou.gov.cn/')))) fail('China noodle soup needs a sourced Suzhou context and clear adaptation framing in both locales.');
   if (expected===98 && (!recipe.record.fact?.includes('global family cooking adaptation') || !recipe.pt?.fact?.includes('adaptação culinária global'))) fail('Air-fryer tofu must remain clearly framed as a global adaptation in both locales.');
   if (!recipe.artwork?.atlas || !recipe.artwork?.hero || recipe.artwork.reviewStatus !== 'A09 visual staging passed; runtime and final artwork review pending') fail(`Pilot artwork for ${expected} must remain clearly marked pending independent approval.`);
   for (const filename of [recipe.artwork.atlas,recipe.artwork.hero,recipe.artwork.source]) if(!fs.existsSync(path.join(here,'artwork/world-adventures',filename))) fail(`Missing local offline artwork file ${filename}.`);
