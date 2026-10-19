@@ -101,8 +101,16 @@ class ProfileStore(context: Context) : SQLiteOpenHelper(context.applicationConte
     fun chooseChef(id: String, chefIdInput: String): Boolean {
         val chefId = ProfilePolicy.normalizedChefId(chefIdInput) ?: return false
         val db = writableDatabase
-        val values = ContentValues().apply { put("chef_id", chefId) }
-        return db.update("profiles", values, "id=?", arrayOf(id)) == 1
+        db.beginTransaction()
+        try {
+            if (meta(db, ACTIVE_PROFILE_KEY) != id || !profileExists(db, id)) return false
+            val values = ContentValues().apply { put("chef_id", chefId) }
+            val updated = db.update("profiles", values, "id=?", arrayOf(id)) == 1
+            if (updated) db.setTransactionSuccessful()
+            return updated
+        } finally {
+            db.endTransaction()
+        }
     }
 
     private fun current(db: SQLiteDatabase): JSONObject {
