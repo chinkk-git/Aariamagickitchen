@@ -156,6 +156,58 @@ jobs:
           fi
           adb shell pidof -s com.aaria.magickitchen.pilot | tee "$diagnostics/app-pid.txt"
           adb logcat -d -s AndroidRuntime:E | tee "$diagnostics/android-runtime-errors.txt"
+          package="com.aaria.magickitchen.pilot"
+          adb shell settings put system accelerometer_rotation 0
+          for rotation in 0 1; do
+            adb shell settings put system user_rotation "$rotation"
+            sleep 2
+            orientation_pid="$(adb shell pidof -s "$package" | tr -d '\r')"
+            if [[ -z "$orientation_pid" ]]; then
+              adb logcat -d
+              echo "::error::V3 app process did not survive orientation change $rotation."
+              exit 1
+            fi
+          done
+          adb shell settings put system user_rotation 0
+          adb shell pidof -s "$package" | tee "$diagnostics/orientation-pid.txt"
+
+          adb shell input keyevent KEYCODE_BACK
+          back_exited=0
+          for attempt in $(seq 1 10); do
+            resumed="$(adb shell dumpsys activity activities | grep -E 'mResumedActivity|topResumedActivity' || true)"
+            if [[ "$resumed" != *"$package"* ]]; then back_exited=1; break; fi
+            sleep 1
+          done
+          printf '%s\n' "$resumed" | tee "$diagnostics/back-navigation.txt"
+          if [[ "$back_exited" != "1" ]]; then
+            echo "::error::Android Back did not exit the V3 home activity."
+            exit 1
+          fi
+
+          adb shell settings put global airplane_mode_on 1
+          adb shell am broadcast -a android.intent.action.AIRPLANE_MODE --ez state true
+          adb shell svc wifi disable || true
+          adb shell svc data disable || true
+          airplane_mode="$(adb shell settings get global airplane_mode_on | tr -d '\r')"
+          printf 'airplane_mode=%s\n' "$airplane_mode" | tee "$diagnostics/offline-state.txt"
+          if [[ "$airplane_mode" != "1" ]]; then
+            echo "::error::Emulator did not enter airplane mode for offline startup test."
+            exit 1
+          fi
+          adb shell am start -W -n com.aaria.magickitchen.pilot/.MainActivity | tee "$diagnostics/offline-launch.txt"
+          offline_pid="$(adb shell pidof -s "$package" | tr -d '\r')"
+          if [[ -z "$offline_pid" ]]; then
+            adb logcat -d
+            echo "::error::V3 app did not remain alive after offline startup."
+            exit 1
+          fi
+          if adb logcat -d -s AndroidRuntime:E | grep -Fq "FATAL EXCEPTION"; then
+            adb logcat -d -s AndroidRuntime:E
+            echo "::error::V3 app crashed during offline startup."
+            exit 1
+          fi
+          printf '%s\n' "$offline_pid" | tee "$diagnostics/offline-app-pid.txt"
+          adb logcat -d -s AndroidRuntime:E | tee "$diagnostics/android-runtime-errors.txt"
 
       - name: Verify unsigned release builds are refused
         shell: bash
