@@ -9,6 +9,7 @@ import java.io.InputStream
 import java.security.KeyFactory
 import java.security.PublicKey
 import java.security.spec.X509EncodedKeySpec
+import java.util.concurrent.ConcurrentHashMap
 
 internal fun <T> activateAfterParentConfirmation(approved: Boolean, activate: () -> T): T {
     if (!approved) throw SecurityException("Parent or guardian did not approve this content update")
@@ -26,6 +27,7 @@ class AndroidContentPackRepository(
     private val root = File(appContext.filesDir, "verified-content")
     private val active = File(root, "active")
     private val previous = File(root, "previous")
+    private val awaitingParentApproval = ConcurrentHashMap.newKeySet<String>()
 
     fun installBase64(encoded: String, parentApproval: (Int, Int) -> Boolean): JSONObject {
         val pack = synchronized(this) {
@@ -37,6 +39,7 @@ class AndroidContentPackRepository(
             val lastVersion = prefs.getInt(KEY_VERSION, 0)
             val stage = File(root, "staged-${System.nanoTime()}")
             SignedContentPackVerifier.verifyAndStage(bytes, stage, key, keyId, BuildConfig.VERSION_CODE, lastVersion)
+                .also { awaitingParentApproval.add(it.stagingDirectory.canonicalPath) }
         }
         try {
             // Prompt only after the signed package has been fully verified. Do not hold the
@@ -63,6 +66,7 @@ class AndroidContentPackRepository(
                 }
             }
         } finally {
+            awaitingParentApproval.remove(pack.stagingDirectory.canonicalPath)
             if (pack.stagingDirectory.exists()) pack.stagingDirectory.deleteRecursively()
         }
     }
@@ -89,7 +93,7 @@ class AndroidContentPackRepository(
     }
 
     private fun discardAbandonedStages() {
-        root.listFiles()?.filter { it.name.startsWith("staged-") }?.forEach { stage ->
+        root.listFiles()?.filter { it.name.startsWith("staged-") && it.canonicalPath !in awaitingParentApproval }?.forEach { stage ->
             // Cleanup is best effort: inability to reclaim stale temporary space must not
             // invalidate or hide the last known-good active content.
             runCatching { stage.deleteRecursively() }
