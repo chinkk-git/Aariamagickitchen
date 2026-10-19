@@ -46,3 +46,6 @@ Single writer per development branch. Control Tower/A10 writes coordination only
 
 ## Cost-free preference
 Use the existing hourly ChatGPT automation; no new paid services, automation slots, cron-based GitHub watchdog or CI run merely to check status. Any actual CI retry uses GitHub Actions quota and is conditional on no incremental charge. Monitoring does not imply guaranteed Work-session uptime.
+
+## Exception-only output and requested dashboard (GOV-05 amendment)
+Keep the existing hourly automation, detection logic, retry ledger and strict limits unchanged. On an ordinary hourly check, emit only a compact heartbeat: `A10 | V3: <state> | V3.1: <state> | CI: <state> | ACTION: <none or one exception>`. Suppress full coverage/release reports and unchanged warning narratives; report new actionable exceptions with source URLs. When the user asks `A10 status`, generate the full evidence-based dashboard, reconciling V3/V3.1 CI, APK/device, 95-recipe asset stages, A08/A09, integration #7 and top three priorities. See [DELIVERY_GOVERNANCE.md](DELIVERY_GOVERNANCE.md). This document does not edit the actual ChatGPT automation schedule or guarantee it is running; verify that separately.
