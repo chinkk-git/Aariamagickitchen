@@ -54,6 +54,7 @@ internal fun resolveChooserResult(
 
 class MainActivity : Activity() {
     private lateinit var webView: WebView
+    private val approvalLifecycleLock = Any()
     @Volatile internal var isForegroundForApproval: Boolean = false
         private set
     private val contentPacks by lazy { AndroidContentPackRepository(this) }
@@ -64,11 +65,11 @@ class MainActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
-        isForegroundForApproval = true
+        synchronized(approvalLifecycleLock) { isForegroundForApproval = true }
     }
 
     override fun onPause() {
-        isForegroundForApproval = false
+        synchronized(approvalLifecycleLock) { isForegroundForApproval = false }
         super.onPause()
     }
 
@@ -249,6 +250,11 @@ class ShareBridge(private val activity: Activity) {
     private val profileStore by lazy { ProfileStore(activity) }
     private val contentPackRepository by lazy { AndroidContentPackRepository(activity) }
 
+    private fun <T> withApprovalForeground(block: () -> T): T = synchronized(approvalLifecycleLock) {
+        check(isApprovalActivityForeground()) { "Parent approval expired because the app left the foreground" }
+        block()
+    }
+
     private fun isApprovalActivityForeground(): Boolean =
         activity is MainActivity && activity.isForegroundForApproval
 
@@ -291,7 +297,12 @@ class ShareBridge(private val activity: Activity) {
 
     @JavascriptInterface
     fun installVerifiedContentPack(base64Zip: String): String = bridgeResult {
-        contentPackRepository.installBase64(base64Zip, { version, fileCount -> confirmParentContentUpdate(version, fileCount) }, { isApprovalActivityForeground() && !activity.isFinishing && !activity.isDestroyed }).toString()
+        contentPackRepository.installBase64(
+            base64Zip,
+            { version, fileCount -> confirmParentContentUpdate(version, fileCount) },
+            { isApprovalActivityForeground() && !activity.isFinishing && !activity.isDestroyed },
+            { activate -> withApprovalForeground(activate) }
+        ).toString()
     }
 
     @JavascriptInterface
