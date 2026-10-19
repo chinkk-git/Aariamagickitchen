@@ -84,18 +84,34 @@ async function waitForVisible(selector, label) {
   }
   throw new Error(`${label} did not become visible in #screen; last state: ${last}`);
 }
+async function currentRotation() {
+  let last = 'unknown';
+  try {
+    const status = adb(['shell','dumpsys','window']).toString('utf8');
+    const rotation = status.match(/mRotation=(\d)/)?.[1] || status.match(/mRotation=ROTATION_(0|90|180|270)/)?.[1];
+    last = rotation === '90' ? '1' : rotation === '180' ? '2' : rotation === '270' ? '3' : rotation || 'unknown';
+  } catch {}
+  if (!['0','1','2','3'].includes(last)) throw new Error(`Could not read Android display rotation; last observed: ${last}`);
+  return Number(last);
+}
 async function waitForRotation(expected) {
   let last = 'unknown';
   for (let attempt=0; attempt<30; attempt++) {
-    try {
-      const status = adb(['shell','dumpsys','window']).toString('utf8');
-      const rotation = status.match(/mRotation=(\d)/)?.[1] || status.match(/mRotation=ROTATION_(0|90|180|270)/)?.[1];
-      last = rotation === '90' ? '1' : rotation === '180' ? '2' : rotation === '270' ? '3' : rotation || 'unknown';
-      if (last === String(expected)) return;
-    } catch {}
+    try { last = String(await currentRotation()); } catch {}
+    if (last === String(expected)) return;
     await pause(1000);
   }
   throw new Error(`Android display did not reach rotation ${expected}; last observed: ${last}`);
+}
+async function rotateTo(expected) {
+  for (let attempt=0; attempt<4; attempt++) {
+    const current = await currentRotation();
+    if (current === expected) return;
+    const next = (current + 1) % 4;
+    adb(['emu','rotate']);
+    await waitForRotation(next);
+  }
+  throw new Error(`Could not normalize Android display to rotation ${expected}; last observed: ${await currentRotation()}`);
 }
 console.log('Waiting for the app-owned Android WebView debugging target');
 let target;
@@ -158,6 +174,8 @@ if (!ready) throw new Error('Android WebView did not reach profile setup or a re
 await evaluate(`(() => { const dialog=document.querySelector('#v3ProfileDialog'); if(!dialog) return 'existing-profile'; const name=dialog.querySelector('#v3ProfileName'); const chef=dialog.querySelector('[data-v3-chef="CHEF_A"]'); const submit=dialog.querySelector('[data-v3-profile-continue]'); if(!name||!chef||!submit) throw Error('unexpected first-run profile setup'); name.value='Preview Chef'; chef.click(); submit.click(); return 'profile-created'; })()`);
 const homeState = await waitForVisible('.v31-home-hero h1', 'Home heading');
 if (!homeState.screen.includes('home-page') || await evaluate(`!!document.querySelector('#v3ProfileDialog')`)) throw new Error(`Home screen did not become the active page after test profile setup: ${JSON.stringify(homeState)}`);
+await rotateTo(0);
+await waitForVisible('.v31-home-hero h1', 'Home heading after portrait normalization');
 console.log('Android home screen loaded with the test profile');
 adb(['shell','screencap','-p','/sdcard/v31-home.png']);
 adb(['pull','/sdcard/v31-home.png','artifacts/v31-android-screenshots/v31-home-portrait.png']);
@@ -172,8 +190,7 @@ adb(['pull','/sdcard/v31-world.png','artifacts/v31-android-screenshots/v31-world
 const homeDigest = createHash('sha256').update(readFileSync('artifacts/v31-android-screenshots/v31-home-portrait.png')).digest('hex');
 const worldDigest = createHash('sha256').update(readFileSync('artifacts/v31-android-screenshots/v31-world-portrait.png')).digest('hex');
 if (homeDigest === worldDigest) throw new Error('World screenshot is byte-identical to Home; route transition was not captured');
-adb(['emu','rotate']);
-await waitForRotation(1);
+await rotateTo(1);
 const landscape = await waitForVisible('.v31-world-header h1', 'World heading after rotation');
 if (!landscape.screen.includes('v31-world-screen') || !landscape.text.includes('World Food Adventures')) throw new Error('World route was lost during orientation change');
 await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
@@ -183,10 +200,7 @@ const image = readFileSync('artifacts/v31-android-screenshots/v31-world-landscap
 const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
 if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
 console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
-adb(['emu','rotate']);
-adb(['emu','rotate']);
-adb(['emu','rotate']);
-await waitForRotation(0);
+await rotateTo(0);
 const portraitWorld = await waitForVisible('.v31-world-header h1', 'World heading after returning to portrait');
 if (!portraitWorld.screen.includes('v31-world-screen') || !portraitWorld.text.includes('World Food Adventures')) throw new Error('World route was lost while returning to portrait orientation');
 const indiaCount = await evaluate(`document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length`);
