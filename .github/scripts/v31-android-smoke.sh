@@ -179,7 +179,7 @@ async function waitForWebViewOrientation(landscapeExpected) {
   let last = null;
   let stable = 0;
   for (let attempt = 0; attempt < 30; attempt++) {
-    last = await evaluate(`() => ({innerWidth, innerHeight, visualWidth: visualViewport?.width ?? null, visualHeight: visualViewport?.height ?? null, orientation: screen.orientation?.type ?? 'unknown'})()`);
+    last = await evaluate(`(() => ({innerWidth, innerHeight, visualWidth: visualViewport?.width ?? null, visualHeight: visualViewport?.height ?? null, orientation: screen.orientation?.type ?? 'unknown'}))()`);
     const viewportIsLandscape = last.innerWidth > last.innerHeight && (last.visualWidth === null || last.visualWidth > last.visualHeight);
     const matches = viewportIsLandscape === landscapeExpected;
     stable = matches ? stable + 1 : 0;
