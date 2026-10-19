@@ -88,6 +88,19 @@ assert.equal(savedProfiles.activeId, 'profile-new');
 assert.deepEqual(savedProfiles.profiles.map(profile => profile.id), ['profile-new', 'profile-existing']);
 assert.deepEqual(savedProfiles.profiles[0].snapshot, { done: [4], favorites: ['recipe-1'] });
 assert.deepEqual(savedProfiles.profiles[1].snapshot, { done: [9] });
+const failedNativeStore = new Map();
+let nativeSaveAttempts = 0;
+const nativeFallbackContext = vm.createContext({
+  window: { AariaNative: { saveProfileSnapshot: () => { nativeSaveAttempts++; return false; } } },
+  localStorage: { setItem: (key, value) => failedNativeStore.set(key, value) },
+  v3ProfileState: { activeId: 'local-recovery', profiles: [{ id: 'local-recovery', name: 'Recovered', snapshot: {} }] },
+  state: { done: [8] }
+});
+vm.runInContext(runtime.slice(persistStart, persistEnd), nativeFallbackContext);
+vm.runInContext('v3PersistProfileState()', nativeFallbackContext);
+assert.equal(nativeSaveAttempts, 1);
+const nativeFallbackProfiles = JSON.parse(failedNativeStore.get('myMagicalKitchenProfilesV1'));
+assert.deepEqual(nativeFallbackProfiles.profiles[0].snapshot, { done: [8] }, 'failed native saves must still persist recovered profiles locally');
 const legacyCalls = [];
 const legacyTrigger = { textContent: '' };
 const legacyProfile = { id: 'legacy-aaria-v4', name: 'Aaria', chefId: 'LEGACY_AARIA' };
