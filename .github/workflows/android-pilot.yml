@@ -175,7 +175,7 @@ jobs:
           back_exited=0
           for attempt in $(seq 1 10); do
             resumed="$(adb shell dumpsys activity activities | grep -E 'mResumedActivity|topResumedActivity' || true)"
-            if [[ "$resumed" != *"$package"* ]]; then back_exited=1; break; fi
+            if [[ -n "$resumed" && "$resumed" != *"$package"* ]]; then back_exited=1; break; fi
             sleep 1
           done
           printf '%s\n' "$resumed" | tee "$diagnostics/back-navigation.txt"
