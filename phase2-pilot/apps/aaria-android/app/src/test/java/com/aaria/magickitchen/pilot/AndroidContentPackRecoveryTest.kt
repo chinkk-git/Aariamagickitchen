@@ -133,7 +133,7 @@ class AndroidContentPackRecoveryTest {
         holder.start()
         try {
             assertTrue("activation lock was not acquired", locked.await(5, TimeUnit.SECONDS))
-            val pendingRead = reader.submit { repository.openContentAsset("content/catalog.json") }
+            val pendingRead = reader.submit<java.io.InputStream?> { repository.openContentAsset("content/catalog.json") }
             try {
                 pendingRead.get(150, TimeUnit.MILLISECONDS)
                 throw AssertionError("content read must wait while activation holds the repository lock")
