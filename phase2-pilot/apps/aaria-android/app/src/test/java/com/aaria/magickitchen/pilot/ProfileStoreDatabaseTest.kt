@@ -72,6 +72,21 @@ class ProfileStoreDatabaseTest {
         assertEquals(3, restoredSecond.getJSONObject("snapshot").getJSONArray("done").getInt(0))
     }
 
+    @Test fun favoritesAndProgressSurviveProfileStoreRecreation() {
+        val created = store.createProfile("Aaria", "CHEF_A", "{}")
+        val profileId = created.getString("activeId")
+        assertTrue(store.saveSnapshot(profileId, """{"favorites":["recipe-95"],"done":[95],"weeks":{"week-1":{"day-1":true}}}"""))
+
+        store.close()
+        store = ProfileStore(app)
+        val restored = store.initialize("{}")
+
+        assertEquals(profileId, restored.getString("activeId"))
+        assertEquals("recipe-95", restored.getJSONObject("snapshot").getJSONArray("favorites").getString(0))
+        assertEquals(95, restored.getJSONObject("snapshot").getJSONArray("done").getInt(0))
+        assertTrue(restored.getJSONObject("snapshot").getJSONObject("weeks").getJSONObject("week-1").getBoolean("day-1"))
+    }
+
     companion object {
         private const val DB_NAME = "my_magical_kitchen_v3.db"
     }
