@@ -1,0 +1,55 @@
+name: Control Tower task dispatcher
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Existing task issue number
+        required: true
+        type: string
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: ct-dispatch-${{ github.event.issue.number || inputs.issue_number || github.run_id }}
+  cancel-in-progress: false
+jobs:
+  dispatch:
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'ct:ready'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Validate and route ready task
+        uses: actions/github-script@v7
+        env:
+          ISSUE_NUMBER: ${{ inputs.issue_number }}
+        with:
+          script: |
+            const {owner,repo}=context.repo;
+            const number=context.eventName==='issues' ? context.issue.number : Number(process.env.ISSUE_NUMBER);
+            if (!Number.isSafeInteger(number)||number<1) throw Error('Invalid issue number');
+            const {data:issue}=await github.rest.issues.get({owner,repo,issue_number:number});
+            if(issue.pull_request) throw Error('Task must be an issue');
+            const text=issue.body||'';
+            const ownerMatch=text.match(/^Task owner:\s*(v3|v31|integration)\s*$/mi);
+            const branchMatch=text.match(/^Target branch:\s*([^\s]+)\s*$/mi);
+            const acceptance=/^Acceptance criteria:\s*\S/m.test(text);
+            if(!ownerMatch||!branchMatch||!acceptance) {
+              core.warning('Task requires Task owner, Target branch and Acceptance criteria fields');
+              return;
+            }
+            const taskOwner=ownerMatch[1];
+            const expected={v3:'codex/v3-completion-core-20261017',v31:'feature/v3.1-home-redesign'}[taskOwner];
+            if(expected&&branchMatch[1]!==expected) throw Error('Owner/branch mismatch');
+            if(taskOwner==='v31') {
+              core.notice('V3.1 is stopped; issue queued without claiming or waking a session');
+            }
+            const marker='<!-- ct-dispatch-v1 -->';
+            const body=marker+'\n**GitHub task queued (not claimed).** Owner: '+taskOwner+
+              '; branch: `'+branchMatch[1]+'`. Active worker must verify branch HEAD, claim with exclusive ownership, and record evidence. GitHub Actions does not wake a stopped Work session. No code was executed.';
+            const comments=await github.paginate(github.rest.issues.listComments,{owner,repo,issue_number:number,per_page:100});
+            const prior=comments.find(c=>c.user?.login==='github-actions[bot]'&&c.body?.startsWith(marker));
+            if(prior) await github.rest.issues.updateComment({owner,repo,comment_id:prior.id,body});
+            else await github.rest.issues.createComment({owner,repo,issue_number:number,body});
+            core.summary.addRaw(body).write();
