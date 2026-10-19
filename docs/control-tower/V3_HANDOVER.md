@@ -55,12 +55,23 @@ PRESSURE_SCORE: lower bound ~12 (4 substantial tasks estimated; >50 events; resp
 CONFIDENCE: medium
 DECISION: PREPARE (observed activity threshold reached; no active degradation)
 CHECKPOINT: READY
-BRANCH_HEADS: V3 `e3f2cd7f58b173de60b6a5f9a7915149d6759e80`; V3.1 untouched
-ISSUES_AND_CI: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4); [queued run 39185263015](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39185263015)
-NEXT: inspect run 39185263015's debug upgrade/profile before-after and fresh install gates; then continue remaining source/test review.
+BRANCH_HEADS: V3 `e842f8aed799ecc6bc965055c615048961b8720d`; V3.1 untouched
+ISSUES_AND_CI: [#4](https://github.com/chinkk-git/Aariamagickitchen/issues/4); failed signer-gate run [39185263015](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39185263015); follow-up CI/artifact status unavailable through connected run listing
+NEXT: obtain exact-head CI/APK/device evidence for the fixed CI-only signer path; then continue independent source/test review.
 USER_ROTATION_CONFIRMATION: pending (no rotation proposed)
 
 ## Next actions
 1. Continue independent V3-04/05 rollback/signature review and document any concrete defect with focused tests.
 2. Keep protected signing, publisher trust root, physical device, parent-supervised installation and A08/A09 sign-off as explicit open gates.
 3. Preserve V3.1/integration branches; no merge.
+
+
+## Delivery checkpoint — 2026-10-19 follow-up
+
+- V3 branch head: `e842f8aed799ecc6bc965055c615048961b8720d`. Failed attempt at `e3f2cd7f58b173de60b6a5f9a7915149d6759e80`, run 39185263015, stopped before install because the v6 fixture/current APK signer comparison failed. Remediation creates one ephemeral CI debug keystore and applies it to both build variants; follow-up persists the keystore path across GitHub Actions steps. Production signing remains separate and release refusal remains in the workflow.
+- Exact-head CI, APK artifact and emulator before/after evidence are not yet available. Do not claim v6→v7 upgrade, physical-device acceptance or current-head APK.
+- Local checks at the current source: Node suite 12/12; pilot recipe validator pass; artwork verifier pass (47 records/checksums/references); legacy audit enumerates 95 recipes (65/15/15). Previous green Android CI remains run 39184693683 at `6f8d747713a3dd59291d85f4e27119f20a7f8d1b`, artifact 12157946161 (debug APK, 23,130,754 bytes; SHA-256 `43c014d01ccdece43a245bceb69ba5d8c40a0f1bf01f50addc36839d8b5abbb0`), passing hosted emulator fresh install/start, offline cold start and activation concurrency.
+- V3-03 is in progress: SQLite migration/idempotency/profile isolation/favorites/progress tests previously green; generated lower-version hosted upgrade plus profile-before/after acceptance pending.
+- V3-04/05 logic tests pass; publisher trust root and device-level disk-full/power-loss rollback evidence pending. V3-06 blocked by protected release signer/fingerprint/dispatch and in-app parent confirmation. V3-07 partial; V3-08 verified; V3-09 recipe/art inventory checks pass, A08/A09 review/signoff pending; V3-10 independent review pending.
+- Environment checkpoint: GitHub connector offers no push-run listing/dispatch for this branch; browser surface is unauthenticated. No run was fabricated. Continue when exact-head CI evidence becomes available; meanwhile continue only independent safe tests/review.
+- Adaptive lifecycle: activity threshold remains reached (>50 observed events), responsiveness/context normal, checkpoint ready, decision PREPARE. Continue from this checkpoint; no branch rotation/merge.
