@@ -184,10 +184,7 @@ jobs:
             exit 1
           fi
 
-          adb shell settings put global airplane_mode_on 1
-          adb shell am broadcast -a android.intent.action.AIRPLANE_MODE --ez state true
-          adb shell svc wifi disable || true
-          adb shell svc data disable || true
+          adb shell cmd connectivity airplane-mode enable | tee "$diagnostics/airplane-mode-command.txt"
           airplane_mode="$(adb shell settings get global airplane_mode_on | tr -d '\r')"
           printf 'airplane_mode=%s\n' "$airplane_mode" | tee "$diagnostics/offline-state.txt"
           if [[ "$airplane_mode" != "1" ]]; then
