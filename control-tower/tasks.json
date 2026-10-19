@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-19",
+  "workers": {
+    "v3": {
+      "branch": "codex/v3-completion-core-20261017",
+      "session_state": "UNKNOWN",
+      "writer": "V3 Rotation 2"
+    },
+    "v31": {
+      "branch": "feature/v3.1-home-redesign",
+      "session_state": "STOPPED",
+      "writer": null
+    },
+    "integration": {
+      "branch": null,
+      "session_state": "NOT_STARTED",
+      "writer": null
+    }
+  },
+  "tasks": [
+    {
+      "id": "INT-01",
+      "issue": 7,
+      "owner": "v3",
+      "status": "BLOCKED",
+      "depends_on": [],
+      "target_branch": "integration/pending",
+      "acceptance": [
+        "Verify essential baseline security and independent review gates"
+      ],
+      "evidence": [],
+      "blocker": "A03/A08/A09 and production update requirements pending"
+    },
+    {
+      "id": "INT-02",
+      "issue": 7,
+      "owner": "v3",
+      "status": "BACKLOG",
+      "depends_on": [
+        "INT-01"
+      ],
+      "target_branch": "integration/pending",
+      "acceptance": [
+        "Create single-writer isolated integration branch and reviewed PR"
+      ],
+      "evidence": [],
+      "blocker": null
+    },
+    {
+      "id": "V31-VISUAL",
+      "issue": 5,
+      "owner": "v31",
+      "status": "BACKLOG",
+      "depends_on": [],
+      "target_branch": "feature/v3.1-home-redesign",
+      "acceptance": [
+        "Approved home screenshot comparison",
+        "55 draft atlases reviewed and integrated"
+      ],
+      "evidence": [],
+      "blocker": "V3.1 Work session stopped"
+    }
+  ],
+  "release": {
+    "name": "Consolidated Preview 1",
+    "status": "BLOCKED",
+    "strict_complete_only": true,
+    "original_recipes_required": 95,
+    "items": [
+      {
+        "id": "recipes-1-95",
+        "decision": "INCLUDE",
+        "state": "VERIFIED",
+        "evidence": [
+          "https://github.com/chinkk-git/Aariamagickitchen/issues/6"
+        ]
+      },
+      {
+        "id": "home-redesign",
+        "decision": "EXCLUDE",
+        "state": "DRAFT",
+        "evidence": []
+      },
+      {
+        "id": "step-atlases-11-65",
+        "decision": "EXCLUDE",
+        "state": "DRAFT",
+        "evidence": []
+      },
+      {
+        "id": "world-recipes-96-98",
+        "decision": "EXCLUDE",
+        "state": "DRAFT",
+        "evidence": []
+      }
+    ]
+  }
+}

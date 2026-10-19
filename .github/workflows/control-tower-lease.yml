@@ -1,0 +1,69 @@
+name: Control Tower exclusive lease
+on:
+  workflow_dispatch:
+    inputs:
+      task_id:
+        description: Canonical task ID
+        required: true
+        type: string
+      worker:
+        description: Worker identity
+        required: true
+        type: choice
+        options: [v3, v31, integration]
+      operation:
+        description: Claim or release
+        required: true
+        type: choice
+        options: [claim, release]
+      lease_token:
+        description: Unique opaque token; do not use credentials
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: ct-lease-global
+  cancel-in-progress: false
+jobs:
+  lease:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Atomic GitHub task lease
+        uses: actions/github-script@v7
+        env:
+          TASK_ID: ${{ inputs.task_id }}
+          WORKER: ${{ inputs.worker }}
+          OPERATION: ${{ inputs.operation }}
+          LEASE_TOKEN: ${{ inputs.lease_token }}
+        with:
+          script: |
+            const {owner,repo}=context.repo;
+            const taskId=process.env.TASK_ID,worker=process.env.WORKER,op=process.env.OPERATION,token=process.env.LEASE_TOKEN;
+            if(!/^[A-Z0-9-]{3,60}$/.test(taskId)||!/^[a-zA-Z0-9_-]{8,100}$/.test(token)) throw Error('Invalid task ID or token');
+            const path='control-tower/tasks.json';
+            const file=await github.rest.repos.getContent({owner,repo,path,ref:context.ref});
+            if(Array.isArray(file.data)) throw Error('Unexpected directory');
+            const d=JSON.parse(Buffer.from(file.data.content,'base64').toString('utf8'));
+            const task=d.tasks.find(t=>t.id===taskId);
+            if(!task||task.owner!==worker) throw Error('Task missing or wrong worker');
+            if(d.workers[worker].session_state==='STOPPED') throw Error('Stopped worker cannot claim');
+            const now=new Date(),existing=task.lease;
+            if(op==='claim'){
+              if(task.status!=='READY'&&task.status!=='CLAIMED'&&task.status!=='IN_PROGRESS') throw Error('Task not ready');
+              for(const dep of task.depends_on) if(d.tasks.find(t=>t.id===dep)?.status!=='VERIFIED') throw Error('Unverified dependency');
+              if(existing&&Date.parse(existing.expires_at)>now.getTime()) throw Error('Exclusive lease already held');
+              task.status='CLAIMED';
+              task.lease={worker,token,claimed_at:now.toISOString(),expires_at:new Date(now.getTime()+15*60000).toISOString()};
+            }else{
+              if(!existing||existing.worker!==worker||existing.token!==token||Date.parse(existing.expires_at)<=now.getTime()) throw Error('Lease owner/token invalid or expired');
+              task.status='READY';task.lease=null;
+            }
+            const result=await github.rest.repos.createOrUpdateFileContents({
+              owner,repo,path,branch:context.ref.replace('refs/heads/',''),
+              sha:file.data.sha,message:'control-tower: '+op+' '+taskId,
+              content:Buffer.from(JSON.stringify(d,null,2)+'\n').toString('base64')
+            });
+            core.info('CAS update commit '+result.data.commit.sha);
+            core.summary.addRaw('Lease operation '+op+' for '+taskId+' by '+worker+' succeeded. GitHub blob SHA precondition prevents overwriting concurrent changes.').write();
