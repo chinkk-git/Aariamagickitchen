@@ -61,6 +61,18 @@ const {execFileSync} = await import('node:child_process');
 const {readFileSync, statSync} = await import('node:fs');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const adb = args => execFileSync('timeout', ['--kill-after=10s','60s','adb',...args]);
+async function waitForRotation(expected) {
+  let last = 'unknown';
+  for (let attempt=0; attempt<30; attempt++) {
+    try {
+      const status = adb(['shell','dumpsys','window']).toString('utf8');
+      last = status.match(/mRotation=(\d)/)?.[1] || 'unknown';
+      if (last === String(expected)) return;
+    } catch {}
+    await pause(1000);
+  }
+  throw new Error(`Android display did not reach rotation ${expected}; last observed: ${last}`);
+}
 console.log('Waiting for Android WebView debugging target');
 let target;
 for (let attempt=0; attempt<60 && !target; attempt++) {
@@ -140,9 +152,9 @@ if (!world.includes('World Food Adventures')) throw new Error('World route did n
 console.log('World route verified:', world);
 adb(['shell','screencap','-p','/sdcard/v31-world.png']);
 adb(['pull','/sdcard/v31-world.png','artifacts/v31-android-screenshots/v31-world-portrait.png']);
-adb(['shell','settings','put','system','accelerometer_rotation','0']);
-adb(['shell','settings','put','system','user_rotation','1']);
-await new Promise(resolve => setTimeout(resolve, 2000));
+adb(['shell','cmd','window','user-rotation','lock','1']);
+adb(['shell','input','keyevent','KEYCODE_WAKEUP']);
+await waitForRotation(1);
 const landscape = await evaluate(`document.querySelector('.v31-world-page h1')?.innerText || ''`);
 if (!landscape.includes('World Food Adventures')) throw new Error('World route was lost during orientation change');
 adb(['shell','screencap','-p','/sdcard/v31-world-landscape.png']);
@@ -151,8 +163,9 @@ const image = readFileSync('artifacts/v31-android-screenshots/v31-world-landscap
 const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
 if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
 console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
-adb(['shell','settings','put','system','user_rotation','0']);
-await pause(2000);
+adb(['shell','cmd','window','user-rotation','lock','0']);
+adb(['shell','input','keyevent','KEYCODE_WAKEUP']);
+await waitForRotation(0);
 const portraitWorld = await evaluate(`document.querySelector('.v31-world-page h1')?.innerText || ''`);
 if (!portraitWorld.includes('World Food Adventures')) throw new Error('World route was lost while returning to portrait orientation');
 const indiaCount = await evaluate(`document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length`);
