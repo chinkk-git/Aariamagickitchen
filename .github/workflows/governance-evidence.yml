@@ -1,0 +1,21 @@
+name: Governance evidence self-test
+on:
+  push:
+    branches:
+      - governance/ai-delivery-gates-20261018
+    paths:
+      - 'tools/governance/**'
+      - '.github/workflows/governance-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python syntax
+        run: python3 -m py_compile tools/governance/validate_evidence.py
+      - name: Governance acceptance scenarios
+        run: python3 tools/governance/validate_evidence.py --selftest
