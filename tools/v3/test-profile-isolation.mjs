@@ -130,6 +130,8 @@ assert.equal(recovered.activeId, 'chef-one', 'stale active ID must recover to fi
 assert.deepEqual(JSON.parse(JSON.stringify(recovered.profiles[0].snapshot)), { done: [3], favorites: [7] });
 assert.deepEqual(JSON.parse(JSON.stringify(recovered.profiles[1].snapshot)), {});
 assert.deepEqual(JSON.parse(JSON.stringify(vm.runInContext(`v3ParseProfileState('not-json')`, parserContext))), { profiles: [], activeId: null, snapshot: {} });
+const nativeFailure = vm.runInContext(`v3ParseProfileState('{\"error\":\"IllegalArgumentException\"}')`, parserContext);
+assert.equal(nativeFailure.error, 'IllegalArgumentException', 'native migration errors must reach v3InitProfiles so its local recovery path is used');
 parserContext.incoming = recovered;
 const objectRecovery = vm.runInContext('v3ParseProfileState(incoming)', parserContext);
 assert.deepEqual(JSON.parse(JSON.stringify(objectRecovery)), JSON.parse(JSON.stringify(recovered)));
