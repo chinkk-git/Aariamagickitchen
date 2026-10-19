@@ -102,3 +102,12 @@ USER_ROTATION_CONFIRMATION: pending (no rotation proposed)
 - Prior completed exact-head green remains [39252249021](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39252249021), APK artifact 12186475950 and hosted generated debug v6→v7 same-signer upgrade/profile persistence/offline startup. Do not promote this to production signer, historical database migration or physical-device evidence.
 - Still open: real production APK/profile migration; protected release-signing continuity; publisher trust-key provisioning; disk-full/process-death rollback injection; parent-confirmed update flow; physical-device acceptance; full WebView/share/camera boundary matrix; A03 independent review; A08/A09 independent safety and 8–10 usability decisions.
 - Next: inspect queued exact-head Actions; remediate any source/test failure and publish artifacts/device evidence. No V3.1 edits or merge.
+
+
+## V3-09 local regression checkpoint — 2026-10-19 | Session V3-20261019-1534-UTC
+
+- On V3 head `1919d94b44c52f92edab6fa0c24f8dd974dc563a`, local Node pilot tests passed 11/11; V3 transform/validation confirmed 95 recipes and 95 IDs; approved Chef A/B artwork checksum validation, profile isolation/reset and legacy-chef checks, CSP policy checks, and runtime/Android adapter JavaScript syntax checks passed.
+- The Android manifest requests no broad storage, camera or location permissions; capture is delegated to a camera app with a scoped content URI. Code review found canceled camera-only capture could consume an unrelated picker URI; fix/test is in `1919d94`. This source review does not close the external A08/A09 decision.
+- V3-05 exact-head run `39279326268` at `eb702f49817d94078bf8b8be851bdfa7d4327597` and V3-07 exact-head run `39279688314` at `1919d94b44c52f92edab6fa0c24f8dd974dc563a` remain queued. No Android Gradle test, current-head APK, or current-head emulator result yet; local checkout has neither Gradle wrapper nor CLI.
+- Last completed green remains run `39252249021` at `075c014`; artifact `12186475950`, generated debug v6→v7 same-signer upgrade/profile assertions and offline start passed. Production signer, historic migration and physical device are not proven.
+- A03 independent review, A08 child-safety review, A09 ages 8–10 usability/accessibility sign-off and external production release/publisher inputs remain open. No V3.1 edits or merge.
