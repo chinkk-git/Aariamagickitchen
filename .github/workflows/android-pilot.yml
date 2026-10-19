@@ -191,7 +191,18 @@ jobs:
             echo "::error::Emulator did not enter airplane mode for offline startup test."
             exit 1
           fi
+          adb shell am force-stop "$package"
+          sleep 1
+          stopped_pid="$(adb shell pidof -s "$package" | tr -d '\r')"
+          if [[ -n "$stopped_pid" ]]; then
+            echo "::error::V3 app process remained active after force-stop before offline cold launch."
+            exit 1
+          fi
           adb shell am start -W -n com.aaria.magickitchen.pilot/.MainActivity | tee "$diagnostics/offline-launch.txt"
+          if ! grep -Fq "LaunchState: COLD" "$diagnostics/offline-launch.txt"; then
+            echo "::error::Offline APK launch was not a cold process start."
+            exit 1
+          fi
           offline_pid="$(adb shell pidof -s "$package" | tr -d '\r')"
           if [[ -z "$offline_pid" ]]; then
             adb logcat -d
