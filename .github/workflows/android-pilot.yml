@@ -75,6 +75,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          diagnostics="$RUNNER_TEMP/aaria-emulator-diagnostics"
+          mkdir -p "$diagnostics"
           image="system-images;android-35;google_apis;x86_64"
           sdkmanager --install "$image"
           export ANDROID_AVD_HOME="$HOME/.android/avd"
@@ -88,37 +90,37 @@ jobs:
             exit 1
           fi
           echo "::group::Runner and emulator diagnostics"
-          free -h
-          nproc
-          id
+          free -h | tee "$diagnostics/memory.txt"
+          nproc | tee "$diagnostics/cpu-count.txt"
+          id | tee "$diagnostics/identity.txt"
           if [[ ! -e /dev/kvm ]]; then
             echo "::error::KVM device is unavailable on this runner."
             exit 1
           fi
-          ls -l /dev/kvm
+          ls -l /dev/kvm | tee "$diagnostics/kvm-before.txt"
           sudo chgrp "$(id -gn)" /dev/kvm
           sudo chmod g+rw /dev/kvm
-          ls -l /dev/kvm
-          if ! "$ANDROID_HOME/emulator/emulator" -accel-check; then
+          ls -l /dev/kvm | tee "$diagnostics/kvm-after.txt"
+          if ! "$ANDROID_HOME/emulator/emulator" -accel-check 2>&1 | tee "$diagnostics/kvm-accel-check.txt"; then
             echo "::error::Runner user still cannot use KVM after the scoped device permission fix."
             exit 1
           fi
           avdmanager list avd
-          cat "$ANDROID_AVD_HOME/aaria-v3-ci.ini"
-          cat "$ANDROID_AVD_HOME/aaria-v3-ci.avd/config.ini"
+          cat "$ANDROID_AVD_HOME/aaria-v3-ci.ini" | tee "$diagnostics/avd.ini"
+          cat "$ANDROID_AVD_HOME/aaria-v3-ci.avd/config.ini" | tee "$diagnostics/avd-config.ini"
           echo "::endgroup::"
-          adb version
-          adb devices -l
-          "$ANDROID_HOME/emulator/emulator" -avd aaria-v3-ci -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -wipe-data >"$RUNNER_TEMP/aaria-emulator.log" 2>&1 &
+          adb version | tee "$diagnostics/adb-version.txt"
+          adb devices -l | tee "$diagnostics/adb-before.txt"
+          "$ANDROID_HOME/emulator/emulator" -verbose -avd aaria-v3-ci -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -wipe-data >"$diagnostics/emulator-boot.log" 2>&1 &
           emulator_pid=$!
           if ! timeout 300 adb wait-for-device; then
-            cat "$RUNNER_TEMP/aaria-emulator.log"
+            cat "$diagnostics/emulator-boot.log"
             adb devices -l
             echo "::error::Android emulator did not expose an ADB device within 5 minutes."
             exit 1
           fi
           if ! kill -0 "$emulator_pid" 2>/dev/null; then
-            cat "$RUNNER_TEMP/aaria-emulator.log"
+            cat "$diagnostics/emulator-boot.log"
             echo "::error::Android emulator exited before ADB became available."
             exit 1
           fi
@@ -128,13 +130,15 @@ jobs:
             sleep 5
           done
           if [[ "$booted" != "1" ]]; then
-            cat "$RUNNER_TEMP/aaria-emulator.log"
+            cat "$diagnostics/emulator-boot.log"
             echo "::error::Android emulator did not finish booting."
             exit 1
           fi
           adb shell settings put global window_animation_scale 0
           adb shell settings put global transition_animation_scale 0
           adb shell settings put global animator_duration_scale 0
+          adb devices -l | tee "$diagnostics/adb-ready.txt"
+          adb shell getprop | tee "$diagnostics/boot-properties.txt"
           apk="phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk"
           adb install -r "$apk"
           adb logcat -c
@@ -150,6 +154,8 @@ jobs:
             echo "::error::V3 app crashed during emulator startup."
             exit 1
           fi
+          adb shell pidof -s com.aaria.magickitchen.pilot | tee "$diagnostics/app-pid.txt"
+          adb logcat -d -s AndroidRuntime:E | tee "$diagnostics/android-runtime-errors.txt"
 
       - name: Verify unsigned release builds are refused
         shell: bash
@@ -168,6 +174,15 @@ jobs:
             exit 1
           fi
 
+
+      - name: Upload Android emulator boot diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-v3-emulator-diagnostics
+          path: ${{ runner.temp }}/aaria-emulator-diagnostics/
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Upload installable V3 APK
         if: always()
