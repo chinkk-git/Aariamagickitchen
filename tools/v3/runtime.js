@@ -241,7 +241,7 @@ function v3ParseProfileState(raw){
   return {...x,profiles,activeId,snapshot};
  }catch{return {profiles:[],activeId:null,snapshot:{}}}
 }
-function v3PersistProfileState(){if(window.AariaNative?.saveProfileSnapshot&&v3ProfileState.activeId){window.AariaNative.saveProfileSnapshot(v3ProfileState.activeId,JSON.stringify(state));return}try{const profiles=(v3ProfileState.profiles||[]).map(p=>({...p,snapshot:p.id===v3ProfileState.activeId?state:p.snapshot}));localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles,activeId:v3ProfileState.activeId||null}))}catch{}}
+function v3PersistProfileState(){if(window.AariaNative?.saveProfileSnapshot&&v3ProfileState.activeId&&window.AariaNative.saveProfileSnapshot(v3ProfileState.activeId,JSON.stringify(state)))return;try{const profiles=(v3ProfileState.profiles||[]).map(p=>({...p,snapshot:p.id===v3ProfileState.activeId?state:p.snapshot}));localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles,activeId:v3ProfileState.activeId||null}))}catch{}}
 function v3EmptyProfileValue(value,key){
  if(Array.isArray(value))return [];
  if(value&&typeof value==='object'){const empty={};for(const [childKey,childValue] of Object.entries(value))empty[childKey]=v3EmptyProfileValue(childValue,childKey);return empty}
