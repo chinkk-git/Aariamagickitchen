@@ -439,8 +439,6 @@ jobs:
             exit 1
           fi
           adb shell pidof -s com.aaria.magickitchen.pilot | tee "$diagnostics/app-pid.txt"
-          adb shell am start -W -n "$preview_component" | tee "$diagnostics/v31-preview-relaunch-after-v3-reinstall.txt"
-          grep -Fq 'Status: ok' "$diagnostics/v31-preview-relaunch-after-v3-reinstall.txt"
           adb logcat -d -s AndroidRuntime:E | tee "$diagnostics/android-runtime-errors.txt"
           adb shell settings put system accelerometer_rotation 0
           for rotation in 0 1; do
@@ -506,6 +504,15 @@ jobs:
           fi
           printf '%s\n' "$offline_pid" | tee "$diagnostics/offline-app-pid.txt"
           adb logcat -d -s AndroidRuntime:E | tee "$diagnostics/android-runtime-errors.txt"
+          adb shell am start -W -n "$preview_component" | tee "$diagnostics/v31-preview-relaunch-after-v3-reinstall.txt"
+          grep -Fq 'Status: ok' "$diagnostics/v31-preview-relaunch-after-v3-reinstall.txt"
+          preview_pid="$(adb shell pidof -s "$preview_package" | tr -d '\r')"
+          if [[ -z "$preview_pid" ]]; then
+            adb logcat -d
+            echo "::error::Co-installable preview did not remain alive after V3 reinstall and offline acceptance."
+            exit 1
+          fi
+          printf '%s\n' "$preview_pid" | tee "$diagnostics/v31-preview-retained-pid.txt"
 
       - name: Verify unsigned release builds are refused
         shell: bash
