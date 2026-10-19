@@ -32,9 +32,10 @@ jobs:
             const {data:issue}=await github.rest.issues.get({owner,repo,issue_number:number});
             if(issue.pull_request) throw Error('Task must be an issue');
             const text=issue.body||'';
-            const ownerMatch=text.match(/^Task owner:\s*(v3|v31|integration)\s*$/mi);
-            const branchMatch=text.match(/^Target branch:\s*([^\s]+)\s*$/mi);
-            const acceptance=/^Acceptance criteria:\s*\S/m.test(text);
+            if(issue.user?.login!=='chinkk-git') throw Error('Only repository owner-authored tasks can be dispatched');
+            const ownerMatch=text.match(/(?:^Task owner:\s*|^### Task owner\s*\n+)(v3|v31|integration)\s*$/mi);
+            const branchMatch=text.match(/(?:^Target branch:\s*|^### Target branch\s*\n+)([^\s]+)\s*$/mi);
+            const acceptance=/(?:^Acceptance criteria:\s*\S|^### Acceptance criteria\s*\n+\S)/m.test(text);
             if(!ownerMatch||!branchMatch||!acceptance) {
               core.warning('Task requires Task owner, Target branch and Acceptance criteria fields');
               return;
