@@ -49,3 +49,6 @@ All Control Tower, V3 and V3.1 sessions follow [Balanced Adaptive Session Lifecy
 
 ## Control Tower self-recovery
 The Control Tower chat is also replaceable. Use [CT_BOOTSTRAP.md](control-tower/CT_BOOTSTRAP.md) and [CT_HANDOVER.md](control-tower/CT_HANDOVER.md) to recover a new coordination chat. These files are durable snapshots, not an automated health-monitoring service.
+
+## Delivery governance and Definition of Done (GOV-01–05)
+Follow [DELIVERY_GOVERNANCE.md](control-tower/DELIVERY_GOVERNANCE.md) for single authority, evidence-based verification, per-role 95-recipe artwork coverage, V3/V3.1 scope freeze, and A10 exception-only reporting. This extends—not replaces—the issue queue, existing A08/A09 gates, session protocol or A10 retry policy. `verified` requires task-appropriate CI, Android/device, visual, security and independent review evidence; unavailable results are `NOT VERIFIED`. Do not automatically merge or promote artwork or drafts.
