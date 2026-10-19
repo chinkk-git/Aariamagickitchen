@@ -94,24 +94,35 @@ async function currentRotation() {
   if (!['0','1','2','3'].includes(last)) throw new Error(`Could not read Android display rotation; last observed: ${last}`);
   return Number(last);
 }
-async function waitForRotation(expected) {
-  let last = 'unknown';
+async function waitForRotationChange(previous) {
+  let last = previous;
   for (let attempt=0; attempt<30; attempt++) {
-    try { last = String(await currentRotation()); } catch {}
-    if (last === String(expected)) return;
+    try { last = await currentRotation(); } catch {}
+    if (last !== previous) return last;
     await pause(1000);
   }
-  throw new Error(`Android display did not reach rotation ${expected}; last observed: ${last}`);
+  throw new Error(`Android display rotation did not change from ${previous}; last observed: ${last}`);
+}
+async function waitForOrientation(landscapeExpected) {
+  let last = 'unknown';
+  for (let attempt=0; attempt<30; attempt++) {
+    try {
+      last = await currentRotation();
+      if ((last % 2 === 1) === landscapeExpected) return last;
+    } catch {}
+    await pause(1000);
+  }
+  throw new Error(`Android display did not reach ${landscapeExpected ? 'landscape' : 'portrait'} orientation; last observed rotation: ${last}`);
 }
 async function rotateTo(expected) {
+  const landscapeExpected = expected % 2 === 1;
   for (let attempt=0; attempt<4; attempt++) {
     const current = await currentRotation();
-    if (current === expected) return;
-    const next = (current + 1) % 4;
+    if ((current % 2 === 1) === landscapeExpected) return current;
     adb(['emu','rotate']);
-    await waitForRotation(next);
+    await waitForRotationChange(current);
   }
-  throw new Error(`Could not normalize Android display to rotation ${expected}; last observed: ${await currentRotation()}`);
+  return await waitForOrientation(landscapeExpected);
 }
 console.log('Waiting for the app-owned Android WebView debugging target');
 let target;
