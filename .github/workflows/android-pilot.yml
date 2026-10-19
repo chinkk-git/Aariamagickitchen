@@ -203,7 +203,12 @@ jobs:
             echo "::error::Offline APK launch was not a cold process start."
             exit 1
           fi
-          offline_pid="$(adb shell pidof -s "$package" | tr -d '\r')"
+          offline_pid=""
+          for attempt in $(seq 1 30); do
+            offline_pid="$(adb shell pidof -s "$package" | tr -d '\r')"
+            if [[ -n "$offline_pid" ]]; then break; fi
+            sleep 1
+          done
           if [[ -z "$offline_pid" ]]; then
             adb logcat -d
             echo "::error::V3 app did not remain alive after offline startup."
