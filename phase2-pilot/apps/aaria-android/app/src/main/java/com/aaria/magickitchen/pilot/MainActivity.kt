@@ -1,11 +1,13 @@
 package com.aaria.magickitchen.pilot
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ClipData
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.net.Uri
 import android.os.Bundle
+import android.os.Looper
 import android.provider.MediaStore
 import android.webkit.JavascriptInterface
 import android.webkit.ValueCallback
@@ -18,6 +20,10 @@ import android.webkit.WebViewClient
 import java.io.ByteArrayInputStream
 import java.io.File
 import java.util.UUID
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicReference
 
 private fun localErrorResponse(statusCode: Int, reasonPhrase: String): WebResourceResponse =
     WebResourceResponse(
@@ -231,9 +237,46 @@ class ShareBridge(private val activity: Activity) {
     private val profileStore by lazy { ProfileStore(activity) }
     private val contentPackRepository by lazy { AndroidContentPackRepository(activity) }
 
+    private fun confirmParentContentUpdate(version: Int, fileCount: Int): Boolean {
+        // A WebView JavaScript bridge call runs off the UI thread. Fail closed if that changes.
+        if (Looper.myLooper() == Looper.getMainLooper()) return false
+        val completed = CountDownLatch(1)
+        val approved = AtomicBoolean(false)
+        val dialog = AtomicReference<AlertDialog?>()
+        activity.runOnUiThread {
+            if (activity.isFinishing || activity.isDestroyed) {
+                completed.countDown()
+            } else {
+                dialog.set(
+                    AlertDialog.Builder(activity)
+                        .setTitle("Parent or guardian approval")
+                        .setMessage("Install verified kitchen content update $version containing $fileCount items?")
+                        .setPositiveButton("Approve update") { _, _ -> approved.set(true); completed.countDown() }
+                        .setNegativeButton("Cancel") { _, _ -> completed.countDown() }
+                        .setOnCancelListener { completed.countDown() }
+                        .create()
+                        .also { it.show() }
+                )
+            }
+        }
+        val deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(60)
+        while (completed.count > 0 && System.nanoTime() < deadline) {
+            if (activity.isFinishing || activity.isDestroyed) {
+                activity.runOnUiThread { dialog.getAndSet(null)?.dismiss() }
+                return false
+            }
+            if (completed.await(250, TimeUnit.MILLISECONDS)) break
+        }
+        if (completed.count > 0) {
+            activity.runOnUiThread { dialog.getAndSet(null)?.dismiss() }
+            return false
+        }
+        return approved.get() && !activity.isFinishing && !activity.isDestroyed
+    }
+
     @JavascriptInterface
     fun installVerifiedContentPack(base64Zip: String): String = bridgeResult {
-        contentPackRepository.installBase64(base64Zip).toString()
+        contentPackRepository.installBase64(base64Zip) { version, fileCount -> confirmParentContentUpdate(version, fileCount) }.toString()
     }
 
     @JavascriptInterface
