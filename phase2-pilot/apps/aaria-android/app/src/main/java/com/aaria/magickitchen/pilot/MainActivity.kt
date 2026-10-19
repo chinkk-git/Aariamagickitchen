@@ -63,6 +63,13 @@ class MainActivity : Activity() {
     private var pendingCaptureFile: File? = null
     private val fileChooserRequest = 4312
 
+    internal fun <T> withApprovalForeground(block: () -> T): T = synchronized(approvalLifecycleLock) {
+        check(isForegroundForApproval && !isFinishing && !isDestroyed) {
+            "Parent approval expired because the app left the foreground"
+        }
+        block()
+    }
+
     override fun onResume() {
         super.onResume()
         synchronized(approvalLifecycleLock) { isForegroundForApproval = true }
@@ -250,10 +257,9 @@ class ShareBridge(private val activity: Activity) {
     private val profileStore by lazy { ProfileStore(activity) }
     private val contentPackRepository by lazy { AndroidContentPackRepository(activity) }
 
-    private fun <T> withApprovalForeground(block: () -> T): T = synchronized(approvalLifecycleLock) {
-        check(isApprovalActivityForeground()) { "Parent approval expired because the app left the foreground" }
-        block()
-    }
+    private fun <T> withApprovalForeground(block: () -> T): T =
+        (activity as? MainActivity)?.withApprovalForeground(block)
+            ?: throw SecurityException("Parent approval requires the kitchen activity")
 
     private fun isApprovalActivityForeground(): Boolean =
         activity is MainActivity && activity.isForegroundForApproval
