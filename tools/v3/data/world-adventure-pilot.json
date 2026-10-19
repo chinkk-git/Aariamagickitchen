@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 7724)
+Total output lines: 727
+
 {
   "schema": "aaria.world-adventures.production-pilot.v1",
   "status": "review-pilot",
@@ -362,7 +365,7 @@
           "ladle"
         ],
         "ingredients": [
-          "250 g cooked plain egg noodles, cooked without added salt and prepared by an adult",
+          "250 g cooked unenriched plain egg noodles, cooked without added salt and prepared by an adult",
           "120 g pak choi, washed",
           "80 g fresh shiitake mushrooms, washed and sliced by an adult",
           "10 g fresh ginger, peeled and thinly sliced by an adult",
@@ -381,49 +384,7 @@
         "extras": [
           "Check egg noodle packet instructions and allergen labels. No optional ingredients are included in the nutrition calculation."
         ],
-        "fact": "Suzhou is known for noodles served in savoury soup. This mild family adaptation pairs cooked egg noodles, shiitake and pak choi; it is not a traditional Suzhou recipe.",
-        "safety": "Contains wheat/gluten and egg. An adult handles the knife, boiling water, hob, saucepan and serving. Stay back while an adult uses knives or hot equipment. Keep children away from the hob and hot bowls. Use cooked noodles prepared by an adult; keep perishable ingredients chilled and refrigerate leftovers within two hours. Check noodle labels and avoid allergen cross-contact.",
-        "allergens": [
-          "wheat/gluten",
-          "egg"
-        ],
-        "nutrition": {
-          "perServing": {
-            "servingSize": "1 small bowl (about 365 g)",
-            "kcal": 101,
-            "proteinG": 3.9,
-            "carbohydrateG": 18.6,
-            "totalFatG": 1.5,
-            "saturatedFatG": 0.3,
-            "fiberG": 1.6,
-            "sugarG": 1.1,
-            "sodiumMg": 122
-          },
-          "source": "USDA FoodData Central SR Legacy FDC 168926 (unenriched egg noodles, cooked without added salt), 170390, 169242, 169231, 169230, 173468; ingredient-weight calculation in this file. Packaged noodle products may differ, and water contributes no nutrients.",
-          "calculationStatus": "Calculated directly from the FDC nutrient references and listed ingredient weights in this pilot file; independent nutrition review pending."
-        }
-      },
-      "pt": {
-        "title": "Sopa de macarrão com ovo, cogumelos e pak choi",
-        "steps": [
-          "Lave as mãos. Um adulto enxágua o pak choi e os cogumelos em água corrente limpa.",
-          "Um adulto corta os cogumelos, o gengibre e o pak choi em uma tábua firme. Você pode observar de um lugar seguro.",
-          "Um adulto leva a água medida, o gengibre, o alho e o sal a uma fervura leve em uma panela.",
-          "Um adulto acrescenta os cogumelos e o pak choi e cozinha até ficarem macios.",
-          "Um adulto acrescenta o macarrão com ovo já cozido e aquece a sopa até ficar bem quente e soltando vapor por completo.",
-          "Um adulto serve a sopa em tigelas rasas, longe do fogão. Deixe esfriar até uma temperatura segura antes de comer."
-        ],
-        "ingredients": [
-          "250 g de macarrão simples com ovo cozido sem sal adicionado e preparado por um adulto",
-          "120 g de pak choi lavado",
-          "80 g de cogumelos shiitake frescos, lavados e fatiados por um adulto",
-          "10 g de gengibre fresco, descascado e fatiado por um adulto",
-          "5 g de alho descascado e picado por um adulto",
-          "1 g de sal de cozinha",
-          "1 litro de água potável"
-        ],
-        "description": "Uma sopa suave feita com macarrão com ovo cozido, cogumelos shiitake e pak choi.",
-        "fact": "Suzhou é conhecida por macarrão servido em sopa saborosa. Esta adaptação suave para famílias combina macarrão com ovo já cozido, shiitake e pak choi; não é uma receita tradicional de Suzhou.",
+        "fact": "Suzhou is known for noodles served in savoury soup. This mild family…724 tokens truncated…ias combina macarrão com ovo já cozido, shiitake e pak choi; não é uma receita tradicional de Suzhou.",
         "safety": "Contém trigo/glúten e ovo. Um adulto cuida da faca, da água fervente, do fogão, da panela e de servir. Fique afastado enquanto um adulto usa facas ou equipamentos quentes. Mantenha as crianças longe do fogão e das tigelas quentes. Use macarrão cozido por um adulto; mantenha os ingredientes perecíveis refrigerados e guarde as sobras na geladeira em até duas horas. Confira os rótulos e evite contato cruzado com alergênicos."
       },
       "nutritionPlan": {
@@ -434,7 +395,7 @@
         "serving": "1 small bowl",
         "entries": [
           {
-            "text": "250 g cooked plain egg noodles, cooked without added salt",
+            "text": "250 g cooked unenriched plain egg noodles, cooked without added salt",
             "key": "v31_egg_noodles",
             "grams": [
               250,
@@ -581,7 +542,7 @@
         "extras": [
           "Check the tofu package for allergens and preparation instructions. No optional ingredients are included in the nutrition calculation."
         ],
-        "fact": "This is a global family cooking adaptation for the China adventure, pairing tofu with ginger and garlic; it is not presented as a traditional Chinese regional recipe.",
+        "fact": "Tofu is part of Chinese food history. This modern family adaptation pairs it with ginger and garlic and uses an air fryer; it is not a traditional Chinese regional recipe.",
         "safety": "Contains soy. An adult drains and cuts tofu, handles the air fryer and hot basket, checks it is heated through and serves it after cooling. Stay back while an adult uses a knife or hot air fryer. Use clean utensils, check package labels and avoid allergen cross-contact. Keep fingers away from the hot appliance.",
         "allergens": [
           "soy"
@@ -620,7 +581,7 @@
           "5 g de azeite"
         ],
         "description": "Cubinhos de tofu firme com gengibre, alho e uma fina camada crocante de amido de milho, preparados por um adulto na air fryer.",
-        "fact": "Esta é uma adaptação culinária global para famílias na aventura pela China, com tofu, gengibre e alho. Não é apresentada como uma receita tradicional de uma região chinesa.",
+        "fact": "O tofu faz parte da história alimentar da China. Esta adaptação moderna para famílias combina tofu com gengibre e alho e usa a air fryer; não é uma receita tradicional de uma região chinesa.",
         "safety": "Contém soja. Um adulto escorre e corta o tofu, usa a air fryer e o cesto quente, confere se o alimento está bem aquecido e serve depois de esfriar. Fique afastado enquanto um adulto usa faca ou air fryer quente. Use utensílios limpos, confira os rótulos e evite contato cruzado com alergênicos. Mantenha os dedos longe do aparelho quente."
       },
       "nutritionPlan": {
@@ -682,7 +643,9 @@
           }
         ]
       },
-      "culturalSources": [],
+      "culturalSources": [
+        "https://www.smithsonianmag.com/history/ben-franklin-may-be-responsible-bringing-tofu-america-180968495/"
+      ],
       "safetySources": [
         "https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety",
         "https://www.food.gov.uk/safety-hygiene/cooking-your-food"
@@ -711,7 +674,7 @@
         "https://api.nal.usda.gov/fdc/v1/food/171413?api_key=DEMO_KEY",
         "https://api.nal.usda.gov/fdc/v1/food/172475?api_key=DEMO_KEY"
       ],
-      "fact": "This is a global family cooking adaptation for the China adventure, pairing tofu with ginger and garlic; it is not presented as a traditional Chinese regional recipe."
+      "fact": "Tofu is part of Chinese food history. This modern family adaptation pairs it with ginger and garlic and uses an air fryer; it is not a traditional Chinese regional recipe."
     }
   ],
   "releaseGates": {
