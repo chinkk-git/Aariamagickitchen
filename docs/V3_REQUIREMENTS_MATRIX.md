@@ -3,7 +3,7 @@ States: NOT STARTED / IN PROGRESS / BLOCKED / VERIFIED. Link actual code/test/ev
 | ID | Requirement | Responsible area | Required evidence | State |
 |---|---|---|---|---|
 | R001 | Brand My Magical Kitchen throughout app | WP00 | UI screenshots + app label | NOT STARTED |
-| R002 | Audience 8–12 inclusive language | WP00/WP09 | content review | NOT STARTED |
+| R002 | Audience 8–10 inclusive language | WP00/WP09 | A09 review of representative recipe/onboarding language and age-appropriateness report | IN PROGRESS — target corrected to 8–10; independent content review and evidence are still required. |
 | R003 | Onboarding name + CHEF_A/CHEF_B only | WP00 | UI + persistence tests | IN PROGRESS — text-first profile UI and two chef choices added; visual assets, persistence integration tests and first-run/legacy device flows remain open. |
 | R004 | No gender field collected | WP00 | schema/privacy audit | NOT STARTED |
 | R005 | Multiple isolated local profiles | WP00/WP04 | profile isolation tests | IN PROGRESS — Robolectric SQLite isolation tests pass in CI 39061031142. A runtime merge could retain fields missing from a switched-to snapshot; the profile apply path now clears prior values before overlaying incoming data. CI run 39062236604 passed the adapter-validation step including the new Node regression script; real-device verification remains pending. |
