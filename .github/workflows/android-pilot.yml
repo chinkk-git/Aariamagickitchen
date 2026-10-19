@@ -114,6 +114,117 @@ jobs:
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android clean assembleDebug
       - name: Restore production Android build configuration
         run: cp "$RUNNER_TEMP/v3-app-build.gradle.kts" phase2-pilot/apps/aaria-android/app/build.gradle.kts
+
+      - name: Check out V3.1 visual source at verified commit
+        uses: actions/checkout@v4
+        with:
+          repository: chinkk-git/Aariamagickitchen
+          ref: 8af9d76ab339b18b33c9e15929b161bbb3f55c68
+          path: v31-visual-source
+
+      - name: Build separate V3.1 visual preview identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          v31_source="$GITHUB_WORKSPACE/v31-visual-source"
+          preview_dir="$GITHUB_WORKSPACE/artifacts/v31-preview"
+          mkdir -p "$preview_dir"
+          (
+            cd "$v31_source"
+            npm --prefix phase2-pilot test
+            npm --prefix phase2-pilot run validate:recipes
+            npm --prefix phase2-pilot run validate:v31
+            node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_1.html
+            node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3_1.html
+            node tools/v3/test-approved-chef-art.mjs dist/Aaria_Magical_Kitchen_V3_1.html
+            node tools/v3/test-csp-policy.mjs
+            node tools/v3/test-profile-isolation.mjs
+            mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
+            cp dist/Aaria_Magical_Kitchen_V3_1.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+            grep -Fq 'World Food Adventures' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+            sha256sum dist/Aaria_Magical_Kitchen_V3_1.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html | tee "$preview_dir/html-sha256.txt"
+          )
+          python3 - "$v31_source/phase2-pilot/apps/aaria-android/app/build.gradle.kts" "$v31_source/phase2-pilot/apps/aaria-android/app/src/main/res/values/strings.xml" <<'PY'
+          import pathlib, sys
+          gradle = pathlib.Path(sys.argv[1])
+          source = gradle.read_text()
+          old_app = 'applicationId = "com.aaria.magickitchen.pilot"'
+          if source.count(old_app) != 1 or source.count('versionCode = 7') != 1 or source.count('    signingConfigs {') != 1:
+              raise SystemExit("Unexpected V3.1 Android identity/config; refusing to patch preview build")
+          preview_signing = '''    signingConfigs {
+                  getByName("debug") {
+                      storeFile = file(System.getenv("V3_CI_DEBUG_KEYSTORE"))
+                      storePassword = "android"
+                      keyAlias = "androiddebugkey"
+                      keyPassword = "android"
+                  }
+          '''
+          source = source.replace('    signingConfigs {', preview_signing, 1)
+          source = source.replace(old_app, 'applicationId = "com.aaria.magickitchen.v31preview"', 1)
+          source = source.replace('versionCode = 7', 'versionCode = 31', 1)
+          source = source.replace('versionName = "1.0.3"', 'versionName = "3.1-preview"', 1)
+          gradle.write_text(source)
+          strings = pathlib.Path(sys.argv[2])
+          value = strings.read_text()
+          old_label = r"Aaria\'s Magical Kitchen"
+          if value.count(old_label) != 1:
+              raise SystemExit("Unexpected V3.1 app label; refusing to patch preview label")
+          strings.write_text(value.replace(old_label, r"Aaria\'s Magical Kitchen V3.1 Preview", 1))
+          PY
+          gradle --no-daemon -p "$v31_source/phase2-pilot/apps/aaria-android" clean assembleDebug
+          preview_apk="$v31_source/phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk"
+          v3_apk="$GITHUB_WORKSPACE/phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk"
+          cp "$preview_apk" "$preview_dir/aaria-magical-kitchen-v3.1-preview.apk"
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          test -x "$aapt" && test -x "$apksigner"
+          "$aapt" dump badging "$v3_apk" > "$preview_dir/v3-apk-badging.txt"
+          "$aapt" dump badging "$preview_apk" > "$preview_dir/v31-preview-badging.txt"
+          "$apksigner" verify --print-certs "$v3_apk" > "$preview_dir/v3-certificate.txt" 2>&1
+          "$apksigner" verify --print-certs "$preview_apk" > "$preview_dir/v31-preview-certificate.txt" 2>&1
+          python3 - "$preview_dir" <<'PY'
+          import pathlib, re, sys
+          root = pathlib.Path(sys.argv[1])
+          def badging(name): return (root / name).read_text()
+          v3 = badging("v3-apk-badging.txt")
+          preview = badging("v31-preview-badging.txt")
+          if "package: name='com.aaria.magickitchen.pilot' versionCode='7'" not in v3:
+              raise SystemExit("V3 APK package/version identity changed unexpectedly")
+          expected = "package: name='com.aaria.magickitchen.v31preview' versionCode='31' versionName='3.1-preview'"
+          if expected not in preview or "application-label:'Aaria's Magical Kitchen V3.1 Preview'" not in preview:
+              raise SystemExit("V3.1 preview package, version or label is not isolated as expected")
+          def signer(path):
+              report = (root / path).read_text(errors="replace")
+              found = re.findall(r"^\s*(?:Signer #\d+ certificate|V\d+ Signer: certificate) SHA-256 digest:\s*([0-9a-fA-F:]+)\s*$", report, re.M)
+              if len(found) != 1:
+                  raise SystemExit(f"Expected exactly one SHA-256 signer in {path}; found {len(found)}")
+              digest = found[0].replace(":", "").lower()
+              if not re.fullmatch(r"[0-9a-f]{64}", digest):
+                  raise SystemExit(f"Invalid SHA-256 signer in {path}")
+              return digest
+          v3_signer = signer("v3-certificate.txt")
+          preview_signer = signer("v31-preview-certificate.txt")
+          if v3_signer != preview_signer:
+              raise SystemExit("V3 APK and side-by-side preview do not use the same run-scoped signer")
+          (root / "identity.txt").write_text(
+              "V3 package=com.aaria.magickitchen.pilot\nV3 versionCode=7\n" +
+              f"V3 CI signer SHA-256={v3_signer}\n" +
+              "Preview package=com.aaria.magickitchen.v31preview\n" +
+              "Preview label=Aaria's Magical Kitchen V3.1 Preview\nPreview versionCode=31\n" +
+              f"Preview CI signer SHA-256={preview_signer}\n" +
+              "Visual source V3.1 commit=8af9d76ab339b18b33c9e15929b161bbb3f55c68\n" +
+              "Preview identity is separate; production applicationId/signing configuration is unchanged.\n"
+          )
+          (root / "INSTALL.txt").write_text(
+              "Aaria's Magical Kitchen V3.1 Visual Preview\n\n" +
+              "Install aaria-magical-kitchen-v3.1-preview.apk using Android's package installer.\n" +
+              "Package: com.aaria.magickitchen.v31preview\n" +
+              "This preview is designed to coexist with com.aaria.magickitchen.pilot.\n" +
+              "Do not uninstall or clear data from the existing Aaria app to install this preview.\n" +
+              "This is a CI debug-signed visual preview and is not a production update.\n"
+          )
+          PY
+
       - name: Install and launch APK in Android emulator
         shell: bash
         run: |
@@ -185,6 +296,7 @@ jobs:
           apk="phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk"
           upgrade_apk="$RUNNER_TEMP/v3-upgrade-fixture/app-debug-v6.apk"
           package="com.aaria.magickitchen.pilot"
+          preview_package="com.aaria.magickitchen.v31preview"
           apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           test -x "$apksigner"
           fixture_cert_report="$diagnostics/upgrade-fixture-certificate.txt"
@@ -282,8 +394,37 @@ jobs:
           assert state["weeks"]["week-1"]["day-1"] is True, "weekly progress changed after APK upgrade"
           print("Same-signer debug APK upgrade v6→v7 preserved favorites, completed recipe IDs and weekly progress.")
           PY
+          preview_apk="$GITHUB_WORKSPACE/artifacts/v31-preview/aaria-magical-kitchen-v3.1-preview.apk"
+          test -s "$preview_apk"
+          adb install "$preview_apk" | tee "$diagnostics/v31-preview-install.txt"
+          preview_version="$(adb shell dumpsys package "$preview_package" | grep -m1 'versionCode=')"
+          printf '%s\n' "$preview_version" | tee "$diagnostics/v31-preview-version.txt"
+          if [[ "$preview_version" != *"versionCode=31"* ]]; then
+            echo "::error::Side-by-side preview package did not report versionCode 31."
+            exit 1
+          fi
+          adb shell pm path "$package" | tee "$diagnostics/v3-package-path.txt"
+          adb shell pm path "$preview_package" | tee "$diagnostics/v31-preview-package-path.txt"
+          grep -Fq 'package:/data/app/' "$diagnostics/v3-package-path.txt"
+          grep -Fq 'package:/data/app/' "$diagnostics/v31-preview-package-path.txt"
+          preview_component="$(adb shell cmd package resolve-activity --brief --user 0 "$preview_package" | tr -d '\r' | tail -n 1)"
+          if [[ "$preview_component" != "$preview_package/"* ]]; then
+            printf 'Resolved preview launcher component: %s\n' "$preview_component" | tee "$diagnostics/v31-preview-resolved-component.txt"
+            echo "::error::Could not resolve launcher activity for the isolated preview package."
+            exit 1
+          fi
+          printf '%s\n' "$preview_component" | tee "$diagnostics/v31-preview-resolved-component.txt"
+          adb shell am start -W -n "$preview_component" | tee "$diagnostics/v31-preview-launch.txt"
+          grep -Fq 'Status: ok' "$diagnostics/v31-preview-launch.txt"
+          adb shell am start -W -n "$package/.MainActivity" | tee "$diagnostics/v3-with-preview-launch.txt"
+          grep -Fq 'Status: ok' "$diagnostics/v3-with-preview-launch.txt"
+          adb shell pm list packages | grep -F "package:$package" | tee "$diagnostics/v3-installed-with-preview.txt"
+          adb shell pm list packages | grep -F "package:$preview_package" | tee "$diagnostics/v31-preview-installed-with-v3.txt"
           adb uninstall "$package"
           adb install -r "$apk"
+          adb shell pm path "$package" | tee "$diagnostics/v3-reinstalled-package-path.txt"
+          adb shell pm path "$preview_package" | tee "$diagnostics/v31-preview-retained-package-path.txt"
+          grep -Fq 'package:/data/app/' "$diagnostics/v31-preview-retained-package-path.txt"
           adb logcat -c
           adb shell am start -W -n "$package/.MainActivity"
           pid="$(adb shell pidof -s "$package" | tr -d '\r')"
@@ -298,6 +439,8 @@ jobs:
             exit 1
           fi
           adb shell pidof -s com.aaria.magickitchen.pilot | tee "$diagnostics/app-pid.txt"
+          adb shell am start -W -n "$preview_component" | tee "$diagnostics/v31-preview-relaunch-after-v3-reinstall.txt"
+          grep -Fq 'Status: ok' "$diagnostics/v31-preview-relaunch-after-v3-reinstall.txt"
           adb logcat -d -s AndroidRuntime:E | tee "$diagnostics/android-runtime-errors.txt"
           adb shell settings put system accelerometer_rotation 0
           for rotation in 0 1; do
@@ -398,6 +541,15 @@ jobs:
           name: aaria-magical-kitchen-v3-apk
           path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload co-installable V3.1 visual preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.1-coinstallable-preview
+          path: artifacts/v31-preview/
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Upload replaceable V3 HTML
