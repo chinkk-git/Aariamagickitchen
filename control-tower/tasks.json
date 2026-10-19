@@ -60,6 +60,20 @@
       ],
       "evidence": [],
       "blocker": "V3.1 Work session stopped"
+    },
+    {
+      "id": "CT-TEST-LEASE",
+      "issue": 11,
+      "owner": "v3",
+      "status": "READY",
+      "depends_on": [],
+      "target_branch": "control-tower/lease-acceptance-20261019",
+      "acceptance": [
+        "One of two claims succeeds; release restores READY"
+      ],
+      "evidence": [],
+      "blocker": null,
+      "lease": null
     }
   ],
   "release": {
