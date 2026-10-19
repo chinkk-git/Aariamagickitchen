@@ -4,6 +4,10 @@ import android.app.Application
 import android.content.Context
 import android.util.Base64
 import java.io.File
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeoutException
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -111,5 +115,36 @@ class AndroidContentPackRecoveryTest {
         assertEquals(-1, preferences.getInt("pending_content_activation_version", -1))
         assertEquals("7", File(active, "pack-version.txt").readText())
         assertEquals("known-good", File(active, "sentinel.txt").readText())
+    }
+
+    @Test fun contentReadsWaitForActivationCriticalSection() {
+        val repository = AndroidContentPackRepository(app, null, null)
+        val content = File(root, "active/content").apply { mkdirs() }
+        File(content, "catalog.json").writeText("[]")
+        val locked = CountDownLatch(1)
+        val release = CountDownLatch(1)
+        val holder = Thread {
+            synchronized(repository) {
+                locked.countDown()
+                release.await(5, TimeUnit.SECONDS)
+            }
+        }
+        val reader = Executors.newSingleThreadExecutor()
+        holder.start()
+        try {
+            assertTrue("activation lock was not acquired", locked.await(5, TimeUnit.SECONDS))
+            val pendingRead = reader.submit { repository.openContentAsset("content/catalog.json") }
+            try {
+                pendingRead.get(150, TimeUnit.MILLISECONDS)
+                throw AssertionError("content read must wait while activation holds the repository lock")
+            } catch (_: TimeoutException) { }
+            release.countDown()
+            val stream = pendingRead.get(5, TimeUnit.SECONDS)
+            assertEquals("[]", stream?.bufferedReader()?.use { it.readText() })
+        } finally {
+            release.countDown()
+            holder.join(5_000)
+            reader.shutdownNow()
+        }
     }
 }

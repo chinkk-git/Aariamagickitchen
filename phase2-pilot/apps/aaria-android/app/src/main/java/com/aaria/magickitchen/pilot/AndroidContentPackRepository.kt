@@ -62,8 +62,10 @@ class AndroidContentPackRepository(
         }
     }
 
+    @Synchronized
     fun activeContentDirectory(): File? = active.takeIf { it.isDirectory }
 
+    @Synchronized
     fun openContentAsset(appAssetPath: String): InputStream? = runCatching {
         recoverInterruptedActivation()
         if (!appAssetPath.startsWith("content/")) return null
