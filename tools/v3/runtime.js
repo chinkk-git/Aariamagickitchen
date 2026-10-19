@@ -241,7 +241,20 @@ function v3ParseProfileState(raw){
   return {...x,profiles,activeId,snapshot};
  }catch{return {profiles:[],activeId:null,snapshot:{}}}
 }
-function v3PersistProfileState(){if(window.AariaNative?.saveProfileSnapshot&&v3ProfileState.activeId&&window.AariaNative.saveProfileSnapshot(v3ProfileState.activeId,JSON.stringify(state)))return;try{const profiles=(v3ProfileState.profiles||[]).map(p=>({...p,snapshot:p.id===v3ProfileState.activeId?state:p.snapshot}));localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles,activeId:v3ProfileState.activeId||null}))}catch{}}
+function v3PersistProfileState(){
+ const activeId=v3ProfileState.activeId||null,nativeSave=window.AariaNative?.saveProfileSnapshot;
+ let nativeSaved=false;
+ if(nativeSave&&activeId){try{nativeSaved=!!nativeSave(activeId,JSON.stringify(state))}catch{}}
+ try{
+  const key='myMagicalKitchenProfilesV1',previous=v3ParseProfileState(localStorage.getItem(key));
+  const priorById=new Map((previous.profiles||[]).map(p=>[p.id,p.snapshot]));
+  const profiles=(v3ProfileState.profiles||[]).map(p=>({...p,snapshot:p.id===activeId?state:(priorById.get(p.id)||p.snapshot)}));
+  const pending=new Set(Array.isArray(previous.pendingProfileIds)?previous.pendingProfileIds.filter(id=>typeof id==='string'):[]);
+  if(nativeSave&&activeId){if(nativeSaved)pending.delete(activeId);else pending.add(activeId)}
+  localStorage.setItem(key,JSON.stringify({profiles,activeId,pendingProfileIds:[...pending]}));
+ }catch{}
+ return nativeSaved||!nativeSave;
+}
 function v3EmptyProfileValue(value,key){
  if(Array.isArray(value))return [];
  if(value&&typeof value==='object'){const empty={};for(const [childKey,childValue] of Object.entries(value))empty[childKey]=v3EmptyProfileValue(childValue,childKey);return empty}
@@ -259,11 +272,23 @@ function v3ProfileStateFor(template,snapshot){
 }
 function v3SetActiveProfile(result){
  const r=v3ParseProfileState(result);
+ const key='myMagicalKitchenProfilesV1',fallback=v3ParseProfileState(localStorage.getItem(key));
+ const pending=new Set(Array.isArray(fallback.pendingProfileIds)?fallback.pendingProfileIds.filter(id=>typeof id==='string'):[]);
+ const fallbackById=new Map((fallback.profiles||[]).map(p=>[p.id,p]));
+ const recovered=fallbackById.get(r.activeId);
+ if(r.activeId&&pending.has(r.activeId)&&recovered?.snapshot)r.snapshot=recovered.snapshot;
  v3ProfileState.profiles=r.profiles||[];v3ProfileState.activeId=r.activeId||null;
  const active=v3ProfileState.profiles.find(p=>p.id===v3ProfileState.activeId)||null;
  v3ProfileState.profile=active;
  state=v3ProfileStateFor(state,r.snapshot);state.avatarAssignments??={};
- if(active){try{localStorage.setItem('aariaPrivateKitchenV4',JSON.stringify(state))}catch{}}
+ if(active){
+  if(pending.has(active.id)&&window.AariaNative?.saveProfileSnapshot){try{if(window.AariaNative.saveProfileSnapshot(active.id,JSON.stringify(state)))pending.delete(active.id)}catch{}}
+  try{
+   localStorage.setItem('aariaPrivateKitchenV4',JSON.stringify(state));
+   const profiles=v3ProfileState.profiles.map(p=>({...p,snapshot:p.id===active.id?state:(fallbackById.get(p.id)?.snapshot||p.snapshot)}));
+   localStorage.setItem(key,JSON.stringify({profiles,activeId:active.id,pendingProfileIds:[...pending]}));
+  }catch{}
+ }
  v3ProfileInitComplete=true;
  if(!v3ProfileSaveWrapped){const original=save;save=function v3ProfileSave(){original();v3PersistProfileState()};v3ProfileSaveWrapped=true}
 }
@@ -311,7 +336,7 @@ function v3OpenProfileEditor(mode='menu'){
  document.querySelector('#v3ProfileDialog [data-v3-chef]')?.focus();
 }
 function v3FreshSnapshot(){const defaults={weeks:{},done:[],checks:{},stories:[],favorites:[],grocerySelected:[],avatarAssignments:{},language:state.language||'en-GB'};return v3ProfileStateFor(state,defaults)}
-function v3ApplyProfileResult(raw){const r=v3ParseProfileState(raw);if(r.error)throw new Error(r.error);v3SetActiveProfile(r);try{localStorage.setItem('myMagicalKitchenProfilesV1',JSON.stringify({profiles:v3ProfileState.profiles,activeId:v3ProfileState.activeId}))}catch{};render()}
+function v3ApplyProfileResult(raw){const r=v3ParseProfileState(raw);if(r.error)throw new Error(r.error);v3SetActiveProfile(r);render()}
 function v3CreateOrSelectChef(name,chefId){
  const profile=v3ProfileState.profile;
  if(profile?.chefId==='LEGACY_AARIA'){

@@ -92,15 +92,55 @@ const failedNativeStore = new Map();
 let nativeSaveAttempts = 0;
 const nativeFallbackContext = vm.createContext({
   window: { AariaNative: { saveProfileSnapshot: () => { nativeSaveAttempts++; return false; } } },
-  localStorage: { setItem: (key, value) => failedNativeStore.set(key, value) },
+  localStorage: { getItem: key => failedNativeStore.get(key) ?? null, setItem: (key, value) => failedNativeStore.set(key, value) },
   v3ProfileState: { activeId: 'local-recovery', profiles: [{ id: 'local-recovery', name: 'Recovered', snapshot: {} }] },
-  state: { done: [8] }
+  state: { done: [8] },
+  v3ParseProfileState: raw => { try { const value = JSON.parse(raw || '{}'); return Array.isArray(value.profiles) ? value : { profiles: [] }; } catch { return { profiles: [] }; } }
 });
 vm.runInContext(runtime.slice(persistStart, persistEnd), nativeFallbackContext);
 vm.runInContext('v3PersistProfileState()', nativeFallbackContext);
 assert.equal(nativeSaveAttempts, 1);
 const nativeFallbackProfiles = JSON.parse(failedNativeStore.get('myMagicalKitchenProfilesV1'));
 assert.deepEqual(nativeFallbackProfiles.profiles[0].snapshot, { done: [8] }, 'failed native saves must still persist recovered profiles locally');
+assert.deepEqual(nativeFallbackProfiles.pendingProfileIds, ['local-recovery'], 'failed native saves must be marked for startup reconciliation');
+
+// A successful native initialization can still return an older snapshot after a prior
+// native save failed. Recover the marked local snapshot before displaying or overwriting it.
+const recoveryStore = new Map([['myMagicalKitchenProfilesV1', JSON.stringify({
+  activeId: 'profile-recovery',
+  pendingProfileIds: ['profile-recovery'],
+  profiles: [{ id: 'profile-recovery', name: 'Aaria', chefId: 'CHEF_A', snapshot: { done: [8], favorites: ['recipe-new'] } }]
+})]]);
+let reconciliationSaveAttempts = 0;
+const recoveryContext = vm.createContext({
+  window: { AariaNative: { saveProfileSnapshot: () => { reconciliationSaveAttempts++; return false; } } },
+  localStorage: { getItem: key => recoveryStore.get(key) ?? null, setItem: (key, value) => recoveryStore.set(key, value) },
+  v3ProfileState: { profiles: [], activeId: null, profile: null },
+  v3ProfileInitComplete: false,
+  v3ProfileSaveWrapped: false,
+  state: { done: [], favorites: [], avatarAssignments: {} },
+  save: () => {}
+});
+const parseStart = runtime.indexOf('function v3ParseProfileState(raw){');
+const parseEnd = runtime.indexOf('\nfunction v3PersistProfileState', parseStart);
+const emptyStart = runtime.indexOf('function v3EmptyProfileValue');
+const emptyEnd = runtime.indexOf('\nfunction v3ProfileStateFor', emptyStart);
+const stateStart = runtime.indexOf('function v3ProfileStateFor');
+const stateEnd = runtime.indexOf('\nfunction v3SetActiveProfile', stateStart);
+const activeStart = runtime.indexOf('function v3SetActiveProfile(result){');
+const activeEnd = runtime.indexOf('\nfunction v3InitProfiles', activeStart);
+assert(parseStart >= 0 && parseEnd > parseStart && emptyStart >= 0 && emptyEnd > emptyStart && stateStart >= 0 && stateEnd > stateStart && activeStart >= 0 && activeEnd > activeStart, 'profile recovery helpers must be available');
+vm.runInContext(runtime.slice(parseStart, parseEnd) + runtime.slice(emptyStart, emptyEnd) + runtime.slice(stateStart, stateEnd) + runtime.slice(activeStart, activeEnd), recoveryContext);
+vm.runInContext("v3SetActiveProfile({profiles:[{id:'profile-recovery',name:'Aaria',chefId:'CHEF_A'}],activeId:'profile-recovery',snapshot:{done:[1],favorites:['recipe-old']}})", recoveryContext);
+assert.deepEqual(JSON.parse(JSON.stringify(recoveryContext.state.done)), [8], 'startup must restore the dirty local progress snapshot over stale native data');
+assert.deepEqual(JSON.parse(JSON.stringify(recoveryContext.state.favorites)), ['recipe-new'], 'startup must restore dirty favourites over stale native data');
+assert.equal(reconciliationSaveAttempts, 1, 'startup must retry saving the recovered snapshot to native storage');
+assert.deepEqual(JSON.parse(recoveryStore.get('myMagicalKitchenProfilesV1')).pendingProfileIds, ['profile-recovery'], 'failed reconciliation must remain pending for another startup');
+
+recoveryContext.window.AariaNative.saveProfileSnapshot = () => { reconciliationSaveAttempts++; return true; };
+vm.runInContext("v3SetActiveProfile({profiles:[{id:'profile-recovery',name:'Aaria',chefId:'CHEF_A'}],activeId:'profile-recovery',snapshot:{done:[1],favorites:['recipe-old']}})", recoveryContext);
+assert.deepEqual(JSON.parse(JSON.stringify(recoveryContext.state.done)), [8]);
+assert.deepEqual(JSON.parse(recoveryStore.get('myMagicalKitchenProfilesV1')).pendingProfileIds, [], 'successful reconciliation must clear the recovery marker');
 const legacyCalls = [];
 const legacyTrigger = { textContent: '' };
 const legacyProfile = { id: 'legacy-aaria-v4', name: 'Aaria', chefId: 'LEGACY_AARIA' };
