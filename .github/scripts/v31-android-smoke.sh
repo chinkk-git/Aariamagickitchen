@@ -59,8 +59,19 @@ adb_timeout forward tcp:9222 "localabstract:$socket"
 timeout --kill-after=10s 240s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
 const {readFileSync, statSync} = await import('node:fs');
+const {createHash} = await import('node:crypto');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const adb = args => execFileSync('timeout', ['--kill-after=10s','60s','adb',...args]);
+async function waitForVisible(selector, label) {
+  let last = '';
+  for (let attempt=0; attempt<30; attempt++) {
+    const state = await evaluate(`(() => { const screen=document.querySelector('#screen'); const node=screen?.querySelector(${JSON.stringify(selector)}); if(!node)return {screen:screen?.className||'',text:''}; const rect=node.getBoundingClientRect(), style=getComputedStyle(node); return {screen:screen.className,text:node.innerText||'',visible:style.display!=='none'&&style.visibility!=='hidden'&&rect.width>0&&rect.height>0}; })()`);
+    last = JSON.stringify(state);
+    if (state?.visible) return state;
+    await pause(250);
+  }
+  throw new Error(`${label} did not become visible in #screen; last state: ${last}`);
+}
 async function waitForRotation(expected) {
   let last = 'unknown';
   for (let attempt=0; attempt<30; attempt++) {
@@ -147,35 +158,46 @@ adb(['shell','screencap','-p','/sdcard/v31-home.png']);
 adb(['pull','/sdcard/v31-home.png','artifacts/v31-android-screenshots/v31-home-portrait.png']);
 if (statSync('artifacts/v31-android-screenshots/v31-home-portrait.png').size < 10000) throw new Error('Home screenshot is unexpectedly small');
 await evaluate(`document.querySelector('[data-v31-open-world]').click()`);
-const world = await evaluate(`document.querySelector('.v31-world-page h1')?.innerText || ''`);
-if (!world.includes('World Food Adventures')) throw new Error('World route did not load; got: ' + world);
-console.log('World route verified:', world);
+const worldState = await waitForVisible('.v31-world-header h1', 'World Adventure heading');
+if (!worldState.screen.includes('v31-world-screen') || !worldState.text.includes('World Food Adventures')) throw new Error('World route did not replace the active screen; got: ' + JSON.stringify(worldState));
+await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
+console.log('Visible World route verified:', worldState.text);
 adb(['shell','screencap','-p','/sdcard/v31-world.png']);
 adb(['pull','/sdcard/v31-world.png','artifacts/v31-android-screenshots/v31-world-portrait.png']);
-adb(['shell','cmd','window','user-rotation','lock','1']);
-adb(['shell','input','keyevent','KEYCODE_WAKEUP']);
+const homeDigest = createHash('sha256').update(readFileSync('artifacts/v31-android-screenshots/v31-home-portrait.png')).digest('hex');
+const worldDigest = createHash('sha256').update(readFileSync('artifacts/v31-android-screenshots/v31-world-portrait.png')).digest('hex');
+if (homeDigest === worldDigest) throw new Error('World screenshot is byte-identical to Home; route transition was not captured');
+adb(['emu','rotate']);
 await waitForRotation(1);
-const landscape = await evaluate(`document.querySelector('.v31-world-page h1')?.innerText || ''`);
-if (!landscape.includes('World Food Adventures')) throw new Error('World route was lost during orientation change');
+const landscape = await waitForVisible('.v31-world-header h1', 'World heading after rotation');
+if (!landscape.screen.includes('v31-world-screen') || !landscape.text.includes('World Food Adventures')) throw new Error('World route was lost during orientation change');
+await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
 adb(['shell','screencap','-p','/sdcard/v31-world-landscape.png']);
 adb(['pull','/sdcard/v31-world-landscape.png','artifacts/v31-android-screenshots/v31-world-landscape.png']);
 const image = readFileSync('artifacts/v31-android-screenshots/v31-world-landscape.png');
 const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
 if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
 console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
-adb(['shell','cmd','window','user-rotation','lock','0']);
-adb(['shell','input','keyevent','KEYCODE_WAKEUP']);
+adb(['emu','rotate']);
+adb(['emu','rotate']);
+adb(['emu','rotate']);
 await waitForRotation(0);
-const portraitWorld = await evaluate(`document.querySelector('.v31-world-page h1')?.innerText || ''`);
-if (!portraitWorld.includes('World Food Adventures')) throw new Error('World route was lost while returning to portrait orientation');
+const portraitWorld = await waitForVisible('.v31-world-header h1', 'World heading after returning to portrait');
+if (!portraitWorld.screen.includes('v31-world-screen') || !portraitWorld.text.includes('World Food Adventures')) throw new Error('World route was lost while returning to portrait orientation');
 const indiaCount = await evaluate(`document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length`);
 if (indiaCount !== 18) throw new Error(`India destination should expose its 18 original recipes; found ${indiaCount}`);
 await evaluate(`document.querySelector('[data-v31-approved-recipe="51"]').click()`);
-const recipeTitle = await evaluate(`document.querySelector('.ref-hero h1')?.innerText || ''`);
-if (recipeTitle !== 'Masala Cheese Toast') throw new Error(`India recipe did not open; got: ${recipeTitle}`);
+const recipe = await waitForVisible('.ref-hero h1', 'India recipe heading');
+if (recipe.text !== 'Masala Cheese Toast') throw new Error(`India recipe did not replace the active screen; got: ${JSON.stringify(recipe)}`);
+await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
 adb(['shell','screencap','-p','/sdcard/v31-recipe.png']);
 adb(['pull','/sdcard/v31-recipe.png','artifacts/v31-android-screenshots/v31-recipe-portrait.png']);
 if (statSync('artifacts/v31-android-screenshots/v31-recipe-portrait.png').size < 10000) throw new Error('Recipe screenshot is unexpectedly small');
+for (const [left,right,label] of [['v31-home-portrait.png','v31-recipe-portrait.png','Recipe'],['v31-world-portrait.png','v31-recipe-portrait.png','Recipe']]) {
+  const a=createHash('sha256').update(readFileSync(`artifacts/v31-android-screenshots/${left}`)).digest('hex');
+  const b=createHash('sha256').update(readFileSync(`artifacts/v31-android-screenshots/${right}`)).digest('hex');
+  if(a===b)throw new Error(`${label} screenshot is byte-identical to ${left}; route transition was not captured`);
+}
 for (const [file, landscapeExpected] of [['v31-home-portrait.png',false],['v31-world-portrait.png',false],['v31-recipe-portrait.png',false],['v31-world-landscape.png',true]]) {
   const path = `artifacts/v31-android-screenshots/${file}`;
   if (statSync(path).size < 10000) throw new Error(`Screenshot is unexpectedly small: ${file}`);
