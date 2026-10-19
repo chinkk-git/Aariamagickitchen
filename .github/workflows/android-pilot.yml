@@ -458,12 +458,14 @@ jobs:
           back_exited=0
           for attempt in $(seq 1 10); do
             resumed="$(adb shell dumpsys activity activities | grep -E 'mResumedActivity|topResumedActivity' || true)"
-            if [[ -n "$resumed" && "$resumed" != *"$package"* ]]; then back_exited=1; break; fi
+            # Match the installed package component, not the activity class name:
+            # the side-by-side preview shares V3's Kotlin namespace.
+            if [[ -n "$resumed" && "$resumed" != *"$package/"* ]]; then back_exited=1; break; fi
             sleep 1
           done
           printf '%s\n' "$resumed" | tee "$diagnostics/back-navigation.txt"
           if [[ "$back_exited" != "1" ]]; then
-            echo "::error::Android Back did not exit the V3 home activity."
+            echo "::error::Android Back did not leave the V3 application package."
             exit 1
           fi
 
