@@ -87,6 +87,24 @@ jobs:
           unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
           unzip -p "$apk" assets/index.html | grep -Fq 'ne_110m_admin_0_countries'
 
+      - name: Prepare Linux KVM access for x86_64 emulator
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v31-diagnostics
+          if [ ! -e /dev/kvm ]; then
+            printf 'kvm_preflight=failed\nreason=/dev/kvm is not present on this runner\n' > artifacts/v31-diagnostics/kvm-preflight.txt
+            cat artifacts/v31-diagnostics/kvm-preflight.txt
+            exit 1
+          fi
+          sudo chown "$(id -un)" /dev/kvm
+          sudo chmod 600 /dev/kvm
+          if [ ! -r /dev/kvm ] || [ ! -w /dev/kvm ]; then
+            printf 'kvm_preflight=failed\nreason=runner cannot read and write /dev/kvm after permission setup\n' > artifacts/v31-diagnostics/kvm-preflight.txt
+            cat artifacts/v31-diagnostics/kvm-preflight.txt
+            exit 1
+          fi
+          printf 'kvm_preflight=passed\nrunner=%s\n' "$(id -un)" > artifacts/v31-diagnostics/kvm-preflight.txt
+          stat -c 'device=%n owner=%U group=%G mode=%a' /dev/kvm | tee -a artifacts/v31-diagnostics/kvm-preflight.txt
       - name: Launch Android APK and capture home/map screenshots
         timeout-minutes: 15
         uses: reactivecircus/android-emulator-runner@v2
