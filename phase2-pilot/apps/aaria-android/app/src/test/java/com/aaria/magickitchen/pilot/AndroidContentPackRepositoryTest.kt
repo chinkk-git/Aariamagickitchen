@@ -36,7 +36,7 @@ class AndroidContentPackRepositoryTest {
         val encoded = Base64.encodeToString(byteArrayOf(1, 2, 3), Base64.NO_WRAP)
 
         try {
-            repository.installBase64(encoded)
+            repository.installBase64(encoded, { _, _ -> false }, { false })
             throw AssertionError("Expected missing publisher key to reject content installation")
         } catch (error: IllegalStateException) {
             assertEquals("Trusted content publisher key is not provisioned", error.message)
