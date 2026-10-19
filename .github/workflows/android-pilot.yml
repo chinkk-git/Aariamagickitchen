@@ -187,13 +187,22 @@ jobs:
           package="com.aaria.magickitchen.pilot"
           apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           test -x "$apksigner"
-          fixture_signer="$("$apksigner" verify --print-certs "$upgrade_apk" 2>&1 | sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest: *//p' | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
-          current_signer="$("$apksigner" verify --print-certs "$apk" 2>&1 | sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest: *//p' | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
-          if [[ -z "$fixture_signer" || "$fixture_signer" != "$current_signer" ]]; then
+          fixture_cert_report="$diagnostics/upgrade-fixture-certificate.txt"
+          current_cert_report="$diagnostics/current-apk-certificate.txt"
+          "$apksigner" verify --print-certs "$upgrade_apk" 2>&1 | tee "$fixture_cert_report"
+          "$apksigner" verify --print-certs "$apk" 2>&1 | tee "$current_cert_report"
+          fixture_signer="$(sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest:[[:space:]]*//p' "$fixture_cert_report" | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
+          current_signer="$(sed -nE 's/^[[:space:]]*Signer #1 certificate SHA-256 digest:[[:space:]]*//p' "$current_cert_report" | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
+          printf 'fixture_signer_sha256=%s\ncurrent_signer_sha256=%s\n' "$fixture_signer" "$current_signer" | tee "$diagnostics/upgrade-signing.txt"
+          if [[ ! "$fixture_signer" =~ ^[0-9a-f]{64}$ || ! "$current_signer" =~ ^[0-9a-f]{64}$ ]]; then
+            echo "::error::Could not parse a SHA-256 signer fingerprint from both APKs."
+            exit 1
+          fi
+          if [[ "$fixture_signer" != "$current_signer" ]]; then
             echo "::error::Lower-version upgrade fixture and current debug APK do not share a signer."
             exit 1
           fi
-          printf 'fixture_version_code=6\ncurrent_version_code=7\nshared_debug_signer_sha256=%s\n' "$fixture_signer" | tee "$diagnostics/upgrade-signing.txt"
+          printf 'fixture_version_code=6\ncurrent_version_code=7\nshared_debug_signer_sha256=%s\n' "$fixture_signer" | tee -a "$diagnostics/upgrade-signing.txt"
           adb install "$upgrade_apk" | tee "$diagnostics/upgrade-fixture-install.txt"
           old_version="$(adb shell dumpsys package "$package" | grep -m1 'versionCode=')"
           printf '%s\n' "$old_version" | tee "$diagnostics/upgrade-version-before.txt"
