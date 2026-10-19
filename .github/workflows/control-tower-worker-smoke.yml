@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   worker-smoke:
-    if: github.event.issue.number == 11 && github.event.label.name == 'ct:worker-smoke' && github.event.issue.user.login == 'chinkk-git'
+    if: github.event.issue.number == 11 && (github.event.label.name == 'ct:worker-smoke' || github.event.label.name == 'ct:worker-smoke-retry') && github.event.issue.user.login == 'chinkk-git'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -19,7 +19,7 @@ jobs:
         with:
           script: |
             const {owner,repo}=context.repo;
-            const branch='control-tower/e2e-worker-smoke-20261019';
+            const branch='control-tower/e2e-worker-smoke-retry-20261019';
             const path='control-tower/e2e_worker_smoke.txt';
             const payload='Control Tower deterministic worker smoke fixture. No AI coding worker was invoked.\n';
             const main=await github.rest.repos.getBranch({owner,repo,branch:'main'});
