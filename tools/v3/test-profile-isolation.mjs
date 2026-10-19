@@ -140,3 +140,23 @@ console.log('Profile persistence and snapshot isolation checks passed.');
 
 console.log('Profile snapshot reset isolation checks passed.');
 
+
+const tourStart = runtime.indexOf('function v3WhatsNewCopy(index,pt){');
+const tourEnd = runtime.indexOf('\nlet v3WhatsNewOpener', tourStart);
+assert(tourStart >= 0 && tourEnd > tourStart, 'V3 tour copy helper must exist');
+const tourContext = vm.createContext({});
+vm.runInContext(runtime.slice(tourStart, tourEnd), tourContext);
+const englishTour = vm.runInContext('[0,1,2].map(index=>v3WhatsNewCopy(index,false))', tourContext);
+const portugueseTour = vm.runInContext('[0,1,2].map(index=>v3WhatsNewCopy(index,true))', tourContext);
+assert.equal(englishTour.length, 3);
+assert.match(englishTour[0].body, /95 recipes/);
+assert.match(englishTour[0].body, /adult.*allergies/);
+assert.match(englishTour[1].body, /adult to review/);
+assert.match(englishTour[2].body, /profile.*Favourites.*progress/);
+assert.match(portugueseTour[0].body, /95 receitas/);
+assert.match(portugueseTour[0].body, /adulto.*alergias/);
+assert.equal(vm.runInContext('v3WhatsNewCopy(-1,false)', tourContext), null);
+assert.equal(vm.runInContext('v3WhatsNewCopy(3,true)', tourContext), null);
+assert.ok(runtime.includes('data-v3-tour-open') && runtime.includes('data-v3-tour-close') && runtime.includes('data-v3-tour-step'), 'tour must expose launch, skip/finish and step controls');
+assert.ok(runtime.includes('Replay the V3 kitchen tour'), 'tour must be replayable from Settings');
+console.log('V3 kitchen tour is translated, bounded, skippable, replayable and keeps adult review guidance.');
