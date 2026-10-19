@@ -1,0 +1,80 @@
+name: Aaria delivery watchdog
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  issues: write
+concurrency:
+  group: aaria-delivery-watchdog
+  cancel-in-progress: true
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Inspect worker health and update one tracking issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner, repo = context.repo.repo;
+            const now = Date.now(), hour = 3600000;
+            const workers = [
+              {name:'V3', branch:'codex/v3-completion-core-20261017', issue:4},
+              {name:'V3.1', branch:'feature/v3.1-home-redesign', issue:5}
+            ];
+            const report = [];
+            let critical = false;
+            for (const w of workers) {
+              const row = {worker:w.name, branch:w.branch, issue:w.issue};
+              try {
+                const [commit, comments, runs] = await Promise.all([
+                  github.rest.repos.getCommit({owner,repo,ref:w.branch}),
+                  github.paginate(github.rest.issues.listComments,{owner,repo,issue_number:w.issue,per_page:100}),
+                  github.rest.actions.listWorkflowRunsForRepo({owner,repo,branch:w.branch,per_page:30})
+                ]);
+                const last = comments.filter(c => !c.user?.type?.includes('Bot')).at(-1);
+                const commitTime = Date.parse(commit.data.commit.committer.date);
+                const heartbeatTime = last ? Date.parse(last.created_at) : 0;
+                const lastActivity = Math.max(commitTime,heartbeatTime);
+                const minutes = Math.floor((now-lastActivity)/60000);
+                const matching = runs.data.workflow_runs.filter(r=>r.head_branch===w.branch && r.event!=='schedule');
+                const latest = matching[0];
+                const runAge = latest ? Math.floor((now-Date.parse(latest.run_started_at||latest.created_at))/60000) : null;
+                const oldRun = matching.find(r=>r.status==='in_progress' && now-Date.parse(r.run_started_at||r.created_at)>45*60000);
+                let state = minutes>60?'STALLED':minutes>30?'WARNING':'ACTIVE';
+                if (oldRun) state='STALLED';
+                if (state==='STALLED') critical=true;
+                row.state=state; row.lastActivityMinutes=minutes;
+                row.sha=commit.data.sha.slice(0,12);
+                row.lastComment=last?.html_url||null;
+                row.ci=latest?{id:latest.id,status:latest.status,conclusion:latest.conclusion,url:latest.html_url,ageMinutes:runAge}:null;
+                row.stuckRun=oldRun?.html_url||null;
+                row.next=state==='STALLED'?'Check active Work chat; resume from issue checkpoint/handover, do not launch a competing branch writer':state==='WARNING'?'Request fresh evidence checkpoint and next task':'Continue next unblocked checklist task';
+              } catch(e) {
+                row.state='MONITOR_ERROR';row.error=String(e).slice(0,250);critical=true;
+              }
+              report.push(row);
+            }
+            const marker='<!-- AARIA-DELIVERY-WATCHDOG -->';
+            const lines=[marker,'## Automated delivery health','Checked: '+new Date(now).toISOString(),'','| Stream | State | Last activity | HEAD | Latest CI |','|---|---|---:|---|---|'];
+            for(const r of report) lines.push('| '+r.worker+' | '+r.state+' | '+(r.lastActivityMinutes??'unknown')+' min | '+(r.sha||'unknown')+' | '+(r.ci?'[Run '+r.ci.id+']('+r.ci.url+') '+r.ci.status+'/'+(r.ci.conclusion||'—'):'unknown')+' |');
+            lines.push('','### Recovery guidance');
+            for(const r of report) lines.push('- **'+r.worker+'**: '+r.next+(r.stuckRun?' · [Long-running CI]('+r.stuckRun+')':'')+'.');
+            lines.push('','**Evidence rule:** commit/issue activity is a heartbeat, not proof a Work session is executing. CI success is not physical-device, signing, artwork or A08/A09 acceptance. A stopped Work session cannot be restarted by this workflow.','', 'Full JSON diagnostics:','```json',JSON.stringify(report,null,2),'```');
+            const body=lines.join('\n');
+            const title='[Control Tower] Automated V3 / V3.1 session health';
+            const issues=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
+            let issue=issues.find(i=>i.title===title && !i.pull_request);
+            if(!issue){
+              const created=await github.rest.issues.create({owner,repo,title,body:marker+'\nThis issue is the watchdog status board. It does not instruct or restart Work sessions.'});
+              issue=created.data;
+            }
+            const cs=await github.paginate(github.rest.issues.listComments,{owner,repo,issue_number:issue.number,per_page:100});
+            const prior=cs.find(c=>c.user?.login==='github-actions[bot]' && c.body?.startsWith(marker));
+            if(prior) await github.rest.issues.updateComment({owner,repo,comment_id:prior.id,body});
+            else await github.rest.issues.createComment({owner,repo,issue_number:issue.number,body});
+            core.summary.addHeading('Aaria delivery health').addRaw(body).write();
+            core.info('Watchdog board: '+issue.html_url+'; critical='+critical);
