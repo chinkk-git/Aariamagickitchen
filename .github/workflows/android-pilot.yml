@@ -76,24 +76,43 @@ jobs:
           gradle_file="phase2-pilot/apps/aaria-android/app/build.gradle.kts"
           backup="$RUNNER_TEMP/v3-app-build.gradle.kts"
           cp "$gradle_file" "$backup"
-          restore_gradle_file() { cp "$backup" "$gradle_file"; }
-          trap restore_gradle_file EXIT
+          key_dir="$RUNNER_TEMP/v3-ci-debug-key"
+          mkdir -p "$key_dir"
+          keytool -genkeypair -noprompt -keystore "$key_dir/debug.keystore" -storepass android -keypass android -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=V3 CI Debug,O=Aaria,C=US"
+          export V3_CI_DEBUG_KEYSTORE="$key_dir/debug.keystore"
           python3 - "$gradle_file" <<'PY'
           import pathlib, sys
           path = pathlib.Path(sys.argv[1])
           source = path.read_text()
-          if source.count("versionCode = 7") != 1:
-              raise SystemExit("Expected exactly one V3 versionCode = 7 for the upgrade fixture")
+          if source.count("versionCode = 7") != 1 or source.count("    signingConfigs {") != 1:
+              raise SystemExit("Expected the V3 versionCode and signingConfigs blocks")
+          test_signing = '''    signingConfigs {
+                  getByName("debug") {
+                      storeFile = file(System.getenv("V3_CI_DEBUG_KEYSTORE"))
+                      storePassword = "android"
+                      keyAlias = "androiddebugkey"
+                      keyPassword = "android"
+                  }
+          '''
+          source = source.replace("    signingConfigs {", test_signing, 1)
           path.write_text(source.replace("versionCode = 7", "versionCode = 6"))
           PY
           gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
           mkdir -p "$RUNNER_TEMP/v3-upgrade-fixture"
           cp phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk "$RUNNER_TEMP/v3-upgrade-fixture/app-debug-v6.apk"
-          cp "$backup" "$gradle_file"
-          trap - EXIT
+          python3 - "$gradle_file" <<'PY'
+          import pathlib, sys
+          path = pathlib.Path(sys.argv[1])
+          source = path.read_text()
+          if source.count("versionCode = 6") != 1:
+              raise SystemExit("Expected exactly one lower-version fixture value")
+          path.write_text(source.replace("versionCode = 6", "versionCode = 7"))
+          PY
 
       - name: Assemble installable APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android clean assembleDebug
+      - name: Restore production Android build configuration
+        run: cp "$RUNNER_TEMP/v3-app-build.gradle.kts" phase2-pilot/apps/aaria-android/app/build.gradle.kts
       - name: Install and launch APK in Android emulator
         shell: bash
         run: |
