@@ -29,7 +29,7 @@ class AndroidContentPackRepository(
     private val previous = File(root, "previous")
     private val awaitingParentApproval = ConcurrentHashMap.newKeySet<String>()
 
-    fun installBase64(encoded: String, parentApproval: (Int, Int) -> Boolean, activationAllowed: () -> Boolean): JSONObject {
+    fun installBase64(encoded: String, parentApproval: (Int, Int) -> Boolean, activationAllowed: () -> Boolean, activationLease: (() -> JSONObject) -> JSONObject): JSONObject {
         val pack = synchronized(this) {
             require(encoded.length <= MAX_BASE64_CHARS) { "Content pack is too large" }
             val key = publisherKey ?: throw IllegalStateException("Trusted content publisher key is not provisioned")
@@ -45,7 +45,8 @@ class AndroidContentPackRepository(
             // Prompt only after the signed package has been fully verified. Do not hold the
             // activation monitor while a parent responds; catalog reads remain available.
             return activateAfterParentConfirmation(parentApproval(pack.version, pack.files.size)) {
-                synchronized(this) {
+                activationLease {
+                    synchronized(this) {
                 recoverInterruptedActivation()
                 check(pack.version > prefs.getInt(KEY_VERSION, 0)) { "Content replay or concurrent activation rejected" }
                 check(activationAllowed()) { "Parent approval expired because the app left the foreground" }
@@ -64,6 +65,7 @@ class AndroidContentPackRepository(
                     throw error
                 }
                 JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
+                    }
                 }
             }
         } finally {
