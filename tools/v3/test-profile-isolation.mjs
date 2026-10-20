@@ -88,6 +88,59 @@ assert.equal(savedProfiles.activeId, 'profile-new');
 assert.deepEqual(savedProfiles.profiles.map(profile => profile.id), ['profile-new', 'profile-existing']);
 assert.deepEqual(savedProfiles.profiles[0].snapshot, { done: [4], favorites: ['recipe-1'] });
 assert.deepEqual(savedProfiles.profiles[1].snapshot, { done: [9] });
+const failedNativeStore = new Map();
+let nativeSaveAttempts = 0;
+const nativeFallbackContext = vm.createContext({
+  window: { AariaNative: { saveProfileSnapshot: () => { nativeSaveAttempts++; return false; } } },
+  localStorage: { getItem: key => failedNativeStore.get(key) ?? null, setItem: (key, value) => failedNativeStore.set(key, value) },
+  v3ProfileState: { activeId: 'local-recovery', profiles: [{ id: 'local-recovery', name: 'Recovered', snapshot: {} }] },
+  state: { done: [8] },
+  v3ParseProfileState: raw => { try { const value = JSON.parse(raw || '{}'); return Array.isArray(value.profiles) ? value : { profiles: [] }; } catch { return { profiles: [] }; } }
+});
+vm.runInContext(runtime.slice(persistStart, persistEnd), nativeFallbackContext);
+vm.runInContext('v3PersistProfileState()', nativeFallbackContext);
+assert.equal(nativeSaveAttempts, 1);
+const nativeFallbackProfiles = JSON.parse(failedNativeStore.get('myMagicalKitchenProfilesV1'));
+assert.deepEqual(nativeFallbackProfiles.profiles[0].snapshot, { done: [8] }, 'failed native saves must still persist recovered profiles locally');
+assert.deepEqual(nativeFallbackProfiles.pendingProfileIds, ['local-recovery'], 'failed native saves must be marked for startup reconciliation');
+
+// A successful native initialization can still return an older snapshot after a prior
+// native save failed. Recover the marked local snapshot before displaying or overwriting it.
+const recoveryStore = new Map([['myMagicalKitchenProfilesV1', JSON.stringify({
+  activeId: 'profile-recovery',
+  pendingProfileIds: ['profile-recovery'],
+  profiles: [{ id: 'profile-recovery', name: 'Aaria', chefId: 'CHEF_A', snapshot: { done: [8], favorites: ['recipe-new'] } }]
+})]]);
+let reconciliationSaveAttempts = 0;
+const recoveryContext = vm.createContext({
+  window: { AariaNative: { saveProfileSnapshot: () => { reconciliationSaveAttempts++; return false; } } },
+  localStorage: { getItem: key => recoveryStore.get(key) ?? null, setItem: (key, value) => recoveryStore.set(key, value) },
+  v3ProfileState: { profiles: [], activeId: null, profile: null },
+  v3ProfileInitComplete: false,
+  v3ProfileSaveWrapped: false,
+  state: { done: [], favorites: [], avatarAssignments: {} },
+  save: () => {}
+});
+const parseStart = runtime.indexOf('function v3ParseProfileState(raw){');
+const parseEnd = runtime.indexOf('\nfunction v3PersistProfileState', parseStart);
+const emptyStart = runtime.indexOf('function v3EmptyProfileValue');
+const emptyEnd = runtime.indexOf('\nfunction v3ProfileStateFor', emptyStart);
+const stateStart = runtime.indexOf('function v3ProfileStateFor');
+const stateEnd = runtime.indexOf('\nfunction v3SetActiveProfile', stateStart);
+const activeStart = runtime.indexOf('function v3SetActiveProfile(result){');
+const activeEnd = runtime.indexOf('\nfunction v3InitProfiles', activeStart);
+assert(parseStart >= 0 && parseEnd > parseStart && emptyStart >= 0 && emptyEnd > emptyStart && stateStart >= 0 && stateEnd > stateStart && activeStart >= 0 && activeEnd > activeStart, 'profile recovery helpers must be available');
+vm.runInContext(runtime.slice(parseStart, parseEnd) + runtime.slice(emptyStart, emptyEnd) + runtime.slice(stateStart, stateEnd) + runtime.slice(activeStart, activeEnd), recoveryContext);
+vm.runInContext("v3SetActiveProfile({profiles:[{id:'profile-recovery',name:'Aaria',chefId:'CHEF_A'}],activeId:'profile-recovery',snapshot:{done:[1],favorites:['recipe-old']}})", recoveryContext);
+assert.deepEqual(JSON.parse(JSON.stringify(recoveryContext.state.done)), [8], 'startup must restore the dirty local progress snapshot over stale native data');
+assert.deepEqual(JSON.parse(JSON.stringify(recoveryContext.state.favorites)), ['recipe-new'], 'startup must restore dirty favourites over stale native data');
+assert.equal(reconciliationSaveAttempts, 1, 'startup must retry saving the recovered snapshot to native storage');
+assert.deepEqual(JSON.parse(recoveryStore.get('myMagicalKitchenProfilesV1')).pendingProfileIds, ['profile-recovery'], 'failed reconciliation must remain pending for another startup');
+
+recoveryContext.window.AariaNative.saveProfileSnapshot = () => { reconciliationSaveAttempts++; return true; };
+vm.runInContext("v3SetActiveProfile({profiles:[{id:'profile-recovery',name:'Aaria',chefId:'CHEF_A'}],activeId:'profile-recovery',snapshot:{done:[1],favorites:['recipe-old']}})", recoveryContext);
+assert.deepEqual(JSON.parse(JSON.stringify(recoveryContext.state.done)), [8]);
+assert.deepEqual(JSON.parse(recoveryStore.get('myMagicalKitchenProfilesV1')).pendingProfileIds, [], 'successful reconciliation must clear the recovery marker');
 const legacyCalls = [];
 const legacyTrigger = { textContent: '' };
 const legacyProfile = { id: 'legacy-aaria-v4', name: 'Aaria', chefId: 'LEGACY_AARIA' };
@@ -108,7 +161,55 @@ assert.deepEqual(legacyCalls, [['choose', 'legacy-aaria-v4', 'CHEF_A'], ['persis
 assert.equal(legacyTrigger.textContent, '👩‍🍳 Aaria ▾');
 console.log('Legacy chef selection persists without rerendering the existing kitchen.');
 
+// Corrupt/partial profile records must not crash activation or erase intact snapshots.
+const parserStart = runtime.indexOf('function v3ParseProfileState(raw){');
+const parserEnd = runtime.indexOf('\nfunction v3PersistProfileState', parserStart);
+assert(parserStart >= 0 && parserEnd > parserStart, 'profile parser must be available for recovery tests');
+const parserContext = vm.createContext({});
+vm.runInContext(runtime.slice(parserStart, parserEnd), parserContext);
+const recovered = vm.runInContext(`v3ParseProfileState(JSON.stringify({
+  profiles: [
+    null,
+    {},
+    { id: '  chef-one  ', name: 'Chef One', snapshot: { done: [3], favorites: [7] } },
+    { id: 'chef-one', name: 'Duplicate', snapshot: { done: [99] } },
+    { id: 'chef-two', name: 'Chef Two', snapshot: [] },
+    { id: '', name: 'Missing ID' }
+  ],
+  activeId: 'deleted-profile'
+}))`, parserContext);
+assert.deepEqual(JSON.parse(JSON.stringify(recovered.profiles.map(p => p.id))), ['chef-one', 'chef-two']);
+assert.equal(recovered.activeId, 'chef-one', 'stale active ID must recover to first valid profile');
+assert.deepEqual(JSON.parse(JSON.stringify(recovered.profiles[0].snapshot)), { done: [3], favorites: [7] });
+assert.deepEqual(JSON.parse(JSON.stringify(recovered.profiles[1].snapshot)), {});
+assert.deepEqual(JSON.parse(JSON.stringify(vm.runInContext(`v3ParseProfileState('not-json')`, parserContext))), { profiles: [], activeId: null, snapshot: {} });
+const nativeFailure = vm.runInContext(`v3ParseProfileState('{\"error\":\"IllegalArgumentException\"}')`, parserContext);
+assert.equal(nativeFailure.error, 'IllegalArgumentException', 'native migration errors must reach v3InitProfiles so its local recovery path is used');
+parserContext.incoming = recovered;
+const objectRecovery = vm.runInContext('v3ParseProfileState(incoming)', parserContext);
+assert.deepEqual(JSON.parse(JSON.stringify(objectRecovery)), JSON.parse(JSON.stringify(recovered)));
+
 console.log('Profile persistence and snapshot isolation checks passed.');
 
 console.log('Profile snapshot reset isolation checks passed.');
 
+
+const tourStart = runtime.indexOf('function v3WhatsNewCopy(index,pt){');
+const tourEnd = runtime.indexOf('\nlet v3WhatsNewOpener', tourStart);
+assert(tourStart >= 0 && tourEnd > tourStart, 'V3 tour copy helper must exist');
+const tourContext = vm.createContext({});
+vm.runInContext(runtime.slice(tourStart, tourEnd), tourContext);
+const englishTour = vm.runInContext('[0,1,2].map(index=>v3WhatsNewCopy(index,false))', tourContext);
+const portugueseTour = vm.runInContext('[0,1,2].map(index=>v3WhatsNewCopy(index,true))', tourContext);
+assert.equal(englishTour.length, 3);
+assert.match(englishTour[0].body, /95 recipes/);
+assert.match(englishTour[0].body, /adult.*allergies/);
+assert.match(englishTour[1].body, /adult to review/);
+assert.match(englishTour[2].body, /profile.*Favourites.*progress/);
+assert.match(portugueseTour[0].body, /95 receitas/);
+assert.match(portugueseTour[0].body, /adulto.*alergias/);
+assert.equal(vm.runInContext('v3WhatsNewCopy(-1,false)', tourContext), null);
+assert.equal(vm.runInContext('v3WhatsNewCopy(3,true)', tourContext), null);
+assert.ok(runtime.includes('data-v3-tour-open') && runtime.includes('data-v3-tour-close') && runtime.includes('data-v3-tour-step'), 'tour must expose launch, skip/finish and step controls');
+assert.ok(runtime.includes('Replay the V3 kitchen tour'), 'tour must be replayable from Settings');
+console.log('V3 kitchen tour is translated, bounded, skippable, replayable and keeps adult review guidance.');
