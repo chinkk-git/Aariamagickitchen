@@ -80,14 +80,20 @@ jobs:
           node --check tools/v3/artwork/batches/batch-01/build-android-review.mjs
           python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-02/generate-batch.py').read_text())"
           python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-03/generate-batch.py').read_text())"
+          python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-04/generate-batch.py').read_text())"
+          python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-05/generate-batch.py').read_text())"
           node --check .github/scripts/v31-artwork-review-smoke.mjs
           python3 tools/v3/artwork/batches/batch-01/generate-batch.py
           python3 tools/v3/artwork/batches/batch-02/generate-batch.py
           python3 tools/v3/artwork/batches/batch-03/generate-batch.py
+          python3 tools/v3/artwork/batches/batch-04/generate-batch.py
+          python3 tools/v3/artwork/batches/batch-05/generate-batch.py
           node tools/v3/artwork/batches/batch-01/build-android-review.mjs
           git diff --exit-code -- tools/v3/artwork/batches/batch-01
           git diff --exit-code -- tools/v3/artwork/batches/batch-02
           git diff --exit-code -- tools/v3/artwork/batches/batch-03
+          git diff --exit-code -- tools/v3/artwork/batches/batch-04
+          git diff --exit-code -- tools/v3/artwork/batches/batch-05
           node tools/v3/artwork/remediation-pilot/audit-readiness.mjs
           bash -n tools/v3/android/verify-nondestructive-upgrade.sh
           if env -u V3_BASELINE_APK -u UPGRADE_CANDIDATE_APK bash tools/v3/android/verify-nondestructive-upgrade.sh >/tmp/w01-upgrade-guard.log 2>&1; then
@@ -121,7 +127,11 @@ jobs:
           unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-02/recipe-31.svg'
           unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-03/recipe-32.svg'
           unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-03/recipe-43.svg'
-          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/batch-0[123]/recipe-[0-9]+\.svg$')" -eq 30
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-04/recipe-44.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-04/recipe-54.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-05/recipe-55.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-05/recipe-65.svg'
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/batch-0[1-5]/recipe-[0-9]+\.svg$')" -eq 50
 
       - name: Prepare Linux KVM access for x86_64 emulator
         run: |
