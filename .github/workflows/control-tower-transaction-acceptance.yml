@@ -34,6 +34,7 @@ jobs:
           python3 control-tower/test_worker_leases.py
           python3 control-tower/test_worker_task_envelope.py
           python3 control-tower/test_worker_readiness.py
+          python3 control-tower/test_worker_snapshot_audit.py
       - name: Assert disabled worker activation
         run: python3 control-tower/worker_registry.py
       - name: Summary
