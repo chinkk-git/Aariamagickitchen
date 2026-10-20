@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "activation": "DISABLED",
+  "cost_policy": "NO_ADDITIONAL_CHARGES",
+  "notes": "Planning registry only. Existing control-tower/tasks.json remains authoritative until migration and acceptance.",
+  "workers": [
+    {
+      "id": "W01",
+      "name": "Android Core",
+      "type": "coding",
+      "branch": "codex/v3-completion-core-20261017",
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W02",
+      "name": "Visual and Artwork",
+      "type": "coding",
+      "branch": "feature/v3.1-home-redesign",
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W03",
+      "name": "Recipes and Features",
+      "type": "coding",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W04",
+      "name": "Integration and APK",
+      "type": "coding",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W05",
+      "name": "Functional QA",
+      "type": "assurance",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W06",
+      "name": "UAT and A09 Child Experience",
+      "type": "assurance",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W07",
+      "name": "A03 Security",
+      "type": "assurance",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W08",
+      "name": "A08 Child Safety",
+      "type": "assurance",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W09",
+      "name": "Release Verification",
+      "type": "release",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W10",
+      "name": "Recovery and Learning",
+      "type": "governance",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    }
+  ]
+}
