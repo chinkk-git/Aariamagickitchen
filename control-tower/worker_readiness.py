@@ -3,7 +3,10 @@
 Read-only: does not grant a lease, start an agent, change registry state, or
 replace independent GitHub/security attestations.
 """
+import re
 from worker_task_envelope import ALLOWED_BRANCHES
+
+SHA_PATTERN = re.compile(r"^[0-9a-f]{40}$")
 
 REQUIRED_GATES = (
     "protected_runner_identity",
@@ -16,14 +19,16 @@ REQUIRED_GATES = (
     "exact_head_ci",
 )
 
-def readiness(registry, evidence):
+def readiness(registry, evidence, *, trusted_head_sha=None):
     """Return sorted, explicit blockers. No self-attested green flags accepted.
 
     Evidence entries must be trusted verifier records containing status PASS,
-    provenance 'protected-github-verifier', and the checked commit SHA. This
+    provenance 'protected-github-verifier', and the trusted exact HEAD SHA. This
     is a schema preflight, not proof that a protected verifier actually ran.
     """
     blockers = []
+    if not isinstance(trusted_head_sha, str) or not SHA_PATTERN.fullmatch(trusted_head_sha):
+        blockers.append("missing trusted exact-head SHA")
     if not isinstance(registry, dict) or registry.get("activation") != "DISABLED":
         blockers.append("registry must remain disabled during readiness review")
     workers = registry.get("workers", []) if isinstance(registry, dict) else []
@@ -41,7 +46,7 @@ def readiness(registry, evidence):
         evidence = {}
     for gate in REQUIRED_GATES:
         item = evidence.get(gate)
-        if not isinstance(item, dict) or item.get("status") != "PASS" or item.get("source") != "protected-github-verifier" or not isinstance(item.get("commit_sha"), str) or len(item["commit_sha"]) != 40:
+        if not isinstance(item, dict) or item.get("status") != "PASS" or item.get("source") != "protected-github-verifier" or item.get("commit_sha") != trusted_head_sha:
             blockers.append("unverified gate " + gate)
     # Even a complete document is not permission to activate: this gate is
     # intentionally incapable of issuing an authorization or changing state.
