@@ -30,6 +30,7 @@ jobs:
           python3 control-tower/test_worker_scheduler.py
           python3 control-tower/test_worker_leases.py
           python3 control-tower/test_worker_release.py
+          python3 control-tower/test_worker_claims.py
       - name: Publish summary
         if: always()
         run: |
