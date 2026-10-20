@@ -4,7 +4,7 @@ from pathlib import Path
 spec=importlib.util.spec_from_file_location("worker_github_cas",Path(__file__).with_name("worker_github_cas.py"))
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 class Api:
-    def __init__(self):self.data={"version":0};self.sha="blob0";self.calls=0
+    def __init__(self):self.data={"version":0,"activation":"DISABLED","cost_policy":"NO_ADDITIONAL_CHARGES"};self.sha="blob0";self.calls=0
     def get_content(self,**kw):return {"sha":self.sha,"content":base64.b64encode(json.dumps(self.data).encode()).decode()}
     def put_content(self,**kw):
         self.calls+=1
@@ -34,6 +34,16 @@ class CasTests(unittest.TestCase):
         def stale(d):a.sha="other";return {**d,"version":1}
         with self.assertRaises(m.ConflictError):self.run_tx(a,transform=stale)
         self.assertEqual(a.data["version"],0);self.assertEqual(a.calls,1)
+    def test_activation_and_cost_changes_denied(self):
+        for field,value in (("activation","ENABLED"),("cost_policy","PAID")):
+            a=Api()
+            with self.subTest(field=field),self.assertRaises(PermissionError):
+                self.run_tx(a,transform=lambda d:{**d,field:value})
+            self.assertEqual(a.calls,0)
+    def test_missing_security_policy_denied(self):
+        a=Api();a.data.pop("activation")
+        with self.assertRaises(PermissionError):self.run_tx(a)
+        self.assertEqual(a.calls,0)
     def test_bad_transform_no_write(self):
         a=Api()
         with self.assertRaises(ValueError):self.run_tx(a,transform=lambda d:None)
