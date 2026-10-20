@@ -2,6 +2,7 @@ package com.aaria.magickitchen.pilot
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.KeyguardManager
 import android.content.ClipData
 import android.content.Intent
 import android.content.pm.ApplicationInfo
@@ -65,7 +66,95 @@ class MainActivity : Activity() {
     private var pendingCaptureUri: Uri? = null
     private var pendingCaptureFile: File? = null
     private val fileChooserRequest = 4312
+    private val parentShareRequest = 4313
+    private data class PendingShare(val bytes: ByteArray, val mimeType: String, val title: String)
+    private val pendingParentShare = AtomicReference<PendingShare?>(null)
     private var backInvokedCallback: OnBackInvokedCallback? = null
+
+    internal fun requestParentApprovedShare(bytes: ByteArray, mimeType: String, title: String): Boolean {
+        if (Looper.myLooper() == Looper.getMainLooper() || bytes.isEmpty() ||
+            bytes.size > 15 * 1024 * 1024 || mimeType !in setOf("image/png", "image/jpeg") ||
+            title.length > NativeBridgeInputPolicy.MAX_SHARED_TITLE_CHARS
+        ) return false
+
+        val keyguard = getSystemService(KEYGUARD_SERVICE) as? KeyguardManager ?: return false
+        if (!keyguard.isDeviceSecure) {
+            runOnUiThread {
+                android.widget.Toast.makeText(
+                    this,
+                    "Ask a parent to set a device screen lock before sharing photos.",
+                    android.widget.Toast.LENGTH_LONG
+                ).show()
+            }
+            return false
+        }
+        if (!ParentShareAuthorizationPolicy.canRequest(
+                hasSecureDeviceCredential = keyguard.isDeviceSecure,
+                activityForeground = isForegroundForApproval,
+                activityAlive = !isFinishing && !isDestroyed,
+                requestAlreadyPending = pendingParentShare.get() != null
+            )
+        ) return false
+        val credentialPrompt = try {
+            keyguard.createConfirmDeviceCredentialIntent(
+                "Parent or guardian approval",
+                "A parent or guardian must confirm before this photo can be shared."
+            )
+        } catch (_: Exception) {
+            null
+        } ?: return false
+
+        val pending = PendingShare(bytes.copyOf(), mimeType, title)
+        if (!pendingParentShare.compareAndSet(null, pending)) return false
+        val promptStarted = AtomicBoolean(false)
+        val promptStartCompleted = CountDownLatch(1)
+        runOnUiThread {
+            if (isFinishing || isDestroyed || !isForegroundForApproval) {
+                pendingParentShare.compareAndSet(pending, null)
+                promptStartCompleted.countDown()
+                return@runOnUiThread
+            }
+            try {
+                startActivityForResult(credentialPrompt, parentShareRequest)
+                promptStarted.set(true)
+            } catch (_: Exception) {
+                pendingParentShare.compareAndSet(pending, null)
+            } finally {
+                promptStartCompleted.countDown()
+            }
+        }
+        val started = try {
+            promptStartCompleted.await(3, TimeUnit.SECONDS) && promptStarted.get()
+        } catch (_: InterruptedException) {
+            Thread.currentThread().interrupt()
+            false
+        }
+        if (!started) pendingParentShare.compareAndSet(pending, null)
+        return started
+    }
+
+    private fun shareParentApprovedPhoto(share: PendingShare) {
+        try {
+            val directory = File(cacheDir, "shared-posts").apply { mkdirs() }
+            val extension = if (share.mimeType == "image/png") ".png" else ".jpg"
+            val name = UUID.randomUUID().toString() + extension
+            File(directory, name).writeBytes(share.bytes)
+            val uri = Uri.parse("content://$packageName.share/post/$name")
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = share.mimeType
+                putExtra(Intent.EXTRA_STREAM, uri)
+                if (share.title.isNotBlank()) putExtra(Intent.EXTRA_TEXT, share.title)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            startActivity(Intent.createChooser(intent, "Share your kitchen win"))
+        } catch (_: Exception) {
+            android.widget.Toast.makeText(
+                this,
+                "Could not open sharing. Please save the picture instead.",
+                android.widget.Toast.LENGTH_LONG
+            ).show()
+        }
+    }
 
     internal fun <T> withApprovalForeground(block: () -> T): T = synchronized(approvalLifecycleLock) {
         check(isForegroundForApproval && !isFinishing && !isDestroyed) {
@@ -238,6 +327,21 @@ class MainActivity : Activity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == parentShareRequest) {
+            val pending = pendingParentShare.getAndSet(null)
+            if (ParentShareAuthorizationPolicy.canDispatch(
+                    credentialResult = resultCode,
+                    successResult = RESULT_OK,
+                    hasPendingPhoto = pending != null,
+                    activityAlive = !isFinishing && !isDestroyed
+                )
+            ) {
+                pending?.let(::shareParentApprovedPhoto)
+            } else if (pending != null && !isFinishing && !isDestroyed) {
+                android.widget.Toast.makeText(this, "No photo was shared.", android.widget.Toast.LENGTH_SHORT).show()
+            }
+            return
+        }
         if (requestCode == fileChooserRequest) {
             val captureUri = pendingCaptureUri
             val captureFile = pendingCaptureFile
@@ -259,6 +363,7 @@ class MainActivity : Activity() {
         fileChooserCallback = null
         pendingCaptureFile = null
         pendingCaptureUri = null
+        pendingParentShare.getAndSet(null)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             backInvokedCallback?.let { onBackInvokedDispatcher.unregisterOnBackInvokedCallback(it) }
             backInvokedCallback = null
@@ -381,37 +486,21 @@ class ShareBridge(private val activity: Activity) {
     }
 
     @JavascriptInterface
-    fun sharePost(dataUrl: String, title: String) {
-        if (!NativeBridgeInputPolicy.isSharePostWithinLimits(dataUrl, title)) return
+    fun sharePost(dataUrl: String, title: String): Boolean {
+        if (!NativeBridgeInputPolicy.isSharePostWithinLimits(dataUrl, title)) return false
         val prefix = when {
             dataUrl.startsWith("data:image/png;base64,") -> "data:image/png;base64,"
             dataUrl.startsWith("data:image/jpeg;base64,") -> "data:image/jpeg;base64,"
-            else -> return
+            else -> return false
         }
         val mimeType = if (prefix.contains("png")) "image/png" else "image/jpeg"
-        val extension = if (mimeType == "image/png") ".png" else ".jpg"
         val bytes = try {
             android.util.Base64.decode(dataUrl.removePrefix(prefix), android.util.Base64.DEFAULT)
         } catch (_: IllegalArgumentException) {
-            return
+            return false
         }
-        if (bytes.isEmpty() || bytes.size > 15 * 1024 * 1024) return
-        activity.runOnUiThread {
-            try {
-                val directory = File(activity.cacheDir, "shared-posts").apply { mkdirs() }
-                val name = UUID.randomUUID().toString() + extension
-                File(directory, name).writeBytes(bytes)
-                val uri = Uri.parse("content://${activity.packageName}.share/post/$name")
-                val share = Intent(Intent.ACTION_SEND).apply {
-                    type = mimeType
-                    putExtra(Intent.EXTRA_STREAM, uri)
-                    if (title.isNotBlank()) putExtra(Intent.EXTRA_TEXT, title)
-                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                }
-                activity.startActivity(Intent.createChooser(share, "Share your kitchen win"))
-            } catch (_: Exception) {
-                android.widget.Toast.makeText(activity, "Could not open sharing. Please save the picture instead.", android.widget.Toast.LENGTH_LONG).show()
-            }
-        }
+        if (bytes.isEmpty() || bytes.size > 15 * 1024 * 1024) return false
+        val mainActivity = activity as? MainActivity ?: return false
+        return mainActivity.requestParentApprovedShare(bytes, mimeType, title)
     }
 }

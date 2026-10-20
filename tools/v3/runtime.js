@@ -133,9 +133,11 @@ const v3OriginalShareCook=shareCook;
 shareCook=async function v3ShareCook(id){
  const blob=sharePostBlobs[id],r=find(id);
  if(window.AariaNative&&blob){
-  try{const reader=new FileReader(),data=await new Promise((resolve,reject)=>{reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)});const caption=translateText(`I made ${r.title}! 🍽️\nMade with love by Chef Aaria in Aaria’s Magical Kitchen.\n#AariasMagicalKitchen #LittleChef`);window.AariaNative.sharePost(String(data),caption);notice('Your post is ready to share 💖');return}catch(e){console.warn('Native share unavailable; using browser share.',e)}
+  try{const reader=new FileReader(),data=await new Promise((resolve,reject)=>{reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)});const caption=translateText(`I made ${r.title}! 🍽️\nMade with love by Chef Aaria in Aaria’s Magical Kitchen.\n#AariasMagicalKitchen #LittleChef`);const started=window.AariaNative.sharePost(String(data),caption);notice(started?'A parent or guardian must confirm with the device screen lock before sharing.':'Sharing needs a parent or guardian and a device screen lock. No photo was shared.');return}catch(e){console.warn('Native share unavailable; sharing was not started.',e);notice('Sharing could not be started. Ask a parent or guardian for help.');return}
  }
- return v3OriginalShareCook(id);
+ const url=sharePostUrls[id];
+ if(url){const slug=r.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');const a=document.createElement('a');a.href=url;a.download=`aaria-${slug}.png`;document.body.append(a);a.click();a.remove();await copyText(translateText(`I made ${r.title}! 🍽️\\nMade with love by Chef Aaria in Aaria’s Magical Kitchen.\\n#AariasMagicalKitchen #LittleChef`));notice('Photo saved on this device. Ask a parent or guardian to share it.');return}
+ notice('Ask a parent or guardian to help save and share this photo.');
 };
 
 async function v3ShowGroceryRecipients(){

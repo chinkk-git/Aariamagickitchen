@@ -31,4 +31,24 @@ class ProfilePolicyTest {
         assertEquals(false, NativeBridgeInputPolicy.isSharePostWithinLimits("data:image/jpeg;base64,", "x".repeat(NativeBridgeInputPolicy.MAX_SHARED_TITLE_CHARS + 1)))
     }
 
+    @Test fun externalPhotoShareRequiresForegroundAdultDeviceCredentialAndNoPendingRequest() {
+        assertEquals(true, ParentShareAuthorizationPolicy.canRequest(true, true, true, false))
+        assertEquals(false, ParentShareAuthorizationPolicy.canRequest(false, true, true, false))
+        assertEquals(false, ParentShareAuthorizationPolicy.canRequest(true, false, true, false))
+        assertEquals(false, ParentShareAuthorizationPolicy.canRequest(true, true, false, false))
+        assertEquals(false, ParentShareAuthorizationPolicy.canRequest(true, true, true, true))
+    }
+
+    @Test fun photoIsSharedOnlyAfterSuccessfulDeviceCredentialResult() {
+        assertEquals(true, ParentShareAuthorizationPolicy.canDispatch(RESULT_OK_TEST, RESULT_OK_TEST, true, true))
+        assertEquals(false, ParentShareAuthorizationPolicy.canDispatch(RESULT_CANCELED_TEST, RESULT_OK_TEST, true, true))
+        assertEquals(false, ParentShareAuthorizationPolicy.canDispatch(RESULT_OK_TEST, RESULT_OK_TEST, false, true))
+        assertEquals(false, ParentShareAuthorizationPolicy.canDispatch(RESULT_OK_TEST, RESULT_OK_TEST, true, false))
+    }
+
+    private companion object {
+        const val RESULT_OK_TEST = -1
+        const val RESULT_CANCELED_TEST = 0
+    }
+
 }
