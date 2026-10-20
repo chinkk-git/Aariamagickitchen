@@ -13,6 +13,9 @@ const manifest=JSON.parse(readFileSync(join(here,'pilot-manifest.json'),'utf8'))
 const batchRoot=join(here,'..','batches','batch-01');
 const batch=JSON.parse(readFileSync(join(batchRoot,'manifest.json'),'utf8'));
 const batchSource=JSON.parse(readFileSync(join(batchRoot,'source-manifest.json'),'utf8'));
+const batch02Root=join(here,'..','batches','batch-02');
+const batch02=JSON.parse(readFileSync(join(batch02Root,'manifest.json'),'utf8'));
+const batch02Source=JSON.parse(readFileSync(join(batch02Root,'source-manifest.json'),'utf8'));
 assert.equal(batchSource.sourceArchiveSha256,'30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab');
 assert.equal(batchSource.rightsStatus,'UNRESOLVED; source authorship/rights not established by archive or file checksums.');
 assert.deepEqual(batchSource.recipes.map(r=>r.id),Array.from({length:10},(_,i)=>i+11));
@@ -26,18 +29,31 @@ assert.equal(batch.androidDebugReview.sourceSet,'src/debug/assets only');
 assert.equal(batch.androidDebugReview.purpose,'Offline reviewer preview only; not the production cooking route.');
 assert.deepEqual(batch.recipes.map(r=>r.id),Array.from({length:10},(_,i)=>i+11));
 assert.equal(batch.recipes.reduce((n,r)=>n+r.panels.length,0),60);
+assert.equal(batch02Source.sourceArchiveSha256,batchSource.sourceArchiveSha256);
+assert.equal(batch02Source.rightsStatus,'UNRESOLVED; provenance/hash do not establish a license or owner');
+const batch02Ids=[21,22,23,24,25,26,28,29,30,31];
+assert.deepEqual(batch02Source.recipes.map(r=>r.id),batch02Ids);
+assert.equal(batch02.status,'draft-only; excluded from production runtime; independent review required');
+assert.equal(batch02.approval.A08,'PENDING independent review');
+assert.equal(batch02.approval.A09,'PENDING independent review');
+assert.equal(batch02.approval.artworkRights,'UNRESOLVED; source authorship/rights not established by checksums');
+assert.equal(batch02.approval.runtime,'NOT INTEGRATED');
+assert.deepEqual(batch02.recipes.map(r=>r.id),batch02Ids);
+assert.equal(batch02.recipes.reduce((n,r)=>n+r.panels.length,0),60);
 const {createHash}=await import('node:crypto');
-for(const recipe of batch.recipes){
- const svg=readFileSync(join(batchRoot,recipe.outputPath),'utf8');
- const source=batchSource.recipes.find(r=>r.id===recipe.id);
- const sourceSvg=readFileSync(join(batchRoot,'source',source.sourceFile),'utf8');
- assert.equal(createHash('sha256').update(sourceSvg).digest('hex'),source.sourceSha256,'Batch source mismatch for recipe '+recipe.id);
- assert.equal(source.sourceSha256,recipe.sourceSha256,'Source/output mapping mismatch for recipe '+recipe.id);
- assert.equal(createHash('sha256').update(svg).digest('hex'),recipe.outputSha256,'Batch 01 provenance mismatch for recipe '+recipe.id);
- assert.equal((svg.match(/class="w01-adult-only-cue"/g)||[]).length,recipe.panels.filter(p=>p.adultOnlyCue).length,'Adult-only cue count mismatch for recipe '+recipe.id);
- assert.equal((svg.match(/role="group" aria-labelledby="w01-b01-r/g)||[]).length,6,'Accessible panel grouping missing for recipe '+recipe.id);
- assert.ok(svg.includes('draft-only-not-approved'));
- assert.ok(!/<script\b|(?:href|xlink:href)\s*=\s*['"]https?:\/\//i.test(svg),'Executable or remote content in batch 01 draft '+recipe.id);
+for(const [name,root,manifest,sourceIndex] of [['01',batchRoot,batch,batchSource],['02',batch02Root,batch02,batch02Source]]){
+ for(const recipe of manifest.recipes){
+  const svg=readFileSync(join(root,recipe.outputPath),'utf8');
+  const source=sourceIndex.recipes.find(r=>r.id===recipe.id);
+  const sourceSvg=readFileSync(join(root,'source',source.sourceFile),'utf8');
+  assert.equal(createHash('sha256').update(sourceSvg).digest('hex'),source.sourceSha256,'Batch source mismatch for recipe '+recipe.id);
+  assert.equal(source.sourceSha256,recipe.sourceSha256,'Source/output mapping mismatch for recipe '+recipe.id);
+  assert.equal(createHash('sha256').update(svg).digest('hex'),recipe.outputSha256,'Batch '+name+' provenance mismatch for recipe '+recipe.id);
+  assert.equal((svg.match(/class="w01-adult-only-cue"/g)||[]).length,recipe.panels.filter(p=>p.adultOnlyCue).length,'Adult-only cue count mismatch for recipe '+recipe.id);
+  assert.equal((svg.match(new RegExp(`role="group" aria-labelledby="w01-b${name}-r`,'g'))||[]).length,6,'Accessible panel grouping missing for recipe '+recipe.id);
+  assert.ok(svg.includes('draft-only-not-approved'));
+  assert.ok(!/<script\b|(?:href|xlink:href)\s*=\s*['"]https?:\/\//i.test(svg),'Executable or remote content in batch '+name+' draft '+recipe.id);
+ }
 }
 assert.equal(manifest.status,'draft-only-not-approved-not-integrated');
 assert.match(manifest.archiveSha256,/^[a-f0-9]{64}$/);
@@ -69,7 +85,6 @@ const drafted=rows.reduce((sum,row)=>sum+Number(row.drafted_panels),0);
 const formal=rows.filter(row=>row.formal_A08_approval==='APPROVED'&&row.formal_A09_approval==='APPROVED');
 const integrated=rows.filter(row=>row.runtime_integration==='INTEGRATED');
 const incomplete=rows.filter(row=>Number(row.drafted_panels)<6);
-const batchDrafts=batch.recipes.length;
-const summary={originalRecipes:95,sourceAtlases:rows.length,sourcePanels:330,draftPilotRecipes:pilotIds,draftBatch01Recipes:batch.recipes.map(r=>r.id),draftPanels:drafted,notDraftedPanels:330-drafted,formalApprovedAtlases:formal.length,runtimeIntegratedAtlases:integrated.length,notFullyDraftedAtlases:incomplete.length,independentApprovalRequired:true};
+const summary={originalRecipes:95,sourceAtlases:rows.length,sourcePanels:330,draftPilotRecipes:pilotIds,draftBatch01Recipes:batch.recipes.map(r=>r.id),draftBatch02Recipes:batch02.recipes.map(r=>r.id),draftPanels:drafted,notDraftedPanels:330-drafted,formalApprovedAtlases:formal.length,runtimeIntegratedAtlases:integrated.length,notFullyDraftedAtlases:incomplete.length,independentApprovalRequired:true};
 console.log(JSON.stringify(summary,null,2));
 if(formal.length!==integrated.length || integrated.some(row=>!formal.includes(row)))throw Error('Unapproved artwork integrated into runtime');

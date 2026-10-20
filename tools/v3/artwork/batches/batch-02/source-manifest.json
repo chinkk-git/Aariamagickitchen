@@ -1,0 +1,469 @@
+{
+  "schema": "w01-artwork-source-manifest-v1",
+  "sourceArchive": "v31-step-atlas-drafts-recipes-11-65.zip",
+  "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+  "sourceArchiveIntegrity": "verified ZIP member checksums; archive checksum checked during production when present",
+  "rightsStatus": "UNRESOLVED; provenance/hash do not establish a license or owner",
+  "recipes": [
+    {
+      "id": 21,
+      "title": "Veggie Flower Garden",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-21-veggie-flower-garden-a09-draft.svg",
+      "sourceFile": "recipe-21-source.svg",
+      "sourceSha256": "9312f77422ff85bf287b140cd0e46923d041efae0b6364eb08b5d126be9f91d1",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Adult washes and slices vegetables, quartering tomatoes.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "Adult washes and slices vegetables, quartering tomatoes.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Spread cream cheese on crackers.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Spread cream cheese on crackers.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Arrange vegetable pieces as flowers and leaves.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Arrange vegetable pieces as flowers and leaves.",
+          "adultOnlyCue": false
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Cauliflower Cheese Tots",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-22-cauliflower-cheese-tots-a09-draft.svg",
+      "sourceFile": "recipe-22-source.svg",
+      "sourceSha256": "da9be1c93cb6bcd965a82afa744fa4ff647463994574d1483c0547db5fbb17f2",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Adult cooks and cools cauliflower.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "Adult cooks and cools cauliflower.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Mix all ingredients and shape small tots.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Mix all ingredients and shape small tots.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Adult air-fries until firm, browned and egg fully cooked.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Adult air-fries until firm, browned and egg fully cooked.",
+          "adultOnlyCue": false
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": "Rainbow Rice Balls",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-23-rainbow-rice-balls-a09-draft.svg",
+      "sourceFile": "recipe-23-source.svg",
+      "sourceSha256": "c74da8e588ec67c38cc319ca33a819f95015aaf9e7a99dc82b5e6a760bac7fec",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "With clean hands mix warm-but-not-hot freshly cooked rice and fully cooked vegetables.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "With clean hands mix warm-but-not-hot freshly cooked rice and fully cooked vegetables.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 3,
+          "step": 1,
+          "sourceStepText": "With clean hands mix warm-but-not-hot freshly cooked rice and fully cooked vegetables.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Shape into bite-size balls and eat promptly.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 5,
+          "step": 2,
+          "sourceStepText": "Shape into bite-size balls and eat promptly.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 6,
+          "step": 2,
+          "sourceStepText": "Shape into bite-size balls and eat promptly.",
+          "adultOnlyCue": false
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Crunchy Chickpea Treasure",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-24-crunchy-chickpea-treasure-a09-draft.svg",
+      "sourceFile": "recipe-24-source.svg",
+      "sourceSha256": "1e6093475fbfcb543b5c73b9f26c7eacc050c82451d1da55cb2612aaf8dfbc6c",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Adult drains and pats chickpeas dry.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "Adult drains and pats chickpeas dry.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Toss with oil and paprika.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Toss with oil and paprika.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Adult air-fries until crisp; cool and check texture before eating.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Adult air-fries until crisp; cool and check texture before eating.",
+          "adultOnlyCue": false
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "Cheesy Chicken Pockets",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-25-cheesy-chicken-pockets-a09-draft.svg",
+      "sourceFile": "recipe-25-source.svg",
+      "sourceSha256": "fd961602e952100872fe12c05d17caf1d3d628c989cede5ba9b9b1a324d784d7",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Adult cuts pastry into squares.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "Adult cuts pastry into squares.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Add chicken, cheese and sauce; fold and press edges.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Add chicken, cheese and sauce; fold and press edges.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Adult air-fries until pastry is golden and cooked through and filling is hot.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Adult air-fries until pastry is golden and cooked through and filling is hot.",
+          "adultOnlyCue": false
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "title": "Nugget Pizza Bites",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-26-nugget-pizza-bites-a09-draft.svg",
+      "sourceFile": "recipe-26-source.svg",
+      "sourceSha256": "cbd00d536db719319fb6360733cb84c2f148a121c497d525016faef92cc7c8b7",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Adult fully cooks nuggets according to package.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "Adult fully cooks nuggets according to package.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Spread sauce on bread; add chopped nuggets, corn and cheese.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Spread sauce on bread; add chopped nuggets, corn and cheese.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Adult air-fries until hot and melted.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Adult air-fries until hot and melted.",
+          "adultOnlyCue": true
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Little Egg Nests",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-28-little-egg-nests-a09-draft.svg",
+      "sourceFile": "recipe-28-source.svg",
+      "sourceSha256": "12383c46cd026e0d408b7b0b9b9712ccdf97b5fa4f5ca3ccbaf878224f0e3ef0",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Flatten bread into four silicone cups.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "Flatten bread into four silicone cups.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Beat eggs and stir in cheese and corn.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Beat eggs and stir in cheese and corn.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Fill cups; adult air-fries until eggs are completely set.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Fill cups; adult air-fries until eggs are completely set.",
+          "adultOnlyCue": false
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "title": "Rainbow Omelette Bites",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-29-rainbow-omelette-bites-a09-draft.svg",
+      "sourceFile": "recipe-29-source.svg",
+      "sourceSha256": "21a9f24e4d08a56caec35b948dd44482a77a10a1c36cec83a10e7cc34bce5755",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Whisk eggs; stir in cheese and finely chopped vegetables.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "Whisk eggs; stir in cheese and finely chopped vegetables.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Pour into silicone molds.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Pour into silicone molds.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Adult cooks until egg centers are completely set.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Adult cooks until egg centers are completely set.",
+          "adultOnlyCue": false
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "title": "Starry Egg Sandwiches",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-30-step-atlas-draft.svg",
+      "sourceFile": "recipe-30-source.svg",
+      "sourceSha256": "0095e7a91b61e0525b1a4281a92d5751927b47d07194739cc8673b7c563fc5ce",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Adult cooks scrambled eggs fully in a pan.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 2,
+          "step": 1,
+          "sourceStepText": "Adult cooks scrambled eggs fully in a pan.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Put eggs and cheese between bread slices.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 2,
+          "sourceStepText": "Put eggs and cheese between bread slices.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Adult uses a star cutter; serve warm.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Adult uses a star cutter; serve warm.",
+          "adultOnlyCue": false
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "title": "Strawberry Banana Sushi",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-31-step-atlas-draft.svg",
+      "sourceFile": "recipe-31-source.svg",
+      "sourceSha256": "5fa6a12b6ba82e366a07637a83d2b2e9db137db63afc9c5aaa47590a04f68954",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "step": 1,
+          "sourceStepText": "Spread cream cheese on tortillas.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 2,
+          "step": 2,
+          "sourceStepText": "Place banana and adult-sliced strawberries inside; roll tightly.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 3,
+          "step": 2,
+          "sourceStepText": "Place banana and adult-sliced strawberries inside; roll tightly.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 4,
+          "step": 3,
+          "sourceStepText": "Adult cuts into small spirals.",
+          "adultOnlyCue": true
+        },
+        {
+          "panel": 5,
+          "step": 3,
+          "sourceStepText": "Adult cuts into small spirals.",
+          "adultOnlyCue": false
+        },
+        {
+          "panel": 6,
+          "step": 3,
+          "sourceStepText": "Adult cuts into small spirals.",
+          "adultOnlyCue": false
+        }
+      ]
+    }
+  ]
+}
