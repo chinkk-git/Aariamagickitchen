@@ -86,12 +86,13 @@ adb_timeout wait-for-device
 wait_for_booted_device
 wait_for_stable_launcher
 echo 'Installing V3.1 APK'
+APP_ID=com.aaria.magickitchen.pilot.v31preview
 adb_timeout install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
 echo 'Starting V3.1 Android activity'
-adb_timeout shell am start -n com.aaria.magickitchen.pilot/.MainActivity
+adb_timeout shell am start -n "$APP_ID"/.MainActivity
 socket=""
 for attempt in $(seq 1 30); do
-  app_pid=$(adb_poll_timeout shell pidof com.aaria.magickitchen.pilot 2>/dev/null | tr -d '\r' | awk '{print $1}' || true)
+  app_pid=$(adb_poll_timeout shell pidof "$APP_ID" 2>/dev/null | tr -d '\r' | awk '{print $1}' || true)
   if [ -n "$app_pid" ]; then
     socket=$(adb_poll_timeout shell cat /proc/net/unix 2>/dev/null | grep -o "webview_devtools_remote_${app_pid}" | head -1 || true)
   fi

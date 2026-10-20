@@ -32,6 +32,10 @@ android {
         }
     }
     buildTypes {
+        getByName("debug") {
+            applicationIdSuffix = ".v31preview"
+            resValue("string", "app_name", "Aaria's Magical Kitchen V3.1 Preview")
+        }
         getByName("release") {
             if (releaseSigningConfigured) {
                 signingConfig = signingConfigs.getByName("release")
