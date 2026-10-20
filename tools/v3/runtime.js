@@ -319,7 +319,23 @@ render();
 let v3ProfileState = { profiles: [], activeId: null, profile: null };
 let v3ProfileInitComplete = false;
 let v3ProfileSaveWrapped = false;
-function v3ParseProfileState(raw){try{const x=JSON.parse(raw||'{}');return x&&Array.isArray(x.profiles)?x:{profiles:[],activeId:null,snapshot:{}}}catch{return {profiles:[],activeId:null,snapshot:{}}}}
+function v3ParseProfileState(raw){
+ try{
+  const x=typeof raw==='string'?JSON.parse(raw||'{}'):raw;
+  if(!x||typeof x!=='object'||!Array.isArray(x.profiles))return {profiles:[],activeId:null,snapshot:{},...(typeof x?.error==='string'?{error:x.error}:{})};
+  const seen=new Set(),profiles=[];
+  for(const p of x.profiles){
+   if(!p||typeof p!=='object'||Array.isArray(p)||typeof p.id!=='string')continue;
+   const id=p.id.trim();if(!id||seen.has(id))continue;seen.add(id);
+   const snapshot=p.snapshot&&typeof p.snapshot==='object'&&!Array.isArray(p.snapshot)?p.snapshot:{};
+   profiles.push({...p,id,snapshot});
+  }
+  const requested=typeof x.activeId==='string'?x.activeId:null;
+  const activeId=profiles.some(p=>p.id===requested)?requested:(profiles[0]?.id||null);
+  const snapshot=x.snapshot&&typeof x.snapshot==='object'&&!Array.isArray(x.snapshot)?x.snapshot:{};
+  return {...x,profiles,activeId,snapshot};
+ }catch{return {profiles:[],activeId:null,snapshot:{}}}
+}
 function v3PersistProfileState(){
  const activeId=v3ProfileState.activeId||null,nativeSave=window.AariaNative?.saveProfileSnapshot;
  let nativeSaved=false;
