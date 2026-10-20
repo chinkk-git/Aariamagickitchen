@@ -3,6 +3,7 @@
 import { readFileSync, mkdirSync, copyFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const here=dirname(fileURLToPath(import.meta.url));
 const batchRoot=resolve(here,'..');
@@ -28,12 +29,19 @@ for(const name of exactBatchNames){
   const root=join(exactRoot,name),manifest=JSON.parse(readFileSync(join(root,'manifest.json'),'utf8'));
   if(manifest.batch!==name||manifest.recipeIds.length!==5||manifest.recipes.length!==5||manifest.recipes.some(r=>r.panels.length!==6))throw new Error(`${name} does not satisfy the exact five-atlas/six-panel manifest`);
   if(manifest.state?.INTEGRATED!=='DEBUG_REVIEW_ONLY'||manifest.productionRuntime!=='NOT_INTEGRATED')throw new Error(`${name} is not safely isolated from production`);
-  const destination=join(reviewRoot,'exact',name),atlasDir=join(destination,'atlases'),previewDir=join(destination,'previews');
+  const destination=join(reviewRoot,'exact',name),atlasDir=join(destination,'atlases'),previewDir=join(destination,'previews'),characterDir=join(destination,'characters');
   mkdirSync(atlasDir,{recursive:true});mkdirSync(previewDir,{recursive:true});
+  mkdirSync(characterDir,{recursive:true});
+  for(const character of Object.values(manifest.characters||{})){
+    const src=join(root,character.packagePath),bytes=readFileSync(src);
+    if(createHash('sha256').update(bytes).digest('hex')!==character.sha256)throw new Error(`${name} character asset hash mismatch: ${character.packagePath}`);
+    copyFileSync(src,join(destination,character.packagePath));
+  }
   copyFileSync(join(root,'contact-sheet.png'),join(destination,'contact-sheet.png'));
   for(const recipe of manifest.recipes){
     const atlasName=`recipe-${recipe.id}.svg`;
-    copyFileSync(join(root,recipe.draftAtlas),join(atlasDir,atlasName));
+    const atlasPath=recipe.remediationAtlas?.path||recipe.draftAtlas;
+    copyFileSync(join(root,atlasPath),join(atlasDir,atlasName));
     for(const panel of recipe.panels){
       const name=panel.previewPng.split('/').at(-1);
       copyFileSync(join(root,panel.previewPng),join(previewDir,name));
@@ -43,11 +51,12 @@ for(const name of exactBatchNames){
     const src=`atlases/recipe-${recipe.id}.svg`;
     const previews=recipe.panels.map(panel=>{
       const file=panel.previewPng.split('/').at(-1);
-      return `<figure><img data-panel-preview="${recipe.id}-${panel.panel}" src="previews/${file}" alt="Draft panel ${panel.panel} for recipe ${recipe.id}: ${esc(panel.sourceStepText)}"><figcaption>Recipe ${recipe.id} · Panel ${panel.panel}${panel.adultOnlyCue?' · ADULT ONLY • SÓ ADULTO':''}</figcaption></figure>`;
+      const cue=panel.adultCue==='ADULT ONLY'?'ADULT ONLY • SÓ ADULTO':panel.adultCue==='ADULT HELP'?'ADULT HELP • AJUDA DE ADULTO':'';
+      return `<figure><img data-panel-preview="${recipe.id}-${panel.panel}" src="previews/${file}" alt="Step ${panel.panel}, recipe ${recipe.id}: ${esc(panel.instructionEn)} / ${esc(panel.instructionPtBr)}"><figcaption><strong>Recipe ${recipe.id} · Step ${panel.panel}</strong>${cue?`<span class="adult-cue">${cue}</span>`:''}<span lang="en-GB">${esc(panel.instructionEn)}</span><span lang="pt-BR">${esc(panel.instructionPtBr)}</span></figcaption></figure>`;
     }).join('');
     return `<section><h2>Recipe ${recipe.id}: ${esc(recipe.title)}</h2><img data-atlas="${recipe.id}" src="${src}" alt="Draft six-panel atlas for recipe ${recipe.id}"><details><summary>Individual panel previews and source steps</summary><div class="panels">${previews}</div></details></section>`;
   }).join('\n');
-  const exactHtml=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'"><title>${name} draft art review</title><style>body{margin:0;background:#fff9f2;color:#342344;font:16px/1.45 system-ui,sans-serif}header{position:sticky;top:0;z-index:1;background:#fff9f2ee;border-bottom:2px solid #dfcbe8;padding:14px}h1{font-size:1.25rem;margin:0}header p{margin:5px 0 0}main{max-width:1100px;margin:auto;padding:12px}section{background:#fff;border:2px solid #e7d8ef;border-radius:18px;padding:12px;margin:14px 0}section h2{font-size:1.05rem}img{display:block;width:100%;height:auto;border-radius:12px}figure{margin:6px;background:#fff;border:1px solid #ddd;border-radius:10px;padding:6px}figcaption{font-size:.82rem}.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}@media(min-width:800px){.panels{grid-template-columns:repeat(3,minmax(0,1fr))}}</style></head><body><header><h1>${name} — draft artwork review</h1><p>Independent review only. Not approved for cooking instructions or release. Rights, A08 and A09 remain pending.</p></header><main><section><h2>Contact sheet — ${manifest.recipeIds.join(', ')}</h2><img data-contact-sheet="true" src="contact-sheet.png" alt="Contact sheet showing all 30 draft panels in ${name}"></section>${sections}</main></body></html>`;
+  const exactHtml=`<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; connect-src 'self'"><title>${name} draft art review</title><style>body{margin:0;background:#fff9f2;color:#342344;font:16px/1.45 system-ui,sans-serif}header{position:sticky;top:0;z-index:1;background:#fff9f2ee;border-bottom:2px solid #dfcbe8;padding:14px}h1{font-size:1.25rem;margin:0}header p{margin:5px 0 0}main{max-width:1100px;margin:auto;padding:12px}section{background:#fff;border:2px solid #e7d8ef;border-radius:18px;padding:12px;margin:14px 0}section h2{font-size:1.05rem}img{display:block;width:100%;height:auto;border-radius:12px}figure{margin:6px;background:#fff;border:1px solid #ddd;border-radius:10px;padding:6px}figcaption{display:grid;gap:4px;font-size:.82rem}.adult-cue{color:#8f3434;font-weight:800}.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}@media(min-width:800px){.panels{grid-template-columns:repeat(3,minmax(0,1fr))}}</style></head><body><header><h1>${name} — draft artwork review</h1><p>Independent review only. Not approved for cooking instructions or release. Rights, A08 and A09 remain pending.</p></header><main><section><h2>Contact sheet — ${manifest.recipeIds.join(', ')}</h2><img data-contact-sheet="true" src="contact-sheet.png" alt="Contact sheet showing all 30 draft panels in ${name}"></section>${sections}</main></body></html>`;
   writeFileSync(join(destination,'index.html'),exactHtml);
   exactRoutes.push({batch:name,recipeIds:manifest.recipeIds,atlases:manifest.recipes.length,panels:manifest.recipes.reduce((n,r)=>n+r.panels.length,0),route:`/artwork-review/exact/${name}/index.html`});
 }

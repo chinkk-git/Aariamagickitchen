@@ -6,6 +6,15 @@ import assert from 'node:assert/strict';
 const batch=process.argv[2];
 assert.match(batch||'',/^B(?:0[1-9]|10)$/,'exact batch argument is required');
 const manifest=JSON.parse(readFileSync(`tools/v3/artwork/exact-batches/${batch}/manifest.json`,'utf8'));
+if(batch==='B01'){
+  const panels=manifest.recipes.flatMap(recipe=>recipe.panels);
+  assert.equal(panels.length,30,'B01 requires thirty distinct panel records');
+  assert.equal(new Set(panels.map(panel=>panel.actionKey)).size,30,'B01 panels must depict distinct actions');
+  assert.ok(panels.every(panel=>panel.instructionEn&&panel.instructionPtBr&&panel.actor),'B01 needs bilingual instructions and original-character mappings');
+  assert.equal(manifest.artworkRights?.status,'UNRESOLVED','B01 must preserve the rights hold');
+  assert.equal(manifest.releaseStatus,'HOLD','B01 cannot leave hold before approval');
+  assert.ok(Object.keys(manifest.characters||{}).includes('aaria')&&Object.keys(manifest.characters||{}).includes('mommy')&&Object.keys(manifest.characters||{}).includes('daddy'));
+}
 const adb=args=>execFileSync('timeout',['--kill-after=10s','60s','adb',...args]);
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 mkdirSync('artifacts/v31-android-screenshots',{recursive:true});
@@ -39,13 +48,19 @@ async function evaluate(expression){
 }
 await command('Runtime.enable');
 await pause(500);
-const data=await evaluate(`(() => ({title:document.title,heading:document.querySelector('h1')?.innerText||'',contact:(()=>{const i=document.querySelector('[data-contact-sheet]');return i?{complete:i.complete,width:i.naturalWidth,height:i.naturalHeight,box:(()=>{const r=i.getBoundingClientRect();return {width:r.width,height:r.height}})()}:null})(),atlases:[...document.querySelectorAll('img[data-atlas]')].map(i=>({id:Number(i.dataset.atlas),complete:i.complete,width:i.naturalWidth,height:i.naturalHeight,display:getComputedStyle(i).display})),panels:[...document.querySelectorAll('img[data-panel-preview]')].map(i=>({id:i.dataset.panelPreview,complete:i.complete,width:i.naturalWidth,height:i.naturalHeight})) ,pendingText:document.querySelector('header')?.innerText||''}))()`);
+const data=await evaluate(`(async()=>{const imgs=[...document.querySelectorAll('img[data-atlas]')];const atlasTexts=await Promise.all(imgs.map(i=>fetch(i.src).then(r=>r.text())));const characterAssets=await Promise.all(['aaria','mommy','daddy'].map(async n=>{const r=await fetch('characters/'+n+'.jpg');const b=await r.blob();const bitmap=await createImageBitmap(b);return {name:n,ok:r.ok,width:bitmap.width,height:bitmap.height}}));return {title:document.title,heading:document.querySelector('h1')?.innerText||'',contact:(()=>{const i=document.querySelector('[data-contact-sheet]');return i?{complete:i.complete,width:i.naturalWidth,height:i.naturalHeight,box:(()=>{const r=i.getBoundingClientRect();return {width:r.width,height:r.height}})()}:null})(),atlases:imgs.map(i=>({id:Number(i.dataset.atlas),complete:i.complete,width:i.naturalWidth,height:i.naturalHeight,display:getComputedStyle(i).display})),atlasTexts,characterAssets,panels:[...document.querySelectorAll('img[data-panel-preview]')].map(i=>({id:i.dataset.panelPreview,complete:i.complete,width:i.naturalWidth,height:i.naturalHeight})),captions:[...document.querySelectorAll('figcaption')].map(i=>i.innerHTML),pendingText:document.querySelector('header')?.innerText||''}})()`);
 assert.equal(data.title,`${batch} draft art review`);
 assert.deepEqual(data.atlases.map(x=>x.id),manifest.recipeIds);
 assert.equal(data.atlases.length,5);
 assert.ok(data.atlases.every(x=>x.complete&&x.width===1536&&x.height===1024&&x.display!=='none'));
 assert.equal(data.panels.length,30);
 assert.ok(data.panels.every(x=>x.complete&&x.width===480&&x.height===480));
+assert.equal(data.captions.length,30);
+if(batch==='B01')assert.ok(data.captions.every(c=>c.includes('lang="en-GB"')&&c.includes('lang="pt-BR"')),'B01 route captions must expose both languages');
+if(batch==='B01'){
+  assert.ok(data.atlasTexts.every(s=>s.includes('PORTUGUÊS (BR)')&&s.includes('../characters/')),'B01 atlas SVGs must contain bilingual instructions and original-character links');
+  assert.ok(data.characterAssets.every(a=>a.ok&&a.width>0&&a.height>0),'B01 original character assets must load in Android WebView');
+}
 assert.ok(data.contact?.complete&&data.contact.width===1440&&data.contact.height===1564);
 assert.match(data.pendingText,/Not approved/);
 assert.match(data.pendingText,/Rights, A08 and A09 remain pending/);

@@ -40,7 +40,7 @@ jobs:
       - name: Set up deterministic SVG preview rendering
         run: |
           sudo apt-get update
-          sudo apt-get install -y inkscape
+          sudo apt-get install -y inkscape python3-pil
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -85,6 +85,7 @@ jobs:
           node --check tools/v3/artwork/batches/batch-01/build-android-review.mjs
           node --check .github/scripts/w01-exact-batch-smoke.mjs
           python3 -m py_compile tools/v3/artwork/exact-batches/build_batch.py
+          python3 -m py_compile tools/v3/artwork/exact-batches/b01_remediation.py
           python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-02/generate-batch.py').read_text())"
           python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-03/generate-batch.py').read_text())"
           python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-04/generate-batch.py').read_text())"
@@ -153,6 +154,11 @@ jobs:
             test "$(unzip -Z1 "$apk" | grep -Ec "^assets/artwork-review/exact/$batch/atlases/recipe-[0-9]+\.svg$")" -eq 5
             test "$(unzip -Z1 "$apk" | grep -Ec "^assets/artwork-review/exact/$batch/previews/recipe-[0-9]+-panel-[0-9]+\.png$")" -eq 30
             unzip -Z1 "$apk" | grep -Fxq "assets/artwork-review/exact/$batch/contact-sheet.png"
+            if [ "$batch" = B01 ]; then
+              for character in aaria mommy daddy; do
+                unzip -Z1 "$apk" | grep -Fxq "assets/artwork-review/exact/$batch/characters/$character.jpg"
+              done
+            fi
           done
 
       - name: Prepare Linux KVM access for x86_64 emulator

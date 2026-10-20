@@ -136,6 +136,26 @@ def build(batch: str, verify_only: bool = False) -> None:
             raise SystemExit(f"{batch} does not contain the exact requested five recipes")
         if sum(len(r["panels"]) for r in manifest["recipes"]) != 30:
             raise SystemExit(f"{batch} is not a six-panel x five-recipe batch")
+        if batch == "B01":
+            panels = [p for recipe in manifest["recipes"] for p in recipe["panels"]]
+            if len({p.get("actionKey") for p in panels}) != 30:
+                raise SystemExit("B01 action panels must all be distinct")
+            if not all(p.get("instructionEn") and p.get("instructionPtBr") and p.get("actor") for p in panels):
+                raise SystemExit("B01 panels require English, Português-BR, and original-character metadata")
+            if manifest.get("artworkRights", {}).get("status") != "UNRESOLVED" or manifest.get("releaseStatus") != "HOLD":
+                raise SystemExit("B01 must retain the unresolved-rights and release HOLD")
+            for character in manifest.get("characters", {}).values():
+                original = REPO / character["sourcePath"]
+                packaged = out / character["packagePath"]
+                expected_hash = character["sha256"]
+                if not original.is_file() or sha(original.read_bytes()) != expected_hash:
+                    raise SystemExit(f"Original character source changed or missing: {original}")
+                if not packaged.is_file() or sha(packaged.read_bytes()) != expected_hash:
+                    raise SystemExit(f"Packaged character hash mismatch: {packaged}")
+            expected_adult_only = {(11, 2), (11, 6), (12, 1), (12, 3), (12, 4), (12, 5), (12, 6), (13, 3), (13, 4), (13, 5), (14, 5), (14, 6), (15, 1), (15, 3), (15, 5), (15, 6)}
+            actual_adult_only = {(recipe["id"], panel["panel"]) for recipe in manifest["recipes"] for panel in recipe["panels"] if panel["adultOnlyCue"]}
+            if actual_adult_only != expected_adult_only:
+                raise SystemExit(f"B01 adult-only cue map mismatch: {sorted(actual_adult_only)}")
         for record in manifest["files"]:
             target = out / record["path"]
             if not target.is_file() or sha(target.read_bytes()) != record["sha256"]:
@@ -146,6 +166,12 @@ def build(batch: str, verify_only: bool = False) -> None:
             if not target.is_file() or sha(target.read_bytes()) != digest:
                 raise SystemExit(f"SHA-256 list mismatch: {relative}")
         print(json.dumps({"batch": batch, "state": manifest["state"], "verifiedFileHashes": len(manifest["files"])}))
+        return
+
+    if batch == "B01":
+        from b01_remediation import write_b01
+
+        write_b01(REPO, out, records, source_paths, render)
         return
 
     shutil.rmtree(out, ignore_errors=True)
