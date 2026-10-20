@@ -21,6 +21,16 @@
       "branch": "codex/w01-unified-v3-v31-20261020",
       "session_state": "BLOCKED_UNTIL_EXCLUSIVE_WRITER_VERIFIED",
       "writer": null
+    },
+    "independent": {
+      "branch": null,
+      "session_state": "NOT_STARTED",
+      "writer": null
+    },
+    "control-tower": {
+      "branch": null,
+      "session_state": "GOVERNANCE_ONLY",
+      "writer": null
     }
   },
   "tasks": [
