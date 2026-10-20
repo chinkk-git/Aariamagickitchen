@@ -134,7 +134,14 @@ jobs:
           apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
           unzip -Z1 "$apk" | grep -Fxq 'assets/index.html'
           unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Spin My Week'
+          unzip -p "$apk" assets/index.html | grep -Fq 'My Creations'
           unzip -p "$apk" assets/index.html | grep -Fq 'ne_110m_admin_0_countries'
+          if unzip -Z1 "$apk" | grep -Eq '^assets/content-pack-publisher\.(x509|keyid)$'; then
+            echo 'Unexpected content-pack publisher key provisioned in the test APK; review the trust-root change.' >&2
+            exit 1
+          fi
+          printf 'secure_content_updates=fail-closed\nblocker=trusted publisher key and key ID are not provisioned; no update activation is claimed\n' > artifacts/v31-diagnostics/secure-content-update-status.txt
           unzip -p "$apk" assets/artwork-review/index.html | grep -Fq 'Draft artwork — independent review only'
           unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-01/recipe-11.svg'
           unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-01/recipe-20.svg'
