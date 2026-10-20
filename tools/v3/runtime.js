@@ -339,7 +339,7 @@ function v3InitProfiles(){
  if(!v3ProfileState.profiles.length)v3OpenProfileEditor('first-run');else if(v3ProfileState.profile?.chefId==='LEGACY_AARIA')v3OpenProfileEditor('legacy');
 }
 const v3ProfileCss=`<style id="v3-profile-style">
-.v3-profile-trigger{border:0;border-radius:15px;background:#fff;color:#4e376c;padding:9px 12px;font:800 13px inherit;box-shadow:0 3px 12px #4e376c18;cursor:pointer;min-height:44px}
+.v3-profile-trigger{border:0;border-radius:12px;background:#fff;color:#4e376c;padding:6px 9px;font:800 11px inherit;box-shadow:0 3px 12px #4e376c18;cursor:pointer;min-height:40px;white-space:nowrap}
 .v3-profile-backdrop{position:fixed;inset:0;z-index:10000;background:#21142fb8;display:grid;place-items:center;padding:18px}
 .v3-profile-dialog{width:min(100%,480px);max-height:min(92dvh,760px);overflow:auto;background:#fffdf9;color:#34264f;border:1px solid #eadff1;border-radius:25px;padding:22px;box-shadow:0 24px 70px #1d0c3566}
 .v3-profile-dialog h2{margin:0 0 7px;font-size:25px;line-height:1.15}.v3-profile-dialog p{color:#655978;line-height:1.45;margin:0 0 16px}
