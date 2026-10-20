@@ -2,7 +2,7 @@
   "schema_version": 1,
   "activation": "DISABLED",
   "cost_policy": "NO_ADDITIONAL_CHARGES",
-  "notes": "Planning registry only. Existing control-tower/tasks.json remains authoritative until migration and acceptance.",
+  "notes": "Disabled planning registry. Roles reconciled with owner-approved W01/W03 delivery assignments on 2026-10-19. This does not transfer writer ownership, authorize branch writes, or migrate legacy tasks.json; runtime remains UNASSIGNED.",
   "workers": [
     {
       "id": "W01",
@@ -15,7 +15,16 @@
     },
     {
       "id": "W02",
-      "name": "Visual and Artwork",
+      "name": "Android QA",
+      "type": "assurance",
+      "branch": null,
+      "activation": "DISABLED",
+      "runtime": "UNASSIGNED",
+      "can_self_approve": false
+    },
+    {
+      "id": "W03",
+      "name": "V3.1 Visual and Artwork",
       "type": "coding",
       "branch": "feature/v3.1-home-redesign",
       "activation": "DISABLED",
@@ -23,18 +32,9 @@
       "can_self_approve": false
     },
     {
-      "id": "W03",
-      "name": "Recipes and Features",
-      "type": "coding",
-      "branch": null,
-      "activation": "DISABLED",
-      "runtime": "UNASSIGNED",
-      "can_self_approve": false
-    },
-    {
       "id": "W04",
-      "name": "Integration and APK",
-      "type": "coding",
+      "name": "Artwork Supply and Review",
+      "type": "assurance",
       "branch": null,
       "activation": "DISABLED",
       "runtime": "UNASSIGNED",
@@ -42,7 +42,7 @@
     },
     {
       "id": "W05",
-      "name": "Functional QA",
+      "name": "Recipe Atlas Coverage",
       "type": "assurance",
       "branch": null,
       "activation": "DISABLED",
@@ -51,7 +51,7 @@
     },
     {
       "id": "W06",
-      "name": "UAT and A09 Child Experience",
+      "name": "Functional QA",
       "type": "assurance",
       "branch": null,
       "activation": "DISABLED",
@@ -60,7 +60,7 @@
     },
     {
       "id": "W07",
-      "name": "A03 Security",
+      "name": "A08 Child Safety",
       "type": "assurance",
       "branch": null,
       "activation": "DISABLED",
@@ -69,7 +69,7 @@
     },
     {
       "id": "W08",
-      "name": "A08 Child Safety",
+      "name": "A09 Child Experience",
       "type": "assurance",
       "branch": null,
       "activation": "DISABLED",
@@ -88,7 +88,7 @@
     {
       "id": "W10",
       "name": "Recovery and Learning",
-      "type": "governance",
+      "type": "assurance",
       "branch": null,
       "activation": "DISABLED",
       "runtime": "UNASSIGNED",
