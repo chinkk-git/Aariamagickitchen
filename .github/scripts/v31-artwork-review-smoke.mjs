@@ -35,7 +35,7 @@ async function command(method,params={}){
 await command('Runtime.enable');
 let page;
 for(let i=0;i<30;i++){
-  page=await evaluate(`(() => ({title:document.title,heading:document.querySelector('h1')?.innerText||'',text:document.body.innerText||'',images:[...document.querySelectorAll('img')].map(i=>({src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight}))}))()`);
+  page=await evaluate(`(() => ({title:document.title,heading:document.querySelector('h1')?.innerText||'',text:document.body.innerText||'',images:[...document.querySelectorAll('img')].map(i=>{const r=i.getBoundingClientRect();return {src:i.getAttribute('src'),complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,width:r.width,height:r.height,display:getComputedStyle(i).display}})}))()`);
   if(page?.images?.length===10&&page.images.every(x=>x.complete&&x.naturalWidth===1536&&x.naturalHeight===1024))break;
   await pause(400);
 }
@@ -44,6 +44,9 @@ assert.match(page.heading,/Draft artwork — independent review only/);
 assert.match(page.text,/Rights, A08 and A09 remain pending/);
 assert.equal(page.images.length,10);
 for(const img of page.images){assert.match(img.src,/^batch-01\/recipe-(1[1-9]|20)\.svg$/);assert.equal(img.naturalWidth,1536);assert.equal(img.naturalHeight,1024);}
+assert.ok(page.images[0].width>=180&&page.images[0].height>=100,`First draft atlas is not visibly laid out: ${JSON.stringify(page.images[0])}`);
+assert.notEqual(page.images[0].display,'none');
+await evaluate(`document.querySelector('img')?.scrollIntoView({block:'center'})`);
 await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
 await pause(800);
 const screenshot=adb(['exec-out','screencap','-p']);

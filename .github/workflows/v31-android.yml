@@ -78,6 +78,7 @@ jobs:
           node tools/v3/test-secure-content-update-approval.mjs
           node tools/v3/validate-v31.mjs
           node --check tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          node --check .github/scripts/v31-artwork-review-smoke.mjs
           python3 tools/v3/artwork/batches/batch-01/generate-batch.py
           node tools/v3/artwork/batches/batch-01/build-android-review.mjs
           git diff --exit-code -- tools/v3/artwork/batches/batch-01
