@@ -55,6 +55,7 @@ jobs:
           node tools/v3/test-csp-policy.mjs
           node tools/v3/test-profile-isolation.mjs
           node tools/v3/test-photo-share-approval.mjs
+          node tools/v3/test-secure-content-update-approval.mjs
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/avatar-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
           node --check phase2-pilot/apps/aaria-android/app/src/main/assets/mobile-fixes.js

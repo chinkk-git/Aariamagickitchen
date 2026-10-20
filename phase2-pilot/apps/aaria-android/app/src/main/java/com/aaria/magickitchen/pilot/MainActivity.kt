@@ -61,14 +61,22 @@ class MainActivity : Activity() {
     private val approvalLifecycleLock = Any()
     @Volatile internal var isForegroundForApproval: Boolean = false
         private set
+    private val parentCredentialPromptPending = AtomicBoolean(false)
     private val contentPacks by lazy { AndroidContentPackRepository(this) }
     private var fileChooserCallback: ValueCallback<Array<Uri>>? = null
     private var pendingCaptureUri: Uri? = null
     private var pendingCaptureFile: File? = null
     private val fileChooserRequest = 4312
     private val parentShareRequest = 4313
+    private val parentUpdateRequest = 4314
     private data class PendingShare(val bytes: ByteArray, val mimeType: String, val title: String)
+    private data class PendingUpdateApproval(
+        val completed: CountDownLatch = CountDownLatch(1),
+        val dialogApproved: AtomicBoolean = AtomicBoolean(false),
+        val credentialApproved: AtomicBoolean = AtomicBoolean(false)
+    )
     private val pendingParentShare = AtomicReference<PendingShare?>(null)
+    private val pendingParentUpdate = AtomicReference<PendingUpdateApproval?>(null)
     private var backInvokedCallback: OnBackInvokedCallback? = null
 
     internal fun requestParentApprovedShare(bytes: ByteArray, mimeType: String, title: String): Boolean {
@@ -76,8 +84,12 @@ class MainActivity : Activity() {
             bytes.size > 15 * 1024 * 1024 || mimeType !in setOf("image/png", "image/jpeg") ||
             title.length > NativeBridgeInputPolicy.MAX_SHARED_TITLE_CHARS
         ) return false
+        if (!parentCredentialPromptPending.compareAndSet(false, true)) return false
 
-        val keyguard = getSystemService(KEYGUARD_SERVICE) as? KeyguardManager ?: return false
+        val keyguard = (getSystemService(KEYGUARD_SERVICE) as? KeyguardManager) ?: run {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
         if (!keyguard.isDeviceSecure) {
             runOnUiThread {
                 android.widget.Toast.makeText(
@@ -86,15 +98,19 @@ class MainActivity : Activity() {
                     android.widget.Toast.LENGTH_LONG
                 ).show()
             }
+            parentCredentialPromptPending.set(false)
             return false
         }
         if (!ParentShareAuthorizationPolicy.canRequest(
                 hasSecureDeviceCredential = keyguard.isDeviceSecure,
                 activityForeground = isForegroundForApproval,
                 activityAlive = !isFinishing && !isDestroyed,
-                requestAlreadyPending = pendingParentShare.get() != null
+                requestAlreadyPending = pendingParentShare.get() != null || pendingParentUpdate.get() != null
             )
-        ) return false
+        ) {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
         val credentialPrompt = try {
             keyguard.createConfirmDeviceCredentialIntent(
                 "Parent or guardian approval",
@@ -102,10 +118,16 @@ class MainActivity : Activity() {
             )
         } catch (_: Exception) {
             null
-        } ?: return false
+        } ?: run {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
 
         val pending = PendingShare(bytes.copyOf(), mimeType, title)
-        if (!pendingParentShare.compareAndSet(null, pending)) return false
+        if (!pendingParentShare.compareAndSet(null, pending)) {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
         val promptStarted = AtomicBoolean(false)
         val promptStartCompleted = CountDownLatch(1)
         runOnUiThread {
@@ -129,8 +151,91 @@ class MainActivity : Activity() {
             Thread.currentThread().interrupt()
             false
         }
-        if (!started) pendingParentShare.compareAndSet(pending, null)
+        if (!started) {
+            pendingParentShare.compareAndSet(pending, null)
+            parentCredentialPromptPending.set(false)
+        }
         return started
+    }
+
+    internal fun confirmParentContentUpdate(version: Int, fileCount: Int): Boolean {
+        // A WebView JavaScript bridge call runs off the UI thread. Fail closed if that changes.
+        if (Looper.myLooper() == Looper.getMainLooper()) return false
+        val keyguard = getSystemService(KEYGUARD_SERVICE) as? KeyguardManager ?: return false
+        if (!keyguard.isDeviceSecure || !isForegroundForApproval || isFinishing || isDestroyed) return false
+        val credentialPrompt = try {
+            keyguard.createConfirmDeviceCredentialIntent(
+                "Parent or guardian approval",
+                "A parent or guardian must unlock this device to approve the verified content update."
+            )
+        } catch (_: Exception) {
+            null
+        } ?: return false
+        if (!parentCredentialPromptPending.compareAndSet(false, true)) return false
+        val pending = PendingUpdateApproval()
+        if (!pendingParentUpdate.compareAndSet(null, pending)) {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
+        val dialog = AtomicReference<AlertDialog?>()
+        val promptStarted = AtomicBoolean(false)
+        runOnUiThread {
+            if (isFinishing || isDestroyed || !isForegroundForApproval) {
+                pending.completed.countDown()
+            } else {
+                dialog.set(
+                    AlertDialog.Builder(this)
+                        .setTitle("Parent or guardian approval")
+                        .setMessage("Review verified kitchen content update $version containing $fileCount items. A device credential is required to continue.")
+                        .setPositiveButton("Continue") { _, _ ->
+                            try {
+                                if (isFinishing || isDestroyed || !isForegroundForApproval) {
+                                    pending.completed.countDown()
+                                } else {
+                                    pending.dialogApproved.set(true)
+                                    startActivityForResult(credentialPrompt, parentUpdateRequest)
+                                    promptStarted.set(true)
+                                }
+                            } catch (_: Exception) {
+                                pending.completed.countDown()
+                            }
+                        }
+                        .setNegativeButton("Cancel") { _, _ -> pending.completed.countDown() }
+                        .setOnCancelListener { pending.completed.countDown() }
+                        .create()
+                        .also { it.show() }
+                )
+            }
+        }
+        val deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(60)
+        while (pending.completed.count > 0 && System.nanoTime() < deadline) {
+            if (isFinishing || isDestroyed || (!promptStarted.get() && !isForegroundForApproval)) {
+                runOnUiThread { dialog.getAndSet(null)?.dismiss() }
+                pending.completed.countDown()
+                break
+            }
+            val signaled = try {
+                pending.completed.await(250, TimeUnit.MILLISECONDS)
+            } catch (_: InterruptedException) {
+                Thread.currentThread().interrupt()
+                pending.completed.countDown()
+                false
+            }
+            if (signaled || Thread.currentThread().isInterrupted) break
+        }
+        if (pending.completed.count > 0) {
+            runOnUiThread { dialog.getAndSet(null)?.dismiss() }
+            pending.completed.countDown()
+        }
+        val approved = ParentUpdateAuthorizationPolicy.canActivate(
+            dialogApproved = pending.dialogApproved.get(),
+            credentialApproved = pending.credentialApproved.get(),
+            activityForeground = isForegroundForApproval,
+            activityAlive = !isFinishing && !isDestroyed
+        )
+        pendingParentUpdate.compareAndSet(pending, null)
+        parentCredentialPromptPending.set(false)
+        return approved
     }
 
     private fun shareParentApprovedPhoto(share: PendingShare) {
@@ -327,6 +432,19 @@ class MainActivity : Activity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == parentUpdateRequest) {
+            val pending = pendingParentUpdate.getAndSet(null)
+            pending?.credentialApproved?.set(
+                ParentUpdateAuthorizationPolicy.canApprove(
+                    credentialResult = resultCode,
+                    successResult = RESULT_OK,
+                    parentDialogApproved = pending.dialogApproved.get(),
+                    activityAlive = !isFinishing && !isDestroyed
+                )
+            )
+            pending?.completed?.countDown()
+            return
+        }
         if (requestCode == parentShareRequest) {
             val pending = pendingParentShare.getAndSet(null)
             if (ParentShareAuthorizationPolicy.canDispatch(
@@ -340,6 +458,7 @@ class MainActivity : Activity() {
             } else if (pending != null && !isFinishing && !isDestroyed) {
                 android.widget.Toast.makeText(this, "No photo was shared.", android.widget.Toast.LENGTH_SHORT).show()
             }
+            parentCredentialPromptPending.set(false)
             return
         }
         if (requestCode == fileChooserRequest) {
@@ -364,6 +483,8 @@ class MainActivity : Activity() {
         pendingCaptureFile = null
         pendingCaptureUri = null
         pendingParentShare.getAndSet(null)
+        pendingParentUpdate.getAndSet(null)?.completed?.countDown()
+        parentCredentialPromptPending.set(false)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             backInvokedCallback?.let { onBackInvokedDispatcher.unregisterOnBackInvokedCallback(it) }
             backInvokedCallback = null
@@ -389,42 +510,8 @@ class ShareBridge(private val activity: Activity) {
     private fun isApprovalActivityForeground(): Boolean =
         activity is MainActivity && activity.isForegroundForApproval
 
-    private fun confirmParentContentUpdate(version: Int, fileCount: Int): Boolean {
-        // A WebView JavaScript bridge call runs off the UI thread. Fail closed if that changes.
-        if (Looper.myLooper() == Looper.getMainLooper()) return false
-        val completed = CountDownLatch(1)
-        val approved = AtomicBoolean(false)
-        val dialog = AtomicReference<AlertDialog?>()
-        activity.runOnUiThread {
-            if (activity.isFinishing || activity.isDestroyed || !isApprovalActivityForeground()) {
-                completed.countDown()
-            } else {
-                dialog.set(
-                    AlertDialog.Builder(activity)
-                        .setTitle("Parent or guardian approval")
-                        .setMessage("Install verified kitchen content update $version containing $fileCount items?")
-                        .setPositiveButton("Approve update") { _, _ -> approved.set(true); completed.countDown() }
-                        .setNegativeButton("Cancel") { _, _ -> completed.countDown() }
-                        .setOnCancelListener { completed.countDown() }
-                        .create()
-                        .also { it.show() }
-                )
-            }
-        }
-        val deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(60)
-        while (completed.count > 0 && System.nanoTime() < deadline) {
-            if (activity.isFinishing || activity.isDestroyed || !isApprovalActivityForeground()) {
-                activity.runOnUiThread { dialog.getAndSet(null)?.dismiss() }
-                return false
-            }
-            if (completed.await(250, TimeUnit.MILLISECONDS)) break
-        }
-        if (completed.count > 0) {
-            activity.runOnUiThread { dialog.getAndSet(null)?.dismiss() }
-            return false
-        }
-        return approved.get() && !activity.isFinishing && !activity.isDestroyed && isApprovalActivityForeground()
-    }
+    private fun confirmParentContentUpdate(version: Int, fileCount: Int): Boolean =
+        (activity as? MainActivity)?.confirmParentContentUpdate(version, fileCount) ?: false
 
     @JavascriptInterface
     fun installVerifiedContentPack(base64Zip: String): String = bridgeResult {
