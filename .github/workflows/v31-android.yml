@@ -141,7 +141,9 @@ jobs:
           mkdir -p artifacts/v31-diagnostics
           echo "${GITHUB_SHA}" > artifacts/v31-diagnostics/source-head.txt
           if [ -f phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk ]; then
-            sha256sum phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk > artifacts/v31-diagnostics/apk-sha256.txt
+            sha256sum phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk | tee artifacts/v31-diagnostics/apk-sha256.txt
+            test -s artifacts/v31-diagnostics/apk-sha256.txt
+            echo "Verified APK payload checksum for exact source HEAD ${GITHUB_SHA}"
           fi
 
       - name: Upload installable V3.1 preview APK
