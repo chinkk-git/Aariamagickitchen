@@ -1,0 +1,578 @@
+{
+  "schema": "w01-artwork-remediation-batch-v1",
+  "status": "draft-only; excluded from production runtime; independent review required",
+  "batch": "03",
+  "recipeIds": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    41,
+    42,
+    43
+  ],
+  "sourceArchive": "v31-step-atlas-drafts-recipes-11-65.zip",
+  "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+  "panelsPerAtlas": 6,
+  "changes": [
+    "Adds localized, visible adult-only wording to panels the source manifest marks adultOnlyCue.",
+    "Adds per-panel SVG title and description tied to the unchanged source step text.",
+    "Original illustration paths and project cartoon character assets remain unchanged."
+  ],
+  "androidDebugReview": {
+    "route": "/artwork-review/index.html",
+    "sourceSet": "src/debug/assets only",
+    "purpose": "Offline reviewer preview only; not the production cooking route."
+  },
+  "approval": {
+    "A08": "PENDING independent review",
+    "A09": "PENDING independent review",
+    "artworkRights": "UNRESOLVED; source authorship/rights not established by checksums",
+    "runtime": "NOT INTEGRATED"
+  },
+  "recipes": [
+    {
+      "id": 32,
+      "title": "Apple Cinnamon Swirls",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-32-step-atlas-draft.svg",
+      "sourceSha256": "4653ab152bb7065955cc8334ea95befd396db4793d53bbad9c2c5ce53dd98861",
+      "outputPath": "atlases/recipe-32-draft.svg",
+      "outputSha256": "737d8853067577a6dc11d5b94890bb14610ebfac089fc807cdafb98656e49916",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult finely dices apple.",
+          "adultOnlyCue": true,
+          "originalSha256": "4653ab152bb7065955cc8334ea95befd396db4793d53bbad9c2c5ce53dd98861"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Scatter apple and cinnamon over pastry; roll into a log.",
+          "adultOnlyCue": false,
+          "originalSha256": "4653ab152bb7065955cc8334ea95befd396db4793d53bbad9c2c5ce53dd98861"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Scatter apple and cinnamon over pastry; roll into a log.",
+          "adultOnlyCue": false,
+          "originalSha256": "4653ab152bb7065955cc8334ea95befd396db4793d53bbad9c2c5ce53dd98861"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult slices and air-fries until pastry is cooked through.",
+          "adultOnlyCue": true,
+          "originalSha256": "4653ab152bb7065955cc8334ea95befd396db4793d53bbad9c2c5ce53dd98861"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult slices and air-fries until pastry is cooked through.",
+          "adultOnlyCue": true,
+          "originalSha256": "4653ab152bb7065955cc8334ea95befd396db4793d53bbad9c2c5ce53dd98861"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult slices and air-fries until pastry is cooked through.",
+          "adultOnlyCue": false,
+          "originalSha256": "4653ab152bb7065955cc8334ea95befd396db4793d53bbad9c2c5ce53dd98861"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 33,
+      "title": "Rainbow Fruit Parfaits",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-33-step-atlas-draft.svg",
+      "sourceSha256": "a3dcfb085fa5ac5507f1dbd2c70c13c8e04c2e4fbe13c83c516e39025764dd03",
+      "outputPath": "atlases/recipe-33-draft.svg",
+      "outputSha256": "2b78e875b15274730b6810398604781fb2e0b74e0238afc6be251fde1df69119",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Wash fruit and ask adult to cut.",
+          "adultOnlyCue": false,
+          "originalSha256": "a3dcfb085fa5ac5507f1dbd2c70c13c8e04c2e4fbe13c83c516e39025764dd03"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Wash fruit and ask adult to cut.",
+          "adultOnlyCue": true,
+          "originalSha256": "a3dcfb085fa5ac5507f1dbd2c70c13c8e04c2e4fbe13c83c516e39025764dd03"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Layer yogurt, fruit and oats in clear cups.",
+          "adultOnlyCue": false,
+          "originalSha256": "a3dcfb085fa5ac5507f1dbd2c70c13c8e04c2e4fbe13c83c516e39025764dd03"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Layer yogurt, fruit and oats in clear cups.",
+          "adultOnlyCue": false,
+          "originalSha256": "a3dcfb085fa5ac5507f1dbd2c70c13c8e04c2e4fbe13c83c516e39025764dd03"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Eat immediately or refrigerate.",
+          "adultOnlyCue": false,
+          "originalSha256": "a3dcfb085fa5ac5507f1dbd2c70c13c8e04c2e4fbe13c83c516e39025764dd03"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Eat immediately or refrigerate.",
+          "adultOnlyCue": false,
+          "originalSha256": "a3dcfb085fa5ac5507f1dbd2c70c13c8e04c2e4fbe13c83c516e39025764dd03"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 34,
+      "title": "Carrot & Potato Tots",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-34-step-atlas-draft.svg",
+      "sourceSha256": "73ff3f8d74b8b73f8570059f275ae74f06c50d7bcc4d37a6f494810f7a40374d",
+      "outputPath": "atlases/recipe-34-draft.svg",
+      "outputSha256": "fef691c9cdbe86777ebe9aade7d8420357a514d81b0fae4dafcccab56a7f8f05",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix cooled cooked potato with grated carrot, cheese and crumbs.",
+          "adultOnlyCue": false,
+          "originalSha256": "73ff3f8d74b8b73f8570059f275ae74f06c50d7bcc4d37a6f494810f7a40374d"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mix cooled cooked potato with grated carrot, cheese and crumbs.",
+          "adultOnlyCue": false,
+          "originalSha256": "73ff3f8d74b8b73f8570059f275ae74f06c50d7bcc4d37a6f494810f7a40374d"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Shape small tots.",
+          "adultOnlyCue": false,
+          "originalSha256": "73ff3f8d74b8b73f8570059f275ae74f06c50d7bcc4d37a6f494810f7a40374d"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Shape small tots.",
+          "adultOnlyCue": false,
+          "originalSha256": "73ff3f8d74b8b73f8570059f275ae74f06c50d7bcc4d37a6f494810f7a40374d"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until browned and heated through.",
+          "adultOnlyCue": true,
+          "originalSha256": "73ff3f8d74b8b73f8570059f275ae74f06c50d7bcc4d37a6f494810f7a40374d"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until browned and heated through.",
+          "adultOnlyCue": false,
+          "originalSha256": "73ff3f8d74b8b73f8570059f275ae74f06c50d7bcc4d37a6f494810f7a40374d"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 35,
+      "title": "Rainbow Veggie Triangles",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-35-step-atlas-draft.svg",
+      "sourceSha256": "429eead39f70432e6c626001c46489ac2714ac1eea2780e1b7e82e9580e58510",
+      "outputPath": "atlases/recipe-35-draft.svg",
+      "outputSha256": "d4db449c7b64d123d8f70c00774a26df8b238561d56e5947565c853097c3ec55",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Fill half of each tortilla with cheese, corn and spinach.",
+          "adultOnlyCue": false,
+          "originalSha256": "429eead39f70432e6c626001c46489ac2714ac1eea2780e1b7e82e9580e58510"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Fill half of each tortilla with cheese, corn and spinach.",
+          "adultOnlyCue": false,
+          "originalSha256": "429eead39f70432e6c626001c46489ac2714ac1eea2780e1b7e82e9580e58510"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Fold and press.",
+          "adultOnlyCue": false,
+          "originalSha256": "429eead39f70432e6c626001c46489ac2714ac1eea2780e1b7e82e9580e58510"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Fold and press.",
+          "adultOnlyCue": true,
+          "originalSha256": "429eead39f70432e6c626001c46489ac2714ac1eea2780e1b7e82e9580e58510"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until crisp and cheese melts.",
+          "adultOnlyCue": true,
+          "originalSha256": "429eead39f70432e6c626001c46489ac2714ac1eea2780e1b7e82e9580e58510"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until crisp and cheese melts.",
+          "adultOnlyCue": false,
+          "originalSha256": "429eead39f70432e6c626001c46489ac2714ac1eea2780e1b7e82e9580e58510"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 36,
+      "title": "Mini Rainbow Pepper Boats",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-36-step-atlas-draft.svg",
+      "sourceSha256": "077f74f2fd6ede54b462dd09c51260a82fed232136f1212d4af666d49eb35bb5",
+      "outputPath": "atlases/recipe-36-draft.svg",
+      "outputSha256": "28daa7e0e410e2ebb8760cd23e461813fff565e19c416022120712bda58428c3",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult halves peppers and removes seeds.",
+          "adultOnlyCue": true,
+          "originalSha256": "077f74f2fd6ede54b462dd09c51260a82fed232136f1212d4af666d49eb35bb5"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Adult halves peppers and removes seeds.",
+          "adultOnlyCue": true,
+          "originalSha256": "077f74f2fd6ede54b462dd09c51260a82fed232136f1212d4af666d49eb35bb5"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Fill with freshly cooked rice, corn and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "077f74f2fd6ede54b462dd09c51260a82fed232136f1212d4af666d49eb35bb5"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Fill with freshly cooked rice, corn and cheese.",
+          "adultOnlyCue": true,
+          "originalSha256": "077f74f2fd6ede54b462dd09c51260a82fed232136f1212d4af666d49eb35bb5"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until peppers are tender and filling hot.",
+          "adultOnlyCue": true,
+          "originalSha256": "077f74f2fd6ede54b462dd09c51260a82fed232136f1212d4af666d49eb35bb5"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until peppers are tender and filling hot.",
+          "adultOnlyCue": false,
+          "originalSha256": "077f74f2fd6ede54b462dd09c51260a82fed232136f1212d4af666d49eb35bb5"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 37,
+      "title": "Chicken Rainbow Pinwheels",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-37-step-atlas-draft.svg",
+      "sourceSha256": "1ee089d4540a60b8844aab300c98b3db289e75c59dcc921060f1ac7f38362740",
+      "outputPath": "atlases/recipe-37-draft.svg",
+      "outputSha256": "76fdd45238fbdc95fc2382fb8481d299a8f7b0c510c819bdac785886e1397f91",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Wash vegetables.",
+          "adultOnlyCue": false,
+          "originalSha256": "1ee089d4540a60b8844aab300c98b3db289e75c59dcc921060f1ac7f38362740"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Spread cream cheese, add cooked chicken, carrot and lettuce.",
+          "adultOnlyCue": false,
+          "originalSha256": "1ee089d4540a60b8844aab300c98b3db289e75c59dcc921060f1ac7f38362740"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Spread cream cheese, add cooked chicken, carrot and lettuce.",
+          "adultOnlyCue": false,
+          "originalSha256": "1ee089d4540a60b8844aab300c98b3db289e75c59dcc921060f1ac7f38362740"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Roll tightly; adult slices and serve promptly.",
+          "adultOnlyCue": false,
+          "originalSha256": "1ee089d4540a60b8844aab300c98b3db289e75c59dcc921060f1ac7f38362740"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Roll tightly; adult slices and serve promptly.",
+          "adultOnlyCue": true,
+          "originalSha256": "1ee089d4540a60b8844aab300c98b3db289e75c59dcc921060f1ac7f38362740"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Roll tightly; adult slices and serve promptly.",
+          "adultOnlyCue": false,
+          "originalSha256": "1ee089d4540a60b8844aab300c98b3db289e75c59dcc921060f1ac7f38362740"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 38,
+      "title": "Spinach & Cheese Egg Clouds",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-38-step-atlas-draft.svg",
+      "sourceSha256": "0b4b0093cb748d11480207697e30626e0c72d3cc92c25ecc809217c8434e08dc",
+      "outputPath": "atlases/recipe-38-draft.svg",
+      "outputSha256": "7e0f63c582dffb8729e8a2ffbd8a8075140beb8005755872aa198ee929f834bd",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Whisk eggs and milk, add spinach and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "0b4b0093cb748d11480207697e30626e0c72d3cc92c25ecc809217c8434e08dc"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Whisk eggs and milk, add spinach and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "0b4b0093cb748d11480207697e30626e0c72d3cc92c25ecc809217c8434e08dc"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Pour into silicone cups.",
+          "adultOnlyCue": false,
+          "originalSha256": "0b4b0093cb748d11480207697e30626e0c72d3cc92c25ecc809217c8434e08dc"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until fully set.",
+          "adultOnlyCue": true,
+          "originalSha256": "0b4b0093cb748d11480207697e30626e0c72d3cc92c25ecc809217c8434e08dc"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until fully set.",
+          "adultOnlyCue": true,
+          "originalSha256": "0b4b0093cb748d11480207697e30626e0c72d3cc92c25ecc809217c8434e08dc"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until fully set.",
+          "adultOnlyCue": false,
+          "originalSha256": "0b4b0093cb748d11480207697e30626e0c72d3cc92c25ecc809217c8434e08dc"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 41,
+      "title": "Cheesy Chicken Meatballs",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-41-step-atlas-draft.svg",
+      "sourceSha256": "8f325652e89ee7e111fbc4a58bcadcadd154d9bce037b5bd6990bb7843252de9",
+      "outputPath": "atlases/recipe-41-draft.svg",
+      "outputSha256": "564a7c85e05a3e5234ca0eeb1fa5d41980bec026d36e3c33483bfedd291a843b",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult handles raw chicken.",
+          "adultOnlyCue": true,
+          "originalSha256": "8f325652e89ee7e111fbc4a58bcadcadd154d9bce037b5bd6990bb7843252de9"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Adult handles raw chicken.",
+          "adultOnlyCue": true,
+          "originalSha256": "8f325652e89ee7e111fbc4a58bcadcadd154d9bce037b5bd6990bb7843252de9"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Mix and shape small meatballs using clean utensils.",
+          "adultOnlyCue": true,
+          "originalSha256": "8f325652e89ee7e111fbc4a58bcadcadd154d9bce037b5bd6990bb7843252de9"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Mix and shape small meatballs using clean utensils.",
+          "adultOnlyCue": true,
+          "originalSha256": "8f325652e89ee7e111fbc4a58bcadcadd154d9bce037b5bd6990bb7843252de9"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until centers reach 74°C on a food thermometer.",
+          "adultOnlyCue": true,
+          "originalSha256": "8f325652e89ee7e111fbc4a58bcadcadd154d9bce037b5bd6990bb7843252de9"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until centers reach 74°C on a food thermometer.",
+          "adultOnlyCue": true,
+          "originalSha256": "8f325652e89ee7e111fbc4a58bcadcadd154d9bce037b5bd6990bb7843252de9"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 42,
+      "title": "Strawberry French Toast Roll-Ups",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-42-step-atlas-draft.svg",
+      "sourceSha256": "9bcc25865a5b48da3797cbb02f301d4615e12a272d2bc2892173e8cdcf63aaca",
+      "outputPath": "atlases/recipe-42-draft.svg",
+      "outputSha256": "88c24bf197e1ed978bd13ab965e80b922524f8bd65042d3beb24da109fd72e9d",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Flatten bread.",
+          "adultOnlyCue": false,
+          "originalSha256": "9bcc25865a5b48da3797cbb02f301d4615e12a272d2bc2892173e8cdcf63aaca"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cuts strawberries; place inside and roll.",
+          "adultOnlyCue": true,
+          "originalSha256": "9bcc25865a5b48da3797cbb02f301d4615e12a272d2bc2892173e8cdcf63aaca"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cuts strawberries; place inside and roll.",
+          "adultOnlyCue": false,
+          "originalSha256": "9bcc25865a5b48da3797cbb02f301d4615e12a272d2bc2892173e8cdcf63aaca"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Dip briefly in beaten egg and milk.",
+          "adultOnlyCue": false,
+          "originalSha256": "9bcc25865a5b48da3797cbb02f301d4615e12a272d2bc2892173e8cdcf63aaca"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 4,
+          "sourceStepText": "Adult air-fries until bread is golden and egg coating completely cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "9bcc25865a5b48da3797cbb02f301d4615e12a272d2bc2892173e8cdcf63aaca"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 4,
+          "sourceStepText": "Adult air-fries until bread is golden and egg coating completely cooked.",
+          "adultOnlyCue": false,
+          "originalSha256": "9bcc25865a5b48da3797cbb02f301d4615e12a272d2bc2892173e8cdcf63aaca"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 43,
+      "title": "Broccoli Potato Stars",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-43-step-atlas-draft.svg",
+      "sourceSha256": "665276416a949839efff6463f2a49c97cd489f6f3ddc8e5e05bcfd77c83e7db8",
+      "outputPath": "atlases/recipe-43-draft.svg",
+      "outputSha256": "7a163a04df922f9c5820a77375405c2b5fb1ada194a0fcb59a57c88aaa86920b",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix cooled potato, broccoli, cheese and crumbs.",
+          "adultOnlyCue": false,
+          "originalSha256": "665276416a949839efff6463f2a49c97cd489f6f3ddc8e5e05bcfd77c83e7db8"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mix cooled potato, broccoli, cheese and crumbs.",
+          "adultOnlyCue": false,
+          "originalSha256": "665276416a949839efff6463f2a49c97cd489f6f3ddc8e5e05bcfd77c83e7db8"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Shape into small stars or patties.",
+          "adultOnlyCue": false,
+          "originalSha256": "665276416a949839efff6463f2a49c97cd489f6f3ddc8e5e05bcfd77c83e7db8"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Shape into small stars or patties.",
+          "adultOnlyCue": true,
+          "originalSha256": "665276416a949839efff6463f2a49c97cd489f6f3ddc8e5e05bcfd77c83e7db8"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until golden and heated through.",
+          "adultOnlyCue": true,
+          "originalSha256": "665276416a949839efff6463f2a49c97cd489f6f3ddc8e5e05bcfd77c83e7db8"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until golden and heated through.",
+          "adultOnlyCue": false,
+          "originalSha256": "665276416a949839efff6463f2a49c97cd489f6f3ddc8e5e05bcfd77c83e7db8"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    }
+  ]
+}

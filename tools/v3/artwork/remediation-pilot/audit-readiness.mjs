@@ -16,6 +16,9 @@ const batchSource=JSON.parse(readFileSync(join(batchRoot,'source-manifest.json')
 const batch02Root=join(here,'..','batches','batch-02');
 const batch02=JSON.parse(readFileSync(join(batch02Root,'manifest.json'),'utf8'));
 const batch02Source=JSON.parse(readFileSync(join(batch02Root,'source-manifest.json'),'utf8'));
+const batch03Root=join(here,'..','batches','batch-03');
+const batch03=JSON.parse(readFileSync(join(batch03Root,'manifest.json'),'utf8'));
+const batch03Source=JSON.parse(readFileSync(join(batch03Root,'source-manifest.json'),'utf8'));
 assert.equal(batchSource.sourceArchiveSha256,'30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab');
 assert.equal(batchSource.rightsStatus,'UNRESOLVED; source authorship/rights not established by archive or file checksums.');
 assert.deepEqual(batchSource.recipes.map(r=>r.id),Array.from({length:10},(_,i)=>i+11));
@@ -40,8 +43,19 @@ assert.equal(batch02.approval.artworkRights,'UNRESOLVED; source authorship/right
 assert.equal(batch02.approval.runtime,'NOT INTEGRATED');
 assert.deepEqual(batch02.recipes.map(r=>r.id),batch02Ids);
 assert.equal(batch02.recipes.reduce((n,r)=>n+r.panels.length,0),60);
+const batch03Ids=[32,33,34,35,36,37,38,41,42,43];
+assert.equal(batch03Source.sourceArchiveSha256,batchSource.sourceArchiveSha256);
+assert.equal(batch03Source.rightsStatus,'UNRESOLVED; provenance/hash do not establish a license or owner');
+assert.deepEqual(batch03Source.recipes.map(r=>r.id),batch03Ids);
+assert.equal(batch03.status,'draft-only; excluded from production runtime; independent review required');
+assert.equal(batch03.approval.A08,'PENDING independent review');
+assert.equal(batch03.approval.A09,'PENDING independent review');
+assert.equal(batch03.approval.artworkRights,'UNRESOLVED; source authorship/rights not established by checksums');
+assert.equal(batch03.approval.runtime,'NOT INTEGRATED');
+assert.deepEqual(batch03.recipes.map(r=>r.id),batch03Ids);
+assert.equal(batch03.recipes.reduce((n,r)=>n+r.panels.length,0),60);
 const {createHash}=await import('node:crypto');
-for(const [name,root,manifest,sourceIndex] of [['01',batchRoot,batch,batchSource],['02',batch02Root,batch02,batch02Source]]){
+for(const [name,root,manifest,sourceIndex] of [['01',batchRoot,batch,batchSource],['02',batch02Root,batch02,batch02Source],['03',batch03Root,batch03,batch03Source]]){
  for(const recipe of manifest.recipes){
   const svg=readFileSync(join(root,recipe.outputPath),'utf8');
   const source=sourceIndex.recipes.find(r=>r.id===recipe.id);
@@ -85,6 +99,6 @@ const drafted=rows.reduce((sum,row)=>sum+Number(row.drafted_panels),0);
 const formal=rows.filter(row=>row.formal_A08_approval==='APPROVED'&&row.formal_A09_approval==='APPROVED');
 const integrated=rows.filter(row=>row.runtime_integration==='INTEGRATED');
 const incomplete=rows.filter(row=>Number(row.drafted_panels)<6);
-const summary={originalRecipes:95,sourceAtlases:rows.length,sourcePanels:330,draftPilotRecipes:pilotIds,draftBatch01Recipes:batch.recipes.map(r=>r.id),draftBatch02Recipes:batch02.recipes.map(r=>r.id),draftPanels:drafted,notDraftedPanels:330-drafted,formalApprovedAtlases:formal.length,runtimeIntegratedAtlases:integrated.length,notFullyDraftedAtlases:incomplete.length,independentApprovalRequired:true};
+const summary={originalRecipes:95,sourceAtlases:rows.length,sourcePanels:330,draftPilotRecipes:pilotIds,draftBatch01Recipes:batch.recipes.map(r=>r.id),draftBatch02Recipes:batch02.recipes.map(r=>r.id),draftBatch03Recipes:batch03.recipes.map(r=>r.id),draftPanels:drafted,notDraftedPanels:330-drafted,formalApprovedAtlases:formal.length,runtimeIntegratedAtlases:integrated.length,notFullyDraftedAtlases:incomplete.length,independentApprovalRequired:true};
 console.log(JSON.stringify(summary,null,2));
 if(formal.length!==integrated.length || integrated.some(row=>!formal.includes(row)))throw Error('Unapproved artwork integrated into runtime');
