@@ -60,6 +60,21 @@
       ],
       "evidence": [],
       "blocker": "V3.1 Work session stopped"
+    },
+    {
+      "id": "CT25",
+      "issue": 25,
+      "owner": "v3",
+      "status": "READY",
+      "depends_on": [],
+      "target_branch": "control-tower/ct25-codex-worker-test",
+      "acceptance": [
+        "Actual Codex/Work session implements an independently verifiable validation edge-case on isolated branch",
+        "Draft PR and deterministic CI succeed; independent acceptance evidence published"
+      ],
+      "evidence": [],
+      "blocker": null,
+      "lease": null
     }
   ],
   "release": {
