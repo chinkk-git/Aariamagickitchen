@@ -14,10 +14,10 @@ def execute(api,*,owner,repo,branch,actor,permission,actor_worker_map,task_id,wo
         if doc.get("activation")!="ENABLED": raise PermissionError("worker transactions are disabled")
         # Activation must never rely on the isolated registry alone.
         # A separate legacy registry can hold a competing branch writer.
-        if doc.get("cross_registry_exclusion")!="VERIFIED":
-            raise PermissionError("cross-registry writer exclusion is not verified")
-        if doc.get("lease_holder_binding")!="VERIFIED":
-            raise PermissionError("authenticated lease-holder binding is not verified")
+        # Registry-controlled flags are attacker-editable data, not security attestations.
+        # Until independently authenticated evidence is integrated, reject even if
+        # the registry claims that both prerequisites are VERIFIED.
+        raise PermissionError("independent writer exclusion and lease binding are not implemented")
         matches=[t for t in doc.get("tasks",[]) if t.get("id")==task_id]
         if len(matches)!=1 or matches[0].get("target_branch")!=branch:
             raise PermissionError("worker transaction is restricted to the isolated Control Tower branch")
