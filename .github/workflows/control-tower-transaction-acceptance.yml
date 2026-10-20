@@ -1,0 +1,30 @@
+name: Control Tower transaction acceptance (read-only)
+on:
+  pull_request:
+    paths:
+      - 'control-tower/**'
+      - '.github/workflows/control-tower-transaction-acceptance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ct-transaction-acceptance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify deterministic transaction and reviewer adapters
+        run: |
+          python3 control-tower/test_worker_github_cas.py
+          python3 control-tower/test_worker_reviewer_identity.py
+          python3 control-tower/test_worker_claims.py
+          python3 control-tower/test_worker_leases.py
+      - name: Assert disabled worker activation
+        run: python3 control-tower/worker_registry.py
+      - name: Summary
+        if: always()
+        run: |
+          echo 'Read-only acceptance only; no lease claims, credentials, worker dispatch, or releases.' >> "$GITHUB_STEP_SUMMARY"
