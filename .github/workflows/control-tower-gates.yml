@@ -42,6 +42,7 @@ jobs:
           python3 control-tower/test_worker_atomic_lease.py
           python3 control-tower/test_worker_atomic_cas_adapter.py
           python3 control-tower/test_worker_execution_boundary.py
+          python3 control-tower/test_worker_cutover_plan.py
       - name: Publish summary
         if: always()
         run: |
