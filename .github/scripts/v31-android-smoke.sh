@@ -85,9 +85,17 @@ echo 'Waiting for emulator ADB'
 adb_timeout wait-for-device
 wait_for_booted_device
 wait_for_stable_launcher
-echo 'Installing V3.1 APK'
+echo 'Installing original V3 APK and isolated V3.1 preview side by side'
+BASELINE_APP_ID=com.aaria.magickitchen.pilot
 APP_ID=com.aaria.magickitchen.pilot.v31preview
+BASELINE_APK=artifacts/v31-baseline-apk/app-debug.apk
+test -s "$BASELINE_APK"
+adb_timeout install -r "$BASELINE_APK"
+adb_timeout shell pm path "$BASELINE_APP_ID" | grep -q 'package:'
 adb_timeout install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+adb_timeout shell pm path "$BASELINE_APP_ID" | grep -q 'package:'
+adb_timeout shell pm path "$APP_ID" | grep -q 'package:'
+echo 'Co-install verified: original V3 and V3.1 preview have distinct installed package paths'
 echo 'Starting V3.1 Android activity'
 adb_timeout shell am start -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity
 socket=""
@@ -303,6 +311,10 @@ if (statSync('artifacts/v31-android-screenshots/v31-recipe-portrait.png').size <
 await evaluate(`document.querySelector('.ref-cook-area')?.scrollIntoView({block:'start'})`);
 const stepSafety = await waitForVisible('.v31-step-adult-cue', 'Active-step adult cooking cue');
 if (!stepSafety.text.includes('Adult only: operate the air fryer')) throw new Error(`Active-step adult cue is missing or unclear: ${JSON.stringify(stepSafety)}`);
+const stepLayout = await evaluate(`(() => { const photo=document.querySelector('.ref-step-card.active .storybook-action'),svg=photo?.querySelector('svg.action-svg'),cue=document.querySelector('.ref-step-card.active .v31-step-adult-cue'),copy=document.querySelector('.ref-step-card.active .ref-step-copy'),actions=document.querySelector('.ref-step-actions'); const box=e=>{const r=e?.getBoundingClientRect();return r?{x:r.x,y:r.y,w:r.width,h:r.height}:null}; const a=box(cue),c=box(copy),n=box(actions),p=box(svg); const overlap=(x,y)=>x&&y&&x.x<x.x+x.w&&x.x<y.x+y.w&&x.x+x.w>y.x&&x.y<y.y+y.h&&x.y+x.h>y.y; return {photo:box(photo),svg:p,cue:a,copy:c,actions:n,cueHeight:a?.h||0,copyActionsOverlap:overlap(c,n)}; })()`);
+if (!stepLayout.svg || stepLayout.svg.w < 180 || stepLayout.svg.h < 100) throw new Error(`Cooking scene illustration is not visibly laid out: ${JSON.stringify(stepLayout)}`);
+if (stepLayout.cueHeight > 100 || stepLayout.copyActionsOverlap) throw new Error(`Cooking instruction/cue overlaps controls or has excessive height: ${JSON.stringify(stepLayout)}`);
+console.log('Cooking-step scene and non-overlapping cue/instruction layout verified:', JSON.stringify(stepLayout));
 await captureScreenshot('v31-recipe-step-portrait.png', 'Recipe active step', recipeDigest);
 for (const [left,right,label] of [['v31-home-portrait.png','v31-recipe-portrait.png','Recipe'],['v31-world-portrait.png','v31-recipe-portrait.png','Recipe']]) {
   const a=createHash('sha256').update(readFileSync(`artifacts/v31-android-screenshots/${left}`)).digest('hex');
