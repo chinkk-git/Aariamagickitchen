@@ -9,6 +9,18 @@ const csv=readFileSync(join(here,'remaining-artwork-completion-matrix.csv'),'utf
 const columns=csv.shift().split(',');
 const rows=csv.map(line=>Object.fromEntries(line.split(',').map((v,i)=>[columns[i],v])));
 const ledger=JSON.parse(readFileSync(join(here,'panel-change-ledger.json'),'utf8'));
+const manifest=JSON.parse(readFileSync(join(here,'pilot-manifest.json'),'utf8'));
+assert.equal(manifest.status,'draft-only-not-approved-not-integrated');
+assert.match(manifest.archiveSha256,/^[a-f0-9]{64}$/);
+for(const [id,entry] of Object.entries(manifest.recipes)){
+ assert.equal(Number(id),entry.recipeId);
+ const svg=readFileSync(join(here,entry.revisedFile),'utf8');
+ const {createHash}=await import('node:crypto');
+ assert.equal(createHash('sha256').update(svg).digest('hex'),entry.revisedSha256,'Provenance mismatch for recipe '+id);
+ for(let n=1;n<=6;n++)assert.ok(svg.includes('recipe-'+id+'-panel-'+n),'Missing accessible panel '+n+' in recipe '+id);
+ assert.ok(!/<script\\b|https?:\\/\\//i.test(svg),'External script or remote content in draft SVG '+id);
+}
+
 assert.equal(rows.length,55,'55 source atlases (11–65) required');
 assert.deepEqual(rows.map(r=>Number(r.recipe_id)),Array.from({length:55},(_,i)=>i+11));
 const pilotIds=[27,39,40,51,63];
