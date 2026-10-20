@@ -464,6 +464,54 @@ function v3SyncRecipeArt(){
 }
 const v3RenderBeforeProfileControls=render;
 render=function(){v3SyncRecipeArt();v3RenderBeforeProfileControls();if(!v3ProfileInitComplete||view!=='home')return;const header=document.querySelector('#screen .v3-home-top');if(header&&!header.querySelector('[data-v3-profile-open]')){const button=document.createElement('button');button.className='v3-profile-trigger';button.type='button';button.setAttribute('data-v3-profile-open','');button.setAttribute('aria-label','Switch kitchen profile');button.textContent=`👩‍🍳 ${v3ProfileState.profile?.name||'Choose profile'} ▾`;header.insertBefore(button,header.lastElementChild)}};
+function v3WhatsNewCopy(index,pt){
+ const steps=pt?[
+  {title:'Bem-vinda à cozinha V3!',body:'Explore as 95 receitas. Escolha uma com um adulto, que pode conferir ingredientes e alergias.'},
+  {title:'Planeje e brinque',body:'Sorteie uma receita, veja a semana mágica, ganhe estrelas, ou monte uma lista de compras. Peça a um adulto para revisar planos e mensagens.'},
+  {title:'Faça do seu jeito',body:'Cada chef pode ter um perfil separado. Favoritos e progresso ficam naquele perfil. Você pode rever este passeio em Configurações.'}
+ ]:[
+  {title:'Welcome to your V3 kitchen!',body:'Explore all 95 recipes. Choose one with an adult, who can check ingredients and allergies.'},
+  {title:'Plan and play',body:'Spin for a recipe, explore your magical week, collect stars, or make a shopping list. Ask an adult to review plans and messages.'},
+  {title:'Make it yours',body:'Each chef can have a separate profile. Favourites and progress stay with that profile. Replay this tour from Settings whenever you like.'}
+ ];
+ return Number.isInteger(index)&&index>=0&&index<steps.length?steps[index]:null;
+}
+
+let v3WhatsNewOpener=null;
+function v3OpenWhatsNew(index=0){
+ const pt=state.language==='pt-BR',step=v3WhatsNewCopy(index,pt);if(!step)return;
+ document.getElementById('v3WhatsNew')?.remove();
+ const modal=document.createElement('div');modal.id='v3WhatsNew';modal.setAttribute('role','presentation');
+ modal.style.cssText='position:fixed;inset:0;z-index:99999;background:rgba(10,20,40,.78);display:grid;place-items:center;padding:18px';
+ const panel=document.createElement('section');panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-labelledby','v3WhatsNewTitle');
+ panel.style.cssText='max-width:480px;width:100%;background:#fffdf4;color:#192c43;border-radius:24px;padding:24px;box-shadow:0 14px 48px #0005';
+ const heading=document.createElement('h2');heading.id='v3WhatsNewTitle';heading.tabIndex=-1;heading.textContent='✨ '+step.title;panel.appendChild(heading);
+ const body=document.createElement('p');body.textContent=step.body;panel.appendChild(body);
+ const progress=document.createElement('p');progress.textContent=(index+1)+(pt?' de 3':' of 3');panel.appendChild(progress);
+ const actions=document.createElement('div');actions.style.cssText='display:flex;gap:8px;flex-wrap:wrap';
+ function action(text,attr,value){const btn=document.createElement('button');btn.type='button';btn.textContent=text;btn.setAttribute(attr,value);btn.style.cssText='padding:12px;border-radius:12px;min-height:44px';actions.appendChild(btn)}
+ if(index>0)action(pt?'Voltar':'Back','data-v3-tour-step',String(index-1));
+ if(index<2)action(pt?'Próximo':'Next','data-v3-tour-step',String(index+1));
+ else action(pt?'Concluir':'Finish','data-v3-tour-close','');
+ action(pt?'Pular passeio':'Skip tour','data-v3-tour-close','');
+ panel.appendChild(actions);modal.appendChild(panel);document.body.appendChild(modal);heading.focus();
+}
+document.addEventListener('click',event=>{
+ const btn=event.target.closest('button');if(!btn)return;
+ if(btn.hasAttribute('data-v3-tour-open')){v3WhatsNewOpener=btn;v3OpenWhatsNew();return}
+ if(btn.hasAttribute('data-v3-tour-close')){document.getElementById('v3WhatsNew')?.remove();v3WhatsNewOpener?.focus();return}
+ if(btn.hasAttribute('data-v3-tour-step'))v3OpenWhatsNew(Number(btn.getAttribute('data-v3-tour-step')));
+});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&document.getElementById('v3WhatsNew')){document.getElementById('v3WhatsNew').remove();v3WhatsNewOpener?.focus()}});
+const v31RenderBeforeTour=render;
+render=function(){v31RenderBeforeTour();if(view!=='home'&&view!=='settings')return;
+ const screen=document.querySelector('#screen');if(!screen||screen.querySelector('[data-v3-tour-open]'))return;
+ const button=document.createElement('button');button.type='button';button.setAttribute('data-v3-tour-open','');
+ button.textContent=view==='settings'?'✨ Replay the V3 kitchen tour':(state.language==='pt-BR'?'✨ Novidades':'✨ What’s new');
+ button.style.cssText='min-height:44px;padding:10px 16px;border-radius:16px;margin:12px;cursor:pointer';
+ screen.appendChild(button);
+};
+
 v3InitProfiles();
 render();
 
