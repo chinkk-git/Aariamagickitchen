@@ -1,0 +1,829 @@
+{
+  "schema": "w03-remediation-pilot-v1",
+  "status": "draft-only-not-approved-not-integrated",
+  "branchBase": "a115fc00e2a516df1e819e97ec737bc55e7b2cfc",
+  "catalogSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+  "archiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+  "convention": "Six numbered 3×2 panels with stable recipe-{id}-panel-{n} SVG group IDs, high-contrast scene-specific vector, bilingual short labels and safety cue, readable ingredient focus tags, consistent approved CHEF_A portrait only on child-safe non-hot panels, per-panel accessible description, no external resources. Before and after PNGs are exported with Inkscape at 1536×1024 for renderer-controlled comparison.",
+  "recipes": {
+    "27": {
+      "recipeId": 27,
+      "title": "Chicken & Carrot Nuggets",
+      "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+      "sourceDraftPath": "11-29/recipe-27-chicken-carrot-nuggets-a09-draft.svg",
+      "sourceDraftSha256": "c7b458532816e341eb9bb2821cce010085ef587854da60affb74c0e9321df816",
+      "revisedFile": "recipe-27-remediation-draft.svg",
+      "revisedSha256": "12fd60478ae2622b0b01a4e263ed57046ddd3e89dbe89fd926ea3f20ba3de61d",
+      "catalogSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+      "approvedChefAssetFileSha256": "730124411fa4296a4b33fc86247356aa2e157eeb766500d140b3fd62c38d90f9",
+      "approvedChefWebpBytesSha256": "d29662b184f391c86f3b9c2afe5343297bb6de5da82dfb9680513861aed9f034",
+      "approvedChefDerivedPngSha256": "67e3ff3c69fcd94782f9bdcc921a85673e2fb2c3c92560d5147473ba92c95e26",
+      "sourceSteps": [
+        "Adult handles raw chicken.",
+        "Mix ingredients using clean utensils; shape small flattened nuggets.",
+        "Adult air-fries until centers reach 74°C, checking with thermometer."
+      ],
+      "ingredientsExact": [
+        "250 g ground chicken",
+        "½ cup finely grated carrot",
+        "1 egg",
+        "⅓ cup breadcrumbs",
+        "pinch of salt"
+      ],
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult handles raw chicken.",
+          "stepLabelEn": "Adult handles raw chicken",
+          "stepLabelPtBr": "Um adulto manuseia o frango cru",
+          "kidInstructionEn": "An adult handles the raw chicken on a clean tray.",
+          "kidInstructionPtBr": "Um adulto manuseia o frango cru.",
+          "altText": "Panel 1, recipe 27 Chicken & Carrot Nuggets. English: An adult handles the raw chicken on a clean tray. Adult-only action. Safety: Raw chicken stays with an adult. Português: Um adulto manuseia o frango cru.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "raw",
+          "visibleIngredientLabels": [
+            "raw chicken",
+            "clean tray"
+          ],
+          "additionalSafetyNote": "Raw chicken stays with an adult.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Adult handles raw chicken.",
+          "stepLabelEn": "Adult mixes with clean tools",
+          "stepLabelPtBr": "Um adulto mistura com utensílios limpos",
+          "kidInstructionEn": "An adult mixes the raw chicken with clean tools.",
+          "kidInstructionPtBr": "Um adulto mistura com utensílios limpos.",
+          "altText": "Panel 2, recipe 27 Chicken & Carrot Nuggets. English: An adult mixes the raw chicken with clean tools. Adult-only action. Safety: Clean tools keep raw chicken separate. Português: Um adulto mistura com utensílios limpos.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "mixraw",
+          "visibleIngredientLabels": [
+            "chicken",
+            "carrot",
+            "egg"
+          ],
+          "additionalSafetyNote": "Clean tools keep raw chicken separate.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Mix ingredients using clean utensils; shape small flattened nuggets.",
+          "stepLabelEn": "Adult shapes small flat nuggets",
+          "stepLabelPtBr": "Um adulto modela nuggets achatados",
+          "kidInstructionEn": "An adult shapes the raw mixture into small, flat nuggets.",
+          "kidInstructionPtBr": "Um adulto modela nuggets achatados.",
+          "altText": "Panel 3, recipe 27 Chicken & Carrot Nuggets. English: An adult shapes the raw mixture into small, flat nuggets. Adult-only action. Safety: The mixture still contains raw chicken. Português: Um adulto modela nuggets achatados.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "shape",
+          "visibleIngredientLabels": [
+            "raw chicken",
+            "breadcrumbs",
+            "carrot"
+          ],
+          "additionalSafetyNote": "The mixture still contains raw chicken.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until centers reach 74°C, checking with thermometer.",
+          "stepLabelEn": "Adult uses the air fryer",
+          "stepLabelPtBr": "Só adulto usa a air fryer",
+          "kidInstructionEn": "An adult places the nuggets in the air fryer.",
+          "kidInstructionPtBr": "Só adulto usa a air fryer.",
+          "altText": "Panel 4, recipe 27 Chicken & Carrot Nuggets. English: An adult places the nuggets in the air fryer. Adult-only action. Safety: Hot appliance: adult only. Português: Só adulto usa a air fryer.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "airfryer",
+          "visibleIngredientLabels": [
+            "nuggets",
+            "air fryer"
+          ],
+          "additionalSafetyNote": "Hot appliance: adult only.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until centers reach 74°C, checking with thermometer.",
+          "stepLabelEn": "Check every centre: 74°C",
+          "stepLabelPtBr": "Adulto confere 74°C no centro",
+          "kidInstructionEn": "An adult checks that each nugget centre reaches 74°C.",
+          "kidInstructionPtBr": "Adulto confere 74°C no centro.",
+          "altText": "Panel 5, recipe 27 Chicken & Carrot Nuggets. English: An adult checks that each nugget centre reaches 74°C. Adult-only action. Safety: Use a food thermometer; adult checks. Português: Adulto confere 74°C no centro.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "thermo",
+          "visibleIngredientLabels": [
+            "nugget",
+            "thermometer"
+          ],
+          "additionalSafetyNote": "Use a food thermometer; adult checks.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until centers reach 74°C, checking with thermometer.",
+          "stepLabelEn": "Wait for an adult to serve after cooling",
+          "stepLabelPtBr": "Espere um adulto servir após esfriar",
+          "kidInstructionEn": "Wait until an adult says the nuggets are cool enough, then ask them to serve.",
+          "kidInstructionPtBr": "Espere um adulto servir após esfriar.",
+          "altText": "Panel 6, recipe 27 Chicken & Carrot Nuggets. English: Wait until an adult says the nuggets are cool enough, then ask them to serve. Safety: Adult checks safe cooling and serves. Português: Espere um adulto servir após esfriar.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "coolnuggets",
+          "visibleIngredientLabels": [
+            "nuggets",
+            "plate"
+          ],
+          "additionalSafetyNote": "Adult checks safe cooling and serves.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        }
+      ],
+      "sourceReviewRisks": [
+        "Simple symbolic artwork is a draft and needs independent ingredient/action fidelity review.",
+        "Safety badges are visual supplementary cues; exact adult-help and cooling language must remain in localized recipe text.",
+        "No Android atlas crop, density, contrast, TalkBack, text-scaling or device screenshot check performed.",
+        "Recipe 27 final panel deliberately changes raw chicken symbol to cooked chicken; verify 74°C wording remains adjacent in app UI."
+      ],
+      "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
+      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
+      "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
+    },
+    "39": {
+      "recipeId": 39,
+      "title": "Chicken & Corn Mini Pancakes",
+      "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+      "sourceDraftPath": "30-47/recipe-39-step-atlas-draft.svg",
+      "sourceDraftSha256": "4edededfee88a722cfd5ef35ae33af774001fde841b9a0ae9e00aa9d5fb9d6ae",
+      "revisedFile": "recipe-39-remediation-draft.svg",
+      "revisedSha256": "af7aebd63893975327eaabc6aeb80da4d485fda073b46268e6454b436b717a31",
+      "catalogSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+      "approvedChefAssetFileSha256": "730124411fa4296a4b33fc86247356aa2e157eeb766500d140b3fd62c38d90f9",
+      "approvedChefWebpBytesSha256": "d29662b184f391c86f3b9c2afe5343297bb6de5da82dfb9680513861aed9f034",
+      "approvedChefDerivedPngSha256": "67e3ff3c69fcd94782f9bdcc921a85673e2fb2c3c92560d5147473ba92c95e26",
+      "sourceSteps": [
+        "Mix all ingredients into thick batter.",
+        "Adult cooks small spoonfuls in a lightly oiled pan until centers are fully cooked."
+      ],
+      "ingredientsExact": [
+        "½ cup fully cooked shredded chicken",
+        "¼ cup corn",
+        "1 egg",
+        "¼ cup flour",
+        "2 tbsp milk"
+      ],
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix all ingredients into thick batter.",
+          "stepLabelEn": "Mix the batter",
+          "stepLabelPtBr": "Misture a massa",
+          "kidInstructionEn": "Mix cooked chicken, corn, egg, flour and milk. Wash hands after touching raw egg; do not taste raw batter.",
+          "kidInstructionPtBr": "Misture a massa; lave as mãos depois de tocar no ovo cru e não prove a massa crua.",
+          "altText": "Panel 1, recipe 39 Chicken & Corn Mini Pancakes. English: Mix cooked chicken, corn, egg, flour and milk. Wash hands after touching raw egg; do not taste raw batter. Português: Misture a massa. Lave as mãos depois de tocar no ovo cru; não prove a massa crua.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "mixbatter",
+          "visibleIngredientLabels": [
+            "cooked chicken",
+            "corn + egg",
+            "flour + milk"
+          ],
+          "additionalSafetyNote": "Wash hands after touching raw egg. Do not taste raw batter.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small spoonfuls in a lightly oiled pan until centers are fully cooked.",
+          "stepLabelEn": "Adult spoons batter into pan",
+          "stepLabelPtBr": "Um adulto coloca a massa na frigideira",
+          "kidInstructionEn": "An adult puts small spoonfuls into the lightly oiled pan.",
+          "kidInstructionPtBr": "Um adulto coloca a massa na frigideira.",
+          "altText": "Panel 2, recipe 39 Chicken & Corn Mini Pancakes. English: An adult puts small spoonfuls into the lightly oiled pan. Adult-only action. Safety: Hot pan: adult only. Português: Um adulto coloca a massa na frigideira.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "panpour",
+          "visibleIngredientLabels": [
+            "batter",
+            "pan"
+          ],
+          "additionalSafetyNote": "Hot pan: adult only.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small spoonfuls in a lightly oiled pan until centers are fully cooked.",
+          "stepLabelEn": "Adult cooks the pancakes",
+          "stepLabelPtBr": "Um adulto cozinha as panquequinhas",
+          "kidInstructionEn": "An adult cooks the pancakes until their centres are fully cooked.",
+          "kidInstructionPtBr": "Um adulto cozinha as panquequinhas.",
+          "altText": "Panel 3, recipe 39 Chicken & Corn Mini Pancakes. English: An adult cooks the pancakes until their centres are fully cooked. Adult-only action. Safety: Hot pan: adult only. Português: Um adulto cozinha as panquequinhas.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "pancakes",
+          "visibleIngredientLabels": [
+            "pancakes",
+            "pan"
+          ],
+          "additionalSafetyNote": "Hot pan: adult only.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small spoonfuls in a lightly oiled pan until centers are fully cooked.",
+          "stepLabelEn": "Adult flips each pancake",
+          "stepLabelPtBr": "Um adulto vira cada panquequinha",
+          "kidInstructionEn": "An adult flips the pancakes with a spatula.",
+          "kidInstructionPtBr": "Um adulto vira cada panquequinha.",
+          "altText": "Panel 4, recipe 39 Chicken & Corn Mini Pancakes. English: An adult flips the pancakes with a spatula. Adult-only action. Safety: Hot pan and spatula: adult only. Português: Um adulto vira cada panquequinha.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "flip",
+          "visibleIngredientLabels": [
+            "pancake",
+            "spatula"
+          ],
+          "additionalSafetyNote": "Hot pan and spatula: adult only.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small spoonfuls in a lightly oiled pan until centers are fully cooked.",
+          "stepLabelEn": "Adult checks the centre",
+          "stepLabelPtBr": "Um adulto confere o centro",
+          "kidInstructionEn": "An adult checks that the middle is cooked through. Keep uncooked batter away from ready-to-eat food.",
+          "kidInstructionPtBr": "Um adulto confere se o centro está bem cozido; mantenha a massa crua longe dos alimentos prontos para comer.",
+          "altText": "Panel 5, recipe 39 Chicken & Corn Mini Pancakes. English: An adult checks that the middle is cooked through. Keep uncooked batter away from ready-to-eat food. Adult-only action. Português: Um adulto confere o centro. Mantenha a massa crua longe dos alimentos prontos para comer.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "checkpancake",
+          "visibleIngredientLabels": [
+            "pancake",
+            "cooked centre"
+          ],
+          "additionalSafetyNote": "Keep uncooked batter off ready-to-eat food.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small spoonfuls in a lightly oiled pan until centers are fully cooked.",
+          "stepLabelEn": "Cool before serving",
+          "stepLabelPtBr": "Espere esfriar antes de servir",
+          "kidInstructionEn": "Let the pancakes cool before they are served.",
+          "kidInstructionPtBr": "Espere esfriar antes de servir.",
+          "altText": "Panel 6, recipe 39 Chicken & Corn Mini Pancakes. English: Let the pancakes cool before they are served. Safety: Wait until food is comfortably cool. Português: Espere esfriar antes de servir.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "coolpancakes",
+          "visibleIngredientLabels": [
+            "pancakes",
+            "serving plate"
+          ],
+          "additionalSafetyNote": "Wait until food is comfortably cool.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        }
+      ],
+      "sourceReviewRisks": [
+        "Original vector food glyph accuracy and step-action match require human visual review.",
+        "Adult-help badge meaning and prominence require child comprehension/accessibility review.",
+        "No approved chef portrait is integrated in panels; asset and A08/A09 review remains pending.",
+        "Chicken is fully cooked before mixing; raw egg/flour batter must cook through."
+      ],
+      "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
+      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
+      "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
+    },
+    "40": {
+      "recipeId": 40,
+      "title": "Apple Sandwich Smiles",
+      "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+      "sourceDraftPath": "30-47/recipe-40-step-atlas-draft.svg",
+      "sourceDraftSha256": "75b229f9bb690ffd153d9bf0bfcdc5de2bc30cd8da02b5dc4f2224147be61c00",
+      "revisedFile": "recipe-40-remediation-draft.svg",
+      "revisedSha256": "a4c462492c729c042462ff95b7e269a741aa71630b3954d7f117d3e2c7b26016",
+      "catalogSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+      "approvedChefAssetFileSha256": "730124411fa4296a4b33fc86247356aa2e157eeb766500d140b3fd62c38d90f9",
+      "approvedChefWebpBytesSha256": "d29662b184f391c86f3b9c2afe5343297bb6de5da82dfb9680513861aed9f034",
+      "approvedChefDerivedPngSha256": "67e3ff3c69fcd94782f9bdcc921a85673e2fb2c3c92560d5147473ba92c95e26",
+      "sourceSteps": [
+        "Adult cuts and cores apple into thin slices.",
+        "Spread with seed or nut butter if allergy-safe.",
+        "Add banana smiles and serve."
+      ],
+      "ingredientsExact": [
+        "1 apple",
+        "2 tbsp peanut or sunflower seed butter",
+        "½ banana"
+      ],
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cuts and cores apple into thin slices.",
+          "stepLabelEn": "Adult slices the apple",
+          "stepLabelPtBr": "Um adulto corta a maçã",
+          "kidInstructionEn": "An adult cuts the apple into thin slices.",
+          "kidInstructionPtBr": "Um adulto corta a maçã.",
+          "altText": "Panel 1, recipe 40 Apple Sandwich Smiles. English: An adult cuts the apple into thin slices. Adult-only action. Safety: Knife: adult only. Português: Um adulto corta a maçã.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "applecut",
+          "visibleIngredientLabels": [
+            "apple",
+            "knife",
+            "board"
+          ],
+          "additionalSafetyNote": "Knife: adult only.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cuts and cores apple into thin slices.",
+          "stepLabelEn": "Adult removes the core",
+          "stepLabelPtBr": "Um adulto tira o miolo",
+          "kidInstructionEn": "An adult cores the apple with a knife or corer.",
+          "kidInstructionPtBr": "Um adulto tira o miolo.",
+          "altText": "Panel 2, recipe 40 Apple Sandwich Smiles. English: An adult cores the apple with a knife or corer. Adult-only action. Safety: Sharp tool: adult only. Português: Um adulto tira o miolo.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "applecore",
+          "visibleIngredientLabels": [
+            "apple",
+            "corer"
+          ],
+          "additionalSafetyNote": "Sharp tool: adult only.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Spread with seed or nut butter if allergy-safe.",
+          "stepLabelEn": "Ask adult: safe spread",
+          "stepLabelPtBr": "Adulto confere o creme",
+          "kidInstructionEn": "Ask an adult to confirm the peanut or sunflower spread is allergy-safe.",
+          "kidInstructionPtBr": "Adulto confere o creme.",
+          "altText": "Panel 3, recipe 40 Apple Sandwich Smiles. English: Ask an adult to confirm the peanut or sunflower spread is allergy-safe. Adult-only action. Safety: Check allergies before opening or serving. Português: Adulto confere o creme.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "allergycheck",
+          "visibleIngredientLabels": [
+            "spread options"
+          ],
+          "additionalSafetyNote": "Check allergies before opening or serving.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Spread with seed or nut butter if allergy-safe.",
+          "stepLabelEn": "Spread the approved filling",
+          "stepLabelPtBr": "Espalhe o recheio aprovado",
+          "kidInstructionEn": "Spread the adult-approved filling on an apple slice.",
+          "kidInstructionPtBr": "Espalhe o recheio aprovado.",
+          "altText": "Panel 4, recipe 40 Apple Sandwich Smiles. English: Spread the adult-approved filling on an apple slice. Safety: Use only the spread your adult approved. Português: Espalhe o recheio aprovado.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "spread",
+          "visibleIngredientLabels": [
+            "apple",
+            "safe spread"
+          ],
+          "additionalSafetyNote": "Use only the spread your adult approved.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Add banana smiles and serve.",
+          "stepLabelEn": "Add banana smiles",
+          "stepLabelPtBr": "Faça carinhas com banana",
+          "kidInstructionEn": "Place banana slices on top to make smiles.",
+          "kidInstructionPtBr": "Faça carinhas com banana.",
+          "altText": "Panel 5, recipe 40 Apple Sandwich Smiles. English: Place banana slices on top to make smiles. Safety: Use clean hands or a clean spoon. Português: Faça carinhas com banana.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "bananas",
+          "visibleIngredientLabels": [
+            "banana",
+            "apple"
+          ],
+          "additionalSafetyNote": "Use clean hands or a clean spoon.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Add banana smiles and serve.",
+          "stepLabelEn": "Stack, then serve",
+          "stepLabelPtBr": "Empilhe e sirva",
+          "kidInstructionEn": "Stack two apple slices with the approved filling and banana between them, then serve.",
+          "kidInstructionPtBr": "Empilhe e sirva.",
+          "altText": "Panel 6, recipe 40 Apple Sandwich Smiles. English: Stack two apple slices with the approved filling and banana between them, then serve. Safety: Serve only the allergy-safe version. Português: Empilhe e sirva.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "appleserve",
+          "visibleIngredientLabels": [
+            "apple",
+            "banana",
+            "safe spread"
+          ],
+          "additionalSafetyNote": "Serve only the allergy-safe version.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        }
+      ],
+      "sourceReviewRisks": [
+        "Original vector food glyph accuracy and step-action match require human visual review.",
+        "Adult-help badge meaning and prominence require child comprehension/accessibility review.",
+        "No approved chef portrait is integrated in panels; asset and A08/A09 review remains pending.",
+        "Recipe allows peanut OR sunflower seed butter; drawing cannot communicate the substitution; allergy-safe choice is essential."
+      ],
+      "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
+      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
+      "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
+    },
+    "51": {
+      "recipeId": 51,
+      "title": "Masala Cheese Toast",
+      "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+      "sourceDraftPath": "48-65/recipe-51-step-atlas-draft.svg",
+      "sourceDraftSha256": "3a5a7309957cbd87e5bf53db1cbda2d962cf75744f8021c0fe2d13b4b6ece1ed",
+      "revisedFile": "recipe-51-remediation-draft.svg",
+      "revisedSha256": "edc83470e96549e0a3cc1935fdd2475fa5d6c45dd3ae4385a46c9e227c47d29d",
+      "catalogSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+      "approvedChefAssetFileSha256": "730124411fa4296a4b33fc86247356aa2e157eeb766500d140b3fd62c38d90f9",
+      "approvedChefWebpBytesSha256": "d29662b184f391c86f3b9c2afe5343297bb6de5da82dfb9680513861aed9f034",
+      "approvedChefDerivedPngSha256": "67e3ff3c69fcd94782f9bdcc921a85673e2fb2c3c92560d5147473ba92c95e26",
+      "sourceSteps": [
+        "Scatter cheese, finely diced vegetables and a tiny pinch of chaat masala on bread.",
+        "Adult air-fries until melted and toast is crisp."
+      ],
+      "ingredientsExact": [
+        "2 bread slices",
+        "½ cup grated cheese",
+        "2 tbsp diced tomato",
+        "2 tbsp diced capsicum",
+        "pinch chaat masala"
+      ],
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Scatter cheese, finely diced vegetables and a tiny pinch of chaat masala on bread.",
+          "stepLabelEn": "Set out bread and toppings",
+          "stepLabelPtBr": "Separe o pão e os ingredientes",
+          "kidInstructionEn": "Place bread, cheese, tomato, capsicum and masala on a clean board.",
+          "kidInstructionPtBr": "Separe o pão e os ingredientes.",
+          "altText": "Panel 1, recipe 51 Masala Cheese Toast. English: Place bread, cheese, tomato, capsicum and masala on a clean board. Safety: Use only the listed toppings. Português: Separe o pão e os ingredientes.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "toastsetup",
+          "visibleIngredientLabels": [
+            "bread",
+            "cheese",
+            "vegetables"
+          ],
+          "additionalSafetyNote": "Use only the listed toppings.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Scatter cheese, finely diced vegetables and a tiny pinch of chaat masala on bread.",
+          "stepLabelEn": "Add cheese and vegetables",
+          "stepLabelPtBr": "Cubra com queijo e legumes",
+          "kidInstructionEn": "Scatter cheese, tomato and capsicum over the bread.",
+          "kidInstructionPtBr": "Cubra com queijo e legumes.",
+          "altText": "Panel 2, recipe 51 Masala Cheese Toast. English: Scatter cheese, tomato and capsicum over the bread. Safety: Keep small diced pieces on the bread. Português: Cubra com queijo e legumes.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "toasttop",
+          "visibleIngredientLabels": [
+            "cheese",
+            "tomato",
+            "capsicum"
+          ],
+          "additionalSafetyNote": "Keep small diced pieces on the bread.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 1,
+          "sourceStepText": "Scatter cheese, finely diced vegetables and a tiny pinch of chaat masala on bread.",
+          "stepLabelEn": "Sprinkle a tiny pinch",
+          "stepLabelPtBr": "Polvilhe uma pitadinha",
+          "kidInstructionEn": "Add just a tiny pinch of chaat masala.",
+          "kidInstructionPtBr": "Polvilhe uma pitadinha.",
+          "altText": "Panel 3, recipe 51 Masala Cheese Toast. English: Add just a tiny pinch of chaat masala. Safety: A tiny pinch is enough. Português: Polvilhe uma pitadinha.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "masala",
+          "visibleIngredientLabels": [
+            "chaat masala",
+            "measuring pinch"
+          ],
+          "additionalSafetyNote": "A tiny pinch is enough.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult air-fries until melted and toast is crisp.",
+          "stepLabelEn": "Adult uses the air fryer",
+          "stepLabelPtBr": "Só adulto usa a air fryer",
+          "kidInstructionEn": "An adult places the toast in the air fryer.",
+          "kidInstructionPtBr": "Só adulto usa a air fryer.",
+          "altText": "Panel 4, recipe 51 Masala Cheese Toast. English: An adult places the toast in the air fryer. Adult-only action. Safety: Hot appliance: adult only. Português: Só adulto usa a air fryer.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "toastair",
+          "visibleIngredientLabels": [
+            "toast",
+            "air fryer"
+          ],
+          "additionalSafetyNote": "Hot appliance: adult only.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Adult air-fries until melted and toast is crisp.",
+          "stepLabelEn": "Adult checks crisp and melted",
+          "stepLabelPtBr": "Adulto confere e deixa esfriar",
+          "kidInstructionEn": "An adult checks the cheese is melted and toast is crisp, then sets it on a cooling rack.",
+          "kidInstructionPtBr": "Adulto confere e deixa esfriar.",
+          "altText": "Panel 5, recipe 51 Masala Cheese Toast. English: An adult checks the cheese is melted and toast is crisp, then sets it on a cooling rack. Adult-only action. Safety: Adult handles hot toast; cool before serving. Português: Adulto confere e deixa esfriar.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "toastcheck",
+          "visibleIngredientLabels": [
+            "melted cheese",
+            "crisp toast"
+          ],
+          "additionalSafetyNote": "Adult handles hot toast; cool before serving.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 2,
+          "sourceStepText": "Adult air-fries until melted and toast is crisp.",
+          "stepLabelEn": "Wait for adult to confirm it is cool",
+          "stepLabelPtBr": "Espere o adulto confirmar que esfriou",
+          "kidInstructionEn": "Wait until an adult confirms the toast is cool enough to eat, then ask them to serve it.",
+          "kidInstructionPtBr": "Espere até um adulto confirmar que a torrada esfriou o suficiente para comer e peça que ele sirva.",
+          "altText": "Panel 6, recipe 51 Masala Cheese Toast. English: Wait until an adult confirms the toast is cool enough to eat, then ask them to serve it. Adult-only action. Safety: Adult confirms safe temperature and serves. Português: Espere o adulto confirmar que esfriou. Espere até um adulto confirmar que a torrada esfriou o suficiente para comer e peça que ele sirva.",
+          "adultAssistRequired": true,
+          "adultCueTextEn": "Adult only",
+          "adultCueTextPtBr": "Só adulto",
+          "conditionalHelp": null,
+          "scene": "toastserve",
+          "visibleIngredientLabels": [
+            "toast",
+            "plate"
+          ],
+          "additionalSafetyNote": "Adult confirms safe temperature and serves.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        }
+      ],
+      "sourceReviewRisks": [
+        "Vector ingredient glyphs need visual accuracy review against exact listed quantities and ingredients.",
+        "Adult A cue may not be intuitive without accessible text/companion app support.",
+        "Only one approved chef variant is shown per atlas; CHEF_A/CHEF_B alternate across IDs and both variants are not furnished per recipe.",
+        "Final-dish colors and proportions are illustrative; A09 visual review required.",
+        "For no-cook scenes, confirm child hand reach and food handling at age 8–10.",
+        "For hot scenes, no child character is shown; adult-only operation is represented by the amber A hand badge."
+      ],
+      "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
+      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
+      "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
+    },
+    "63": {
+      "recipeId": 63,
+      "title": "Coconut Ladoo",
+      "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+      "sourceDraftPath": "48-65/recipe-63-step-atlas-draft.svg",
+      "sourceDraftSha256": "e651698e28b98e89e1545b4e38710b60c597ed65ea00cd2a1448178648338848",
+      "revisedFile": "recipe-63-remediation-draft.svg",
+      "revisedSha256": "743abd20ffedcc56020f1c35d6ad5a1a30105ec78605409370bce82260e9d26c",
+      "catalogSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+      "approvedChefAssetFileSha256": "730124411fa4296a4b33fc86247356aa2e157eeb766500d140b3fd62c38d90f9",
+      "approvedChefWebpBytesSha256": "d29662b184f391c86f3b9c2afe5343297bb6de5da82dfb9680513861aed9f034",
+      "approvedChefDerivedPngSha256": "67e3ff3c69fcd94782f9bdcc921a85673e2fb2c3c92560d5147473ba92c95e26",
+      "sourceSteps": [
+        "Mix coconut, condensed milk and cardamom into a moldable mixture.",
+        "Roll into small balls and refrigerate until firm."
+      ],
+      "ingredientsExact": [
+        "1 cup fine desiccated coconut",
+        "⅓ cup sweetened condensed milk (adjust)",
+        "pinch cardamom"
+      ],
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix coconut, condensed milk and cardamom into a moldable mixture.",
+          "stepLabelEn": "Mix coconut and condensed milk",
+          "stepLabelPtBr": "Misture o coco e o leite condensado",
+          "kidInstructionEn": "Stir coconut and condensed milk together.",
+          "kidInstructionPtBr": "Misture o coco e o leite condensado.",
+          "altText": "Panel 1, recipe 63 Coconut Ladoo. English: Stir coconut and condensed milk together. Safety: Condensed milk contains dairy. Português: Misture o coco e o leite condensado.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "ladoomix",
+          "visibleIngredientLabels": [
+            "coconut",
+            "condensed milk"
+          ],
+          "additionalSafetyNote": "Condensed milk contains dairy.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mix coconut, condensed milk and cardamom into a moldable mixture.",
+          "stepLabelEn": "Add a tiny pinch of cardamom",
+          "stepLabelPtBr": "Pitada de cardamomo",
+          "kidInstructionEn": "Add a tiny pinch of cardamom and mix.",
+          "kidInstructionPtBr": "Pitada de cardamomo.",
+          "altText": "Panel 2, recipe 63 Coconut Ladoo. English: Add a tiny pinch of cardamom and mix. Safety: Keep the pinch small. Português: Pitada de cardamomo.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "cardamom",
+          "visibleIngredientLabels": [
+            "cardamom",
+            "coconut"
+          ],
+          "additionalSafetyNote": "Keep the pinch small.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Roll into small balls and refrigerate until firm.",
+          "stepLabelEn": "Roll small ladoo balls",
+          "stepLabelPtBr": "Enrole bolinhas de ladoo",
+          "kidInstructionEn": "Roll the mixture into small balls with clean hands.",
+          "kidInstructionPtBr": "Enrole bolinhas de ladoo.",
+          "altText": "Panel 3, recipe 63 Coconut Ladoo. English: Roll the mixture into small balls with clean hands. Safety: Wash hands before rolling. Português: Enrole bolinhas de ladoo.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "ladooform",
+          "visibleIngredientLabels": [
+            "coconut mixture",
+            "clean hands"
+          ],
+          "additionalSafetyNote": "Wash hands before rolling.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Roll into small balls and refrigerate until firm.",
+          "stepLabelEn": "Place balls on clean tray",
+          "stepLabelPtBr": "Ponha na bandeja limpa",
+          "kidInstructionEn": "Set each ball on a clean tray.",
+          "kidInstructionPtBr": "Ponha na bandeja limpa.",
+          "altText": "Panel 4, recipe 63 Coconut Ladoo. English: Set each ball on a clean tray. Safety: Leave a little space between balls. Português: Ponha na bandeja limpa.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "ladootray",
+          "visibleIngredientLabels": [
+            "ladoo balls",
+            "tray"
+          ],
+          "additionalSafetyNote": "Leave a little space between balls.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Roll into small balls and refrigerate until firm.",
+          "stepLabelEn": "Chill until firm",
+          "stepLabelPtBr": "Leve à geladeira até firmar",
+          "kidInstructionEn": "Refrigerate the tray until the balls are firm.",
+          "kidInstructionPtBr": "Leve à geladeira até firmar.",
+          "altText": "Panel 5, recipe 63 Coconut Ladoo. English: Refrigerate the tray until the balls are firm. Safety: Ask an adult for help if the fridge shelf is high. Português: Leve à geladeira até firmar.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": "Ask an adult if the refrigerator shelf is high.",
+          "scene": "ladoofridge",
+          "visibleIngredientLabels": [
+            "tray",
+            "refrigerator"
+          ],
+          "additionalSafetyNote": "Ask an adult for help if the fridge shelf is high.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 2,
+          "sourceStepText": "Roll into small balls and refrigerate until firm.",
+          "stepLabelEn": "Serve the chilled ladoo",
+          "stepLabelPtBr": "Sirva o ladoo gelado",
+          "kidInstructionEn": "Serve the ladoo once it is firm and chilled.",
+          "kidInstructionPtBr": "Sirva o ladoo gelado.",
+          "altText": "Panel 6, recipe 63 Coconut Ladoo. English: Serve the ladoo once it is firm and chilled. Safety: Contains dairy from condensed milk. Português: Sirva o ladoo gelado.",
+          "adultAssistRequired": false,
+          "adultCueTextEn": null,
+          "adultCueTextPtBr": null,
+          "conditionalHelp": null,
+          "scene": "ladooserve",
+          "visibleIngredientLabels": [
+            "coconut",
+            "dairy",
+            "plate"
+          ],
+          "additionalSafetyNote": "Contains dairy from condensed milk.",
+          "reviewStatus": "PENDING W07/A08 AND W08/A09 — DRAFT; NOT FOR RUNTIME"
+        }
+      ],
+      "sourceReviewRisks": [
+        "Vector ingredient glyphs need visual accuracy review against exact listed quantities and ingredients.",
+        "Adult A cue may not be intuitive without accessible text/companion app support.",
+        "Only one approved chef variant is shown per atlas; CHEF_A/CHEF_B alternate across IDs and both variants are not furnished per recipe.",
+        "Final-dish colors and proportions are illustrative; A09 visual review required.",
+        "For no-cook scenes, confirm child hand reach and food handling at age 8–10.",
+        "For hot scenes, no child character is shown; adult-only operation is represented by the amber A hand badge."
+      ],
+      "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
+      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
+      "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
+    }
+  }
+}
