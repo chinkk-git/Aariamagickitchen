@@ -7,6 +7,17 @@ import org.junit.Test
 
 class AppAssetsUrlPolicyTest {
     @Test
+    fun exactArtworkBatchRoutesAreDebugOnlyAndAllowlisted() {
+        assertEquals("index.html", DebugArtworkReviewRoute.resolve(false, true, "B01"))
+        assertEquals("index.html", DebugArtworkReviewRoute.resolve(true, false, "B01"))
+        assertEquals("artwork-review/index.html", DebugArtworkReviewRoute.resolve(true, true, null))
+        assertEquals("artwork-review/exact/B01/index.html", DebugArtworkReviewRoute.resolve(true, true, "B01"))
+        assertEquals("artwork-review/exact/B10/index.html", DebugArtworkReviewRoute.resolve(true, true, "B10"))
+        assertEquals("artwork-review/index.html", DebugArtworkReviewRoute.resolve(true, true, "../index.html"))
+        assertEquals("artwork-review/index.html", DebugArtworkReviewRoute.resolve(true, true, "B11"))
+    }
+
+    @Test
     fun acceptsOnlyTheExactHttpsOriginWithoutAuthorityExtras() {
         assertTrue(
             AppAssetsUrlPolicy.isTrustedOrigin(

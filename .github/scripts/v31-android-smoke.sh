@@ -369,4 +369,26 @@ done
 test -n "$review_socket"
 adb_timeout forward tcp:9222 "localabstract:$review_socket"
 timeout --kill-after=10s 90s node .github/scripts/v31-artwork-review-smoke.mjs
+echo 'Launching exact five-recipe artwork batches in the debug-only Android reviewer route'
+for batch_dir in tools/v3/artwork/exact-batches/B*; do
+  [ -d "$batch_dir" ] || continue
+  batch=$(basename "$batch_dir")
+  [[ "$batch" =~ ^B(0[1-9]|10)$ ]] || { echo "Unexpected exact batch directory: $batch" >&2; exit 1; }
+  echo "Capturing exact Android review evidence for $batch"
+  adb_timeout shell am force-stop "$APP_ID"
+  adb_timeout shell am start -W -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity --ez W01_ARTWORK_REVIEW true --es W01_ARTWORK_BATCH "$batch"
+  adb_timeout forward --remove tcp:9222 >/dev/null 2>&1 || true
+  exact_socket=""
+  for attempt in $(seq 1 30); do
+    exact_pid=$(adb_poll_timeout shell pidof "$APP_ID" 2>/dev/null | tr -d '\r' | awk '{print $1}' || true)
+    if [ -n "$exact_pid" ]; then
+      exact_socket=$(adb_poll_timeout shell cat /proc/net/unix 2>/dev/null | grep -o "webview_devtools_remote_${exact_pid}" | head -1 || true)
+    fi
+    [ -n "$exact_socket" ] && break
+    sleep 2
+  done
+  test -n "$exact_socket"
+  adb_timeout forward tcp:9222 "localabstract:$exact_socket"
+  timeout --kill-after=10s 120s node .github/scripts/w01-exact-batch-smoke.mjs "$batch"
+done
 file artifacts/v31-android-screenshots/*.png

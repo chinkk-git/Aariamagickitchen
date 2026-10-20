@@ -37,6 +37,11 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Set up deterministic SVG preview rendering
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y inkscape
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -78,6 +83,8 @@ jobs:
           node tools/v3/test-secure-content-update-approval.mjs
           node tools/v3/validate-v31.mjs
           node --check tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          node --check .github/scripts/w01-exact-batch-smoke.mjs
+          python3 -m py_compile tools/v3/artwork/exact-batches/build_batch.py
           python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-02/generate-batch.py').read_text())"
           python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-03/generate-batch.py').read_text())"
           python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-04/generate-batch.py').read_text())"
@@ -88,7 +95,14 @@ jobs:
           python3 tools/v3/artwork/batches/batch-03/generate-batch.py
           python3 tools/v3/artwork/batches/batch-04/generate-batch.py
           python3 tools/v3/artwork/batches/batch-05/generate-batch.py
+          python3 tools/v3/artwork/exact-batches/build_batch.py B01
+          python3 tools/v3/artwork/exact-batches/build_batch.py B01 --verify-only
           node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          for batch_dir in tools/v3/artwork/exact-batches/B*; do
+            [ -d "$batch_dir" ] || continue
+            batch=$(basename "$batch_dir")
+            python3 tools/v3/artwork/exact-batches/build_batch.py "$batch" --verify-only
+          done
           git diff --exit-code -- tools/v3/artwork/batches/batch-01
           git diff --exit-code -- tools/v3/artwork/batches/batch-02
           git diff --exit-code -- tools/v3/artwork/batches/batch-03
@@ -132,6 +146,14 @@ jobs:
           unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-05/recipe-55.svg'
           unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-05/recipe-65.svg'
           test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/batch-0[1-5]/recipe-[0-9]+\.svg$')" -eq 50
+          for batch_dir in tools/v3/artwork/exact-batches/B*; do
+            [ -d "$batch_dir" ] || continue
+            batch=$(basename "$batch_dir")
+            unzip -Z1 "$apk" | grep -Fxq "assets/artwork-review/exact/$batch/index.html"
+            test "$(unzip -Z1 "$apk" | grep -Ec "^assets/artwork-review/exact/$batch/atlases/recipe-[0-9]+\.svg$")" -eq 5
+            test "$(unzip -Z1 "$apk" | grep -Ec "^assets/artwork-review/exact/$batch/previews/recipe-[0-9]+-panel-[0-9]+\.png$")" -eq 30
+            unzip -Z1 "$apk" | grep -Fxq "assets/artwork-review/exact/$batch/contact-sheet.png"
+          done
 
       - name: Prepare Linux KVM access for x86_64 emulator
         run: |
@@ -247,6 +269,15 @@ jobs:
         with:
           name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-android-screenshots' || 'aaria-magical-kitchen-v3.1-android-screenshots' }}
           path: artifacts/v31-android-screenshots/*.png
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload exact B01 atlas and panel review package
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-w01-artwork-B01-deliverables
+          path: tools/v3/artwork/exact-batches/B01/**
           if-no-files-found: warn
           retention-days: 30
 

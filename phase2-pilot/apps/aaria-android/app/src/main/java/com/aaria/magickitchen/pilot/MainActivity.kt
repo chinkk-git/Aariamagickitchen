@@ -416,11 +416,11 @@ class MainActivity : Activity() {
                     // Normal builds continue loading the production index.html as-is.
                 }
             }
-            val startPath = if (BuildConfig.DEBUG && intent.getBooleanExtra("W01_ARTWORK_REVIEW", false)) {
-                "artwork-review/index.html"
-            } else {
-                "index.html"
-            }
+            val startPath = DebugArtworkReviewRoute.resolve(
+                isDebugBuild = BuildConfig.DEBUG,
+                reviewEnabled = intent.getBooleanExtra("W01_ARTWORK_REVIEW", false),
+                batch = intent.getStringExtra("W01_ARTWORK_BATCH")
+            )
             loadUrl("https://appassets.androidplatform.net/$startPath")
         }
         setContentView(webView)

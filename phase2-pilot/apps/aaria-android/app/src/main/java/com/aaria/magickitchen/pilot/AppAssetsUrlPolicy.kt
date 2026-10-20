@@ -39,3 +39,17 @@ internal object AppAssetsUrlPolicy {
         return AssetPathResult.Valid(segments.joinToString("/"))
     }
 }
+
+internal object DebugArtworkReviewRoute {
+    private val exactBatchPattern = Regex("B(?:0[1-9]|10)")
+
+    fun resolve(isDebugBuild: Boolean, reviewEnabled: Boolean, batch: String?): String {
+        if (!isDebugBuild || !reviewEnabled) return "index.html"
+        if (batch == null) return "artwork-review/index.html"
+        return if (exactBatchPattern.matches(batch)) {
+            "artwork-review/exact/$batch/index.html"
+        } else {
+            "artwork-review/index.html"
+        }
+    }
+}
