@@ -7,6 +7,8 @@ m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 class Api:
     def __init__(self,permission="write",enabled=False):
         self.permission=permission;self.doc={"activation":"ENABLED" if enabled else "DISABLED",
+          "cross_registry_exclusion":"VERIFIED" if enabled else "UNVERIFIED",
+          "lease_holder_binding":"VERIFIED" if enabled else "UNVERIFIED",
           "workers":{"W01":{"session_state":"UNKNOWN"}},
           "tasks":[{"id":"AA","owner":"W01","status":"READY","target_branch":"control-tower/worker-control-plan-20261019","depends_on":[],"lease":None}]}
         self.sha="blob1";self.writes=0
@@ -47,6 +49,12 @@ class RuntimeTests(unittest.TestCase):
         api=Api("write",False)
         with self.assertRaisesRegex(PermissionError,"transactions are disabled"):m.main(env(self.event()),api)
         self.assertEqual(api.writes,0)
+    def test_unverified_cross_registry_and_lease_binding_fail_closed(self):
+        for missing in ("cross_registry_exclusion","lease_holder_binding"):
+            with self.subTest(missing=missing):
+                api=Api("write",True);api.doc[missing]="UNVERIFIED"
+                with self.assertRaises(PermissionError):m.main(env(self.event()),api)
+                self.assertEqual(api.writes,0)
     def test_verified_permission_then_whole_registry_cas(self):
         api=Api("write",True);result=m.main(env(self.event()),api)
         self.assertEqual(result["commit"]["sha"],"fixture")
