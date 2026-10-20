@@ -22,4 +22,10 @@ class Gates(unittest.TestCase):
   with self.assertRaisesRegex(ValueError,"expired"): release(r,"v3","token","2026-10-19T21:01:01Z")
  def test_lease_duration_bounds(self):
   with self.assertRaisesRegex(ValueError,"invalid"): claim({"status":"READY"},"v3","token",NOW,10)
+ def test_expiry_boundary_is_exclusive(self):
+  r=claim({"status":"READY"},"v3","token-a",NOW,60)
+  expires=r["lease"]["expires_at"]
+  with self.assertRaisesRegex(ValueError,"expired"): release(r,"v3","token-a",expires)
+  reclaimed=claim(r,"v31","token-b",expires)
+  self.assertEqual(reclaimed["lease"]["worker"],"v31")
 if __name__=="__main__": unittest.main(verbosity=2)
