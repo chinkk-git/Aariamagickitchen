@@ -1,0 +1,22 @@
+name: Control Tower guarded transaction (DISABLED)
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        type: choice
+        options: [claim, renew, release, recover]
+        required: true
+      task_id:
+        type: string
+        required: true
+      worker:
+        type: string
+        required: true
+permissions:
+  contents: read
+jobs:
+  disabled:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Not activated. Requires independently reviewed trusted API integration, GitHub identity binding and secure credentials.'
