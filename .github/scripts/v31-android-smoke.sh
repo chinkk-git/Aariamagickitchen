@@ -354,6 +354,19 @@ console.log('Android World Adventure verified: India recipes → recipe → quiz
 ws.close();
 NODE
 echo 'Launching the explicitly gated debug-only artwork review route'
+adb_timeout shell am force-stop "$APP_ID"
 adb_timeout shell am start -W -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity --ez W01_ARTWORK_REVIEW true
+adb_timeout forward --remove tcp:9222 >/dev/null 2>&1 || true
+review_socket=""
+for attempt in $(seq 1 30); do
+  review_pid=$(adb_poll_timeout shell pidof "$APP_ID" 2>/dev/null | tr -d '\r' | awk '{print $1}' || true)
+  if [ -n "$review_pid" ]; then
+    review_socket=$(adb_poll_timeout shell cat /proc/net/unix 2>/dev/null | grep -o "webview_devtools_remote_${review_pid}" | head -1 || true)
+  fi
+  [ -n "$review_socket" ] && break
+  sleep 2
+done
+test -n "$review_socket"
+adb_timeout forward tcp:9222 "localabstract:$review_socket"
 timeout --kill-after=10s 90s node .github/scripts/v31-artwork-review-smoke.mjs
 file artifacts/v31-android-screenshots/*.png
