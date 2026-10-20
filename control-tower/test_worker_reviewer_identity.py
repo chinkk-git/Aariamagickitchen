@@ -20,7 +20,7 @@ def fixture():
 
 class ReviewerTests(unittest.TestCase):
     def test_verified(self):
-        self.assertEqual(m.validate_review(*fixture()), [])
+        self.assertEqual(m.validate_review(fixture()[1], fixture()[0], fixture()[2]), [])
 
     def test_issue_comment_not_approval(self):
         c, r, t = fixture()
