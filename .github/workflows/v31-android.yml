@@ -159,7 +159,7 @@ jobs:
           same_package=bp==up
           same_signer=bs==us
           safe_upgrade=same_package and same_signer and uv>bv
-          report=f"baseline_package={bp}\\nbaseline_version={bv}\\nbaseline_signer_sha256={bs}\\nunified_package={up}\\nunified_version={uv}\\nunified_signer_sha256={us}\\nsame_package={str(same_package).lower()}\\nsame_signer={str(same_signer).lower()}\\nverified_upgrade_eligible={str(safe_upgrade).lower()}\\n"
+          report=f"baseline_package={bp}\nbaseline_version={bv}\nbaseline_signer_sha256={bs}\nunified_package={up}\nunified_version={uv}\nunified_signer_sha256={us}\nsame_package={str(same_package).lower()}\nsame_signer={str(same_signer).lower()}\nverified_upgrade_eligible={str(safe_upgrade).lower()}\n"
           (d/'package-signing-continuity.txt').write_text(report)
           print(report)
           if same_package and not same_signer:
