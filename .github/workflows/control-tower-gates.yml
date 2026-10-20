@@ -35,6 +35,7 @@ jobs:
           python3 control-tower/test_worker_reviewer_identity.py
           python3 control-tower/test_worker_github_reviews.py
           python3 control-tower/test_worker_transactions.py
+          python3 control-tower/test_worker_executor.py
       - name: Publish summary
         if: always()
         run: |
