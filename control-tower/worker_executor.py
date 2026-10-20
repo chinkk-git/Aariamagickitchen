@@ -12,6 +12,12 @@ def execute(api,*,owner,repo,branch,actor,permission,actor_worker_map,task_id,wo
     allowed={login for login,roles in actor_worker_map.items() if isinstance(roles,(set,frozenset)) and roles}
     def change(doc):
         if doc.get("activation")!="ENABLED": raise PermissionError("worker transactions are disabled")
+        # Activation must never rely on the isolated registry alone.
+        # A separate legacy registry can hold a competing branch writer.
+        if doc.get("cross_registry_exclusion")!="VERIFIED":
+            raise PermissionError("cross-registry writer exclusion is not verified")
+        if doc.get("lease_holder_binding")!="VERIFIED":
+            raise PermissionError("authenticated lease-holder binding is not verified")
         matches=[t for t in doc.get("tasks",[]) if t.get("id")==task_id]
         if len(matches)!=1 or matches[0].get("target_branch")!=branch:
             raise PermissionError("worker transaction is restricted to the isolated Control Tower branch")
