@@ -1,0 +1,69 @@
+name: W01 Ordered Readiness Gate
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - control-tower/tasks.json
+      - .github/workflows/w01-ordered-readiness.yml
+  push:
+    branches:
+      - control-tower/w01-artwork-ownership-proposal-20261020
+    paths:
+      - control-tower/tasks.json
+      - .github/workflows/w01-ordered-readiness.yml
+permissions:
+  contents: read
+  issues: read
+concurrency:
+  group: w01-readiness-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check-ordered-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate ordered dependencies (read-only, fail closed)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, urllib.request
+          from pathlib import Path
+          data=json.loads(Path('control-tower/tasks.json').read_text())
+          tasks={t['id']:t for t in data['tasks']}
+          order=['W01-OWN-01','W01-ART-02','W01-AND-01','W01-ART-03','W01-GATES-01','W01-READY-01']
+          for tid in order:
+              if tid not in tasks:
+                  sys.exit(f'MISSING REQUIRED TASK: {tid}')
+          for t in data['tasks']:
+              for dep in t.get('depends_on',[]):
+                  if dep not in tasks:
+                      sys.exit(f'UNKNOWN DEPENDENCY: {t["id"]} -> {dep}')
+                  if t.get('status') in ('READY','ACTIVE','VERIFIED') and tasks[dep]['status']!='VERIFIED':
+                      sys.exit(f'PREMATURE TASK: {t["id"]} depends on unverified {dep}')
+          if data['workers']['v31']['session_state']!='STOPPED':
+              sys.exit('W03 NOT STOPPED')
+          if data['workers']['w01'].get('writer') and data['workers']['v31'].get('writer'):
+              sys.exit('COMPETING WRITERS')
+          repo=os.environ['GH_REPO']
+          def issue(num):
+              req=urllib.request.Request(f'https://api.github.com/repos/{repo}/issues/{num}',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'w01-readiness-gate'})
+              with urllib.request.urlopen(req,timeout=15) as response:return json.load(response)
+          for tid in order:
+              t=tasks[tid]
+              state=issue(t['issue'])['state']
+              if t['status']=='VERIFIED' and state!='closed':
+                  sys.exit(f'UNVERIFIED ISSUE STATE: {tid} issue {t["issue"]} is {state}')
+              print(f'{tid}: registry={t["status"]}, issue={state}')
+          if tasks['W01-READY-01']['status']=='VERIFIED':
+              gate=issue(35)
+              labels={x['name'] for x in gate.get('labels',[])}
+              required={'a08-approved','a09-approved','artwork-rights-approved','security-approved'}
+              if not required.issubset(labels):
+                  sys.exit('MISSING INDEPENDENT APPROVAL LABELS: '+','.join(sorted(required-labels)))
+              if any(tasks[t]['status']!='VERIFIED' for t in ['W01-ART-03','W01-AND-01','W01-GATES-01']):
+                  sys.exit('FINAL READINESS PREMATURE')
+          print('PASS: governance invariants. This is NOT approval to merge, install or release.')
+          PY
