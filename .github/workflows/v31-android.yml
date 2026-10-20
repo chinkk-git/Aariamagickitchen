@@ -150,7 +150,7 @@ jobs:
               return m.group(1),int(m.group(2))
           def signer(file):
               s=(d/file).read_text()
-              m=re.search(r"(?im)^(?:V[123] Signer|Signer\\s*#?\\s*1):?\\s*certificate SHA-256 digest:\\s*([0-9a-fA-F:]+)",s)
+              m=re.search(r"(?im)^(?:V[123] Signer|Signer\s*#?\s*1):?\s*certificate SHA-256 digest:\s*([0-9a-fA-F:]+)",s)
               if not m: raise SystemExit('Missing signer digest: '+file+'; apksigner output='+repr(s[:1500]))
               return m.group(1).replace(':','').lower()
           bp,bv=parse('v3-baseline-badging.txt')
