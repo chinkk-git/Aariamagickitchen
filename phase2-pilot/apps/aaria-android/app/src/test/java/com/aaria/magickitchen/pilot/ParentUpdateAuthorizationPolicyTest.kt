@@ -1,5 +1,7 @@
 package com.aaria.magickitchen.pilot
 
+import android.app.Activity.RESULT_CANCELED
+import android.app.Activity.RESULT_OK
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
