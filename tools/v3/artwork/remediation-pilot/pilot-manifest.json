@@ -167,7 +167,7 @@
         "Recipe 27 final panel deliberately changes raw chicken symbol to cooked chicken; verify 74°C wording remains adjacent in app UI."
       ],
       "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
-      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "adultAssistAssessment": "Raw chicken handling, mixing and shaping must be adult-only until fully cooked; check food thermometer 74°C/165°F and cross-contamination precautions in recipe text and panels.",
       "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
       "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
     },
@@ -330,7 +330,7 @@
         "Chicken is fully cooked before mixing; raw egg/flour batter must cook through."
       ],
       "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
-      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "adultAssistAssessment": "Confirm cooked-chicken preparation and adult operation of the cooking surface; raw egg/flour pancake batter must be thoroughly cooked. Check adult-help cues and allergy information.",
       "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
       "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
     },
@@ -492,7 +492,7 @@
         "Recipe allows peanut OR sunflower seed butter; drawing cannot communicate the substitution; allergy-safe choice is essential."
       ],
       "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
-      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "adultAssistAssessment": "Adult help required for knife work slicing apples; verify peanut-versus-sunflower butter allergy substitution and age-appropriate spreading steps.",
       "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
       "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
     },
@@ -658,7 +658,7 @@
         "For hot scenes, no child character is shown; adult-only operation is represented by the amber A hand badge."
       ],
       "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
-      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "adultAssistAssessment": "Adult operates hot air fryer/toaster and handles hot tray; child steps must not depict unsupervised heat handling. Preserve accessible adult-only cue.",
       "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
       "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
     },
@@ -821,7 +821,7 @@
         "For hot scenes, no child character is shown; adult-only operation is represented by the amber A hand badge."
       ],
       "revisionOrigin": "W03-generated vector redraw from the unchanged recipe source text and explicit panel instructions in this isolated remediation branch; original draft SVGs were not edited in place. The approved CHEF_A portrait is included only as a static safe-step guide.",
-      "adultAssistAssessment": "Recipe 63 source steps require no heat, sharp tool or raw animal-food handling, so no mandatory adult-assist cue is inferred. Refrigerator placement may need conditional adult help when the shelf is high; this remains visible in the per-panel description for panel 5.",
+      "adultAssistAssessment": "No heat, sharp tool or raw animal food in listed steps; conditional adult help if refrigerator shelf is high. Preserve condensed-milk dairy allergen notice.",
       "rightsTraceability": "Original ZIP recovered from Library and archive digest matches expected value; original SVG authorship/rights attestation is absent. CHEF_A input path and source-file/WebP/derived-PNG hashes are recorded, but hashes do not establish license or authorship; rights remain unresolved.",
       "decision": "DRAFT ONLY; no W07/A08 or W08/A09 approval; no runtime integration"
     }
