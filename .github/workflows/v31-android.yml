@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - feature/v3.1-home-redesign
+      - codex/w01-unified-v3-v31-20261020
     paths:
       - 'index.html'
       - 'tools/v3/**'
@@ -49,6 +50,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: '8.10.2'
+
+      - name: Record exact source HEAD
+        run: |
+          mkdir -p artifacts/v31-diagnostics
+          echo "${GITHUB_SHA}" | tee artifacts/v31-diagnostics/source-head.txt
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
 
       - name: Run repository regression and V3.1 data gates
         working-directory: phase2-pilot
@@ -126,6 +133,15 @@ jobs:
           disable-animations: true
           disable-linux-hw-accel: false
           script: bash .github/scripts/v31-android-smoke.sh
+      - name: Record APK payload checksum and exact HEAD
+        if: always()
+        run: |
+          mkdir -p artifacts/v31-diagnostics
+          echo "${GITHUB_SHA}" > artifacts/v31-diagnostics/source-head.txt
+          if [ -f phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk ]; then
+            sha256sum phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk > artifacts/v31-diagnostics/apk-sha256.txt
+          fi
+
       - name: Upload installable V3.1 preview APK
         if: always()
         uses: actions/upload-artifact@v4
