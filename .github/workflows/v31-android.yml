@@ -15,6 +15,7 @@ on:
       - '.github/workflows/v31-android.yml'
 
 permissions:
+  actions: read
   contents: read
 
 concurrency:
@@ -105,6 +106,15 @@ jobs:
           fi
           printf 'kvm_preflight=passed\nrunner=%s\n' "$(id -un)" > artifacts/v31-diagnostics/kvm-preflight.txt
           stat -c 'device=%n owner=%U group=%G mode=%a' /dev/kvm | tee -a artifacts/v31-diagnostics/kvm-preflight.txt
+      - name: Download original V3 APK for co-install verification
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.1-preview-apk
+          path: artifacts/v31-baseline-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39191099617
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Launch Android APK and capture home/map screenshots
         timeout-minutes: 15
         uses: reactivecircus/android-emulator-runner@v2
