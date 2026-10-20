@@ -29,6 +29,7 @@ jobs:
           python3 control-tower/test_worker_atomic_lease.py
           python3 control-tower/test_worker_atomic_cas_adapter.py
           python3 control-tower/test_worker_execution_boundary.py
+          python3 control-tower/test_worker_cutover_plan.py
           python3 control-tower/test_worker_claims.py
           python3 control-tower/test_worker_leases.py
       - name: Assert disabled worker activation
