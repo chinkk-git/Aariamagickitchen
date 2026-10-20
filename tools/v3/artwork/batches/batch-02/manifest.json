@@ -472,7 +472,7 @@
       "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-30-step-atlas-draft.svg",
       "sourceSha256": "0095e7a91b61e0525b1a4281a92d5751927b47d07194739cc8673b7c563fc5ce",
       "outputPath": "atlases/recipe-30-draft.svg",
-      "outputSha256": "50cab39f80bba3bb374c80e40448a94529da5b5ecd0fe090a654ea5ba0abbdcc",
+      "outputSha256": "5b9e814c437a654767ea7381a0b2b86c8828cdc5057e3cd559db4da767e8edfd",
       "dimensions": "1536x1024",
       "panels": [
         {
@@ -526,7 +526,7 @@
       "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-31-step-atlas-draft.svg",
       "sourceSha256": "5fa6a12b6ba82e366a07637a83d2b2e9db137db63afc9c5aaa47590a04f68954",
       "outputPath": "atlases/recipe-31-draft.svg",
-      "outputSha256": "07652a1132806da8830eedf5bf9bb11ef163a2b81938cafd379b8eb8909340da",
+      "outputSha256": "9f7b8383ec5bc836d6b543cf2d58dbafccdb06f3be51c2abc4ca76534bee26d9",
       "dimensions": "1536x1024",
       "panels": [
         {

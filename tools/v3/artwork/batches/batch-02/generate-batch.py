@@ -85,9 +85,18 @@ def main() -> None:
                 if adult:
                     # The original atlas already carries the adult-action pictogram. This label makes its meaning explicit.
                     anchor = replacement
-                    badge = (f'<g class="w01-adult-only-cue" aria-label="Adult only; Só adulto">'
-                             f'<rect x="28" y="414" width="456" height="34" rx="15" fill="#8f3434" stroke="#ffffff" stroke-width="2"/>'
-                             f'<text x="256" y="437" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="800" fill="#ffffff">ADULT ONLY • SÓ ADULTO</text></g>')
+                    if rid >= 30:
+                        # The 30–47 atlas format has shorter panels and a row of ingredient
+                        # glyphs near the bottom; place the label in its open top band.
+                        tile_x = (18, 410, 800)[(n - 1) % 3]
+                        tile_y = 18 if n <= 3 else 402
+                        badge = (f'<g class="w01-adult-only-cue" aria-label="Adult only; Só adulto">'
+                                 f'<rect x="{tile_x + 20}" y="{tile_y + 58}" width="342" height="26" rx="12" fill="#8f3434" stroke="#ffffff" stroke-width="2"/>'
+                                 f'<text x="{tile_x + 191}" y="{tile_y + 76}" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="800" fill="#ffffff">ADULT ONLY • SÓ ADULTO</text></g>')
+                    else:
+                        badge = (f'<g class="w01-adult-only-cue" aria-label="Adult only; Só adulto">'
+                                 f'<rect x="28" y="414" width="456" height="34" rx="15" fill="#8f3434" stroke="#ffffff" stroke-width="2"/>'
+                                 f'<text x="256" y="437" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="800" fill="#ffffff">ADULT ONLY • SÓ ADULTO</text></g>')
                     start = text.find(replacement)
                     next_panel = text.find(f'<g id="panel-{n+1}"', start + len(replacement)) if n < 6 else -1
                     segment_end = next_panel if next_panel >= 0 else text.find('</svg>', start)
