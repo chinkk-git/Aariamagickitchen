@@ -45,6 +45,7 @@ jobs:
           python3 control-tower/test_worker_cutover_plan.py
           python3 control-tower/test_worker_task_envelope.py
           python3 control-tower/test_worker_readiness.py
+          python3 control-tower/test_worker_snapshot_audit.py
       - name: Publish summary
         if: always()
         run: |
