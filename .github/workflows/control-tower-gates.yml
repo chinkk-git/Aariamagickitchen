@@ -39,6 +39,7 @@ jobs:
           python3 control-tower/test_worker_runtime.py
           python3 control-tower/test_worker_security_evidence.py
           python3 control-tower/test_worker_shared_lease_policy.py
+          python3 control-tower/test_worker_atomic_lease.py
       - name: Publish summary
         if: always()
         run: |
