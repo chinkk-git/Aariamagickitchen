@@ -65,14 +65,19 @@
       "id": "CT25",
       "issue": 25,
       "owner": "v3",
-      "status": "READY",
+      "status": "VERIFIED",
       "depends_on": [],
       "target_branch": "control-tower/ct25-codex-worker-test",
       "acceptance": [
         "Actual Codex/Work session implements an independently verifiable validation edge-case on isolated branch",
         "Draft PR and deterministic CI succeed; independent acceptance evidence published"
       ],
-      "evidence": [],
+      "evidence": [
+        "https://github.com/chinkk-git/Aariamagickitchen/pull/26",
+        "https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39345590354",
+        "https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39345473716",
+        "https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39345638734"
+      ],
       "blocker": null,
       "lease": null
     }
