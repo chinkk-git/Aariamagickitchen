@@ -377,6 +377,7 @@ class MainActivity : Activity() {
                         assetPath.endsWith(".html", ignoreCase = true) -> "text/html"
                         assetPath.endsWith(".js", ignoreCase = true) -> "application/javascript"
                         assetPath.endsWith(".css", ignoreCase = true) -> "text/css"
+                        assetPath.endsWith(".svg", ignoreCase = true) -> "image/svg+xml"
                         assetPath.endsWith(".png", ignoreCase = true) -> "image/png"
                         assetPath.endsWith(".webp", ignoreCase = true) -> "image/webp"
                         assetPath.endsWith(".jpg", ignoreCase = true) || assetPath.endsWith(".jpeg", ignoreCase = true) -> "image/jpeg"
@@ -411,10 +412,16 @@ class MainActivity : Activity() {
 
                 override fun onPageFinished(view: WebView, url: String?) {
                     super.onPageFinished(view, url)
-                    // Load the production index.html as-is. Android only supplies the native file chooser.
+                    // The debug-only artwork review extra uses assets from src/debug/assets.
+                    // Normal builds continue loading the production index.html as-is.
                 }
             }
-            loadUrl("https://appassets.androidplatform.net/index.html")
+            val startPath = if (BuildConfig.DEBUG && intent.getBooleanExtra("W01_ARTWORK_REVIEW", false)) {
+                "artwork-review/index.html"
+            } else {
+                "index.html"
+            }
+            loadUrl("https://appassets.androidplatform.net/$startPath")
         }
         setContentView(webView)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

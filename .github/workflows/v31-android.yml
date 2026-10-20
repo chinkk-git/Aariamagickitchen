@@ -77,7 +77,9 @@ jobs:
           node tools/v3/test-photo-share-approval.mjs
           node tools/v3/test-secure-content-update-approval.mjs
           node tools/v3/validate-v31.mjs
+          node --check tools/v3/artwork/batches/batch-01/build-android-review.mjs
           python3 tools/v3/artwork/batches/batch-01/generate-batch.py
+          node tools/v3/artwork/batches/batch-01/build-android-review.mjs
           git diff --exit-code -- tools/v3/artwork/batches/batch-01
           node tools/v3/artwork/remediation-pilot/audit-readiness.mjs
           bash -n tools/v3/android/verify-nondestructive-upgrade.sh
@@ -105,6 +107,10 @@ jobs:
           unzip -Z1 "$apk" | grep -Fxq 'assets/index.html'
           unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
           unzip -p "$apk" assets/index.html | grep -Fq 'ne_110m_admin_0_countries'
+          unzip -p "$apk" assets/artwork-review/index.html | grep -Fq 'Draft artwork — independent review only'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-01/recipe-11.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-01/recipe-20.svg'
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/batch-01/recipe-[0-9]+\.svg$')" -eq 10
 
       - name: Prepare Linux KVM access for x86_64 emulator
         run: |

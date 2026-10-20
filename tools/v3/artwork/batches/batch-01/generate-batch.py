@@ -39,6 +39,8 @@ def main() -> None:
              'changes':['Adds localized, visible adult-only wording to panels the source manifest marks adultOnlyCue.',
                         'Adds per-panel SVG title and description tied to the unchanged source step text.',
                         'Original illustration paths and project cartoon character assets remain unchanged.'],
+             'androidDebugReview':{'route':'/artwork-review/index.html','sourceSet':'src/debug/assets only',
+                                   'purpose':'Offline reviewer preview only; not the production cooking route.'},
              'approval':{'A08':'PENDING independent review','A09':'PENDING independent review',
                          'artworkRights':'UNRESOLVED; source authorship/rights not established by checksums',
                          'runtime':'NOT INTEGRATED'},

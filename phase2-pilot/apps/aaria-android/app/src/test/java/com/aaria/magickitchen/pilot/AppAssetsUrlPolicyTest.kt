@@ -71,6 +71,14 @@ class AppAssetsUrlPolicyTest {
             AssetPathResult.Valid("images/chef.webp"),
             AppAssetsUrlPolicy.classifyAssetPath("/images/chef.webp")
         )
+        assertEquals(
+            AssetPathResult.Valid("artwork-review/index.html"),
+            AppAssetsUrlPolicy.classifyAssetPath("/artwork-review/index.html")
+        )
+        assertEquals(
+            AssetPathResult.Valid("artwork-review/batch-01/recipe-11.svg"),
+            AppAssetsUrlPolicy.classifyAssetPath("/artwork-review/batch-01/recipe-11.svg")
+        )
     }
 
     @Test

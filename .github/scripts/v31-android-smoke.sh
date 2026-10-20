@@ -353,4 +353,7 @@ if (!resetCount.includes('0/7')) throw new Error(`Passport reset did not clear l
 console.log('Android World Adventure verified: India recipes → recipe → quiz → local passport stamp/reset');
 ws.close();
 NODE
+echo 'Launching the explicitly gated debug-only artwork review route'
+adb_timeout shell am start -W -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity --ez W01_ARTWORK_REVIEW true
+timeout --kill-after=10s 90s node .github/scripts/v31-artwork-review-smoke.mjs
 file artifacts/v31-android-screenshots/*.png
