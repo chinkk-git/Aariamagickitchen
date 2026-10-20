@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-19",
+  "updated_at": "2026-10-20",
   "workers": {
     "v3": {
       "branch": "codex/v3-completion-core-20261017",
@@ -19,7 +19,7 @@
     },
     "w01": {
       "branch": "codex/w01-unified-v3-v31-20261020",
-      "session_state": "OWNERSHIP_VERIFICATION_REQUIRED",
+      "session_state": "BLOCKED_UNTIL_EXCLUSIVE_WRITER_VERIFIED",
       "writer": null
     }
   },
@@ -54,10 +54,12 @@
     },
     {
       "id": "V31-VISUAL",
-      "issue": 5,
+      "issue": 32,
       "owner": "w01",
       "status": "BLOCKED",
-      "depends_on": [],
+      "depends_on": [
+        "W01-OWN-01"
+      ],
       "target_branch": "codex/w01-unified-v3-v31-20261020",
       "acceptance": [
         "Approved home screenshot comparison",
@@ -88,11 +90,11 @@
     },
     {
       "id": "W01-ART-02",
-      "issue": 5,
+      "issue": 32,
       "owner": "w01",
       "status": "BLOCKED",
       "depends_on": [
-        "V31-VISUAL"
+        "W01-OWN-01"
       ],
       "target_branch": "codex/w01-unified-v3-v31-20261020",
       "acceptance": [
@@ -107,10 +109,12 @@
     },
     {
       "id": "W01-AND-01",
-      "issue": 4,
+      "issue": 34,
       "owner": "w01",
       "status": "BLOCKED",
-      "depends_on": [],
+      "depends_on": [
+        "W01-OWN-01"
+      ],
       "target_branch": "codex/w01-unified-v3-v31-20261020",
       "acceptance": [
         "Disposable-emulator same-package same-signer seeded-data upgrade",
@@ -120,6 +124,74 @@
         "https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39484542872"
       ],
       "blocker": "W01 exclusive writer claim not verified; production signer continuity unproven"
+    },
+    {
+      "id": "W01-OWN-01",
+      "issue": 31,
+      "owner": "w01",
+      "status": "BLOCKED",
+      "depends_on": [],
+      "target_branch": "codex/w01-unified-v3-v31-20261020",
+      "acceptance": [
+        "Exclusive writer claim verified",
+        "W02/W03 stopped",
+        "Current HEAD and CI reconciled"
+      ],
+      "evidence": [],
+      "blocker": "Prerequisite evidence and independent gates not yet verified"
+    },
+    {
+      "id": "W01-ART-03",
+      "issue": 33,
+      "owner": "w01",
+      "status": "BLOCKED",
+      "depends_on": [
+        "W01-OWN-01",
+        "W01-ART-02"
+      ],
+      "target_branch": "codex/w01-unified-v3-v31-20261020",
+      "acceptance": [
+        "Exact-head Android screenshots and visibility assertions",
+        "95 original recipes preserved",
+        "Portrait/landscape and accessibility evidence"
+      ],
+      "evidence": [],
+      "blocker": "Prerequisite evidence and independent gates not yet verified"
+    },
+    {
+      "id": "W01-GATES-01",
+      "issue": 35,
+      "owner": "independent",
+      "status": "BLOCKED",
+      "depends_on": [
+        "W01-ART-02",
+        "W01-ART-03"
+      ],
+      "target_branch": null,
+      "acceptance": [
+        "Formal A08 approval",
+        "Formal A09 approval",
+        "Art rights and security sign-off"
+      ],
+      "evidence": [],
+      "blocker": "Prerequisite evidence and independent gates not yet verified"
+    },
+    {
+      "id": "W01-READY-01",
+      "issue": 36,
+      "owner": "control-tower",
+      "status": "BLOCKED",
+      "depends_on": [
+        "W01-ART-03",
+        "W01-AND-01",
+        "W01-GATES-01"
+      ],
+      "target_branch": null,
+      "acceptance": [
+        "Readiness evidence only; no merge/release"
+      ],
+      "evidence": [],
+      "blocker": "Prerequisite evidence and independent gates not yet verified"
     }
   ],
   "release": {
