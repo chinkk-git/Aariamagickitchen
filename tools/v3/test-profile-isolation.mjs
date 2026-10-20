@@ -3,6 +3,7 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 
 const runtime = fs.readFileSync(new URL('./runtime.js', import.meta.url), 'utf8');
+assert.ok(runtime.includes("function v3RestoreCreationsRoute(){if(location.hash==='#aria/creations'){view='creations';render()}}") && runtime.includes("window.addEventListener('popstate',v3RestoreCreationsRoute)"), 'My Creations must be recognized by Android hash navigation and restored on Back');
 // Regression guard: the profile-aware render wrapper must call the prior renderer,
 // not its own named function (which previously overflowed the stack on profile setup).
 assert.ok(runtime.includes('const v3RenderBeforeProfileControls=render;') && /render=function\(\)\{const creationsView=view==='creations';if\(creationsView\)view='home';v3SyncRecipeArt\(\);v3RenderBeforeProfileControls\(\);if\(creationsView\)/.test(runtime), 'profile wrapper must preserve profile art syncing while safely routing My Creations through the pre-profile renderer');
