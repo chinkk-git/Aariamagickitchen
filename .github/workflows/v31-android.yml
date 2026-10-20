@@ -1,4 +1,4 @@
-name: Aaria V3.1 Android preview APK
+name: Aaria Android unified W01 and legacy V3.1 verification
 
 on:
   workflow_dispatch:
@@ -20,14 +20,14 @@ permissions:
   contents: read
 
 concurrency:
-  group: aaria-v31-android-preview
+  group: aaria-android-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
   build-v31-preview:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out isolated V3.1 source
+      - name: Check out exact-head Android integration source
         uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
@@ -148,7 +148,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-magical-kitchen-v3.1-preview-apk
+          name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-preview-apk' || 'aaria-magical-kitchen-v3.1-preview-apk' }}
           path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: warn
           retention-days: 30
@@ -157,7 +157,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-magical-kitchen-v3.1-html
+          name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-html' || 'aaria-magical-kitchen-v3.1-html' }}
           path: dist/Aaria_Magical_Kitchen_V3_1.html
           if-no-files-found: warn
           retention-days: 30
@@ -166,7 +166,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-magical-kitchen-v3.1-android-screenshots
+          name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-android-screenshots' || 'aaria-magical-kitchen-v3.1-android-screenshots' }}
           path: artifacts/v31-android-screenshots/*.png
           if-no-files-found: warn
           retention-days: 30
@@ -175,7 +175,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-magical-kitchen-v3.1-android-diagnostics
+          name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-android-diagnostics' || 'aaria-magical-kitchen-v3.1-android-diagnostics' }}
           path: artifacts/v31-diagnostics/**
           if-no-files-found: warn
           retention-days: 30
