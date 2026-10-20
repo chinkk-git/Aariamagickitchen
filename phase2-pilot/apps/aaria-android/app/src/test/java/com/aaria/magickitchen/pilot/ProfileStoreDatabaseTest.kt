@@ -111,6 +111,25 @@ class ProfileStoreDatabaseTest {
         assertEquals("CHEF_B", chefFor(updatedFirst, secondId))
     }
 
+
+    @Test fun seededRealAppStateSurvivesStoreRecreationWithoutDataClear() {
+        val seeded = store.createProfile("Upgrade Seed", "CHEF_A", "{}")
+        val profileId = seeded.getString("activeId")
+        val snapshot = """{"favorites":[27,39,40,51,63],"done":[51],"weeks":{"mon":{"recipe":27}},"shoppingList":{"milk":2},"recent":[51],"customUnknown":{"mustSurvive":"upgrade-marker-51"}}"""
+        assertTrue(store.saveSnapshot(profileId, snapshot))
+        val expected = store.initialize("{}").getJSONObject("snapshot").toString()
+        store.close()
+
+        // Reopening the same app-private SQLite file simulates persistence across
+        // a process restart, NOT a package-manager APK upgrade.
+        store = ProfileStore(app)
+        val reopened = store.initialize("{}")
+        assertEquals(profileId, reopened.getString("activeId"))
+        assertEquals(org.json.JSONObject(expected).toString(), reopened.getJSONObject("snapshot").toString())
+        assertEquals("upgrade-marker-51", reopened.getJSONObject("snapshot")
+            .getJSONObject("customUnknown").getString("mustSurvive"))
+    }
+
     companion object {
         private const val DB_NAME = "my_magical_kitchen_v3.db"
     }
