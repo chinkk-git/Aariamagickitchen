@@ -18,7 +18,7 @@ for(const [id,entry] of Object.entries(manifest.recipes)){
  const {createHash}=await import('node:crypto');
  assert.equal(createHash('sha256').update(svg).digest('hex'),entry.revisedSha256,'Provenance mismatch for recipe '+id);
  for(let n=1;n<=6;n++)assert.ok(svg.includes('recipe-'+id+'-panel-'+n),'Missing accessible panel '+n+' in recipe '+id);
- assert.ok(!/<script\\b|https?:\\/\\//i.test(svg),'External script or remote content in draft SVG '+id);
+ assert.ok(!/<script\b|(?:href|xlink:href)\s*=\s*['\"]https?:\/\//i.test(svg),'Executable script or remote asset reference in draft SVG '+id);
 }
 
 assert.equal(rows.length,55,'55 source atlases (11–65) required');
