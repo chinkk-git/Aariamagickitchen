@@ -78,6 +78,12 @@ jobs:
           node tools/v3/test-secure-content-update-approval.mjs
           node tools/v3/validate-v31.mjs
           node tools/v3/artwork/remediation-pilot/audit-readiness.mjs
+          bash -n tools/v3/android/verify-nondestructive-upgrade.sh
+          if env -u V3_BASELINE_APK -u UPGRADE_CANDIDATE_APK bash tools/v3/android/verify-nondestructive-upgrade.sh >/tmp/w01-upgrade-guard.log 2>&1; then
+            echo 'ERROR: production-upgrade harness unexpectedly allowed missing APK prerequisites'
+            exit 1
+          fi
+          grep -Fq 'V3_BASELINE_APK' /tmp/w01-upgrade-guard.log
           mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
           cp dist/Aaria_Magical_Kitchen_V3_1.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           grep -Fq 'AARIA_V3_BUILD_2026_10' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
