@@ -19,7 +19,7 @@ class ReleaseGates(unittest.TestCase):
   d=json.loads(json.dumps(original));d["tasks"][0]["status"]="VERIFIED";d["tasks"][0]["evidence"]=[]
   self.assertNotEqual(self.validate(d).returncode,0)
  def test_stopped_worker_claim_rejected(self):
-  d=json.loads(json.dumps(original));d["tasks"][2]["status"]="IN_PROGRESS"
+  d=json.loads(json.dumps(original));d["tasks"][2]["owner"]="v31";d["tasks"][2]["status"]="IN_PROGRESS"
   self.assertNotEqual(self.validate(d).returncode,0)
  def test_release_without_completed_integration_rejected(self):
   d=json.loads(json.dumps(original));d["release"]["status"]="VERIFIED"
