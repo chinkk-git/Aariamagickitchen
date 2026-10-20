@@ -19,14 +19,17 @@ read -r next_pkg next_version <<< "$(identity "$UPGRADE_CANDIDATE_APK")"
 [[ "$next_version" =~ ^[0-9]+$ && "$base_version" =~ ^[0-9]+$ && "$next_version" -gt "$base_version" ]] || { echo 'BLOCKED: versionCode must increase'; exit 1; }
 base_cert="$(fingerprint "$V3_BASELINE_APK")"; next_cert="$(fingerprint "$UPGRADE_CANDIDATE_APK")"
 [[ -n "$base_cert" && "$base_cert" == "$next_cert" ]] || { echo 'BLOCKED: signing identity mismatch'; exit 1; }
-adb wait-for-device
-[[ "${ALLOW_ISOLATED_EMULATOR_INSTALL:-}" == "YES" ]] || { echo 'BLOCKED: set ALLOW_ISOLATED_EMULATOR_INSTALL=YES on a disposable isolated emulator'; exit 1; }
-adb install "$V3_BASELINE_APK"
+[[ "${ALLOW_ISOLATED_EMULATOR_INSTALL:-}" == "YES" ]] || { echo 'BLOCKED: isolated-emulator opt-in required'; exit 1; }
+[[ -n "${SEED_VERIFY_COMMAND:-}" ]] || { echo 'BLOCKED: seeded-data assertion command required'; exit 1; }
+[[ -n "${ANDROID_SERIAL:-}" && "${ANDROID_SERIAL}" == emulator-* ]] || { echo 'BLOCKED: ANDROID_SERIAL must identify an emulator'; exit 1; }
+adb -s "$ANDROID_SERIAL" wait-for-device
+[[ "$(adb -s "$ANDROID_SERIAL" shell getprop ro.kernel.qemu | tr -d '\r')" == "1" ]] || { echo 'BLOCKED: target is not an emulator'; exit 1; }
+adb -s "$ANDROID_SERIAL" install "$V3_BASELINE_APK"
 # Seed a marker into app-private data through an authorized app-side test hook or instrumentation;
 # do not claim data preservation without an observed marker surviving the upgrade.
 [[ -n "${SEED_VERIFY_COMMAND:-}" ]] || { echo 'BLOCKED: provide SEED_VERIFY_COMMAND to seed and assert actual app-private user data'; exit 1; }
 bash -c "$SEED_VERIFY_COMMAND seed"
-adb install -r "$UPGRADE_CANDIDATE_APK"
+adb -s "$ANDROID_SERIAL" install -r "$UPGRADE_CANDIDATE_APK"
 bash -c "$SEED_VERIFY_COMMAND verify"
-adb shell pm path "$PACKAGE"
+adb -s "$ANDROID_SERIAL" shell pm path "$PACKAGE"
 echo 'PASS: same-package, same-signer, higher-version non-destructive emulator upgrade; seeded marker verified'
