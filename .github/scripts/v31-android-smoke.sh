@@ -298,8 +298,12 @@ const adultCue = await waitForVisible('.v31-adult-cue', 'Recipe adult cooking cu
 if (!adultCue.text.includes('Ask an adult to operate the air fryer')) throw new Error(`Air fryer safety cue is missing or unclear: ${JSON.stringify(adultCue)}`);
 const recipeNavigation = await evaluate(`(() => { const nav=document.querySelector('#nav'),r=nav?.getBoundingClientRect(); return {display:nav?getComputedStyle(nav).display:'missing',height:r?.height||0}; })()`);
 if (recipeNavigation.display === 'none' || recipeNavigation.height < 40) throw new Error(`Recipe navigation is not visible: ${JSON.stringify(recipeNavigation)}`);
-await captureScreenshot('v31-recipe-portrait.png', 'Recipe', worldDigest);
+const recipeDigest = await captureScreenshot('v31-recipe-portrait.png', 'Recipe', worldDigest);
 if (statSync('artifacts/v31-android-screenshots/v31-recipe-portrait.png').size < 10000) throw new Error('Recipe screenshot is unexpectedly small');
+await evaluate(`document.querySelector('.ref-cook-area')?.scrollIntoView({block:'start'})`);
+const stepSafety = await waitForVisible('.v31-step-adult-cue', 'Active-step adult cooking cue');
+if (!stepSafety.text.includes('Adult only: operate the air fryer')) throw new Error(`Active-step adult cue is missing or unclear: ${JSON.stringify(stepSafety)}`);
+await captureScreenshot('v31-recipe-step-portrait.png', 'Recipe active step', recipeDigest);
 for (const [left,right,label] of [['v31-home-portrait.png','v31-recipe-portrait.png','Recipe'],['v31-world-portrait.png','v31-recipe-portrait.png','Recipe']]) {
   const a=createHash('sha256').update(readFileSync(`artifacts/v31-android-screenshots/${left}`)).digest('hex');
   const b=createHash('sha256').update(readFileSync(`artifacts/v31-android-screenshots/${right}`)).digest('hex');
