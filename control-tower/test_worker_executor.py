@@ -7,7 +7,7 @@ m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 NOW="2026-10-19T20:00:00Z";ACTORS={"trusted":{"W01","W02"}}
 class Api:
     def __init__(self,enabled=False,barrier=None):
-        self.doc={"activation":"ENABLED" if enabled else "DISABLED","workers":{"W01":{"session_state":"UNKNOWN"},"W02":{"session_state":"UNKNOWN"}},
+        self.doc={"activation":"ENABLED" if enabled else "DISABLED","cross_registry_exclusion":"VERIFIED" if enabled else "UNVERIFIED","lease_holder_binding":"VERIFIED" if enabled else "UNVERIFIED","workers":{"W01":{"session_state":"UNKNOWN"},"W02":{"session_state":"UNKNOWN"}},
           "tasks":[{"id":"A","owner":"W01","status":"READY","target_branch":"control-tower/worker-control-plan-20261019","depends_on":[],"lease":None},
                    {"id":"B","owner":"W02","status":"READY","target_branch":"control-tower/worker-control-plan-20261019","depends_on":[],"lease":None}]}
         self.sha="blob1";self.writes=0;self.lock=threading.Lock();self.barrier=barrier
@@ -29,6 +29,12 @@ class ExecutorTests(unittest.TestCase):
         a=Api()
         with self.assertRaises(PermissionError):run(a)
         self.assertEqual(a.writes,0)
+    def test_missing_security_verifications_reject_all_writes(self):
+        for field in ("cross_registry_exclusion","lease_holder_binding"):
+            with self.subTest(field=field):
+                a=Api(True);a.doc[field]="UNVERIFIED"
+                with self.assertRaises(PermissionError):run(a)
+                self.assertEqual(a.writes,0)
     def test_authorized_claim(self):
         a=Api(True);run(a);self.assertEqual(a.doc["tasks"][0]["status"],"CLAIMED")
     def test_actor_role_permission_and_scope_denials(self):
