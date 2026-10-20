@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "activation": "DISABLED",
+  "cost_policy": "NO_ADDITIONAL_CHARGES",
+  "notes": "Isolated Control Tower transaction fixture only. Legacy control-tower/tasks.json remains authoritative and is not migrated or modified.",
+  "workers": {
+    "W01": {
+      "session_state": "UNKNOWN"
+    },
+    "W02": {
+      "session_state": "UNKNOWN"
+    },
+    "W03": {
+      "session_state": "UNKNOWN"
+    },
+    "W04": {
+      "session_state": "UNKNOWN"
+    },
+    "W05": {
+      "session_state": "UNKNOWN"
+    },
+    "W06": {
+      "session_state": "UNKNOWN"
+    },
+    "W07": {
+      "session_state": "UNKNOWN"
+    },
+    "W08": {
+      "session_state": "UNKNOWN"
+    },
+    "W09": {
+      "session_state": "UNKNOWN"
+    },
+    "W10": {
+      "session_state": "UNKNOWN"
+    }
+  },
+  "tasks": []
+}

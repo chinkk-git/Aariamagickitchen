@@ -1,0 +1,50 @@
+name: Control Tower transaction acceptance (read-only)
+on:
+  pull_request:
+    paths:
+      - 'control-tower/**'
+      - '.github/workflows/control-tower-transaction-acceptance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ct-transaction-acceptance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify deterministic transaction and reviewer adapters
+        run: |
+          python3 control-tower/test_worker_github_cas.py
+          python3 control-tower/test_worker_reviewer_identity.py
+          python3 control-tower/test_worker_github_reviews.py
+          python3 control-tower/test_worker_transactions.py
+          python3 control-tower/test_worker_executor.py
+          python3 control-tower/test_worker_runtime.py
+          python3 control-tower/test_worker_security_evidence.py
+          python3 control-tower/test_worker_shared_lease_policy.py
+          python3 control-tower/test_worker_atomic_lease.py
+          python3 control-tower/test_worker_atomic_cas_adapter.py
+          python3 control-tower/test_worker_execution_boundary.py
+          python3 control-tower/test_worker_cutover_plan.py
+          python3 control-tower/test_worker_claims.py
+          python3 control-tower/test_worker_leases.py
+          python3 control-tower/test_worker_task_envelope.py
+          python3 control-tower/test_worker_readiness.py
+          python3 control-tower/test_worker_snapshot_audit.py
+          python3 control-tower/test_worker_scope_policy.py
+          python3 control-tower/test_worker_task_graph.py
+          python3 control-tower/test_worker_task_transitions.py
+          python3 control-tower/test_worker_evidence_contract.py
+          python3 control-tower/test_worker_recovery_policy.py
+          python3 control-tower/test_worker_activation_audit.py
+          python3 control-tower/worker_activation_audit.py
+      - name: Assert disabled worker activation
+        run: python3 control-tower/worker_registry.py
+      - name: Summary
+        if: always()
+        run: |
+          echo 'Read-only acceptance only; no lease claims, credentials, worker dispatch, or releases.' >> "$GITHUB_STEP_SUMMARY"
