@@ -25,6 +25,9 @@ jobs:
           python3 control-tower/validate.py
           python3 control-tower/test_orchestration.py
           python3 control-tower/test_release_gates.py
+          python3 control-tower/worker_registry.py
+          python3 control-tower/test_worker_registry.py
+          python3 control-tower/test_worker_scheduler.py
       - name: Publish summary
         if: always()
         run: |
