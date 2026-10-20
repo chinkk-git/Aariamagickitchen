@@ -74,6 +74,8 @@ jobs:
           node tools/v3/test-approved-chef-art.mjs dist/Aaria_Magical_Kitchen_V3_1.html
           node tools/v3/test-csp-policy.mjs
           node tools/v3/test-profile-isolation.mjs
+          node tools/v3/test-photo-share-approval.mjs
+          node tools/v3/test-secure-content-update-approval.mjs
           node tools/v3/validate-v31.mjs
           mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
           cp dist/Aaria_Magical_Kitchen_V3_1.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
