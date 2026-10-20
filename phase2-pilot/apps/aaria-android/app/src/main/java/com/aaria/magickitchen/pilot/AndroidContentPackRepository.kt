@@ -9,6 +9,12 @@ import java.io.InputStream
 import java.security.KeyFactory
 import java.security.PublicKey
 import java.security.spec.X509EncodedKeySpec
+import java.util.concurrent.ConcurrentHashMap
+
+internal fun <T> activateAfterParentConfirmation(approved: Boolean, activate: () -> T): T {
+    if (!approved) throw SecurityException("Parent or guardian did not approve this content update")
+    return activate()
+}
 
 /** App-private storage and monotonic activation state for verified content packs. */
 class AndroidContentPackRepository(
@@ -21,34 +27,60 @@ class AndroidContentPackRepository(
     private val root = File(appContext.filesDir, "verified-content")
     private val active = File(root, "active")
     private val previous = File(root, "previous")
+    private val awaitingParentApproval = ConcurrentHashMap.newKeySet<String>()
 
-    @Synchronized
-    fun installBase64(encoded: String): JSONObject {
-        require(encoded.length <= MAX_BASE64_CHARS) { "Content pack is too large" }
-        val key = publisherKey ?: throw IllegalStateException("Trusted content publisher key is not provisioned")
-        val keyId = publisherKeyId?.takeIf { it.isNotBlank() } ?: throw IllegalStateException("Trusted content publisher key ID is not provisioned")
-        recoverInterruptedActivation()
-        val bytes = Base64.decode(encoded, Base64.DEFAULT)
-        val lastVersion = prefs.getInt(KEY_VERSION, 0)
-        val stage = File(root, "staged-${System.nanoTime()}")
-        val pack = SignedContentPackVerifier.verifyAndStage(bytes, stage, key, keyId, BuildConfig.VERSION_CODE, lastVersion)
-        check(prefs.edit().putInt(KEY_PENDING, pack.version).commit()) { "Could not persist activation recovery marker" }
-        try {
-            SignedContentPackVerifier.activate(pack, active, previous) { version ->
-                check(prefs.edit().putInt(KEY_VERSION, version).remove(KEY_PENDING).commit()) { "Could not persist accepted content version" }
-            }
-        } catch (error: Exception) {
-            // Keep KEY_PENDING for startup recovery. The swap may have reached disk even if
-            // a later preference commit or rollback operation failed.
-            throw error
+    fun installBase64(encoded: String, parentApproval: (Int, Int) -> Boolean, activationAllowed: () -> Boolean, activationLease: (() -> JSONObject) -> JSONObject): JSONObject {
+        val pack = synchronized(this) {
+            require(encoded.length <= MAX_BASE64_CHARS) { "Content pack is too large" }
+            val key = publisherKey ?: throw IllegalStateException("Trusted content publisher key is not provisioned")
+            val keyId = publisherKeyId?.takeIf { it.isNotBlank() } ?: throw IllegalStateException("Trusted content publisher key ID is not provisioned")
+            recoverInterruptedActivation()
+            val bytes = Base64.decode(encoded, Base64.DEFAULT)
+            val lastVersion = prefs.getInt(KEY_VERSION, 0)
+            val stage = File(root, "staged-${System.nanoTime()}")
+            SignedContentPackVerifier.verifyAndStage(bytes, stage, key, keyId, BuildConfig.VERSION_CODE, lastVersion)
+                .also { awaitingParentApproval.add(it.stagingDirectory.canonicalPath) }
         }
-        return JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
+        try {
+            // Prompt only after the signed package has been fully verified. Do not hold the
+            // activation monitor while a parent responds; catalog reads remain available.
+            return activateAfterParentConfirmation(parentApproval(pack.version, pack.files.size)) {
+                activationLease {
+                    synchronized(this) {
+                recoverInterruptedActivation()
+                check(pack.version > prefs.getInt(KEY_VERSION, 0)) { "Content replay or concurrent activation rejected" }
+                check(activationAllowed()) { "Parent approval expired because the app left the foreground" }
+                val stageRoot = root.canonicalFile
+                val stage = pack.stagingDirectory.canonicalFile
+                check(stage.parentFile == stageRoot && stage.name.startsWith("staged-") && stage.isDirectory) {
+                    "Verified staging data is no longer available"
+                }
+                check(prefs.edit().putInt(KEY_PENDING, pack.version).commit()) { "Could not persist activation recovery marker" }
+                try {
+                    SignedContentPackVerifier.activate(pack, active, previous) { version ->
+                        check(prefs.edit().putInt(KEY_VERSION, version).remove(KEY_PENDING).commit()) { "Could not persist accepted content version" }
+                    }
+                } catch (error: Exception) {
+                    // Keep KEY_PENDING for startup recovery if the swap reached disk.
+                    throw error
+                }
+                JSONObject().put("contentVersion", pack.version).put("files", pack.files.size)
+                    }
+                }
+            }
+        } finally {
+            awaitingParentApproval.remove(pack.stagingDirectory.canonicalPath)
+            if (pack.stagingDirectory.exists()) pack.stagingDirectory.deleteRecursively()
+        }
     }
 
     @Synchronized
     fun recoverInterruptedActivation() {
         val pending = prefs.getInt(KEY_PENDING, -1)
-        if (pending < 0) return
+        if (pending < 0) {
+            discardAbandonedStages()
+            return
+        }
         val activeVersion = active.takeIf { it.isDirectory }?.resolve("pack-version.txt")?.takeIf { it.isFile }?.readText()?.trim()?.toIntOrNull()
         if (activeVersion == pending) {
             check(prefs.edit().putInt(KEY_VERSION, pending).remove(KEY_PENDING).commit())
@@ -60,10 +92,21 @@ class AndroidContentPackRepository(
             }
             check(prefs.edit().remove(KEY_PENDING).commit()) { "Could not clear content recovery marker" }
         }
+        discardAbandonedStages()
     }
 
+    private fun discardAbandonedStages() {
+        root.listFiles()?.filter { it.name.startsWith("staged-") && it.canonicalPath !in awaitingParentApproval }?.forEach { stage ->
+            // Cleanup is best effort: inability to reclaim stale temporary space must not
+            // invalidate or hide the last known-good active content.
+            runCatching { stage.deleteRecursively() }
+        }
+    }
+
+    @Synchronized
     fun activeContentDirectory(): File? = active.takeIf { it.isDirectory }
 
+    @Synchronized
     fun openContentAsset(appAssetPath: String): InputStream? = runCatching {
         recoverInterruptedActivation()
         if (!appAssetPath.startsWith("content/")) return null
