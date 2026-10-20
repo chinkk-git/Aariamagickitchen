@@ -124,6 +124,47 @@ jobs:
           run-id: 39191099617
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Audit Android package identity and signing continuity
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v31-diagnostics
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          baseline="artifacts/v31-baseline-apk/app-debug.apk"
+          unified="phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$baseline" && test -s "$unified"
+          "$aapt" dump badging "$baseline" > artifacts/v31-diagnostics/v3-baseline-badging.txt
+          "$aapt" dump badging "$unified" > artifacts/v31-diagnostics/unified-badging.txt
+          "$apksigner" verify --print-certs "$baseline" > artifacts/v31-diagnostics/v3-baseline-signer.txt
+          "$apksigner" verify --print-certs "$unified" > artifacts/v31-diagnostics/unified-signer.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          d=Path('artifacts/v31-diagnostics')
+          def parse(file):
+              s=(d/file).read_text()
+              m=re.search(r"package: name='([^']+)' versionCode='([^']+)'",s)
+              if not m: raise SystemExit('Missing APK package identity: '+file)
+              return m.group(1),int(m.group(2))
+          def signer(file):
+              s=(d/file).read_text()
+              m=re.search(r"Signer #1 certificate SHA-256 digest: ([0-9a-fA-F]+)",s)
+              if not m: raise SystemExit('Missing signer digest: '+file)
+              return m.group(1).lower()
+          bp,bv=parse('v3-baseline-badging.txt')
+          up,uv=parse('unified-badging.txt')
+          bs=signer('v3-baseline-signer.txt')
+          us=signer('unified-signer.txt')
+          same_package=bp==up
+          same_signer=bs==us
+          safe_upgrade=same_package and same_signer and uv>bv
+          report=f"baseline_package={bp}\\nbaseline_version={bv}\\nbaseline_signer_sha256={bs}\\nunified_package={up}\\nunified_version={uv}\\nunified_signer_sha256={us}\\nsame_package={str(same_package).lower()}\\nsame_signer={str(same_signer).lower()}\\nverified_upgrade_eligible={str(safe_upgrade).lower()}\\n"
+          (d/'package-signing-continuity.txt').write_text(report)
+          print(report)
+          if same_package and not same_signer:
+              raise SystemExit('Unsafe same-package signing mismatch: do not install over existing app')
+          PY
       - name: Launch Android APK and capture home/map screenshots
         timeout-minutes: 15
         uses: reactivecircus/android-emulator-runner@v2
