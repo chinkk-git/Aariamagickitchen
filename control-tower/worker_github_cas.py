@@ -18,7 +18,8 @@ def cas_update(api,owner,repo,branch,path,transform,actor,allowed,permission):
         raise ValueError("missing expected blob SHA")
     if file.get("encoding","base64")!="base64" or not isinstance(file.get("content"),str):
         raise ValueError("registry content is not base64")
-    try: old=json.loads(base64.b64decode(file["content"],validate=True).decode("utf-8"))
+    compact="".join(ch for ch in file["content"] if ch not in " \t\r\n")
+    try: old=json.loads(base64.b64decode(compact,validate=True).decode("utf-8"))
     except (ValueError,UnicodeDecodeError,json.JSONDecodeError) as exc:
         raise ValueError("invalid authoritative registry") from exc
     if not isinstance(old,dict): raise ValueError("registry must be an object")

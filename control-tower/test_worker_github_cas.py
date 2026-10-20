@@ -16,6 +16,14 @@ class CasTests(unittest.TestCase):
         return m.cas_update(a,**args,transform=transform,actor=actor,allowed={"trusted"},permission=permission)
     def test_success(self):
         a=Api();self.run_tx(a);self.assertEqual(a.data["version"],1)
+    def test_wrapped_base64_content(self):
+        a=Api();original=a.get_content
+        def wrapped(**kw):
+            response=original(**kw);content=response["content"]
+            response["content"]="\r\n".join(content[i:i+12] for i in range(0,len(content),12))
+            return response
+        a.get_content=wrapped;self.run_tx(a)
+        self.assertEqual(a.data["version"],1)
     def test_authorization_and_fixed_scope(self):
         a=Api()
         for u in ({"actor":"bad"},{"permission":"read"},{"branch":"main"},{"path":"tasks.json"}):
