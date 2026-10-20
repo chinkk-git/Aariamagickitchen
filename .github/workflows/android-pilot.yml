@@ -559,7 +559,14 @@ jobs:
           fi
           adb shell pm path "$test_package" | tee "$diagnostics/v3-test-package-path.txt"
           grep -Fq 'package:/data/app/' "$diagnostics/v3-test-package-path.txt"
-          adb shell am start -W -n "$test_package/.MainActivity" | tee "$diagnostics/v3-test-launch.txt"
+          test_component="$(adb shell cmd package resolve-activity --brief --user 0 "$test_package" | tr -d '\r' | tail -n 1)"
+          if [[ "$test_component" != "$test_package/"* ]]; then
+            printf 'Resolved V3 test launcher component: %s\n' "$test_component" | tee "$diagnostics/v3-test-resolved-component.txt"
+            echo "::error::Could not resolve launcher activity for the isolated V3 test package."
+            exit 1
+          fi
+          printf '%s\n' "$test_component" | tee "$diagnostics/v3-test-resolved-component.txt"
+          adb shell am start -W -n "$test_component" | tee "$diagnostics/v3-test-launch.txt"
           grep -Fq 'Status: ok' "$diagnostics/v3-test-launch.txt"
           adb shell pm list packages | grep -F "package:$package" | tee "$diagnostics/v3-installed-with-test.txt"
           adb shell pm list packages | grep -F "package:$test_package" | tee "$diagnostics/v3-test-installed-with-existing.txt"
