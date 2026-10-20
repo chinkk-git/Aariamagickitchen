@@ -77,6 +77,8 @@ jobs:
           node tools/v3/test-photo-share-approval.mjs
           node tools/v3/test-secure-content-update-approval.mjs
           node tools/v3/validate-v31.mjs
+          python3 tools/v3/artwork/batches/batch-01/generate-batch.py
+          git diff --exit-code -- tools/v3/artwork/batches/batch-01
           node tools/v3/artwork/remediation-pilot/audit-readiness.mjs
           bash -n tools/v3/android/verify-nondestructive-upgrade.sh
           if env -u V3_BASELINE_APK -u UPGRADE_CANDIDATE_APK bash tools/v3/android/verify-nondestructive-upgrade.sh >/tmp/w01-upgrade-guard.log 2>&1; then
