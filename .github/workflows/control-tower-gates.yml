@@ -49,6 +49,7 @@ jobs:
           python3 control-tower/test_worker_scope_policy.py
           python3 control-tower/test_worker_task_graph.py
           python3 control-tower/test_worker_task_transitions.py
+          python3 control-tower/test_worker_evidence_contract.py
       - name: Publish summary
         if: always()
         run: |
