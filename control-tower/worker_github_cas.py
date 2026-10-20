@@ -25,6 +25,11 @@ def cas_update(api,owner,repo,branch,path,transform,actor,allowed,permission):
     if not isinstance(old,dict): raise ValueError("registry must be an object")
     updated=transform(old)
     if not isinstance(updated,dict): raise ValueError("invalid transaction result")
+    if updated is old: raise ValueError("transaction must return an independent document")
+    if old.get("activation") != "DISABLED" or updated.get("activation") != "DISABLED":
+        raise PermissionError("CAS cannot activate workers")
+    if old.get("cost_policy") != "NO_ADDITIONAL_CHARGES" or updated.get("cost_policy") != "NO_ADDITIONAL_CHARGES":
+        raise PermissionError("CAS cannot change cost policy")
     encoded=base64.b64encode((json.dumps(updated,indent=2,sort_keys=True)+"\n").encode()).decode("ascii")
     try:
         return api.put_content(owner=owner,repo=repo,branch=branch,path=path,sha=file["sha"],
