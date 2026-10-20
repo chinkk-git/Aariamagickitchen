@@ -222,7 +222,7 @@ render=function v3Render(){
   const focusCode=active?.closest?.('[data-v31-country]')?.dataset.v31Country||'';
   const focusType=active?.matches?.('[data-v31-country-select]')?'select':active?.matches?.('[data-v31-country-search]')?'search':active?.closest?.('.v31-map-pin')?'pin':active?.closest?.('.v31-country-choice')?'list':active?.matches?.('.v31-land')?'map':'';
   const screen=document.querySelector('#screen');if(screen){screen.className='page v31-world-screen';screen.innerHTML=v31WorldPage()}
-  const app=document.querySelector('.app');app?.classList.remove('home-dashboard');app?.classList.toggle('reduce-motion',!!state.reducedMotion);
+  const app=document.querySelector('.app');app?.classList.remove('home-dashboard');app?.classList.add('v31-world-active');app?.classList.toggle('reduce-motion',!!state.reducedMotion);
   document.body.classList.remove('v3-screen-home');document.querySelectorAll('.bottom .tab').forEach(b=>{b.classList.toggle('active',b.dataset.nav==='world');if(b.dataset.nav==='world')b.lastChild.textContent=state.language==='pt-BR'?'Mundo':'World'});
   v31ApplyMapTransform();
   const selector=focusType==='select'?'[data-v31-country-select]':focusType==='search'?'[data-v31-country-search]':focusType==='pin'?`.v31-map-pin[data-v31-country="${focusCode}"]`:focusType==='list'?`.v31-country-choice[data-v31-country="${focusCode}"]`:focusType==='map'?`.v31-land[data-v31-country="${focusCode}"]`:'';
@@ -232,10 +232,34 @@ render=function v3Render(){
  }
  window.v31PreviousView=view;
  v3BaseRender();
+ document.querySelector('.app')?.classList.remove('v31-world-active');
+ if(view==='recipe')v31AddAdultCookingCues();
  document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  document.body.classList.toggle('v3-screen-home',view==='home');
  if(view==='recipe'&&selected){const screen=document.querySelector('#screen');if(screen&&!screen.querySelector('.v3-quiz-card'))screen.insertAdjacentHTML('beforeend',v3QuizCard(selected));}
 };
+
+function v31AddAdultCookingCues(){
+ const method=String(selected?.method||'').toLowerCase();
+ const cueText=method.includes('air fryer')
+  ?(state.language==='pt-BR'?'Peça a um adulto para usar a air fryer e retirar a comida quente. Espere a comida esfriar antes de comer.':'Ask an adult to operate the air fryer and remove hot food. Wait until food is cool before eating.')
+  :method.includes('oven')||method.includes('stovetop')||method.includes('hob')
+   ?(state.language==='pt-BR'?'Peça a um adulto para usar o forno ou fogão e manusear panelas e alimentos quentes.':'Ask an adult to operate the oven or hob and handle hot pans and food.')
+   :'';
+ if(!cueText)return;
+ const banner=document.querySelector('.rollup-method-banner');
+ if(banner&&!banner.previousElementSibling?.classList.contains('v31-adult-cue')){
+  const cue=document.createElement('p');cue.className='v31-adult-cue';cue.setAttribute('role','note');cue.textContent=cueText;banner.before(cue);
+ }
+ const stepCopy=document.querySelector('.ref-step-card.active .ref-step-copy');
+ if(stepCopy&&!stepCopy.previousElementSibling?.classList.contains('v31-step-adult-cue')){
+  const cue=document.createElement('p');cue.className='v31-step-adult-cue';cue.setAttribute('role','note');
+  cue.textContent=method.includes('air fryer')
+   ?(state.language==='pt-BR'?'Somente um adulto deve usar a air fryer e retirar a comida quente.':'Adult only: operate the air fryer and remove hot food.')
+   :(state.language==='pt-BR'?'Somente um adulto deve usar o forno ou fogão e manusear panelas quentes.':'Adult only: operate the oven or hob and handle hot pans.');
+  stepCopy.before(cue);
+ }
+}
 
 document.addEventListener('click',e=>{if(e.target.closest?.('.bottom .tab[data-nav="world"]'))window.v31WorldOpenedFromNav=true},true);
 document.addEventListener('click',async e=>{

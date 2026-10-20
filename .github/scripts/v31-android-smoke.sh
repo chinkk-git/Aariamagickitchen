@@ -278,6 +278,8 @@ await rotateTo(1);
 await waitForWebViewOrientation(true);
 const landscape = await waitForVisible('.v31-world-header h1', 'World heading after rotation');
 if (!landscape.screen.includes('v31-world-screen') || !landscape.text.includes('World Food Adventures')) throw new Error('World route was lost during orientation change');
+const landscapeLayout = await evaluate(`(() => { const app=document.querySelector('.app'),nav=document.querySelector('#nav'); return {appWidth:app?.getBoundingClientRect().width||0,viewportWidth:innerWidth,navDisplay:nav?getComputedStyle(nav).display:'missing',navHeight:nav?.getBoundingClientRect().height||0}; })()`);
+if (landscapeLayout.appWidth < landscapeLayout.viewportWidth * 0.9 || landscapeLayout.navDisplay === 'none' || landscapeLayout.navHeight < 40) throw new Error(`Landscape layout does not use the screen width or show navigation: ${JSON.stringify(landscapeLayout)}`);
 await captureScreenshot('v31-world-landscape.png', 'World landscape', worldDigest);
 const image = readFileSync('artifacts/v31-android-screenshots/v31-world-landscape.png');
 const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
@@ -292,6 +294,10 @@ if (indiaCount !== 18) throw new Error(`India destination should expose its 18 o
 await evaluate(`document.querySelector('[data-v31-approved-recipe="51"]').click()`);
 const recipe = await waitForVisible('.ref-hero h1', 'India recipe heading');
 if (recipe.text !== 'Masala Cheese Toast') throw new Error(`India recipe did not replace the active screen; got: ${JSON.stringify(recipe)}`);
+const adultCue = await waitForVisible('.v31-adult-cue', 'Recipe adult cooking cue');
+if (!adultCue.text.includes('Ask an adult to operate the air fryer')) throw new Error(`Air fryer safety cue is missing or unclear: ${JSON.stringify(adultCue)}`);
+const recipeNavigation = await evaluate(`(() => { const nav=document.querySelector('#nav'),r=nav?.getBoundingClientRect(); return {display:nav?getComputedStyle(nav).display:'missing',height:r?.height||0}; })()`);
+if (recipeNavigation.display === 'none' || recipeNavigation.height < 40) throw new Error(`Recipe navigation is not visible: ${JSON.stringify(recipeNavigation)}`);
 await captureScreenshot('v31-recipe-portrait.png', 'Recipe', worldDigest);
 if (statSync('artifacts/v31-android-screenshots/v31-recipe-portrait.png').size < 10000) throw new Error('Recipe screenshot is unexpectedly small');
 for (const [left,right,label] of [['v31-home-portrait.png','v31-recipe-portrait.png','Recipe'],['v31-world-portrait.png','v31-recipe-portrait.png','Recipe']]) {
