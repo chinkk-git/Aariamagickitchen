@@ -5,7 +5,7 @@ a trusted API, plus a private capability handle. The capability is never logged
 or persisted. This module makes no network requests and cannot activate workers.
 """
 import hmac
-from worker_github_cas import cas_update
+from worker_github_cas import cas_update, ConflictError
 from worker_transactions import transact
 
 
