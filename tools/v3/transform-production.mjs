@@ -228,6 +228,22 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 .v3-rail .home-tile{min-width:0;width:100%;border:1px solid var(--v3-line);border-radius:17px;background:#fff;box-shadow:var(--v3-shadow);overflow:hidden}
 .v3-rail .home-thumb{height:116px}
 .v3-rail .home-tile-name{display:block;padding:8px 9px 10px;color:var(--v3-ink);font-weight:850;font-size:13px;line-height:1.2;white-space:normal}
+.v31-pinterest-board{columns:2;column-gap:12px;padding:4px 1px 2px}
+.v31-pinterest-tile{display:block;break-inside:avoid;width:100%;margin:0 0 12px;padding:0 0 10px;overflow:hidden;border:1px solid #e8deed;border-radius:19px;background:#fff;color:var(--v3-ink);text-align:left;box-shadow:0 5px 16px #39285412;cursor:pointer}
+.v31-pinterest-tile .home-thumb{height:auto;aspect-ratio:1.34;margin:0;overflow:hidden;border-radius:18px 18px 0 0;background:#f3eafa}
+.v31-pinterest-tile:nth-child(4n+1) .home-thumb{aspect-ratio:1/1}
+.v31-pinterest-tile:nth-child(4n+2) .home-thumb{aspect-ratio:1.34/1}
+.v31-pinterest-tile:nth-child(4n+3) .home-thumb{aspect-ratio:1.12/1}
+.v31-pinterest-tile:nth-child(4n) .home-thumb{aspect-ratio:1.48/1}
+.v31-pinterest-tile .home-thumb img{width:100%;height:100%;object-fit:cover}
+.v31-pinterest-tile .home-thumb.family-group-art img{object-fit:contain;background:#fff8fc}
+.v31-pinterest-tile .home-thumb .atlas-cell img{object-fit:fill}
+.v31-pinterest-tile .recipe-number-badge{top:8px;left:8px}
+.v31-pinterest-tile .home-tile-name{display:block;padding:9px 11px 0;color:var(--v3-ink);font-size:14px;font-weight:900;line-height:1.2;white-space:normal}
+.v31-pinterest-tile .home-tile-meta{display:block;padding:4px 11px 0;color:#746985;font-size:11px;font-weight:700;line-height:1.25}
+.v31-board-heading{margin-top:3px}
+@media(min-width:760px){.v31-pinterest-board{columns:3;column-gap:14px}.v31-pinterest-tile{margin-bottom:14px}.v31-pinterest-tile .home-tile-name{font-size:15px}}
+@media(max-width:340px){.v31-pinterest-board{columns:1}}
 .v3-quick-links{display:flex;flex-wrap:wrap;gap:8px}
 .v3-quick-links button{min-height:42px;padding:8px 13px;border:1px solid var(--v3-line);border-radius:14px;background:#fff;color:var(--v3-plum);font:inherit;font-size:13px;font-weight:800}
 .v3-planner-note{margin:0 0 12px;padding:12px 14px;border:1px solid #d5e8dc;border-radius:15px;background:#edf7ef;color:#405e50;font-size:13px;line-height:1.4}

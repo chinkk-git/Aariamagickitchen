@@ -56,6 +56,7 @@ function v3IngredientArt(value){
  if(idx<0)return `<span aria-hidden="true">${v3IngredientFallback(value)}</span>`;
  return `<span class="v3-ingredient-art v3-food-${idx}" role="img" aria-label="${safe(value)}"></span>`;
 }
+homeTile=function v31PinterestTile(r){return `<button class="home-tile v31-pinterest-tile" data-open="${r.id}" aria-label="Open ${safe(r.title)}">${homeDishThumb(r)}${recipeNumberMarkup(r)}<span class="home-tile-name">${safe(r.title)}</span><span class="home-tile-meta">${safe(r.category)} · ${safe(r.method)}</span></button>`};
 // The production batch renderer has hand-drawn, ingredient-specific SVGs for
 // the full recipe catalogue. Keep it intact; the small atlas is only a fallback
 // for the older recipe card renderer, where exact atlas matches are available.
@@ -85,7 +86,10 @@ home=function v3Home(){
  const stats=homeStats();
  const recent=[...(state.done||[])].reverse().map(find).filter(Boolean);
  const favs=(state.favorites||[]).map(find).filter(Boolean);
- const picks=(favs.length?favs:recent.length?recent:RECIPES.slice(0,6)).slice(0,6);
+ const family=RECIPES.find(r=>r.category==='Cooking with Mommy & Daddy');
+ const friends=RECIPES.find(r=>r.category==='Cooking with Friends');
+ const preferred=[...favs.slice(0,4),...recent.slice(0,4),family,friends,...RECIPES];
+ const picks=[...new Map(preferred.filter(Boolean).map(r=>[r.id,r])).values()].slice(0,12);
  const pt=state.language==='pt-BR';
  const title=pt?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  const aaria=avatar('v3-hero-avatar');
@@ -93,8 +97,8 @@ home=function v3Home(){
   <header class="v3-home-top"><div class="v3-brand"><span class="v3-brand-mark" aria-hidden="true">✨</span><span>${title}<small>${pt?'Sua cozinha · Suas criações · Sua magia':'Your kitchen · Your creations · Your magic'}</small></span></div><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
   <section class="v31-home-hero"><div class="v31-hero-copy"><span class="v3-eyebrow">${pt?'✨ AVENTURAS NA COZINHA':'✨ LITTLE KITCHEN ADVENTURES'}</span><h1>${pt?'O que vamos criar hoje?':'What shall we make today?'}</h1><p>${pt?'Escolha uma receita ou explore sabores do mundo.':'Pick a recipe or explore flavours around the world.'}</p><div class="v31-primary-actions"><button class="v3-primary" data-nav="library">${pt?'Vamos cozinhar':'Let’s Cook'} <span aria-hidden="true">→</span></button><button class="v31-world-primary" data-v31-open-world>${pt?'Explorar o mundo':'Explore the World'} <span aria-hidden="true">🌍</span></button></div></div><div class="v31-hero-art">${aaria}<span class="v31-sparkle v31-sparkle-a" aria-hidden="true">✦</span><span class="v31-sparkle v31-sparkle-b" aria-hidden="true">✧</span></div></section>
   <section class="v31-shortcuts" aria-label="${pt?'Atalhos da cozinha':'Kitchen shortcuts'}"><button class="v31-shortcut v31-surprise" data-action="open-wheel"><span aria-hidden="true">🎁</span><span><strong>${pt?'Surpresa!':'Surprise Me'}</strong><small>${pt?'Uma receita escolhida na roda':'Spin for a recipe'}</small></span></button><button class="v31-shortcut v31-planner" data-nav="week"><span aria-hidden="true">🗓️</span><span><strong>${pt?'Meu planejador':'My Planner'}</strong><small>${pt?'Planeje a semana em família':'Plan a fun week together'}</small></span></button></section>
-  <div class="v3-section-head"><div><h2>${pt?'Receita em destaque':'Featured recipe'}</h2><p>${pt?'Uma ideia deliciosa para começar.':'A delicious idea to get started.'}</p></div><button class="text-link" data-nav="library">${pt?'Ver todas':'Browse all'} →</button></div>
-  <section class="v3-rail" aria-label="${pt?'Receitas em destaque':'Featured recipes'}">${picks.map(homeTile).join('')}</section>
+  <div class="v3-section-head v31-board-heading"><div><h2>${pt?'Meu livro de receitas':'My recipe book'}</h2><p>${pt?'Uma coleção visual para escolher sua próxima aventura.':'A picture-led collection for your next kitchen adventure.'}</p></div><button class="text-link" data-nav="library">${pt?'Ver todas':'Browse all'} →</button></div>
+  <section class="v31-pinterest-board" aria-label="${pt?'Meu livro de receitas':'My recipe book'}">${picks.map(homeTile).join('')}</section>
   <section class="v31-world-shelf"><div class="v3-section-head"><div><h2>${pt?'Aventuras de comida pelo mundo':'World Food Adventures'}</h2><p>${pt?'Conheça um lugar novo, um sabor de cada vez.':'Meet a new place, one flavour at a time.'}</p></div><button class="text-link" data-v31-open-world>${pt?'Explorar':'Explore'} →</button></div><button class="v31-world-card" data-v31-open-world><span class="v31-world-globe" aria-hidden="true">🌏</span><span><strong>${pt?'Seu passaporte culinário':'Your food explorer passport'}</strong><small>${pt?'Sete destinos para descobrir no mapa':'Seven destinations to discover on the map'}</small></span><span class="v31-country-flags" aria-hidden="true">🇮🇳 🇮🇹 🇨🇳 🇯🇵 🇲🇽 🇻🇳 🇬🇷</span><span class="v31-card-arrow" aria-hidden="true">→</span></button></section>
   <section class="v31-collection-links"><div class="v3-section-head"><div><h2>${pt?'Cozinhe junto':'Cook together'}</h2><p>${pt?'Com as pessoas que você gosta.':'With the people you love.'}</p></div></div><div class="v31-collection-grid"><button data-nav="family">👨‍👩‍👧 <strong>${pt?'Com a família':'With Family'}</strong></button><button data-nav="friends">🧑‍🍳 <strong>${pt?'Com amigos':'With Friends'}</strong></button></div></section>
   <nav class="v3-quick-links" aria-label="${pt?'Mais atividades':'More activities'}"><button data-nav="rewards">🏆 ${pt?'Prêmios':'Awards'} · ${stats.badges}</button><button data-nav="stories">🧚 ${pt?'Histórias e música':'Stories and music'}</button><button data-action="groceries-choose">🛒 ${pt?'Lista de compras':'Shopping list'}</button><button data-nav="settings">⚙️ ${pt?'Configurações':'Settings'}</button></nav>
