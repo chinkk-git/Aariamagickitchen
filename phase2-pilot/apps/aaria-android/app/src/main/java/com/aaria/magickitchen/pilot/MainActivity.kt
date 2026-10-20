@@ -1,11 +1,15 @@
 package com.aaria.magickitchen.pilot
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.KeyguardManager
 import android.content.ClipData
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.net.Uri
 import android.os.Bundle
+import android.os.Build
+import android.os.Looper
 import android.provider.MediaStore
 import android.webkit.JavascriptInterface
 import android.webkit.ValueCallback
@@ -15,9 +19,15 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 import java.io.ByteArrayInputStream
 import java.io.File
 import java.util.UUID
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicReference
 
 private fun localErrorResponse(statusCode: Int, reasonPhrase: String): WebResourceResponse =
     WebResourceResponse(
@@ -29,13 +39,244 @@ private fun localErrorResponse(statusCode: Int, reasonPhrase: String): WebResour
         ByteArrayInputStream(ByteArray(0))
     )
 
+internal fun resolveChooserResult(
+    cameraCaptureUri: Uri?,
+    cameraCaptureFile: File?,
+    resultCode: Int,
+    resultOkCode: Int,
+    pickerResult: Array<Uri>?
+): Array<Uri>? {
+    if (cameraCaptureUri == null) return pickerResult
+    return if (resultCode == resultOkCode && cameraCaptureFile?.isFile == true && cameraCaptureFile.length() > 0L) {
+        arrayOf(cameraCaptureUri)
+    } else {
+        // A camera-only request must not fall through to a URI supplied by a picker or
+        // by a camera app when capture was canceled or did not produce the requested file.
+        null
+    }
+}
+
 class MainActivity : Activity() {
     private lateinit var webView: WebView
+    private val approvalLifecycleLock = Any()
+    @Volatile internal var isForegroundForApproval: Boolean = false
+        private set
+    private val parentCredentialPromptPending = AtomicBoolean(false)
     private val contentPacks by lazy { AndroidContentPackRepository(this) }
     private var fileChooserCallback: ValueCallback<Array<Uri>>? = null
     private var pendingCaptureUri: Uri? = null
     private var pendingCaptureFile: File? = null
     private val fileChooserRequest = 4312
+    private val parentShareRequest = 4313
+    private val parentUpdateRequest = 4314
+    private data class PendingShare(val bytes: ByteArray, val mimeType: String, val title: String)
+    private data class PendingUpdateApproval(
+        val completed: CountDownLatch = CountDownLatch(1),
+        val dialogApproved: AtomicBoolean = AtomicBoolean(false),
+        val credentialApproved: AtomicBoolean = AtomicBoolean(false)
+    )
+    private val pendingParentShare = AtomicReference<PendingShare?>(null)
+    private val pendingParentUpdate = AtomicReference<PendingUpdateApproval?>(null)
+    private var backInvokedCallback: OnBackInvokedCallback? = null
+
+    internal fun requestParentApprovedShare(bytes: ByteArray, mimeType: String, title: String): Boolean {
+        if (Looper.myLooper() == Looper.getMainLooper() || bytes.isEmpty() ||
+            bytes.size > 15 * 1024 * 1024 || mimeType !in setOf("image/png", "image/jpeg") ||
+            title.length > NativeBridgeInputPolicy.MAX_SHARED_TITLE_CHARS
+        ) return false
+        if (!parentCredentialPromptPending.compareAndSet(false, true)) return false
+
+        val keyguard = (getSystemService(KEYGUARD_SERVICE) as? KeyguardManager) ?: run {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
+        if (!keyguard.isDeviceSecure) {
+            runOnUiThread {
+                android.widget.Toast.makeText(
+                    this,
+                    "Ask a parent to set a device screen lock before sharing photos.",
+                    android.widget.Toast.LENGTH_LONG
+                ).show()
+            }
+            parentCredentialPromptPending.set(false)
+            return false
+        }
+        if (!ParentShareAuthorizationPolicy.canRequest(
+                hasSecureDeviceCredential = keyguard.isDeviceSecure,
+                activityForeground = isForegroundForApproval,
+                activityAlive = !isFinishing && !isDestroyed,
+                requestAlreadyPending = pendingParentShare.get() != null || pendingParentUpdate.get() != null
+            )
+        ) {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
+        val credentialPrompt = try {
+            keyguard.createConfirmDeviceCredentialIntent(
+                "Parent or guardian approval",
+                "A parent or guardian must confirm before this photo can be shared."
+            )
+        } catch (_: Exception) {
+            null
+        } ?: run {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
+
+        val pending = PendingShare(bytes.copyOf(), mimeType, title)
+        if (!pendingParentShare.compareAndSet(null, pending)) {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
+        val promptStarted = AtomicBoolean(false)
+        val promptStartCompleted = CountDownLatch(1)
+        runOnUiThread {
+            if (isFinishing || isDestroyed || !isForegroundForApproval) {
+                pendingParentShare.compareAndSet(pending, null)
+                promptStartCompleted.countDown()
+                return@runOnUiThread
+            }
+            try {
+                startActivityForResult(credentialPrompt, parentShareRequest)
+                promptStarted.set(true)
+            } catch (_: Exception) {
+                pendingParentShare.compareAndSet(pending, null)
+            } finally {
+                promptStartCompleted.countDown()
+            }
+        }
+        val started = try {
+            promptStartCompleted.await(3, TimeUnit.SECONDS) && promptStarted.get()
+        } catch (_: InterruptedException) {
+            Thread.currentThread().interrupt()
+            false
+        }
+        if (!started) {
+            pendingParentShare.compareAndSet(pending, null)
+            parentCredentialPromptPending.set(false)
+        }
+        return started
+    }
+
+    internal fun confirmParentContentUpdate(version: Int, fileCount: Int): Boolean {
+        // A WebView JavaScript bridge call runs off the UI thread. Fail closed if that changes.
+        if (Looper.myLooper() == Looper.getMainLooper()) return false
+        val keyguard = getSystemService(KEYGUARD_SERVICE) as? KeyguardManager ?: return false
+        if (!keyguard.isDeviceSecure || !isForegroundForApproval || isFinishing || isDestroyed) return false
+        val credentialPrompt = try {
+            keyguard.createConfirmDeviceCredentialIntent(
+                "Parent or guardian approval",
+                "A parent or guardian must unlock this device to approve the verified content update."
+            )
+        } catch (_: Exception) {
+            null
+        } ?: return false
+        if (!parentCredentialPromptPending.compareAndSet(false, true)) return false
+        val pending = PendingUpdateApproval()
+        if (!pendingParentUpdate.compareAndSet(null, pending)) {
+            parentCredentialPromptPending.set(false)
+            return false
+        }
+        val dialog = AtomicReference<AlertDialog?>()
+        val promptStarted = AtomicBoolean(false)
+        runOnUiThread {
+            if (isFinishing || isDestroyed || !isForegroundForApproval) {
+                pending.completed.countDown()
+            } else {
+                dialog.set(
+                    AlertDialog.Builder(this)
+                        .setTitle("Parent or guardian approval")
+                        .setMessage("Review verified kitchen content update $version containing $fileCount items. A device credential is required to continue.")
+                        .setPositiveButton("Continue") { _, _ ->
+                            try {
+                                if (isFinishing || isDestroyed || !isForegroundForApproval) {
+                                    pending.completed.countDown()
+                                } else {
+                                    pending.dialogApproved.set(true)
+                                    startActivityForResult(credentialPrompt, parentUpdateRequest)
+                                    promptStarted.set(true)
+                                }
+                            } catch (_: Exception) {
+                                pending.completed.countDown()
+                            }
+                        }
+                        .setNegativeButton("Cancel") { _, _ -> pending.completed.countDown() }
+                        .setOnCancelListener { pending.completed.countDown() }
+                        .create()
+                        .also { it.show() }
+                )
+            }
+        }
+        val deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(60)
+        while (pending.completed.count > 0 && System.nanoTime() < deadline) {
+            if (isFinishing || isDestroyed || (!promptStarted.get() && !isForegroundForApproval)) {
+                runOnUiThread { dialog.getAndSet(null)?.dismiss() }
+                pending.completed.countDown()
+                break
+            }
+            val signaled = try {
+                pending.completed.await(250, TimeUnit.MILLISECONDS)
+            } catch (_: InterruptedException) {
+                Thread.currentThread().interrupt()
+                pending.completed.countDown()
+                false
+            }
+            if (signaled || Thread.currentThread().isInterrupted) break
+        }
+        if (pending.completed.count > 0) {
+            runOnUiThread { dialog.getAndSet(null)?.dismiss() }
+            pending.completed.countDown()
+        }
+        val approved = ParentUpdateAuthorizationPolicy.canActivate(
+            dialogApproved = pending.dialogApproved.get(),
+            credentialApproved = pending.credentialApproved.get(),
+            activityForeground = isForegroundForApproval,
+            activityAlive = !isFinishing && !isDestroyed
+        )
+        pendingParentUpdate.compareAndSet(pending, null)
+        parentCredentialPromptPending.set(false)
+        return approved
+    }
+
+    private fun shareParentApprovedPhoto(share: PendingShare) {
+        try {
+            val directory = File(cacheDir, "shared-posts").apply { mkdirs() }
+            val extension = if (share.mimeType == "image/png") ".png" else ".jpg"
+            val name = UUID.randomUUID().toString() + extension
+            File(directory, name).writeBytes(share.bytes)
+            val uri = Uri.parse("content://$packageName.share/post/$name")
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = share.mimeType
+                putExtra(Intent.EXTRA_STREAM, uri)
+                if (share.title.isNotBlank()) putExtra(Intent.EXTRA_TEXT, share.title)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            startActivity(Intent.createChooser(intent, "Share your kitchen win"))
+        } catch (_: Exception) {
+            android.widget.Toast.makeText(
+                this,
+                "Could not open sharing. Please save the picture instead.",
+                android.widget.Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    internal fun <T> withApprovalForeground(block: () -> T): T = synchronized(approvalLifecycleLock) {
+        check(isForegroundForApproval && !isFinishing && !isDestroyed) {
+            "Parent approval expired because the app left the foreground"
+        }
+        block()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        synchronized(approvalLifecycleLock) { isForegroundForApproval = true }
+    }
+
+    override fun onPause() {
+        synchronized(approvalLifecycleLock) { isForegroundForApproval = false }
+        super.onPause()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +333,12 @@ class MainActivity : Activity() {
                             pendingCaptureFile = null
                             pendingCaptureUri = null
                         }
+                    }
+                    if (fileChooserParams.isCaptureEnabled) {
+                        // Camera-only requests must never fall through to a photo picker or gallery.
+                        fileChooserCallback?.onReceiveValue(null)
+                        fileChooserCallback = null
+                        return true
                     }
                     return try {
                         startActivityForResult(fileChooserParams.createIntent(), fileChooserRequest)
@@ -170,18 +417,56 @@ class MainActivity : Activity() {
             loadUrl("https://appassets.androidplatform.net/index.html")
         }
         setContentView(webView)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            backInvokedCallback = OnBackInvokedCallback { handleBackNavigation() }.also { callback ->
+                onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                    callback
+                )
+            }
+        }
+    }
+
+    private fun handleBackNavigation() {
+        if (webView.canGoBack()) webView.goBack() else finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == parentUpdateRequest) {
+            val pending = pendingParentUpdate.getAndSet(null)
+            pending?.credentialApproved?.set(
+                ParentUpdateAuthorizationPolicy.canApprove(
+                    credentialResult = resultCode,
+                    successResult = RESULT_OK,
+                    parentDialogApproved = pending.dialogApproved.get(),
+                    activityAlive = !isFinishing && !isDestroyed
+                )
+            )
+            pending?.completed?.countDown()
+            return
+        }
+        if (requestCode == parentShareRequest) {
+            val pending = pendingParentShare.getAndSet(null)
+            if (ParentShareAuthorizationPolicy.canDispatch(
+                    credentialResult = resultCode,
+                    successResult = RESULT_OK,
+                    hasPendingPhoto = pending != null,
+                    activityAlive = !isFinishing && !isDestroyed
+                )
+            ) {
+                pending?.let(::shareParentApprovedPhoto)
+            } else if (pending != null && !isFinishing && !isDestroyed) {
+                android.widget.Toast.makeText(this, "No photo was shared.", android.widget.Toast.LENGTH_SHORT).show()
+            }
+            parentCredentialPromptPending.set(false)
+            return
+        }
         if (requestCode == fileChooserRequest) {
             val captureUri = pendingCaptureUri
             val captureFile = pendingCaptureFile
-            val result = if (resultCode == RESULT_OK && captureUri != null && captureFile?.isFile == true && captureFile.length() > 0L) {
-                arrayOf(captureUri)
-            } else {
-                if (captureFile != null) captureFile.delete()
-                WebChromeClient.FileChooserParams.parseResult(resultCode, data)
-            }
+            val pickerResult = if (captureUri == null) WebChromeClient.FileChooserParams.parseResult(resultCode, data) else null
+            val result = resolveChooserResult(captureUri, captureFile, resultCode, RESULT_OK, pickerResult)
+            if (captureUri != null && result == null) captureFile?.delete()
             fileChooserCallback?.onReceiveValue(result)
             fileChooserCallback = null
             pendingCaptureUri = null
@@ -197,13 +482,20 @@ class MainActivity : Activity() {
         fileChooserCallback = null
         pendingCaptureFile = null
         pendingCaptureUri = null
+        pendingParentShare.getAndSet(null)
+        pendingParentUpdate.getAndSet(null)?.completed?.countDown()
+        parentCredentialPromptPending.set(false)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            backInvokedCallback?.let { onBackInvokedDispatcher.unregisterOnBackInvokedCallback(it) }
+            backInvokedCallback = null
+        }
         webView.destroy()
         super.onDestroy()
     }
 
     @Deprecated("Android routes back navigation through the WebView before exiting the pilot.")
     override fun onBackPressed() {
-        if (webView.canGoBack()) webView.goBack() else super.onBackPressed()
+        handleBackNavigation()
     }
 }
 
@@ -211,9 +503,24 @@ class ShareBridge(private val activity: Activity) {
     private val profileStore by lazy { ProfileStore(activity) }
     private val contentPackRepository by lazy { AndroidContentPackRepository(activity) }
 
+    private fun <T> withApprovalForeground(block: () -> T): T =
+        (activity as? MainActivity)?.withApprovalForeground(block)
+            ?: throw SecurityException("Parent approval requires the kitchen activity")
+
+    private fun isApprovalActivityForeground(): Boolean =
+        activity is MainActivity && activity.isForegroundForApproval
+
+    private fun confirmParentContentUpdate(version: Int, fileCount: Int): Boolean =
+        (activity as? MainActivity)?.confirmParentContentUpdate(version, fileCount) ?: false
+
     @JavascriptInterface
     fun installVerifiedContentPack(base64Zip: String): String = bridgeResult {
-        contentPackRepository.installBase64(base64Zip).toString()
+        contentPackRepository.installBase64(
+            base64Zip,
+            { version, fileCount -> confirmParentContentUpdate(version, fileCount) },
+            { isApprovalActivityForeground() && !activity.isFinishing && !activity.isDestroyed },
+            { activate -> withApprovalForeground(activate) }
+        ).toString()
     }
 
     @JavascriptInterface
@@ -266,37 +573,21 @@ class ShareBridge(private val activity: Activity) {
     }
 
     @JavascriptInterface
-    fun sharePost(dataUrl: String, title: String) {
-        if (!NativeBridgeInputPolicy.isSharePostWithinLimits(dataUrl, title)) return
+    fun sharePost(dataUrl: String, title: String): Boolean {
+        if (!NativeBridgeInputPolicy.isSharePostWithinLimits(dataUrl, title)) return false
         val prefix = when {
             dataUrl.startsWith("data:image/png;base64,") -> "data:image/png;base64,"
             dataUrl.startsWith("data:image/jpeg;base64,") -> "data:image/jpeg;base64,"
-            else -> return
+            else -> return false
         }
         val mimeType = if (prefix.contains("png")) "image/png" else "image/jpeg"
-        val extension = if (mimeType == "image/png") ".png" else ".jpg"
         val bytes = try {
             android.util.Base64.decode(dataUrl.removePrefix(prefix), android.util.Base64.DEFAULT)
         } catch (_: IllegalArgumentException) {
-            return
+            return false
         }
-        if (bytes.isEmpty() || bytes.size > 15 * 1024 * 1024) return
-        activity.runOnUiThread {
-            try {
-                val directory = File(activity.cacheDir, "shared-posts").apply { mkdirs() }
-                val name = UUID.randomUUID().toString() + extension
-                File(directory, name).writeBytes(bytes)
-                val uri = Uri.parse("content://${activity.packageName}.share/post/$name")
-                val share = Intent(Intent.ACTION_SEND).apply {
-                    type = mimeType
-                    putExtra(Intent.EXTRA_STREAM, uri)
-                    if (title.isNotBlank()) putExtra(Intent.EXTRA_TEXT, title)
-                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                }
-                activity.startActivity(Intent.createChooser(share, "Share your kitchen win"))
-            } catch (_: Exception) {
-                android.widget.Toast.makeText(activity, "Could not open sharing. Please save the picture instead.", android.widget.Toast.LENGTH_LONG).show()
-            }
-        }
+        if (bytes.isEmpty() || bytes.size > 15 * 1024 * 1024) return false
+        val mainActivity = activity as? MainActivity ?: return false
+        return mainActivity.requestParentApprovedShare(bytes, mimeType, title)
     }
 }
