@@ -16,6 +16,11 @@
       "branch": null,
       "session_state": "NOT_STARTED",
       "writer": null
+    },
+    "w01": {
+      "branch": "codex/w01-unified-v3-v31-20261020",
+      "session_state": "OWNERSHIP_VERIFICATION_REQUIRED",
+      "writer": null
     }
   },
   "tasks": [
@@ -50,16 +55,16 @@
     {
       "id": "V31-VISUAL",
       "issue": 5,
-      "owner": "v31",
-      "status": "BACKLOG",
+      "owner": "w01",
+      "status": "BLOCKED",
       "depends_on": [],
-      "target_branch": "feature/v3.1-home-redesign",
+      "target_branch": "codex/w01-unified-v3-v31-20261020",
       "acceptance": [
         "Approved home screenshot comparison",
         "55 draft atlases reviewed and integrated"
       ],
       "evidence": [],
-      "blocker": "V3.1 Work session stopped"
+      "blocker": "W03 stopped; W01 exclusive writer claim and independent A08/A09/rights gates not verified; 50 atlases / 300 panels outstanding"
     },
     {
       "id": "CT25",
@@ -80,6 +85,41 @@
       ],
       "blocker": null,
       "lease": null
+    },
+    {
+      "id": "W01-ART-02",
+      "issue": 5,
+      "owner": "w01",
+      "status": "BLOCKED",
+      "depends_on": [
+        "V31-VISUAL"
+      ],
+      "target_branch": "codex/w01-unified-v3-v31-20261020",
+      "acceptance": [
+        "Preserve five verified pilot atlases and original 55-atlas archive",
+        "Complete 50 remaining atlases / 300 panels in independently reviewable batches",
+        "Independent A08/A09, rights and Android screenshot evidence"
+      ],
+      "evidence": [
+        "https://github.com/chinkk-git/Aariamagickitchen/issues/5"
+      ],
+      "blocker": "W01 exclusive writer claim not verified; no active artwork executor"
+    },
+    {
+      "id": "W01-AND-01",
+      "issue": 4,
+      "owner": "w01",
+      "status": "BLOCKED",
+      "depends_on": [],
+      "target_branch": "codex/w01-unified-v3-v31-20261020",
+      "acceptance": [
+        "Disposable-emulator same-package same-signer seeded-data upgrade",
+        "Non-destructive before/after persistence evidence and exact-head CI"
+      ],
+      "evidence": [
+        "https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39484542872"
+      ],
+      "blocker": "W01 exclusive writer claim not verified; production signer continuity unproven"
     }
   ],
   "release": {
