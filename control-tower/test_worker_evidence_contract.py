@@ -2,7 +2,7 @@ import unittest
 from worker_evidence_contract import validate_evidence,EvidenceDenied
 SHA="a"*40
 def item(kind="ci",**kw):
-    return dict({"kind":kind,"task_id":"CT-03","worker":"W01","commit_sha":SHA,"source_ref":"github:run/123","status":"PASS"},**kw)
+    return {"kind":kind,"task_id":"CT-03","worker":"W01","commit_sha":SHA,"source_ref":"github:run/123","status":"PASS",**kw}
 class EvidenceTests(unittest.TestCase):
     def test_valid_schema(self):
         self.assertEqual(validate_evidence([item()],trusted_head_sha=SHA,task_id="CT-03",worker="W01"),("ci",))
