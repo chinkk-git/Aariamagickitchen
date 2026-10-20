@@ -23,6 +23,7 @@ jobs:
           python3 control-tower/test_worker_github_reviews.py
           python3 control-tower/test_worker_transactions.py
           python3 control-tower/test_worker_executor.py
+          python3 control-tower/test_worker_runtime.py
           python3 control-tower/test_worker_claims.py
           python3 control-tower/test_worker_leases.py
       - name: Assert disabled worker activation
