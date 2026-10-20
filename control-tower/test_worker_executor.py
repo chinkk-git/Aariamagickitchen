@@ -35,16 +35,18 @@ class ExecutorTests(unittest.TestCase):
                 a=Api(True);a.doc[field]="UNVERIFIED"
                 with self.assertRaises(PermissionError):run(a)
                 self.assertEqual(a.writes,0)
-    def test_authorized_claim(self):
-        a=Api(True);run(a);self.assertEqual(a.doc["tasks"][0]["status"],"CLAIMED")
+    def test_self_attested_verification_cannot_authorize_claim(self):
+        a=Api(True)
+        with self.assertRaisesRegex(PermissionError,"independent writer exclusion"):run(a)
+        self.assertEqual(a.writes,0)
     def test_actor_role_permission_and_scope_denials(self):
         a=Api(True)
         for u in ({"actor":"bad"},{"worker":"W05"},{"permission":"read"},{"owner":"bad"},{"repo":"bad"},{"branch":"main"}):
             with self.subTest(u=u),self.assertRaises(PermissionError):run(a,**u)
         self.assertEqual(a.writes,0)
     def test_same_branch_exclusion(self):
-        a=Api(True);run(a)
-        with self.assertRaises(ValueError):run(a,task_id="B",worker="W02")
+        a=Api(True)
+        with self.assertRaises(PermissionError):run(a,task_id="B",worker="W02")
     def test_cannot_lease_v3_or_v31_branch(self):
         a=Api(True)
         a.doc["tasks"][0]["target_branch"]="codex/v3-completion-core-20261017"
@@ -54,17 +56,19 @@ class ExecutorTests(unittest.TestCase):
         a=Api(True);old=a.get_content
         def change(**kw):r=old(**kw);a.sha="changed";return r
         a.get_content=change
-        with self.assertRaises(m.ConflictError):run(a)
+        with self.assertRaises(PermissionError):run(a)
         self.assertEqual(a.doc["tasks"][0]["status"],"READY")
     def test_ephemeral_credential_not_persisted(self):
-        a=Api(True);run(a);self.assertNotIn("ephemeral-test-token",json.dumps(a.doc))
+        a=Api(True)
+        with self.assertRaises(PermissionError):run(a)
+        self.assertNotIn("ephemeral-test-token",json.dumps(a.doc))
     def test_two_racing_claims_exactly_one_cas_wins(self):
         a=Api(True,threading.Barrier(2));result=[]
         def claim(task,worker):
             try:run(a,task_id=task,worker=worker);result.append("success")
-            except m.ConflictError:result.append("conflict")
+            except PermissionError:result.append("blocked")
         ts=[threading.Thread(target=claim,args=("A","W01")),threading.Thread(target=claim,args=("B","W02"))]
         [t.start() for t in ts];[t.join(10) for t in ts]
-        self.assertTrue(all(not t.is_alive() for t in ts));self.assertCountEqual(result,["success","conflict"])
-        self.assertEqual(sum(t["status"]=="CLAIMED" for t in a.doc["tasks"]),1)
+        self.assertTrue(all(not t.is_alive() for t in ts));self.assertCountEqual(result,["blocked","blocked"])
+        self.assertEqual(sum(t["status"]=="CLAIMED" for t in a.doc["tasks"]),0)
 if __name__=="__main__":unittest.main()
