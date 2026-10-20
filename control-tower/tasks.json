@@ -65,7 +65,7 @@
       "id": "CT25",
       "issue": 25,
       "owner": "v3",
-      "status": "CLAIMED",
+      "status": "READY",
       "depends_on": [],
       "target_branch": "control-tower/ct25-codex-worker-test",
       "acceptance": [
@@ -74,12 +74,7 @@
       ],
       "evidence": [],
       "blocker": null,
-      "lease": {
-        "worker": "v3",
-        "token": "ct25codexworker20261020c7",
-        "claimed_at": "2026-10-20T00:04:59.040Z",
-        "expires_at": "2026-10-20T00:19:59.040Z"
-      }
+      "lease": null
     }
   ],
   "release": {
