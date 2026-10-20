@@ -6,6 +6,10 @@ const activity = await readFile(new URL('../../phase2-pilot/apps/aaria-android/a
 const profile = JSON.parse(await readFile(new URL('../../phase2-pilot/tools/recipe-pipeline/release-profile.json', import.meta.url), 'utf8'));
 
 assert.equal(profile.photoPost.parentConfirmationBeforeExternalShare, true);
+const cameraFlow = runtime.slice(runtime.indexOf('cookShareSection=function v3CookShareSection'), runtime.indexOf('const v3OriginalShareCook'));
+assert.ok(cameraFlow.includes('capture="environment"'), 'Android photo input must request the device camera');
+assert.ok(cameraFlow.includes('.replace(/<label class="cook-photo-pick">🖼️ Choose a dish photo'), 'gallery/picker control must be removed from the Android recipe flow');
+assert.ok(cameraFlow.includes('v3-hidden-camera-input'), 'Android camera input must remain hidden behind the camera action');
 const nativeShare = runtime.slice(runtime.indexOf('shareCook=async function v3ShareCook'), runtime.indexOf('async function v3ShowGroceryRecipients'));
 assert.match(nativeShare, /window\.AariaNative\.sharePost\(String\(data\),caption\)/);
 assert.match(nativeShare, /Sharing could not be started\. Ask a parent or guardian for help\./);

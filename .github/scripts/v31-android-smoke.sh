@@ -413,7 +413,7 @@ await waitForVisible('.ref-hero h1', 'Favourite test recipe');
 await evaluate(`document.querySelector('.ref-favorite')?.click()`);
 const favoriteSaved = await evaluate(`state.favorites.includes(1)`);
 if (!favoriteSaved) throw new Error('Favourite control did not save recipe 1 to this profile');
-const cameraOnly = await evaluate(`(() => {const inputs=[...document.querySelectorAll('#screen input[type="file"]')];return inputs.length===1&&inputs[0].accept==='image/*'&&inputs[0].getAttribute('capture')==='environment'&&!!document.querySelector('#screen [data-action="take-dish-photo"]')})()`);
+const cameraOnly = await evaluate(`(() => {const inputs=[...document.querySelectorAll('#screen input[type="file"]')];return inputs.length===1&&inputs[0].accept==='image/*'&&inputs[0].getAttribute('capture')==='environment'&&!!document.querySelector('#screen [data-action="take-dish-photo"]')&&!/Choose a dish photo/i.test(document.querySelector('#screen .cook-share-card')?.innerText||'')})()`);
 if (!cameraOnly) throw new Error('Recipe dish-photo flow is not camera-only');
 await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
 await waitForVisible('.recipe-card', 'Favourite filter setup');
