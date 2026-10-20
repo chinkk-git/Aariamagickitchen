@@ -10,7 +10,6 @@ This isolated branch contains revised vector atlases for recipes 27, 39, 40, 51 
 - Distinct, step-specific vector action scenes; bilingual English and Brazilian Portuguese child-facing short labels.
 - Larger ingredient focus tags with English and Portuguese labels.
 - The same source-approved CHEF_A portrait appears only in non-hot, non-sharp child-safe scenes. Adult-only scenes use a high-contrast bilingual text cue and show no child operating hot/sharp equipment.
-- CHEF_A is embedded once in each SVG definition block and referenced by local fragment IDs, keeping the package self-contained and avoiding duplicated image payloads.
 - Each panel group has its own title and accessible description; the companion manifest carries source step text, adult cue, kid instruction and review status. Live runtime/TalkBack association remains unverified.
 - Recipe 63’s listed steps contain no heat, sharp tool or raw animal-food handling. No mandatory adult-assist cue is inferred from those steps; panel 5 calls for conditional help only if the refrigerator shelf is high. The condensed-milk dairy allergen is called out.
 
