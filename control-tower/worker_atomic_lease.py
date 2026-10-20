@@ -30,7 +30,7 @@ def transition(registry,*,branch,identity,operation,now,ttl=900,expected_epoch=N
         raise LeaseDenied("single authority missing")
     if not isinstance(branch,str) or not branch or not isinstance(identity,dict):
         raise LeaseDenied("invalid request")
-    if operation not in {"claim","renew","release","recover"}:raise LeaseDenied("invalid operation")
+    if branch not in {"codex/v3-completion-core-20261017","feature/v3.1-home-redesign"}:\n        raise LeaseDenied("branch outside protected worker scope")\n    if identity.get("worker") not in {"W01","W03"} or (identity.get("worker")=="W01" and branch!="codex/v3-completion-core-20261017") or (identity.get("worker")=="W03" and branch!="feature/v3.1-home-redesign"):\n        raise LeaseDenied("worker/branch policy mismatch")\n    if operation not in {"claim","renew","release","recover"}:raise LeaseDenied("invalid operation")
     if type(ttl) is not int or not 60<=ttl<=3600:raise LeaseDenied("invalid TTL")
     if not isinstance(expected_epoch,int) or isinstance(expected_epoch,bool) or expected_epoch<0:
         raise LeaseDenied("expected epoch required")
