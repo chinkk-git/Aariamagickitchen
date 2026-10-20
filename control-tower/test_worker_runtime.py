@@ -55,10 +55,11 @@ class RuntimeTests(unittest.TestCase):
                 api=Api("write",True);api.doc[missing]="UNVERIFIED"
                 with self.assertRaises(PermissionError):m.main(env(self.event()),api)
                 self.assertEqual(api.writes,0)
-    def test_verified_permission_then_whole_registry_cas(self):
-        api=Api("write",True);result=m.main(env(self.event()),api)
-        self.assertEqual(result["commit"]["sha"],"fixture")
-        self.assertEqual(api.doc["tasks"][0]["status"],"CLAIMED")
+    def test_self_attested_registry_flags_cannot_authorize_runtime(self):
+        api=Api("write",True)
+        with self.assertRaisesRegex(PermissionError,"independent writer exclusion"):
+            m.main(env(self.event()),api)
+        self.assertEqual(api.writes,0)
         self.assertNotIn("ephemeral-test-token",json.dumps(api.doc))
     def test_runtime_registry_is_empty_and_disabled(self):
         registry=json.loads((HERE/"worker-runtime.json").read_text())
