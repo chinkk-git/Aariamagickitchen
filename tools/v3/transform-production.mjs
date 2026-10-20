@@ -12,17 +12,60 @@ const marker = 'AARIA_V3_BUILD_2026_10';
 if (html.includes(marker)) throw new Error('Input already contains the V3 build layer. Start from production index.html.');
 
 function readAsset(name) {
-  const value = fs.readFileSync(path.join(here, 'artwork', name), 'utf8').replace(/\s/g, '');
-  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(value)) throw new Error(`Invalid base64 artwork: ${name}`);
-  return `data:image/webp;base64,${value}`;
+  const bytes = fs.readFileSync(path.join(here, 'artwork', name));
+  const text = bytes.toString('ascii').replace(/\s/g, '');
+  if (/^[A-Za-z0-9+/]+={0,2}$/.test(text)) return `data:image/webp;base64,${text}`;
+  if (bytes.subarray(0, 4).toString('ascii') === 'RIFF' && bytes.subarray(8, 12).toString('ascii') === 'WEBP') {
+    return `data:image/webp;base64,${bytes.toString('base64')}`;
+  }
+  throw new Error(`Invalid WebP artwork: ${name}`);
 }
 
-const art = Object.fromEntries([78, 89, 93, 94].map(id => [id, {
-  atlas: readAsset(`recipe-${id}-storyboard.webp.b64`),
-  hero: readAsset(`recipe-${id}-hero.webp.b64`),
-  aspect: id === 94 ? 412 / 624 : 502 / 507
-}]));
+const art = Object.fromEntries([
+  [1, {
+    variants: {
+      CHEF_A: { atlas: readAsset('recipe-1-chef-a-storyboard.webp.b64'), hero: readAsset('recipe-1-chef-a-hero.webp.b64') },
+      CHEF_B: { atlas: readAsset('recipe-1-chef-b-storyboard.webp.b64'), hero: readAsset('recipe-1-chef-b-hero.webp.b64') }
+    },
+    aspect: 543 / 724,
+    status: 'pending-review'
+  }],
+  [2, {
+    variants: {
+      CHEF_A: { atlas: readAsset('recipe-2-chef-a-storyboard.webp.b64'), hero: readAsset('recipe-2-chef-a-hero.webp.b64') },
+      CHEF_B: { atlas: readAsset('recipe-2-chef-b-storyboard.webp.b64'), hero: readAsset('recipe-2-chef-b-hero.webp.b64') }
+    },
+    aspect: 543 / 724,
+    status: 'pending-review'
+  }],
+  [3, {
+    variants: {
+      CHEF_A: { atlas: readAsset('recipe-3-chef-a-storyboard.webp.b64'), hero: readAsset('recipe-3-chef-a-hero.webp.b64') },
+      CHEF_B: { atlas: readAsset('recipe-3-chef-b-storyboard.webp.b64'), hero: readAsset('recipe-3-chef-b-hero.webp.b64') }
+    },
+    aspect: 420 / 700,
+    status: 'pending-review'
+  }],
+  [4, {
+    variants: {
+      CHEF_A: { atlas: readAsset('recipe-4-chef-a-storyboard.webp.b64'), hero: readAsset('recipe-4-chef-a-hero.webp.b64') },
+      CHEF_B: { atlas: readAsset('recipe-4-chef-b-storyboard.webp.b64'), hero: readAsset('recipe-4-chef-b-hero.webp.b64') }
+    },
+    aspect: 480 / 640,
+    status: 'pending-review'
+  }],
+  ...[78, 89, 93, 94].map(id => [id, {
+    atlas: readAsset(`recipe-${id}-storyboard.webp.b64`),
+    hero: readAsset(`recipe-${id}-hero.webp.b64`),
+    aspect: id === 94 ? 412 / 624 : 502 / 507,
+    status: 'approved'
+  }])
+]);
 const ingredientAtlas = readAsset('ingredients-storybook-atlas.webp.b64');
+const profileArt = {
+  chefA: readAsset('approved-chef-a.webp.b64'),
+  chefB: readAsset('approved-chef-b.webp.b64')
+};
 
 const styles = String.raw`
 /* ${marker} */
@@ -117,7 +160,8 @@ const runtimeTemplate = fs.readFileSync(path.join(here, 'runtime.js'), 'utf8');
 const runtime = runtimeTemplate
   .replaceAll('__AARIA_V3_MARKER__', marker)
   .replace('__V3_ART_JSON__', JSON.stringify(art))
-  .replace('__V3_INGREDIENT_ATLAS_JSON__', JSON.stringify(ingredientAtlas));
+  .replace('__V3_INGREDIENT_ATLAS_JSON__', JSON.stringify(ingredientAtlas))
+  .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt));
 
 
 let outputHtml = html;
@@ -131,8 +175,13 @@ const bellPepperRule = "else if(/pepper|capsicum/.test(t)&&!/salt/.test(t))";
 if (!outputHtml.includes(bellPepperRule)) throw new Error('Could not find the production bell-pepper illustration rule.');
 outputHtml = outputHtml.replace(bellPepperRule, `else if(/black pepper|peppercorn|ground pepper/.test(t)){kind='Black pepper';body='<ellipse cx="32" cy="26" rx="24" ry="10" fill="#d9d5d2"/><path d="M8 28c2 17 13 23 24 23s22-6 24-23Z" fill="#eeeaf0" stroke="#b1a1bf" stroke-width="2"/><g fill="#312d34"><circle cx="20" cy="23" r="2"/><circle cx="29" cy="19" r="2"/><circle cx="39" cy="24" r="2"/><circle cx="31" cy="27" r="2"/><circle cx="44" cy="20" r="1.5"/></g>';}${bellPepperRule}`);
 outputHtml = outputHtml.replaceAll('Cozinha Mágica da Aaria', 'Cozinha mágica da Aaria');
+const csp = "script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src 'none'; child-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'";
+const headTag = outputHtml.match(/<head\b[^>]*>/i)?.[0];
+if (!headTag) throw new Error('Production HTML must have a <head> for the V3 security policy.');
+outputHtml = outputHtml.replace(headTag, `${headTag}<meta http-equiv="Content-Security-Policy" content="${csp}">`);
 outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}</style><script id="aaria-v3-layer">${runtime}</script></body>`);
 if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could not append the V3 layer to the production HTML.');
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, outputHtml);
 console.log(`Built ${output} (${outputHtml.length.toLocaleString()} chars) from ${input}`);
+

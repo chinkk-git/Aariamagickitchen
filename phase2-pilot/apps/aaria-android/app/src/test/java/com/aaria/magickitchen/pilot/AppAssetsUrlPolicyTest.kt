@@ -49,6 +49,12 @@ class AppAssetsUrlPolicyTest {
     }
 
     @Test
+    fun blocksEverySubframeNavigationButAllowsMainFrameRouting() {
+        assertTrue(AppAssetsUrlPolicy.shouldBlockSubframeNavigation(isForMainFrame = false))
+        assertFalse(AppAssetsUrlPolicy.shouldBlockSubframeNavigation(isForMainFrame = true))
+    }
+
+    @Test
     fun distinguishesThePackagedHostFromOtherOrigins() {
         assertTrue(AppAssetsUrlPolicy.isAppAssetsHost(AppAssetsUrlPolicy.HOST))
         assertFalse(AppAssetsUrlPolicy.isAppAssetsHost("other.example"))

@@ -119,3 +119,101 @@ The WebView pilot was hardened on `codex/v3-webview-hardening-20261017` at `ee02
 GitHub Actions run 39057437535 passed HTML validation/packaging, adapter syntax checks, five WebView URL-policy tests, and debug APK assembly. It published the generated HTML archive [12110216216](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110216216) and debug APK archive [12110495010](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39057437535/artifacts/12110495010), with artifact digests recorded in `V3_IMPLEMENTATION_STATUS.md`. Both archives are available until 2026-11-16. The APK is debug-signed and intended for development testing; it is not proof of continuity with the installed app or production release readiness.
 
 Migration remains unstarted until the actual shipped HTML or a verified installed-data export confirms the source key/schema and a representative fixture. One independent audit reported a candidate key, but another reviewer could not verify it from the available source; preserve this uncertainty rather than encoding an assumption. Production signer lineage and device tests remain required gates.
+
+
+## 16.4 Bounded implementation evidence and key gate (2026-10-17)
+
+Draft PR #2 (`codex/v3-completion-core-20261017`) adds profile storage/migration scaffolding, signed data-only pack verification and atomic activation foundations. The root `index.html` source statically confirms localStorage key `aariaPrivateKitchenV4`; this does not replace validation against installed user data. CI run 39060124410 exposed a missing generated BuildConfig; enabling BuildConfig led to passing run 39060262205 on c9c5c842bf18c60e381370b3e1dcdff52ff597f3. That run published debug APK and HTML artifacts (12111410525 and 12110882719). Follow-up run 39060387158 passed on branch code head bb2176911a2b1a5061454a9e9500a0499c0897f0, including strict JSON parsing, and published development artifacts 12111033320/12111286874.
+
+The current APK remains debug-signed. The codebase contains no production signing configuration or trusted installed APK signer evidence, and no content publisher key is provisioned. Do not generate a replacement production key or claim APK upgrade continuity. Resume after the owner establishes the existing APK signer/key lineage through a trusted channel and provisions the content publisher trust root; then rerun CI on the current branch head and complete device/migration/update tests. PR #2 remains draft and is not merged.
+
+
+## 16.5 Migration safety progress (2026-10-17)
+
+The profile migration parser was hardened in commit `81fdd93710e6ad19ca292655c9393d05c725e3f4`: invalid, oversized, trailing and non-object JSON is rejected before migration completion can be recorded; unknown nested fields are preserved. CI run [39060716858](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39060716858) passed Android tests and debug APK/HTML assembly. SQLite transaction/recovery and installed-data fixture tests remain open. This is a bounded engineering step, not completion of WP00/WP04.
+
+
+## 16.6 SQLite profile migration evidence (2026-10-17)
+
+Robolectric-backed SQLite tests in commit `e5425c6539c93492c241814bf380755b3f9439ae` pass in CI run [39061031142](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39061031142). They verify idempotent legacy migration, retry after malformed input, preservation of unknown fields, and isolation between two profiles. This does not establish migration behavior on the user's installed app data or Android devices. Release signing, content publisher trust, backup/restore and device QA remain open.
+
+
+## Superseding release-signing decision (2026-10-17)
+
+The owner explicitly approved creating a new permanent release signer after confirming there is no saved app data to preserve. This decision supersedes earlier notes in this plan that prohibited a replacement key. The attached/current APK inspected for this task is debug-signed; its private key cannot be recovered, and the exact installed APK bytes were not independently compared. Therefore the new key does **not** provide an in-place update from that debug installation. The first release signed with the new key requires a clean uninstall/reinstall; the owner confirmed saved data migration is not required. Do not uninstall until a verified new signed APK is ready. Keep the new key for every subsequent direct APK release. Any future Google Play transition must be planned around the same app signing identity and the Play App Signing setup; this new key does not sign unrelated apps or different package IDs.
+
+A PKCS#12 RSA-3072 release keystore was generated for alias `aaria-v3-release`; certificate SHA-256 fingerprint: `3A:ED:A9:B7:1A:B2:9C:4C:21:D9:FC:A5:15:54:18:B5:68:4A:21:11:CE:C6:FC:17:22:2B:64:DB:03:69:75:88`. Public certificate fingerprint was verified with Java `keytool`. Private keystore and passwords are not committed to GitHub. The owner must securely back up the keystore and configure environment secrets `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD` plus environment variable `ANDROID_SIGNER_SHA256` in GitHub environment `android-production-signing`. Until configured, a signed release build, APK verification, device install, and future update continuity remain unverified.
+
+
+
+## Continuation checkpoint — 2026-10-17
+The owner reports that the new permanent APK signing key is configured and that an APK update using it succeeded on the phone. GitHub Actions run #8 also passed the signed V3 build and trusted-certificate checks. This confirms the signing/update milestone by CI plus owner-reported device behavior; it does not independently verify every saved profile field or Play Protect behavior.
+
+The phone then exposed a real profile-onboarding crash: selecting Chef A or Chef B showed “Maximum call stack size exceeded.” Source review traced it to a profile-aware render wrapper calling itself. Fix commit `133fbb4b35fb06789b13ffd1b5d0b83508d0c5df` captures and calls the prior renderer. A follow-up regression check was added, and independent review confirmed the recursion cause and fix. Review also found and a follow-up fixed a standalone HTML profile persistence defect at `0c702f4b9a0feb85d69e0b98a24ac34afc7443bc`; Node syntax and profile reset/persistence tests pass locally on the branch. GitHub CI has not yet reported a run for the latest head `56e08ba321535645953bcc216bfd485125cb922b`.
+
+Next execution order: (1) run CI for the latest head and repair any failures; (2) build a fresh signed APK from that exact immutable source commit and verify the trusted signer and packaged V3 marker; (3) retest launch, legacy chef selection, saved progress, and update on the phone; (4) complete content publisher key provisioning and signed data-only update/replay/rollback tests; (5) finish migration recovery, WebView bridge/device review, What's New tours, artwork/cooking-safety review, and phone/tablet regression. The text-only Chef A/B buttons remain a visual acceptance gap against the Character Bible. Do not treat the current artifact as fixing the chooser until a phone retest passes.
+
+
+
+## Release workflow source pin — 2026-10-17
+Main signed-release workflow was updated at commit `eaa4263fc131547ca24b5cdc1bea0aff2a6dfc28` to check out immutable fix source `56e08ba321535645953bcc216bfd485125cb922b`. That source includes the recursive-render fix, standalone profile persistence fix, and their Node regressions. The next signed workflow run executes these tests plus V3 transformation, Android unit tests, trusted signer verification and APK marker checks. It has not yet run; this GitHub integration cannot dispatch Actions workflows, so the owner can start it from the [signed-release workflow page](https://github.com/chinkk-git/Aariamagickitchen/actions/workflows/android-release.yml).
+
+## WebView containment follow-up — 2026-10-17
+The chooser crash and standalone profile-persistence defect have code-level fixes and local regressions. Candidate source `524e85a33f874ac9c12e8b4e7943b7dad4c9b294` adds generated-page CSP checks and subframe navigation rejection. Next: hosted CI and the phone regression; WebView CSP compatibility/instrumentation; origin-restricted message bridge; then the existing roadmap for trusted content publisher provisioning, authenticated downloads, parent activation, rollback/recovery, profile/device migration, visual and safety review, and production release acceptance. The approved baseline remains unchanged.
+
+The security candidate now includes a unit test for explicit subframe navigation policy. Treat this as code-level coverage only; CSP compatibility and bridge isolation need WebView instrumentation and device acceptance before completion.
+
+
+## Independent WebView review follow-up — 2026-10-17
+Independent review confirmed the inline-script and subframe changes are coherent with the single-document V2/V3 model, and identified unrestricted network connections plus duplicate CSP directives. Candidate `524e85a33f874ac9c12e8b4e7943b7dad4c9b294` now limits script connections to self, disables child frames, rejects duplicate directives, and has local negative tests. Complete the actual V2 resource inventory before restricting image/style/font/media categories, then run hosted Android tests and real-device WebView/profile acceptance. 
+
+
+## Execution checkpoint — 2026-10-17 (current evidence)
+
+This section reconciles later verified work with older “signing blocked / no release artifact” notes in the plan. Those older notes remain historical audit records, not current blockers.
+
+**Completed and evidenced:** the permanent release signer is configured in GitHub; signed Actions run [39080069478](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080069478) verified the trusted certificate and APK signature, packaged the V3 HTML and uploaded artifact 12118841013. The owner reports a successful update test. Profile storage/migration scaffolding, content-pack verification/activation recovery, and WebView policy foundations are implemented in draft PR #2. Pilot runs [39080611176](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080611176) and [39080621336](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080621336) pass unit/build checks, including fail-closed missing publisher trust assets and invalid image-byte rejection.
+
+**Still in progress:** the phone shows “Maximum call stack size exceeded” in the legacy chef chooser, so fix and retest onboarding/chooser before a new signed candidate; confirm saved progress during update. Content update delivery has no bundled publisher public key/key ID, feed/downloader, parent approval/activation flow, catalog runtime integration, offline scheduler or What's New tour. Existing replay/version checks are app-private and device-clock based, not hardware-backed anti-rollback or trusted-time enforcement. Complete process-kill/disk-full recovery and real legacy-data validation. Audit the full baseline resource inventory, finish WebView bridge-origin hardening and device tests. Complete approved cast/artwork/recipe review, cooking-safety/allergen/accessibility review, no-timer audit, and phone/tablet/offline/baseline regression.
+
+The currently signed artifact predates the draft CSP/subframe changes and does not constitute a complete V3 family release. Continue implementation in draft PR #2 and preserve the protected feature/platform-v3 baseline. Do not claim release readiness until the chooser bug and required device/security acceptance gates are closed.
+
+
+### Latest implementation follow-up — 2026-10-17
+
+The draft branch now keeps the activation recovery marker on failure and performs interrupted-swap recovery before serving the recipe catalog. Pilot runs [39080934453](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080934453) and [39080945482](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080945482) passed these regression checks. The legacy chooser path now updates the chef identity and visible profile button without synchronously rerendering the full kitchen; run [39080987371](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39080987371) passed the JavaScript flow regression. The owner’s reported phone stack overflow remains open until a newly signed APK passes device retest. No production release or full-device rollback claim is made.
+
+
+The exact-source signed-candidate workflow is prepared in draft PR #2 and its YAML parses successfully. It runs V3 HTML validation, CSP/profile regressions, Android unit tests, signer fingerprint checks, APK signature validation and V3 marker verification before upload. It still requires a manual Actions dispatch because the connected GitHub API has no dispatch call; use the draft branch `codex/v3-completion-core-20261017`. The resulting signed APK must then be retested on phone for legacy chooser completion and data preservation before it can be accepted.
+
+
+### Implementation checkpoint — 2026-10-18
+
+Pilot run [39081529933](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39081529933) passed on exact source `ad61ef004d14327ec9177d72bb13662e38631488`. Hosted evidence covers the V3 transform/validator, CSP and profile regressions, Android unit tests, APK assembly and the unsigned-release refusal guard. Content-pack negative tests now explicitly reject oversized entries before staging, unsupported media, truncated archives, mismatched artwork roles and active SVG. The generated HTML and debug APK are artifacts [12118747562](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39081529933/artifacts/12118747562) and [12118364099](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39081529933/artifacts/12118364099). The APK is debug-signed; neither artifact is a family release.
+
+The remainder of WP00–WP11 stays active: dispatch and device-test the latest same-signer APK; verify actual legacy data migration and profile recovery; provision a separate content publisher trust root and build the HTTPS feed/downloader, adult approval, catalog and What's New flow; finish WebView resource inventory and origin-restricted bridge; audit approved recipes/artwork, child safety/allergens and no-timer/baseline preservation; then verify offline use, accessibility, phone/tablet layouts, rollback/failure behavior, and release acceptance. The publisher public key/key ID and a device-runner/owner device confirmation are external dependencies; no implementation may bypass their trust or acceptance checks. The protected baseline remains unchanged and PR #2 remains draft.
+
+
+### Archive-set validation checkpoint — 2026-10-18
+
+Added a signed content-pack regression proving an archive containing undeclared payload data is rejected before staging. Pilot run [39082241731](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082241731) passed on source `53dfd150df68c52b480b40bfbb9fb5195689ab76`, including V3 HTML/CSP/profile checks, Android unit tests, debug APK assembly and unsigned-release refusal. This is incremental WP05/R024 progress; publisher key/feed, activation UI, duplicate ZIP-name and decompression-bomb cases, plus device validation remain open. The artifact is debug-signed and not a release.
+
+
+### Duplicate ZIP member checkpoint — 2026-10-18
+
+WP05/R024 now includes a hosted regression for a structurally valid signed ZIP with a duplicate path; the verifier rejects it before staging. Pilot run [39082636745](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745) passed on source `807520cff9594d2ae7e8d574e5c3231a31297b80`. The APK/HTML artifacts [12119193578](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12119193578) and [12118969797](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39082636745/artifacts/12118969797) are development outputs; the APK is debug-signed. Decompression-bomb scale, publisher trust/feed, activation UI, and device verification remain open.
+
+
+### Native share bridge input bound — 2026-10-18
+
+WP02/R027 hardening now rejects unsupported share-image data URLs and payloads exceeding the 15 MiB decoded-image budget before Base64 decoding; share titles are capped at 240 characters. Unit tests cover accepted boundaries, over-limit payloads, unsupported MIME types and oversized titles. Hosted Android pilot run [39083638168](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168) passed on source `9ef44f1ffe2da57a94554d4f73611a047516a92f`. The run uploaded debug APK artifact [12119168709](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168/artifacts/12119168709) and generated HTML artifact [12119792034](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083638168/artifacts/12119792034); these are development artifacts, not a production-signed family release. R027 remains open for origin-restricted bridge migration, full baseline resource inventory and device regression.
+
+
+### High-ratio content archive rejection — 2026-10-18
+
+WP05/R024 now explicitly proves rejection of a highly compressible ZIP entry whose expanded data exceeds the per-entry limit: the fixture asserts a compressed ratio above 100:1 and verifies the staging directory is never created. Pilot run [39083839601](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601) passed on source `90f6ab655ec070b1a11cdc8e50dd740192b0a48f`. Artifacts [12119644017](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601/artifacts/12119644017) (debug APK) and [12120345126](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39083839601/artifacts/12120345126) (generated HTML) are development outputs; the APK is not production-signed. Remaining WP05 work: trusted publisher key/key ID, authenticated feed/downloader, adult activation/catalog UI and on-device activation/rollback checks.
+
+
+### Signed V3 candidate — run 11 — 2026-10-18
+
+The manual release workflow completed successfully on branch `codex/v3-completion-core-20261017`, dispatched source `2b724135c891bd88942033c528075effdc68eb63`. Hosted checks passed V3 HTML transform/validation, Android unit tests, protected signing-input validation, staged certificate fingerprint match, signed APK assembly, packaged V3 page verification, APK signature/trusted-certificate verification, and artifact upload. Signed APK artifact [12119608874](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39084778835/artifacts/12119608874); generated HTML artifact [12119763598](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39084778835/artifacts/12119763598). The signed candidate is awaiting owner-phone install/upgrade, profile chooser and saved-progress verification; it is not yet device-accepted or the final family release.

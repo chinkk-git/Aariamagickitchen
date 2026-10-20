@@ -11,6 +11,8 @@ internal object AppAssetsUrlPolicy {
 
     fun isAppAssetsHost(host: String?): Boolean = host == HOST
 
+    fun shouldBlockSubframeNavigation(isForMainFrame: Boolean): Boolean = !isForMainFrame
+
     fun isTrustedOrigin(
         scheme: String?,
         host: String?,
