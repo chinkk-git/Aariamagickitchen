@@ -26,3 +26,7 @@ All 30 panel decisions remain `PENDING` in `panel-change-ledger.json`. W07/A08 a
 - `panel-change-ledger.json` records source/revised SVG digests and before/after atlas render digests for each panel entry.
 
 The source recipe records and all 95 recipes are unchanged. Runtime integration, Android CI, portrait/landscape screenshot acceptance and offline APK testing have not been performed from this isolated draft branch.
+
+## Remaining-artwork completion matrix
+
+`remaining-artwork-completion-matrix.csv` tracks all 55 source recipes (11–65), drafted and reviewed panel counts, runtime integration, and CI state. The five pilot recipes have 30 draft panels with static review passes; formal A08/A09 approval and runtime integration remain pending. The other 50 recipes (300 panels) are not started.
