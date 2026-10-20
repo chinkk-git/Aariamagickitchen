@@ -37,3 +37,16 @@ Retain `control-tower/tasks.json`, `control-tower/lease.py`, existing workflows 
 3. Design generic lease/branch-lock operations without changing live CT25 bridge.
 4. Build failure-path tests and independent evidence gate contracts.
 5. Enable roles progressively only after verified acceptance and explicit free-runtime feasibility.
+
+
+## Trusted runtime implementation checkpoint
+
+Rotation 3 adds a disabled Actions runtime prototype, protected actor-to-worker
+mapping, GitHub collaborator permission lookup, exact repository/default-source/
+target-branch checks, whole-registry blob-SHA CAS, and an in-memory concurrent
+claim acceptance test. The runtime registry is separate, empty, and DISABLED;
+legacy tasks.json and its lease/CT25 workflows are preserved. Assurance roles
+cannot be selected by the write workflow. No production worker can start from
+this change. Independent security review, protected environment setup, billing
+validation, actual GitHub CAS race acceptance, and a verified V3/V3.1 handover
+remain blockers before any live write is considered.

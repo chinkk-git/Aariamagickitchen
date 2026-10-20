@@ -10,13 +10,34 @@ on:
         type: string
         required: true
       worker:
-        type: string
+        type: choice
+        options: [W01, W02, W03, W04]
         required: true
 permissions:
   contents: read
 jobs:
-  disabled:
+  guarded-transaction:
     if: ${{ false }}
+    environment: worker-control-runtime
+    permissions:
+      contents: write
+    concurrency:
+      group: control-tower-worker-registry
+      cancel-in-progress: false
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
-      - run: echo 'Not activated. Requires independently reviewed trusted API integration, GitHub identity binding and secure credentials.'
+      - name: Check out trusted default branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Execute protected transaction runtime
+        env:
+          CT_TRANSACTION_ENABLED: "0"
+          CT_ACTOR_WORKER_MAP: ${{ secrets.CT_ACTOR_WORKER_MAP }}
+          GH_TOKEN: ${{ github.token }}
+          CT_TASK_ID: ${{ inputs.task_id }}
+          CT_WORKER: ${{ inputs.worker }}
+          CT_OPERATION: ${{ inputs.operation }}
+        run: python3 control-tower/worker_runtime.py

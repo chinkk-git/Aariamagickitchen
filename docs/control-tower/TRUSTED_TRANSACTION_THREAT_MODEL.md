@@ -25,3 +25,22 @@ Status: **DESIGN / DISABLED**. This document does not authorize activation.
 - Release gate and security approval independent of the implementer
 
 **This PR must remain draft and the worker registry DISABLED.**
+
+
+## Rotation 3 implementation boundary
+
+The prototype now has an API-backed collaborator-permission lookup and compares the
+GitHub event sender with the immutable Actions actor context. A protected environment
+secret maps actor logins to worker IDs. The runtime accepts only a manual dispatch
+from the protected default branch, the exact repository, and the isolated
+Control Tower branch; it only claims tasks assigned to that isolated branch.
+The ephemeral GitHub token is held in process memory and is never persisted.
+Whole-registry Contents API writes use the fetched blob SHA and stop on 409/422.
+
+The workflow remains hard-disabled (job condition false and transaction flag 0).
+The separate worker-runtime registry starts DISABLED and empty. The legacy
+control-tower/tasks.json lease schema and CT25 comment bridge are not used or
+modified. This prototype therefore does not yet orchestrate V3/V3.1 or prove
+cross-registry writer exclusion. Independent security review, protected
+environment configuration, GitHub quota/billing validation, and live API/CAS
+acceptance remain required before any future activation.

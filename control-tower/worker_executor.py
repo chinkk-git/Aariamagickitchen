@@ -1,28 +1,19 @@
-"""Trusted transaction executor for an eventual GitHub Actions integration.
-
-The caller must provide authenticated GitHub actor and permission metadata from
-a trusted API, plus a private capability handle. The capability is never logged
-or persisted. This module makes no network requests and cannot activate workers.
-"""
-import hmac
-from worker_github_cas import cas_update, ConflictError
+"""Fail-closed executor for the isolated Control Tower runtime registry."""
+from worker_github_cas import cas_update,ConflictError,OWNER,REPOSITORY,TARGET_BRANCH,REGISTRY_PATH
 from worker_transactions import transact
-
-
-def execute(api, *, owner, repo, branch, actor, permission, allowed_actors,
-            trusted_actor, capability, expected_capability, task_id, worker,
-            operation, now, audit_ref, ttl=900):
-    if not trusted_actor or actor != trusted_actor:
-        raise PermissionError("actor does not match authenticated GitHub context")
-    if not isinstance(capability, str) or not isinstance(expected_capability, str):
-        raise PermissionError("missing private capability")
-    if len(capability) < 32 or len(expected_capability) < 32 or not hmac.compare_digest(capability, expected_capability):
-        raise PermissionError("invalid private capability")
-    if branch != "control-tower/worker-control-plan-20261019":
-        raise PermissionError("only isolated control tower branch permitted")
+WORKER_IDS={"W01","W02","W03","W04"}
+def execute(api,*,owner,repo,branch,actor,permission,actor_worker_map,task_id,worker,operation,now,audit_ref,ttl=900):
+    if (owner,repo,branch)!=(OWNER,REPOSITORY,TARGET_BRANCH):
+        raise PermissionError("only isolated Control Tower registry branch is writable")
+    if worker not in WORKER_IDS or not isinstance(actor_worker_map,dict):
+        raise PermissionError("unknown worker role")
+    if worker not in actor_worker_map.get(actor,set()):
+        raise PermissionError("authenticated actor is not mapped to this worker role")
+    allowed={login for login,roles in actor_worker_map.items() if isinstance(roles,(set,frozenset)) and roles}
     def change(doc):
-        if doc.get("activation") != "ENABLED":
-            raise PermissionError("worker transactions are disabled")
-        return transact(doc, task_id, worker, operation, now, audit_ref, ttl)
-    return cas_update(api, owner, repo, branch, "control-tower/worker-runtime.json",
-                      change, actor, allowed_actors, permission)
+        if doc.get("activation")!="ENABLED": raise PermissionError("worker transactions are disabled")
+        matches=[t for t in doc.get("tasks",[]) if t.get("id")==task_id]
+        if len(matches)!=1 or matches[0].get("target_branch")!=branch:
+            raise PermissionError("worker transaction is restricted to the isolated Control Tower branch")
+        return transact(doc,task_id,worker,operation,now,audit_ref,ttl)
+    return cas_update(api,owner,repo,branch,REGISTRY_PATH,change,actor,allowed,permission)
