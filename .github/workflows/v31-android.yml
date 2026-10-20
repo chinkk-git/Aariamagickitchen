@@ -149,9 +149,9 @@ jobs:
               return m.group(1),int(m.group(2))
           def signer(file):
               s=(d/file).read_text()
-              m=re.search(r"Signer #1 certificate SHA-256 digest: ([0-9a-fA-F]+)",s)
+              m=re.search(r"(?im)^Signer #1 certificate SHA-256 digest:\\s*([0-9a-fA-F:]+)",s) or re.search(r"(?im)^Signer #1 certificate SHA-256 digest:\\s*([0-9a-fA-F:]+)",s.replace("\\r",""))
               if not m: raise SystemExit('Missing signer digest: '+file)
-              return m.group(1).lower()
+              return m.group(1).replace(':','').lower()
           bp,bv=parse('v3-baseline-badging.txt')
           up,uv=parse('unified-badging.txt')
           bs=signer('v3-baseline-signer.txt')
