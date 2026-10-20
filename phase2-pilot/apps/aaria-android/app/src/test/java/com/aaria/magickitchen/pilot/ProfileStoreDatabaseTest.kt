@@ -72,6 +72,45 @@ class ProfileStoreDatabaseTest {
         assertEquals(3, restoredSecond.getJSONObject("snapshot").getJSONArray("done").getInt(0))
     }
 
+    @Test fun favoritesAndProgressSurviveProfileStoreRecreation() {
+        val created = store.createProfile("Aaria", "CHEF_A", "{}")
+        val profileId = created.getString("activeId")
+        assertTrue(store.saveSnapshot(profileId, """{"favorites":["recipe-95"],"done":[95],"weeks":{"week-1":{"day-1":true}}}"""))
+
+        store.close()
+        store = ProfileStore(app)
+        val restored = store.initialize("{}")
+
+        assertEquals(profileId, restored.getString("activeId"))
+        assertEquals("recipe-95", restored.getJSONObject("snapshot").getJSONArray("favorites").getString(0))
+        assertEquals(95, restored.getJSONObject("snapshot").getJSONArray("done").getInt(0))
+        assertTrue(restored.getJSONObject("snapshot").getJSONObject("weeks").getJSONObject("week-1").getBoolean("day-1"))
+    }
+
+    @Test fun chefChoiceCannotMutateInactiveProfile() {
+        val first = store.createProfile("First", "CHEF_A", "{}")
+        val firstId = first.getString("activeId")
+        val second = store.createProfile("Second", "CHEF_B", "{}")
+        val secondId = second.getString("activeId")
+
+        assertFalse(store.chooseChef(firstId, "CHEF_B"))
+        fun chefFor(snapshot: org.json.JSONObject, id: String): String {
+            val profiles = snapshot.getJSONArray("profiles")
+            return (0 until profiles.length()).map { profiles.getJSONObject(it) }
+                .first { it.getString("id") == id }.getString("chefId")
+        }
+
+        val stillSecond = store.initialize("{}")
+        assertEquals("CHEF_B", chefFor(stillSecond, secondId))
+        assertEquals("CHEF_A", chefFor(stillSecond, firstId))
+
+        val activeFirst = store.activateProfile(firstId)
+        assertTrue(store.chooseChef(activeFirst.getString("activeId"), "CHEF_B"))
+        val updatedFirst = store.initialize("{}")
+        assertEquals("CHEF_B", chefFor(updatedFirst, firstId))
+        assertEquals("CHEF_B", chefFor(updatedFirst, secondId))
+    }
+
     companion object {
         private const val DB_NAME = "my_magical_kitchen_v3.db"
     }
