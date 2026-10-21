@@ -69,3 +69,7 @@ The hardened audit was run against `assets/index.html` extracted from installabl
 ## Closure rule
 
 Work through each unblocked W01-owned row and record code/test/evidence. Keep genuinely external approvals explicitly BLOCKED and prepare reviewer-ready evidence. Do not claim V3.2 accepted while mandatory gates remain open. Preserve V3.1 Classic. Do not merge, release, publish to Play, or start Issue #39.
+
+
+## OWNER P0 OVERRIDE — Universal Recipe Template v1.0 (2026-10-21)
+Authoritative issue [#40](https://github.com/chinkk-git/Aariamagickitchen/issues/40) supersedes prior **recipe-template design and rollout sequence only**. Canonical docs: [design](../design/V3_2_UNIVERSAL_RECIPE_TEMPLATE_V1.md), [replication architecture](../architecture/V3_2_RECIPE_TEMPLATE_REPLICATION_FRAMEWORK.md), [approval-gated rollout](V3_2_RECIPE_TEMPLATE_P0_ROLLOUT.md). Previous recipe-step designs and three-recipe pilot remain historical evidence, **not the active specification**. Pilot recipe #12 ONLY -> exact-head review APK -> STOP for owner approval -> batches B01–B10 with 10 recipes each (final 4), each with APK and STOP -> only then remaining #38 backlog. Approved PNG binary not yet committed: pixel-accurate implementation gate OPEN. W01 stopped; no recipe implementation authorised by this docs-only handover. Preserve six-button homepage navigation, Classic, $0 cost, no merge/release.
