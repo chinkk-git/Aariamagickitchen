@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "algorithm": "FNV-1a(v3.2-theme:<recipe-id>) mod 3",
+  "algorithm": "FNV-1a(v3.2-theme:<recipe-id>) mod 3 with approved template-reference overrides",
   "themes": [
     "playful-purple",
     "fresh-green",
@@ -102,5 +102,14 @@
     "93": "sunny-orange",
     "94": "playful-purple",
     "95": "fresh-green"
+  },
+  "referenceOverrides": {
+    "5": "sunny-orange",
+    "12": "playful-purple"
+  },
+  "approvedTemplateExemplars": {
+    "5": "sunny-orange",
+    "12": "playful-purple",
+    "76": "fresh-green"
   }
 }
