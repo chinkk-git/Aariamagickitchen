@@ -55,7 +55,7 @@ The last available tablet samples are from run 39620830609 (artifact 12356076974
 ## Artwork and avatars inventory
 
 - Reference and asset provenance index: `docs/design/references/V3_2_REFERENCE_ASSET_MANIFEST.json`.
-- Avatar identity contract: `docs/design/V3_2_AVATAR_IDENTITY_REGISTRY.md`.
+- Avatar identity contract: `docs/design/V3_2_AVATAR_IDENTITY_REGISTRY.md`. Local SHA-256 verification matched the approved bearded-Daddy reference sheet and all 11 registered identity crops/poses (Aaria, Mommy, bearded Daddy and seven friends). This verifies bytes against the registry only; screen placement, consistency, rights, A08 and A09 remain independently unapproved.
 - Draft recipe-dish manifest: `tools/v3/artwork/recipe-dishes-draft/manifest.json`. The 13 requested finished-dish images are review-only drafts; they are not cleared for runtime. Tasty Tacos approved source remains unavailable and BLOCKED.
 - Batch manifests and source manifests: `tools/v3/artwork/batches/batch-01/` through `batch-05/`. Automated readiness audit reports 330 draft panels, zero formally approved atlases, zero runtime-integrated atlases, and independent approval still required.
 - Read-only source inventory found runtime `BATCH_ATLASES` references for recipe IDs 1, 2 and 4–10. The owner-reported 13-dish missing set includes IDs 1 and 4–10; IDs 16, 26, 33, 51 and 57 use explicit missing-art placeholders. Atlas presence does not establish exact dish match, source provenance, A08/A09 approval or rights. Reconcile these embedded runtime references against the draft-only manifests; do not claim any missing dish cleared until that review is complete.
