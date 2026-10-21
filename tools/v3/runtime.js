@@ -8,6 +8,7 @@ const V31_WORLD_ADVENTURE_ART=__V31_WORLD_ADVENTURE_ART_JSON__;
 const V31_HOME_WORLD_ART=__V31_HOME_WORLD_ART_JSON__;
 const V32_RECIPE_THEME_MAP=__V32_RECIPE_THEME_MAP_JSON__;
 const V32_PT_RECIPE_DRAFTS=__V3_PT_RECIPE_DRAFTS_JSON__;
+const V32_PT_GROUP_ROLE_COPY=__V32_PT_GROUP_ROLE_COPY_JSON__;
 for(const [id,draft] of Object.entries(V32_PT_RECIPE_DRAFTS))PT_RECIPES[id]={...(PT_RECIPES[id]||{}),...draft};
 const v32BaseTranslateText=translateText;
 const v32PortugueseCopy=new Map();
@@ -17,6 +18,22 @@ for(const [id,draft] of Object.entries(V32_PT_RECIPE_DRAFTS)){
  for(const key of ['ingredients','steps','extras'])if(Array.isArray(record[key])&&Array.isArray(draft[key]))record[key].forEach((source,index)=>{if(draft[key][index])v32PortugueseCopy.set(source,draft[key][index])});
 }
 translateText=function(value,lang=state.language){const source=String(value??'');if(lang==='pt-BR'&&v32PortugueseCopy.has(source))return v32PortugueseCopy.get(source);return v32BaseTranslateText(value,lang)};
+function v32AddGroupRoleCopy(){
+ if(view!=='recipe'||!selected)return;
+ const mode=selected.category==='Cooking with Mommy & Daddy'?'family':selected.category==='Cooking with Friends'?'friends':null;
+ if(!mode)return;
+ const title=document.querySelector('#screen .ref-title'),heading=title?.querySelector('h1');
+ if(!title||!heading||title.querySelector('.v32-group-role-copy'))return;
+ const english={
+  family:'Aaria is the head chef. Mommy and Daddy help. An adult handles the oven, hob and hot food as shown in the steps.',
+  friends:'Aaria and the friends cook together. An adult supervises hot equipment, knives and hot food as shown in the steps.'
+ };
+ const copy=state.language==='pt-BR'?V32_PT_GROUP_ROLE_COPY[mode]:english[mode];
+ if(!copy)return;
+ const note=document.createElement('p');note.className='v32-group-role-copy';note.setAttribute('role','note');note.textContent=copy;
+ note.style.cssText='margin:8px 0;padding:8px 10px;border-left:3px solid #9c65bd;border-radius:8px;background:#fff3fb;color:#50345a;font-size:clamp(12px,2.8vw,15px);line-height:1.35;text-align:left';
+ heading.insertAdjacentElement('afterend',note);
+}
 function v32RecipeTheme(id){return V32_RECIPE_THEME_MAP[String(Number(id))]||'playful-purple'}
 function v3IngredientClass(value){
  const t=String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -306,6 +323,7 @@ render=function v3Render(){
  }
  window.v31PreviousView=view;
  v3BaseRender();
+ if(view==='recipe')v32AddGroupRoleCopy();
  document.querySelector('.app')?.classList.remove('v31-world-active');document.body.classList.remove('v31-screen-world');
  if(view==='recipe')v31AddAdultCookingCues();
  document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
