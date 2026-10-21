@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "v3.2-draft-1",
+  "status": "PROPOSED_NOT_REFERENCE_CALIBRATED",
+  "themeAssignment": {
+    "method": "explicit-manifest-or-fixed-seed-hash",
+    "stableBy": "recipeId",
+    "runtimeRandom": false
+  },
+  "dimensions": {
+    "screenInsetPhoneDp": 16,
+    "screenInsetTabletMinDp": 24,
+    "cardRadiusDp": 20,
+    "panelRadiusDp": 16,
+    "primaryButtonMinHeightDp": 52,
+    "touchTargetMinDp": 48,
+    "progressTrackDp": 8,
+    "cardGapDp": 12,
+    "heroAspectRatio": "16:9",
+    "stepTextSpRange": [
+      18,
+      22
+    ]
+  },
+  "spacingDp": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "themes": {
+    "playful-purple": {
+      "primary": "#8B5CF6",
+      "soft": "#E9D5FF",
+      "accent": "#FBCFE8",
+      "canvas": "#FFF7ED",
+      "ink": "#4C1D95",
+      "card": "#FFFFFF"
+    },
+    "fresh-green": {
+      "primary": "#34A853",
+      "soft": "#D9F5DE",
+      "accent": "#A7DDA9",
+      "canvas": "#FFFBF0",
+      "ink": "#22543D",
+      "card": "#FFFFFF"
+    },
+    "sunny-orange": {
+      "primary": "#F97316",
+      "soft": "#FED7AA",
+      "accent": "#FDE68A",
+      "canvas": "#FFF7ED",
+      "ink": "#7C2D12",
+      "card": "#FFFFFF"
+    }
+  }
+}
