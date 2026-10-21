@@ -76,7 +76,7 @@ jobs:
         run: node tools/v3/artwork/batches/batch-01/build-android-review.mjs
 
       - name: Run Android unit tests and assemble isolated test APK
-        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+        run: V32_REVIEW_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
 
       - name: Verify test package, 95 recipes and draft-only artwork payload
         run: |
@@ -87,7 +87,9 @@ jobs:
           apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           "$aapt" dump badging "$apk" > artifacts/v32-diagnostics/test-apk-badging.txt
           "$apksigner" verify --print-certs "$apk" > artifacts/v32-diagnostics/test-apk-signer.txt
-          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32preview' versionCode='7' versionName='1.0.3'" artifacts/v32-diagnostics/test-apk-badging.txt
+          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
+          "$aapt" dump xmltree "$apk" AndroidManifest.xml > artifacts/v32-diagnostics/test-apk-manifest.txt
+          grep -Fq "com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER}.share" artifacts/v32-diagnostics/test-apk-manifest.txt
           test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/index.html')" -eq 1
           unzip -p "$apk" assets/artwork-review/index.html | grep -Fq '<title>Draft artwork review — Batches 01–05</title>'
           if unzip -p "$apk" assets/index.html | grep -Fq 'Draft artwork review'; then
@@ -108,6 +110,30 @@ jobs:
           echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
           sha256sum "$apk" | tee artifacts/v32-diagnostics/apk-sha256.txt
           printf 'A08_review=HOLD\nA09_review=HOLD\nartwork_rights=HOLD\nrelease=NOT_AUTHORIZED\n' > artifacts/v32-diagnostics/gates.txt
+
+      - name: Download previous V3.2 preview for install-conflict regression
+        if: github.run_number == 70
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-test-apk
+          path: artifacts/v32-previous-preview-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39662030525
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify previous V3.2 preview identity for coexistence test
+        if: github.run_number == 70
+        run: |
+          set -euo pipefail
+          prior=artifacts/v32-previous-preview-apk/app-debug.apk
+          test -s "$prior"
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$prior" > artifacts/v32-diagnostics/previous-v32-apk-badging.txt
+          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32preview' versionCode='7' versionName='1.0.3'" artifacts/v32-diagnostics/previous-v32-apk-badging.txt
+          "$apksigner" verify --print-certs "$prior" > artifacts/v32-diagnostics/previous-v32-apk-signer.txt
+          grep -Fq "certificate SHA-256 digest: 59a4885f3baacb9434f99e0c6cf3373b9ae6b8384d254627c2ab40361dfcde44" artifacts/v32-diagnostics/previous-v32-apk-signer.txt
+          sha256sum "$prior" | tee artifacts/v32-diagnostics/previous-v32-apk-sha256.txt
 
       - name: Download Classic preview for nondestructive coexistence check
         uses: actions/download-artifact@v4
@@ -157,7 +183,7 @@ jobs:
         timeout-minutes: 20
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 35
+          api-level: 36
           arch: x86_64
           profile: pixel_3a
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4

@@ -115,9 +115,10 @@ wait_for_booted_device
   adb_timeout -s "$ANDROID_SERIAL" shell df -h /data
 } | tee artifacts/v32-diagnostics/emulator-boot-properties.txt
 wait_for_stable_launcher
-echo 'Installing original V3 APK and isolated V3.2 preview side by side'
+echo 'Installing the previous V3.2 preview, V3.1 baseline and uniquely identified V3.2 visual review build side by side'
 BASELINE_APP_ID=com.aaria.magickitchen.pilot.v31preview
-APP_ID=com.aaria.magickitchen.pilot.v32preview
+PREVIOUS_V32_APP_ID=com.aaria.magickitchen.pilot.v32preview
+APP_ID="com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER:-local}"
 baseline_candidates=(artifacts/v31-baseline-apk/*.apk)
 if [ "${#baseline_candidates[@]}" -ne 1 ] || [ ! -s "${baseline_candidates[0]}" ]; then
   echo "Expected exactly one archived Classic preview APK under artifacts/v31-baseline-apk; found ${#baseline_candidates[@]}" >&2
@@ -125,12 +126,26 @@ if [ "${#baseline_candidates[@]}" -ne 1 ] || [ ! -s "${baseline_candidates[0]}" 
   exit 1
 fi
 BASELINE_APK=${baseline_candidates[0]}
+if [ "${GITHUB_RUN_NUMBER:-}" = "70" ]; then
+  previous_v32_candidates=(artifacts/v32-previous-preview-apk/*.apk)
+  if [ "${#previous_v32_candidates[@]}" -ne 1 ] || [ ! -s "${previous_v32_candidates[0]}" ]; then
+    echo "Expected the previous V3.2 preview APK for the one-time install-conflict regression." >&2
+    exit 1
+  fi
+  PREVIOUS_V32_APK=${previous_v32_candidates[0]}
+  adb_timeout install -r "$PREVIOUS_V32_APK"
+  adb_timeout shell pm path "$PREVIOUS_V32_APP_ID" | grep -q 'package:'
+  echo "Previous V3.2 package remains installed: $PREVIOUS_V32_APP_ID"
+fi
 adb_timeout install -r "$BASELINE_APK"
 adb_timeout shell pm path "$BASELINE_APP_ID" | grep -q 'package:'
 adb_timeout install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
 adb_timeout shell pm path "$BASELINE_APP_ID" | grep -q 'package:'
 adb_timeout shell pm path "$APP_ID" | grep -q 'package:'
-echo 'Co-install verified: original V3 and V3.1 preview have distinct installed package paths'
+if [ "${GITHUB_RUN_NUMBER:-}" = "70" ]; then
+  adb_timeout shell pm path "$PREVIOUS_V32_APP_ID" | grep -q 'package:'
+fi
+echo "Co-install verified: V3.1 baseline and uniquely identified V3.2 visual review package $APP_ID"
 echo 'Starting V3.2 Android activity'
 adb_timeout shell am start -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity
 socket=""
