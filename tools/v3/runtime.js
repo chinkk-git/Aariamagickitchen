@@ -260,6 +260,25 @@ function v3OpenQuiz(id){
 }
 
 const v3BaseRender=render;
+// Official food-composition records can be identified while their nutrient
+// payload is unavailable. Keep those entries visibly partial instead of
+// dereferencing null or presenting invented values.
+nutritionValue=function v32SafeNutritionValue(r){
+ const plan=NUTRITION_PLANS[r.id],o=state.nutritionOverrides[r.id]||{},totals={},missing=[],unavailable=new Set();
+ NUTRIENT_COLUMNS.forEach(([k])=>totals[k]=[0,0]);
+ plan.entries.forEach((entry,i)=>{
+  if(entry.water)return;
+  const key=o.types?.[i]||entry.key,ref=NUTRIENT_REFS[key];
+  let grams=entry.optional?[0,0]:entry.grams;
+  if(o.weights?.[i]!==undefined&&o.weights[i]!==null)grams=[o.weights[i],o.weights[i]];
+  if(grams[0]===0&&grams[1]===0)return;
+  if(!ref||!ref.nutrients||grams[0]===null){missing.push(entry.text);return}
+  NUTRIENT_COLUMNS.forEach(([k])=>{if(ref.nutrients[k]===null)unavailable.add(k);else for(let j=0;j<2;j++)totals[k][j]+=ref.nutrients[k]*grams[j]/100;});
+ });
+ const servings=o.servings?[o.servings,o.servings]:plan.yield,per={};
+ NUTRIENT_COLUMNS.forEach(([k])=>per[k]=[totals[k][0]/servings[1],totals[k][1]/servings[0]]);
+ return {totals,per,servings,missing,unavailable:[...unavailable]};
+};
 render=function v3Render(){
  document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  if(view==='world'){
