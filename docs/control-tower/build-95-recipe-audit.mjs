@@ -39,10 +39,30 @@ const plans=Object.assign(extract('NUTRITION_PLANS','{'),extractAssigns('NUTRITI
 const d1=JSON.parse(fs.readFileSync(path.join(root,'tools/v3/data/pt-BR-recipes-66-80-review.json'),'utf8'));
 const d2=JSON.parse(fs.readFileSync(path.join(root,'tools/v3/data/pt-BR-recipes-81-95-review.json'),'utf8'));
 const drafts={...d1.recipes,...d2.recipes};
+function assertDraftContract(doc,firstId,lastId,label){
+ if(doc.status!=='W01_DRAFT_PENDING_INDEPENDENT_REVIEW'||doc.locale!=='pt-BR')throw new Error(label+' must remain a pt-BR independent-review draft');
+ const requiredReviews=['A08_child_safety','A09_child_experience','native_PT_BR_translation'];
+ if(!requiredReviews.every(item=>doc.independentReviewRequired?.includes(item)))throw new Error(label+' is missing an independent-review gate');
+ const ids=Object.keys(doc.recipes||{}).map(Number).sort((a,b)=>a-b);
+ const expected=Array.from({length:lastId-firstId+1},(_,i)=>firstId+i);
+ if(JSON.stringify(ids)!==JSON.stringify(expected))throw new Error(label+' IDs must be exactly '+firstId+'-'+lastId+'; got '+ids.join(','));
+ for(const id of expected){
+  const translation=doc.recipes[String(id)],canonical=recipes.find(recipe=>Number(recipe.id)===id);
+  if(!canonical)throw new Error(label+' recipe '+id+' is absent from canonical source');
+  if(typeof translation.title!=='string'||!translation.title.trim())throw new Error(label+' recipe '+id+' has no translated title');
+  for(const field of ['ingredients','steps']){
+   const values=translation[field];
+   if(!Array.isArray(values)||!values.length||values.length!==canonical[field]?.length||values.some(value=>typeof value!=='string'||!value.trim()))throw new Error(label+' recipe '+id+' has incomplete '+field+' coverage');
+  }
+  if(typeof translation.safety!=='string'||!translation.safety.trim())throw new Error(label+' recipe '+id+' has no translated safety text');
+ }
+}
+assertDraftContract(d1,66,80,'PT-BR draft 66-80');
+assertDraftContract(d2,81,95,'PT-BR draft 81-95');
 const themes=JSON.parse(fs.readFileSync(path.join(root,'tools/v3/data/v3.2-recipe-theme-map.json'),'utf8'));
 const missing=new Set([1,4,5,6,7,8,9,10,16,26,33,51,57]);
 const blobSha=crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+Buffer.byteLength(html)+'\0'),Buffer.from(html)])).digest('hex');
-if(recipes.length!==95||new Set(recipes.map(r=>Number(r.id))).size!==95)throw new Error('Canonical recipe contract is not 95 unique IDs');
+if(recipes.length!==95||new Set(recipes.map(r=>Number(r.id))).size!==95||recipes.some((recipe,index)=>Number(recipe.id)!==index+1))throw new Error('Canonical recipe contract must contain exactly the ordered IDs 1-95');
 if(Object.keys(themes.mapping||themes).length!==95)throw new Error('Expected exactly 95 theme assignments');
 const rows=recipes.map(r=>{
  const id=String(r.id), translated=pt[id]||drafts[id]||null;
