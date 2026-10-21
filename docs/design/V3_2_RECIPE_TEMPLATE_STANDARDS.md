@@ -1,6 +1,6 @@
 # V3.2 Shared Recipe Template Standard
 
-Status: owner-approved design baseline, implementation reference only. The exact approved comparison image is `references/v3.2-three-recipe-templates.png`; its bytes are preserved from the approved Library image.
+Status: owner-approved visual direction; exact comparison mockup is BLOCKED. The expected source path is `references/v3.2-three-recipe-templates.png` and recorded approved SHA-256 is `d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e`. Exact-head CI measured the former checked-in candidate as `e40c8d9cbe3c418a1c716b3a06704e088a0bc4c781f8d58c52bb4a3d853b0372`; those bytes are retained only as `references/unverified-v3.2-three-recipe-templates-candidate.png`. The original approved attachment is required before visual calibration.
 
 ## One shared recipe template
 
