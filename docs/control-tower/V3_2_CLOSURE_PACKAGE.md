@@ -1,8 +1,16 @@
 # V3.2 Closure Package — W01 session rotation
 
+## Current live branch checkpoint — C1/C5 remediation
+
+- Branch HEAD and app/test SHA: `49dbfb2afe4d26165fe9a0361d896e927e4aecba`. Commits since the prior checkpoint update Home/World smoke selectors, remove deferred World Map zoom/drag controls while retaining map/country selection, and assert map art remains `contain` at its 1.7 source ratio. The canonical Family/Friends avatars remain wired to the registered hash-verified crops.
+- Exact identifiable Android run [39643309680](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39643309680) is a failure at prior app/test SHA `8f992901ac8bdc4cbadc993a8960ca1f448624a4`: app build/package/co-install checks passed, C5 phone smoke then searched an obsolete Home selector and could not navigate to Family. The app selectors and tablet fit assertion have now been corrected; the current SHA has no verifiable Actions run ID/artifact available through the connected run-list capability. No current-head pass or failure is claimed, and no auth bypass/manual dispatch was used.
+- #396433 artifacts: evidence ZIP [12367240363](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39643309680/artifacts/12367240363), test APK ZIP [12366407115](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39643309680/artifacts/12366407115). The evidence ZIP contains the partial Home portrait and approved source references; map, family/friends and tablet comparison results are explicitly BLOCKED_MISSING_SCREENSHOTS. Current-head APK/screenshots are pending.
+- Closure ledger remains **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED**; Home/World visual acceptance remains FAIL, avatar evidence remains pending, A08/A09/artwork rights/security decisions stay independent. Overall **NOT READY / HOLD**. Classic is unchanged; no merge or release.
+
+
 **Disposition: NOT READY / HOLD.** This package consolidates the exact-head evidence and open gates. It is not a release approval.
 
-## Current W01 checkpoint — app code SHA fc3dfe7
+## Earlier checkpoint — app code SHA fc3dfe7 (superseded)
 
 - Branch application/test head: `fc3dfe796b5a55ce55656e83e42b4b9cbd50a805`. The latest docs update records the coordinated 95-recipe content and artwork matrix. Overall disposition remains **NOT READY / HOLD**.
 - [Android run 39640274275](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39640274275) is the authorized push-triggered run for this exact app/test head; it is pending behind an earlier queued run. No APK, screenshots, or current-head pass is claimed yet.
@@ -12,7 +20,7 @@
 - Current artwork source inventory records 2 inline dish photos, 50 Home thumbnails, 9 atlas registrations, 30 new-recipe records, and 5 explicit missing placeholders. The 13 owner-listed missing dishes remain 1,4,5,6,7,8,9,10,16,26,33,51,57. Read-only artwork readiness audit passed 55 atlases/330 panels and 330 draft panels, with 0 formal approvals and 0 runtime-integrated review atlases. No review-only asset was promoted.
 - Acceptance ledger totals remain **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED**. Home/World visual rows remain FAIL pending current-code screenshot review and independent sign-off. The three-theme acceptance and all 95 individual recipe rows remain open.
 
-## Current W01 checkpoint — branch HEAD 5159a01; app/test SHA 9bf66d2
+## Earlier checkpoint — branch HEAD 5159a01; app/test SHA 9bf66d2 (superseded)
 
 - Live branch HEAD: `5159a01e6d1bebae8453f3b84814fd3cbca92a8f` (closure documentation and contact-sheet checkpoint). Latest app/test code parent: `9bf66d2545c2bf2bd58834bff882f2c32693d846`; this docs commit adds no app code.
 - Android run [39640274275](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39640274275) remains in progress at prior app/test SHA `fc3dfe7`; its build, recipe/asset/theme contracts, package checks and emulator setup passed, and phone evidence capture is still active. Exact app/test-head run [39641229641](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39641229641) is pending at `9bf66d2`. Neither has produced artifacts yet. Do not treat the earlier successful run #39632118408 at `857b3e0` as current-code evidence.
