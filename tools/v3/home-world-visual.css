@@ -149,3 +149,29 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .app.v32-template-active .ref-dot.selected{background:var(--v3-berry)}
 .app.v32-template-active .rollup-method-banner{border-color:var(--v3-line);box-shadow:0 3px 0 color-mix(in srgb,var(--v3-line) 75%,white)}
 .app.v32-template-active .rollup-method-banner strong{color:var(--v3-berry)}
+
+/* Closure calibration: keep the approved reference art vivid and fully visible on
+   narrow portrait screens while bringing the Home hero and World map closer to
+   the owner-approved composition. The reference map image already contains its
+   destination markers, so this preserves the entire image and marker mapping. */
+.v31-reference-hero{
+ background-image:linear-gradient(90deg,#fff0e36b 0%,#fff3e45a 48%,#fff0e31f 100%),var(--v31-kitchen) center/cover,#ffe8cf;
+}
+.v31-reference-hero:before{background:linear-gradient(0deg,#fff8f073 0%,transparent 48%)}
+.v31-hero-welcome{
+ max-width:430px;
+ border-radius:34px 34px 34px 13px;
+ background:#fffaf6dc;
+}
+@media(max-width:720px) and (orientation:portrait){
+ .v31-hero-welcome{max-width:53%;padding:10px 11px}
+ .v31-reference-characters{right:-1%;height:88%;width:50%}
+ .v31-illustrated-map-panel .v31-map-wrap{
+  height:210px;max-height:clamp(205px,34vh,320px);aspect-ratio:auto;background-size:100% 100%;
+ }
+}
+@media(min-width:721px) and (orientation:portrait){
+ .v31-illustrated-map-panel .v31-map-wrap{
+  height:clamp(250px,39vh,420px);max-height:clamp(250px,39vh,420px);aspect-ratio:auto;background-size:100% 100%;
+ }
+}
