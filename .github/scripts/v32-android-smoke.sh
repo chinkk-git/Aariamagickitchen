@@ -458,6 +458,17 @@ const themeReport = await evaluate(`(() => { const cards=[...document.querySelec
 if(themeReport.count!==95||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['1']!=='sunny-orange'||themeReport.samples['2']!=='fresh-green'||themeReport.samples['3']!=='playful-purple') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 95 recipes: ${JSON.stringify(themeReport)}`);
 await captureScreenshot('v32-three-theme-library-portrait.png','All three recipe themes',recipeDigest);
 console.log('V3.2 renderer exposes all three stable recipe themes across all 95 original IDs:',JSON.stringify(themeReport));
+const filterReport=await evaluate(`(()=>{const select=document.querySelector('[data-appliance-filter]');if(!select)throw Error('Cooking-method filter is missing');select.value='Air fryer';select.dispatchEvent(new Event('change',{bubbles:true}));const ids=[...document.querySelectorAll('#screen .recipe-card[data-open]')].map(x=>Number(x.dataset.open));return {ids,allAirFryer:ids.length>0&&ids.every(id=>/air[ -]?fryer/i.test(RECIPES.find(r=>r.id===id)?.method||''))}})()`);
+if(!filterReport.allAirFryer||filterReport.ids.length>=95)throw new Error(`Air fryer filter returned invalid recipes: ${JSON.stringify(filterReport)}`);
+await evaluate(`(()=>{const select=document.querySelector('[data-appliance-filter]');select.value='All';select.dispatchEvent(new Event('change',{bubbles:true}));return true})()`);
+const breakfastCount=await evaluate(`(()=>{const button=document.querySelector('#screen .ref-category[data-filter="Breakfast"]');if(!button)throw Error('Breakfast category filter is missing');button.click();const cards=[...document.querySelectorAll('#screen .recipe-card[data-open]')];return {count:cards.length,allBreakfast:cards.length>0&&cards.every(x=>RECIPES.find(r=>r.id===Number(x.dataset.open))?.category==='Breakfast')}})()`);
+if(!breakfastCount.allBreakfast||breakfastCount.count>=95)throw new Error(`Breakfast filter returned invalid recipes: ${JSON.stringify(breakfastCount)}`);
+await evaluate(`document.querySelector('#screen .ref-category[data-filter="All"]')?.click()`);
+const surpriseId=await evaluate(`(()=>{const b=document.querySelector('.ref-side-nav [data-action="random"]');if(!b)throw Error('Surprise Me control is missing');b.click();return Number(selected?.id)})()`);
+if(!Number.isInteger(surpriseId)||surpriseId<1||surpriseId>95)throw new Error(`Surprise Me selected invalid recipe ID: ${surpriseId}`);
+await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
+await waitForVisible('.recipe-card[data-open="1"]','95-recipe catalogue restored after filter and Surprise Me checks');
+console.log('Air fryer/category filters and Surprise Me preserve canonical recipe IDs:',JSON.stringify({airFryer:filterReport.ids.length,breakfast:breakfastCount.count,surpriseId}));
 const routeCoverage=[];
 for(let recipeId=1;recipeId<=95;recipeId++){
   const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=document.querySelector('#screen .recipe-card[data-open="${recipeId}"]');if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
