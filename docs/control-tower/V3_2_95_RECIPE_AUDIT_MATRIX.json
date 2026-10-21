@@ -42,12 +42,18 @@
       "newRecipeArt": 30,
       "missingPlaceholder": 5
     },
-    "rights": "UNVERIFIED_FOR_ALL_RUNTIME_ASSETS"
+    "rights": "UNVERIFIED_FOR_ALL_RUNTIME_ASSETS",
+    "reviewContactSheet": {
+      "path": "docs/control-tower/V3_2_13_MISSING_DISH_REVIEW_CONTACT.jpg",
+      "sha256": "09e1374ee5024c1e42596d38efcb977a8f95eaabb87155f45734dd00f94b710b",
+      "dimensions": "896x1000",
+      "status": "REVIEW_INDEX_ONLY_NOT_APPROVED"
+    }
   },
   "runBinding": {
     "runId": 39640274275,
     "codeSha": "fc3dfe796b5a55ce55656e83e42b4b9cbd50a805",
-    "status": "PENDING"
+    "status": "IN_PROGRESS"
   },
   "evidenceLegend": {
     "routeEvidence": "Prior 95/95 route run; does not prove current-head content acceptance or per-recipe screenshots.",
