@@ -1,0 +1,140 @@
+name: Aaria V3.2 shared recipe renderer and test APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/v3.2-magical-cookbook
+    paths:
+      - 'index.html'
+      - 'tools/v3/**'
+      - 'phase2-pilot/**'
+      - 'docs/design/**'
+      - '.github/scripts/v32-android-smoke.sh'
+      - '.github/workflows/v32-android.yml'
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: aaria-v32-android
+  cancel-in-progress: false
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out exact V3.2 source head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: 8.9
+
+      - name: Test recipe contracts, assets and 95-ID theme map
+        run: |
+          set -euo pipefail
+          npm test --prefix phase2-pilot
+          node tools/v3/validate-v31.mjs
+          node --check tools/v3/runtime.js
+          node --check tools/v3/transform-production.mjs
+
+      - name: Build offline shared recipe renderer and stage draft review assets
+        run: |
+          set -euo pipefail
+          mkdir -p dist artifacts/v32-diagnostics phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes
+          node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_2.html
+          cp dist/Aaria_Magical_Kitchen_V3_2.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          cp tools/v3/artwork/recipe-dishes-draft/manifest.json phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          cp tools/v3/artwork/recipe-dishes-draft/source/recipe-dishes-13-source-sheet.png phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          cp tools/v3/artwork/recipe-dishes-draft/*.webp phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
+
+      - name: Run Android unit tests and assemble isolated test APK
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+
+      - name: Verify test package, 95 recipes and draft-only artwork payload
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v32-diagnostics
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$apk" > artifacts/v32-diagnostics/test-apk-badging.txt
+          "$apksigner" verify --print-certs "$apk" > artifacts/v32-diagnostics/test-apk-signer.txt
+          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32preview' versionCode='7' versionName='1.0.3'" artifacts/v32-diagnostics/test-apk-badging.txt
+          unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Spin My Week'
+          unzip -p "$apk" assets/index.html | grep -Fq 'data-v32-theme'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Cozinha mágica da Aaria'
+          if unzip -p "$apk" assets/index.html | grep -Fq 'recipe-dishes-draft'; then
+            echo 'Draft dish artwork must not be promoted into the runtime page.' >&2
+            exit 1
+          fi
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review-v32/dishes/recipe-[0-9]+-[a-z0-9-]+\.webp$')" -eq 13
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review-v32/dishes/manifest.json'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review-v32/dishes/recipe-dishes-13-source-sheet.png'
+          echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
+          sha256sum "$apk" | tee artifacts/v32-diagnostics/apk-sha256.txt
+          printf 'A08_review=HOLD\nA09_review=HOLD\nartwork_rights=HOLD\nrelease=NOT_AUTHORIZED\n' > artifacts/v32-diagnostics/gates.txt
+
+      - name: Download Classic preview for nondestructive coexistence check
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-w01-unified-preview-apk
+          path: artifacts/v31-baseline-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39528150224
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Launch both preview APKs and capture Android evidence
+        timeout-minutes: 20
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_3a
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          disable-animations: true
+          disable-linux-hw-accel: false
+          script: bash .github/scripts/v32-android-smoke.sh
+
+      - name: Upload isolated V3.2 test APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-test-apk
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload screenshots and gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-test-evidence
+          path: |
+            artifacts/v32-diagnostics/
+            artifacts/v32-android-screenshots/
+            phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          if-no-files-found: warn
+          retention-days: 30

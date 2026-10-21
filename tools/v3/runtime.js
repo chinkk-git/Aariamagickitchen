@@ -6,6 +6,8 @@ const V31_WORLD_GEOGRAPHY=__V31_WORLD_GEOGRAPHY_JSON__;
 const V31_WORLD_ADVENTURE=__V31_WORLD_ADVENTURE_JSON__;
 const V31_WORLD_ADVENTURE_ART=__V31_WORLD_ADVENTURE_ART_JSON__;
 const V31_HOME_WORLD_ART=__V31_HOME_WORLD_ART_JSON__;
+const V32_RECIPE_THEME_MAP=__V32_RECIPE_THEME_MAP_JSON__;
+function v32RecipeTheme(id){return V32_RECIPE_THEME_MAP[String(Number(id))]||'playful-purple'}
 function v3IngredientClass(value){
  const t=String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  // Only use a sprite when the atlas actually depicts that ingredient. This
@@ -57,7 +59,7 @@ function v3IngredientArt(value){
  if(idx<0)return `<span aria-hidden="true">${v3IngredientFallback(value)}</span>`;
  return `<span class="v3-ingredient-art v3-food-${idx}" role="img" aria-label="${safe(value)}"></span>`;
 }
-homeTile=function v31PinterestTile(r){return `<button class="home-tile v31-pinterest-tile" data-open="${r.id}" aria-label="Open ${safe(r.title)}">${homeDishThumb(r)}${recipeNumberMarkup(r)}<span class="home-tile-name">${safe(r.title)}</span><span class="home-tile-meta">${safe(r.category)} · ${safe(r.method)}</span></button>`};
+homeTile=function v31PinterestTile(r){return `<button class="home-tile v31-pinterest-tile" data-v32-theme="${v32RecipeTheme(r.id)}" data-open="${r.id}" aria-label="Open ${safe(r.title)}">${homeDishThumb(r)}${recipeNumberMarkup(r)}<span class="home-tile-name">${safe(r.title)}</span><span class="home-tile-meta">${safe(r.category)} · ${safe(r.method)}</span></button>`};
 // The production batch renderer has hand-drawn, ingredient-specific SVGs for
 // the full recipe catalogue. Keep it intact; the small atlas is only a fallback
 // for the older recipe card renderer, where exact atlas matches are available.
@@ -280,7 +282,21 @@ render=function v3Render(){
  document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  document.body.classList.toggle('v3-screen-home',view==='home');
  if(view==='recipe'&&selected){const screen=document.querySelector('#screen');if(screen&&!screen.querySelector('.v3-quiz-card'))screen.insertAdjacentHTML('beforeend',v3QuizCard(selected));}
+ v32ApplyRecipeThemes();
 };
+
+function v32ApplyRecipeThemes(){
+ const themeFor=id=>V32_RECIPE_THEME_MAP[String(Number(id))];
+ document.querySelectorAll('#screen [data-open],#screen [data-v31-approved-recipe]').forEach(node=>{
+  const id=node.dataset.open||node.dataset.v31ApprovedRecipe,theme=themeFor(id);
+  if(theme)node.dataset.v32Theme=theme;
+ });
+ const app=document.querySelector('.app');
+ if(!app)return;
+ const theme=view==='recipe'&&selected?themeFor(selected.id):null;
+ if(theme){app.dataset.v32RecipeTheme=theme;app.classList.add('v32-template-active')}
+ else{delete app.dataset.v32RecipeTheme;app.classList.remove('v32-template-active')}
+}
 
 function v31AddAdultCookingCues(){
  const method=String(selected?.method||'').toLowerCase();

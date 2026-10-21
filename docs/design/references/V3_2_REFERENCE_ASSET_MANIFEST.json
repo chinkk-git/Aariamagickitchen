@@ -1,0 +1,41 @@
+{
+  "status": "PROVENANCE_RECORDED; SOME_REQUIRED_REFERENCES_BLOCKED",
+  "assets": [
+    {
+      "role": "three-recipe-theme-comparison",
+      "path": "docs/design/references/v3.2-three-recipe-templates.png",
+      "sha256": "d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e",
+      "provenance": "Exact bytes verified against approved original Control Tower attachment mirrored at ref/Kids’ Cooking App UI Templates.png.",
+      "status": "EXACT_SOURCE_BYTES_VERIFIED"
+    },
+    {
+      "role": "approved-avatar-identity-sheet",
+      "path": "docs/design/references/v3.2-approved-avatar-sheet-bearded-daddy.png",
+      "sha256": "cfb1c9073d4a4f3ccabae9675a33f7d5dc097b9f738de60eb2f8b2c86a97ba2a",
+      "provenance": "Owner-uploaded approved PNG; preserve exact bytes.",
+      "status": "EXACT_BYTES_VERIFIED; RIGHTS_AND_SAFETY_HOLD"
+    },
+    {
+      "role": "protected-v31-home-and-world-reference",
+      "path": "docs/design/approved-v31-home-world-reference.png",
+      "sha256": "6934745614144a6100cbceee8140b4dc54b18a4fd4cac55835dda2ad41eaa5b8",
+      "provenance": "Existing committed V3.1 baseline reference used by the approved-reference comparison report.",
+      "status": "SOURCE_HASH_VERIFIED; PRIOR_ANDROID_VISUAL_COMPARISON_FAIL"
+    },
+    {
+      "role": "protected-v31-world-map-crop",
+      "path": "docs/design/approved-v31-world-map-crop.jpg",
+      "sha256": "781caaba49b44965515cf2bbec427b78344d9d9c117b8b71b651ae667a5bb9cd",
+      "provenance": "Existing committed V3.1 world-map crop.",
+      "status": "SOURCE_HASH_VERIFIED; VISUAL_ACCEPTANCE_BLOCKED"
+    },
+    {
+      "role": "approved-tasty-tacos-recipe-flow",
+      "path": null,
+      "sha256": null,
+      "provenance": null,
+      "status": "BLOCKED_NOT_FOUND_IN_BRANCH_OR_AVAILABLE_UPLOADS"
+    }
+  ],
+  "tokens": "docs/design/v3.2-design-tokens.proposed.json remains PROPOSED_NOT_REFERENCE_CALIBRATED."
+}

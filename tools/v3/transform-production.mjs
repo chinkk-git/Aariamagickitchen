@@ -322,17 +322,19 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 `;
 
 const runtimeTemplate = fs.readFileSync(path.join(here, 'runtime.js'), 'utf8');
+const v32RecipeThemeMap = JSON.parse(fs.readFileSync(path.join(here, 'data/v3.2-recipe-theme-map.json'), 'utf8'));
 const runtime = runtimeTemplate
   .replaceAll('__AARIA_V3_MARKER__', marker)
   .replace('__V3_ART_JSON__', JSON.stringify(art))
   .replace('__V3_INGREDIENT_ATLAS_JSON__', JSON.stringify(ingredientAtlas))
   .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt))
   .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))
+  .replace('__V32_RECIPE_THEME_MAP_JSON__', JSON.stringify(v32RecipeThemeMap.mapping))
   .replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))
   .replace('__V31_WORLD_ADVENTURE_ART_JSON__', JSON.stringify(worldAdventureArt))
   .replace('__V31_HOME_WORLD_ART_JSON__', JSON.stringify(homeWorldArt));
 
-if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__/.test(runtime)) throw new Error('Could not embed the offline world adventure data and artwork.');
+if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__|__V32_RECIPE_THEME_MAP_JSON__/.test(runtime)) throw new Error('Could not embed the offline experience data.');
 
 
 let outputHtml = html;

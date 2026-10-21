@@ -33,8 +33,8 @@ android {
     }
     buildTypes {
         getByName("debug") {
-            applicationIdSuffix = ".v31preview"
-            resValue("string", "app_name", "Aaria Magical Kitchen V3.1 Preview")
+            applicationIdSuffix = ".v32preview"
+            resValue("string", "app_name", "Aaria Magical Kitchen V3.2 Test Preview")
         }
         getByName("release") {
             if (releaseSigningConfigured) {

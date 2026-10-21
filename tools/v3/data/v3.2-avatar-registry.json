@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "status": "HOLD_CANONICAL_EXTRACTION_AND_RIGHTS_REVIEW",
+  "identityPolicy": "Keep approved reference bytes unchanged. Do not create lookalikes or infer canonical identity from unverified crop files.",
+  "approvedReference": {
+    "path": "docs/design/references/v3.2-approved-avatar-sheet-bearded-daddy.png",
+    "sha256": "cfb1c9073d4a4f3ccabae9675a33f7d5dc097b9f738de60eb2f8b2c86a97ba2a",
+    "status": "VISUAL_REFERENCE_APPROVED; RIGHTS_AND_A08_A09_NOT_CLEARED"
+  },
+  "canonicalIdentitiesVisibleInReference": [
+    {"key":"aaria","displayName":"Aaria","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"mommy","displayName":"Mommy","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"daddy","displayName":"Daddy","identityNote":"Bearded Daddy in blue shirt and apron shown in approved reference","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"boy-rohan","displayName":"Rohan","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"boy-arjun","displayName":"Arjun","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"boy-vihaan","displayName":"Vihaan","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"girl-isha","displayName":"Isha","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"girl-meera","displayName":"Meera","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"girl-sana","displayName":"Sana","status":"SOURCE_ART_EXTRACTION_BLOCKED"},
+    {"key":"girl-diya","displayName":"Diya","status":"SOURCE_ART_EXTRACTION_BLOCKED"}
+  ],
+  "candidateExistingAssets": [
+    {"path":"phase2-pilot/packages/assets/characters/aaria.jpg","sha256":"f2e0eaf936e41fb79f999a53dbd3d7b4292a5174c17e6ef43d07d9e8e7f9684e","status":"UNVERIFIED_CANDIDATE"},
+    {"path":"phase2-pilot/packages/assets/characters/mommy.jpg","sha256":"f68e9e647a5cd5b5996b31bbf1915f9e1acb570f535dcb8fb50b6670f68e9f1f","status":"UNVERIFIED_CANDIDATE"},
+    {"path":"phase2-pilot/packages/assets/characters/daddy.jpg","sha256":"6801c83f44cd248ca0151bd6cb14f6051eb88923a0f4feda85af1df917663771","status":"UNVERIFIED_CANDIDATE_NOT_MATCHED_TO_APPROVED_DADDY_REFERENCE"},
+    {"path":"phase2-pilot/packages/assets/characters/sophia.jpg","sha256":"c4b6c51ddafa10a623baa861489882d3f9e26095fe04dac87b2ba1fa8a3c0164","status":"UNVERIFIED_CANDIDATE"},
+    {"path":"phase2-pilot/packages/assets/characters/liam.jpg","sha256":"84b94cef93cc4fa4535f13ae3b2323c5d1a0d6fbc21a6f5d52f6bd5a68908730","status":"UNVERIFIED_CANDIDATE"},
+    {"path":"phase2-pilot/packages/assets/characters/emma.jpg","sha256":"3e13c1f686356c7c85ac5de74beaf8d274c28bf653732a26376bd66bc0dd510e","status":"UNVERIFIED_CANDIDATE"},
+    {"path":"phase2-pilot/packages/assets/characters/friends.jpg","sha256":"a46a1b7aca6449b1debc799c9a2755afcd8afca02696f8a3e6de822330697fce","status":"UNVERIFIED_COMPOSITE_NOT_INDIVIDUAL_IDENTITIES"}
+  ],
+  "allowedContexts": ["home", "family", "friends", "completion", "crew"],
+  "forbiddenContexts": ["individual cooking-step artwork"],
+  "releaseGate": "HOLD until exact canonical source extraction, rights, identity consistency, A08 and A09 are independently verified."
+}

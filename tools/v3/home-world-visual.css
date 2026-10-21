@@ -101,3 +101,18 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .v31-pantry-shortcuts{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
 .v31-pantry-shortcuts button{min-height:38px;padding:7px 11px;border:1px solid #e8dce8;border-radius:12px;background:#fff;color:#5a3a76;font-size:11px;font-weight:800}
 @media(max-width:720px){.v31-home-quick-links{display:flex;justify-content:flex-start;overflow:auto;padding:1px 0 4px;scrollbar-width:none}.v31-home-quick-links button{flex:none;white-space:nowrap;font-size:9px}.v31-pantry-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.v31-pantry-shortcuts button{min-width:0;padding:5px 7px;font-size:9px}}
+
+/* V3.2 uses one shared recipe renderer. Theme tokens affect decoration only. */
+.app[data-v32-recipe-theme="playful-purple"]{--v3-ink:#3e285f;--v3-plum:#674094;--v3-berry:#8a43bf;--v3-mint:#318d79;--v3-lav:#f6efff;--v3-paper:#fffaff;--v3-line:#e6d6f4;--v3-shadow:0 8px 24px #4c287a18}
+.app[data-v32-recipe-theme="fresh-green"]{--v3-ink:#214934;--v3-plum:#286344;--v3-berry:#18824d;--v3-mint:#2e9160;--v3-lav:#eff9f1;--v3-paper:#fffef8;--v3-line:#d2e9d7;--v3-shadow:0 8px 24px #285c3817}
+.app[data-v32-recipe-theme="sunny-orange"]{--v3-ink:#56351f;--v3-plum:#86471f;--v3-berry:#c35419;--v3-mint:#b65b24;--v3-lav:#fff3e8;--v3-paper:#fffdf7;--v3-line:#f4d7bf;--v3-shadow:0 8px 24px #87461d17}
+.app.v32-template-active .v31-step-progress{background:color-mix(in srgb,var(--v3-berry) 18%,white)}
+.app.v32-template-active .v31-step-progress>span{background:var(--v3-berry)}
+.app.v32-template-active .v31-primary-actions button,.app.v32-template-active .v3-primary,.app.v32-template-active .v31-world-cook{background:var(--v3-berry);border-color:var(--v3-berry);color:#fff}
+.app.v32-template-active .recipe-card[data-v32-theme],.app.v32-template-active .home-tile[data-v32-theme]{border-color:var(--v3-line);box-shadow:var(--v3-shadow)}
+.app.v32-template-active button:focus-visible{outline:3px solid var(--v3-berry);outline-offset:3px}
+.home-tile[data-v32-theme="playful-purple"],.recipe-card[data-v32-theme="playful-purple"]{--v32-card-accent:#7541ad;--v32-card-surface:#f7efff}
+.home-tile[data-v32-theme="fresh-green"],.recipe-card[data-v32-theme="fresh-green"]{--v32-card-accent:#27724a;--v32-card-surface:#eef9f0}
+.home-tile[data-v32-theme="sunny-orange"],.recipe-card[data-v32-theme="sunny-orange"]{--v32-card-accent:#b54d18;--v32-card-surface:#fff1e4}
+.home-tile[data-v32-theme],.recipe-card[data-v32-theme]{border-color:var(--v3-line);background:linear-gradient(160deg,#fff 45%,var(--v32-card-surface));color:var(--v32-card-accent)}
+.home-tile[data-v32-theme] .home-tile-name,.recipe-card[data-v32-theme] strong{color:var(--v32-card-accent)}

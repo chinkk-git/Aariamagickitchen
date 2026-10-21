@@ -41,6 +41,16 @@ const recipes = extractRecipes(source);
 if (recipes.length !== 95) fail(`Expected to preserve exactly 95 original recipes; found ${recipes.length}.`);
 const ids = recipes.map(recipe => recipe.id);
 if (new Set(ids).size !== 95 || ids.some(id => !Number.isInteger(id) || id < 1 || id > 95)) fail('Original recipe IDs must remain unique and within 1–95.');
+const themeSpec = JSON.parse(fs.readFileSync(path.join(here, 'data/v3.2-recipe-theme-map.json'), 'utf8'));
+const themeKeys = ['playful-purple', 'fresh-green', 'sunny-orange'];
+function expectedTheme(id) {
+  let hash = 2166136261;
+  for (const character of `v3.2-theme:${id}`) { hash ^= character.charCodeAt(0); hash = Math.imul(hash, 16777619); }
+  return themeKeys[(hash >>> 0) % themeKeys.length];
+}
+if (themeSpec.algorithm !== 'FNV-1a(v3.2-theme:<recipe-id>) mod 3' || JSON.stringify(themeSpec.themes) !== JSON.stringify(themeKeys)) fail('V3.2 recipe theme algorithm or theme names changed unexpectedly.');
+if (Object.keys(themeSpec.mapping).length !== 95 || ids.some(id => themeSpec.mapping[String(id)] !== expectedTheme(id))) fail('Every original recipe ID 1–95 must map deterministically to its V3.2 theme.');
+if (themeKeys.some(theme => !Object.values(themeSpec.mapping).includes(theme))) fail('All three approved V3.2 themes must be represented in the 95-recipe assignment.');
 
 const destinations = [['IND', 'India'], ['ITA', 'Italy'], ['CHN', 'China'], ['JPN', 'Japan'], ['MEX', 'Mexico'], ['VNM', 'Vietnam'], ['GRC', 'Greece']];
 if (!Array.isArray(geography.features) || geography.features.length < 150) fail('Offline country boundaries are incomplete.');
