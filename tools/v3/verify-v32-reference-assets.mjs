@@ -28,6 +28,5 @@ if(!tacos||tacos.path!==null||!String(tacos.status).includes('BLOCKED'))throw ne
 results.push({role:'approved-tasty-tacos-recipe-flow',status:tacos.status});
 mkdirSync(resolve(root,'artifacts/v32-diagnostics'),{recursive:true});
 copyFileSync(resolve(root,template.candidate_path),resolve(root,'artifacts/v32-diagnostics/unverified-template-candidate.png'));
-writeFileSync(resolve(root,'artifacts/v32-diagnostics/reference-provenance.json'),JSON.stringify({source:manifestPath,manifestStatus:manifest.status,assets:results,rights:'HOLD',A08:'HOLD',A09:'HOLD'},null,2)+'
-');
+writeFileSync(resolve(root,'artifacts/v32-diagnostics/reference-provenance.json'),JSON.stringify({source:manifestPath,manifestStatus:manifest.status,assets:results,rights:'HOLD',A08:'HOLD',A09:'HOLD'},null,2)+'\n');
 console.log(JSON.stringify(results));
