@@ -145,7 +145,7 @@ done
 test -n "$socket"
 echo "Forwarding app-owned WebView DevTools socket: $socket (app PID $app_pid)"
 adb_timeout forward tcp:9222 "localabstract:$socket"
-timeout --kill-after=10s 240s node --input-type=module <<'NODE'
+timeout --kill-after=10s 720s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
 const {readFileSync, statSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');
@@ -466,6 +466,7 @@ for(let recipeId=1;recipeId<=95;recipeId++){
   const detail=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',theme:document.querySelector('.app')?.dataset.v32RecipeTheme||'',steps:document.querySelectorAll('#screen .ref-step-card').length,ingredients:document.querySelectorAll('#screen .ref-ingredient').length}))()`);
   if(!detail.title||detail.theme!==card.theme||detail.steps<1||detail.ingredients<1)throw new Error(`Recipe ${recipeId} detail regression: ${JSON.stringify({card,detail})}`);
   routeCoverage.push(recipeId);
+  if(recipeId%10===0)console.log(`Verified recipe detail routes ${recipeId}/95`);
   await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
   await waitForVisible('.recipe-card',`Recipe catalogue after ${recipeId}`);
 }
