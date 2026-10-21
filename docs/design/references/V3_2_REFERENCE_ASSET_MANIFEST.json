@@ -1,12 +1,12 @@
 {
-  "status": "PROVENANCE_RECORDED; THREE-TEMPLATE MOCKUP BLOCKED; REQUIRED REFERENCES PARTIALLY BLOCKED",
+  "status": "PROVENANCE_RECORDED; THREE-TEMPLATE SOURCE HASH VERIFIED; TASTY TACOS REFERENCE REVIEW PENDING",
   "assets": [
     {
       "role": "three-recipe-theme-comparison",
-      "path": null,
-      "sha256": null,
-      "provenance": "Expected original Control Tower attachment bytes are not present. The former checked-in candidate was measured by exact-head CI and did not match the recorded approved-source SHA-256; it is quarantined as an unverified candidate.",
-      "status": "BLOCKED_EXPECTED_SOURCE_HASH_MISMATCH_ORIGINAL_ATTACHMENT_UNAVAILABLE",
+      "path": "docs/design/references/v3.2-three-recipe-templates.png",
+      "sha256": "d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e",
+      "provenance": "Restored exact bytes from the Library upload titled Kids’ Cooking App UI Templates.png; SHA-256 matches the owner-approved source hash recorded in Issue #38.",
+      "status": "EXACT_SOURCE_BYTES_VERIFIED",
       "expected_sha256": "d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e",
       "candidate_path": "docs/design/references/unverified-v3.2-three-recipe-templates-candidate.png",
       "candidate_sha256": "e40c8d9cbe3c418a1c716b3a06704e088a0bc4c781f8d58c52bb4a3d853b0372"
