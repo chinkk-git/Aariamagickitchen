@@ -282,7 +282,7 @@ async function evaluate(expression) {
   });
   ws.send(JSON.stringify({id, method:'Runtime.evaluate', params:{expression, returnByValue:true, awaitPromise:true}}));
   const response = await result;
-  if (response.exceptionDetails) throw new Error(response.exceptionDetails.text || 'WebView evaluation failed');
+  if (response.exceptionDetails) { const d=response.exceptionDetails, detail=d.exception?.description||String(d.exception?.value??d.text??'WebView evaluation failed'); throw new Error(`${detail}; expression=${expression.slice(0,240)}`); }
   return response.result?.value;
 }
 async function command(method, params={}) {
@@ -319,7 +319,7 @@ for(const scene of [
  {mode:'family',keys:['aaria','mommy','daddy'],labels:['Aaria','Mommy','Daddy']},
  {mode:'friends',keys:['rohan','arjun','vihaan','isha','meera','sana','diya'],labels:['Rohan','Arjun','Vihaan','Isha','Meera','Sana','Diya']}
 ]){
- await evaluate(`document.querySelector('.v31-collection-links [data-nav="${scene.mode}"]')?.click()`);
+ const groupEntry=await evaluate(`(()=>{const button=document.querySelector('.v31-home-quick-links [data-nav="${scene.mode}"]');if(!button)return false;button.click();return view==='${scene.mode}'})()`); if(!groupEntry)throw new Error(`Home ${scene.mode} entry did not open its route`);
  await waitForVisible(`.v32-${scene.mode}-avatar-cast`,`${scene.mode} canonical avatar scene`);
  const report=await evaluate(`(()=>{const imgs=[...document.querySelectorAll('.v32-${scene.mode}-avatar-cast img[data-v32-avatar]')];return {keys:imgs.map(i=>i.dataset.v32Avatar),labels:imgs.map(i=>i.alt),assetsMatch:imgs.every(i=>i.src===(i.dataset.v32Avatar==='aaria'?V31_HOME_WORLD_ART.aaria:V31_HOME_WORLD_ART.avatars[i.dataset.v32Avatar]))}})()`);
  if(JSON.stringify(report.keys)!==JSON.stringify(scene.keys)||JSON.stringify(report.labels)!==JSON.stringify(scene.labels)||!report.assetsMatch)throw new Error(`Canonical ${scene.mode} avatar identity/source mismatch: ${JSON.stringify(report)}`);
