@@ -32,7 +32,8 @@ const homeWorldArt = {
   brand: readReferenceImage('phase2-pilot/packages/assets/brand/brand-lockup.png'),
   aaria: readReferenceImage('phase2-pilot/packages/assets/characters/aaria.jpg'),
   friends: readReferenceImage('phase2-pilot/packages/assets/characters/friends.jpg'),
-  kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg')
+  kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
+  worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.jpg')
 };
 
 const art = Object.fromEntries([

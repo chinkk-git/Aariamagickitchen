@@ -59,10 +59,13 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .v31-world-illustrated .v31-world-header p{margin-top:4px;font-size:12px}
 .v31-world-illustrated .v31-passport-count{min-width:max-content;border-radius:18px;background:#fff6d8;font-size:21px}
 .v31-illustrated-map-panel{position:relative;min-height:220px;overflow:hidden;padding:8px;border:1px solid #e4d8ea;border-radius:21px;background:linear-gradient(180deg,#f1f7ff,#d7f0f0 70%,#c8e7ec);box-shadow:0 7px 17px #50325110}
-.v31-illustrated-map-panel .v31-map-wrap{width:100%;height:clamp(210px,33vh,330px);overflow:hidden;border-radius:16px}
-.v31-illustrated-map-panel .v31-world-map{width:100%;height:100%;opacity:.74}
+.v31-illustrated-map-panel .v31-map-wrap{width:100%;height:clamp(210px,33vh,330px);overflow:hidden;border-radius:16px;background:var(--v31-world-map-art) center/cover no-repeat,#d7f0f0}
+.v31-illustrated-map-panel .v31-world-map{width:100%;height:100%;opacity:.74;transform:scale(var(--v31-zoom,1)) translate(var(--v31-pan-x,0),var(--v31-pan-y,0));transition:transform .15s ease}
+.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map{opacity:.16}
+.v31-illustrated-map-panel .v31-world-map>rect:first-child{opacity:0}
 .v31-illustrated-map-panel .v31-land{fill:#fff2cf;stroke:#a7c5a5;stroke-width:1.2}.v31-illustrated-map-panel .v31-land.v31-destination{fill:#b9d9ad;stroke:#729e79}.v31-illustrated-map-panel .v31-land.is-selected{fill:#f0c366;stroke:#a87437;stroke-width:2.2}
 .v31-map-decoration{position:absolute;z-index:2;inset:4% 2% 22%;pointer-events:none}
+.v31-map-reference-art .v31-map-decoration{display:none}
 .v31-map-landmark{position:absolute;display:grid;place-items:center;width:50px;height:45px;border:2px solid #fff;border-radius:18px;background:#fff6e7e8;box-shadow:0 3px 9px #43314c26;font-size:22px}
 .v31-map-landmark small{position:absolute;top:100%;width:max-content;max-width:110px;margin-top:3px;padding:3px 7px;border-radius:8px;background:#fff7e6;color:#422952;font-size:9px;font-weight:900}
 .v31-landmark-america{left:12%;top:38%}.v31-landmark-europe{left:47%;top:20%}.v31-landmark-asia{right:14%;top:38%}.v31-landmark-africa{left:48%;bottom:8%}.v31-landmark-oceania{right:8%;bottom:5%}
