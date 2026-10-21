@@ -5,8 +5,8 @@
 ## Checkpoint
 
 - Branch: `feature/v3.2-magical-cookbook`
-- Package documentation commit: recorded in branch history; exact app code tested at `9251a388c3b634c613b06d0570db7de216d204f4`.
-- Exact-head CI: [run 39620830609](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609), success.
+- Visual calibration commit: `8e78a5159fc529a2d66426872f7313e0d0872e88` (`tools/v3/home-world-visual.css`); ledger/package documentation updated after it.
+- Last completed Android CI: [run 39620830609](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609), success at older app code head `9251a388c3b634c613b06d0570db7de216d204f4`. No exact-head run is currently visible for `8e78a51`; those screenshots and APK are not evidence for the latest visual edit.
 - Acceptance ledger: [V3_2_CLOSURE_ACCEPTANCE_LEDGER.md](V3_2_CLOSURE_ACCEPTANCE_LEDGER.md), **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED** (115 rows). Recipe content rows remain individually blocked pending content, media, rights and independent review.
 
 ## 95-recipe audit and Android regression
@@ -28,6 +28,8 @@
 ## Design comparisons
 
 Approved reference: `docs/design/approved-v31-home-world-reference.png`; reference SHA-256 `6934745614144a6100cbceee8140b4dc54b18a4fd4cac55835dda2ad41eaa5b8`.
+
+Visual calibration commit `8e78a5159fc529a2d66426872f7313e0d0872e88` reduces the Home hero wash, reshapes the welcome card, enlarges the canonical character group on portrait phones, and increases portrait map viewport height while preserving the full source map image and embedded destination marker positions. Exact-head Android CI and fresh four-orientation comparison evidence are still pending. The connected browser exposed Actions only after GitHub sign-in; the secure authentication request was declined, so no manual dispatch or login was performed.
 
 Run 39620830609 captured the app and generated reference comparison images in the evidence artifact. Mean absolute luminance difference (0–255) remains high:
 
@@ -63,7 +65,7 @@ These are diagnostics, not visual acceptance. Home/World acceptance remains FAIL
 
 ## Remaining closure blockers
 
-1. Correct Home and World against the approved reference; finish independent visual review.
+1. Validate commit `8e78a51` in exact-head Android CI; inspect fresh phone/tablet Home and World portrait/landscape screenshots against the approved reference, then continue any needed correction and independent visual review.
 2. Complete and review all three reusable recipe templates.
 3. Obtain artwork rights and A08/A09 approval; audit 82 existing images and cooking-step art; clear or replace the 13 draft dishes through approved provenance.
 4. Obtain the owner-approved Tasty Tacos reference or keep that item BLOCKED.
