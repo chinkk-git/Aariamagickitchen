@@ -372,6 +372,11 @@ const headTag = outputHtml.match(/<head\b[^>]*>/i)?.[0];
 if (!headTag) throw new Error('Production HTML must have a <head> for the V3 security policy.');
 outputHtml = outputHtml.replace(headTag, `${headTag}<meta http-equiv="Content-Security-Policy" content="${csp}">`);
 const homeWorldStyles = fs.readFileSync(path.join(here, 'home-world-visual.css'), 'utf8');
+const ptRecipeTranslationLoop = "for(const r of RECIPES)r.steps.forEach((t,i)=>PT_TRANSLATIONS[displayStepText(r,i)]=PT_RECIPES[r.id].steps[i]);";
+const guardedPtRecipeTranslationLoop = "for(const r of RECIPES)r.steps.forEach((t,i)=>{const translated=PT_RECIPES[r.id]?.steps?.[i];if(translated)PT_TRANSLATIONS[displayStepText(r,i)]=translated;});";
+if (!outputHtml.includes(ptRecipeTranslationLoop)) throw new Error('Expected PT recipe translation registration loop was not found');
+outputHtml = outputHtml.replace(ptRecipeTranslationLoop, guardedPtRecipeTranslationLoop);
+
 outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}\n${homeWorldStyles}</style><script id="aaria-v3-layer">${runtime}</script></body>`);
 if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could not append the V3 layer to the production HTML.');
 fs.mkdirSync(path.dirname(output), { recursive: true });
