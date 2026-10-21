@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname, '..', '..'));
+const root = path.resolve(path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..'));
 const source = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 function parseJsonAfter(marker) {
   const start = source.indexOf(marker);
