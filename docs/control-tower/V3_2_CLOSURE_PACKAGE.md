@@ -2,7 +2,18 @@
 
 **Disposition: NOT READY / HOLD.** This package consolidates the exact-head evidence and open gates. It is not a release approval.
 
-## Checkpoint
+## Current W01 checkpoint — app code SHA fc3dfe7
+
+- Branch application/test head: `fc3dfe796b5a55ce55656e83e42b4b9cbd50a805`. The latest docs update records the coordinated 95-recipe content and artwork matrix. Overall disposition remains **NOT READY / HOLD**.
+- [Android run 39640274275](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39640274275) is the authorized push-triggered run for this exact app/test head; it is pending behind an earlier queued run. No APK, screenshots, or current-head pass is claimed yet.
+- Run [39638099422](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39638099422) passed the 95/95 English route sweep but failed the PT-BR safety assertion because the harness did not open the collapsed Kitchen safety disclosure. The smoke now opens it and validates exact translated warning text. Run [39637991420](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39637991420) failed before emulator tests due to hosted Android Emulator SDK archive corruption.
+- Family/Friends Portuguese role copy now flows from the explicitly review-pending content files through `transform-production.mjs` into the shared recipe-detail header. The Android harness checks it on IDs 66–95; the validator asserts both role strings. Local validator passed 95 canonical IDs, 30 translated drafts, 207 translated ingredient entries, 120 translated steps, preserved numeric quantities/adult cues, and both role records. The offline production transform, V3.1 validator (95 original recipes and 177 offline countries), V3 validator, and 19/19 unit tests pass.
+- The [95-recipe matrix](V3_2_95_RECIPE_AUDIT_MATRIX.json) and [reproducible generator](build-95-recipe-audit.mjs) enumerate IDs 1–95, step counts, EN/PT-BR text and quantities, deterministic themes, nutrition-plan and artwork source presence, route baseline, rights and per-recipe evidence gaps. All recipe rows remain BLOCKED; no content or rights approval is inferred.
+- Current artwork source inventory records 2 inline dish photos, 50 Home thumbnails, 9 atlas registrations, 30 new-recipe records, and 5 explicit missing placeholders. The 13 owner-listed missing dishes remain 1,4,5,6,7,8,9,10,16,26,33,51,57. Read-only artwork readiness audit passed 55 atlases/330 panels and 330 draft panels, with 0 formal approvals and 0 runtime-integrated review atlases. No review-only asset was promoted.
+- Acceptance ledger totals remain **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED**. Home/World visual rows remain FAIL pending current-code screenshot review and independent sign-off. The three-theme acceptance and all 95 individual recipe rows remain open.
+
+## Prior C1 checkpoint (run 39632118408)
+
 
 - Branch: `feature/v3.2-magical-cookbook`; latest app-code commit `8cf79f0a31a910d5e0ec6287a0c4aae9d4cf5cd9` adjusts the World Map to preserve its approved source aspect and avoid portrait/landscape stretching. CI/test changes are committed at `dd2ff7e`, `7ae9392`, and workflow path update `2e62c0e`.
 - Reconciled branch head before this fix: `20e69a7f3364950474af23f187f18ad0f2a39f76`. Compare confirms 11 commits after the CI-tested app SHA `857b3e002b25135a702d05cdf00471a20fcdada8` contained only the acceptance ledger and this closure package.
