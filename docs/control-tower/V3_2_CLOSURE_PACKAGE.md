@@ -7,14 +7,16 @@
 - Branch: `feature/v3.2-magical-cookbook`; latest app-code commit: `857b3e002b25135a702d05cdf00471a20fcdada8` (canonical Home/India recipe IDs now fail closed rather than falling back to unrelated catalogue entries).
 - Visual calibration commits: `8e78a5159fc529a2d66426872f7313e0d0872e88` (Home/World) and `b13dabd6dbecf96de73dacf8d3263cb57c2917b8` (tablet portrait ingredient/tool fit), both in `tools/v3/home-world-visual.css`.
 - Latest completed Android CI: [run 39620830609](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609), success at older app code head `9251a388c3b634c613b06d0570db7de216d204f4`. The workflow-run lookup returned no run for `857b3e0`; the connected GitHub capability exposes no manual workflow-dispatch action. No authentication bypass was attempted. Exact-head Android CI, fresh screenshots and APK for the current code remain blocked on authorized Actions access.
-- Ledger reconciliation commit: `cfbc11d72495b5bf260390ff24bba6da71ad998b`.
+- Ledger reconciliation commits: `cfbc11d72495b5bf260390ff24bba6da71ad998b` (Home/World mapping) and `a9e8e8edfea8b1fa6f0ecaa50e88f6a9adda7579` (template and 95-recipe audit limits).
 - Acceptance ledger: [V3_2_CLOSURE_ACCEPTANCE_LEDGER.md](V3_2_CLOSURE_ACCEPTANCE_LEDGER.md), **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED** (115 rows). Recipe content rows remain individually blocked pending content, media, rights and independent review.
 
 ## 95-recipe audit and Android regression
 
-- Static validation reported all 95 original recipe records preserved unchanged; theme mapping covered all 95 original IDs.
-- Android smoke verified 95/95 detail routes with theme, ingredient and cooking-step content, catalogue restoration, and partial-source notices for recipes 91 and 94.
+- Local canonical-catalog validation reported all 95 original V3.1 recipe records unchanged, 177 offline countries retained, and 18 original India recipes linked. The 19/19 unit suite also passed, including deterministic theme assignment for all 95 IDs and theme text/button contrast checks. These are local source checks, not exact-head Android evidence.
+- Android smoke in run #39620830609 verified 95/95 detail routes with theme, ingredient and cooking-step content, catalogue restoration, partial-source notices for recipes 91 and 94, and Classic/V3.2 coexistence at older app code head `9251a388c3b634c613b06d0570db7de216d204f4`. It does not test CSS commits `8e78a51`, `b13dabd` or current mapping commit `857b3e0`.
 - Null USDA nutrient payloads for recipes 91 and 94 remain unavailable; renderer now safely preserves missing values without inventing nutrition.
+- All 95 per-recipe acceptance rows remain BLOCKED pending bilingual content, quantities, nutrition/allergens, safety/cooking-flow review, correct cleared dish/step art, provenance/rights, item-specific screenshots and independent A08/A09/artwork decisions. Route coverage and theme mapping do not establish full content acceptance.
+- The `phase2-pilot` rollout validator is scoped to two pilot recipes; its `--mode full` attempt reports “expected 95 recipes; found 2” and pilot artwork-group mismatches. It cannot be used as the canonical 95-catalog acceptance validator.
 - Build, unit tests, phone route sweep, tablet portrait/landscape capture, and isolated Classic/V3.2 coexistence checks passed in the exact-head run.
 - CI evidence artifact: [12356076974](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609/artifacts/12356076974), ZIP SHA-256 `e09704a985c0f32d8cd50b82901b55ace769aae7e6c9a5323f4da8532ea9724c`.
 - Diagnostic route coverage and screenshots are in that artifact under `artifacts/v32-diagnostics/` and `artifacts/v32-android-screenshots/`.
@@ -47,7 +49,7 @@ These are diagnostics, not visual acceptance. Home/World acceptance remains FAIL
 
 Approved reference: `docs/design/references/v3.2-three-recipe-templates.png`, SHA-256 `d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e`.
 
-The last available tablet samples are from run 39620830609 (artifact 12356076974): `tablet/theme-1-detail-portrait.png`, `theme-2-detail-portrait.png`, `theme-3-detail-portrait.png`, plus all three landscape variants. They show the shared recipe hierarchy and purple/green/orange theme mapping. Human review of all six captures is still pending. Tablet portrait review found ingredient labels and tool cards cramped by the two-column layout; calibration commit `b13dabd6dbecf96de73dacf8d3263cb57c2917b8` stacks those panels and widens cards at tablet portrait widths. The new layout has not yet been captured in exact-head CI. No phone captures for all three theme templates are recorded, and steps/completion still need orientation coverage and independent review.
+The last available tablet samples are from run 39620830609 (artifact 12356076974): `tablet/theme-1-detail-portrait.png`, `theme-2-detail-portrait.png`, `theme-3-detail-portrait.png`, plus all three landscape variants. They show the shared recipe hierarchy and purple/green/orange theme mapping. Human review of all six captures is still pending. Tablet portrait review found ingredient labels and tool cards cramped by the two-column layout; calibration commit `b13dabd6dbecf96de73dacf8d3263cb57c2917b8` stacks those panels and widens cards at tablet portrait widths. The 19/19 local unit suite passed, including stable theme assignment for all 95 IDs and text/button contrast checks, but the new layout has not been captured in exact-head CI. No phone captures for all three theme templates are recorded, and steps/completion still need orientation coverage and independent A09/design review.
 
 ## Artwork and avatars inventory
 
