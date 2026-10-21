@@ -122,13 +122,15 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .home-tile[data-v32-theme],.recipe-card[data-v32-theme]{border-color:var(--v3-line);background:linear-gradient(160deg,#fff 45%,var(--v32-card-surface));color:var(--v32-card-accent)}
 .home-tile[data-v32-theme] .home-tile-name,.recipe-card[data-v32-theme] strong{color:var(--v32-card-accent)}
 
-/* Keep World map controls usable without allowing search chrome to shrink the approved map art. */
+/* Preserve the approved illustration while exposing the interactive country layer. */
 .v31-illustrated-map-panel.v31-map-reference-art{position:relative}
-.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search{position:absolute;z-index:4;left:14px;bottom:18px;grid-template-columns:minmax(0,1fr) minmax(110px,.8fr);width:min(56%,680px);gap:8px;margin:0;padding:7px 9px;border:1px solid #fff9;border-radius:14px;background:#fffdf2dc;box-shadow:0 3px 12px #352b2c30;backdrop-filter:blur(5px)}
+.v31-illustrated-map-panel.v31-map-reference-art .v31-map-decoration{display:none}
+.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map{opacity:.22}
+.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search{position:relative;left:auto;bottom:auto;grid-template-columns:minmax(0,1fr) minmax(145px,.7fr);width:auto;gap:7px;margin:7px 10px 22px;padding:6px 8px;border:1px solid #eadced;border-radius:13px;background:#fffaf3e8;box-shadow:none}
 .v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search label{min-width:0;font-size:9px;font-weight:800;color:#60457a}
-.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search input,.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search select{width:100%;min-width:0;min-height:36px;padding:5px 8px;border:1px solid #d9c5e1;border-radius:10px;background:#fff;color:#50396a;font-size:11px}
-.v31-illustrated-map-panel.v31-map-reference-art>.v31-map-source{position:absolute;z-index:2;right:15px;bottom:4px;margin:0;padding:2px 5px;border-radius:8px;background:#fff9;color:#554b59;font-size:8px}
-@media(max-width:720px){.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search{left:7px;bottom:17px;width:min(70%,360px);gap:4px;padding:5px 6px}.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search label{font-size:7px}.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search input,.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search select{min-height:32px;padding:4px 5px;font-size:9px}.v31-illustrated-map-panel.v31-map-reference-art>.v31-map-source{right:6px;font-size:7px}}
+.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search input,.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search select{width:100%;min-width:0;min-height:40px;padding:5px 8px;border:1px solid #d9c5e1;border-radius:10px;background:#fff;color:#50396a;font-size:11px}
+.v31-illustrated-map-panel.v31-map-reference-art>.v31-map-source{position:absolute;z-index:2;right:12px;bottom:4px;margin:0;padding:2px 5px;border-radius:8px;background:#fffc;color:#554b59;font-size:8px}
+@media(max-width:720px){.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search{grid-template-columns:minmax(0,1fr) minmax(115px,.7fr);gap:4px;margin:6px 5px 21px;padding:5px}.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search label{font-size:7px}.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search input,.v31-illustrated-map-panel.v31-map-reference-art .v31-world-map-search select{min-height:36px;padding:4px 5px;font-size:9px}.v31-illustrated-map-panel.v31-map-reference-art>.v31-map-source{right:5px;font-size:7px}}
 
 /* One recipe screen hierarchy, with deterministic decorative palettes per recipe. */
 .app.v32-template-active .reference-main{background:linear-gradient(180deg,var(--v3-paper),var(--v3-lav) 52%,var(--v3-paper))}

@@ -147,7 +147,7 @@ echo "Forwarding app-owned WebView DevTools socket: $socket (app PID $app_pid)"
 adb_timeout forward tcp:9222 "localabstract:$socket"
 timeout --kill-after=10s 240s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
-const {readFileSync, statSync, renameSync, unlinkSync} = await import('node:fs');
+const {readFileSync, statSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const adb = args => execFileSync('timeout', ['--kill-after=10s','60s','adb',...args]);
@@ -458,6 +458,21 @@ const themeReport = await evaluate(`(() => { const cards=[...document.querySelec
 if(themeReport.count!==95||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['1']!=='sunny-orange'||themeReport.samples['2']!=='fresh-green'||themeReport.samples['3']!=='playful-purple') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 95 recipes: ${JSON.stringify(themeReport)}`);
 await captureScreenshot('v32-three-theme-library-portrait.png','All three recipe themes',recipeDigest);
 console.log('V3.2 renderer exposes all three stable recipe themes across all 95 original IDs:',JSON.stringify(themeReport));
+const routeCoverage=[];
+for(let recipeId=1;recipeId<=95;recipeId++){
+  const card=await evaluate(`(()=>{const e=document.querySelector('#screen [data-open="${recipeId}"]');if(!e)return null;const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
+  if(!card?.title||!card.theme)throw new Error(`Recipe ${recipeId} is missing its catalogue card or deterministic theme`);
+  await waitForVisible('.ref-hero h1',`Recipe ${recipeId} detail route`);
+  const detail=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',theme:document.querySelector('.app')?.dataset.v32RecipeTheme||'',steps:document.querySelectorAll('#screen .ref-step-card').length,ingredients:document.querySelectorAll('#screen .ref-ingredient').length}))()`);
+  if(!detail.title||detail.theme!==card.theme||detail.steps<1||detail.ingredients<1)throw new Error(`Recipe ${recipeId} detail regression: ${JSON.stringify({card,detail})}`);
+  routeCoverage.push(recipeId);
+  await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
+  await waitForVisible('.recipe-card',`Recipe catalogue after ${recipeId}`);
+}
+if(routeCoverage.length!==95||new Set(routeCoverage).size!==95)throw new Error(`Expected unique detail route coverage 95/95, got ${routeCoverage.length}`);
+mkdirSync('artifacts/v32-diagnostics',{recursive:true});
+writeFileSync('artifacts/v32-diagnostics/recipe-route-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:routeCoverage,uniqueCount:new Set(routeCoverage).size,status:'PASS'},null,2)+'\n');
+console.log('Android recipe detail route coverage passed 95/95 with theme, ingredient and step content verified');
 await evaluate(`document.querySelector('#screen [data-open="1"]')?.click()`);
 await waitForVisible('.ref-hero h1', 'Favourite test recipe');
 await evaluate(`document.querySelector('.ref-favorite')?.click()`);
