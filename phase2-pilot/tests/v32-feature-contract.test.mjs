@@ -26,12 +26,15 @@ test('V3.2 keeps Classic navigation, feature entrypoints and data schemas', asyn
   assert.match(signedContent, /Manifest signature is invalid/);
 });
 
-test('recipe 12 Android smoke selector quotes numeric data-check values', async () => {
+test('recipe 12 Android smoke finds numeric checklist items without nested CSS quoting', async () => {
   const smoke = await read('.github/scripts/v32-android-smoke.sh');
-  assert.equal((smoke.match(/input\[data-check=\\"0\\"\]/g) || []).length, 2,
-    'both recipe 12 checklist interactions must use valid quoted CSS attribute values');
-  assert.doesNotMatch(smoke, /input\[data-check=0\]/,
-    'unquoted numeric CSS attribute selectors are invalid and must not return');
+  assert.match(smoke, /async function clickRecipeIngredient\(index\)/);
+  assert.match(smoke, /querySelectorAll\("\.v32-r12-ingredient-list input"\).*node\.dataset\.check===\$\{JSON\.stringify\(String\(index\)\)\}/,
+    'checklist lookup must compare the dataset value instead of constructing nested CSS attribute quotes');
+  assert.equal((smoke.match(/clickRecipeIngredient\(0\)/g) || []).length, 2,
+    'both recipe 12 checklist interactions must use the tested lookup');
+  assert.doesNotMatch(smoke, /input\[data-check=[^\]]*\]/,
+    'the Android DevTools evaluator must not receive a nested quoted data-check selector');
 });
 
 test('current-batch Featured Recipes omits absent descriptions instead of rendering undefined', async () => {

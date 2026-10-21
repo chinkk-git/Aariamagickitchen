@@ -312,6 +312,9 @@ async function evaluate(expression) {
   if (response.exceptionDetails) { const d=response.exceptionDetails, detail=d.exception?.description||String(d.exception?.value??d.text??'WebView evaluation failed'); throw new Error(`${detail}; expression=${expression.slice(0,240)}`); }
   return response.result?.value;
 }
+async function clickRecipeIngredient(index) {
+  return evaluate(`(()=>{const input=[...document.querySelectorAll(".v32-r12-ingredient-list input")].find(node=>node.dataset.check===${JSON.stringify(String(index))});if(!input)return false;input.click();return true})()`);
+}
 async function command(method, params={}) {
   const id=++seq;
   const result=new Promise((resolve,reject)=>{
@@ -546,9 +549,9 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   if(id===12){
     const acceptance=await evaluate('(()=>({canonicalId:selected?.id,title:selected?.title,ingredients:document.querySelectorAll(".v32-r12-ingredient-list .ref-ingredient").length,steps:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount||0),allergens:[...document.querySelectorAll(".allergy-card .allergen-badges span")].map(x=>x.textContent.trim()).sort(),nutrition:!!document.querySelector(".nutrition-results"),quiz:!!document.querySelector(".v3-quiz-card"),copy:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedCopy:RECIPES.find(x=>x.id===12)?.steps?.[0]||"",safety:document.querySelector(".v32-r12-safety p")?.textContent||""}))()');
     if(acceptance.canonicalId!==12||acceptance.title!==title||acceptance.ingredients!==6||acceptance.steps!==4||!['Eggs','Milk','Wheat'].every(x=>acceptance.allergens.includes(x))||!acceptance.nutrition||!acceptance.quiz||acceptance.copy!==acceptance.expectedCopy||!acceptance.safety)throw new Error('Recipe 12 internal acceptance data/health/quiz gate failed: '+JSON.stringify(acceptance));
-    await evaluate('document.querySelector(".v32-r12-ingredient-list input[data-check=\"0\"]")?.click()');
+    if(!await clickRecipeIngredient(0))throw new Error('Recipe 12 first ingredient checkbox was not found.');
     if(!await evaluate('state.checks[12]?.includes(0)'))throw new Error('Recipe 12 ingredient checklist did not persist.');
-    await evaluate('document.querySelector(".v32-r12-ingredient-list input[data-check=\"0\"]")?.click()');
+    if(!await clickRecipeIngredient(0))throw new Error('Recipe 12 first ingredient checkbox was not found for reset.');
     await evaluate('document.querySelector(".v32-r12-favorite")?.click()');
     if(!await evaluate('state.favorites.includes(12)'))throw new Error('Recipe 12 favourite action did not persist.');
     await evaluate('document.querySelector(".v32-r12-favorite")?.click()');
