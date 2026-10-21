@@ -4,29 +4,32 @@
 
 ## Checkpoint
 
-- Branch: `feature/v3.2-magical-cookbook`; latest app-code commit: `857b3e002b25135a702d05cdf00471a20fcdada8` (canonical Home/India recipe IDs now fail closed rather than falling back to unrelated catalogue entries).
-- Visual calibration commits: `8e78a5159fc529a2d66426872f7313e0d0872e88` (Home/World) and `b13dabd6dbecf96de73dacf8d3263cb57c2917b8` (tablet portrait ingredient/tool fit), both in `tools/v3/home-world-visual.css`.
-- Latest completed Android CI: [run 39620830609](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609), success at older app code head `9251a388c3b634c613b06d0570db7de216d204f4`. The workflow-run lookup returned no run for `857b3e0`; the connected GitHub capability exposes no manual workflow-dispatch action. No authentication bypass was attempted. Exact-head Android CI, fresh screenshots and APK for the current code remain blocked on authorized Actions access.
-- Ledger reconciliation commits: `cfbc11d72495b5bf260390ff24bba6da71ad998b` (Home/World mapping) and `a9e8e8edfea8b1fa6f0ecaa50e88f6a9adda7579` (template and 95-recipe audit limits).
-- Acceptance ledger: [V3_2_CLOSURE_ACCEPTANCE_LEDGER.md](V3_2_CLOSURE_ACCEPTANCE_LEDGER.md), **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED** (115 rows). Recipe content rows remain individually blocked pending content, media, rights and independent review.
+- Branch: `feature/v3.2-magical-cookbook`; current app-code commit `8cf79f0a31a910d5e0ec6287a0c4aae9d4cf5cd9` adjusts the World Map to preserve its approved source aspect and avoid portrait/landscape stretching.
+- Reconciled branch head before this fix: `20e69a7f3364950474af23f187f18ad0f2a39f76`. Compare confirms 11 commits after the CI-tested app SHA `857b3e002b25135a702d05cdf00471a20fcdada8` contained only the acceptance ledger and this closure package.
+- Latest completed Android CI: [run 39632118408](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39632118408), SUCCESS at app-code SHA `857b3e002b25135a702d05cdf00471a20fcdada8`. The job passed recipe/assets/theme-map checks, unit tests, isolated APK/package checks, 95/95 Android recipe routes, phone and Pixel Tablet portrait/landscape captures, Home/World diagnostics, and nondestructive Classic/V3.2 co-install. It does not test the newer map fit correction `8cf79f0`; current-code exact-head CI and after screenshots remain pending.
+- APK artifact [12360242415](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39632118408/artifacts/12360242415): ZIP SHA-256 `dcb6bd3a0da4bdaab56ea795c5c95a92e1e879357535fdafabac40acddb7bf23`; extracted APK SHA-256 `55e3b015049f30079b16ad93514d6de99bd15e7fa86a9870442867e78d4affd5`. Evidence artifact [12360102633](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39632118408/artifacts/12360102633): ZIP SHA-256 `3c744dc11737d63f3cb72fd789edbd79c7f75f05c28df30f9d904a21323e90e1`.
+- Screenshot review confirmed Home canonical recipe #12 and India #51 are mapped without fallback. It also exposed a distorted/cropped World Map: orientation rules forced height independently from the 1.7 source-art ratio and stretched the background. Commit `8cf79f0` removes those overrides, fits the entire source image, and retains the image’s embedded destination art. This correction awaits fresh Android screenshots.
+- Issue #38 owner directives: [#6318469211](https://github.com/chinkk-git/Aariamagickitchen/issues/38#issuecomment-6318469211), [#6319583656](https://github.com/chinkk-git/Aariamagickitchen/issues/38#issuecomment-6319583656), [#6320464441](https://github.com/chinkk-git/Aariamagickitchen/issues/38#issuecomment-6320464441), [#6321082783](https://github.com/chinkk-git/Aariamagickitchen/issues/38#issuecomment-6321082783).
+- Connected GitHub tools do not expose Actions workflow dispatch. Commit-run lookup returned no run for `8cf79f0`; no authentication bypass or alternate unauthenticated trigger was used.
+- Acceptance ledger: [V3_2_CLOSURE_ACCEPTANCE_LEDGER.md](V3_2_CLOSURE_ACCEPTANCE_LEDGER.md), **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED** (115 rows). Overall disposition remains **NOT READY / HOLD**.
 
 ## 95-recipe audit and Android regression
 
 - Local canonical-catalog validation reported all 95 original V3.1 recipe records unchanged, 177 offline countries retained, and 18 original India recipes linked. The 19/19 unit suite also passed, including deterministic theme assignment for all 95 IDs and theme text/button contrast checks. These are local source checks, not exact-head Android evidence.
 - Read-only inventory of canonical `index.html` source found 95 unique contiguous IDs (1–95); all 95 have ingredient lists, step lists, and top-level safety text across 318 steps. This is field-presence evidence only. Only 65 PT-BR translation records exist; IDs 66–95 (30 recipes) have no PT-BR record and remain blocked pending reviewed translation.
-- Android smoke in run #39620830609 verified 95/95 detail routes with theme, ingredient and cooking-step content, catalogue restoration, partial-source notices for recipes 91 and 94, and Classic/V3.2 coexistence at older app code head `9251a388c3b634c613b06d0570db7de216d204f4`. It does not test CSS commits `8e78a51`, `b13dabd` or current mapping commit `857b3e0`.
+- Android smoke in run #39632118408 verified 95/95 detail routes with theme, ingredient and cooking-step content, catalogue restoration, partial-source notices for recipes 91 and 94, and Classic/V3.2 coexistence at older app code head `9251a388c3b634c613b06d0570db7de216d204f4`. It does not test CSS commits `8e78a51`, `b13dabd` or current mapping commit `857b3e0`.
 - Null USDA nutrient payloads for recipes 91 and 94 remain unavailable; renderer now safely preserves missing values without inventing nutrition.
 - All 95 per-recipe acceptance rows remain BLOCKED pending bilingual content, quantities, nutrition/allergens, safety/cooking-flow review, correct cleared dish/step art, provenance/rights, item-specific screenshots and independent A08/A09/artwork decisions. Route coverage and theme mapping do not establish full content acceptance.
 - The `phase2-pilot` rollout validator is scoped to two pilot recipes; its `--mode full` attempt reports “expected 95 recipes; found 2” and pilot artwork-group mismatches. It cannot be used as the canonical 95-catalog acceptance validator.
 - Build, unit tests, phone route sweep, tablet portrait/landscape capture, and isolated Classic/V3.2 coexistence checks passed in the exact-head run.
-- CI evidence artifact: [12356076974](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609/artifacts/12356076974), ZIP SHA-256 `e09704a985c0f32d8cd50b82901b55ace769aae7e6c9a5323f4da8532ea9724c`.
+- CI evidence artifact: [12360102633](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39632118408/artifacts/12360102633), ZIP SHA-256 `3c744dc11737d63f3cb72fd789edbd79c7f75f05c28df30f9d904a21323e90e1`.
 - Diagnostic route coverage and screenshots are in that artifact under `artifacts/v32-diagnostics/` and `artifacts/v32-android-screenshots/`.
 
 ## APK and checksums
 
-- Isolated debug APK artifact: [12356555237](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609/artifacts/12356555237).
-- Artifact ZIP SHA-256: `6794bf793f92f7e54749778c32b41ed51ba7d07967eeccef8d0d3c5dfbd19605` (matches the Actions artifact digest).
-- APK SHA-256: `172922fd3e145e89a8f35b81a2e645062d0454cf93d2cb32220b614eddfa0ef2`.
+- Isolated debug APK artifact: [12360242415](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39632118408/artifacts/12360242415).
+- Artifact ZIP SHA-256: `dcb6bd3a0da4bdaab56ea795c5c95a92e1e879357535fdafabac40acddb7bf23` (matches the Actions artifact digest).
+- APK SHA-256: `55e3b015049f30079b16ad93514d6de99bd15e7fa86a9870442867e78d4affd5`.
 - The APK is the isolated debug package. This evidence does not establish production signing or same-package upgrade safety.
 
 ## Design comparisons
@@ -37,7 +40,7 @@ Approved reference: `docs/design/approved-v31-home-world-reference.png`; referen
 
 Visual calibration commit `8e78a5159fc529a2d66426872f7313e0d0872e88` reduces the Home hero wash, reshapes the welcome card, enlarges the canonical character group on portrait phones, and increases portrait map viewport height while preserving the full source map image and embedded destination marker positions. Tablet portrait fit was adjusted in `b13dabd6`. Fail-closed data mapping is in `857b3e0`: Home uses canonical recipe #12 Cheesy Corn Pancakes; the India World feature uses canonical recipe #51 Masala Cheese Toast only. The approved Home mockup's Rainbow Pancakes and the World mockup's Mango Lassi Magic are documented content deviations, not substitutions into the canonical 95. Recipe #51's finished-dish artwork remains missing/review-only; no draft art is promoted. Exact-head Android CI and fresh four-orientation screenshots remain blocked: the connected GitHub capability has no dispatch action, and no run was returned for `857b3e0`. No authentication bypass was attempted.
 
-Run 39620830609 captured the app and generated reference comparison images in the evidence artifact. Mean absolute luminance difference (0–255) remains high:
+Run 39632118408 captured the app and generated phone/tablet reference comparison images in the evidence artifact; the comparison JSON marks luminance as diagnostic only. Human review found the World Map distortion fixed in code commit 8cf79f0 but not yet recaptured. Mean absolute luminance difference (0–255) remains high:
 
 | Screen | Phone | Tablet |
 |---|---:|---:|
@@ -50,7 +53,7 @@ These are diagnostics, not visual acceptance. Home/World acceptance remains FAIL
 
 Approved reference: `docs/design/references/v3.2-three-recipe-templates.png`, SHA-256 `d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e`.
 
-The last available tablet samples are from run 39620830609 (artifact 12356076974): `tablet/theme-1-detail-portrait.png`, `theme-2-detail-portrait.png`, `theme-3-detail-portrait.png`, plus all three landscape variants. They show the shared recipe hierarchy and purple/green/orange theme mapping. Human review of all six captures is still pending. Tablet portrait review found ingredient labels and tool cards cramped by the two-column layout; calibration commit `b13dabd6dbecf96de73dacf8d3263cb57c2917b8` stacks those panels and widens cards at tablet portrait widths. The 19/19 local unit suite passed, including stable theme assignment for all 95 IDs and text/button contrast checks, but the new layout has not been captured in exact-head CI. No phone captures for all three theme templates are recorded, and steps/completion still need orientation coverage and independent A09/design review.
+The last available tablet samples are from run 39632118408 (artifact 12360102633): `tablet/theme-1-detail-portrait.png`, `theme-2-detail-portrait.png`, `theme-3-detail-portrait.png`, plus all three landscape variants. They show the shared recipe hierarchy and purple/green/orange theme mapping. Human review of all six captures is still pending. Tablet portrait review found ingredient labels and tool cards cramped by the two-column layout; calibration commit `b13dabd6dbecf96de73dacf8d3263cb57c2917b8` stacks those panels and widens cards at tablet portrait widths. The 19/19 local unit suite passed, including stable theme assignment for all 95 IDs and text/button contrast checks, but the new layout has not been captured in exact-head CI. No phone captures for all three theme templates are recorded, and steps/completion still need orientation coverage and independent A09/design review.
 
 ## Artwork and avatars inventory
 
