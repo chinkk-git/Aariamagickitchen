@@ -110,7 +110,7 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 /* V3.2 uses one shared recipe renderer. Theme tokens affect decoration only. */
 .app[data-v32-recipe-theme="playful-purple"]{--v3-ink:#35204e;--v3-plum:#6429a7;--v3-berry:#8633df;--v3-mint:#c827c8;--v3-lav:#f8ebff;--v3-paper:#fffaff;--v3-line:#eed9fd;--v3-shadow:0 8px 24px #4c287a18}
 .app[data-v32-recipe-theme="fresh-green"]{--v3-ink:#17442a;--v3-plum:#1d633d;--v3-berry:#16813f;--v3-mint:#74b044;--v3-lav:#f0f8e9;--v3-paper:#fffef7;--v3-line:#c0e19f;--v3-shadow:0 8px 24px #285c3817}
-.app[data-v32-recipe-theme="sunny-orange"]{--v3-ink:#532d12;--v3-plum:#b94e14;--v3-berry:#fa6a1a;--v3-mint:#ff9b00;--v3-lav:#fff1df;--v3-paper:#fffdf7;--v3-line:#f9d6b3;--v3-shadow:0 8px 24px #87461d17}
+.app[data-v32-recipe-theme="sunny-orange"]{--v3-ink:#532d12;--v3-plum:#b94e14;--v3-berry:#b94e14;--v3-mint:#ff9b00;--v3-lav:#fff1df;--v3-paper:#fffdf7;--v3-line:#f9d6b3;--v3-shadow:0 8px 24px #87461d17}
 .app.v32-template-active .v31-step-progress{background:color-mix(in srgb,var(--v3-berry) 18%,white)}
 .app.v32-template-active .v31-step-progress>span{background:var(--v3-berry)}
 .app.v32-template-active .v31-primary-actions button,.app.v32-template-active .v3-primary,.app.v32-template-active .v31-world-cook{background:var(--v3-berry);border-color:var(--v3-berry);color:#fff}
