@@ -12,6 +12,17 @@
 - Current artwork source inventory records 2 inline dish photos, 50 Home thumbnails, 9 atlas registrations, 30 new-recipe records, and 5 explicit missing placeholders. The 13 owner-listed missing dishes remain 1,4,5,6,7,8,9,10,16,26,33,51,57. Read-only artwork readiness audit passed 55 atlases/330 panels and 330 draft panels, with 0 formal approvals and 0 runtime-integrated review atlases. No review-only asset was promoted.
 - Acceptance ledger totals remain **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED**. Home/World visual rows remain FAIL pending current-code screenshot review and independent sign-off. The three-theme acceptance and all 95 individual recipe rows remain open.
 
+## Current W01 checkpoint — branch HEAD 5159a01; app/test SHA 9bf66d2
+
+- Live branch HEAD: `5159a01e6d1bebae8453f3b84814fd3cbca92a8f` (closure documentation and contact-sheet checkpoint). Latest app/test code parent: `9bf66d2545c2bf2bd58834bff882f2c32693d846`; this docs commit adds no app code.
+- Android run [39640274275](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39640274275) remains in progress at prior app/test SHA `fc3dfe7`; its build, recipe/asset/theme contracts, package checks and emulator setup passed, and phone evidence capture is still active. Exact app/test-head run [39641229641](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39641229641) is pending at `9bf66d2`. Neither has produced artifacts yet. Do not treat the earlier successful run #39632118408 at `857b3e0` as current-code evidence.
+- The `9bf66d2` smoke harness retains all 95 recipe route checks, opens the Kitchen safety disclosure before validating translated warnings, validates Family/Friends role copy for draft PT-BR recipes, exercises Air fryer/category filtering and verifies Surprise Me returns a canonical ID. These are pending exact-head Android execution.
+- The runtime integration of PT-BR drafts for IDs 66–95 and Family/Friends role copy remains review-pending. Local checks reported 95 unchanged canonical IDs, 30 translated drafts, preserved quantities/adult cues, 19/19 unit tests, V3.1/V3 source validators, and a successful offline transform. Independent native Portuguese, A08 and A09 review is still required before acceptance.
+- The 95-row recipe matrix and generator are committed. All 95 acceptance rows remain BLOCKED for individual content, nutrition/allergen, safety, artwork rights/provenance, visual and independent evidence.
+- C4 review-only contact sheet `docs/control-tower/V3_2_13_MISSING_DISH_REVIEW_CONTACT.jpg` is committed at SHA-256 `09e1374ee5024c1e42596d38efcb977a8f95eaabb87155f45734dd00f94b710b` (896×1000). It indexes the 13 missing-dish drafts only; no draft art was promoted. Rights/A08/A09 and fidelity remain open.
+- Ledger remains **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED** (115 rows), overall **NOT READY / HOLD**. Home and World remain FAIL pending fresh current-code phone/tablet portrait+landscape evidence and independent visual review; three-template acceptance remains blocked pending step/completion captures and independent review. Preserve Classic; no merge/release.
+
+
 ## Prior C1 checkpoint (run 39632118408)
 
 
