@@ -50,6 +50,7 @@ adb_timeout -s "$ANDROID_SERIAL" forward tcp:9223 "localabstract:$socket"
 timeout --kill-after=10s 300s node --input-type=module <<'NODE'
 import {execFileSync} from 'node:child_process';
 import {mkdirSync,readFileSync,writeFileSync} from 'node:fs';
+import {clickByDatasetExpression,clickSelectorExpression} from './tools/v3/android-webview-smoke-expressions.mjs';
 const serial=process.env.ANDROID_SERIAL;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const adb=args=>execFileSync('timeout',['--kill-after=5s','60s','adb','-s',serial,...args],{maxBuffer:32*1024*1024});
@@ -66,8 +67,9 @@ ws.addEventListener('message',async event=>{let data=event.data;if(typeof data!=
 async function command(method,params={}){const id=++seq;const p=new Promise((resolve,reject)=>{const timer=setTimeout(()=>{pending.delete(id);reject(new Error('DevTools timeout: '+method))},30000);pending.set(id,{resolve,reject,timer})});ws.send(JSON.stringify({id,method,params}));return await p}
 async function evaluate(expression){const r=await command('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.text||'WebView evaluation failed');return r.result?.value}
 async function waitFor(selector,label){let last='';for(let i=0;i<40;i++){const x=await evaluate('(()=>{const e=document.querySelector('+JSON.stringify(selector)+');const r=e?.getBoundingClientRect();const hidden=e?[...function*(){for(let n=e;n&&n!==document.documentElement;n=n.parentElement)yield n}()].some(n=>{const s=getComputedStyle(n);return s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0}):true;return {ok:!!e&&!!r&&r.width>0&&r.height>0&&!hidden,text:e?.innerText||""}})()');last=JSON.stringify(x);if(x.ok)return x;await pause(250)}throw Error(label+' not visible: '+last)}
-async function dismissChefChooser(){const present=await evaluate('(()=>{const d=document.querySelector("#v3ProfileDialog");if(!d)return false;const r=d.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(d).display!=="none"})()');if(present){console.log('Selecting Chef A for the disposable Aaria tablet profile');const selected=await evaluate('(()=>{const e=document.querySelector("#v3ProfileDialog [data-v3-chef]");if(!e)return false;e.click();return e.getAttribute("aria-pressed")==="true"})()');if(!selected)throw Error('Chef chooser was visible but Chef A could not be selected');const clicked=await evaluate('(()=>{const e=document.querySelector("#v3ProfileDialog [data-v3-profile-continue]");if(!e)return false;e.click();return true})()');if(!clicked)throw Error('Chef chooser was visible but could not be continued');await pause(700);const remains=await evaluate('!!document.querySelector("#v3ProfileDialog")');if(remains)throw Error('Chef chooser remained open after selecting Chef A')} }
-async function click(selector,label){const ok=await evaluate('(()=>{const e=document.querySelector('+JSON.stringify(selector)+');if(!e)return false;e.click();return true})()');if(!ok)throw Error(label+' control missing')}
+async function dismissChefChooser(){const present=await evaluate('(()=>{const d=document.querySelector("#v3ProfileDialog");if(!d)return false;const r=d.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(d).display!=="none"})()');if(present){console.log('Selecting Chef A for the disposable Aaria tablet profile');const selected=await evaluate(clickSelectorExpression('#v3ProfileDialog [data-v3-chef]'));if(!selected||!await evaluate('document.querySelector("#v3ProfileDialog [data-v3-chef]")?.getAttribute("aria-pressed")==="true"'))throw Error('Chef chooser was visible but Chef A could not be selected');const clicked=await evaluate(clickSelectorExpression('#v3ProfileDialog [data-v3-profile-continue]'));if(!clicked)throw Error('Chef chooser was visible but could not be continued');await pause(700);const remains=await evaluate('!!document.querySelector("#v3ProfileDialog")');if(remains)throw Error('Chef chooser remained open after selecting Chef A')} }
+async function click(selector,label){const ok=await evaluate(clickSelectorExpression(selector));if(!ok)throw Error(label+' control missing')}
+async function clickRecipeCard(id,label){const ok=await evaluate(clickByDatasetExpression('#screen [data-open]','open',id));if(!ok)throw Error(label+' recipe card missing')}
 const orientationTrace=[];
 async function orientation(landscape){
   const target=landscape?'landscape':'portrait';
@@ -122,14 +124,14 @@ async function pageSet(landscape){
   if(map.destinationPaths<7||map.svgOpacity<0.1||map.mapArtFit!=="contain"||!map.mapAspectRatio.startsWith("1.7")||!map.selected||map.controls.length!==0)throw Error('World map destination visibility/touch target audit failed: '+JSON.stringify(map));
   const world=await screenshot('world-'+(landscape?'landscape':'portrait'),landscape);if(readFileSync(world.path).equals(readFileSync(home.path)))throw Error('Tablet World screenshot is byte-identical to Home; navigation state was not visibly captured: '+JSON.stringify(worldRoute));
   await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcome h1','Home before library');await click('.v31-action-tiles [data-nav="library"]','Recipe library');await waitFor('.recipe-card','95-recipe library');
-  const library=await evaluate('(()=>({count:document.querySelectorAll("#screen .recipe-card").length,themeIds:[12,76,5].map(id=>document.querySelector("#screen [data-open=\\\""+id+"\\\"]")?.dataset.v32Theme||"")}))()');
+  const library=await evaluate('(()=>({count:document.querySelectorAll("#screen .recipe-card").length,themeIds:[12,76,5].map(id=>[...document.querySelectorAll("#screen [data-open]")].find(card=>card.dataset.open===String(id))?.dataset.v32Theme||"")}))()');
   if(library.count!==95||library.themeIds.join(',')!=='playful-purple,fresh-green,sunny-orange')throw Error('Tablet catalogue/theme audit failed: '+JSON.stringify(library));
   const exemplarExpected={12:{title:'Cheesy Corn Pancakes',theme:'playful-purple'},76:{title:'Rainbow Vegetable Noodle Toss',theme:'fresh-green'},5:{title:'Mini Pizza Bread Cups',theme:'sunny-orange'}};
   const libraryA11y=await audit('library');const libshot=await screenshot('library-'+(landscape?'landscape':'portrait'),landscape);
   const themeShots=[];
   for(const id of [12,76,5]){
     if(id===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
-    await click('#screen [data-open="'+id+'"]','Recipe '+id);
+    await clickRecipeCard(id,'Recipe '+id);
     await waitFor('.ref-hero h1','Recipe '+id+' details');
     const expected=exemplarExpected[id],actualTitle=await evaluate('document.querySelector(".ref-hero h1")?.textContent?.trim()||""');
     if(!expected||actualTitle!==expected.title)throw Error('Recipe detail title mismatch for '+id+': '+JSON.stringify({expected:expected?.title,actual:actualTitle}));

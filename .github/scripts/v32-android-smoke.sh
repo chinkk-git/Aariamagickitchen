@@ -176,6 +176,7 @@ timeout --kill-after=10s 720s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
 const {readFileSync, statSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');
+const {clickByDatasetExpression, clickSelectorExpression, findByDatasetExpression} = await import('./tools/v3/android-webview-smoke-expressions.mjs');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const adb = args => execFileSync('timeout', ['--kill-after=10s','60s','adb',...args]);
 async function waitForVisible(selector, label) {
@@ -313,7 +314,14 @@ async function evaluate(expression) {
   return response.result?.value;
 }
 async function clickRecipeIngredient(index) {
-  return evaluate(`(()=>{const input=[...document.querySelectorAll(".v32-r12-ingredient-list input")].find(node=>node.dataset.check===${JSON.stringify(String(index))});if(!input)return false;input.click();return true})()`);
+  return evaluate(clickByDatasetExpression('.v32-r12-ingredient-list input', 'check', index));
+}
+async function clickCatalogueRecipe(id) {
+  return evaluate(clickByDatasetExpression('#screen [data-open]', 'open', id));
+}
+async function clickWebViewSelector(selector, label = selector) {
+  if (!await evaluate(clickSelectorExpression(selector))) throw new Error(`${label} control was not found.`);
+  return true;
 }
 async function command(method, params={}) {
   const id=++seq;
@@ -343,9 +351,9 @@ const homeVisual = await evaluate(`(() => { const rect=e=>{const r=e?.getBoundin
 if (!homeVisual.hero || homeVisual.hero.w < 260 || homeVisual.hero.h < 150 || !homeVisual.brand || homeVisual.heroImages.some(i=>!i.loaded) || homeVisual.tiles!==4 || !homeVisual.featured || homeVisual.destinationTiles<5 || homeVisual.nav.length!==6) throw new Error(`Approved Home visual composition is incomplete in Android: ${JSON.stringify(homeVisual)}`);
 const reviewFeatured=await evaluate(`(()=>{const rail=document.querySelector('.v32-review-featured-rail'),style=rail?getComputedStyle(rail):null,cards=[...document.querySelectorAll('.v32-review-featured-card')];return {ids:cards.map(e=>Number(e.dataset.v32ReviewFeaturedId)),contract:rail?.dataset.v32FeaturedIds||'',overflowX:style?.overflowX||'',title:document.querySelector('.v32-review-featured-section h2')?.textContent?.trim()||'',ready:document.querySelector('.v32-review-featured-card .v31-featured-kicker')?.textContent?.trim()||'',cardTitle:cards[0]?.querySelector('strong')?.textContent?.trim()||'',visible:!!rail&&rail.getBoundingClientRect().width>0&&rail.getBoundingClientRect().height>0}})()`);
 if(JSON.stringify(reviewFeatured.ids)!=='[12]'||reviewFeatured.contract!=='12'||reviewFeatured.overflowX!=='auto'||!reviewFeatured.visible||reviewFeatured.title!=='⭐ Featured Recipes'||reviewFeatured.ready!=='READY FOR REVIEW'||reviewFeatured.cardTitle!=='Cheesy Corn Pancakes')throw new Error('Review Featured Recipes must contain only the current pilot recipe #12 in a visible horizontal rail: '+JSON.stringify(reviewFeatured));
-await evaluate(`document.querySelector('.v32-review-featured-card[data-v32-review-featured-id="12"]')?.click()`);await waitForVisible('.v32-r12-main','Featured recipe 12 direct route');
+await clickWebViewSelector('.v32-review-featured-card[data-v32-review-featured-id="12"]','Featured recipe #12');await waitForVisible('.v32-r12-main','Featured recipe 12 direct route');
 if(!await evaluate(`view==='recipe'&&Number(selected?.id)===12`))throw new Error('Featured recipe #12 card did not open recipe #12.');
-await evaluate(`document.querySelector('#nav .tab[data-nav="home"]')?.click()`);await waitForVisible('.v32-review-featured-rail','Home after featured recipe route');
+await clickWebViewSelector('#nav .tab[data-nav="home"]','Home');await waitForVisible('.v32-review-featured-rail','Home after featured recipe route');
 await evaluate(`state.language='pt-BR';save();render()`);
 const ptFeatured=await evaluate(`(()=>({ids:[...document.querySelectorAll('.v32-review-featured-card')].map(e=>Number(e.dataset.v32ReviewFeaturedId)),title:document.querySelector('.v32-review-featured-card strong')?.textContent?.trim()||'',heading:document.querySelector('.v32-review-featured-section h2')?.textContent?.trim()||''}))()`);
 if(JSON.stringify(ptFeatured.ids)!=='[12]'||ptFeatured.title!=='Panquequinhas de milho com queijo'||ptFeatured.heading!=='⭐ Receitas em destaque')throw new Error('PT-BR current-batch Featured Recipes content mismatch: '+JSON.stringify(ptFeatured));
@@ -509,7 +517,7 @@ await evaluate(`document.querySelector('.v31-action-tiles [data-nav="library"]')
 const libraryReady = await waitForVisible('.recipe-card', '95-recipe library');
 const libraryCards = await evaluate(`document.querySelectorAll('#screen .recipe-card').length`);
 if (libraryCards !== 95) throw new Error(`Recipe library should show all 95 recipes; found ${libraryCards}`);
-const themeReport = await evaluate(`(() => { const cards=[...document.querySelectorAll('#screen .recipe-card')]; return {count:cards.length, themes:[...new Set(cards.map(x=>x.dataset.v32Theme))].sort(), samples:Object.fromEntries(['12','76','5'].map(id=>[id,document.querySelector('#screen [data-open=\"'+id+'\"]')?.dataset.v32Theme||'']))}; })()`);
+const themeReport = await evaluate(`(() => { const cards=[...document.querySelectorAll('#screen .recipe-card')]; return {count:cards.length, themes:[...new Set(cards.map(x=>x.dataset.v32Theme))].sort(), samples:Object.fromEntries(['12','76','5'].map(id=>[id,[...document.querySelectorAll('#screen [data-open]')].find(card=>card.dataset.open===id)?.dataset.v32Theme||'']))}; })()`);
 if(themeReport.count!==95||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['12']!=='playful-purple'||themeReport.samples['76']!=='fresh-green'||themeReport.samples['5']!=='sunny-orange') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 95 recipes: ${JSON.stringify(themeReport)}`);
 await captureScreenshot('v32-three-theme-library-portrait.png','All three recipe themes',recipeDigest);
 console.log('V3.2 renderer exposes all three stable recipe themes across all 95 original IDs:',JSON.stringify(themeReport));
@@ -539,7 +547,7 @@ let v32PhoneScreenshotDigest=recipeDigest;
 async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   const orientation=landscape?'landscape':'portrait';
   await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!=='+id+');state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!=='+id+');step=0;save();return true})()');
-  const card=await evaluate('(()=>{const e=[...document.querySelectorAll("#screen [data-open]")].find(node=>Number(node.dataset.open)==='+id+');const text=e?.innerText?.trim()||"";const observedTheme=e?.dataset.v32Theme||"";e?.click();return {text,theme:observedTheme}})()');
+  const card=await evaluate(`(()=>{const e=${findByDatasetExpression('#screen [data-open]','open',id)};const text=e?.innerText?.trim()||"";const observedTheme=e?.dataset.v32Theme||"";e?.click();return {text,theme:observedTheme}})()`);
   if(!card||!card.text.includes(title)||card.theme!==theme)throw new Error('Phone exemplar catalogue card mismatch: '+JSON.stringify({id,title,theme,card}));
   await waitForVisible('.ref-hero h1','Phone '+title+' details');
   const detail=await evaluate('(()=>({title:document.querySelector(".ref-hero h1")?.textContent?.trim()||"",theme:document.querySelector(".app")?.dataset.v32RecipeTheme||""}))()');
@@ -552,14 +560,14 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
     if(!await clickRecipeIngredient(0))throw new Error('Recipe 12 first ingredient checkbox was not found.');
     if(!await evaluate('state.checks[12]?.includes(0)'))throw new Error('Recipe 12 ingredient checklist did not persist.');
     if(!await clickRecipeIngredient(0))throw new Error('Recipe 12 first ingredient checkbox was not found for reset.');
-    await evaluate('document.querySelector(".v32-r12-favorite")?.click()');
+    await clickWebViewSelector('.v32-r12-favorite','Recipe 12 favourite');
     if(!await evaluate('state.favorites.includes(12)'))throw new Error('Recipe 12 favourite action did not persist.');
-    await evaluate('document.querySelector(".v32-r12-favorite")?.click()');
-    await evaluate('document.querySelector(".recipe-grocery-link")?.click()');
+    await clickWebViewSelector('.v32-r12-favorite','Recipe 12 favourite reset');
+    await clickWebViewSelector('.recipe-grocery-link','Recipe 12 grocery action');
     if(!await evaluate('view==="groceries"&&state.grocerySelected.includes(12)'))throw new Error('Recipe 12 grocery-list action did not carry the canonical recipe.');
-    await evaluate('document.querySelector("#nav .tab[data-nav=library]")?.click()');
+    await clickWebViewSelector('#nav .tab[data-nav="library"]','Recipe library');
     await waitForVisible('.recipe-card[data-open="12"]','Recipe library after recipe 12 grocery check');
-    await evaluate('document.querySelector("#screen [data-open=12]")?.click()');
+    if(!await clickCatalogueRecipe(12))throw new Error('Recipe 12 catalogue card was not found after grocery checks.');
     await waitForVisible('.v32-r12-main','Recipe 12 after existing-function checks');
   }
   const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".v32-r12-main"),nav:[...document.querySelectorAll("#nav .tab")].map(x=>x.innerText.trim())}))()');
@@ -577,13 +585,13 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
       stepFiles.push(stepName);
     }
     if(index<flow.stepCount){
-      await evaluate('document.querySelector(".ref-next")?.click()');
+      await clickWebViewSelector('.ref-next','Next recipe step');
       await pause(200);
     }
   }
   let complete=false;
   const last=await evaluate('!!document.querySelector(".ref-next.finish-step")');
-  if(last){await evaluate('document.querySelector(".ref-next.finish-step")?.click()');await pause(250);complete=await evaluate('Array.isArray(state.done)&&state.done.includes('+id+')');}
+  if(last){await clickWebViewSelector('.ref-next.finish-step','Finish recipe');await pause(250);complete=await evaluate('Array.isArray(state.done)&&state.done.includes('+id+')');}
   if(!complete)throw new Error('Phone exemplar '+id+' did not reach completion');
   if(id===12&&(!await evaluate('state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".v32-r12-completion")')))throw new Error('Recipe 12 completion did not save to My Creations or render the completion view.');
   const completionName='v32-recipe-'+id+'-completion-'+orientation+'.png';
@@ -596,7 +604,7 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
     return {name,width,height,bytes:image.length};
   });
   v32PhoneRecipeScreenshots.push({id,title,theme,orientation,files});
-  await evaluate('document.querySelector("#nav .tab[data-nav=library]")?.click()');
+  await clickWebViewSelector('#nav .tab[data-nav="library"]','Recipe library');
   await waitForVisible('.recipe-card[data-open="1"]','Phone catalogue after '+title+' '+orientation);
 }
 for(const [id,title,theme] of v32CanonicalPhoneExamples){
@@ -612,7 +620,7 @@ console.log('Phone recipe detail, active-step and completion screenshots capture
 const routeCoverage=[];
 for(let recipeId=1;recipeId<=95;recipeId++){
   if(recipeId===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
-  const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=document.querySelector('#screen .recipe-card[data-open="${recipeId}"]');if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
+  const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
   if(!card?.title||!card.theme)throw new Error(`Recipe ${recipeId} is missing its catalogue card or deterministic theme`);
   if(card.catalogueCount!==undefined)throw new Error(`Recipe ${recipeId} route sweep is not on the full recipe catalogue: ${JSON.stringify(card)}`);
   await pause(250);
@@ -637,7 +645,7 @@ await evaluate(`(()=>{const select=document.querySelector('#languageSelect');if(
 await waitForVisible('.recipe-card','PT-BR recipe library');
 const ptRouteCoverage=[];
 for(let recipeId=66;recipeId<=95;recipeId++){
-  const card=await evaluate(`(()=>{const e=document.querySelector('#screen .recipe-card[data-open="${recipeId}"]');if(!e)return null;const title=e.querySelector('.home-tile-name')?.textContent||e.innerText;e.click();return title})()`);
+  const card=await evaluate(`(()=>{const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(!e)return null;const title=e.querySelector('.home-tile-name')?.textContent||e.innerText;e.click();return title})()`);
   if(!card)throw new Error(`PT-BR recipe ${recipeId} is missing from the catalogue`);
   await waitForVisible('.ref-hero h1',`PT-BR recipe ${recipeId} detail`);
   const translated=await evaluate(`(()=>{const r=RECIPES.find(x=>x.id===${recipeId}),pt=PT_RECIPES[${recipeId}],title=document.querySelector('.ref-hero h1')?.textContent?.trim()||'',ingredient=document.querySelector('.ref-ingredient')?.innerText||'',step=document.querySelector('.ref-step-card.active .ref-step-copy p')?.innerText||'',safetyPanel=document.querySelector('.storybook-safety,.ref-safety details');if(!safetyPanel)throw Error('Portuguese recipe safety disclosure is missing');safetyPanel.open=true;const safety=safetyPanel.querySelector('p')?.textContent||'',role=document.querySelector('.v32-group-role-copy')?.innerText||'',roleMode=r?.category==='Cooking with Mommy & Daddy'?'family':'friends',expectedRole=V32_PT_GROUP_ROLE_COPY?.[roleMode]||'';return {id:r?.id,title,expectedTitle:pt?.title,ingredient,expectedIngredient:pt?.ingredients?.[0],step,expectedStep:pt?.steps?.[0],safety,expectedSafety:pt?.safety,safetyDisclosureOpened:safetyPanel.open,role,expectedRole}})()`);
@@ -651,7 +659,8 @@ for(let recipeId=66;recipeId<=95;recipeId++){
 }
 if(ptRouteCoverage.length!==30||ptRouteCoverage[0]!==66||ptRouteCoverage.at(-1)!==95)throw new Error('PT-BR recipe translation route coverage is not IDs 66–95');
 writeFileSync('artifacts/v32-diagnostics/pt-br-recipe-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:ptRouteCoverage,uniqueCount:new Set(ptRouteCoverage).size,status:'DRAFT_COPY_RENDERED_REVIEW_REQUIRED',review:'A08/A09/native PT-BR review pending'},null,2)+'\\n');
-await evaluate(`(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);step=0;save();document.querySelector('#screen [data-open="12"]')?.click();return true})()`);
+await evaluate(`(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);step=0;save();return true})()`);
+if(!await clickCatalogueRecipe(12))throw new Error('PT-BR recipe 12 card was not found.');
 await waitForVisible('.v32-r12-main','PT-BR recipe 12 pilot');
 const pt12=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',expected:PT_RECIPES[12].title,ingredient:document.querySelector('.v32-r12-ingredient-list .ref-ingredient span')?.textContent?.trim()||'',expectedIngredient:PT_RECIPES[12].ingredients[0],ingredientCount:PT_RECIPES[12].ingredients.length,stepCount:PT_RECIPES[12].steps.length,nav:[...document.querySelectorAll('#nav .tab')].map(x=>x.innerText.trim())}))()`);
 if(pt12.title!==pt12.expected||pt12.ingredient!==pt12.expectedIngredient||pt12.nav.join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações')throw new Error('PT-BR recipe 12 title, ingredient or six-destination navigation is incorrect: '+JSON.stringify(pt12));
@@ -661,9 +670,9 @@ for(let index=0;index<4;index++){
  if(copy.step!==copy.expectedStep||copy.safety!==copy.expectedSafety||copy.number!==index+1)throw new Error('PT-BR recipe 12 step/safety coverage failed: '+JSON.stringify({index,copy}));
  const name='v32-recipe-12-pt-br-step-'+(index+1)+'-portrait.png';
  v32PhoneScreenshotDigest=await captureScreenshot(name,'PT-BR recipe 12 step '+(index+1)+' portrait',v32PhoneScreenshotDigest);pt12StepScreens.push(name);
- if(index<3){await evaluate('document.querySelector(".ref-next")?.click()');await pause(200)}
+ if(index<3){await clickWebViewSelector('.ref-next','Next PT-BR recipe step');await pause(200)}
 }
-await evaluate('document.querySelector(".ref-next.finish-step")?.click()');await pause(250);
+await clickWebViewSelector('.ref-next.finish-step','Finish PT-BR recipe');await pause(250);
 if(!await evaluate('state.done.includes(12)&&!!document.querySelector(".v32-r12-completion")'))throw new Error('PT-BR recipe 12 completion did not render.');
 const pt12Completion='v32-recipe-12-pt-br-completion-portrait.png';v32PhoneScreenshotDigest=await captureScreenshot(pt12Completion,'PT-BR recipe 12 completion portrait',v32PhoneScreenshotDigest);
 writeFileSync('artifacts/v32-diagnostics/recipe-12-pt-br-evidence.json',JSON.stringify({status:'INTERNAL_TRANSLATION_RENDER_PASS',title:pt12.title,ingredients:pt12.ingredientCount,steps:pt12.stepCount,stepScreens:pt12StepScreens,completion:pt12Completion,independentReview:'A08/A09/native PT-BR review pending'},null,2)+'\n');
