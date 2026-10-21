@@ -5,8 +5,8 @@
 ## Checkpoint
 
 - Branch: `feature/v3.2-magical-cookbook`
-- Visual calibration commit: `8e78a5159fc529a2d66426872f7313e0d0872e88` (`tools/v3/home-world-visual.css`); ledger/package documentation updated after it.
-- Last completed Android CI: [run 39620830609](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609), success at older app code head `9251a388c3b634c613b06d0570db7de216d204f4`. No exact-head run is currently visible for `8e78a51`; those screenshots and APK are not evidence for the latest visual edit.
+- Visual calibration commits: `8e78a5159fc529a2d66426872f7313e0d0872e88` (Home/World) and `b13dabd6dbecf96de73dacf8d3263cb57c2917b8` (tablet portrait ingredient/tool fit), both in `tools/v3/home-world-visual.css`; ledger/package documentation updated after them.
+- Last completed Android CI: [run 39620830609](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39620830609), success at older app code head `9251a388c3b634c613b06d0570db7de216d204f4`. No exact-head run is currently visible for `b13dabd`; earlier screenshots/APK do not verify either visual edit.
 - Acceptance ledger: [V3_2_CLOSURE_ACCEPTANCE_LEDGER.md](V3_2_CLOSURE_ACCEPTANCE_LEDGER.md), **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED** (115 rows). Recipe content rows remain individually blocked pending content, media, rights and independent review.
 
 ## 95-recipe audit and Android regression
@@ -40,6 +40,12 @@ Run 39620830609 captured the app and generated reference comparison images in th
 
 These are diagnostics, not visual acceptance. Home/World acceptance remains FAIL pending correction and independent design review. The approved identity and template standards are in `docs/design/V3_2_VISUAL_IDENTITY_STANDARD.md`, `docs/design/V3_2_RECIPE_TEMPLATE_STANDARDS.md`, and `docs/design/V3_2_SCREEN_CONTRACTS.md`.
 
+## Three reusable recipe templates
+
+Approved reference: `docs/design/references/v3.2-three-recipe-templates.png`, SHA-256 `d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e`.
+
+The last available tablet samples are from run 39620830609 (artifact 12356076974): `tablet/theme-1-detail-portrait.png`, `theme-2-detail-portrait.png`, `theme-3-detail-portrait.png`, plus all three landscape variants. They show the shared recipe hierarchy and purple/green/orange theme mapping. Human review of all six captures is still pending. Tablet portrait review found ingredient labels and tool cards cramped by the two-column layout; calibration commit `b13dabd6dbecf96de73dacf8d3263cb57c2917b8` stacks those panels and widens cards at tablet portrait widths. The new layout has not yet been captured in exact-head CI. No phone captures for all three theme templates are recorded, and steps/completion still need orientation coverage and independent review.
+
 ## Artwork and avatars inventory
 
 - Reference and asset provenance index: `docs/design/references/V3_2_REFERENCE_ASSET_MANIFEST.json`.
@@ -66,7 +72,7 @@ These are diagnostics, not visual acceptance. Home/World acceptance remains FAIL
 ## Remaining closure blockers
 
 1. Validate commit `8e78a51` in exact-head Android CI; inspect fresh phone/tablet Home and World portrait/landscape screenshots against the approved reference, then continue any needed correction and independent visual review.
-2. Complete and review all three reusable recipe templates.
+2. Validate the tablet portrait template fit calibration in exact-head CI; capture all three themes on phone/tablet in portrait/landscape including steps and completion, then complete independent design/A09 review.
 3. Obtain artwork rights and A08/A09 approval; audit 82 existing images and cooking-step art; clear or replace the 13 draft dishes through approved provenance.
 4. Obtain the owner-approved Tasty Tacos reference or keep that item BLOCKED.
 5. Complete all per-recipe content, cooking-flow, media and accessibility acceptance.
