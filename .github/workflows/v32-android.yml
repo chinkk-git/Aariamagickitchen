@@ -11,6 +11,7 @@ on:
       - 'phase2-pilot/**'
       - 'docs/design/**'
       - '.github/scripts/v32-android-smoke.sh'
+      - '.github/scripts/v32-android-tablet-smoke.sh'
       - '.github/workflows/v32-android.yml'
 
 permissions:
