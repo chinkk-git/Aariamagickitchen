@@ -230,3 +230,13 @@ Each record contains the owner-required fields: item ID, approved contract/refer
 ## Closure decision
 
 **NOT READY / HOLD.** Exact-head run 39620830609 passed 95/95 detail routes and captured tablet portrait/landscape evidence. Home and World visual acceptance fail; exact Tasty Tacos flow source is unavailable; 13 missing dish images remain review-only drafts; the 82-image/step-art audit and per-recipe content/media review are incomplete; A08, A09 and artwork-rights reviews have no independent evidence; accessibility and physical-device/production-signing upgrade tests are not tested. Preserve Classic. Do not merge or release.
+
+
+## 2026-10-21 W01 checkpoint — tablet harness correction and $0 gate
+
+- Failed exact-head run [39659517895](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39659517895) at source/test SHA `37937e63ff811e50ec31924033ba712f42fd8f7b`. Pixel Tablet rotation passed. The failing assertion was recipe #12 theme mismatch: the app returned `playful-purple`, while the test's expected value was undefined because a three-element theme array was indexed by `recipeId - 1` (index 11 for ID 12). This was a harness defect, not an app theme defect.
+- Corrected by [`85f03c6fe0825a1b2d1404a48b389ca3c845f5c0`](https://github.com/chinkk-git/Aariamagickitchen/commit/85f03c6fe0825a1b2d1404a48b389ca3c845f5c0): explicit ID-keyed title/theme expectations plus visible title assertion. Shell and embedded Node syntax checks pass.
+- Exact-head Android run [39662030525](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39662030525) is pinned to `85f03c6fe0825a1b2d1404a48b389ca3c845f5c0`; last status check was `in_progress`, in the emulator capture step. Terminal result, APK, SHA-256 and screenshots are not yet verified.
+- Permanent $0 policy is in [`FREE_ONLY_OPERATING_POLICY.md`](FREE_ONLY_OPERATING_POLICY.md), commit [`c8e32fdfb1fb6f6868b3439e051f6cc7a13cb834`](https://github.com/chinkk-git/Aariamagickitchen/commit/c8e32fdfb1fb6f6868b3439e051f6cc7a13cb834). It applies to V3.2 #38 and deferred V3.3 #39. Public standard runner usage is free under GitHub's published policy; artifact storage is limited by plan and current owner headroom cannot be verified through the connected GitHub tools, so no additional artifact-producing run may be started until that allowance is confirmed.
+- Prior independent closure audit remains: recipe matrix 95/95 records parse with contiguous IDs; acceptance remains BLOCKED 95/95; content, rights, step-art, visual, A08/A09, accessibility, signing/device and Classic recovery evidence gaps remain as summarized above. Do not promote draft artwork or claim release readiness.
+- V3.1 Classic remains preserved. V3.3 is deferred. No merge or release.
