@@ -64,4 +64,4 @@ const rows=recipes.map(r=>{
  };
 });
 const out={schemaVersion:'v3.2-95-recipe-acceptance-matrix/1',canonicalSource:{path:'index.html',gitBlobSha:blobSha,recipeCount:recipes.length,ids:'1-95'},translationSources:['index.html:PT_RECIPES','tools/v3/data/pt-BR-recipes-66-80-review.json','tools/v3/data/pt-BR-recipes-81-95-review.json'],themeMapPath:'tools/v3/data/v3.2-recipe-theme-map.json',runBinding:{runId:Number(process.env.V32_RUN_ID||0)||null,codeSha:process.env.V32_CODE_SHA||null,status:process.env.V32_RUN_STATUS||'PENDING'},acceptanceNote:'Routing, source presence and automated draft contracts are evidence inputs, not recipe acceptance. Every row remains BLOCKED until individual content, safety, nutrition, artwork, rights and visual evidence plus independent reviews are recorded.',rows};
-console.log(JSON.stringify(out));
+console.log(JSON.stringify(out,null,2));
