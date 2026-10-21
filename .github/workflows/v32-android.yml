@@ -56,6 +56,7 @@ jobs:
           set -euo pipefail
           npm test --prefix phase2-pilot
           node tools/v3/validate-v31.mjs
+          node tools/v3/validate-pt-br-review-drafts.mjs
           node --check tools/v3/runtime.js
           node --check tools/v3/transform-production.mjs
           node tools/v3/verify-v32-reference-assets.mjs
