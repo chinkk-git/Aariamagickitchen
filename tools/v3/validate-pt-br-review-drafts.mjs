@@ -28,11 +28,15 @@ function parseJsonAfter(marker) {
 }
 const recipes = parseJsonAfter('const RECIPES=');
 const drafts = {};
+const roleCopy = {};
 for (const name of ['pt-BR-recipes-66-80-review.json', 'pt-BR-recipes-81-95-review.json']) {
   const file = JSON.parse(fs.readFileSync(path.join(root, 'tools/v3/data', name), 'utf8'));
   if (file.status !== 'W01_DRAFT_PENDING_INDEPENDENT_REVIEW' || file.locale !== 'pt-BR') throw new Error(name + ' lost its review-pending declaration');
   Object.assign(drafts, file.recipes);
+  if (file.familyRoleCopy) roleCopy.family = file.familyRoleCopy;
+  if (file.friendsRoleCopy) roleCopy.friends = file.friendsRoleCopy;
 }
+if (typeof roleCopy.family !== 'string' || typeof roleCopy.friends !== 'string') throw new Error('Family/Friends PT-BR role text is missing');
 const wanted = Array.from({length:30}, (_,i)=>String(i+66));
 const actual = Object.keys(drafts).sort((a,b)=>Number(a)-Number(b));
 if (actual.join(',') !== wanted.join(',')) throw new Error('Expected exactly translation drafts for IDs 66–95; got ' + actual.join(','));
@@ -59,4 +63,4 @@ for (const id of wanted) {
   }
 }
 if (recipes.length !== 95 || new Set(recipes.map(r=>r.id)).size !== 95 || recipes.some((r,i)=>r.id!==i+1)) throw new Error('Canonical catalog must remain exactly IDs 1–95');
-console.log(JSON.stringify({status:'PASS_DRAFT_CONTRACTS',canonicalRecipes:recipes.length,translatedDraftIds:actual.length,ingredients:checkedIngredients,steps:checkedSteps,quantities:'preserved',adultCues:'preserved',acceptance:'BLOCKED_PENDING_A08_A09_AND_NATIVE_REVIEW'},null,2));
+console.log(JSON.stringify({status:'PASS_DRAFT_CONTRACTS',canonicalRecipes:recipes.length,translatedDraftIds:actual.length,ingredients:checkedIngredients,steps:checkedSteps,quantities:'preserved',adultCues:'preserved',groupRoleCopy:Object.keys(roleCopy),acceptance:'BLOCKED_PENDING_A08_A09_AND_NATIVE_REVIEW'},null,2));
