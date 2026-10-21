@@ -1,3 +1,11 @@
+# Current W01 execution checkpoint — Android route remediation (2026-10-21)
+
+- App/test commit: `011305393e4ba24b33f334de0d787c733ece83e7`; current exact-head Android run: [39651552283](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39651552283), in progress.
+- Fixed the stack-overflow source in `tools/v3/runtime.js`: non-exemplar cooking steps now fall through to the captured original `cookingScene` instead of recursively calling the named wrapper. The first exact-code run built/packaged and passed source tests; Android smoke passed World→India #51, group avatars, planner, My Creations, shopping UI, and all-95 theme display, then exposed stale category/surprise selectors. Updated the harness against actual V3.2 catalogue and Home wheel controls while retaining assertions. This updated run must still pass the full 95-route loop and tablet matrix.
+- Run #396501 evidence artifact [12368747828](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39650146107/artifacts/12368747828), SHA-256 `5678390620ac02324a94bb09d6849c6670cec76ef3cbfa83e74d35caa09d383c`. Failed-run APK artifact [12369535738](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39650146107/artifacts/12369535738), APK SHA-256 `e82f23c19112f1079d913b38cf8e13ef645cdf419d34e55d87c538cdd32639fe`; isolated debug package `com.aaria.magickitchen.pilot.v32preview`, version `1.0.3`. It is not an accepted preview.
+- Fresh phone images exist but require care: World landscape visibly shows the map; the purported World portrait PNG shows Home despite passing DOM route/layout checks. The portrait screenshot is therefore excluded from acceptance until capture/route behavior is corrected and rerun. Automated reference comparison is a coarse diagnostic; no human visual acceptance recorded. Tablet capture was skipped after phone smoke stopped.
+- Ledger counts remain **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED**, overall **NOT READY / HOLD**. No merge, release, production install or Classic change.
+
 # V3.2 Closure Package — W01 session rotation
 
 ## Current live application checkpoint — C2 recipe templates
