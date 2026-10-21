@@ -1,15 +1,22 @@
 {
-  "status": "PROVENANCE_RECORDED; THREE-TEMPLATE SOURCE HASH VERIFIED; REFERENCE-DERIVED HOME/WORLD ART AND APPROVED AVATAR CROPS READY FOR VISUAL REVIEW; TASTY TACOS REFERENCE REVIEW PENDING",
+  "status": "P0 ISSUE #40 CURRENT RECIPE TEMPLATE REFERENCE IDENTIFIED; HISTORICAL THREE-THEME REFERENCE SUPERSEDED; OTHER INDEPENDENT ART/RIGHTS GATES UNCHANGED",
   "assets": [
+    {
+      "role": "CURRENT_OWNER_APPROVED_UNIVERSAL_RECIPE_STEP_TEMPLATE_P0_ISSUE_40",
+      "path": "docs/design/references/wide_clean_modern_ui_mockups_three_smartphone_s.png",
+      "status": "APPROVED_REFERENCE_PRESENT_SHA256_INDEPENDENT_VERIFICATION_PENDING",
+      "notes": "Overrides older three-theme recipe-step design only; mockup five-tab footer rejected, reuse six-tab homepage nav."
+    },
     {
       "role": "three-recipe-theme-comparison",
       "path": "docs/design/references/v3.2-three-recipe-templates.png",
       "sha256": "d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e",
       "provenance": "Restored exact bytes from the Library upload titled Kids’ Cooking App UI Templates.png; SHA-256 matches the owner-approved source hash recorded in Issue #38.",
-      "status": "EXACT_SOURCE_BYTES_VERIFIED",
+      "status": "HISTORICAL_SOURCE_HASH_VERIFIED; SUPERSEDED_FOR_ISSUE_40_RECIPE_TEMPLATE",
       "expected_sha256": "d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e",
       "candidate_path": "docs/design/references/unverified-v3.2-three-recipe-templates-candidate.png",
-      "candidate_sha256": "e40c8d9cbe3c418a1c716b3a06704e088a0bc4c781f8d58c52bb4a3d853b0372"
+      "candidate_sha256": "e40c8d9cbe3c418a1c716b3a06704e088a0bc4c781f8d58c52bb4a3d853b0372",
+      "notes": "Retained for history. Do not use as current recipe step visual baseline."
     },
     {
       "role": "approved-avatar-identity-sheet",
