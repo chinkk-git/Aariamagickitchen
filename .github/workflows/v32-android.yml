@@ -170,6 +170,15 @@ jobs:
           disable-linux-hw-accel: false
           script: bash .github/scripts/v32-android-tablet-smoke.sh
 
+
+      - name: Set up Python for screenshot comparisons
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned screenshot comparison dependency
+        run: python -m pip install --disable-pip-version-check Pillow==11.3.0
+
       - name: Compare phone and tablet screens with approved Home and World references
         if: always()
         run: |
