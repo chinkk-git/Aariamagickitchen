@@ -4,15 +4,18 @@
     {
       "role": "CURRENT_OWNER_APPROVED_UNIVERSAL_RECIPE_STEP_TEMPLATE_P0_ISSUE_40",
       "path": "docs/design/references/wide_clean_modern_ui_mockups_three_smartphone_s.png",
-      "status": "APPROVED_REFERENCE_PRESENT_SHA256_INDEPENDENT_VERIFICATION_PENDING",
-      "notes": "Overrides older three-theme recipe-step design only; mockup five-tab footer rejected, reuse six-tab homepage nav."
+      "sha256": "bc9cbef93dbe461622f7f3eb9cc344545dfd3c885e09a826623bd475e733f062",
+      "provenance": "Owner-approved PNG committed on feature/v3.2-magical-cookbook; independently verified by W01 with SHA-256 during the Issue #40 pilot.",
+      "status": "OWNER_APPROVED_SOURCE_BYTES_SHA256_VERIFIED",
+      "notes": "Overrides older three-theme recipe-step design only; mockup five-tab footer rejected, reuse exact six-destination homepage nav."
     },
     {
       "role": "three-recipe-theme-comparison",
       "path": "docs/design/references/v3.2-three-recipe-templates.png",
       "sha256": "d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e",
       "provenance": "Restored exact bytes from the Library upload titled Kids’ Cooking App UI Templates.png; SHA-256 matches the owner-approved source hash recorded in Issue #38.",
-      "status": "HISTORICAL_SOURCE_HASH_VERIFIED; SUPERSEDED_FOR_ISSUE_40_RECIPE_TEMPLATE",
+      "source_status": "HISTORICAL_SOURCE_HASH_VERIFIED",
+      "design_status": "SUPERSEDED_FOR_ISSUE_40_RECIPE_TEMPLATE",
       "expected_sha256": "d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e",
       "candidate_path": "docs/design/references/unverified-v3.2-three-recipe-templates-candidate.png",
       "candidate_sha256": "e40c8d9cbe3c418a1c716b3a06704e088a0bc4c781f8d58c52bb4a3d853b0372",

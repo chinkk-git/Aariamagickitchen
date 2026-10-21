@@ -1,5 +1,5 @@
 # V3.2 P0 Universal Recipe Template — Strict Approval-Gated Rollout
-**Authority:** owner directive 2026-10-21; [Issue #40](https://github.com/chinkk-git/Aariamagickitchen/issues/40) overrides older recipe-template sequencing in #38. **Implementation remains on hold until W01 resumes as sole writer.**
+**Authority:** owner directive 2026-10-21; [Issue #40](https://github.com/chinkk-git/Aariamagickitchen/issues/40) overrides older recipe-template sequencing in #38. **Recipe #12 pilot is authorised; no later recipe batch is authorised before owner approval.**
 ## Stage 0: source-of-truth
 Reconcile live HEAD, CI and writer exclusivity. Confirm approved reference PNG committed and hash verified. Finalise source-derived homepage tokens, six-button nav contract and actual recipe data mapping. Supersede previous active recipe-step definition; retain historical evidence.
 ## Pilot: recipe #12 only
@@ -33,8 +33,5 @@ Open batch -> adapt only batch IDs -> tests/screenshot diff -> remediate -> exac
 Do not resume other #38 C1–C8 items until all 95 recipe adaptations receive owner approvals. Preserve independently required gates and all security controls. V3.3 #39 deferred. No merge/release.
 ## Cost
 $0 additional spend; eligible free public GitHub runners only, no paid services, minimise builds/polling. Current billing cannot be verified from repository.
-## Image caveat
-Owner-approved PNG is in Control Tower conversation but **not committed here by this text-only document upload**. Image attachment/commit is a P0 prerequisite for pixel-accurate W01 visual acceptance.
-
-## P0 owner correction — Featured Recipes shows CURRENT batch only (supersedes cumulative rail)
-**Authoritative owner correction:** Each review APK's horizontally scrollable Featured Recipes rail displays **only the recipes completed in the current APK checkpoint**, not cumulative completed recipes. Pilot APK: recipe #12 only. B01 APK: recipes 1–10 only. B02 APK: 11 and 13–21 only. Continue per #40 batch IDs through B10 (92–95 only). Recipes from **previously owner-approved batches** remain accessible in the normal Recipes catalogue/list, not Featured Recipes. Do not remove them from the app, reset their progress, or exclude other canonical recipes from the catalogue. Current-batch recipes are internally complete and pending owner approval, not labelled approved. Review-build-scoped selection only; preserve production Featured Recipes and approved Home styling/six-button nav. Test Featured count/IDs equals exactly current checkpoint (pilot 1, B01–B09 10 each, B10 4), swipe/scroll and card navigation; regression-check previously approved recipes in Recipes list. No automatic next batch; STOP after each APK for owner approval.
+## Reference image verification
+Use only `docs/design/references/wide_clean_modern_ui_mockups_three_smartphone_s.png` for the new recipe-step visual review. W01 independently verified SHA-256 `bc9cbef93dbe461622f7f3eb9cc344545dfd3c885e09a826623bd475e733f062`; CI must check it against the reference manifest. The older three-theme image remains historical and superseded. The five-button footer in the approved image is rejected; reuse the exact six-destination homepage navigation. The PNG is committed in this branch.

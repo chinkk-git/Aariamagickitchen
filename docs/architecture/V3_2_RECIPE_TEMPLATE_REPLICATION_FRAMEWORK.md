@@ -1,5 +1,5 @@
 # V3.2 Recipe Template Replication Architecture v1.0
-**Governing P0:** #40 · **Status:** architecture contract, implementation not yet authorised in this documentation handover.
+**Governing P0:** #40 · **Status:** architecture contract; owner authorised the recipe #12 pilot only. Later batches remain approval-gated.
 ## Core principle
 **One shared renderer + 95 immutable canonical identities + versioned data adapters.** No recipe-specific screen forks or 95 duplicated HTML templates. Preserve existing runtime, navigation, saved data, update/signing and features.
 ## Proposed component tree

@@ -65,7 +65,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dist artifacts/v32-diagnostics phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes
-          node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_2.html
+          V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_2.html
           cp dist/Aaria_Magical_Kitchen_V3_2.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           cp tools/v3/artwork/recipe-dishes-draft/manifest.json phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
           cp tools/v3/artwork/recipe-dishes-draft/source/recipe-dishes-13-source-sheet.png phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
@@ -120,6 +120,29 @@ jobs:
           repository: chinkk-git/Aariamagickitchen
           run-id: 39662030525
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download prior uniquely identified V3.2 review APK for coexistence
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-test-apk
+          path: artifacts/v32-previous-review-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39666012130
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify prior V3.2 review APK identity and integrity
+        run: |
+          set -euo pipefail
+          prior=artifacts/v32-previous-review-apk/app-debug.apk
+          test -s "$prior"
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$prior" > artifacts/v32-diagnostics/prior-review-apk-badging.txt
+          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32review70' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/prior-review-apk-badging.txt
+          "$apksigner" verify --print-certs "$prior" > artifacts/v32-diagnostics/prior-review-apk-signer.txt
+          grep -Fq 'certificate SHA-256 digest: 6635474c461b5ae5e6206624e1be07184258df35e94782aeb236308e9e013c46' artifacts/v32-diagnostics/prior-review-apk-signer.txt
+          echo 'c7cd47fe6b18c7da1053ef355aad7f634ae306a1306ce7718950bcb26f73333b  '"$prior" | sha256sum --check
+          sha256sum "$prior" | tee artifacts/v32-diagnostics/prior-review-apk-sha256.txt
 
       - name: Verify previous V3.2 preview identity for coexistence test
         if: github.run_number == 74

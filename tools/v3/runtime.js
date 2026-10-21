@@ -7,6 +7,7 @@ const V31_WORLD_ADVENTURE=__V31_WORLD_ADVENTURE_JSON__;
 const V31_WORLD_ADVENTURE_ART=__V31_WORLD_ADVENTURE_ART_JSON__;
 const V31_HOME_WORLD_ART=__V31_HOME_WORLD_ART_JSON__;
 const V32_RECIPE_THEME_MAP=__V32_RECIPE_THEME_MAP_JSON__;
+const V32_REVIEW_FEATURED_IDS=__V32_REVIEW_FEATURED_IDS_JSON__;
 const V32_PT_RECIPE_DRAFTS=__V3_PT_RECIPE_DRAFTS_JSON__;
 const V32_PT_GROUP_ROLE_COPY=__V32_PT_GROUP_ROLE_COPY_JSON__;
 for(const [id,draft] of Object.entries(V32_PT_RECIPE_DRAFTS))PT_RECIPES[id]={...(PT_RECIPES[id]||{}),...draft};
@@ -147,13 +148,15 @@ home=function v3Home(){
 home=function v31ApprovedHome(){
  const pt=state.language==='pt-BR',stats=homeStats();
  const featured=find(12);
+ const currentReviewFeatured=V32_REVIEW_FEATURED_IDS.map(find).filter(Boolean);
+ const featuredMarkup=currentReviewFeatured.length?`<section class="v31-featured-section v32-review-featured-section"><div class="v31-section-title"><div><h2>⭐ ${pt?'Receitas em destaque':'Featured Recipes'}</h2><p>${pt?'Prontas para revisão do responsável':'Ready for owner review'}</p></div><button class="text-link" data-nav="library">${pt?'Ver todas':'See all'} →</button></div><div class="v32-review-featured-rail" role="group" aria-label="${pt?'Receitas em destaque desta revisão':'Featured recipes in this review'}" data-v32-featured-ids="${currentReviewFeatured.map(recipe=>recipe.id).join(',')}">${currentReviewFeatured.map(recipe=>`<button class="v31-featured-card v32-review-featured-card" data-open="${recipe.id}" data-v32-review-featured-id="${recipe.id}" aria-label="${safe(pt?(PT_RECIPES[recipe.id]?.title||recipe.title):recipe.title)}"><span class="v31-featured-art">${homeDishThumb(recipe)}</span><span class="v31-featured-copy"><span class="v31-featured-kicker">${pt?'PRONTA PARA REVISÃO':'READY FOR REVIEW'}</span><strong>${safe(pt?(PT_RECIPES[recipe.id]?.title||recipe.title):recipe.title)}</strong><small>${safe(pt?(PT_RECIPES[recipe.id]?.description||recipe.description):recipe.description)}</small><span class="v31-featured-meta">◷ ${safe(recipe.time||'')}　♧ ${pt?'Rende':'Makes'} ${safe(recipe.yieldText||'')}</span></span></button>`).join('')}</div></section>`:'';
  const countries=['IND','ITA','JPN','MEX','GRC'].map(code=>V31_DESTINATION_BY_ISO[code]).filter(Boolean);
  const headline=pt?'O que vamos cozinhar hoje?':'What shall we cook today?';
  return `<section class="v31-approved-home" aria-label="${pt?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen'}">
   <header class="v31-approved-header"><img class="v31-brand-lockup" src="${V31_HOME_WORLD_ART.brand}" alt="Aaria’s Magical Kitchen"><button type="button" class="v31-header-greeting" data-v3-profile-open aria-label="${pt?'Trocar perfil da cozinha':'Switch kitchen profile'}"><img src="${V31_HOME_WORLD_ART.aaria}" alt=""><span><strong>${pt?'Oi, Aaria!':'Hi Aaria!'}</strong><small>${pt?'Pronta para uma aventura saborosa?':'Ready for a tasty adventure?'}</small></span></button><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
   <section class="v31-reference-hero" style="--v31-kitchen:url('${V31_HOME_WORLD_ART.kitchen}')"><div class="v31-hero-welcome"><h1>${headline}</h1><span aria-hidden="true">♥</span></div><div class="v31-reference-characters"><img class="v31-hero-character" src="${V31_HOME_WORLD_ART.aariaCooking}" alt="Aaria, the kitchen’s young chef"><img class="v31-hero-dog" src="${V31_HOME_WORLD_ART.friends}" alt="Aaria’s friendly dog"></div></section>
   <nav class="v31-action-tiles" aria-label="${pt?'Aventuras da cozinha':'Kitchen adventures'}"><button class="v31-action-tile v31-tile-cook" data-nav="library"><span>♨️</span><strong>${pt?'Vamos cozinhar!':'Let’s Cook!'}</strong><small>${pt?'Explore todas as receitas':'Explore all recipes'}</small></button><button class="v31-action-tile v31-tile-world" data-v31-open-world><span>🌍</span><strong>${pt?'Aventura pelo mundo':'World Adventure'}</strong><small>${pt?'Cozinhe ao redor do mundo':'Cook around the world'}</small></button><button class="v31-action-tile v31-tile-surprise" data-action="open-wheel"><span>🎲</span><strong>${pt?'Surpresa!':'Surprise Me!'}</strong><small>${pt?'Encontre uma receita':'Find a random recipe'}</small></button><button class="v31-action-tile v31-tile-planner" data-nav="week"><span>▦</span><strong>${pt?'Meu planejador':'My Planner'}</strong><small>${pt?'Planeje sua semana saborosa':'Plan your tasty week'}</small></button></nav>
-  <section class="v31-featured-section"><div class="v31-section-title"><h2>⭐ ${pt?'Receita em destaque':'Featured Recipe'}</h2><button class="text-link" data-nav="library">${pt?'Ver todas':'See all'} →</button></div><button class="v31-featured-card" data-open="${featured.id}"><span class="v31-featured-art">${homeDishThumb(featured)}</span><span class="v31-featured-copy"><span class="v31-featured-kicker">${pt?'FÁCIL E DIVERTIDA':'EASY & FUN'}</span><strong>${safe(pt?(PT_RECIPES[featured.id]?.title||featured.title):featured.title)}</strong><small>${safe((pt?(PT_RECIPES[featured.id]?.description||featured.description):featured.description)||(pt?'Uma receita gostosa para preparar juntos.':'A tasty recipe to make together.'))}</small><span class="v31-featured-meta">◷ ${safe(featured.time||'15 min')}　 ♧ ${pt?'Fácil':'Easy'}　 ♧ ${pt?'Porções':'Serves'} ${safe(featured.servings||'2')}</span></span><span class="v31-featured-heart" aria-hidden="true">♡</span></button></section>
+  ${featuredMarkup||`<section class="v31-featured-section"><div class="v31-section-title"><h2>⭐ ${pt?'Receita em destaque':'Featured Recipe'}</h2><button class="text-link" data-nav="library">${pt?'Ver todas':'See all'} →</button></div><button class="v31-featured-card" data-open="${featured.id}"><span class="v31-featured-art">${homeDishThumb(featured)}</span><span class="v31-featured-copy"><span class="v31-featured-kicker">${pt?'FÁCIL E DIVERTIDA':'EASY & FUN'}</span><strong>${safe(pt?(PT_RECIPES[featured.id]?.title||featured.title):featured.title)}</strong><small>${safe((pt?(PT_RECIPES[featured.id]?.description||featured.description):featured.description)||(pt?'Uma receita gostosa para preparar juntos.':'A tasty recipe to make together.'))}</small><span class="v31-featured-meta">◷ ${safe(featured.time||'15 min')}　 ♧ ${pt?'Fácil':'Easy'}　 ♧ ${pt?'Porções':'Serves'} ${safe(featured.servings||'2')}</span></span><span class="v31-featured-heart" aria-hidden="true">♡</span></button></section>`}
   <section class="v31-world-shelf"><div class="v31-section-title"><div><h2>🌍 ${pt?'Aventura de comida pelo mundo':'World Food Adventure'}</h2><p>${pt?'Descubra pratos deliciosos de todo o mundo!':'Discover delicious dishes from around the world!'}</p></div><button class="text-link" data-v31-open-world>${pt?'Explorar mapa':'Explore the map'} →</button></div><div class="v31-destination-rail">${countries.map((c,i)=>{const id=c.code==='IND'?51:null,r=id?find(id):null;const recipeTitle=r?(pt?(PT_RECIPES[id]?.title||r.title):r.title):(pt?'Novas receitas em revisão':'New recipes under review');return `<button class="v31-destination-tile${i===0?' is-featured':''}" data-v31-card-country="${c.code}"><span class="v31-destination-art v31-country-${c.code.toLowerCase()}"><img src="${V31_HOME_WORLD_ART.destinations[c.code]}" alt="" loading="lazy" decoding="async">${i===0?'<i aria-hidden="true">✦</i>':''}</span><strong>${pt?c.pt:c.en}</strong><small>${safe(recipeTitle)}</small></button>`}).join('')}</div></section>
   <section class="v31-home-quick-links" aria-label="${pt?'Mais aventuras':'More adventures'}"><button data-action="open-week-wheel">🎡 ${pt?'Monte minha semana':'Spin My Week'}</button><button data-nav="stories">🎵 ${pt?'Histórias e música':'Stories & Music'}</button><button data-nav="family">💛 ${pt?'Cozinhar com a família':'Cook with Family'}</button><button data-nav="friends">🌈 ${pt?'Cozinhar com amigos':'Cook with Friends'}</button><button data-nav="groceries">🧺 ${pt?'Lista de compras':'Shopping list'}</button></section>
  </section>`;
@@ -361,11 +364,12 @@ render=function v3Render(){
  v3BaseRender();
  if(view==='recipe')v32AddGroupRoleCopy();
  document.querySelector('.app')?.classList.remove('v31-world-active');document.body.classList.remove('v31-screen-world');
- if(view==='recipe')v31AddAdultCookingCues();
+  if(view==='recipe'&&Number(selected?.id)!==12)v31AddAdultCookingCues();
  document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  document.body.classList.toggle('v3-screen-home',view==='home');
  if(view==='recipe'&&selected){const screen=document.querySelector('#screen');if(screen&&!screen.querySelector('.v3-quiz-card'))screen.insertAdjacentHTML('beforeend',v3QuizCard(selected));}
- v32ApplyRecipeThemes();
+  v32ApplyRecipeThemes();
+  document.querySelector('.app')?.classList.toggle('v32-recipe12-pilot-active',view==='recipe'&&Number(selected?.id)===12);
 };
 
 function v32ApplyRecipeThemes(){
@@ -664,6 +668,61 @@ render=function(){v31RenderBeforeTour();if(view!=='home'&&view!=='settings')retu
  button.style.cssText='min-height:44px;padding:10px 16px;border-radius:16px;margin:12px;cursor:pointer';
  screen.appendChild(button);
 };
+
+// Issue #40 pilot: adapt only canonical recipe 12 to the owner-approved
+// instruction-first template. Recipe content remains sourced from RECIPES and
+// PT_RECIPES; health, quiz, save, favourite and share components stay shared.
+const v32PilotRecipePresentation={12:{
+ stepTitles:{en:['Mix the batter','Warm the pan','Cook the pancakes','Check and cool'],pt:['Misture a massa','Aqueça a frigideira','Cozinhe as panquequinhas','Confira e deixe esfriar']},
+ methodIcons:['🥣','🍳','🥞','✓'],
+ safety:{en:['Do not taste batter containing raw egg. Cook it fully before eating.','An adult operates the hob and handles the hot pan.','An adult operates the hob, cooks the pancakes and handles the hot pan.','Check that the centres are fully cooked. An adult handles the hot pan; let the pancakes cool before eating.'],pt:['Não prove a massa com ovo cru. Cozinhe-a completamente antes de comer.','Um adulto deve usar o fogão e manusear a frigideira quente.','Um adulto deve usar o fogão, cozinhar as panquequinhas e manusear a frigideira quente.','Confira se o centro está completamente cozido. Um adulto deve manusear a frigideira quente; deixe as panquequinhas esfriarem antes de comer.']},
+ method:{en:'Hob',pt:'Fogão'},
+ time:{en:'2–3 min each side',pt:'2–3 min de cada lado'},
+ yield:{en:'Makes 6 small pancakes',pt:'Rende 6 panquequinhas'},
+ dishIcon:'🥞'
+}};
+function v32UniversalRecipeStepTemplate(r,config){
+ const id=Number(r?.id),pt=state.language==='pt-BR',locale=pt?'pt':'en',ptRecord=PT_RECIPES[id];
+ if(!r||!config||!Array.isArray(r.steps)||!r.steps.length)throw new Error('Canonical recipe step data or presentation contract is missing.');
+ if(!ptRecord||ptRecord.steps?.length!==r.steps.length||ptRecord.ingredients?.length!==r.ingredients?.length)throw new Error('PT-BR recipe coverage is incomplete for recipe '+id+'.');
+ if(!Array.isArray(config.safety?.[locale])||config.safety[locale].length!==r.steps.length||config.safety[locale].some(value=>!String(value).trim()))throw new Error('Per-step adult-safety contract is incomplete for recipe '+id+'.');
+ const title=pt?(ptRecord.title||r.title):r.title,steps=pt?ptRecord.steps:r.steps,ingredients=pt?ptRecord.ingredients:r.ingredients;
+ const stepIndex=Math.max(0,Math.min(r.steps.length-1,Number(step)||0)),finished=(state.done||[]).some(value=>Number(value)===id);
+ const checks=state.checks[id]||[],favorite=(state.favorites||[]).some(value=>Number(value)===id),h=value=>safe(value);
+ const method=config.method?.[locale]||r.method||'',time=config.time?.[locale]||r.time||'',makes=config.yield?.[locale]||r.yieldText||'';
+ const stepTitle=config.stepTitles?.[locale]?.[stepIndex]||(pt?'Etapa '+(stepIndex+1):'Step '+(stepIndex+1)),adultHelp=pt?'Ajuda de um adulto':'Adult help needed';
+ const stepPanel=finished
+  ?`<section class="v32-r12-completion" data-v32-recipe-completion role="status" aria-live="polite"><div class="v32-r12-completion-icon" aria-hidden="true">${h(config.dishIcon||r.emoji||'✓')}</div><p class="v32-r12-eyebrow">${pt?'RECEITA CONCLUÍDA':'RECIPE COMPLETE'}</p><h2>${pt?'Você fez '+h(title)+'!':'You made '+h(title)+'!'}</h2><p>${h(config.completionSafety?.[locale]||config.safety[locale].at(-1))}</p><div class="v32-r12-completion-actions"><button type="button" data-nav="library">${pt?'Voltar às receitas':'Back to recipes'}</button></div></section>`
+  :`<section class="v32-r12-cook" aria-label="${pt?'Etapas da receita':'Recipe steps'}">
+    <div class="v32-r12-progress-head"><p class="v32-r12-eyebrow">${pt?'ETAPA':'STEP'} ${stepIndex+1} ${pt?'DE':'OF'} ${r.steps.length}</p><span class="v32-r12-step-count">${stepIndex+1} / ${r.steps.length}</span></div>
+    <div class="v32-r12-progress" role="progressbar" aria-label="${pt?'Progresso da receita':'Recipe progress'}" aria-valuemin="1" aria-valuemax="${r.steps.length}" aria-valuenow="${stepIndex+1}">${r.steps.map((_,i)=>`<span class="${i<=stepIndex?'is-complete':''}" aria-hidden="true"></span>`).join('')}</div>
+    <div class="ref-step-grid v32-r12-step-grid" data-step-count="${r.steps.length}">
+     <article class="ref-step-card active v32-r12-step-card" aria-current="step" data-v32-step="${stepIndex+1}">
+      <div class="v32-r12-step-heading"><span class="v32-r12-method-icon" aria-hidden="true">${h(config.methodIcons?.[stepIndex]||'•')}</span><div><p class="v32-r12-step-kicker">${pt?'ETAPA':'STEP'} ${stepIndex+1}</p><h2 class="ref-step-title v32-r12-title"><span class="ref-step-number">${stepIndex+1}</span><strong>${h(stepTitle)}</strong></h2></div></div>
+      <div class="ref-step-copy v32-r12-instruction"><p data-original-source="recipe-step">${h(steps[stepIndex])}</p></div>
+      ${config.metadataStep===stepIndex?`<p class="v32-r12-metadata" data-original-source="recipe-metadata">◷ ${h(time)}</p>`:''}
+      <aside class="v32-r12-safety" role="note" aria-label="${pt?'Ajuda de um adulto e segurança':'Adult help and safety'}"><span class="v32-r12-safety-icon" aria-hidden="true">!</span><div><strong>${adultHelp}</strong><p data-original-source="recipe-safety">${h(config.safety[locale][stepIndex])}</p></div></aside>
+     </article>
+    </div>
+    <div class="ref-step-actions v32-r12-actions"><button type="button" class="ref-back" data-action="prevstep" ${stepIndex===0?'disabled':''}>← ${pt?'Anterior':'Previous'}</button><span class="v32-r12-actions-progress">${stepIndex+1} ${pt?'de':'of'} ${r.steps.length}</span><button type="button" class="ref-next ${stepIndex===r.steps.length-1?'finish-step':''}" data-action="nextstep">${stepIndex===r.steps.length-1?(pt?'Concluir':'Finish'):(pt?'Próxima etapa':'Next step')} →</button></div>
+   </section>`;
+ return `<main class="v32-r12-main" data-v32-template="recipe-step-v1" data-recipe-id="${id}">
+  <header class="ref-hero v32-r12-header">
+   <button type="button" class="v32-r12-back" data-nav="library" aria-label="${pt?'Voltar às receitas':'Back to recipes'}">←</button>
+   <div class="v32-r12-dish-icon" role="img" aria-label="${h(title)}">${h(config.dishIcon||r.emoji||'✓')}</div>
+   <div class="v32-r12-title-block"><p class="v32-r12-eyebrow">${pt?'RECEITA':'RECIPE'} #${id}</p><h1>${h(title)}</h1><div class="v32-r12-meta"><span class="v32-r12-method">🍳 ${h(method)}</span><span>◷ ${h(time)}</span></div><p class="v32-r12-yield">${h(makes)}</p></div>
+   <button type="button" class="ref-favorite v32-r12-favorite" data-action="favorite" aria-label="${favorite?(pt?'Remover dos favoritos':'Remove from favourites'):(pt?'Adicionar aos favoritos':'Add to favourites')}">${favorite?'♥':'♡'}</button>
+  </header>
+  <section class="v32-r12-ingredients ref-card" aria-labelledby="v32-r12-ingredients-title"><div class="v32-r12-section-heading"><h2 id="v32-r12-ingredients-title">${pt?'Ingredientes':'Ingredients'}</h2><span>${h(makes)}</span></div><div class="v32-r12-ingredient-list">${ingredients.map((ingredient,i)=>`<label class="ref-ingredient ${checks.includes(i)?'is-checked':''}"><input type="checkbox" data-check="${i}" ${checks.includes(i)?'checked':''}><span>${h(ingredient)}</span><i>${checks.includes(i)?'✓':'○'}</i></label>`).join('')}</div>${r.extras?.length?`<p class="v32-r12-extras">${r.extras.map(extra=>h(translateText(extra,pt?'pt-BR':'en-GB'))).join('; ')}</p>`:''}<button type="button" class="recipe-grocery-link" data-action="groceries-current">🛒 ${pt?'Lista de compras':'Make grocery list'}</button></section>
+  ${stepPanel}
+  ${finished?'':`<details class="storybook-safety v32-r12-recipe-safety"><summary>🛡️ ${pt?'Segurança na cozinha':'Kitchen safety'}</summary><p>${h(translateText(r.safety||config.safety[locale].join(' '),pt?'pt-BR':'en-GB'))}</p></details>`}
+  ${healthPanels(r)}
+  ${cookShareSection(r)}
+  <div class="avatar-note v32-r12-fact"><span aria-hidden="true">${h(config.dishIcon||r.emoji||'✓')}</span><span>${h(translateText(r.fact,pt?'pt-BR':'en-GB'))}</span></div>
+ </main>`;
+}
+const v32RecipeBeforePilot=recipe;
+recipe=function v32Recipe12Only(){const id=Number(selected?.id);return id===12?v32UniversalRecipeStepTemplate(find(id),v32PilotRecipePresentation[id]):v32RecipeBeforePilot()};
 
 v3InitProfiles();
 render();

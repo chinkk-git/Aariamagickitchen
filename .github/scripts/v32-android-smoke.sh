@@ -121,6 +121,7 @@ wait_for_stable_launcher
 echo 'Installing the previous V3.2 preview, V3.1 baseline and uniquely identified V3.2 visual review build side by side'
 BASELINE_APP_ID=com.aaria.magickitchen.pilot.v31preview
 PREVIOUS_V32_APP_ID=com.aaria.magickitchen.pilot.v32preview
+PREVIOUS_V32_REVIEW_APP_ID=com.aaria.magickitchen.pilot.v32review70
 APP_ID="com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER:-local}"
 baseline_candidates=(artifacts/v31-baseline-apk/*.apk)
 if [ "${#baseline_candidates[@]}" -ne 1 ] || [ ! -s "${baseline_candidates[0]}" ]; then
@@ -129,6 +130,14 @@ if [ "${#baseline_candidates[@]}" -ne 1 ] || [ ! -s "${baseline_candidates[0]}" 
   exit 1
 fi
 BASELINE_APK=${baseline_candidates[0]}
+previous_review_candidates=(artifacts/v32-previous-review-apk/*.apk)
+if [ "${#previous_review_candidates[@]}" -ne 1 ] || [ ! -s "${previous_review_candidates[0]}" ]; then
+  echo "Expected exactly one previous unique V3.2 review APK; found ${#previous_review_candidates[@]}" >&2
+  exit 1
+fi
+adb_timeout install -r "${previous_review_candidates[0]}"
+adb_timeout shell pm path "$PREVIOUS_V32_REVIEW_APP_ID" | grep -q 'package:'
+echo "Previous uniquely identified V3.2 review package remains installed: $PREVIOUS_V32_REVIEW_APP_ID"
 if [ "${GITHUB_RUN_NUMBER:-}" = "74" ]; then
   previous_v32_candidates=(artifacts/v32-previous-preview-apk/*.apk)
   if [ "${#previous_v32_candidates[@]}" -ne 1 ] || [ ! -s "${previous_v32_candidates[0]}" ]; then
@@ -329,6 +338,15 @@ await waitForVisible('.v31-hero-welcome h1', 'Home heading after portrait normal
 console.log('Android home screen loaded with the test profile');
 const homeVisual = await evaluate(`(() => { const rect=e=>{const r=e?.getBoundingClientRect();return r?{x:r.x,y:r.y,w:r.width,h:r.height}:null}; const images=[...document.querySelectorAll('.v31-reference-hero img,.v31-brand-lockup,.v31-featured-art img')];const nav=[...document.querySelectorAll('#nav .tab')];return {hero:rect(document.querySelector('.v31-reference-hero')),brand:rect(document.querySelector('.v31-brand-lockup')),heroImages:images.map(i=>({loaded:i.complete&&i.naturalWidth>0,alt:i.alt,width:i.naturalWidth})),tiles:document.querySelectorAll('.v31-action-tile').length,featured:rect(document.querySelector('.v31-featured-card')),destinationTiles:document.querySelectorAll('.v31-destination-tile').length,nav:nav.map(b=>b.innerText.trim())}; })()`);
 if (!homeVisual.hero || homeVisual.hero.w < 260 || homeVisual.hero.h < 150 || !homeVisual.brand || homeVisual.heroImages.some(i=>!i.loaded) || homeVisual.tiles!==4 || !homeVisual.featured || homeVisual.destinationTiles<5 || homeVisual.nav.length!==6) throw new Error(`Approved Home visual composition is incomplete in Android: ${JSON.stringify(homeVisual)}`);
+const reviewFeatured=await evaluate(`(()=>{const rail=document.querySelector('.v32-review-featured-rail'),style=rail?getComputedStyle(rail):null,cards=[...document.querySelectorAll('.v32-review-featured-card')];return {ids:cards.map(e=>Number(e.dataset.v32ReviewFeaturedId)),contract:rail?.dataset.v32FeaturedIds||'',overflowX:style?.overflowX||'',title:document.querySelector('.v32-review-featured-section h2')?.textContent?.trim()||'',ready:document.querySelector('.v32-review-featured-card .v31-featured-kicker')?.textContent?.trim()||'',cardTitle:cards[0]?.querySelector('strong')?.textContent?.trim()||'',visible:!!rail&&rail.getBoundingClientRect().width>0&&rail.getBoundingClientRect().height>0}})()`);
+if(JSON.stringify(reviewFeatured.ids)!=='[12]'||reviewFeatured.contract!=='12'||reviewFeatured.overflowX!=='auto'||!reviewFeatured.visible||reviewFeatured.title!=='⭐ Featured Recipes'||reviewFeatured.ready!=='READY FOR REVIEW'||reviewFeatured.cardTitle!=='Cheesy Corn Pancakes')throw new Error('Review Featured Recipes must contain only the current pilot recipe #12 in a visible horizontal rail: '+JSON.stringify(reviewFeatured));
+await evaluate(`document.querySelector('.v32-review-featured-card[data-v32-review-featured-id="12"]')?.click()`);await waitForVisible('.v32-r12-main','Featured recipe 12 direct route');
+if(!await evaluate(`view==='recipe'&&Number(selected?.id)===12`))throw new Error('Featured recipe #12 card did not open recipe #12.');
+await evaluate(`document.querySelector('#nav .tab[data-nav="home"]')?.click()`);await waitForVisible('.v32-review-featured-rail','Home after featured recipe route');
+await evaluate(`state.language='pt-BR';save();render()`);
+const ptFeatured=await evaluate(`(()=>({ids:[...document.querySelectorAll('.v32-review-featured-card')].map(e=>Number(e.dataset.v32ReviewFeaturedId)),title:document.querySelector('.v32-review-featured-card strong')?.textContent?.trim()||'',heading:document.querySelector('.v32-review-featured-section h2')?.textContent?.trim()||''}))()`);
+if(JSON.stringify(ptFeatured.ids)!=='[12]'||ptFeatured.title!=='Panquequinhas de milho com queijo'||ptFeatured.heading!=='⭐ Receitas em destaque')throw new Error('PT-BR current-batch Featured Recipes content mismatch: '+JSON.stringify(ptFeatured));
+await evaluate(`state.language='en-GB';save();render()`);await waitForVisible('.v32-review-featured-rail','English Featured Recipes restored');
 console.log('Installed Android Home visual composition verified:', JSON.stringify(homeVisual));
 const homeDigest = await captureScreenshot('v31-home-portrait.png', 'Home');
 if (statSync('artifacts/v32-android-screenshots/v31-home-portrait.png').size < 10000) throw new Error('Home screenshot is unexpectedly small');
@@ -517,6 +535,7 @@ const v32PhoneRecipeScreenshots=[];
 let v32PhoneScreenshotDigest=recipeDigest;
 async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   const orientation=landscape?'landscape':'portrait';
+  await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!=='+id+');state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!=='+id+');step=0;save();return true})()');
   const card=await evaluate('(()=>{const e=[...document.querySelectorAll("#screen [data-open]")].find(node=>Number(node.dataset.open)==='+id+');const text=e?.innerText?.trim()||"";const observedTheme=e?.dataset.v32Theme||"";e?.click();return {text,theme:observedTheme}})()');
   if(!card||!card.text.includes(title)||card.theme!==theme)throw new Error('Phone exemplar catalogue card mismatch: '+JSON.stringify({id,title,theme,card}));
   await waitForVisible('.ref-hero h1','Phone '+title+' details');
@@ -524,27 +543,50 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   if(detail.title!==title||detail.theme!==theme)throw new Error('Phone exemplar detail mismatch: '+JSON.stringify({id,expected:{title,theme},detail}));
   const detailName='v32-recipe-'+id+'-detail-'+orientation+'.png';
   v32PhoneScreenshotDigest=await captureScreenshot(detailName,title+' detail '+orientation,v32PhoneScreenshotDigest);
-  const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
-  if(flow.selectedId!==id||flow.stepCount<1||flow.activeCount!==1||flow.activeStep!==1)throw new Error('Phone exemplar active-step state mismatch: '+JSON.stringify({id,flow}));
-  await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"center"})');
-  const stepName='v32-recipe-'+id+'-active-step-'+orientation+'.png';
-  v32PhoneScreenshotDigest=await captureScreenshot(stepName,title+' active step '+orientation,v32PhoneScreenshotDigest);
-  let complete=false;
-  for(let n=0;n<=flow.stepCount;n++){
-    const last=await evaluate('!!document.querySelector(".ref-next.finish-step")');
-    if(last){
-      await evaluate('document.querySelector(".ref-next.finish-step")?.click()');
-      await pause(250);
-      complete=await evaluate('Array.isArray(state.done)&&state.done.includes('+id+')');
-      break;
-    }
-    await evaluate('document.querySelector(".ref-next")?.click()');
-    await pause(200);
+  if(id===12){
+    const acceptance=await evaluate('(()=>({canonicalId:selected?.id,title:selected?.title,ingredients:document.querySelectorAll(".v32-r12-ingredient-list .ref-ingredient").length,steps:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount||0),allergens:[...document.querySelectorAll(".allergy-card .allergen-badges span")].map(x=>x.textContent.trim()).sort(),nutrition:!!document.querySelector(".nutrition-results"),quiz:!!document.querySelector(".v3-quiz-card"),copy:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedCopy:RECIPES.find(x=>x.id===12)?.steps?.[0]||"",safety:document.querySelector(".v32-r12-safety p")?.textContent||""}))()');
+    if(acceptance.canonicalId!==12||acceptance.title!==title||acceptance.ingredients!==6||acceptance.steps!==4||!['Eggs','Milk','Wheat'].every(x=>acceptance.allergens.includes(x))||!acceptance.nutrition||!acceptance.quiz||acceptance.copy!==acceptance.expectedCopy||!acceptance.safety)throw new Error('Recipe 12 internal acceptance data/health/quiz gate failed: '+JSON.stringify(acceptance));
+    await evaluate('document.querySelector(".v32-r12-ingredient-list input[data-check=0]")?.click()');
+    if(!await evaluate('state.checks[12]?.includes(0)'))throw new Error('Recipe 12 ingredient checklist did not persist.');
+    await evaluate('document.querySelector(".v32-r12-ingredient-list input[data-check=0]")?.click()');
+    await evaluate('document.querySelector(".v32-r12-favorite")?.click()');
+    if(!await evaluate('state.favorites.includes(12)'))throw new Error('Recipe 12 favourite action did not persist.');
+    await evaluate('document.querySelector(".v32-r12-favorite")?.click()');
+    await evaluate('document.querySelector(".recipe-grocery-link")?.click()');
+    if(!await evaluate('view==="groceries"&&state.grocerySelected.includes(12)'))throw new Error('Recipe 12 grocery-list action did not carry the canonical recipe.');
+    await evaluate('document.querySelector("#nav .tab[data-nav=library]")?.click()');
+    await waitForVisible('.recipe-card[data-open="12"]','Recipe library after recipe 12 grocery check');
+    await evaluate('document.querySelector("#screen [data-open=12]")?.click()');
+    await waitForVisible('.v32-r12-main','Recipe 12 after existing-function checks');
   }
+  const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".v32-r12-main"),nav:[...document.querySelectorAll("#nav .tab")].map(x=>x.innerText.trim())}))()');
+  if(flow.selectedId!==id||flow.stepCount<1||flow.activeCount!==1||flow.activeStep!==1)throw new Error('Phone exemplar active-step state mismatch: '+JSON.stringify({id,flow}));
+  if(id===12&&(!flow.pilot||flow.stepCount!==4||flow.nav.join('|')!=='Home|Recipes|World Adventure|Magic Pantry|Planner|My Creations'))throw new Error('Recipe 12 pilot contract or exact six-button navigation failed: '+JSON.stringify(flow));
+  const stepFiles=[];
+  for(let index=1;index<=flow.stepCount;index++){
+    const current=await evaluate('(()=>({step:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),safety:document.querySelector(".v32-r12-safety p")?.textContent||"",progress:Number(document.querySelector(".v32-r12-progress")?.getAttribute("aria-valuenow")||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedInstruction:selected?.steps?.[step]||""}))()');
+    if(current.step!==index)throw new Error('Phone exemplar step progression mismatch: '+JSON.stringify({id,index,current}));
+    if(id===12&&(!current.safety||current.progress!==index||current.instruction!==current.expectedInstruction))throw new Error('Recipe 12 is missing canonical step text, per-step safety or progress: '+JSON.stringify(current));
+    if(id===12||index===1){
+      await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"start"})');
+      const stepName=id===12?'v32-recipe-12-step-'+index+'-'+orientation+'.png':'v32-recipe-'+id+'-active-step-'+orientation+'.png';
+      v32PhoneScreenshotDigest=await captureScreenshot(stepName,title+' step '+index+' '+orientation,v32PhoneScreenshotDigest);
+      stepFiles.push(stepName);
+    }
+    if(index<flow.stepCount){
+      await evaluate('document.querySelector(".ref-next")?.click()');
+      await pause(200);
+    }
+  }
+  let complete=false;
+  const last=await evaluate('!!document.querySelector(".ref-next.finish-step")');
+  if(last){await evaluate('document.querySelector(".ref-next.finish-step")?.click()');await pause(250);complete=await evaluate('Array.isArray(state.done)&&state.done.includes('+id+')');}
   if(!complete)throw new Error('Phone exemplar '+id+' did not reach completion');
+  if(id===12&&(!await evaluate('state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".v32-r12-completion")')))throw new Error('Recipe 12 completion did not save to My Creations or render the completion view.');
   const completionName='v32-recipe-'+id+'-completion-'+orientation+'.png';
+  if(id===12&&!await evaluate('!!document.querySelector(".v32-r12-completion")'))throw new Error('Recipe 12 completion view is missing.');
   v32PhoneScreenshotDigest=await captureScreenshot(completionName,title+' completion '+orientation,v32PhoneScreenshotDigest);
-  const files=[detailName,stepName,completionName].map(name=>{
+  const files=[detailName,...stepFiles,completionName].map(name=>{
     const image=readFileSync('artifacts/v32-android-screenshots/'+name);
     const width=image.readUInt32BE(16),height=image.readUInt32BE(20);
     if(landscape?width<=height:width>=height)throw new Error(name+' has incorrect screenshot orientation '+width+'x'+height);
@@ -573,7 +615,7 @@ for(let recipeId=1;recipeId<=95;recipeId++){
   const routeState=await evaluate(`(()=>({view:typeof view==='undefined'?'unavailable':view,selectedId:typeof selected==='undefined'?null:selected?.id??null,hash:location.hash,screen:document.querySelector('#screen')?.className||'',screenText:document.querySelector('#screen')?.innerText?.slice(0,180)||'',record:typeof RECIPES==='undefined'?null:(RECIPES.find(r=>r.id===${recipeId})?{id:RECIPES.find(r=>r.id===${recipeId}).id,title:RECIPES.find(r=>r.id===${recipeId}).title,steps:RECIPES.find(r=>r.id===${recipeId}).steps?.length,ingredients:RECIPES.find(r=>r.id===${recipeId}).ingredients?.length}:null)}))()`);
   if(routeState.view!=='recipe'||Number(routeState.selectedId)!==recipeId)throw new Error(`Recipe ${recipeId} catalogue click did not enter its route: ${JSON.stringify(routeState)}`);
   await waitForVisible('.ref-hero h1',`Recipe ${recipeId} detail route`);
-  const detail=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',theme:document.querySelector('.app')?.dataset.v32RecipeTheme||'',steps:document.querySelectorAll('#screen .ref-step-card').length,ingredients:document.querySelectorAll('#screen .ref-ingredient').length,nutrition:document.querySelector('#screen .nutrition-results')?.innerText||''}))()`);
+  const detail=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',theme:document.querySelector('.app')?.dataset.v32RecipeTheme||'',steps:Number(document.querySelector('#screen .v32-r12-step-grid')?.dataset.stepCount)||document.querySelectorAll('#screen .ref-step-card').length,ingredients:document.querySelectorAll('#screen .ref-ingredient').length,nutrition:document.querySelector('#screen .nutrition-results')?.innerText||'',completion:!!document.querySelector('#screen .v32-r12-completion')}))()`);
   if(!detail.title||detail.theme!==card.theme||detail.steps<1||detail.ingredients<1)throw new Error(`Recipe ${recipeId} detail regression: ${JSON.stringify({card,detail})}`);
   if(!detail.nutrition||([91,94].includes(recipeId)&&!detail.nutrition.includes('Partial draft')))throw new Error(`Recipe ${recipeId} nutrition must render and disclose incomplete source data: ${JSON.stringify(detail)}`);
   routeCoverage.push(recipeId);
@@ -605,6 +647,24 @@ for(let recipeId=66;recipeId<=95;recipeId++){
 }
 if(ptRouteCoverage.length!==30||ptRouteCoverage[0]!==66||ptRouteCoverage.at(-1)!==95)throw new Error('PT-BR recipe translation route coverage is not IDs 66–95');
 writeFileSync('artifacts/v32-diagnostics/pt-br-recipe-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:ptRouteCoverage,uniqueCount:new Set(ptRouteCoverage).size,status:'DRAFT_COPY_RENDERED_REVIEW_REQUIRED',review:'A08/A09/native PT-BR review pending'},null,2)+'\\n');
+await evaluate(`(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);step=0;save();document.querySelector('#screen [data-open="12"]')?.click();return true})()`);
+await waitForVisible('.v32-r12-main','PT-BR recipe 12 pilot');
+const pt12=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',expected:PT_RECIPES[12].title,ingredient:document.querySelector('.v32-r12-ingredient-list .ref-ingredient span')?.textContent?.trim()||'',expectedIngredient:PT_RECIPES[12].ingredients[0],ingredientCount:PT_RECIPES[12].ingredients.length,stepCount:PT_RECIPES[12].steps.length,nav:[...document.querySelectorAll('#nav .tab')].map(x=>x.innerText.trim())}))()`);
+if(pt12.title!==pt12.expected||pt12.ingredient!==pt12.expectedIngredient||pt12.nav.join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações')throw new Error('PT-BR recipe 12 title, ingredient or six-destination navigation is incorrect: '+JSON.stringify(pt12));
+const pt12StepScreens=[];
+for(let index=0;index<4;index++){
+ const copy=await evaluate('(()=>({step:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedStep:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32Recipe12Safety.pt['+index+'],number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
+ if(copy.step!==copy.expectedStep||copy.safety!==copy.expectedSafety||copy.number!==index+1)throw new Error('PT-BR recipe 12 step/safety coverage failed: '+JSON.stringify({index,copy}));
+ const name='v32-recipe-12-pt-br-step-'+(index+1)+'-portrait.png';
+ v32PhoneScreenshotDigest=await captureScreenshot(name,'PT-BR recipe 12 step '+(index+1)+' portrait',v32PhoneScreenshotDigest);pt12StepScreens.push(name);
+ if(index<3){await evaluate('document.querySelector(".ref-next")?.click()');await pause(200)}
+}
+await evaluate('document.querySelector(".ref-next.finish-step")?.click()');await pause(250);
+if(!await evaluate('state.done.includes(12)&&!!document.querySelector(".v32-r12-completion")'))throw new Error('PT-BR recipe 12 completion did not render.');
+const pt12Completion='v32-recipe-12-pt-br-completion-portrait.png';v32PhoneScreenshotDigest=await captureScreenshot(pt12Completion,'PT-BR recipe 12 completion portrait',v32PhoneScreenshotDigest);
+writeFileSync('artifacts/v32-diagnostics/recipe-12-pt-br-evidence.json',JSON.stringify({status:'INTERNAL_TRANSLATION_RENDER_PASS',title:pt12.title,ingredients:pt12.ingredientCount,steps:pt12.stepCount,stepScreens:pt12StepScreens,completion:pt12Completion,independentReview:'A08/A09/native PT-BR review pending'},null,2)+'\n');
+await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
+await waitForVisible('.recipe-card','Portuguese recipe library restored');
 await evaluate(`(()=>{const select=document.querySelector('#languageSelect');select.value='en-GB';select.dispatchEvent(new Event('change',{bubbles:true}));return state.language})()`);
 await waitForVisible('.recipe-card','English recipe library restored');
 console.log('Portuguese recipe titles, ingredients, steps and safety rendered for IDs 66–95; acceptance remains pending independent review');

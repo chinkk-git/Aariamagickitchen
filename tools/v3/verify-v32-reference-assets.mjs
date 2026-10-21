@@ -11,6 +11,12 @@ const required=[
   ['protected-v31-world-map-crop','docs/design/approved-v31-world-map-crop.webp']
 ];
 const results=[];
+const recipeTemplate=manifest.assets.find(x=>x.role==='CURRENT_OWNER_APPROVED_UNIVERSAL_RECIPE_STEP_TEMPLATE_P0_ISSUE_40');
+const recipeTemplatePath='docs/design/references/wide_clean_modern_ui_mockups_three_smartphone_s.png';
+if(!recipeTemplate||recipeTemplate.path!==recipeTemplatePath||recipeTemplate.status!=='OWNER_APPROVED_SOURCE_BYTES_SHA256_VERIFIED'||!recipeTemplate.sha256)throw new Error('Missing current owner-approved Issue #40 recipe template reference provenance');
+const recipeTemplateSha=createHash('sha256').update(readFileSync(resolve(root,recipeTemplatePath))).digest('hex');
+if(recipeTemplateSha!==recipeTemplate.sha256)throw new Error('Current recipe template reference SHA-256 mismatch: '+recipeTemplateSha+' != '+recipeTemplate.sha256);
+results.push({role:recipeTemplate.role,path:recipeTemplatePath,sha256:recipeTemplateSha,status:recipeTemplate.status});
 for(const [role,path] of required){
  const record=manifest.assets.find(x=>x.role===role);
  if(!record||record.path!==path||!record.sha256)throw new Error('Missing or changed approved reference provenance: '+role);
@@ -44,19 +50,18 @@ for(const item of avatarArt.items){
 results.push({role:avatarArt.role,sourcePath:avatarArt.sourcePath,sourceSha256:avatarArt.sourceSha256,items:avatarArt.items,status:avatarArt.status});
 const template=manifest.assets.find(x=>x.role==='three-recipe-theme-comparison');
 const templatePath='docs/design/references/v3.2-three-recipe-templates.png';
-if(!template||template.path!==templatePath||!template.sha256||template.status!=='EXACT_SOURCE_BYTES_VERIFIED')throw new Error('Three-template source must match the approved reference manifest');
+if(!template||template.path!==templatePath||!template.sha256||template.source_status!=='HISTORICAL_SOURCE_HASH_VERIFIED'||template.design_status!=='SUPERSEDED_FOR_ISSUE_40_RECIPE_TEMPLATE')throw new Error('Historical source provenance and superseded design authority must be recorded independently');
 const approvedTemplate=createHash('sha256').update(readFileSync(resolve(root,templatePath))).digest('hex');
-if(approvedTemplate!==template.sha256)throw new Error('Approved three-template SHA-256 mismatch: '+approvedTemplate+' != '+template.sha256);
+if(approvedTemplate!==template.sha256||approvedTemplate!==template.expected_sha256)throw new Error('Historical three-template source SHA-256 mismatch: '+approvedTemplate+' != '+template.sha256);
 const candidate=createHash('sha256').update(readFileSync(resolve(root,template.candidate_path))).digest('hex');
 if(candidate!==template.candidate_sha256)throw new Error('Quarantined template candidate bytes changed: '+candidate);
-results.push({role:'three-recipe-theme-comparison',path:templatePath,sha256:approvedTemplate,status:template.status,candidatePath:template.candidate_path,candidateSha256:candidate,candidateStatus:'UNVERIFIED_QUARANTINED'});
+results.push({role:'three-recipe-theme-comparison',path:templatePath,sha256:approvedTemplate,sourceStatus:template.source_status,designStatus:template.design_status,candidatePath:template.candidate_path,candidateSha256:candidate,candidateStatus:'UNVERIFIED_QUARANTINED'});
 const tacos=manifest.assets.find(x=>x.role==='approved-tasty-tacos-recipe-flow');
 if(!tacos||tacos.path!==null||!String(tacos.status).includes('BLOCKED'))throw new Error('Missing Tasty Tacos baseline must remain explicitly blocked');
 results.push({role:'approved-tasty-tacos-recipe-flow',status:tacos.status});
 mkdirSync(resolve(root,'artifacts/v32-diagnostics'),{recursive:true});
 mkdirSync(resolve(root,'artifacts/v32-diagnostics/avatar-crops'),{recursive:true});
-copyFileSync(resolve(root,templatePath),resolve(root,'artifacts/v32-diagnostics/approved-three-template-reference.png'));
-copyFileSync(resolve(root,template.candidate_path),resolve(root,'artifacts/v32-diagnostics/unverified-template-candidate.png'));
+copyFileSync(resolve(root,recipeTemplatePath),resolve(root,'artifacts/v32-diagnostics/approved-recipe-template-reference.png'));
 copyFileSync(resolve(root,mapRecord.path),resolve(root,'artifacts/v32-diagnostics/reference-derived-world-map.webp'));
 copyFileSync(resolve(root,dogArt.path),resolve(root,'artifacts/v32-diagnostics/approved-home-dog-crop.png'));
 copyFileSync(resolve(root,avatarReference.path),resolve(root,'artifacts/v32-diagnostics/approved-avatar-identity-sheet.png'));

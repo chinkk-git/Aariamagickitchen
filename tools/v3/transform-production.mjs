@@ -326,6 +326,9 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 
 const runtimeTemplate = fs.readFileSync(path.join(here, 'runtime.js'), 'utf8');
 const v32RecipeThemeMap = JSON.parse(fs.readFileSync(path.join(here, 'data/v3.2-recipe-theme-map.json'), 'utf8'));
+const v32ReviewFeaturedIds = (process.env.V32_REVIEW_FEATURED_IDS || '').split(',').map(x => x.trim()).filter(Boolean).map(Number);
+const v32CanonicalIds = new Set(Object.keys(v32RecipeThemeMap.mapping).map(Number));
+if (new Set(v32ReviewFeaturedIds).size !== v32ReviewFeaturedIds.length || v32ReviewFeaturedIds.some(id => !Number.isInteger(id) || !v32CanonicalIds.has(id))) throw new Error('V32_REVIEW_FEATURED_IDS must contain unique canonical recipe IDs.');
 const v32PtRecipeDrafts = {};
 const v32PtGroupRoleCopy = {};
 for (const name of ['pt-BR-recipes-66-80-review.json','pt-BR-recipes-81-95-review.json']) {
@@ -342,6 +345,7 @@ const runtime = runtimeTemplate
   .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt))
   .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))
   .replace('__V32_RECIPE_THEME_MAP_JSON__', JSON.stringify(v32RecipeThemeMap.mapping))
+  .replace('__V32_REVIEW_FEATURED_IDS_JSON__', JSON.stringify(v32ReviewFeaturedIds))
   .replace('__V3_PT_RECIPE_DRAFTS_JSON__', JSON.stringify(v32PtRecipeDrafts))
   .replace('__V32_PT_GROUP_ROLE_COPY_JSON__', JSON.stringify(v32PtGroupRoleCopy))
   .replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))

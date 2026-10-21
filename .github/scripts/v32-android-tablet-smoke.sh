@@ -21,7 +21,21 @@ for attempt in $(seq 1 90); do
 done
 [ "$booted" = 1 ] || { adb_poll_timeout devices -l; echo "Tablet emulator did not finish booting" >&2; exit 1; }
 APP_ID="com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER:-local}"
+BASELINE_APP_ID=com.aaria.magickitchen.pilot.v31preview
+PREVIOUS_V32_REVIEW_APP_ID=com.aaria.magickitchen.pilot.v32review70
+previous_review_candidates=(artifacts/v32-previous-review-apk/*.apk)
+baseline_candidates=(artifacts/v31-baseline-apk/*.apk)
+if [ "${#previous_review_candidates[@]}" -ne 1 ] || [ ! -s "${previous_review_candidates[0]}" ] || [ "${#baseline_candidates[@]}" -ne 1 ] || [ ! -s "${baseline_candidates[0]}" ]; then
+  echo 'Expected previous V3.2 review and Classic APKs for nondestructive coexistence validation.' >&2
+  exit 1
+fi
+adb_timeout -s "$ANDROID_SERIAL" install -r "${baseline_candidates[0]}"
+adb_timeout -s "$ANDROID_SERIAL" shell pm path "$BASELINE_APP_ID" | grep -q 'package:'
+adb_timeout -s "$ANDROID_SERIAL" install -r "${previous_review_candidates[0]}"
+adb_timeout -s "$ANDROID_SERIAL" shell pm path "$PREVIOUS_V32_REVIEW_APP_ID" | grep -q 'package:'
 adb_timeout -s "$ANDROID_SERIAL" install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+adb_timeout -s "$ANDROID_SERIAL" shell pm path "$BASELINE_APP_ID" | grep -q 'package:'
+adb_timeout -s "$ANDROID_SERIAL" shell pm path "$PREVIOUS_V32_REVIEW_APP_ID" | grep -q 'package:'
 adb_timeout -s "$ANDROID_SERIAL" shell pm path "$APP_ID" | grep -q 'package:'
 adb_timeout -s "$ANDROID_SERIAL" shell am start -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity
 socket=
@@ -102,7 +116,7 @@ async function avatarScene(mode,landscape){
 }
 async function screenshot(name,landscape){await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');await pause(500);const png=adb(['exec-out','screencap','-p']);const w=png.readUInt32BE(16),h=png.readUInt32BE(20);if(landscape?w<=h:w>=h)throw Error(name+' has incorrect screenshot orientation '+w+'x'+h);const path='artifacts/v32-android-screenshots/tablet/'+name+'.png';writeFileSync(path,png);return {path,width:w,height:h,bytes:png.length}}
 async function pageSet(landscape){
-  await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcome h1','Home');const homeA11y=await audit('home');const home=await screenshot('home-'+(landscape?'landscape':'portrait'),landscape);const avatarScenes={family:await avatarScene('family',landscape),friends:await avatarScene('friends',landscape)};
+  await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcome h1','Home');const featured=await evaluate('(()=>{const rail=document.querySelector(".v32-review-featured-rail"),style=rail?getComputedStyle(rail):null,cards=[...document.querySelectorAll(".v32-review-featured-card")];return {ids:cards.map(e=>Number(e.dataset.v32ReviewFeaturedId)),contract:rail?.dataset.v32FeaturedIds||"",overflowX:style?.overflowX||"",title:cards[0]?.querySelector("strong")?.textContent?.trim()||"",heading:document.querySelector(".v32-review-featured-section h2")?.textContent?.trim()||""}})()');if(JSON.stringify(featured.ids)!=="[12]"||featured.contract!=="12"||featured.overflowX!=="auto"||featured.title!=="Cheesy Corn Pancakes"||featured.heading!=="⭐ Featured Recipes")throw Error("Tablet Featured Recipes must contain only review-pilot recipe #12 in a horizontal rail: "+JSON.stringify(featured));const homeA11y=await audit('home');const home=await screenshot('home-'+(landscape?'landscape':'portrait'),landscape);if(!landscape){await evaluate('state.language="pt-BR";save();render()');await waitFor('.v32-review-featured-rail','PT-BR tablet Featured Recipes');const ptFeatured=await evaluate('(()=>({ids:[...document.querySelectorAll(".v32-review-featured-card")].map(e=>Number(e.dataset.v32ReviewFeaturedId)),title:document.querySelector(".v32-review-featured-card strong")?.textContent?.trim()||"",heading:document.querySelector(".v32-review-featured-section h2")?.textContent?.trim()||""}))()');if(JSON.stringify(ptFeatured.ids)!=="[12]"||ptFeatured.title!=="Panquequinhas de milho com queijo"||ptFeatured.heading!=="⭐ Receitas em destaque")throw Error("PT-BR tablet Featured Recipes mismatch: "+JSON.stringify(ptFeatured));await screenshot('home-featured-pt-br-portrait',false);await evaluate('state.language="en-GB";save();render()');await waitFor('.v32-review-featured-rail','English tablet Featured Recipes restored')}const avatarScenes={family:await avatarScene('family',landscape),friends:await avatarScene('friends',landscape)};
   await click('#nav .tab[data-nav="world"]','World');await waitFor('#screen .v31-world-header h1','World');await dismissChefChooser();const worldRoute=await evaluate('(()=>{const screen=document.querySelector("#screen"),e=screen?.querySelector(".v31-world-header h1"),r=e?.getBoundingClientRect(),s=e?getComputedStyle(e):null;return {view:typeof view==="undefined"?"unavailable":view,heading:e?.textContent?.trim()||"",screenClass:screen?.className||"",screenText:screen?.innerText||"",visible:!!e&&!!r&&r.width>0&&r.height>0&&s?.display!=="none"&&s?.visibility!=="hidden"}})()');if(worldRoute.view!=="world"||!worldRoute.screenClass.includes("v31-world-screen")||!worldRoute.screenText.includes("World Food Adventure")||!worldRoute.visible)throw Error("Tablet world navigation did not replace the active screen with visible World content: "+JSON.stringify(worldRoute));const worldA11y=await audit('world');
   const map=await evaluate('(()=>{const svg=document.querySelector("#screen .v31-world-map"),style=svg?getComputedStyle(svg):null,wrap=document.querySelector("#screen .v31-map-wrap"),wrapStyle=wrap?getComputedStyle(wrap):null,selected=document.querySelector("#screen .v31-world-map .v31-destination.is-selected")?.dataset.v31Country||"";const controls=[...document.querySelectorAll("#screen .v31-map-controls button")].map(e=>{const b=e.getBoundingClientRect();return {w:Math.round(b.width),h:Math.round(b.height)}});return {destinationPaths:document.querySelectorAll(".v31-world-map .v31-destination[data-v31-country]").length,svgOpacity:Number(style?.opacity||0),mapArtFit:(wrapStyle?.backgroundSize||"").split(",")[0]?.trim()||"",mapBackgroundSizes:(wrapStyle?.backgroundSize||"").split(",").map(size=>size.trim()),mapAspectRatio:wrapStyle?.aspectRatio||"",selected,controls}})()');
   if(map.destinationPaths<7||map.svgOpacity<0.1||map.mapArtFit!=="contain"||!map.mapAspectRatio.startsWith("1.7")||!map.selected||map.controls.length!==0)throw Error('World map destination visibility/touch target audit failed: '+JSON.stringify(map));
@@ -113,7 +127,49 @@ async function pageSet(landscape){
   const exemplarExpected={12:{title:'Cheesy Corn Pancakes',theme:'playful-purple'},76:{title:'Rainbow Vegetable Noodle Toss',theme:'fresh-green'},5:{title:'Mini Pizza Bread Cups',theme:'sunny-orange'}};
   const libraryA11y=await audit('library');const libshot=await screenshot('library-'+(landscape?'landscape':'portrait'),landscape);
   const themeShots=[];
-  for(const id of [12,76,5]){await click('#screen [data-open="'+id+'"]','Recipe '+id);await waitFor('.ref-hero h1','Recipe '+id+' details');const expected=exemplarExpected[id];if(!expected)throw Error('Missing canonical exemplar contract for recipe '+id);const actualTitle=await evaluate('document.querySelector(".ref-hero h1")?.textContent?.trim()||""');if(actualTitle!==expected.title)throw Error('Recipe detail title mismatch for '+id+': '+JSON.stringify({expected:expected.title,actual:actualTitle}));const result=await evaluate('(()=>({theme:document.querySelector(".app")?.dataset.v32RecipeTheme||"unknown"}))()');if(result.theme!==expected.theme)throw Error('Recipe detail theme mismatch for '+id+': '+JSON.stringify({expected:expected.theme,actual:result.theme}));const image=await screenshot('theme-'+id+'-detail-'+(landscape?'landscape':'portrait'),landscape);const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');if(flow.selectedId!==id||flow.stepCount<1||flow.activeCount!==1||flow.activeStep!==1)throw Error('Recipe template must show one active step at a time: '+JSON.stringify({id,flow}));const stepArt=await evaluate('(()=>{const e=document.querySelector(".ref-step-card.active .v32-template-ingredient-art");return {count:e?.querySelectorAll(".v32-template-ingredient").length||0,characterImages:e?.querySelectorAll("img").length||0}})()');if(stepArt.count!==3||stepArt.characterImages!==0)throw Error('Approved template step must use three accurate ingredient icons without character art: '+JSON.stringify({id,stepArt}));await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"center"})');const stepOne=await screenshot('theme-'+id+'-step-1-'+(landscape?'landscape':'portrait'),landscape);await click('.ref-next','Next step for recipe '+id);await pause(250);await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"center"})');const stepTwo=await evaluate('Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)');if(flow.stepCount>1&&stepTwo!==2)throw Error('Recipe '+id+' did not advance to its second step');if(flow.stepCount>1)await screenshot('theme-'+id+'-step-2-'+(landscape?'landscape':'portrait'),landscape);let complete=false;for(let n=0;n<=flow.stepCount;n++){const isLast=await evaluate('!!document.querySelector(".ref-next.finish-step")');if(isLast){await click('.ref-next.finish-step','Finish recipe '+id);await pause(250);complete=await evaluate('Array.isArray(state.done)&&state.done.includes('+id+')');break}await click('.ref-next','Advance recipe '+id);await pause(150)}if(!complete)throw Error('Recipe '+id+' did not reach its completion state');await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"center"})');const completion=await screenshot('theme-'+id+'-completion-'+(landscape?'landscape':'portrait'),landscape);themeShots.push({id,title:actualTitle,expected:expected.theme,observed:result.theme,screenshot:image,stepOne,stepTwo:flow.stepCount>1?stepTwo:null,completion,activeStepCount:flow.activeCount,totalSteps:flow.stepCount});await click('#nav .tab[data-nav="library"]','Recipe library');await waitFor('.recipe-card','Library after recipe '+id)}
+  for(const id of [12,76,5]){
+    if(id===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
+    await click('#screen [data-open="'+id+'"]','Recipe '+id);
+    await waitFor('.ref-hero h1','Recipe '+id+' details');
+    const expected=exemplarExpected[id],actualTitle=await evaluate('document.querySelector(".ref-hero h1")?.textContent?.trim()||""');
+    if(!expected||actualTitle!==expected.title)throw Error('Recipe detail title mismatch for '+id+': '+JSON.stringify({expected:expected?.title,actual:actualTitle}));
+    const result=await evaluate('(()=>({theme:document.querySelector(".app")?.dataset.v32RecipeTheme||"unknown"}))()');
+    if(result.theme!==expected.theme)throw Error('Recipe detail theme mismatch for '+id+': '+JSON.stringify({expected:expected.theme,actual:result.theme}));
+    const image=await screenshot('theme-'+id+'-detail-'+(landscape?'landscape':'portrait'),landscape);
+    const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".v32-r12-main"),nav:[...document.querySelectorAll("#nav .tab")].map(x=>x.innerText.trim())}))()');
+    if(flow.selectedId!==id||flow.activeCount!==1||flow.activeStep!==1)throw Error('Recipe template first-step state failed: '+JSON.stringify({id,flow}));
+    if(id===12&&(flow.stepCount!==4||!flow.pilot||flow.nav.join('|')!=='Home|Recipes|World Adventure|Magic Pantry|Planner|My Creations'))throw Error('Recipe 12 pilot contract or exact six-button navigation failed: '+JSON.stringify(flow));
+    const stepFiles=[];
+    if(id===12){
+      for(let index=1;index<=4;index++){
+        const active=await evaluate('(()=>({step:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),safety:document.querySelector(".v32-r12-safety p")?.textContent||"",progress:Number(document.querySelector(".v32-r12-progress")?.getAttribute("aria-valuenow")||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedInstruction:selected?.steps?.[step]||""}))()');
+        if(active.step!==index||!active.safety||active.progress!==index||active.instruction!==active.expectedInstruction)throw Error('Tablet recipe 12 canonical step/safety/progress regression: '+JSON.stringify({index,active}));
+        await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"start"})');
+        const name='recipe-12-step-'+index+'-'+(landscape?'landscape':'portrait')+'.png';
+        stepFiles.push(await screenshot(name,landscape));
+        if(index<4){await click('.ref-next','Next recipe 12 step');await pause(250)}
+      }
+      await click('.ref-next.finish-step','Finish recipe 12');await pause(250);
+      if(!await evaluate('state.done.includes(12)&&state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".v32-r12-completion")'))throw Error('Tablet recipe 12 completion did not persist or render.');
+    }else{
+      const stepArt=await evaluate('(()=>{const e=document.querySelector(".ref-step-card.active .v32-template-ingredient-art");return {count:e?.querySelectorAll(".v32-template-ingredient").length||0,characterImages:e?.querySelectorAll("img").length||0}})()');
+      if(stepArt.count!==3||stepArt.characterImages!==0)throw Error('Approved template step must use three accurate ingredient icons without character art: '+JSON.stringify({id,stepArt}));
+      await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"center"})');
+      stepFiles.push(await screenshot('theme-'+id+'-step-1-'+(landscape?'landscape':'portrait'),landscape));
+      await click('.ref-next','Next step for recipe '+id);await pause(250);
+      const stepTwo=await evaluate('Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)');
+      if(flow.stepCount>1&&stepTwo!==2)throw Error('Recipe '+id+' did not advance to its second step');
+      if(flow.stepCount>1)stepFiles.push(await screenshot('theme-'+id+'-step-2-'+(landscape?'landscape':'portrait'),landscape));
+      let complete=false;for(let n=0;n<=flow.stepCount;n++){
+        if(await evaluate('!!document.querySelector(".ref-next.finish-step")')){await click('.ref-next.finish-step','Finish recipe '+id);await pause(250);complete=await evaluate('Array.isArray(state.done)&&state.done.includes('+id+')');break}
+        await click('.ref-next','Advance recipe '+id);await pause(150)
+      }
+      if(!complete)throw Error('Recipe '+id+' did not reach its completion state');
+    }
+    const completion=await screenshot(id===12?'recipe-12-completion-'+(landscape?'landscape':'portrait')+'.png':'theme-'+id+'-completion-'+(landscape?'landscape':'portrait'),landscape);
+    themeShots.push({id,title:actualTitle,expected:expected.theme,observed:result.theme,screenshot:image,steps:stepFiles,completion,activeStepCount:flow.activeCount,totalSteps:flow.stepCount});
+    await click('#nav .tab[data-nav="library"]','Recipe library');await waitFor('.recipe-card','Library after recipe '+id);
+  }
   return {home,avatarScenes,world,library:libshot,themeShots,accessibility:{home:homeA11y,world:worldA11y,library:libraryA11y},worldMap:map}
 }
 await pause(6000);
