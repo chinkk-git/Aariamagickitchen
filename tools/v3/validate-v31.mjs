@@ -9,6 +9,7 @@ const root = path.resolve(here, '../..');
 const fail = message => { console.error(`FAIL: ${message}`); process.exit(1); };
 const runtime = fs.readFileSync(path.join(here, 'runtime.js'), 'utf8');
 const transform = fs.readFileSync(path.join(here, 'transform-production.mjs'), 'utf8');
+const visualCss = fs.readFileSync(path.join(here, 'home-world-visual.css'), 'utf8');
 const source = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const geography = JSON.parse(fs.readFileSync(path.join(here, 'data/ne_110m_admin_0_countries.geojson'), 'utf8'));
 const dataNotes = fs.readFileSync(path.join(here, 'data/README.md'), 'utf8');
@@ -81,15 +82,15 @@ for (const [token, label] of [
   ['prefers-reduced-motion', 'reduced-motion support'],
   ['.v31-world-map', 'pan and zoom map styling']
 ]) if (!runtime.includes(token) && !transform.includes(token)) fail(`Missing ${label}.`);
-if (!transform.includes('.v31-illustrated-map-panel .v31-map-wrap{') || !transform.includes('aspect-ratio:1.7') || !transform.includes('center/contain')) fail('World Map must preserve the approved source ratio and contain the full reference artwork in every orientation.');
-if (!runtime.includes('data-v31-country-select') || !runtime.includes('data-v31-country-search') || !runtime.includes('V31_DESTINATION_BY_ISO') || !runtime.includes('data-v31-destination')) fail('World Map must retain accessible country selection, search and canonical destination markers while gesture polish is deferred.');
+if (!visualCss.includes('.v31-illustrated-map-panel .v31-map-wrap{') || !visualCss.includes('aspect-ratio:1.7') || !visualCss.includes('center/contain')) fail('World Map must preserve the approved source ratio and contain the full reference artwork in every orientation.');
+if (!runtime.includes('data-v31-country-select') || !runtime.includes('data-v31-country-search') || !runtime.includes('V31_DESTINATION_BY_ISO') || !runtime.includes('v31-destination')) fail('World Map must retain accessible country selection, search and canonical destination markers while gesture polish is deferred.');
 if (!runtime.includes('aria-live="polite"') || !runtime.includes('focus({preventScroll:true})')) fail('Accessible status or focus restoration is missing.');
 if (!runtime.includes('aria-pressed="${v31SelectedCountry===code}"') || !runtime.includes('aria-pressed="${x.code===c.code}"')) fail('Selected map and destination states must be announced to assistive technology.');
 if (transform.includes('max-height:300px;overflow:auto')) fail('India recipes must remain part of the page scroll instead of a nested clipped list.');
 if (!runtime.includes('<h1 tabindex="-1">') || !runtime.includes('v31WorldOpenerIndex')) fail('World entry and return focus targets are missing.');
 if (!runtime.includes(".bottom .tab[data-nav=\"world\"]") || !runtime.includes('v31WorldOpenedFromNav')) fail('World-tab return focus is missing.');
 if (!transform.includes('grid-template-columns:repeat(5,minmax(0,1fr))') || !transform.includes('.v31-primary-actions button{min-height:44px') || !transform.includes('.v31-world-header h1:focus')) fail('Five-tab navigation, focus styling or 44px primary-action targets are missing.');
-if (!transform.includes('.v31-illustrated-map-panel .v31-map-wrap{') || !transform.includes('aspect-ratio:1.7') || !transform.includes('background:var(--v31-world-map-art) center/contain no-repeat')) fail('World Map must use the approved illustrated artwork at its source ratio without crop or stretch.');
+if (!visualCss.includes('.v31-illustrated-map-panel .v31-map-wrap{') || !visualCss.includes('aspect-ratio:1.7') || !visualCss.includes('background:var(--v31-world-map-art) center/contain no-repeat')) fail('World Map must use the approved illustrated artwork at its source ratio without crop or stretch.');
 if (!runtime.includes('Boundaries are simplified and may be disputed')) fail('The map must explain disputed/simplified borders.');
 if (!runtime.includes('Fronteiras simplificadas e possivelmente disputadas')) fail('The Portuguese map must explain disputed/simplified borders.');
 if (!transform.includes(".replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))") || !runtime.includes('V31_WORLD_GEOGRAPHY=__V31_WORLD_GEOGRAPHY_JSON__')) fail('Offline country data injection is missing.');
