@@ -1,6 +1,14 @@
 # V3.2 Closure Package — W01 session rotation
 
-## Current live branch checkpoint — C1/C5 remediation
+## Current live application checkpoint — C2 recipe templates
+
+- App/test SHA `bbe3591a7a304834ae59626e5f9e220d39d50146`; branch docs will advance separately when this package is updated. C2 commits: `097b7011` canonical theme assignments; `eb18dc4b` icon-only active-step art for the three reference exemplars; `ca45d81d` palette calibration; `13309458` phone smoke; `bbe3591a` tablet portrait/landscape detail, step and completion matrix.
+- The exact approved reference remains `d2f6a18845657e85ec94db76ea35d269ea14a82a4f697ead5eaf6098fb8fbf7e`. Canonical exemplar mapping is #12 Cheesy Corn Pancakes/playful purple, #76 Rainbow Vegetable Noodle Toss/fresh green, #5 Mini Pizza Bread Cups/sunny orange. IDs, recipe content, steps and ingredients remain unchanged.
+- Syntax checks pass for runtime, shell scripts and embedded Node scripts; theme map remains 95 IDs. No current-head Android run/artifact/screenshots are retrievable through the connected Actions run lookup. The last identifiable Android run #39643309680 is prior SHA `8f99290` and failed before C2 captures. No C2 Android visual acceptance is claimed.
+- C2 status **BLOCKED** pending exact-head screenshots/CI and independent design/A09 approval. C1 remains **FAIL** pending fresh Home/World evidence. Totals **5 PASS / 2 FAIL / 106 BLOCKED / 2 NOT TESTED**; overall **NOT READY / HOLD**. No merge/release; Classic remains unchanged.
+
+
+## Earlier checkpoint — C1/C5 remediation (superseded)
 
 - Branch HEAD and app/test SHA: `49dbfb2afe4d26165fe9a0361d896e927e4aecba`. Commits since the prior checkpoint update Home/World smoke selectors, remove deferred World Map zoom/drag controls while retaining map/country selection, and assert map art remains `contain` at its 1.7 source ratio. The canonical Family/Friends avatars remain wired to the registered hash-verified crops.
 - Exact identifiable Android run [39643309680](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39643309680) is a failure at prior app/test SHA `8f992901ac8bdc4cbadc993a8960ca1f448624a4`: app build/package/co-install checks passed, C5 phone smoke then searched an obsolete Home selector and could not navigate to Family. The app selectors and tablet fit assertion have now been corrected; the current SHA has no verifiable Actions run ID/artifact available through the connected run-list capability. No current-head pass or failure is claimed, and no auth bypass/manual dispatch was used.
