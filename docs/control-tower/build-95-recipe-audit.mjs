@@ -29,6 +29,10 @@ function extractAssigns(name){
 const recipes=extract('RECIPES','[');
 const pt=extract('PT_RECIPES','{');
 const art=extract('NEW_RECIPE_ART','{');
+const inlineDish=extract('INLINE_DISH_PHOTOS','{');
+const homeDish=extract('HOME_RECIPE_THUMBS','{');
+const batchAtlas=extract('BATCH_ATLASES','{');
+const missingDish=extract('HOME_MISSING_RECIPE_INDEX','{');
 const qa=extract('NEW_RECIPE_QA_STATUS','{');
 const notes=extract('NEW_NUTRITION_SOURCE_NOTES','{');
 const plans=Object.assign(extract('NUTRITION_PLANS','{'),extractAssigns('NUTRITION_PLANS'));
@@ -45,6 +49,7 @@ const rows=recipes.map(r=>{
  const theme=themes.mapping?.[id]??themes[id]??themes.recipes?.[id]??null;
  if(!theme)throw new Error('Missing deterministic theme for '+id);
  const artRecord=art[id]||null, nutritionPlan=plans[id]||null;
+ const assetChannels=[inlineDish[id]?'INLINE_DISH_PHOTOS':null,homeDish[id]?'HOME_RECIPE_THUMBS':null,batchAtlas[id]?'BATCH_ATLASES':null,artRecord?'NEW_RECIPE_ART':null,missingDish[id]!==undefined?'HOME_MISSING_RECIPE_INDEX':null].filter(Boolean);
  return {
   recipeId:Number(id),runtimeId:Number(id),canonicalTitleEN:r.title,canonicalTitlePTBR:translated?.title||null,
   translationStatus:translated?(pt[id]?'EXISTING':'DRAFT_REVIEW_PENDING'):'MISSING',
@@ -57,10 +62,10 @@ const rows=recipes.map(r=>{
   nutrition:{plan:!!nutritionPlan,sourceNote:!!notes[id],perPortion:'REVIEW_REQUIRED'},
   allergens:'NOT_AUDITED',
   theme:typeof theme==='string'?theme:(theme.theme||theme.name||JSON.stringify(theme)),
-  artwork:{dish:missing.has(Number(id))?'MISSING_REVIEW_ONLY':'NOT_AUDITED',runtimeArtRegistry:!!artRecord,rights:'UNVERIFIED',stepArt:'NOT_AUDITED',screen:'NOT_CAPTURED'},
+  artwork:{dish:missing.has(Number(id))?'MISSING_OR_REVIEW_ONLY':'UNVERIFIED_RUNTIME_SOURCE',assetChannels,registryStatus:artRecord?.status||null,rights:'UNVERIFIED',stepArt:'NOT_AUDITED',screen:'NOT_CAPTURED'},
   routeEvidence:'PASS_PRIOR_CODE_SHA_ONLY',
   independentGates:'HOLD',acceptance:'BLOCKED'
  };
 });
-const out={schemaVersion:'v3.2-95-recipe-acceptance-matrix/1',canonicalSource:{path:'index.html',gitBlobSha:blobSha,recipeCount:recipes.length,ids:'1-95'},translationSources:['index.html:PT_RECIPES','tools/v3/data/pt-BR-recipes-66-80-review.json','tools/v3/data/pt-BR-recipes-81-95-review.json'],roleCopy:{familyEN:'Family mode role labels remain in the application source; review required.',familyPTBR:d1.familyRoleCopy||null,friendsEN:'Friends mode role labels remain in the application source; review required.',friendsPTBR:d2.friendsRoleCopy||null,review:'NATIVE_AND_A09_REVIEW_REQUIRED'},themeMapPath:'tools/v3/data/v3.2-recipe-theme-map.json',runBinding:{runId:Number(process.env.V32_RUN_ID||0)||null,codeSha:process.env.V32_CODE_SHA||null,status:process.env.V32_RUN_STATUS||'PENDING'},evidenceLegend:{routeEvidence:'Prior 95/95 route run; does not prove current-head content acceptance or per-recipe screenshots.',independentGates:'A08, A09, rights and visual reviewer decisions remain external.',nextAction:'Complete per-recipe content, nutrition/allergen, artwork/provenance and screenshot review; obtain independent gate decisions.'},acceptanceNote:'Routing, source presence and automated draft contracts are evidence inputs, not recipe acceptance. Every row remains BLOCKED until individual content, safety, nutrition, artwork, rights and visual evidence plus independent reviews are recorded.',rows};
+const out={schemaVersion:'v3.2-95-recipe-acceptance-matrix/1',canonicalSource:{path:'index.html',gitBlobSha:blobSha,recipeCount:recipes.length,ids:'1-95'},translationSources:['index.html:PT_RECIPES','tools/v3/data/pt-BR-recipes-66-80-review.json','tools/v3/data/pt-BR-recipes-81-95-review.json'],roleCopy:{familyEN:'Family mode role labels remain in the application source; review required.',familyPTBR:d1.familyRoleCopy||null,friendsEN:'Friends mode role labels remain in the application source; review required.',friendsPTBR:d2.friendsRoleCopy||null,review:'NATIVE_AND_A09_REVIEW_REQUIRED'},themeMapPath:'tools/v3/data/v3.2-recipe-theme-map.json',artworkInventory:{expectedMissingDishIds:[1,4,5,6,7,8,9,10,16,26,33,51,57],sourceChannelCounts:{inlineDish:Object.keys(inlineDish).length,homeThumb:Object.keys(homeDish).length,batchAtlas:Object.keys(batchAtlas).length,newRecipeArt:Object.keys(art).length,missingPlaceholder:Object.keys(missingDish).length},rights:'UNVERIFIED_FOR_ALL_RUNTIME_ASSETS'},runBinding:{runId:Number(process.env.V32_RUN_ID||0)||null,codeSha:process.env.V32_CODE_SHA||null,status:process.env.V32_RUN_STATUS||'PENDING'},evidenceLegend:{routeEvidence:'Prior 95/95 route run; does not prove current-head content acceptance or per-recipe screenshots.',independentGates:'A08, A09, rights and visual reviewer decisions remain external.',nextAction:'Complete per-recipe content, nutrition/allergen, artwork/provenance and screenshot review; obtain independent gate decisions.'},acceptanceNote:'Routing, source presence and automated draft contracts are evidence inputs, not recipe acceptance. Every row remains BLOCKED until individual content, safety, nutrition, artwork, rights and visual evidence plus independent reviews are recorded.',rows};
 console.log(JSON.stringify(out,null,2));
