@@ -481,6 +481,27 @@ if(routeCoverage.length!==95||new Set(routeCoverage).size!==95)throw new Error(`
 mkdirSync('artifacts/v32-diagnostics',{recursive:true});
 writeFileSync('artifacts/v32-diagnostics/recipe-route-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:routeCoverage,uniqueCount:new Set(routeCoverage).size,status:'PASS'},null,2)+'\n');
 console.log('Android recipe detail route coverage passed 95/95 with theme, ingredient and step content verified');
+await evaluate(`(()=>{const select=document.querySelector('#languageSelect');if(!select)throw Error('Language selector missing before PT-BR recipe audit');select.value='pt-BR';select.dispatchEvent(new Event('change',{bubbles:true}));return state.language})()`);
+await waitForVisible('.recipe-card','PT-BR recipe library');
+const ptRouteCoverage=[];
+for(let recipeId=66;recipeId<=95;recipeId++){
+  const card=await evaluate(`(()=>{const e=document.querySelector('#screen .recipe-card[data-open="${recipeId}"]');if(!e)return null;const title=e.querySelector('.home-tile-name')?.textContent||e.innerText;e.click();return title})()`);
+  if(!card)throw new Error(`PT-BR recipe ${recipeId} is missing from the catalogue`);
+  await waitForVisible('.ref-hero h1',`PT-BR recipe ${recipeId} detail`);
+  const translated=await evaluate(`(()=>{const r=RECIPES.find(x=>x.id===${recipeId}),pt=PT_RECIPES[${recipeId}],title=document.querySelector('.ref-hero h1')?.textContent?.trim()||'',ingredient=document.querySelector('.ref-ingredient')?.innerText||'',step=document.querySelector('.ref-step-card.active .ref-step-copy p')?.innerText||'',safety=[...document.querySelectorAll('.storybook-safety p,.ref-safety p')].map(x=>x.innerText).join(' ');return {id:r?.id,title,expectedTitle:pt?.title,ingredient,expectedIngredient:pt?.ingredients?.[0],step,expectedStep:pt?.steps?.[0],safety,expectedSafety:pt?.safety}})()`);
+  if(!translated.expectedTitle||!translated.title.includes(translated.expectedTitle)||!translated.expectedIngredient||!translated.ingredient.includes(translated.expectedIngredient)||!translated.expectedStep||!translated.step.includes(translated.expectedStep.slice(0,36))||!translated.expectedSafety||!translated.safety.includes(translated.expectedSafety.slice(0,36)))throw new Error(`PT-BR recipe ${recipeId} translation did not reach its title, ingredient, first step and safety view: ${JSON.stringify(translated)}`);
+  ptRouteCoverage.push(recipeId);
+  if([66,81,95].includes(recipeId))await captureScreenshot(`pt-br-recipe-${recipeId}-portrait.png`,`Portuguese recipe ${recipeId}`);
+  await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
+  const returned=await waitForVisible('.recipe-card[data-open="66"]',`PT-BR catalogue after recipe ${recipeId}`);
+  const count=await evaluate(`document.querySelectorAll('#screen .recipe-card[data-open]').length`);
+  if(count!==95)throw new Error(`PT-BR catalogue after recipe ${recipeId} contains ${count}, expected 95: ${returned.screen}`);
+}
+if(ptRouteCoverage.length!==30||ptRouteCoverage[0]!==66||ptRouteCoverage.at(-1)!==95)throw new Error('PT-BR recipe translation route coverage is not IDs 66–95');
+writeFileSync('artifacts/v32-diagnostics/pt-br-recipe-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:ptRouteCoverage,uniqueCount:new Set(ptRouteCoverage).size,status:'DRAFT_COPY_RENDERED_REVIEW_REQUIRED',review:'A08/A09/native PT-BR review pending'},null,2)+'\\n');
+await evaluate(`(()=>{const select=document.querySelector('#languageSelect');select.value='en-GB';select.dispatchEvent(new Event('change',{bubbles:true}));return state.language})()`);
+await waitForVisible('.recipe-card','English recipe library restored');
+console.log('Portuguese recipe titles, ingredients, steps and safety rendered for IDs 66–95; acceptance remains pending independent review');
 await evaluate(`document.querySelector('#screen [data-open="1"]')?.click()`);
 await waitForVisible('.ref-hero h1', 'Favourite test recipe');
 await evaluate(`document.querySelector('.ref-favorite')?.click()`);
