@@ -39,6 +39,7 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
     const syntax = spawnSync(process.execPath, ['--check', '--input-type=module'], { input: nodeBody[1], encoding: 'utf8' });
     assert.equal(syntax.status, 0, `${label} generated runner parses: ${syntax.stderr}`);
     assert.match(script, /android-webview-smoke-expressions\.mjs/, `${label} harness imports shared builders`);
+    assert.match(script, /navigationSummaryExpression}[^\n]*android-webview-smoke-expressions\.mjs/, `${label} harness imports the navigation builder it invokes`);
     assert.match(script, /evaluate\(navigationSummaryExpression\(\)\)/, `${label} harness uses the tested icon-safe navigation summary`);
     assert.doesNotMatch(script, /\[(?:data-[\w-]+|aria-[\w-]+)=\d+\]/,
       `${label} harness must not use unquoted numeric CSS attribute values`);

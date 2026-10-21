@@ -50,7 +50,7 @@ adb_timeout -s "$ANDROID_SERIAL" forward tcp:9223 "localabstract:$socket"
 timeout --kill-after=10s 300s node --input-type=module <<'NODE'
 import {execFileSync} from 'node:child_process';
 import {mkdirSync,readFileSync,writeFileSync} from 'node:fs';
-import {clickByDatasetExpression,clickSelectorExpression} from './tools/v3/android-webview-smoke-expressions.mjs';
+import {clickByDatasetExpression,clickSelectorExpression,navigationSummaryExpression} from './tools/v3/android-webview-smoke-expressions.mjs';
 const serial=process.env.ANDROID_SERIAL;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const adb=args=>execFileSync('timeout',['--kill-after=5s','60s','adb','-s',serial,...args],{maxBuffer:32*1024*1024});
