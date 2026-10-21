@@ -172,6 +172,7 @@ jobs:
           path: |
             artifacts/v32-diagnostics/
             artifacts/v32-android-screenshots/
+            artifacts/v31-android-screenshots/
             phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
           if-no-files-found: warn
           retention-days: 30

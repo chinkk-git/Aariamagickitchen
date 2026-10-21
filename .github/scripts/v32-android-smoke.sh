@@ -100,7 +100,7 @@ wait_for_stable_launcher() {
   echo 'Android HOME did not reach a stable Quickstep foreground without ANR' >&2
   return 1
 }
-mkdir -p artifacts/v32-android-screenshots
+mkdir -p artifacts/v32-android-screenshots artifacts/v31-android-screenshots
 mkdir -p artifacts/v32-diagnostics
 echo 'Waiting for emulator ADB'
 discover_android_serial
