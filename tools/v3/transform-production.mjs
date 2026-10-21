@@ -21,6 +21,20 @@ function readAsset(name) {
   throw new Error(`Invalid WebP artwork: ${name}`);
 }
 
+function readReferenceImage(relativePath) {
+  const bytes = fs.readFileSync(path.join(root, relativePath));
+  const ext = path.extname(relativePath).toLowerCase();
+  const mime = ext === '.png' ? 'image/png' : ext === '.webp' ? 'image/webp' : 'image/jpeg';
+  return `data:${mime};base64,${bytes.toString('base64')}`;
+}
+
+const homeWorldArt = {
+  brand: readReferenceImage('phase2-pilot/packages/assets/brand/brand-lockup.png'),
+  aaria: readReferenceImage('phase2-pilot/packages/assets/characters/aaria.jpg'),
+  friends: readReferenceImage('phase2-pilot/packages/assets/characters/friends.jpg'),
+  kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg')
+};
+
 const art = Object.fromEntries([
   [1, {
     variants: {
@@ -314,7 +328,8 @@ const runtime = runtimeTemplate
   .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt))
   .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))
   .replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))
-  .replace('__V31_WORLD_ADVENTURE_ART_JSON__', JSON.stringify(worldAdventureArt));
+  .replace('__V31_WORLD_ADVENTURE_ART_JSON__', JSON.stringify(worldAdventureArt))
+  .replace('__V31_HOME_WORLD_ART_JSON__', JSON.stringify(homeWorldArt));
 
 if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__/.test(runtime)) throw new Error('Could not embed the offline world adventure data and artwork.');
 
@@ -322,8 +337,11 @@ if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__/.test(runtime)) throw n
 let outputHtml = html;
 outputHtml = outputHtml.replace('home|week|library|recipe|stories|groceries|family|friends|rewards|settings|wheel', 'home|week|library|recipe|stories|groceries|family|friends|rewards|settings|wheel|world');
 if (!outputHtml.includes('wheel|world')) throw new Error('Could not add the V3.1 world route to Android back navigation.');
-outputHtml = outputHtml.replace('</nav><button class="nav-reopen"', '<button class="tab" data-nav="world"><b>🌍</b>World</button></nav><button class="nav-reopen"');
-if (!outputHtml.includes('data-nav="world"')) throw new Error('Could not add the persistent World navigation tab.');
+const sourceNav = outputHtml.match(/<nav class="bottom" id="nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+if (!sourceNav) throw new Error('Could not find the persistent bottom navigation.');
+const sixTabNav = '<nav class="bottom" id="nav" aria-label="Main navigation"><button class="tab" data-nav="home"><b>⌂</b>Home</button><button class="tab" data-nav="library"><b>♧</b>Recipes</button><button class="tab" data-nav="world"><b>🌍</b>World Adventure</button><button class="tab" data-nav="groceries"><b>🧺</b>Magic Pantry</button><button class="tab" data-nav="week"><b>▦</b>Planner</button><button class="tab" data-nav="creations"><b>☆</b>My Creations</button></nav>';
+outputHtml = outputHtml.replace(sourceNav, sixTabNav);
+if ((outputHtml.match(/<button class="tab" data-nav=/g) || []).length < 6 || !outputHtml.includes('data-nav="world"')) throw new Error('Could not install the six-item persistent navigation.');
 const homeArtSelector = '.home-action .action-illustration,.home-drawer-link .drawer-illustration{';
 if (!outputHtml.includes(homeArtSelector)) throw new Error('Production home artwork selector missing.');
 outputHtml = outputHtml.replace(homeArtSelector, '.home-action .action-illustration,.home-drawer-link .drawer-illustration,.v3-action .action-illustration{');
@@ -338,7 +356,8 @@ const csp = "script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src 'n
 const headTag = outputHtml.match(/<head\b[^>]*>/i)?.[0];
 if (!headTag) throw new Error('Production HTML must have a <head> for the V3 security policy.');
 outputHtml = outputHtml.replace(headTag, `${headTag}<meta http-equiv="Content-Security-Policy" content="${csp}">`);
-outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}</style><script id="aaria-v3-layer">${runtime}</script></body>`);
+const homeWorldStyles = fs.readFileSync(path.join(here, 'home-world-visual.css'), 'utf8');
+outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}\n${homeWorldStyles}</style><script id="aaria-v3-layer">${runtime}</script></body>`);
 if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could not append the V3 layer to the production HTML.');
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, outputHtml);

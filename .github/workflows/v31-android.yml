@@ -247,6 +247,11 @@ jobs:
           disable-animations: true
           disable-linux-hw-accel: false
           script: bash .github/scripts/v31-android-smoke.sh
+      - name: Create approved-reference Android screenshot comparison
+        if: always()
+        run: |
+          python3 -m py_compile tools/v3/compare-home-world-reference.py
+          python3 tools/v3/compare-home-world-reference.py
       - name: Record APK payload checksum and exact HEAD
         if: always()
         run: |
