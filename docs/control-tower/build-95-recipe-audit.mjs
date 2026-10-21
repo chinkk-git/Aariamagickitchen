@@ -47,21 +47,20 @@ const rows=recipes.map(r=>{
  const artRecord=art[id]||null, nutritionPlan=plans[id]||null;
  return {
   recipeId:Number(id),runtimeId:Number(id),canonicalTitleEN:r.title,canonicalTitlePTBR:translated?.title||null,
-  translationStatus:translated?(pt[id]?'EXISTING_SOURCE_TRANSLATION':'W01_DRAFT_PENDING_NATIVE_A08_A09_REVIEW'):'MISSING',
+  translationStatus:translated?(pt[id]?'EXISTING':'DRAFT_REVIEW_PENDING'):'MISSING',
   category:r.category,method:r.method,time:r.time,yieldText:r.yieldText,servings:r.servings??null,
   ingredients:{en:[...(r.ingredients||[])],ptBR:[...(translated?.ingredients||[])]},
-  steps:{en:[...(r.steps||[])],ptBR:[...(translated?.steps||[])]},
+  stepReference:'index.html:RECIPES['+id+'].steps; translated record by recipeId',
   stepCountEN:(r.steps||[]).length,stepCountPTBR:(translated?.steps||[]).length,
-  safety:{en:r.safety||null,ptBR:translated?.safety||null,adultAssistanceCuePresentEN:/adult|grown-up|parent/i.test(r.safety||''),review:'A08_A09_INDEPENDENT_REVIEW_REQUIRED'},
-  familyFriendsRoleCopy:{family:d1.familyRoleCopy||null,friends:d2.friendsRoleCopy||null,review:'NATIVE_AND_A09_REVIEW_REQUIRED'},
-  nutrition:{planPresent:!!nutritionPlan,planPath: nutritionPlan?'index.html:NUTRITION_PLANS['+id+']':null,sourceNote:notes[id]||null,perPortionValues:'NOT independently verified in this matrix; do not infer from plan presence',status:'REVIEW_REQUIRED_NO_FABRICATION'},
-  allergens:{status:'NOT_INDEPENDENTLY_AUDITED',source:r.safety||null,crossContactReview:'REQUIRED'},
-  theme:{name:typeof theme==='string'?theme:(theme.theme||theme.name||JSON.stringify(theme)),source:'tools/v3/data/v3.2-recipe-theme-map.json'},
-  artwork:{finishedDishStatus:missing.has(Number(id))?'MISSING_OR_REVIEW_ONLY':'NOT_INDIVIDUALLY_AUDITED',registryPresent:!!artRecord,sourcePath:artRecord?'index.html:NEW_RECIPE_ART['+id+']':'tools/v3/artwork and canonical recipe image fields',sourceFiles:artRecord?.sourceFiles||[],rights:'UNVERIFIED',stepArt:'NOT_INDIVIDUALLY_AUDITED',runtimeScreenshot:'NOT_CAPTURED_PER_RECIPE'},
-  routeEvidence:{priorRun:39632118408,priorTestedCodeSha:'857b3e002b25135a702d05cdf00471a20fcdada8',result:'ROUTE_PASSED_AT_PRIOR_CODE_SHA_ONLY',currentHeadRun:Number(process.env.V32_RUN_ID||0)||null,currentHeadStatus:process.env.V32_RUN_STATUS||'PENDING',screenshotEvidence:'not recipe-specific'},
-  independentGates:{A08:'HOLD_PENDING_INDEPENDENT_REVIEW',A09:'HOLD_PENDING_INDEPENDENT_REVIEW',artworkRights:'HOLD_PENDING_INDEPENDENT_REVIEW'},
-  acceptance:'BLOCKED',nextAction:'Complete content/nutrition/allergen/media/provenance review, capture required visual evidence, then obtain independent gates.'
+  safety:{en:r.safety||null,ptBR:translated?.safety||null,adultCueEN:/adult|grown-up|parent/i.test(r.safety||'')},
+  familyFriendsRoleCopyRef:'roleCopy',
+  nutrition:{plan:!!nutritionPlan,sourceNote:!!notes[id],perPortion:'REVIEW_REQUIRED'},
+  allergens:'NOT_AUDITED',
+  theme:typeof theme==='string'?theme:(theme.theme||theme.name||JSON.stringify(theme)),
+  artwork:{dish:missing.has(Number(id))?'MISSING_REVIEW_ONLY':'NOT_AUDITED',runtimeArtRegistry:!!artRecord,rights:'UNVERIFIED',stepArt:'NOT_AUDITED',screen:'NOT_CAPTURED'},
+  routeEvidence:'PASS_PRIOR_CODE_SHA_ONLY',
+  independentGates:'HOLD',acceptance:'BLOCKED'
  };
 });
-const out={schemaVersion:'v3.2-95-recipe-acceptance-matrix/1',canonicalSource:{path:'index.html',gitBlobSha:blobSha,recipeCount:recipes.length,ids:'1-95'},translationSources:['index.html:PT_RECIPES','tools/v3/data/pt-BR-recipes-66-80-review.json','tools/v3/data/pt-BR-recipes-81-95-review.json'],themeMapPath:'tools/v3/data/v3.2-recipe-theme-map.json',runBinding:{runId:Number(process.env.V32_RUN_ID||0)||null,codeSha:process.env.V32_CODE_SHA||null,status:process.env.V32_RUN_STATUS||'PENDING'},acceptanceNote:'Routing, source presence and automated draft contracts are evidence inputs, not recipe acceptance. Every row remains BLOCKED until individual content, safety, nutrition, artwork, rights and visual evidence plus independent reviews are recorded.',rows};
+const out={schemaVersion:'v3.2-95-recipe-acceptance-matrix/1',canonicalSource:{path:'index.html',gitBlobSha:blobSha,recipeCount:recipes.length,ids:'1-95'},translationSources:['index.html:PT_RECIPES','tools/v3/data/pt-BR-recipes-66-80-review.json','tools/v3/data/pt-BR-recipes-81-95-review.json'],roleCopy:{familyEN:'Family mode role labels remain in the application source; review required.',familyPTBR:d1.familyRoleCopy||null,friendsEN:'Friends mode role labels remain in the application source; review required.',friendsPTBR:d2.friendsRoleCopy||null,review:'NATIVE_AND_A09_REVIEW_REQUIRED'},themeMapPath:'tools/v3/data/v3.2-recipe-theme-map.json',runBinding:{runId:Number(process.env.V32_RUN_ID||0)||null,codeSha:process.env.V32_CODE_SHA||null,status:process.env.V32_RUN_STATUS||'PENDING'},evidenceLegend:{routeEvidence:'Prior 95/95 route run; does not prove current-head content acceptance or per-recipe screenshots.',independentGates:'A08, A09, rights and visual reviewer decisions remain external.',nextAction:'Complete per-recipe content, nutrition/allergen, artwork/provenance and screenshot review; obtain independent gate decisions.'},acceptanceNote:'Routing, source presence and automated draft contracts are evidence inputs, not recipe acceptance. Every row remains BLOCKED until individual content, safety, nutrition, artwork, rights and visual evidence plus independent reviews are recorded.',rows};
 console.log(JSON.stringify(out,null,2));
