@@ -136,3 +136,17 @@ test('current-batch Featured Recipes omits absent descriptions instead of render
   assert.match(runtime, /\$\{description\?`<small>\$\{safe\(description\)\}<\/small>`:''\}/,
     'the optional description element must be omitted when canonical copy is absent');
 });
+
+test('recipe 12 ingredient labels keep the full card width beside the checkbox', async () => {
+  const css = await read('tools/v3/home-world-visual.css');
+  const rule = css.match(/\.v32-r12-ingredients \.ref-ingredient\{[^}]+\}/)?.[0];
+  assert.ok(rule, 'pilot ingredients must have an explicit layout rule');
+  assert.match(rule, /grid-template-columns:\s*minmax\(0,1fr\)\s+18px/,
+    'ingredient copy uses the flexible column; the checkbox is absolutely positioned');
+  assert.match(css, /\.v32-r12-ingredients \.ref-ingredient>span\{grid-column:1;min-width:0;overflow-wrap:anywhere\}/,
+    'ingredient text must be placed in the flexible grid column');
+  assert.match(css, /\.v32-r12-ingredients \.ref-ingredient>i\{grid-column:2;/,
+    'the check state stays in the compact status column');
+  assert.match(css, /\.v32-r12-ingredients \.ref-ingredient input\{width:20px;height:20px;margin:0/,
+    'checkbox remains visible and tappable');
+});
