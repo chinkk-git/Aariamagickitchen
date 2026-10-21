@@ -69,6 +69,9 @@ jobs:
           cp tools/v3/artwork/recipe-dishes-draft/*.webp phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
           echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
 
+      - name: Build isolated debug-only artwork review routes
+        run: node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+
       - name: Run Android unit tests and assemble isolated test APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
 
@@ -82,6 +85,96 @@ jobs:
           "$aapt" dump badging "$apk" > artifacts/v32-diagnostics/test-apk-badging.txt
           "$apksigner" verify --print-certs "$apk" > artifacts/v32-diagnostics/test-apk-signer.txt
           grep -Fq "package: name='com.aaria.magickitchen.pilot.v32preview' versionCode='7' versionName='1.0.3'" artifacts/v32-diagnostics/test-apk-badging.txt
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/index\\.html          unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Spin My Week'
+          unzip -p "$apk" assets/index.html | grep -Fq 'data-v32-theme'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Cozinha mágica da Aaria'
+          if unzip -p "$apk" assets/index.html | grep -Fq 'recipe-dishes-draft'; then
+            echo 'Draft dish artwork must not be promoted into the runtime page.' >&2
+            exit 1
+          fi
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review-v32/dishes/recipe-[0-9]+-[a-z0-9-]+\.webp$')" -eq 13
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review-v32/dishes/manifest.json'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review-v32/dishes/recipe-dishes-13-source-sheet.png'
+          echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
+          sha256sum "$apk" | tee artifacts/v32-diagnostics/apk-sha256.txt
+          printf 'A08_review=HOLD\nA09_review=HOLD\nartwork_rights=HOLD\nrelease=NOT_AUTHORIZED\n' > artifacts/v32-diagnostics/gates.txt
+
+      - name: Download Classic preview for nondestructive coexistence check
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-w01-unified-preview-apk
+          path: artifacts/v31-baseline-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39528150224
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable and verify Linux KVM for Android emulator
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v32-diagnostics
+          {
+            echo "utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "runner_user=$(id)"
+            uname -a
+            free -h
+            df -h "$GITHUB_WORKSPACE"
+            if [ ! -c /dev/kvm ]; then
+              echo "/dev/kvm is missing on this runner." >&2
+              exit 1
+            fi
+            ls -l /dev/kvm
+            stat -c 'kvm_mode=%a kvm_owner=%U kvm_group=%G' /dev/kvm
+            echo "kvm_read_write_before=$(test -r /dev/kvm && test -w /dev/kvm && echo yes || echo no)"
+          } | tee artifacts/v32-diagnostics/emulator-runner-preflight.txt
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm
+          test -w /dev/kvm
+          stat -c 'kvm_mode_after=%a kvm_owner=%U kvm_group=%G' /dev/kvm | tee -a artifacts/v32-diagnostics/emulator-runner-preflight.txt
+          adb devices -l | tee artifacts/v32-diagnostics/adb-devices-before-emulator.txt
+
+      - name: Launch both preview APKs and capture Android evidence
+        timeout-minutes: 20
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_3a
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-boot-timeout: 300
+          disable-animations: true
+          disable-linux-hw-accel: false
+          script: bash .github/scripts/v32-android-smoke.sh
+
+      - name: Upload isolated V3.2 test APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-test-apk
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload screenshots and gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-test-evidence
+          path: |
+            artifacts/v32-diagnostics/
+            artifacts/v32-android-screenshots/
+            phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          if-no-files-found: warn
+          retention-days: 30
+)" -eq 1
+          unzip -p "$apk" assets/artwork-review/index.html | grep -Fq '<title>Draft artwork review — Batches 01–05</title>'
+          if unzip -p "$apk" assets/index.html | grep -Fq 'Draft artwork review'; then
+            echo 'Debug-only artwork review must not be included in the runtime page.' >&2
+            exit 1
+          fi
           unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
           unzip -p "$apk" assets/index.html | grep -Fq 'Spin My Week'
           unzip -p "$apk" assets/index.html | grep -Fq 'data-v32-theme'

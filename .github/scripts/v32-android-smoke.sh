@@ -22,15 +22,15 @@ export ANDROID_SERIAL
 discover_android_serial() {
   local listed
   listed="$(adb_poll_timeout devices -l 2>&1 || true)"
-  printf '%s\\n' "$listed" | tee artifacts/v32-diagnostics/adb-devices-at-smoke-start.txt
+  printf '%s\n' "$listed" | tee artifacts/v32-diagnostics/adb-devices-at-smoke-start.txt
   if [ -n "$ANDROID_SERIAL" ]; then
-    if ! printf '%s\\n' "$listed" | awk -v serial="$ANDROID_SERIAL" '$1 == serial && $2 == "device" { found=1 } END { exit !found }'; then
+    if ! printf '%s\n' "$listed" | awk -v serial="$ANDROID_SERIAL" '$1 == serial && $2 == "device" { found=1 } END { exit !found }'; then
       echo "Configured Android serial $ANDROID_SERIAL is not an online emulator." >&2
       return 1
     fi
   else
     local -a candidates=()
-    mapfile -t candidates < <(printf '%s\\n' "$listed" | awk '$1 ~ /^emulator-[0-9]+$/ && $2 == "device" { print $1 }')
+    mapfile -t candidates < <(printf '%s\n' "$listed" | awk '$1 ~ /^emulator-[0-9]+$/ && $2 == "device" { print $1 }')
     if [ "${#candidates[@]}" -ne 1 ]; then
       echo "Expected exactly one online Android emulator; found ${#candidates[@]}." >&2
       return 1
@@ -107,7 +107,7 @@ discover_android_serial
 adb_timeout -s "$ANDROID_SERIAL" wait-for-device
 wait_for_booted_device
 {
-  printf 'serial=%s\\n' "$ANDROID_SERIAL"
+  printf 'serial=%s\n' "$ANDROID_SERIAL"
   adb_timeout -s "$ANDROID_SERIAL" shell getprop sys.boot_completed
   adb_timeout -s "$ANDROID_SERIAL" shell getprop ro.build.version.release
   adb_timeout -s "$ANDROID_SERIAL" shell getprop ro.build.version.sdk
