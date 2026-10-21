@@ -19,10 +19,35 @@
     "review": "NATIVE_AND_A09_REVIEW_REQUIRED"
   },
   "themeMapPath": "tools/v3/data/v3.2-recipe-theme-map.json",
+  "artworkInventory": {
+    "expectedMissingDishIds": [
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      16,
+      26,
+      33,
+      51,
+      57
+    ],
+    "sourceChannelCounts": {
+      "inlineDish": 2,
+      "homeThumb": 50,
+      "batchAtlas": 9,
+      "newRecipeArt": 30,
+      "missingPlaceholder": 5
+    },
+    "rights": "UNVERIFIED_FOR_ALL_RUNTIME_ASSETS"
+  },
   "runBinding": {
-    "runId": 39638099422,
-    "codeSha": "1e783e9a41ff1cad684f9d6c3b567632743e4f0a",
-    "status": "IN_PROGRESS"
+    "runId": 39640274275,
+    "codeSha": "fc3dfe796b5a55ce55656e83e42b4b9cbd50a805",
+    "status": "PENDING"
   },
   "evidenceLegend": {
     "routeEvidence": "Prior 95/95 route run; does not prove current-head content acceptance or per-recipe screenshots.",
@@ -77,8 +102,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -131,8 +159,12 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "INLINE_DISH_PHOTOS",
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -185,8 +217,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "INLINE_DISH_PHOTOS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -239,8 +274,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -293,8 +331,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -345,8 +386,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -401,8 +445,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -455,8 +502,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -511,8 +561,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -563,8 +616,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "BATCH_ATLASES"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -619,8 +675,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -675,8 +734,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -727,8 +789,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -781,8 +846,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -835,8 +903,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -887,8 +958,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "HOME_MISSING_RECIPE_INDEX"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -939,8 +1013,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -993,8 +1070,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1043,8 +1123,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1093,8 +1176,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1147,8 +1233,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1199,8 +1288,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1253,8 +1345,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1303,8 +1398,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1355,8 +1453,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1409,8 +1510,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "HOME_MISSING_RECIPE_INDEX"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1463,8 +1567,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1515,8 +1622,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1569,8 +1679,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1621,8 +1734,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1673,8 +1789,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1725,8 +1844,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1779,8 +1901,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "HOME_MISSING_RECIPE_INDEX"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1831,8 +1956,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1883,8 +2011,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1935,8 +2066,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -1989,8 +2123,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2041,8 +2178,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2095,8 +2235,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2145,8 +2288,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2197,8 +2343,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2251,8 +2400,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2303,8 +2455,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2357,8 +2512,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2409,8 +2567,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2461,8 +2622,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2513,8 +2677,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2565,8 +2732,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2617,8 +2787,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2671,8 +2844,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2725,8 +2901,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "HOME_MISSING_RECIPE_INDEX"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2779,8 +2958,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2833,8 +3015,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2887,8 +3072,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2941,8 +3129,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -2995,8 +3186,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3049,8 +3243,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "MISSING_REVIEW_ONLY",
-        "runtimeArtRegistry": false,
+        "dish": "MISSING_OR_REVIEW_ONLY",
+        "assetChannels": [
+          "HOME_MISSING_RECIPE_INDEX"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3103,8 +3300,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3159,8 +3359,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3215,8 +3418,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3269,8 +3475,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3325,8 +3534,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3375,8 +3587,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3425,8 +3640,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3479,8 +3697,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": false,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "HOME_RECIPE_THUMBS"
+        ],
+        "registryStatus": null,
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3541,8 +3762,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3599,8 +3823,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3659,8 +3886,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3727,8 +3957,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3789,8 +4022,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3843,8 +4079,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3905,8 +4144,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -3963,8 +4205,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4027,8 +4272,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4087,8 +4335,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4145,8 +4396,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4207,8 +4461,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4263,8 +4520,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4323,8 +4583,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4383,8 +4646,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4441,8 +4707,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4495,8 +4764,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4551,8 +4823,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4601,8 +4876,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4667,8 +4945,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4723,8 +5004,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4779,8 +5063,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4833,8 +5120,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4891,8 +5181,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "BLOCKED_MISSING_ARTWORK",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -4945,8 +5238,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -5001,8 +5297,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -5051,8 +5350,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_PENDING_REVIEW",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -5105,8 +5407,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "sunny-orange",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "BLOCKED_MISSING_ARTWORK",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -5157,8 +5462,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "playful-purple",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "BLOCKED_MISSING_ARTWORK",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
@@ -5213,8 +5521,11 @@
       "allergens": "NOT_AUDITED",
       "theme": "fresh-green",
       "artwork": {
-        "dish": "NOT_AUDITED",
-        "runtimeArtRegistry": true,
+        "dish": "UNVERIFIED_RUNTIME_SOURCE",
+        "assetChannels": [
+          "NEW_RECIPE_ART"
+        ],
+        "registryStatus": "ART_AVAILABLE_REVIEWED",
         "rights": "UNVERIFIED",
         "stepArt": "NOT_AUDITED",
         "screen": "NOT_CAPTURED"
