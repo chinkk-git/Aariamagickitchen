@@ -30,11 +30,13 @@ function readReferenceImage(relativePath) {
 
 const homeWorldArt = {
   brand: readReferenceImage('phase2-pilot/packages/assets/brand/brand-lockup.png'),
-  aaria: readReferenceImage('phase2-pilot/packages/assets/characters/aaria.jpg'),
-  friends: readReferenceImage('phase2-pilot/packages/assets/characters/friends.jpg'),
+  aaria: readReferenceImage('tools/v3/artwork/characters/reference-derived/aaria-portrait.webp'),
+  aariaCooking: readReferenceImage('tools/v3/artwork/characters/reference-derived/aaria-cooking.webp'),
+  friends: readReferenceImage('tools/v3/artwork/characters/reference-derived/home-approved-dog-crop.png'),
   kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
   worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),
-  destinations: Object.fromEntries(['IND', 'ITA', 'JPN', 'MEX', 'GRC'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)]))
+  destinations: Object.fromEntries(['IND', 'ITA', 'JPN', 'MEX', 'GRC'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
+  avatars: Object.fromEntries(['mommy','daddy','rohan','arjun','vihaan','isha','meera','sana','diya'].map(key => [key, readReferenceImage(`tools/v3/artwork/characters/reference-derived/${key}.webp`)]))
 };
 
 const art = Object.fromEntries([
@@ -339,6 +341,15 @@ if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__|__V32_RECIPE_THEME_MAP_
 
 
 let outputHtml = html;
+for (const [constant, key] of [['HOME_MOM','mommy'],['HOME_DAD','daddy']]) {
+  const matches = outputHtml.match(new RegExp(`const ${constant}='[^']*';`, 'g')) || [];
+  if (matches.length !== 1) throw new Error(`Expected one legacy ${constant} asset to replace with its approved avatar crop; found ${matches.length}.`);
+  outputHtml = outputHtml.replace(matches[0], `const ${constant}=${JSON.stringify(homeWorldArt.avatars[key])};`);
+}
+const legacyFriendPortraits = '<div class="parent-pair" aria-hidden="true"><span style="font-size:78px">👧🏻</span><span style="font-size:78px">👦🏽</span><span style="font-size:78px">👦🏻</span></div>';
+const canonicalFriendPortraits = `<div class="parent-pair v32-friend-portraits" role="group" aria-label="Aaria’s kitchen friends">${[['rohan','Rohan'],['arjun','Arjun'],['vihaan','Vihaan'],['isha','Isha'],['meera','Meera'],['sana','Sana'],['diya','Diya']].map(([key,name]) => `<figure class="v32-friend-portrait"><img src="${homeWorldArt.avatars[key]}" alt="${name}, Aaria’s cooking friend"><figcaption>${name}</figcaption></figure>`).join('')}</div>`;
+if (!outputHtml.includes(legacyFriendPortraits) || outputHtml.indexOf(legacyFriendPortraits) !== outputHtml.lastIndexOf(legacyFriendPortraits)) throw new Error('Could not uniquely replace the unverified friends emoji row with approved avatar crops.');
+outputHtml = outputHtml.replace(legacyFriendPortraits, canonicalFriendPortraits);
 outputHtml = outputHtml.replace('home|week|library|recipe|stories|groceries|family|friends|rewards|settings|wheel', 'home|week|library|recipe|stories|groceries|family|friends|rewards|settings|wheel|world');
 if (!outputHtml.includes('wheel|world')) throw new Error('Could not add the V3.1 world route to Android back navigation.');
 const sourceNav = outputHtml.match(/<nav class="bottom" id="nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
