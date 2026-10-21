@@ -57,6 +57,7 @@ jobs:
           node tools/v3/validate-v31.mjs
           node --check tools/v3/runtime.js
           node --check tools/v3/transform-production.mjs
+          node tools/v3/verify-v32-reference-assets.mjs
 
       - name: Build offline shared recipe renderer and stage draft review assets
         run: |
@@ -155,6 +156,45 @@ jobs:
           disable-linux-hw-accel: false
           script: bash .github/scripts/v32-android-smoke.sh
 
+
+      - name: Capture Pixel Tablet V3.2 portrait and landscape evidence
+        timeout-minutes: 20
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_tablet
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-boot-timeout: 300
+          disable-animations: true
+          disable-linux-hw-accel: false
+          script: bash .github/scripts/v32-android-tablet-smoke.sh
+
+      - name: Compare phone and tablet screens with approved Home and World references
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v31-android-screenshots artifacts/v31-diagnostics artifacts/v32-diagnostics
+          python3 -m py_compile tools/v3/compare-home-world-reference.py
+          if [ -s artifacts/v32-android-screenshots/v31-home-portrait.png ] && [ -s artifacts/v32-android-screenshots/v31-world-portrait.png ]; then
+            cp artifacts/v32-android-screenshots/v31-home-portrait.png artifacts/v31-android-screenshots/v31-home-portrait.png
+            cp artifacts/v32-android-screenshots/v31-world-portrait.png artifacts/v31-android-screenshots/v31-world-portrait.png
+            python3 tools/v3/compare-home-world-reference.py
+            cp artifacts/v31-diagnostics/home-world-reference-comparison.png artifacts/v32-diagnostics/home-world-phone-reference-comparison.png
+            cp artifacts/v31-diagnostics/home-world-reference-comparison.json artifacts/v32-diagnostics/home-world-phone-reference-comparison.json
+          else
+            echo 'phone_reference_comparison=BLOCKED_MISSING_SCREENSHOTS' > artifacts/v32-diagnostics/phone-reference-comparison-status.txt
+          fi
+          if [ -s artifacts/v32-android-screenshots/tablet/home-portrait.png ] && [ -s artifacts/v32-android-screenshots/tablet/world-portrait.png ]; then
+            cp artifacts/v32-android-screenshots/tablet/home-portrait.png artifacts/v31-android-screenshots/v31-home-portrait.png
+            cp artifacts/v32-android-screenshots/tablet/world-portrait.png artifacts/v31-android-screenshots/v31-world-portrait.png
+            python3 tools/v3/compare-home-world-reference.py
+            cp artifacts/v31-diagnostics/home-world-reference-comparison.png artifacts/v32-diagnostics/home-world-tablet-reference-comparison.png
+            cp artifacts/v31-diagnostics/home-world-reference-comparison.json artifacts/v32-diagnostics/home-world-tablet-reference-comparison.json
+          else
+            echo 'tablet_reference_comparison=BLOCKED_MISSING_SCREENSHOTS' > artifacts/v32-diagnostics/tablet-reference-comparison-status.txt
+          fi
+
       - name: Upload isolated V3.2 test APK
         if: always()
         uses: actions/upload-artifact@v4
@@ -173,6 +213,7 @@ jobs:
             artifacts/v32-diagnostics/
             artifacts/v32-android-screenshots/
             artifacts/v31-android-screenshots/
+            artifacts/v31-diagnostics/
             phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
           if-no-files-found: warn
           retention-days: 30
