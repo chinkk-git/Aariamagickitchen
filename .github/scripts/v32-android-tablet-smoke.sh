@@ -54,7 +54,38 @@ async function evaluate(expression){const r=await command('Runtime.evaluate',{ex
 async function waitFor(selector,label){let last='';for(let i=0;i<40;i++){const x=await evaluate('(()=>{const e=document.querySelector('+JSON.stringify(selector)+');const r=e?.getBoundingClientRect();return {ok:!!e&&!!r&&r.width>0&&r.height>0,text:e?.innerText||""}})()');last=JSON.stringify(x);if(x.ok)return x;await pause(250)}throw Error(label+' not visible: '+last)}
 async function dismissChefChooser(){const present=await evaluate('(()=>{const d=document.querySelector("#v3ProfileDialog");if(!d)return false;const r=d.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(d).display!=="none"})()');if(present){console.log('Selecting Chef A for the disposable Aaria tablet profile');const selected=await evaluate('(()=>{const e=document.querySelector("#v3ProfileDialog [data-v3-chef]");if(!e)return false;e.click();return e.getAttribute("aria-pressed")==="true"})()');if(!selected)throw Error('Chef chooser was visible but Chef A could not be selected');const clicked=await evaluate('(()=>{const e=document.querySelector("#v3ProfileDialog [data-v3-profile-continue]");if(!e)return false;e.click();return true})()');if(!clicked)throw Error('Chef chooser was visible but could not be continued');await pause(700);const remains=await evaluate('!!document.querySelector("#v3ProfileDialog")');if(remains)throw Error('Chef chooser remained open after selecting Chef A')} }
 async function click(selector,label){const ok=await evaluate('(()=>{const e=document.querySelector('+JSON.stringify(selector)+');if(!e)return false;e.click();return true})()');if(!ok)throw Error(label+' control missing')}
-async function orientation(landscape){for(let n=0;n<4;n++){const v=await evaluate('({w:innerWidth,h:innerHeight})');if((v.w>v.h)===landscape)return v;adb(['emu','rotate']);for(let i=0;i<30;i++){await pause(500);const x=await evaluate('({w:innerWidth,h:innerHeight})');if((x.w>x.h)===landscape){await pause(800);return x}}}throw Error('Tablet did not rotate to '+(landscape?'landscape':'portrait'))}
+const orientationTrace=[];
+async function orientation(landscape){
+  const target=landscape?'landscape':'portrait';
+  const viewport=()=>evaluate('({w:innerWidth,h:innerHeight})');
+  await adb(['shell','settings','put','system','accelerometer_rotation','0']);
+  const attempts=[];
+  for(const rotation of [0,1,2,3]){
+    const before=await viewport();
+    await adb(['shell','settings','put','system','user_rotation',String(rotation)]);
+    const configured=adb(['shell','settings','get','system','user_rotation']).toString('utf8').trim();
+    let after=before;
+    for(let i=0;i<24;i++){
+      await pause(500);
+      after=await viewport();
+      if((after.w>after.h)===landscape){
+        await pause(800);
+        after=await viewport();
+        if((after.w>after.h)===landscape){
+          const record={target,rotation,configured,before,after,matched:true};
+          attempts.push(record);orientationTrace.push(...attempts);
+          console.log('Tablet orientation verified: '+JSON.stringify(record));
+          return after;
+        }
+      }
+    }
+    attempts.push({target,rotation,configured,before,after,matched:false});
+  }
+  orientationTrace.push(...attempts);
+  const diagnostic={target,attempts};
+  writeFileSync('artifacts/v32-diagnostics/tablet-orientation-trace.json',JSON.stringify(orientationTrace,null,2)+'\\n');
+  throw Error('Tablet failed to reach '+target+' viewport: '+JSON.stringify(diagnostic));
+}
 async function audit(label){const x=await evaluate('(()=>{const tabs=[...document.querySelectorAll("#nav .tab")].map(e=>{const r=e.getBoundingClientRect();return {label:(e.innerText||e.getAttribute("aria-label")||e.title||"").trim(),w:Math.round(r.width),h:Math.round(r.height)}});return {label:'+JSON.stringify(label)+',width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth,tabs}})()');if(x.tabs.length!==6||x.tabs.some(t=>!t.label||t.w<48||t.h<48))throw Error('Persistent navigation accessibility failure: '+JSON.stringify(x));if(x.documentWidth>x.width+2)throw Error('Horizontal page overflow: '+JSON.stringify(x));return x}
 
 async function avatarScene(mode,landscape){
@@ -92,7 +123,7 @@ const portraitViewport=await orientation(false);
 const portrait=await pageSet(false);
 const landscapeViewport=await orientation(true);
 const landscape=await pageSet(true);
-const report={serial,profile:'pixel_tablet',portraitViewport,landscapeViewport,portrait,landscape,scope:'isolated V3.2 debug APK; no release or rights/A08/A09 approval'};
+const report={serial,profile:'pixel_tablet',portraitViewport,landscapeViewport,orientationTrace,portrait,landscape,scope:'isolated V3.2 debug APK; no release or rights/A08/A09 approval'};
 mkdirSync('artifacts/v32-diagnostics',{recursive:true});
 writeFileSync('artifacts/v32-diagnostics/tablet-smoke.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));
