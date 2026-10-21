@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { clickByDatasetExpression, clickSelectorExpression, findByDatasetExpression } from '../../tools/v3/android-webview-smoke-expressions.mjs';
+import { spawnSync } from 'node:child_process';
+import { clickByDatasetExpression, clickSelectorExpression, findByDatasetExpression, navigationSummaryExpression } from '../../tools/v3/android-webview-smoke-expressions.mjs';
 const root = new URL('../../', import.meta.url);
 const read = path => readFile(new URL(path, root), 'utf8');
 
@@ -33,7 +34,12 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
     read('.github/scripts/v32-android-tablet-smoke.sh')
   ]);
   for (const [label, script] of [['phone', phone], ['tablet', tablet]]) {
+    const nodeBody = script.match(/node --input-type=module <<'NODE'\n([\s\S]*?)\nNODE\n/);
+    assert.ok(nodeBody, `${label} harness must contain its Node/WebView runner`);
+    const syntax = spawnSync(process.execPath, ['--check', '--input-type=module'], { input: nodeBody[1], encoding: 'utf8' });
+    assert.equal(syntax.status, 0, `${label} generated runner parses: ${syntax.stderr}`);
     assert.match(script, /android-webview-smoke-expressions\.mjs/, `${label} harness imports shared builders`);
+    assert.match(script, /evaluate\(navigationSummaryExpression\(\)\)/, `${label} harness uses the tested icon-safe navigation summary`);
     assert.doesNotMatch(script, /\[(?:data-[\w-]+|aria-[\w-]+)=\d+\]/,
       `${label} harness must not use unquoted numeric CSS attribute values`);
     assert.doesNotMatch(script, /querySelector\([^\n]*\[data-open=12\]/,
@@ -55,6 +61,10 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
   const next = { click() { clicked.push('step:next'); } };
   const finish = { click() { clicked.push('step:finish'); } };
   const library = { click() { clicked.push('nav:library'); } };
+  const navTabs = [
+    ['home','⌂','Home'], ['library','♧','Recipes'], ['world','🌍','World Adventure'],
+    ['groceries','🧺','Magic Pantry'], ['week','▦','Planner'], ['creations','☆','My Creations']
+  ].map(([id,icon,label]) => ({ dataset:{nav:id}, innerText:`${icon}\n${label}`, lastChild:{textContent:label} }));
   const selectors = new Map([
     ['.v32-r12-ingredient-list input', [inputZero]],
     ['#screen [data-open]', [recipe12, recipe99]],
@@ -68,6 +78,7 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
   ]);
   const mockDocument = {
     querySelectorAll(selector) {
+      if (selector === '#nav .tab') return navTabs;
       assert.ok(selectors.has(selector), `unexpected generated querySelectorAll selector: ${selector}`);
       return selectors.get(selector);
     },
@@ -97,6 +108,12 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
   assert.deepEqual(clicked, ['ingredient:0', 'recipe:12', 'recipe:99', 'featured:12', 'step:next', 'step:finish', 'nav:library']);
   assert.equal(evaluateClick('#screen [data-open]', 'open', 404), false,
     'missing recipe lookup returns false without a click');
+  const nav = execute(navigationSummaryExpression());
+  assert.deepEqual(nav.map(item => item.id), ['home','library','world','groceries','week','creations'],
+    'icon-bearing DOM nodes retain all six navigation identities in order');
+  assert.deepEqual(nav.map(item => item.label), ['Home','Recipes','World Adventure','Magic Pantry','Planner','My Creations'],
+    'normalization extracts visible labels without decorative icons or line breaks');
+  assert.equal(navTabs[0].innerText, '⌂\nHome', 'regression input includes the icon-plus-label DOM shape from Android');
 });
 
 test('current-batch Featured Recipes omits absent descriptions instead of rendering undefined', async () => {

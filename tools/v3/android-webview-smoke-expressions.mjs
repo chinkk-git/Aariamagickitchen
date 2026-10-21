@@ -10,3 +10,7 @@ export function clickByDatasetExpression(collectionSelector, datasetKey, value) 
 export function clickSelectorExpression(selector) {
   return `(()=>{const node=document.querySelector(${JSON.stringify(selector)});if(!node)return false;node.click();return true})()`;
 }
+
+export function navigationSummaryExpression() {
+  return `(()=>[...document.querySelectorAll("#nav .tab")].map(tab=>({id:tab.dataset.nav,label:(tab.lastChild?.textContent||"").trim()})))()`;
+}

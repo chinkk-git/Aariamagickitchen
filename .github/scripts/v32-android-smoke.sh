@@ -176,7 +176,7 @@ timeout --kill-after=10s 720s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
 const {readFileSync, statSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');
-const {clickByDatasetExpression, clickSelectorExpression, findByDatasetExpression} = await import('./tools/v3/android-webview-smoke-expressions.mjs');
+const {clickByDatasetExpression, clickSelectorExpression, findByDatasetExpression, navigationSummaryExpression} = await import('./tools/v3/android-webview-smoke-expressions.mjs');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const adb = args => execFileSync('timeout', ['--kill-after=10s','60s','adb',...args]);
 async function waitForVisible(selector, label) {
@@ -570,9 +570,9 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
     if(!await clickCatalogueRecipe(12))throw new Error('Recipe 12 catalogue card was not found after grocery checks.');
     await waitForVisible('.v32-r12-main','Recipe 12 after existing-function checks');
   }
-  const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".v32-r12-main"),nav:[...document.querySelectorAll("#nav .tab")].map(x=>x.innerText.trim())}))()');
+  const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".v32-r12-main")}))()');flow.nav=await evaluate(navigationSummaryExpression());
   if(flow.selectedId!==id||flow.stepCount<1||flow.activeCount!==1||flow.activeStep!==1)throw new Error('Phone exemplar active-step state mismatch: '+JSON.stringify({id,flow}));
-  if(id===12&&(!flow.pilot||flow.stepCount!==4||flow.nav.join('|')!=='Home|Recipes|World Adventure|Magic Pantry|Planner|My Creations'))throw new Error('Recipe 12 pilot contract or exact six-button navigation failed: '+JSON.stringify(flow));
+  if(id===12&&(!flow.pilot||flow.stepCount!==4||flow.nav.map(x=>x.label).join('|')!=='Home|Recipes|World Adventure|Magic Pantry|Planner|My Creations'||flow.nav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations'))throw new Error('Recipe 12 pilot contract or exact six-button navigation failed: '+JSON.stringify(flow));
   const stepFiles=[];
   for(let index=1;index<=flow.stepCount;index++){
     const current=await evaluate('(()=>({step:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),safety:document.querySelector(".v32-r12-safety p")?.textContent||"",progress:Number(document.querySelector(".v32-r12-progress")?.getAttribute("aria-valuenow")||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedInstruction:selected?.steps?.[step]||""}))()');
@@ -662,8 +662,8 @@ writeFileSync('artifacts/v32-diagnostics/pt-br-recipe-coverage.json',JSON.string
 await evaluate(`(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);step=0;save();return true})()`);
 if(!await clickCatalogueRecipe(12))throw new Error('PT-BR recipe 12 card was not found.');
 await waitForVisible('.v32-r12-main','PT-BR recipe 12 pilot');
-const pt12=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',expected:PT_RECIPES[12].title,ingredient:document.querySelector('.v32-r12-ingredient-list .ref-ingredient span')?.textContent?.trim()||'',expectedIngredient:PT_RECIPES[12].ingredients[0],ingredientCount:PT_RECIPES[12].ingredients.length,stepCount:PT_RECIPES[12].steps.length,nav:[...document.querySelectorAll('#nav .tab')].map(x=>x.innerText.trim())}))()`);
-if(pt12.title!==pt12.expected||pt12.ingredient!==pt12.expectedIngredient||pt12.nav.join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações')throw new Error('PT-BR recipe 12 title, ingredient or six-destination navigation is incorrect: '+JSON.stringify(pt12));
+const pt12=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',expected:PT_RECIPES[12].title,ingredient:document.querySelector('.v32-r12-ingredient-list .ref-ingredient span')?.textContent?.trim()||'',expectedIngredient:PT_RECIPES[12].ingredients[0],ingredientCount:PT_RECIPES[12].ingredients.length,stepCount:PT_RECIPES[12].steps.length}))()`);pt12.nav=await evaluate(navigationSummaryExpression());
+if(pt12.title!==pt12.expected||pt12.ingredient!==pt12.expectedIngredient||pt12.nav.map(x=>x.label).join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações'||pt12.nav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations')throw new Error('PT-BR recipe 12 title, ingredient or six-destination navigation is incorrect: '+JSON.stringify(pt12));
 const pt12StepScreens=[];
 for(let index=0;index<4;index++){
  const copy=await evaluate('(()=>({step:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedStep:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
