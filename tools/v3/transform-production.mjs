@@ -33,7 +33,8 @@ const homeWorldArt = {
   aaria: readReferenceImage('phase2-pilot/packages/assets/characters/aaria.jpg'),
   friends: readReferenceImage('phase2-pilot/packages/assets/characters/friends.jpg'),
   kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
-  worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.jpg')
+  worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),
+  destinations: Object.fromEntries(['IND', 'ITA', 'JPN', 'MEX', 'GRC'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)]))
 };
 
 const art = Object.fromEntries([
@@ -365,4 +366,3 @@ if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could 
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, outputHtml);
 console.log(`Built ${output} (${outputHtml.length.toLocaleString()} chars) from ${input}`);
-

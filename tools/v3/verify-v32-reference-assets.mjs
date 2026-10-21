@@ -8,7 +8,7 @@ const manifest=JSON.parse(readFileSync(resolve(root,manifestPath),'utf8'));
 const required=[
   ['approved-avatar-identity-sheet','docs/design/references/v3.2-approved-avatar-sheet-bearded-daddy.png'],
   ['protected-v31-home-and-world-reference','docs/design/approved-v31-home-world-reference.png'],
-  ['protected-v31-world-map-crop','docs/design/approved-v31-world-map-crop.jpg']
+  ['protected-v31-world-map-crop','docs/design/approved-v31-world-map-crop.webp']
 ];
 const results=[];
 for(const [role,path] of required){
@@ -18,6 +18,17 @@ for(const [role,path] of required){
  if(actual!==record.sha256)throw new Error('Approved reference SHA-256 mismatch for '+role+': '+actual+' != '+record.sha256);
  results.push({role,path,sha256:actual,status:record.status});
 }
+const homeReference=manifest.assets.find(x=>x.role==='protected-v31-home-and-world-reference');
+const derivedArt=manifest.assets.find(x=>x.role==='v31-home-destination-art-crops');
+if(!derivedArt||derivedArt.sourcePath!=='docs/design/approved-v31-home-world-reference.png'||derivedArt.sourceSha256!==homeReference.sha256||derivedArt.items?.length!==5)throw new Error('Home destination artwork must remain traceable to the verified approved reference');
+const mapRecord=manifest.assets.find(x=>x.role==='protected-v31-world-map-crop');
+const mapBytes=readFileSync(resolve(root,mapRecord.path));
+if(mapBytes.subarray(0,4).toString('ascii')!=='RIFF'||mapBytes.subarray(8,12).toString('ascii')!=='WEBP')throw new Error('Reference-derived world map crop must be a decodable WebP');
+for(const item of derivedArt.items){
+ const bytes=readFileSync(resolve(root,item.path)),actual=createHash('sha256').update(bytes).digest('hex');
+ if(actual!==item.sha256||bytes.subarray(0,4).toString('ascii')!=='RIFF'||bytes.subarray(8,12).toString('ascii')!=='WEBP')throw new Error('Reference-derived Home art is missing, corrupt, or mismatched: '+item.code);
+}
+results.push({role:derivedArt.role,sourcePath:derivedArt.sourcePath,sourceSha256:derivedArt.sourceSha256,items:derivedArt.items,status:derivedArt.status});
 const template=manifest.assets.find(x=>x.role==='three-recipe-theme-comparison');
 const templatePath='docs/design/references/v3.2-three-recipe-templates.png';
 if(!template||template.path!==templatePath||!template.sha256||template.status!=='EXACT_SOURCE_BYTES_VERIFIED')throw new Error('Three-template source must match the approved reference manifest');
@@ -32,5 +43,6 @@ results.push({role:'approved-tasty-tacos-recipe-flow',status:tacos.status});
 mkdirSync(resolve(root,'artifacts/v32-diagnostics'),{recursive:true});
 copyFileSync(resolve(root,templatePath),resolve(root,'artifacts/v32-diagnostics/approved-three-template-reference.png'));
 copyFileSync(resolve(root,template.candidate_path),resolve(root,'artifacts/v32-diagnostics/unverified-template-candidate.png'));
+copyFileSync(resolve(root,mapRecord.path),resolve(root,'artifacts/v32-diagnostics/reference-derived-world-map.webp'));
 writeFileSync(resolve(root,'artifacts/v32-diagnostics/reference-provenance.json'),JSON.stringify({source:manifestPath,manifestStatus:manifest.status,assets:results,rights:'HOLD',A08:'HOLD',A09:'HOLD'},null,2)+'\n');
 console.log(JSON.stringify(results));

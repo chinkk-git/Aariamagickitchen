@@ -1,5 +1,5 @@
 {
-  "status": "PROVENANCE_RECORDED; THREE-TEMPLATE SOURCE HASH VERIFIED; TASTY TACOS REFERENCE REVIEW PENDING",
+  "status": "PROVENANCE_RECORDED; THREE-TEMPLATE SOURCE HASH VERIFIED; REFERENCE-DERIVED HOME/WORLD ART ADDED FOR VISUAL REVIEW; TASTY TACOS REFERENCE REVIEW PENDING",
   "assets": [
     {
       "role": "three-recipe-theme-comparison",
@@ -27,10 +27,10 @@
     },
     {
       "role": "protected-v31-world-map-crop",
-      "path": "docs/design/approved-v31-world-map-crop.jpg",
-      "sha256": "781caaba49b44965515cf2bbec427b78344d9d9c117b8b71b651ae667a5bb9cd",
-      "provenance": "Existing committed V3.1 world-map crop.",
-      "status": "SOURCE_HASH_VERIFIED; VISUAL_ACCEPTANCE_BLOCKED"
+      "path": "docs/design/approved-v31-world-map-crop.webp",
+      "sha256": "5296a636c86f2d0f8a12c60406fa366723cb442c292cc2d3bd6b3f1b90afa353",
+      "provenance": "Derived only by cropping the owner-approved composite reference docs/design/approved-v31-home-world-reference.png (SHA-256 6934745614144a6100cbceee8140b4dc54b18a4fd4cac55835dda2ad41eaa5b8); crop excludes surrounding device UI. The previous committed .jpg bytes did not decode as JPEG and were replaced with this traceable WebP derivative.",
+      "status": "DERIVED_FROM_APPROVED_REFERENCE; VISUAL_REVIEW_REQUIRED; RIGHTS_HOLD"
     },
     {
       "role": "approved-tasty-tacos-recipe-flow",
@@ -38,6 +38,45 @@
       "sha256": null,
       "provenance": null,
       "status": "BLOCKED_NOT_FOUND_IN_BRANCH_OR_AVAILABLE_UPLOADS"
+    },
+    {
+      "role": "v31-home-destination-art-crops",
+      "sourcePath": "docs/design/approved-v31-home-world-reference.png",
+      "sourceSha256": "6934745614144a6100cbceee8140b4dc54b18a4fd4cac55835dda2ad41eaa5b8",
+      "cropRegion": "Approved V3.1 Home destination card illustration areas, five owner-approved visible crops.",
+      "items": [
+        {
+          "code": "IND",
+          "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-ind.webp",
+          "sha256": "a920cc3af89a65ab7fdc981c61b1ec1cae86724cff387be7be57bf13cd6f8de2",
+          "status": "DERIVED_FROM_APPROVED_REFERENCE; VISUAL_REVIEW_REQUIRED; RIGHTS_HOLD"
+        },
+        {
+          "code": "ITA",
+          "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-ita.webp",
+          "sha256": "5da3fb304c4801cf01088b13f87cb762be5769057db370bc8754f90e140e0614",
+          "status": "DERIVED_FROM_APPROVED_REFERENCE; VISUAL_REVIEW_REQUIRED; RIGHTS_HOLD"
+        },
+        {
+          "code": "JPN",
+          "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-jpn.webp",
+          "sha256": "658879702f3c04613f2d5222ca91db6545412f9d5b790338c81cc44ee7bf76e9",
+          "status": "DERIVED_FROM_APPROVED_REFERENCE; VISUAL_REVIEW_REQUIRED; RIGHTS_HOLD"
+        },
+        {
+          "code": "MEX",
+          "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-mex.webp",
+          "sha256": "deea652a033bc000b4500e7f9ce3497ca1039e3e4ff62a7ca72258ec7f168765",
+          "status": "DERIVED_FROM_APPROVED_REFERENCE; VISUAL_REVIEW_REQUIRED; RIGHTS_HOLD"
+        },
+        {
+          "code": "GRC",
+          "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-grc.webp",
+          "sha256": "e843c06b47ad8447079ff1652ea392ed333df3e286badb74af22ab25aae93108",
+          "status": "DERIVED_FROM_APPROVED_REFERENCE; VISUAL_REVIEW_REQUIRED; RIGHTS_HOLD"
+        }
+      ],
+      "status": "DERIVED_FROM_APPROVED_REFERENCE; VISUAL_REVIEW_REQUIRED; RIGHTS_HOLD"
     }
   ],
   "tokens": "docs/design/v3.2-design-tokens.proposed.json remains PROPOSED_NOT_REFERENCE_CALIBRATED."
