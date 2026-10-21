@@ -326,6 +326,12 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 
 const runtimeTemplate = fs.readFileSync(path.join(here, 'runtime.js'), 'utf8');
 const v32RecipeThemeMap = JSON.parse(fs.readFileSync(path.join(here, 'data/v3.2-recipe-theme-map.json'), 'utf8'));
+const v32PtRecipeDrafts = {};
+for (const name of ['pt-BR-recipes-66-80-review.json','pt-BR-recipes-81-95-review.json']) {
+  const draft = JSON.parse(fs.readFileSync(path.join(here, 'data', name), 'utf8'));
+  if (draft.status !== 'W01_DRAFT_PENDING_INDEPENDENT_REVIEW' || draft.locale !== 'pt-BR') throw new Error('Portuguese recipe copy must remain explicitly marked for independent review: ' + name);
+  Object.assign(v32PtRecipeDrafts, draft.recipes);
+}
 const runtime = runtimeTemplate
   .replaceAll('__AARIA_V3_MARKER__', marker)
   .replace('__V3_ART_JSON__', JSON.stringify(art))
@@ -333,11 +339,12 @@ const runtime = runtimeTemplate
   .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt))
   .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))
   .replace('__V32_RECIPE_THEME_MAP_JSON__', JSON.stringify(v32RecipeThemeMap.mapping))
+  .replace('__V3_PT_RECIPE_DRAFTS_JSON__', JSON.stringify(v32PtRecipeDrafts))
   .replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))
   .replace('__V31_WORLD_ADVENTURE_ART_JSON__', JSON.stringify(worldAdventureArt))
   .replace('__V31_HOME_WORLD_ART_JSON__', JSON.stringify(homeWorldArt));
 
-if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__|__V32_RECIPE_THEME_MAP_JSON__/.test(runtime)) throw new Error('Could not embed the offline experience data.');
+if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__|__V32_RECIPE_THEME_MAP_JSON__|__V3_PT_RECIPE_DRAFTS_JSON__/.test(runtime)) throw new Error('Could not embed the offline experience data.');
 
 
 let outputHtml = html;
