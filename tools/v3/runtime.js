@@ -150,6 +150,33 @@ home=function v31ApprovedHome(){
  </section>`;
 };
 
+
+function v32AvatarCastItems(items, ariaLabel, mode) {
+ if(items.some(item=>!item.src))throw new Error('Canonical avatar source is missing: '+ariaLabel);
+ return `<div class="parent-pair v32-avatar-cast v32-${mode}-avatar-cast" role="group" aria-label="${ariaLabel}">${items.map(item=>`<div class="parent-person"><img data-v32-avatar="${item.key}" src="${item.src}" alt="${item.label}" loading="eager"><span>${item.label}</span></div>`).join('')}</div>`;
+}
+family=function v32CanonicalFamily(){
+ const pt=state.language==='pt-BR';
+ const people=[
+  {key:'aaria',label:'Aaria',src:V31_HOME_WORLD_ART.aaria},
+  {key:'mommy',label:'Mommy',src:V31_HOME_WORLD_ART.avatars.mommy},
+  {key:'daddy',label:'Daddy',src:V31_HOME_WORLD_ART.avatars.daddy}
+ ];
+ return `${header(pt?'Cozinhe com a família 💛':'Cook with Family 💛')}<section class="home-subpage v32-group-screen"><h1>${pt?'Cozinhe com Mamãe e Papai':'Cook with Mommy and Daddy'}</h1><p>${pt?'Escolha uma receita para preparar com Mamãe ou Papai. Abra um cartão para começar a cozinhar juntos.':'Pick a recipe to make with Mommy or Daddy. Open a card to start cooking together.'}</p>${v32AvatarCastItems(people,pt?'Aaria, Mamãe e Papai':'Aaria, Mommy and Daddy','family')}<h2>${pt?'Sugestões de receitas em família':'Family recipe ideas'}</h2>${relatedRecipeGrid('family')}<div class="home-subpage-actions"><button data-nav="library">${pt?'📖 Ver todas as 95 receitas':'📖 See all 95 recipes'}</button><button data-nav="week">${pt?'🗓️ Planejar a semana':'🗓️ Plan a cooking week'}</button></div></section>`;
+};
+friends=function v32CanonicalFriends(){
+ const pt=state.language==='pt-BR';
+ const people=[
+  {key:'rohan',label:'Rohan',src:V31_HOME_WORLD_ART.avatars.rohan},
+  {key:'arjun',label:'Arjun',src:V31_HOME_WORLD_ART.avatars.arjun},
+  {key:'vihaan',label:'Vihaan',src:V31_HOME_WORLD_ART.avatars.vihaan},
+  {key:'isha',label:'Isha',src:V31_HOME_WORLD_ART.avatars.isha},
+  {key:'meera',label:'Meera',src:V31_HOME_WORLD_ART.avatars.meera},
+  {key:'sana',label:'Sana',src:V31_HOME_WORLD_ART.avatars.sana},
+  {key:'diya',label:'Diya',src:V31_HOME_WORLD_ART.avatars.diya}
+ ];
+ return `${header(pt?'Cozinhe com amigos 🌈':'Cook with Friends 🌈')}<section class="home-subpage v32-group-screen"><h1>${pt?'Convide seus amigos para a cozinha!':'Invite your kitchen friends!'}</h1><p>${pt?'Escolha uma receita fácil para preparar juntos. Peça a um adulto para ajudar com aparelhos quentes e ferramentas afiadas.':'Choose an easy recipe to make together. Ask an adult to help with hot appliances and sharp tools.'}</p>${v32AvatarCastItems(people,pt?'Sete amigos da cozinha':'Seven kitchen friends','friends')}<h2>${pt?'Sugestões de receitas entre amigos':'Friend-friendly recipe ideas'}</h2>${relatedRecipeGrid('friends')}<div class="home-subpage-actions"><button data-nav="library">${pt?'📖 Ver todas as 95 receitas':'📖 See all 95 recipes'}</button><button data-nav="week">${pt?'🗓️ Planejar uma semana de receitas':'🗓️ Plan a cooking week'}</button></div></section>`;
+};
 const v3OriginalGroceries=groceries;
 groceries=function v31PantryShortcuts(){
  const pt=state.language==='pt-BR',html=v3OriginalGroceries();

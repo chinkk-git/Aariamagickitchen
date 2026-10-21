@@ -314,6 +314,22 @@ if (!homeVisual.hero || homeVisual.hero.w < 260 || homeVisual.hero.h < 150 || !h
 console.log('Installed Android Home visual composition verified:', JSON.stringify(homeVisual));
 const homeDigest = await captureScreenshot('v31-home-portrait.png', 'Home');
 if (statSync('artifacts/v32-android-screenshots/v31-home-portrait.png').size < 10000) throw new Error('Home screenshot is unexpectedly small');
+const groupAvatarAudits=[];
+for(const scene of [
+ {mode:'family',keys:['aaria','mommy','daddy'],labels:['Aaria','Mommy','Daddy']},
+ {mode:'friends',keys:['rohan','arjun','vihaan','isha','meera','sana','diya'],labels:['Rohan','Arjun','Vihaan','Isha','Meera','Sana','Diya']}
+]){
+ await evaluate(`document.querySelector('.v31-collection-links [data-nav="${scene.mode}"]')?.click()`);
+ await waitForVisible(`.v32-${scene.mode}-avatar-cast`,`${scene.mode} canonical avatar scene`);
+ const report=await evaluate(`(()=>{const imgs=[...document.querySelectorAll('.v32-${scene.mode}-avatar-cast img[data-v32-avatar]')];return {keys:imgs.map(i=>i.dataset.v32Avatar),labels:imgs.map(i=>i.alt),assetsMatch:imgs.every(i=>i.src===(i.dataset.v32Avatar==='aaria'?V31_HOME_WORLD_ART.aaria:V31_HOME_WORLD_ART.avatars[i.dataset.v32Avatar]))}})()`);
+ if(JSON.stringify(report.keys)!==JSON.stringify(scene.keys)||JSON.stringify(report.labels)!==JSON.stringify(scene.labels)||!report.assetsMatch)throw new Error(`Canonical ${scene.mode} avatar identity/source mismatch: ${JSON.stringify(report)}`);
+ groupAvatarAudits.push({mode:scene.mode,...report});
+ await captureScreenshot(`v32-${scene.mode}-avatars-portrait.png`,`${scene.mode} canonical avatar scene`);
+ await evaluate(`document.querySelector('#nav .tab[data-nav="home"]')?.click()`);
+ await waitForVisible('.v31-hero-welcome h1',`Home restored after ${scene.mode} avatar scene`);
+}
+console.log('Canonical Aaria, family and seven friend identities verified in existing routes:',JSON.stringify(groupAvatarAudits));
+
 await evaluate(`document.querySelector('[data-v31-open-world]').click()`);
 const worldState = await waitForVisible('.v31-world-header h1', 'World Adventure heading');
 if (!worldState.screen.includes('v31-world-screen') || !worldState.text.includes('World Food Adventure')) throw new Error('World route did not replace the active screen; got: ' + JSON.stringify(worldState));

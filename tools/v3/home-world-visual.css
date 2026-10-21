@@ -185,3 +185,11 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
  .ref-tool-grid{grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px}
  .ref-tool{min-height:88px}
 }
+
+/* Canonical, identity-locked family and friends artwork in their existing routes. */
+.v32-group-screen{box-sizing:border-box}
+.v32-avatar-cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(82px,1fr));align-items:start;justify-items:center;width:min(100%,900px);gap:12px;margin:22px auto}
+.v32-family-avatar-cast{max-width:560px}
+.v32-avatar-cast .parent-person{min-width:0;width:100%;text-align:center;font-size:clamp(12px,2vw,16px)}
+.v32-avatar-cast .parent-person img{display:block;width:min(100%,132px);height:auto;aspect-ratio:3/4;object-fit:contain;object-position:center bottom;margin:0 auto 7px;border-radius:18px;border:2px solid #fff;background:linear-gradient(155deg,#fff,#f9f2ff);box-shadow:0 5px 15px #53326b30}
+@media(max-width:540px){.v32-avatar-cast{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.v32-family-avatar-cast{grid-template-columns:repeat(3,minmax(0,1fr));max-width:440px}.v32-avatar-cast .parent-person img{width:100%;border-radius:14px}.v32-avatar-cast .parent-person{font-size:12px}}
