@@ -26,15 +26,39 @@ test('V3.2 keeps Classic navigation, feature entrypoints and data schemas', asyn
   assert.match(signedContent, /Manifest signature is invalid/);
 });
 
-test('recipe 12 Android smoke finds numeric checklist items without nested CSS quoting', async () => {
+test('recipe 12 WebView checklist helper generates and executes a valid checkbox click', async () => {
   const smoke = await read('.github/scripts/v32-android-smoke.sh');
-  assert.match(smoke, /async function clickRecipeIngredient\(index\)/);
-  assert.match(smoke, /querySelectorAll\("\.v32-r12-ingredient-list input"\).*node\.dataset\.check===\$\{JSON\.stringify\(String\(index\)\)\}/,
-    'checklist lookup must compare the dataset value instead of constructing nested CSS attribute quotes');
+  const helper = smoke.match(/async function clickRecipeIngredient\(index\)\s*\{([\s\S]*?)\n\}/);
+  assert.ok(helper, 'the Android smoke helper must be present');
   assert.equal((smoke.match(/clickRecipeIngredient\(0\)/g) || []).length, 2,
     'both recipe 12 checklist interactions must use the tested lookup');
   assert.doesNotMatch(smoke, /input\[data-check=[^\]]*\]/,
-    'the Android DevTools evaluator must not receive a nested quoted data-check selector');
+    'the WebView smoke must not construct numeric data-check CSS selectors');
+
+  let clicked = -1;
+  let generatedExpression = '';
+  const inputs = ['1', '0'].map(value => ({
+    dataset: { check: value },
+    click() { clicked = Number(value); }
+  }));
+  const mockDocument = {
+    querySelectorAll(selector) {
+      assert.equal(selector, '.v32-r12-ingredient-list input');
+      return inputs;
+    }
+  };
+  const webViewEvaluate = async expression => {
+    generatedExpression = expression;
+    return new Function('document', `"use strict"; return (${expression});`)(mockDocument);
+  };
+  const clickRecipeIngredient = new Function('evaluate',
+    `return async function clickRecipeIngredient(index) {${helper[1]}\n}`)(webViewEvaluate);
+
+  assert.equal(await clickRecipeIngredient(0), true);
+  assert.equal(clicked, 0, 'the generated WebView expression must click checkbox data-check="0"');
+  assert.equal(generatedExpression,
+    '(()=>{const input=[...document.querySelectorAll(".v32-r12-ingredient-list input")].find(node=>node.dataset.check==="0");if(!input)return false;input.click();return true})()');
+  assert.equal(await clickRecipeIngredient(7), false, 'missing checkbox lookup must fail safely');
 });
 
 test('current-batch Featured Recipes omits absent descriptions instead of rendering undefined', async () => {
