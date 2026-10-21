@@ -584,3 +584,5 @@ render=function(){v31RenderBeforeTour();if(view!=='home'&&view!=='settings')retu
 
 v3InitProfiles();
 render();
+
+

@@ -366,3 +366,4 @@ if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could 
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, outputHtml);
 console.log(`Built ${output} (${outputHtml.length.toLocaleString()} chars) from ${input}`);
+
