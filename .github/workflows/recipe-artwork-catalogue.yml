@@ -1,0 +1,55 @@
+name: Recipe artwork catalogue
+
+on:
+  push:
+    branches:
+      - codex/w01-unified-v3-v31-20261020
+    paths:
+      - tools/artwork-catalogue/**
+      - .github/workflows/recipe-artwork-catalogue.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  catalogue:
+    name: Build and validate 95-recipe catalogue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact source head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install catalogue dependencies
+        run: python -m pip install --disable-pip-version-check reportlab pillow pypdf
+
+      - name: Generate and validate catalogue
+        run: |
+          mkdir -p artifacts/recipe-artwork
+          python tools/artwork-catalogue/generate_catalogue.py \
+            --input index.html \
+            --output-dir artifacts/recipe-artwork \
+            --source-head "${GITHUB_SHA}"
+          printf '%s\n' "${GITHUB_SHA}" > artifacts/recipe-artwork/source-head.txt
+          pdfinfo artifacts/recipe-artwork/95-recipe-artwork-catalogue.pdf | grep -E '^Pages:[[:space:]]+3$'
+          pdftoppm -png -r 120 \
+            artifacts/recipe-artwork/95-recipe-artwork-catalogue.pdf \
+            artifacts/recipe-artwork/page
+          cd artifacts/recipe-artwork
+          sha256sum 95-recipe-artwork-catalogue.pdf recipe-artwork-inventory.csv page-*.png > SHA256SUMS.txt
+
+      - name: Upload PDF, inventory and page renders
+        uses: actions/upload-artifact@v4
+        with:
+          name: recipe-artwork-catalogue-${{ github.sha }}
+          path: artifacts/recipe-artwork/
+          if-no-files-found: error
+          retention-days: 30
