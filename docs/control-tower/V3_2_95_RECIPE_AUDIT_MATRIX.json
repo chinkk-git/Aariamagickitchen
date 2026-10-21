@@ -1,0 +1,5227 @@
+{
+  "schemaVersion": "v3.2-95-recipe-acceptance-matrix/1",
+  "canonicalSource": {
+    "path": "index.html",
+    "gitBlobSha": "ece8232e8b76e24ac0e46a0e02df4b86577c6c28",
+    "recipeCount": 95,
+    "ids": "1-95"
+  },
+  "translationSources": [
+    "index.html:PT_RECIPES",
+    "tools/v3/data/pt-BR-recipes-66-80-review.json",
+    "tools/v3/data/pt-BR-recipes-81-95-review.json"
+  ],
+  "roleCopy": {
+    "familyEN": "Family mode role labels remain in the application source; review required.",
+    "familyPTBR": "Aaria é a chef principal. Mamãe e Papai participam; um adulto cuida do fogão, do forno e de alimentos quentes conforme indicado em cada etapa.",
+    "friendsEN": "Friends mode role labels remain in the application source; review required.",
+    "friendsPTBR": "Aaria e os amigos cozinham juntos. Um adulto acompanha as tarefas com calor, facas, aparelhos e alimentos quentes conforme indicado em cada etapa.",
+    "review": "NATIVE_AND_A09_REVIEW_REQUIRED"
+  },
+  "themeMapPath": "tools/v3/data/v3.2-recipe-theme-map.json",
+  "runBinding": {
+    "runId": 39638099422,
+    "codeSha": "1e783e9a41ff1cad684f9d6c3b567632743e4f0a",
+    "status": "IN_PROGRESS"
+  },
+  "evidenceLegend": {
+    "routeEvidence": "Prior 95/95 route run; does not prove current-head content acceptance or per-recipe screenshots.",
+    "independentGates": "A08, A09, rights and visual reviewer decisions remain external.",
+    "nextAction": "Complete per-recipe content, nutrition/allergen, artwork/provenance and screenshot review; obtain independent gate decisions."
+  },
+  "acceptanceNote": "Routing, source presence and automated draft contracts are evidence inputs, not recipe acceptance. Every row remains BLOCKED until individual content, safety, nutrition, artwork, rights and visual evidence plus independent reviews are recorded.",
+  "rows": [
+    {
+      "recipeId": 1,
+      "runtimeId": 1,
+      "canonicalTitleEN": "Cheesy Egg Bread Cups",
+      "canonicalTitlePTBR": "Cestinhas de pão com ovo e queijo",
+      "translationStatus": "EXISTING",
+      "category": "Breakfast",
+      "method": "Air fryer",
+      "time": "160°C · 8–12 min",
+      "yieldText": "4 cups",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 slices soft sandwich bread",
+          "2 eggs",
+          "4 tbsp grated mozzarella or cheddar",
+          "2 tbsp milk",
+          "A little butter",
+          "Pinch of salt"
+        ],
+        "ptBR": [
+          "4 fatias de pão de forma macio",
+          "2 ovos",
+          "4 colheres de sopa de muçarela ou cheddar ralado",
+          "2 colheres de sopa de leite",
+          "Um pouco de manteiga",
+          "Uma pitada de sal"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[1].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the hot air fryer. Cook eggs until completely set.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 2,
+      "runtimeId": 2,
+      "canonicalTitleEN": "Chicken Nugget Buns",
+      "canonicalTitlePTBR": "Mini sanduíches de nuggets",
+      "translationStatus": "EXISTING",
+      "category": "Lunch",
+      "method": "Air fryer",
+      "time": "160°C · 4–7 min",
+      "yieldText": "4 mini buns",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 small slider buns",
+          "4–8 fully cooked chicken nuggets",
+          "½ cup grated mozzarella or cheddar",
+          "1–2 tbsp ketchup (optional)",
+          "Lettuce or thin tomato slices (optional)"
+        ],
+        "ptBR": [
+          "4 pãezinhos para mini-hambúrguer",
+          "4–8 nuggets de frango já completamente preparados",
+          "½ xícara de muçarela ou cheddar ralado",
+          "1–2 colheres de sopa de ketchup (opcional)",
+          "Alface ou fatias finas de tomate (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[2].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles cutting and hot food. Chicken must be thoroughly cooked before assembly.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 3,
+      "runtimeId": 3,
+      "canonicalTitleEN": "Banana Chocolate Roll-Ups",
+      "canonicalTitlePTBR": "Rolinhos de banana com chocolate",
+      "translationStatus": "EXISTING",
+      "category": "Sweet",
+      "method": "Air fryer",
+      "time": "170°C · 5–7 min",
+      "yieldText": "4 roll-ups",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 slices soft sandwich bread",
+          "1 ripe banana",
+          "3–4 tbsp chocolate spread",
+          "1 tsp melted butter (optional)",
+          "Cinnamon (optional)"
+        ],
+        "ptBR": [
+          "4 fatias de pão de forma macio",
+          "1 banana madura",
+          "3–4 colheres de sopa de creme de chocolate",
+          "1 colher de chá de manteiga derretida (opcional)",
+          "Canela (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[3].steps; translated record by recipeId",
+      "stepCountEN": 5,
+      "stepCountPTBR": 5,
+      "safety": {
+        "en": "Chocolate filling can be very hot. Let it cool before taking a bite.",
+        "ptBR": null,
+        "adultCueEN": false
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 4,
+      "runtimeId": 4,
+      "canonicalTitleEN": "Cheesy Potato Balls",
+      "canonicalTitlePTBR": "Bolinhas de batata com queijo",
+      "translationStatus": "EXISTING",
+      "category": "Snack",
+      "method": "Air fryer",
+      "time": "180°C · 8–12 min",
+      "yieldText": "10–12 balls",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup cooked, cooled mashed potato",
+          "½ cup grated mozzarella or cheddar",
+          "⅓ cup breadcrumbs",
+          "1 tbsp corn (optional)",
+          "1 tsp olive oil (optional)"
+        ],
+        "ptBR": [
+          "1 xícara de batata cozida, fria e amassada",
+          "½ xícara de queijo ralado",
+          "⅓ xícara de farinha de rosca",
+          "1 colher de sopa de milho (opcional)",
+          "1 colher de chá de azeite (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[4].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the hot air fryer. Use fully cooked potato.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 5,
+      "runtimeId": 5,
+      "canonicalTitleEN": "Mini Pizza Bread Cups",
+      "canonicalTitlePTBR": "Cestinhas de minipizza de pão",
+      "translationStatus": "EXISTING",
+      "category": "Lunch",
+      "method": "Air fryer",
+      "time": "170°C · 5–8 min",
+      "yieldText": "4 cups",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 slices sandwich bread",
+          "4 tbsp tomato pizza sauce",
+          "½ cup grated mozzarella",
+          "2 tbsp sweet corn",
+          "2 tbsp finely diced bell pepper"
+        ],
+        "ptBR": [
+          "4 fatias de pão de forma",
+          "4 colheres de sopa de molho de tomate para pizza",
+          "½ xícara de muçarela ralada",
+          "2 colheres de sopa de milho",
+          "2 colheres de sopa de pimentão em cubinhos"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[5].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the hot air fryer and chopping.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 6,
+      "runtimeId": 6,
+      "canonicalTitleEN": "Cheesy Corn Pinwheels",
+      "canonicalTitlePTBR": "Espirais de queijo e milho",
+      "translationStatus": "EXISTING",
+      "category": "Snack",
+      "method": "Air fryer",
+      "time": "170°C · 9–13 min",
+      "yieldText": "8–10 pinwheels",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 sheet ready-rolled puff pastry (about 250 g)",
+          "½ cup grated cheese",
+          "¼ cup drained sweet corn",
+          "1 tbsp tomato sauce (optional)"
+        ],
+        "ptBR": [
+          "1 folha de massa folhada pronta (cerca de 250 g)",
+          "½ xícara de queijo ralado",
+          "¼ xícara de milho escorrido",
+          "1 colher de sopa de molho de tomate (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[6].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult uses the knife and air fryer. Raw pastry must cook through.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 7,
+      "runtimeId": 7,
+      "canonicalTitleEN": "Rainbow Veggie Cheese Muffins",
+      "canonicalTitlePTBR": "Muffins coloridos de legumes e queijo",
+      "translationStatus": "EXISTING",
+      "category": "Breakfast",
+      "method": "Air fryer",
+      "time": "160°C · 10–14 min",
+      "yieldText": "4–6 mini muffins",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 eggs",
+          "3 tbsp grated cheese",
+          "2 tbsp grated carrot",
+          "2 tbsp sweet corn",
+          "1 tbsp milk",
+          "Pinch of salt"
+        ],
+        "ptBR": [
+          "2 ovos",
+          "3 colheres de sopa de queijo ralado",
+          "2 colheres de sopa de cenoura ralada",
+          "2 colheres de sopa de milho",
+          "1 colher de sopa de leite",
+          "Uma pitada de sal"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[7].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the air fryer. Egg centers must be fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 8,
+      "runtimeId": 8,
+      "canonicalTitleEN": "Broccoli Cheese Nuggets",
+      "canonicalTitlePTBR": "Nuggets de brócolis e queijo",
+      "translationStatus": "EXISTING",
+      "category": "Snack",
+      "method": "Air fryer",
+      "time": "180°C · 10–14 min",
+      "yieldText": "10–12 nuggets",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup cooked, cooled, finely chopped broccoli",
+          "½ cup grated mozzarella or cheddar",
+          "1 egg",
+          "⅓ cup breadcrumbs",
+          "Pinch of salt and pepper (optional)"
+        ],
+        "ptBR": [
+          "1 xícara de brócolis cozido, frio e bem picadinho",
+          "½ xícara de queijo ralado",
+          "1 ovo",
+          "⅓ xícara de farinha de rosca",
+          "Uma pitada de sal e pimenta-do-reino (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[8].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the air fryer and chopping. Egg mixture must cook through.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 9,
+      "runtimeId": 9,
+      "canonicalTitleEN": "Rainbow Veggie Mini Pizzas",
+      "canonicalTitlePTBR": "Minipizzas arco-íris de legumes",
+      "translationStatus": "EXISTING",
+      "category": "Lunch",
+      "method": "Air fryer",
+      "time": "170°C · 5–7 min",
+      "yieldText": "4 mini pizzas",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 small bread slices",
+          "4 tbsp tomato pizza sauce",
+          "½ cup grated mozzarella",
+          "¼ cup finely diced bell pepper",
+          "¼ cup sweet corn",
+          "Oregano (optional)"
+        ],
+        "ptBR": [
+          "4 fatias pequenas de pão",
+          "4 colheres de sopa de molho de tomate para pizza",
+          "½ xícara de muçarela",
+          "¼ xícara de pimentão em cubinhos bem pequenos",
+          "¼ xícara de milho",
+          "Orégano (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[9].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles chopping and the hot air fryer.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 10,
+      "runtimeId": 10,
+      "canonicalTitleEN": "Sweet Potato Smiley Fries",
+      "canonicalTitlePTBR": "Batata-doce divertida em gomos",
+      "translationStatus": "EXISTING",
+      "category": "Snack",
+      "method": "Air fryer",
+      "time": "190°C · 12–18 min",
+      "yieldText": "2 servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 medium sweet potato",
+          "1 tsp olive oil",
+          "Pinch of salt",
+          "¼ tsp paprika (optional)"
+        ],
+        "ptBR": [
+          "1 batata-doce média",
+          "1 colher de chá de azeite",
+          "Uma pitada de sal",
+          "¼ colher de chá de páprica (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[10].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult must cut the hard potato and handle the air fryer. Cooking time varies by thickness.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 11,
+      "runtimeId": 11,
+      "canonicalTitleEN": "Rainbow Veggie Roll-Ups",
+      "canonicalTitlePTBR": "Rolinhos arco-íris de legumes",
+      "translationStatus": "EXISTING",
+      "category": "No-cook",
+      "method": "No cooking",
+      "time": "5–10 min",
+      "yieldText": "2 rolls / 8 slices",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 whole-wheat tortillas",
+          "3 tbsp cream cheese",
+          "½ cup grated carrot",
+          "½ cucumber, cut into thin sticks",
+          "2 lettuce leaves",
+          "Tomato slices (optional)"
+        ],
+        "ptBR": [
+          "2 tortilhas integrais",
+          "3 colheres de sopa de cream cheese",
+          "½ xícara de cenoura ralada",
+          "½ pepino cortado em palitos finos",
+          "2 folhas de alface",
+          "Fatias de tomate (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[11].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Wash vegetables and hands. An adult uses the knife. Keep cream cheese refrigerated.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 12,
+      "runtimeId": 12,
+      "canonicalTitleEN": "Cheesy Corn Pancakes",
+      "canonicalTitlePTBR": "Panquequinhas de milho com queijo",
+      "translationStatus": "EXISTING",
+      "category": "Lunch",
+      "method": "Stovetop",
+      "time": "2–3 min each side",
+      "yieldText": "6 small pancakes",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "½ cup sweet corn",
+          "1 egg",
+          "3 tbsp whole-wheat flour",
+          "2 tbsp grated cheese",
+          "2 tbsp milk",
+          "1 tsp oil for the pan"
+        ],
+        "ptBR": [
+          "½ xícara de milho",
+          "1 ovo",
+          "3 colheres de sopa de farinha de trigo integral",
+          "2 colheres de sopa de queijo ralado",
+          "2 colheres de sopa de leite",
+          "1 colher de chá de azeite para a frigideira"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[12].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult operates the stove and handles the hot pan. Cook egg batter fully.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 13,
+      "runtimeId": 13,
+      "canonicalTitleEN": "Teddy Bear Cheese Toast",
+      "canonicalTitlePTBR": "Torradinhas de queijo em forma de ursinho",
+      "translationStatus": "EXISTING",
+      "category": "Snack",
+      "method": "Air fryer",
+      "time": "160°C · 4–6 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 bread slices",
+          "2 cheese slices",
+          "4 cucumber rounds",
+          "2 cherry tomatoes"
+        ],
+        "ptBR": [
+          "2 fatias de pão",
+          "2 fatias de queijo",
+          "4 rodelas de pepino",
+          "2 tomates-cereja"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[13].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 14,
+      "runtimeId": 14,
+      "canonicalTitleEN": "Mini Pizza Bagels",
+      "canonicalTitlePTBR": "Minipizzas de bagel",
+      "translationStatus": "EXISTING",
+      "category": "Lunch",
+      "method": "Air fryer",
+      "time": "170°C · 5–7 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 mini bagels, halved",
+          "4 tbsp tomato sauce",
+          "½ cup mozzarella",
+          "2 tbsp corn",
+          "2 tbsp diced bell pepper"
+        ],
+        "ptBR": [
+          "2 minibagels cortados ao meio",
+          "4 colheres de sopa de molho de tomate",
+          "½ xícara de muçarela",
+          "2 colheres de sopa de milho",
+          "2 colheres de sopa de pimentão em cubinhos"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[14].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 15,
+      "runtimeId": 15,
+      "canonicalTitleEN": "Crunchy Zucchini Fries",
+      "canonicalTitlePTBR": "Palitinhos crocantes de abobrinha",
+      "translationStatus": "EXISTING",
+      "category": "Snack",
+      "method": "Air fryer",
+      "time": "190°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 small zucchini",
+          "1 egg",
+          "⅓ cup breadcrumbs",
+          "2 tbsp Parmesan",
+          "1 tsp oil"
+        ],
+        "ptBR": [
+          "1 abobrinha pequena",
+          "1 ovo",
+          "⅓ xícara de farinha de rosca",
+          "2 colheres de sopa de parmesão",
+          "1 colher de chá de azeite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[15].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 16,
+      "runtimeId": 16,
+      "canonicalTitleEN": "Cheesy Rainbow Quesadillas",
+      "canonicalTitlePTBR": "Quesadillas arco-íris com queijo",
+      "translationStatus": "EXISTING",
+      "category": "Lunch",
+      "method": "Air fryer",
+      "time": "170°C · 5–7 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 small tortillas",
+          "½ cup mozzarella",
+          "¼ cup corn",
+          "¼ cup finely diced bell pepper"
+        ],
+        "ptBR": [
+          "2 tortilhas pequenas",
+          "½ xícara de muçarela",
+          "¼ xícara de milho",
+          "¼ xícara de pimentão em cubinhos bem pequenos"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[16].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 17,
+      "runtimeId": 17,
+      "canonicalTitleEN": "Banana Pancake Faces",
+      "canonicalTitlePTBR": "Panquecas de banana com carinhas",
+      "translationStatus": "EXISTING",
+      "category": "Breakfast",
+      "method": "Stovetop",
+      "time": "2–3 min per side",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 ripe banana",
+          "1 egg",
+          "⅓ cup rolled oats",
+          "3 strawberries"
+        ],
+        "ptBR": [
+          "1 banana madura",
+          "1 ovo",
+          "⅓ xícara de aveia em flocos",
+          "3 morangos"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[17].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 18,
+      "runtimeId": 18,
+      "canonicalTitleEN": "Rainbow Fruit Wands",
+      "canonicalTitlePTBR": "Varinhas arco-íris de frutas",
+      "translationStatus": "EXISTING",
+      "category": "Fruit",
+      "method": "No cooking",
+      "time": "10 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 strawberries",
+          "1 banana",
+          "1 kiwi",
+          "½ mango",
+          "¼ cup blueberries"
+        ],
+        "ptBR": [
+          "4 morangos",
+          "1 banana",
+          "1 kiwi",
+          "½ manga",
+          "¼ xícara de mirtilos"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[18].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 19,
+      "runtimeId": 19,
+      "canonicalTitleEN": "Cinnamon Apple Donuts",
+      "canonicalTitlePTBR": "Rosquinhas de maçã com canela",
+      "translationStatus": "EXISTING",
+      "category": "Sweet",
+      "method": "Air fryer",
+      "time": "170°C · 8–12 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 apples",
+          "½ tsp cinnamon",
+          "1 tsp melted butter"
+        ],
+        "ptBR": [
+          "2 maçãs",
+          "½ colher de chá de canela",
+          "1 colher de chá de manteiga derretida"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[19].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 20,
+      "runtimeId": 20,
+      "canonicalTitleEN": "Strawberry Yogurt Pops",
+      "canonicalTitlePTBR": "Picolés de morango com iogurte",
+      "translationStatus": "EXISTING",
+      "category": "Sweet",
+      "method": "Freezer",
+      "time": "Freeze 4–6 hours",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup plain yogurt",
+          "½ cup strawberries",
+          "1 ripe banana"
+        ],
+        "ptBR": [
+          "1 xícara de iogurte natural",
+          "½ xícara de morangos",
+          "1 banana madura"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[20].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 21,
+      "runtimeId": 21,
+      "canonicalTitleEN": "Veggie Flower Garden",
+      "canonicalTitlePTBR": "Jardim de flores de legumes",
+      "translationStatus": "EXISTING",
+      "category": "Veggies",
+      "method": "No cooking",
+      "time": "10 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "½ cucumber",
+          "1 carrot",
+          "4 cherry tomatoes",
+          "2 tbsp cream cheese",
+          "6 whole-grain crackers"
+        ],
+        "ptBR": [
+          "½ pepino",
+          "1 cenoura",
+          "4 tomates-cereja",
+          "2 colheres de sopa de cream cheese",
+          "6 biscoitos integrais"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[21].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 22,
+      "runtimeId": 22,
+      "canonicalTitleEN": "Cauliflower Cheese Tots",
+      "canonicalTitlePTBR": "Bolinhos de couve-flor com queijo",
+      "translationStatus": "EXISTING",
+      "category": "Snack",
+      "method": "Air fryer",
+      "time": "180°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup cooked chopped cauliflower",
+          "1 egg",
+          "⅓ cup breadcrumbs",
+          "½ cup grated cheese"
+        ],
+        "ptBR": [
+          "1 xícara de couve-flor cozida e picada",
+          "1 ovo",
+          "⅓ xícara de farinha de rosca",
+          "½ xícara de queijo ralado"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[22].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 23,
+      "runtimeId": 23,
+      "canonicalTitleEN": "Rainbow Rice Balls",
+      "canonicalTitlePTBR": "Bolinhas de arroz arco-íris",
+      "translationStatus": "EXISTING",
+      "category": "Lunch",
+      "method": "No cooking",
+      "time": "10 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup freshly cooked cooled sticky rice",
+          "¼ cup cooked peas",
+          "¼ cup cooked diced carrot",
+          "2 tbsp cooked corn",
+          "2 tbsp grated cheese"
+        ],
+        "ptBR": [
+          "1 xícara de arroz glutinoso recém-cozido e já resfriado",
+          "¼ xícara de ervilhas cozidas",
+          "¼ xícara de cenoura cozida em cubinhos",
+          "2 colheres de sopa de milho cozido",
+          "2 colheres de sopa de queijo ralado"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[23].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 24,
+      "runtimeId": 24,
+      "canonicalTitleEN": "Crunchy Chickpea Treasure",
+      "canonicalTitlePTBR": "Tesourinhos crocantes de grão-de-bico",
+      "translationStatus": "EXISTING",
+      "category": "Snack",
+      "method": "Air fryer",
+      "time": "190°C · 12–16 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup cooked drained chickpeas",
+          "1 tsp olive oil",
+          "¼ tsp mild paprika"
+        ],
+        "ptBR": [
+          "1 xícara de grão-de-bico cozido e escorrido",
+          "1 colher de chá de azeite",
+          "¼ colher de chá de páprica suave"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[24].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 25,
+      "runtimeId": 25,
+      "canonicalTitleEN": "Cheesy Chicken Pockets",
+      "canonicalTitlePTBR": "Pastelinhos de frango com queijo",
+      "translationStatus": "EXISTING",
+      "category": "Chicken",
+      "method": "Air fryer",
+      "time": "180°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 sheet ready-made puff pastry",
+          "½ cup fully cooked shredded chicken",
+          "⅓ cup cheese",
+          "1 tbsp tomato sauce"
+        ],
+        "ptBR": [
+          "1 folha de massa folhada pronta",
+          "½ xícara de frango completamente cozido e desfiado",
+          "⅓ xícara de queijo",
+          "1 colher de sopa de molho de tomate"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[25].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 26,
+      "runtimeId": 26,
+      "canonicalTitleEN": "Nugget Pizza Bites",
+      "canonicalTitlePTBR": "Bocadinhos de pizza com nuggets",
+      "translationStatus": "EXISTING",
+      "category": "Chicken",
+      "method": "Air fryer",
+      "time": "170°C · 5–8 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 small bread slices",
+          "4 fully cooked chicken nuggets",
+          "4 tbsp tomato sauce",
+          "½ cup mozzarella",
+          "2 tbsp corn"
+        ],
+        "ptBR": [
+          "4 fatias pequenas de pão",
+          "4 nuggets de frango completamente preparados",
+          "4 colheres de sopa de molho de tomate",
+          "½ xícara de muçarela",
+          "2 colheres de sopa de milho"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[26].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 27,
+      "runtimeId": 27,
+      "canonicalTitleEN": "Chicken & Carrot Nuggets",
+      "canonicalTitlePTBR": "Nuggets de frango e cenoura",
+      "translationStatus": "EXISTING",
+      "category": "Chicken",
+      "method": "Air fryer",
+      "time": "180°C · approx. 12–18 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "250 g ground chicken",
+          "½ cup finely grated carrot",
+          "1 egg",
+          "⅓ cup breadcrumbs",
+          "pinch of salt"
+        ],
+        "ptBR": [
+          "250 g de frango moído",
+          "½ xícara de cenoura bem ralada",
+          "1 ovo",
+          "⅓ xícara de farinha de rosca",
+          "Uma pitada de sal"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[27].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 28,
+      "runtimeId": 28,
+      "canonicalTitleEN": "Little Egg Nests",
+      "canonicalTitlePTBR": "Ninhos de ovo no pão",
+      "translationStatus": "EXISTING",
+      "category": "Breakfast",
+      "method": "Air fryer",
+      "time": "160°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 bread slices",
+          "2 eggs",
+          "¼ cup mozzarella",
+          "2 tbsp corn"
+        ],
+        "ptBR": [
+          "4 fatias de pão",
+          "2 ovos",
+          "¼ xícara de muçarela",
+          "2 colheres de sopa de milho"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[28].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 29,
+      "runtimeId": 29,
+      "canonicalTitleEN": "Rainbow Omelette Bites",
+      "canonicalTitlePTBR": "Bocadinhos de omelete arco-íris",
+      "translationStatus": "EXISTING",
+      "category": "Breakfast",
+      "method": "Air fryer",
+      "time": "160°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 eggs",
+          "¼ cup grated cheese",
+          "2 tbsp grated carrot",
+          "2 tbsp chopped spinach",
+          "2 tbsp diced bell pepper"
+        ],
+        "ptBR": [
+          "2 ovos",
+          "¼ xícara de queijo ralado",
+          "2 colheres de sopa de cenoura ralada",
+          "2 colheres de sopa de espinafre picado",
+          "2 colheres de sopa de pimentão em cubinhos"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[29].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 30,
+      "runtimeId": 30,
+      "canonicalTitleEN": "Starry Egg Sandwiches",
+      "canonicalTitlePTBR": "Sanduíches de ovo em forma de estrela",
+      "translationStatus": "EXISTING",
+      "category": "Breakfast",
+      "method": "Stovetop",
+      "time": "8–10 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 bread slices",
+          "2 eggs",
+          "2 tbsp grated cheese",
+          "1 tsp butter"
+        ],
+        "ptBR": [
+          "2 fatias de pão",
+          "2 ovos",
+          "2 colheres de sopa de queijo ralado",
+          "1 colher de chá de manteiga"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[30].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 31,
+      "runtimeId": 31,
+      "canonicalTitleEN": "Strawberry Banana Sushi",
+      "canonicalTitlePTBR": "Sushi de morango e banana",
+      "translationStatus": "EXISTING",
+      "category": "Fruit",
+      "method": "No cooking",
+      "time": "8 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 small tortillas",
+          "1 banana",
+          "4 strawberries",
+          "3 tbsp cream cheese"
+        ],
+        "ptBR": [
+          "2 tortilhas pequenas",
+          "1 banana",
+          "4 morangos",
+          "3 colheres de sopa de cream cheese"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[31].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 32,
+      "runtimeId": 32,
+      "canonicalTitleEN": "Apple Cinnamon Swirls",
+      "canonicalTitlePTBR": "Espirais de maçã com canela",
+      "translationStatus": "EXISTING",
+      "category": "Sweet",
+      "method": "Air fryer",
+      "time": "170°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 sheet puff pastry",
+          "1 small apple",
+          "½ tsp cinnamon",
+          "1 tsp sugar (optional)"
+        ],
+        "ptBR": [
+          "1 folha de massa folhada",
+          "1 maçã pequena",
+          "½ colher de chá de canela",
+          "1 colher de chá de açúcar (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[32].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 33,
+      "runtimeId": 33,
+      "canonicalTitleEN": "Rainbow Fruit Parfaits",
+      "canonicalTitlePTBR": "Taças de frutas arco-íris",
+      "translationStatus": "EXISTING",
+      "category": "Fruit",
+      "method": "No cooking",
+      "time": "5 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup plain yogurt",
+          "½ cup chopped mango",
+          "½ banana",
+          "4 strawberries",
+          "2 tbsp oats"
+        ],
+        "ptBR": [
+          "1 xícara de iogurte natural",
+          "½ xícara de manga picada",
+          "½ banana",
+          "4 morangos",
+          "2 colheres de sopa de aveia"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[33].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 34,
+      "runtimeId": 34,
+      "canonicalTitleEN": "Carrot & Potato Tots",
+      "canonicalTitlePTBR": "Bolinhos de cenoura e batata",
+      "translationStatus": "EXISTING",
+      "category": "Veggies",
+      "method": "Air fryer",
+      "time": "180°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup cooked mashed potato",
+          "½ cup grated carrot",
+          "¼ cup cheese",
+          "⅓ cup breadcrumbs"
+        ],
+        "ptBR": [
+          "1 xícara de batata cozida e amassada",
+          "½ xícara de cenoura ralada",
+          "¼ xícara de queijo",
+          "⅓ xícara de farinha de rosca"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[34].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 35,
+      "runtimeId": 35,
+      "canonicalTitleEN": "Rainbow Veggie Triangles",
+      "canonicalTitlePTBR": "Triângulos arco-íris de legumes",
+      "translationStatus": "EXISTING",
+      "category": "Veggies",
+      "method": "Air fryer",
+      "time": "170°C · 5–7 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 tortillas",
+          "½ cup cheese",
+          "¼ cup cooked corn",
+          "¼ cup chopped spinach"
+        ],
+        "ptBR": [
+          "2 tortilhas",
+          "½ xícara de queijo",
+          "¼ xícara de milho cozido",
+          "¼ xícara de espinafre picado"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[35].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 36,
+      "runtimeId": 36,
+      "canonicalTitleEN": "Mini Rainbow Pepper Boats",
+      "canonicalTitlePTBR": "Barquinhos de minipimentão arco-íris",
+      "translationStatus": "EXISTING",
+      "category": "Veggies",
+      "method": "Air fryer",
+      "time": "170°C · 8–12 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 sweet mini peppers",
+          "½ cup cooked rice",
+          "¼ cup cooked corn",
+          "¼ cup grated cheese"
+        ],
+        "ptBR": [
+          "4 minipimentões doces",
+          "½ xícara de arroz cozido",
+          "¼ xícara de milho cozido",
+          "¼ xícara de queijo ralado"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[36].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 37,
+      "runtimeId": 37,
+      "canonicalTitleEN": "Chicken Rainbow Pinwheels",
+      "canonicalTitlePTBR": "Espirais arco-íris de frango",
+      "translationStatus": "EXISTING",
+      "category": "Chicken",
+      "method": "No cooking",
+      "time": "10 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 tortillas",
+          "½ cup fully cooked chilled chicken",
+          "3 tbsp cream cheese",
+          "¼ cup grated carrot",
+          "2 lettuce leaves"
+        ],
+        "ptBR": [
+          "2 tortilhas",
+          "½ xícara de frango completamente cozido e resfriado",
+          "3 colheres de sopa de cream cheese",
+          "¼ xícara de cenoura ralada",
+          "2 folhas de alface"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[37].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 38,
+      "runtimeId": 38,
+      "canonicalTitleEN": "Spinach & Cheese Egg Clouds",
+      "canonicalTitlePTBR": "Nuvens de ovo com espinafre e queijo",
+      "translationStatus": "EXISTING",
+      "category": "Breakfast",
+      "method": "Air fryer",
+      "time": "160°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 eggs",
+          "¼ cup mozzarella",
+          "¼ cup finely chopped spinach",
+          "1 tbsp milk"
+        ],
+        "ptBR": [
+          "2 ovos",
+          "¼ xícara de muçarela",
+          "¼ xícara de espinafre bem picadinho",
+          "1 colher de sopa de leite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[38].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 39,
+      "runtimeId": 39,
+      "canonicalTitleEN": "Chicken & Corn Mini Pancakes",
+      "canonicalTitlePTBR": "Minipanquecas de frango e milho",
+      "translationStatus": "EXISTING",
+      "category": "Chicken",
+      "method": "Stovetop",
+      "time": "2–3 min per side",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "½ cup fully cooked shredded chicken",
+          "¼ cup corn",
+          "1 egg",
+          "¼ cup flour",
+          "2 tbsp milk"
+        ],
+        "ptBR": [
+          "½ xícara de frango completamente cozido e desfiado",
+          "¼ xícara de milho",
+          "1 ovo",
+          "¼ xícara de farinha de trigo",
+          "2 colheres de sopa de leite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[39].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 40,
+      "runtimeId": 40,
+      "canonicalTitleEN": "Apple Sandwich Smiles",
+      "canonicalTitlePTBR": "Sanduichinhos sorridentes de maçã",
+      "translationStatus": "EXISTING",
+      "category": "Fruit",
+      "method": "No cooking",
+      "time": "5 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 apple",
+          "2 tbsp peanut or sunflower seed butter",
+          "½ banana"
+        ],
+        "ptBR": [
+          "1 maçã",
+          "2 colheres de sopa de pasta de amendoim ou de sementes de girassol",
+          "½ banana"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[40].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 41,
+      "runtimeId": 41,
+      "canonicalTitleEN": "Cheesy Chicken Meatballs",
+      "canonicalTitlePTBR": "Almôndegas de frango com queijo",
+      "translationStatus": "EXISTING",
+      "category": "Chicken",
+      "method": "Air fryer",
+      "time": "180°C · approx. 12–18 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "250 g ground chicken",
+          "¼ cup cheese",
+          "¼ cup breadcrumbs",
+          "1 egg"
+        ],
+        "ptBR": [
+          "250 g de frango moído",
+          "¼ xícara de queijo",
+          "¼ xícara de farinha de rosca",
+          "1 ovo"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[41].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 42,
+      "runtimeId": 42,
+      "canonicalTitleEN": "Strawberry French Toast Roll-Ups",
+      "canonicalTitlePTBR": "Rolinhos de rabanada com morango",
+      "translationStatus": "EXISTING",
+      "category": "Sweet",
+      "method": "Air fryer",
+      "time": "170°C · 7–10 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 bread slices",
+          "4 strawberries",
+          "1 egg",
+          "2 tbsp milk",
+          "pinch of cinnamon"
+        ],
+        "ptBR": [
+          "4 fatias de pão",
+          "4 morangos",
+          "1 ovo",
+          "2 colheres de sopa de leite",
+          "Uma pitada de canela"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[42].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 43,
+      "runtimeId": 43,
+      "canonicalTitleEN": "Broccoli Potato Stars",
+      "canonicalTitlePTBR": "Estrelinhas de brócolis e batata",
+      "translationStatus": "EXISTING",
+      "category": "Veggies",
+      "method": "Air fryer",
+      "time": "180°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup cooked mashed potato",
+          "½ cup cooked chopped broccoli",
+          "¼ cup cheese",
+          "⅓ cup breadcrumbs"
+        ],
+        "ptBR": [
+          "1 xícara de batata cozida e amassada",
+          "½ xícara de brócolis cozido e picado",
+          "¼ xícara de queijo",
+          "⅓ xícara de farinha de rosca"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[43].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 44,
+      "runtimeId": 44,
+      "canonicalTitleEN": "Pizza Egg Muffins",
+      "canonicalTitlePTBR": "Muffins de ovo com sabor de pizza",
+      "translationStatus": "EXISTING",
+      "category": "Breakfast",
+      "method": "Air fryer",
+      "time": "160°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 eggs",
+          "¼ cup mozzarella",
+          "2 tbsp finely diced tomato",
+          "2 tbsp diced bell pepper",
+          "pinch oregano"
+        ],
+        "ptBR": [
+          "2 ovos",
+          "¼ xícara de muçarela",
+          "2 colheres de sopa de tomate em cubinhos bem pequenos",
+          "2 colheres de sopa de pimentão em cubinhos",
+          "Uma pitada de orégano"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[44].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 45,
+      "runtimeId": 45,
+      "canonicalTitleEN": "Banana Oat Cookies",
+      "canonicalTitlePTBR": "Biscoitinhos de banana e aveia",
+      "translationStatus": "EXISTING",
+      "category": "Sweet",
+      "method": "Air fryer",
+      "time": "160°C · 8–12 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 ripe banana",
+          "¾ cup rolled oats",
+          "¼ tsp cinnamon",
+          "1 tbsp chocolate chips (optional)"
+        ],
+        "ptBR": [
+          "1 banana madura",
+          "¾ xícara de aveia em flocos",
+          "¼ colher de chá de canela",
+          "1 colher de sopa de gotas de chocolate (opcional)"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[45].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 46,
+      "runtimeId": 46,
+      "canonicalTitleEN": "Nugget Treasure Pockets",
+      "canonicalTitlePTBR": "Pastelinhos de nuggets",
+      "translationStatus": "EXISTING",
+      "category": "Chicken",
+      "method": "Air fryer",
+      "time": "170°C · 5–8 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 tortillas",
+          "4 fully cooked nuggets",
+          "¼ cup mozzarella",
+          "2 tbsp tomato sauce"
+        ],
+        "ptBR": [
+          "2 tortilhas",
+          "4 nuggets completamente preparados",
+          "¼ xícara de muçarela",
+          "2 colheres de sopa de molho de tomate"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[46].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 47,
+      "runtimeId": 47,
+      "canonicalTitleEN": "Sunshine Mango Smoothie",
+      "canonicalTitlePTBR": "Vitamina de manga ensolarada",
+      "translationStatus": "EXISTING",
+      "category": "Fruit",
+      "method": "No cooking",
+      "time": "5 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "½ cup chopped mango",
+          "1 banana",
+          "½ cup plain yogurt",
+          "½ cup milk"
+        ],
+        "ptBR": [
+          "½ xícara de manga picada",
+          "1 banana",
+          "½ xícara de iogurte natural",
+          "½ xícara de leite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[47].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 48,
+      "runtimeId": 48,
+      "canonicalTitleEN": "Carrot Cheese Fritters",
+      "canonicalTitlePTBR": "Bolinhos de cenoura com queijo",
+      "translationStatus": "EXISTING",
+      "category": "Veggies",
+      "method": "Stovetop",
+      "time": "2–3 min per side",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup grated carrot",
+          "1 egg",
+          "¼ cup flour",
+          "¼ cup grated cheese"
+        ],
+        "ptBR": [
+          "1 xícara de cenoura ralada",
+          "1 ovo",
+          "¼ xícara de farinha de trigo",
+          "¼ xícara de queijo ralado"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[48].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 49,
+      "runtimeId": 49,
+      "canonicalTitleEN": "Strawberry Banana Crunch Cups",
+      "canonicalTitlePTBR": "Copinhos crocantes de morango e banana",
+      "translationStatus": "EXISTING",
+      "category": "Fruit",
+      "method": "No cooking",
+      "time": "5 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "½ cup strawberries",
+          "1 banana",
+          "1 cup yogurt",
+          "¼ cup granola"
+        ],
+        "ptBR": [
+          "½ xícara de morangos",
+          "1 banana",
+          "1 xícara de iogurte",
+          "¼ xícara de granola"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[49].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 50,
+      "runtimeId": 50,
+      "canonicalTitleEN": "Aaria's Superstar Chicken Pizzas",
+      "canonicalTitlePTBR": "Pizzas de frango estreladas da Aaria",
+      "translationStatus": "EXISTING",
+      "category": "Chicken",
+      "method": "Air fryer",
+      "time": "170°C · 5–7 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 bread slices",
+          "½ cup fully cooked shredded chicken",
+          "4 tbsp tomato sauce",
+          "½ cup cheese",
+          "2 tbsp corn"
+        ],
+        "ptBR": [
+          "4 fatias de pão",
+          "½ xícara de frango completamente cozido e desfiado",
+          "4 colheres de sopa de molho de tomate",
+          "½ xícara de queijo",
+          "2 colheres de sopa de milho"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[50].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 51,
+      "runtimeId": 51,
+      "canonicalTitleEN": "Masala Cheese Toast",
+      "canonicalTitlePTBR": "Torrada de queijo com masala",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Air fryer",
+      "time": "170°C · 5–7 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 bread slices",
+          "½ cup grated cheese",
+          "2 tbsp diced tomato",
+          "2 tbsp diced capsicum",
+          "pinch chaat masala"
+        ],
+        "ptBR": [
+          "2 fatias de pão",
+          "½ xícara de queijo ralado",
+          "2 colheres de sopa de tomate em cubinhos",
+          "2 colheres de sopa de pimentão em cubinhos",
+          "Uma pitada de chaat masala"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[51].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 52,
+      "runtimeId": 52,
+      "canonicalTitleEN": "Mini Paneer Tikka Cubes",
+      "canonicalTitlePTBR": "Cubinhos de paneer tikka",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Air fryer",
+      "time": "180°C · 8–12 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "150 g paneer cubes",
+          "2 tbsp plain yogurt",
+          "¼ tsp mild tikka masala",
+          "½ capsicum",
+          "1 tsp oil"
+        ],
+        "ptBR": [
+          "150 g de paneer em cubinhos",
+          "2 colheres de sopa de iogurte natural",
+          "¼ colher de chá de tikka masala suave",
+          "½ pimentão",
+          "1 colher de chá de azeite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[52].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 53,
+      "runtimeId": 53,
+      "canonicalTitleEN": "Aloo Cheese Sandwich",
+      "canonicalTitlePTBR": "Sanduíche de batata com queijo",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Stovetop",
+      "time": "3–4 min per side",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 bread slices",
+          "½ cup cooked mashed potato",
+          "¼ cup cheese",
+          "pinch cumin",
+          "1 tsp butter"
+        ],
+        "ptBR": [
+          "2 fatias de pão",
+          "½ xícara de batata cozida e amassada",
+          "¼ xícara de queijo",
+          "Uma pitada de cominho",
+          "1 colher de chá de manteiga"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[53].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 54,
+      "runtimeId": 54,
+      "canonicalTitleEN": "Paneer Pizza Bites",
+      "canonicalTitlePTBR": "Bocadinhos de pizza com paneer",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Air fryer",
+      "time": "170°C · 5–7 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 small bread slices",
+          "½ cup diced paneer",
+          "¼ cup mozzarella",
+          "4 tbsp tomato sauce",
+          "2 tbsp corn"
+        ],
+        "ptBR": [
+          "4 fatias pequenas de pão",
+          "½ xícara de paneer em cubinhos",
+          "¼ xícara de muçarela",
+          "4 colheres de sopa de molho de tomate",
+          "2 colheres de sopa de milho"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[54].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 55,
+      "runtimeId": 55,
+      "canonicalTitleEN": "Mini Aloo Tikki",
+      "canonicalTitlePTBR": "Mini aloo tikki",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Stovetop",
+      "time": "3–4 min per side",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup cooked mashed potato",
+          "¼ cup cooked peas",
+          "¼ cup breadcrumbs",
+          "pinch ground cumin",
+          "1 tsp oil"
+        ],
+        "ptBR": [
+          "1 xícara de batata cozida e amassada",
+          "¼ xícara de ervilhas cozidas",
+          "¼ xícara de farinha de rosca",
+          "Uma pitada de cominho moído",
+          "1 colher de chá de azeite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[55].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 56,
+      "runtimeId": 56,
+      "canonicalTitleEN": "Crispy Aloo Bread Rolls",
+      "canonicalTitlePTBR": "Rolinhos crocantes de pão com batata",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Air fryer",
+      "time": "180°C · 10–12 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "4 bread slices",
+          "¾ cup cooked mashed potato",
+          "¼ cup cooked peas",
+          "pinch cumin",
+          "1 tsp oil"
+        ],
+        "ptBR": [
+          "4 fatias de pão",
+          "¾ xícara de batata cozida e amassada",
+          "¼ xícara de ervilhas cozidas",
+          "Uma pitada de cominho",
+          "1 colher de chá de azeite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[56].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 57,
+      "runtimeId": 57,
+      "canonicalTitleEN": "Rainbow Veggie Cutlets",
+      "canonicalTitlePTBR": "Bolinhos arco-íris de legumes",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Air fryer",
+      "time": "180°C · 10–14 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup cooked mashed potato",
+          "¼ cup cooked carrot",
+          "¼ cup cooked peas",
+          "2 tbsp corn",
+          "⅓ cup breadcrumbs"
+        ],
+        "ptBR": [
+          "1 xícara de batata cozida e amassada",
+          "¼ xícara de cenoura cozida",
+          "¼ xícara de ervilhas cozidas",
+          "2 colheres de sopa de milho",
+          "⅓ xícara de farinha de rosca"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[57].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "MISSING_REVIEW_ONLY",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 58,
+      "runtimeId": 58,
+      "canonicalTitleEN": "Mini Besan Chilla",
+      "canonicalTitlePTBR": "Mini besan chilla",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Stovetop",
+      "time": "3–4 min per side",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "½ cup besan (chickpea flour)",
+          "½ cup water (adjust)",
+          "¼ cup grated carrot",
+          "1 tbsp chopped coriander",
+          "pinch salt"
+        ],
+        "ptBR": [
+          "½ xícara de besan (farinha de grão-de-bico)",
+          "½ xícara de água (ajuste conforme necessário)",
+          "¼ xícara de cenoura ralada",
+          "1 colher de sopa de coentro picado",
+          "Uma pitada de sal"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[58].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 59,
+      "runtimeId": 59,
+      "canonicalTitleEN": "Mini Suji Uttapam",
+      "canonicalTitlePTBR": "Mini suji uttapam",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Stovetop",
+      "time": "3–4 min per side + 10 min rest",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "½ cup semolina (suji)",
+          "¼ cup plain yogurt",
+          "¼ cup water (adjust)",
+          "2 tbsp grated carrot",
+          "2 tbsp diced tomato",
+          "¼ tsp baking soda"
+        ],
+        "ptBR": [
+          "½ xícara de semolina (suji)",
+          "¼ xícara de iogurte natural",
+          "¼ xícara de água (ajuste conforme necessário)",
+          "2 colheres de sopa de cenoura ralada",
+          "2 colheres de sopa de tomate em cubinhos",
+          "¼ colher de chá de bicarbonato de sódio"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[59].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 60,
+      "runtimeId": 60,
+      "canonicalTitleEN": "Cheesy Egg Bhurji",
+      "canonicalTitlePTBR": "Ovos mexidos com queijo e especiarias",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Stovetop",
+      "time": "7–10 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 eggs",
+          "2 tbsp diced tomato",
+          "2 tbsp finely chopped onion",
+          "¼ cup cheese",
+          "pinch turmeric",
+          "1 tsp oil"
+        ],
+        "ptBR": [
+          "2 ovos",
+          "2 colheres de sopa de tomate em cubinhos",
+          "2 colheres de sopa de cebola bem picadinha",
+          "¼ xícara de queijo",
+          "Uma pitada de cúrcuma",
+          "1 colher de chá de azeite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[60].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 61,
+      "runtimeId": 61,
+      "canonicalTitleEN": "Banana Mini Malpua",
+      "canonicalTitlePTBR": "Minipanquecas de banana malpua",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Stovetop",
+      "time": "2–3 min per side",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 ripe banana",
+          "½ cup wheat flour",
+          "⅓ cup milk (adjust)",
+          "pinch cardamom",
+          "1 tsp oil"
+        ],
+        "ptBR": [
+          "1 banana madura",
+          "½ xícara de farinha de trigo",
+          "⅓ xícara de leite (ajuste conforme necessário)",
+          "Uma pitada de cardamomo",
+          "1 colher de chá de azeite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[61].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 62,
+      "runtimeId": 62,
+      "canonicalTitleEN": "Rainbow Vegetable Poha",
+      "canonicalTitlePTBR": "Poha arco-íris de legumes",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Stovetop",
+      "time": "10–15 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup thick poha",
+          "¼ cup cooked peas",
+          "¼ cup finely diced carrot",
+          "¼ tsp turmeric",
+          "1 tsp oil",
+          "lemon wedge"
+        ],
+        "ptBR": [
+          "1 xícara de poha grosso",
+          "¼ xícara de ervilhas cozidas",
+          "¼ xícara de cenoura em cubinhos bem pequenos",
+          "¼ colher de chá de cúrcuma",
+          "1 colher de chá de azeite",
+          "Um gomo de limão"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[62].steps; translated record by recipeId",
+      "stepCountEN": 3,
+      "stepCountPTBR": 3,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 63,
+      "runtimeId": 63,
+      "canonicalTitleEN": "Coconut Ladoo",
+      "canonicalTitlePTBR": "Ladoo de coco",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "No cooking",
+      "time": "10 min + chill",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup fine desiccated coconut",
+          "⅓ cup sweetened condensed milk (adjust)",
+          "pinch cardamom"
+        ],
+        "ptBR": [
+          "1 xícara de coco seco ralado fino",
+          "⅓ xícara de leite condensado (ajuste conforme necessário)",
+          "Uma pitada de cardamomo"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[63].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 64,
+      "runtimeId": 64,
+      "canonicalTitleEN": "Mango Shrikhand",
+      "canonicalTitlePTBR": "Shrikhand de manga",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "No cooking",
+      "time": "5–10 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "1 cup thick plain Greek yogurt",
+          "½ cup mango pulp",
+          "pinch cardamom"
+        ],
+        "ptBR": [
+          "1 xícara de iogurte grego natural espesso",
+          "½ xícara de polpa de manga",
+          "Uma pitada de cardamomo"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[64].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult helps with cutting; wash produce and check allergies.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 65,
+      "runtimeId": 65,
+      "canonicalTitleEN": "Roti Pizza",
+      "canonicalTitlePTBR": "Pizza de roti",
+      "translationStatus": "EXISTING",
+      "category": "Indian",
+      "method": "Stovetop",
+      "time": "5–8 min",
+      "yieldText": "2–4 small servings",
+      "servings": null,
+      "ingredients": {
+        "en": [
+          "2 ready-made rotis",
+          "4 tbsp tomato sauce",
+          "½ cup mozzarella",
+          "¼ cup diced capsicum",
+          "2 tbsp corn"
+        ],
+        "ptBR": [
+          "2 rotis prontos",
+          "4 colheres de sopa de molho de tomate",
+          "½ xícara de muçarela",
+          "¼ xícara de pimentão em cubinhos",
+          "2 colheres de sopa de milho"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[65].steps; translated record by recipeId",
+      "stepCountEN": 2,
+      "stepCountPTBR": 2,
+      "safety": {
+        "en": "Adult handles hot equipment, knives and checks food is fully cooked.",
+        "ptBR": null,
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": false,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": false,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 66,
+      "runtimeId": 66,
+      "canonicalTitleEN": "Rainbow Vegetable Lasagna",
+      "canonicalTitlePTBR": "Lasanha Arco-Íris de Legumes",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Oven",
+      "time": "180°C · about 25–30 min bake (descriptive only; no timer)",
+      "yieldText": "4 portions",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "250 g plain white flour",
+          "2 medium eggs (100 g edible weight)",
+          "30 g water for the pasta dough",
+          "180 g plain tomato sauce",
+          "150 g raw courgette, thinly sliced",
+          "100 g raw carrot, grated",
+          "150 g whole-milk mozzarella, grated",
+          "5 g olive oil for the dish",
+          "1 g table salt"
+        ],
+        "ptBR": [
+          "250 g de farinha de trigo branca",
+          "2 ovos médios (100 g de peso comestível)",
+          "30 g de água para a massa",
+          "180 g de molho de tomate simples",
+          "150 g de abobrinha crua em fatias finas",
+          "100 g de cenoura crua ralada",
+          "150 g de muçarela integral ralada",
+          "5 g de azeite para a assadeira",
+          "1 g de sal de mesa"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[66].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains wheat/gluten, egg and milk. An adult handles the hot oven and baking dish. Wash hands and surfaces after raw egg; do not eat raw dough.",
+        "ptBR": "Contém trigo/glúten, ovo e leite. Um adulto cuida do forno quente e da assadeira. Lave mãos e superfícies depois de manusear ovo cru; não coma massa crua.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 67,
+      "runtimeId": 67,
+      "canonicalTitleEN": "Cheesy Paneer Paratha",
+      "canonicalTitlePTBR": "Paratha de Paneer com Queijo",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Hob",
+      "time": "Medium heat · about 3–4 min each side (descriptive only; no timer)",
+      "yieldText": "4 parathas",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "240 g wholemeal wheat flour",
+          "180 g paneer, crumbled",
+          "120 g drinking water for dough",
+          "8 g fresh coriander leaves, finely chopped",
+          "10 g olive oil for pan-cooking",
+          "1.5 g table salt",
+          "1 g ground cumin"
+        ],
+        "ptBR": [
+          "240 g de farinha de trigo integral",
+          "180 g de paneer esfarelado",
+          "120 g de água potável para a massa",
+          "8 g de folhas de coentro fresco picadas bem finas",
+          "10 g de azeite para cozinhar na frigideira",
+          "1,5 g de sal de mesa",
+          "1 g de cominho em pó"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[67].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains wheat/gluten and milk. An adult handles the hot pan. Keep raw dough and ready-to-eat filling separate; wash hands after handling flour.",
+        "ptBR": "Contém trigo/glúten e leite. Um adulto cuida da frigideira quente. Mantenha a massa crua separada do recheio pronto para comer; lave as mãos depois de manusear farinha.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 68,
+      "runtimeId": 68,
+      "canonicalTitleEN": "Mini Chicken Burgers",
+      "canonicalTitlePTBR": "Mini-hambúrgueres de Frango",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Hob",
+      "time": "Adult-cooked · about 4–5 min each side (descriptive only; no timer)",
+      "yieldText": "4 mini burgers",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "240 g raw ground chicken",
+          "4 small plain dinner rolls (100 g total)",
+          "40 g whole-milk mozzarella, grated",
+          "20 g washed green-leaf lettuce",
+          "60 g raw tomato, thinly sliced",
+          "30 g raw onion, finely chopped",
+          "5 g olive oil for the pan",
+          "1 g table salt"
+        ],
+        "ptBR": [
+          "240 g de frango moído cru",
+          "4 pãezinhos simples pequenos (100 g no total)",
+          "40 g de muçarela integral ralada",
+          "20 g de alface verde lavada",
+          "60 g de tomate cru em fatias finas",
+          "30 g de cebola crua picada bem fina",
+          "5 g de azeite para a frigideira",
+          "1 g de sal de mesa"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[68].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains wheat/gluten and milk. Raw poultry and the hob are adult-only. Cook chicken to 74°C/165°F at the centre using a food thermometer; wash hands and prevent cross-contamination.",
+        "ptBR": "Contém trigo/glúten e leite. Frango cru e fogão são tarefas exclusivas de um adulto. Cozinhe o frango até 74°C/165°F no centro usando um termômetro culinário; lave as mãos e evite contaminação cruzada.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 69,
+      "runtimeId": 69,
+      "canonicalTitleEN": "Vegetable Biryani",
+      "canonicalTitlePTBR": "Biryani de Legumes",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Hob",
+      "time": "Covered simmer · about 15–20 min (descriptive only; no timer)",
+      "yieldText": "4 bowls",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "200 g raw long-grain white rice",
+          "80 g boiled, drained green peas",
+          "80 g boiled, drained carrot",
+          "100 g boiled, drained cauliflower",
+          "60 g raw onion, finely chopped",
+          "100 g raw tomato, chopped",
+          "10 g olive oil",
+          "2 g ground turmeric",
+          "1 g ground cumin",
+          "0.5 g ground black pepper",
+          "1.5 g table salt",
+          "450 g drinking water"
+        ],
+        "ptBR": [
+          "200 g de arroz branco de grão longo cru",
+          "80 g de ervilhas verdes cozidas e escorridas",
+          "80 g de cenoura cozida e escorrida",
+          "100 g de couve-flor cozida e escorrida",
+          "60 g de cebola crua picada bem fina",
+          "100 g de tomate cru picado",
+          "10 g de azeite",
+          "2 g de cúrcuma em pó",
+          "1 g de cominho em pó",
+          "0,5 g de pimenta-do-reino em pó",
+          "1,5 g de sal de mesa",
+          "450 g de água potável"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[69].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains no major priority allergen as listed; check spice labels for cross-contact. An adult handles the hob, hot oil and pot. Keep the rice hot until serving and refrigerate leftovers promptly.",
+        "ptBR": "Não contém os principais alérgenos prioritários conforme listados; confira os rótulos dos temperos para avisos de contaminação cruzada. Um adulto cuida do fogão, do azeite quente e da panela. Mantenha o arroz quente até servir e refrigere as sobras rapidamente.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 70,
+      "runtimeId": 70,
+      "canonicalTitleEN": "Chicken & Vegetable Pot Pie",
+      "canonicalTitlePTBR": "Tortinhas de Frango e Legumes",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Oven",
+      "time": "200°C · about 20–25 min bake (descriptive only; no timer)",
+      "yieldText": "4 individual pies",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "280 g ready-to-bake puff pastry",
+          "200 g cooked, skinless roasted chicken breast, chopped",
+          "80 g boiled, drained green peas",
+          "80 g boiled, drained carrot, diced",
+          "40 g raw onion, finely chopped",
+          "120 g whole milk",
+          "15 g plain white flour",
+          "14.2 g unsalted butter",
+          "1 g table salt"
+        ],
+        "ptBR": [
+          "280 g de massa folhada pronta para assar",
+          "200 g de peito de frango assado, cozido, sem pele e picado",
+          "80 g de ervilhas verdes cozidas e escorridas",
+          "80 g de cenoura cozida, escorrida e em cubos",
+          "40 g de cebola crua picada bem fina",
+          "120 g de leite integral",
+          "15 g de farinha de trigo branca",
+          "14,2 g de manteiga sem sal",
+          "1 g de sal de mesa"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[70].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains wheat/gluten and milk. An adult handles the oven, hot tins and sauce pan. If using refrigerated cooked chicken, keep it chilled until use and reheat the filling to 74°C/165°F; do not serve lukewarm.",
+        "ptBR": "Contém trigo/glúten e leite. Um adulto cuida do forno, das formas quentes e da panela do molho. Se usar frango cozido refrigerado, mantenha-o frio até usar e reaqueça o recheio a 74°C/165°F; não sirva morno.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 71,
+      "runtimeId": 71,
+      "canonicalTitleEN": "Coconut Rice Pudding Cups",
+      "canonicalTitlePTBR": "Copinhos de Arroz-Doce com Coco",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Hob",
+      "time": "Gentle simmer · about 12 min",
+      "yieldText": "4 cups · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "400 g cooked white glutinous rice",
+          "300 g whole milk",
+          "80 g sweetened condensed milk",
+          "18 g unsweetened dried coconut",
+          "0.5 g table salt"
+        ],
+        "ptBR": [
+          "400 g de arroz branco glutinoso cozido",
+          "300 g de leite integral",
+          "80 g de leite condensado",
+          "18 g de coco seco sem açúcar",
+          "0,5 g de sal de mesa"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[71].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult operates the hob and handles the hot pan. Let the pudding cool before serving. Refrigerate leftovers promptly; use within 2 days as a conservative household instruction.",
+        "ptBR": "Um adulto opera o fogão e cuida da panela quente. Deixe o arroz-doce esfriar antes de servir. Refrigere as sobras rapidamente; use em até 2 dias como orientação doméstica conservadora.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 72,
+      "runtimeId": 72,
+      "canonicalTitleEN": "Paneer Butter Masala",
+      "canonicalTitlePTBR": "Paneer Manteiga Masala",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Hob",
+      "time": "Gentle simmer · about 18 min",
+      "yieldText": "4 small bowls · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "300 g paneer, cut into 2 cm cubes",
+          "200 g red ripe tomatoes, chopped",
+          "80 g onion, finely chopped",
+          "10 g unsalted butter",
+          "120 g whole milk",
+          "13.5 g olive oil",
+          "1 g ground cumin",
+          "0.5 g ground turmeric",
+          "1 g table salt"
+        ],
+        "ptBR": [
+          "300 g de paneer cortado em cubos de 2 cm",
+          "200 g de tomates vermelhos maduros picados",
+          "80 g de cebola picada bem fina",
+          "10 g de manteiga sem sal",
+          "120 g de leite integral",
+          "13,5 g de azeite",
+          "1 g de cominho em pó",
+          "0,5 g de cúrcuma em pó",
+          "1 g de sal de mesa"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[72].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the knife, hob and hot pan. Use mild spices; do not add chilli. Heat the paneer thoroughly and cool before serving.",
+        "ptBR": "Um adulto cuida da faca, do fogão e da panela quente. Use temperos suaves; não acrescente pimenta chili. Aqueça bem o paneer e deixe esfriar antes de servir.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 73,
+      "runtimeId": 73,
+      "canonicalTitleEN": "Spinach & Corn Quiche",
+      "canonicalTitlePTBR": "Quiche de Espinafre e Milho",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Oven",
+      "time": "200°C · about 25–30 min",
+      "yieldText": "1 quiche · 6 servings",
+      "servings": 6,
+      "ingredients": {
+        "en": [
+          "250 g ready-rolled puff pastry",
+          "150 g whole raw egg, without shells (about 3 large eggs)",
+          "70 g raw spinach, washed and chopped",
+          "60 g canned sweetcorn, drained",
+          "50 g grated cheddar",
+          "60 g whole milk",
+          "30 g onion, finely chopped"
+        ],
+        "ptBR": [
+          "250 g de massa folhada pronta, já aberta",
+          "150 g de ovo inteiro cru, sem casca (cerca de 3 ovos grandes)",
+          "70 g de espinafre cru lavado e picado",
+          "60 g de milho-doce enlatado e escorrido",
+          "50 g de cheddar ralado",
+          "60 g de leite integral",
+          "30 g de cebola picada bem fina"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[73].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the oven, hot tin and sharp knife. Bake until the egg centre is fully set. Cool before slicing; refrigerate leftovers promptly.",
+        "ptBR": "Um adulto cuida do forno, da forma quente e da faca afiada. Asse até o centro com ovo ficar totalmente firme. Deixe esfriar antes de cortar; refrigere as sobras rapidamente.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 74,
+      "runtimeId": 74,
+      "canonicalTitleEN": "Mini Vegetable Samosas",
+      "canonicalTitlePTBR": "Mini-samosas de Legumes",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Oven",
+      "time": "200°C · about 20–25 min",
+      "yieldText": "8 mini samosas · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "180 g all-purpose wheat flour",
+          "75 g water for the dough",
+          "20 g olive oil for the dough",
+          "220 g boiled potato, peeled and mashed",
+          "80 g cooked green peas, drained",
+          "60 g boiled carrot, drained and diced",
+          "1 g ground cumin",
+          "3 g raw coriander leaves, finely chopped",
+          "2 g table salt",
+          "8 g olive oil for brushing"
+        ],
+        "ptBR": [
+          "180 g de farinha de trigo branca",
+          "75 g de água para a massa",
+          "20 g de azeite para a massa",
+          "220 g de batata cozida, descascada e amassada",
+          "80 g de ervilhas verdes cozidas e escorridas",
+          "60 g de cenoura cozida, escorrida e em cubos",
+          "1 g de cominho em pó",
+          "3 g de folhas de coentro cru picadas bem finas",
+          "2 g de sal de mesa",
+          "8 g de azeite para pincelar"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[74].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles hot water if needed, the oven and hot tray. Use cooked, cooled vegetables for the filling. Let samosas cool before eating; avoid hard, very hot filling.",
+        "ptBR": "Um adulto cuida de água quente, se necessária, do forno e da assadeira quente. Use legumes cozidos e frios no recheio. Deixe as samosas esfriarem antes de comer; evite servir recheio muito quente e duro.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 75,
+      "runtimeId": 75,
+      "canonicalTitleEN": "Chicken & Spinach Ravioli",
+      "canonicalTitlePTBR": "Ravióli de Frango e Espinafre",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Hob",
+      "time": "Gentle boil · about 4–5 min",
+      "yieldText": "20 ravioli · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "250 g all-purpose wheat flour",
+          "100 g whole raw egg, without shells (about 2 large eggs)",
+          "50 g drinking water for the dough",
+          "120 g cooked roasted chicken breast, finely shredded and chilled",
+          "70 g raw spinach, washed and finely chopped",
+          "60 g grated whole-milk mozzarella",
+          "13.5 g olive oil",
+          "2 g table salt"
+        ],
+        "ptBR": [
+          "250 g de farinha de trigo branca",
+          "100 g de ovo inteiro cru, sem casca (cerca de 2 ovos grandes)",
+          "50 g de água potável para a massa",
+          "120 g de peito de frango assado, cozido, desfiado bem fino e refrigerado",
+          "70 g de espinafre cru lavado e picado bem fino",
+          "60 g de muçarela integral ralada",
+          "13,5 g de azeite",
+          "2 g de sal de mesa"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[75].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult checks and prepares the cooked chicken, handles the pasta cutter, boiling water and hot pan. Refrigerate cooked chicken promptly and use within 2 days for this recipe; do not use chicken left at room temperature. Cook ravioli until steaming hot throughout; cool before eating.",
+        "ptBR": "Um adulto confere e prepara o frango cozido, usa o cortador de massa e cuida da água fervente e da panela quente. Refrigere o frango cozido rapidamente e use nesta receita em até 2 dias; não use frango que ficou em temperatura ambiente. Cozinhe os raviólis até ficarem bem quentes por inteiro; deixe esfriar antes de comer.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 76,
+      "runtimeId": 76,
+      "canonicalTitleEN": "Rainbow Vegetable Noodle Toss",
+      "canonicalTitlePTBR": "Macarrão Arco-Íris com Legumes",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "No-cook assembly (all components pre-cooked by adult)",
+      "time": "Prep 25 min",
+      "yieldText": "4 bowls · 620 g ingredients before serving",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "250 g cooked rice noodles, cooled",
+          "80 g raw carrot, finely cut into ribbons",
+          "80 g raw red pepper, finely sliced",
+          "100 g broccoli, boiled and cooled",
+          "100 g peas, boiled and cooled",
+          "9 g olive oil",
+          "1 g fine salt"
+        ],
+        "ptBR": [
+          "250 g de macarrão de arroz cozido e frio",
+          "80 g de cenoura crua cortada em tiras finas",
+          "80 g de pimentão vermelho cru em tiras finas",
+          "100 g de brócolis cozido e frio",
+          "100 g de ervilhas cozidas e frias",
+          "9 g de azeite",
+          "1 g de sal fino"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[76].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult must handle boiling water and cook/cool the noodles and vegetables. Refrigerate cooked rice noodles promptly; keep chilled until serving. Avoid cross-contact with allergens.",
+        "ptBR": "Um adulto deve cuidar da água fervente e cozinhar/resfriar o macarrão e os legumes. Refrigere rapidamente o macarrão de arroz cozido; mantenha frio até servir. Evite contaminação cruzada com alérgenos.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 77,
+      "runtimeId": 77,
+      "canonicalTitleEN": "Strawberry Cupcakes",
+      "canonicalTitlePTBR": "Cupcakes de Morango",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Oven bake",
+      "time": "Prep 25 min · bake 16–20 min",
+      "yieldText": "8 cupcakes · 8 servings",
+      "servings": 8,
+      "ingredients": {
+        "en": [
+          "120 g plain wheat flour",
+          "90 g granulated sugar",
+          "100 g beaten whole egg (about 2 large eggs)",
+          "60 g unsalted butter, softened",
+          "60 g whole milk",
+          "100 g strawberries, finely chopped",
+          "80 g regular cream cheese, softened (icing)",
+          "20 g granulated sugar (icing)",
+          "1 g baking soda"
+        ],
+        "ptBR": [
+          "120 g de farinha de trigo branca",
+          "90 g de açúcar cristal",
+          "100 g de ovo inteiro batido (cerca de 2 ovos grandes)",
+          "60 g de manteiga sem sal amolecida",
+          "60 g de leite integral",
+          "100 g de morangos picados bem finos",
+          "80 g de cream cheese tradicional amolecido (cobertura)",
+          "20 g de açúcar cristal (cobertura)",
+          "1 g de bicarbonato de sódio"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[77].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult operates the oven and handles the hot tin. Do not eat raw batter containing flour or egg. Refrigerate cream-cheese-topped cupcakes promptly; keep cold until serving. Check wheat/gluten, egg and milk allergies and package cross-contact.",
+        "ptBR": "Um adulto opera o forno e cuida da forma quente. Não coma massa crua que contenha farinha ou ovo. Refrigere rapidamente os cupcakes com cobertura de cream cheese; mantenha frios até servir. Confira alergias a trigo/glúten, ovo e leite, e avisos de contaminação cruzada nas embalagens.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 78,
+      "runtimeId": 78,
+      "canonicalTitleEN": "Stuffed Potato Boats",
+      "canonicalTitlePTBR": "Batatas Recheadas em Barquinhos",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Oven bake and reheat",
+      "time": "Prep 25 min · bake 45–60 min",
+      "yieldText": "4 potato boats · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "600 g baked russet potato flesh and skin (4 small/medium potatoes)",
+          "120 g broccoli, boiled and drained",
+          "100 g canned sweetcorn, drained",
+          "80 g grated cheddar",
+          "60 g plain whole-milk Greek yoghurt",
+          "1 g fine salt"
+        ],
+        "ptBR": [
+          "600 g de polpa e casca de batata russet assada (4 batatas pequenas/médias)",
+          "120 g de brócolis cozido e escorrido",
+          "100 g de milho-doce enlatado e escorrido",
+          "80 g de cheddar ralado",
+          "60 g de iogurte grego natural integral",
+          "1 g de sal fino"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[78].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the oven, hot tray and any sharp tool. Cool potatoes before Aaria scoops them. Reheat leftovers until steaming hot throughout; refrigerate promptly. Contains milk; check cross-contact.",
+        "ptBR": "Um adulto cuida do forno, da assadeira quente e de qualquer ferramenta afiada. Deixe as batatas esfriarem antes de Aaria retirar o centro. Reaqueça as sobras até soltarem vapor por inteiro; refrigere rapidamente. Contém leite; confira avisos de contaminação cruzada.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 79,
+      "runtimeId": 79,
+      "canonicalTitleEN": "Chicken Fried Rice",
+      "canonicalTitlePTBR": "Arroz Frito com Frango",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Stovetop (adult handles hot pan)",
+      "time": "Prep 25 min · cook 10–12 min",
+      "yieldText": "4 bowls · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "600 g cooked long-grain white rice, chilled",
+          "200 g cooked skinless chicken breast, diced",
+          "100 g green peas, boiled and drained",
+          "100 g carrots, boiled and diced",
+          "100 g whole egg, beaten (about 2 large eggs)",
+          "9 g olive oil",
+          "1 g fine salt",
+          "0.5 g ground black pepper"
+        ],
+        "ptBR": [
+          "600 g de arroz branco de grão longo cozido e refrigerado",
+          "200 g de peito de frango cozido, sem pele e em cubos",
+          "100 g de ervilhas verdes cozidas e escorridas",
+          "100 g de cenouras cozidas e em cubos",
+          "100 g de ovo inteiro batido (cerca de 2 ovos grandes)",
+          "9 g de azeite",
+          "1 g de sal fino",
+          "0,5 g de pimenta-do-reino em pó"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[79].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Aaria does not use the hob or touch the hot pan. Adult handles cooking and verifies egg is fully set and chicken is reheated to 74°C/165°F. Chill cooked rice promptly and refrigerate; reheat only once until steaming hot. Contains egg. Check cross-contact.",
+        "ptBR": "Aaria não usa o fogão nem toca na frigideira quente. Um adulto cozinha e verifica se o ovo está totalmente firme e se o frango foi reaquecido a 74°C/165°F. Resfrie o arroz cozido rapidamente e refrigere; reaqueça somente uma vez até soltar vapor e ficar bem quente. Contém ovo. Confira avisos de contaminação cruzada.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 80,
+      "runtimeId": 80,
+      "canonicalTitleEN": "Mini Cheesy Polenta Squares",
+      "canonicalTitlePTBR": "Quadradinhos de Polenta com Queijo",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Mommy & Daddy",
+      "method": "Stovetop and oven bake (adult handles heat)",
+      "time": "Prep 25 min · bake 15–20 min",
+      "yieldText": "16 squares · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "160 g enriched yellow cornmeal",
+          "500 g water",
+          "250 g whole milk",
+          "100 g grated mozzarella",
+          "50 g beaten whole egg (about 1 large egg)",
+          "9 g olive oil",
+          "1 g fine salt",
+          "0.5 g dried oregano"
+        ],
+        "ptBR": [
+          "160 g de fubá amarelo enriquecido",
+          "500 g de água",
+          "250 g de leite integral",
+          "100 g de muçarela ralada",
+          "50 g de ovo inteiro batido (cerca de 1 ovo grande)",
+          "9 g de azeite",
+          "1 g de sal fino",
+          "0,5 g de orégano seco"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[80].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the hob, hot pot, oven and knife. Keep Aaria away from hot liquid and splashes. Cook egg-containing mixture thoroughly. Contains milk and egg; check cross-contact.",
+        "ptBR": "Um adulto cuida do fogão, da panela quente, do forno e da faca. Mantenha Aaria longe do líquido quente e dos respingos. Cozinhe totalmente a mistura com ovo. Contém leite e ovo; confira avisos de contaminação cruzada.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 81,
+      "runtimeId": 81,
+      "canonicalTitleEN": "Creamy Rainbow Corn Chowder",
+      "canonicalTitlePTBR": "Sopa Cremosa Arco-Íris de Milho",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "Hob",
+      "time": "Adult-supervised · about 30 min",
+      "yieldText": "About 1.05 kg · 4 bowls",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "180 g drained sweetcorn",
+          "300 g cooked peeled potato, diced",
+          "100 g cooked carrot, diced",
+          "400 g whole milk",
+          "60 g chopped onion",
+          "8 g olive oil",
+          "1 g table salt"
+        ],
+        "ptBR": [
+          "180 g de milho-doce escorrido",
+          "300 g de batata cozida, descascada e em cubos",
+          "100 g de cenoura cozida em cubos",
+          "400 g de leite integral",
+          "60 g de cebola picada",
+          "8 g de azeite",
+          "1 g de sal de mesa"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[81].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains milk. An adult handles the hob, hot pan and hot soup. Use fully cooked vegetables; serve only after cooling to a safe temperature. Check packaged ingredients for cross-contact warnings.",
+        "ptBR": "Contém leite. Um adulto cuida do fogão, da panela quente e da sopa quente. Use legumes totalmente cozidos; sirva somente depois de esfriar até uma temperatura segura. Confira avisos de contaminação cruzada nos ingredientes embalados.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 82,
+      "runtimeId": 82,
+      "canonicalTitleEN": "Rainbow Rice Paper Rolls",
+      "canonicalTitlePTBR": "Rolinhos Arco-Íris de Papel de Arroz",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook",
+      "time": "About 25 min · adult help for cutting",
+      "yieldText": "8 rolls · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "8 rice-paper wrappers (64 g dry weight total)",
+          "80 g raw carrot, cut into thin sticks",
+          "80 g cucumber, cut into thin sticks",
+          "80 g raw red pepper, cut into thin strips",
+          "20 g green-leaf lettuce leaves"
+        ],
+        "ptBR": [
+          "8 folhas de papel de arroz (64 g no total, peso seco)",
+          "80 g de cenoura crua cortada em palitos finos",
+          "80 g de pepino cortado em palitos finos",
+          "80 g de pimentão vermelho cru em tiras finas",
+          "20 g de folhas de alface verde"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[82].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "The vegetables have no listed major allergen; wrapper composition and cross-contact vary by brand, so an adult must check the packet. Keep prepared rolls chilled if not serving immediately.",
+        "ptBR": "Os legumes não têm alérgeno principal listado; a composição e a contaminação cruzada do papel de arroz variam conforme a marca, então um adulto deve conferir a embalagem. Mantenha os rolinhos preparados refrigerados se não forem servidos imediatamente.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 83,
+      "runtimeId": 83,
+      "canonicalTitleEN": "Mini Cucumber Sushi Boats",
+      "canonicalTitlePTBR": "Barquinhos de Pepino com Sushi",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook with pre-cooked rice",
+      "time": "About 20 min · adult help for cutting",
+      "yieldText": "8 boats · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "320 g cucumber with peel, washed",
+          "180 g cooked glutinous white rice, cooled",
+          "60 g regular cream cheese",
+          "40 g raw carrot, finely grated",
+          "3 g sesame seeds",
+          "1 g table salt"
+        ],
+        "ptBR": [
+          "320 g de pepino lavado com casca",
+          "180 g de arroz branco glutinoso cozido e frio",
+          "60 g de cream cheese tradicional",
+          "40 g de cenoura crua ralada bem fina",
+          "3 g de sementes de gergelim",
+          "1 g de sal de mesa"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[83].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains milk and sesame. Rice must be cooled promptly and kept refrigerated; discard if left at room temperature for more than 2 hours (1 hour above 32°C/90°F). An adult handles the knife. No raw fish is used.",
+        "ptBR": "Contém leite e gergelim. O arroz deve ser refrigerado rapidamente e mantido na geladeira; descarte se ficar em temperatura ambiente por mais de 2 horas (1 hora acima de 32°C/90°F). Um adulto usa a faca. Não se usa peixe cru.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 84,
+      "runtimeId": 84,
+      "canonicalTitleEN": "Chocolate Banana Pops",
+      "canonicalTitlePTBR": "Picolés de Banana com Chocolate",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook and freezer set",
+      "time": "About 20 min hands-on, plus freezing",
+      "yieldText": "6 pops · 6 servings",
+      "servings": 6,
+      "ingredients": {
+        "en": [
+          "354 g peeled ripe banana (about 3 medium bananas)",
+          "90 g semisweet chocolate chips",
+          "18 g unsweetened desiccated coconut"
+        ],
+        "ptBR": [
+          "354 g de banana madura descascada (cerca de 3 bananas médias)",
+          "90 g de gotas de chocolate meio amargo",
+          "18 g de coco seco sem açúcar"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[84].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Banana and coconut are ingredients. Chocolate brands may contain milk or soy; check the label. An adult melts chocolate. Keep frozen until serving and supervise sticks to reduce choking or injury risk.",
+        "ptBR": "Os ingredientes incluem banana e coco. Algumas marcas de chocolate podem conter leite ou soja; confira o rótulo. Um adulto derrete o chocolate. Mantenha congelado até servir e supervisione o uso dos palitos para reduzir risco de engasgo ou ferimento.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 85,
+      "runtimeId": 85,
+      "canonicalTitleEN": "Mini Baked Falafel Pita Pockets",
+      "canonicalTitlePTBR": "Mini-pitas com Falafel Assado",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "Oven · adult-supervised",
+      "time": "About 40 min, including bake",
+      "yieldText": "4 mini pita pockets · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "240 g cooked chickpeas, drained and patted dry",
+          "50 g raw onion, finely chopped",
+          "25 g whole-grain wheat flour",
+          "8 g olive oil",
+          "1 g ground cumin",
+          "8 g fresh coriander leaves, chopped",
+          "1 g table salt",
+          "120 g mini whole-wheat pita bread (nutrition varies by brand)",
+          "25 g green-leaf lettuce",
+          "68 g raw tomato, diced",
+          "60 g plain whole-milk yogurt dip"
+        ],
+        "ptBR": [
+          "240 g de grão-de-bico cozido, escorrido e seco com papel-toalha",
+          "50 g de cebola crua picada bem fina",
+          "25 g de farinha de trigo integral",
+          "8 g de azeite",
+          "1 g de cominho em pó",
+          "8 g de folhas de coentro fresco picadas",
+          "1 g de sal de mesa",
+          "120 g de pão pita mini integral (a nutrição varia conforme a marca)",
+          "25 g de alface verde",
+          "68 g de tomate cru em cubos",
+          "60 g de molho de iogurte natural integral"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[85].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains wheat/gluten and milk (yogurt dip). Check pita and packaged chickpea labels for sesame, soy or cross-contact. An adult handles the oven and hot tray. Bake until hot through; wash hands after handling ingredients.",
+        "ptBR": "Contém trigo/glúten e leite (molho de iogurte). Confira os rótulos da pita e do grão-de-bico embalado para verificar gergelim, soja ou avisos de contaminação cruzada. Um adulto cuida do forno e da assadeira quente. Asse até ficar bem quente por dentro; lave as mãos depois de manusear os ingredientes.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 86,
+      "runtimeId": 86,
+      "canonicalTitleEN": "Rainbow Pretzel Bites with Dips",
+      "canonicalTitlePTBR": "Petiscos Arco-Íris de Pretzel com Molhos",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook assembly",
+      "time": "No cooking · serve fresh",
+      "yieldText": "4 snack portions (about 105 g each)",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "80 g mini salted pretzels",
+          "80 g cream cheese, softened",
+          "80 g plain whole-milk yoghurt",
+          "60 g cucumber sticks",
+          "60 g red bell pepper strips",
+          "60 g carrot sticks"
+        ],
+        "ptBR": [
+          "80 g de mini pretzels salgados",
+          "80 g de cream cheese amolecido",
+          "80 g de iogurte natural integral",
+          "60 g de pepino em palitos",
+          "60 g de tiras de pimentão vermelho",
+          "60 g de cenoura em palitos"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[86].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Check pretzel and cream-cheese labels for allergens and cross-contact. Mini pretzels can be hard and salty; serve seated and supervise children while eating.",
+        "ptBR": "Confira os rótulos dos pretzels e do cream cheese para identificar alérgenos e avisos de contaminação cruzada. Mini pretzels podem ser duros e salgados; sirva com a criança sentada e supervisione enquanto come.",
+        "adultCueEN": false
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 87,
+      "runtimeId": 87,
+      "canonicalTitleEN": "Rainbow Popcorn Mix",
+      "canonicalTitlePTBR": "Mistura Arco-Íris de Pipoca",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook mixing; popcorn prepared by an adult",
+      "time": "Mix and serve immediately",
+      "yieldText": "4 small snack bowls (about 57 g each)",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "32 g plain air-popped popcorn, already popped",
+          "60 g strawberries, hulled and diced",
+          "40 g blueberries",
+          "40 g green kiwi, peeled and diced",
+          "40 g seedless grapes, halved lengthways by an adult",
+          "16 g mini semisweet chocolate chips"
+        ],
+        "ptBR": [
+          "32 g de pipoca simples preparada com ar quente, já estourada",
+          "60 g de morangos sem folhas e em cubos",
+          "40 g de mirtilos",
+          "40 g de kiwi verde descascado e em cubos",
+          "40 g de uvas sem sementes cortadas ao comprido por um adulto",
+          "16 g de gotas pequenas de chocolate meio amargo"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[87].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult prepares and handles the hot popcorn appliance. Remove any unpopped kernels before serving. An adult should quarter grapes lengthways for younger children to reduce choking risk. Check chocolate packaging for milk, soy and cross-contact. Serve fruit immediately; refrigerate leftovers promptly.",
+        "ptBR": "Um adulto prepara e manuseia o aparelho de pipoca quente. Retire os grãos que não estouraram antes de servir. Para crianças menores, um adulto deve cortar as uvas em quatro partes no sentido do comprimento para reduzir o risco de engasgo. Confira na embalagem do chocolate avisos sobre leite, soja e contaminação cruzada. Sirva a fruta imediatamente; refrigere rapidamente as sobras.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 88,
+      "runtimeId": 88,
+      "canonicalTitleEN": "Chocolate Avocado Mousse Cups",
+      "canonicalTitlePTBR": "Copinhos de Mousse de Chocolate e Abacate",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "Blend and chill",
+      "time": "No cooking · serve chilled",
+      "yieldText": "4 small cups (about 85.5 g each)",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "150 g ripe avocado flesh, pit and skin removed",
+          "120 g plain whole-milk Greek yoghurt",
+          "12 g unsweetened cocoa powder",
+          "20 g granulated sugar",
+          "40 g strawberries, washed and thinly sliced"
+        ],
+        "ptBR": [
+          "150 g de polpa de abacate maduro, sem caroço e sem casca",
+          "120 g de iogurte grego natural integral",
+          "12 g de cacau em pó sem açúcar",
+          "20 g de açúcar cristal",
+          "40 g de morangos lavados e fatiados finos"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[88].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult removes the avocado stone and operates the blender; keep hands and utensils away from moving blades. Check cocoa and yoghurt labels for cross-contact. Keep chilled until serving.",
+        "ptBR": "Um adulto retira o caroço do abacate e opera o liquidificador; mantenha mãos e utensílios longe das lâminas em movimento. Confira os rótulos do cacau e do iogurte para avisos de contaminação cruzada. Mantenha refrigerado até servir.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 89,
+      "runtimeId": 89,
+      "canonicalTitleEN": "Rainbow Bean Salad Jars",
+      "canonicalTitlePTBR": "Salada Arco-Íris de Feijão em Potes",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook assembly",
+      "time": "About 10 minutes · no cooking",
+      "yieldText": "4 jars · about 133 g each",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "200 g cooked chickpeas, drained and rinsed",
+          "80 g sweetcorn, drained",
+          "80 g cucumber, diced",
+          "80 g red bell pepper, diced",
+          "80 g tomato, diced",
+          "10 g olive oil",
+          "1 g dried oregano"
+        ],
+        "ptBR": [
+          "200 g de grão-de-bico cozido, escorrido e lavado",
+          "80 g de milho-doce escorrido",
+          "80 g de pepino em cubos",
+          "80 g de pimentão vermelho em cubos",
+          "80 g de tomate em cubos",
+          "10 g de azeite",
+          "1 g de orégano seco"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[89].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Use cooked, cooled chickpeas; an adult opens and drains the can before cooking together. Check ingredient labels and cross-contact warnings. Keep the salad chilled if it is not served straight away. Chickpeas can trigger reactions in people with legume allergies.",
+        "ptBR": "Use grão-de-bico cozido e frio; um adulto abre e escorre a lata antes de cozinhar juntos. Confira os rótulos dos ingredientes e os avisos de contaminação cruzada. Mantenha a salada refrigerada se não for servir logo. O grão-de-bico pode causar reações em pessoas com alergia a leguminosas.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 90,
+      "runtimeId": 90,
+      "canonicalTitleEN": "Mini Fruit Tarts",
+      "canonicalTitlePTBR": "Mini-tortinhas de Frutas",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "Oven-baked pastry; chilled assembly",
+      "time": "Adult bakes until puffed and golden",
+      "yieldText": "6 mini tarts (about 72 g each by pre-bake ingredient weight)",
+      "servings": 6,
+      "ingredients": {
+        "en": [
+          "180 g ready-to-bake puff pastry, thawed as directed",
+          "120 g plain whole-milk Greek yoghurt",
+          "50 g strawberries, washed and thinly sliced",
+          "40 g peeled kiwi, thinly sliced",
+          "40 g blueberries, washed"
+        ],
+        "ptBR": [
+          "180 g de massa folhada pronta para assar, descongelada conforme indicado",
+          "120 g de iogurte grego natural integral",
+          "50 g de morangos lavados e fatiados finos",
+          "40 g de kiwi descascado e fatiado fino",
+          "40 g de mirtilos lavados"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[90].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "An adult handles the oven, hot tin and any sharp cutter. Cool pastry cases completely before filling. Check pastry and yoghurt labels for milk, soy, wheat, gluten and cross-contact. Keep filled tarts refrigerated if not serving immediately.",
+        "ptBR": "Um adulto cuida do forno, da forma quente e de qualquer cortador afiado. Esfrie completamente as bases de massa antes de rechear. Confira os rótulos da massa e do iogurte para leite, soja, trigo, glúten e avisos de contaminação cruzada. Mantenha as tortinhas recheadas refrigeradas se não forem servidas imediatamente.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 91,
+      "runtimeId": 91,
+      "canonicalTitleEN": "Mini Lemon-Herb Couscous Salad Cups",
+      "canonicalTitlePTBR": "Copinhos de Salada de Cuscuz com Limão e Ervas",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook assembly",
+      "time": "About 20 min hands-on; couscous prepared and cooled by an adult beforehand",
+      "yieldText": "8 cucumber cups · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "150 g cooked, cooled couscous",
+          "1 medium cucumber (about 300 g whole; serve all cucumber as cups and sticks)",
+          "60 g cherry tomatoes, finely chopped",
+          "10 g fresh lemon juice",
+          "5 g olive oil",
+          "1 g dried oregano"
+        ],
+        "ptBR": [
+          "150 g de cuscuz cozido e frio",
+          "1 pepino médio (cerca de 300 g inteiro; use todo o pepino em copinhos e palitos)",
+          "60 g de tomates-cereja picados bem finos",
+          "10 g de suco de limão fresco",
+          "5 g de azeite",
+          "1 g de orégano seco"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[91].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains wheat/gluten. Adult prepares and cools the couscous and supervises the child-safe cutter. Keep cooked couscous refrigerated until serving; do not leave it at room temperature.",
+        "ptBR": "Contém trigo/glúten. Um adulto prepara e resfria o cuscuz e supervisiona o cortador seguro para crianças. Mantenha o cuscuz cozido refrigerado até servir; não o deixe em temperatura ambiente.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 92,
+      "runtimeId": 92,
+      "canonicalTitleEN": "No-Bake Chocolate Oat Balls",
+      "canonicalTitlePTBR": "Bolinha de Aveia e Chocolate sem Forno",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook assembly",
+      "time": "About 20 min hands-on; chill until firm",
+      "yieldText": "12 small balls · 4 servings (3 balls each)",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "90 g rolled oats",
+          "60 g smooth salted peanut butter",
+          "40 g chocolate-flavoured hazelnut spread"
+        ],
+        "ptBR": [
+          "90 g de aveia em flocos",
+          "60 g de pasta de amendoim cremosa com sal",
+          "40 g de creme de avelã com sabor de chocolate"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[92].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains peanuts, hazelnuts and oats. Check the spread label for additional allergens (such as milk or soya) and cross-contact warnings. Wash hands and surfaces; keep chilled. Use a commercially processed spread, not whole nuts.",
+        "ptBR": "Contém amendoim, avelãs e aveia. Confira no rótulo do creme outros alérgenos (como leite ou soja) e avisos de contaminação cruzada. Lave mãos e superfícies; mantenha refrigerado. Use pasta processada comercialmente, não castanhas inteiras.",
+        "adultCueEN": false
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 93,
+      "runtimeId": 93,
+      "canonicalTitleEN": "Cheesy Spinach-Stuffed Mushroom Caps",
+      "canonicalTitlePTBR": "Cogumelos Recheados com Espinafre e Queijo",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "Oven-baked",
+      "time": "190°C · about 15–18 min; an adult checks the centres are piping hot",
+      "yieldText": "8 stuffed caps · 4 servings (2 caps each)",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "8 small white mushrooms (160 g edible weight), stems removed",
+          "40 g raw spinach, finely chopped",
+          "35 g grated mozzarella",
+          "20 g plain dry breadcrumbs",
+          "5 g olive oil"
+        ],
+        "ptBR": [
+          "8 cogumelos brancos pequenos (160 g de parte comestível), sem os talos",
+          "40 g de espinafre cru picado bem fino",
+          "35 g de muçarela ralada",
+          "20 g de farinha de rosca simples e seca",
+          "5 g de azeite"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[93].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains milk and wheat/gluten. An adult handles the oven and hot tray. Clean mushrooms safely, use a separate board for produce, and bake until the filling is piping hot.",
+        "ptBR": "Contém leite e trigo/glúten. Um adulto cuida do forno e da assadeira quente. Limpe os cogumelos com segurança, use uma tábua separada para os vegetais e asse até o recheio soltar vapor e ficar bem quente.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "sunny-orange",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 94,
+      "runtimeId": 94,
+      "canonicalTitleEN": "Mango Coconut Chia Pudding Cups",
+      "canonicalTitlePTBR": "Copinhos de Pudim de Chia, Manga e Coco",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "No-cook assembly",
+      "time": "About 15 min hands-on; chill until thick, preferably overnight",
+      "yieldText": "4 cups · 4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "30 g dried chia seeds",
+          "250 g whole milk",
+          "120 g ripe mango flesh, finely diced",
+          "15 g unsweetened desiccated coconut"
+        ],
+        "ptBR": [
+          "30 g de sementes de chia secas",
+          "250 g de leite integral",
+          "120 g de polpa de manga madura em cubos bem pequenos",
+          "15 g de coco seco sem açúcar"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[94].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains milk and coconut. Check packaging for allergy and cross-contact warnings, and confirm that each child can safely eat chia seeds. Never serve dry chia; confirm it has fully hydrated in the milk. An adult handles peeling and cutting the mango. Keep refrigerated.",
+        "ptBR": "Contém leite e coco. Confira os rótulos para avisos de alergia e contaminação cruzada e confirme se cada criança pode comer sementes de chia com segurança. Nunca sirva chia seca; confira se hidratou totalmente no leite. Um adulto descasca e corta a manga. Mantenha refrigerado.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "playful-purple",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    },
+    {
+      "recipeId": 95,
+      "runtimeId": 95,
+      "canonicalTitleEN": "Rainbow Party Nachos",
+      "canonicalTitlePTBR": "Nachos Arco-Íris para Compartilhar",
+      "translationStatus": "DRAFT_REVIEW_PENDING",
+      "category": "Cooking with Friends",
+      "method": "Oven-baked",
+      "time": "180°C · about 8–10 min; an adult checks the cheese is melted",
+      "yieldText": "4 servings",
+      "servings": 4,
+      "ingredients": {
+        "en": [
+          "2 small whole-wheat tortillas (82 g total)",
+          "5 g olive oil",
+          "80 g drained canned sweetcorn",
+          "60 g ripe tomato, finely diced",
+          "40 g red bell pepper, finely diced",
+          "50 g grated cheddar"
+        ],
+        "ptBR": [
+          "2 tortilhas pequenas de trigo integral (82 g no total)",
+          "5 g de azeite",
+          "80 g de milho-doce enlatado escorrido",
+          "60 g de tomate maduro em cubos bem pequenos",
+          "40 g de pimentão vermelho em cubos bem pequenos",
+          "50 g de cheddar ralado"
+        ]
+      },
+      "stepReference": "index.html:RECIPES[95].steps; translated record by recipeId",
+      "stepCountEN": 4,
+      "stepCountPTBR": 4,
+      "safety": {
+        "en": "Contains wheat/gluten and milk. An adult handles the knife, oven and hot tray. Drain canned corn and use clean boards for the raw vegetables.",
+        "ptBR": "Contém trigo/glúten e leite. Um adulto cuida da faca, do forno e da assadeira quente. Escorra o milho enlatado e use tábuas limpas para os vegetais crus.",
+        "adultCueEN": true
+      },
+      "familyFriendsRoleCopyRef": "roleCopy",
+      "nutrition": {
+        "plan": true,
+        "sourceNote": true,
+        "perPortion": "REVIEW_REQUIRED"
+      },
+      "allergens": "NOT_AUDITED",
+      "theme": "fresh-green",
+      "artwork": {
+        "dish": "NOT_AUDITED",
+        "runtimeArtRegistry": true,
+        "rights": "UNVERIFIED",
+        "stepArt": "NOT_AUDITED",
+        "screen": "NOT_CAPTURED"
+      },
+      "routeEvidence": "PASS_PRIOR_CODE_SHA_ONLY",
+      "independentGates": "HOLD",
+      "acceptance": "BLOCKED"
+    }
+  ]
+}
