@@ -493,6 +493,59 @@ if(!Number.isInteger(surpriseId)||surpriseId<1||surpriseId>95)throw new Error('S
 await evaluate("document.querySelector('#nav .tab[data-nav=library]')?.click()");
 await waitForVisible('.recipe-card[data-open="1"]','95-recipe catalogue restored after filter and Surprise Me checks');
 console.log('Air fryer/category filters and Surprise Me preserve canonical recipe IDs:',JSON.stringify({airFryer:filterReport.ids.length,breakfast:breakfastCount.count,surpriseId}));
+
+const v32CanonicalPhoneExamples=[[12,'Cheesy Corn Pancakes','playful-purple'],[76,'Rainbow Vegetable Noodle Toss','fresh-green'],[5,'Mini Pizza Bread Cups','sunny-orange']];
+const v32PhoneRecipeScreenshots=[];
+let v32PhoneScreenshotDigest=recipeDigest;
+async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
+  const orientation=landscape?'landscape':'portrait';
+  const card=await evaluate('(()=>{const e=[...document.querySelectorAll("#screen [data-open]")].find(node=>Number(node.dataset.open)==='+id+');const text=e?.innerText?.trim()||"";const observedTheme=e?.dataset.v32Theme||"";e?.click();return {text,theme:observedTheme}})()');
+  if(!card||!card.text.includes(title)||card.theme!==theme)throw new Error('Phone exemplar catalogue card mismatch: '+JSON.stringify({id,title,theme,card}));
+  await waitForVisible('.ref-hero h1','Phone '+title+' details');
+  const detail=await evaluate('(()=>({title:document.querySelector(".ref-hero h1")?.textContent?.trim()||"",theme:document.querySelector(".app")?.dataset.v32RecipeTheme||""}))()');
+  if(detail.title!==title||detail.theme!==theme)throw new Error('Phone exemplar detail mismatch: '+JSON.stringify({id,expected:{title,theme},detail}));
+  const detailName='v32-recipe-'+id+'-detail-'+orientation+'.png';
+  v32PhoneScreenshotDigest=await captureScreenshot(detailName,title+' detail '+orientation,v32PhoneScreenshotDigest);
+  const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
+  if(flow.selectedId!==id||flow.stepCount<1||flow.activeCount!==1||flow.activeStep!==1)throw new Error('Phone exemplar active-step state mismatch: '+JSON.stringify({id,flow}));
+  await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"center"})');
+  const stepName='v32-recipe-'+id+'-active-step-'+orientation+'.png';
+  v32PhoneScreenshotDigest=await captureScreenshot(stepName,title+' active step '+orientation,v32PhoneScreenshotDigest);
+  let complete=false;
+  for(let n=0;n<=flow.stepCount;n++){
+    const last=await evaluate('!!document.querySelector(".ref-next.finish-step")');
+    if(last){
+      await evaluate('document.querySelector(".ref-next.finish-step")?.click()');
+      await pause(250);
+      complete=await evaluate('Array.isArray(state.done)&&state.done.includes('+id+')');
+      break;
+    }
+    await evaluate('document.querySelector(".ref-next")?.click()');
+    await pause(200);
+  }
+  if(!complete)throw new Error('Phone exemplar '+id+' did not reach completion');
+  const completionName='v32-recipe-'+id+'-completion-'+orientation+'.png';
+  v32PhoneScreenshotDigest=await captureScreenshot(completionName,title+' completion '+orientation,v32PhoneScreenshotDigest);
+  const files=[detailName,stepName,completionName].map(name=>{
+    const image=readFileSync('artifacts/v32-android-screenshots/'+name);
+    const width=image.readUInt32BE(16),height=image.readUInt32BE(20);
+    if(landscape?width<=height:width>=height)throw new Error(name+' has incorrect screenshot orientation '+width+'x'+height);
+    return {name,width,height,bytes:image.length};
+  });
+  v32PhoneRecipeScreenshots.push({id,title,theme,orientation,files});
+  await evaluate('document.querySelector("#nav .tab[data-nav=library]")?.click()');
+  await waitForVisible('.recipe-card[data-open="1"]','Phone catalogue after '+title+' '+orientation);
+}
+for(const [id,title,theme] of v32CanonicalPhoneExamples){
+  await rotateTo(0);await waitForWebViewOrientation(false);
+  await captureV32PhoneRecipeFlow(id,title,theme,false);
+  await rotateTo(1);await waitForWebViewOrientation(true);
+  await captureV32PhoneRecipeFlow(id,title,theme,true);
+}
+await rotateTo(0);await waitForWebViewOrientation(false);
+writeFileSync('artifacts/v32-diagnostics/phone-three-recipe-screenshots.json',JSON.stringify({status:'CAPTURED',device:'Pixel 3a',recipes:v32PhoneRecipeScreenshots,scope:'debug preview; visual, rights, A08/A09 approval still pending'},null,2)+'\n');
+console.log('Phone recipe detail, active-step and completion screenshots captured for all three themes in portrait and landscape:',JSON.stringify(v32PhoneRecipeScreenshots));
+
 const routeCoverage=[];
 for(let recipeId=1;recipeId<=95;recipeId++){
   const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=document.querySelector('#screen .recipe-card[data-open="${recipeId}"]');if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
