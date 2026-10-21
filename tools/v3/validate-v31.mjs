@@ -48,8 +48,9 @@ function expectedTheme(id) {
   for (const character of `v3.2-theme:${id}`) { hash ^= character.charCodeAt(0); hash = Math.imul(hash, 16777619); }
   return themeKeys[(hash >>> 0) % themeKeys.length];
 }
-if (themeSpec.algorithm !== 'FNV-1a(v3.2-theme:<recipe-id>) mod 3' || JSON.stringify(themeSpec.themes) !== JSON.stringify(themeKeys)) fail('V3.2 recipe theme algorithm or theme names changed unexpectedly.');
-if (Object.keys(themeSpec.mapping).length !== 95 || ids.some(id => themeSpec.mapping[String(id)] !== expectedTheme(id))) fail('Every original recipe ID 1–95 must map deterministically to its V3.2 theme.');
+if (themeSpec.algorithm !== 'FNV-1a(v3.2-theme:<recipe-id>) mod 3 with approved template-reference overrides' || JSON.stringify(themeSpec.themes) !== JSON.stringify(themeKeys)) fail('V3.2 recipe theme algorithm or theme names changed unexpectedly.');
+if (JSON.stringify(themeSpec.referenceOverrides) !== JSON.stringify({'5':'sunny-orange','12':'playful-purple'}) || JSON.stringify(themeSpec.approvedTemplateExemplars) !== JSON.stringify({'5':'sunny-orange','12':'playful-purple','76':'fresh-green'})) fail('Approved recipe-template reference overrides changed unexpectedly.');
+if (Object.keys(themeSpec.mapping).length !== 95 || ids.some(id => themeSpec.mapping[String(id)] !== (themeSpec.referenceOverrides[String(id)] || expectedTheme(id)))) fail('Every original recipe ID 1–95 must map deterministically to its V3.2 theme.');
 if (themeKeys.some(theme => !Object.values(themeSpec.mapping).includes(theme))) fail('All three approved V3.2 themes must be represented in the 95-recipe assignment.');
 
 const destinations = [['IND', 'India'], ['ITA', 'Italy'], ['CHN', 'China'], ['JPN', 'Japan'], ['MEX', 'Mexico'], ['VNM', 'Vietnam'], ['GRC', 'Greece']];
