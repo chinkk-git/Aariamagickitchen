@@ -106,6 +106,33 @@ jobs:
           run-id: 39528150224
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Enable and verify Linux KVM for Android emulator
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v32-diagnostics
+          {
+            echo "utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "runner_user=$(id)"
+            uname -a
+            free -h
+            df -h "$GITHUB_WORKSPACE"
+            if [ ! -c /dev/kvm ]; then
+              echo "/dev/kvm is missing on this runner." >&2
+              exit 1
+            fi
+            ls -l /dev/kvm
+            stat -c 'kvm_mode=%a kvm_owner=%U kvm_group=%G' /dev/kvm
+            echo "kvm_read_write_before=$(test -r /dev/kvm && test -w /dev/kvm && echo yes || echo no)"
+          } | tee artifacts/v32-diagnostics/emulator-runner-preflight.txt
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm
+          test -w /dev/kvm
+          stat -c 'kvm_mode_after=%a kvm_owner=%U kvm_group=%G' /dev/kvm | tee -a artifacts/v32-diagnostics/emulator-runner-preflight.txt
+          adb devices -l | tee artifacts/v32-diagnostics/adb-devices-before-emulator.txt
+
       - name: Launch both preview APKs and capture Android evidence
         timeout-minutes: 20
         uses: reactivecircus/android-emulator-runner@v2
@@ -114,6 +141,7 @@ jobs:
           arch: x86_64
           profile: pixel_3a
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-boot-timeout: 300
           disable-animations: true
           disable-linux-hw-accel: false
           script: bash .github/scripts/v32-android-smoke.sh

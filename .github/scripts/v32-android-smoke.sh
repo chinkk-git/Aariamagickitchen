@@ -17,8 +17,29 @@ on_exit() {
 trap on_exit EXIT
 adb_timeout() { timeout --kill-after=10s 90s adb "$@"; }
 adb_poll_timeout() { timeout --kill-after=2s 5s adb "$@"; }
-ANDROID_SERIAL=${ANDROID_SERIAL:-emulator-5554}
+ANDROID_SERIAL=${ANDROID_SERIAL:-}
 export ANDROID_SERIAL
+discover_android_serial() {
+  local listed
+  listed="$(adb_poll_timeout devices -l 2>&1 || true)"
+  printf '%s\\n' "$listed" | tee artifacts/v32-diagnostics/adb-devices-at-smoke-start.txt
+  if [ -n "$ANDROID_SERIAL" ]; then
+    if ! printf '%s\\n' "$listed" | awk -v serial="$ANDROID_SERIAL" '$1 == serial && $2 == "device" { found=1 } END { exit !found }'; then
+      echo "Configured Android serial $ANDROID_SERIAL is not an online emulator." >&2
+      return 1
+    fi
+  else
+    local -a candidates=()
+    mapfile -t candidates < <(printf '%s\\n' "$listed" | awk '$1 ~ /^emulator-[0-9]+$/ && $2 == "device" { print $1 }')
+    if [ "${#candidates[@]}" -ne 1 ]; then
+      echo "Expected exactly one online Android emulator; found ${#candidates[@]}." >&2
+      return 1
+    fi
+    ANDROID_SERIAL="${candidates[0]}"
+    export ANDROID_SERIAL
+  fi
+  echo "Selected online emulator: $ANDROID_SERIAL"
+}
 wait_for_booted_device() {
   echo "Waiting for $ANDROID_SERIAL to be online and fully booted"
   stable=0
@@ -82,8 +103,17 @@ wait_for_stable_launcher() {
 mkdir -p artifacts/v32-android-screenshots
 mkdir -p artifacts/v32-diagnostics
 echo 'Waiting for emulator ADB'
-adb_timeout wait-for-device
+discover_android_serial
+adb_timeout -s "$ANDROID_SERIAL" wait-for-device
 wait_for_booted_device
+{
+  printf 'serial=%s\\n' "$ANDROID_SERIAL"
+  adb_timeout -s "$ANDROID_SERIAL" shell getprop sys.boot_completed
+  adb_timeout -s "$ANDROID_SERIAL" shell getprop ro.build.version.release
+  adb_timeout -s "$ANDROID_SERIAL" shell getprop ro.build.version.sdk
+  adb_timeout -s "$ANDROID_SERIAL" shell getprop ro.product.model
+  adb_timeout -s "$ANDROID_SERIAL" shell df -h /data
+} | tee artifacts/v32-diagnostics/emulator-boot-properties.txt
 wait_for_stable_launcher
 echo 'Installing original V3 APK and isolated V3.2 preview side by side'
 BASELINE_APP_ID=com.aaria.magickitchen.pilot.v31preview
