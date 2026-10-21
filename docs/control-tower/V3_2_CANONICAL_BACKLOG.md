@@ -55,6 +55,10 @@ This is the canonical task index. Detailed per-recipe acceptance rows, hashes, c
 - Current branch HEAD is `f621d78cea9e3343d910db2b59707e39dd52eaf6`. Relative to Android app/test SHA `f3ec538519d612654603a38d3694538d0190491d`, later changes are limited to control-tower backlog and audit tooling; the Android workflow excludes these paths.
 - An installable, explicitly unvalidated preview is available from run #39662030525 (artifact 12377100981). Its actual APK SHA and identity are recorded in P5.2 and Issue #38 comment 6325093641. The current run #39664165011 has passing build/test/package/coexistence steps; phone emulator capture is active and no artifacts have uploaded yet.
 
+## Runtime payload validation (unaccepted content)
+
+The hardened audit was run against `assets/index.html` extracted from installable preview artifact 12377100981 (actual APK SHA-256 `5f49e1bab2fa32f32a7e9316719d2a575103fa1e3346d0040162ca631c90a996`), plus the branch PT-BR review draft files and 95-ID theme map. It produced 95 ordered recipe rows and 318 English steps, with 65 runtime translations and 30 pending-review draft translations; all 30 drafts had matching EN/PT-BR step counts. PT-BR safety text is absent in runtime for IDs 1–65, as already recorded in the detailed matrix. This is structural coverage only: translation, ingredients, nutrition, allergen, safety accuracy, rights and child comprehension are not accepted.
+
 ## Closure rule
 
 Work through each unblocked W01-owned row and record code/test/evidence. Keep genuinely external approvals explicitly BLOCKED and prepare reviewer-ready evidence. Do not claim V3.2 accepted while mandatory gates remain open. Preserve V3.1 Classic. Do not merge, release, publish to Play, or start Issue #39.
