@@ -7,6 +7,16 @@ const V31_WORLD_ADVENTURE=__V31_WORLD_ADVENTURE_JSON__;
 const V31_WORLD_ADVENTURE_ART=__V31_WORLD_ADVENTURE_ART_JSON__;
 const V31_HOME_WORLD_ART=__V31_HOME_WORLD_ART_JSON__;
 const V32_RECIPE_THEME_MAP=__V32_RECIPE_THEME_MAP_JSON__;
+const V32_PT_RECIPE_DRAFTS=__V3_PT_RECIPE_DRAFTS_JSON__;
+for(const [id,draft] of Object.entries(V32_PT_RECIPE_DRAFTS))PT_RECIPES[id]={...(PT_RECIPES[id]||{}),...draft};
+const v32BaseTranslateText=translateText;
+const v32PortugueseCopy=new Map();
+for(const [id,draft] of Object.entries(V32_PT_RECIPE_DRAFTS)){
+ const record=RECIPES.find(item=>item.id===Number(id));if(!record)throw new Error('Portuguese copy references unknown recipe '+id);
+ for(const key of ['title','safety','description','allergyAlert'])if(record[key]&&draft[key])v32PortugueseCopy.set(record[key],draft[key]);
+ for(const key of ['ingredients','steps','extras'])if(Array.isArray(record[key])&&Array.isArray(draft[key]))record[key].forEach((source,index)=>{if(draft[key][index])v32PortugueseCopy.set(source,draft[key][index])});
+}
+translateText=function(value,lang=state.language){const source=String(value??'');if(lang==='pt-BR'&&v32PortugueseCopy.has(source))return v32PortugueseCopy.get(source);return v32BaseTranslateText(value,lang)};
 function v32RecipeTheme(id){return V32_RECIPE_THEME_MAP[String(Number(id))]||'playful-purple'}
 function v3IngredientClass(value){
  const t=String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
