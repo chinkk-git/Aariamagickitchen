@@ -38,7 +38,7 @@ Run 39620830609 captured the app and generated reference comparison images in th
 | Home | 59.252 | 56.476 |
 | World | 56.724 | 56.514 |
 
-These are diagnostics, not visual acceptance. Home/World acceptance remains FAIL pending correction and independent design review. The approved identity and template standards are in `docs/design/V3_2_VISUAL_IDENTITY_STANDARD.md`, `docs/design/V3_2_RECIPE_TEMPLATE_STANDARDS.md`, and `docs/design/V3_2_SCREEN_CONTRACTS.md`.
+These are diagnostics, not visual acceptance. Home/World acceptance remains FAIL pending fresh exact-head screenshots and independent design review. Reference-to-catalogue content also differs: the Home image features Rainbow Pancakes, absent from the canonical 95; the World India card features Mango Lassi Magic, while canonical destination recipe 51 is Masala Cheese Toast and its finished-dish art remains missing/review-only. We have preserved the existing 95-recipe IDs and have not substituted an unrelated dish or promoted draft art; owner-approved mapping or replacement-reference guidance is still needed to close these content-specific visual deltas. The approved identity and template standards are in `docs/design/V3_2_VISUAL_IDENTITY_STANDARD.md`, `docs/design/V3_2_RECIPE_TEMPLATE_STANDARDS.md`, and `docs/design/V3_2_SCREEN_CONTRACTS.md`.
 
 ## Three reusable recipe templates
 
