@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 10673)
-Total output lines: 537
-
 #!/usr/bin/env bash
 set -euo pipefail
 on_exit() {
@@ -330,7 +327,28 @@ await rotateTo(1);
 await waitForWebViewOrientation(true);
 const landscape = await waitForVisible('.v31-world-header h1', 'World heading after rotation');
 if (!landscape.screen.includes('v31-world-screen') || !landscape.text.includes('World Food Adventure')) throw new Error('World route was lost during orientation change');
-const landscapeLayout = await evaluate(`(() => {…673 tokens truncated…Recipe screenshot is unexpectedly small');
+const landscapeLayout = await evaluate(`(() => { const app=document.querySelector('.app'),nav=document.querySelector('#nav'); return {appWidth:app?.getBoundingClientRect().width||0,viewportWidth:innerWidth,navDisplay:nav?getComputedStyle(nav).display:'missing',navHeight:nav?.getBoundingClientRect().height||0}; })()`);
+if (landscapeLayout.appWidth < landscapeLayout.viewportWidth * 0.9 || landscapeLayout.navDisplay === 'none' || landscapeLayout.navHeight < 40) throw new Error(`Landscape layout does not use the screen width or show navigation: ${JSON.stringify(landscapeLayout)}`);
+await captureScreenshot('v31-world-landscape.png', 'World landscape', worldDigest);
+const image = readFileSync('artifacts/v32-android-screenshots/v31-world-landscape.png');
+const width = image.readUInt32BE(16), height = image.readUInt32BE(20);
+if (width <= height) throw new Error(`Landscape capture is not landscape: ${width}x${height}`);
+console.log(`Verified landscape screenshot dimensions: ${width}x${height}`);
+await rotateTo(0);
+await waitForWebViewOrientation(false);
+const portraitWorld = await waitForVisible('.v31-world-header h1', 'World heading after returning to portrait');
+if (!portraitWorld.screen.includes('v31-world-screen') || !portraitWorld.text.includes('World Food Adventure')) throw new Error('World route was lost while returning to portrait orientation');
+const indiaCount = await evaluate(`document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length`);
+if (indiaCount !== 18) throw new Error(`India destination should expose its 18 original recipes; found ${indiaCount}`);
+await evaluate(`document.querySelector('[data-v31-approved-recipe="51"]').click()`);
+const recipe = await waitForVisible('.ref-hero h1', 'India recipe heading');
+if (recipe.text !== 'Masala Cheese Toast') throw new Error(`India recipe did not replace the active screen; got: ${JSON.stringify(recipe)}`);
+const adultCue = await waitForVisible('.v31-adult-cue', 'Recipe adult cooking cue');
+if (!adultCue.text.includes('Ask an adult to operate the air fryer')) throw new Error(`Air fryer safety cue is missing or unclear: ${JSON.stringify(adultCue)}`);
+const recipeNavigation = await evaluate(`(() => { const nav=document.querySelector('#nav'),r=nav?.getBoundingClientRect(); return {display:nav?getComputedStyle(nav).display:'missing',height:r?.height||0}; })()`);
+if (recipeNavigation.display === 'none' || recipeNavigation.height < 40) throw new Error(`Recipe navigation is not visible: ${JSON.stringify(recipeNavigation)}`);
+const recipeDigest = await captureScreenshot('v31-recipe-portrait.png', 'Recipe', worldDigest);
+if (statSync('artifacts/v32-android-screenshots/v31-recipe-portrait.png').size < 10000) throw new Error('Recipe screenshot is unexpectedly small');
 await evaluate(`document.querySelector('.ref-cook-area')?.scrollIntoView({block:'start'})`);
 const stepSafety = await waitForVisible('.v31-step-adult-cue', 'Active-step adult cooking cue');
 if (!stepSafety.text.includes('Adult only: operate the air fryer')) throw new Error(`Active-step adult cue is missing or unclear: ${JSON.stringify(stepSafety)}`);
@@ -446,7 +464,7 @@ for(let recipeId=1;recipeId<=95;recipeId++){
   if(!card?.title||!card.theme)throw new Error(`Recipe ${recipeId} is missing its catalogue card or deterministic theme`);
   if(card.catalogueCount!==undefined)throw new Error(`Recipe ${recipeId} route sweep is not on the full recipe catalogue: ${JSON.stringify(card)}`);
   await pause(250);
-  const routeState=await evaluate(`(()=>({view:typeof view==='undefined'?'unavailable':view,selectedId:typeof selected==='undefined'?null:selected?.id??null,hash:location.hash,screen:document.querySelector('#screen')?.className||'',screenText:document.querySelector('#screen')?.innerText?.slice(0,180)||'',card:document.querySelector('#screen .recipe-card[data-open="${recipeId}"]')?.outerHTML.slice(0,900)||null,record:typeof RECIPES==='undefined'?null:(RECIPES.find(r=>r.id===${recipeId})?{id:RECIPES.find(r=>r.id===${recipeId}).id,title:RECIPES.find(r=>r.id===${recipeId}).title,steps:RECIPES.find(r=>r.id===${recipeId}).steps?.length,ingredients:RECIPES.find(r=>r.id===${recipeId}).ingredients?.length}:null)}))()`);
+  const routeState=await evaluate(`(()=>({view:typeof view==='undefined'?'unavailable':view,selectedId:typeof selected==='undefined'?null:selected?.id??null,hash:location.hash,screen:document.querySelector('#screen')?.className||'',screenText:document.querySelector('#screen')?.innerText?.slice(0,180)||'',record:typeof RECIPES==='undefined'?null:(RECIPES.find(r=>r.id===${recipeId})?{id:RECIPES.find(r=>r.id===${recipeId}).id,title:RECIPES.find(r=>r.id===${recipeId}).title,steps:RECIPES.find(r=>r.id===${recipeId}).steps?.length,ingredients:RECIPES.find(r=>r.id===${recipeId}).ingredients?.length}:null)}))()`);
   if(routeState.view!=='recipe'||Number(routeState.selectedId)!==recipeId)throw new Error(`Recipe ${recipeId} catalogue click did not enter its route: ${JSON.stringify(routeState)}`);
   await waitForVisible('.ref-hero h1',`Recipe ${recipeId} detail route`);
   const detail=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',theme:document.querySelector('.app')?.dataset.v32RecipeTheme||'',steps:document.querySelectorAll('#screen .ref-step-card').length,ingredients:document.querySelectorAll('#screen .ref-ingredient').length}))()`);
