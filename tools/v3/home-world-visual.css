@@ -108,9 +108,9 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 @media(max-width:720px){.v31-home-quick-links{display:flex;justify-content:flex-start;overflow:auto;padding:1px 0 4px;scrollbar-width:none}.v31-home-quick-links button{flex:none;white-space:nowrap;font-size:9px}.v31-pantry-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.v31-pantry-shortcuts button{min-width:0;padding:5px 7px;font-size:9px}}
 
 /* V3.2 uses one shared recipe renderer. Theme tokens affect decoration only. */
-.app[data-v32-recipe-theme="playful-purple"]{--v3-ink:#3e285f;--v3-plum:#674094;--v3-berry:#8a43bf;--v3-mint:#318d79;--v3-lav:#f6efff;--v3-paper:#fffaff;--v3-line:#e6d6f4;--v3-shadow:0 8px 24px #4c287a18}
-.app[data-v32-recipe-theme="fresh-green"]{--v3-ink:#214934;--v3-plum:#286344;--v3-berry:#18824d;--v3-mint:#2e9160;--v3-lav:#eff9f1;--v3-paper:#fffef8;--v3-line:#d2e9d7;--v3-shadow:0 8px 24px #285c3817}
-.app[data-v32-recipe-theme="sunny-orange"]{--v3-ink:#56351f;--v3-plum:#86471f;--v3-berry:#c35419;--v3-mint:#b65b24;--v3-lav:#fff3e8;--v3-paper:#fffdf7;--v3-line:#f4d7bf;--v3-shadow:0 8px 24px #87461d17}
+.app[data-v32-recipe-theme="playful-purple"]{--v3-ink:#35204e;--v3-plum:#6429a7;--v3-berry:#8633df;--v3-mint:#c827c8;--v3-lav:#f8ebff;--v3-paper:#fffaff;--v3-line:#eed9fd;--v3-shadow:0 8px 24px #4c287a18}
+.app[data-v32-recipe-theme="fresh-green"]{--v3-ink:#17442a;--v3-plum:#1d633d;--v3-berry:#0fa154;--v3-mint:#74b044;--v3-lav:#f0f8e9;--v3-paper:#fffef7;--v3-line:#c0e19f;--v3-shadow:0 8px 24px #285c3817}
+.app[data-v32-recipe-theme="sunny-orange"]{--v3-ink:#532d12;--v3-plum:#b94e14;--v3-berry:#fa6a1a;--v3-mint:#ff9b00;--v3-lav:#fff1df;--v3-paper:#fffdf7;--v3-line:#f9d6b3;--v3-shadow:0 8px 24px #87461d17}
 .app.v32-template-active .v31-step-progress{background:color-mix(in srgb,var(--v3-berry) 18%,white)}
 .app.v32-template-active .v31-step-progress>span{background:var(--v3-berry)}
 .app.v32-template-active .v31-primary-actions button,.app.v32-template-active .v3-primary,.app.v32-template-active .v31-world-cook{background:var(--v3-berry);border-color:var(--v3-berry);color:#fff}
@@ -193,3 +193,13 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .v32-avatar-cast .parent-person{min-width:0;width:100%;text-align:center;font-size:clamp(12px,2vw,16px)}
 .v32-avatar-cast .parent-person img{display:block;width:min(100%,132px);height:auto;aspect-ratio:3/4;object-fit:contain;object-position:center bottom;margin:0 auto 7px;border-radius:18px;border:2px solid #fff;background:linear-gradient(155deg,#fff,#f9f2ff);box-shadow:0 5px 15px #53326b30}
 @media(max-width:540px){.v32-avatar-cast{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.v32-family-avatar-cast{grid-template-columns:repeat(3,minmax(0,1fr));max-width:440px}.v32-avatar-cast .parent-person img{width:100%;border-radius:14px}.v32-avatar-cast .parent-person{font-size:12px}}
+
+/* Three approved reference recipes: bright, distinct palette and accurate ingredient-only step art. */
+.app.v32-template-active .ref-step-actions .ref-next,.app.v32-template-active .v31-primary-actions button,.app.v32-template-active .v3-primary{background:linear-gradient(105deg,var(--v3-berry),var(--v3-mint));border-color:var(--v3-berry);color:#fff}
+.v32-template-ingredient-art{display:grid;align-content:center;gap:12px;min-height:240px;padding:clamp(16px,4vw,32px);border:2px solid var(--v3-line);border-radius:22px;background:linear-gradient(145deg,#fff,var(--v3-lav));color:var(--v3-ink)}
+.v32-template-ingredient-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,2vw,18px);align-items:stretch}
+.v32-template-ingredient{display:grid;align-content:center;justify-items:center;gap:8px;min-width:0;min-height:112px;padding:12px 8px;border:1px solid var(--v3-line);border-radius:18px;background:var(--v3-paper);color:var(--v3-ink);text-align:center}
+.v32-template-ingredient .v3-ingredient-art{width:clamp(38px,8vw,72px);height:clamp(38px,8vw,72px)}
+.v32-template-ingredient>span[aria-hidden="true"]{font-size:clamp(34px,7vw,64px);line-height:1}
+.v32-template-ingredient small{max-width:100%;font-size:clamp(10px,1.5vw,15px);font-weight:750;line-height:1.2}
+.v32-template-ingredient-art figcaption{color:var(--v3-plum);font-size:clamp(12px,1.7vw,16px);font-weight:800}
