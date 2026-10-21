@@ -460,15 +460,18 @@ await captureScreenshot('v32-three-theme-library-portrait.png','All three recipe
 console.log('V3.2 renderer exposes all three stable recipe themes across all 95 original IDs:',JSON.stringify(themeReport));
 const routeCoverage=[];
 for(let recipeId=1;recipeId<=95;recipeId++){
-  const card=await evaluate(`(()=>{const e=document.querySelector('#screen [data-open="${recipeId}"]');if(!e)return null;const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
+  const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=document.querySelector('#screen .recipe-card[data-open="${recipeId}"]');if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
   if(!card?.title||!card.theme)throw new Error(`Recipe ${recipeId} is missing its catalogue card or deterministic theme`);
+  if(card.catalogueCount!==undefined)throw new Error(`Recipe ${recipeId} route sweep is not on the full recipe catalogue: ${JSON.stringify(card)}`);
   await waitForVisible('.ref-hero h1',`Recipe ${recipeId} detail route`);
   const detail=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',theme:document.querySelector('.app')?.dataset.v32RecipeTheme||'',steps:document.querySelectorAll('#screen .ref-step-card').length,ingredients:document.querySelectorAll('#screen .ref-ingredient').length}))()`);
   if(!detail.title||detail.theme!==card.theme||detail.steps<1||detail.ingredients<1)throw new Error(`Recipe ${recipeId} detail regression: ${JSON.stringify({card,detail})}`);
   routeCoverage.push(recipeId);
   if(recipeId%10===0)console.log(`Verified recipe detail routes ${recipeId}/95`);
   await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
-  await waitForVisible('.recipe-card',`Recipe catalogue after ${recipeId}`);
+  const returned=await waitForVisible('.recipe-card[data-open="1"]',`Recipe catalogue after ${recipeId}`);
+  const returnCount=await evaluate(`document.querySelectorAll('#screen .recipe-card[data-open]').length`);
+  if(returnCount!==95)throw new Error(`Recipe catalogue after ${recipeId} contains ${returnCount} cards, expected 95; screen=${returned.screen}`);
 }
 if(routeCoverage.length!==95||new Set(routeCoverage).size!==95)throw new Error(`Expected unique detail route coverage 95/95, got ${routeCoverage.length}`);
 mkdirSync('artifacts/v32-diagnostics',{recursive:true});
