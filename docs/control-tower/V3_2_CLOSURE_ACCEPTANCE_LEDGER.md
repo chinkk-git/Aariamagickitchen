@@ -140,6 +140,7 @@ Each record contains the owner-required fields: item ID, approved contract/refer
 ## Coordinated 95-recipe audit checkpoint
 
 - Canonical catalog preservation validator passed in the local workspace: 95 original V3.1 recipe records remain unchanged; 177 offline countries remain; India links to 18 original recipes. Stable V3.2 theme-map unit coverage passed for all 95 recipe IDs.
+- Read-only source inventory of `index.html` found 95 unique contiguous recipe IDs (1–95); all 95 records have ingredient lists, step lists, and top-level safety text, across 318 steps. This verifies field presence only, not accuracy or age appropriateness. `PT_RECIPES` contains 65 records; IDs 66–95 (30 recipes) have no PT-BR record and remain blocked for reviewed bilingual translation.
 - Local Node test suite passed 19/19. These source checks do not replace exact-head Android CI or visual/content review.
 - The latest completed Android run remains #39620830609 at older code head `9251a388c3b634c613b06d0570db7de216d204f4`: 95/95 detail routes and Classic/V3.2 coexistence passed. That run does not test visual commits `8e78a51`, `b13dabd` or mapping commit `857b3e0`.
 - All 95 recipe acceptance rows remain BLOCKED for per-recipe bilingual content, ingredients/quantities, nutrition/allergens, safety/cooking flow, recipe-matched dish and step artwork, rights/provenance, screenshots and independent review. Route coverage and stable theme IDs are not full recipe acceptance.
