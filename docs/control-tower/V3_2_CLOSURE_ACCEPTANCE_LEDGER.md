@@ -240,3 +240,8 @@ Each record contains the owner-required fields: item ID, approved contract/refer
 - Permanent $0 policy is in [`FREE_ONLY_OPERATING_POLICY.md`](FREE_ONLY_OPERATING_POLICY.md), commit [`c8e32fdfb1fb6f6868b3439e051f6cc7a13cb834`](https://github.com/chinkk-git/Aariamagickitchen/commit/c8e32fdfb1fb6f6868b3439e051f6cc7a13cb834). It applies to V3.2 #38 and deferred V3.3 #39. Public standard runner usage is free under GitHub's published policy; artifact storage is limited by plan and current owner headroom cannot be verified through the connected GitHub tools, so no additional artifact-producing run may be started until that allowance is confirmed.
 - Prior independent closure audit remains: recipe matrix 95/95 records parse with contiguous IDs; acceptance remains BLOCKED 95/95; content, rights, step-art, visual, A08/A09, accessibility, signing/device and Classic recovery evidence gaps remain as summarized above. Do not promote draft artwork or claim release readiness.
 - V3.1 Classic remains preserved. V3.3 is deferred. No merge or release.
+
+
+## Owner billing verification — 2026-10-21
+
+Owner verified GitHub Actions usage: $15.16 gross, $15.16 discounts, $0 actual charges, and 0 of 2,000 included Actions minutes consumed. Continue only necessary V3.2 Android CI on eligible standard GitHub-hosted runners while keeping the repository public. No larger/paid runners, billing changes, upgrades or overages. Minimize redundant runs and polling; no merge/release. This verification is for Actions usage and does not close any recipe, art-rights, independent review, accessibility, signing or recovery gate.
