@@ -112,7 +112,7 @@ jobs:
           printf 'A08_review=HOLD\nA09_review=HOLD\nartwork_rights=HOLD\nrelease=NOT_AUTHORIZED\n' > artifacts/v32-diagnostics/gates.txt
 
       - name: Download previous V3.2 preview for install-conflict regression
-        if: github.run_number == 70
+        if: github.run_number == 73
         uses: actions/download-artifact@v4
         with:
           name: aaria-magical-kitchen-v3.2-test-apk
@@ -122,7 +122,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify previous V3.2 preview identity for coexistence test
-        if: github.run_number == 70
+        if: github.run_number == 73
         run: |
           set -euo pipefail
           prior=artifacts/v32-previous-preview-apk/app-debug.apk

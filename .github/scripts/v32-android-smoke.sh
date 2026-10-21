@@ -126,7 +126,7 @@ if [ "${#baseline_candidates[@]}" -ne 1 ] || [ ! -s "${baseline_candidates[0]}" 
   exit 1
 fi
 BASELINE_APK=${baseline_candidates[0]}
-if [ "${GITHUB_RUN_NUMBER:-}" = "70" ]; then
+if [ "${GITHUB_RUN_NUMBER:-}" = "73" ]; then
   previous_v32_candidates=(artifacts/v32-previous-preview-apk/*.apk)
   if [ "${#previous_v32_candidates[@]}" -ne 1 ] || [ ! -s "${previous_v32_candidates[0]}" ]; then
     echo "Expected the previous V3.2 preview APK for the one-time install-conflict regression." >&2
@@ -142,7 +142,7 @@ adb_timeout shell pm path "$BASELINE_APP_ID" | grep -q 'package:'
 adb_timeout install -r phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
 adb_timeout shell pm path "$BASELINE_APP_ID" | grep -q 'package:'
 adb_timeout shell pm path "$APP_ID" | grep -q 'package:'
-if [ "${GITHUB_RUN_NUMBER:-}" = "70" ]; then
+if [ "${GITHUB_RUN_NUMBER:-}" = "73" ]; then
   adb_timeout shell pm path "$PREVIOUS_V32_APP_ID" | grep -q 'package:'
 fi
 echo "Co-install verified: V3.1 baseline and uniquely identified V3.2 visual review package $APP_ID"
