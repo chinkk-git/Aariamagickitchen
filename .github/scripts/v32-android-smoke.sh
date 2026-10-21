@@ -608,6 +608,7 @@ console.log('Phone recipe detail, active-step and completion screenshots capture
 
 const routeCoverage=[];
 for(let recipeId=1;recipeId<=95;recipeId++){
+  if(recipeId===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
   const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=document.querySelector('#screen .recipe-card[data-open="${recipeId}"]');if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
   if(!card?.title||!card.theme)throw new Error(`Recipe ${recipeId} is missing its catalogue card or deterministic theme`);
   if(card.catalogueCount!==undefined)throw new Error(`Recipe ${recipeId} route sweep is not on the full recipe catalogue: ${JSON.stringify(card)}`);
@@ -653,7 +654,7 @@ const pt12=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.
 if(pt12.title!==pt12.expected||pt12.ingredient!==pt12.expectedIngredient||pt12.nav.join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações')throw new Error('PT-BR recipe 12 title, ingredient or six-destination navigation is incorrect: '+JSON.stringify(pt12));
 const pt12StepScreens=[];
 for(let index=0;index<4;index++){
- const copy=await evaluate('(()=>({step:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedStep:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32Recipe12Safety.pt['+index+'],number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
+ const copy=await evaluate('(()=>({step:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedStep:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
  if(copy.step!==copy.expectedStep||copy.safety!==copy.expectedSafety||copy.number!==index+1)throw new Error('PT-BR recipe 12 step/safety coverage failed: '+JSON.stringify({index,copy}));
  const name='v32-recipe-12-pt-br-step-'+(index+1)+'-portrait.png';
  v32PhoneScreenshotDigest=await captureScreenshot(name,'PT-BR recipe 12 step '+(index+1)+' portrait',v32PhoneScreenshotDigest);pt12StepScreens.push(name);
