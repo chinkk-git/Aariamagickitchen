@@ -198,6 +198,31 @@ test('Android SDK preflight rejects GPT containers with corrupt primary-header o
   }
 });
 
+test('Android SDK preflight accepts an installed system-image package with its data directory instead of userdata.img', async t => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-data-dir-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const directory = path.join(root, 'system-images/android-35/default/x86_64');
+  const packageId = 'system-images;android-35;default;x86_64';
+  await writeValidImage(directory, packageId);
+  await rm(path.join(directory, 'userdata.img'));
+  await mkdir(path.join(directory, 'data'));
+  await writeFile(path.join(directory, 'data', 'package.ini'), 'installed SDK image data');
+  assert.equal((await validateSystemImageDirectory(directory, packageId)).valid, true);
+});
+
+test('Android SDK preflight rejects a package with neither userdata.img nor a populated data directory', async t => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-no-userdata-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const directory = path.join(root, 'system-images/android-35/default/x86_64');
+  const packageId = 'system-images;android-35;default;x86_64';
+  await writeValidImage(directory, packageId);
+  await rm(path.join(directory, 'userdata.img'));
+  await mkdir(path.join(directory, 'data'));
+  const result = await validateSystemImageDirectory(directory, packageId);
+  assert.equal(result.valid, false);
+  assert.match(result.reason, /SDK data directory is empty/);
+});
+
 test('Android SDK system image preflight rejects a package with wrong metadata and stops after two failed installs', async t => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-image-fail-'));
   t.after(() => rm(root, { recursive: true, force: true }));

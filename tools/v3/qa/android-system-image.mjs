@@ -135,7 +135,7 @@ async function describeDiskImageHeader(filePath, fsApi, size) {
   }
 }
 
-export async function validateSystemImageDirectory(directory, packageId, fsApi = { readFile, stat, open }) {
+export async function validateSystemImageDirectory(directory, packageId, fsApi = { readFile, stat, open, readdir }) {
   try {
     const packageXml = await fsApi.readFile(path.join(directory, 'package.xml'), 'utf8');
     const sourceProperties = await fsApi.readFile(path.join(directory, 'source.properties'), 'utf8');
@@ -157,7 +157,18 @@ export async function validateSystemImageDirectory(directory, packageId, fsApi =
       return { valid: false, reason: 'source.properties API level or ABI does not match the requested package' };
     }
     for (const payload of ['system.img', 'userdata.img']) {
-      const details = await fsApi.stat(path.join(directory, payload));
+      let details;
+      try {
+        details = await fsApi.stat(path.join(directory, payload));
+      } catch (error) {
+        if (payload !== 'userdata.img' || error.code !== 'ENOENT') throw error;
+        const dataDirectory = path.join(directory, 'data');
+        const dataDetails = await fsApi.stat(dataDirectory);
+        if (!dataDetails.isDirectory()) return { valid: false, reason: 'userdata.img is absent and SDK data directory is not a directory' };
+        const dataEntries = await fsApi.readdir(dataDirectory);
+        if (dataEntries.length === 0) return { valid: false, reason: 'userdata.img is absent and SDK data directory is empty' };
+        continue;
+      }
       if (!details.isFile() || details.size === 0) return { valid: false, reason: `${payload} is missing or empty` };
       if (!await hasRecognizedDiskImageHeader(path.join(directory, payload), fsApi, details.size)) {
         const imageEvidence = {
