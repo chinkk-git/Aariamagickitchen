@@ -7,6 +7,7 @@ test('tablet Android smoke imports its screenshot helper from the repository-rel
   const script = await readFile(new URL('../../.github/scripts/v32-android-tablet-smoke.sh', import.meta.url), 'utf8');
   assert.match(script, /from '\.\/\.github\/scripts\/android-screenshot-orientation\.mjs'/);
   assert.doesNotMatch(script, /from '\.\/android-screenshot-orientation\.mjs'/);
+  assert.match(script, /await command\('Page\.enable'\);\s*await command\('Runtime\.enable'\);/);
 });
 
 function png(width, height) {
