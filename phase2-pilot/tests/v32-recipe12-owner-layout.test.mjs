@@ -120,6 +120,10 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'tablet geometry accounts for the visible recipe navigation rail in portrait');
   assert.match(tablet, /layout\.grid<layout\.usableWidth\*\.68\|\|layout\.main<layout\.usableWidth\*\.82/,
     'tablet ingredient widths are measured against the actual available recipe pane');
+  assert.match(tablet, /expectedInstruction:displayStepText\(selected,step\)[\s\S]*?canonicalInstruction:selected\?\.steps\?\.\[step\]/,
+    'tablet smoke compares the rendered child-friendly step copy to its renderer source while retaining the canonical source as evidence');
+  assert.match(tablet, /!active\.safety[\s\S]*?active\.instruction!==active\.expectedInstruction/,
+    'tablet step verification independently requires the adult safety text and correct rendered copy');
 });
 
 test('APK recipe #12 keeps the approved four illustrated step bindings', async () => {
