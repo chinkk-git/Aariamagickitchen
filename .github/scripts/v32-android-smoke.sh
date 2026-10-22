@@ -547,8 +547,21 @@ let v32PhoneScreenshotDigest=recipeDigest;
 async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   const orientation=landscape?'landscape':'portrait';
   await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!=='+id+');state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!=='+id+');step=0;save();return true})()');
+  // Each recipe capture starts from an explicit, user-visible navigation path.
+  // Earlier world-map and planner checks can leave the renderer on a different
+  // screen; do not assume the preceding test's route is the recipe catalogue.
+  await clickWebViewSelector('#nav .tab[data-nav="home"]','Home before phone recipe '+id);
+  await waitForVisible('.v31-hero-welcome h1','Home before phone recipe '+id);
+  const homeState=await evaluate('(()=>({view,screen:document.querySelector("#screen")?.className||"",title:document.querySelector(".v31-hero-welcome h1")?.textContent?.trim()||""}))()');
+  if(homeState.view!=='home'||homeState.screen.includes('v31-world-screen')||!homeState.title)throw new Error('Phone recipe flow did not reset to the visible Home route: '+JSON.stringify({id,homeState}));
+  await clickWebViewSelector('.v31-action-tiles [data-nav="library"]','Recipes before phone recipe '+id);
+  await waitForVisible('.recipe-card[data-open="1"]','95-recipe catalogue before phone recipe '+id);
+  const catalogueState=await evaluate('(()=>({view,count:document.querySelectorAll("#screen .recipe-card[data-open]").length,screen:document.querySelector("#screen")?.className||""}))()');
+  if(catalogueState.view!=='library'||catalogueState.count!==95||catalogueState.screen.includes('v31-world-screen'))throw new Error('Phone recipe flow did not enter the complete Recipes catalogue: '+JSON.stringify({id,catalogueState}));
   const card=await evaluate(`(()=>{const e=${findByDatasetExpression('#screen [data-open]','open',id)};const text=e?.innerText?.trim()||"";const observedTheme=e?.dataset.v32Theme||"";e?.click();return {text,theme:observedTheme}})()`);
   if(!card||!card.text.includes(title)||card.theme!==theme)throw new Error('Phone exemplar catalogue card mismatch: '+JSON.stringify({id,title,theme,card}));
+  const opened=await evaluate('(()=>({view,selectedId:Number(selected?.id||0),screen:document.querySelector("#screen")?.className||""}))()');
+  if(opened.view!=='recipe'||opened.selectedId!==id||opened.screen.includes('v31-world-screen'))throw new Error('Phone recipe card click did not reach the selected recipe route: '+JSON.stringify({id,opened}));
   await waitForVisible('.ref-hero h1','Phone '+title+' details');
   const detail=await evaluate('(()=>({title:document.querySelector(".ref-hero h1")?.textContent?.trim()||"",theme:document.querySelector(".app")?.dataset.v32RecipeTheme||""}))()');
   if(detail.title!==title||detail.theme!==theme)throw new Error('Phone exemplar detail mismatch: '+JSON.stringify({id,expected:{title,theme},detail}));

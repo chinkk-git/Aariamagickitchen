@@ -50,6 +50,12 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
     'phone recipe opening must compare dataset values instead of interpolating CSS');
   assert.match(tablet, /clickByDatasetExpression\('#screen \[data-open\]',\s*'open',\s*id\)/,
     'tablet recipe opening must compare dataset values instead of interpolating CSS');
+  assert.match(phone, /Home before phone recipe '\+id/,
+    'phone recipe captures reset through the visible Home navigation after prior route checks');
+  assert.match(phone, /Recipes before phone recipe '\+id/,
+    'phone recipe captures enter the catalogue through its visible Home action');
+  assert.match(phone, /homeState\.view!=='home'[\s\S]*catalogueState\.view!=='library'[\s\S]*opened\.view!=='recipe'/,
+    'phone capture fails closed unless Home, the full catalogue, and the selected recipe route are confirmed');
   for (const selector of ['.v32-r12-ingredient-list input', '#screen [data-open]', '.v32-review-featured-card', '.ref-next', '.ref-next.finish-step', '#nav .tab[data-nav="library"]']) {
     assert.ok(phone.includes(selector) || tablet.includes(selector), `both device flows include ${selector}`);
   }
