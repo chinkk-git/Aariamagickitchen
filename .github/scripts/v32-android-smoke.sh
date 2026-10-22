@@ -198,6 +198,15 @@ async function waitForVisible(selector, label) {
   }
   throw new Error(`${label} did not become visible in #screen; last state: ${last}`);
 }
+async function prepareVisibleRecipeCapture(selector, label) {
+  const state = await evaluate(`(() => { const screen=document.querySelector('#screen'); const node=screen?.querySelector(${JSON.stringify(selector)}); if(!node) return {visible:false,reason:'missing target'}; node.scrollIntoView({block:'center',inline:'nearest'}); const rect=node.getBoundingClientRect(), root=screen.getBoundingClientRect(), style=getComputedStyle(node); const visible=style.display!=='none'&&style.visibility!=='hidden'&&rect.width>0&&rect.height>0&&rect.bottom>root.top&&rect.top<root.bottom&&rect.right>root.left&&rect.left<root.right; return {visible,text:(node.innerText||node.textContent||'').trim(),rect:{top:Math.round(rect.top),bottom:Math.round(rect.bottom),left:Math.round(rect.left),right:Math.round(rect.right)},screen:{top:Math.round(root.top),bottom:Math.round(root.bottom),left:Math.round(root.left),right:Math.round(root.right)}}; })()`);
+  if (!state?.visible) throw new Error(`${label} is not visibly inside the active app screen before screenshot: ${JSON.stringify(state)}`);
+  await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
+  await pause(500);
+  const settled = await evaluate(`(() => { const screen=document.querySelector('#screen'); const node=screen?.querySelector(${JSON.stringify(selector)}); if(!node) return {visible:false,reason:'target disappeared'}; const rect=node.getBoundingClientRect(), root=screen.getBoundingClientRect(), style=getComputedStyle(node); return {visible:style.display!=='none'&&style.visibility!=='hidden'&&rect.width>0&&rect.height>0&&rect.bottom>root.top&&rect.top<root.bottom&&rect.right>root.left&&rect.left<root.right,text:(node.innerText||node.textContent||'').trim()}; })()`);
+  if (!settled?.visible) throw new Error(`${label} left the active app viewport before screenshot: ${JSON.stringify(settled)}`);
+  return settled;
+}
 async function assertNoAndroidAnr(label) {
   const windows = adb(['shell','dumpsys','window','windows']).toString('utf8');
   const anrWindow = windows.match(/Window\{[^}\n]*Application Not Responding[^}\n]*\}/i)?.[0];
@@ -688,18 +697,46 @@ if(!await clickCatalogueRecipe(12))throw new Error('PT-BR recipe 12 card was not
 await waitForVisible('.v32-r12-main','PT-BR recipe 12 pilot');
 const pt12=await evaluate(`(()=>{const expectedIngredient=PT_RECIPES[12].ingredients[0];const ingredient=[...document.querySelectorAll('.v32-r12-ingredient-list .ref-ingredient')].map(card=>(card.innerText||card.textContent||'').replace(/\\s+/g,' ').trim()).find(text=>text.includes(expectedIngredient))||'';return {title:document.querySelector('.v32-r12-title-block h1')?.textContent?.trim()||'',expected:PT_RECIPES[12].title,ingredient,expectedIngredient,ingredientCount:PT_RECIPES[12].ingredients.length,stepCount:PT_RECIPES[12].steps.length}})()`);pt12.nav=await evaluate(navigationSummaryExpression());
 if(pt12.title!==pt12.expected||!pt12.ingredient.includes(pt12.expectedIngredient)||pt12.nav.map(x=>x.label).join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações'||pt12.nav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations')throw new Error('PT-BR recipe 12 title, ingredient or six-destination navigation is incorrect: '+JSON.stringify(pt12));
-const pt12StepScreens=[];
-for(let index=0;index<4;index++){
- const copy=await evaluate('(()=>({step:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedStep:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
- if(copy.step!==copy.expectedStep||copy.safety!==copy.expectedSafety||copy.number!==index+1)throw new Error('PT-BR recipe 12 step/safety coverage failed: '+JSON.stringify({index,copy}));
- const name='v32-recipe-12-pt-br-step-'+(index+1)+'-portrait.png';
- v32PhoneScreenshotDigest=await captureScreenshot(name,'PT-BR recipe 12 step '+(index+1)+' portrait',v32PhoneScreenshotDigest);pt12StepScreens.push(name);
- if(index<3){await clickWebViewSelector('.ref-next','Next PT-BR recipe step');await pause(200)}
+async function capturePtBr12Orientation(orientation){
+ const landscape=orientation==='landscape';
+ const title=await waitForVisible('.v32-r12-title-block h1','PT-BR #12 detail '+orientation);
+ const detailState=await prepareVisibleRecipeCapture('.v32-r12-title-block h1','PT-BR #12 detail '+orientation);
+ if(!title.text.includes(pt12.expected)||!detailState.text.includes(pt12.expected))throw new Error('PT-BR #12 detail capture is not on the expected recipe: '+JSON.stringify({title,detailState}));
+ const detail='v32-recipe-12-pt-br-detail-'+orientation+'.png';
+ v32PhoneScreenshotDigest=await captureScreenshot(detail,'PT-BR recipe 12 detail '+orientation,v32PhoneScreenshotDigest);
+ const stepScreens=[];
+ for(let index=0;index<4;index++){
+  let copy=null;
+  for(let attempt=0;attempt<30;attempt++){
+   copy=await evaluate('(()=>({step:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedStep:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
+   if(copy.number===index+1)break;
+   await pause(250);
+  }
+  if(copy.step!==copy.expectedStep||copy.safety!==copy.expectedSafety||copy.number!==index+1)throw new Error('PT-BR recipe 12 step/safety coverage failed: '+JSON.stringify({index,copy}));
+  const active=await prepareVisibleRecipeCapture('.ref-step-card.active','PT-BR #12 active step '+(index+1)+' '+orientation);
+  if(!active.text.includes(copy.step))throw new Error('PT-BR #12 active-step capture target does not contain the canonical instruction: '+JSON.stringify({index,copy,active}));
+  const name='v32-recipe-12-pt-br-step-'+(index+1)+'-'+orientation+'.png';
+  v32PhoneScreenshotDigest=await captureScreenshot(name,'PT-BR recipe 12 step '+(index+1)+' '+orientation,v32PhoneScreenshotDigest);stepScreens.push(name);
+  if(index<3){await clickWebViewSelector('.ref-next','Next PT-BR recipe step');await pause(250)}
+ }
+ await clickWebViewSelector('.ref-next.finish-step','Finish PT-BR recipe');await pause(300);
+ if(!await evaluate('state.done.includes(12)&&!!document.querySelector(".v32-r12-completion")'))throw new Error('PT-BR recipe 12 completion did not render.');
+ const completionState=await prepareVisibleRecipeCapture('.v32-r12-completion','PT-BR #12 completion '+orientation);
+ const completion='v32-recipe-12-pt-br-completion-'+orientation+'.png';
+ v32PhoneScreenshotDigest=await captureScreenshot(completion,'PT-BR recipe 12 completion '+orientation,v32PhoneScreenshotDigest);
+ return {orientation,detail,steps:stepScreens,completion,visibleTargets:{detail:detailState.text,steps:4,completion:completionState.text}};
 }
-await clickWebViewSelector('.ref-next.finish-step','Finish PT-BR recipe');await pause(250);
-if(!await evaluate('state.done.includes(12)&&!!document.querySelector(".v32-r12-completion")'))throw new Error('PT-BR recipe 12 completion did not render.');
-const pt12Completion='v32-recipe-12-pt-br-completion-portrait.png';v32PhoneScreenshotDigest=await captureScreenshot(pt12Completion,'PT-BR recipe 12 completion portrait',v32PhoneScreenshotDigest);
-writeFileSync('artifacts/v32-diagnostics/recipe-12-pt-br-evidence.json',JSON.stringify({status:'INTERNAL_TRANSLATION_RENDER_PASS',title:pt12.title,ingredients:pt12.ingredientCount,steps:pt12.stepCount,stepScreens:pt12StepScreens,completion:pt12Completion,independentReview:'A08/A09/native PT-BR review pending'},null,2)+'\n');
+await rotateTo(0);await waitForWebViewOrientation(false);
+const pt12Portrait=await capturePtBr12Orientation('portrait');
+await rotateTo(1);await waitForWebViewOrientation(true);
+await clickWebViewSelector('#nav .tab[data-nav="home"]','PT-BR Home before landscape recipe capture');
+await waitForVisible('.v31-hero-welcome h1','PT-BR Home before landscape recipe capture');
+await clickWebViewSelector('.v31-action-tiles [data-nav="library"]','PT-BR Recipes before landscape recipe capture');
+await waitForVisible('.recipe-card[data-open="12"]','PT-BR recipe library before landscape capture');
+if(!await clickCatalogueRecipe(12))throw new Error('PT-BR recipe 12 card was not found for landscape capture.');
+await waitForVisible('.v32-r12-main','PT-BR recipe 12 landscape detail');
+const pt12Landscape=await capturePtBr12Orientation('landscape');
+writeFileSync('artifacts/v32-diagnostics/recipe-12-pt-br-evidence.json',JSON.stringify({status:'INTERNAL_VISUAL_CAPTURE_PENDING_MANUAL_INSPECTION',title:pt12.title,ingredients:pt12.ingredientCount,steps:pt12.stepCount,phone:{portrait:pt12Portrait,landscape:pt12Landscape},independentReview:'A08/A09/native PT-BR review pending'},null,2)+'\n');
 await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
 await waitForVisible('.recipe-card','Portuguese recipe library restored');
 await evaluate(`(()=>{const select=document.querySelector('#languageSelect');select.value='en-GB';select.dispatchEvent(new Event('change',{bubbles:true}));return state.language})()`);

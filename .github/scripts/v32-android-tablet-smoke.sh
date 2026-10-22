@@ -117,6 +117,7 @@ async function avatarScene(mode,landscape){
   return {result,shot};
 }
 async function screenshot(name,landscape){await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');await pause(500);const png=adb(['exec-out','screencap','-p']);const w=png.readUInt32BE(16),h=png.readUInt32BE(20);if(landscape?w<=h:w>=h)throw Error(name+' has incorrect screenshot orientation '+w+'x'+h);const path='artifacts/v32-android-screenshots/tablet/'+name+'.png';writeFileSync(path,png);return {path,width:w,height:h,bytes:png.length}}
+async function prepareVisibleRecipeCapture(selector,label){const first=await evaluate('(()=>{const screen=document.querySelector("#screen"),e=screen?.querySelector('+JSON.stringify(selector)+');if(!e)return {visible:false,reason:"missing target"};e.scrollIntoView({block:"center",inline:"nearest"});const r=e.getBoundingClientRect(),root=screen.getBoundingClientRect(),s=getComputedStyle(e);return {visible:s.display!=="none"&&s.visibility!=="hidden"&&r.width>0&&r.height>0&&r.bottom>root.top&&r.top<root.bottom&&r.right>root.left&&r.left<root.right,text:(e.innerText||e.textContent||"").trim()}})()');if(!first?.visible)throw Error(label+' is not inside the visible app screen before capture: '+JSON.stringify(first));await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');await pause(500);const settled=await evaluate('(()=>{const screen=document.querySelector("#screen"),e=screen?.querySelector('+JSON.stringify(selector)+');if(!e)return {visible:false,reason:"target disappeared"};const r=e.getBoundingClientRect(),root=screen.getBoundingClientRect(),s=getComputedStyle(e);return {visible:s.display!=="none"&&s.visibility!=="hidden"&&r.width>0&&r.height>0&&r.bottom>root.top&&r.top<root.bottom&&r.right>root.left&&r.left<root.right,text:(e.innerText||e.textContent||"").trim()}})()');if(!settled?.visible)throw Error(label+' left the active app screen before capture: '+JSON.stringify(settled));return settled}
 async function pageSet(landscape){
   await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcome h1','Home');const featured=await evaluate('(()=>{const rail=document.querySelector(".v32-review-featured-rail"),style=rail?getComputedStyle(rail):null,cards=[...document.querySelectorAll(".v32-review-featured-card")];return {ids:cards.map(e=>Number(e.dataset.v32ReviewFeaturedId)),contract:rail?.dataset.v32FeaturedIds||"",overflowX:style?.overflowX||"",title:cards[0]?.querySelector("strong")?.textContent?.trim()||"",heading:document.querySelector(".v32-review-featured-section h2")?.textContent?.trim()||""}})()');if(JSON.stringify(featured.ids)!=="[12]"||featured.contract!=="12"||featured.overflowX!=="auto"||featured.title!=="Cheesy Corn Pancakes"||featured.heading!=="⭐ Featured Recipes")throw Error("Tablet Featured Recipes must contain only review-pilot recipe #12 in a horizontal rail: "+JSON.stringify(featured));const homeA11y=await audit('home');const home=await screenshot('home-'+(landscape?'landscape':'portrait'),landscape);if(!landscape){await evaluate('state.language="pt-BR";save();render()');await waitFor('.v32-review-featured-rail','PT-BR tablet Featured Recipes');const ptFeatured=await evaluate('(()=>({ids:[...document.querySelectorAll(".v32-review-featured-card")].map(e=>Number(e.dataset.v32ReviewFeaturedId)),title:document.querySelector(".v32-review-featured-card strong")?.textContent?.trim()||"",heading:document.querySelector(".v32-review-featured-section h2")?.textContent?.trim()||""}))()');if(JSON.stringify(ptFeatured.ids)!=="[12]"||ptFeatured.title!=="Panquequinhas de milho com queijo"||ptFeatured.heading!=="⭐ Receitas em destaque")throw Error("PT-BR tablet Featured Recipes mismatch: "+JSON.stringify(ptFeatured));await screenshot('home-featured-pt-br-portrait',false);await evaluate('state.language="en-GB";save();render()');await waitFor('.v32-review-featured-rail','English tablet Featured Recipes restored')}const avatarScenes={family:await avatarScene('family',landscape),friends:await avatarScene('friends',landscape)};
   await click('#nav .tab[data-nav="world"]','World');await waitFor('#screen .v31-world-header h1','World');await dismissChefChooser();const worldRoute=await evaluate('(()=>{const screen=document.querySelector("#screen"),e=screen?.querySelector(".v31-world-header h1"),r=e?.getBoundingClientRect(),s=e?getComputedStyle(e):null;return {view:typeof view==="undefined"?"unavailable":view,heading:e?.textContent?.trim()||"",screenClass:screen?.className||"",screenText:screen?.innerText||"",visible:!!e&&!!r&&r.width>0&&r.height>0&&s?.display!=="none"&&s?.visibility!=="hidden"}})()');if(worldRoute.view!=="world"||!worldRoute.screenClass.includes("v31-world-screen")||!worldRoute.screenText.includes("World Food Adventure")||!worldRoute.visible)throw Error("Tablet world navigation did not replace the active screen with visible World content: "+JSON.stringify(worldRoute));const worldA11y=await audit('world');
@@ -182,7 +183,43 @@ const portraitViewport=await orientation(false);
 const portrait=await pageSet(false);
 const landscapeViewport=await orientation(true);
 const landscape=await pageSet(true);
-const report={serial,profile:'pixel_tablet',portraitViewport,landscapeViewport,orientationTrace,portrait,landscape,scope:'isolated V3.2 debug APK; no release or rights/A08/A09 approval'};
+async function capturePtBrRecipe12(landscape){
+ await orientation(landscape);
+ await click('#nav .tab[data-nav="home"]','Home before PT-BR #12 '+(landscape?'landscape':'portrait'));
+ await waitFor('.v31-hero-welcome h1','Home before PT-BR #12 capture');
+ await evaluate('(()=>{state.language="pt-BR";save();render();return state.language})()');
+ await waitFor('.v32-review-featured-rail','PT-BR Featured Recipes before #12 capture');
+ await click('.v31-action-tiles [data-nav="library"]','PT-BR recipe library');
+ await waitFor('.recipe-card[data-open="12"]','PT-BR #12 recipe card');
+ await clickRecipeCard(12,'PT-BR #12');
+ await waitFor('.v32-r12-title-block h1','PT-BR #12 detail');
+ const detailState=await prepareVisibleRecipeCapture('.v32-r12-title-block h1','PT-BR #12 detail');
+ const detailCheck=await evaluate('(()=>({title:document.querySelector(".v32-r12-title-block h1")?.textContent?.trim()||"",expected:PT_RECIPES[12].title,ingredient:[...document.querySelectorAll(".v32-r12-ingredient-list .ref-ingredient")].map(e=>(e.innerText||e.textContent||"").replace(/\\s+/g," ").trim()).join("|"),expectedIngredient:PT_RECIPES[12].ingredients[0],nav:[...document.querySelectorAll("#nav .tab")].map(e=>e.textContent.trim()).join("|"),navIds:[...document.querySelectorAll("#nav .tab")].map(e=>e.dataset.nav).join("|")}))()');
+ if(detailCheck.title!==detailCheck.expected||!detailCheck.ingredient.includes(detailCheck.expectedIngredient)||detailCheck.nav!=='Início|Receitas|Aventura|Despensa|Planejar|Criações'||detailCheck.navIds!=='home|library|world|groceries|week|creations')throw Error('PT-BR #12 detail/navigation content mismatch: '+JSON.stringify(detailCheck));
+ const suffix=landscape?'landscape':'portrait';
+ const detail=await screenshot('recipe-12-pt-br-detail-'+suffix,landscape);
+ const steps=[];
+ for(let index=0;index<4;index++){
+  let active=null;
+  for(let attempt=0;attempt<30;attempt++){
+   active=await evaluate('(()=>({number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],progress:Number(document.querySelector(".v32-r12-progress")?.getAttribute("aria-valuenow")||0)}))()');
+   if(active.number===index+1)break;
+   await pause(250);
+  }
+  if(active.number!==index+1||active.instruction!==active.expected||active.safety!==active.expectedSafety||active.progress!==index+1)throw Error('PT-BR #12 step/safety/progress mismatch: '+JSON.stringify({index,active}));
+  const visible=await prepareVisibleRecipeCapture('.ref-step-card.active','PT-BR #12 active step '+(index+1));
+  if(!visible.text.includes(active.instruction))throw Error('PT-BR #12 active screenshot target does not contain its canonical step: '+JSON.stringify({index,active,visible}));
+  steps.push(await screenshot('recipe-12-pt-br-step-'+(index+1)+'-'+suffix,landscape));
+  if(index<3){await click('.ref-next','Next PT-BR #12 step');await pause(250)}
+ }
+ await click('.ref-next.finish-step','Finish PT-BR #12');await pause(300);
+ if(!await evaluate('state.done.includes(12)&&state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".v32-r12-completion")'))throw Error('PT-BR #12 completion did not persist/render.');
+ const completionState=await prepareVisibleRecipeCapture('.v32-r12-completion','PT-BR #12 completion');
+ const completion=await screenshot('recipe-12-pt-br-completion-'+suffix,landscape);
+ return {orientation:suffix,detail,steps,completion,visibleTargets:{detail:detailState.text,completion:completionState.text},decision:'visual review still required'};
+}
+const ptBrRecipe12={portrait:await capturePtBrRecipe12(false),landscape:await capturePtBrRecipe12(true)};
+const report={serial,profile:'pixel_tablet',portraitViewport,landscapeViewport,orientationTrace,portrait,landscape,ptBrRecipe12,scope:'isolated V3.2 debug APK; no release or rights/A08/A09 approval'};
 mkdirSync('artifacts/v32-diagnostics',{recursive:true});
 writeFileSync('artifacts/v32-diagnostics/tablet-smoke.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));
