@@ -131,7 +131,11 @@ test('PT-BR #12 ingredient assertion searches card content past decorative icons
     'phone smoke reads full ingredient cards rather than their decorative first span');
   assert.ok(phone.includes('.find(text=>text.includes(expectedIngredient))'),
     'phone smoke requires the expected ingredient text inside a rendered card');
-  const cards = [{ innerText: '🧺 ½ xícara de milho' }, { innerText: '🥚 1 ovo' }];
+  assert.ok(phone.includes('!pt12.ingredient.includes(pt12.expectedIngredient)'),
+    'PT-BR #12 allows decoration around the exact canonical ingredient while requiring it to remain present');
+  assert.ok(!phone.includes('pt12.ingredient!==pt12.expectedIngredient'),
+    'PT-BR #12 cannot reject a correct ingredient card because of decorative glyphs');
+  const cards = [{ innerText: '🧺 ½ xícara de milho ○' }, { innerText: '🥚 1 ovo' }];
   const expected = '½ xícara de milho';
   const actual = cards.map(card => (card.innerText || card.textContent || '').replace(/\s+/g, ' ').trim()).find(text => text.includes(expected)) || '';
   assert.equal(actual, '🧺 ½ xícara de milho',
