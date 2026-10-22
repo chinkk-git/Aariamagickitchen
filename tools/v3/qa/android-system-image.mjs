@@ -29,6 +29,21 @@ async function hasRecognizedDiskImageHeader(filePath, fsApi) {
   }
 }
 
+async function describeDiskImageHeader(filePath, fsApi, size) {
+  const handle = await fsApi.open(filePath, 'r');
+  try {
+    const samples = [];
+    for (const [offset, length] of [[0, 32], [1024, 4], [1080, 2]]) {
+      const bytes = Buffer.alloc(length);
+      const { bytesRead } = await handle.read(bytes, 0, length, offset);
+      samples.push('[ ' + offset + ':+ ' + length + ']=' + (bytes.subarray(0, bytesRead).toString('hex') || '<eof>'));
+    }
+    return 'size=' + size + '; ' + samples.join(' ');
+  } finally {
+    await handle.close();
+  }
+}
+
 export async function validateSystemImageDirectory(directory, packageId, fsApi = { readFile, stat, open }) {
   try {
     const packageXml = await fsApi.readFile(path.join(directory, 'package.xml'), 'utf8');
@@ -46,7 +61,10 @@ export async function validateSystemImageDirectory(directory, packageId, fsApi =
     for (const payload of ['system.img', 'userdata.img']) {
       const details = await fsApi.stat(path.join(directory, payload));
       if (!details.isFile() || details.size === 0) return { valid: false, reason: `${payload} is missing or empty` };
-      if (!await hasRecognizedDiskImageHeader(path.join(directory, payload), fsApi)) return { valid: false, reason: `${payload} is not a recognized Android sparse or ext4 image` };
+      if (!await hasRecognizedDiskImageHeader(path.join(directory, payload), fsApi)) {
+        const evidence = await describeDiskImageHeader(path.join(directory, payload), fsApi, details.size);
+        return { valid: false, reason: `${payload} is not a recognized Android sparse or ext4 image; ${evidence}` };
+      }
     }
     return { valid: true, reason: 'SDK package metadata and required image payloads are present' };
   } catch (error) {
