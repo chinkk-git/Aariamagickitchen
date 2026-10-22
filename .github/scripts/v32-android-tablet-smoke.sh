@@ -47,7 +47,7 @@ for attempt in $(seq 1 30); do
 done
 [ -n "$socket" ] || { echo "Tablet WebView debug socket was not created" >&2; exit 1; }
 adb_timeout -s "$ANDROID_SERIAL" forward tcp:9223 "localabstract:$socket"
-timeout --kill-after=10s 300s node --input-type=module <<'NODE'
+timeout --kill-after=10s 1080s node --input-type=module <<'NODE'
 import {execFileSync} from 'node:child_process';
 import {mkdirSync,readFileSync,unlinkSync,writeFileSync} from 'node:fs';
 import {clickByDatasetExpression,clickSelectorExpression,navigationSummaryExpression} from './tools/v3/android-webview-smoke-expressions.mjs';

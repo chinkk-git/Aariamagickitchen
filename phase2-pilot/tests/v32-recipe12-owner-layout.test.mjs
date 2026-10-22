@@ -103,8 +103,9 @@ test('owner reference attachments remain byte-for-byte unchanged', async () => {
 });
 
 test('Android smoke scripts target the approved #12 renderer selectors', async () => {
-  const [phone, tablet] = await Promise.all([
-    read('.github/scripts/v32-android-smoke.sh'), read('.github/scripts/v32-android-tablet-smoke.sh')
+  const [phone, tablet, workflow] = await Promise.all([
+    read('.github/scripts/v32-android-smoke.sh'), read('.github/scripts/v32-android-tablet-smoke.sh'),
+    read('.github/workflows/v32-android.yml')
   ]);
   assert.match(phone, /detailTitleSelector=id===12\?'.ref-hero h1':'.ref-hero h1'/,
     'phone smoke waits for the approved recipe title');
@@ -124,6 +125,10 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'tablet smoke compares the rendered child-friendly step copy to its renderer source while retaining the canonical source as evidence');
   assert.match(tablet, /!active\.safety[\s\S]*?active\.instruction!==active\.expectedInstruction/,
     'tablet step verification independently requires the adult safety text and correct rendered copy');
+  assert.match(tablet, /timeout --kill-after=10s 1080s node/,
+    'the two-orientation tablet image audit has enough bounded time to visit all 95 recipes');
+  assert.match(workflow, /G2 TARGETED DEVICE SMOKE[\s\S]*?timeout-minutes:\s*20/,
+    'the tablet audit timeout remains below the Android device step limit');
 });
 
 test('APK recipe #12 keeps the approved four illustrated step bindings', async () => {
