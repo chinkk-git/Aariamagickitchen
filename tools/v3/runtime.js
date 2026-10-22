@@ -752,7 +752,7 @@ function v32UniversalRecipeStepTemplate(r,config){
  </article>`;
 }
 const v32RecipeBeforePilot=recipe;
-recipe=function v32Recipe12Only(){const id=Number(selected?.id);return id===12?v32UniversalRecipeStepTemplate(find(id),v32PilotRecipePresentation[id]):v32RecipeBeforePilot()};
+recipe=function v32Recipe12Only(){const id=Number(selected?.id);return id===12?batchReferenceRecipe():v32RecipeBeforePilot()};
 
 v3InitProfiles();
 render();

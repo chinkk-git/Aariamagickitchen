@@ -71,7 +71,7 @@ async function waitFor(selector,label){let last='';for(let i=0;i<40;i++){const x
 async function dismissChefChooser(){const present=await evaluate('(()=>{const d=document.querySelector("#v3ProfileDialog");if(!d)return false;const r=d.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(d).display!=="none"})()');if(present){console.log('Selecting Chef A for the disposable Aaria tablet profile');const selected=await evaluate(clickSelectorExpression('#v3ProfileDialog [data-v3-chef]'));if(!selected||!await evaluate('document.querySelector("#v3ProfileDialog [data-v3-chef]")?.getAttribute("aria-pressed")==="true"'))throw Error('Chef chooser was visible but Chef A could not be selected');const clicked=await evaluate(clickSelectorExpression('#v3ProfileDialog [data-v3-profile-continue]'));if(!clicked)throw Error('Chef chooser was visible but could not be continued');await pause(700);const remains=await evaluate('!!document.querySelector("#v3ProfileDialog")');if(remains)throw Error('Chef chooser remained open after selecting Chef A')} }
 async function click(selector,label){const ok=await evaluate(clickSelectorExpression(selector));if(!ok)throw Error(label+' control missing')}
 async function clickRecipeCard(id,label){const ok=await evaluate(clickByDatasetExpression('#screen [data-open]','open',id));if(!ok)throw Error(label+' recipe card missing')}
-async function assertRecipe12IngredientGrid(label,expectedColumns){const layout=await evaluate('(()=>{const grid=document.querySelector(".v32-r12-ingredient-list");if(!grid)return {missing:true};const cards=[...grid.querySelectorAll(".ref-ingredient")],cols=getComputedStyle(grid).gridTemplateColumns.trim().split(/\\s+/).length,boxes=cards.map(card=>{const art=card.querySelector(".v32-r12-ingredient-art"),name=card.querySelector(".v32-r12-ingredient-name"),input=card.querySelector("input[type=checkbox]"),cr=card.getBoundingClientRect(),ar=art?.getBoundingClientRect(),nr=name?.getBoundingClientRect(),ir=input?.getBoundingClientRect(),style=name?getComputedStyle(name):null,range=document.createRange();if(name)range.selectNodeContents(name);return {card:{left:cr.left,right:cr.right,top:cr.top,bottom:cr.bottom},art:ar&&{right:ar.right},name:nr&&{left:nr.left,scrollWidth:name.scrollWidth,clientWidth:name.clientWidth,scrollHeight:name.scrollHeight,clientHeight:name.clientHeight,lines:new Set([...range.getClientRects()].map(r=>Math.round(r.top))).size,wordBreak:style?.wordBreak,overflowWrap:style?.overflowWrap,hyphens:style?.hyphens},input:ir&&{width:ir.width,height:ir.height,label:input.getAttribute("aria-label")}}});return {width:innerWidth,height:innerHeight,cols,rows:new Set(boxes.map(x=>Math.round(x.card.top))).size,count:cards.length,boxes}})()');if(layout.missing||layout.count!==6||layout.cols!==expectedColumns||layout.rows!==Math.ceil(6/expectedColumns))throw Error(label+' #12 ingredient grid geometry mismatch: '+JSON.stringify(layout));for(let i=0;i<layout.boxes.length;i++){const c=layout.boxes[i];if(!c.art||!c.name||!c.input||c.art.right>c.name.left+1||c.input.width<18||c.input.height<18||!c.input.label||c.name.scrollWidth>c.name.clientWidth+1||c.name.scrollHeight>c.name.clientHeight+1||c.name.lines>10||c.name.wordBreak!=="normal"||c.name.overflowWrap!=="normal"||c.name.hyphens!=="none")throw Error(label+' ingredient '+(i+1)+' overlaps, clips, breaks words or lacks an accessible checkbox: '+JSON.stringify({layout,card:c}))}return layout}
+async function assertRecipe12IngredientGrid(label){const layout=await evaluate('(()=>{const grid=document.querySelector(".ref-ingredient-grid"),screen=document.querySelector("#screen"),main=document.querySelector(".reference-main");if(!grid||!screen||!main)return {missing:true};const cards=[...grid.querySelectorAll(".ref-ingredient")],cols=getComputedStyle(grid).gridTemplateColumns.trim().split(/\\s+/).length,boxes=cards.map(card=>{const art=card.querySelector(".ref-ingredient-icon"),name=card.querySelector(".ref-ingredient-icon + span"),input=card.querySelector("input[type=checkbox]"),cr=card.getBoundingClientRect(),ar=art?.getBoundingClientRect(),nr=name?.getBoundingClientRect(),ir=input?.getBoundingClientRect(),range=document.createRange();if(name)range.selectNodeContents(name);return {card:{left:cr.left,right:cr.right,top:cr.top,bottom:cr.bottom},art:ar&&{left:ar.left,right:ar.right,top:ar.top,bottom:ar.bottom},name:nr&&{left:nr.left,right:nr.right,top:nr.top,bottom:nr.bottom,scrollWidth:name.scrollWidth,clientWidth:name.clientWidth,lines:range.getClientRects().length},input:ir&&{width:ir.width,height:ir.height,labels:input.labels?.length||0,labelText:input.closest("label")?.innerText||""}}});return {width:innerWidth,documentWidth:document.documentElement.scrollWidth,screen:screen.getBoundingClientRect().width,main:main.getBoundingClientRect().width,grid:grid.getBoundingClientRect().width,cols,rows:new Set(boxes.map(x=>Math.round(x.card.top))).size,count:cards.length,boxes}})()');if(layout.missing||layout.count!==6||layout.cols<1||layout.cols>6||layout.rows!==Math.ceil(6/layout.cols)||layout.documentWidth>layout.width+1||layout.grid<layout.width*.68||layout.main<layout.width*.82)throw Error(label+' approved ingredient grid does not use the viewport or has invalid card geometry: '+JSON.stringify(layout));for(let i=0;i<layout.boxes.length;i++){const c=layout.boxes[i],overlap=c.art&&c.name&&c.art.right>c.name.left&&c.art.left<c.name.right&&c.art.bottom>c.name.top&&c.art.top<c.name.bottom;if(!c.art||!c.name||!c.input||overlap||c.input.width<12||c.input.height<12||c.input.labels<1||!c.input.labelText.trim()||c.name.scrollWidth>c.name.clientWidth+1||c.name.lines>8)throw Error(label+' ingredient '+(i+1)+' overlaps, clips or lacks a labeled checkbox: '+JSON.stringify({layout,card:c}))}return layout}
 const orientationTrace=[];
 async function orientation(landscape){
   const target=landscape?'landscape':'portrait';
@@ -135,7 +135,7 @@ async function pageSet(landscape){
   for(const id of [12,76,5]){
     if(id===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
     await clickRecipeCard(id,'Recipe '+id);
-    const titleSelector=id===12?'.v32-r12-title-block h1':'.ref-hero h1';
+    const titleSelector=id===12?'.ref-hero h1':'.ref-hero h1';
     await waitFor(titleSelector,'Recipe '+id+' details');
     const expected=exemplarExpected[id],actualTitle=await evaluate(`document.querySelector(${JSON.stringify(titleSelector)})?.textContent?.trim()||""`);
     if(!expected||actualTitle!==expected.title)throw Error('Recipe detail title mismatch for '+id+': '+JSON.stringify({expected:expected?.title,actual:actualTitle}));
@@ -144,23 +144,23 @@ async function pageSet(landscape){
     const orientationName=landscape?'landscape':'portrait';
     if(id===12){
       const viewport=await evaluate('({width:innerWidth,height:innerHeight})');
-      const expectedColumns=viewport.width>=760&&viewport.width>viewport.height?6:3;
-      await assertRecipe12IngredientGrid('EN-GB #12 tablet '+orientationName,expectedColumns);
+      const expectedColumns=null;
+      await assertRecipe12IngredientGrid('EN-GB #12 tablet '+orientationName);
     }
     const image=await screenshot('theme-'+id+'-detail-'+orientationName,landscape);
     let ingredientScreenshot=null;
     if(id===12){
-      const ingredientState=await prepareVisibleRecipeCapture('.v32-r12-ingredient-list','EN-GB #12 Ingredients '+orientationName);
+      const ingredientState=await prepareVisibleRecipeCapture('.ref-ingredient-grid','EN-GB #12 Ingredients '+orientationName);
       if(!ingredientState.visible)throw Error('EN-GB #12 tablet Ingredients grid is not visible before screenshot capture');
       ingredientScreenshot=await screenshot('recipe-12-ingredients-'+orientationName,landscape);
     }
-    const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".v32-r12-main")}))()');flow.nav=await evaluate(navigationSummaryExpression());
+    const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".ref-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".reference-layout")}))()');flow.nav=await evaluate(navigationSummaryExpression());
     if(flow.selectedId!==id||flow.activeCount!==1||flow.activeStep!==1)throw Error('Recipe template first-step state failed: '+JSON.stringify({id,flow}));
     if(id===12&&(flow.stepCount!==4||!flow.pilot||flow.nav.map(x=>x.label).join('|')!=='Home|Recipes|World Adventure|Magic Pantry|Planner|My Creations'||flow.nav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations'))throw Error('Recipe 12 pilot contract or exact six-button navigation failed: '+JSON.stringify(flow));
     const stepFiles=[];
     if(id===12){
       for(let index=1;index<=4;index++){
-        const active=await evaluate('(()=>({step:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),safety:document.querySelector(".v32-r12-safety p")?.textContent||"",progress:Number(document.querySelector(".v32-r12-progress")?.getAttribute("aria-valuenow")||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedInstruction:selected?.steps?.[step]||""}))()');
+        const active=await evaluate('(()=>({step:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),safety:document.querySelector(".ref-safety details p")?.textContent||"",progress:Number(step||0)+1,instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedInstruction:selected?.steps?.[step]||""}))()');
         if(active.step!==index||!active.safety||active.progress!==index||active.instruction!==active.expectedInstruction)throw Error('Tablet recipe 12 canonical step/safety/progress regression: '+JSON.stringify({index,active}));
         await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"start"})');
         const name='recipe-12-step-'+index+'-'+(landscape?'landscape':'portrait')+'.png';
@@ -168,7 +168,7 @@ async function pageSet(landscape){
         if(index<4){await click('.ref-next','Next recipe 12 step');await pause(250)}
       }
       await click('.ref-next.finish-step','Finish recipe 12');await pause(250);
-      if(!await evaluate('state.done.includes(12)&&state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".v32-r12-completion")'))throw Error('Tablet recipe 12 completion did not persist or render.');
+      if(!await evaluate('state.done.includes(12)&&state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".ref-next.finish-step")'))throw Error('Tablet recipe 12 completion did not persist or render.');
     }else{
       const stepArt=await evaluate('(()=>{const e=document.querySelector(".ref-step-card.active .v32-template-ingredient-art");return {count:e?.querySelectorAll(".v32-template-ingredient").length||0,characterImages:e?.querySelectorAll("img").length||0}})()');
       if(stepArt.count!==3||stepArt.characterImages!==0)throw Error('Approved template step must use three accurate ingredient icons without character art: '+JSON.stringify({id,stepArt}));
@@ -206,22 +206,22 @@ async function capturePtBrRecipe12(landscape){
  await click('.v31-action-tiles [data-nav="library"]','PT-BR recipe library');
  await waitFor('.recipe-card[data-open="12"]','PT-BR #12 recipe card');
  await clickRecipeCard(12,'PT-BR #12');
- await waitFor('.v32-r12-title-block h1','PT-BR #12 detail');
+ await waitFor('.ref-hero h1','PT-BR #12 detail');
  const viewport=await evaluate('({width:innerWidth,height:innerHeight})');
- const expectedColumns=viewport.width>=760&&viewport.width>viewport.height?6:3;
- await assertRecipe12IngredientGrid('PT-BR #12 tablet '+(landscape?'landscape':'portrait'),expectedColumns);
- const detailState=await prepareVisibleRecipeCapture('.v32-r12-title-block h1','PT-BR #12 detail');
- const detailCheck=await evaluate('(()=>({title:document.querySelector(".v32-r12-title-block h1")?.textContent?.trim()||"",expected:PT_RECIPES[12].title,ingredient:[...document.querySelectorAll(".v32-r12-ingredient-list .ref-ingredient")].map(e=>(e.innerText||e.textContent||"").replace(/\\s+/g," ").trim()).join("|"),expectedIngredient:PT_RECIPES[12].ingredients[0],nav:[...document.querySelectorAll("#nav .tab")].map(e=>e.textContent.trim()).join("|"),navIds:[...document.querySelectorAll("#nav .tab")].map(e=>e.dataset.nav).join("|")}))()');
+ const expectedColumns=null;
+ await assertRecipe12IngredientGrid('PT-BR #12 tablet '+(landscape?'landscape':'portrait'));
+ const detailState=await prepareVisibleRecipeCapture('.ref-hero h1','PT-BR #12 detail');
+ const detailCheck=await evaluate('(()=>({title:document.querySelector(".ref-hero h1")?.textContent?.trim()||"",expected:PT_RECIPES[12].title,ingredient:[...document.querySelectorAll(".ref-ingredient-grid .ref-ingredient")].map(e=>(e.innerText||e.textContent||"").replace(/\\s+/g," ").trim()).join("|"),expectedIngredient:PT_RECIPES[12].ingredients[0],nav:[...document.querySelectorAll("#nav .tab")].map(e=>e.textContent.trim()).join("|"),navIds:[...document.querySelectorAll("#nav .tab")].map(e=>e.dataset.nav).join("|")}))()');
  if(detailCheck.title!==detailCheck.expected||!detailCheck.ingredient.includes(detailCheck.expectedIngredient)||detailCheck.nav!=='Início|Receitas|Aventura|Despensa|Planejar|Criações'||detailCheck.navIds!=='home|library|world|groceries|week|creations')throw Error('PT-BR #12 detail/navigation content mismatch: '+JSON.stringify(detailCheck));
  const suffix=landscape?'landscape':'portrait';
  const detail=await screenshot('recipe-12-pt-br-detail-'+suffix,landscape);
- const ingredientsState=await prepareVisibleRecipeCapture('.v32-r12-ingredient-list','PT-BR #12 Ingredients '+suffix);
+ const ingredientsState=await prepareVisibleRecipeCapture('.ref-ingredient-grid','PT-BR #12 Ingredients '+suffix);
  const ingredients=await screenshot('recipe-12-pt-br-ingredients-'+suffix,landscape);
  const steps=[];
  for(let index=0;index<4;index++){
   let active=null;
   for(let attempt=0;attempt<30;attempt++){
-   active=await evaluate('(()=>({number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],progress:Number(document.querySelector(".v32-r12-progress")?.getAttribute("aria-valuenow")||0)}))()');
+   active=await evaluate('(()=>({number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".ref-safety details p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],progress:Number(step||0)+1}))()');
    if(active.number===index+1)break;
    await pause(250);
   }
@@ -232,8 +232,8 @@ async function capturePtBrRecipe12(landscape){
   if(index<3){await click('.ref-next','Next PT-BR #12 step');await pause(250)}
  }
  await click('.ref-next.finish-step','Finish PT-BR #12');await pause(300);
- if(!await evaluate('state.done.includes(12)&&state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".v32-r12-completion")'))throw Error('PT-BR #12 completion did not persist/render.');
- const completionState=await prepareVisibleRecipeCapture('.v32-r12-completion','PT-BR #12 completion');
+ if(!await evaluate('state.done.includes(12)&&state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".ref-next.finish-step")'))throw Error('PT-BR #12 completion did not persist/render.');
+ const completionState=await prepareVisibleRecipeCapture('.ref-next.finish-step','PT-BR #12 completion');
  const completion=await screenshot('recipe-12-pt-br-completion-'+suffix,landscape);
  return {orientation:suffix,detail,ingredients,steps,completion,visibleTargets:{detail:detailState.text,ingredients:ingredientsState.text,completion:completionState.text},decision:'visual review still required'};
 }

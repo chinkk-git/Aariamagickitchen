@@ -58,7 +58,7 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
     'phone recipe captures enter the catalogue through its visible Home action');
   assert.match(phone, /homeState\.view!=='home'[\s\S]*catalogueState\.view!=='library'[\s\S]*opened\.view!=='recipe'/,
     'phone capture fails closed unless Home, the full catalogue, and the selected recipe route are confirmed');
-  for (const selector of ['.v32-r12-ingredient-list input', '#screen [data-open]', '.v32-review-featured-card', '.ref-next', '.ref-next.finish-step', '#nav .tab[data-nav="library"]']) {
+  for (const selector of ['.ref-ingredient-grid input', '#screen [data-open]', '.v32-review-featured-card', '.ref-next', '.ref-next.finish-step', '#nav .tab[data-nav="library"]']) {
     assert.ok(phone.includes(selector) || tablet.includes(selector), `both device flows include ${selector}`);
   }
 
@@ -75,7 +75,7 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
     ['groceries','🧺','Magic Pantry'], ['week','▦','Planner'], ['creations','☆','My Creations']
   ].map(([id,icon,label]) => ({ dataset:{nav:id}, innerText:`${icon}\n${label}`, lastChild:{textContent:label} }));
   const selectors = new Map([
-    ['.v32-r12-ingredient-list input', [inputZero]],
+    ['.ref-ingredient-grid input', [inputZero]],
     ['#screen [data-open]', [recipe12, recipe99]],
     ['#screen .recipe-card[data-open]', [recipe12, recipe99]],
     ['.v32-review-featured-card', [featured12]],
@@ -99,7 +99,7 @@ test('Android smoke WebView selectors generate executable, safely quoted route a
   const execute = expression => new Function('document', `"use strict"; return (${expression});`)(mockDocument);
   const evaluateClick = (selector, key, value) => execute(clickByDatasetExpression(selector, key, value));
 
-  const generated = clickByDatasetExpression('.v32-r12-ingredient-list input', 'check', 0);
+  const generated = clickByDatasetExpression('.ref-ingredient-grid input', 'check', 0);
   assert.equal(await Promise.resolve(execute(generated)), true);
   assert.deepEqual(clicked, ['ingredient:0'], 'full generated expression clicks ingredient data-check="0"');
   assert.match(generated, /dataset\["check"\]==="0"/);
@@ -145,41 +145,27 @@ test('current-batch Featured Recipes omits absent descriptions instead of render
     'the optional description element must be omitted when canonical copy is absent');
 });
 
-test('recipe 12 ingredients use a compact three-column layout with separate icon, copy and checkbox tracks', async () => {
-  const css = await read('tools/v3/home-world-visual.css');
-  const ownerCorrection = css.slice(css.lastIndexOf('/* Owner-requested #12 Ingredients correction.'));
-  assert.ok(ownerCorrection.includes('grid-template-columns:repeat(3,minmax(0,1fr))'),
-    'the six owner-pilot ingredients form three columns and two rows by default');
-  assert.match(ownerCorrection, /\.v32-r12-ingredients \.ref-ingredient\{[^}]*grid-template-columns:24px minmax\(0,1fr\);grid-template-rows:18px minmax\(0,1fr\)/,
-    'each compact card has a dedicated icon column and readable text column');
-  assert.match(ownerCorrection, /\.v32-r12-ingredient-art\{grid-column:1;grid-row:1\/3/,
-    'the existing icon sits beside the ingredient name');
-  assert.match(ownerCorrection, /\.v32-r12-ingredient-name\{grid-column:2;grid-row:2/,
-    'ingredient copy remains in its own text track');
-  assert.match(ownerCorrection, /\.v32-r12-ingredients \.ref-ingredient>\.v32-r12-ingredient-name\{grid-column:2;grid-row:2;[^}]*overflow-wrap:normal/,
-    'the name rule outranks the older generic ingredient-span selector in Android WebView');
-  assert.match(ownerCorrection, /\.v32-r12-ingredients \.ref-ingredient input\{position:static;grid-column:2;grid-row:1;[^}]*width:18px;height:18px/,
-    'the small checkbox occupies a separate accessible track rather than overlapping artwork or text');
-  assert.match(ownerCorrection, /overflow-wrap:normal;word-break:normal;hyphens:none/,
-    'long ingredient words wrap at spaces instead of breaking into individual letters');
-  assert.match(ownerCorrection, /@media\(max-width:360px\)\{\.v32-r12-ingredient-list\{gap:/,
-    'narrow phones receive tighter grid spacing while retaining the base three columns');
-  assert.doesNotMatch(ownerCorrection, /@media\(max-width:360px\)\{[^}]*grid-template-columns:1fr/,
-    'narrow phones do not collapse the six ingredients into oversized vertical cards');
-  assert.match(ownerCorrection, /@media\(min-width:760px\) and \(orientation:landscape\)\{\.v32-r12-ingredient-list\{grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/,
-    'wide landscape tablet layouts expand the six cards responsively');
+test('recipe 12 ingredient cards use the approved reference renderer with labeled checkboxes', async () => {
+  const html = await read('index.html');
+  const start = html.indexOf('function batchReferenceRecipe(){');
+  const end = html.indexOf('\nfunction recipe(){', start);
+  assert.ok(start >= 0 && end > start);
+  const renderer = html.slice(start, end);
+  assert.match(renderer, /<label class=\"ref-ingredient[^>]*><input type=\"checkbox\"[^>]*><span class=\"ref-ingredient-icon\">\$\{batchIngredientPicture\(v\)\}<\/span><span>\$\{safe\(v\)\}<\/span>/,
+    'ingredient picture, readable name and native labeled checkbox share one card');
+  assert.match(renderer, /<div class=\"ref-ingredient-grid\">/, 'the approved renderer uses the owner reference ingredient grid');
 });
 
 test('phone and tablet Android capture the visible PT-BR ingredient grid and reset recipe progress per orientation', async () => {
   const phone = await read('.github/scripts/v32-android-smoke.sh');
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
-  assert.match(phone, /prepareVisibleRecipeCapture\('\.v32-r12-ingredient-list','PT-BR #12 Ingredients '\+orientation\)/);
+  assert.match(phone, /prepareVisibleRecipeCapture\('\.ref-ingredient-grid','PT-BR #12 Ingredients '\+orientation\)/);
   assert.match(phone, /v32-recipe-12-pt-br-ingredients-'\+orientation\+'\.png/);
   assert.match(phone, /state\.done=\(state\.done\|\|\[\]\)\.filter\(x=>Number\(x\)!==12\);state\.myCreations=/,
     'phone landscape capture clears only disposable recipe 12 completion state');
   assert.match(phone, /step=0;save\(\);return true/,
     'phone landscape capture starts at step one after portrait completion');
-  assert.match(tablet, /prepareVisibleRecipeCapture\('\.v32-r12-ingredient-list','PT-BR #12 Ingredients '\+suffix\)/);
+  assert.match(tablet, /prepareVisibleRecipeCapture\('\.ref-ingredient-grid','PT-BR #12 Ingredients '\+suffix\)/);
   assert.match(tablet, /recipe-12-pt-br-ingredients-'\+suffix/);
   assert.match(tablet, /state\.language="pt-BR";state\.done=\(state\.done\|\|\[\]\)\.filter\(x=>Number\(x\)!==12\);state\.myCreations=/,
     'each tablet orientation clears only disposable recipe 12 completion state');

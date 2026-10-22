@@ -352,3 +352,16 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
   max-width:100%;
   box-sizing:border-box;
 }
+.app.v32-recipe12-pilot-active .reference-layout {
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  margin-inline:0 !important;
+}
+.app.v32-recipe12-pilot-active .reference-main,
+.app.v32-recipe12-pilot-active .reference-main > * {
+  width:100%;
+  max-width:none;
+  min-width:0;
+  box-sizing:border-box;
+}
