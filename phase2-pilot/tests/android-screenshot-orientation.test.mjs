@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { captureOrientedPng } from '../../.github/scripts/android-screenshot-orientation.mjs';
+import { captureDistinctPng, captureOrientedPng } from '../../.github/scripts/android-screenshot-orientation.mjs';
 
 function png(width, height) {
   const buffer = Buffer.alloc(24);
@@ -44,4 +44,34 @@ test('Android screenshot capture fails closed when pixels never match the settle
     wait: async () => {},
     captureAttempts: 2
   }), /Expected portrait review screenshot, got 2220x1080 at rotation 0/);
+});
+
+test('tablet World capture rejects byte-identical Home frames and checks World UI before each capture', async () => {
+  const home = png(1600, 2560);
+  let checks = 0;
+  await assert.rejects(captureDistinctPng({
+    label: 'Tablet World',
+    previousPng: home,
+    assertExpectedUi: async () => { checks++; },
+    capturePng: async () => Buffer.from(home),
+    wait: async () => {},
+    attempts: 3
+  }), /Tablet World screenshot is byte-identical to Home after 3 fresh captures/);
+  assert.equal(checks, 3, 'World UI is verified immediately before each screenshot attempt');
+});
+
+test('tablet World capture retries stale Home pixels and accepts the distinct World frame', async () => {
+  const home = png(1600, 2560);
+  const world = png(1600, 2560);
+  world[23] = 1;
+  const frames = [Buffer.from(home), world];
+  const captured = await captureDistinctPng({
+    label: 'Tablet World',
+    previousPng: home,
+    assertExpectedUi: async () => {},
+    capturePng: async () => frames.shift(),
+    wait: async () => {},
+    attempts: 3
+  });
+  assert.deepEqual(captured.png, world);
 });

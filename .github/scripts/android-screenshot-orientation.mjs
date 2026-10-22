@@ -8,6 +8,26 @@ export function pngDimensions(png) {
   return { width: png.readUInt32BE(16), height: png.readUInt32BE(20) };
 }
 
+export async function captureDistinctPng({
+  label,
+  capturePng,
+  previousPng,
+  assertExpectedUi,
+  wait = pause,
+  attempts = 20,
+  retryDelayMs = 1000
+}) {
+  let dimensions;
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    if (assertExpectedUi) await assertExpectedUi();
+    const png = await capturePng();
+    dimensions = pngDimensions(png);
+    if (!previousPng || !png.equals(previousPng)) return { png, ...dimensions };
+    if (attempt + 1 < attempts) await wait(retryDelayMs);
+  }
+  throw new Error(`${label} screenshot is byte-identical to Home after ${attempts} fresh captures; navigation state was not visibly captured`);
+}
+
 export async function captureOrientedPng({
   expectedOrientation,
   readRotation,
