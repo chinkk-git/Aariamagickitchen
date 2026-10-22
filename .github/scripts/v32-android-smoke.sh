@@ -345,7 +345,7 @@ async function assertRecipe12IngredientGrid(label, expectedColumns) {
   const layout=await evaluate(`(()=>{const grid=document.querySelector('.v32-r12-ingredient-list');if(!grid)return {missing:true};const cards=[...grid.querySelectorAll('.ref-ingredient')];const cols=getComputedStyle(grid).gridTemplateColumns.trim().split(/\\s+/).length;const boxes=cards.map(card=>{const art=card.querySelector('.v32-r12-ingredient-art'),name=card.querySelector('.v32-r12-ingredient-name'),input=card.querySelector('input[type="checkbox"]'),cr=card.getBoundingClientRect(),ar=art?.getBoundingClientRect(),nr=name?.getBoundingClientRect(),ir=input?.getBoundingClientRect(),style=name?getComputedStyle(name):null,range=document.createRange();if(name)range.selectNodeContents(name);const lineTops=[...range.getClientRects()].map(r=>Math.round(r.top));return {card:{left:cr.left,right:cr.right,top:cr.top,bottom:cr.bottom},art:ar&&{left:ar.left,right:ar.right,top:ar.top,bottom:ar.bottom},name:nr&&{left:nr.left,right:nr.right,top:nr.top,bottom:nr.bottom,scrollWidth:name.scrollWidth,clientWidth:name.clientWidth,scrollHeight:name.scrollHeight,clientHeight:name.clientHeight,lines:new Set(lineTops).size,wordBreak:style?.wordBreak,overflowWrap:style?.overflowWrap,hyphens:style?.hyphens},input:ir&&{left:ir.left,right:ir.right,top:ir.top,bottom:ir.bottom,width:ir.width,height:ir.height,label:input.getAttribute('aria-label')}}});const xs=[...new Set(boxes.map(x=>Math.round(x.card.left)))].sort((a,b)=>a-b),ys=[...new Set(boxes.map(x=>Math.round(x.card.top)))].sort((a,b)=>a-b);return {width:innerWidth,height:innerHeight,cols,rows:ys.length,xs,ys,count:cards.length,boxes}})()`);
   if(layout.missing||layout.count!==6||layout.cols!==expectedColumns||layout.rows!==Math.ceil(6/expectedColumns))throw new Error(`${label}: #12 Ingredients grid geometry mismatch: ${JSON.stringify(layout)}`);
   for(const [i,card] of layout.boxes.entries()){
-    if(!card.art||!card.name||!card.input||card.art.right>card.name.left+1||card.input.width<18||card.input.height<18||!card.input.label||card.name.scrollWidth>card.name.clientWidth+1||card.name.lines>10||card.name.wordBreak!=='normal'||card.name.overflowWrap!=='normal'||card.name.hyphens!=='none')throw new Error(`${label}: #12 ingredient ${i+1} overlaps, clips, breaks words or lacks an accessible checkbox: ${JSON.stringify({layout,card})}`);
+    if(!card.art||!card.name||!card.input||card.art.right>card.name.left+1||card.input.width<18||card.input.height<18||!card.input.label||card.name.scrollWidth>card.name.clientWidth+1||card.name.scrollHeight>card.name.clientHeight+1||card.name.lines>10||card.name.wordBreak!=='normal'||card.name.overflowWrap!=='normal'||card.name.hyphens!=='none')throw new Error(`${label}: #12 ingredient ${i+1} overlaps, clips, breaks words or lacks an accessible checkbox: ${JSON.stringify({layout,card})}`);
   }
   return layout;
 }
@@ -728,6 +728,9 @@ async function capturePtBr12Orientation(orientation){
  if(!title.text.includes(pt12.expected)||!detailState.text.includes(pt12.expected))throw new Error('PT-BR #12 detail capture is not on the expected recipe: '+JSON.stringify({title,detailState}));
  const detail='v32-recipe-12-pt-br-detail-'+orientation+'.png';
  v32PhoneScreenshotDigest=await captureScreenshot(detail,'PT-BR recipe 12 detail '+orientation,v32PhoneScreenshotDigest);
+ const ingredientsState=await prepareVisibleRecipeCapture('.v32-r12-ingredient-list','PT-BR #12 Ingredients '+orientation);
+ const ingredients='v32-recipe-12-pt-br-ingredients-'+orientation+'.png';
+ v32PhoneScreenshotDigest=await captureScreenshot(ingredients,'PT-BR #12 Ingredients '+orientation,v32PhoneScreenshotDigest);
  const stepScreens=[];
  for(let index=0;index<4;index++){
   let copy=null;
@@ -748,7 +751,7 @@ async function capturePtBr12Orientation(orientation){
  const completionState=await prepareVisibleRecipeCapture('.v32-r12-completion','PT-BR #12 completion '+orientation);
  const completion='v32-recipe-12-pt-br-completion-'+orientation+'.png';
  v32PhoneScreenshotDigest=await captureScreenshot(completion,'PT-BR recipe 12 completion '+orientation,v32PhoneScreenshotDigest);
- return {orientation,detail,steps:stepScreens,completion,visibleTargets:{detail:detailState.text,steps:4,completion:completionState.text}};
+ return {orientation,detail,ingredients,steps:stepScreens,completion,visibleTargets:{detail:detailState.text,ingredients:ingredientsState.text,steps:4,completion:completionState.text}};
 }
 await rotateTo(0);await waitForWebViewOrientation(false);
 const pt12Portrait=await capturePtBr12Orientation('portrait');
@@ -757,6 +760,7 @@ await clickWebViewSelector('#nav .tab[data-nav="home"]','PT-BR Home before lands
 await waitForVisible('.v31-hero-welcome h1','PT-BR Home before landscape recipe capture');
 await clickWebViewSelector('.v31-action-tiles [data-nav="library"]','PT-BR Recipes before landscape recipe capture');
 await waitForVisible('.recipe-card[data-open="12"]','PT-BR recipe library before landscape capture');
+await evaluate('(()=>{step=0;save();return step})()');
 if(!await clickCatalogueRecipe(12))throw new Error('PT-BR recipe 12 card was not found for landscape capture.');
 await waitForVisible('.v32-r12-main','PT-BR recipe 12 landscape detail');
 const pt12Landscape=await capturePtBr12Orientation('landscape');

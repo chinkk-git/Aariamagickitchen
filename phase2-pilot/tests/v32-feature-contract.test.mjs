@@ -167,3 +167,16 @@ test('recipe 12 ingredients use a compact three-column layout with separate icon
   assert.match(ownerCorrection, /@media\(min-width:760px\) and \(orientation:landscape\)\{\.v32-r12-ingredient-list\{grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/,
     'wide landscape tablet layouts expand the six cards responsively');
 });
+
+test('phone and tablet Android capture the visible PT-BR ingredient grid and reset recipe progress per orientation', async () => {
+  const phone = await read('.github/scripts/v32-android-smoke.sh');
+  const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
+  assert.match(phone, /prepareVisibleRecipeCapture\('\.v32-r12-ingredient-list','PT-BR #12 Ingredients '\+orientation\)/);
+  assert.match(phone, /v32-recipe-12-pt-br-ingredients-'\+orientation\+'\.png/);
+  assert.match(phone, /step=0;save\(\);return step/,
+    'phone landscape capture starts at step one after portrait completion');
+  assert.match(tablet, /prepareVisibleRecipeCapture\('\.v32-r12-ingredient-list','PT-BR #12 Ingredients '\+suffix\)/);
+  assert.match(tablet, /recipe-12-pt-br-ingredients-'\+suffix/);
+  assert.match(tablet, /state\.language="pt-BR";step=0;save\(\);render\(\)/,
+    'each tablet orientation starts the PT-BR pilot at step one');
+});
