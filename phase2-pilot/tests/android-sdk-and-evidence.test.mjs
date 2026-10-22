@@ -36,11 +36,23 @@ test('Android SDK preflight reports image size and header bytes for an unrecogni
   await writeFile(path.join(directory, 'system.img'), Buffer.alloc(4096, 0x7f));
   const result = await validateSystemImageDirectory(directory, packageId);
   assert.equal(result.valid, false);
-  assert.match(result.reason, /system\.img is not a recognized Android sparse or ext4 image/);
-  assert.match(result.reason, /size=4096/);
-  assert.match(result.reason, /\[0:\+32\]=(?:7f){32}/);
-  assert.match(result.reason, /\[1024:\+4\]=(?:7f){2}/);
-  assert.match(result.reason, /\[1080:\+2\]=(?:7f){1}/);
+  assert.equal(result.reason.startsWith('system.img is not a recognized Android sparse or ext4 image; diagnostic='), true);
+  assert.deepEqual(result.packageMetadata, {
+    packageId,
+    packageXmlPathMatches: true,
+    revision: '1',
+    apiLevel: '35',
+    abi: 'x86_64'
+  });
+  assert.deepEqual(result.imageEvidence, {
+    payload: 'system.img',
+    size: 4096,
+    samples: {
+      '0': '7f'.repeat(32),
+      '1024': '7f'.repeat(4),
+      '1080': '7f'.repeat(2)
+    }
+  });
 });
 
 test('Android SDK system image preflight rejects a corrupt cached package and retries the exact package once', async t => {

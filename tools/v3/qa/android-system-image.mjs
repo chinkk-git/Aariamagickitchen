@@ -32,17 +32,18 @@ async function hasRecognizedDiskImageHeader(filePath, fsApi) {
 async function describeDiskImageHeader(filePath, fsApi, size) {
   const handle = await fsApi.open(filePath, 'r');
   try {
-    const samples = [];
+    const samples = {};
     for (const [offset, length] of [[0, 32], [1024, 4], [1080, 2]]) {
       const bytes = Buffer.alloc(length);
       const { bytesRead } = await handle.read(bytes, 0, length, offset);
-      samples.push('[ ' + offset + ':+ ' + length + ']=' + (bytes.subarray(0, bytesRead).toString('hex') || '<eof>'));
+      samples[String(offset)] = bytes.subarray(0, bytesRead).toString('hex');
     }
-    return 'size=' + size + '; ' + samples.join(' ');
+    return { size, samples };
   } finally {
     await handle.close();
   }
 }
+
 
 export async function validateSystemImageDirectory(directory, packageId, fsApi = { readFile, stat, open }) {
   try {
@@ -53,6 +54,13 @@ export async function validateSystemImageDirectory(directory, packageId, fsApi =
       const divider = line.indexOf('=');
       return divider < 0 ? ['', ''] : [line.slice(0, divider).trim(), line.slice(divider + 1).trim()];
     }));
+    const packageMetadata = {
+      packageId,
+      packageXmlPathMatches: packageXml.includes(`path="${packageId}"`) || packageXml.includes(`path='${packageId}'`),
+      revision: properties.get('Pkg.Revision') || null,
+      apiLevel: properties.get('AndroidVersion.ApiLevel') || null,
+      abi: properties.get('SystemImage.Abi') || null
+    };
     if (!properties.get('Pkg.Revision')) return { valid: false, reason: 'source.properties does not declare an installed package revision' };
     const [, apiText, , arch] = packageId.split(';');
     if (properties.get('SystemImage.Abi') !== arch || Number(properties.get('AndroidVersion.ApiLevel')) !== Number(apiText.replace('android-', ''))) {
@@ -62,10 +70,17 @@ export async function validateSystemImageDirectory(directory, packageId, fsApi =
       const details = await fsApi.stat(path.join(directory, payload));
       if (!details.isFile() || details.size === 0) return { valid: false, reason: `${payload} is missing or empty` };
       if (!await hasRecognizedDiskImageHeader(path.join(directory, payload), fsApi)) {
-        const evidence = await describeDiskImageHeader(path.join(directory, payload), fsApi, details.size);
-        return { valid: false, reason: `${payload} is not a recognized Android sparse or ext4 image; ${evidence}` };
-      }
-    }
+        const imageEvidence = {
+          payload,
+          ...(await describeDiskImageHeader(path.join(directory, payload), fsApi, details.size))
+        };
+        const diagnostic = { packageMetadata, imageEvidence };
+        return {
+          valid: false,
+          reason: `${payload} is not a recognized Android sparse or ext4 image; diagnostic=${JSON.stringify(diagnostic)}`,
+          ...diagnostic
+        };
+      }    }
     return { valid: true, reason: 'SDK package metadata and required image payloads are present' };
   } catch (error) {
     return { valid: false, reason: `package is incomplete: ${error.message}` };
