@@ -89,7 +89,7 @@ function v3IngredientArt(value){
 }
 const v32ReferenceTemplateCookingScene=cookingScene;
 cookingScene=function v32IngredientOnlyCookingScene(r,stepIndex){
- if([5,12,76].includes(Number(r?.id))){
+ if([5,76].includes(Number(r?.id))){
   const ingredients=(Array.isArray(r.ingredients)?r.ingredients:[]).slice(0,3);
   return `<figure class="ref-step-photo v32-template-ingredient-art" role="img" aria-label="${safe(r.title+' — '+localizedStepTitle(r,stepIndex)+' ingredients')}"><div class="v32-template-ingredient-row">${ingredients.map(value=>`<div class="v32-template-ingredient">${v3IngredientArt(value)}<small>${safe(value)}</small></div>`).join('')}</div><figcaption data-original-source="canonical-ingredient-icons">${safe(localizedStepTitle(r,stepIndex))}</figcaption></figure>`;
  }

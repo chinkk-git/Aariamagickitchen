@@ -93,7 +93,8 @@ test('recipe #12 keeps the full-width portrait layout after restoring its render
 test('owner reference attachments remain byte-for-byte unchanged', async () => {
   const references = [
     ['docs/design/references/1000072735-owner-recipe-page.png', 'e452103dc8c12a88633190dcc30f3d230bdb120cc3e8bc453d41fc02adc51bcc'],
-    ['docs/design/references/1000072737-owner-step-panel.png', '630861cf27c2bcb0a06e57958b86c2f71a5118d844d38c0efda6508ecfde4f07']
+    ['docs/design/references/1000072737-owner-step-panel.png', '630861cf27c2bcb0a06e57958b86c2f71a5118d844d38c0efda6508ecfde4f07'],
+    ['docs/design/references/1000072960-owner-recipe12-step-reference.png', '33ef32fdb90d697d26f946b44826da6fba899ca3ed830be029fa85a4572e439d']
   ];
   for (const [path, expected] of references) {
     const bytes = await readFile(new URL(path, root));
@@ -115,4 +116,56 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'smoke coverage cannot pass by finding the retired text-heavy template title');
   assert.doesNotMatch(tablet, /v32-r12-title-block h1/,
     'tablet coverage cannot pass by finding the retired text-heavy template title');
+});
+
+test('APK recipe #12 keeps the approved four illustrated step bindings', async () => {
+  const [html, runtime] = await Promise.all([read('index.html'), read('tools/v3/runtime.js')]);
+  const start = runtime.indexOf('const v32ReferenceTemplateCookingScene=cookingScene;');
+  const end = runtime.indexOf('\nhomeTile=', start);
+  assert.ok(start >= 0 && end > start, 'the APK-only cooking-scene adapter is present');
+  const adapter = runtime.slice(start, end);
+  assert.doesNotMatch(adapter, /\[5,\s*12,\s*76\]/,
+    'recipe #12 cannot be replaced with the ingredient-card artwork used for other pilot routes');
+  assert.match(adapter, /return v32ReferenceTemplateCookingScene\(r,stepIndex\)/,
+    'unmodified recipes use the canonical original cooking-scene renderer');
+
+  const calls = [];
+  const originalCookingScene = (recipe, index) => {
+    calls.push([recipe.id, index]);
+    return `<figure class="ref-step-photo"><img src="step-${index + 1}.webp" width="1536" height="1024" alt="Aaria step ${index + 1}"></figure>`;
+  };
+  const wrappedCookingScene = new Function('cookingScene', 'v3IngredientArt', 'safe', 'localizedStepTitle',
+    `${adapter}; return cookingScene;`)(originalCookingScene, String, String, () => 'Step');
+  const recipe12 = { id: 12, title: 'Cheesy Corn Pancakes', ingredients: ['corn', 'egg', 'flour'] };
+  const scenes = [0, 1, 2, 3].map(index => wrappedCookingScene(recipe12, index));
+  assert.deepEqual(calls, [[12, 0], [12, 1], [12, 2], [12, 3]],
+    'all four #12 step indices reach the original renderer in order');
+  assert.deepEqual(scenes.map(scene => scene.match(/src="([^"]+)"/)?.[1]),
+    ['step-1.webp', 'step-2.webp', 'step-3.webp', 'step-4.webp'],
+    'each step keeps its own cooking illustration rather than an ingredient tile');
+  for (const scene of scenes) {
+    assert.match(scene, /<img[^>]+width="1536"[^>]+height="1024"/,
+      'each original step illustration retains intrinsic image dimensions');
+  }
+
+  assert.match(html, /atlasImage\(r,BATCH_META\[r\.id\]\.stepCells\?\.\[stepIndex\]\?\?stepIndex\+1,'step-atlas'/,
+    'the shared renderer binds the selected step index to the recipe atlas cell');
+  const atlasesStart = html.indexOf('const BATCH_ATLASES=');
+  const atlasesEnd = html.indexOf('\nconst NUTRIENT_REFS=', atlasesStart);
+  assert.ok(atlasesStart >= 0 && atlasesEnd > atlasesStart, 'canonical recipe atlases are present');
+  const atlasMatch = html.slice(atlasesStart, atlasesEnd).match(/"12"\s*:\s*"data:image\/webp;base64,([^"]+)"/);
+  assert.ok(atlasMatch, 'recipe #12 has its original embedded cooking-scene atlas');
+  const atlas = Buffer.from(atlasMatch[1], 'base64');
+  assert.equal(atlas.subarray(0, 4).toString('ascii'), 'RIFF', 'recipe #12 image is a valid WebP container');
+  assert.equal(atlas.subarray(8, 12).toString('ascii'), 'WEBP', 'recipe #12 atlas is a WebP image');
+  assert.equal(atlas.subarray(12, 16).toString('ascii'), 'VP8 ', 'recipe #12 atlas uses the expected WebP frame');
+  assert.equal(atlas.readUInt16LE(26) & 0x3fff, 1024, 'recipe #12 atlas source width is 1024 pixels');
+  assert.equal(atlas.readUInt16LE(28) & 0x3fff, 683, 'recipe #12 atlas source height is 683 pixels');
+  assert.deepEqual([1, 2, 3, 4].map(cell => [cell % 3, Math.floor(cell / 3)]),
+    [[1, 0], [2, 0], [0, 1], [1, 1]],
+    'the four step indices address four distinct cells in the 3-column by 2-row atlas');
+  assert.match(html, /\.ref-step-photo\{[^}]*width:100%[^}]*aspect-ratio:1\.5/,
+    'the illustrated step viewport keeps a bounded image aspect ratio');
+  assert.match(html, /@media\(max-width:720px\)\{\.ref-step-photo\{aspect-ratio:1\.42/,
+    'phone screenshots use the approved responsive step image ratio');
 });
