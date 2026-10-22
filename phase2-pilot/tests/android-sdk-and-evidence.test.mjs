@@ -35,7 +35,7 @@ function fixtureCrc32(bytes) {
   return (crc ^ 0xffffffff) >>> 0;
 }
 
-async function writeObservedGptImage(filePath, { corruptPrimaryCrc = false, corruptEntriesCrc = false } = {}) {
+async function writeObservedGptImage(filePath, { corruptPrimaryCrc = false, corruptEntriesCrc = false, omitFilesystemMagic = false } = {}) {
   const sectorSize = 512;
   const totalSectors = 3168256; // CI-observed size: 1,622,147,072 bytes at 512-byte sectors.
   const lastLba = totalSectors - 1;
@@ -83,8 +83,10 @@ async function writeObservedGptImage(filePath, { corruptPrimaryCrc = false, corr
     await file.write(entries, 0, entries.length, backupEntriesLba * sectorSize);
     await file.write(header({ currentLba: lastLba, backupLba: 1, entriesLba: backupEntriesLba }), 0, sectorSize, lastLba * sectorSize);
     // Minimal ext4 signature at the partition-relative superblock magic field.
-    const ext4Magic = Buffer.from([0x53, 0xef]);
-    await file.write(ext4Magic, 0, ext4Magic.length, 34 * sectorSize + 1080);
+    if (!omitFilesystemMagic) {
+      const ext4Magic = Buffer.from([0x53, 0xef]);
+      await file.write(ext4Magic, 0, ext4Magic.length, 34 * sectorSize + 1080);
+    }
   } finally {
     await file.close();
   }
@@ -126,7 +128,7 @@ test('Android SDK preflight reports image size and header bytes for an unrecogni
   await writeFile(path.join(directory, 'system.img'), Buffer.alloc(4096, 0x7f));
   const result = await validateSystemImageDirectory(directory, packageId);
   assert.equal(result.valid, false);
-  assert.equal(result.reason.startsWith('system.img is not a recognized Android sparse or ext4 image; diagnostic='), true);
+  assert.equal(result.reason.startsWith('system.img is not a recognized Android sparse, ext4, EROFS, or integrity-checked GPT image; diagnostic='), true);
   assert.deepEqual(result.packageMetadata, {
     packageId,
     packageXmlPathMatches: true,
@@ -169,6 +171,16 @@ test('Android SDK preflight accepts the observed GPT disk-image header with vali
   assert.equal((await validateSystemImageDirectory(directory, packageId)).valid, true);
 });
 
+test('Android SDK preflight accepts a structurally valid SDK GPT image with an unfamiliar partition filesystem', async t => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-gpt-format-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const directory = path.join(root, 'system-images/android-35/default/x86_64');
+  const packageId = 'system-images;android-35;default;x86_64';
+  await writeValidImage(directory, packageId);
+  await writeObservedGptImage(path.join(directory, 'system.img'), { omitFilesystemMagic: true });
+  assert.equal((await validateSystemImageDirectory(directory, packageId)).valid, true);
+});
+
 test('Android SDK preflight rejects GPT containers with corrupt primary-header or partition-array CRCs', async t => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-gpt-corrupt-'));
   t.after(() => rm(root, { recursive: true, force: true }));
@@ -182,7 +194,7 @@ test('Android SDK preflight rejects GPT containers with corrupt primary-header o
     });
     const result = await validateSystemImageDirectory(directory, packageId);
     assert.equal(result.valid, false, `${kind} corruption must be rejected`);
-    assert.match(result.reason, /not a recognized Android sparse or ext4 image/);
+    assert.match(result.reason, /not a recognized Android sparse, ext4, EROFS, or integrity-checked GPT image/);
   }
 });
 

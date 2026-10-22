@@ -89,8 +89,13 @@ async function hasValidGptDiskImage(handle, imageSize) {
   if (!backupEntries || !backupEntries.equals(entries) || crc32(backupEntries) !== expectedEntriesCrc) return false;
 
   // Validate the Linux filesystem-data partition type GUID observed in CI and
-  // require a supported filesystem signature inside its declared bounds.
+  // its declared bounds. Do not require a host-recognized filesystem magic:
+  // Android SDK system images are opaque package payloads and may use a
+  // filesystem/container format the validator does not know. sdkmanager
+  // verifies the downloaded package; GPT header and both partition-array
+  // CRCs above verify the disk-image structure without rejecting new formats.
   const linuxFsDataGuid = Buffer.from('af3dc60f838472478e793d69d8477de4', 'hex');
+  let foundLinuxFilesystemPartition = false;
   for (let index = 0; index < entryCount; index++) {
     const entry = entries.subarray(index * entrySize, (index + 1) * entrySize);
     if (entry.subarray(0, 16).equals(Buffer.alloc(16))) continue;
@@ -100,10 +105,10 @@ async function hasValidGptDiskImage(handle, imageSize) {
     if (!entry.subarray(0, 16).equals(linuxFsDataGuid)) continue;
     const partitionStart = Number(firstLba) * sectorSize;
     const partitionSize = Number(lastLba - firstLba + 1n) * sectorSize;
-    if (Number.isSafeInteger(partitionStart) && Number.isSafeInteger(partitionSize) &&
-        partitionStart + partitionSize <= imageSize && await hasFilesystemAt(handle, partitionStart)) return true;
+    if (Number.isSafeInteger(partitionStart) && Number.isSafeInteger(partitionSize) && partitionSize > 0 &&
+        partitionStart + partitionSize <= imageSize) foundLinuxFilesystemPartition = true;
   }
-  return false;
+  return foundLinuxFilesystemPartition;
 }
 
 async function hasRecognizedDiskImageHeader(filePath, fsApi, imageSize) {
@@ -162,7 +167,7 @@ export async function validateSystemImageDirectory(directory, packageId, fsApi =
         const diagnostic = { packageMetadata, imageEvidence };
         return {
           valid: false,
-          reason: `${payload} is not a recognized Android sparse or ext4 image; diagnostic=${JSON.stringify(diagnostic)}`,
+          reason: `${payload} is not a recognized Android sparse, ext4, EROFS, or integrity-checked GPT image; diagnostic=${JSON.stringify(diagnostic)}`,
           ...diagnostic
         };
       }
