@@ -71,23 +71,35 @@ wait_for_booted_device() {
 }
 wait_for_stable_launcher() {
   echo 'Warming Android HOME and waiting for Quickstep to settle before the app launch'
-  adb_timeout shell am start -W -a android.intent.action.MAIN -c android.intent.category.HOME
+  adb_timeout -s "$ANDROID_SERIAL" shell am start -W -a android.intent.action.MAIN -c android.intent.category.HOME
   stable=0
-  restarted=0
-  for attempt in $(seq 1 45); do
-    windows=$(adb_poll_timeout shell dumpsys window windows 2>/dev/null || true)
-    activities=$(adb_poll_timeout shell dumpsys activity activities 2>/dev/null || true)
-    if printf '%s' "$windows" | grep -Eqi 'Window\{[^}]*Application Not Responding|WindowStateAnimator\{[^}]*Application Not Responding'; then
+  rebooted=0
+  attempt=0
+  while [ "$attempt" -lt 45 ]; do
+    attempt=$((attempt + 1))
+    windows=$(adb_poll_timeout -s "$ANDROID_SERIAL" shell dumpsys window windows 2>/dev/null || true)
+    activities=$(adb_poll_timeout -s "$ANDROID_SERIAL" shell dumpsys activity activities 2>/dev/null || true)
+    anr_window=$(printf '%s' "$windows" | grep -Ei 'Window\{[^}]*Application Not Responding|WindowStateAnimator\{[^}]*Application Not Responding' | head -1 || true)
+    if [ -n "$anr_window" ]; then
       stable=0
-      if [ "$restarted" -eq 0 ]; then
-        echo 'Quickstep showed an ANR during HOME warmup; restarting launcher before app smoke'
-        adb_timeout shell am force-stop com.android.launcher3
-        adb_timeout shell am start -W -a android.intent.action.MAIN -c android.intent.category.HOME
-        restarted=1
+      if [ "$rebooted" -eq 0 ]; then
+        echo "Android showed an ANR before the app smoke; rebooting the emulator once: $anr_window" >&2
+        printf 'startup_anr_recovery=reboot\nstartup_anr_window=%s\n' "$anr_window" > artifacts/v32-diagnostics/launcher-preflight.txt
+        rebooted=1
+        adb_timeout -s "$ANDROID_SERIAL" reboot
+        wait_for_booted_device
+        adb_timeout -s "$ANDROID_SERIAL" shell am start -W -a android.intent.action.MAIN -c android.intent.category.HOME
+        stable=0
+        attempt=0
+        continue
       fi
+      printf 'startup_anr_recovery=reboot\nstartup_anr_window=%s\nstartup_anr_persisted=true\n' "$anr_window" > artifacts/v32-diagnostics/launcher-preflight.txt
+      echo "Android still shows an ANR after one clean reboot; refusing to capture evidence: $anr_window" >&2
+      return 1
     elif printf '%s' "$activities" | grep -Eq 'ResumedActivity: ActivityRecord.*com\.android\.launcher3/.uioverrides\.QuickstepLauncher'; then
       stable=$((stable + 1))
       if [ "$stable" -ge 3 ]; then
+        printf 'startup_anr_recovery=%s\nlauncher_stable_checks=%s\n' "$([ "$rebooted" -eq 1 ] && echo rebooted || echo none)" "$stable" > artifacts/v32-diagnostics/launcher-preflight.txt
         echo 'Quickstep HOME stayed resumed across three checks with no ANR window'
         return 0
       fi
@@ -96,12 +108,9 @@ wait_for_stable_launcher() {
     fi
     sleep 2
   done
-  printf 'launcher_preflight=degraded\nrestarted=%s\ndirect_app_launch=continuing\n' "$restarted" > artifacts/v32-diagnostics/launcher-preflight.txt
-  echo 'Quickstep did not settle after restart; dismissing launcher ANR and continuing with direct app launch verification' >&2
-  adb_timeout shell input keyevent 4 >/dev/null 2>&1 || true
-  adb_timeout shell am force-stop com.android.launcher3 >/dev/null 2>&1 || true
-  sleep 1
-  return 0
+  printf 'startup_anr_recovery=%s\nlauncher_preflight=timeout\n' "$([ "$rebooted" -eq 1 ] && echo rebooted || echo none)" > artifacts/v32-diagnostics/launcher-preflight.txt
+  echo 'Quickstep did not reach a stable HOME state; refusing to continue Android evidence capture' >&2
+  return 1
 }
 mkdir -p artifacts/v32-android-screenshots artifacts/v31-android-screenshots
 mkdir -p artifacts/v32-diagnostics
