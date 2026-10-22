@@ -70,7 +70,11 @@ test('owner screenshot layout retains canonical #12 cooking content and shared s
   assert.match(runtime, /id===12\?v32UniversalRecipeStepTemplate/,
     'the screenshot rework remains limited to the current #12 pilot');
 
-  const renderedTemplate = template.slice(template.indexOf('return `<main'));
+  assert.match(template, /return `<article class="v32-r12-main"/,
+    'the recipe template is an article inside the app-owned main screen, never a nested main element');
+  assert.doesNotMatch(template, /return `<main\b/,
+    'nested main markup cannot eject the recipe route outside #screen during Android HTML parsing');
+  const renderedTemplate = template.slice(template.indexOf('return `<article'));
   const ordered = [
     'v32-r12-top', 'v32-r12-header', 'v32-r12-dish-photo', 'v32-r12-character',
     'v32-r12-ingredients', 'v32-r12-equipment', '${stepPanel}',

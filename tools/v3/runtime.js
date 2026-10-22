@@ -728,7 +728,7 @@ function v32UniversalRecipeStepTemplate(r,config){
     </div>
     <div class="ref-step-actions v32-r12-actions"><button type="button" class="ref-back" data-action="prevstep" ${stepIndex===0?'disabled':''}>← ${pt?'Anterior':'Previous'}</button><span class="v32-r12-actions-progress">${stepIndex+1} ${pt?'de':'of'} ${r.steps.length}</span><button type="button" class="ref-next ${stepIndex===r.steps.length-1?'finish-step':''}" data-action="nextstep">${stepIndex===r.steps.length-1?(pt?'Concluir':'Finish'):(pt?'Próxima etapa':'Next step')} →</button></div>
    </section>`;
- return `<main class="v32-r12-main" data-v32-template="recipe-step-v1" data-recipe-id="${id}">
+ return `<article class="v32-r12-main" data-v32-template="recipe-step-v1" data-recipe-id="${id}">
   <section class="v32-r12-top" aria-label="${pt?'Atalhos da cozinha':'Kitchen shortcuts'}">
    <div class="v32-r12-brand">${chefAvatar}<span><strong>${pt?'Cozinha mágica':'Aaria’s'}<br>${pt?'da Aaria':'Magical Kitchen'}</strong><small>${pt?'Cozinhar · Criar · Explorar':'Cook · Create · Explore'}</small></span></div>
    <nav class="v32-r12-quick-actions" aria-label="${pt?'Atalhos da cozinha':'Kitchen shortcuts'}">${quickActions.map(([icon,label,type,target])=>`<button type="button" ${type==='nav'?`data-nav="${target}"`:`data-action="${target}"`}><span aria-hidden="true">${icon}</span>${label}</button>`).join('')}</nav>
@@ -749,7 +749,7 @@ function v32UniversalRecipeStepTemplate(r,config){
   <details open class="storybook-safety v32-r12-recipe-safety"><summary>🛡️ ${pt?'Segurança na cozinha':'Kitchen safety'}</summary><p>${h(translateText(r.safety||config.safety[locale].join(' '),pt?'pt-BR':'en-GB'))}</p></details>
   ${healthPanels(r)}
   ${cookShareSection(r)}
- </main>`;
+ </article>`;
 }
 const v32RecipeBeforePilot=recipe;
 recipe=function v32Recipe12Only(){const id=Number(selected?.id);return id===12?v32UniversalRecipeStepTemplate(find(id),v32PilotRecipePresentation[id]):v32RecipeBeforePilot()};
