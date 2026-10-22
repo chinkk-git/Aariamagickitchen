@@ -11,12 +11,23 @@ const required=[
   ['protected-v31-world-map-crop','docs/design/approved-v31-world-map-crop.webp']
 ];
 const results=[];
-const recipeTemplate=manifest.assets.find(x=>x.role==='CURRENT_OWNER_APPROVED_UNIVERSAL_RECIPE_STEP_TEMPLATE_P0_ISSUE_40');
-const recipeTemplatePath='docs/design/references/wide_clean_modern_ui_mockups_three_smartphone_s.png';
-if(!recipeTemplate||recipeTemplate.path!==recipeTemplatePath||recipeTemplate.status!=='OWNER_APPROVED_SOURCE_BYTES_SHA256_VERIFIED'||!recipeTemplate.sha256)throw new Error('Missing current owner-approved Issue #40 recipe template reference provenance');
-const recipeTemplateSha=createHash('sha256').update(readFileSync(resolve(root,recipeTemplatePath))).digest('hex');
-if(recipeTemplateSha!==recipeTemplate.sha256)throw new Error('Current recipe template reference SHA-256 mismatch: '+recipeTemplateSha+' != '+recipeTemplate.sha256);
-results.push({role:recipeTemplate.role,path:recipeTemplatePath,sha256:recipeTemplateSha,status:recipeTemplate.status});
+const recipeTemplates=[
+ ['owner_recipe_page_reference_issue_40_rework','docs/design/references/1000072735-owner-recipe-page.png'],
+ ['owner_step_panel_reference_issue_40_rework','docs/design/references/1000072737-owner-step-panel.png']
+];
+for(const [role,path] of recipeTemplates){
+ const record=manifest.assets.find(x=>x.role===role);
+ if(!record||record.path!==path||record.status!=='OWNER_REFERENCE_BYTES_VERIFIED_PROPOSED_NOT_APPROVED'||!record.sha256)throw new Error('Missing proposed owner reference provenance: '+role);
+ const actual=createHash('sha256').update(readFileSync(resolve(root,path))).digest('hex');
+ if(actual!==record.sha256)throw new Error('Owner reference SHA-256 mismatch for '+role+': '+actual+' != '+record.sha256);
+ results.push({role,path,sha256:actual,status:record.status});
+}
+const priorTemplate=manifest.assets.find(x=>x.role==='historical_owner_approved_universal_recipe_step_template_before_issue_40_rework');
+const priorTemplatePath='docs/design/references/wide_clean_modern_ui_mockups_three_smartphone_s.png';
+if(!priorTemplate||priorTemplate.path!==priorTemplatePath||priorTemplate.status!=='HISTORICAL_OWNER_APPROVED_SOURCE_BYTES_SHA256_VERIFIED; SUPERSEDED_FOR_REJECTED_PILOT_REWORK')throw new Error('Previous recipe template must remain identified as historical, superseded evidence');
+const priorTemplateSha=createHash('sha256').update(readFileSync(resolve(root,priorTemplatePath))).digest('hex');
+if(priorTemplateSha!==priorTemplate.sha256)throw new Error('Historical recipe template SHA-256 mismatch: '+priorTemplateSha+' != '+priorTemplate.sha256);
+results.push({role:priorTemplate.role,path:priorTemplatePath,sha256:priorTemplateSha,status:priorTemplate.status});
 for(const [role,path] of required){
  const record=manifest.assets.find(x=>x.role===role);
  if(!record||record.path!==path||!record.sha256)throw new Error('Missing or changed approved reference provenance: '+role);
@@ -61,7 +72,9 @@ if(!tacos||tacos.path!==null||!String(tacos.status).includes('BLOCKED'))throw ne
 results.push({role:'approved-tasty-tacos-recipe-flow',status:tacos.status});
 mkdirSync(resolve(root,'artifacts/v32-diagnostics'),{recursive:true});
 mkdirSync(resolve(root,'artifacts/v32-diagnostics/avatar-crops'),{recursive:true});
-copyFileSync(resolve(root,recipeTemplatePath),resolve(root,'artifacts/v32-diagnostics/approved-recipe-template-reference.png'));
+copyFileSync(resolve(root,recipeTemplates[0][1]),resolve(root,'artifacts/v32-diagnostics/owner-recipe-page-reference.png'));
+copyFileSync(resolve(root,recipeTemplates[1][1]),resolve(root,'artifacts/v32-diagnostics/owner-step-panel-reference.png'));
+copyFileSync(resolve(root,priorTemplatePath),resolve(root,'artifacts/v32-diagnostics/historical-recipe-template-reference.png'));
 copyFileSync(resolve(root,mapRecord.path),resolve(root,'artifacts/v32-diagnostics/reference-derived-world-map.webp'));
 copyFileSync(resolve(root,dogArt.path),resolve(root,'artifacts/v32-diagnostics/approved-home-dog-crop.png'));
 copyFileSync(resolve(root,avatarReference.path),resolve(root,'artifacts/v32-diagnostics/approved-avatar-identity-sheet.png'));

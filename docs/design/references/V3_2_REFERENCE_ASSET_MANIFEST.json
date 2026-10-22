@@ -1,13 +1,29 @@
 {
-  "status": "P0 ISSUE #40 CURRENT RECIPE TEMPLATE REFERENCE IDENTIFIED; HISTORICAL THREE-THEME REFERENCE SUPERSEDED; OTHER INDEPENDENT ART/RIGHTS GATES UNCHANGED",
+  "status": "P0 ISSUE #40 REJECTED-PILOT REWORK REFERENCES IDENTIFIED; REPLACEMENT DESIGN PROPOSED_NOT_APPROVED; OTHER INDEPENDENT ART/RIGHTS GATES UNCHANGED",
   "assets": [
     {
-      "role": "CURRENT_OWNER_APPROVED_UNIVERSAL_RECIPE_STEP_TEMPLATE_P0_ISSUE_40",
+      "role": "owner_recipe_page_reference_issue_40_rework",
+      "path": "docs/design/references/1000072735-owner-recipe-page.png",
+      "sha256": "e452103dc8c12a88633190dcc30f3d230bdb120cc3e8bc453d41fc02adc51bcc",
+      "provenance": "Exact owner-supplied W01 attachment 1000072735.png; independently SHA-256 verified before implementation.",
+      "status": "OWNER_REFERENCE_BYTES_VERIFIED_PROPOSED_NOT_APPROVED",
+      "notes": "Authoritative full recipe-page visual for rejected #12 pilot rework. The newer step-panel image overrides only the cooking-step section."
+    },
+    {
+      "role": "owner_step_panel_reference_issue_40_rework",
+      "path": "docs/design/references/1000072737-owner-step-panel.png",
+      "sha256": "630861cf27c2bcb0a06e57958b86c2f71a5118d844d38c0efda6508ecfde4f07",
+      "provenance": "Exact owner-supplied W01 attachment 1000072737.png; independently SHA-256 verified before implementation.",
+      "status": "OWNER_REFERENCE_BYTES_VERIFIED_PROPOSED_NOT_APPROVED",
+      "notes": "Overrides only the cooking-step section of the full-page reference; canonical content and state logic remain sourced from the app."
+    },
+    {
+      "role": "historical_owner_approved_universal_recipe_step_template_before_issue_40_rework",
       "path": "docs/design/references/wide_clean_modern_ui_mockups_three_smartphone_s.png",
       "sha256": "bc9cbef93dbe461622f7f3eb9cc344545dfd3c885e09a826623bd475e733f062",
       "provenance": "Owner-approved PNG committed on feature/v3.2-magical-cookbook; independently verified by W01 with SHA-256 during the Issue #40 pilot.",
-      "status": "OWNER_APPROVED_SOURCE_BYTES_SHA256_VERIFIED",
-      "notes": "Overrides older three-theme recipe-step design only; mockup five-tab footer rejected, reuse exact six-destination homepage nav."
+      "status": "HISTORICAL_OWNER_APPROVED_SOURCE_BYTES_SHA256_VERIFIED; SUPERSEDED_FOR_REJECTED_PILOT_REWORK",
+      "notes": "Historical visual baseline retained after owner rejection; no longer controls #12 recipe-page appearance. Reuse exact six-destination homepage nav."
     },
     {
       "role": "three-recipe-theme-comparison",

@@ -1,3 +1,12 @@
+# Current W01 checkpoint — Issue #40 rejected-pilot visual rework (2026-10-22)
+
+- Live branch HEAD at start of rework: `5173c651be230ff386b9d450158b2c19e77c2448`. Latest prior exact-head Android run: [#39690540117](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39690540117), which passed CI but its pilot APK was rejected by the owner in Issue #40 comment [#6330115202](https://github.com/chinkk-git/Aariamagickitchen/issues/40#issuecomment-6330115202). CI is not visual acceptance.
+- Owner references are now available in W01 and checksum-verified: full recipe page `docs/design/references/1000072735-owner-recipe-page.png`, SHA-256 `e452103dc8c12a88633190dcc30f3d230bdb120cc3e8bc453d41fc02adc51bcc`; step-only replacement `docs/design/references/1000072737-owner-step-panel.png`, SHA-256 `630861cf27c2bcb0a06e57958b86c2f71a5118d844d38c0efda6508ecfde4f07`. The newer image overrides only the cooking-step panel.
+- Current implementation target is recipe #12 only. Canonical steps, order, localization, progress, safety and existing interactions remain data/state driven. Current visual status: PROPOSED / NOT OWNER-APPROVED. No B01 or other recipe work is authorized before explicit owner approval.
+- Local evidence before new exact-head CI: `npm test --prefix phase2-pilot` 23/23 PASS; V3.1 validator PASS (95 canonical recipes preserved); Portuguese draft-contract validator PASS (30 draft translations, quantities and adult cues preserved). Android screenshots, replacement APK, package/signing identity and checksum are NOT YET VERIFIED.
+- Mandatory remaining pilot gates: exact-head Android CI; inspect actual phone/tablet portrait/landscape captures against both images; verify active steps and completion, current-batch Featured Recipes only #12, package/version/signer/APK SHA-256 and safe non-destructive install/coexistence. Owner-phone in-place upgrade remains BLOCKED unless installed identity, matching signer, increasing version and seeded-data retention can be proven without uninstall/data clear. A08/A09 and artwork-rights remain independent.
+- Preserve V3.1 Classic, user data and all 95 recipes. $0 additional spend. No merge, release or production overwrite. After publishing the replacement APK/evidence, STOP for explicit owner approval.
+
 # Current W01 checkpoint — exact-head preview and independent closure audit (2026-10-21)
 
 - **Live branch head before this documentation update:** `37937e63ff811e50ec31924033ba712f42fd8f7b`.

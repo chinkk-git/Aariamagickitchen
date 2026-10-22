@@ -1,10 +1,10 @@
 # V3.2 Recipe Template Replication Architecture v1.0
-**Governing P0:** #40 · **Status:** architecture contract; owner authorised the recipe #12 pilot only. Later batches remain approval-gated.
+**Governing P0:** #40 · **Status:** proposed architecture for the rejected-pilot #12 rework; owner approval is still required. Later batches remain approval-gated.
 ## Core principle
 **One shared renderer + 95 immutable canonical identities + versioned data adapters.** No recipe-specific screen forks or 95 duplicated HTML templates. Preserve existing runtime, navigation, saved data, update/signing and features.
 ## Proposed component tree
-`AppShell(HomeDesignTokens, SharedSixTabNav) -> RecipeView -> RecipeHeader / StepProgress / InstructionCard(MethodIcon, Title, ActionText, SourcedMetadata) / SafetyNotice / OptionalTip / StepActions / CompletionView`.
-Reuse current components where possible; W01 must map this proposal to actual code before refactoring. Never duplicate the homepage nav.
+`AppShell(HomeDesignTokens, SharedSixTabNav) -> RecipeView(BrandAndQuickActions, RecipeHeader, DishPhoto, CharacterFact, IngredientsAndChecklist, Equipment, CookingFlow, AllergyCheck, Nutrition, PhotoShare) -> CookingFlow(StepProgress, InstructionCard(MethodIcon, Title, CanonicalActionText), SafetyNotice, StepActions, ExpandableKitchenSafety, CompletionView)`.
+The owner full-page image controls page structure; the newer owner step image replaces only `CookingFlow`'s active-step visual composition. Reuse current shared functions/state where possible. Never duplicate the homepage nav or create a recipe-specific navigation shell.
 ## Data contract (illustrative, not a replacement for canonical source)
 ```json
 {
@@ -39,7 +39,7 @@ Central token references (from approved Home), optional visibility toggles (tip,
 - Exactly 95 unique IDs, no lost records, each step valid and reachable.
 - All target batch IDs complete in both languages; missing translations reported, not fabricated.
 - Missing safety-critical data blocks approval; independent A08/A09 remain HOLD until reviewed.
-- Phone/tablet portrait/landscape screenshots for representative no-cook/hob/air-fryer/long-text and each target recipe route; inspect visuals, not file presence.
+- Phone/tablet portrait/landscape screenshots for representative no-cook/hob/air-fryer/long-text and each target recipe route; inspect visuals, not file presence. For the #12 rework, compare the full page with the owner full-page image and the cooking flow with the newer step-only image.
 - All existing routes/features: planner, favourites, shopping/WhatsApp, family/friends, world, camera/share, quizzes, updates, offline/persistence and Android Back.
 - APK exact-head build, unique co-installable identity, signer/sha256, Android 16 test where feasible; no uninstall/data loss.
 ## Rollback

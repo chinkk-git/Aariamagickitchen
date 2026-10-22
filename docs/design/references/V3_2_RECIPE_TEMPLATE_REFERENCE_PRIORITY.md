@@ -1,18 +1,20 @@
-# V3.2 Recipe-template image authority — P0 Issue #40
-**CURRENT APPROVED RECIPE-STEP DESIGN — USE THIS FILE ONLY:**
-[wide_clean_modern_ui_mockups_three_smartphone_s.png](wide_clean_modern_ui_mockups_three_smartphone_s.png)
-- Owner approved on 2026-10-21. Professional, instruction-first, compact method icons; no oversized step imagery.
-- The screenshot's five-button bottom bar is NOT approved. Reuse actual homepage six-button navigation unchanged.
-- SHA-256 must be verified independently by W01 before visual acceptance; GitHub blob SHA is NOT a SHA-256.
+# V3.2 Recipe Template Reference Priority — Issue #40
 
-**SUPERSEDED FOR CURRENT RECIPE TEMPLATE — DO NOT IMPLEMENT:**
-[v3.2-three-recipe-templates.png](v3.2-three-recipe-templates.png)
-- Historical purple/green/orange Mini Pancakes / Veggie Noodles / Mini Pizza Bread Cups collage, with large cooking-step photos and star-heavy completion panels.
-- Keep original bytes for audit/history and unrelated historical evidence. Never delete or repurpose it as the approved #40 step template.
-- Also do not use `unverified-v3.2-three-recipe-templates-candidate.png` as the current template.
-- If another historical document calls the three-theme image approved, interpret that as **historically approved at that time, now superseded for the #40 recipe-template UI**.
+**Current state:** owner-rejected #12 pilot is being reworked. The replacement visual design is PROPOSED / NOT APPROVED until the owner tests the new APK and explicitly approves it.
 
-Canonical specification: [V3_2_UNIVERSAL_RECIPE_TEMPLATE_V1.md](../V3_2_UNIVERSAL_RECIPE_TEMPLATE_V1.md).
-Architecture: [V3_2_RECIPE_TEMPLATE_REPLICATION_FRAMEWORK.md](../../architecture/V3_2_RECIPE_TEMPLATE_REPLICATION_FRAMEWORK.md).
-Rollout: [V3_2_RECIPE_TEMPLATE_P0_ROLLOUT.md](../../control-tower/V3_2_RECIPE_TEMPLATE_P0_ROLLOUT.md).
-Do not start implementation from this reference clean-up. Pilot recipe #12 only after W01 takeover, then APK and explicit owner approval gate.
+## Active owner-provided references
+
+1. [Full recipe-page reference](1000072735-owner-recipe-page.png) — SHA-256 `e452103dc8c12a88633190dcc30f3d230bdb120cc3e8bc453d41fc02adc51bcc`.
+2. [Cooking-step replacement](1000072737-owner-step-panel.png) — SHA-256 `630861cf27c2bcb0a06e57958b86c2f71a5118d844d38c0efda6508ecfde4f07`.
+
+Use the first image for the whole recipe page. Use the second image in place of **only** the cooking-step section. Retain all other sections and existing app navigation. Both files are the exact W01-supplied PNG bytes, retained for review; their hashes were verified locally before implementation.
+
+## Content, navigation, and historical references
+
+Canonical recipe data and current state logic supply every ingredient, step, translation, safety message, allergen, nutrition value, interaction, and completion state. Do not treat screenshot example copy as canonical recipe data or invent missing content. Distinguish child-safe mixing from adult-only hot-pan work. The existing six-button navigation is unchanged.
+
+The earlier `wide_clean_modern_ui_mockups_three_smartphone_s.png` and `v3.2-three-recipe-templates.png` remain available as historical references only; neither overrides the two latest owner images for this #12 rework. Preserve all historical files and evidence.
+
+Canonical spec: [V3_2_UNIVERSAL_RECIPE_TEMPLATE_V1.md](../V3_2_UNIVERSAL_RECIPE_TEMPLATE_V1.md). Architecture: [V3_2_RECIPE_TEMPLATE_REPLICATION_FRAMEWORK.md](../../architecture/V3_2_RECIPE_TEMPLATE_REPLICATION_FRAMEWORK.md). Rollout: [V3_2_RECIPE_TEMPLATE_P0_ROLLOUT.md](../../control-tower/V3_2_RECIPE_TEMPLATE_P0_ROLLOUT.md).
+
+No later batch starts until the owner explicitly approves the replacement #12 APK. No merge or release.

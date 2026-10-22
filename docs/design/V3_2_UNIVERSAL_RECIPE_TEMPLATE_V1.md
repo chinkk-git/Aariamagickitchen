@@ -1,28 +1,35 @@
-# V3.2 Universal Recipe Template v1.0 — OWNER APPROVED
-**Priority:** P0 · **Issue:** #40 · **Status:** canonical specification; approved PNG SHA-256 independently verified by W01.
-**Supersedes:** all earlier V3.2 recipe-step layout definitions (retain history). Does **not** supersede approved Home, World, shared navigation or Classic.
-## Visual reference and authority
-Approved Control Tower image: final professional **three-phone comparison** (no-cook / hob / air-fryer), filename `wide_clean_modern_ui_mockups_three_smartphone_s.png`. Exact committed bytes SHA-256: `bc9cbef93dbe461622f7f3eb9cc344545dfd3c885e09a826623bd475e733f062`, independently verified by W01 and enforced by the CI reference verifier. **The former `v3.2-three-recipe-templates.png` is SUPERSEDED FOR RECIPE TEMPLATE UI** and must never be used for the new recipe-step design. The image's five-button footer is NOT approved. The live homepage's six-destination nav is authoritative. Do not substitute earlier cartoonish or image-heavy mockups.
-## Intent
-Professional, restrained, engaging age-8–10 cookbook screen, **instruction first**, one active step, small reusable method icon (not big images), cream/lavender card treatment, readable high-contrast text, subtle rounded corners/shadows, generous but efficient spacing. Reuse existing homepage design tokens; inspect actual values in source before finalising pixel numbers. Do not invent token values from an AI-rendered mockup.
-## Screen hierarchy (top to bottom)
-1. Shared app shell and unchanged approved header/back behaviour; compact recipe title and existing finished-dish thumbnail only where artwork is verified.
-2. Step position `n of total` and segmented progress; handle arbitrary canonical step counts.
-3. Dominant instruction card: small pan/bowl/air-fryer/prep/serve icon, concise step title, **largest readable action instruction**. Do not replace canonical text or invent copy.
-4. Optional sourced time/temperature or equipment metadata; omit when absent.
-5. Compact, unambiguous **step-specific** adult-assistance/safety notice; avoid duplicate notices. Adult-only heat/appliance/sharp-object operations stay explicit. Fail closed on missing safety-critical mapping.
-6. Optional nonduplicative chef tip; no mandatory tip, mission, step-star reward or timer.
-7. Previous/Next controls; first/last/completion states. Buttons remain accessible above the persistent bottom nav.
-8. **Exact shared homepage navigation**: Home, Recipes, World Adventure, Magic Pantry, Planner, My Creations; same component, labels, icons, order, colours, safe-area treatment and responsive behaviour. No five-button variant.
-## Variants
-- No-cook: bowl/mixing icon, no heat warning unless a particular step uses a knife or another hazard.
-- Hob/oven: pan/heat icon; adult-only hot-pan/hob/oven notice where relevant.
-- Air fryer: small reusable air-fryer icon; adult handles controls/hot basket where relevant.
-- Prep/serve/completion: small contextual icon, existing finished-dish artwork only on appropriate detail/completion screens.
-Methods and safety are **per-step**; one recipe can use several.
-## Responsive and accessible
-Phone portrait: single column, no horizontal clipping, scroll instruction area above fixed nav. Phone landscape/tablet portrait/tablet landscape: adaptive max-width, no stretched illustrations, safe-area insets and orientation changes. EN-GB and PT-BR, long translated text, large font settings, accessible touch targets and contrast; Android Back and focus. Never hide critical safety behind navigation.
-## Data fidelity
-Keep canonical recipe IDs 1–95, quantities, ingredient text, steps, allergen/nutrition source status, quiz and state. AI mockup examples/times/temperatures are illustrative, NOT canonical content. No fake translations, cooking settings, safety assurances or artwork. Missing optional images/tips degrade gracefully.
-## Acceptance
-Compare **real emulator screenshots** against the committed approved reference at documented phone/tablet viewports; verify layout geometry, typography, colour, text dominance, six-button nav, no clipping, per-step warning and content fidelity. Test first #12 fully, STOP for owner APK approval, then #40 batches only. External A08/A09/rights/security approvals are separate. No merge/release.
+# V3.2 Universal Recipe Template v1.0 — owner rework proposal
+
+**Governing issue:** #40 · **Status:** PROPOSED / NOT APPROVED. The previous #12 pilot was rejected. This specification records the two owner images for the replacement #12 review APK; delivery or CI success does not constitute owner acceptance.
+
+## Visual authority and provenance
+
+The full-page recipe reference is [`1000072735-owner-recipe-page.png`](references/1000072735-owner-recipe-page.png), SHA-256 `e452103dc8c12a88633190dcc30f3d230bdb120cc3e8bc453d41fc02adc51bcc` (1080×11418). It controls the page composition and the appearance/order of all recipe sections.
+
+The newer cooking-step reference is [`1000072737-owner-step-panel.png`](references/1000072737-owner-step-panel.png), SHA-256 `630861cf27c2bcb0a06e57958b86c2f71a5118d844d38c0efda6508ecfde4f07` (1080×1572). It replaces **only** the cooking-step section in the full-page reference. Both source files are retained byte-for-byte from the W01 attachments and were independently SHA-256 verified.
+
+The previously approved three-phone mockup and the historical purple/green/orange collage are not the active visual authority for this rejected-pilot rework. Preserve their historical records. The example content visible in either image is not recipe data. The existing six-destination homepage navigation remains authoritative and unchanged.
+
+## Full recipe-page hierarchy
+
+Reproduce the full-page reference’s order and visual hierarchy using the existing application design tokens and current shared navigation: brand/header and kitchen shortcuts; special-recipe badge and title; sourced description only when canonical content exists; existing finished-dish image; Aaria character/fact panel; ingredient cards with persistent checklist; equipment; replacement step panel; ingredient allergy check; sourced nutrition; cooking-photo/share section; six-button bottom navigation. Do not make up a description, nutrition, allergy data, cooking time, image, or translation to fill a visual slot. Preserve existing feature behavior and data sources.
+
+The screenshot’s six navigation destinations, order and labels must continue to come from the shared app navigation: Home, Recipes, World Adventure, Magic Pantry, Planner, My Creations. Keep the bar persistent, accessible, safe-area aware, and clear of scrollable recipe content.
+
+## Replacement step panel (1000072737)
+
+Use a large rounded warm-cream outer panel. Place the active `STEP n OF total` label at upper left and `n / total` at upper right, then a segmented progress indicator derived from the actual canonical step count. The inset, softly tinted rounded card contains one active step: a circular reusable illustrated method icon; `STEP n` eyebrow; prominent step title; large, legible canonical instruction; and a warm orange, step-specific safety/adult-help notice. Beneath it, place Previous / current count / prominent Next (or completion) controls. Immediately below the panel, retain an expandable Kitchen safety section.
+
+Use the existing canonical step order, translations, progress state, navigation actions and completion logic. The title, instruction, count, icon mapping and warning come from the recipe record and shared presentation mapping, never from screenshot example text. Child-safe mixing must not be labelled an adult-only task; stove, hot-pan and other adult-only actions must state the adult’s role accurately. Keep safety visible with large text and controls. Do not add timers, extra step images, duplicated safety messages, or altered cooking instructions.
+
+## Responsive and accessible behavior
+
+Use one shared, data-driven renderer. At phone portrait, preserve the narrow reference hierarchy as a single scroll column above the fixed six-button bar. At phone landscape and tablet portrait/landscape, adapt width and card spacing without clipping, distorting artwork, obscuring buttons, or changing section order. Keep long EN-GB/PT-BR instructions readable, allow text wrapping and vertical scrolling, maintain safe-area insets, keyboard/Android Back behavior, focus, contrast and practical touch targets. Show one active step at a time.
+
+## Data and preservation requirements
+
+Do not alter canonical IDs 1–95, recipe #12 quantities/instructions, other recipe records, V3.1 Classic, user data, or shared navigation. Render English from the canonical English record and Portuguese from its localized record. Missing source content stays explicitly absent/review-only; do not fabricate or silently translate safety-critical fields. Preserve checklist, favorites, groceries, allergy/nutrition status, photo/share, quiz and completion behavior.
+
+## Acceptance and status
+
+The replacement #12 APK must be compared visually with both attached references using actual phone/tablet portrait/landscape screenshots. Validate canonical steps and safety, EN-GB/PT-BR, section order, no clipping, exact six-destination nav, current-batch Featured Recipes containing only #12, and relevant existing functions. Record CI SHA, APK identity/signing/hash and evidence. The proposed design remains **NOT APPROVED** until the owner tests that exact APK and explicitly approves it. No B01 before that approval. Independent A08/A09, artwork-rights and signing/update gates remain separate.

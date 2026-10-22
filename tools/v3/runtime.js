@@ -673,17 +673,20 @@ render=function(){v31RenderBeforeTour();if(view!=='home'&&view!=='settings')retu
  screen.appendChild(button);
 };
 
-// Issue #40 pilot: adapt only canonical recipe 12 to the owner-approved
-// instruction-first template. Recipe content remains sourced from RECIPES and
-// PT_RECIPES; health, quiz, save, favourite and share components stay shared.
+// Issue #40 pilot: adapt only canonical recipe 12 to the owner's attached
+// recipe-screen reference. All cooking content remains sourced from RECIPES and
+// PT_RECIPES; health, checklist, progress, save, favourite and share behaviour
+// continues to use the existing shared components and state.
 const v32PilotRecipePresentation={12:{
  stepTitles:{en:['Mix the batter','Warm the pan','Cook the pancakes','Check and cool'],pt:['Misture a massa','Aqueça a frigideira','Cozinhe as panquequinhas','Confira e deixe esfriar']},
  methodIcons:['🥣','🍳','🥞','✓'],
  safety:{en:['Do not taste batter containing raw egg. Cook it fully before eating.','An adult operates the hob and handles the hot pan.','An adult operates the hob, cooks the pancakes and handles the hot pan.','Check that the centres are fully cooked. An adult handles the hot pan; let the pancakes cool before eating.'],pt:['Não prove a massa com ovo cru. Cozinhe-a completamente antes de comer.','Um adulto deve usar o fogão e manusear a frigideira quente.','Um adulto deve usar o fogão, cozinhar as panquequinhas e manusear a frigideira quente.','Confira se o centro está completamente cozido. Um adulto deve manusear a frigideira quente; deixe as panquequinhas esfriarem antes de comer.']},
+ safetyTitles:{en:['Food safety','Adult help needed','Adult help needed','Adult help needed'],pt:['Segurança dos alimentos','Ajuda de um adulto','Ajuda de um adulto','Ajuda de um adulto']},
  method:{en:'Hob',pt:'Fogão'},
  time:{en:'2–3 min each side',pt:'2–3 min de cada lado'},
  yield:{en:'Makes 6 small pancakes',pt:'Rende 6 panquequinhas'},
- dishIcon:'🥞'
+ dishIcon:'🥞',
+ equipment:{en:[['🥣','Mixing bowl'],['🥄','Spoon'],['🥄','Whisk'],['🍳','Non-stick pan'],['🥄','Spatula'],['♨️','Hob']],pt:[['🥣','Tigela'],['🥄','Colher'],['🥄','Batedor'],['🍳','Frigideira antiaderente'],['🥄','Espátula'],['♨️','Fogão']]}
 }};
 function v32UniversalRecipeStepTemplate(r,config){
  const id=Number(r?.id),pt=state.language==='pt-BR',locale=pt?'pt':'en',ptRecord=PT_RECIPES[id];
@@ -694,6 +697,17 @@ function v32UniversalRecipeStepTemplate(r,config){
  const stepIndex=Math.max(0,Math.min(r.steps.length-1,Number(step)||0)),finished=(state.done||[]).some(value=>Number(value)===id);
  const checks=state.checks[id]||[],favorite=(state.favorites||[]).some(value=>Number(value)===id),h=value=>safe(value);
  const method=config.method?.[locale]||r.method||'',time=config.time?.[locale]||r.time||'',makes=config.yield?.[locale]||r.yieldText||'';
+ const dishImage=NEW_RECIPE_ART[id]?.dish||NEW_RECIPE_ART[id]?.hero||INLINE_DISH_PHOTOS[id]||HOME_RECIPE_THUMBS[id]||'';
+ const chefAvatar=avatar('v32-r12-brand-avatar',id);
+ const characterAvatar=avatar('v32-r12-character-avatar',id);
+ const equipment=config.equipment?.[locale]||[];
+ const quickActions=pt?[
+  ['⌂','Início','nav','home'],['📖','Minhas receitas','nav','library'],['🎁','Surpresa!','action','open-wheel'],
+  ['♥','Minhas favoritas','action','favorites'],['🗓️','Minha semana','nav','week'],['🛒','Lista de compras','action','groceries-choose']
+ ]:[
+  ['⌂','Home','nav','home'],['📖','My Recipes','nav','library'],['🎁','Surprise Me','action','open-wheel'],
+  ['♥','My Favourites','action','favorites'],['🗓️','My Week','nav','week'],['🛒','Grocery List','action','groceries-choose']
+ ];
  const stepTitle=config.stepTitles?.[locale]?.[stepIndex]||(pt?'Etapa '+(stepIndex+1):'Step '+(stepIndex+1)),adultHelp=pt?'Ajuda de um adulto':'Adult help needed';
  const stepPanel=finished
   ?`<section class="v32-r12-completion" data-v32-recipe-completion role="status" aria-live="polite"><div class="v32-r12-completion-icon" aria-hidden="true">${h(config.dishIcon||r.emoji||'✓')}</div><p class="v32-r12-eyebrow">${pt?'RECEITA CONCLUÍDA':'RECIPE COMPLETE'}</p><h2>${pt?'Você fez '+h(title)+'!':'You made '+h(title)+'!'}</h2><p>${h(config.completionSafety?.[locale]||config.safety[locale].at(-1))}</p><div class="v32-r12-completion-actions"><button type="button" data-nav="library">${pt?'Voltar às receitas':'Back to recipes'}</button></div></section>`
@@ -705,24 +719,32 @@ function v32UniversalRecipeStepTemplate(r,config){
       <div class="v32-r12-step-heading"><span class="v32-r12-method-icon" aria-hidden="true">${h(config.methodIcons?.[stepIndex]||'•')}</span><div><p class="v32-r12-step-kicker">${pt?'ETAPA':'STEP'} ${stepIndex+1}</p><h2 class="ref-step-title v32-r12-title"><span class="ref-step-number">${stepIndex+1}</span><strong>${h(stepTitle)}</strong></h2></div></div>
       <div class="ref-step-copy v32-r12-instruction"><p data-original-source="recipe-step">${h(steps[stepIndex])}</p></div>
       ${config.metadataStep===stepIndex?`<p class="v32-r12-metadata" data-original-source="recipe-metadata">◷ ${h(time)}</p>`:''}
-      <aside class="v32-r12-safety" role="note" aria-label="${pt?'Ajuda de um adulto e segurança':'Adult help and safety'}"><span class="v32-r12-safety-icon" aria-hidden="true">!</span><div><strong>${adultHelp}</strong><p data-original-source="recipe-safety">${h(config.safety[locale][stepIndex])}</p></div></aside>
+      <aside class="v32-r12-safety" role="note" aria-label="${h(config.safetyTitles?.[locale]?.[stepIndex]||adultHelp)}"><span class="v32-r12-safety-icon" aria-hidden="true">!</span><div><strong>${h(config.safetyTitles?.[locale]?.[stepIndex]||adultHelp)}</strong><p data-original-source="recipe-safety">${h(config.safety[locale][stepIndex])}</p></div></aside>
      </article>
     </div>
     <div class="ref-step-actions v32-r12-actions"><button type="button" class="ref-back" data-action="prevstep" ${stepIndex===0?'disabled':''}>← ${pt?'Anterior':'Previous'}</button><span class="v32-r12-actions-progress">${stepIndex+1} ${pt?'de':'of'} ${r.steps.length}</span><button type="button" class="ref-next ${stepIndex===r.steps.length-1?'finish-step':''}" data-action="nextstep">${stepIndex===r.steps.length-1?(pt?'Concluir':'Finish'):(pt?'Próxima etapa':'Next step')} →</button></div>
    </section>`;
  return `<main class="v32-r12-main" data-v32-template="recipe-step-v1" data-recipe-id="${id}">
-  <header class="ref-hero v32-r12-header">
-   <button type="button" class="v32-r12-back" data-nav="library" aria-label="${pt?'Voltar às receitas':'Back to recipes'}">←</button>
-   <div class="v32-r12-dish-icon" role="img" aria-label="${h(title)}">${h(config.dishIcon||r.emoji||'✓')}</div>
-   <div class="v32-r12-title-block"><p class="v32-r12-eyebrow">${pt?'RECEITA':'RECIPE'} #${id}</p><h1>${h(title)}</h1><div class="v32-r12-meta"><span class="v32-r12-method">🍳 ${h(method)}</span><span>◷ ${h(time)}</span></div><p class="v32-r12-yield">${h(makes)}</p></div>
-   <button type="button" class="ref-favorite v32-r12-favorite" data-action="favorite" aria-label="${favorite?(pt?'Remover dos favoritos':'Remove from favourites'):(pt?'Adicionar aos favoritos':'Add to favourites')}">${favorite?'♥':'♡'}</button>
+  <section class="v32-r12-top" aria-label="${pt?'Atalhos da cozinha':'Kitchen shortcuts'}">
+   <div class="v32-r12-brand">${chefAvatar}<span><strong>${pt?'Cozinha mágica':'Aaria’s'}<br>${pt?'da Aaria':'Magical Kitchen'}</strong><small>${pt?'Cozinhar · Criar · Explorar':'Cook · Create · Explore'}</small></span></div>
+   <nav class="v32-r12-quick-actions" aria-label="${pt?'Atalhos da cozinha':'Kitchen shortcuts'}">${quickActions.map(([icon,label,type,target])=>`<button type="button" ${type==='nav'?`data-nav="${target}"`:`data-action="${target}"`}><span aria-hidden="true">${icon}</span>${label}</button>`).join('')}</nav>
+  </section>
+  <header class="v32-r12-header">
+   <p class="v32-r12-special">✨ ${pt?'RECEITA ESPECIAL PARA A AARIA':'SPECIAL RECIPE FOR AARIA'} <span>♥ ${pt?'Favorita da família':'Family favourite'}</span></p>
+   <div class="v32-r12-title-block"><p class="v32-r12-eyebrow">✨ ${pt?'VAMOS FAZER ALGO GOSTOSO':'LET’S MAKE SOMETHING YUMMY'}</p><h1>${h(title)}</h1></div>
+   <div class="v32-r12-meta"><span class="v32-r12-method">🍳 ${h(method)}</span><span>◷ ${h(time)}</span></div>
+   <p class="v32-r12-yield">${pt?'Rende':'Makes'} ${h(makes.replace(/^(Makes |Rende )/i,''))}</p>
+   <button type="button" class="ref-favorite v32-r12-favorite" data-action="favorite" aria-label="${favorite?(pt?'Remover dos favoritos':'Remove from favourites'):(pt?'Adicionar aos favoritos':'Add to favourites')}">${favorite?'♥':'♡'} <span>${pt?'Favorita':'Favourite'}</span></button>
+   <button type="button" class="recipe-grocery-link v32-r12-grocery" data-action="groceries-current">🛒 ${pt?'Lista de compras':'Make grocery list'}</button>
   </header>
-  <section class="v32-r12-ingredients ref-card" aria-labelledby="v32-r12-ingredients-title"><div class="v32-r12-section-heading"><h2 id="v32-r12-ingredients-title">${pt?'Ingredientes':'Ingredients'}</h2><span>${h(makes)}</span></div><div class="v32-r12-ingredient-list">${ingredients.map((ingredient,i)=>`<label class="ref-ingredient ${checks.includes(i)?'is-checked':''}"><input type="checkbox" data-check="${i}" ${checks.includes(i)?'checked':''}><span>${h(ingredient)}</span><i>${checks.includes(i)?'✓':'○'}</i></label>`).join('')}</div>${r.extras?.length?`<p class="v32-r12-extras">${r.extras.map(extra=>h(translateText(extra,pt?'pt-BR':'en-GB'))).join('; ')}</p>`:''}<button type="button" class="recipe-grocery-link" data-action="groceries-current">🛒 ${pt?'Lista de compras':'Make grocery list'}</button></section>
+  <figure class="v32-r12-dish-photo" aria-label="${pt?'Foto do prato pronto: ':'Finished dish photo: '}${h(title)}">${dishImage?`<img src="${dishImage}" alt="${pt?'Prato pronto: ':'Finished '}${h(title)}" decoding="async" fetchpriority="high">`:`<span aria-hidden="true">${h(config.dishIcon||r.emoji||'✓')}</span>`}</figure>
+  <aside class="v32-r12-character" aria-label="${pt?'Dica da Aaria':'Aaria’s recipe fact'}">${characterAvatar}<div><strong>${pt?'Oi! Eu sou a Aaria!':'Hi! I’m Aaria!'}</strong><p>${h(translateText(r.fact,pt?'pt-BR':'en-GB'))}</p></div></aside>
+  <section class="v32-r12-ingredients ref-card" aria-labelledby="v32-r12-ingredients-title"><div class="v32-r12-section-heading"><h2 id="v32-r12-ingredients-title">🥣 ${pt?'Ingredientes':'Ingredients'}</h2><span>${h(makes)}</span></div><div class="v32-r12-ingredient-list">${ingredients.map((ingredient,i)=>`<label class="ref-ingredient ${checks.includes(i)?'is-checked':''}"><span class="v32-r12-ingredient-art">${v3IngredientArt(ingredient)}</span><span class="v32-r12-ingredient-name">${h(ingredient)}</span><input type="checkbox" data-check="${i}" aria-label="${pt?'Marcar':'Check'} ${h(ingredient)}" ${checks.includes(i)?'checked':''}><i aria-hidden="true">${checks.includes(i)?'✓':'○'}</i></label>`).join('')}</div>${r.extras?.length?`<p class="v32-r12-extras">✨ ${pt?'Opcional':'Optional'}: ${r.extras.map(extra=>h(translateText(extra,pt?'pt-BR':'en-GB'))).join('; ')}</p>`:''}</section>
+  <section class="v32-r12-equipment ref-card" aria-labelledby="v32-r12-equipment-title"><div class="v32-r12-section-heading"><h2 id="v32-r12-equipment-title">💗 ${pt?'Você vai precisar':'You’ll need'}</h2></div><ul class="v32-r12-equipment-list">${equipment.map(([icon,label])=>`<li><span aria-hidden="true">${icon}</span><small>${h(label)}</small></li>`).join('')}</ul></section>
   ${stepPanel}
-  ${finished?'':`<details class="storybook-safety v32-r12-recipe-safety"><summary>🛡️ ${pt?'Segurança na cozinha':'Kitchen safety'}</summary><p>${h(translateText(r.safety||config.safety[locale].join(' '),pt?'pt-BR':'en-GB'))}</p></details>`}
+  <details class="storybook-safety v32-r12-recipe-safety"><summary>🛡️ ${pt?'Segurança na cozinha':'Kitchen safety'}</summary><p>${h(translateText(r.safety||config.safety[locale].join(' '),pt?'pt-BR':'en-GB'))}</p></details>
   ${healthPanels(r)}
   ${cookShareSection(r)}
-  <div class="avatar-note v32-r12-fact"><span aria-hidden="true">${h(config.dishIcon||r.emoji||'✓')}</span><span>${h(translateText(r.fact,pt?'pt-BR':'en-GB'))}</span></div>
  </main>`;
 }
 const v32RecipeBeforePilot=recipe;
