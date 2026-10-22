@@ -606,7 +606,15 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   if(detail.title!==title||detail.theme!==theme)throw new Error('Phone exemplar detail mismatch: '+JSON.stringify({id,expected:{title,theme},detail}));
   const detailName='v32-recipe-'+id+'-detail-'+orientation+'.png';
   v32PhoneScreenshotDigest=await captureScreenshot(detailName,title+' detail '+orientation,v32PhoneScreenshotDigest);
+  let ingredientName=null;
   if(id===12){
+    const viewport=await evaluate('({width:innerWidth,height:innerHeight})');
+    const expectedColumns=viewport.width>=760&&viewport.width>viewport.height?6:3;
+    await assertRecipe12IngredientGrid('EN-GB #12 phone '+orientation,expectedColumns);
+    const ingredientTarget=await prepareVisibleRecipeCapture('.v32-r12-ingredient-list','EN-GB #12 Ingredients '+orientation);
+    if(!ingredientTarget.visible)throw new Error('EN-GB #12 ingredient grid is not visible before screenshot capture');
+    ingredientName='v32-recipe-12-ingredients-'+orientation+'.png';
+    v32PhoneScreenshotDigest=await captureScreenshot(ingredientName,'EN-GB #12 Ingredients '+orientation,v32PhoneScreenshotDigest);
     const acceptance=await evaluate('(()=>({canonicalId:selected?.id,title:selected?.title,ingredients:document.querySelectorAll(".v32-r12-ingredient-list .ref-ingredient").length,steps:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount||0),allergens:[...document.querySelectorAll(".allergy-card .allergen-badges span")].map(x=>x.textContent.trim()).sort(),nutrition:!!document.querySelector(".nutrition-results"),quiz:!!document.querySelector(".v3-quiz-card"),copy:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedCopy:RECIPES.find(x=>x.id===12)?.steps?.[0]||"",safety:document.querySelector(".v32-r12-safety p")?.textContent||""}))()');
     if(acceptance.canonicalId!==12||acceptance.title!==title||acceptance.ingredients!==6||acceptance.steps!==4||!['Eggs','Milk','Wheat'].every(x=>acceptance.allergens.includes(x))||!acceptance.nutrition||!acceptance.quiz||acceptance.copy!==acceptance.expectedCopy||!acceptance.safety)throw new Error('Recipe 12 internal acceptance data/health/quiz gate failed: '+JSON.stringify(acceptance));
     if(!await clickRecipeIngredient(0))throw new Error('Recipe 12 first ingredient checkbox was not found.');
@@ -649,7 +657,7 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   const completionName='v32-recipe-'+id+'-completion-'+orientation+'.png';
   if(id===12&&!await evaluate('!!document.querySelector(".v32-r12-completion")'))throw new Error('Recipe 12 completion view is missing.');
   v32PhoneScreenshotDigest=await captureScreenshot(completionName,title+' completion '+orientation,v32PhoneScreenshotDigest);
-  const files=[detailName,...stepFiles,completionName].map(name=>{
+  const files=[detailName,...(ingredientName?[ingredientName]:[]),...stepFiles,completionName].map(name=>{
     const image=readFileSync('artifacts/v32-android-screenshots/'+name);
     const width=image.readUInt32BE(16),height=image.readUInt32BE(20);
     if(landscape?width<=height:width>=height)throw new Error(name+' has incorrect screenshot orientation '+width+'x'+height);

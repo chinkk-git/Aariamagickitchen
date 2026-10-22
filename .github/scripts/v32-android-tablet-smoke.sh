@@ -141,7 +141,19 @@ async function pageSet(landscape){
     if(!expected||actualTitle!==expected.title)throw Error('Recipe detail title mismatch for '+id+': '+JSON.stringify({expected:expected?.title,actual:actualTitle}));
     const result=await evaluate('(()=>({theme:document.querySelector(".app")?.dataset.v32RecipeTheme||"unknown"}))()');
     if(result.theme!==expected.theme)throw Error('Recipe detail theme mismatch for '+id+': '+JSON.stringify({expected:expected.theme,actual:result.theme}));
-    const image=await screenshot('theme-'+id+'-detail-'+(landscape?'landscape':'portrait'),landscape);
+    const orientationName=landscape?'landscape':'portrait';
+    if(id===12){
+      const viewport=await evaluate('({width:innerWidth,height:innerHeight})');
+      const expectedColumns=viewport.width>=760&&viewport.width>viewport.height?6:3;
+      await assertRecipe12IngredientGrid('EN-GB #12 tablet '+orientationName,expectedColumns);
+    }
+    const image=await screenshot('theme-'+id+'-detail-'+orientationName,landscape);
+    let ingredientScreenshot=null;
+    if(id===12){
+      const ingredientState=await prepareVisibleRecipeCapture('.v32-r12-ingredient-list','EN-GB #12 Ingredients '+orientationName);
+      if(!ingredientState.visible)throw Error('EN-GB #12 tablet Ingredients grid is not visible before screenshot capture');
+      ingredientScreenshot=await screenshot('recipe-12-ingredients-'+orientationName,landscape);
+    }
     const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".v32-r12-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".v32-r12-main")}))()');flow.nav=await evaluate(navigationSummaryExpression());
     if(flow.selectedId!==id||flow.activeCount!==1||flow.activeStep!==1)throw Error('Recipe template first-step state failed: '+JSON.stringify({id,flow}));
     if(id===12&&(flow.stepCount!==4||!flow.pilot||flow.nav.map(x=>x.label).join('|')!=='Home|Recipes|World Adventure|Magic Pantry|Planner|My Creations'||flow.nav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations'))throw Error('Recipe 12 pilot contract or exact six-button navigation failed: '+JSON.stringify(flow));
@@ -173,7 +185,7 @@ async function pageSet(landscape){
       if(!complete)throw Error('Recipe '+id+' did not reach its completion state');
     }
     const completion=await screenshot(id===12?'recipe-12-completion-'+(landscape?'landscape':'portrait')+'.png':'theme-'+id+'-completion-'+(landscape?'landscape':'portrait'),landscape);
-    themeShots.push({id,title:actualTitle,expected:expected.theme,observed:result.theme,screenshot:image,steps:stepFiles,completion,activeStepCount:flow.activeCount,totalSteps:flow.stepCount});
+    themeShots.push({id,title:actualTitle,expected:expected.theme,observed:result.theme,screenshot:image,ingredients:ingredientScreenshot,steps:stepFiles,completion,activeStepCount:flow.activeCount,totalSteps:flow.stepCount});
     await click('#nav .tab[data-nav="library"]','Recipe library');await waitFor('.recipe-card','Library after recipe '+id);
   }
   return {home,avatarScenes,world,library:libshot,themeShots,accessibility:{home:homeA11y,world:worldA11y,library:libraryA11y},worldMap:map}
