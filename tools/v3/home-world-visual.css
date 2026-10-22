@@ -327,3 +327,28 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .v32-r12-ingredients .ref-ingredient>i{display:none}.v32-r12-ingredients .ref-ingredient.is-checked{border-color:#d89de7;background:#fcf3ff}
 @media(max-width:360px){.v32-r12-ingredient-list{gap:5px}.v32-r12-ingredients .ref-ingredient{grid-template-columns:22px minmax(0,1fr);gap:2px 4px;padding:4px;font-size:10px}.v32-r12-ingredient-art .v3-ingredient-art{width:22px;height:22px}.v32-r12-ingredient-art>span[aria-hidden="true"]{font-size:20px}}
 @media(min-width:760px) and (orientation:landscape){.v32-r12-ingredient-list{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.v32-r12-ingredients .ref-ingredient{min-height:70px}}
+
+/* P0 recovery from owner portrait screenshot: keep the #12 shell and article from
+   inheriting any legacy recipe/card max-width or two-column track constraint. */
+.app.v32-recipe12-pilot-active,
+.app.v32-recipe12-pilot-active .page,
+.app.v32-recipe12-pilot-active #screen {
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  margin-inline:0 !important;
+  box-sizing:border-box;
+}
+.app.v32-recipe12-pilot-active #screen > .v32-r12-main {
+  display:grid;
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  margin-inline:auto !important;
+  box-sizing:border-box;
+}
+.app.v32-recipe12-pilot-active .v32-r12-main > * {
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+}

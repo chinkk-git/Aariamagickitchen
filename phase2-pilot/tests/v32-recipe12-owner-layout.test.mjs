@@ -142,3 +142,17 @@ test('PT-BR #12 ingredient assertion searches card content past decorative icons
     'a decorative icon before ingredient text cannot cause a false mismatch');
   assert.ok(actual.includes(expected));
 });
+
+test('owner portrait regression: recipe #12 shell and content occupy the available viewport width', async () => {
+  const [runtime, css] = await Promise.all([
+    read('tools/v3/runtime.js'), read('tools/v3/home-world-visual.css')
+  ]);
+  assert.match(runtime, /return `<article class="v32-r12-main"/,
+    'the #12 screen has one dedicated top-level content article');
+  assert.match(css, /\.app\.v32-recipe12-pilot-active,\s*\n\.app\.v32-recipe12-pilot-active \.page,\s*\n\.app\.v32-recipe12-pilot-active #screen\s*\{[^}]*width:\s*100% !important;[^}]*max-width:\s*none !important;[^}]*min-width:\s*0 !important;/,
+    'app and screen cannot retain a narrow max-width or minimum width on phone portrait');
+  assert.match(css, /\.app\.v32-recipe12-pilot-active #screen > \.v32-r12-main\s*\{[^}]*width:\s*100% !important;[^}]*max-width:\s*none !important;[^}]*min-width:\s*0 !important;/,
+    'recipe article uses the viewport width rather than an inherited two-column card track');
+  assert.match(css, /\.app\.v32-recipe12-pilot-active \.v32-r12-main > \*\s*\{[^}]*min-width:\s*0;[^}]*max-width:\s*100%;/,
+    'child panels may shrink within the available width without horizontal overflow');
+});

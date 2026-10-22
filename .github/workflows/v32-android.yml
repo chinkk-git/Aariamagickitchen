@@ -46,19 +46,6 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: G1 FAST PREFLIGHT — contracts, evidence harness and SDK integrity
-        run: |
-          set -euo pipefail
-          npm test --prefix phase2-pilot
-          node tools/v3/validate-v31.mjs
-          node tools/v3/validate-pt-br-review-drafts.mjs
-          node --check tools/v3/runtime.js
-          node --check tools/v3/transform-production.mjs
-          node tools/v3/verify-v32-reference-assets.mjs
-          node --check tools/v3/qa/android-system-image.mjs
-          node --check tools/v3/qa/android-evidence-manifest.mjs
-          node tools/v3/qa/android-system-image.mjs
-
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
         with:
@@ -113,6 +100,20 @@ jobs:
           echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
           sha256sum "$apk" | tee artifacts/v32-diagnostics/apk-sha256.txt
           printf 'A08_review=HOLD\nA09_review=HOLD\nartwork_rights=HOLD\nrelease=NOT_AUTHORIZED\n' > artifacts/v32-diagnostics/gates.txt
+
+      - name: G1 FAST PREFLIGHT — contracts, evidence harness and SDK integrity
+        run: |
+          set -euo pipefail
+          npm test --prefix phase2-pilot
+          node tools/v3/validate-v31.mjs
+          node tools/v3/validate-pt-br-review-drafts.mjs
+          node --check tools/v3/runtime.js
+          node --check tools/v3/transform-production.mjs
+          node tools/v3/verify-v32-reference-assets.mjs
+          node --check tools/v3/qa/android-system-image.mjs
+          node --check tools/v3/qa/android-evidence-manifest.mjs
+          node tools/v3/qa/android-system-image.mjs
+
 
       - name: Download previous V3.2 preview for install-conflict regression
         if: github.run_number == 74
