@@ -17,6 +17,8 @@ test('V3.2 keeps Classic navigation, feature entrypoints and data schemas', asyn
   assert.match(html, /const RECIPES=/);
   assert.match(html, /const PT_RECIPES=/);
   assert.match(html, /const NUTRITION_PLANS=/);
+  assert.match(runtime, /v3BaseRender\(\);[\s\S]*?classList\.remove\('v31-world-screen'\)/,
+    'leaving World clears its route-only screen class instead of leaving Home in stale World DOM state');
   for (const phrase of ['Spin My Week','World Food Adventures','Magic Pantry','WhatsApp','nutrition','allergen','favorite','recent','Mommy','Friends']) {
     assert.ok((html+runtime).toLowerCase().includes(phrase.toLowerCase()), `feature entrypoint: ${phrase}`);
   }
