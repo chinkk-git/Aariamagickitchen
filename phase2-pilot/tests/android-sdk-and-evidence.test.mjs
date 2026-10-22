@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, open, readFile, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { provisionSystemImage, validateSystemImageDirectory } from '../../tools/v3/qa/android-system-image.mjs';
@@ -26,6 +26,96 @@ async function writeValidImage(directory, packageId) {
   await writeFile(path.join(directory, 'userdata.img'), sparseImage);
 }
 
+function fixtureCrc32(bytes) {
+  let crc = 0xffffffff;
+  for (const byte of bytes) {
+    crc ^= byte;
+    for (let bit = 0; bit < 8; bit++) crc = (crc >>> 1) ^ (0xedb88320 & -(crc & 1));
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
+async function writeObservedGptImage(filePath, { corruptPrimaryCrc = false, corruptEntriesCrc = false } = {}) {
+  const sectorSize = 512;
+  const totalSectors = 3168256; // CI-observed size: 1,622,147,072 bytes at 512-byte sectors.
+  const lastLba = totalSectors - 1;
+  const backupEntriesLba = lastLba - 32;
+  const lastUsableLba = backupEntriesLba - 1;
+  const entries = Buffer.alloc(128 * 128);
+  // The CI bytes at file offset 1024 begin with this Linux filesystem-data GUID.
+  Buffer.from('af3dc60f838472478e793d69d8477de4', 'hex').copy(entries, 0);
+  Buffer.alloc(16, 0x21).copy(entries, 16); // Unique partition GUID.
+  entries.writeBigUInt64LE(34n, 32);
+  entries.writeBigUInt64LE(BigInt(lastUsableLba), 40);
+  Buffer.from('vendor', 'utf16le').copy(entries, 56);
+  const entriesCrc = (fixtureCrc32(entries) ^ (corruptEntriesCrc ? 1 : 0)) >>> 0;
+
+  function header({ currentLba, backupLba, entriesLba }) {
+    const result = Buffer.alloc(sectorSize);
+    result.write('EFI PART', 0, 'ascii');
+    result.writeUInt32LE(0x00010000, 8);
+    result.writeUInt32LE(92, 12);
+    result.writeBigUInt64LE(BigInt(currentLba), 24);
+    result.writeBigUInt64LE(BigInt(backupLba), 32);
+    result.writeBigUInt64LE(34n, 40);
+    result.writeBigUInt64LE(BigInt(lastUsableLba), 48);
+    Buffer.alloc(16, 0x42).copy(result, 56);
+    result.writeBigUInt64LE(BigInt(entriesLba), 72);
+    result.writeUInt32LE(128, 80);
+    result.writeUInt32LE(128, 84);
+    result.writeUInt32LE(entriesCrc, 88);
+    result.writeUInt32LE((fixtureCrc32(result.subarray(0, 92)) ^ (corruptPrimaryCrc && currentLba === 1 ? 1 : 0)) >>> 0, 16);
+    return result;
+  }
+
+  const file = await open(filePath, 'w');
+  try {
+    await file.truncate(totalSectors * sectorSize);
+    const mbr = Buffer.alloc(sectorSize);
+    mbr[446 + 4] = 0xee;
+    mbr.writeUInt32LE(1, 446 + 8);
+    mbr.writeUInt32LE(totalSectors - 1, 446 + 12);
+    mbr[510] = 0x55;
+    mbr[511] = 0xaa;
+    await file.write(mbr, 0, mbr.length, 0);
+    await file.write(header({ currentLba: 1, backupLba: lastLba, entriesLba: 2 }), 0, sectorSize, sectorSize);
+    await file.write(entries, 0, entries.length, 2 * sectorSize);
+    await file.write(entries, 0, entries.length, backupEntriesLba * sectorSize);
+    await file.write(header({ currentLba: lastLba, backupLba: 1, entriesLba: backupEntriesLba }), 0, sectorSize, lastLba * sectorSize);
+    // Minimal ext4 signature at the partition-relative superblock magic field.
+    const ext4Magic = Buffer.from([0x53, 0xef]);
+    await file.write(ext4Magic, 0, ext4Magic.length, 34 * sectorSize + 1080);
+  } finally {
+    await file.close();
+  }
+}
+
+test('Android SDK system image preflight rejects a corrupt cached package and retries the exact package once', async t => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-image-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const sdkRoot = path.join(root, 'sdk');
+  const directory = path.join(sdkRoot, 'system-images/android-35/default/x86_64');
+  const packageId = 'system-images;android-35;default;x86_64';
+  await mkdir(directory, { recursive: true });
+  await writeFile(path.join(directory, 'system.img'), Buffer.alloc(0));
+  await mkdir(path.join(sdkRoot, '.temp'), { recursive: true });
+  await writeFile(path.join(sdkRoot, '.temp', 'PackageOperation01'), 'corrupt archive staging');
+  let attempts = 0;
+  const result = await provisionSystemImage({
+    sdkRoot,
+    apiLevel: 35,
+    sdkManager: '/sdkmanager',
+    runSdkManager: async (_manager, args) => {
+      attempts++;
+      assert.deepEqual(args, ['--install', packageId, '--channel=0', `--sdk_root=${sdkRoot}`]);
+      if (attempts === 1) throw new Error('Error on ZipFile unknown archive');
+      await writeValidImage(directory, packageId);
+    }
+  });
+  assert.equal(result.attempts, 2);
+  assert.equal((await validateSystemImageDirectory(directory, packageId)).valid, true);
+  await assert.rejects(readFile(path.join(sdkRoot, '.temp', 'PackageOperation01')), { code: 'ENOENT' });
+});
 
 test('Android SDK preflight reports image size and header bytes for an unrecognized installed format', async t => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-image-header-'));
@@ -55,31 +145,45 @@ test('Android SDK preflight reports image size and header bytes for an unrecogni
   });
 });
 
-test('Android SDK system image preflight rejects a corrupt cached package and retries the exact package once', async t => {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-image-'));
+test('Android SDK preflight accepts the observed GPT disk-image header with valid GPT CRCs and embedded ext4', async t => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-gpt-header-'));
   t.after(() => rm(root, { recursive: true, force: true }));
-  const sdkRoot = path.join(root, 'sdk');
-  const directory = path.join(sdkRoot, 'system-images/android-35/default/x86_64');
+  const directory = path.join(root, 'system-images/android-35/default/x86_64');
   const packageId = 'system-images;android-35;default;x86_64';
-  await mkdir(directory, { recursive: true });
-  await writeFile(path.join(directory, 'system.img'), Buffer.alloc(0));
-  await mkdir(path.join(sdkRoot, '.temp'), { recursive: true });
-  await writeFile(path.join(sdkRoot, '.temp', 'PackageOperation01'), 'corrupt archive staging');
-  let attempts = 0;
-  const result = await provisionSystemImage({
-    sdkRoot,
-    apiLevel: 35,
-    sdkManager: '/sdkmanager',
-    runSdkManager: async (_manager, args) => {
-      attempts++;
-      assert.deepEqual(args, ['--install', packageId, '--channel=0', `--sdk_root=${sdkRoot}`]);
-      if (attempts === 1) throw new Error('Error on ZipFile unknown archive');
-      await writeValidImage(directory, packageId);
-    }
-  });
-  assert.equal(result.attempts, 2);
+  await writeValidImage(directory, packageId);
+  await writeObservedGptImage(path.join(directory, 'system.img'));
+  const image = await open(path.join(directory, 'system.img'), 'r');
+  try {
+    const zeroSample = Buffer.alloc(32);
+    const guidSample = Buffer.alloc(4);
+    const nameSample = Buffer.alloc(2);
+    await image.read(zeroSample, 0, zeroSample.length, 0);
+    await image.read(guidSample, 0, guidSample.length, 1024);
+    await image.read(nameSample, 0, nameSample.length, 1080);
+    assert.equal(zeroSample.toString('hex'), '00'.repeat(32));
+    assert.equal(guidSample.toString('hex'), 'af3dc60f');
+    assert.equal(nameSample.toString('hex'), '7600');
+  } finally {
+    await image.close();
+  }
   assert.equal((await validateSystemImageDirectory(directory, packageId)).valid, true);
-  await assert.rejects(readFile(path.join(sdkRoot, '.temp', 'PackageOperation01')), { code: 'ENOENT' });
+});
+
+test('Android SDK preflight rejects GPT containers with corrupt primary-header or partition-array CRCs', async t => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-gpt-corrupt-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const packageId = 'system-images;android-35;default;x86_64';
+  for (const kind of ['primary-header', 'partition-array']) {
+    const directory = path.join(root, kind, 'system-images/android-35/default/x86_64');
+    await writeValidImage(directory, packageId);
+    await writeObservedGptImage(path.join(directory, 'system.img'), {
+      corruptPrimaryCrc: kind === 'primary-header',
+      corruptEntriesCrc: kind === 'partition-array'
+    });
+    const result = await validateSystemImageDirectory(directory, packageId);
+    assert.equal(result.valid, false, `${kind} corruption must be rejected`);
+    assert.match(result.reason, /not a recognized Android sparse or ext4 image/);
+  }
 });
 
 test('Android SDK system image preflight rejects a package with wrong metadata and stops after two failed installs', async t => {
