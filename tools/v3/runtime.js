@@ -87,15 +87,6 @@ function v3IngredientArt(value){
  if(idx<0)return `<span aria-hidden="true">${v3IngredientFallback(value)}</span>`;
  return `<span class="v3-ingredient-art v3-food-${idx}" role="img" aria-label="${safe(value)}"></span>`;
 }
-const v32ReferenceTemplateCookingScene=cookingScene;
-cookingScene=function v32IngredientOnlyCookingScene(r,stepIndex){
- if([5,76].includes(Number(r?.id))){
-  const ingredients=(Array.isArray(r.ingredients)?r.ingredients:[]).slice(0,3);
-  return `<figure class="ref-step-photo v32-template-ingredient-art" role="img" aria-label="${safe(r.title+' — '+localizedStepTitle(r,stepIndex)+' ingredients')}"><div class="v32-template-ingredient-row">${ingredients.map(value=>`<div class="v32-template-ingredient">${v3IngredientArt(value)}<small>${safe(value)}</small></div>`).join('')}</div><figcaption data-original-source="canonical-ingredient-icons">${safe(localizedStepTitle(r,stepIndex))}</figcaption></figure>`;
- }
- return v32ReferenceTemplateCookingScene(r,stepIndex);
-};
-
 homeTile=function v31PinterestTile(r){return `<button class="home-tile v31-pinterest-tile" data-v32-theme="${v32RecipeTheme(r.id)}" data-open="${r.id}" aria-label="Open ${safe(r.title)}">${homeDishThumb(r)}${recipeNumberMarkup(r)}<span class="home-tile-name">${safe(r.title)}</span><span class="home-tile-meta">${safe(r.category)} · ${safe(r.method)}</span></button>`};
 // The production batch renderer has hand-drawn, ingredient-specific SVGs for
 // the full recipe catalogue. Keep it intact; the small atlas is only a fallback

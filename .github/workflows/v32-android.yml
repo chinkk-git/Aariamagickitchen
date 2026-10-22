@@ -261,6 +261,11 @@ jobs:
           else
             echo 'tablet_reference_comparison=BLOCKED_MISSING_SCREENSHOTS' > artifacts/v32-diagnostics/tablet-reference-comparison-status.txt
           fi
+          if [ -s artifacts/v32-android-screenshots/recipe-image-12-phone-portrait-step-1.png ]; then
+            python3 tools/v3/compare-recipe12-step-reference.py
+          else
+            echo 'recipe12_step_reference_comparison=BLOCKED_MISSING_PHONE_SCREENSHOT' > artifacts/v32-diagnostics/recipe12-step-reference-comparison-status.txt
+          fi
 
       - name: Upload isolated V3.2 test APK
         if: always()

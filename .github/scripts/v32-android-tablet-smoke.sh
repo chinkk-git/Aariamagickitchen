@@ -170,8 +170,6 @@ async function pageSet(landscape){
       await click('.ref-next.finish-step','Finish recipe 12');await pause(250);
       if(!await evaluate('state.done.includes(12)&&state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".ref-next.finish-step")'))throw Error('Tablet recipe 12 completion did not persist or render.');
     }else{
-      const stepArt=await evaluate('(()=>{const e=document.querySelector(".ref-step-card.active .v32-template-ingredient-art");return {count:e?.querySelectorAll(".v32-template-ingredient").length||0,characterImages:e?.querySelectorAll("img").length||0}})()');
-      if(stepArt.count!==3||stepArt.characterImages!==0)throw Error('Approved template step must use three accurate ingredient icons without character art: '+JSON.stringify({id,stepArt}));
       await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"center"})');
       stepFiles.push(await screenshot('theme-'+id+'-step-1-'+(landscape?'landscape':'portrait'),landscape));
       await click('.ref-next','Next step for recipe '+id);await pause(250);
@@ -188,7 +186,39 @@ async function pageSet(landscape){
     themeShots.push({id,title:actualTitle,expected:expected.theme,observed:result.theme,screenshot:image,ingredients:ingredientScreenshot,steps:stepFiles,completion,activeStepCount:flow.activeCount,totalSteps:flow.stepCount});
     await click('#nav .tab[data-nav="library"]','Recipe library');await waitFor('.recipe-card','Library after recipe '+id);
   }
-  return {home,avatarScenes,world,library:libshot,themeShots,accessibility:{home:homeA11y,world:worldA11y,library:libraryA11y},worldMap:map}
+  const recipeVisualEvidence=[];
+  for(let id=1;id<=95;id++){
+    const orientationName=landscape?'landscape':'portrait';
+    await clickRecipeCard(id,'All-recipe tablet image audit');
+    await waitFor('.ref-hero h1','Recipe '+id+' tablet '+orientationName+' visual audit');
+    const detail=await evaluate(`(()=>({id:Number(selected?.id||0),title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',steps:Number(document.querySelector('.ref-step-grid')?.dataset.stepCount)||document.querySelectorAll('.ref-step-card').length}))()`);
+    if(detail.id!==id||!detail.title||detail.steps<1)throw Error('Tablet all-recipe image audit entered the wrong detail route: '+JSON.stringify({id,detail}));
+    const detailShot=await screenshot(`recipe-image-${id}-tablet-${orientationName}-detail`,landscape);
+    const steps=[];
+    for(let index=0;index<detail.steps;index++){
+      const art=await evaluate(`(()=>{
+        const id=${id},index=${index},card=document.querySelector('#screen .ref-step-card.active'),figure=card?.querySelector('.ref-step-photo, [data-v32-step-art], .storybook-action');
+        const image=figure?.querySelector('img'),svg=figure?.querySelector('svg'),pending=!!document.querySelector('#screen .ref-step-photo.new-recipe-art-pending');
+        const runtimeArt=NEW_RECIPE_ART?.[id]||{},source=image?.currentSrc||image?.src||'',expectedSource=runtimeArt.atlas||runtimeArt.storyboard||BATCH_ATLASES?.[id]||'';
+        const atlas=!!figure?.querySelector('.atlas-cell'),meta=BATCH_META?.[id],cell=Number.isInteger(meta?.stepCells?.[index])?meta.stepCells[index]:index;
+        const left=image?.style.left||'',top=image?.style.top||'',loaded=!!image&&image.complete&&image.naturalWidth>0&&image.naturalHeight>0;
+        const rendered=loaded||!!svg||!!figure?.querySelector('[role="img"]');
+        const association=atlas?!!expectedSource&&source===expectedSource&&left===(-((cell%3)*100)+'%')&&top===(-Math.floor(cell/3)*100+'%'):rendered;
+        return {recipeId:id,stepIndex:index+1,stepNumber:Number(card?.querySelector('.ref-step-number')?.textContent||0),pending,kind:pending?'pending':atlas?'atlas':image?'image':svg?'svg':'role-image',source,expectedSource,cell,left,top,aspect:figure?getComputedStyle(figure).aspectRatio:'',naturalWidth:image?.naturalWidth||0,naturalHeight:image?.naturalHeight||0,loaded,rendered,association,status:pending?'FAIL':rendered&&association&&((atlas||image)?loaded:true)?'PASS':'FAIL'};
+      })()`);
+      if(art.stepNumber!==index+1)throw Error('Tablet recipe '+id+' step navigation mismatch: '+JSON.stringify(art));
+      steps.push(art);
+      if(index===0){await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"center"})');var firstStepShot=await screenshot(`recipe-image-${id}-tablet-${orientationName}-step-1`,landscape)}
+      if(index+1<detail.steps){await click('.ref-next','Recipe '+id+' tablet artwork next step');await pause(180)}
+    }
+    const dish=await evaluate(`(()=>{const id=${id},screen=document.querySelector('#screen'),art=NEW_RECIPE_ART?.[id]||{},images=[...screen.querySelectorAll('.ref-hero img,.ref-dish img,[data-dish-art] img,.v32-r12-dish img')],image=images.find(item=>!item.alt?.toLowerCase().includes('avatar'))||null,source=image?.currentSrc||image?.src||'',expected=art.dish||art.hero||INLINE_DISH_PHOTOS?.[id]||HOME_RECIPE_THUMBS?.[id]||'';return {source,expected,loaded:!!image&&image.complete&&image.naturalWidth>0,naturalWidth:image?.naturalWidth||0,naturalHeight:image?.naturalHeight||0,association:!!image&&!!source&&(!expected||source===expected),candidateCount:images.length}})()`);
+    const status=dish.loaded&&dish.association&&steps.every(item=>item.status==='PASS')?'PASS':dish.candidateCount===0||steps.some(item=>item.status==='FAIL')?'FAIL':'NOT TESTED';
+    recipeVisualEvidence.push({recipeId:id,title:detail.title,device:'tablet',orientation:orientationName,status,finishedDish:dish,steps,screenshots:[detailShot.path,firstStepShot?.path].filter(Boolean)});
+    await click('#nav .tab[data-nav="library"]','Recipe library after image audit '+id);await waitFor('.recipe-card[data-open="1"]','Library after image audit '+id);
+    if(id%10===0)console.log(`Verified tablet ${orientationName} recipe images ${id}/95`);
+  }
+  writeFileSync(`artifacts/v32-diagnostics/recipe-image-verification-tablet-${landscape?'landscape':'portrait'}.json`,JSON.stringify({schemaVersion:1,device:'tablet',orientation:landscape?'landscape':'portrait',recipeCount:recipeVisualEvidence.length,recipes:recipeVisualEvidence},null,2)+'\n');
+  return {home,avatarScenes,world,library:libshot,themeShots,recipeVisualEvidence,accessibility:{home:homeA11y,world:worldA11y,library:libraryA11y},worldMap:map}
 }
 await pause(6000);
 await waitFor('.v31-hero-welcome h1','Tablet home');
