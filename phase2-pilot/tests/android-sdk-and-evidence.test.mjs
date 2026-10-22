@@ -198,19 +198,22 @@ test('Android SDK preflight rejects GPT containers with corrupt primary-header o
   }
 });
 
-test('Android SDK preflight accepts an installed system-image package with its data directory instead of userdata.img', async t => {
+test('Android SDK preflight accepts the authoritative API 35 x86_64 empty-data-disk package layout', async t => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-data-dir-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const directory = path.join(root, 'system-images/android-35/default/x86_64');
   const packageId = 'system-images;android-35;default;x86_64';
   await writeValidImage(directory, packageId);
   await rm(path.join(directory, 'userdata.img'));
-  await mkdir(path.join(directory, 'data'));
-  await writeFile(path.join(directory, 'data', 'package.ini'), 'installed SDK image data');
-  assert.equal((await validateSystemImageDirectory(directory, packageId)).valid, true);
+  await mkdir(path.join(directory, 'data', 'misc', 'apns'), { recursive: true });
+  await writeFile(path.join(directory, 'data', 'empty_data_disk'), '');
+  await writeFile(path.join(directory, 'data', 'misc', 'apns', 'apns-conf.xml'), '<apns/>');
+  const result = await validateSystemImageDirectory(directory, packageId);
+  assert.equal(result.valid, true);
+  assert.equal(result.layout, 'api35-x86_64-empty-data-disk');
 });
 
-test('Android SDK preflight rejects a package with neither userdata.img nor a populated data directory', async t => {
+test('Android SDK preflight rejects an API 35 package missing the authoritative empty-data-disk marker', async t => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-no-userdata-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const directory = path.join(root, 'system-images/android-35/default/x86_64');
@@ -218,9 +221,24 @@ test('Android SDK preflight rejects a package with neither userdata.img nor a po
   await writeValidImage(directory, packageId);
   await rm(path.join(directory, 'userdata.img'));
   await mkdir(path.join(directory, 'data'));
+  await writeFile(path.join(directory, 'data', 'unrelated.txt'), 'not an SDK package payload');
   const result = await validateSystemImageDirectory(directory, packageId);
   assert.equal(result.valid, false);
-  assert.match(result.reason, /SDK data directory is empty/);
+  assert.match(result.reason, /authoritative data\/empty_data_disk payload/);
+});
+
+test('Android SDK preflight does not accept arbitrary data directories for other package layouts', async t => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'aria-sdk-unrecognized-data-layout-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const directory = path.join(root, 'system-images/android-35/google_apis/x86_64');
+  const packageId = 'system-images;android-35;google_apis;x86_64';
+  await writeValidImage(directory, packageId);
+  await rm(path.join(directory, 'userdata.img'));
+  await mkdir(path.join(directory, 'data'));
+  await writeFile(path.join(directory, 'data', 'empty_data_disk'), '');
+  const result = await validateSystemImageDirectory(directory, packageId);
+  assert.equal(result.valid, false);
+  assert.match(result.reason, /userdata.img is missing for a package layout that requires it/);
 });
 
 test('Android SDK system image preflight rejects a package with wrong metadata and stops after two failed installs', async t => {

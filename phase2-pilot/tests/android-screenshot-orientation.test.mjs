@@ -1,6 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { captureDistinctPng, captureOrientedPng } from '../../.github/scripts/android-screenshot-orientation.mjs';
+
+test('tablet Android smoke imports its screenshot helper from the repository-relative path', async () => {
+  const script = await readFile(new URL('../../.github/scripts/v32-android-tablet-smoke.sh', import.meta.url), 'utf8');
+  assert.match(script, /from '\.\/\.github\/scripts\/android-screenshot-orientation\.mjs'/);
+  assert.doesNotMatch(script, /from '\.\/android-screenshot-orientation\.mjs'/);
+});
 
 function png(width, height) {
   const buffer = Buffer.alloc(24);

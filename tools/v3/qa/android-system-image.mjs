@@ -156,18 +156,12 @@ export async function validateSystemImageDirectory(directory, packageId, fsApi =
     if (properties.get('SystemImage.Abi') !== arch || Number(properties.get('AndroidVersion.ApiLevel')) !== Number(apiText.replace('android-', ''))) {
       return { valid: false, reason: 'source.properties API level or ABI does not match the requested package' };
     }
-    for (const payload of ['system.img', 'userdata.img']) {
+    for (const payload of ['system.img']) {
       let details;
       try {
         details = await fsApi.stat(path.join(directory, payload));
       } catch (error) {
-        if (payload !== 'userdata.img' || error.code !== 'ENOENT') throw error;
-        const dataDirectory = path.join(directory, 'data');
-        const dataDetails = await fsApi.stat(dataDirectory);
-        if (!dataDetails.isDirectory()) return { valid: false, reason: 'userdata.img is absent and SDK data directory is not a directory' };
-        const dataEntries = await fsApi.readdir(dataDirectory);
-        if (dataEntries.length === 0) return { valid: false, reason: 'userdata.img is absent and SDK data directory is empty' };
-        continue;
+        throw error;
       }
       if (!details.isFile() || details.size === 0) return { valid: false, reason: `${payload} is missing or empty` };
       if (!await hasRecognizedDiskImageHeader(path.join(directory, payload), fsApi, details.size)) {
@@ -183,7 +177,50 @@ export async function validateSystemImageDirectory(directory, packageId, fsApi =
         };
       }
     }
-    return { valid: true, reason: 'SDK package metadata and required image payloads are present' };
+
+    // Google changed the API 35 x86_64 package layout: its authoritative
+    // android-35 image file group contains data/empty_data_disk and does not
+    // contain userdata.img. Other system-image layouts still need userdata.img.
+    // The file group is maintained at:
+    // https://android.googlesource.com/platform/tools/base/+/7bf1856df50fac20b1ddb25868c2e712ee54f3a8/bazel/avd/system_images.BUILD
+    const modernApi35X64Layout = packageId === 'system-images;android-35;default;x86_64';
+    let dataLayout = false;
+    try {
+      const userdata = await fsApi.stat(path.join(directory, 'userdata.img'));
+      if (!userdata.isFile() || userdata.size === 0) return { valid: false, reason: 'userdata.img is missing or empty' };
+      if (!await hasRecognizedDiskImageHeader(path.join(directory, 'userdata.img'), fsApi, userdata.size)) {
+        const imageEvidence = {
+          payload: 'userdata.img',
+          ...(await describeDiskImageHeader(path.join(directory, 'userdata.img'), fsApi, userdata.size))
+        };
+        const diagnostic = { packageMetadata, imageEvidence };
+        return {
+          valid: false,
+          reason: `userdata.img is not a recognized Android sparse, ext4, EROFS, or integrity-checked GPT image; diagnostic=${JSON.stringify(diagnostic)}`,
+          ...diagnostic
+        };
+      }
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+      if (!modernApi35X64Layout) return { valid: false, reason: 'userdata.img is missing for a package layout that requires it' };
+      const emptyDiskMarker = path.join(directory, 'data', 'empty_data_disk');
+      let marker;
+      try {
+        marker = await fsApi.stat(emptyDiskMarker);
+      } catch (markerError) {
+        if (markerError.code === 'ENOENT') return { valid: false, reason: 'API 35 x86_64 package is missing its authoritative data/empty_data_disk payload' };
+        throw markerError;
+      }
+      if (!marker.isFile()) return { valid: false, reason: 'API 35 x86_64 package is missing its authoritative data/empty_data_disk payload' };
+      dataLayout = true;
+    }
+    return {
+      valid: true,
+      reason: dataLayout
+        ? 'SDK package metadata, integrity-checked system image, and authoritative API 35 data/empty_data_disk payload are present'
+        : 'SDK package metadata and integrity-checked system/userdata image payloads are present',
+      layout: dataLayout ? 'api35-x86_64-empty-data-disk' : 'userdata-image'
+    };
   } catch (error) {
     return { valid: false, reason: `package is incomplete: ${error.message}` };
   }
