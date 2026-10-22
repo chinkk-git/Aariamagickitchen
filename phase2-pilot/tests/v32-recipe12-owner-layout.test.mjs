@@ -138,7 +138,7 @@ test('PT-BR #12 ingredient assertion searches card content past decorative icons
   const cards = [{ innerText: '🧺 ½ xícara de milho ○' }, { innerText: '🥚 1 ovo' }];
   const expected = '½ xícara de milho';
   const actual = cards.map(card => (card.innerText || card.textContent || '').replace(/\s+/g, ' ').trim()).find(text => text.includes(expected)) || '';
-  assert.equal(actual, '🧺 ½ xícara de milho',
+  assert.equal(actual, '🧺 ½ xícara de milho ○',
     'a decorative icon before ingredient text cannot cause a false mismatch');
   assert.ok(actual.includes(expected));
 });
