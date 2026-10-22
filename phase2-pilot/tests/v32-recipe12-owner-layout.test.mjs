@@ -111,6 +111,8 @@ test('phone and tablet smoke tests select the #12 heading from the owner templat
     'the owner recipe template provides its title inside v32-r12-title-block');
   assert.match(phone, /detailTitleSelector=id===12\?'.v32-r12-title-block h1':'.ref-hero h1'/,
     'phone smoke waits for the title selector used by #12 while retaining existing selectors for other recipes');
+  assert.match(phone, /routeTitleSelector=recipeId===12\?'.v32-r12-title-block h1':'.ref-hero h1'/,
+    'the 95-recipe phone route sweep uses the pilot heading for #12');
   assert.match(phone, /querySelector\('\.v32-r12-title-block h1'\).*PT_RECIPES\[12\]\.title/,
     'PT-BR phone coverage reads the visible title from the owner template');
   assert.match(tablet, /titleSelector=id===12\?'.v32-r12-title-block h1':'.ref-hero h1'/,
