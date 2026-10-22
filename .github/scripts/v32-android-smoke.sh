@@ -760,7 +760,7 @@ await clickWebViewSelector('#nav .tab[data-nav="home"]','PT-BR Home before lands
 await waitForVisible('.v31-hero-welcome h1','PT-BR Home before landscape recipe capture');
 await clickWebViewSelector('.v31-action-tiles [data-nav="library"]','PT-BR Recipes before landscape recipe capture');
 await waitForVisible('.recipe-card[data-open="12"]','PT-BR recipe library before landscape capture');
-await evaluate('(()=>{step=0;save();return step})()');
+await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
 if(!await clickCatalogueRecipe(12))throw new Error('PT-BR recipe 12 card was not found for landscape capture.');
 await waitForVisible('.v32-r12-main','PT-BR recipe 12 landscape detail');
 const pt12Landscape=await capturePtBr12Orientation('landscape');

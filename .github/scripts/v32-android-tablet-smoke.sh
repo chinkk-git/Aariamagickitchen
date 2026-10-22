@@ -188,7 +188,7 @@ async function capturePtBrRecipe12(landscape){
  await orientation(landscape);
  await click('#nav .tab[data-nav="home"]','Home before PT-BR #12 '+(landscape?'landscape':'portrait'));
  await waitFor('.v31-hero-welcome h1','Home before PT-BR #12 capture');
- await evaluate('(()=>{state.language="pt-BR";step=0;save();render();return state.language})()');
+ await evaluate('(()=>{state.language="pt-BR";state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();render();return state.language})()');
  await waitFor('.v32-review-featured-rail','PT-BR Featured Recipes before #12 capture');
  await click('.v31-action-tiles [data-nav="library"]','PT-BR recipe library');
  await waitFor('.recipe-card[data-open="12"]','PT-BR #12 recipe card');
