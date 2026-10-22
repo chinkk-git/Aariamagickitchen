@@ -122,3 +122,19 @@ test('phone and tablet smoke tests select the #12 heading from the owner templat
   assert.doesNotMatch(tablet, /await waitFor\('\.ref-hero h1','Recipe /,
     'tablet #12 detail assertion cannot regress to the superseded title location');
 });
+
+test('PT-BR #12 ingredient assertion searches card content past decorative icons', async () => {
+  const phone = await read('.github/scripts/v32-android-smoke.sh');
+  assert.ok(phone.includes("const expectedIngredient=PT_RECIPES[12].ingredients[0];"),
+    'phone smoke compares against the canonical Portuguese ingredient');
+  assert.ok(phone.includes("document.querySelectorAll('.v32-r12-ingredient-list .ref-ingredient')"),
+    'phone smoke reads full ingredient cards rather than their decorative first span');
+  assert.ok(phone.includes('.find(text=>text.includes(expectedIngredient))'),
+    'phone smoke requires the expected ingredient text inside a rendered card');
+  const cards = [{ innerText: '🧺 ½ xícara de milho' }, { innerText: '🥚 1 ovo' }];
+  const expected = '½ xícara de milho';
+  const actual = cards.map(card => (card.innerText || card.textContent || '').replace(/\s+/g, ' ').trim()).find(text => text.includes(expected)) || '';
+  assert.equal(actual, '🧺 ½ xícara de milho',
+    'a decorative icon before ingredient text cannot cause a false mismatch');
+  assert.ok(actual.includes(expected));
+});
