@@ -100,3 +100,23 @@ test('both owner reference attachments are retained byte-for-byte with their rec
     assert.equal(createHash('sha256').update(bytes).digest('hex'), expected, `${path} matches the verified owner attachment`);
   }
 });
+
+test('phone and tablet smoke tests select the #12 heading from the owner template', async () => {
+  const [runtime, phone, tablet] = await Promise.all([
+    read('tools/v3/runtime.js'),
+    read('.github/scripts/v32-android-smoke.sh'),
+    read('.github/scripts/v32-android-tablet-smoke.sh')
+  ]);
+  assert.match(runtime, /<div class="v32-r12-title-block"><p class="v32-r12-eyebrow"[\s\S]*?<h1>\$\{h\(title\)\}<\/h1>/,
+    'the owner recipe template provides its title inside v32-r12-title-block');
+  assert.match(phone, /detailTitleSelector=id===12\?'.v32-r12-title-block h1':'.ref-hero h1'/,
+    'phone smoke waits for the title selector used by #12 while retaining existing selectors for other recipes');
+  assert.match(phone, /querySelector\('\.v32-r12-title-block h1'\).*PT_RECIPES\[12\]\.title/,
+    'PT-BR phone coverage reads the visible title from the owner template');
+  assert.match(tablet, /titleSelector=id===12\?'.v32-r12-title-block h1':'.ref-hero h1'/,
+    'tablet smoke waits for the title selector used by #12');
+  assert.doesNotMatch(phone, /waitForVisible\('\.ref-hero h1','Phone /,
+    'phone #12 detail assertion cannot regress to the superseded title location');
+  assert.doesNotMatch(tablet, /await waitFor\('\.ref-hero h1','Recipe /,
+    'tablet #12 detail assertion cannot regress to the superseded title location');
+});

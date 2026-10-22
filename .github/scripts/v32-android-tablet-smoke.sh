@@ -132,8 +132,9 @@ async function pageSet(landscape){
   for(const id of [12,76,5]){
     if(id===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
     await clickRecipeCard(id,'Recipe '+id);
-    await waitFor('.ref-hero h1','Recipe '+id+' details');
-    const expected=exemplarExpected[id],actualTitle=await evaluate('document.querySelector(".ref-hero h1")?.textContent?.trim()||""');
+    const titleSelector=id===12?'.v32-r12-title-block h1':'.ref-hero h1';
+    await waitFor(titleSelector,'Recipe '+id+' details');
+    const expected=exemplarExpected[id],actualTitle=await evaluate(`document.querySelector(${JSON.stringify(titleSelector)})?.textContent?.trim()||""`);
     if(!expected||actualTitle!==expected.title)throw Error('Recipe detail title mismatch for '+id+': '+JSON.stringify({expected:expected?.title,actual:actualTitle}));
     const result=await evaluate('(()=>({theme:document.querySelector(".app")?.dataset.v32RecipeTheme||"unknown"}))()');
     if(result.theme!==expected.theme)throw Error('Recipe detail theme mismatch for '+id+': '+JSON.stringify({expected:expected.theme,actual:result.theme}));

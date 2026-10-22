@@ -571,8 +571,9 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   if(!card||!card.text.includes(title)||card.theme!==theme)throw new Error('Phone exemplar catalogue card mismatch: '+JSON.stringify({id,title,theme,card}));
   const opened=await evaluate('(()=>({view,selectedId:Number(selected?.id||0),screen:document.querySelector("#screen")?.className||""}))()');
   if(opened.view!=='recipe'||opened.selectedId!==id||opened.screen.includes('v31-world-screen'))throw new Error('Phone recipe card click did not reach the selected recipe route: '+JSON.stringify({id,opened}));
-  await waitForVisible('.ref-hero h1','Phone '+title+' details');
-  const detail=await evaluate('(()=>({title:document.querySelector(".ref-hero h1")?.textContent?.trim()||"",theme:document.querySelector(".app")?.dataset.v32RecipeTheme||""}))()');
+  const detailTitleSelector=id===12?'.v32-r12-title-block h1':'.ref-hero h1';
+  await waitForVisible(detailTitleSelector,'Phone '+title+' details');
+  const detail=await evaluate(`(()=>({title:document.querySelector(${JSON.stringify(detailTitleSelector)})?.textContent?.trim()||"",theme:document.querySelector(".app")?.dataset.v32RecipeTheme||""}))()`);
   if(detail.title!==title||detail.theme!==theme)throw new Error('Phone exemplar detail mismatch: '+JSON.stringify({id,expected:{title,theme},detail}));
   const detailName='v32-recipe-'+id+'-detail-'+orientation+'.png';
   v32PhoneScreenshotDigest=await captureScreenshot(detailName,title+' detail '+orientation,v32PhoneScreenshotDigest);
@@ -684,7 +685,7 @@ writeFileSync('artifacts/v32-diagnostics/pt-br-recipe-coverage.json',JSON.string
 await evaluate(`(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);step=0;save();return true})()`);
 if(!await clickCatalogueRecipe(12))throw new Error('PT-BR recipe 12 card was not found.');
 await waitForVisible('.v32-r12-main','PT-BR recipe 12 pilot');
-const pt12=await evaluate(`(()=>({title:document.querySelector('.ref-hero h1')?.textContent?.trim()||'',expected:PT_RECIPES[12].title,ingredient:document.querySelector('.v32-r12-ingredient-list .ref-ingredient span')?.textContent?.trim()||'',expectedIngredient:PT_RECIPES[12].ingredients[0],ingredientCount:PT_RECIPES[12].ingredients.length,stepCount:PT_RECIPES[12].steps.length}))()`);pt12.nav=await evaluate(navigationSummaryExpression());
+const pt12=await evaluate(`(()=>({title:document.querySelector('.v32-r12-title-block h1')?.textContent?.trim()||'',expected:PT_RECIPES[12].title,ingredient:document.querySelector('.v32-r12-ingredient-list .ref-ingredient span')?.textContent?.trim()||'',expectedIngredient:PT_RECIPES[12].ingredients[0],ingredientCount:PT_RECIPES[12].ingredients.length,stepCount:PT_RECIPES[12].steps.length}))()`);pt12.nav=await evaluate(navigationSummaryExpression());
 if(pt12.title!==pt12.expected||pt12.ingredient!==pt12.expectedIngredient||pt12.nav.map(x=>x.label).join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações'||pt12.nav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations')throw new Error('PT-BR recipe 12 title, ingredient or six-destination navigation is incorrect: '+JSON.stringify(pt12));
 const pt12StepScreens=[];
 for(let index=0;index<4;index++){
