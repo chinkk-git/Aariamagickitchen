@@ -116,6 +116,10 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'smoke coverage cannot pass by finding the retired text-heavy template title');
   assert.doesNotMatch(tablet, /v32-r12-title-block h1/,
     'tablet coverage cannot pass by finding the retired text-heavy template title');
+  assert.match(tablet, /sidebarOverlap[\s\S]*?usableWidth=innerWidth-sidebarOverlap/,
+    'tablet geometry accounts for the visible recipe navigation rail in portrait');
+  assert.match(tablet, /layout\.grid<layout\.usableWidth\*\.68\|\|layout\.main<layout\.usableWidth\*\.82/,
+    'tablet ingredient widths are measured against the actual available recipe pane');
 });
 
 test('APK recipe #12 keeps the approved four illustrated step bindings', async () => {
