@@ -53,8 +53,10 @@ test('owner screenshot layout retains canonical #12 cooking content and shared s
     'the active instruction is rendered from the canonical step at the current index');
   assert.match(template, /config\.safety\[locale\]\[stepIndex\]/,
     'step-specific safety remains attached to the current step');
-  assert.match(runtime, /safetyTitles:\{en:\['Food safety','Adult help needed','Adult help needed','Adult help needed'\],pt:\['Segurança dos alimentos','Ajuda de um adulto','Ajuda de um adulto','Ajuda de um adulto'\]\}/,
-    'child-safe mixing is clearly separated from adult-only pan work in both locales');
+  assert.match(runtime, /safetyTitles:\{en:\['Adult help needed','Adult help needed','Adult help needed','Adult help needed'\],pt:\['Ajuda de um adulto','Ajuda de um adulto','Ajuda de um adulto','Ajuda de um adulto'\]\}/,
+    'step-specific warning labels remain localized and child-safe mixing guidance stays separate from adult-only pan work');
+  assert.match(runtime, /<details open class="storybook-safety v32-r12-recipe-safety">/,
+    'the Kitchen Safety disclosure starts expanded as shown in the owner step reference and remains expandable');
   assert.match(template, /aria-valuenow="\$\{stepIndex\+1\}"/,
     'progress value remains tied to the canonical active step');
   assert.match(template, /data-check="\$\{i\}"/,
