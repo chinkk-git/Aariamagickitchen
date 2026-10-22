@@ -2,9 +2,23 @@ import { execFileSync } from 'node:child_process';
 import { writeFileSync, statSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
+import { captureOrientedPng } from './android-screenshot-orientation.mjs';
 
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const adb=args=>execFileSync('timeout',['--kill-after=10s','60s','adb',...args]);
+async function currentRotation(){
+  const status=adb(['shell','dumpsys','window']).toString('utf8');
+  const value=status.match(/mRotation=(\d)/)?.[1]||status.match(/mRotation=ROTATION_(0|90|180|270)/)?.[1];
+  const normalized=value==='90'?'1':value==='180'?'2':value==='270'?'3':value;
+  assert.ok(['0','1','2','3'].includes(normalized),`Could not read Android display rotation: ${normalized||'unknown'}`);
+  return Number(normalized);
+}
+const captureReviewPng=()=>captureOrientedPng({
+  expectedOrientation:'portrait',
+  readRotation:currentRotation,
+  rotate:()=>adb(['emu','rotate']),
+  capturePng:()=>adb(['exec-out','screencap','-p'])
+});
 let target;
 for(let i=0;i<30&&!target;i++){
   const pages=await (await fetch('http://127.0.0.1:9222/json')).json();
@@ -49,14 +63,13 @@ assert.notEqual(page.images[0].display,'none');
 await evaluate(`document.querySelector('img')?.scrollIntoView({block:'center'})`);
 await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
 await pause(800);
-const screenshot=adb(['exec-out','screencap','-p']);
+const {png:screenshot,width:w,height:h,rotation}=await captureReviewPng();
 assert.ok(screenshot.length>10000,`Android screenshot unexpectedly small: ${screenshot.length}`);
-assert.equal(screenshot.toString('ascii',1,4),'PNG');
 const output='artifacts/v31-android-screenshots/v31-artwork-review-batches-01-05.png';
 writeFileSync(output,screenshot);
 const written=readFileSync(output);assert.equal(createHash('sha256').update(written).digest('hex'),createHash('sha256').update(screenshot).digest('hex'));
 assert.ok(statSync(output).size>10000);
-const w=written.readUInt32BE(16),h=written.readUInt32BE(20);assert.ok(w<h,`Expected portrait review screenshot, got ${w}x${h}`);
+assert.ok(w<h,`Expected portrait review screenshot, got ${w}x${h}`);
 await evaluate(`document.querySelector('img[src="batch-04/recipe-48.svg"]')?.scrollIntoView({block:'center'})`);
 await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
 await pause(800);
@@ -64,9 +77,10 @@ const legacyLayout=await evaluate(`(() => {const i=document.querySelector('img[s
 assert.equal(legacyLayout.complete,true);assert.equal(legacyLayout.naturalWidth,1536);assert.equal(legacyLayout.naturalHeight,1024);
 assert.ok(legacyLayout.width>=180&&legacyLayout.height>=100,`Recipe 48 draft atlas is not visibly laid out: ${JSON.stringify(legacyLayout)}`);
 assert.notEqual(legacyLayout.display,'none');
-const legacyScreenshot=adb(['exec-out','screencap','-p']);
-assert.ok(legacyScreenshot.length>10000);assert.equal(legacyScreenshot.toString('ascii',1,4),'PNG');
+const {png:legacyScreenshot,width:legacyWidth,height:legacyHeight,rotation:legacyRotation}=await captureReviewPng();
+assert.ok(legacyScreenshot.length>10000);
+assert.ok(legacyWidth<legacyHeight,`Expected portrait legacy review screenshot, got ${legacyWidth}x${legacyHeight}`);
 const legacyOutput='artifacts/v31-android-screenshots/v31-artwork-review-recipe-48.png';writeFileSync(legacyOutput,legacyScreenshot);
 const legacyWritten=readFileSync(legacyOutput);assert.equal(createHash('sha256').update(legacyWritten).digest('hex'),createHash('sha256').update(legacyScreenshot).digest('hex'));
-console.log(JSON.stringify({route:target.url,title:page.title,atlases:page.images.length,allSvgImagesLoaded:true,screenshots:[{path:output,width:w,height:h,bytes:written.length},{path:legacyOutput,width:legacyWritten.readUInt32BE(16),height:legacyWritten.readUInt32BE(20),bytes:legacyWritten.length}]}));
+console.log(JSON.stringify({route:target.url,title:page.title,atlases:page.images.length,allSvgImagesLoaded:true,screenshots:[{path:output,width:w,height:h,rotation,orientation:'portrait',bytes:written.length},{path:legacyOutput,width:legacyWidth,height:legacyHeight,rotation:legacyRotation,orientation:'portrait',bytes:legacyWritten.length}]}));
 ws.close();
