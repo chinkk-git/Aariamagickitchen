@@ -341,6 +341,26 @@ async function clickWebViewSelector(selector, label = selector) {
   if (!await evaluate(clickSelectorExpression(selector))) throw new Error(`${label} control was not found.`);
   return true;
 }
+async function assertRecipe12IngredientGrid(label, expectedColumns) {
+  const layout=await evaluate(`(()=>{const grid=document.querySelector('.v32-r12-ingredient-list');if(!grid)return {missing:true};const cards=[...grid.querySelectorAll('.ref-ingredient')];const cols=getComputedStyle(grid).gridTemplateColumns.trim().split(/\\s+/).length;const boxes=cards.map(card=>{const art=card.querySelector('.v32-r12-ingredient-art'),name=card.querySelector('.v32-r12-ingredient-name'),input=card.querySelector('input[type="checkbox"]'),cr=card.getBoundingClientRect(),ar=art?.getBoundingClientRect(),nr=name?.getBoundingClientRect(),ir=input?.getBoundingClientRect(),style=name?getComputedStyle(name):null,range=document.createRange();if(name)range.selectNodeContents(name);const lineTops=[...range.getClientRects()].map(r=>Math.round(r.top));return {card:{left:cr.left,right:cr.right,top:cr.top,bottom:cr.bottom},art:ar&&{left:ar.left,right:ar.right,top:ar.top,bottom:ar.bottom},name:nr&&{left:nr.left,right:nr.right,top:nr.top,bottom:nr.bottom,scrollWidth:name.scrollWidth,clientWidth:name.clientWidth,scrollHeight:name.scrollHeight,clientHeight:name.clientHeight,lines:new Set(lineTops).size,wordBreak:style?.wordBreak,overflowWrap:style?.overflowWrap,hyphens:style?.hyphens},input:ir&&{left:ir.left,right:ir.right,top:ir.top,bottom:ir.bottom,width:ir.width,height:ir.height,label:input.getAttribute('aria-label')}}});const xs=[...new Set(boxes.map(x=>Math.round(x.card.left)))].sort((a,b)=>a-b),ys=[...new Set(boxes.map(x=>Math.round(x.card.top)))].sort((a,b)=>a-b);return {width:innerWidth,height:innerHeight,cols,rows:ys.length,xs,ys,count:cards.length,boxes}})()`);
+  if(layout.missing||layout.count!==6||layout.cols!==expectedColumns||layout.rows!==Math.ceil(6/expectedColumns))throw new Error(`${label}: #12 Ingredients grid geometry mismatch: ${JSON.stringify(layout)}`);
+  for(const [i,card] of layout.boxes.entries()){
+    if(!card.art||!card.name||!card.input||card.art.right>card.name.left+1||card.input.width<18||card.input.height<18||!card.input.label||card.name.scrollWidth>card.name.clientWidth+1||card.name.lines>10||card.name.wordBreak!=='normal'||card.name.overflowWrap!=='normal'||card.name.hyphens!=='none')throw new Error(`${label}: #12 ingredient ${i+1} overlaps, clips, breaks words or lacks an accessible checkbox: ${JSON.stringify({layout,card})}`);
+  }
+  return layout;
+}
+async function assertNarrowPtBrIngredientGrid() {
+  await command('Emulation.setDeviceMetricsOverride',{width:320,height:720,deviceScaleFactor:2,mobile:true,screenOrientation:{angle:0,type:'portraitPrimary'}});
+  try {
+    await pause(300);
+    const layout=await assertRecipe12IngredientGrid('PT-BR 320 CSS-pixel phone viewport',3);
+    if(Math.min(...layout.boxes.map(card=>card.name.clientWidth))<50)throw new Error('PT-BR ingredient text column is too narrow at 320 CSS pixels: '+JSON.stringify(layout));
+  } finally {
+    await command('Emulation.clearDeviceMetricsOverride');
+    await pause(300);
+  }
+  await waitForWebViewOrientation(false);
+}
 async function command(method, params={}) {
   const id=++seq;
   const result=new Promise((resolve,reject)=>{
@@ -700,6 +720,10 @@ if(pt12.title!==pt12.expected||!pt12.ingredient.includes(pt12.expectedIngredient
 async function capturePtBr12Orientation(orientation){
  const landscape=orientation==='landscape';
  const title=await waitForVisible('.v32-r12-title-block h1','PT-BR #12 detail '+orientation);
+ const viewport=await evaluate('({width:innerWidth,height:innerHeight})');
+ const expectedColumns=viewport.width>=760&&viewport.width>viewport.height?6:3;
+ await assertRecipe12IngredientGrid('PT-BR #12 phone '+orientation,expectedColumns);
+ if(!landscape)await assertNarrowPtBrIngredientGrid();
  const detailState=await prepareVisibleRecipeCapture('.v32-r12-title-block h1','PT-BR #12 detail '+orientation);
  if(!title.text.includes(pt12.expected)||!detailState.text.includes(pt12.expected))throw new Error('PT-BR #12 detail capture is not on the expected recipe: '+JSON.stringify({title,detailState}));
  const detail='v32-recipe-12-pt-br-detail-'+orientation+'.png';

@@ -145,16 +145,25 @@ test('current-batch Featured Recipes omits absent descriptions instead of render
     'the optional description element must be omitted when canonical copy is absent');
 });
 
-test('recipe 12 ingredient labels keep the full card width beside the checkbox', async () => {
+test('recipe 12 ingredients use a compact three-column layout with separate icon, copy and checkbox tracks', async () => {
   const css = await read('tools/v3/home-world-visual.css');
-  const rule = css.match(/\.v32-r12-ingredients \.ref-ingredient\{[^}]+\}/)?.[0];
-  assert.ok(rule, 'pilot ingredients must have an explicit layout rule');
-  assert.match(rule, /grid-template-columns:\s*minmax\(0,1fr\)\s+18px/,
-    'ingredient copy uses the flexible column; the checkbox is absolutely positioned');
-  assert.match(css, /\.v32-r12-ingredients \.ref-ingredient>span\{grid-column:1;min-width:0;overflow-wrap:anywhere\}/,
-    'ingredient text must be placed in the flexible grid column');
-  assert.match(css, /\.v32-r12-ingredients \.ref-ingredient>i\{grid-column:2;/,
-    'the check state stays in the compact status column');
-  assert.match(css, /\.v32-r12-ingredients \.ref-ingredient input\{width:20px;height:20px;margin:0/,
-    'checkbox remains visible and tappable');
+  const ownerCorrection = css.slice(css.lastIndexOf('/* Owner-requested #12 Ingredients correction.'));
+  assert.ok(ownerCorrection.includes('grid-template-columns:repeat(3,minmax(0,1fr))'),
+    'the six owner-pilot ingredients form three columns and two rows by default');
+  assert.match(ownerCorrection, /\.v32-r12-ingredients \.ref-ingredient\{[^}]*grid-template-columns:24px minmax\(0,1fr\);grid-template-rows:18px minmax\(0,1fr\)/,
+    'each compact card has a dedicated icon column and readable text column');
+  assert.match(ownerCorrection, /\.v32-r12-ingredient-art\{grid-column:1;grid-row:1\/3/,
+    'the existing icon sits beside the ingredient name');
+  assert.match(ownerCorrection, /\.v32-r12-ingredient-name\{grid-column:2;grid-row:2/,
+    'ingredient copy remains in its own text track');
+  assert.match(ownerCorrection, /\.v32-r12-ingredients \.ref-ingredient input\{position:static;grid-column:2;grid-row:1;[^}]*width:18px;height:18px/,
+    'the small checkbox occupies a separate accessible track rather than overlapping artwork or text');
+  assert.match(ownerCorrection, /overflow-wrap:normal;word-break:normal;hyphens:none/,
+    'long ingredient words wrap at spaces instead of breaking into individual letters');
+  assert.match(ownerCorrection, /@media\(max-width:360px\)\{\.v32-r12-ingredient-list\{gap:/,
+    'narrow phones receive tighter grid spacing while retaining the base three columns');
+  assert.doesNotMatch(ownerCorrection, /@media\(max-width:360px\)\{[^}]*grid-template-columns:1fr/,
+    'narrow phones do not collapse the six ingredients into oversized vertical cards');
+  assert.match(ownerCorrection, /@media\(min-width:760px\) and \(orientation:landscape\)\{\.v32-r12-ingredient-list\{grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/,
+    'wide landscape tablet layouts expand the six cards responsively');
 });
