@@ -19,6 +19,14 @@ If a proposed operation could exceed an included allowance or its cost cannot be
 - Do not change billing, spending controls, runner selection or retention to evade a limit. Do not cancel or overwrite an already-authorized run solely to conceal usage; report any newly discovered cost risk and use the safest available stop mechanism.
 - Record workflow URL, exact source SHA, result, artifact IDs, retention, actual APK SHA-256 and evidence links. An archive's checksum is not the checksum of the APK inside it.
 
+## Permanent CI polling circuit breaker
+
+Every W01 execution that observes a GitHub Actions run must follow [the CI polling circuit breaker](CI_POLLING_CIRCUIT_BREAKER.md). It applies to the Control Tower and every worker:
+- At most **3 status reads per run per Work execution**; never duplicate an identical jobs/status query in consecutive calls.
+- Use bounded backoff only when the interface supports scheduling; detect no progress and enter `WAITING_FOR_CI` instead of busy-waiting.
+- Keep a hard budget of **12 GitHub Actions API calls per run per Work execution**, including status, jobs, logs, artifacts and downloads. One required issue handover is outside this Actions-call budget.
+- A `WAITING_FOR_CI` handover is mandatory and ends the current execution. Resume only in a new Work execution on a terminal CI event or explicit owner instruction.
+
 ## Other work
 
 - Use existing local/free tooling and included quotas for code, tests, artwork, screenshots, documentation and review.

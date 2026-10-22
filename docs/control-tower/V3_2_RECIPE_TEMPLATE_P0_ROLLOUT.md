@@ -29,6 +29,9 @@ Implement Cheesy Corn Pancakes across every canonical step and relevant detail/i
 8. **STOP** after artifact delivery and await affirmative owner approval for next batch.
 ## Batch operating protocol
 Open batch -> adapt only batch IDs -> tests/screenshot diff -> remediate -> exact-head build -> publish evidence and SHA -> mark `AWAITING_OWNER_APPROVAL` -> STOP. If rejected, fix only current batch and retest; approved earlier batches stay under regression. If CR modifies shared template, run regression across all previously approved recipes.
+## Control Tower and worker CI protocol
+
+W01 is the sole implementation writer on the active V3.2 feature branch. Control Tower and workers must follow [the permanent CI polling circuit breaker](CI_POLLING_CIRCUIT_BREAKER.md): no more than three status reads per run and twelve Actions API calls per run in one Work execution; no immediate duplicate polls; track progress and stop on no progress; enter `WAITING_FOR_CI`, publish one final Issue #40 handover, and terminate the execution. A later Work execution may resume only on a terminal CI event or explicit owner instruction. Workers may prepare independent review evidence, but may not write implementation in parallel or override a gate.
 ## Deferred backlog
 Do not resume other #38 C1–C8 items until all 95 recipe adaptations receive owner approvals. Preserve independently required gates and all security controls. V3.3 #39 deferred. No merge/release.
 ## Cost
