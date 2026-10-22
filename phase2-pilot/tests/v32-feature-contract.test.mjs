@@ -156,6 +156,8 @@ test('recipe 12 ingredients use a compact three-column layout with separate icon
     'the existing icon sits beside the ingredient name');
   assert.match(ownerCorrection, /\.v32-r12-ingredient-name\{grid-column:2;grid-row:2/,
     'ingredient copy remains in its own text track');
+  assert.match(ownerCorrection, /\.v32-r12-ingredients \.ref-ingredient>\.v32-r12-ingredient-name\{grid-column:2;grid-row:2;[^}]*overflow-wrap:normal/,
+    'the name rule outranks the older generic ingredient-span selector in Android WebView');
   assert.match(ownerCorrection, /\.v32-r12-ingredients \.ref-ingredient input\{position:static;grid-column:2;grid-row:1;[^}]*width:18px;height:18px/,
     'the small checkbox occupies a separate accessible track rather than overlapping artwork or text');
   assert.match(ownerCorrection, /overflow-wrap:normal;word-break:normal;hyphens:none/,
