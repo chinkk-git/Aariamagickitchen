@@ -38,7 +38,6 @@ export async function validateSystemImageDirectory(directory, packageId, fsApi =
       const divider = line.indexOf('=');
       return divider < 0 ? ['', ''] : [line.slice(0, divider).trim(), line.slice(divider + 1).trim()];
     }));
-    if (properties.get('Pkg.Path') !== packageId) return { valid: false, reason: 'source.properties does not declare the requested package path' };
     if (!properties.get('Pkg.Revision')) return { valid: false, reason: 'source.properties does not declare an installed package revision' };
     const [, apiText, , arch] = packageId.split(';');
     if (properties.get('SystemImage.Abi') !== arch || Number(properties.get('AndroidVersion.ApiLevel')) !== Number(apiText.replace('android-', ''))) {

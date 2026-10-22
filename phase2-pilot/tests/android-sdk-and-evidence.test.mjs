@@ -17,7 +17,9 @@ function png(width, height) {
 async function writeValidImage(directory, packageId) {
   await mkdir(directory, { recursive: true });
   await writeFile(path.join(directory, 'package.xml'), `<localPackage path="${packageId}"></localPackage>`);
-  await writeFile(path.join(directory, 'source.properties'), `Pkg.Path=${packageId}\nPkg.Revision=1\nAndroidVersion.ApiLevel=35\nSystemImage.Abi=x86_64\n`);
+  // Android system-image source.properties carries revision/API/ABI; the
+  // canonical package path is recorded in package.xml and need not be repeated.
+  await writeFile(path.join(directory, 'source.properties'), `Pkg.Revision=1\nAndroidVersion.ApiLevel=35\nSystemImage.Abi=x86_64\n`);
   const sparseImage = Buffer.alloc(4096);
   sparseImage.writeUInt32LE(0xed26ff3a, 0);
   await writeFile(path.join(directory, 'system.img'), sparseImage);
