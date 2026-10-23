@@ -28,35 +28,35 @@ async function fixture(status = 'READY_FOR_INTEGRATION') {
   return {directory,manifest,recipe};
 }
 
-test('the five-country registry stays review-only and the fixed map exposes India only', async () => {
+test('the draft registry stays separate and Android mounts the W03 globe with dynamic catalogue data', async () => {
   const validator = spawnSync(process.execPath, ['tools/v3/validate-v33-world-map-drafts.mjs'], { cwd: new URL('../../', import.meta.url), encoding: 'utf8' });
   assert.equal(validator.status,0,validator.stderr||validator.stdout);
   assert.match(validator.stdout,/five-country draft registry: valid/);
   const runtime=await read('tools/v3/runtime.js');
-  const page=runtime.slice(runtime.lastIndexOf('v31WorldPage=function v33FixedWorldMapPage(){'),runtime.indexOf('const v3OriginalCreateWeek'));
-  assert.match(page,/data-v31-country="IND"/);
-  assert.ok(page.includes('V31_APPROVED_INDIA_RECIPE_IDS.map(id=>find(id))'));
-  assert.doesNotMatch(page,/V31_WORLD_DESTINATIONS|V31_WORLD_ADVENTURE|data-v31-zoom|data-v31-pan-toggle|v31MapSvg/);
-  assert.match(page,/w02-country-recipes/);
-  assert.match(page,/w02-passport-button/);
+  assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
+  assert.match(runtime,/canonicalRecipes:RECIPES/);
+  assert.match(runtime,/v33Destinations\(v33WorldHost\)/);
+  assert.match(runtime,/onOpenRecipe:id=>v33WorldHost\.openRecipe\(id\)/);
+  assert.match(runtime,/onOpenPassport:\(\)=>v33WorldHost\.openPassport\(\)/);
+  assert.match(runtime,/v33GlobeController\?\.handleBack/);
 });
 
-test('fixed map keeps the owner-approved image bytes, aspect ratio and direct route controls', async () => {
-  const [transform,runtime,css,smoke,mapCrop]=await Promise.all([
-    read('tools/v3/transform-production.mjs'),read('tools/v3/runtime.js'),read('tools/v3/home-world-visual.css'),
-    read('.github/scripts/v33-world-map-sample-smoke.mjs'),readFile(new URL('docs/design/approved-v31-world-map-crop.webp',root))
+test('W03 globe assets are integrated unchanged with approved Aaria art and Android visual evidence hooks', async () => {
+  const [transform,runtime,globeJs,globeCss,smoke,avatar]=await Promise.all([
+    read('tools/v3/transform-production.mjs'),read('tools/v3/runtime.js'),read('tools/v3/world-adventure-globe/world-adventure-globe.js'),read('tools/v3/world-adventure-globe/world-adventure-globe.css'),
+    read('.github/scripts/v33-world-map-sample-smoke.mjs'),readFile(new URL('tools/v3/world-adventure-globe/aaria-portrait.webp',root))
   ]);
-  assert.match(transform,/worldMap: readReferenceImage\('docs\/design\/approved-v31-world-map-crop\.webp'\)/);
-  assert.match(runtime,/mapArt\.src=V31_HOME_WORLD_ART\.worldMap/);
-  assert.match(css,/\.w02-map-art \.v31-map-art-image\{[^}]*object-fit:contain/);
-  assert.match(css,/\.w02-map-viewport\{[^}]*flex:1 1 auto/);
-  assert.match(css,/\.w02-map-caption\{[^}]*position:absolute/,'map guidance stays over the viewport so its full Android-rendered area is available to the map');
-  assert.match(smoke,/vr\.width\*vr\.height\/\(sr\.width\*sr\.height\)/);
+  assert.match(transform,/magicalGlobeScript/);
+  assert.match(transform,/magicalGlobeStyles/);
+  assert.match(runtime,/avatarSrc:V31_HOME_WORLD_ART\.aria/);
+  assert.match(globeJs,/Surprise Me/);
+  assert.match(globeJs,/onOpenRecipe/);
+  assert.match(globeCss,/@media \(orientation:landscape\)/);
+  assert.equal(createHash('sha256').update(avatar).digest('hex'),'0268a8739595178a6e6ed0eb130a4bfc96c65d559130c3fea686239bd664a8d9');
   assert.match(smoke,/world-map-phone-portrait/);
   assert.match(smoke,/world-map-phone-landscape/);
   assert.match(smoke,/country-preview-phone-portrait/);
   assert.match(smoke,/food-passport-offline-restart-persistence/);
-  assert.equal(createHash('sha256').update(mapCrop).digest('hex'),'5296a636c86f2d0f8a12c60406fa366723cb442c292cc2d3bd6b3f1b90afa353');
 });
 
 test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 coverage', async () => {
@@ -64,21 +64,21 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
     read('.github/scripts/v33-world-map-sample-smoke.mjs'),read('.github/scripts/v33-world-map-sample-smoke.sh'),read('.github/scripts/v32-android-tablet-smoke.sh'),
     read('.github/workflows/v32-android.yml'),read('.github/scripts/v32-android-smoke.sh')
   ]);
-  for (const script of [phone,tablet,regression]) {
-    assert.match(script,/occupancy/);
-    assert.match(script,/717\/389/);
-    assert.match(script,/data-v31-country/);
-    assert.match(script,/w02-country-recipes/);
+  assert.match(phone,/orientation/);
+  assert.match(phone,/aria-world-globe/);
+  assert.match(phone,/aria-world-globe__recipe/);
+  for (const script of [tablet,regression]) {
+    assert.match(script,/orientation/);
     assert.doesNotMatch(script,/two-finger-pinch|Natural pinch zoom|Natural one-finger drag/);
   }
-  assert.match(phone,/Input\.dispatchTouchEvent/,'sample taps the country marker through Android WebView input');
+  assert.match(phone,/Input\.dispatchTouchEvent/,'sample taps a country flag through Android WebView input');
   assert.match(phone,/const mapShot=await stableScreenshot\(session,'world-map-phone-portrait'/,'map screenshot requires a settled Android framebuffer');
   assert.match(phone,/countryShot\.sha256===mapShot\.sha256/,'Android country preview evidence must contain the rendered card overlay, not a stale map frame');
   assert.match(phone,/adb\(\['emu','rotate'\]\)/,'phone orientation smoke must rotate the emulator and verify its actual display rotation');
   assert.match(phone,/connect\(\{refresh:true\}\)/,'phone smoke must reconnect to the app-owned WebView after Android orientation recreates DevTools');
   assert.match(phone,/adb\(\['forward','tcp:9224',`localabstract:\$\{socket\}`\]\)/,'rotation reconnect must forward the current app process DevTools socket');
   assert.match(phone,/attempt<\(refresh\?6:2\)/,'the sample retries a transient WebView handshake after orientation recreates its target');
-  assert.match(await read('tools/v3/runtime.js'),/e\.state\?\.v31Panel==='country'&&location\.hash==='#aria\/world'[\s\S]*?view='world';v31MapPanel='country'/,'Android Back from recipe restores the India card panel state');
+  assert.match(await read('tools/v3/runtime.js'),/v33GlobeState=v33GlobeController\?\.getState\?\.\(\)\|\|v33GlobeState/,'World state is serialized before opening a canonical recipe so Back can restore the same country');
   assert.match(phone,/cmd','connectivity','airplane-mode','enable/);
   assert.match(phone,/food-passport-offline-restart-persistence/);
   assert.match(phone,/complete-canonical-recipe-through-real-step-controls/,'passport restart evidence must follow canonical recipe completion through rendered step controls');
@@ -129,8 +129,9 @@ test('passport awards remain tied to completed canonical India recipes and nativ
     read('phase2-pilot/apps/aaria-android/app/src/test/java/com/aaria/magickitchen/pilot/ProfileStoreDatabaseTest.kt'),
     read('.github/scripts/v33-passport-persistence-smoke.mjs')
   ]);
-  assert.match(runtime,/!state\.done\.includes\(selected\.id\)\|\|!V31_APPROVED_INDIA_RECIPE_IDS\.includes\(selected\.id\)/);
-  assert.match(runtime,/state\.worldStamps\.push\('IND'\);save\(\)/);
+  assert.match(runtime,/state\.done\.includes\(selected\.id\)/);
+  assert.match(runtime,/v33CountryForCompletedRecipe\(selected\.id\)/);
+  assert.match(runtime,/worldStamps\.push\(code\);save\(\)/);
   assert.match(profileStore,/class ProfileStore\(context: Context\) : SQLiteOpenHelper/);
   assert.match(profileRestartTest,/completedWorldPassportStampSurvivesStoreRecreation/);
   assert.match(restartSmoke,/shell', 'am', 'force-stop'/);

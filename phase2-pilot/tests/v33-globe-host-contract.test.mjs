@@ -3,50 +3,46 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createWorldAdventureHost, WORLD_ADVENTURE_INDIA_RECIPE_IDS } from '../../tools/v3/world-adventure-host.mjs';
 
-const makeRecipes = () => Array.from({ length: 95 }, (_, index) => ({
+const makeRecipes = (count = 95) => Array.from({ length: count }, (_, index) => ({
   id: index + 1,
-  title: { 'en-GB': `Recipe ${index + 1}`, 'pt-BR': `Receita ${index + 1}` },
-  description: { 'en-GB': 'A canonical recipe', 'pt-BR': 'Uma receita canônica' }
+  title: `Recipe ${index + 1}`,
+  description: 'A catalogue recipe',
+  ingredients: ['an ingredient'],
+  steps: ['a step']
 }));
-
-function setup(overrides = {}) {
+const validatedRecipe = (id, countryCode) => ({
+  id, title: `Recipe ${id}`, description: 'A translated recipe', ingredients: ['ingredient'], steps: ['step'], active: true,
+  worldAdventure: { countryCode, validationStatus: 'W01_VALIDATED', bilingualStatus: 'APPROVED', artworkStatus: 'APPROVED', safetyStatus: 'APPROVED', navigationStatus: 'ACTIVE' }
+});
+function setup(canonicalRecipes = makeRecipes(), overrides = {}) {
   const calls = [];
   const host = createWorldAdventureHost({
-    canonicalRecipes: makeRecipes(),
-    locale: 'en-GB',
-    passportSnapshot: { worldStamps: ['IND', 'ITA', 'IND'] },
-    onOpenRecipe: id => calls.push(['recipe', id]),
-    onBack: scope => calls.push(['back', scope]),
-    onOpenPassport: () => calls.push(['passport']),
-    ...overrides
+    canonicalRecipes, locale: 'en-GB', passportSnapshot: { worldStamps: ['IND', 'ITA', 'IND'] },
+    onOpenRecipe: id => calls.push(['recipe', id]), onBack: scope => calls.push(['back', scope]),
+    onOpenPassport: () => calls.push(['passport']), ...overrides
   });
   return { host, calls };
 }
 
-test('host contract exposes exactly the existing 18 canonical India IDs', () => {
+test('host preserves all 18 India links from the original catalogue', async () => {
   const { host } = setup();
   assert.deepEqual(WORLD_ADVENTURE_INDIA_RECIPE_IDS, [51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74]);
-  const runtime = readFile(new URL('../../tools/v3/runtime.js', import.meta.url), 'utf8');
-  return runtime.then(source => {
-    const ids = source.match(/V31_APPROVED_INDIA_RECIPE_IDS=\[([^\]]+)\]/)?.[1].split(',').map(Number);
-    assert.deepEqual(WORLD_ADVENTURE_INDIA_RECIPE_IDS, ids, 'host IDs must match the app completion/mapping allowlist');
-  }).then(() => {
+  const runtime = await readFile(new URL('../../tools/v3/runtime.js', import.meta.url), 'utf8');
+  const ids = runtime.match(/V31_APPROVED_INDIA_RECIPE_IDS=\[([^\]]+)\]/)?.[1].split(',').map(Number);
+  assert.deepEqual(WORLD_ADVENTURE_INDIA_RECIPE_IDS, ids);
   const india = host.getCountry('IND');
   assert.equal(india.available, true);
   assert.equal(india.reviewOnly, false);
   assert.deepEqual(india.recipes.map(recipe => recipe.id), WORLD_ADVENTURE_INDIA_RECIPE_IDS);
-  assert.equal(india.recipes[0].title, 'Recipe 51');
   assert.equal(india.recipes[0].canonical, true);
-  });
 });
 
-test('draft destinations remain unavailable and cannot route to a recipe or earn a stamp', () => {
+test('95-recipe catalogue exposes India only and fails closed for unvalidated countries', () => {
   const { host, calls } = setup();
   for (const code of ['ITA', 'CHN', 'JPN', 'MEX', 'VNM']) {
-    const result = host.getCountry(code);
-    assert.equal(result.available, false);
-    assert.equal(result.reviewOnly, true);
-    assert.deepEqual(result.recipes, []);
+    assert.equal(host.getCountry(code).available, false);
+    assert.equal(host.getCountry(code).reviewOnly, true);
+    assert.deepEqual(host.getCountry(code).recipes, []);
   }
   assert.equal(host.openRecipe(96), false);
   assert.equal(host.openRecipe(12), false);
@@ -54,41 +50,67 @@ test('draft destinations remain unavailable and cannot route to a recipe or earn
   assert.deepEqual(calls, []);
 });
 
-test('host delegates recipe, Back and Passport navigation without owning screens', () => {
-  const { host, calls } = setup();
-  assert.equal(host.openRecipe(51), true);
-  host.back('country');
-  host.back('screen');
-  host.openPassport();
-  assert.deepEqual(calls, [['recipe', 51], ['back', 'country'], ['back', 'screen'], ['passport']]);
-  assert.throws(() => host.back('recipe'), /Unknown Back scope/);
+test('97-entry catalogue discovers only W01-validated Italy and China links', () => {
+  const recipes = [...makeRecipes(), validatedRecipe(96, 'ITA'), validatedRecipe(99, 'CHN')];
+  const { host, calls } = setup(recipes);
+  assert.deepEqual(host.getCountry('ITA').recipes.map(r => r.id), [96]);
+  assert.deepEqual(host.getCountry('CHN').recipes.map(r => r.id), [99]);
+  assert.equal(host.getCountry('JPN').available, false);
+  assert.equal(host.openRecipe(96), true);
+  assert.equal(host.openRecipe(99), true);
+  assert.deepEqual(calls, [['recipe', 96], ['recipe', 99]]);
 });
 
-test('Portuguese locale passes localized country and recipe labels through the same data boundary', () => {
-  const { host } = setup({ locale: 'pt-BR' });
+test('110-entry catalogue scales by validated country metadata without an allowlist update', () => {
+  const additions = [validatedRecipe(96,'ITA'), validatedRecipe(97,'JPN'), validatedRecipe(98,'MEX'), validatedRecipe(99,'CHN'), validatedRecipe(100,'VNM'),
+    ...Array.from({length:10},(_,i)=>validatedRecipe(101+i,['ITA','JPN','MEX','CHN','VNM'][i%5]))];
+  const { host } = setup([...makeRecipes(), ...additions]);
+  assert.equal(Object.values({ITA:'ITA',JPN:'JPN',MEX:'MEX',CHN:'CHN',VNM:'VNM'}).reduce((n,code)=>n+host.getCountry(code).recipes.length,0),15);
+  assert.deepEqual(host.getCountry('ITA').recipes.map(r=>r.id), [96,101,106]);
+});
+
+test('catalogue identity remains strict while future records with missing approval fail closed', () => {
+  assert.throws(() => setup(makeRecipes().slice(1)), /base/);
+  const duplicate = [...makeRecipes(), validatedRecipe(96,'ITA')];duplicate[95] = {...duplicate[95],id:95};
+  assert.throws(() => setup(duplicate), /unique positive IDs/);
+  const records = [...makeRecipes(), validatedRecipe(96,'ITA'), validatedRecipe(97,'USA'), validatedRecipe(98,'JPN')];
+  records[96].worldAdventure.countryCode = 'USA';
+  records[97].worldAdventure.bilingualStatus = 'PENDING';
+  records[97].worldAdventure.safetyStatus = 'PENDING';
+  records.push({...validatedRecipe(99,'MEX'),active:false});
+  const { host, calls } = setup(records);
+  assert.deepEqual(host.getCountry('ITA').recipes.map(r=>r.id),[96]);
+  for (const code of ['CHN','JPN','MEX','VNM']) assert.deepEqual(host.getCountry(code).recipes, []);
+  assert.equal(host.openRecipe(96),true);
+  for (const id of [97,98,99]) assert.equal(host.openRecipe(id), false);
+  assert.deepEqual(calls, [['recipe',96]]);
+});
+
+test('host delegates recipe, Back and Passport navigation and localizes country names', () => {
+  const { host, calls } = setup(makeRecipes(), { locale:'pt-BR', getLocalizedRecipe:(r,locale)=>({title:locale==='pt-BR'?`Receita ${r.id}`:r.title}) });
   assert.equal(host.getCountry('IND').label, 'Índia');
   assert.equal(host.getCountry('IND').recipes[0].title, 'Receita 51');
   assert.equal(host.locale, 'pt-BR');
-  assert.throws(() => setup({ locale: 'fr-FR' }), /locale/);
+  assert.throws(() => setup(makeRecipes(), { locale:'fr-FR' }), /locale/);
+  assert.equal(host.openRecipe(51), true);
+  host.back('country'); host.back('screen'); host.openPassport();
+  assert.deepEqual(calls, [['recipe',51],['back','country'],['back','screen'],['passport']]);
+  assert.throws(() => host.back('recipe'), /Unknown Back scope/);
 });
 
-test('missing any India mapping fails closed instead of exposing a partial destination', () => {
-  const recipes = makeRecipes().filter(recipe => recipe.id !== 65);
-  assert.throws(() => setup({ canonicalRecipes: recipes }), /95-recipe catalogue/);
-});
-
-test('host rejects catalogue count or ID mutations instead of masking canonical drift', () => {
-  assert.throws(() => setup({ canonicalRecipes: makeRecipes().slice(1) }), /95-recipe/);
-  const duplicate = makeRecipes();
-  duplicate[94] = { ...duplicate[94], id: 94 };
-  assert.throws(() => setup({ canonicalRecipes: duplicate }), /unique IDs/);
-});
-
-test('integration boundary documents module lifecycle, orientation and Android Back ownership', async () => {
-  const doc = await readFile(new URL('../../docs/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md', import.meta.url), 'utf8');
-  for (const contract of ['mount(root, hostContext, restoredState)', 'dispose()', 'orientation', 'Android Back', 'bottom navigation', 'read-only', 'REVIEW_READY']) {
-    assert.ok(doc.includes(contract), `handoff must document ${contract}`);
-  }
-  assert.match(doc, /W03 owns the globe renderer,[\s\S]*?Surprise Me behaviour,[\s\S]*?recipe-card presentation/);
-  assert.match(doc, /W02 owns the Android\/WebView screen host,[\s\S]*?canonical recipe lookup\/navigation,[\s\S]*?Food Passport/);
+test('module handoff, Android host and production transform are wired and preserve screen ownership', async () => {
+  const [doc,runtime,transform,moduleJs] = await Promise.all([
+    readFile(new URL('../../docs/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md', import.meta.url),'utf8'),
+    readFile(new URL('../../tools/v3/runtime.js', import.meta.url),'utf8'),
+    readFile(new URL('../../tools/v3/transform-production.mjs', import.meta.url),'utf8'),
+    readFile(new URL('../../tools/v3/world-adventure-globe/world-adventure-globe.js', import.meta.url),'utf8')
+  ]);
+  assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
+  assert.match(runtime,/createWorldAdventureHost\(\{canonicalRecipes:RECIPES/);
+  assert.match(runtime,/aria-world-globe__header/);
+  assert.match(transform,/magicalGlobeScript/);
+  assert.match(transform,/magicalGlobeStyles/);
+  assert.match(moduleJs,/handleBack:/);
+  assert.match(moduleJs,/Surprise/);
+  for (const contract of ["India's 18 existing recipe descriptors",'Android Back','bottom navigation','read-only','portrait','landscape','Food Passport','fec1214']) assert.ok(doc.includes(contract));
 });

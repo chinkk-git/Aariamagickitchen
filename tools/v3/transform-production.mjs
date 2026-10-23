@@ -300,6 +300,19 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 `;
 
 const runtimeTemplate = fs.readFileSync(path.join(here, 'runtime.js'), 'utf8');
+const worldAdventureHost = fs.readFileSync(path.join(here, 'world-adventure-host.mjs'), 'utf8')
+  .replace(/^export const /gm, 'const ')
+  .replace(/^export function /gm, 'function ')
+  + '\nwindow.createWorldAdventureHost=createWorldAdventureHost;';
+const magicalGlobeScript = fs.readFileSync(path.join(here, 'world-adventure-globe/world-adventure-globe.js'), 'utf8');
+const magicalGlobeStyles = fs.readFileSync(path.join(here, 'world-adventure-globe/world-adventure-globe.css'), 'utf8');
+const w02GlobeHostStyles = String.raw`
+.app.v31-world-active #screen.v31-world-screen{width:100%;height:100dvh;min-height:0;max-width:none;margin:0;padding:0;overflow:hidden}
+.app.v31-world-active .v33-world-globe-host{width:100%;height:100%;min-height:0}
+.v33-passport-overlay{position:fixed;z-index:240;inset:0;display:grid;place-items:center;padding:16px;background:#241a3888}
+.v33-passport-overlay .w02-map-sheet{position:relative;inset:auto;width:min(620px,calc(100vw - 24px));max-height:min(82dvh,720px);overflow:auto;transform:none}
+@media(max-height:520px) and (orientation:landscape){.v33-passport-overlay .w02-map-sheet{max-height:calc(100dvh - 20px)}}
+`;
 const v32RecipeThemeMap = JSON.parse(fs.readFileSync(path.join(here, 'data/v3.2-recipe-theme-map.json'), 'utf8'));
 const v32ReviewFeaturedIds = (process.env.V32_REVIEW_FEATURED_IDS || '').split(',').map(x => x.trim()).filter(Boolean).map(Number);
 const v32CanonicalIds = new Set(Object.keys(v32RecipeThemeMap.mapping).map(Number));
@@ -365,7 +378,7 @@ const guardedPtRecipeTranslationLoop = "for(const r of RECIPES)r.steps.forEach((
 if (!outputHtml.includes(ptRecipeTranslationLoop)) throw new Error('Expected PT recipe translation registration loop was not found');
 outputHtml = outputHtml.replace(ptRecipeTranslationLoop, guardedPtRecipeTranslationLoop);
 
-outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}\n${homeWorldStyles}</style><script id="aaria-v3-layer">${runtime}</script></body>`);
+outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}\n${homeWorldStyles}\n${magicalGlobeStyles}\n${w02GlobeHostStyles}</style><script id="aaria-v3-layer">${worldAdventureHost}\n${magicalGlobeScript}\n${runtime}</script></body>`);
 if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could not append the V3 layer to the production HTML.');
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, outputHtml);

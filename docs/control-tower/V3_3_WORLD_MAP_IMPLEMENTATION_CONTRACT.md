@@ -1,20 +1,20 @@
 # V3.3 World Map — W02 Implementation Contract
 
-Status: legacy fixed-map implementation retained pending W03 globe handoff; acceptance and independent gates not claimed
+Status: W03 globe module integrated on W02 branch; Android exact-head evidence pending
 Owner: W02
 Tracking: [Issue #39](https://github.com/chinkk-git/Aariamagickitchen/issues/39)
 Branch: `feature/v3.3-world-map-explorer`
-Baseline reconciled for this update: `40ba0c998cf3ef85e5bcc5a641fc0f6aba49825f`
+Baseline reconciled for this update: `f2907c9e7fc184ce8806ebe595dff15290f658f3`
 
 ## Current owner decision — Magical Spinning Globe (supersedes the fixed-map direction below)
 
-The owner subsequently approved Option 1 Magical Spinning Globe and assigned its visual/interaction module to W03 on `feature/international-recipe-content`. W02 must not implement a parallel globe, flag system, spin/Surprise Me animation or recipe-card UI. W02 owns the Android host integration, `world` route, bottom navigation, Back/history, canonical data adapter, India 18 links, Food Passport wiring, offline/localization and orientation lifecycle. W01 retains exclusive Italy/China template integration. The fixed-map requirements and implementation notes below are historical for the currently shipped W02 branch and stay in place until owner-approved cutover; they are not the new target design.
+The owner approved Option 1 Magical Spinning Globe and assigned its visual/interaction module to W03. W02 now integrates the immutable W03 module at `fec1214f664706ca9be35d4bdb45711a94d80d3c` on the exclusive W02 branch. W03 owns globe visuals, flags, rotation, Surprise Me and country recipe cards. W02 owns Android/WebView mounting, `world` route, bottom navigation, Back/history, dynamic catalogue adapter, India 18 links, Passport persistence, offline/localization and orientation lifecycle. W01 remains the sole owner of Android recipe registration and Italy/China recipe integration.
 
-See [W02 ↔ W03 Magical Globe Android Integration Handoff](W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md) for the proposed module boundary, adapter behavior, dependencies, tests, evidence and readiness. Current status: `BLOCKED_FOR_W03_HANDOFF`; no globe APK or globe owner-review candidate is claimed.
+See [W02 ↔ W03 Magical Globe Android Integration Handoff](W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md) for the implemented module binding, catalogue metadata contract, tests, evidence and readiness. Current status: Android build and phone smoke pending; owner visual review and independent gates remain open.
 
-## Governing owner direction
+## Historical fixed-map direction — superseded by the approved globe
 
-The owner’s latest Issue #39 directive (2026-10-23, comment `6366595097`) supersedes earlier zoom/pan Adventure Explorer plans. The prior framed/gesture sample remains rejected. W02 is the only writer on this branch. W01 retains exclusive ownership of `feature/v3.2-magical-cookbook`; W03 retains exclusive ownership of `feature/international-recipe-content`. No merge, production deployment or release is authorized.
+The following fixed-map requirements are retained as historical project context only. They do not govern the W03 globe implementation. W02 remains the only writer on this branch; W01 and W03 retain their exclusive branches. No merge, production deployment or release is authorized.
 
 - Use the existing owner-approved illustrated World Map image `docs/design/approved-v31-world-map-crop.webp` (SHA-256 `5296a636c86f2d0f8a12c60406fa366723cb442c292cc2d3bd6b3f1b90afa353`) as a fixed background. Preserve its 717×389 aspect ratio and bytes. Do not generate or substitute map art.
 - Show only destinations with validated canonical recipe links. India is the only live destination now and links exactly to IDs 51–65, 69, 72 and 74. Italy, China, Japan, Mexico and Vietnam remain review-only concepts; they are not live recipe routes or rewards.
@@ -24,9 +24,9 @@ The owner’s latest Issue #39 directive (2026-10-23, comment `6366595097`) supe
 - Food Passport state comes only from completed canonical recipe events. Viewing a country or opening the passport grants nothing. Preserve profile data and offline/restart persistence.
 - Keep all 95 canonical records, IDs and existing routes unchanged. G1 → W02 sample → G2 → G3 and all 95 G3 recipe checks remain mandatory. A08 child protection, A09 child experience, artwork rights, nutrition/culture and Android security are distinct gates. Owner visual approval is still required.
 
-## Architecture
+## Historical fixed-map implementation notes — superseded
 
-Reuse the existing production HTML/JavaScript transformed by `tools/v3/transform-production.mjs`, the V3.1 World route in `tools/v3/runtime.js`, its approved artwork and the existing Android WebView app. Do not add a second application shell or change the W01 recipe layout.
+The implementation continues to reuse the existing production HTML/JavaScript transformer, `world` route and Android WebView app. The fixed-map details in this historical section no longer describe the active screen.
 
 The fixed route uses one image element and one India button positioned in the approved art’s normalized local frame. It renders only the 18 allowlisted canonical India records in a scrollable country sheet. Recipe cards call the existing `openRecipe` route. Country/passport sheets use the existing browser history so system Back closes them in the expected order. The route omits the 177-feature GeoJSON payload and SVG polygon generation, which is not needed for a fixed illustrated background and is under investigation as a contributor to the previous slow/stale framebuffer capture.
 
@@ -46,9 +46,10 @@ W02 posted the proposed manifest/path contract to Issue #50 comment `6366700295`
 
 | Area | Required evidence |
 |---|---|
-| Fixed map geometry | On Android, measure the actual screen, viewport, artwork, image intrinsic/rendered ratio, marker rectangle and marker location. Require usable viewport occupancy 85–95% where device geometry permits, aspect preservation, zero map frame, target size ≥48 CSS px, and no hidden pan/zoom controls. |
-| Phone sample | Clean install/launch; real Android touch Home → World Map → India; capture framebuffer and logs; verify 18 unique canonical IDs; open recipe 51; Android Back returns to India cards; capture portrait and landscape, cards, recipe and Passport. |
-| Tablet G2 | Measure/capture fixed map in portrait and landscape. Preserve recipe #12 EN-GB/PT-BR detail, ingredients, steps, completion and accessibility checks. |
+| Globe module and touch | Verify the exact W03 module is mounted; spin and Surprise Me stop for explicit flag tap; tap India to show 18 unique canonical IDs and open recipe 51. |
+| Phone Android sample | Clean install/launch; real Android touch Home → Globe → India; capture actual framebuffer/logs; Android Back returns to the selected country; capture portrait and landscape, country cards, recipe and Passport. |
+| Tablet G2 | Capture globe in portrait and landscape; preserve recipe #12 EN-GB/PT-BR detail, ingredients, steps, completion and accessibility checks. |
+| Dynamic catalogue | Exercise 95/97/110 entry fixtures; discover only active W01-validated records by explicit country metadata; reject duplicate IDs, incomplete approvals, unsupported countries, drafts and missing art/safety/bilingual validation. |
 | G3 | Preserve the full 95 canonical recipe-route sweep, language/safety checks, screenshot manifest, Home/World screenshots and Passport completion behavior. |
 | Food Passport | Opening country/Passport grants no stamp. Existing completed progress survives process death and airplane-mode restart. |
 | W03 adapter | Unit tests reject drafts, wrong pinned commit, ID collisions, missing bilingual fields/files/assets and tampered hashes; a complete pinned fixture becomes a local offline bundle while review states remain independent. |

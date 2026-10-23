@@ -154,6 +154,28 @@ const V31_APPROVED_INDIA_RECIPE_IDS=[51,52,53,54,55,56,57,58,59,60,61,62,63,64,6
 const V31_WORLD_DESTINATIONS=[{code:'IND',iso:'IND',en:'India',pt:'Índia',flag:'🇮🇳',factEn:'Explore the original Indian recipes in Aaria’s kitchen.',factPt:'Explore as receitas indianas originais da cozinha da Aaria.',reviewStatus:'approved-reference'}];
 const V31_DESTINATION_BY_ISO=Object.fromEntries(V31_WORLD_DESTINATIONS.map(x=>[x.code,x]));
 let v31SelectedCountry='IND',v31MapPanel='';
+let v33GlobeController=null,v33GlobeState=null,v33WorldHost=null;
+function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\b[^>]*\bsrc=["']([^"']+)["']/i)?.[1]||'';return src.startsWith('data:image/')?src:''}catch{return ''}}
+function v33WorldCatalogue(){
+ const getLocalizedRecipe=(recipe,locale)=>{const pt=PT_RECIPES[recipe.id]||{};return {title:locale==='pt-BR'?(pt.title||''):recipe.title,description:locale==='pt-BR'?(pt.description||''):recipe.description,finishedDish:v33FinishedDishSource(recipe)}};
+ return createWorldAdventureHost({canonicalRecipes:RECIPES,locale:state.language==='pt-BR'?'pt-BR':'en-GB',passportSnapshot:{worldStamps:state.worldStamps},getLocalizedRecipe,
+  onOpenRecipe:id=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState;openRecipe(id);return true},
+  onBack:scope=>{if(scope==='screen'){goto('home');return true}return false},onOpenPassport:()=>{v33ShowPassport();return true}});
+}
+function v33Destinations(host){return host.countries.map(code=>{const item=host.getCountry(code);return {id:code.toLowerCase(),name:item.label,flag:item.flag,available:item.available,recipes:item.recipes.map(r=>({id:r.id,title:r.title,finishedDish:r.finishedDish,routeEnabled:true})),note:item.reviewOnly?(state.language==='pt-BR'?'Prévia · revisão pendente':'Preview only · review pending'):''}})}
+function v33ShowPassport(){
+ const screen=document.querySelector('#screen');if(!screen)return;screen.querySelector('.v33-passport-overlay')?.remove();
+ const pt=state.language==='pt-BR',stamps=[...new Set((v33WorldHost?.getPassportSnapshot?.().stamps||[]))];
+ const names={IND:pt?'Índia':'India',ITA:pt?'Itália':'Italy',CHN:'China',JPN:pt?'Japão':'Japan',MEX:pt?'México':'Mexico',VNM:pt?'Vietnã':'Vietnam'},flags={IND:'🇮🇳',ITA:'🇮🇹',CHN:'🇨🇳',JPN:'🇯🇵',MEX:'🇲🇽',VNM:'🇻🇳'};
+ const count=pt?`${stamps.length} selo${stamps.length===1?'':'s'} ganho${stamps.length===1?'':'s'}`:`${stamps.length} stamp${stamps.length===1?'':'s'} earned`;
+ screen.insertAdjacentHTML('beforeend',`<div class="v33-passport-overlay"><section class="w02-map-sheet w02-passport-sheet" role="dialog" aria-modal="true" aria-labelledby="v33-passport-title"><button class="w02-sheet-close" type="button" data-v33-passport-close aria-label="${pt?'Fechar passaporte culinário':'Close Food Passport'}">×</button><div class="w02-sheet-heading"><span aria-hidden="true">📔</span><div><small>${pt?'PASSAPORTE CULINÁRIO':'FOOD PASSPORT'}</small><h2 id="v33-passport-title" tabindex="-1">${pt?'Meu passaporte culinário':'My Food Passport'}</h2><p>${count} · ${pt?'selos aparecem após concluir uma receita aprovada.':'stamps are earned after completing an approved recipe.'}</p></div></div>${stamps.length?`<div class="w02-passport-stamps">${stamps.map(code=>`<span class="v31-stamp">${flags[code]||'⭐'} ${names[code]||code}</span>`).join('')}</div>`:`<p class="w02-passport-empty">${pt?'Conclua uma receita aprovada para ganhar seu primeiro selo.':'Complete an approved recipe to earn your first stamp.'}</p>`}</section></div>`);
+ screen.querySelector('#v33-passport-title')?.focus({preventScroll:true});
+}
+function v33MountGlobe(screen){
+ if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
+ screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
+ v33GlobeController=window.AariaWorldAdventureGlobe.mount(screen.querySelector('#v33-world-globe-host'),{locale:v33WorldHost.locale,avatarSrc:V31_HOME_WORLD_ART.aria,destinations:v33Destinations(v33WorldHost),initialState:v33GlobeState||undefined,onOpenRecipe:id=>v33WorldHost.openRecipe(id),onOpenPassport:()=>v33WorldHost.openPassport(),onCountrySelect:()=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState}});
+}
 let v31WorldPage;
 v31WorldPage=function v33FixedWorldMapPage(){
  const pt=state.language==='pt-BR';
@@ -264,17 +286,15 @@ nutritionValue=function v32SafeNutritionValue(r){
 render=function v3Render(){
  document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  if(view==='world'){
-  const active=document.activeElement,previousView=window.v31PreviousView||'home';
-   const focusCode=active?.closest?.('[data-v31-country]')?.dataset.v31Country||'';
-   const focusType=active?.closest?.('.w02-country-marker')?'pin':'';
-  const screen=document.querySelector('#screen');if(screen){screen.className='page v31-world-screen';screen.innerHTML=v31WorldPage();const mapArt=screen.querySelector('.v31-map-art-image');if(mapArt)mapArt.src=V31_HOME_WORLD_ART.worldMap}
+  const previousView=window.v31PreviousView||'home';
+  const screen=document.querySelector('#screen');if(screen){screen.className='page v31-world-screen';v33MountGlobe(screen)}
   const app=document.querySelector('.app');app?.classList.remove('home-dashboard');app?.classList.add('v31-world-active');app?.classList.toggle('reduce-motion',!!state.reducedMotion);
   document.body.classList.remove('v3-screen-home');document.body.classList.add('v31-screen-world');document.querySelectorAll('.bottom .tab').forEach(b=>b.classList.toggle('active',b.dataset.nav==='world'));
-   const selector=focusType==='pin'?`.w02-country-marker[data-v31-country="${focusCode}"]`:'';
-  if(selector)document.querySelector(selector)?.focus({preventScroll:true});else if(previousView!=='world')document.querySelector('.v31-world-header h1')?.focus({preventScroll:true});
+  if(previousView!=='world')screen?.querySelector('.aria-world-globe__header h1')?.focus({preventScroll:true});
   window.v31PreviousView='world';
   return;
  }
+ if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy();v33GlobeController=null;v33WorldHost=null}
  window.v31PreviousView=view;
  v3BaseRender();
  // The base renderer appends the current page class while the world renderer
@@ -350,6 +370,7 @@ document.addEventListener('click',async e=>{
  }
 });
 document.addEventListener('click',e=>{
+ if(e.target.closest?.('[data-v33-passport-close]')){document.querySelector('.v33-passport-overlay')?.remove();document.querySelector('.aria-world-globe__passport')?.focus({preventScroll:true});return}
   const target=e.target.closest('[data-v31-country]');
   if(target){v31SelectedCountry=target.dataset.v31Country;v31MapPanel='country';history.pushState({v31Panel:'country'},'',location.hash);render();document.querySelector('#v33-country-title')?.focus({preventScroll:true});return}
  const button=e.target.closest('button');if(!button)return;
@@ -359,7 +380,14 @@ document.addEventListener('click',e=>{
  if(button.hasAttribute('data-v31-open-world')){window.v31WorldOpenedFromNav=false;window.v31WorldOpenerIndex=[...document.querySelectorAll('[data-v31-open-world]')].indexOf(button);goto('world');return}
   if(button.hasAttribute('data-v31-back')){v31MapPanel='';goto('home');if(window.v31WorldOpenedFromNav)document.querySelector('.bottom .tab[data-nav="world"]')?.focus({preventScroll:true});else{const openers=[...document.querySelectorAll('[data-v31-open-world]')];(openers[window.v31WorldOpenerIndex]||openers[0])?.focus({preventScroll:true})}window.v31WorldOpenedFromNav=false;return}
 });
-document.addEventListener('click',e=>{const button=e.target.closest('button[data-action="nextstep"].finish-step');if(!button||!selected||!state.done.includes(selected.id)||!V31_APPROVED_INDIA_RECIPE_IDS.includes(selected.id))return;state.worldStamps=Array.isArray(state.worldStamps)?state.worldStamps:[];if(!state.worldStamps.includes('IND')){state.worldStamps.push('IND');save()}});
+function v33CountryForCompletedRecipe(id){
+ if(V31_APPROVED_INDIA_RECIPE_IDS.includes(Number(id)))return 'IND';
+ const recipe=RECIPES.find(item=>Number(item.id)===Number(id)),meta=recipe?.worldAdventure;
+ return meta?.validationStatus==='W01_VALIDATED'&&meta?.navigationStatus==='ACTIVE'&&['ITA','CHN','JPN','MEX','VNM'].includes(meta.countryCode)&&meta.bilingualStatus==='APPROVED'&&meta.artworkStatus==='APPROVED'&&meta.safetyStatus==='APPROVED'?meta.countryCode:null;
+}
+document.addEventListener('click',e=>{const button=e.target.closest('button[data-action="nextstep"].finish-step');if(!button||!selected||!state.done.includes(selected.id))return;const code=v33CountryForCompletedRecipe(selected.id);if(!code)return;state.worldStamps=Array.isArray(state.worldStamps)?state.worldStamps:[];if(!state.worldStamps.includes(code)){state.worldStamps.push(code);save()}});
+document.addEventListener('backbutton',e=>{if(view!=='world')return;if(document.querySelector('.v33-passport-overlay')){document.querySelector('.v33-passport-overlay').remove();e.preventDefault();e.stopImmediatePropagation();return}if(v33GlobeController?.handleBack?.()){e.preventDefault();e.stopImmediatePropagation()}},true);
+document.addEventListener('keydown',e=>{if(view!=='world'||!['Escape','Backspace','BrowserBack'].includes(e.key))return;if(document.querySelector('.v33-passport-overlay')){document.querySelector('.v33-passport-overlay').remove();e.preventDefault();e.stopImmediatePropagation();return}if(v33GlobeController?.handleBack?.()){e.preventDefault();e.stopImmediatePropagation()}},true);
 window.addEventListener('popstate',e=>{
   // Recipe navigation changes the hash, but the prior history entry is the
   // country-card panel state at #aria/world. Restore that panel explicitly;
