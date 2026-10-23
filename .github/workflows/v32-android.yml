@@ -27,6 +27,8 @@ jobs:
   test-and-build:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      ANDROID_TEST_APP_ID: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && format('com.aaria.magickitchen.pilot.v33map{0}', github.run_number) || format('com.aaria.magickitchen.pilot.v32review{0}', github.run_number) }}
     steps:
       - name: Check out exact V3.2 source head
         uses: actions/checkout@v4
@@ -67,7 +69,12 @@ jobs:
         run: node tools/v3/artwork/batches/batch-01/build-android-review.mjs
 
       - name: Run Android unit tests and assemble isolated test APK
-        run: V32_REVIEW_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+        run: |
+          if [[ "$GITHUB_REF_NAME" == "feature/v3.3-world-map-explorer" ]]; then
+            V33_MAP_SAMPLE_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+          else
+            V32_REVIEW_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+          fi
 
       - name: Verify test package, 95 recipes and draft-only artwork payload
         run: |
@@ -78,9 +85,14 @@ jobs:
           apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           "$aapt" dump badging "$apk" > artifacts/v32-diagnostics/test-apk-badging.txt
           "$apksigner" verify --print-certs "$apk" > artifacts/v32-diagnostics/test-apk-signer.txt
-          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
+          if [[ "$GITHUB_REF_NAME" == "feature/v3.3-world-map-explorer" ]]; then
+            grep -Fq "package: name='com.aaria.magickitchen.pilot.v33map${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
+            grep -Fq "application-label:'Aaria Magical Kitchen V3.3 World Map Sample ${GITHUB_RUN_NUMBER}'" artifacts/v32-diagnostics/test-apk-badging.txt
+          else
+            grep -Fq "package: name='com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
+          fi
           "$aapt" dump xmltree "$apk" AndroidManifest.xml > artifacts/v32-diagnostics/test-apk-manifest.txt
-          grep -Fq "com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER}.share" artifacts/v32-diagnostics/test-apk-manifest.txt
+          grep -Fq "${ANDROID_TEST_APP_ID}.share" artifacts/v32-diagnostics/test-apk-manifest.txt
           test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/index.html')" -eq 1
           unzip -p "$apk" assets/artwork-review/index.html | grep -Fq '<title>Draft artwork review — Batches 01–05</title>'
           if unzip -p "$apk" assets/index.html | grep -Fq 'Draft artwork review'; then
@@ -273,7 +285,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-magical-kitchen-v3.2-test-apk
+          name: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && 'aaria-magical-kitchen-v3.3-world-map-sample-apk' || 'aaria-magical-kitchen-v3.2-test-apk' }}
           path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: warn
           retention-days: 30
@@ -282,7 +294,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-magical-kitchen-v3.2-test-evidence
+          name: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && 'aaria-magical-kitchen-v3.3-world-map-sample-evidence' || 'aaria-magical-kitchen-v3.2-test-evidence' }}
           path: |
             artifacts/v32-diagnostics/
             artifacts/v32-android-screenshots/

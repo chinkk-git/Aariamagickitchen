@@ -8,6 +8,7 @@ val releaseKeyAlias = System.getenv("ANDROID_KEY_ALIAS")?.takeIf { it.isNotBlank
 val releaseKeyPassword = System.getenv("ANDROID_KEY_PASSWORD")?.takeIf { it.isNotBlank() }
 val releaseSigningValues = listOf(releaseStorePath, releaseStorePassword, releaseKeyAlias, releaseKeyPassword)
 val releaseSigningConfigured = releaseSigningValues.all { it != null }
+val v33MapSampleBuildSuffix = System.getenv("V33_MAP_SAMPLE_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) }
 val v32ReviewBuildSuffix = System.getenv("V32_REVIEW_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) } ?: "local"
 if (releaseSigningValues.any { it != null } && !releaseSigningConfigured) {
     throw GradleException("Release signing is partially configured; provide all protected signing inputs.")
@@ -34,8 +35,8 @@ android {
     }
     buildTypes {
         getByName("debug") {
-            applicationIdSuffix = ".v32review${v32ReviewBuildSuffix}"
-            resValue("string", "app_name", "Aaria Magical Kitchen V3.2 Visual Review ${v32ReviewBuildSuffix}")
+            applicationIdSuffix = if (v33MapSampleBuildSuffix != null) ".v33map${v33MapSampleBuildSuffix}" else ".v32review${v32ReviewBuildSuffix}"
+            resValue("string", "app_name", if (v33MapSampleBuildSuffix != null) "Aaria Magical Kitchen V3.3 World Map Sample ${v33MapSampleBuildSuffix}" else "Aaria Magical Kitchen V3.2 Visual Review ${v32ReviewBuildSuffix}")
         }
         getByName("release") {
             if (releaseSigningConfigured) {

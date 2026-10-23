@@ -102,6 +102,36 @@ test('owner reference attachments remain byte-for-byte unchanged', async () => {
   }
 });
 
+test('tablet #12 landscape geometry measures its ingredient panel, not the full viewport', async () => {
+  const [tablet, css] = await Promise.all([read('.github/scripts/v32-android-tablet-smoke.sh'), read('index.html')]);
+  const observed = { viewport: 1280, grid: 788.6640625 };
+  assert.match(css, /\.ref-card\{[^}]*border:3px solid #fff;[^}]*padding:12px\}/,
+    'the measured recipe-card border and padding remain part of the panel');
+  const panel = observed.grid + 30;
+  assert.ok(observed.grid < observed.viewport * 0.68,
+    'the original W02 failure is reproducible against the old whole-viewport threshold');
+  assert.ok(panel >= observed.viewport * 0.58 && observed.grid >= panel * 0.90,
+    'the captured grid fills its measured ingredient panel in the landscape split layout');
+  assert.match(tablet, /layout\.ingredientPanel<layout\.usableWidth\*\.58\|\|layout\.grid<layout\.ingredientPanel\*\.90/,
+    'Android checks the usable panel geometry without changing recipe layout');
+  assert.match(tablet, /c\.input\.width<12\|\|c\.input\.height<12\|\|c\.input\.labels<1/,
+    'checkbox size and accessible labeling checks remain strict');
+  assert.match(tablet, /c\.name\.scrollWidth>c\.name\.clientWidth\+1/,
+    'ingredient label clipping remains a failure');
+});
+
+test('V3.3 Android sample APK has a distinct debug package identity', async () => {
+  const [gradle, workflow] = await Promise.all([
+    read('phase2-pilot/apps/aaria-android/app/build.gradle.kts'), read('.github/workflows/v32-android.yml')
+  ]);
+  assert.match(gradle, /V33_MAP_SAMPLE_BUILD_SUFFIX/);
+  assert.match(gradle, /\.v33map\$\{v33MapSampleBuildSuffix\}/);
+  assert.match(gradle, /V3\.3 World Map Sample/);
+  assert.match(workflow, /com\.aaria\.magickitchen\.pilot\.v33map\$\{GITHUB_RUN_NUMBER\}/);
+  assert.match(workflow, /aaria-magical-kitchen-v3\.3-world-map-sample-apk/);
+  assert.match(workflow, /ANDROID_TEST_APP_ID/);
+});
+
 test('Android smoke scripts target the approved #12 renderer selectors', async () => {
   const [phone, tablet, workflow] = await Promise.all([
     read('.github/scripts/v32-android-smoke.sh'), read('.github/scripts/v32-android-tablet-smoke.sh'),
@@ -119,8 +149,8 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'tablet coverage cannot pass by finding the retired text-heavy template title');
   assert.match(tablet, /sidebarOverlap[\s\S]*?usableWidth=innerWidth-sidebarOverlap/,
     'tablet geometry accounts for the visible recipe navigation rail in portrait');
-  assert.match(tablet, /layout\.grid<layout\.usableWidth\*\.68\|\|layout\.main<layout\.usableWidth\*\.82/,
-    'tablet ingredient widths are measured against the actual available recipe pane');
+  assert.match(tablet, /layout\.ingredientPanel<layout\.usableWidth\*\.58\|\|layout\.grid<layout\.ingredientPanel\*\.90/,
+    'tablet ingredient grid is measured against its actual landscape ingredient panel');
   assert.match(tablet, /expectedInstruction:displayStepText\(selected,step\)[\s\S]*?canonicalInstruction:selected\?\.steps\?\.\[step\]/,
     'tablet smoke compares the rendered child-friendly step copy to its renderer source while retaining the canonical source as evidence');
   assert.match(tablet, /!active\.safety[\s\S]*?active\.instruction!==active\.expectedInstruction/,
