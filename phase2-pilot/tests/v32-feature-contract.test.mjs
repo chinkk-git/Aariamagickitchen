@@ -236,6 +236,8 @@ test('production international ingredient rows stay compact, contained and measu
     'production checkboxes remain visibly sized and actionable');
   assert.match(runtime, /\.v32-international-recipe \.v31-step-adult-cue\{[^}]*flex:0 1 auto;[^}]*width:auto/,
     'international step safety cues keep natural height in the portrait column layout');
+  assert.match(runtime, /\.v32-international-recipe \.ref-step-grid\{grid-template-columns:minmax\(0,1fr\)!important\}/,
+    'international guided steps occupy the full recipe width instead of the shared five-step grid columns');
   assert.match(runtime, /@media\(min-width:700px\)\{\.v32-international-recipe \.ref-ingredient-grid\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important\}\}@media\(min-width:1100px\)\{\.v32-international-recipe \.ref-ingredient-grid\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)!important\}\}/,
     'two/three-column international rows override the shared auto-fit landscape grid at tablet widths');
   assert.match(tablet, /async function assertInternationalIngredientLayout[\s\S]*?imageEscapes[\s\S]*?overlap\([\s\S]*?height>96[\s\S]*?labels<1/,
@@ -246,6 +248,8 @@ test('production international ingredient rows stay compact, contained and measu
     'real Android G2 checks illustrated step, instruction and safety geometry for overflow and overlap in both new recipes');
   assert.match(tablet, /labels:elements\.map\(\(e,i\)=>i===1\?\(image\?\.alt\|\|""\)\.trim\(\)/,
     'step artwork accessibility checks use image alt text instead of expecting text inside the figure');
+  assert.match(tablet, /x\.card\.width<x\.width\*\.8/,
+    'real-device guided-step assertions reject the narrow 147px portrait layout');
   assert.match(tablet, /international-\x27\+id\+\x27-ingredients-\x27\+orientationName/,
     'tablet G2 captures the production ingredient list for each new recipe and orientation');
   assert.match(phone, /internationalProductionEvidence[\s\S]*?for\(const id of \[96,99\]\)[\s\S]*?row\.card\.height>96[\s\S]*?production-international-\$\{id\}-phone-/,
