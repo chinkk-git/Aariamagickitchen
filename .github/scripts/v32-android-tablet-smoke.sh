@@ -318,7 +318,7 @@ async function targetedRecipe12(landscape){
  const homeA11y=await audit('G2 home navigation');const home=await screenshot('home-'+orientationName,landscape);
  await click('#nav .tab[data-nav="library"]','G2 Recipe library');await waitFor('.recipe-card[data-open="12"]','G2 #12 recipe card');
  const library=await evaluate('(()=>({count:document.querySelectorAll("#screen .recipe-card").length,selected:Number(selected?.id||0)}))()');
- if(library.count!==95)throw Error('G2 recipe library expected all 95 canonical routes: '+JSON.stringify(library));
+ if(library.count!==97)throw Error('G2 recipe library expected all 97 searchable routes (95 canonical plus #096/#099): '+JSON.stringify(library));
  await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
  await clickRecipeCard(12,'G2 #12');await waitFor('.ref-hero h1','G2 #12 detail');
  const title=await evaluate('document.querySelector(".ref-hero h1")?.textContent?.trim()||""');
