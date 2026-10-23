@@ -25,6 +25,6 @@ jobs:
       - name: Inspect worker evidence and escalate
         env:
           GH_TOKEN: ${{ github.token }}
-          A10_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          A10_DRY_RUN: 'true'
           GH_REPO: ${{ github.repository }}
         run: python3 scripts/a10_watchdog.py
