@@ -11,16 +11,22 @@ mkdirSync(screenshots, { recursive: true });
 
 async function connect() {
   let target;
-  for (let attempt = 0; attempt < 60; attempt++) {
-    try {
-      const targets = await (await fetch('http://127.0.0.1:9224/json')).json();
-      target = targets.find(item => item.type === 'page' && item.webSocketDebuggerUrl &&
-        (item.url?.includes('appassets.androidplatform.net') || item.title?.includes('Magical Kitchen')));
-      if (target) break;
-    } catch { }
-    await pause(500);
+  let lastTargets = [];
+  try { target = JSON.parse(process.env.ANDROID_DEVTOOLS_TARGET || 'null'); } catch { }
+  if (!target) {
+    for (let attempt = 0; attempt < 60; attempt++) {
+      try {
+        const response = await fetch('http://127.0.0.1:9224/json');
+        const targets = await response.json();
+        lastTargets = Array.isArray(targets) ? targets.map(({type,url,title,webSocketDebuggerUrl})=>({type,url,title,hasWebSocket:!!webSocketDebuggerUrl})) : [];
+        target = Array.isArray(targets) ? targets.find(item => item.type === 'page' && item.webSocketDebuggerUrl &&
+          (item.url?.includes('appassets.androidplatform.net') || item.title?.includes('Magical Kitchen'))) : null;
+        if (target) break;
+      } catch { }
+      await pause(500);
+    }
   }
-  if (!target) throw new Error('Clean phone emulator did not expose the app-owned WebView');
+  if (!target?.webSocketDebuggerUrl) throw new Error(`Clean phone emulator did not expose the app-owned WebView; targets=${JSON.stringify(lastTargets)}`);
   const ws = new WebSocket(target.webSocketDebuggerUrl);
   await new Promise((resolve, reject) => {
     ws.addEventListener('open', resolve, { once: true });

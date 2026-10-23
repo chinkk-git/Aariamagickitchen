@@ -83,9 +83,12 @@ for attempt in $(seq 1 60); do
     socket="$(adb shell cat /proc/net/unix 2>/dev/null | grep -o "webview_devtools_remote_${pid}" | head -1 || true)"
     [ -n "$socket" ] || continue
     adb forward --remove tcp:9224 >/dev/null 2>&1 || true
-    if adb forward tcp:9224 "localabstract:$socket" >/dev/null 2>&1 \
-      && node -e 'fetch("http://127.0.0.1:9224/json").then(r=>r.json()).then(t=>process.exit(Array.isArray(t)&&t.some(x=>x.type==="page"&&x.webSocketDebuggerUrl&&(String(x.url||"").includes("appassets.androidplatform.net")||String(x.title||"").includes("Magical Kitchen")))?0:1)).catch(()=>process.exit(1))'; then
-      printf 'Connected Android WebView DevTools pid=%s socket=%s\n' "$pid" "$socket" | tee artifacts/v33-world-map-sample/logs/devtools-target.txt
+    devtools_target=''
+    if adb forward tcp:9224 "localabstract:$socket" >/dev/null 2>&1; then
+      devtools_target="$(node -e 'fetch("http://127.0.0.1:9224/json").then(r=>r.json()).then(t=>{const x=Array.isArray(t)?t.find(x=>x.type==="page"&&x.webSocketDebuggerUrl&&(String(x.url||"").includes("appassets.androidplatform.net")||String(x.title||"").includes("Magical Kitchen"))):null;if(x)process.stdout.write(JSON.stringify(x))}).catch(()=>process.exit(1))' 2>/dev/null || true)"
+    fi
+    if [ -n "$devtools_target" ]; then
+      printf '{"pid":"%s","socket":"%s","target":%s}\n' "$pid" "$socket" "$devtools_target" | tee artifacts/v33-world-map-sample/logs/devtools-target.json
       connected='yes'
       break 2
     fi
@@ -99,4 +102,4 @@ if [ "$connected" != 'yes' ]; then
   echo 'No live app-owned WebView DevTools page became available from the current app process' >&2
   exit 1
 fi
-ANDROID_TEST_APP_ID="$APP_ID" node .github/scripts/v33-world-map-sample-smoke.mjs
+ANDROID_TEST_APP_ID="$APP_ID" ANDROID_DEVTOOLS_TARGET="$devtools_target" node .github/scripts/v33-world-map-sample-smoke.mjs
