@@ -52,11 +52,24 @@ async function connect({ refresh = false } = {}) {
     }
   }
   if (!target?.webSocketDebuggerUrl) throw new Error(`Clean phone emulator did not expose the app-owned WebView; targets=${JSON.stringify(lastTargets)}`);
-  const ws = new WebSocket(target.webSocketDebuggerUrl);
-  await new Promise((resolve, reject) => {
-    ws.addEventListener('open', resolve, { once: true });
-    ws.addEventListener('error', reject, { once: true });
-  });
+  let ws,lastError='unknown';
+  for(let attempt=0;attempt<(refresh?6:2);attempt++){
+    if(attempt>0)target=await refreshForwardedWebView();
+    ws=new WebSocket(target.webSocketDebuggerUrl);
+    try{
+      await new Promise((resolve,reject)=>{
+        const timer=setTimeout(()=>reject(new Error('DevTools WebSocket handshake timed out')),8000);
+        ws.addEventListener('open',()=>{clearTimeout(timer);resolve()}, {once:true});
+        ws.addEventListener('error',event=>{clearTimeout(timer);reject(new Error(`DevTools WebSocket handshake failed: ${event.message||'connection error'}`))}, {once:true});
+      });
+      lastError='';break;
+    }catch(error){
+      lastError=String(error?.message||error);
+      try{ws.close()}catch{}
+      if(attempt+1<(refresh?6:2))await pause(500);
+    }
+  }
+  if(lastError)throw new Error(`Could not connect to the app-owned WebView target after retries: ${lastError}; target=${target?.webSocketDebuggerUrl||'missing'}`);
   const pending = new Map();
   let sequence = 0;
   ws.addEventListener('message', async event => {

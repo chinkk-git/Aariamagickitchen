@@ -77,6 +77,7 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/adb\(\['emu','rotate'\]\)/,'phone orientation smoke must rotate the emulator and verify its actual display rotation');
   assert.match(phone,/connect\(\{refresh:true\}\)/,'phone smoke must reconnect to the app-owned WebView after Android orientation recreates DevTools');
   assert.match(phone,/adb\(\['forward','tcp:9224',`localabstract:\$\{socket\}`\]\)/,'rotation reconnect must forward the current app process DevTools socket');
+  assert.match(phone,/attempt<\(refresh\?6:2\)/,'the sample retries a transient WebView handshake after orientation recreates its target');
   assert.match(await read('tools/v3/runtime.js'),/e\.state\?\.v31Panel==='country'&&location\.hash==='#aria\/world'[\s\S]*?view='world';v31MapPanel='country'/,'Android Back from recipe restores the India card panel state');
   assert.match(phone,/cmd','connectivity','airplane-mode','enable/);
   assert.match(phone,/food-passport-offline-restart-persistence/);
