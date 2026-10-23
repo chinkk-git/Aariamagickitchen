@@ -34,3 +34,11 @@ The previous two-argument preview API remains supported by the local `index.html
 ## Integration evidence and gates
 
 This W03 handoff proves the module export contract and source boundary only. W03 does not claim W02 Android mounting, phone/tablet screenshots, orientation recreation smoke, offline/navigation acceptance, or APK evidence. W02 must capture and report those against its exact integration commit in Issue #39. A08, A09, artwork rights, independent nutrition/allergen and translation/cultural reviews, security and owner visual review remain separate gates. No merge or release is authorized.
+
+## Land projection update (W03 module version 0.3.0)
+
+The previous ten hand-authored coarse land silhouettes have been replaced by a locally embedded orthographic projection of Natural Earth 1:110m Land polygons (dataset version 4.0.0). The source is public domain under the [Natural Earth terms of use](https://www.naturalearthdata.com/about/terms-of-use/) and is credited as “Made with Natural Earth.” The archived source zip is `data/ne_110m_land.zip` (SHA-256 `1926c621afd6ac67c3f36639bb1236134a48d82226dc675d3e3df53d02d2a3de`).
+
+The build script simplifies paths by at most 0.3 degrees, wraps the date line, projects land orthographically on the same 1000×1000 sphere as the flags, and clips the far hemisphere. Country latitude/longitude values and flag semantics are unchanged; the same projection radius is used for land and flags. The map is embedded in `world-adventure-globe.js`, so it is available offline without a new runtime request. No external character art was introduced.
+
+The host API remains `mount(root, hostContext, restoredState)` with the same controller methods. W02 should consume the updated module JS and CSS from the exact W03 module commit separately from its host-owned viewport/flag-containment fix.
