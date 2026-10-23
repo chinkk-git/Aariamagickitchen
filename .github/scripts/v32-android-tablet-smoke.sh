@@ -12,6 +12,19 @@ else
   ANDROID_SERIAL=${devices[0]}
 fi
 export ANDROID_SERIAL
+capture_tablet_logcat_on_exit() {
+  local result=$?
+  trap - EXIT
+  if [ "$result" -ne 0 ]; then
+    {
+      printf 'exit_code=%s\n' "$result"
+      printf 'captured_at_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+      adb_timeout -s "$ANDROID_SERIAL" logcat -d -t 4000 || printf 'logcat_capture=FAILED\n'
+    } > artifacts/v32-diagnostics/tablet-emulator-logcat.txt 2>&1
+  fi
+  exit "$result"
+}
+trap capture_tablet_logcat_on_exit EXIT
 adb_timeout -s "$ANDROID_SERIAL" wait-for-device
 booted=
 for attempt in $(seq 1 90); do
@@ -56,17 +69,18 @@ const serial=process.env.ANDROID_SERIAL;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const adb=args=>execFileSync('timeout',['--kill-after=5s','60s','adb','-s',serial,...args],{maxBuffer:32*1024*1024});
 let target=null;
+let lastCandidate=null;
 for(let i=0;i<60&&!target;i++){
-  try{const list=await(await fetch('http://127.0.0.1:9223/json')).json();target=list.find(x=>x.type==='page'&&x.webSocketDebuggerUrl&&(x.url?.includes('appassets.androidplatform.net')||x.title?.includes('Magical Kitchen')))}catch{}
+  try{const list=await(await fetch('http://127.0.0.1:9223/json')).json();lastCandidate=list.find(x=>x.type==='page'&&x.webSocketDebuggerUrl&&x.url?.includes('appassets.androidplatform.net'))||null;target=list.find(x=>x.type==='page'&&x.webSocketDebuggerUrl&&x.url?.includes('appassets.androidplatform.net')&&x.title?.includes('Magical Kitchen'))||null}catch{}
   if(!target)await pause(500);
 }
-if(!target)throw Error('Tablet app-owned WebView target missing');
+if(!target)throw Error('Tablet app-owned WebView target did not become title-ready within 30 seconds: '+JSON.stringify(lastCandidate&&{url:lastCandidate.url,title:lastCandidate.title,id:lastCandidate.id}));
 console.log('Tablet WebView DevTools target: '+JSON.stringify({url:target.url,title:target.title,id:target.id}));
 const ws=new WebSocket(target.webSocketDebuggerUrl);
 await new Promise((resolve,reject)=>{ws.addEventListener('open',resolve,{once:true});ws.addEventListener('error',reject,{once:true})});
-ws.addEventListener('close',event=>console.error('Tablet WebView DevTools socket closed: '+JSON.stringify({code:event.code,reason:event.reason,wasClean:event.wasClean})));
-ws.addEventListener('error',event=>console.error('Tablet WebView DevTools socket error: '+String(event.message||event.type)));
 let seq=0;const pending=new Map();
+ws.addEventListener('close',event=>{const error=new Error('Tablet WebView DevTools socket closed: '+JSON.stringify({code:event.code,reason:event.reason,wasClean:event.wasClean}));console.error(error.message);for(const request of pending.values()){clearTimeout(request.timer);request.reject(error)}pending.clear()});
+ws.addEventListener('error',event=>console.error('Tablet WebView DevTools socket error: '+String(event.message||event.type)));
 ws.addEventListener('message',async event=>{let data=event.data;if(typeof data!=='string')data=typeof data?.text==='function'?await data.text():Buffer.from(data).toString('utf8');let msg;try{msg=JSON.parse(data)}catch{return}if(!msg.id||!pending.has(msg.id))return;const p=pending.get(msg.id);pending.delete(msg.id);clearTimeout(p.timer);msg.error?p.reject(new Error(msg.error.message)):p.resolve(msg.result)});
 async function command(method,params={}){const id=++seq;const p=new Promise((resolve,reject)=>{const timer=setTimeout(()=>{pending.delete(id);reject(new Error('DevTools timeout: '+method+'; target='+JSON.stringify({url:target.url,title:target.title,id:target.id})+'; pending='+pending.size))},30000);pending.set(id,{resolve,reject,timer})});ws.send(JSON.stringify({id,method,params}));return await p}
 async function evaluate(expression){const r=await command('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.text||'WebView evaluation failed');return r.result?.value}

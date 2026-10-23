@@ -211,3 +211,16 @@ test('phone G3 keeps both complete 95-recipe sweeps enabled within bounded execu
   assert.match(workflow, /test-and-build:\n\s+runs-on: ubuntu-latest\n\s+timeout-minutes: 90/,
     'the enclosing job can accommodate ordered G1, G2 and both G3 gates');
 });
+
+test('tablet G3 waits for a ready WebView title and preserves emulator logcat on failure', async () => {
+  const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
+  assert.match(tablet, /title\?\.includes\('Magical Kitchen'\)/,
+    'tablet G3 must not attach DevTools to the appassets target before its document title is ready');
+  assert.match(tablet, /did not become title-ready within 30 seconds/,
+    'startup readiness remains bounded and reports the last observed target');
+  assert.match(tablet, /ws\.addEventListener\('close',event=>\{const error=new Error\('Tablet WebView DevTools socket closed:/,
+    'a lost DevTools socket immediately fails pending protocol commands with the close code');
+  assert.match(tablet, /trap capture_tablet_logcat_on_exit EXIT/);
+  assert.match(tablet, /logcat -d -t 4000/,
+    'tablet emulator logcat is retained in diagnostics when the smoke fails');
+});
