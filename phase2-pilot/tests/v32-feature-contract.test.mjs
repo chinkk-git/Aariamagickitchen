@@ -244,6 +244,8 @@ test('production international ingredient rows stay compact, contained and measu
     'real Android tablet assertions prove international equipment art stays within its wrapper and does not cover either label');
   assert.match(tablet, /async function assertInternationalGuidedStepLayout[\s\S]*?cue\.height>180[\s\S]*?x\.overlaps\.length[\s\S]*?Production international #\x27\+id\+\x27 step 1[\s\S]*?Production international #\x27\+id\+\x27 step 2/,
     'real Android G2 checks illustrated step, instruction and safety geometry for overflow and overlap in both new recipes');
+  assert.match(tablet, /labels:elements\.map\(\(e,i\)=>i===1\?\(image\?\.alt\|\|""\)\.trim\(\)/,
+    'step artwork accessibility checks use image alt text instead of expecting text inside the figure');
   assert.match(tablet, /international-\x27\+id\+\x27-ingredients-\x27\+orientationName/,
     'tablet G2 captures the production ingredient list for each new recipe and orientation');
   assert.match(phone, /internationalProductionEvidence[\s\S]*?for\(const id of \[96,99\]\)[\s\S]*?row\.card\.height>96[\s\S]*?production-international-\$\{id\}-phone-/,
