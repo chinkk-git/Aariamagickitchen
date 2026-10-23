@@ -82,7 +82,7 @@ test('Adventure Explorer acceptance harness measures real Android geometry and c
     assert.ok(phone.includes(shot), `phone evidence captures ${shot}`);
   }
   assert.match(phone, /android-back-restores-map-position/);
-  assert.match(phone, /markerGeometry\.some\(m=>m\.hitWidth<44\|\|m\.hitHeight<44\|\|m\.anchorError>2\)/,
+  assert.match(phone, /markerGeometry\.some\(m=>m\.hitWidth<44\|\|m\.hitHeight<44\|\|m\.anchorError>2\|\|m\.coordinateError>0\.1\)/,
     'country markers keep accessible hit areas and map-coordinate alignment through real zoom and pan');
   assert.match(phone, /g\.overlapPairs\?\.length/);
   assert.match(tablet, /map\.overlapPairs\.length/,
