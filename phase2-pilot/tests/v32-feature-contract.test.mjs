@@ -226,6 +226,8 @@ test('production international ingredient rows stay compact, contained and measu
     'production checklist uses compact rows with independent art, text and touch target columns');
   assert.match(runtime, /\.v32-international-recipe \.ref-ingredient input\[type=checkbox\][^{]*\{[^}]*width:24px;height:24px/,
     'production checkboxes remain visibly sized and actionable');
+  assert.match(runtime, /@media\(min-width:700px\)\{\.v32-international-recipe \.ref-ingredient-grid\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important\}\}@media\(min-width:1100px\)\{\.v32-international-recipe \.ref-ingredient-grid\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)!important\}\}/,
+    'two/three-column international rows override the shared auto-fit landscape grid at tablet widths');
   assert.match(tablet, /async function assertInternationalIngredientLayout[\s\S]*?imageEscapes[\s\S]*?overlap\([\s\S]*?height>96[\s\S]*?labels<1/,
     'real Android tablet assertions cover image bounds, text overlap, row size, accessible labels and rendered images');
   assert.match(tablet, /international-\x27\+id\+\x27-ingredients-\x27\+orientationName/,
