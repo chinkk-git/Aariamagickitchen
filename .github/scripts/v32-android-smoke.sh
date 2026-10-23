@@ -619,7 +619,7 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   await clickWebViewSelector('.v31-action-tiles [data-nav="library"]','Recipes before phone recipe '+id);
   await waitForVisible('.recipe-card[data-open="1"]','95-recipe catalogue before phone recipe '+id);
   const catalogueState=await evaluate('(()=>({view,count:document.querySelectorAll("#screen .recipe-card[data-open]").length,screen:document.querySelector("#screen")?.className||""}))()');
-  if(catalogueState.view!=='library'||catalogueState.count!==95||catalogueState.screen.includes('v31-world-screen'))throw new Error('Phone recipe flow did not enter the complete Recipes catalogue: '+JSON.stringify({id,catalogueState}));
+  if(catalogueState.view!=='library'||catalogueState.count!==97||catalogueState.screen.includes('v31-world-screen'))throw new Error('Phone recipe flow did not enter the complete 97-entry Recipes catalogue: '+JSON.stringify({id,catalogueState}));
   const card=await evaluate(`(()=>{const e=${findByDatasetExpression('#screen [data-open]','open',id)};const text=e?.innerText?.trim()||"";const observedTheme=e?.dataset.v32Theme||"";e?.click();return {text,theme:observedTheme}})()`);
   if(!card||!card.text.includes(title)||card.theme!==theme)throw new Error('Phone exemplar catalogue card mismatch: '+JSON.stringify({id,title,theme,card}));
   const opened=await evaluate('(()=>({view,selectedId:Number(selected?.id||0),screen:document.querySelector("#screen")?.className||""}))()');
@@ -809,7 +809,7 @@ for(let recipeId=66;recipeId<=95;recipeId++){
   await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
   const returned=await waitForVisible('.recipe-card[data-open="66"]',`PT-BR catalogue after recipe ${recipeId}`);
   const count=await evaluate(`document.querySelectorAll('#screen .recipe-card[data-open]').length`);
-  if(count!==95)throw new Error(`PT-BR catalogue after recipe ${recipeId} contains ${count}, expected 95: ${returned.screen}`);
+  if(count!==97)throw new Error(`PT-BR catalogue after recipe ${recipeId} contains ${count}, expected 97 searchable routes: ${returned.screen}`);
 }
 if(ptRouteCoverage.length!==30||ptRouteCoverage[0]!==66||ptRouteCoverage.at(-1)!==95)throw new Error('PT-BR recipe translation route coverage is not IDs 66–95');
 writeFileSync('artifacts/v32-diagnostics/pt-br-recipe-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:ptRouteCoverage,uniqueCount:new Set(ptRouteCoverage).size,status:'DRAFT_COPY_RENDERED_REVIEW_REQUIRED',review:'A08/A09/native PT-BR review pending'},null,2)+'\\n');
