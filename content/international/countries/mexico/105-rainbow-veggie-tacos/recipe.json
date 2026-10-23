@@ -1,0 +1,384 @@
+{
+  "schema_version": "1.0-draft",
+  "id": 105,
+  "country": "mexico",
+  "country_code": "MX",
+  "title": {
+    "en-GB": "Rainbow Veggie Tacos",
+    "pt-BR": "Tacos arco-íris de legumes"
+  },
+  "description": {
+    "en-GB": "A colourful, no-cook family taco filling inspired by Mexican flavours, with beans, sweetcorn and fresh vegetables.",
+    "pt-BR": "Um recheio colorido de tacos para preparar em família, inspirado nos sabores mexicanos, com feijão, milho e legumes frescos."
+  },
+  "cultural_context": {
+    "en-GB": "A colourful, no-cook family taco filling inspired by Mexican flavours, with beans, sweetcorn and fresh vegetables.",
+    "pt-BR": "Um recheio colorido de tacos para preparar em família, inspirado nos sabores mexicanos, com feijão, milho e legumes frescos."
+  },
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 25,
+  "total_minutes": 25,
+  "ingredients": [
+    {
+      "id": "corn-tortillas",
+      "name": {
+        "en-GB": "Small corn tortillas",
+        "pt-BR": "Tortilhas pequenas de milho"
+      },
+      "quantity": 8,
+      "unit": "tortillas",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "black-beans",
+      "name": {
+        "en-GB": "No-added-salt black beans, drained",
+        "pt-BR": "Feijão-preto sem sal adicionado, escorrido"
+      },
+      "quantity": 240,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "sweetcorn",
+      "name": {
+        "en-GB": "Sweetcorn kernels, drained",
+        "pt-BR": "Milho-doce em grãos, escorrido"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "red-pepper",
+      "name": {
+        "en-GB": "Red bell pepper",
+        "pt-BR": "Pimentão vermelho"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "yellow-pepper",
+      "name": {
+        "en-GB": "Yellow bell pepper",
+        "pt-BR": "Pimentão amarelo"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "avocado",
+      "name": {
+        "en-GB": "Ripe avocado",
+        "pt-BR": "Abacate maduro"
+      },
+      "quantity": 150,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "lime",
+      "name": {
+        "en-GB": "Lime juice",
+        "pt-BR": "Suco de limão-taiti"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "lettuce",
+      "name": {
+        "en-GB": "Romaine lettuce",
+        "pt-BR": "Alface-romana"
+      },
+      "quantity": 60,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    }
+  ],
+  "equipment": [
+    "Colander",
+    "Mixing bowl",
+    "Fork for mashing beans",
+    "Chopping board",
+    "Kitchen knife",
+    "Measuring spoon",
+    "Serving plate"
+  ],
+  "equipmentItems": [
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "fork",
+      "name": {
+        "en-GB": "Fork for mashing beans",
+        "pt-BR": "Garfo para amassar o feijão"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "measuring-spoon",
+      "name": {
+        "en-GB": "Measuring spoon",
+        "pt-BR": "Colher medidora"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "serving-plate",
+      "name": {
+        "en-GB": "Serving plate",
+        "pt-BR": "Prato para servir"
+      },
+      "role": "shared",
+      "artwork": null
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash and drain",
+        "pt-BR": "Lave e escorra"
+      },
+      "instruction": {
+        "en-GB": "Wash hands and rinse the lettuce and peppers. An adult drains and rinses the beans and sweetcorn.",
+        "pt-BR": "Lave as mãos e enxágue a alface e os pimentões. Um adulto escorre e lava o feijão e o milho."
+      },
+      "ingredientIds": [
+        "black-beans",
+        "sweetcorn",
+        "red-pepper",
+        "yellow-pepper",
+        "lettuce"
+      ],
+      "equipmentIds": [
+        "colander"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles the knife. Use clean hands and utensils, drain canned foods safely, keep cut avocado and vegetables chilled until serving, and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto manuseia a faca. Use mãos e utensílios limpos, escorra os enlatados com segurança, mantenha o abacate e os legumes cortados refrigerados até servir e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Prepare the colourful filling",
+        "pt-BR": "Prepare o recheio colorido"
+      },
+      "instruction": {
+        "en-GB": "An adult cuts peppers and avocado into small pieces. Tear the lettuce into bite-size strips.",
+        "pt-BR": "Um adulto corta os pimentões e o abacate em pedaços pequenos. Rasgue a alface em tiras para comer."
+      },
+      "ingredientIds": [
+        "red-pepper",
+        "yellow-pepper",
+        "avocado",
+        "lettuce"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles the knife. Use clean hands and utensils, drain canned foods safely, keep cut avocado and vegetables chilled until serving, and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto manuseia a faca. Use mãos e utensílios limpos, escorra os enlatados com segurança, mantenha o abacate e os legumes cortados refrigerados até servir e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Mash and season the beans",
+        "pt-BR": "Amasse e tempere o feijão"
+      },
+      "instruction": {
+        "en-GB": "Mash the drained beans with a fork and stir in lime juice. Add the sweetcorn and mix.",
+        "pt-BR": "Amasse o feijão escorrido com um garfo e misture o suco de limão. Acrescente o milho e mexa."
+      },
+      "ingredientIds": [
+        "black-beans",
+        "lime",
+        "sweetcorn"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "fork"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles the knife. Use clean hands and utensils, drain canned foods safely, keep cut avocado and vegetables chilled until serving, and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto manuseia a faca. Use mãos e utensílios limpos, escorra os enlatados com segurança, mantenha o abacate e os legumes cortados refrigerados até servir e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Build the rainbow tacos",
+        "pt-BR": "Monte os tacos arco-íris"
+      },
+      "instruction": {
+        "en-GB": "Spoon the bean mixture into the tortillas. Add red and yellow pepper, avocado and lettuce.",
+        "pt-BR": "Coloque a mistura de feijão nas tortilhas. Acrescente os pimentões vermelho e amarelo, o abacate e a alface."
+      },
+      "ingredientIds": [
+        "corn-tortillas",
+        "black-beans",
+        "sweetcorn",
+        "red-pepper",
+        "yellow-pepper",
+        "avocado",
+        "lettuce"
+      ],
+      "equipmentIds": [
+        "serving-plate",
+        "measuring-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles the knife. Use clean hands and utensils, drain canned foods safely, keep cut avocado and vegetables chilled until serving, and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto manuseia a faca. Use mãos e utensílios limpos, escorra os enlatados com segurança, mantenha o abacate e os legumes cortados refrigerados até servir e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Serve safely",
+        "pt-BR": "Sirva com segurança"
+      },
+      "instruction": {
+        "en-GB": "Serve straight away. An adult checks the tortilla and canned-bean labels and refrigerates any leftovers promptly.",
+        "pt-BR": "Sirva imediatamente. Um adulto confere os rótulos das tortilhas e do feijão enlatado e refrigera as sobras sem demora."
+      },
+      "ingredientIds": [
+        "corn-tortillas",
+        "black-beans",
+        "sweetcorn"
+      ],
+      "equipmentIds": [
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles the knife. Use clean hands and utensils, drain canned foods safely, keep cut avocado and vegetables chilled until serving, and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto manuseia a faca. Use mãos e utensílios limpos, escorra os enlatados com segurança, mantenha o abacate e os legumes cortados refrigerados até servir e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "An adult handles the knife. Use clean hands and utensils, drain canned foods safely, keep cut avocado and vegetables chilled until serving, and refrigerate leftovers promptly.",
+    "pt-BR": "Um adulto manuseia a faca. Use mãos e utensílios limpos, escorra os enlatados com segurança, mantenha o abacate e os legumes cortados refrigerados até servir e refrigere as sobras sem demora."
+  },
+  "allergens": [],
+  "allergen_notes": {
+    "contains": [],
+    "cross_contact": {
+      "en-GB": "Check canned beans and tortilla packaging for allergens and cross-contact statements; do not assume products are allergen-free.",
+      "pt-BR": "Confira nos rótulos do feijão e das tortilhas os alergênicos e avisos de contato cruzado; não presuma que os produtos sejam livres de alergênicos."
+    }
+  },
+  "nutrition": {
+    "per_serving": null,
+    "status": "PENDING_NUTRIENT_SOURCE_LOOKUP",
+    "sources": []
+  },
+  "artwork": {
+    "status": "NOT_STARTED",
+    "artwork_assets": []
+  },
+  "artwork_assets": [],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "No-cook/Adult stovetop where noted",
+    "time": "25 min"
+  }
+}

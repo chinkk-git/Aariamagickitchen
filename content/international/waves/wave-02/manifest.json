@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0-draft",
+  "wave": 2,
+  "status": "DRAFT_NOT_READY",
+  "source_commit": "c9dd936ae2495684452faa4572172a566fd5c36b",
+  "recipes": [
+    {
+      "id": 102,
+      "country": "japan",
+      "title": "Veggie Sushi Rolls",
+      "recipe_json": "countries/japan/102-veggie-sushi-rolls/recipe.json",
+      "recipe_md": "countries/japan/102-veggie-sushi-rolls/recipe.md",
+      "artwork_ready": false,
+      "nutrition_status": "PENDING_NUTRIENT_SOURCE_LOOKUP"
+    },
+    {
+      "id": 105,
+      "country": "mexico",
+      "title": "Rainbow Veggie Tacos",
+      "recipe_json": "countries/mexico/105-rainbow-veggie-tacos/recipe.json",
+      "recipe_md": "countries/mexico/105-rainbow-veggie-tacos/recipe.md",
+      "artwork_ready": false,
+      "nutrition_status": "PENDING_NUTRIENT_SOURCE_LOOKUP"
+    }
+  ],
+  "next_steps": [
+    "Resolve canonical IDs and source nutrition values.",
+    "Finalize exact recipe schema against W01/W02 adapter.",
+    "Generate every distinct ingredient, equipment, finished-dish and step illustration after content lock.",
+    "Run full validation before any integration handoff."
+  ],
+  "wave1_handoff_commit": "c9dd936ae2495684452faa4572172a566fd5c36b"
+}

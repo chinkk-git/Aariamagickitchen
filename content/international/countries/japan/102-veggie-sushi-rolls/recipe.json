@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.0-draft",
+  "id": 102,
+  "country": "japan",
+  "country_code": "JP",
+  "title": {
+    "en-GB": "Veggie Sushi Rolls",
+    "pt-BR": "Rolinhos de sushi com legumes"
+  },
+  "description": {
+    "en-GB": "A family-friendly, vegetable-only sushi roll inspired by Japanese home cooking; no raw fish is used.",
+    "pt-BR": "Um sushi de legumes para fazer em família, inspirado na cozinha caseira japonesa; não leva peixe cru."
+  },
+  "cultural_context": {
+    "en-GB": "A family-friendly, vegetable-only sushi roll inspired by Japanese home cooking; no raw fish is used.",
+    "pt-BR": "Um sushi de legumes para fazer em família, inspirado na cozinha caseira japonesa; não leva peixe cru."
+  },
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 30,
+  "total_minutes": 55,
+  "ingredients": [
+    {
+      "id": "sushi-rice",
+      "name": {
+        "en-GB": "Short-grain sushi rice",
+        "pt-BR": "Arroz para sushi de grão curto"
+      },
+      "quantity": 200,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "water",
+      "name": {
+        "en-GB": "Water",
+        "pt-BR": "Água"
+      },
+      "quantity": 300,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "rice-vinegar",
+      "name": {
+        "en-GB": "Rice vinegar",
+        "pt-BR": "Vinagre de arroz"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "sugar",
+      "name": {
+        "en-GB": "Caster sugar",
+        "pt-BR": "Açúcar refinado"
+      },
+      "quantity": 8,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "nori",
+      "name": {
+        "en-GB": "Nori sheets",
+        "pt-BR": "Folhas de nori"
+      },
+      "quantity": 4,
+      "unit": "sheets",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "cucumber",
+      "name": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "carrot",
+      "name": {
+        "en-GB": "Carrot",
+        "pt-BR": "Cenoura"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "avocado",
+      "name": {
+        "en-GB": "Ripe avocado",
+        "pt-BR": "Abacate maduro"
+      },
+      "quantity": 150,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    }
+  ],
+  "equipment": [
+    "Lidded saucepan",
+    "Rice paddle or wooden spoon",
+    "Small bowl",
+    "Sushi rolling mat",
+    "Chopping board",
+    "Sharp kitchen knife",
+    "Measuring cup"
+  ],
+  "equipmentItems": [
+    {
+      "id": "saucepan",
+      "name": {
+        "en-GB": "Lidded saucepan",
+        "pt-BR": "Panela com tampa"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "rice-paddle",
+      "name": {
+        "en-GB": "Rice paddle or wooden spoon",
+        "pt-BR": "Espátula de arroz ou colher de pau"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "small-bowl",
+      "name": {
+        "en-GB": "Small bowl",
+        "pt-BR": "Tigela pequena"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "sushi-mat",
+      "name": {
+        "en-GB": "Sushi rolling mat",
+        "pt-BR": "Esteira para enrolar sushi"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Sharp kitchen knife",
+        "pt-BR": "Faca afiada de cozinha"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "measuring-cup",
+      "name": {
+        "en-GB": "Measuring cup",
+        "pt-BR": "Copo medidor"
+      },
+      "role": "shared",
+      "artwork": null
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Prepare the vegetables",
+        "pt-BR": "Prepare os legumes"
+      },
+      "instruction": {
+        "en-GB": "Wash hands and rinse the cucumber and carrot. An adult cuts them into thin sticks and prepares the avocado.",
+        "pt-BR": "Lave as mãos e enxágue o pepino e a cenoura. Um adulto corta os legumes em tiras finas e prepara o abacate."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "carrot",
+        "avocado"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Rinse the rice",
+        "pt-BR": "Lave o arroz"
+      },
+      "instruction": {
+        "en-GB": "Rinse the rice in a bowl until the water is mostly clear. Drain it well.",
+        "pt-BR": "Lave o arroz em uma tigela até a água sair quase transparente. Escorra bem."
+      },
+      "ingredientIds": [
+        "sushi-rice",
+        "water"
+      ],
+      "equipmentIds": [
+        "small-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Cook and cool the rice",
+        "pt-BR": "Cozinhe e esfrie o arroz"
+      },
+      "instruction": {
+        "en-GB": "An adult cooks the rice with measured water, then spreads it in a shallow clean tray to cool quickly. Keep it covered and do not leave it sitting out.",
+        "pt-BR": "Um adulto cozinha o arroz com a água medida e depois o espalha em uma travessa limpa e rasa para esfriar rapidamente. Mantenha coberto e não deixe parado à temperatura ambiente."
+      },
+      "ingredientIds": [
+        "sushi-rice",
+        "water"
+      ],
+      "equipmentIds": [
+        "saucepan"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Season and spread the rice",
+        "pt-BR": "Tempere e espalhe o arroz"
+      },
+      "instruction": {
+        "en-GB": "An adult mixes rice vinegar and sugar into the cooled rice. Place one nori sheet on the mat and spread a thin layer of rice, leaving a small strip clear at the far edge.",
+        "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz já frio. Coloque uma folha de nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa sem arroz na borda distante."
+      },
+      "ingredientIds": [
+        "rice-vinegar",
+        "sugar",
+        "nori",
+        "sushi-rice"
+      ],
+      "equipmentIds": [
+        "rice-paddle",
+        "small-bowl",
+        "sushi-mat"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Fill, roll and serve",
+        "pt-BR": "Recheie, enrole e sirva"
+      },
+      "instruction": {
+        "en-GB": "Lay cucumber, carrot and avocado across the rice. Roll firmly with the mat. An adult slices the roll with a clean sharp knife; eat promptly and refrigerate leftovers.",
+        "pt-BR": "Coloque pepino, cenoura e abacate sobre o arroz. Enrole com firmeza usando a esteira. Um adulto corta o rolo com uma faca limpa e afiada; consuma logo e refrigere as sobras."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "carrot",
+        "avocado",
+        "nori",
+        "sushi-rice"
+      ],
+      "equipmentIds": [
+        "sushi-mat",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult assistance is required for knife or heat tasks; adult supervises all steps.",
+        "pt-BR": "É necessária a ajuda de um adulto para usar faca ou calor; um adulto supervisiona todas as etapas."
+      },
+      "safety": {
+        "en-GB": "An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora."
+      },
+      "artwork": null
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.",
+    "pt-BR": "Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora."
+  },
+  "allergens": [],
+  "allergen_notes": {
+    "contains": [],
+    "cross_contact": {
+      "en-GB": "Check nori and vinegar labels for declared allergens and cross-contact; use clean hands and equipment.",
+      "pt-BR": "Confira nos rótulos do nori e do vinagre os alergênicos e avisos de contato cruzado; use mãos e utensílios limpos."
+    }
+  },
+  "nutrition": {
+    "per_serving": null,
+    "status": "PENDING_NUTRIENT_SOURCE_LOOKUP",
+    "sources": []
+  },
+  "artwork": {
+    "status": "NOT_STARTED",
+    "artwork_assets": []
+  },
+  "artwork_assets": [],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "No-cook/Adult stovetop where noted",
+    "time": "55 min"
+  }
+}
