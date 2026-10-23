@@ -9,10 +9,10 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const screenshots = 'artifacts/v33-world-map-sample/screenshots';
 mkdirSync(screenshots, { recursive: true });
 
-async function connect() {
+async function connect({ refresh = false } = {}) {
   let target;
   let lastTargets = [];
-  try { target = JSON.parse(process.env.ANDROID_DEVTOOLS_TARGET || 'null'); } catch { }
+  if (!refresh) try { target = JSON.parse(process.env.ANDROID_DEVTOOLS_TARGET || 'null'); } catch { }
   if (!target) {
     for (let attempt = 0; attempt < 60; attempt++) {
       try {
@@ -45,6 +45,9 @@ async function connect() {
     clearTimeout(timer);
     message.error ? reject(new Error(message.error.message)) : resolve(message.result);
   });
+  const failPending=reason=>{for(const {reject,timer} of pending.values()){clearTimeout(timer);reject(new Error(reason))}pending.clear()};
+  ws.addEventListener('close',()=>failPending('Android WebView DevTools target closed'));
+  ws.addEventListener('error',()=>failPending('Android WebView DevTools target disconnected'));
   const command = (method, params = {}) => {
     const id = ++sequence;
     const response = new Promise((resolve, reject) => {
@@ -108,7 +111,7 @@ async function setOrientation(session, landscape) {
       for(let i=0;i<20;i++){
         await pause(300);
         lastViewport=await session.evaluate('({width:innerWidth,height:innerHeight})');
-        if((lastViewport.width>lastViewport.height)===landscape){if(++stable===3)return lastViewport}else stable=0;
+        if((lastViewport.width>lastViewport.height)===landscape){if(++stable===3)return session}else stable=0;
       }
     }
     adb(['emu','rotate']);
@@ -116,6 +119,16 @@ async function setOrientation(session, landscape) {
       await pause(300);
       lastRotation=await currentRotation();
       if((lastRotation%2===1)===landscape)break;
+    }
+    if((lastRotation%2===1)===landscape){
+      try{session.ws.close()}catch{}
+      session=await connect({refresh:true});
+      let stable=0;
+      for(let i=0;i<20;i++){
+        await pause(300);
+        lastViewport=await session.evaluate('({width:innerWidth,height:innerHeight})');
+        if((lastViewport.width>lastViewport.height)===landscape){if(++stable===3)return session}else stable=0;
+      }
     }
   }
   throw new Error(`Phone emulator did not reach ${landscape?'landscape':'portrait'} orientation: ${JSON.stringify({rotation:lastRotation,viewport:lastViewport})}`);
@@ -179,13 +192,13 @@ try {
   evidence.flow.push({step:'android-back-restores-country-cards',...returned,status:'PASS'});
   evidence.screenshots.push(screenshot('world-map-back-phone-portrait'));
 
-  adb(['shell','input','keyevent','4']);await pause(400);await setOrientation(session,true);
+  adb(['shell','input','keyevent','4']);await pause(400);session=await setOrientation(session,true);
   const landscape=await session.evaluate(evalWorld);assertMap(landscape,'phone landscape');
   evidence.geometry.push({device:'phone',orientation:'landscape',...landscape});
   await session.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');await pause(600);
   evidence.screenshots.push(screenshot('world-map-phone-landscape','landscape'));
   evidence.flow.push({step:'fixed-map-orientation-reflow',orientation:'landscape',viewport:await session.evaluate('({width:innerWidth,height:innerHeight})'),status:'PASS'});
-  await setOrientation(session,false);
+  session=await setOrientation(session,false);
 
   const locale=await session.evaluate(`(()=>{state.language='pt-BR';render();return {heading:document.querySelector('.w02-map-header h1')?.textContent?.trim()||'',marker:document.querySelector('.w02-country-marker')?.textContent?.trim()||'',label:document.querySelector('.w02-country-marker')?.getAttribute('aria-label')||''}})()`);
   if(locale.heading!=='Mapa do mundo'||locale.marker!=='🇮🇳Índia'||!locale.label.includes('Índia'))throw new Error(`PT-BR fixed map localisation failed: ${JSON.stringify(locale)}`);
