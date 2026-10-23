@@ -31,15 +31,24 @@ def transition(task, next_state, *, now=None, lease_until="", exact_sha=""):
         from .a10_job_contract import SHA
         if not SHA.fullmatch(exact_sha):
             raise ValueError("invalid exact SHA")
+        until = datetime.fromisoformat(lease_until.replace("Z", "+00:00"))
+        clock = now or datetime.now(timezone.utc)
+        if until.tzinfo is None or until <= clock:
+            raise ValueError("claim requires a future timezone-aware lease")
         return Task(task.key, task.worker, next_state, task.attempt + 1,
                     lease_until, exact_sha)
     if next_state == "RUNNING":
-        if not task.lease_until:
-            raise ValueError("missing claim lease")
+        if not task.lease_until or not task.exact_sha:
+            raise ValueError("missing claim lease or SHA")
         clock = now or datetime.now(timezone.utc)
         until = datetime.fromisoformat(task.lease_until.replace("Z", "+00:00"))
         if until.tzinfo is None or until <= clock:
             raise ValueError("expired or naive lease")
+    if next_state == "VERIFYING":
+        clock = now or datetime.now(timezone.utc)
+        until = datetime.fromisoformat(task.lease_until.replace("Z", "+00:00"))
+        if until <= clock:
+            raise ValueError("cannot verify after lease expiration")
     return Task(task.key, task.worker, next_state, task.attempt,
                 task.lease_until if next_state in {"RUNNING", "VERIFYING"} else "",
                 task.exact_sha)
