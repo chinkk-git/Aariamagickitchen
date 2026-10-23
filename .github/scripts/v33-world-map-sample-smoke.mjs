@@ -143,6 +143,7 @@ async function tap(session, selector, label) {
   if (!point.visible) throw new Error(`${label} is missing or unreachable: ${JSON.stringify(point)}`);
   await session.command('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: point.x, y: point.y, id: 41 }] });
   await session.command('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await pause(180);
   return point;
 }
 
@@ -243,9 +244,15 @@ try {
   assertMap(world,'phone portrait');evidence.geometry.push({device:'phone',orientation:'portrait',...world});
   evidence.flow.push({step:'home-touch-to-magical-spinning-globe',target:openTarget,status:'PASS'});
 
-  const marker=world.marker.rect;
-  await session.command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:(marker.left+marker.right)/2,y:(marker.top+marker.bottom)/2,id:52}]});
-  await session.command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await tap(session,'.aria-world-globe__surprise','Surprise Me');
+  const surprise=await waitFor(session.evaluate,`(()=>{const state=v33GlobeController?.getState?.()||{};return {visible:!!state.pending&&!state.selected,pending:state.pending||null,selected:state.selected||null,message:document.querySelector('.aria-world-globe__empty-state p')?.textContent?.trim()||''}})()`,'Surprise Me country hint');
+  if(surprise.pending!=='india'||surprise.selected||!surprise.message.includes('Tap a front-facing flag'))throw new Error(`Surprise Me must suggest a country and wait for a flag tap: ${JSON.stringify(surprise)}`);
+  evidence.flow.push({step:'surprise-me-waits-for-explicit-flag-selection',...surprise,status:'PASS'});
+  await waitFor(session.evaluate,`(()=>{const f=document.querySelector('.aria-world-globe__flag.is-pending');return {visible:!!f&&document.activeElement===f}})()`,'settled Surprise Me flag');
+  const selectedFlag=await tap(session,'.aria-world-globe__flag.is-pending','Select the suggested India flag');
+  const selectedCountry=await waitFor(session.evaluate,`(()=>{const state=v33GlobeController?.getState?.()||{},title=document.querySelector('.aria-world-globe__panel-head h2');return {visible:!!title&&!!state.selected&&!state.pending,name:title?.textContent?.trim()||'',selected:state.selected||null}})()`,'explicit India flag selection');
+  if(selectedCountry.name!=='India'||selectedCountry.selected!=='india')throw new Error(`Explicit flag selection opened the wrong country: ${JSON.stringify(selectedCountry)}`);
+  evidence.flow.push({step:'android-touch-selects-suggested-india-flag',target:selectedFlag,...selectedCountry,status:'PASS'});
   const country=await waitFor(session.evaluate,`(()=>{const title=document.querySelector('.aria-world-globe__panel-head h2'),r=title?.getBoundingClientRect();return {visible:!!title&&!!r&&r.width>0&&r.height>0,name:title?.textContent?.trim()||'',ids:[...document.querySelectorAll('.aria-world-globe__recipe[data-recipe-id]')].map(x=>Number(x.dataset.recipeId))}})()`,'India recipe cards');
   if(country.name!=='India'||country.ids.length!==18||new Set(country.ids).size!==18||country.ids.some(id=>id<1||id>95))throw new Error(`India must expose only its 18 existing canonical recipes: ${JSON.stringify(country)}`);
   evidence.flow.push({step:'android-touch-india-country-cards',recipeIds:country.ids,status:'PASS'});
@@ -287,7 +294,10 @@ try {
   evidence.flow.push({step:'food-passport-view-without-reward',...passport,status:'PASS'});
   evidence.screenshots.push(await stableScreenshot(session,'food-passport-phone-portrait','portrait',emptyPassportBase.sha256));
   await tap(session,'[data-v33-passport-close]','Close empty Food Passport');
-  await tap(session,'.aria-world-globe__flag[aria-label="Índia"]','Open India after passport');
+  const passportClosed=await waitFor(session.evaluate,`(()=>({visible:!document.querySelector('.v33-passport-overlay'),overlay:!!document.querySelector('.v33-passport-overlay'),flags:[...document.querySelectorAll('.aria-world-globe__flag')].map(x=>x.getAttribute('aria-label'))}))()`,'empty Food Passport dismissal');
+  if(passportClosed.overlay||!passportClosed.flags.includes('India'))throw new Error(`Closing Food Passport must restore the English globe flags: ${JSON.stringify(passportClosed)}`);
+  evidence.flow.push({step:'food-passport-close-restores-globe',flags:passportClosed.flags,status:'PASS'});
+  await tap(session,'.aria-world-globe__flag[aria-label="India"]','Open India after passport');
   await waitFor(session.evaluate,`(()=>{const h=document.querySelector('.aria-world-globe__panel-head h2'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0,name:h?.textContent?.trim()||''}})()`,'India cards for completion');
   await tap(session,'.aria-world-globe__recipe[data-recipe-id="51"]','Open recipe 51 for completion');
   const completionStart=await session.evaluate(`({id:Number(selected?.id||0),stepCount:selected?.steps?.length||0,step:Number(step||0)})`);

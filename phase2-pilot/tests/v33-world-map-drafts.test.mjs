@@ -61,6 +61,8 @@ test('W03 globe assets are integrated unchanged with approved Aaria art and Andr
   assert.match(smoke,/world-map-phone-portrait/);
   assert.match(smoke,/world-map-phone-landscape/);
   assert.match(smoke,/country-preview-phone-portrait/);
+  assert.match(smoke,/surprise-me-waits-for-explicit-flag-selection/);
+  assert.match(smoke,/android-touch-selects-suggested-india-flag/);
   assert.match(smoke,/food-passport-offline-restart-persistence/);
 });
 
@@ -93,6 +95,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/stableScreenshot\(session,'recipe-navigation-phone-portrait','portrait',countryShot\.sha256\)/,'recipe screenshot must wait for stable Android pixels distinct from the country preview');
   assert.match(phone,/stableScreenshot\(session,'food-passport-phone-portrait','portrait',emptyPassportBase\.sha256\)/,'empty Passport screenshot must show settled pixels distinct from the underlying map');
   assert.match(phone,/stableScreenshot\(session,'food-passport-earned-phone-portrait','portrait',earnedPassportBase\.sha256\)/,'earned Passport screenshot must show settled pixels distinct from the underlying map');
+  assert.match(phone,/empty Food Passport dismissal/,'the smoke waits for the real Android close tap to dismiss Passport');
+  assert.match(phone,/flags\.includes\('India'\)/,'after resetting to EN-GB the globe tap must use the English flag label');
   assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
   assert.match(phoneLaunch,/127\.0\.0\.1:9224\/json/,'sample verifies a live app-owned DevTools page before connecting');
   assert.match(phoneLaunch,/pm clear \"\$APP_ID\"/,'sample clears the fresh app profile before launching the app');

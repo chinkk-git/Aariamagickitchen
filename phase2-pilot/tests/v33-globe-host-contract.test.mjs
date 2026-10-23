@@ -23,6 +23,7 @@ function setup(canonicalRecipes = makeRecipes(), overrides = {}) {
   });
   return { host, calls };
 }
+const allCountryRecipes = host => ['IND','ITA','CHN','JPN','MEX','VNM'].flatMap(code => host.getCountry(code).recipes);
 
 test('host preserves all 18 India links from the original catalogue', async () => {
   const { host } = setup();
@@ -46,6 +47,10 @@ test('95-recipe catalogue exposes India only and fails closed for unvalidated co
   }
   assert.equal(host.openRecipe(96), false);
   assert.equal(host.openRecipe(12), false);
+  const linked = allCountryRecipes(host).map(recipe => recipe.id);
+  assert.equal(linked.length, 18, '95-item stage must expose exactly the 18 canonical India links');
+  assert.equal(new Set(linked).size, 18, '95-item stage must not duplicate globe destinations');
+  assert.deepEqual(linked, WORLD_ADVENTURE_INDIA_RECIPE_IDS, 'the other 77 originals must stay out of globe country lists');
   assert.deepEqual(host.getPassportSnapshot().stamps, ['IND']);
   assert.deepEqual(calls, []);
 });
@@ -56,6 +61,11 @@ test('97-entry catalogue discovers only W01-validated Italy and China links', ()
   assert.deepEqual(host.getCountry('ITA').recipes.map(r => r.id), [96]);
   assert.deepEqual(host.getCountry('CHN').recipes.map(r => r.id), [99]);
   assert.equal(host.getCountry('JPN').available, false);
+  const linked = allCountryRecipes(host).map(recipe => recipe.id);
+  assert.equal(linked.length, 20, '97-item stage must contain 18 India and 2 validated international links');
+  assert.equal(new Set(linked).size, 20, '97-item stage must not duplicate globe destinations');
+  assert.deepEqual(linked.filter(id => id > 95).sort((a,b) => a-b), [96,99]);
+  assert.deepEqual(linked.filter(id => id <= 95), WORLD_ADVENTURE_INDIA_RECIPE_IDS);
   assert.equal(host.openRecipe(96), true);
   assert.equal(host.openRecipe(99), true);
   assert.deepEqual(calls, [['recipe', 96], ['recipe', 99]]);
@@ -65,6 +75,11 @@ test('110-entry catalogue scales by validated country metadata without an allowl
   const additions = [validatedRecipe(96,'ITA'), validatedRecipe(97,'JPN'), validatedRecipe(98,'MEX'), validatedRecipe(99,'CHN'), validatedRecipe(100,'VNM'),
     ...Array.from({length:10},(_,i)=>validatedRecipe(101+i,['ITA','JPN','MEX','CHN','VNM'][i%5]))];
   const { host } = setup([...makeRecipes(), ...additions]);
+  const linked = allCountryRecipes(host).map(recipe => recipe.id);
+  assert.equal(linked.length, 33, '110-item stage must contain 18 India and all 15 validated international links');
+  assert.equal(new Set(linked).size, 33, '110-item stage must not duplicate globe destinations');
+  assert.deepEqual(linked.filter(id => id <= 95), WORLD_ADVENTURE_INDIA_RECIPE_IDS);
+  assert.deepEqual(linked.filter(id => id > 95).sort((a,b) => a-b), Array.from({length:15},(_,i)=>96+i));
   assert.equal(Object.values({ITA:'ITA',JPN:'JPN',MEX:'MEX',CHN:'CHN',VNM:'VNM'}).reduce((n,code)=>n+host.getCountry(code).recipes.length,0),15);
   assert.deepEqual(host.getCountry('ITA').recipes.map(r=>r.id), [96,101,106]);
 });
