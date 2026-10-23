@@ -1,0 +1,204 @@
+{
+  "version": "1.0",
+  "wave": 3,
+  "recipes": [
+    {
+      "id": 97,
+      "status": "PASS",
+      "artwork_count": 16,
+      "errors": []
+    },
+    {
+      "id": 100,
+      "status": "PASS",
+      "artwork_count": 23,
+      "errors": []
+    }
+  ],
+  "checks": {
+    "repository_schema_constraints": "PASS",
+    "bilingual_completeness": "PASS",
+    "asset_existence_sha256": "PASS",
+    "canonical_ids": "PASS; 97/100 outside canonical 1-95, no pair collision",
+    "safety_content": "PASS; adult hot/knife and food handling cues present; independent A08/A09 pending",
+    "nutrition_sources": "PASS; per-serving estimates and USDA FDC queries recorded; independent review pending",
+    "offline_paths": "PASS",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "pair_sha256": "8222d539121eff2d558b30ff6d5376f6de37c58a7c86da40d7320905689267b1",
+  "package_files": [
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
+      "sha256": "8a01ea7b5fc1f50f2c5e216f441eff4a4208e5dbeb1c18b28ccf28cc3cf13d5f"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
+      "sha256": "406c15fa58aa2156e8d7b4922816d8f95b59897004f6a51b3126d43bfa40d43b"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
+      "sha256": "1ed95bda24bfa70e4338d1151c1192c158a4749d8edc5809d23fd3b667c663d1"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/skewers.png",
+      "sha256": "ae105b7064b12ba7dcd1d71a269f6b6204bdb2faf5a35515d36b3b0482a2055a"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
+      "sha256": "e25af75d11751b4c56ae1b85298329c95df43ab4cbc1e4191d66373141303677"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/finished-dish.png",
+      "sha256": "f6cedf79d4d1e867d4b5dcdd6b81220a7cf4ff860feac3a93fe3f3f20c3fa33f"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
+      "sha256": "7fcd09833738ce0567980d9afe66d1427610949341ea436a33c36bd8a3e11cfc"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
+      "sha256": "231bbc9857c45a3f4ac0a355ae42fceb48d15fb88df3fa7ae0978624070a9c77"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/cherry-tomatoes.png",
+      "sha256": "a70bffbda30cd986f296d33d07904acebba1a607c92caada5e789c7d0d7373ba"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
+      "sha256": "f892ecd1a7c67f98500fbd367d241cac88d57fa98794b478512a850c562674e0"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
+      "sha256": "bad8a7e706078807a9661c7b2677d779a9964346b2341fb69cf27119f3f2a45b"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
+      "sha256": "3bcde86acd0fe63009246d687008bda7c2cb0a6d75118ac87b25d40c3c544562"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
+      "sha256": "3b23172dfabb05bb0826b1d2d8c07721dbcb0e7a8ad3ec663ff3dcc5fa391900"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
+      "sha256": "06c839fa2fd18b45fe0f3a1c1e30063b14887cbb9753645cd106cde7d30faa96"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
+      "sha256": "d2696331972d254af2802f2e15b6b5e189f626aaaaeb7fae472faba125e45065"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
+      "sha256": "26581f80af29aad3169af956618c12fe919d0a9647e1e5f16931b02d27539eb8"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/recipe.json",
+      "sha256": "316381121f3d3a8ec960a73db642daec8faf1dc0f60469d4fff88344ad81f4b7"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/recipe.md",
+      "sha256": "05f518f53e2b9d69b7c49b7ced1ebdc410d8c2c3481d09b184edd944b8c0e260"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/chopping-board.png",
+      "sha256": "f9fa81b7e561abfaac8a25db3c1304176dac706fae8ca4f085832c5bb1d052c9"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png",
+      "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/knife.png",
+      "sha256": "3a97fae0528e0b769820e1a7cbda80b2173882ac02d74f0e344b5ec09ebc7626"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/saucepan.png",
+      "sha256": "ab97d4b8f293066c5d94bff4f8e5676ce40e49143034b2f0df6d20c569da4463"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png",
+      "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/spatula.png",
+      "sha256": "d760023800fbd31b8f2c6a32cabdd12ee9573073ebc6a9cd4472f4088ca58aae"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/wok.png",
+      "sha256": "3a534629defff6290d63a6a15f10e4afd5ec9c0dd150b65058add7c69a4f9321"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/finished-dish.png",
+      "sha256": "718ca0bb309cb7e1e54516ba65ca9ae51daf7f90aa32727c91a9ae335aab3729"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/broccoli.png",
+      "sha256": "774cc17ac9639de9eba74a54d78ad6fff343a6374fefe9fb2f1ba54df151fdb3"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/carrot.png",
+      "sha256": "d4760230067d2c6c84efd138d1bfc0176f90e2dd7b80fc0783b087fd4845badc"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/garlic.png",
+      "sha256": "449a3764f5ea6b4c51c497a0fb448a031de15dc963455a29cccb03a99cfae27c"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/neutral-oil.png",
+      "sha256": "1f8f86c4eb97209b390a5fc13400c6c2eb6904e2383f9b738b74fea358a514b3"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/red-pepper.png",
+      "sha256": "33793056ad67b6daaca87c05a86752d40eb8f50aefb6ec32ad2f93029de0c709"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/sesame-oil.png",
+      "sha256": "062c8bd323c65bc8e1bf5543286ca1341cac48ff1a56f40f817c4baa30f368e0"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/soy-sauce.png",
+      "sha256": "573e87d5caaf8bf8f693f6818e35c74b06ce4f57415c6f0b9f0ab4f583a37804"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/spring-onion.png",
+      "sha256": "375535e4e85d69d60e71be8119065d93ce74803b74f55c381ecbb628d6ccdb22"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/water.png",
+      "sha256": "57c5b56128122e18e201e2703e74705b0aadae3c47f7e159e1a8422d8bd13e90"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/wheat-noodles.png",
+      "sha256": "e1574a597475f778240850fab627c4f7155649232b12985482e924bdf7933e42"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-01.png",
+      "sha256": "a079b94065f41f34586f010d4ea0d75113a7d6ea3d033d62af6b5055d585822d"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-02.png",
+      "sha256": "7a1cfda7d24f8022d63c9aa99b2bb3cc51682010891d2cf0b53fb7e942290fd3"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-03.png",
+      "sha256": "8d2fe7de52ef8092ba1e8607641ffde0d4ca3249f8052d9b1c7a90ce4151c021"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-04.png",
+      "sha256": "2acb1f6061f08b5a8b9cc201aaf4a6daacd253f96bf6ab40ad753617e9afc16a"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-05.png",
+      "sha256": "5f8ee81e2c0c00617fdeb84bada183d2b24ef66a85e39ebc498a892afecf46e7"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/recipe.json",
+      "sha256": "9d6fe8e58461dc349d058174684323f4b3f2fb7935f9d913bb7065a034a36cb3"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/recipe.md",
+      "sha256": "71b276402088e5733ec7d8af44a83cb8324bac37c17d70c6fd9002216ff214cd"
+    }
+  ]
+}

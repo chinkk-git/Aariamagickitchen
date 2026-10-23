@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0-draft",
+  "schema_version": "1.0",
   "id": 100,
   "country": "china",
   "country_code": "CN",
@@ -12,17 +12,41 @@
     "pt-BR": "Um prato rápido de macarrão com legumes coloridos e molho de soja e gergelim, inspirado na cozinha caseira chinesa."
   },
   "cultural_context": {
-    "en-GB": "A quick family noodle dish with colourful vegetables and a soy-sesame dressing, inspired by Chinese home-style cooking.",
-    "pt-BR": "Um prato rápido de macarrão com legumes coloridos e molho de soja e gergelim, inspirado na cozinha caseira chinesa."
+    "en-GB": "Wheat noodles and stir-fried vegetables are common across many Chinese regional and household traditions; sauces and vegetables vary.",
+    "pt-BR": "Macarrão de trigo e legumes salteados aparecem em diversas tradições regionais e familiares chinesas; molhos e vegetais variam."
   },
+  "category": "international",
+  "method": "Adult stovetop",
+  "time": "35 min",
   "servings": 4,
   "age_range_years": [
     8,
     10
   ],
-  "active_minutes": 20,
+  "active_minutes": 25,
   "total_minutes": 35,
   "ingredients": [
+    "240 g Dried wheat noodles",
+    "150 g Broccoli florets",
+    "100 g Carrot",
+    "120 g Red bell pepper",
+    "30 g Spring onion",
+    "1 clove Garlic clove",
+    "30 mL Reduced-sodium soy sauce",
+    "5 mL Sesame oil",
+    "15 mL Neutral cooking oil",
+    "1500 mL Water for noodles"
+  ],
+  "equipment": [
+    "Large lidded saucepan",
+    "Colander",
+    "Wok",
+    "Wok spatula",
+    "Chopping board",
+    "Kitchen knife",
+    "Small sauce bowl"
+  ],
+  "ingredientItems": [
     {
       "id": "wheat-noodles",
       "name": {
@@ -36,7 +60,14 @@
         "gluten"
       ],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/wheat-noodles.png",
+        "sha256": "e1574a597475f778240850fab627c4f7155649232b12985482e924bdf7933e42",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "broccoli",
@@ -48,7 +79,14 @@
       "unit": "g",
       "allergens": [],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/broccoli.png",
+        "sha256": "774cc17ac9639de9eba74a54d78ad6fff343a6374fefe9fb2f1ba54df151fdb3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "carrot",
@@ -60,7 +98,14 @@
       "unit": "g",
       "allergens": [],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/carrot.png",
+        "sha256": "d4760230067d2c6c84efd138d1bfc0176f90e2dd7b80fc0783b087fd4845badc",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "red-pepper",
@@ -72,7 +117,14 @@
       "unit": "g",
       "allergens": [],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/red-pepper.png",
+        "sha256": "33793056ad67b6daaca87c05a86752d40eb8f50aefb6ec32ad2f93029de0c709",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "spring-onion",
@@ -84,7 +136,14 @@
       "unit": "g",
       "allergens": [],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/spring-onion.png",
+        "sha256": "375535e4e85d69d60e71be8119065d93ce74803b74f55c381ecbb628d6ccdb22",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "garlic",
@@ -96,7 +155,14 @@
       "unit": "clove",
       "allergens": [],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/garlic.png",
+        "sha256": "449a3764f5ea6b4c51c497a0fb448a031de15dc963455a29cccb03a99cfae27c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "soy-sauce",
@@ -112,7 +178,14 @@
         "gluten"
       ],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/soy-sauce.png",
+        "sha256": "573e87d5caaf8bf8f693f6818e35c74b06ce4f57415c6f0b9f0ab4f583a37804",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "sesame-oil",
@@ -126,7 +199,14 @@
         "sesame"
       ],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/sesame-oil.png",
+        "sha256": "062c8bd323c65bc8e1bf5543286ca1341cac48ff1a56f40f817c4baa30f368e0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "neutral-oil",
@@ -138,7 +218,14 @@
       "unit": "mL",
       "allergens": [],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/neutral-oil.png",
+        "sha256": "1f8f86c4eb97209b390a5fc13400c6c2eb6904e2383f9b738b74fea358a514b3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "water",
@@ -150,18 +237,33 @@
       "unit": "mL",
       "allergens": [],
       "optional": false,
-      "artwork": null
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/water.png",
+        "sha256": "57c5b56128122e18e201e2703e74705b0aadae3c47f7e159e1a8422d8bd13e90",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     }
   ],
   "equipmentItems": [
     {
       "id": "saucepan",
       "name": {
-        "en-GB": "Large saucepan",
-        "pt-BR": "Panela grande"
+        "en-GB": "Large lidded saucepan",
+        "pt-BR": "Panela grande com tampa"
       },
       "role": "adult",
-      "artwork": null
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/saucepan.png",
+        "sha256": "ab97d4b8f293066c5d94bff4f8e5676ce40e49143034b2f0df6d20c569da4463",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "colander",
@@ -170,7 +272,15 @@
         "pt-BR": "Escorredor"
       },
       "role": "adult",
-      "artwork": null
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png",
+        "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "wok",
@@ -179,7 +289,15 @@
         "pt-BR": "Wok"
       },
       "role": "adult",
-      "artwork": null
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/wok.png",
+        "sha256": "3a534629defff6290d63a6a15f10e4afd5ec9c0dd150b65058add7c69a4f9321",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "spatula",
@@ -188,7 +306,15 @@
         "pt-BR": "Espátula para wok"
       },
       "role": "adult",
-      "artwork": null
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/spatula.png",
+        "sha256": "d760023800fbd31b8f2c6a32cabdd12ee9573073ebc6a9cd4472f4088ca58aae",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "chopping-board",
@@ -197,7 +323,15 @@
         "pt-BR": "Tábua de corte"
       },
       "role": "adult",
-      "artwork": null
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/chopping-board.png",
+        "sha256": "f9fa81b7e561abfaac8a25db3c1304176dac706fae8ca4f085832c5bb1d052c9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "knife",
@@ -206,28 +340,44 @@
         "pt-BR": "Faca de cozinha"
       },
       "role": "adult",
-      "artwork": null
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/knife.png",
+        "sha256": "3a97fae0528e0b769820e1a7cbda80b2173882ac02d74f0e344b5ec09ebc7626",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "small-bowl",
       "name": {
-        "en-GB": "Small bowl",
-        "pt-BR": "Tigela pequena"
+        "en-GB": "Small sauce bowl",
+        "pt-BR": "Tigela pequena para o molho"
       },
       "role": "shared",
-      "artwork": null
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     }
   ],
   "steps": [
     {
       "id": "step-01",
       "title": {
-        "en-GB": "Wash and prepare",
-        "pt-BR": "Lave e prepare"
+        "en-GB": "Wash and prepare vegetables",
+        "pt-BR": "Lave e prepare os legumes"
       },
       "instruction": {
-        "en-GB": "Wash vegetables. An adult cuts carrot, pepper and spring onion on a stable board; children tear broccoli into florets.",
-        "pt-BR": "Lave os legumes. Um adulto corta cenoura, pimentão e cebolinha em tábua estável; crianças separam o brócolis em floretes."
+        "en-GB": "Wash the vegetables. An adult cuts the carrot and pepper on a stable board; children tear broccoli into florets.",
+        "pt-BR": "Lave os legumes. Um adulto corta a cenoura e o pimentão em uma tábua estável; crianças separam o brócolis em floretes."
       },
       "ingredientIds": [
         "broccoli",
@@ -236,23 +386,34 @@
         "spring-onion"
       ],
       "equipmentIds": [
-        "saucepan",
-        "colander",
-        "wok",
-        "spatula",
         "chopping-board",
-        "knife",
-        "small-bowl"
+        "knife"
       ],
       "adultAssist": {
-        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+        "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
       },
       "safety": {
-        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+        "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
       },
-      "artwork": null
+      "heatOrKnifeCue": {
+        "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+        "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-01.png",
+        "sha256": "a079b94065f41f34586f010d4ea0d75113a7d6ea3d033d62af6b5055d585822d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "step-02",
@@ -270,22 +431,33 @@
       ],
       "equipmentIds": [
         "saucepan",
-        "colander",
-        "wok",
-        "spatula",
-        "chopping-board",
-        "knife",
-        "small-bowl"
+        "colander"
       ],
       "adultAssist": {
-        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+        "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
       },
       "safety": {
-        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+        "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
       },
-      "artwork": null
+      "heatOrKnifeCue": {
+        "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+        "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-02.png",
+        "sha256": "7a1cfda7d24f8022d63c9aa99b2bb3cc51682010891d2cf0b53fb7e942290fd3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "step-03",
@@ -294,42 +466,51 @@
         "pt-BR": "Misture o molho"
       },
       "instruction": {
-        "en-GB": "Stir soy sauce, sesame oil and a splash of water in a small bowl. Check labels for allergens.",
-        "pt-BR": "Misture o molho de soja, o óleo de gergelim e um pouco de água em uma tigela. Confira os rótulos para alergênicos."
+        "en-GB": "Stir soy sauce and sesame oil in a small bowl. Check product labels for allergens.",
+        "pt-BR": "Misture o molho de soja e o óleo de gergelim em uma tigela pequena. Confira os rótulos para alergênicos."
       },
       "ingredientIds": [
         "soy-sauce",
-        "sesame-oil",
-        "water"
+        "sesame-oil"
       ],
       "equipmentIds": [
-        "saucepan",
-        "colander",
-        "wok",
-        "spatula",
-        "chopping-board",
-        "knife",
         "small-bowl"
       ],
       "adultAssist": {
-        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+        "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
       },
       "safety": {
-        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+        "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
       },
-      "artwork": null
+      "heatOrKnifeCue": {
+        "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+        "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-03.png",
+        "sha256": "8d2fe7de52ef8092ba1e8607641ffde0d4ca3249f8052d9b1c7a90ce4151c021",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "step-04",
       "title": {
-        "en-GB": "Cook the vegetables",
-        "pt-BR": "Cozinhe os legumes"
+        "en-GB": "Stir-fry the vegetables",
+        "pt-BR": "Salteie os legumes"
       },
       "instruction": {
-        "en-GB": "An adult heats neutral oil in a wok, adds garlic and vegetables and stirs until tender-crisp. Keep children away from the hot wok.",
-        "pt-BR": "Um adulto aquece o óleo neutro em uma wok, acrescenta alho e legumes e mexe até ficarem macios e crocantes. Mantenha crianças longe da wok quente."
+        "en-GB": "An adult heats neutral oil in a wok, adds garlic and vegetables and stirs until just tender. Children stay well back from the hot wok.",
+        "pt-BR": "Um adulto aquece o óleo neutro em uma wok, acrescenta alho e legumes e mexe até ficarem macios. Crianças ficam afastadas da wok quente."
       },
       "ingredientIds": [
         "neutral-oil",
@@ -340,23 +521,34 @@
         "spring-onion"
       ],
       "equipmentIds": [
-        "saucepan",
-        "colander",
         "wok",
-        "spatula",
-        "chopping-board",
-        "knife",
-        "small-bowl"
+        "spatula"
       ],
       "adultAssist": {
-        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+        "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
       },
       "safety": {
-        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+        "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
       },
-      "artwork": null
+      "heatOrKnifeCue": {
+        "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+        "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-04.png",
+        "sha256": "2acb1f6061f08b5a8b9cc201aaf4a6daacd253f96bf6ab40ad753617e9afc16a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     },
     {
       "id": "step-05",
@@ -365,8 +557,8 @@
         "pt-BR": "Misture e sirva"
       },
       "instruction": {
-        "en-GB": "An adult adds drained noodles and dressing to the wok and stirs until steaming hot. Serve promptly.",
-        "pt-BR": "Um adulto acrescenta o macarrão escorrido e o molho à wok e mexe até ficar bem quente. Sirva logo."
+        "en-GB": "An adult adds drained noodles and dressing to the hot wok and tosses until steaming. Serve promptly.",
+        "pt-BR": "Um adulto acrescenta o macarrão escorrido e o molho à wok quente e mistura até soltar vapor. Sirva logo."
       },
       "ingredientIds": [
         "wheat-noodles",
@@ -374,25 +566,40 @@
         "sesame-oil"
       ],
       "equipmentIds": [
-        "saucepan",
-        "colander",
         "wok",
-        "spatula",
-        "chopping-board",
-        "knife",
-        "small-bowl"
+        "spatula"
       ],
       "adultAssist": {
-        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+        "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
       },
       "safety": {
-        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+        "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
       },
-      "artwork": null
+      "heatOrKnifeCue": {
+        "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+        "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-05.png",
+        "sha256": "5f8ee81e2c0c00617fdeb84bada183d2b24ef66a85e39ebc498a892afecf46e7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
     }
   ],
+  "adult_assistance": {
+    "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+    "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
+  },
   "allergens": [
     "gluten",
     "sesame",
@@ -400,21 +607,479 @@
     "wheat"
   ],
   "allergen_notes": {
+    "contains": [
+      "gluten",
+      "sesame",
+      "soy",
+      "wheat"
+    ],
     "cross_contact": {
-      "en-GB": "Check all packaging for allergens and cross-contact.",
-      "pt-BR": "Confira todas as embalagens para alergênicos e contato cruzado."
+      "en-GB": "Check ingredient packaging for allergens and cross-contact. The mozzarella contains milk; balsamic vinegar may contain sulphites. Noodles contain wheat/gluten, soy sauce contains soy and wheat, and sesame oil contains sesame.",
+      "pt-BR": "Confira as embalagens para alergênicos e contato cruzado. A muçarela contém leite; o vinagre balsâmico pode conter sulfitos. O macarrão contém trigo/glúten, o molho de soja contém soja e trigo, e o óleo de gergelim contém gergelim."
     }
   },
   "nutrition": {
-    "per_serving": null,
-    "status": "PENDING_SOURCE_LOOKUP_AND_CALCULATION",
-    "sources": []
+    "per_serving": {
+      "energyKcal": 300,
+      "proteinG": 10.5,
+      "carbohydrateG": 57.0,
+      "fatG": 7.0,
+      "fibreG": 5.7,
+      "saturatedFatG": 1.2,
+      "sodiumMg": 280
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate based on weighed recipe amounts and generic USDA FoodData Central ingredient data. Product composition and drained weights vary; not laboratory analysis.",
+    "method": "Scale generic FoodData Central nutrient data per 100 g by measured ingredient weights, sum and divide by 4; rounded values. Brand-specific sodium and fats vary.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Noodles, egg, cooked",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Noodles%2C%20egg%2C%20cooked"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Broccoli, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Broccoli%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Carrots, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Peppers, sweet, red, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Peppers%2C%20sweet%2C%20red%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Onions, spring, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Onions%2C%20spring%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Garlic%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Soy sauce, reduced sodium",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Soy%20sauce%2C%20reduced%20sodium"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Oil, sesame, salad or cooking",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20sesame%2C%20salad%20or%20cooking"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Oil, canola",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20canola"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Water, tap",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Water%2C%20tap"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "A quick family noodle dish with colourful vegetables and a soy-sesame dressing, inspired by Chinese home-style cooking.",
+      "pt-BR": "Um prato rápido de macarrão com legumes coloridos e molho de soja e gergelim, inspirado na cozinha caseira chinesa."
+    },
+    "image": {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/finished-dish.png",
+      "sha256": "718ca0bb309cb7e1e54516ba65ca9ae51daf7f90aa32727c91a9ae335aab3729",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending."
   },
   "artwork": {
-    "status": "NOT_STARTED",
-    "artwork_assets": []
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/finished-dish.png",
+      "sha256": "718ca0bb309cb7e1e54516ba65ca9ae51daf7f90aa32727c91a9ae335aab3729",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/wheat-noodles.png",
+        "sha256": "e1574a597475f778240850fab627c4f7155649232b12985482e924bdf7933e42",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/broccoli.png",
+        "sha256": "774cc17ac9639de9eba74a54d78ad6fff343a6374fefe9fb2f1ba54df151fdb3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/carrot.png",
+        "sha256": "d4760230067d2c6c84efd138d1bfc0176f90e2dd7b80fc0783b087fd4845badc",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/red-pepper.png",
+        "sha256": "33793056ad67b6daaca87c05a86752d40eb8f50aefb6ec32ad2f93029de0c709",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/spring-onion.png",
+        "sha256": "375535e4e85d69d60e71be8119065d93ce74803b74f55c381ecbb628d6ccdb22",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/garlic.png",
+        "sha256": "449a3764f5ea6b4c51c497a0fb448a031de15dc963455a29cccb03a99cfae27c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/soy-sauce.png",
+        "sha256": "573e87d5caaf8bf8f693f6818e35c74b06ce4f57415c6f0b9f0ab4f583a37804",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/sesame-oil.png",
+        "sha256": "062c8bd323c65bc8e1bf5543286ca1341cac48ff1a56f40f817c4baa30f368e0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/neutral-oil.png",
+        "sha256": "1f8f86c4eb97209b390a5fc13400c6c2eb6904e2383f9b738b74fea358a514b3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/water.png",
+        "sha256": "57c5b56128122e18e201e2703e74705b0aadae3c47f7e159e1a8422d8bd13e90",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/saucepan.png",
+        "sha256": "ab97d4b8f293066c5d94bff4f8e5676ce40e49143034b2f0df6d20c569da4463",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png",
+        "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/wok.png",
+        "sha256": "3a534629defff6290d63a6a15f10e4afd5ec9c0dd150b65058add7c69a4f9321",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/spatula.png",
+        "sha256": "d760023800fbd31b8f2c6a32cabdd12ee9573073ebc6a9cd4472f4088ca58aae",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/chopping-board.png",
+        "sha256": "f9fa81b7e561abfaac8a25db3c1304176dac706fae8ca4f085832c5bb1d052c9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/knife.png",
+        "sha256": "3a97fae0528e0b769820e1a7cbda80b2173882ac02d74f0e344b5ec09ebc7626",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-01.png",
+        "sha256": "a079b94065f41f34586f010d4ea0d75113a7d6ea3d033d62af6b5055d585822d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-02.png",
+        "sha256": "7a1cfda7d24f8022d63c9aa99b2bb3cc51682010891d2cf0b53fb7e942290fd3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-03.png",
+        "sha256": "8d2fe7de52ef8092ba1e8607641ffde0d4ca3249f8052d9b1c7a90ce4151c021",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-04.png",
+        "sha256": "2acb1f6061f08b5a8b9cc201aaf4a6daacd253f96bf6ab40ad753617e9afc16a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-05.png",
+        "sha256": "5f8ee81e2c0c00617fdeb84bada183d2b24ef66a85e39ebc498a892afecf46e7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ]
   },
-  "artwork_assets": [],
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/finished-dish.png",
+      "sha256": "718ca0bb309cb7e1e54516ba65ca9ae51daf7f90aa32727c91a9ae335aab3729",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/wheat-noodles.png",
+      "sha256": "e1574a597475f778240850fab627c4f7155649232b12985482e924bdf7933e42",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/broccoli.png",
+      "sha256": "774cc17ac9639de9eba74a54d78ad6fff343a6374fefe9fb2f1ba54df151fdb3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/carrot.png",
+      "sha256": "d4760230067d2c6c84efd138d1bfc0176f90e2dd7b80fc0783b087fd4845badc",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/red-pepper.png",
+      "sha256": "33793056ad67b6daaca87c05a86752d40eb8f50aefb6ec32ad2f93029de0c709",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/spring-onion.png",
+      "sha256": "375535e4e85d69d60e71be8119065d93ce74803b74f55c381ecbb628d6ccdb22",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/garlic.png",
+      "sha256": "449a3764f5ea6b4c51c497a0fb448a031de15dc963455a29cccb03a99cfae27c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/soy-sauce.png",
+      "sha256": "573e87d5caaf8bf8f693f6818e35c74b06ce4f57415c6f0b9f0ab4f583a37804",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/sesame-oil.png",
+      "sha256": "062c8bd323c65bc8e1bf5543286ca1341cac48ff1a56f40f817c4baa30f368e0",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/neutral-oil.png",
+      "sha256": "1f8f86c4eb97209b390a5fc13400c6c2eb6904e2383f9b738b74fea358a514b3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/water.png",
+      "sha256": "57c5b56128122e18e201e2703e74705b0aadae3c47f7e159e1a8422d8bd13e90",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/saucepan.png",
+      "sha256": "ab97d4b8f293066c5d94bff4f8e5676ce40e49143034b2f0df6d20c569da4463",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png",
+      "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/wok.png",
+      "sha256": "3a534629defff6290d63a6a15f10e4afd5ec9c0dd150b65058add7c69a4f9321",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/spatula.png",
+      "sha256": "d760023800fbd31b8f2c6a32cabdd12ee9573073ebc6a9cd4472f4088ca58aae",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/chopping-board.png",
+      "sha256": "f9fa81b7e561abfaac8a25db3c1304176dac706fae8ca4f085832c5bb1d052c9",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/knife.png",
+      "sha256": "3a97fae0528e0b769820e1a7cbda80b2173882ac02d74f0e344b5ec09ebc7626",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png",
+      "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-01.png",
+      "sha256": "a079b94065f41f34586f010d4ea0d75113a7d6ea3d033d62af6b5055d585822d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-02.png",
+      "sha256": "7a1cfda7d24f8022d63c9aa99b2bb3cc51682010891d2cf0b53fb7e942290fd3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-03.png",
+      "sha256": "8d2fe7de52ef8092ba1e8607641ffde0d4ca3249f8052d9b1c7a90ce4151c021",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-04.png",
+      "sha256": "2acb1f6061f08b5a8b9cc201aaf4a6daacd253f96bf6ab40ad753617e9afc16a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-05.png",
+      "sha256": "5f8ee81e2c0c00617fdeb84bada183d2b24ef66a85e39ebc498a892afecf46e7",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    }
+  ],
   "reviews": {
     "A08": "PENDING",
     "A09": "PENDING",
@@ -423,18 +1088,10 @@
     "artwork_rights": "PENDING_REVIEW",
     "security": "PENDING"
   },
-  "equipment": [
-    "Large saucepan",
-    "Colander",
-    "Wok",
-    "Wok spatula",
-    "Chopping board",
-    "Kitchen knife",
-    "Small bowl"
-  ],
-  "adult_assistance": {
-    "en-GB": "Adults handle sharp knives and, for noodles, all hot water and wok cooking. Children wash, tear, mix and assemble with supervision.",
-    "pt-BR": "Adultos cuidam das facas afiadas e, no macarrão, de toda água quente e do cozimento na wok. Crianças lavam, separam, misturam e montam com supervisão."
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
   },
   "renderer": {
     "category": "International",
@@ -442,10 +1099,11 @@
     "time": "35 min"
   },
   "content": {
-    "contentSchemaVersion": "1.0-draft",
-    "status": "DRAFT_NOT_READY",
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
     "id": 100,
     "country": "china",
+    "countryCode": "CN",
     "title": {
       "en-GB": "Rainbow Vegetable Noodles",
       "pt-BR": "Macarrão arco-íris com legumes"
@@ -454,7 +1112,21 @@
       "en-GB": "A quick family noodle dish with colourful vegetables and a soy-sesame dressing, inspired by Chinese home-style cooking.",
       "pt-BR": "Um prato rápido de macarrão com legumes coloridos e molho de soja e gergelim, inspirado na cozinha caseira chinesa."
     },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Wheat noodles and stir-fried vegetables are common across many Chinese regional and household traditions; sauces and vegetables vary.",
+      "pt-BR": "Macarrão de trigo e legumes salteados aparecem em diversas tradições regionais e familiares chinesas; molhos e vegetais variam."
+    },
     "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 25,
+    "totalMinutes": 35,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; keep safety guidance and roles unchanged."
+    },
     "ingredients": [
       {
         "id": "wheat-noodles",
@@ -469,7 +1141,14 @@
           "gluten"
         ],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/wheat-noodles.png",
+          "sha256": "e1574a597475f778240850fab627c4f7155649232b12985482e924bdf7933e42",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "broccoli",
@@ -481,7 +1160,14 @@
         "unit": "g",
         "allergens": [],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/broccoli.png",
+          "sha256": "774cc17ac9639de9eba74a54d78ad6fff343a6374fefe9fb2f1ba54df151fdb3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "carrot",
@@ -493,7 +1179,14 @@
         "unit": "g",
         "allergens": [],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/carrot.png",
+          "sha256": "d4760230067d2c6c84efd138d1bfc0176f90e2dd7b80fc0783b087fd4845badc",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "red-pepper",
@@ -505,7 +1198,14 @@
         "unit": "g",
         "allergens": [],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/red-pepper.png",
+          "sha256": "33793056ad67b6daaca87c05a86752d40eb8f50aefb6ec32ad2f93029de0c709",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "spring-onion",
@@ -517,7 +1217,14 @@
         "unit": "g",
         "allergens": [],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/spring-onion.png",
+          "sha256": "375535e4e85d69d60e71be8119065d93ce74803b74f55c381ecbb628d6ccdb22",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "garlic",
@@ -529,7 +1236,14 @@
         "unit": "clove",
         "allergens": [],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/garlic.png",
+          "sha256": "449a3764f5ea6b4c51c497a0fb448a031de15dc963455a29cccb03a99cfae27c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "soy-sauce",
@@ -545,7 +1259,14 @@
           "gluten"
         ],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/soy-sauce.png",
+          "sha256": "573e87d5caaf8bf8f693f6818e35c74b06ce4f57415c6f0b9f0ab4f583a37804",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "sesame-oil",
@@ -559,7 +1280,14 @@
           "sesame"
         ],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/sesame-oil.png",
+          "sha256": "062c8bd323c65bc8e1bf5543286ca1341cac48ff1a56f40f817c4baa30f368e0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "neutral-oil",
@@ -571,7 +1299,14 @@
         "unit": "mL",
         "allergens": [],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/neutral-oil.png",
+          "sha256": "1f8f86c4eb97209b390a5fc13400c6c2eb6904e2383f9b738b74fea358a514b3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "water",
@@ -583,18 +1318,42 @@
         "unit": "mL",
         "allergens": [],
         "optional": false,
-        "artwork": null
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/water.png",
+          "sha256": "57c5b56128122e18e201e2703e74705b0aadae3c47f7e159e1a8422d8bd13e90",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       }
+    ],
+    "equipment": [
+      "Large lidded saucepan",
+      "Colander",
+      "Wok",
+      "Wok spatula",
+      "Chopping board",
+      "Kitchen knife",
+      "Small sauce bowl"
     ],
     "equipmentItems": [
       {
         "id": "saucepan",
         "name": {
-          "en-GB": "Large saucepan",
-          "pt-BR": "Panela grande"
+          "en-GB": "Large lidded saucepan",
+          "pt-BR": "Panela grande com tampa"
         },
         "role": "adult",
-        "artwork": null
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/saucepan.png",
+          "sha256": "ab97d4b8f293066c5d94bff4f8e5676ce40e49143034b2f0df6d20c569da4463",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "colander",
@@ -603,7 +1362,15 @@
           "pt-BR": "Escorredor"
         },
         "role": "adult",
-        "artwork": null
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png",
+          "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "wok",
@@ -612,7 +1379,15 @@
           "pt-BR": "Wok"
         },
         "role": "adult",
-        "artwork": null
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/wok.png",
+          "sha256": "3a534629defff6290d63a6a15f10e4afd5ec9c0dd150b65058add7c69a4f9321",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "spatula",
@@ -621,7 +1396,15 @@
           "pt-BR": "Espátula para wok"
         },
         "role": "adult",
-        "artwork": null
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/spatula.png",
+          "sha256": "d760023800fbd31b8f2c6a32cabdd12ee9573073ebc6a9cd4472f4088ca58aae",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "chopping-board",
@@ -630,7 +1413,15 @@
           "pt-BR": "Tábua de corte"
         },
         "role": "adult",
-        "artwork": null
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/chopping-board.png",
+          "sha256": "f9fa81b7e561abfaac8a25db3c1304176dac706fae8ca4f085832c5bb1d052c9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "knife",
@@ -639,28 +1430,44 @@
           "pt-BR": "Faca de cozinha"
         },
         "role": "adult",
-        "artwork": null
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/knife.png",
+          "sha256": "3a97fae0528e0b769820e1a7cbda80b2173882ac02d74f0e344b5ec09ebc7626",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "small-bowl",
         "name": {
-          "en-GB": "Small bowl",
-          "pt-BR": "Tigela pequena"
+          "en-GB": "Small sauce bowl",
+          "pt-BR": "Tigela pequena para o molho"
         },
         "role": "shared",
-        "artwork": null
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       }
     ],
     "steps": [
       {
         "id": "step-01",
         "title": {
-          "en-GB": "Wash and prepare",
-          "pt-BR": "Lave e prepare"
+          "en-GB": "Wash and prepare vegetables",
+          "pt-BR": "Lave e prepare os legumes"
         },
         "instruction": {
-          "en-GB": "Wash vegetables. An adult cuts carrot, pepper and spring onion on a stable board; children tear broccoli into florets.",
-          "pt-BR": "Lave os legumes. Um adulto corta cenoura, pimentão e cebolinha em tábua estável; crianças separam o brócolis em floretes."
+          "en-GB": "Wash the vegetables. An adult cuts the carrot and pepper on a stable board; children tear broccoli into florets.",
+          "pt-BR": "Lave os legumes. Um adulto corta a cenoura e o pimentão em uma tábua estável; crianças separam o brócolis em floretes."
         },
         "ingredientIds": [
           "broccoli",
@@ -669,23 +1476,34 @@
           "spring-onion"
         ],
         "equipmentIds": [
-          "saucepan",
-          "colander",
-          "wok",
-          "spatula",
           "chopping-board",
-          "knife",
-          "small-bowl"
+          "knife"
         ],
         "adultAssist": {
-          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+          "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+          "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
         },
         "safety": {
-          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+          "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+          "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
         },
-        "artwork": null
+        "heatOrKnifeCue": {
+          "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+          "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-01.png",
+          "sha256": "a079b94065f41f34586f010d4ea0d75113a7d6ea3d033d62af6b5055d585822d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "step-02",
@@ -703,22 +1521,33 @@
         ],
         "equipmentIds": [
           "saucepan",
-          "colander",
-          "wok",
-          "spatula",
-          "chopping-board",
-          "knife",
-          "small-bowl"
+          "colander"
         ],
         "adultAssist": {
-          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+          "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+          "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
         },
         "safety": {
-          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+          "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+          "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
         },
-        "artwork": null
+        "heatOrKnifeCue": {
+          "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+          "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-02.png",
+          "sha256": "7a1cfda7d24f8022d63c9aa99b2bb3cc51682010891d2cf0b53fb7e942290fd3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "step-03",
@@ -727,42 +1556,51 @@
           "pt-BR": "Misture o molho"
         },
         "instruction": {
-          "en-GB": "Stir soy sauce, sesame oil and a splash of water in a small bowl. Check labels for allergens.",
-          "pt-BR": "Misture o molho de soja, o óleo de gergelim e um pouco de água em uma tigela. Confira os rótulos para alergênicos."
+          "en-GB": "Stir soy sauce and sesame oil in a small bowl. Check product labels for allergens.",
+          "pt-BR": "Misture o molho de soja e o óleo de gergelim em uma tigela pequena. Confira os rótulos para alergênicos."
         },
         "ingredientIds": [
           "soy-sauce",
-          "sesame-oil",
-          "water"
+          "sesame-oil"
         ],
         "equipmentIds": [
-          "saucepan",
-          "colander",
-          "wok",
-          "spatula",
-          "chopping-board",
-          "knife",
           "small-bowl"
         ],
         "adultAssist": {
-          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+          "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+          "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
         },
         "safety": {
-          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+          "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+          "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
         },
-        "artwork": null
+        "heatOrKnifeCue": {
+          "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+          "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-03.png",
+          "sha256": "8d2fe7de52ef8092ba1e8607641ffde0d4ca3249f8052d9b1c7a90ce4151c021",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "step-04",
         "title": {
-          "en-GB": "Cook the vegetables",
-          "pt-BR": "Cozinhe os legumes"
+          "en-GB": "Stir-fry the vegetables",
+          "pt-BR": "Salteie os legumes"
         },
         "instruction": {
-          "en-GB": "An adult heats neutral oil in a wok, adds garlic and vegetables and stirs until tender-crisp. Keep children away from the hot wok.",
-          "pt-BR": "Um adulto aquece o óleo neutro em uma wok, acrescenta alho e legumes e mexe até ficarem macios e crocantes. Mantenha crianças longe da wok quente."
+          "en-GB": "An adult heats neutral oil in a wok, adds garlic and vegetables and stirs until just tender. Children stay well back from the hot wok.",
+          "pt-BR": "Um adulto aquece o óleo neutro em uma wok, acrescenta alho e legumes e mexe até ficarem macios. Crianças ficam afastadas da wok quente."
         },
         "ingredientIds": [
           "neutral-oil",
@@ -773,23 +1611,34 @@
           "spring-onion"
         ],
         "equipmentIds": [
-          "saucepan",
-          "colander",
           "wok",
-          "spatula",
-          "chopping-board",
-          "knife",
-          "small-bowl"
+          "spatula"
         ],
         "adultAssist": {
-          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+          "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+          "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
         },
         "safety": {
-          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+          "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+          "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
         },
-        "artwork": null
+        "heatOrKnifeCue": {
+          "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+          "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-04.png",
+          "sha256": "2acb1f6061f08b5a8b9cc201aaf4a6daacd253f96bf6ab40ad753617e9afc16a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       },
       {
         "id": "step-05",
@@ -798,8 +1647,8 @@
           "pt-BR": "Misture e sirva"
         },
         "instruction": {
-          "en-GB": "An adult adds drained noodles and dressing to the wok and stirs until steaming hot. Serve promptly.",
-          "pt-BR": "Um adulto acrescenta o macarrão escorrido e o molho à wok e mexe até ficar bem quente. Sirva logo."
+          "en-GB": "An adult adds drained noodles and dressing to the hot wok and tosses until steaming. Serve promptly.",
+          "pt-BR": "Um adulto acrescenta o macarrão escorrido e o molho à wok quente e mistura até soltar vapor. Sirva logo."
         },
         "ingredientIds": [
           "wheat-noodles",
@@ -807,35 +1656,349 @@
           "sesame-oil"
         ],
         "equipmentIds": [
-          "saucepan",
-          "colander",
           "wok",
-          "spatula",
-          "chopping-board",
-          "knife",
-          "small-bowl"
+          "spatula"
         ],
         "adultAssist": {
-          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
-          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+          "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+          "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
         },
         "safety": {
-          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
-          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+          "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+          "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
         },
-        "artwork": null
+        "heatOrKnifeCue": {
+          "en-GB": "Adult-only sharp knife and heat steps are identified above.",
+          "pt-BR": "As etapas com faca afiada e calor são exclusivas de adultos, conforme indicado."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-05.png",
+          "sha256": "5f8ee81e2c0c00617fdeb84bada183d2b24ef66a85e39ebc498a892afecf46e7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
       }
     ],
+    "adultAssistance": {
+      "en-GB": "Children wash vegetables, tear broccoli and mix the cool sauce. Adults chop, boil, drain and stir-fry.",
+      "pt-BR": "As crianças lavam os legumes, separam o brócolis e misturam o molho frio. Adultos cortam, fervem, escorrem e salteiam."
+    },
+    "finishedDish": {
+      "image": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/finished-dish.png",
+        "sha256": "718ca0bb309cb7e1e54516ba65ca9ae51daf7f90aa32727c91a9ae335aab3729",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "description": {
+        "en-GB": "A quick family noodle dish with colourful vegetables and a soy-sesame dressing, inspired by Chinese home-style cooking.",
+        "pt-BR": "Um prato rápido de macarrão com legumes coloridos e molho de soja e gergelim, inspirado na cozinha caseira chinesa."
+      }
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 300,
+        "proteinG": 10.5,
+        "carbohydrateG": 57.0,
+        "fatG": 7.0,
+        "fibreG": 5.7,
+        "saturatedFatG": 1.2,
+        "sodiumMg": 280
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate based on weighed recipe amounts and generic USDA FoodData Central ingredient data. Product composition and drained weights vary; not laboratory analysis.",
+      "method": "Scale generic FoodData Central nutrient data per 100 g by measured ingredient weights, sum and divide by 4; rounded values. Brand-specific sodium and fats vary.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Noodles, egg, cooked",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Noodles%2C%20egg%2C%20cooked"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Broccoli, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Broccoli%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Carrots, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Peppers, sweet, red, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peppers%2C%20sweet%2C%20red%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Onions, spring, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Onions%2C%20spring%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Garlic, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Garlic%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Soy sauce, reduced sodium",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Soy%20sauce%2C%20reduced%20sodium"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Oil, sesame, salad or cooking",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20sesame%2C%20salad%20or%20cooking"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Oil, canola",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20canola"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Water, tap",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Water%2C%20tap"
+        }
+      ]
+    },
     "allergens": [
       "gluten",
       "sesame",
       "soy",
       "wheat"
     ],
-    "nutrition": {
-      "per_serving": null,
-      "status": "PENDING_SOURCE_LOOKUP_AND_CALCULATION",
-      "sources": []
+    "allergenNotes": {
+      "contains": [
+        "gluten",
+        "sesame",
+        "soy",
+        "wheat"
+      ],
+      "cross_contact": {
+        "en-GB": "Check ingredient packaging for allergens and cross-contact. The mozzarella contains milk; balsamic vinegar may contain sulphites. Noodles contain wheat/gluten, soy sauce contains soy and wheat, and sesame oil contains sesame.",
+        "pt-BR": "Confira as embalagens para alergênicos e contato cruzado. A muçarela contém leite; o vinagre balsâmico pode conter sulfitos. O macarrão contém trigo/glúten, o molho de soja contém soja e trigo, e o óleo de gergelim contém gergelim."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/finished-dish.png",
+        "sha256": "718ca0bb309cb7e1e54516ba65ca9ae51daf7f90aa32727c91a9ae335aab3729",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/wheat-noodles.png",
+          "sha256": "e1574a597475f778240850fab627c4f7155649232b12985482e924bdf7933e42",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/broccoli.png",
+          "sha256": "774cc17ac9639de9eba74a54d78ad6fff343a6374fefe9fb2f1ba54df151fdb3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/carrot.png",
+          "sha256": "d4760230067d2c6c84efd138d1bfc0176f90e2dd7b80fc0783b087fd4845badc",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/red-pepper.png",
+          "sha256": "33793056ad67b6daaca87c05a86752d40eb8f50aefb6ec32ad2f93029de0c709",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/spring-onion.png",
+          "sha256": "375535e4e85d69d60e71be8119065d93ce74803b74f55c381ecbb628d6ccdb22",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/garlic.png",
+          "sha256": "449a3764f5ea6b4c51c497a0fb448a031de15dc963455a29cccb03a99cfae27c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/soy-sauce.png",
+          "sha256": "573e87d5caaf8bf8f693f6818e35c74b06ce4f57415c6f0b9f0ab4f583a37804",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/sesame-oil.png",
+          "sha256": "062c8bd323c65bc8e1bf5543286ca1341cac48ff1a56f40f817c4baa30f368e0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/neutral-oil.png",
+          "sha256": "1f8f86c4eb97209b390a5fc13400c6c2eb6904e2383f9b738b74fea358a514b3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/ingredients/water.png",
+          "sha256": "57c5b56128122e18e201e2703e74705b0aadae3c47f7e159e1a8422d8bd13e90",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/saucepan.png",
+          "sha256": "ab97d4b8f293066c5d94bff4f8e5676ce40e49143034b2f0df6d20c569da4463",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png",
+          "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/wok.png",
+          "sha256": "3a534629defff6290d63a6a15f10e4afd5ec9c0dd150b65058add7c69a4f9321",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/spatula.png",
+          "sha256": "d760023800fbd31b8f2c6a32cabdd12ee9573073ebc6a9cd4472f4088ca58aae",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/chopping-board.png",
+          "sha256": "f9fa81b7e561abfaac8a25db3c1304176dac706fae8ca4f085832c5bb1d052c9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/knife.png",
+          "sha256": "3a97fae0528e0b769820e1a7cbda80b2173882ac02d74f0e344b5ec09ebc7626",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-01.png",
+          "sha256": "a079b94065f41f34586f010d4ea0d75113a7d6ea3d033d62af6b5055d585822d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-02.png",
+          "sha256": "7a1cfda7d24f8022d63c9aa99b2bb3cc51682010891d2cf0b53fb7e942290fd3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-03.png",
+          "sha256": "8d2fe7de52ef8092ba1e8607641ffde0d4ca3249f8052d9b1c7a90ce4151c021",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-04.png",
+          "sha256": "2acb1f6061f08b5a8b9cc201aaf4a6daacd253f96bf6ab40ad753617e9afc16a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/steps/step-05.png",
+          "sha256": "5f8ee81e2c0c00617fdeb84bada183d2b24ef66a85e39ebc498a892afecf46e7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food"
+    },
+    "safety": {
+      "en-GB": "An adult handles boiling water, hot oil, the wok and all knife work. Keep children away from the hob and hot pan. Cook noodles per packet, drain facing away from steam and serve hot. Check allergen labels and prevent cross-contact.",
+      "pt-BR": "Um adulto cuida da água fervente, do óleo quente, da wok e de todo o corte. Mantenha as crianças longe do fogão e da panela quente. Cozinhe conforme a embalagem, escorra longe do vapor e sirva quente. Confira alergênicos e evite contato cruzado."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
     }
   }
 }
