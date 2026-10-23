@@ -1,0 +1,161 @@
+{
+  "schema_version": "0.1-draft",
+  "source_issue": 50,
+  "owner_approved_candidate_names": true,
+  "production_artwork_approved": false,
+  "canonical_existing_recipe_count": 95,
+  "india_mapping_status": "PENDING_REVALIDATION",
+  "id_assignment": "PROVISIONAL_CHECK_COLLISIONS",
+  "recipes": [
+    {
+      "proposed_id": 96,
+      "country": "italy",
+      "title": "Tomato Basil Pasta",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 97,
+      "country": "italy",
+      "title": "Mini Caprese Skewers",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 98,
+      "country": "italy",
+      "title": "Air-Fryer Courgette Bites",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 99,
+      "country": "china",
+      "title": "Vegetable Fried Rice",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 100,
+      "country": "china",
+      "title": "Rainbow Vegetable Noodles",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 101,
+      "country": "china",
+      "title": "Cucumber Sesame Salad",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 102,
+      "country": "japan",
+      "title": "Veggie Sushi Rolls",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 103,
+      "country": "japan",
+      "title": "Onigiri Rice Balls",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 104,
+      "country": "japan",
+      "title": "Japanese Cucumber Salad",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 105,
+      "country": "mexico",
+      "title": "Rainbow Veggie Tacos",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 106,
+      "country": "mexico",
+      "title": "Black Bean Quesadillas",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 107,
+      "country": "mexico",
+      "title": "Mexican Sweetcorn Cups",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 108,
+      "country": "vietnam",
+      "title": "Fresh Spring Rolls",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 109,
+      "country": "vietnam",
+      "title": "Rice Noodle Salad",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 110,
+      "country": "vietnam",
+      "title": "Vietnamese Mango Salad",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    }
+  ]
+}
