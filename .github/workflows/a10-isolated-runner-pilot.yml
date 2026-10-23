@@ -29,6 +29,7 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_a10_*.py' -v
           python3 -m unittest discover -s tests -p 'test_a10_state.py' -v
           python3 -m unittest discover -s tests -p 'test_a10_recovery_policy.py' -v
+          python3 -m unittest discover -s tests -p 'test_a10_ref_store.py' -v
       - name: Validate immutable inspect-only manifest
         env:
           WORKER: ${{ inputs.worker }}
