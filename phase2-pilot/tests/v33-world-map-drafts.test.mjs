@@ -78,6 +78,11 @@ test('Adventure Explorer acceptance harness measures real Android geometry and c
     assert.ok(phone.includes(shot), `phone evidence captures ${shot}`);
   }
   assert.match(phone, /android-back-restores-map-position/);
+  assert.match(phone, /markerGeometry\.some\(m=>m\.hitWidth<44\|\|m\.hitHeight<44\|\|m\.anchorError>2\)/,
+    'country markers keep accessible hit areas and map-coordinate alignment through real zoom and pan');
+  assert.match(phone, /food-passport-offline-restart-persistence/);
+  assert.match(phone, /airplane_mode_on/);
+  assert.match(phone, /passport-back-restores-map-position/);
   assert.match(phone, /PT-BR-country-preview/);
   assert.match(tablet, /map\.occupancy<0\.85\|\|map\.occupancy>0\.95/);
   assert.match(tablet, /world-map-tablet-"\+orientationName/);
