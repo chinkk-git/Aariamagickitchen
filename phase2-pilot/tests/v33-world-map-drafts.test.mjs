@@ -72,7 +72,7 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
     assert.doesNotMatch(script,/two-finger-pinch|Natural pinch zoom|Natural one-finger drag/);
   }
   assert.match(phone,/Input\.dispatchTouchEvent/,'sample taps the country marker through Android WebView input');
-  assert.match(phone,/const mapShot=screenshot\('world-map-phone-portrait'\)/);
+  assert.match(phone,/const mapShot=await stableScreenshot\(session,'world-map-phone-portrait'/,'map screenshot requires a settled Android framebuffer');
   assert.match(phone,/countryShot\.sha256===mapShot\.sha256/,'Android country preview evidence must contain the rendered card overlay, not a stale map frame');
   assert.match(phone,/adb\(\['emu','rotate'\]\)/,'phone orientation smoke must rotate the emulator and verify its actual display rotation');
   assert.match(phone,/connect\(\{refresh:true\}\)/,'phone smoke must reconnect to the app-owned WebView after Android orientation recreates DevTools');
@@ -85,6 +85,9 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.doesNotMatch(phone,/state\.done=\[51\]|state\.worldStamps=\['IND'\]/,'passport persistence smoke must not seed earned progress directly');
   assert.match(phone,/await tapAfterAndroidScroll\(session,.*nextstep/,'recipe completion taps must scroll controls into the real Android viewport before touch');
   assert.match(phone,/type:'touchMove'/,'recipe step scrolling must use an Android touch gesture rather than DOM scrolling');
+  assert.match(phone,/stableScreenshot\(session,'recipe-navigation-phone-portrait','portrait',countryShot\.sha256\)/,'recipe screenshot must wait for stable Android pixels distinct from the country preview');
+  assert.match(phone,/stableScreenshot\(session,'food-passport-phone-portrait','portrait',emptyPassportBase\.sha256\)/,'empty Passport screenshot must show settled pixels distinct from the underlying map');
+  assert.match(phone,/stableScreenshot\(session,'food-passport-earned-phone-portrait','portrait',earnedPassportBase\.sha256\)/,'earned Passport screenshot must show settled pixels distinct from the underlying map');
   assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
   assert.match(phoneLaunch,/127\.0\.0\.1:9224\/json/,'sample verifies a live app-owned DevTools page before connecting');
   assert.match(phoneLaunch,/pm clear \"\$APP_ID\"/,'sample clears the fresh app profile before launching the app');

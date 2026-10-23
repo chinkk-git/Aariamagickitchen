@@ -124,6 +124,20 @@ function screenshot(name, orientation = 'portrait') {
   return { name: `${name}.png`, width, height, bytes: png.length, sha256: createHash('sha256').update(png).digest('hex') };
 }
 
+async function stableScreenshot(session,name,orientation='portrait',previousSha256=null){
+  let previousFrame=null,lastFrame=null,repeats=0;
+  for(let attempt=0;attempt<14;attempt++){
+    await session.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+    await pause(350);
+    lastFrame=screenshot(name,orientation);
+    if(lastFrame.sha256===previousFrame)repeats++;else repeats=0;
+    if(repeats>=1&&(!previousSha256||lastFrame.sha256!==previousSha256))return lastFrame;
+    previousFrame=lastFrame.sha256;
+    await pause(250);
+  }
+  throw new Error(`${name} framebuffer did not settle to a new visible screen: ${JSON.stringify({previousSha256,lastFrame,repeats})}`);
+}
+
 async function tap(session, selector, label) {
   const point = await session.evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)}),r=e?.getBoundingClientRect();return {visible:!!e&&!!r&&r.width>0&&r.height>0&&getComputedStyle(e).visibility!=='hidden',x:r?(r.left+r.right)/2:0,y:r?(r.top+r.bottom)/2:0}})()`);
   if (!point.visible) throw new Error(`${label} is missing or unreachable: ${JSON.stringify(point)}`);
@@ -221,11 +235,10 @@ try {
     await pause(700);
   }
   evidence.flow.push({step:'clean-install-launch',route:'home',packageId:appId,status:'PASS'});
-  const homeScreenshot=screenshot('home-phone-portrait');evidence.screenshots.push(homeScreenshot);
+  const homeScreenshot=await stableScreenshot(session,'home-phone-portrait');evidence.screenshots.push(homeScreenshot);
   const openTarget=await tap(session,'[data-v31-open-world]','Explore the World');
   const world=await waitFor(session.evaluate,evalWorld,'fixed World Map');
-  await session.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');await pause(900);
-  const mapShot=screenshot('world-map-phone-portrait');evidence.screenshots.push(mapShot);
+  const mapShot=await stableScreenshot(session,'world-map-phone-portrait','portrait',homeScreenshot.sha256);evidence.screenshots.push(mapShot);
   if(mapShot.sha256===homeScreenshot.sha256)throw new Error('Android framebuffer remained on Home after the World Map route rendered');
   assertMap(world,'phone portrait');evidence.geometry.push({device:'phone',orientation:'portrait',...world});
   evidence.flow.push({step:'home-touch-to-fixed-world-map',target:openTarget,status:'PASS'});
@@ -236,25 +249,25 @@ try {
   const country=await waitFor(session.evaluate,`(()=>{const title=document.querySelector('#v33-country-title'),r=title?.getBoundingClientRect();return {visible:!!title&&!!r&&r.width>0&&r.height>0,name:title?.textContent?.trim()||'',ids:[...document.querySelectorAll('.w02-country-recipes [data-v31-approved-recipe]')].map(x=>Number(x.dataset.v31ApprovedRecipe))}})()`,'India recipe cards');
   if(country.name!=='India'||country.ids.length!==18||new Set(country.ids).size!==18||country.ids.some(id=>id<1||id>95))throw new Error(`India must expose only its 18 existing canonical recipes: ${JSON.stringify(country)}`);
   evidence.flow.push({step:'android-touch-india-country-cards',recipeIds:country.ids,status:'PASS'});
-  await session.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');await pause(500);
-  const countryShot=screenshot('country-preview-phone-portrait');evidence.screenshots.push(countryShot);
+  const countryShot=await stableScreenshot(session,'country-preview-phone-portrait','portrait',mapShot.sha256);evidence.screenshots.push(countryShot);
   if(countryShot.sha256===mapShot.sha256)throw new Error('Android framebuffer did not capture the India country-card overlay');
   await session.evaluate(`document.querySelector('.w02-country-recipes [data-v31-approved-recipe="51"]')?.click()`);
   const recipe=await waitFor(session.evaluate,`(()=>{const h=document.querySelector('.ref-hero h1'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0,title:h?.textContent?.trim()||'',id:Number(selected?.id||0),route:typeof view==='undefined'?'unknown':view}})()`,'canonical India recipe');
   if(recipe.id!==51||recipe.route!=='recipe'||recipe.title!=='Masala Cheese Toast')throw new Error(`Country recipe card opened the wrong route: ${JSON.stringify(recipe)}`);
   evidence.flow.push({step:'country-card-to-existing-recipe-details',...recipe,status:'PASS'});
-  evidence.screenshots.push(screenshot('recipe-navigation-phone-portrait'));
+  const recipeShot=await stableScreenshot(session,'recipe-navigation-phone-portrait','portrait',countryShot.sha256);
+  if(recipeShot.sha256===countryShot.sha256)throw new Error('Android framebuffer still shows country cards after canonical recipe navigation');
+  evidence.screenshots.push(recipeShot);
   session.ws.close();adb(['shell','input','keyevent','4']);await pause(700);session=await connect();
   const returned=await waitFor(session.evaluate,`(()=>{const h=document.querySelector('#v33-country-title'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0,route:typeof view==='undefined'?'unknown':view,country:h?.textContent?.trim()||'',cards:document.querySelectorAll('.w02-country-recipes [data-v31-approved-recipe]').length}})()`,'Android Back to India recipe cards');
   if(returned.route!=='world'||returned.country!=='India'||returned.cards!==18)throw new Error(`Android Back did not restore the India cards: ${JSON.stringify(returned)}`);
   evidence.flow.push({step:'android-back-restores-country-cards',...returned,status:'PASS'});
-  evidence.screenshots.push(screenshot('world-map-back-phone-portrait'));
+  const backShot=await stableScreenshot(session,'world-map-back-phone-portrait','portrait',recipeShot.sha256);evidence.screenshots.push(backShot);
 
   adb(['shell','input','keyevent','4']);await pause(400);session=await setOrientation(session,true);
   const landscape=await session.evaluate(evalWorld);assertMap(landscape,'phone landscape');
   evidence.geometry.push({device:'phone',orientation:'landscape',...landscape});
-  await session.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');await pause(600);
-  evidence.screenshots.push(screenshot('world-map-phone-landscape','landscape'));
+  evidence.screenshots.push(await stableScreenshot(session,'world-map-phone-landscape','landscape',backShot.sha256));
   evidence.flow.push({step:'fixed-map-orientation-reflow',orientation:'landscape',viewport:await session.evaluate('({width:innerWidth,height:innerHeight})'),status:'PASS'});
   session=await setOrientation(session,false);
 
@@ -267,11 +280,12 @@ try {
   evidence.flow.push({step:'PT-BR-country-cards',...ptCards,status:'PASS'});
   await session.evaluate(`history.back()`);await pause(300);await session.evaluate(`state.language='en-GB';render()`);
 
-  await session.evaluate(`document.querySelector('.w02-passport-button')?.click()`);
+  const emptyPassportBase=await stableScreenshot(session,'world-map-before-empty-passport-phone-portrait');evidence.screenshots.push(emptyPassportBase);
+  await tap(session,'.w02-passport-button','Open empty Food Passport');
   const passport=await session.evaluate(`(()=>({title:document.querySelector('#v33-passport-title')?.textContent?.trim()||'',stamps:[...document.querySelectorAll('.w02-passport-stamps .v31-stamp')].map(x=>x.textContent.trim()),done:(state.done||[]).map(Number),worldStamps:(state.worldStamps||[]).slice()}))()`);
   if(passport.title!=='My Food Passport'||passport.stamps.length||passport.done.length||passport.worldStamps.length)throw new Error(`Viewing map/passport must not award progress: ${JSON.stringify(passport)}`);
   evidence.flow.push({step:'food-passport-view-without-reward',...passport,status:'PASS'});
-  evidence.screenshots.push(screenshot('food-passport-phone-portrait'));
+  evidence.screenshots.push(await stableScreenshot(session,'food-passport-phone-portrait','portrait',emptyPassportBase.sha256));
   await tap(session,'.w02-passport-sheet .w02-sheet-close','Close empty Food Passport');
   await tap(session,'.w02-country-marker','Open India after passport');
   await waitFor(session.evaluate,`(()=>{const h=document.querySelector('#v33-country-title'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0,name:h?.textContent?.trim()||''}})()`,'India cards for completion');
@@ -292,19 +306,21 @@ try {
   const completionBack=await waitFor(session.evaluate,`(()=>{const h=document.querySelector('#v33-country-title'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0,route:typeof view==='undefined'?'unknown':view,country:h?.textContent?.trim()||'',cards:document.querySelectorAll('.w02-country-recipes [data-v31-approved-recipe]').length}})()`,'Android Back after recipe completion');
   if(completionBack.route!=='world'||completionBack.country!=='India'||completionBack.cards!==18)throw new Error(`Android Back did not restore the country panel after recipe completion: ${JSON.stringify(completionBack)}`);
   await tap(session,'.w02-country-sheet .w02-sheet-close','Close India cards after completion');
+  const earnedPassportBase=await stableScreenshot(session,'world-map-before-earned-passport-phone-portrait');evidence.screenshots.push(earnedPassportBase);
   await tap(session,'.w02-passport-button','Open earned Food Passport');
   const earned=await session.evaluate(`(()=>({title:document.querySelector('#v33-passport-title')?.textContent?.trim()||'',stamps:[...document.querySelectorAll('.w02-passport-stamps .v31-stamp')].map(x=>x.textContent.trim()),done:(state.done||[]).map(Number),worldStamps:(state.worldStamps||[]).slice()}))()`);
   if(earned.title!=='My Food Passport'||earned.stamps.length!==1||!earned.stamps[0].includes('India')||earned.done.filter(id=>id===51).length!==1||earned.worldStamps.filter(code=>code==='IND').length!==1)throw new Error(`Completed canonical recipe did not produce exactly one India Food Passport stamp: ${JSON.stringify(earned)}`);
   evidence.flow.push({step:'food-passport-after-canonical-completion',...earned,status:'PASS'});
-  evidence.screenshots.push(screenshot('food-passport-earned-phone-portrait'));
+  evidence.screenshots.push(await stableScreenshot(session,'food-passport-earned-phone-portrait','portrait',earnedPassportBase.sha256));
   session.ws.close();adb(['shell','am','force-stop',appId]);adb(['shell','cmd','connectivity','airplane-mode','enable']);adb(['shell','monkey','-p',appId,'1']);await pause(1200);session=await connect();
   await waitFor(session.evaluate,`(()=>{const h=document.querySelector('.v31-hero-welcome h1'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0}})()`,'offline relaunch Home');
   await session.evaluate(`document.querySelector('[data-v31-open-world]')?.click()`);await waitFor(session.evaluate,evalWorld,'offline relaunch World Map');
-  await session.evaluate(`document.querySelector('.w02-passport-button')?.click()`);
+  const offlinePassportBase=await stableScreenshot(session,'world-map-before-offline-passport-phone-portrait');evidence.screenshots.push(offlinePassportBase);
+  await tap(session,'.w02-passport-button','Open Food Passport offline');
   const persisted=await session.evaluate(`(()=>({title:document.querySelector('#v33-passport-title')?.textContent?.trim()||'',stamps:[...document.querySelectorAll('.w02-passport-stamps .v31-stamp')].map(x=>x.textContent.trim()),done:(state.done||[]).map(Number),worldStamps:(state.worldStamps||[]).slice()}))()`);
   const airplane=adb(['shell','cmd','connectivity','airplane-mode']).toString('utf8').trim().toLowerCase();
   if(persisted.title!=='My Food Passport'||persisted.stamps.length!==1||!persisted.stamps[0].includes('India')||persisted.done.filter(id=>id===51).length!==1||persisted.worldStamps.filter(code=>code==='IND').length!==1||airplane!=='enabled')throw new Error(`Food Passport offline restart persistence failed: ${JSON.stringify({persisted,airplane})}`);
-  evidence.flow.push({step:'food-passport-offline-restart-persistence',...persisted,airplane,status:'PASS'});evidence.screenshots.push(screenshot('food-passport-offline-phone-portrait'));
+  evidence.flow.push({step:'food-passport-offline-restart-persistence',...persisted,airplane,status:'PASS'});evidence.screenshots.push(await stableScreenshot(session,'food-passport-offline-phone-portrait','portrait',offlinePassportBase.sha256));
   evidence.logs=adb(['logcat','-d','-t','2500']).toString('utf8').split('\n').filter(line=>line.includes(appId)||line.includes('ANR in')).slice(-250);
   if(evidence.logs.some(line=>line.includes('ANR in')&&line.includes(appId)))throw new Error('Android logcat contains an ANR for the World Map sample package');
   evidence.status='PASS';evidence.completedAt=new Date().toISOString();
