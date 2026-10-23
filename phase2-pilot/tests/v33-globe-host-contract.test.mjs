@@ -131,7 +131,7 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(runtime,/aria-world-globe__header/);
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);
-  assert.ok(/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags\{transform:scale\(1\.12\)/.test(transform),'the host scales atlas and flags together without pushing touch targets outside the stage');
+  assert.ok(/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags\{transform:scale\(1\.16\)/.test(transform),'the host enlarges Natural Earth land and flags together without pushing touch targets outside the stage');
   assert.ok(!/aria-globe-map-copy path\{transform:scale/.test(transform),'Natural Earth land and flags keep the same orthographic projection without local path distortion');
   assert.ok(/landPathCount\s*<\s*30[\s\S]*?landBoundsCoverage\s*<\s*\.48[\s\S]*?flagsInStage/.test(smoke),'the real-device smoke checks substantial projected land coverage and keeps every flag target inside the stage');
   assert.ok(/width:54px;height:54px/.test(moduleCss) && /Math\.max\(0\.8, Math\.min\(1, p\.depth\)\)/.test(moduleJs),'phone hit targets retain at least 48 CSS px after depth and shared projection scaling');
