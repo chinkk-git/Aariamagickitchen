@@ -83,6 +83,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/food-passport-offline-restart-persistence/);
   assert.match(phone,/complete-canonical-recipe-through-real-step-controls/,'passport restart evidence must follow canonical recipe completion through rendered step controls');
   assert.doesNotMatch(phone,/state\.done=\[51\]|state\.worldStamps=\['IND'\]/,'passport persistence smoke must not seed earned progress directly');
+  assert.match(phone,/await tapAfterAndroidScroll\(session,.*nextstep/,'recipe completion taps must scroll controls into the real Android viewport before touch');
+  assert.match(phone,/type:'touchMove'/,'recipe step scrolling must use an Android touch gesture rather than DOM scrolling');
   assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
   assert.match(phoneLaunch,/127\.0\.0\.1:9224\/json/,'sample verifies a live app-owned DevTools page before connecting');
   assert.match(phoneLaunch,/pm clear \"\$APP_ID\"/,'sample clears the fresh app profile before launching the app');

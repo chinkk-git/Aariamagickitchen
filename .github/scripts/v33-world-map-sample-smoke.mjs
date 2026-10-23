@@ -132,6 +132,26 @@ async function tap(session, selector, label) {
   return point;
 }
 
+async function tapAfterAndroidScroll(session, selector, label) {
+  let last=null;
+  for(let attempt=0;attempt<8;attempt++){
+    last=await session.evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)}),r=e?.getBoundingClientRect();return {visible:!!e&&!!r&&r.width>0&&r.height>0&&getComputedStyle(e).visibility!=='hidden',x:r?(r.left+r.right)/2:innerWidth/2,top:r?.top??0,bottom:r?.bottom??0,width:innerWidth,height:innerHeight,scrollY,scrollHeight:document.documentElement.scrollHeight}})()`);
+    if(!last.visible)throw new Error(`${label} is missing while scrolling: ${JSON.stringify(last)}`);
+    if(last.top>=8&&last.bottom<=last.height*.82)return tap(session,selector,label);
+    const x=Math.max(8,Math.min(last.width-8,last.x));
+    const down=last.top<8;
+    const startY=down?last.height*.35:last.height*.82,endY=down?last.height*.82:last.height*.35;
+    await session.command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y:startY,id:73}]});
+    await pause(80);
+    await session.command('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y:(startY+endY)/2,id:73}]});
+    await pause(80);
+    await session.command('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y:endY,id:73}]});
+    await session.command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    await pause(350);
+  }
+  throw new Error(`${label} stayed outside the Android touch-safe viewport after native swipe attempts: ${JSON.stringify(last)}`);
+}
+
 async function currentRotation() {
   const status=adb(['shell','dumpsys','window']).toString('utf8');
   const rotation=status.match(/mRotation=(\d)/)?.[1]||status.match(/mRotation=ROTATION_(0|90|180|270)/)?.[1];
@@ -259,7 +279,7 @@ try {
   const completionStart=await session.evaluate(`({id:Number(selected?.id||0),stepCount:selected?.steps?.length||0,step:Number(step||0)})`);
   if(completionStart.id!==51||completionStart.stepCount<1||completionStart.step!==0)throw new Error(`Canonical recipe completion did not start at step one: ${JSON.stringify(completionStart)}`);
   for(let index=0;index<completionStart.stepCount;index++){
-    await tap(session,'.ref-step-actions .ref-next[data-action="nextstep"]',`Complete recipe 51 step ${index+1}`);
+    await tapAfterAndroidScroll(session,'.ref-step-actions .ref-next[data-action="nextstep"]',`Complete recipe 51 step ${index+1}`);
     const expectedStep=index+1;
     const progress=await waitFor(session.evaluate,`(()=>{const done=(state.done||[]).some(value=>Number(value)===51);return {visible:done||Number(step)===${expectedStep},step:Number(step||0),done,stamps:(state.worldStamps||[]).slice()}})()`,`recipe 51 completion step ${expectedStep}`);
     if(index<completionStart.stepCount-1&&(!progress.visible||progress.done||progress.step!==expectedStep))throw new Error(`Recipe 51 did not advance through its real step UI: ${JSON.stringify(progress)}`);
