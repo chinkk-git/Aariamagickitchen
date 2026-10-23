@@ -125,9 +125,6 @@ function assertMap(map, label) {
 }
 
 try {
-  adb(['shell','cmd','connectivity','airplane-mode','disable']);
-  adb(['shell','pm','clear',appId]);
-  adb(['shell','monkey','-p',appId,'1']);
   session = await connect();
   const home = await waitFor(session.evaluate, `(()=>{const e=document.querySelector('.v31-hero-welcome h1'),r=e?.getBoundingClientRect();return {visible:!!e&&!!r&&r.width>0&&r.height>0,text:e?.textContent?.trim()||''}})()`, 'Home');
   const profileDialog = await session.evaluate(`(()=>{const d=document.querySelector('#v3ProfileDialog'),r=d?.getBoundingClientRect();return !!d&&!!r&&r.width>0&&r.height>0&&getComputedStyle(d).display!=='none'})()`);

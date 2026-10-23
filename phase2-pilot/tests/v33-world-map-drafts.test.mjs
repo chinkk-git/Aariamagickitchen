@@ -76,10 +76,14 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/food-passport-offline-restart-persistence/);
   assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
   assert.match(phoneLaunch,/127\.0\.0\.1:9224\/json/,'sample verifies a live app-owned DevTools page before connecting');
+  assert.match(phoneLaunch,/pm clear \"\$APP_ID\"/,'sample clears the fresh app profile before launching the app');
   assert.match(phoneLaunch,/ANDROID_DEVTOOLS_TARGET=/,'sample passes the verified WebView target directly to the smoke process');
   assert.match(phoneLaunch,/devtools-sockets\.txt/,'sample records process/socket diagnostics if DevTools stays unavailable');
   assert.match(phone,/ANDROID_DEVTOOLS_TARGET/,'smoke consumes the verified target instead of racing DevTools discovery');
   assert.match(phone,/targets=\$\{JSON\.stringify\(lastTargets\)\}/,'smoke reports observed target descriptors on fallback failure');
+  const connectionStartup=phone.slice(phone.indexOf('try {'),phone.indexOf("const home = await waitFor"));
+  assert.doesNotMatch(connectionStartup,/pm','clear/,'WebView connection must not clear app data after launch');
+  assert.doesNotMatch(connectionStartup,/monkey/,'WebView connection must not relaunch the app after forwarding its target');
   assert.match(tablet,/world-map-tablet-"\+orientationName/);
   assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
   assert.match(regression,/catalogueCount !== 95/);

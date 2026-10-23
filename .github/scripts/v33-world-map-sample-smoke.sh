@@ -68,12 +68,13 @@ grep -Fq "package: name='${APP_ID}'" artifacts/v33-world-map-sample/logs/apk-bad
 sha256sum "$APK" | tee artifacts/v33-world-map-sample/logs/apk-sha256.txt
 adb install -r "$APK" | tee artifacts/v33-world-map-sample/logs/install.txt
 adb shell pm path "$APP_ID" | tee artifacts/v33-world-map-sample/logs/package-path.txt | grep -q 'package:'
+adb shell cmd connectivity airplane-mode disable
+adb shell pm clear "$APP_ID" | tee artifacts/v33-world-map-sample/logs/clean-profile.txt
 wait_for_stable_launcher
 adb shell am start -W -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity | tee artifacts/v33-world-map-sample/logs/launch.txt
 
-# A cold-started WebView can briefly leave an old app PID ahead of the active
-# process in `pidof`. Do not forward to the first socket-shaped match: prove
-# that the forwarded socket serves this app's DevTools page before continuing.
+# Do not forward to the first socket-shaped match: prove that the forwarded
+# socket serves this app's DevTools page and hand that exact target to Node.
 adb forward --remove tcp:9224 >/dev/null 2>&1 || true
 connected=''
 for attempt in $(seq 1 60); do
