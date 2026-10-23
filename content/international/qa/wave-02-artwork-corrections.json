@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0.0",
+  "source_issue": 50,
+  "source_head_before_correction": "294db5cea846355b7813f2de63eba9cd1f358d35",
+  "purpose": "Superseding W03 content-side correction record for Wave 2 artwork mapping and recipe metadata. Existing wave-02 manifest remains the historical immutable snapshot.",
+  "supersedes": "content/international/waves/wave-02/manifest.json",
+  "findings": {
+    "duplicate_hash_pairs_found": 16,
+    "affected_recipe_ids": [
+      102,
+      105
+    ],
+    "correction_status": "CORRECTED",
+    "new_asset_count": 2,
+    "reused_matching_asset_count": 15
+  },
+  "content_reference_fix": {
+    "recipe_id": 102,
+    "recipe_json": "content/international/countries/japan/102-veggie-sushi-rolls/recipe.json",
+    "step_id": "step-02",
+    "before": [
+      "colander",
+      "mixing-bowl"
+    ],
+    "after": [
+      "small-bowl",
+      "colander"
+    ],
+    "reason": "mixing-bowl was not an equipment item; the recipe lists a small bowl and colander for rinsing/draining rice."
+  },
+  "assets": [
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
+      "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
+      "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
+      "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
+      "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
+      "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
+      "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
+      "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
+      "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
+      "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
+      "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
+      "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
+      "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
+      "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png",
+      "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
+      "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
+      "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+      "action": "REUSED_MATCHING_EXISTING_PROJECT_ASSET",
+      "source_path": "content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
+      "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
+      "action": "GENERATED_REPLACEMENT",
+      "source_path": null,
+      "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
+      "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
+      "action": "GENERATED_REPLACEMENT",
+      "source_path": null,
+      "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+      "rights_status": "PENDING_REVIEW"
+    }
+  ],
+  "package_json_updates": [
+    {
+      "recipe_id": 102,
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/recipe.json",
+      "reason": "artwork metadata and step-02 equipment reference corrected"
+    },
+    {
+      "recipe_id": 105,
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/recipe.json",
+      "reason": "artwork metadata corrected"
+    }
+  ],
+  "independent_review_status": "PENDING"
+}

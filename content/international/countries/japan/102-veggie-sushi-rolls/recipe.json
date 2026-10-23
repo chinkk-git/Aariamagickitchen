@@ -210,9 +210,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
-        "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+        "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -227,9 +227,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
-        "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+        "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -244,9 +244,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
-        "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -261,9 +261,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
-        "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+        "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -278,9 +278,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
-        "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+        "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -295,9 +295,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
-        "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+        "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -312,9 +312,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
-        "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+        "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -329,9 +329,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
-        "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+        "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -398,8 +398,8 @@
         "water"
       ],
       "equipmentIds": [
-        "colander",
-        "mixing-bowl"
+        "small-bowl",
+        "colander"
       ],
       "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
       "artwork": {
@@ -584,7 +584,7 @@
       "carbohydrateG": 46.4,
       "fatG": 6.1,
       "fibreG": 4.8,
-      "saturatedFatG": 1.0,
+      "saturatedFatG": 1,
       "sodiumMg": 85
     },
     "status": "ESTIMATE_REVIEW_PENDING",
@@ -729,65 +729,65 @@
     "equipment_images": [
       {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
-        "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+        "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
-        "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+        "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
-        "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
-        "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+        "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
-        "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+        "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
-        "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+        "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
-        "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+        "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
-        "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+        "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -910,65 +910,65 @@
     },
     {
       "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
-      "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+      "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
-      "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+      "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
-      "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+      "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
-      "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+      "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
-      "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+      "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
-      "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+      "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
-      "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+      "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
-      "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+      "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
@@ -1221,9 +1221,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
-          "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+          "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1238,9 +1238,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
-          "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+          "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1255,9 +1255,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
-          "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1272,9 +1272,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
-          "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+          "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1289,9 +1289,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
-          "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+          "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1306,9 +1306,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
-          "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+          "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1323,9 +1323,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
-          "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+          "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1340,9 +1340,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
-          "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+          "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1555,7 +1555,7 @@
         "carbohydrateG": 46.4,
         "fatG": 6.1,
         "fibreG": 4.8,
-        "saturatedFatG": 1.0,
+        "saturatedFatG": 1,
         "sodiumMg": 85
       },
       "status": "ESTIMATE_REVIEW_PENDING",
@@ -1682,65 +1682,65 @@
       "equipment": [
         {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
-          "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+          "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
-          "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+          "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
-          "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
-          "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+          "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
-          "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+          "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
-          "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+          "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
-          "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+          "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
-          "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+          "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }

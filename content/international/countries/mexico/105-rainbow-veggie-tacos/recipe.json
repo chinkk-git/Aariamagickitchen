@@ -134,9 +134,9 @@
       "optional": false,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
-        "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+        "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -210,9 +210,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
-        "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+        "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -227,9 +227,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
-        "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+        "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -244,9 +244,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
-        "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+        "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -261,9 +261,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
-        "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+        "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -278,9 +278,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
-        "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+        "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -295,9 +295,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
-        "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+        "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -312,9 +312,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
-        "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+        "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -329,9 +329,9 @@
       "iconPath": null,
       "artwork": {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
-        "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -697,9 +697,9 @@
       },
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
-        "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+        "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
@@ -731,65 +731,65 @@
     "equipment_images": [
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
-        "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+        "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
-        "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+        "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
-        "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+        "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
-        "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+        "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
-        "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+        "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
-        "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+        "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
-        "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+        "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       },
       {
         "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
-        "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
         "mime_type": "image/png",
-        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
         "license": "AI-generated project asset; independent rights review pending",
         "rights_status": "PENDING_REVIEW"
       }
@@ -880,9 +880,9 @@
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
-      "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+      "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
@@ -912,65 +912,65 @@
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
-      "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+      "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
-      "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+      "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
-      "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+      "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
-      "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+      "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
-      "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+      "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
-      "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+      "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
-      "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+      "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
     {
       "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
-      "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+      "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
       "mime_type": "image/png",
-      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
       "license": "AI-generated project asset; independent rights review pending",
       "rights_status": "PENDING_REVIEW"
     },
@@ -1147,9 +1147,9 @@
         "optional": false,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
-          "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+          "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1223,9 +1223,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
-          "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+          "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1240,9 +1240,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
-          "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+          "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1257,9 +1257,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
-          "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+          "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1274,9 +1274,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
-          "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+          "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1291,9 +1291,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
-          "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+          "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1308,9 +1308,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
-          "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+          "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1325,9 +1325,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
-          "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+          "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1342,9 +1342,9 @@
         "iconPath": null,
         "artwork": {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
-          "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
@@ -1652,9 +1652,9 @@
         },
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
-          "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+          "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
@@ -1686,65 +1686,65 @@
       "equipment": [
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
-          "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+          "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
-          "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+          "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
-          "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+          "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
-          "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+          "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
-          "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09",
+          "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
-          "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+          "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
-          "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+          "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         },
         {
           "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
-          "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
           "mime_type": "image/png",
-          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }

@@ -1,0 +1,473 @@
+{
+  "schema_version": "1.0.0",
+  "source_issue": 50,
+  "supporting_issue": 45,
+  "source_head_before_content_corrections": "294db5cea846355b7813f2de63eba9cd1f358d35",
+  "purpose": "W03 content-side handoff for the 13 existing international packages not in W01's urgent #096/#099 batch. No new recipes created.",
+  "canonical_existing_recipe_count": 95,
+  "international_package_total": 15,
+  "remaining_package_count": 13,
+  "readiness_definition": "READY_FOR_INTEGRATION means structural bilingual/content/reference/artwork package checks pass. It does not pass independent safety, nutrition/allergen, translation/cultural, rights, security, Android runtime or owner approval gates.",
+  "india_mapping_status": "PENDING_REVALIDATION",
+  "validation_summary": {
+    "expected_ids_unique": true,
+    "expected_country_metadata_match": true,
+    "bilingual_fields": "PASS_STRUCTURAL",
+    "ingredient_equipment_references": "PASS",
+    "step_safety_fields": "PASS_STRUCTURAL",
+    "asset_paths_present_in_source_tree": true,
+    "asset_sha256_fields_well_formed": true,
+    "duplicate_asset_hashes_after_corrections": "NONE_WITHIN_REMAINING_PACKAGES",
+    "nutrition": "ESTIMATES_REVIEW_PENDING",
+    "independent_gates": "PENDING"
+  },
+  "global_gates": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "independent_nutrition_allergen": "PENDING",
+    "independent_translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING",
+    "W01_runtime_integration": "PENDING",
+    "W02_globe_runtime_acceptance": "PENDING"
+  },
+  "recipes": [
+    {
+      "id": 97,
+      "country": "italy",
+      "title": "Mini Caprese Skewers",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/italy/097-mini-caprese-skewers/recipe.md",
+      "recipe_json": "content/international/countries/italy/097-mini-caprese-skewers/recipe.json",
+      "ingredients": 5,
+      "equipment": 5,
+      "steps": 5,
+      "artwork_assets": 16,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "milk"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 98,
+      "country": "italy",
+      "title": "Air-Fryer Courgette Bites",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/italy/098-air-fryer-courgette-bites/recipe.md",
+      "recipe_json": "content/international/countries/italy/098-air-fryer-courgette-bites/recipe.json",
+      "ingredients": 6,
+      "equipment": 9,
+      "steps": 5,
+      "artwork_assets": 21,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "egg",
+        "gluten",
+        "milk",
+        "wheat"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 100,
+      "country": "china",
+      "title": "Rainbow Vegetable Noodles",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/china/100-rainbow-vegetable-noodles/recipe.md",
+      "recipe_json": "content/international/countries/china/100-rainbow-vegetable-noodles/recipe.json",
+      "ingredients": 10,
+      "equipment": 7,
+      "steps": 5,
+      "artwork_assets": 23,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "gluten",
+        "sesame",
+        "soy",
+        "wheat"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 101,
+      "country": "china",
+      "title": "Cucumber Sesame Salad",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/china/101-cucumber-sesame-salad/recipe.md",
+      "recipe_json": "content/international/countries/china/101-cucumber-sesame-salad/recipe.json",
+      "ingredients": 8,
+      "equipment": 7,
+      "steps": 5,
+      "artwork_assets": 21,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "gluten",
+        "sesame",
+        "soy",
+        "wheat"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 102,
+      "country": "japan",
+      "title": "Veggie Sushi Rolls",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/japan/102-veggie-sushi-rolls/recipe.md",
+      "recipe_json": "content/international/countries/japan/102-veggie-sushi-rolls/recipe.json",
+      "ingredients": 8,
+      "equipment": 8,
+      "steps": 5,
+      "artwork_assets": 22,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 103,
+      "country": "japan",
+      "title": "Onigiri Rice Balls",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/japan/103-onigiri-rice-balls/recipe.md",
+      "recipe_json": "content/international/countries/japan/103-onigiri-rice-balls/recipe.json",
+      "ingredients": 5,
+      "equipment": 8,
+      "steps": 5,
+      "artwork_assets": 19,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "sesame"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 104,
+      "country": "japan",
+      "title": "Japanese Cucumber Salad",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/japan/104-japanese-cucumber-salad/recipe.md",
+      "recipe_json": "content/international/countries/japan/104-japanese-cucumber-salad/recipe.json",
+      "ingredients": 6,
+      "equipment": 8,
+      "steps": 5,
+      "artwork_assets": 20,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "sesame"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 105,
+      "country": "mexico",
+      "title": "Rainbow Veggie Tacos",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/mexico/105-rainbow-veggie-tacos/recipe.md",
+      "recipe_json": "content/international/countries/mexico/105-rainbow-veggie-tacos/recipe.json",
+      "ingredients": 8,
+      "equipment": 8,
+      "steps": 5,
+      "artwork_assets": 22,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 106,
+      "country": "mexico",
+      "title": "Black Bean Quesadillas",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/mexico/106-black-bean-quesadillas/recipe.md",
+      "recipe_json": "content/international/countries/mexico/106-black-bean-quesadillas/recipe.json",
+      "ingredients": 8,
+      "equipment": 8,
+      "steps": 5,
+      "artwork_assets": 22,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "milk"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 107,
+      "country": "mexico",
+      "title": "Mexican Sweetcorn Cups",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/mexico/107-mexican-sweetcorn-cups/recipe.md",
+      "recipe_json": "content/international/countries/mexico/107-mexican-sweetcorn-cups/recipe.json",
+      "ingredients": 6,
+      "equipment": 7,
+      "steps": 5,
+      "artwork_assets": 19,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "egg",
+        "milk"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 108,
+      "country": "vietnam",
+      "title": "Fresh Spring Rolls",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/vietnam/108-fresh-spring-rolls/recipe.md",
+      "recipe_json": "content/international/countries/vietnam/108-fresh-spring-rolls/recipe.json",
+      "ingredients": 9,
+      "equipment": 11,
+      "steps": 5,
+      "artwork_assets": 26,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "peanut"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 109,
+      "country": "vietnam",
+      "title": "Rice Noodle Salad",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/vietnam/109-rice-noodle-salad/recipe.md",
+      "recipe_json": "content/international/countries/vietnam/109-rice-noodle-salad/recipe.json",
+      "ingredients": 10,
+      "equipment": 10,
+      "steps": 5,
+      "artwork_assets": 26,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "fish",
+        "peanut"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    },
+    {
+      "id": 110,
+      "country": "vietnam",
+      "title": "Vietnamese Mango Salad",
+      "readiness": "READY_FOR_INTEGRATION",
+      "recipe_md": "content/international/countries/vietnam/110-vietnamese-mango-salad/recipe.md",
+      "recipe_json": "content/international/countries/vietnam/110-vietnamese-mango-salad/recipe.json",
+      "ingredients": 10,
+      "equipment": 9,
+      "steps": 5,
+      "artwork_assets": 25,
+      "checks": {
+        "bilingual": "PASS_STRUCTURAL",
+        "ingredient_equipment_references": "PASS",
+        "artwork": "PASS",
+        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
+        "canonical_id_country": "PASS_PACKAGE_METADATA",
+        "independent_reviews": "PENDING"
+      },
+      "known_allergen_labels": [
+        "fish",
+        "peanut"
+      ],
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      },
+      "content_errors": []
+    }
+  ]
+}
