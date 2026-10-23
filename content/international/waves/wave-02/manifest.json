@@ -3,7 +3,7 @@
   "wave": 2,
   "status": "READY_FOR_INTEGRATION",
   "integration_status": "READY_FOR_INTEGRATION",
-  "source_commit": "5c88df0f72d18f528a6179bc7408f11117d08a18",
+  "source_commit": "e97156a23aa64867b2fc97558ca20aa7f7c62bba",
   "canonical_recipe_count": 95,
   "india_mapping_status": "VALIDATED_UNCHANGED",
   "production_artwork_approved": true,
