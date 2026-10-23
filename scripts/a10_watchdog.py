@@ -7,10 +7,9 @@ separately reviewed allowlisted implementation, not a speculative rerun.
 import json
 import os
 import subprocess
-from datetime import datetime, timezone
 
 REPO = os.environ["GH_REPO"]
-DRY_RUN = os.getenv("A10_DRY_RUN", "false").lower() == "true"
+DRY_RUN = os.getenv("A10_DRY_RUN", "true").lower() == "true"
 WORKERS = {
     "W01": {"issue": 45, "branch": "feature/v3.2-magical-cookbook"},
     "W02": {"issue": 39, "branch": "feature/v3.3-world-map-explorer"},
@@ -70,6 +69,7 @@ def check(name, cfg):
             print(f"{name}: posted evidence to issue #{issue}")
     except Exception as exc:
         print(f"{name}: monitoring error: {exc}")
+        raise
 
 if __name__ == "__main__":
     for worker, config in WORKERS.items():
