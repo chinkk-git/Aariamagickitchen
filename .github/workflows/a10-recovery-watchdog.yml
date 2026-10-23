@@ -22,6 +22,8 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
+      - name: Validate watchdog script and safety checks
+        run: python3 -m unittest discover -s tests -p 'test_a10_watchdog.py' -v
       - name: Inspect worker evidence and escalate
         env:
           GH_TOKEN: ${{ github.token }}
