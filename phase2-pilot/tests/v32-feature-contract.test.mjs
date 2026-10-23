@@ -189,6 +189,18 @@ test('phone and tablet Android capture the visible PT-BR ingredient grid and res
     'each tablet orientation starts the PT-BR pilot at step one');
 });
 
+test('international Android review explicitly sets orientation after tablet smoke disables auto-rotate', async () => {
+  const review = await read('.github/scripts/w01-international-review-smoke.mjs');
+  assert.match(review, /settings','put','system','accelerometer_rotation','0'/,
+    'the review harness explicitly disables sensor-driven orientation before switching');
+  assert.match(review, /for\(const rotation of \[0,1,2,3\]\)[\s\S]*?settings','put','system','user_rotation',String\(rotation\)/,
+    'the review harness selects an Android rotation setting and tries the supported orientations');
+  assert.match(review, /screenshot orientation mismatch/,
+    'captured phone/tablet evidence still must match the requested portrait or landscape orientation');
+  assert.doesNotMatch(review, /adb\(\['emu','rotate'\]\)/,
+    'the review route does not rely on emulator sensor rotation after G2 has disabled auto-rotate');
+});
+
 test('Android visual regression emulators use stable SwiftShader rendering', async () => {
   const workflow = await read('.github/workflows/v32-android.yml');
   const deviceGates = workflow.match(/emulator-options:[^\n]+/g) || [];

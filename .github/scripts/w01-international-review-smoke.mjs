@@ -26,11 +26,40 @@ assert.equal(initial.template,'recipe-step-v1');assert.ok(initial.hasIngredients
 assert.equal(initial.assets.length,42);assert.ok(initial.assets.every(x=>x.ok&&x.png&&x.size>1000),'All 42 package artwork images must load from local appassets');assert.deepEqual(initial.external,[],'Offline route must not request external resources');assert.match(initial.csp,/connect-src 'self'/);
 const screenshots=[];
 function capture(name,landscape){const bytes=adb(['exec-out','screencap','-p']);assert.ok(bytes.length>10000,name+' screenshot is unexpectedly small');assert.equal(bytes.toString('ascii',1,4),'PNG');const width=bytes.readUInt32BE(16),height=bytes.readUInt32BE(20);assert.equal(width>height,landscape,name+' screenshot orientation mismatch');const path='artifacts/v32-android-screenshots/international-wave-1/'+name+'.png';writeFileSync(path,bytes);const digest=createHash('sha256').update(readFileSync(path)).digest('hex');screenshots.push({path,width,height,bytes:bytes.length,sha256:digest});}
-async function waitOrientation(landscape){for(let i=0;i<40;i++){const v=await evaluate('({width:innerWidth,height:innerHeight})');if((v.width>v.height)===landscape)return v;await pause(250)}throw new Error('WebView orientation did not settle')}
+const orientationTrace=[];
+async function setOrientation(landscape){
+  const target=landscape?'landscape':'portrait';
+  const viewport=()=>evaluate('({width:innerWidth,height:innerHeight})');
+  adb(['shell','settings','put','system','accelerometer_rotation','0']);
+  const attempts=[];
+  for(const rotation of [0,1,2,3]){
+    const before=await viewport();
+    adb(['shell','settings','put','system','user_rotation',String(rotation)]);
+    const configured=adb(['shell','settings','get','system','user_rotation']).toString('utf8').trim();
+    let after=before;
+    for(let i=0;i<24;i++){
+      await pause(250);
+      after=await viewport();
+      if((after.width>after.height)===landscape){
+        await pause(100);
+        const settled=await viewport();
+        await pause(100);
+        after=await viewport();
+        if((settled.width>settled.height)===landscape&&settled.width===after.width&&settled.height===after.height){
+          const record={target,rotation,configured,before,after,matched:true};
+          attempts.push(record);orientationTrace.push(...attempts);return after;
+        }
+      }
+    }
+    attempts.push({target,rotation,configured,before,after,matched:false});
+  }
+  orientationTrace.push(...attempts);
+  throw new Error('Android failed to reach '+target+' WebView orientation: '+JSON.stringify({target,attempts}));
+}
 async function waitImages(){for(let i=0;i<30;i++){const loaded=await evaluate(`[...document.querySelectorAll('#app img')].every(x=>x.complete&&x.naturalWidth>0)`);if(loaded)return;await pause(200)}throw new Error('Recipe template images failed to load')}
 const matrix=[];
 for(const landscape of [false,true]){
-  const before=await evaluate('({width:innerWidth,height:innerHeight})');if((before.width>before.height)!==landscape){adb(['emu','rotate']);await waitOrientation(landscape)}
+  await setOrientation(landscape);
   for(const [recipeIndex,id] of [[0,96],[1,99]])for(const locale of ['en-GB','pt-BR']){
     const state=await evaluate(`(()=>{document.querySelector('#locale').value=${JSON.stringify(locale)};document.querySelector('#locale').dispatchEvent(new Event('change'));document.querySelector(${JSON.stringify(id===96?'#r96':'#r99')}).click();window.scrollTo(0,0);const r=packageData[${recipeIndex}].locales[${JSON.stringify(locale)}];return {id:r.id,title:r.title,ingredientCount:r.ingredients.length,equipmentCount:r.equipmentItems.length,stepCount:r.steps.length,adultHelp:r.adultHelp,crossContact:r.crossContact}})()`);
     assert.equal(state.id,id);assert.ok(state.title&&state.ingredientCount>0&&state.equipmentCount>0&&state.stepCount>0);assert.ok(state.adultHelp&&state.crossContact,'Safety and cross-contact disclosures must be rendered');
@@ -43,6 +72,6 @@ for(const landscape of [false,true]){
     matrix.push({recipeId:id,locale,orientation:landscape?'landscape':'portrait',ingredients:state.ingredientCount,equipment:state.equipmentCount,steps:state.stepCount,status:'PASS'});
   }
 }
-const report={route:target.url,sourceCommit:'451ab0bf8a3ab1867cf004a113d3d8e6896ccf60',recipeIds:[96,99],matrix,verifiedArtworkFiles:initial.assets.length,offline:true,screenshots,independentGates:{A08:'PENDING',A09:'PENDING',nutrition:'PENDING',artworkRights:'PENDING',security:'PENDING',release:'NOT_AUTHORIZED'}};
+const report={route:target.url,sourceCommit:'451ab0bf8a3ab1867cf004a113d3d8e6896ccf60',recipeIds:[96,99],matrix,verifiedArtworkFiles:initial.assets.length,offline:true,orientationTrace,screenshots,independentGates:{A08:'PENDING',A09:'PENDING',nutrition:'PENDING',artworkRights:'PENDING',security:'PENDING',release:'NOT_AUTHORIZED'}};
 writeFileSync('artifacts/v32-diagnostics/international-wave-1-android-smoke.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));ws.close();
