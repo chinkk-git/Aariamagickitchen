@@ -84,6 +84,9 @@ test('Adventure Explorer acceptance harness measures real Android geometry and c
   assert.match(phone, /android-back-restores-map-position/);
   assert.match(phone, /markerGeometry\.some\(m=>m\.hitWidth<44\|\|m\.hitHeight<44\|\|m\.anchorError>2\)/,
     'country markers keep accessible hit areas and map-coordinate alignment through real zoom and pan');
+  assert.match(phone, /g\.overlapPairs\?\.length/);
+  assert.match(tablet, /map\.overlapPairs\.length/,
+    'tablet markers are checked for overlapping touch targets in both orientations');
   assert.match(phone, /food-passport-offline-restart-persistence/);
   assert.match(phone, /cmd','connectivity','airplane-mode','enable/);
   assert.match(phone, /cmd','connectivity','airplane-mode'\]\)\.toString\('utf8'\)\.trim\(\)\.toLowerCase\(\)/);
