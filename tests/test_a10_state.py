@@ -38,6 +38,15 @@ class StateTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             transition(t, "VERIFYING", now=datetime(2026, 10, 24, tzinfo=timezone.utc))
 
+    def test_expired_lease_blocks_completion(self):
+        t = transition(Task("#47", "A10", "READY"), "CLAIMED",
+                       lease_until="2026-10-23T00:00:00Z", exact_sha="a"*40,
+                       now=datetime(2026, 10, 22, tzinfo=timezone.utc))
+        t = transition(t, "RUNNING", now=datetime(2026, 10, 22, tzinfo=timezone.utc))
+        t = transition(t, "VERIFYING", now=datetime(2026, 10, 22, tzinfo=timezone.utc))
+        with self.assertRaises(ValueError):
+            transition(t, "DONE", now=datetime(2026, 10, 24, tzinfo=timezone.utc))
+
     def test_done_is_terminal(self):
         with self.assertRaises(ValueError):
             transition(Task("#47", "A10", "DONE"), "READY")
