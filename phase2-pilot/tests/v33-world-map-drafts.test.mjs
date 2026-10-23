@@ -129,7 +129,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(workflow,/G1 FAST PREFLIGHT[\s\S]*?W02 SAMPLE[\s\S]*?G2 TARGETED DEVICE SMOKE[\s\S]*?G3 FULL REGRESSION/);
   const transform=await read('tools/v3/transform-production.mjs');
   assert.match(transform,/aria-world-globe__flag\{width:58px;height:58px;/,'Android host CSS keeps the enlarged country hit targets above 48px');
-  assert.match(transform,/aria-world-globe__sphere\{position:absolute;left:62%;top:50%;width:min\(84cqw,84cqh,820px\);/,'Android phone landscape globe scales to available width and height');
+  assert.match(transform,/aria-world-globe__sphere\{position:absolute;left:58%;top:50%;width:min\(84cqw,84cqh,820px\);/,'Android phone landscape globe scales to available width and height');
+  assert.match(transform,/aria-globe-map-copy path\{transform:scale\(1\.28\);transform-box:fill-box/,'recognizable land geometry grows independently of the geospatial flag layer');
   assert.match(transform,/width:min\(94cqw,94cqh,900px\);height:auto;aspect-ratio:1/,'the orbit is a viewport-contained circle');
 });
 

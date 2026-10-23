@@ -114,11 +114,12 @@ test('host delegates recipe, Back and Passport navigation and localizes country 
 });
 
 test('module handoff, Android host and production transform are wired and preserve screen ownership', async () => {
-  const [doc,runtime,transform,moduleJs] = await Promise.all([
+  const [doc,runtime,transform,moduleJs,smoke] = await Promise.all([
     readFile(new URL('../../docs/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/runtime.js', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/transform-production.mjs', import.meta.url),'utf8'),
-    readFile(new URL('../../tools/v3/world-adventure-globe/world-adventure-globe.js', import.meta.url),'utf8')
+    readFile(new URL('../../tools/v3/world-adventure-globe/world-adventure-globe.js', import.meta.url),'utf8'),
+    readFile(new URL('../../.github/scripts/v33-world-map-sample-smoke.mjs', import.meta.url),'utf8')
   ]);
   assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
   assert.match(runtime,/createWorldAdventureHost\(\{canonicalRecipes:RECIPES/);
@@ -129,7 +130,9 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(runtime,/aria-world-globe__header/);
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);
-  assert.match(transform,/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags\{transform:scale\(1\.32\)/,'the host enlarges land geometry and keeps flag positions aligned');
+  assert.ok(/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags\{transform:scale\(1\.12\)/.test(transform),'the host scales atlas and flags together without pushing touch targets outside the stage');
+  assert.ok(/aria-globe-map-copy path\{transform:scale\(1\.28\);transform-box:fill-box/.test(transform),'the host enlarges recognizable land paths around their own centers without moving country flags');
+  assert.ok(/landScale\s*<\s*1\.25[\s\S]*?flagsInStage/.test(smoke),'the real-device smoke checks enlarged land paths and keeps all flag targets inside the stage');
   assert.match(transform,/v33-orbit-turn/);
   assert.match(transform,/v33-sparkle-twinkle/);
   assert.match(transform,/aspect-ratio:1;border:3px dashed/,'the orbit remains a mathematically circular ring');
