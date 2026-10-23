@@ -52,6 +52,12 @@ test('V3.3 map art comes from the supplied approved visual reference', async () 
     'V3.3 runtime no longer substitutes the earlier V3.1 crop for its approved reference');
 });
 
+test('phone World Map screenshot capture accepts the high-detail approved PNG', async () => {
+  const smoke = await read('.github/scripts/v33-world-map-sample-smoke.mjs');
+  assert.match(smoke, /execFileSync\('adb',[\s\S]*?maxBuffer:\s*64\s*\*\s*1024\s*\*\s*1024/,
+    'the Android screenshot pipe has enough capacity for the approved illustrated map');
+});
+
 test('pinch camera scales around its moving focal point and stays within map bounds', async () => {
   const runtime = await read('tools/v3/runtime.js');
   const declaration = runtime.match(/function v31CalculatePinchCamera\(start,current,viewport\)\{[\s\S]*?\n\}/)?.[0];

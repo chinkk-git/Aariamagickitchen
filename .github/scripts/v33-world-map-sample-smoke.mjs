@@ -4,7 +4,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
 const appId = process.env.ANDROID_TEST_APP_ID;
 if (!appId) throw new Error('ANDROID_TEST_APP_ID is required');
-const adb = args => execFileSync('adb', args, { timeout: 30_000, stdio: ['ignore', 'pipe', 'pipe'] });
+const adb = args => execFileSync('adb', args, { timeout: 30_000, maxBuffer: 64 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] });
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const screenshots = 'artifacts/v33-world-map-sample/screenshots';
 mkdirSync(screenshots, { recursive: true });
