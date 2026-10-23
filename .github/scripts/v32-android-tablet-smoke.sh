@@ -258,8 +258,8 @@ async function capturePtBrRecipe12(landscape){
  const steps=[];
  for(let index=0;index<4;index++){
   await waitForActiveStep(index+1,'PT-BR #12 '+suffix);
-  const active=await evaluate('(()=>({number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".ref-safety details p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],progress:Number(step||0)+1}))()');
-  if(active.number!==index+1||active.instruction!==active.expected||active.safety!==active.expectedSafety||active.progress!==index+1)throw Error('PT-BR #12 step/safety/progress mismatch: '+JSON.stringify({index,active}));
+  const active=await evaluate('(()=>({number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".ref-safety details p")?.textContent?.trim()||"",expectedSafety:translateText(RECIPES.find(recipe=>Number(recipe.id)===12)?.safety||"", "pt-BR"),progress:Number(step||0)+1}))()');
+  if(active.number!==index+1||active.instruction!==active.expected||!active.expectedSafety||active.safety!==active.expectedSafety||active.progress!==index+1)throw Error('PT-BR #12 step/canonical recipe-safety/progress mismatch: '+JSON.stringify({index,active}));
   const visible=await prepareVisibleRecipeCapture('.ref-step-card.active','PT-BR #12 active step '+(index+1));
   if(!visible.text.includes(active.instruction))throw Error('PT-BR #12 active screenshot target does not contain its canonical step: '+JSON.stringify({index,active,visible}));
   steps.push(await screenshot('recipe-12-pt-br-step-'+(index+1)+'-'+suffix,landscape));
