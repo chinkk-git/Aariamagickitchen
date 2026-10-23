@@ -149,7 +149,9 @@ try {
   const country=await waitFor(session.evaluate,`(()=>{const title=document.querySelector('#v33-country-title'),r=title?.getBoundingClientRect();return {visible:!!title&&!!r&&r.width>0&&r.height>0,name:title?.textContent?.trim()||'',ids:[...document.querySelectorAll('.w02-country-recipes [data-v31-approved-recipe]')].map(x=>Number(x.dataset.v31ApprovedRecipe))}})()`,'India recipe cards');
   if(country.name!=='India'||country.ids.length!==18||new Set(country.ids).size!==18||country.ids.some(id=>id<1||id>95))throw new Error(`India must expose only its 18 existing canonical recipes: ${JSON.stringify(country)}`);
   evidence.flow.push({step:'android-touch-india-country-cards',recipeIds:country.ids,status:'PASS'});
-  evidence.screenshots.push(screenshot('country-preview-phone-portrait'));
+  await session.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');await pause(500);
+  const countryShot=screenshot('country-preview-phone-portrait');evidence.screenshots.push(countryShot);
+  if(countryShot.sha256===mapShot.sha256)throw new Error('Android framebuffer did not capture the India country-card overlay');
   await session.evaluate(`document.querySelector('.w02-country-recipes [data-v31-approved-recipe="51"]')?.click()`);
   const recipe=await waitFor(session.evaluate,`(()=>{const h=document.querySelector('.ref-hero h1'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0,title:h?.textContent?.trim()||'',id:Number(selected?.id||0),route:typeof view==='undefined'?'unknown':view}})()`,'canonical India recipe');
   if(recipe.id!==51||recipe.route!=='recipe'||recipe.title!=='Masala Cheese Toast')throw new Error(`Country recipe card opened the wrong route: ${JSON.stringify(recipe)}`);

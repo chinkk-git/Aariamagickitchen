@@ -360,7 +360,16 @@ document.addEventListener('click',e=>{
   if(button.hasAttribute('data-v31-back')){v31MapPanel='';goto('home');if(window.v31WorldOpenedFromNav)document.querySelector('.bottom .tab[data-nav="world"]')?.focus({preventScroll:true});else{const openers=[...document.querySelectorAll('[data-v31-open-world]')];(openers[window.v31WorldOpenerIndex]||openers[0])?.focus({preventScroll:true})}window.v31WorldOpenedFromNav=false;return}
 });
 document.addEventListener('click',e=>{const button=e.target.closest('button[data-action="nextstep"].finish-step');if(!button||!selected||!state.done.includes(selected.id)||!V31_APPROVED_INDIA_RECIPE_IDS.includes(selected.id))return;state.worldStamps=Array.isArray(state.worldStamps)?state.worldStamps:[];if(!state.worldStamps.includes('IND')){state.worldStamps.push('IND');save()}});
- window.addEventListener('popstate',e=>{if(view==='world'&&v31MapPanel){v31MapPanel='';e.preventDefault();e.stopImmediatePropagation();render()}},true);
+window.addEventListener('popstate',e=>{
+  // Recipe navigation changes the hash, but the prior history entry is the
+  // country-card panel state at #aria/world. Restore that panel explicitly;
+  // the base hash router intentionally does not know about the World route.
+  if(e.state?.v31Panel==='country'&&location.hash==='#aria/world'){
+   view='world';v31MapPanel='country';e.preventDefault();e.stopImmediatePropagation();render();return;
+  }
+  // A subsequent Back from the country panel returns to the fixed map.
+  if(view==='world'&&v31MapPanel){v31MapPanel='';e.preventDefault();e.stopImmediatePropagation();render()}
+},true);
 
  window.addEventListener('hashchange',()=>{if(!location.hash&&view!=='home'){view='home';v31MapPanel='';render()}});
 document.addEventListener('change',e=>{
