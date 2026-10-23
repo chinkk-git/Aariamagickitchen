@@ -58,6 +58,12 @@ test('phone World Map screenshot capture accepts the high-detail approved PNG', 
     'the Android screenshot pipe has enough capacity for the approved illustrated map');
 });
 
+test('PT-BR tablet navigation compares labels without decorative tab icons', async () => {
+  const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
+  assert.match(tablet, /nav:\[\.\.\.document\.querySelectorAll\("#nav \.tab"\)\]\.map\(e=>e\.lastChild\?\.textContent\?\.trim\(\)\|\|""\)/,
+    'the bilingual navigation assertion reads the label text node separately from the icon element');
+});
+
 test('pinch camera scales around its moving focal point and stays within map bounds', async () => {
   const runtime = await read('tools/v3/runtime.js');
   const declaration = runtime.match(/function v31CalculatePinchCamera\(start,current,viewport\)\{[\s\S]*?\n\}/)?.[0];
