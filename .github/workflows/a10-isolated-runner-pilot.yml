@@ -1,0 +1,45 @@
+name: A10 Isolated Runner Pilot
+on:
+  workflow_dispatch:
+    inputs:
+      worker:
+        description: 'Approved worker to inspect'
+        required: true
+        type: choice
+        options:
+          - W01
+          - W02
+      base_sha:
+        description: 'Exact 40-character branch commit SHA'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: a10-inspect-${{ inputs.worker }}
+  cancel-in-progress: false
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify contract tests
+        run: python3 -m unittest discover -s tests -p 'test_a10_*.py' -v
+      - name: Validate immutable inspect-only manifest
+        env:
+          WORKER: ${{ inputs.worker }}
+          BASE_SHA: ${{ inputs.base_sha }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from scripts.a10_job_contract import BRANCHES, validate
+          worker = os.environ["WORKER"]
+          manifest = {"worker":worker, "branch":BRANCHES[worker],
+            "base_sha":os.environ["BASE_SHA"], "issue":"#45" if worker=="W01" else "#39",
+            "mode":"inspect", "max_minutes":5, "attempt":1}
+          print(json.dumps(validate(manifest), sort_keys=True))
+          PY
+      - name: Confirm runner is non-mutating
+        run: |
+          echo "Inspect-only pilot. No coding agent, secrets, branch writes, or CI reruns are enabled."
