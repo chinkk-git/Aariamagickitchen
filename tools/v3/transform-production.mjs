@@ -310,9 +310,18 @@ const w02GlobeHostStyles = String.raw`
 .app.v31-world-active #screen.v31-world-screen{width:100%;height:100dvh;min-height:0;max-width:none;margin:0;padding:0;overflow:hidden}
 .app.v31-world-active .v33-world-globe-host{width:100%;height:100%;min-height:0}
 .app.v31-world-active .aria-world-globe__flag{width:68px;height:68px}
+.app.v31-world-active .aria-world-globe__atlas,.app.v31-world-active .aria-world-globe__flags{transform:scale(1.18);transform-origin:50% 50%}
+.app.v31-world-active .aria-world-globe__stage::before{content:"";position:absolute;z-index:0;left:50%;top:50%;width:clamp(220px,94%,760px);aspect-ratio:1;border:2px dashed rgba(133,87,184,.55);border-radius:50%;box-shadow:0 0 0 8px rgba(255,214,111,.13),0 0 20px rgba(133,87,184,.24);transform:translate(-50%,-50%) rotate(-18deg) scaleY(.84);animation:v33-orbit-turn 38s linear infinite;pointer-events:none}
+.app.v31-world-active .aria-world-globe__stage::after{content:"";position:absolute;z-index:4;inset:0;background:radial-gradient(circle at 17% 23%,#fff8b7 0 2px,transparent 3px),radial-gradient(circle at 82% 19%,#fff 0 2px,transparent 3px),radial-gradient(circle at 76% 73%,#ffe69b 0 2px,transparent 3px),radial-gradient(circle at 23% 78%,#fff 0 1.5px,transparent 3px),radial-gradient(circle at 50% 8%,#fff 0 1.5px,transparent 3px),radial-gradient(circle at 91% 47%,#fff8b7 0 2px,transparent 3px);filter:drop-shadow(0 0 5px #fff2a8);animation:v33-sparkle-twinkle 2.4s ease-in-out infinite alternate;pointer-events:none}
+.app.v31-world-active .aria-world-globe__guide{left:clamp(6px,1.3vw,18px);bottom:clamp(7px,1.5vh,18px);height:clamp(128px,21dvh,190px);max-width:36%;object-fit:contain;object-position:bottom left;filter:drop-shadow(0 7px 10px rgba(65,40,89,.28))}
+.app.v31-world-active .aria-world-globe__guide-copy{left:clamp(98px,15vw,180px);bottom:clamp(13px,2.5vh,26px);max-width:min(30%,260px)}
+@keyframes v33-orbit-turn{from{transform:translate(-50%,-50%) rotate(-18deg) scaleY(.84)}to{transform:translate(-50%,-50%) rotate(342deg) scaleY(.84)}}
+@keyframes v33-sparkle-twinkle{from{opacity:.45}to{opacity:1}}
 .v33-passport-overlay{position:fixed;z-index:240;inset:0;display:grid;place-items:center;padding:16px;background:#241a3888}
 .v33-passport-overlay .w02-map-sheet{position:relative;inset:auto;width:min(620px,calc(100vw - 24px));max-height:min(82dvh,720px);overflow:auto;transform:none}
-@media(max-height:520px) and (orientation:landscape){.app.v31-world-active .aria-world-globe__sphere{width:min(100%,calc(100dvh - var(--aria-globe-nav-height) - 110px))}.v33-passport-overlay .w02-map-sheet{max-height:calc(100dvh - 20px)}}
+@media(orientation:portrait){.app.v31-world-active .aria-world-globe__guide{height:clamp(122px,18dvh,164px);max-width:34%}.app.v31-world-active .aria-world-globe__guide-copy{left:clamp(92px,20vw,156px);max-width:28%}}
+@media(max-height:520px) and (orientation:landscape){.app.v31-world-active .aria-world-globe__sphere{width:min(100%,calc(100dvh - var(--aria-globe-nav-height) - 56px))}.app.v31-world-active .aria-world-globe__guide{height:clamp(92px,31dvh,154px);max-width:30%}.app.v31-world-active .aria-world-globe__guide-copy{left:clamp(80px,14vw,150px);max-width:27%}.v33-passport-overlay .w02-map-sheet{max-height:calc(100dvh - 20px)}}
+@media(prefers-reduced-motion:reduce){.app.v31-world-active .aria-world-globe__stage::before,.app.v31-world-active .aria-world-globe__stage::after{animation:none}.app.v31-world-active .aria-world-globe__stage::before{border-style:solid}}
 `;
 const v32RecipeThemeMap = JSON.parse(fs.readFileSync(path.join(here, 'data/v3.2-recipe-theme-map.json'), 'utf8'));
 const v32ReviewFeaturedIds = (process.env.V32_REVIEW_FEATURED_IDS || '').split(',').map(x => x.trim()).filter(Boolean).map(Number);

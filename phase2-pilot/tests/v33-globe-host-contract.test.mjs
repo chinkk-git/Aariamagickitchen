@@ -129,6 +129,12 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(runtime,/aria-world-globe__header/);
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);
+  assert.match(transform,/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags/);
+  assert.match(transform,/v33-orbit-turn/);
+  assert.match(transform,/v33-sparkle-twinkle/);
+  assert.match(transform,/prefers-reduced-motion:reduce\).*stage::before/);
+  assert.match(transform,/aria-world-globe__guide\{[^}]*height:clamp\(128px/);
+  assert.match(transform,/100dvh - var\(--aria-globe-nav-height\) - 56px/);
   assert.match(moduleJs,/handleBack:/);
   assert.match(moduleJs,/Surprise/);
   for (const contract of ["India's 18 existing recipe descriptors",'Android Back','bottom navigation','read-only','portrait','landscape','Food Passport','294db5cea846355b7813f2de63eba9cd1f358d35']) assert.ok(doc.includes(contract));
