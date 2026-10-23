@@ -1,0 +1,12 @@
+recipe_id,food,source,fdc_id,source_url,method,status
+96,Pasta dry enriched,USDA FoodData Central SR Legacy,169736,https://fdc.nal.usda.gov/food-details/169736/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+96,Canned tomatoes no salt added,USDA FoodData Central SR Legacy,170138,https://fdc.nal.usda.gov/food-details/170138/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+96,Olive oil,USDA FoodData Central SR Legacy,171413,https://fdc.nal.usda.gov/food-details/171413/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+96,Garlic raw,USDA FoodData Central SR Legacy,169230,https://fdc.nal.usda.gov/food-details/169230/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+96,Basil fresh,USDA FoodData Central SR Legacy,172232,https://fdc.nal.usda.gov/food-details/172232/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+99,Cooked long-grain white rice,USDA FoodData Central SR Legacy,168878,https://fdc.nal.usda.gov/food-details/168878/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+99,Egg whole raw fresh,USDA FoodData Central SR Legacy,171287,https://fdc.nal.usda.gov/food-details/171287/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+99,Peas and carrots frozen cooked without salt,USDA FoodData Central SR Legacy,170018,https://fdc.nal.usda.gov/food-details/170018/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+99,Canola oil,USDA FoodData Central SR Legacy,172336,https://fdc.nal.usda.gov/food-details/172336/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+99,Reduced-sodium soy sauce, generic reference,USDA FoodData Central SR Legacy,174277,https://fdc.nal.usda.gov/food-details/174277/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+99,Spring onions raw,USDA FoodData Central SR Legacy,170005,https://fdc.nal.usda.gov/food-details/170005/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING

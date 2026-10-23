@@ -1,0 +1,1756 @@
+{
+  "schema_version": "1.0",
+  "id": 96,
+  "country": "italy",
+  "country_code": "IT",
+  "title": {
+    "en-GB": "Tomato Basil Pasta",
+    "pt-BR": "Massa com tomate e manjericão"
+  },
+  "description": {
+    "en-GB": "A simple tomato-and-basil pasta inspired by Italian home cooking.",
+    "pt-BR": "Uma massa simples com tomate e manjericão, inspirada na cozinha caseira italiana."
+  },
+  "cultural_context": {
+    "en-GB": "A simple tomato-and-basil pasta inspired by familiar Italian home cooking.",
+    "pt-BR": "Uma massa simples com tomate e manjericão, inspirada na cozinha caseira italiana."
+  },
+  "category": "pasta",
+  "method": "Stovetop",
+  "time": "35 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 20,
+  "total_minutes": 35,
+  "ingredients": [
+    "Dried spaghetti: 280 g",
+    "Chopped tinned tomatoes, no added salt: 400 g",
+    "Olive oil: 15 mL",
+    "Garlic clove: 1 clove (about 3 g)",
+    "Fresh basil leaves: 12 g",
+    "Salt for pasta water: 2 g",
+    "Water for cooking pasta: 2000 mL"
+  ],
+  "equipment": [
+    "Large saucepan with lid",
+    "Small saucepan",
+    "Colander",
+    "Mixing bowl",
+    "Wooden spoon",
+    "Chopping board",
+    "Kitchen knife"
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Get the ingredients ready",
+        "pt-BR": "Separe os ingredientes"
+      },
+      "instruction": {
+        "en-GB": "Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.",
+        "pt-BR": "Ajude a separar os ingredientes. Lave as mãos e enxágue o manjericão. Rasgue as folhas em uma tigela; um adulto pica o alho."
+      },
+      "ingredientIds": [
+        "fresh-basil",
+        "garlic"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "chopping-board",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult chops garlic with the knife; child tears washed basil.",
+        "pt-BR": "Um adulto pica o alho com a faca; a criança rasga o manjericão lavado."
+      },
+      "heatOrKnifeCue": "Knife work is adult-only.",
+      "crossContaminationCue": "Wash hands and rinse basil before handling ready-to-eat ingredients.",
+      "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
+        "sha256": "fcf613a74f1cd3cd1380cb2251c4c66413ce3cd885dafa87a447554c016de2c4",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "safety": {
+        "en-GB": "Knife work is adult-only. Wash hands and rinse basil before handling ready-to-eat ingredients.",
+        "pt-BR": "Somente um adulto usa a faca. Lave as mãos e enxágue o manjericão antes de manipular ingredientes prontos para consumo."
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Stir the cool sauce ingredients",
+        "pt-BR": "Misture os ingredientes frios do molho"
+      },
+      "instruction": {
+        "en-GB": "Put the chopped tomatoes, olive oil and adult-chopped garlic in a mixing bowl. Stir gently with a wooden spoon.",
+        "pt-BR": "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau."
+      },
+      "ingredientIds": [
+        "tomatoes-canned",
+        "olive-oil",
+        "garlic"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "wooden-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult prepares the chopped garlic first; keep the bowl on the cool worktop, away from the hob.",
+        "pt-BR": "Um adulto prepara o alho picado; mantenha a tigela na bancada fria, longe do fogão."
+      },
+      "heatOrKnifeCue": "No heat or knife is used in this step.",
+      "crossContaminationCue": "Use a clean bowl and spoon.",
+      "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+        "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "safety": {
+        "en-GB": "Use a clean bowl and spoon.",
+        "pt-BR": "Use uma tigela e uma colher limpas."
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Cook the tomato sauce",
+        "pt-BR": "Cozinhe o molho de tomate"
+      },
+      "instruction": {
+        "en-GB": "An adult puts the sauce in a small saucepan and cooks it gently, stirring with a spoon, until hot and bubbling.",
+        "pt-BR": "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar."
+      },
+      "ingredientIds": [
+        "tomatoes-canned",
+        "olive-oil",
+        "garlic"
+      ],
+      "equipmentIds": [
+        "small-pan",
+        "wooden-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult-only hob task. Child stays back from the hot pan and steam.",
+        "pt-BR": "Tarefa no fogão exclusiva de adulto. A criança fica afastada da panela quente e do vapor."
+      },
+      "heatOrKnifeCue": "Hot pan and steam: adult only.",
+      "crossContaminationCue": "Use a clean utensil.",
+      "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
+        "sha256": "7df6224d78c18a9f252607a114aa96388fb3b6ef446d2ca69c96634340181ddf",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "safety": {
+        "en-GB": "Hot pan and steam: adult only; keep child back.",
+        "pt-BR": "Panela quente e vapor: tarefa de adulto; mantenha a criança afastada."
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Cook the spaghetti",
+        "pt-BR": "Cozinhe o espaguete"
+      },
+      "instruction": {
+        "en-GB": "An adult cooks the spaghetti in salted boiling water, following the packet directions until tender.",
+        "pt-BR": "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio."
+      },
+      "ingredientIds": [
+        "spaghetti-dry",
+        "salt",
+        "water-pasta"
+      ],
+      "equipmentIds": [
+        "large-pot"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult-only boiling-water task. Child stays away from the hob.",
+        "pt-BR": "Tarefa com água fervente exclusiva de adulto. A criança fica longe do fogão."
+      },
+      "heatOrKnifeCue": "Boiling water and hob are adult-only.",
+      "crossContaminationCue": "Check the pasta packet for wheat/gluten and any may-contain advice.",
+      "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
+        "sha256": "58c35c49c9bf56cb6bc22e2f78fb2694659b2a1191ce376c35d93e8ec402d8f0",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "safety": {
+        "en-GB": "Boiling water and hob are adult-only. Check pasta label for wheat/gluten.",
+        "pt-BR": "Água fervente e fogão são tarefas de adulto. Confira no rótulo se a massa contém trigo/glúten."
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Finish and serve",
+        "pt-BR": "Finalize e sirva"
+      },
+      "instruction": {
+        "en-GB": "An adult drains the pasta safely. Mix it with the sauce in a serving bowl, then add the torn basil. Let it cool to a safe eating temperature.",
+        "pt-BR": "Um adulto escorre a massa com cuidado. Misture-a ao molho em uma tigela de servir e acrescente o manjericão rasgado. Deixe esfriar até uma temperatura segura para comer."
+      },
+      "ingredientIds": [
+        "spaghetti-dry",
+        "tomatoes-canned",
+        "olive-oil",
+        "garlic",
+        "fresh-basil"
+      ],
+      "equipmentIds": [
+        "colander",
+        "large-pot",
+        "mixing-bowl",
+        "wooden-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult drains boiling water and handles the hot pot; child may add basil after the pan is away from heat.",
+        "pt-BR": "Um adulto escorre a água fervente e manuseia a panela quente; a criança pode acrescentar o manjericão quando a panela estiver longe do fogo."
+      },
+      "heatOrKnifeCue": "Adult handles draining, hot pot and serving; check for hot spots before eating.",
+      "crossContaminationCue": "Keep clean serving utensils separate from any allergen-contact utensils.",
+      "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
+        "sha256": "7f776d9620c7b44413cb49761aba527efdb6ec429bf007db87f2a34fd6e5021e",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "safety": {
+        "en-GB": "Adult handles draining, hot pot and serving; check for hot spots before eating.",
+        "pt-BR": "Um adulto escorre a água, manuseia a panela quente e serve; verifique se não há pontos muito quentes antes de comer."
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "An adult handles knives, the hob, boiling water, hot pans and draining. Keep the child away from steam and check the pasta is cool enough before eating.",
+    "pt-BR": "Um adulto cuida das facas, do fogão, da água fervente, das panelas quentes e de escorrer a massa. Mantenha a criança longe do vapor e confira se a massa está fria o suficiente antes de comer."
+  },
+  "allergens": [
+    "wheat",
+    "gluten"
+  ],
+  "allergen_notes": {
+    "contains": [
+      "wheat",
+      "gluten"
+    ],
+    "mayContain": "Check the selected pasta and tinned tomato labels for declared cross-contact; do not infer absence from recipe ingredients.",
+    "crossContact": {
+      "en-GB": "Use clean utensils and surfaces; avoid wheat/gluten cross-contact for anyone with an allergy or coeliac disease.",
+      "pt-BR": "Use utensílios e superfícies limpos; evite contato cruzado com trigo/glúten para pessoas com alergia ou doença celíaca."
+    },
+    "reviewStatus": "PENDING_A08_AND_ALLERGEN_REVIEW",
+    "status": "REVIEW_PENDING"
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 308,
+      "proteinG": 10.1,
+      "carbohydrateG": 56.2,
+      "fatG": 4.8,
+      "fibreG": 3.4,
+      "saturatedFatG": 0.8,
+      "sodiumMg": null
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Estimated from ingredient weights and USDA FoodData Central SR Legacy per-100-g values; dry pasta is used as the measured recipe input; no optional toppings included. Values are approximate and need nutrition review. Sodium not calculated because canned tomato labels vary and salt is optional.",
+    "method": "Ingredient weights scaled against USDA FoodData Central SR Legacy reference foods; values are estimates, not laboratory analyses.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central SR Legacy",
+        "food": "Pasta, dry, enriched",
+        "fdcId": 169736,
+        "url": "https://fdc.nal.usda.gov/food-details/169736/nutrients"
+      },
+      {
+        "source": "USDA FoodData Central SR Legacy",
+        "food": "Tomatoes, red, ripe, canned, packed in tomato juice, no salt added",
+        "fdcId": 170138,
+        "url": "https://fdc.nal.usda.gov/food-details/170138/nutrients"
+      },
+      {
+        "source": "USDA FoodData Central SR Legacy",
+        "food": "Oil, olive, salad or cooking",
+        "fdcId": 171413,
+        "url": "https://fdc.nal.usda.gov/food-details/171413/nutrients"
+      },
+      {
+        "source": "USDA FoodData Central SR Legacy",
+        "food": "Garlic, raw",
+        "fdcId": 169230,
+        "url": "https://fdc.nal.usda.gov/food-details/169230/nutrients"
+      },
+      {
+        "source": "USDA FoodData Central SR Legacy",
+        "food": "Basil, fresh",
+        "fdcId": 172232,
+        "url": "https://fdc.nal.usda.gov/food-details/172232/nutrients"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": null,
+    "description": {
+      "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
+      "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
+    },
+    "provenance": "PENDING; no finished-dish asset generated because the first-artwork approval gate is active.",
+    "image": {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
+      "sha256": "3b30fd4f9444a7ae151844702ee7383fb5c0011a54a936ff0f3ef9da4ee61fc7",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    }
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
+      "sha256": "3b30fd4f9444a7ae151844702ee7383fb5c0011a54a936ff0f3ef9da4ee61fc7",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/spaghetti-dry.png",
+        "sha256": "bfed3869475dfc1c3ce7c2ba0230a0639afbc7aad40dd86edb30d298ff85368b",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
+        "sha256": "12a3222cd1a2e31ad6bdbf99bc133eeb9181b9cf22265f20c337dabda561a49d",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
+        "sha256": "c6c62d599b2dda50cc4f0978e19ae49abe23e80a9517423e29d18b4083705967",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
+        "sha256": "c832cf1a3814d75a80d925fa3218394c03111a446ae074ebb8be1bc831f6306f",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
+        "sha256": "b83da7601a2f7bbb2293bd2694c4b1bc816a03c7801a63afda179e428e9a3f25",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
+        "sha256": "2371f43a568fbf2918f5445149e567319101cf1dfbd00dee8a2d311ef3eef7fd",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
+        "sha256": "8fba2dfa9d22e7b9028f10412c115d36195823f54f32914bbf97d2fd8a229662",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/large-pot.png",
+        "sha256": "36e4f52dc0ac6da837db5b8eb47015c6aa2cd0bbf23a7861f7b1c9e974d8c0b0",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
+        "sha256": "95eb48fc050e5e849b884b2b4d0b6cdedc88bf2493577a39ab373d98033b8684",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
+        "sha256": "05bb57eb39b78e1890542fd98d4bc021754d2599fbe3f565d89870410261c27f",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
+        "sha256": "b3e48e31ca949891de2a070203b57eff8d7fac4d372019cf8886a2b48abcc88d",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
+        "sha256": "0e6b42ff341c64e9c17bb70e2c13607de9cad5de88067a8ca987dbca85ec839d",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
+        "sha256": "f0aa30d99b14a9796f90f4c9e08daf491ec0ef7defb95649bf64fa6846c62e58",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
+        "sha256": "581bc24d12df46c90c5564d4ea245e13bb8868ba0435df22c1041c94a8e3e0be",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
+        "sha256": "fcf613a74f1cd3cd1380cb2251c4c66413ce3cd885dafa87a447554c016de2c4",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+        "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
+        "sha256": "7df6224d78c18a9f252607a114aa96388fb3b6ef446d2ca69c96634340181ddf",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
+        "sha256": "58c35c49c9bf56cb6bc22e2f78fb2694659b2a1191ce376c35d93e8ec402d8f0",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
+        "sha256": "7f776d9620c7b44413cb49761aba527efdb6ec429bf007db87f2a34fd6e5021e",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  "reviews": {
+    "A08ChildProtection": "PENDING",
+    "A09ChildExperience": "PENDING",
+    "nutrition": "PENDING",
+    "translation": "PENDING",
+    "cultural": "PENDING",
+    "artworkRights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+  },
+  "renderer": {
+    "id": 96,
+    "title": "Tomato Basil Pasta",
+    "emoji": "🍝",
+    "category": "International: Italy",
+    "method": "Stovetop",
+    "time": "35 min",
+    "yieldText": "4 servings",
+    "ingredients": [
+      "Dried spaghetti: 280 g",
+      "Chopped tinned tomatoes, no added salt: 400 g",
+      "Olive oil: 15 mL",
+      "Garlic clove: 1 clove (about 3 g)",
+      "Fresh basil leaves: 12 g",
+      "Salt for pasta water: 2 g",
+      "Water for cooking pasta: 2000 mL"
+    ],
+    "steps": [
+      "Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.",
+      "Put the chopped tomatoes, olive oil and adult-chopped garlic in a mixing bowl. Stir gently with a wooden spoon.",
+      "An adult puts the sauce in a small saucepan and cooks it gently, stirring with a spoon, until hot and bubbling.",
+      "An adult cooks the spaghetti in salted boiling water, following the packet directions until tender.",
+      "An adult drains the pasta safely. Mix it with the sauce in a serving bowl, then add the torn basil. Let it cool to a safe eating temperature."
+    ],
+    "extras": [
+      "No optional ingredients are included in the nutrition estimate."
+    ],
+    "fact": "Tomatoes are fruits, but cooks often use them like vegetables.",
+    "safety": "An adult handles knives, the hob, boiling water, hot pans and draining. Keep the child away from steam and check the pasta is cool enough before eating.",
+    "pt-BR": {
+      "title": "Massa com tomate e manjericão",
+      "ingredients": [
+        "Espaguete seco: 280 g",
+        "Tomates picados em lata, sem sal adicionado: 400 g",
+        "Azeite de oliva: 15 mL",
+        "Dente de alho: 1 clove (about 3 g)",
+        "Folhas de manjericão fresco: 12 g",
+        "Sal para a água do macarrão: 2 g",
+        "Água para cozinhar o macarrão: 2000 mL"
+      ],
+      "steps": [
+        "Ajude a separar os ingredientes. Lave as mãos e enxágue o manjericão. Rasgue as folhas em uma tigela; um adulto pica o alho.",
+        "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau.",
+        "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar.",
+        "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio.",
+        "Um adulto escorre a massa com cuidado. Misture-a ao molho em uma tigela de servir e acrescente o manjericão rasgado. Deixe esfriar até uma temperatura segura para comer."
+      ],
+      "extras": [],
+      "fact": "O tomate é uma fruta, mas costuma ser usado como legume na cozinha.",
+      "safety": "Um adulto cuida das facas, do fogão, da água fervente, das panelas quentes e de escorrer a massa. Mantenha a criança longe do vapor e confira se a massa está fria o suficiente antes de comer."
+    }
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "id": 96,
+    "country": "italy",
+    "countryCode": "IT",
+    "status": "READY_FOR_INTEGRATION",
+    "title": {
+      "en-GB": "Tomato Basil Pasta",
+      "pt-BR": "Massa com tomate e manjericão"
+    },
+    "category": "pasta",
+    "culturalContext": {
+      "en-GB": "A simple tomato-and-basil pasta inspired by familiar Italian home cooking.",
+      "pt-BR": "Uma massa simples com tomate e manjericão, inspirada na cozinha caseira italiana."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 20,
+    "totalMinutes": 35,
+    "scaling": {
+      "policy": "Scale ingredient amounts linearly by servings; keep safety instructions and equipment roles unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "spaghetti-dry",
+        "name": {
+          "en-GB": "Dried spaghetti",
+          "pt-BR": "Espaguete seco"
+        },
+        "quantity": 280,
+        "unit": "g",
+        "allergens": [
+          "wheat",
+          "gluten"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/spaghetti-dry.png",
+          "sha256": "bfed3869475dfc1c3ce7c2ba0230a0639afbc7aad40dd86edb30d298ff85368b",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "tomatoes-canned",
+        "name": {
+          "en-GB": "Chopped tinned tomatoes, no added salt",
+          "pt-BR": "Tomates picados em lata, sem sal adicionado"
+        },
+        "quantity": 400,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
+          "sha256": "12a3222cd1a2e31ad6bdbf99bc133eeb9181b9cf22265f20c337dabda561a49d",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "olive-oil",
+        "name": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
+          "sha256": "c6c62d599b2dda50cc4f0978e19ae49abe23e80a9517423e29d18b4083705967",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "garlic",
+        "name": {
+          "en-GB": "Garlic clove",
+          "pt-BR": "Dente de alho"
+        },
+        "quantity": 1,
+        "unit": "clove (about 3 g)",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
+          "sha256": "c832cf1a3814d75a80d925fa3218394c03111a446ae074ebb8be1bc831f6306f",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "fresh-basil",
+        "name": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "quantity": 12,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
+          "sha256": "b83da7601a2f7bbb2293bd2694c4b1bc816a03c7801a63afda179e428e9a3f25",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "salt",
+        "name": {
+          "en-GB": "Salt for pasta water",
+          "pt-BR": "Sal para a água do macarrão"
+        },
+        "quantity": 2,
+        "unit": "g",
+        "allergens": [],
+        "optional": true,
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
+          "sha256": "2371f43a568fbf2918f5445149e567319101cf1dfbd00dee8a2d311ef3eef7fd",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "water-pasta",
+        "name": {
+          "en-GB": "Water for cooking pasta",
+          "pt-BR": "Água para cozinhar o macarrão"
+        },
+        "quantity": 2000,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
+          "sha256": "8fba2dfa9d22e7b9028f10412c115d36195823f54f32914bbf97d2fd8a229662",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "equipment": [
+      {
+        "id": "large-pot",
+        "name": {
+          "en-GB": "Large saucepan with lid",
+          "pt-BR": "Panela grande com tampa"
+        },
+        "iconPath": null,
+        "role": "adult",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/large-pot.png",
+          "sha256": "36e4f52dc0ac6da837db5b8eb47015c6aa2cd0bbf23a7861f7b1c9e974d8c0b0",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "small-pan",
+        "name": {
+          "en-GB": "Small saucepan",
+          "pt-BR": "Panela pequena"
+        },
+        "iconPath": null,
+        "role": "adult",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
+          "sha256": "95eb48fc050e5e849b884b2b4d0b6cdedc88bf2493577a39ab373d98033b8684",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "iconPath": null,
+        "role": "adult",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
+          "sha256": "05bb57eb39b78e1890542fd98d4bc021754d2599fbe3f565d89870410261c27f",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Mixing bowl",
+          "pt-BR": "Tigela para misturar"
+        },
+        "iconPath": null,
+        "role": "shared under adult supervision",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
+          "sha256": "b3e48e31ca949891de2a070203b57eff8d7fac4d372019cf8886a2b48abcc88d",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "wooden-spoon",
+        "name": {
+          "en-GB": "Wooden spoon",
+          "pt-BR": "Colher de pau"
+        },
+        "iconPath": null,
+        "role": "shared under adult supervision",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
+          "sha256": "0e6b42ff341c64e9c17bb70e2c13607de9cad5de88067a8ca987dbca85ec839d",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "iconPath": null,
+        "role": "shared under adult supervision",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
+          "sha256": "f0aa30d99b14a9796f90f4c9e08daf491ec0ef7defb95649bf64fa6846c62e58",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Kitchen knife",
+          "pt-BR": "Faca de cozinha"
+        },
+        "iconPath": null,
+        "role": "adult",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
+          "sha256": "581bc24d12df46c90c5564d4ea245e13bb8868ba0435df22c1041c94a8e3e0be",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Get the ingredients ready",
+          "pt-BR": "Separe os ingredientes"
+        },
+        "instruction": {
+          "en-GB": "Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.",
+          "pt-BR": "Ajude a separar os ingredientes. Lave as mãos e enxágue o manjericão. Rasgue as folhas em uma tigela; um adulto pica o alho."
+        },
+        "ingredientIds": [
+          "fresh-basil",
+          "garlic"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "chopping-board",
+          "knife"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult chops garlic with the knife; child tears washed basil.",
+          "pt-BR": "Um adulto pica o alho com a faca; a criança rasga o manjericão lavado."
+        },
+        "heatOrKnifeCue": "Knife work is adult-only.",
+        "crossContaminationCue": "Wash hands and rinse basil before handling ready-to-eat ingredients.",
+        "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
+          "sha256": "fcf613a74f1cd3cd1380cb2251c4c66413ce3cd885dafa87a447554c016de2c4",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        "safety": {
+          "en-GB": "Knife work is adult-only. Wash hands and rinse basil before handling ready-to-eat ingredients.",
+          "pt-BR": "Somente um adulto usa a faca. Lave as mãos e enxágue o manjericão antes de manipular ingredientes prontos para consumo."
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Stir the cool sauce ingredients",
+          "pt-BR": "Misture os ingredientes frios do molho"
+        },
+        "instruction": {
+          "en-GB": "Put the chopped tomatoes, olive oil and adult-chopped garlic in a mixing bowl. Stir gently with a wooden spoon.",
+          "pt-BR": "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau."
+        },
+        "ingredientIds": [
+          "tomatoes-canned",
+          "olive-oil",
+          "garlic"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "wooden-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult prepares the chopped garlic first; keep the bowl on the cool worktop, away from the hob.",
+          "pt-BR": "Um adulto prepara o alho picado; mantenha a tigela na bancada fria, longe do fogão."
+        },
+        "heatOrKnifeCue": "No heat or knife is used in this step.",
+        "crossContaminationCue": "Use a clean bowl and spoon.",
+        "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+          "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        "safety": {
+          "en-GB": "Use a clean bowl and spoon.",
+          "pt-BR": "Use uma tigela e uma colher limpas."
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Cook the tomato sauce",
+          "pt-BR": "Cozinhe o molho de tomate"
+        },
+        "instruction": {
+          "en-GB": "An adult puts the sauce in a small saucepan and cooks it gently, stirring with a spoon, until hot and bubbling.",
+          "pt-BR": "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar."
+        },
+        "ingredientIds": [
+          "tomatoes-canned",
+          "olive-oil",
+          "garlic"
+        ],
+        "equipmentIds": [
+          "small-pan",
+          "wooden-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult-only hob task. Child stays back from the hot pan and steam.",
+          "pt-BR": "Tarefa no fogão exclusiva de adulto. A criança fica afastada da panela quente e do vapor."
+        },
+        "heatOrKnifeCue": "Hot pan and steam: adult only.",
+        "crossContaminationCue": "Use a clean utensil.",
+        "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
+          "sha256": "7df6224d78c18a9f252607a114aa96388fb3b6ef446d2ca69c96634340181ddf",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        "safety": {
+          "en-GB": "Hot pan and steam: adult only; keep child back.",
+          "pt-BR": "Panela quente e vapor: tarefa de adulto; mantenha a criança afastada."
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Cook the spaghetti",
+          "pt-BR": "Cozinhe o espaguete"
+        },
+        "instruction": {
+          "en-GB": "An adult cooks the spaghetti in salted boiling water, following the packet directions until tender.",
+          "pt-BR": "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio."
+        },
+        "ingredientIds": [
+          "spaghetti-dry",
+          "salt",
+          "water-pasta"
+        ],
+        "equipmentIds": [
+          "large-pot"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult-only boiling-water task. Child stays away from the hob.",
+          "pt-BR": "Tarefa com água fervente exclusiva de adulto. A criança fica longe do fogão."
+        },
+        "heatOrKnifeCue": "Boiling water and hob are adult-only.",
+        "crossContaminationCue": "Check the pasta packet for wheat/gluten and any may-contain advice.",
+        "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
+          "sha256": "58c35c49c9bf56cb6bc22e2f78fb2694659b2a1191ce376c35d93e8ec402d8f0",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        "safety": {
+          "en-GB": "Boiling water and hob are adult-only. Check pasta label for wheat/gluten.",
+          "pt-BR": "Água fervente e fogão são tarefas de adulto. Confira no rótulo se a massa contém trigo/glúten."
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Finish and serve",
+          "pt-BR": "Finalize e sirva"
+        },
+        "instruction": {
+          "en-GB": "An adult drains the pasta safely. Mix it with the sauce in a serving bowl, then add the torn basil. Let it cool to a safe eating temperature.",
+          "pt-BR": "Um adulto escorre a massa com cuidado. Misture-a ao molho em uma tigela de servir e acrescente o manjericão rasgado. Deixe esfriar até uma temperatura segura para comer."
+        },
+        "ingredientIds": [
+          "spaghetti-dry",
+          "tomatoes-canned",
+          "olive-oil",
+          "garlic",
+          "fresh-basil"
+        ],
+        "equipmentIds": [
+          "colander",
+          "large-pot",
+          "mixing-bowl",
+          "wooden-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult drains boiling water and handles the hot pot; child may add basil after the pan is away from heat.",
+          "pt-BR": "Um adulto escorre a água fervente e manuseia a panela quente; a criança pode acrescentar o manjericão quando a panela estiver longe do fogo."
+        },
+        "heatOrKnifeCue": "Adult handles draining, hot pot and serving; check for hot spots before eating.",
+        "crossContaminationCue": "Keep clean serving utensils separate from any allergen-contact utensils.",
+        "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
+          "sha256": "7f776d9620c7b44413cb49761aba527efdb6ec429bf007db87f2a34fd6e5021e",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        "safety": {
+          "en-GB": "Adult handles draining, hot pot and serving; check for hot spots before eating.",
+          "pt-BR": "Um adulto escorre a água, manuseia a panela quente e serve; verifique se não há pontos muito quentes antes de comer."
+        }
+      }
+    ],
+    "finishedDish": {
+      "artworkPath": null,
+      "description": {
+        "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
+        "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
+      },
+      "provenance": "PENDING; no finished-dish asset generated because the first-artwork approval gate is active.",
+      "image": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
+        "sha256": "3b30fd4f9444a7ae151844702ee7383fb5c0011a54a936ff0f3ef9da4ee61fc7",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    "nutrition": {
+      "basis": "Estimated from ingredient weights and USDA FoodData Central SR Legacy per-100-g values; dry pasta is used as the measured recipe input; no optional toppings included. Values are approximate and need nutrition review. Sodium not calculated because canned tomato labels vary and salt is optional.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central SR Legacy",
+          "food": "Pasta, dry, enriched",
+          "fdcId": 169736,
+          "url": "https://fdc.nal.usda.gov/food-details/169736/nutrients"
+        },
+        {
+          "source": "USDA FoodData Central SR Legacy",
+          "food": "Tomatoes, red, ripe, canned, packed in tomato juice, no salt added",
+          "fdcId": 170138,
+          "url": "https://fdc.nal.usda.gov/food-details/170138/nutrients"
+        },
+        {
+          "source": "USDA FoodData Central SR Legacy",
+          "food": "Oil, olive, salad or cooking",
+          "fdcId": 171413,
+          "url": "https://fdc.nal.usda.gov/food-details/171413/nutrients"
+        },
+        {
+          "source": "USDA FoodData Central SR Legacy",
+          "food": "Garlic, raw",
+          "fdcId": 169230,
+          "url": "https://fdc.nal.usda.gov/food-details/169230/nutrients"
+        },
+        {
+          "source": "USDA FoodData Central SR Legacy",
+          "food": "Basil, fresh",
+          "fdcId": 172232,
+          "url": "https://fdc.nal.usda.gov/food-details/172232/nutrients"
+        }
+      ],
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "per_serving": {
+        "energyKcal": 308,
+        "proteinG": 10.1,
+        "carbohydrateG": 56.2,
+        "fatG": 4.8,
+        "fibreG": 3.4,
+        "saturatedFatG": 0.8,
+        "sodiumMg": null
+      },
+      "method": "Ingredient weights scaled against USDA FoodData Central SR Legacy reference foods; values are estimates, not laboratory analyses."
+    },
+    "allergens": {
+      "contains": [
+        "wheat",
+        "gluten"
+      ],
+      "mayContain": "Check the selected pasta and tinned tomato labels for declared cross-contact; do not infer absence from recipe ingredients.",
+      "crossContact": {
+        "en-GB": "Use clean utensils and surfaces; avoid wheat/gluten cross-contact for anyone with an allergy or coeliac disease.",
+        "pt-BR": "Use utensílios e superfícies limpos; evite contato cruzado com trigo/glúten para pessoas com alergia ou doença celíaca."
+      },
+      "reviewStatus": "PENDING_A08_AND_ALLERGEN_REVIEW",
+      "status": "REVIEW_PENDING"
+    },
+    "reviews": {
+      "A08ChildProtection": "PENDING",
+      "A09ChildExperience": "PENDING",
+      "nutrition": "PENDING",
+      "translation": "PENDING",
+      "cultural": "PENDING",
+      "artworkRights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "finished_dish": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
+        "sha256": "3b30fd4f9444a7ae151844702ee7383fb5c0011a54a936ff0f3ef9da4ee61fc7",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "ingredient_images": [
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/spaghetti-dry.png",
+          "sha256": "bfed3869475dfc1c3ce7c2ba0230a0639afbc7aad40dd86edb30d298ff85368b",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
+          "sha256": "12a3222cd1a2e31ad6bdbf99bc133eeb9181b9cf22265f20c337dabda561a49d",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
+          "sha256": "c6c62d599b2dda50cc4f0978e19ae49abe23e80a9517423e29d18b4083705967",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
+          "sha256": "c832cf1a3814d75a80d925fa3218394c03111a446ae074ebb8be1bc831f6306f",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
+          "sha256": "b83da7601a2f7bbb2293bd2694c4b1bc816a03c7801a63afda179e428e9a3f25",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
+          "sha256": "2371f43a568fbf2918f5445149e567319101cf1dfbd00dee8a2d311ef3eef7fd",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
+          "sha256": "8fba2dfa9d22e7b9028f10412c115d36195823f54f32914bbf97d2fd8a229662",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "equipment_images": [
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/large-pot.png",
+          "sha256": "36e4f52dc0ac6da837db5b8eb47015c6aa2cd0bbf23a7861f7b1c9e974d8c0b0",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
+          "sha256": "95eb48fc050e5e849b884b2b4d0b6cdedc88bf2493577a39ab373d98033b8684",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
+          "sha256": "05bb57eb39b78e1890542fd98d4bc021754d2599fbe3f565d89870410261c27f",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
+          "sha256": "b3e48e31ca949891de2a070203b57eff8d7fac4d372019cf8886a2b48abcc88d",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
+          "sha256": "0e6b42ff341c64e9c17bb70e2c13607de9cad5de88067a8ca987dbca85ec839d",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
+          "sha256": "f0aa30d99b14a9796f90f4c9e08daf491ec0ef7defb95649bf64fa6846c62e58",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
+          "sha256": "581bc24d12df46c90c5564d4ea245e13bb8868ba0435df22c1041c94a8e3e0be",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "step_images": [
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
+          "sha256": "fcf613a74f1cd3cd1380cb2251c4c66413ce3cd885dafa87a447554c016de2c4",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+          "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
+          "sha256": "7df6224d78c18a9f252607a114aa96388fb3b6ef446d2ca69c96634340181ddf",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
+          "sha256": "58c35c49c9bf56cb6bc22e2f78fb2694659b2a1191ce376c35d93e8ec402d8f0",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
+          "sha256": "7f776d9620c7b44413cb49761aba527efdb6ec429bf007db87f2a34fd6e5021e",
+          "mime_type": "image/png",
+          "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "nutritionSource": "https://fdc.nal.usda.gov/",
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+    },
+    "notes": [
+      "All further artwork is blocked pending explicit owner approval of the sample.",
+      "No timer controls or timer instructions are included.",
+      "Canonical index.html at 4e8e629c80c68d64c28b7dbc8f07d0f40fc40344 contains unique IDs 1–95; this assigned ID is collision-free.",
+      "Canonical index.html at 4e8e629c80c68d64c28b7dbc8f07d0f40fc40344 contains unique IDs 1–95; this assigned ID is collision-free.",
+      "Canonical index.html at 4e8e629c80c68d64c28b7dbc8f07d0f40fc40344 contains unique IDs 1–95; this assigned ID is collision-free."
+    ],
+    "fact": {
+      "en-GB": "Tomatoes are fruits, but cooks often use them like vegetables.",
+      "pt-BR": "O tomate é uma fruta, mas costuma ser usado como legume na cozinha."
+    },
+    "safety": {
+      "en-GB": "An adult handles knives, the hob, boiling water, hot pans and draining. Keep the child away from steam and check the pasta is cool enough before eating.",
+      "pt-BR": "Um adulto cuida das facas, do fogão, da água fervente, das panelas quentes e de escorrer a massa. Mantenha a criança longe do vapor e confira se a massa está fria o suficiente antes de comer."
+    },
+    "artworkApproval": {
+      "status": "OWNER_APPROVED_STYLE_REFERENCE",
+      "issue": 50,
+      "comment_id": 6367104240,
+      "reference_path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "reference_sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+    },
+    "description": {
+      "en-GB": "A simple tomato-and-basil pasta inspired by Italian home cooking.",
+      "pt-BR": "Uma massa simples com tomate e manjericão, inspirada na cozinha caseira italiana."
+    }
+  },
+  "ingredientItems": [
+    {
+      "id": "spaghetti-dry",
+      "name": {
+        "en-GB": "Dried spaghetti",
+        "pt-BR": "Espaguete seco"
+      },
+      "quantity": 280,
+      "unit": "g",
+      "allergens": [
+        "wheat",
+        "gluten"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/spaghetti-dry.png",
+        "sha256": "bfed3869475dfc1c3ce7c2ba0230a0639afbc7aad40dd86edb30d298ff85368b",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "tomatoes-canned",
+      "name": {
+        "en-GB": "Chopped tinned tomatoes, no added salt",
+        "pt-BR": "Tomates picados em lata, sem sal adicionado"
+      },
+      "quantity": 400,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
+        "sha256": "12a3222cd1a2e31ad6bdbf99bc133eeb9181b9cf22265f20c337dabda561a49d",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "olive-oil",
+      "name": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
+        "sha256": "c6c62d599b2dda50cc4f0978e19ae49abe23e80a9517423e29d18b4083705967",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "garlic",
+      "name": {
+        "en-GB": "Garlic clove",
+        "pt-BR": "Dente de alho"
+      },
+      "quantity": 1,
+      "unit": "clove (about 3 g)",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
+        "sha256": "c832cf1a3814d75a80d925fa3218394c03111a446ae074ebb8be1bc831f6306f",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "fresh-basil",
+      "name": {
+        "en-GB": "Fresh basil leaves",
+        "pt-BR": "Folhas de manjericão fresco"
+      },
+      "quantity": 12,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
+        "sha256": "b83da7601a2f7bbb2293bd2694c4b1bc816a03c7801a63afda179e428e9a3f25",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "salt",
+      "name": {
+        "en-GB": "Salt for pasta water",
+        "pt-BR": "Sal para a água do macarrão"
+      },
+      "quantity": 2,
+      "unit": "g",
+      "allergens": [],
+      "optional": true,
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
+        "sha256": "2371f43a568fbf2918f5445149e567319101cf1dfbd00dee8a2d311ef3eef7fd",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "water-pasta",
+      "name": {
+        "en-GB": "Water for cooking pasta",
+        "pt-BR": "Água para cozinhar o macarrão"
+      },
+      "quantity": 2000,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
+        "sha256": "8fba2dfa9d22e7b9028f10412c115d36195823f54f32914bbf97d2fd8a229662",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "large-pot",
+      "name": {
+        "en-GB": "Large saucepan with lid",
+        "pt-BR": "Panela grande com tampa"
+      },
+      "iconPath": null,
+      "role": "adult",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/large-pot.png",
+        "sha256": "36e4f52dc0ac6da837db5b8eb47015c6aa2cd0bbf23a7861f7b1c9e974d8c0b0",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "small-pan",
+      "name": {
+        "en-GB": "Small saucepan",
+        "pt-BR": "Panela pequena"
+      },
+      "iconPath": null,
+      "role": "adult",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
+        "sha256": "95eb48fc050e5e849b884b2b4d0b6cdedc88bf2493577a39ab373d98033b8684",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "iconPath": null,
+      "role": "adult",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
+        "sha256": "05bb57eb39b78e1890542fd98d4bc021754d2599fbe3f565d89870410261c27f",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "iconPath": null,
+      "role": "shared under adult supervision",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
+        "sha256": "b3e48e31ca949891de2a070203b57eff8d7fac4d372019cf8886a2b48abcc88d",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "wooden-spoon",
+      "name": {
+        "en-GB": "Wooden spoon",
+        "pt-BR": "Colher de pau"
+      },
+      "iconPath": null,
+      "role": "shared under adult supervision",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
+        "sha256": "0e6b42ff341c64e9c17bb70e2c13607de9cad5de88067a8ca987dbca85ec839d",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "iconPath": null,
+      "role": "shared under adult supervision",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
+        "sha256": "f0aa30d99b14a9796f90f4c9e08daf491ec0ef7defb95649bf64fa6846c62e58",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "iconPath": null,
+      "role": "adult",
+      "artwork": {
+        "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
+        "sha256": "581bc24d12df46c90c5564d4ea245e13bb8868ba0435df22c1041c94a8e3e0be",
+        "mime_type": "image/png",
+        "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
+      "sha256": "3b30fd4f9444a7ae151844702ee7383fb5c0011a54a936ff0f3ef9da4ee61fc7",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/spaghetti-dry.png",
+      "sha256": "bfed3869475dfc1c3ce7c2ba0230a0639afbc7aad40dd86edb30d298ff85368b",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
+      "sha256": "12a3222cd1a2e31ad6bdbf99bc133eeb9181b9cf22265f20c337dabda561a49d",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
+      "sha256": "c6c62d599b2dda50cc4f0978e19ae49abe23e80a9517423e29d18b4083705967",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
+      "sha256": "c832cf1a3814d75a80d925fa3218394c03111a446ae074ebb8be1bc831f6306f",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
+      "sha256": "b83da7601a2f7bbb2293bd2694c4b1bc816a03c7801a63afda179e428e9a3f25",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
+      "sha256": "2371f43a568fbf2918f5445149e567319101cf1dfbd00dee8a2d311ef3eef7fd",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
+      "sha256": "8fba2dfa9d22e7b9028f10412c115d36195823f54f32914bbf97d2fd8a229662",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/large-pot.png",
+      "sha256": "36e4f52dc0ac6da837db5b8eb47015c6aa2cd0bbf23a7861f7b1c9e974d8c0b0",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
+      "sha256": "95eb48fc050e5e849b884b2b4d0b6cdedc88bf2493577a39ab373d98033b8684",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
+      "sha256": "05bb57eb39b78e1890542fd98d4bc021754d2599fbe3f565d89870410261c27f",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
+      "sha256": "b3e48e31ca949891de2a070203b57eff8d7fac4d372019cf8886a2b48abcc88d",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
+      "sha256": "0e6b42ff341c64e9c17bb70e2c13607de9cad5de88067a8ca987dbca85ec839d",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
+      "sha256": "f0aa30d99b14a9796f90f4c9e08daf491ec0ef7defb95649bf64fa6846c62e58",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
+      "sha256": "581bc24d12df46c90c5564d4ea245e13bb8868ba0435df22c1041c94a8e3e0be",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
+      "sha256": "fcf613a74f1cd3cd1380cb2251c4c66413ce3cd885dafa87a447554c016de2c4",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
+      "sha256": "7df6224d78c18a9f252607a114aa96388fb3b6ef446d2ca69c96634340181ddf",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
+      "sha256": "58c35c49c9bf56cb6bc22e2f78fb2694659b2a1191ce376c35d93e8ec402d8f0",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
+      "sha256": "7f776d9620c7b44413cb49761aba527efdb6ec429bf007db87f2a34fd6e5021e",
+      "mime_type": "image/png",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    }
+  ]
+}

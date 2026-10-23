@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "status": "VALIDATED_REFERENCE_ONLY",
+  "source_commit": "4e8e629c80c68d64c28b7dbc8f07d0f40fc40344",
+  "canonical_source": "index.html RECIPES array",
+  "mapping_policy": "Reuse canonical Indian recipe IDs; do not duplicate, renumber or modify canonical records.",
+  "canonical_count": 95,
+  "india_recipe_count": 15,
+  "recipes": [
+    {
+      "id": 51,
+      "title": "Masala Cheese Toast",
+      "category": "Indian"
+    },
+    {
+      "id": 52,
+      "title": "Mini Paneer Tikka Cubes",
+      "category": "Indian"
+    },
+    {
+      "id": 53,
+      "title": "Aloo Cheese Sandwich",
+      "category": "Indian"
+    },
+    {
+      "id": 54,
+      "title": "Paneer Pizza Bites",
+      "category": "Indian"
+    },
+    {
+      "id": 55,
+      "title": "Mini Aloo Tikki",
+      "category": "Indian"
+    },
+    {
+      "id": 56,
+      "title": "Crispy Aloo Bread Rolls",
+      "category": "Indian"
+    },
+    {
+      "id": 57,
+      "title": "Rainbow Veggie Cutlets",
+      "category": "Indian"
+    },
+    {
+      "id": 58,
+      "title": "Mini Besan Chilla",
+      "category": "Indian"
+    },
+    {
+      "id": 59,
+      "title": "Mini Suji Uttapam",
+      "category": "Indian"
+    },
+    {
+      "id": 60,
+      "title": "Cheesy Egg Bhurji",
+      "category": "Indian"
+    },
+    {
+      "id": 61,
+      "title": "Banana Mini Malpua",
+      "category": "Indian"
+    },
+    {
+      "id": 62,
+      "title": "Rainbow Vegetable Poha",
+      "category": "Indian"
+    },
+    {
+      "id": 63,
+      "title": "Coconut Ladoo",
+      "category": "Indian"
+    },
+    {
+      "id": 64,
+      "title": "Mango Shrikhand",
+      "category": "Indian"
+    },
+    {
+      "id": 65,
+      "title": "Roti Pizza",
+      "category": "Indian"
+    }
+  ]
+}

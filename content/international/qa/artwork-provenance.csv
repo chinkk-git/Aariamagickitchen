@@ -1,0 +1,2 @@
+recipe_id,step_id,path,sha256,provenance,reference,rights_status,review_status
+96,step-02,countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png,7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec,OpenAI ImageGen 2026-10-23; one accurate cool-bowl tomato sauce mixing action,a_colorful_ui_ux_prototype_mockup_showing_a_kid_fr.png (Library ref libfile_42472e7bee248191849bb957f34abc8f),PENDING,PENDING_OWNER_APPROVAL_AND_RIGHTS_REVIEW

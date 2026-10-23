@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/chinkk-git/Aariamagickitchen/content/international/schema/recipe.schema.json",
+  "title": "International recipe adapter package 1.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "country",
+    "title",
+    "description",
+    "servings",
+    "ingredients",
+    "equipment",
+    "steps",
+    "adult_assistance",
+    "allergens",
+    "nutrition",
+    "artwork",
+    "reviews",
+    "renderer",
+    "content",
+    "ingredientItems",
+    "equipmentItems",
+    "artwork_assets"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "integer",
+      "minimum": 96,
+      "maximum": 110
+    },
+    "country": {
+      "enum": [
+        "italy",
+        "china",
+        "japan",
+        "mexico",
+        "vietnam"
+      ]
+    },
+    "title": {
+      "$ref": "#/$defs/localized"
+    },
+    "description": {
+      "$ref": "#/$defs/localized"
+    },
+    "servings": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "ingredients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "equipment": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "instruction",
+          "ingredientIds",
+          "equipmentIds",
+          "adultAssist",
+          "safety",
+          "artwork"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "$ref": "#/$defs/localized"
+          },
+          "instruction": {
+            "$ref": "#/$defs/localized"
+          },
+          "adultAssist": {
+            "$ref": "#/$defs/localized"
+          },
+          "safety": {
+            "$ref": "#/$defs/localized"
+          },
+          "artwork": {
+            "$ref": "#/$defs/art"
+          }
+        }
+      }
+    },
+    "adult_assistance": {
+      "$ref": "#/$defs/localized"
+    },
+    "allergens": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nutrition": {
+      "type": "object",
+      "required": [
+        "per_serving",
+        "status",
+        "sources"
+      ],
+      "properties": {
+        "per_serving": {
+          "type": "object",
+          "required": [
+            "energyKcal",
+            "proteinG",
+            "carbohydrateG",
+            "fatG",
+            "fibreG",
+            "saturatedFatG",
+            "sodiumMg"
+          ]
+        },
+        "status": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1
+        }
+      }
+    },
+    "artwork": {
+      "type": "object"
+    },
+    "reviews": {
+      "type": "object"
+    },
+    "renderer": {
+      "type": "object"
+    },
+    "content": {
+      "type": "object"
+    },
+    "ingredientItems": {
+      "type": "array",
+      "minItems": 1
+    },
+    "equipmentItems": {
+      "type": "array",
+      "minItems": 1
+    },
+    "artwork_assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/art"
+      }
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": [
+        "en-GB",
+        "pt-BR"
+      ],
+      "properties": {
+        "en-GB": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pt-BR": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "art": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "mime_type",
+        "provenance",
+        "license",
+        "rights_status"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "mime_type": {
+          "const": "image/png"
+        },
+        "provenance": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "rights_status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+recipe_id,known_allergens,adult_assist_status,A08_status,A09_status,cross_contact_notes
+96,wheat;gluten,adult-only knife hob boiling water and draining,NOT_REVIEWED,NOT_REVIEWED,Check product labels and avoid gluten cross-contact
+99,egg;soy;wheat;gluten,adult-only raw egg prep knife hob wok and hot handling,NOT_REVIEWED,NOT_REVIEWED,Check soy sauce/frozen vegetable labels and prevent raw egg cross-contact
