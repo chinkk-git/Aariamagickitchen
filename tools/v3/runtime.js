@@ -173,7 +173,7 @@ function v33ShowPassport(){
 function v33MountGlobe(screen){
  if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
  screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
- const moduleController=window.AariaWorldAdventureGlobe.mount(screen.querySelector('#v33-world-globe-host'),{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||undefined);
+ const moduleController=window.AariaWorldAdventureGlobe.mount(screen.querySelector('#v33-world-globe-host'),{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||{rotation:-78});
  // Keep the W03 module source immutable while preserving W02's existing app
  // lifecycle hooks and ensuring every rendered country control remains a
  // 48px minimum Android touch target at the globe's farthest visible depth.

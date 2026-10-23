@@ -124,7 +124,7 @@ test('module handoff, Android host and production transform are wired and preser
   ]);
   assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
   assert.match(runtime,/createWorldAdventureHost\(\{canonicalRecipes:RECIPES/);
-  assert.match(runtime,/\.mount\(screen\.querySelector\('#v33-world-globe-host'\),\{\.\.\.v33WorldHost,avatarSrc:V31_HOME_WORLD_ART\.aaria\},v33GlobeState\|\|undefined\)/);
+  assert.match(runtime,/\.mount\(screen\.querySelector\('#v33-world-globe-host'\),\{\.\.\.v33WorldHost,avatarSrc:V31_HOME_WORLD_ART\.aaria\},v33GlobeState\|\|\{rotation:-78\}\)/,'the first view centres India to keep its tappable flag inside the sphere');
   assert.match(runtime,/avatarSrc:V31_HOME_WORLD_ART\.aaria/);
   assert.match(runtime,/getState:\(\)=>moduleController\.serialize\(\)/);
   assert.match(runtime,/destroy:\(\)=>moduleController\.dispose\(\)/);
@@ -133,7 +133,7 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(transform,/magicalGlobeStyles/);
   assert.ok(/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags\{transform:scale\(1\.14\)/.test(transform),'the host enlarges Natural Earth land and flags together without pushing touch targets outside the stage');
   assert.ok(!/aria-globe-map-copy path\{transform:scale/.test(transform),'Natural Earth land and flags keep the same orthographic projection without local path distortion');
-  assert.ok(/landPathCount\s*<\s*30[\s\S]*?landBoundsCoverage\s*<\s*\.48[\s\S]*?flagsInStage/.test(smoke),'the real-device smoke checks substantial projected land coverage and keeps every flag target inside the stage');
+  assert.ok(/landPathCount\s*<\s*30[\s\S]*?landBoundsCoverage\s*<\s*\.48/.test(smoke) && /flagsInStage/.test(smoke) && /marker\.insideSphere/.test(smoke),'the real-device smoke checks substantial land coverage and flag targets inside both sphere and stage');
   assert.ok(/width:54px;height:54px/.test(moduleCss) && /Math\.max\(0\.8, Math\.min\(1, p\.depth\)\)/.test(moduleJs),'phone hit targets retain at least 48 CSS px after depth and shared projection scaling');
   assert.match(transform,/v33-orbit-turn/);
   assert.match(transform,/v33-sparkle-twinkle/);

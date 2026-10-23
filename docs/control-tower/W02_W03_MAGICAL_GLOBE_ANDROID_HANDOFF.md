@@ -22,7 +22,7 @@ The JavaScript data/navigation boundary is implemented in `tools/v3/world-advent
 
 ## W03 module API and W02 host binding
 
-W02 consumes the immutable W03 Natural Earth module at `dc1bd7d45f643a939936fb8c95ac6c424b3f012d`, copied without source edits to `tools/v3/world-adventure-globe/`. Version `0.3.0-natural-earth-orthographic` preserves the W03 0.2 host API. The module remains the sole owner of globe rendering, flags, spin/Surprise Me, and country recipe-card UI.
+W02 consumes the immutable W03 Natural Earth module at `dc1bd7d45f643a939936fb8c95ac6c424b3f012d`, copied without source edits to `tools/v3/world-adventure-globe/`. Version `0.3.0-natural-earth-orthographic` preserves the W03 0.2 host API. The module remains the sole owner of globe rendering, flags, spin/Surprise Me, and country recipe-card UI. W02 supplies a first-entry restored rotation of `-78°` to centre India (`78°E`) on the visible hemisphere; later user rotations stay in the module's serialized state. This keeps the initial India flag fully on the globe while preserving explicit flag selection.
 
 ```js
 const controller = AariaWorldAdventureGlobe.mount(root, hostContext, restoredState);
