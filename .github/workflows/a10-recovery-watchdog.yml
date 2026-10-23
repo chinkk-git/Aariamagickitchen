@@ -1,0 +1,30 @@
+name: A10 Recovery Watchdog
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Log proposed actions without posting comments'
+        required: true
+        type: boolean
+        default: true
+permissions:
+  contents: read
+  actions: read
+  issues: write
+concurrency:
+  group: a10-watchdog
+  cancel-in-progress: false
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect worker evidence and escalate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          A10_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
+          GH_REPO: ${{ github.repository }}
+        run: python3 scripts/a10_watchdog.py
