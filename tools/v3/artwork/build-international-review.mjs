@@ -39,4 +39,4 @@ writeFileSync(join(route, 'index.html'), template);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const images = sourceLock.package_files.filter(item => item.path.endsWith('.png'));
 if(images.length!==42||images.some(item=>hash(readFileSync(join(route,item.path)))!==item.sha256)) throw new Error('Debug route did not stage all 42 pinned artwork files byte-for-byte');
-console.log(JSON.stringify({route:'artwork-review/international-wave-1/index.html',sourceCommit:prepared.sourceCommit,recipeIds:prepared.recipes.map(x=>x.id),packagePairSha256:prepared.pairSha256,artworkFiles:images.length,offline:true,productionCatalogChanged:false}));
+console.log(JSON.stringify({route:'artwork-review/international-wave-1/index.html',sourceCommit:prepared.sourceCommit,recipeIds:prepared.recipes.map(x=>x.id),packagePairSha256:prepared.pairSha256,artworkFiles:images.length,offline:true,productionArtworkCopied:true,productionCatalogueIntegration:'transform-production.mjs'}));
