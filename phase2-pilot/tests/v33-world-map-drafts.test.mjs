@@ -62,7 +62,7 @@ test('W03 globe assets are integrated unchanged with approved Aaria art and Andr
   assert.match(smoke,/world-map-phone-landscape/);
   assert.match(smoke,/country-preview-phone-portrait/);
   assert.match(smoke,/surprise-me-waits-for-explicit-flag-selection/);
-  assert.match(smoke,/android-touch-selects-suggested-india-flag/);
+  assert.match(smoke,/android-touch-selects-suggested-flag/);
   assert.match(smoke,/food-passport-offline-restart-persistence/);
 });
 
@@ -97,6 +97,10 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/stableScreenshot\(session,'food-passport-earned-phone-portrait','portrait',earnedPassportBase\.sha256\)/,'earned Passport screenshot must show settled pixels distinct from the underlying map');
   assert.match(phone,/empty Food Passport dismissal/,'the smoke waits for the real Android close tap to dismiss Passport');
   assert.match(phone,/flags\.includes\('India'\)/,'after resetting to EN-GB the globe tap must use the English flag label');
+  assert.match(phone,/Tap the highlighted flag/,'phone smoke follows the current Surprise Me hint copy');
+  assert.match(phone,/android-touch-selects-suggested-flag/,'phone smoke explicitly touches the Surprise Me destination');
+  assert.match(phone,/android-touch-selects-india-flag-for-canonical-recipe-check/,'phone smoke selects India after Surprise Me when needed');
+  assert.match(phone,/Open canonical recipe #51/,'phone recipe navigation is a real Android touch');
   assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
   assert.match(phoneLaunch,/127\.0\.0\.1:9224\/json/,'sample verifies a live app-owned DevTools page before connecting');
   assert.match(phoneLaunch,/pm clear \"\$APP_ID\"/,'sample clears the fresh app profile before launching the app');
@@ -107,7 +111,13 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   const connectionStartup=phone.slice(phone.indexOf('try {'),phone.indexOf("const home = await waitFor"));
   assert.doesNotMatch(connectionStartup,/pm','clear/,'WebView connection must not clear app data after launch');
   assert.doesNotMatch(connectionStartup,/monkey/,'WebView connection must not relaunch the app after forwarding its target');
-  assert.match(tablet,/world-map-tablet-"\+orientationName/);
+  assert.match(tablet,/world-map-tablet-/);
+  assert.match(tablet,/aria-world-globe__surprise/,'tablet smoke exercises Surprise Me on the mounted W03 globe');
+  assert.match(tablet,/Input\.dispatchTouchEvent/,'tablet smoke uses Android touch events for flag and recipe selection');
+  assert.match(tablet,/world-country-tablet-/,'tablet captures the selected country panel');
+  assert.match(tablet,/world-recipe-51-tablet-/,'tablet captures recipe navigation from the globe');
+  assert.match(tablet,/keyevent','4/,'tablet verifies Android Back restores the selected country panel');
+  assert.match(tablet,/world-map-geometry-/,'tablet records live globe geometry in portrait and landscape');
   assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
   assert.match(regression,/catalogueCount !== 95/);
   assert.match(workflow,/G1 FAST PREFLIGHT[\s\S]*?W02 SAMPLE[\s\S]*?G2 TARGETED DEVICE SMOKE[\s\S]*?G3 FULL REGRESSION/);

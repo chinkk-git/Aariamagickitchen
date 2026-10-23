@@ -147,6 +147,14 @@ async function tap(session, selector, label) {
   return point;
 }
 
+async function dragGlobe(session, dx) {
+  const point=await session.evaluate(`(()=>{const e=document.querySelector('.aria-world-globe__stage'),r=e?.getBoundingClientRect();return {visible:!!r&&r.width>0&&r.height>0,x:r?(r.left+r.right)/2:0,y:r?(r.top+r.bottom)/2:0}})()`);
+  if(!point.visible)throw new Error('Magical Spinning Globe drag stage is missing');
+  await session.command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:point.x,y:point.y,id:93}]});
+  await session.command('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:point.x+dx,y:point.y,id:93}]});
+  await session.command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await pause(220);
+}
+
 async function tapAfterAndroidScroll(session, selector, label) {
   let last=null;
   for(let attempt=0;attempt<8;attempt++){
@@ -245,23 +253,24 @@ try {
   evidence.flow.push({step:'home-touch-to-magical-spinning-globe',target:openTarget,status:'PASS'});
 
   await tap(session,'.aria-world-globe__surprise','Surprise Me');
-  const surprise=await waitFor(session.evaluate,`(()=>{const state=v33GlobeController?.getState?.()||{};return {visible:!!state.pending&&!state.selected,pending:state.pending||null,selected:state.selected||null,message:document.querySelector('.aria-world-globe__empty-state p')?.textContent?.trim()||''}})()`,'Surprise Me country hint');
-  if(surprise.pending!=='india'||surprise.selected||!surprise.message.includes('Tap a front-facing flag'))throw new Error(`Surprise Me must suggest a country and wait for a flag tap: ${JSON.stringify(surprise)}`);
+  const surprise=await waitFor(session.evaluate,`(()=>{const state=v33GlobeController?.getState?.()||{};const pending=state.pending||null,country=pending?v33WorldHost?.getCountry(pending):null;return {visible:!!pending&&!state.selected,pending,selected:state.selected||null,country:country?.label||'',message:document.querySelector('.aria-world-globe__empty-state p')?.textContent?.trim()||''}})()`,'Surprise Me country hint');
+  if(!surprise.pending||surprise.selected||!surprise.message.includes('Tap the highlighted flag'))throw new Error(`Surprise Me must suggest a country and wait for a flag tap: ${JSON.stringify(surprise)}`);
   evidence.flow.push({step:'surprise-me-waits-for-explicit-flag-selection',...surprise,status:'PASS'});
   await waitFor(session.evaluate,`(()=>{const f=document.querySelector('.aria-world-globe__flag.is-pending');return {visible:!!f&&document.activeElement===f}})()`,'settled Surprise Me flag');
-  const selectedFlag=await tap(session,'.aria-world-globe__flag.is-pending','Select the suggested India flag');
-  const selectedCountry=await waitFor(session.evaluate,`(()=>{const state=v33GlobeController?.getState?.()||{},title=document.querySelector('.aria-world-globe__panel-head h2');return {visible:!!title&&!!state.selected&&!state.pending,name:title?.textContent?.trim()||'',selected:state.selected||null}})()`,'explicit India flag selection');
-  if(selectedCountry.name!=='India'||selectedCountry.selected!=='india')throw new Error(`Explicit flag selection opened the wrong country: ${JSON.stringify(selectedCountry)}`);
-  evidence.flow.push({step:'android-touch-selects-suggested-india-flag',target:selectedFlag,...selectedCountry,status:'PASS'});
+  const selectedFlag=await tap(session,'.aria-world-globe__flag.is-pending','Select the suggested country flag');
+  const selectedCountry=await waitFor(session.evaluate,`(()=>{const state=v33GlobeController?.getState?.()||{},title=document.querySelector('.aria-world-globe__panel-head h2');return {visible:!!title&&!!state.selected&&!state.pending,name:title?.textContent?.trim()||'',selected:state.selected||null}})()`,'explicit suggested country flag selection');
+  if(selectedCountry.name!==surprise.country||selectedCountry.selected!==surprise.pending)throw new Error(`Explicit flag selection did not open the suggested country: ${JSON.stringify({surprise,selectedCountry})}`);
+  evidence.flow.push({step:'android-touch-selects-suggested-flag',target:selectedFlag,...selectedCountry,status:'PASS'});
+  if(selectedCountry.selected!=='india'){let indiaVisible=false;for(let attempt=0;attempt<6;attempt++){indiaVisible=await session.evaluate(`!!document.querySelector('.aria-world-globe__flag[aria-label="India"]')`);if(indiaVisible)break;await dragGlobe(session,attempt%2===0?160:-320)}if(!indiaVisible)throw new Error('India flag did not rotate into the visible hemisphere after Android globe drags');const indiaFlag=await tap(session,'.aria-world-globe__flag[aria-label="India"]','Explicitly select India');const indiaCountry=await waitFor(session.evaluate,`(()=>{const state=v33GlobeController?.getState?.()||{},title=document.querySelector('.aria-world-globe__panel-head h2');return {visible:!!title&&!!state.selected&&!state.pending,name:title?.textContent?.trim()||'',selected:state.selected||null}})()`,'explicit India flag selection');if(indiaCountry.name!=='India'||indiaCountry.selected!=='india')throw new Error(`Explicit India selection opened the wrong country: ${JSON.stringify(indiaCountry)}`);evidence.flow.push({step:'android-touch-selects-india-flag-for-canonical-recipe-check',target:indiaFlag,...indiaCountry,status:'PASS'});}
   const country=await waitFor(session.evaluate,`(()=>{const title=document.querySelector('.aria-world-globe__panel-head h2'),r=title?.getBoundingClientRect();return {visible:!!title&&!!r&&r.width>0&&r.height>0,name:title?.textContent?.trim()||'',ids:[...document.querySelectorAll('.aria-world-globe__recipe[data-recipe-id]')].map(x=>Number(x.dataset.recipeId))}})()`,'India recipe cards');
   if(country.name!=='India'||country.ids.length!==18||new Set(country.ids).size!==18||country.ids.some(id=>id<1||id>95))throw new Error(`India must expose only its 18 existing canonical recipes: ${JSON.stringify(country)}`);
   evidence.flow.push({step:'android-touch-india-country-cards',recipeIds:country.ids,status:'PASS'});
   const countryShot=await stableScreenshot(session,'country-preview-phone-portrait','portrait',mapShot.sha256);evidence.screenshots.push(countryShot);
   if(countryShot.sha256===mapShot.sha256)throw new Error('Android framebuffer did not capture the India country-card overlay');
-  await session.evaluate(`document.querySelector('.aria-world-globe__recipe[data-recipe-id="51"]')?.click()`);
+  const recipeTarget=await tap(session,'.aria-world-globe__recipe[data-recipe-id="51"]','Open canonical recipe #51');
   const recipe=await waitFor(session.evaluate,`(()=>{const h=document.querySelector('.ref-hero h1'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0,title:h?.textContent?.trim()||'',id:Number(selected?.id||0),route:typeof view==='undefined'?'unknown':view}})()`,'canonical India recipe');
   if(recipe.id!==51||recipe.route!=='recipe'||recipe.title!=='Masala Cheese Toast')throw new Error(`Country recipe card opened the wrong route: ${JSON.stringify(recipe)}`);
-  evidence.flow.push({step:'country-card-to-existing-recipe-details',...recipe,status:'PASS'});
+  evidence.flow.push({step:'country-card-to-existing-recipe-details',target:recipeTarget,...recipe,status:'PASS'});
   const recipeShot=await stableScreenshot(session,'recipe-navigation-phone-portrait','portrait',countryShot.sha256);
   if(recipeShot.sha256===countryShot.sha256)throw new Error('Android framebuffer still shows country cards after canonical recipe navigation');
   evidence.screenshots.push(recipeShot);
