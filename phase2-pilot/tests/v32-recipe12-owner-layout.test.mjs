@@ -137,6 +137,12 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'smoke coverage cannot pass by finding the retired text-heavy template title');
   assert.doesNotMatch(tablet, /v32-r12-title-block h1/,
     'tablet coverage cannot pass by finding the retired text-heavy template title');
+  assert.match(phone, /steps:Number\(document\.querySelector\("\.ref-step-grid"\)\?\.dataset\.stepCount\)\|\|document\.querySelectorAll\("\.ref-step-card"\)\.length/,
+    'phone #12 counts the rendered step cards when the renderer omits optional step-count metadata');
+  assert.match(phone, /acceptance\.steps!==4/,
+    'phone #12 continues to require exactly four rendered steps');
+  assert.match(phone, /acceptance\.copy!==acceptance\.expectedCopy/,
+    'phone #12 continues to compare the visible step copy with the canonical source');
   assert.match(tablet, /sidebarOverlap[\s\S]*?usableWidth=innerWidth-sidebarOverlap/,
     'tablet geometry accounts for the visible recipe navigation rail in portrait');
   assert.match(tablet, /ingredientPanel:panel\.getBoundingClientRect\(\)\.width/,
