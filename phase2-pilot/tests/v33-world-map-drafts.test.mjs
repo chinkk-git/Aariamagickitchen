@@ -127,8 +127,10 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
   assert.match(regression,/catalogueCount !== 95/);
   assert.match(workflow,/G1 FAST PREFLIGHT[\s\S]*?W02 SAMPLE[\s\S]*?G2 TARGETED DEVICE SMOKE[\s\S]*?G3 FULL REGRESSION/);
-  assert.match(await read('tools/v3/transform-production.mjs'),/aria-world-globe__flag\{width:68px;height:68px\}/,'Android host CSS keeps scaled country hit targets at least 48px');
-  assert.match(await read('tools/v3/transform-production.mjs'),/aria-world-globe__sphere\{width:min\(100%,calc\(100dvh - var\(--aria-globe-nav-height\) - 56px\)\)\}/,'Android phone landscape host CSS preserves the corrected larger landscape globe geometry');
+  const transform=await read('tools/v3/transform-production.mjs');
+  assert.match(transform,/aria-world-globe__flag\{width:58px;height:58px;/,'Android host CSS keeps the enlarged country hit targets above 48px');
+  assert.match(transform,/aria-world-globe__sphere\{position:absolute;left:62%;top:50%;width:min\(84cqw,84cqh,820px\);/,'Android phone landscape globe scales to available width and height');
+  assert.match(transform,/width:min\(94cqw,94cqh,900px\);height:auto;aspect-ratio:1/,'the orbit is a viewport-contained circle');
 });
 
 test('international adapter rejects W03 drafts and accepts only a pinned complete offline handoff', async t => {

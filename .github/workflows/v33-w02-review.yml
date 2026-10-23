@@ -2,6 +2,12 @@ name: W02 V3.3 owner-review APK (fast lane)
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_apk:
+        description: Publish the installable review APK after exact-head screenshots have been visually inspected
+        type: boolean
+        required: false
+        default: false
   push:
     branches:
       - feature/v3.3-world-map-explorer
@@ -93,7 +99,8 @@ jobs:
           echo 'A08_review=PENDING' > artifacts/v33-world-map-sample/logs/review-status.txt
           echo 'A09_review=PENDING' >> artifacts/v33-world-map-sample/logs/review-status.txt
           echo 'artwork_rights_review=PENDING' >> artifacts/v33-world-map-sample/logs/review-status.txt
-          echo 'REVIEW_READY=CONDITIONAL_ON_PHONE_SMOKE' >> artifacts/v33-world-map-sample/logs/review-status.txt
+          echo 'OWNER_APPROVED=NO' > artifacts/v33-world-map-sample/logs/review-status.txt
+          echo 'REVIEW_READY=NO' >> artifacts/v33-world-map-sample/logs/review-status.txt
           echo 'RELEASE_READY=NO' >> artifacts/v33-world-map-sample/logs/review-status.txt
 
       - name: Enable and verify Linux KVM for Android emulator
@@ -137,7 +144,7 @@ jobs:
           script: bash .github/scripts/v33-world-map-sample-smoke.sh
 
       - name: Publish installable owner-review APK after targeted smoke
-        if: success()
+        if: success() && inputs.publish_apk == true
         uses: actions/upload-artifact@v4
         with:
           name: aaria-magical-kitchen-v3.3-owner-review-apk
