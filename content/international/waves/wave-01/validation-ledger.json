@@ -1,0 +1,43 @@
+{
+  "validator": "W03 local content/package validator v1",
+  "result": "PASS",
+  "checks": {
+    "schema": "PASS",
+    "canonical_catalogue": "PASS",
+    "bilingual_title_description_steps_safety_adult_assistance": "PASS",
+    "asset_existence_sha256": "PASS",
+    "step_ingredient_equipment_references": "PASS",
+    "exact_ingredient_quantities": "PASS",
+    "nutrition_sources_per_recipe": "PASS",
+    "child_safety_rice_handling_hot_equipment": "PASS",
+    "artwork_count": "PASS"
+  },
+  "evidence": {
+    "canonical_count": 95,
+    "recipe_ids": [
+      96,
+      99
+    ],
+    "artwork_file_count": 42,
+    "package_file_count": 46,
+    "package_files_sha256": "f101a9c0a769379caaaaf767810cb216c1c2350226dc110c6752dbcbdd795452",
+    "pair_sha256": "f101a9c0a769379caaaaf767810cb216c1c2350226dc110c6752dbcbdd795452"
+  },
+  "independent_gates": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "known_limitations": [
+    "Nutrition estimates require independent review; Vegetable Fried Rice numeric estimate omits soy sauce and spring onion contributions, sodium not calculated.",
+    "Rights, A08, A09, nutrition/allergen, translation/cultural and security reviews were not performed by W03.",
+    "India mapping was not revalidated; canonical 95 source catalogue remained unchanged."
+  ],
+  "source_commit": "451ab0bf8a3ab1867cf004a113d3d8e6896ccf60",
+  "manifest_path": "content/international/waves/wave-01/manifest.json",
+  "manifest_sha256": "7a188cf10323d37462ca0cdda117593a575134b5913f42c8b9979cbba32cb732",
+  "status": "PASS_CONTENT_ARTWORK_SCHEMA"
+}
