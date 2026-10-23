@@ -1,0 +1,1838 @@
+{
+  "schema_version": "1.0",
+  "id": 101,
+  "country": "china",
+  "country_code": "CN",
+  "title": {
+    "en-GB": "Cucumber Sesame Salad",
+    "pt-BR": "Salada de pepino com gergelim"
+  },
+  "description": {
+    "en-GB": "Cool cucumber tossed with a tangy soy, rice vinegar and sesame dressing.",
+    "pt-BR": "Pepino fresco misturado com molho agridoce de soja, vinagre de arroz e gergelim."
+  },
+  "cultural_context": {
+    "en-GB": "Cucumber salads with garlic, vinegar and sesame are found in many Chinese regional and household meals; recipes vary by family.",
+    "pt-BR": "Saladas de pepino com alho, vinagre e gergelim aparecem em refeições de várias regiões e famílias chinesas; as receitas variam."
+  },
+  "category": "international",
+  "method": "No-cook chilled salad",
+  "time": "30 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 20,
+  "total_minutes": 30,
+  "ingredients": [
+    "400 g Cucumber",
+    "30 mL Unseasoned rice vinegar",
+    "15 mL Reduced-sodium soy sauce",
+    "10 mL Sesame oil",
+    "4 g Caster sugar",
+    "5 g Sesame seeds",
+    "1 clove Garlic clove",
+    "10 g Spring onion"
+  ],
+  "equipment": [
+    "Chopping board",
+    "Kitchen knife",
+    "Small bowl",
+    "Mixing bowl",
+    "Mixing spoon",
+    "Measuring spoon",
+    "Serving bowl"
+  ],
+  "ingredientItems": [
+    {
+      "id": "cucumber",
+      "name": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "quantity": 400,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/cucumber.png",
+        "sha256": "6b05b2d2223648de01c4deb334ef048eb350f23c5ba49d1075c83d03ac1378ae",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "rice-vinegar",
+      "name": {
+        "en-GB": "Unseasoned rice vinegar",
+        "pt-BR": "Vinagre de arroz sem tempero"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/rice-vinegar.png",
+        "sha256": "d4d05c56b3c216becafc24597f3df5ee1a377f9ebc0f6da3672255b814454332",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "soy-sauce",
+      "name": {
+        "en-GB": "Reduced-sodium soy sauce",
+        "pt-BR": "Molho de soja com menos sódio"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [
+        "soy",
+        "wheat",
+        "gluten"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/soy-sauce.png",
+        "sha256": "e704a1739ffdffdbdad2069b2fd82268f8f5f9d8e3dba2580fdb47132f7b581b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "sesame-oil",
+      "name": {
+        "en-GB": "Sesame oil",
+        "pt-BR": "Óleo de gergelim"
+      },
+      "quantity": 10,
+      "unit": "mL",
+      "allergens": [
+        "sesame"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-oil.png",
+        "sha256": "83b9181aa5274806f715defde53deb6160aae5d5337b874f8834bcb768646aeb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "sugar",
+      "name": {
+        "en-GB": "Caster sugar",
+        "pt-BR": "Açúcar refinado"
+      },
+      "quantity": 4,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sugar.png",
+        "sha256": "1949af3bc0b1f582e104aedc8367fee6df678ac275a926cd3e859df010cc3beb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "sesame-seeds",
+      "name": {
+        "en-GB": "Sesame seeds",
+        "pt-BR": "Sementes de gergelim"
+      },
+      "quantity": 5,
+      "unit": "g",
+      "allergens": [
+        "sesame"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-seeds.png",
+        "sha256": "f77a4e4d5c5b612813b5b8c843472a4631f6b811dd0e514e5a8a14fb95a41ded",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "garlic",
+      "name": {
+        "en-GB": "Garlic clove",
+        "pt-BR": "Dente de alho"
+      },
+      "quantity": 1,
+      "unit": "clove",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/garlic.png",
+        "sha256": "a2333d6b7f5716ce663882e52790c6b40a050b5c35a543d7a9be99fb4129a55d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "spring-onion",
+      "name": {
+        "en-GB": "Spring onion",
+        "pt-BR": "Cebolinha"
+      },
+      "quantity": 10,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/spring-onion.png",
+        "sha256": "0d296244c2aaad902a60aa5a859b380681980b217b2b803dbbcc7d4f45d6a197",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/chopping-board.png",
+        "sha256": "2f006bbf629a043ec28004af85822abcf889c73d81ee475a850a4fe78e80874a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/knife.png",
+        "sha256": "80b1b32e90994ba7ebc3bcb2759a6d8f213d470364ec8c2e713525acb1200024",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "small-bowl",
+      "name": {
+        "en-GB": "Small bowl",
+        "pt-BR": "Tigela pequena"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/small-bowl.png",
+        "sha256": "eaa943540826cacf124c49e6952f4f7c1f7ab2d0ea640bfb864fcf27c697c38d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/mixing-bowl.png",
+        "sha256": "0c6c8961dc4a84ad38ac2cd5e8e4b3479e5e32868314fa5ade01ae95fd5f08b8",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "spoon",
+      "name": {
+        "en-GB": "Mixing spoon",
+        "pt-BR": "Colher para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/spoon.png",
+        "sha256": "249212830795392bd26185932b0a5135e673d181c3f2b6ee3602497866d12fba",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "measuring-spoon",
+      "name": {
+        "en-GB": "Measuring spoon",
+        "pt-BR": "Colher medidora"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/measuring-spoon.png",
+        "sha256": "68db0722feeebcd3e6ca6b4516a86db141c11952d5cd11568260221d7394177c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "serving-bowl",
+      "name": {
+        "en-GB": "Serving bowl",
+        "pt-BR": "Tigela para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/serving-bowl.png",
+        "sha256": "bcd79b62c67e86dc314fd2dc0cfcc45c932b73be1549b618d1a164677de333a2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash the vegetables",
+        "pt-BR": "Lave os vegetais"
+      },
+      "instruction": {
+        "en-GB": "Wash the cucumber and spring onion under clean running water.",
+        "pt-BR": "Lave o pepino e a cebolinha em água corrente limpa."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "spring-onion"
+      ],
+      "equipmentIds": [],
+      "adultAssist": {
+        "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+        "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-01.png",
+        "sha256": "d9b0fa587a1cb9e23e89d93a7cecd2d12a610e7eda519407006440e4ebc560ef",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Slice the cucumber",
+        "pt-BR": "Corte o pepino"
+      },
+      "instruction": {
+        "en-GB": "An adult slices the cucumber into bite-size pieces on a stable board.",
+        "pt-BR": "Um adulto corta o pepino em pedaços pequenos sobre uma tábua estável."
+      },
+      "ingredientIds": [
+        "cucumber"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+        "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-02.png",
+        "sha256": "ca8d8118616640c9964cc84045be37909e433aff572f8176f95fc9759630f174",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Mix the dressing",
+        "pt-BR": "Misture o molho"
+      },
+      "instruction": {
+        "en-GB": "Stir rice vinegar, soy sauce, sesame oil and sugar in a small bowl. Check labels for allergens.",
+        "pt-BR": "Misture o vinagre de arroz, o molho de soja, o óleo de gergelim e o açúcar em uma tigela. Confira os rótulos para alergênicos."
+      },
+      "ingredientIds": [
+        "rice-vinegar",
+        "soy-sauce",
+        "sesame-oil",
+        "sugar"
+      ],
+      "equipmentIds": [
+        "small-bowl",
+        "measuring-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+        "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-03.png",
+        "sha256": "77fb6c360f9a132130383dc4323a034a511434cde23786719b34dbd44c446936",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Toss the salad",
+        "pt-BR": "Misture a salada"
+      },
+      "instruction": {
+        "en-GB": "Add cucumber, minced garlic and sliced spring onion to a bowl. Pour over the dressing and toss gently.",
+        "pt-BR": "Coloque o pepino, o alho picado e a cebolinha fatiada em uma tigela. Acrescente o molho e misture delicadamente."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "garlic",
+        "spring-onion"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+        "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-04.png",
+        "sha256": "1b756899b8ab93077486e755be744dde4503ecd81fd4f8e06f61f9c77224a966",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Garnish and chill",
+        "pt-BR": "Finalize e refrigere"
+      },
+      "instruction": {
+        "en-GB": "Sprinkle with sesame seeds. Chill for 10 minutes and serve cold. Refrigerate leftovers promptly.",
+        "pt-BR": "Polvilhe com sementes de gergelim. Refrigere por 10 minutos e sirva frio. Refrigere as sobras sem demora."
+      },
+      "ingredientIds": [
+        "sesame-seeds"
+      ],
+      "equipmentIds": [
+        "serving-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+        "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-05.png",
+        "sha256": "39146938f9a1b031a21ebabe3f14267f4e9cdb88fd9e2f1af5ddfd267b38198d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+    "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+  },
+  "allergens": [
+    "gluten",
+    "sesame",
+    "soy",
+    "wheat"
+  ],
+  "allergen_notes": {
+    "contains": [
+      "gluten",
+      "sesame",
+      "soy",
+      "wheat"
+    ],
+    "cross_contact": {
+      "en-GB": "Check all package labels for allergens and cross-contact.",
+      "pt-BR": "Confira todos os rótulos para alergênicos e contato cruzado."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 53,
+      "proteinG": 1.9,
+      "carbohydrateG": 6.4,
+      "fatG": 3.2,
+      "fibreG": 1.1,
+      "saturatedFatG": 0.5,
+      "sodiumMg": 200
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate based on weighed recipe amounts and generic USDA FoodData Central references; ingredient brands and preparation vary. Not a laboratory analysis.",
+    "method": "Scale FDC generic per-100-g ingredient values to recipe quantities, sum and divide by four; rounded values.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber%2C%20with%20peel%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Vinegar, rice",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar%2C%20rice"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Soy sauce, reduced sodium",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Soy%20sauce%2C%20reduced%20sodium"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Oil, sesame, salad or cooking",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20sesame%2C%20salad%20or%20cooking"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Sugar, granulated",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Sugar%2C%20granulated"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Seeds, sesame seeds, whole, dried",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Seeds%2C%20sesame%20seeds%2C%20whole%2C%20dried"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Garlic%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Onions, spring, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Onions%2C%20spring%2C%20raw"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Cool cucumber tossed with a tangy soy, rice vinegar and sesame dressing.",
+      "pt-BR": "Pepino fresco misturado com molho agridoce de soja, vinagre de arroz e gergelim."
+    },
+    "image": {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/finished-dish.png",
+      "sha256": "b0e172df4b6dd4e7d9ae3e037ab547ca0016a6d9663ee336dc363cd448a84e5a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/finished-dish.png",
+      "sha256": "b0e172df4b6dd4e7d9ae3e037ab547ca0016a6d9663ee336dc363cd448a84e5a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/cucumber.png",
+        "sha256": "6b05b2d2223648de01c4deb334ef048eb350f23c5ba49d1075c83d03ac1378ae",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/rice-vinegar.png",
+        "sha256": "d4d05c56b3c216becafc24597f3df5ee1a377f9ebc0f6da3672255b814454332",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/soy-sauce.png",
+        "sha256": "e704a1739ffdffdbdad2069b2fd82268f8f5f9d8e3dba2580fdb47132f7b581b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-oil.png",
+        "sha256": "83b9181aa5274806f715defde53deb6160aae5d5337b874f8834bcb768646aeb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sugar.png",
+        "sha256": "1949af3bc0b1f582e104aedc8367fee6df678ac275a926cd3e859df010cc3beb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-seeds.png",
+        "sha256": "f77a4e4d5c5b612813b5b8c843472a4631f6b811dd0e514e5a8a14fb95a41ded",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/garlic.png",
+        "sha256": "a2333d6b7f5716ce663882e52790c6b40a050b5c35a543d7a9be99fb4129a55d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/spring-onion.png",
+        "sha256": "0d296244c2aaad902a60aa5a859b380681980b217b2b803dbbcc7d4f45d6a197",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/chopping-board.png",
+        "sha256": "2f006bbf629a043ec28004af85822abcf889c73d81ee475a850a4fe78e80874a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/knife.png",
+        "sha256": "80b1b32e90994ba7ebc3bcb2759a6d8f213d470364ec8c2e713525acb1200024",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/small-bowl.png",
+        "sha256": "eaa943540826cacf124c49e6952f4f7c1f7ab2d0ea640bfb864fcf27c697c38d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/mixing-bowl.png",
+        "sha256": "0c6c8961dc4a84ad38ac2cd5e8e4b3479e5e32868314fa5ade01ae95fd5f08b8",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/spoon.png",
+        "sha256": "249212830795392bd26185932b0a5135e673d181c3f2b6ee3602497866d12fba",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/measuring-spoon.png",
+        "sha256": "68db0722feeebcd3e6ca6b4516a86db141c11952d5cd11568260221d7394177c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/serving-bowl.png",
+        "sha256": "bcd79b62c67e86dc314fd2dc0cfcc45c932b73be1549b618d1a164677de333a2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-01.png",
+        "sha256": "d9b0fa587a1cb9e23e89d93a7cecd2d12a610e7eda519407006440e4ebc560ef",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-02.png",
+        "sha256": "ca8d8118616640c9964cc84045be37909e433aff572f8176f95fc9759630f174",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-03.png",
+        "sha256": "77fb6c360f9a132130383dc4323a034a511434cde23786719b34dbd44c446936",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-04.png",
+        "sha256": "1b756899b8ab93077486e755be744dde4503ecd81fd4f8e06f61f9c77224a966",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-05.png",
+        "sha256": "39146938f9a1b031a21ebabe3f14267f4e9cdb88fd9e2f1af5ddfd267b38198d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/finished-dish.png",
+      "sha256": "b0e172df4b6dd4e7d9ae3e037ab547ca0016a6d9663ee336dc363cd448a84e5a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/cucumber.png",
+      "sha256": "6b05b2d2223648de01c4deb334ef048eb350f23c5ba49d1075c83d03ac1378ae",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/rice-vinegar.png",
+      "sha256": "d4d05c56b3c216becafc24597f3df5ee1a377f9ebc0f6da3672255b814454332",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/soy-sauce.png",
+      "sha256": "e704a1739ffdffdbdad2069b2fd82268f8f5f9d8e3dba2580fdb47132f7b581b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-oil.png",
+      "sha256": "83b9181aa5274806f715defde53deb6160aae5d5337b874f8834bcb768646aeb",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sugar.png",
+      "sha256": "1949af3bc0b1f582e104aedc8367fee6df678ac275a926cd3e859df010cc3beb",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-seeds.png",
+      "sha256": "f77a4e4d5c5b612813b5b8c843472a4631f6b811dd0e514e5a8a14fb95a41ded",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/garlic.png",
+      "sha256": "a2333d6b7f5716ce663882e52790c6b40a050b5c35a543d7a9be99fb4129a55d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/spring-onion.png",
+      "sha256": "0d296244c2aaad902a60aa5a859b380681980b217b2b803dbbcc7d4f45d6a197",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/chopping-board.png",
+      "sha256": "2f006bbf629a043ec28004af85822abcf889c73d81ee475a850a4fe78e80874a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/knife.png",
+      "sha256": "80b1b32e90994ba7ebc3bcb2759a6d8f213d470364ec8c2e713525acb1200024",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/small-bowl.png",
+      "sha256": "eaa943540826cacf124c49e6952f4f7c1f7ab2d0ea640bfb864fcf27c697c38d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/mixing-bowl.png",
+      "sha256": "0c6c8961dc4a84ad38ac2cd5e8e4b3479e5e32868314fa5ade01ae95fd5f08b8",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/spoon.png",
+      "sha256": "249212830795392bd26185932b0a5135e673d181c3f2b6ee3602497866d12fba",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/measuring-spoon.png",
+      "sha256": "68db0722feeebcd3e6ca6b4516a86db141c11952d5cd11568260221d7394177c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/serving-bowl.png",
+      "sha256": "bcd79b62c67e86dc314fd2dc0cfcc45c932b73be1549b618d1a164677de333a2",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-01.png",
+      "sha256": "d9b0fa587a1cb9e23e89d93a7cecd2d12a610e7eda519407006440e4ebc560ef",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-02.png",
+      "sha256": "ca8d8118616640c9964cc84045be37909e433aff572f8176f95fc9759630f174",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-03.png",
+      "sha256": "77fb6c360f9a132130383dc4323a034a511434cde23786719b34dbd44c446936",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-04.png",
+      "sha256": "1b756899b8ab93077486e755be744dde4503ecd81fd4f8e06f61f9c77224a966",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-05.png",
+      "sha256": "39146938f9a1b031a21ebabe3f14267f4e9cdb88fd9e2f1af5ddfd267b38198d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "No-cook chilled salad",
+    "time": "30 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 101,
+    "country": "china",
+    "countryCode": "CN",
+    "title": {
+      "en-GB": "Cucumber Sesame Salad",
+      "pt-BR": "Salada de pepino com gergelim"
+    },
+    "description": {
+      "en-GB": "Cool cucumber tossed with a tangy soy, rice vinegar and sesame dressing.",
+      "pt-BR": "Pepino fresco misturado com molho agridoce de soja, vinagre de arroz e gergelim."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Cucumber salads with garlic, vinegar and sesame are found in many Chinese regional and household meals; recipes vary by family.",
+      "pt-BR": "Saladas de pepino com alho, vinagre e gergelim aparecem em refeições de várias regiões e famílias chinesas; as receitas variam."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 20,
+    "totalMinutes": 30,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; keep safety guidance and roles unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "cucumber",
+        "name": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "quantity": 400,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/cucumber.png",
+          "sha256": "6b05b2d2223648de01c4deb334ef048eb350f23c5ba49d1075c83d03ac1378ae",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "rice-vinegar",
+        "name": {
+          "en-GB": "Unseasoned rice vinegar",
+          "pt-BR": "Vinagre de arroz sem tempero"
+        },
+        "quantity": 30,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/rice-vinegar.png",
+          "sha256": "d4d05c56b3c216becafc24597f3df5ee1a377f9ebc0f6da3672255b814454332",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "soy-sauce",
+        "name": {
+          "en-GB": "Reduced-sodium soy sauce",
+          "pt-BR": "Molho de soja com menos sódio"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [
+          "soy",
+          "wheat",
+          "gluten"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/soy-sauce.png",
+          "sha256": "e704a1739ffdffdbdad2069b2fd82268f8f5f9d8e3dba2580fdb47132f7b581b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "sesame-oil",
+        "name": {
+          "en-GB": "Sesame oil",
+          "pt-BR": "Óleo de gergelim"
+        },
+        "quantity": 10,
+        "unit": "mL",
+        "allergens": [
+          "sesame"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-oil.png",
+          "sha256": "83b9181aa5274806f715defde53deb6160aae5d5337b874f8834bcb768646aeb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "sugar",
+        "name": {
+          "en-GB": "Caster sugar",
+          "pt-BR": "Açúcar refinado"
+        },
+        "quantity": 4,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sugar.png",
+          "sha256": "1949af3bc0b1f582e104aedc8367fee6df678ac275a926cd3e859df010cc3beb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "sesame-seeds",
+        "name": {
+          "en-GB": "Sesame seeds",
+          "pt-BR": "Sementes de gergelim"
+        },
+        "quantity": 5,
+        "unit": "g",
+        "allergens": [
+          "sesame"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-seeds.png",
+          "sha256": "f77a4e4d5c5b612813b5b8c843472a4631f6b811dd0e514e5a8a14fb95a41ded",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "garlic",
+        "name": {
+          "en-GB": "Garlic clove",
+          "pt-BR": "Dente de alho"
+        },
+        "quantity": 1,
+        "unit": "clove",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/garlic.png",
+          "sha256": "a2333d6b7f5716ce663882e52790c6b40a050b5c35a543d7a9be99fb4129a55d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "spring-onion",
+        "name": {
+          "en-GB": "Spring onion",
+          "pt-BR": "Cebolinha"
+        },
+        "quantity": 10,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/spring-onion.png",
+          "sha256": "0d296244c2aaad902a60aa5a859b380681980b217b2b803dbbcc7d4f45d6a197",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "equipment": [
+      "Chopping board",
+      "Kitchen knife",
+      "Small bowl",
+      "Mixing bowl",
+      "Mixing spoon",
+      "Measuring spoon",
+      "Serving bowl"
+    ],
+    "equipmentItems": [
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/chopping-board.png",
+          "sha256": "2f006bbf629a043ec28004af85822abcf889c73d81ee475a850a4fe78e80874a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Kitchen knife",
+          "pt-BR": "Faca de cozinha"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/knife.png",
+          "sha256": "80b1b32e90994ba7ebc3bcb2759a6d8f213d470364ec8c2e713525acb1200024",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "small-bowl",
+        "name": {
+          "en-GB": "Small bowl",
+          "pt-BR": "Tigela pequena"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/small-bowl.png",
+          "sha256": "eaa943540826cacf124c49e6952f4f7c1f7ab2d0ea640bfb864fcf27c697c38d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Mixing bowl",
+          "pt-BR": "Tigela para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/mixing-bowl.png",
+          "sha256": "0c6c8961dc4a84ad38ac2cd5e8e4b3479e5e32868314fa5ade01ae95fd5f08b8",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "spoon",
+        "name": {
+          "en-GB": "Mixing spoon",
+          "pt-BR": "Colher para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/spoon.png",
+          "sha256": "249212830795392bd26185932b0a5135e673d181c3f2b6ee3602497866d12fba",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "measuring-spoon",
+        "name": {
+          "en-GB": "Measuring spoon",
+          "pt-BR": "Colher medidora"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/measuring-spoon.png",
+          "sha256": "68db0722feeebcd3e6ca6b4516a86db141c11952d5cd11568260221d7394177c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "serving-bowl",
+        "name": {
+          "en-GB": "Serving bowl",
+          "pt-BR": "Tigela para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/serving-bowl.png",
+          "sha256": "bcd79b62c67e86dc314fd2dc0cfcc45c932b73be1549b618d1a164677de333a2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Wash the vegetables",
+          "pt-BR": "Lave os vegetais"
+        },
+        "instruction": {
+          "en-GB": "Wash the cucumber and spring onion under clean running water.",
+          "pt-BR": "Lave o pepino e a cebolinha em água corrente limpa."
+        },
+        "ingredientIds": [
+          "cucumber",
+          "spring-onion"
+        ],
+        "equipmentIds": [],
+        "adultAssist": {
+          "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+          "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-01.png",
+          "sha256": "d9b0fa587a1cb9e23e89d93a7cecd2d12a610e7eda519407006440e4ebc560ef",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Slice the cucumber",
+          "pt-BR": "Corte o pepino"
+        },
+        "instruction": {
+          "en-GB": "An adult slices the cucumber into bite-size pieces on a stable board.",
+          "pt-BR": "Um adulto corta o pepino em pedaços pequenos sobre uma tábua estável."
+        },
+        "ingredientIds": [
+          "cucumber"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+          "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-02.png",
+          "sha256": "ca8d8118616640c9964cc84045be37909e433aff572f8176f95fc9759630f174",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Mix the dressing",
+          "pt-BR": "Misture o molho"
+        },
+        "instruction": {
+          "en-GB": "Stir rice vinegar, soy sauce, sesame oil and sugar in a small bowl. Check labels for allergens.",
+          "pt-BR": "Misture o vinagre de arroz, o molho de soja, o óleo de gergelim e o açúcar em uma tigela. Confira os rótulos para alergênicos."
+        },
+        "ingredientIds": [
+          "rice-vinegar",
+          "soy-sauce",
+          "sesame-oil",
+          "sugar"
+        ],
+        "equipmentIds": [
+          "small-bowl",
+          "measuring-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+          "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-03.png",
+          "sha256": "77fb6c360f9a132130383dc4323a034a511434cde23786719b34dbd44c446936",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Toss the salad",
+          "pt-BR": "Misture a salada"
+        },
+        "instruction": {
+          "en-GB": "Add cucumber, minced garlic and sliced spring onion to a bowl. Pour over the dressing and toss gently.",
+          "pt-BR": "Coloque o pepino, o alho picado e a cebolinha fatiada em uma tigela. Acrescente o molho e misture delicadamente."
+        },
+        "ingredientIds": [
+          "cucumber",
+          "garlic",
+          "spring-onion"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+          "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-04.png",
+          "sha256": "1b756899b8ab93077486e755be744dde4503ecd81fd4f8e06f61f9c77224a966",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Garnish and chill",
+          "pt-BR": "Finalize e refrigere"
+        },
+        "instruction": {
+          "en-GB": "Sprinkle with sesame seeds. Chill for 10 minutes and serve cold. Refrigerate leftovers promptly.",
+          "pt-BR": "Polvilhe com sementes de gergelim. Refrigere por 10 minutos e sirva frio. Refrigere as sobras sem demora."
+        },
+        "ingredientIds": [
+          "sesame-seeds"
+        ],
+        "equipmentIds": [
+          "serving-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+          "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-05.png",
+          "sha256": "39146938f9a1b031a21ebabe3f14267f4e9cdb88fd9e2f1af5ddfd267b38198d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults handle the sharp knife. Children wash vegetables, measure dressing and toss the salad with supervision.",
+      "pt-BR": "Adultos usam a faca afiada. Crianças lavam os vegetais, medem o molho e misturam a salada com supervisão."
+    },
+    "finishedDish": {
+      "image": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/finished-dish.png",
+        "sha256": "b0e172df4b6dd4e7d9ae3e037ab547ca0016a6d9663ee336dc363cd448a84e5a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "description": {
+        "en-GB": "Cool cucumber tossed with a tangy soy, rice vinegar and sesame dressing.",
+        "pt-BR": "Pepino fresco misturado com molho agridoce de soja, vinagre de arroz e gergelim."
+      }
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 53,
+        "proteinG": 1.9,
+        "carbohydrateG": 6.4,
+        "fatG": 3.2,
+        "fibreG": 1.1,
+        "saturatedFatG": 0.5,
+        "sodiumMg": 200
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate based on weighed recipe amounts and generic USDA FoodData Central references; ingredient brands and preparation vary. Not a laboratory analysis.",
+      "method": "Scale FDC generic per-100-g ingredient values to recipe quantities, sum and divide by four; rounded values.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cucumber, with peel, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber%2C%20with%20peel%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Vinegar, rice",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar%2C%20rice"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Soy sauce, reduced sodium",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Soy%20sauce%2C%20reduced%20sodium"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Oil, sesame, salad or cooking",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20sesame%2C%20salad%20or%20cooking"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Sugar, granulated",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Sugar%2C%20granulated"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Seeds, sesame seeds, whole, dried",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Seeds%2C%20sesame%20seeds%2C%20whole%2C%20dried"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Garlic, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Garlic%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Onions, spring, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Onions%2C%20spring%2C%20raw"
+        }
+      ]
+    },
+    "allergens": [
+      "gluten",
+      "sesame",
+      "soy",
+      "wheat"
+    ],
+    "allergenNotes": {
+      "contains": [
+        "gluten",
+        "sesame",
+        "soy",
+        "wheat"
+      ],
+      "cross_contact": {
+        "en-GB": "Check all package labels for allergens and cross-contact.",
+        "pt-BR": "Confira todos os rótulos para alergênicos e contato cruzado."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/finished-dish.png",
+        "sha256": "b0e172df4b6dd4e7d9ae3e037ab547ca0016a6d9663ee336dc363cd448a84e5a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/cucumber.png",
+          "sha256": "6b05b2d2223648de01c4deb334ef048eb350f23c5ba49d1075c83d03ac1378ae",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/rice-vinegar.png",
+          "sha256": "d4d05c56b3c216becafc24597f3df5ee1a377f9ebc0f6da3672255b814454332",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/soy-sauce.png",
+          "sha256": "e704a1739ffdffdbdad2069b2fd82268f8f5f9d8e3dba2580fdb47132f7b581b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-oil.png",
+          "sha256": "83b9181aa5274806f715defde53deb6160aae5d5337b874f8834bcb768646aeb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sugar.png",
+          "sha256": "1949af3bc0b1f582e104aedc8367fee6df678ac275a926cd3e859df010cc3beb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-seeds.png",
+          "sha256": "f77a4e4d5c5b612813b5b8c843472a4631f6b811dd0e514e5a8a14fb95a41ded",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/garlic.png",
+          "sha256": "a2333d6b7f5716ce663882e52790c6b40a050b5c35a543d7a9be99fb4129a55d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/spring-onion.png",
+          "sha256": "0d296244c2aaad902a60aa5a859b380681980b217b2b803dbbcc7d4f45d6a197",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/chopping-board.png",
+          "sha256": "2f006bbf629a043ec28004af85822abcf889c73d81ee475a850a4fe78e80874a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/knife.png",
+          "sha256": "80b1b32e90994ba7ebc3bcb2759a6d8f213d470364ec8c2e713525acb1200024",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/small-bowl.png",
+          "sha256": "eaa943540826cacf124c49e6952f4f7c1f7ab2d0ea640bfb864fcf27c697c38d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/mixing-bowl.png",
+          "sha256": "0c6c8961dc4a84ad38ac2cd5e8e4b3479e5e32868314fa5ade01ae95fd5f08b8",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/spoon.png",
+          "sha256": "249212830795392bd26185932b0a5135e673d181c3f2b6ee3602497866d12fba",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/measuring-spoon.png",
+          "sha256": "68db0722feeebcd3e6ca6b4516a86db141c11952d5cd11568260221d7394177c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/serving-bowl.png",
+          "sha256": "bcd79b62c67e86dc314fd2dc0cfcc45c932b73be1549b618d1a164677de333a2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-01.png",
+          "sha256": "d9b0fa587a1cb9e23e89d93a7cecd2d12a610e7eda519407006440e4ebc560ef",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-02.png",
+          "sha256": "ca8d8118616640c9964cc84045be37909e433aff572f8176f95fc9759630f174",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-03.png",
+          "sha256": "77fb6c360f9a132130383dc4323a034a511434cde23786719b34dbd44c446936",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-04.png",
+          "sha256": "1b756899b8ab93077486e755be744dde4503ecd81fd4f8e06f61f9c77224a966",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-05.png",
+          "sha256": "39146938f9a1b031a21ebabe3f14267f4e9cdb88fd9e2f1af5ddfd267b38198d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food"
+    },
+    "safety": {
+      "en-GB": "Wash hands and produce. An adult uses the sharp knife on a stable board. Check soy sauce and sesame labels for allergens and cross-contact; refrigerate salad and leftovers promptly.",
+      "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca afiada sobre uma tábua estável. Confira os rótulos do molho de soja e do gergelim para alergênicos e contato cruzado; refrigere a salada e as sobras sem demora."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}

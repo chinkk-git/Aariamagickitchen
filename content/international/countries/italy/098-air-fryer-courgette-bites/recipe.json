@@ -1,0 +1,1826 @@
+{
+  "schema_version": "1.0",
+  "id": 98,
+  "country": "italy",
+  "country_code": "IT",
+  "title": {
+    "en-GB": "Air-Fryer Courgette Bites",
+    "pt-BR": "Petiscos de abobrinha na air fryer"
+  },
+  "description": {
+    "en-GB": "Crisp-edged courgette rounds with a light parmesan crumb coating.",
+    "pt-BR": "Rodelas de abobrinha douradas com uma leve cobertura crocante de parmesão."
+  },
+  "cultural_context": {
+    "en-GB": "A simple family snack using courgette, a familiar vegetable in Italian home cooking; air-frying is a modern preparation method.",
+    "pt-BR": "Um lanche simples com abobrinha, vegetal comum na cozinha caseira italiana; a air fryer é um método moderno de preparo."
+  },
+  "category": "international",
+  "method": "Adult air fryer; child mixing",
+  "time": "30 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 20,
+  "total_minutes": 30,
+  "ingredients": [
+    "300 g Courgette",
+    "1 large egg Egg",
+    "60 g Dried breadcrumbs",
+    "30 g Finely grated Parmesan",
+    "10 mL Olive oil",
+    "1 g Fine salt"
+  ],
+  "equipment": [
+    "Air fryer",
+    "Chopping board",
+    "Kitchen knife",
+    "Mixing bowl",
+    "Fork",
+    "Measuring spoon",
+    "Silicone-tipped tongs",
+    "Oven mitt",
+    "Serving plate"
+  ],
+  "ingredientItems": [
+    {
+      "id": "courgette",
+      "name": {
+        "en-GB": "Courgette",
+        "pt-BR": "Abobrinha"
+      },
+      "quantity": 300,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/courgette.png",
+        "sha256": "70a828b2b54be6a246e35183dbf2b0303fa6ee93c637df0a1dba1e8974581ee3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "egg",
+      "name": {
+        "en-GB": "Egg",
+        "pt-BR": "Ovo"
+      },
+      "quantity": 1,
+      "unit": "large egg",
+      "allergens": [
+        "egg"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/egg.png",
+        "sha256": "2fa324735c537942f3da2ac28bc56e6064b274fccc0453b5b96d21af97997d8b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "breadcrumbs",
+      "name": {
+        "en-GB": "Dried breadcrumbs",
+        "pt-BR": "Farinha de rosca"
+      },
+      "quantity": 60,
+      "unit": "g",
+      "allergens": [
+        "wheat",
+        "gluten"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/breadcrumbs.png",
+        "sha256": "547a5cb86f59a05c427ad6ba168100205a937d5b8d854e07f26b4c0a13184d81",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "parmesan",
+      "name": {
+        "en-GB": "Finely grated Parmesan",
+        "pt-BR": "Parmesão ralado fino"
+      },
+      "quantity": 30,
+      "unit": "g",
+      "allergens": [
+        "milk"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/parmesan.png",
+        "sha256": "93a207d868e8b1bf131189f46083c3fbe6d1ae789978d668554b215865ae3b5e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "olive-oil",
+      "name": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "quantity": 10,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/olive-oil.png",
+        "sha256": "56b3b154e9f5cf155a5fc60f7bbff4a2f8b97bd550018752c6d49279943a9e3f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "salt",
+      "name": {
+        "en-GB": "Fine salt",
+        "pt-BR": "Sal fino"
+      },
+      "quantity": 1,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/salt.png",
+        "sha256": "6e3106ae4b451d9fbba7c422e843c6790a5742030c10d03c6a4a9342c6914173",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "air-fryer",
+      "name": {
+        "en-GB": "Air fryer",
+        "pt-BR": "Fritadeira elétrica sem óleo"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/air-fryer.png",
+        "sha256": "8e4936845ee5246c40e1eef7924e7053f39ae294fcd705f12a8ce68cbb4a996a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/chopping-board.png",
+        "sha256": "3b2fce9b8177b7636744e320afd4211cf2fea5141db9227bdac633f5641f37c7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/knife.png",
+        "sha256": "30e2d0a73d7d6c272c5c5ab05e451d9d3d7a083511a43af9e0036b579c64c640",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/mixing-bowl.png",
+        "sha256": "98a40da86c7074eae6cf0c880e443cd61361fcb452a631b8eb39e199ae540801",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "fork",
+      "name": {
+        "en-GB": "Fork",
+        "pt-BR": "Garfo"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/fork.png",
+        "sha256": "eeb3e1c7ea71a681e1440f543c6263988b5bd166641e8d038481063f2f8aad20",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "measuring-spoon",
+      "name": {
+        "en-GB": "Measuring spoon",
+        "pt-BR": "Colher medidora"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/measuring-spoon.png",
+        "sha256": "168a6e2bceb49c9b4e559ed7eecbf8b5ae3b8e2e769361dc980312cab60f822e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "tongs",
+      "name": {
+        "en-GB": "Silicone-tipped tongs",
+        "pt-BR": "Pegador com ponta de silicone"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/tongs.png",
+        "sha256": "25e4c3b7e98abdf0c1fb49568272173e0901a1619c1e0185474b7829fae8ba37",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "oven-mitt",
+      "name": {
+        "en-GB": "Oven mitt",
+        "pt-BR": "Luva térmica"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/oven-mitt.png",
+        "sha256": "1311ffc2714d660cf4ed843ccd80a60e6a44030e9863e28238433e87e2717c7d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "serving-plate",
+      "name": {
+        "en-GB": "Serving plate",
+        "pt-BR": "Prato para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/serving-plate.png",
+        "sha256": "4701d91a8ebd49154e2df80779d85fabb04528ded7e51347cea112d3b134dd08",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash and slice",
+        "pt-BR": "Lave e corte"
+      },
+      "instruction": {
+        "en-GB": "Wash hands and courgette. An adult cuts it into even rounds on a stable board.",
+        "pt-BR": "Lave as mãos e a abobrinha. Um adulto corta em rodelas iguais sobre uma tábua estável."
+      },
+      "ingredientIds": [
+        "courgette"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+        "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+        "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-01.png",
+        "sha256": "be3faf022b8c34ac78e807028f3d2d646b4315a985beea7a4fa8c381b3d70b38",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Prepare the coating",
+        "pt-BR": "Prepare a cobertura"
+      },
+      "instruction": {
+        "en-GB": "Beat the egg in a bowl. Mix breadcrumbs, Parmesan and salt in another bowl.",
+        "pt-BR": "Bata o ovo em uma tigela. Misture a farinha de rosca, o parmesão e o sal em outra tigela."
+      },
+      "ingredientIds": [
+        "egg",
+        "breadcrumbs",
+        "parmesan",
+        "salt"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "fork"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+        "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+        "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-02.png",
+        "sha256": "3dc2e6b30732a44d49863ba23ce06d03532010c3a98a42cde33faaf49eca21b9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Coat the courgette",
+        "pt-BR": "Empane a abobrinha"
+      },
+      "instruction": {
+        "en-GB": "Dip each round in egg, then crumbs. Drizzle or brush with the measured olive oil.",
+        "pt-BR": "Passe cada rodela no ovo e depois na mistura de farinha. Regue ou pincele com o azeite medido."
+      },
+      "ingredientIds": [
+        "courgette",
+        "egg",
+        "breadcrumbs",
+        "parmesan",
+        "olive-oil"
+      ],
+      "equipmentIds": [
+        "mixing-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+        "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+        "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-03.png",
+        "sha256": "f4561bf8a190d4679990d96ef0a1ec871e81c9aea1e82c899dcc5a9b91df499c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Air-fry until golden",
+        "pt-BR": "Asse na air fryer até dourar"
+      },
+      "instruction": {
+        "en-GB": "An adult arranges rounds in a single layer and air-fries at 200°C for 10–14 minutes, turning once, until crisp and cooked through.",
+        "pt-BR": "Um adulto organiza as rodelas em uma camada e assa a 200°C por 10–14 minutos, virando uma vez, até ficarem douradas e cozidas."
+      },
+      "ingredientIds": [
+        "courgette",
+        "olive-oil"
+      ],
+      "equipmentIds": [
+        "air-fryer",
+        "tongs",
+        "oven-mitt"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+        "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+        "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-04.png",
+        "sha256": "7ab6c30d134ff9f46586eda57e5bc9060cf2b1b2a635b059289b7269cf59b478",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Cool and serve",
+        "pt-BR": "Esfrie e sirva"
+      },
+      "instruction": {
+        "en-GB": "An adult removes the hot basket. Let bites cool briefly on a plate before eating.",
+        "pt-BR": "Um adulto retira a cesta quente. Deixe os petiscos esfriarem um pouco no prato antes de comer."
+      },
+      "ingredientIds": [
+        "courgette",
+        "parmesan"
+      ],
+      "equipmentIds": [
+        "air-fryer",
+        "oven-mitt",
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+        "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+      },
+      "safety": {
+        "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+        "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles sharp knife and any hot appliance.",
+        "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+        "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-05.png",
+        "sha256": "d49ccb385ed0915a3691386c04e9839b9cd6fe1295cb0a14567cb26b300fdfb9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+    "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+  },
+  "allergens": [
+    "egg",
+    "gluten",
+    "milk",
+    "wheat"
+  ],
+  "allergen_notes": {
+    "contains": [
+      "egg",
+      "gluten",
+      "milk",
+      "wheat"
+    ],
+    "cross_contact": {
+      "en-GB": "Check all package labels for allergens and cross-contact.",
+      "pt-BR": "Confira todos os rótulos para alergênicos e contato cruzado."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 110,
+      "proteinG": 8.7,
+      "carbohydrateG": 11.5,
+      "fatG": 4.0,
+      "fibreG": 1.5,
+      "saturatedFatG": 1.7,
+      "sodiumMg": 260
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate based on weighed recipe amounts and generic USDA FoodData Central references; ingredient brands and preparation vary. Not a laboratory analysis.",
+    "method": "Scale FDC generic per-100-g ingredient values to recipe quantities, sum and divide by four; rounded values.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Squash, summer, green, zucchini, includes skin, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Squash%2C%20summer%2C%20green%2C%20zucchini%2C%20includes%20skin%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Egg, whole, raw, fresh",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Egg%2C%20whole%2C%20raw%2C%20fresh"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Bread crumbs, dry, grated, plain",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Bread%20crumbs%2C%20dry%2C%20grated%2C%20plain"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cheese, parmesan, hard",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese%2C%20parmesan%2C%20hard"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Oil, olive, salad or cooking",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20olive%2C%20salad%20or%20cooking"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Salt, table",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Salt%2C%20table"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Crisp-edged courgette rounds with a light parmesan crumb coating.",
+      "pt-BR": "Rodelas de abobrinha douradas com uma leve cobertura crocante de parmesão."
+    },
+    "image": {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/finished-dish.png",
+      "sha256": "93f4eea19a5cc620b2f7ffaafe246ecc87e378ea9a04b8a910a5238231bdff4b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/finished-dish.png",
+      "sha256": "93f4eea19a5cc620b2f7ffaafe246ecc87e378ea9a04b8a910a5238231bdff4b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/courgette.png",
+        "sha256": "70a828b2b54be6a246e35183dbf2b0303fa6ee93c637df0a1dba1e8974581ee3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/egg.png",
+        "sha256": "2fa324735c537942f3da2ac28bc56e6064b274fccc0453b5b96d21af97997d8b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/breadcrumbs.png",
+        "sha256": "547a5cb86f59a05c427ad6ba168100205a937d5b8d854e07f26b4c0a13184d81",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/parmesan.png",
+        "sha256": "93a207d868e8b1bf131189f46083c3fbe6d1ae789978d668554b215865ae3b5e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/olive-oil.png",
+        "sha256": "56b3b154e9f5cf155a5fc60f7bbff4a2f8b97bd550018752c6d49279943a9e3f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/salt.png",
+        "sha256": "6e3106ae4b451d9fbba7c422e843c6790a5742030c10d03c6a4a9342c6914173",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/air-fryer.png",
+        "sha256": "8e4936845ee5246c40e1eef7924e7053f39ae294fcd705f12a8ce68cbb4a996a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/chopping-board.png",
+        "sha256": "3b2fce9b8177b7636744e320afd4211cf2fea5141db9227bdac633f5641f37c7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/knife.png",
+        "sha256": "30e2d0a73d7d6c272c5c5ab05e451d9d3d7a083511a43af9e0036b579c64c640",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/mixing-bowl.png",
+        "sha256": "98a40da86c7074eae6cf0c880e443cd61361fcb452a631b8eb39e199ae540801",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/fork.png",
+        "sha256": "eeb3e1c7ea71a681e1440f543c6263988b5bd166641e8d038481063f2f8aad20",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/measuring-spoon.png",
+        "sha256": "168a6e2bceb49c9b4e559ed7eecbf8b5ae3b8e2e769361dc980312cab60f822e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/tongs.png",
+        "sha256": "25e4c3b7e98abdf0c1fb49568272173e0901a1619c1e0185474b7829fae8ba37",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/oven-mitt.png",
+        "sha256": "1311ffc2714d660cf4ed843ccd80a60e6a44030e9863e28238433e87e2717c7d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/serving-plate.png",
+        "sha256": "4701d91a8ebd49154e2df80779d85fabb04528ded7e51347cea112d3b134dd08",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-01.png",
+        "sha256": "be3faf022b8c34ac78e807028f3d2d646b4315a985beea7a4fa8c381b3d70b38",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-02.png",
+        "sha256": "3dc2e6b30732a44d49863ba23ce06d03532010c3a98a42cde33faaf49eca21b9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-03.png",
+        "sha256": "f4561bf8a190d4679990d96ef0a1ec871e81c9aea1e82c899dcc5a9b91df499c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-04.png",
+        "sha256": "7ab6c30d134ff9f46586eda57e5bc9060cf2b1b2a635b059289b7269cf59b478",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-05.png",
+        "sha256": "d49ccb385ed0915a3691386c04e9839b9cd6fe1295cb0a14567cb26b300fdfb9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/finished-dish.png",
+      "sha256": "93f4eea19a5cc620b2f7ffaafe246ecc87e378ea9a04b8a910a5238231bdff4b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/courgette.png",
+      "sha256": "70a828b2b54be6a246e35183dbf2b0303fa6ee93c637df0a1dba1e8974581ee3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/egg.png",
+      "sha256": "2fa324735c537942f3da2ac28bc56e6064b274fccc0453b5b96d21af97997d8b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/breadcrumbs.png",
+      "sha256": "547a5cb86f59a05c427ad6ba168100205a937d5b8d854e07f26b4c0a13184d81",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/parmesan.png",
+      "sha256": "93a207d868e8b1bf131189f46083c3fbe6d1ae789978d668554b215865ae3b5e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/olive-oil.png",
+      "sha256": "56b3b154e9f5cf155a5fc60f7bbff4a2f8b97bd550018752c6d49279943a9e3f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/salt.png",
+      "sha256": "6e3106ae4b451d9fbba7c422e843c6790a5742030c10d03c6a4a9342c6914173",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/air-fryer.png",
+      "sha256": "8e4936845ee5246c40e1eef7924e7053f39ae294fcd705f12a8ce68cbb4a996a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/chopping-board.png",
+      "sha256": "3b2fce9b8177b7636744e320afd4211cf2fea5141db9227bdac633f5641f37c7",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/knife.png",
+      "sha256": "30e2d0a73d7d6c272c5c5ab05e451d9d3d7a083511a43af9e0036b579c64c640",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/mixing-bowl.png",
+      "sha256": "98a40da86c7074eae6cf0c880e443cd61361fcb452a631b8eb39e199ae540801",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/fork.png",
+      "sha256": "eeb3e1c7ea71a681e1440f543c6263988b5bd166641e8d038481063f2f8aad20",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/measuring-spoon.png",
+      "sha256": "168a6e2bceb49c9b4e559ed7eecbf8b5ae3b8e2e769361dc980312cab60f822e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/tongs.png",
+      "sha256": "25e4c3b7e98abdf0c1fb49568272173e0901a1619c1e0185474b7829fae8ba37",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/oven-mitt.png",
+      "sha256": "1311ffc2714d660cf4ed843ccd80a60e6a44030e9863e28238433e87e2717c7d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/serving-plate.png",
+      "sha256": "4701d91a8ebd49154e2df80779d85fabb04528ded7e51347cea112d3b134dd08",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-01.png",
+      "sha256": "be3faf022b8c34ac78e807028f3d2d646b4315a985beea7a4fa8c381b3d70b38",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-02.png",
+      "sha256": "3dc2e6b30732a44d49863ba23ce06d03532010c3a98a42cde33faaf49eca21b9",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-03.png",
+      "sha256": "f4561bf8a190d4679990d96ef0a1ec871e81c9aea1e82c899dcc5a9b91df499c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-04.png",
+      "sha256": "7ab6c30d134ff9f46586eda57e5bc9060cf2b1b2a635b059289b7269cf59b478",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-05.png",
+      "sha256": "d49ccb385ed0915a3691386c04e9839b9cd6fe1295cb0a14567cb26b300fdfb9",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult air fryer; child mixing",
+    "time": "30 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 98,
+    "country": "italy",
+    "countryCode": "IT",
+    "title": {
+      "en-GB": "Air-Fryer Courgette Bites",
+      "pt-BR": "Petiscos de abobrinha na air fryer"
+    },
+    "description": {
+      "en-GB": "Crisp-edged courgette rounds with a light parmesan crumb coating.",
+      "pt-BR": "Rodelas de abobrinha douradas com uma leve cobertura crocante de parmesão."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "A simple family snack using courgette, a familiar vegetable in Italian home cooking; air-frying is a modern preparation method.",
+      "pt-BR": "Um lanche simples com abobrinha, vegetal comum na cozinha caseira italiana; a air fryer é um método moderno de preparo."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 20,
+    "totalMinutes": 30,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; keep safety guidance and roles unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "courgette",
+        "name": {
+          "en-GB": "Courgette",
+          "pt-BR": "Abobrinha"
+        },
+        "quantity": 300,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/courgette.png",
+          "sha256": "70a828b2b54be6a246e35183dbf2b0303fa6ee93c637df0a1dba1e8974581ee3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "egg",
+        "name": {
+          "en-GB": "Egg",
+          "pt-BR": "Ovo"
+        },
+        "quantity": 1,
+        "unit": "large egg",
+        "allergens": [
+          "egg"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/egg.png",
+          "sha256": "2fa324735c537942f3da2ac28bc56e6064b274fccc0453b5b96d21af97997d8b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "breadcrumbs",
+        "name": {
+          "en-GB": "Dried breadcrumbs",
+          "pt-BR": "Farinha de rosca"
+        },
+        "quantity": 60,
+        "unit": "g",
+        "allergens": [
+          "wheat",
+          "gluten"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/breadcrumbs.png",
+          "sha256": "547a5cb86f59a05c427ad6ba168100205a937d5b8d854e07f26b4c0a13184d81",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "parmesan",
+        "name": {
+          "en-GB": "Finely grated Parmesan",
+          "pt-BR": "Parmesão ralado fino"
+        },
+        "quantity": 30,
+        "unit": "g",
+        "allergens": [
+          "milk"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/parmesan.png",
+          "sha256": "93a207d868e8b1bf131189f46083c3fbe6d1ae789978d668554b215865ae3b5e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "olive-oil",
+        "name": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "quantity": 10,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/olive-oil.png",
+          "sha256": "56b3b154e9f5cf155a5fc60f7bbff4a2f8b97bd550018752c6d49279943a9e3f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "salt",
+        "name": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "quantity": 1,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/salt.png",
+          "sha256": "6e3106ae4b451d9fbba7c422e843c6790a5742030c10d03c6a4a9342c6914173",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "equipment": [
+      "Air fryer",
+      "Chopping board",
+      "Kitchen knife",
+      "Mixing bowl",
+      "Fork",
+      "Measuring spoon",
+      "Silicone-tipped tongs",
+      "Oven mitt",
+      "Serving plate"
+    ],
+    "equipmentItems": [
+      {
+        "id": "air-fryer",
+        "name": {
+          "en-GB": "Air fryer",
+          "pt-BR": "Fritadeira elétrica sem óleo"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/air-fryer.png",
+          "sha256": "8e4936845ee5246c40e1eef7924e7053f39ae294fcd705f12a8ce68cbb4a996a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/chopping-board.png",
+          "sha256": "3b2fce9b8177b7636744e320afd4211cf2fea5141db9227bdac633f5641f37c7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Kitchen knife",
+          "pt-BR": "Faca de cozinha"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/knife.png",
+          "sha256": "30e2d0a73d7d6c272c5c5ab05e451d9d3d7a083511a43af9e0036b579c64c640",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Mixing bowl",
+          "pt-BR": "Tigela para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/mixing-bowl.png",
+          "sha256": "98a40da86c7074eae6cf0c880e443cd61361fcb452a631b8eb39e199ae540801",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "fork",
+        "name": {
+          "en-GB": "Fork",
+          "pt-BR": "Garfo"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/fork.png",
+          "sha256": "eeb3e1c7ea71a681e1440f543c6263988b5bd166641e8d038481063f2f8aad20",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "measuring-spoon",
+        "name": {
+          "en-GB": "Measuring spoon",
+          "pt-BR": "Colher medidora"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/measuring-spoon.png",
+          "sha256": "168a6e2bceb49c9b4e559ed7eecbf8b5ae3b8e2e769361dc980312cab60f822e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "tongs",
+        "name": {
+          "en-GB": "Silicone-tipped tongs",
+          "pt-BR": "Pegador com ponta de silicone"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/tongs.png",
+          "sha256": "25e4c3b7e98abdf0c1fb49568272173e0901a1619c1e0185474b7829fae8ba37",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "oven-mitt",
+        "name": {
+          "en-GB": "Oven mitt",
+          "pt-BR": "Luva térmica"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/oven-mitt.png",
+          "sha256": "1311ffc2714d660cf4ed843ccd80a60e6a44030e9863e28238433e87e2717c7d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "serving-plate",
+        "name": {
+          "en-GB": "Serving plate",
+          "pt-BR": "Prato para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/serving-plate.png",
+          "sha256": "4701d91a8ebd49154e2df80779d85fabb04528ded7e51347cea112d3b134dd08",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Wash and slice",
+          "pt-BR": "Lave e corte"
+        },
+        "instruction": {
+          "en-GB": "Wash hands and courgette. An adult cuts it into even rounds on a stable board.",
+          "pt-BR": "Lave as mãos e a abobrinha. Um adulto corta em rodelas iguais sobre uma tábua estável."
+        },
+        "ingredientIds": [
+          "courgette"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+          "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+          "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-01.png",
+          "sha256": "be3faf022b8c34ac78e807028f3d2d646b4315a985beea7a4fa8c381b3d70b38",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Prepare the coating",
+          "pt-BR": "Prepare a cobertura"
+        },
+        "instruction": {
+          "en-GB": "Beat the egg in a bowl. Mix breadcrumbs, Parmesan and salt in another bowl.",
+          "pt-BR": "Bata o ovo em uma tigela. Misture a farinha de rosca, o parmesão e o sal em outra tigela."
+        },
+        "ingredientIds": [
+          "egg",
+          "breadcrumbs",
+          "parmesan",
+          "salt"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "fork"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+          "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+          "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-02.png",
+          "sha256": "3dc2e6b30732a44d49863ba23ce06d03532010c3a98a42cde33faaf49eca21b9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Coat the courgette",
+          "pt-BR": "Empane a abobrinha"
+        },
+        "instruction": {
+          "en-GB": "Dip each round in egg, then crumbs. Drizzle or brush with the measured olive oil.",
+          "pt-BR": "Passe cada rodela no ovo e depois na mistura de farinha. Regue ou pincele com o azeite medido."
+        },
+        "ingredientIds": [
+          "courgette",
+          "egg",
+          "breadcrumbs",
+          "parmesan",
+          "olive-oil"
+        ],
+        "equipmentIds": [
+          "mixing-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+          "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+          "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-03.png",
+          "sha256": "f4561bf8a190d4679990d96ef0a1ec871e81c9aea1e82c899dcc5a9b91df499c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Air-fry until golden",
+          "pt-BR": "Asse na air fryer até dourar"
+        },
+        "instruction": {
+          "en-GB": "An adult arranges rounds in a single layer and air-fries at 200°C for 10–14 minutes, turning once, until crisp and cooked through.",
+          "pt-BR": "Um adulto organiza as rodelas em uma camada e assa a 200°C por 10–14 minutos, virando uma vez, até ficarem douradas e cozidas."
+        },
+        "ingredientIds": [
+          "courgette",
+          "olive-oil"
+        ],
+        "equipmentIds": [
+          "air-fryer",
+          "tongs",
+          "oven-mitt"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+          "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+          "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-04.png",
+          "sha256": "7ab6c30d134ff9f46586eda57e5bc9060cf2b1b2a635b059289b7269cf59b478",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Cool and serve",
+          "pt-BR": "Esfrie e sirva"
+        },
+        "instruction": {
+          "en-GB": "An adult removes the hot basket. Let bites cool briefly on a plate before eating.",
+          "pt-BR": "Um adulto retira a cesta quente. Deixe os petiscos esfriarem um pouco no prato antes de comer."
+        },
+        "ingredientIds": [
+          "courgette",
+          "parmesan"
+        ],
+        "equipmentIds": [
+          "air-fryer",
+          "oven-mitt",
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+          "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+        },
+        "safety": {
+          "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+          "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles sharp knife and any hot appliance.",
+          "pt-BR": "Um adulto cuida da faca afiada e de qualquer aparelho quente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean hands and equipment; check packaging for allergens.",
+          "pt-BR": "Use mãos e utensílios limpos; confira as embalagens para alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-05.png",
+          "sha256": "d49ccb385ed0915a3691386c04e9839b9cd6fe1295cb0a14567cb26b300fdfb9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults cut the courgette, handle raw egg safely and operate the air fryer and hot basket. Children mix the coating and help bread the slices with supervision.",
+      "pt-BR": "Adultos cortam a abobrinha, manuseiam o ovo cru com higiene e operam a air fryer e a cesta quente. Crianças misturam a cobertura e ajudam a empanar com supervisão."
+    },
+    "finishedDish": {
+      "image": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/finished-dish.png",
+        "sha256": "93f4eea19a5cc620b2f7ffaafe246ecc87e378ea9a04b8a910a5238231bdff4b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "description": {
+        "en-GB": "Crisp-edged courgette rounds with a light parmesan crumb coating.",
+        "pt-BR": "Rodelas de abobrinha douradas com uma leve cobertura crocante de parmesão."
+      }
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 110,
+        "proteinG": 8.7,
+        "carbohydrateG": 11.5,
+        "fatG": 4.0,
+        "fibreG": 1.5,
+        "saturatedFatG": 1.7,
+        "sodiumMg": 260
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate based on weighed recipe amounts and generic USDA FoodData Central references; ingredient brands and preparation vary. Not a laboratory analysis.",
+      "method": "Scale FDC generic per-100-g ingredient values to recipe quantities, sum and divide by four; rounded values.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Squash, summer, green, zucchini, includes skin, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Squash%2C%20summer%2C%20green%2C%20zucchini%2C%20includes%20skin%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Egg, whole, raw, fresh",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Egg%2C%20whole%2C%20raw%2C%20fresh"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Bread crumbs, dry, grated, plain",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Bread%20crumbs%2C%20dry%2C%20grated%2C%20plain"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cheese, parmesan, hard",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese%2C%20parmesan%2C%20hard"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Oil, olive, salad or cooking",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20olive%2C%20salad%20or%20cooking"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Salt, table",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Salt%2C%20table"
+        }
+      ]
+    },
+    "allergens": [
+      "egg",
+      "gluten",
+      "milk",
+      "wheat"
+    ],
+    "allergenNotes": {
+      "contains": [
+        "egg",
+        "gluten",
+        "milk",
+        "wheat"
+      ],
+      "cross_contact": {
+        "en-GB": "Check all package labels for allergens and cross-contact.",
+        "pt-BR": "Confira todos os rótulos para alergênicos e contato cruzado."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/finished-dish.png",
+        "sha256": "93f4eea19a5cc620b2f7ffaafe246ecc87e378ea9a04b8a910a5238231bdff4b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/courgette.png",
+          "sha256": "70a828b2b54be6a246e35183dbf2b0303fa6ee93c637df0a1dba1e8974581ee3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/egg.png",
+          "sha256": "2fa324735c537942f3da2ac28bc56e6064b274fccc0453b5b96d21af97997d8b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/breadcrumbs.png",
+          "sha256": "547a5cb86f59a05c427ad6ba168100205a937d5b8d854e07f26b4c0a13184d81",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/parmesan.png",
+          "sha256": "93a207d868e8b1bf131189f46083c3fbe6d1ae789978d668554b215865ae3b5e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/olive-oil.png",
+          "sha256": "56b3b154e9f5cf155a5fc60f7bbff4a2f8b97bd550018752c6d49279943a9e3f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/salt.png",
+          "sha256": "6e3106ae4b451d9fbba7c422e843c6790a5742030c10d03c6a4a9342c6914173",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/air-fryer.png",
+          "sha256": "8e4936845ee5246c40e1eef7924e7053f39ae294fcd705f12a8ce68cbb4a996a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/chopping-board.png",
+          "sha256": "3b2fce9b8177b7636744e320afd4211cf2fea5141db9227bdac633f5641f37c7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/knife.png",
+          "sha256": "30e2d0a73d7d6c272c5c5ab05e451d9d3d7a083511a43af9e0036b579c64c640",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/mixing-bowl.png",
+          "sha256": "98a40da86c7074eae6cf0c880e443cd61361fcb452a631b8eb39e199ae540801",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/fork.png",
+          "sha256": "eeb3e1c7ea71a681e1440f543c6263988b5bd166641e8d038481063f2f8aad20",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/measuring-spoon.png",
+          "sha256": "168a6e2bceb49c9b4e559ed7eecbf8b5ae3b8e2e769361dc980312cab60f822e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/tongs.png",
+          "sha256": "25e4c3b7e98abdf0c1fb49568272173e0901a1619c1e0185474b7829fae8ba37",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/oven-mitt.png",
+          "sha256": "1311ffc2714d660cf4ed843ccd80a60e6a44030e9863e28238433e87e2717c7d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/serving-plate.png",
+          "sha256": "4701d91a8ebd49154e2df80779d85fabb04528ded7e51347cea112d3b134dd08",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-01.png",
+          "sha256": "be3faf022b8c34ac78e807028f3d2d646b4315a985beea7a4fa8c381b3d70b38",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-02.png",
+          "sha256": "3dc2e6b30732a44d49863ba23ce06d03532010c3a98a42cde33faaf49eca21b9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-03.png",
+          "sha256": "f4561bf8a190d4679990d96ef0a1ec871e81c9aea1e82c899dcc5a9b91df499c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-04.png",
+          "sha256": "7ab6c30d134ff9f46586eda57e5bc9060cf2b1b2a635b059289b7269cf59b478",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-05.png",
+          "sha256": "d49ccb385ed0915a3691386c04e9839b9cd6fe1295cb0a14567cb26b300fdfb9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment visuals cropped from a recipe-specific sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food"
+    },
+    "safety": {
+      "en-GB": "Wash hands after touching raw egg; keep raw egg separate from ready-to-eat foods. An adult handles the sharp knife, air fryer, hot basket and tongs. Keep children back from hot surfaces; cool bites before eating.",
+      "pt-BR": "Lave as mãos após tocar no ovo cru; mantenha o ovo separado de alimentos prontos. Um adulto usa a faca, a air fryer, a cesta quente e o pegador. Mantenha as crianças longe das superfícies quentes; esfrie antes de comer."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}

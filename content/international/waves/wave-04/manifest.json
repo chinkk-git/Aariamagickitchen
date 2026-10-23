@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.0.0",
+  "wave": 4,
+  "status": "READY_FOR_INTEGRATION",
+  "integration_status": "READY_FOR_INTEGRATION",
+  "source_commit": "12a67df14f6b1d1ce570ae8ae670052f9fa034d7",
+  "canonical_recipe_count": 95,
+  "india_mapping_status": "VALIDATED_UNCHANGED",
+  "production_artwork_approved": true,
+  "recipes": [
+    {
+      "id": 98,
+      "country": "italy",
+      "title": "Air-Fryer Courgette Bites",
+      "recipe_json": "content/international/countries/italy/098-air-fryer-courgette-bites/recipe.json",
+      "recipe_md": "content/international/countries/italy/098-air-fryer-courgette-bites/recipe.md",
+      "artwork_count": 21,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING"
+    },
+    {
+      "id": 101,
+      "country": "china",
+      "title": "Cucumber Sesame Salad",
+      "recipe_json": "content/international/countries/china/101-cucumber-sesame-salad/recipe.json",
+      "recipe_md": "content/international/countries/china/101-cucumber-sesame-salad/recipe.md",
+      "artwork_count": 21,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING"
+    }
+  ],
+  "package_files": [
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/air-fryer.png",
+      "sha256": "8e4936845ee5246c40e1eef7924e7053f39ae294fcd705f12a8ce68cbb4a996a"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/chopping-board.png",
+      "sha256": "3b2fce9b8177b7636744e320afd4211cf2fea5141db9227bdac633f5641f37c7"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/fork.png",
+      "sha256": "eeb3e1c7ea71a681e1440f543c6263988b5bd166641e8d038481063f2f8aad20"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/knife.png",
+      "sha256": "30e2d0a73d7d6c272c5c5ab05e451d9d3d7a083511a43af9e0036b579c64c640"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/measuring-spoon.png",
+      "sha256": "168a6e2bceb49c9b4e559ed7eecbf8b5ae3b8e2e769361dc980312cab60f822e"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/mixing-bowl.png",
+      "sha256": "98a40da86c7074eae6cf0c880e443cd61361fcb452a631b8eb39e199ae540801"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/oven-mitt.png",
+      "sha256": "1311ffc2714d660cf4ed843ccd80a60e6a44030e9863e28238433e87e2717c7d"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/serving-plate.png",
+      "sha256": "4701d91a8ebd49154e2df80779d85fabb04528ded7e51347cea112d3b134dd08"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/equipment/tongs.png",
+      "sha256": "25e4c3b7e98abdf0c1fb49568272173e0901a1619c1e0185474b7829fae8ba37"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/finished-dish.png",
+      "sha256": "93f4eea19a5cc620b2f7ffaafe246ecc87e378ea9a04b8a910a5238231bdff4b"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/breadcrumbs.png",
+      "sha256": "547a5cb86f59a05c427ad6ba168100205a937d5b8d854e07f26b4c0a13184d81"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/courgette.png",
+      "sha256": "70a828b2b54be6a246e35183dbf2b0303fa6ee93c637df0a1dba1e8974581ee3"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/egg.png",
+      "sha256": "2fa324735c537942f3da2ac28bc56e6064b274fccc0453b5b96d21af97997d8b"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/olive-oil.png",
+      "sha256": "56b3b154e9f5cf155a5fc60f7bbff4a2f8b97bd550018752c6d49279943a9e3f"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/parmesan.png",
+      "sha256": "93a207d868e8b1bf131189f46083c3fbe6d1ae789978d668554b215865ae3b5e"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/ingredients/salt.png",
+      "sha256": "6e3106ae4b451d9fbba7c422e843c6790a5742030c10d03c6a4a9342c6914173"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-01.png",
+      "sha256": "be3faf022b8c34ac78e807028f3d2d646b4315a985beea7a4fa8c381b3d70b38"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-02.png",
+      "sha256": "3dc2e6b30732a44d49863ba23ce06d03532010c3a98a42cde33faaf49eca21b9"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-03.png",
+      "sha256": "f4561bf8a190d4679990d96ef0a1ec871e81c9aea1e82c899dcc5a9b91df499c"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-04.png",
+      "sha256": "7ab6c30d134ff9f46586eda57e5bc9060cf2b1b2a635b059289b7269cf59b478"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/artwork/steps/step-05.png",
+      "sha256": "d49ccb385ed0915a3691386c04e9839b9cd6fe1295cb0a14567cb26b300fdfb9"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/recipe.json",
+      "sha256": "4477e426537d613f30f2450d72e7d9827413bd4ea5cf0faa283d872a47bd8b2a"
+    },
+    {
+      "path": "content/international/countries/italy/098-air-fryer-courgette-bites/recipe.md",
+      "sha256": "72611d3449849e7fee42d868a971964219368ff9ac86dfc9419401a924a6e23d"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/chopping-board.png",
+      "sha256": "2f006bbf629a043ec28004af85822abcf889c73d81ee475a850a4fe78e80874a"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/knife.png",
+      "sha256": "80b1b32e90994ba7ebc3bcb2759a6d8f213d470364ec8c2e713525acb1200024"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/measuring-spoon.png",
+      "sha256": "68db0722feeebcd3e6ca6b4516a86db141c11952d5cd11568260221d7394177c"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/mixing-bowl.png",
+      "sha256": "0c6c8961dc4a84ad38ac2cd5e8e4b3479e5e32868314fa5ade01ae95fd5f08b8"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/serving-bowl.png",
+      "sha256": "bcd79b62c67e86dc314fd2dc0cfcc45c932b73be1549b618d1a164677de333a2"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/small-bowl.png",
+      "sha256": "eaa943540826cacf124c49e6952f4f7c1f7ab2d0ea640bfb864fcf27c697c38d"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/equipment/spoon.png",
+      "sha256": "249212830795392bd26185932b0a5135e673d181c3f2b6ee3602497866d12fba"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/finished-dish.png",
+      "sha256": "b0e172df4b6dd4e7d9ae3e037ab547ca0016a6d9663ee336dc363cd448a84e5a"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/cucumber.png",
+      "sha256": "6b05b2d2223648de01c4deb334ef048eb350f23c5ba49d1075c83d03ac1378ae"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/garlic.png",
+      "sha256": "a2333d6b7f5716ce663882e52790c6b40a050b5c35a543d7a9be99fb4129a55d"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/rice-vinegar.png",
+      "sha256": "d4d05c56b3c216becafc24597f3df5ee1a377f9ebc0f6da3672255b814454332"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-oil.png",
+      "sha256": "83b9181aa5274806f715defde53deb6160aae5d5337b874f8834bcb768646aeb"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sesame-seeds.png",
+      "sha256": "f77a4e4d5c5b612813b5b8c843472a4631f6b811dd0e514e5a8a14fb95a41ded"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/soy-sauce.png",
+      "sha256": "e704a1739ffdffdbdad2069b2fd82268f8f5f9d8e3dba2580fdb47132f7b581b"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/spring-onion.png",
+      "sha256": "0d296244c2aaad902a60aa5a859b380681980b217b2b803dbbcc7d4f45d6a197"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/ingredients/sugar.png",
+      "sha256": "1949af3bc0b1f582e104aedc8367fee6df678ac275a926cd3e859df010cc3beb"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-01.png",
+      "sha256": "d9b0fa587a1cb9e23e89d93a7cecd2d12a610e7eda519407006440e4ebc560ef"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-02.png",
+      "sha256": "ca8d8118616640c9964cc84045be37909e433aff572f8176f95fc9759630f174"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-03.png",
+      "sha256": "77fb6c360f9a132130383dc4323a034a511434cde23786719b34dbd44c446936"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-04.png",
+      "sha256": "1b756899b8ab93077486e755be744dde4503ecd81fd4f8e06f61f9c77224a966"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/artwork/steps/step-05.png",
+      "sha256": "39146938f9a1b031a21ebabe3f14267f4e9cdb88fd9e2f1af5ddfd267b38198d"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/recipe.json",
+      "sha256": "5ac605ad55ba28ec2be0f09e7f34793f1c69079c633a0b8160f042e98c11b3dd"
+    },
+    {
+      "path": "content/international/countries/china/101-cucumber-sesame-salad/recipe.md",
+      "sha256": "6df94aa789bf3f1cd82cc2d79bfa11ab53bc9f5fdca1ef51da19d8bdd870d50a"
+    }
+  ],
+  "pair_sha256": "be85f145cc413c4cf95da2416cbd2f4e059d275361c4c3ce4368b2a1a0dcf961",
+  "validation_ledger": "content/international/waves/wave-04/validation-ledger.json",
+  "nutrition_sources": "content/international/waves/wave-04/nutrition-sources.json",
+  "independent_gates": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "wave3_handoff_commit": "12a67df14f6b1d1ce570ae8ae670052f9fa034d7",
+  "validation": "Repository schema constraints, bilingual fields, safety content, source records, offline asset paths and local artwork SHA-256 checks passed; independent gates pending",
+  "support_files": [
+    {
+      "path": "content/international/waves/wave-04/validation-ledger.json",
+      "sha256": "abb11c733a6af8c8d6718e9642e600fcc12477f39ec27665bf42b95cfc330790"
+    },
+    {
+      "path": "content/international/waves/wave-04/nutrition-sources.json",
+      "sha256": "90c07fbdb433751dc9b9f8b2d1b41d4d21b371766395a0b9a70a51983cc451b6"
+    }
+  ]
+}
