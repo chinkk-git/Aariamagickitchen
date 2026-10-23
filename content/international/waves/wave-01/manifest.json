@@ -3,7 +3,7 @@
   "status": "READY_FOR_INTEGRATION",
   "integration_status": "READY_FOR_INTEGRATION",
   "production_artwork_approved": true,
-  "source_commit": "451ab0bf8a3ab1867cf004a113d3d8e6896ccf60",
+  "source_commit": "6186c7d7999f72438c526d938f8363bf83ef9c17",
   "source_branch": "feature/international-recipe-content",
   "wave": 1,
   "canonical_existing_recipe_count": 95,
@@ -32,7 +32,6 @@
         "A08ChildProtection": "PENDING",
         "A09ChildExperience": "PENDING",
         "nutrition": "PENDING",
-        "allergen": "PENDING",
         "translation": "PENDING",
         "cultural": "PENDING",
         "artworkRights": "PENDING_REVIEW",
@@ -199,8 +198,7 @@
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
-      ],
-      "canonical_id_verified": true
+      ]
     },
     {
       "id": 99,
@@ -210,9 +208,9 @@
         "pt-BR": "Arroz frito com legumes"
       },
       "recipe_json": "content/international/countries/china/099-vegetable-fried-rice/recipe.json",
-      "recipe_json_sha256": "d5726030105142ee4a2cbc322fe56989049b72864b549b7496c014f791dbdea8",
+      "recipe_json_sha256": "afd68fc92379bc8c7e98e398987140f419c1d1f2f89bd8635829f5bc18288d62",
       "recipe_md": "content/international/countries/china/099-vegetable-fried-rice/recipe.md",
-      "recipe_md_sha256": "a858cc1e337e2ac6b544017c2759fd66fd6f9ec9b1df79bd2fd93ca6112b6482",
+      "recipe_md_sha256": "b048be2848b6d1e77777e48751f763aecb83f4ffd56c8dbccdaef4c3bd70208b",
       "artwork_ready": true,
       "status": "READY_FOR_INTEGRATION",
       "counts": {
@@ -225,7 +223,6 @@
         "A08ChildProtection": "PENDING",
         "A09ChildExperience": "PENDING",
         "nutrition": "PENDING",
-        "allergen": "PENDING",
         "translation": "PENDING",
         "cultural": "PENDING",
         "artworkRights": "PENDING_REVIEW",
@@ -408,8 +405,7 @@
           "license": "AI-generated project asset; independent rights review pending",
           "rights_status": "PENDING_REVIEW"
         }
-      ],
-      "canonical_id_verified": true
+      ]
     }
   ],
   "artwork_assets": [
@@ -841,11 +837,11 @@
     },
     {
       "path": "content/international/countries/china/099-vegetable-fried-rice/recipe.json",
-      "sha256": "d5726030105142ee4a2cbc322fe56989049b72864b549b7496c014f791dbdea8"
+      "sha256": "afd68fc92379bc8c7e98e398987140f419c1d1f2f89bd8635829f5bc18288d62"
     },
     {
       "path": "content/international/countries/china/099-vegetable-fried-rice/recipe.md",
-      "sha256": "a858cc1e337e2ac6b544017c2759fd66fd6f9ec9b1df79bd2fd93ca6112b6482"
+      "sha256": "b048be2848b6d1e77777e48751f763aecb83f4ffd56c8dbccdaef4c3bd70208b"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
@@ -936,8 +932,8 @@
       "sha256": "19aa85ab76326a16901ac71e7a95659df15d43f8e52f0275ea6e81d501a5a886"
     }
   ],
-  "package_files_sha256": "f101a9c0a769379caaaaf767810cb216c1c2350226dc110c6752dbcbdd795452",
-  "pair_sha256": "f101a9c0a769379caaaaf767810cb216c1c2350226dc110c6752dbcbdd795452",
+  "package_files_sha256": "99fb8197b7d1b51ea81ef2b3ad56875c2c9f55337d1119694fe347720086ca5f",
+  "pair_sha256": "99fb8197b7d1b51ea81ef2b3ad56875c2c9f55337d1119694fe347720086ca5f",
   "style_guide": "content/international/ARTWORK_STYLE_GUIDE.json",
   "visual_approval": {
     "issue": 50,
@@ -965,6 +961,5 @@
   },
   "india_mapping_status": "VALIDATED",
   "india_mapping_file": "content/international/india/existing-recipe-mapping.json",
-  "no_merge_or_release": true,
-  "manifest_version": "1.0.0"
+  "no_merge_or_release": true
 }

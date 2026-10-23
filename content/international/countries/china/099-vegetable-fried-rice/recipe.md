@@ -70,7 +70,7 @@
 - Artwork: `content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-05.png` SHA-256 `1670ff3ace2442c8f9f217efbdb389e8b66330b3554f041616b4063c5921e8e5`
 
 ## Nutrition per serving (estimate; review pending)
-- 272 kcal; protein 8.8 g; carbohydrate 47.1 g; fat 5.3 g; fibre 1.8 g; saturated fat 1.0 g; sodium not calculated.
+- 276 kcal; protein 9.2 g; carbohydrate 47.7 g; fat 5.3 g; fibre 1.9 g; saturated fat 1.0 g; sodium 193 mg.
 - Estimate per serving from USDA FoodData Central SR Legacy reference values for rice, egg, peas/carrots and canola oil; spring onion and brand-variable reduced-sodium soy sauce are listed as sources but omitted from numeric totals. Sodium is not calculated because the soy sauce label varies. Values are approximate and require independent review. Ingredient weights scaled against USDA FoodData Central SR Legacy reference foods; values are estimates, not laboratory analyses.
 
 ### Nutrition sources
@@ -78,7 +78,7 @@
 - USDA FoodData Central SR Legacy: [Egg, whole, raw, fresh (FDC 171287)](https://fdc.nal.usda.gov/food-details/171287/nutrients)
 - USDA FoodData Central SR Legacy: [Peas and carrots, frozen, cooked, boiled, drained, without salt (FDC 170018)](https://fdc.nal.usda.gov/food-details/170018/nutrients)
 - USDA FoodData Central SR Legacy: [Oil, canola (FDC 172336)](https://fdc.nal.usda.gov/food-details/172336/nutrients)
-- USDA FoodData Central SR Legacy: [Soy sauce, reduced sodium, generic reference (FDC 174277)](https://fdc.nal.usda.gov/food-details/174277/nutrients)
+- USDA FoodData Central SR Legacy: [Soy sauce made from soy and wheat (shoyu), low sodium (FDC 172473)](https://fdc.nal.usda.gov/food-details/172473/nutrients)
 - USDA FoodData Central SR Legacy: [Onions, spring, raw (FDC 170005)](https://fdc.nal.usda.gov/food-details/170005/nutrients)
 
 ## Allergens and cross-contact

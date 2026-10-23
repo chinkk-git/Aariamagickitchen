@@ -271,16 +271,16 @@
   },
   "nutrition": {
     "per_serving": {
-      "energyKcal": 272,
-      "proteinG": 8.8,
-      "carbohydrateG": 47.1,
+      "energyKcal": 276,
+      "proteinG": 9.2,
+      "carbohydrateG": 47.7,
       "fatG": 5.3,
-      "fibreG": 1.8,
+      "fibreG": 1.9,
       "saturatedFatG": 1.0,
-      "sodiumMg": null
+      "sodiumMg": 193
     },
     "status": "ESTIMATE_REVIEW_PENDING",
-    "basis": "Estimate per serving from USDA FoodData Central SR Legacy reference values for rice, egg, peas/carrots and canola oil; spring onion and brand-variable reduced-sodium soy sauce are listed as sources but omitted from numeric totals. Sodium is not calculated because the soy sauce label varies. Values are approximate and require independent review.",
+    "basis": "Estimated per serving by scaling USDA FoodData Central SR Legacy per-100-g values for all measured recipe ingredients. The 15 mL reduced-sodium soy sauce is approximated as 16 g using FDC 172473; actual brands vary, so check the package label. Salt is not added separately. Values are estimates and require independent nutrition review.",
     "method": "Ingredient weights scaled against USDA FoodData Central SR Legacy reference foods; values are estimates, not laboratory analyses.",
     "sources": [
       {
@@ -309,9 +309,9 @@
       },
       {
         "source": "USDA FoodData Central SR Legacy",
-        "food": "Soy sauce, reduced sodium, generic reference",
-        "fdcId": 174277,
-        "url": "https://fdc.nal.usda.gov/food-details/174277/nutrients"
+        "food": "Soy sauce made from soy and wheat (shoyu), low sodium",
+        "fdcId": 172473,
+        "url": "https://fdc.nal.usda.gov/food-details/172473/nutrients"
       },
       {
         "source": "USDA FoodData Central SR Legacy",
@@ -1124,7 +1124,7 @@
       }
     },
     "nutrition": {
-      "basis": "Estimate per serving from USDA FoodData Central SR Legacy reference values for rice, egg, peas/carrots and canola oil; spring onion and brand-variable reduced-sodium soy sauce are listed as sources but omitted from numeric totals. Sodium is not calculated because the soy sauce label varies. Values are approximate and require independent review.",
+      "basis": "Estimated per serving by scaling USDA FoodData Central SR Legacy per-100-g values for all measured recipe ingredients. The 15 mL reduced-sodium soy sauce is approximated as 16 g using FDC 172473; actual brands vary, so check the package label. Salt is not added separately. Values are estimates and require independent nutrition review.",
       "sources": [
         {
           "source": "USDA FoodData Central SR Legacy",
@@ -1152,9 +1152,9 @@
         },
         {
           "source": "USDA FoodData Central SR Legacy",
-          "food": "Soy sauce, reduced sodium, generic reference",
-          "fdcId": 174277,
-          "url": "https://fdc.nal.usda.gov/food-details/174277/nutrients"
+          "food": "Soy sauce made from soy and wheat (shoyu), low sodium",
+          "fdcId": 172473,
+          "url": "https://fdc.nal.usda.gov/food-details/172473/nutrients"
         },
         {
           "source": "USDA FoodData Central SR Legacy",
@@ -1165,13 +1165,13 @@
       ],
       "status": "ESTIMATE_REVIEW_PENDING",
       "per_serving": {
-        "energyKcal": 272,
-        "proteinG": 8.8,
-        "carbohydrateG": 47.1,
+        "energyKcal": 276,
+        "proteinG": 9.2,
+        "carbohydrateG": 47.7,
         "fatG": 5.3,
-        "fibreG": 1.8,
+        "fibreG": 1.9,
         "saturatedFatG": 1.0,
-        "sodiumMg": null
+        "sodiumMg": 193
       },
       "method": "Ingredient weights scaled against USDA FoodData Central SR Legacy reference foods; values are estimates, not laboratory analyses."
     },

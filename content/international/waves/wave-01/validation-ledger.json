@@ -20,8 +20,8 @@
     ],
     "artwork_file_count": 42,
     "package_file_count": 46,
-    "package_files_sha256": "f101a9c0a769379caaaaf767810cb216c1c2350226dc110c6752dbcbdd795452",
-    "pair_sha256": "f101a9c0a769379caaaaf767810cb216c1c2350226dc110c6752dbcbdd795452"
+    "package_files_sha256": "99fb8197b7d1b51ea81ef2b3ad56875c2c9f55337d1119694fe347720086ca5f",
+    "pair_sha256": "99fb8197b7d1b51ea81ef2b3ad56875c2c9f55337d1119694fe347720086ca5f"
   },
   "independent_gates": {
     "A08": "PENDING",
@@ -32,12 +32,8 @@
     "security": "PENDING"
   },
   "known_limitations": [
-    "Nutrition estimates require independent review; Vegetable Fried Rice numeric estimate omits soy sauce and spring onion contributions, sodium not calculated.",
+    "Nutrition values are estimates requiring independent review; soy sauce sodium is based on USDA low-sodium reference data and varies by product label.",
     "Rights, A08, A09, nutrition/allergen, translation/cultural and security reviews were not performed by W03.",
     "India mapping was not revalidated; canonical 95 source catalogue remained unchanged."
-  ],
-  "source_commit": "451ab0bf8a3ab1867cf004a113d3d8e6896ccf60",
-  "manifest_path": "content/international/waves/wave-01/manifest.json",
-  "manifest_sha256": "7a188cf10323d37462ca0cdda117593a575134b5913f42c8b9979cbba32cb732",
-  "status": "PASS_CONTENT_ARTWORK_SCHEMA"
+  ]
 }

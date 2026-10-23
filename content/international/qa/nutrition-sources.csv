@@ -8,5 +8,5 @@ recipe_id,food,source,fdc_id,source_url,method,status
 99,Egg whole raw fresh,USDA FoodData Central SR Legacy,171287,https://fdc.nal.usda.gov/food-details/171287/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
 99,Peas and carrots frozen cooked without salt,USDA FoodData Central SR Legacy,170018,https://fdc.nal.usda.gov/food-details/170018/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
 99,Canola oil,USDA FoodData Central SR Legacy,172336,https://fdc.nal.usda.gov/food-details/172336/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
-99,Reduced-sodium soy sauce, generic reference,USDA FoodData Central SR Legacy,174277,https://fdc.nal.usda.gov/food-details/174277/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
+99,Soy sauce made from soy and wheat (shoyu), low sodium,USDA FoodData Central SR Legacy,172473,https://fdc.nal.usda.gov/food-details/172473/nutrients,Per-100-g ingredient values scaled by 16 g estimated from 15 mL,ESTIMATED_REVIEW_PENDING
 99,Spring onions raw,USDA FoodData Central SR Legacy,170005,https://fdc.nal.usda.gov/food-details/170005/nutrients,Per-100-g ingredient values scaled by weighed recipe amount,ESTIMATED_REVIEW_PENDING
