@@ -34,6 +34,24 @@ class FakeAPI:
         self.head, self.content = sha, content
 
 class StoreTests(unittest.TestCase):
+    def test_illegal_skip_to_done(self):
+        with self.assertRaises(InvalidTask):
+            RefStore(FakeAPI()).compare_and_swap("task1","root",Task("task1","W01","DONE"))
+    def test_heartbeat_requires_extension(self):
+        api=FakeAPI()
+        api.content=encode(Task("task1","W01","RUNNING",1,"2099-01-01T00:00:00Z","a"*40))
+        with self.assertRaises(InvalidTask):
+            RefStore(api).compare_and_swap("task1","root",Task("task1","W01","RUNNING",1,"2099-01-01T00:00:00Z","a"*40))
+    def test_claim_increments_attempt(self):
+        api=FakeAPI()
+        api.content=encode(Task("task1","W01","READY"))
+        with self.assertRaises(InvalidTask):
+            RefStore(api).compare_and_swap("task1","root",Task("task1","W01","CLAIMED",0,"2099-01-01T00:00:00Z","a"*40))
+    def test_heartbeat_extends_lease(self):
+        api=FakeAPI()
+        api.content=encode(Task("task1","W01","RUNNING",1,"2099-01-01T00:00:00Z","a"*40))
+        RefStore(api).compare_and_swap("task1","root",Task("task1","W01","RUNNING",1,"2099-01-02T00:00:00Z","a"*40))
+        self.assertEqual(RefStore(api).load("task1")[1].state,"RUNNING")
     def test_roundtrip(self):
         self.assertEqual(decode(encode(Task("task1","W01"))).worker, "W01")
     def test_cas_success(self):
