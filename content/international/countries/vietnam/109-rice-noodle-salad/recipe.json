@@ -1,0 +1,2178 @@
+{
+  "schema_version": "1.0",
+  "id": 109,
+  "country": "vietnam",
+  "country_code": "VN",
+  "title": {
+    "en-GB": "Rice Noodle Salad",
+    "pt-BR": "Salada vietnamita de macarrão de arroz"
+  },
+  "description": {
+    "en-GB": "A fresh vermicelli bowl tossed with crunchy vegetables, mint and a tangy lime-fish-sauce dressing, finished with roasted peanuts.",
+    "pt-BR": "Uma tigela fresca de macarrão de arroz com vegetais crocantes, hortelã e molho cítrico de limão e peixe, finalizada com amendoim torrado."
+  },
+  "cultural_context": {
+    "en-GB": "Vietnamese rice-noodle salads have many regional and family versions. This simple bún-style salad pairs cool vermicelli with herbs, vegetables and a balanced fish-sauce dressing.",
+    "pt-BR": "Saladas vietnamitas de macarrão de arroz têm muitas versões regionais e familiares. Esta salada simples, ao estilo bún, combina macarrão frio, ervas, vegetais e molho equilibrado de peixe."
+  },
+  "category": "international",
+  "method": "Adult-cooked rice vermicelli; child-mixed salad and dressing",
+  "time": "35 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 25,
+  "total_minutes": 35,
+  "ingredients": [
+    "160 g Rice vermicelli, dry",
+    "120 g Carrot",
+    "200 g Cucumber",
+    "100 g Lettuce leaves",
+    "10 g Fresh mint leaves",
+    "30 mL Fresh lime juice",
+    "20 mL Fish sauce",
+    "12 g Granulated sugar",
+    "1530 mL Clean water",
+    "20 g Roasted peanuts, finely chopped"
+  ],
+  "equipment": [
+    "Saucepan",
+    "Colander",
+    "Chopping board",
+    "Sharp knife",
+    "Vegetable peeler",
+    "Large mixing bowl",
+    "Measuring cup",
+    "Serving bowls",
+    "Mixing spoon",
+    "Small dressing bowl"
+  ],
+  "ingredientItems": [
+    {
+      "id": "rice-vermicelli",
+      "name": {
+        "en-GB": "Rice vermicelli, dry",
+        "pt-BR": "Macarrão de arroz seco"
+      },
+      "quantity": 160,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/rice-vermicelli.png",
+        "sha256": "be9d81c52d3b8606c2b68934873760f84285d4306fcb4b729221445f9baa944e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "carrot",
+      "name": {
+        "en-GB": "Carrot",
+        "pt-BR": "Cenoura"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/carrot.png",
+        "sha256": "0a9892d62838b7f09876f10a4265958c6281c9c10de8109e149b215e4f2dd0e7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "cucumber",
+      "name": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "quantity": 200,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/cucumber.png",
+        "sha256": "0b5df623cdc9ad40b110ff54fce511c37009262b97f38b463f9189de47201196",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "lettuce",
+      "name": {
+        "en-GB": "Lettuce leaves",
+        "pt-BR": "Folhas de alface"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lettuce.png",
+        "sha256": "b0df4161ae05e3d0756d7e12fc360074a6f07b263484f9d9a50ab2f19796e91a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mint",
+      "name": {
+        "en-GB": "Fresh mint leaves",
+        "pt-BR": "Folhas de hortelã fresca"
+      },
+      "quantity": 10,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/mint.png",
+        "sha256": "47ed6e89d468b0b82b7cfb0fc0a8ec1e73f5a6dd214661c878d837e724bef682",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "lime-juice",
+      "name": {
+        "en-GB": "Fresh lime juice",
+        "pt-BR": "Suco de limão-taiti fresco"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lime-juice.png",
+        "sha256": "5a33cb4e25beef89e7470dea88c8838a0faca168207166579061f08e520c1b8b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "fish-sauce",
+      "name": {
+        "en-GB": "Fish sauce",
+        "pt-BR": "Molho de peixe"
+      },
+      "quantity": 20,
+      "unit": "mL",
+      "allergens": [
+        "fish"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/fish-sauce.png",
+        "sha256": "71ee347e72ef2c716c8bee2680ce265a70f7855d1aa399598ac633837f9a2e2a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "sugar",
+      "name": {
+        "en-GB": "Granulated sugar",
+        "pt-BR": "Açúcar granulado"
+      },
+      "quantity": 12,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/sugar.png",
+        "sha256": "aba5f49906f6e653b77c439ffc9e7586ef9d40207eb93984e98e3d4552a18f34",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "water",
+      "name": {
+        "en-GB": "Clean water",
+        "pt-BR": "Água potável"
+      },
+      "quantity": 1530,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/water.png",
+        "sha256": "3f3e2a751d2a63e4ecf7e5e092a1898b3e9ebee7341476c804ea31938a1836fd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "peanuts",
+      "name": {
+        "en-GB": "Roasted peanuts, finely chopped",
+        "pt-BR": "Amendoim torrado picado fino"
+      },
+      "quantity": 20,
+      "unit": "g",
+      "allergens": [
+        "peanut"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/peanuts.png",
+        "sha256": "2dc43c61ed271f8e1d53a0f431d6a1e9825ad8b6d5ffa6b2952be1553c23151d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "saucepan",
+      "name": {
+        "en-GB": "Saucepan",
+        "pt-BR": "Panela"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/saucepan.png",
+        "sha256": "d343808756418a9469cb8e386c05d694bc09427eedb46881544a4a7d521173de",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/colander.png",
+        "sha256": "158a29d25b2b568a3e506bb8a22d8229f44dc49fa65020e8ec3e913ec560c6ec",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/chopping-board.png",
+        "sha256": "ada5751e7d18b404e69b479b523b003482ec593a99ae3abb804f2456595ea366",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Sharp knife",
+        "pt-BR": "Faca afiada"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/knife.png",
+        "sha256": "73509f03bb492877295a8c3fca1ba47d5a9c679598853d0db12bdd134a21694e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "vegetable-peeler",
+      "name": {
+        "en-GB": "Vegetable peeler",
+        "pt-BR": "Descascador de legumes"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/vegetable-peeler.png",
+        "sha256": "c6ffe61790f6a1244681a23824702b156a05d3c49eadd317be0fbf33d086569a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Large mixing bowl",
+        "pt-BR": "Tigela grande para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-bowl.png",
+        "sha256": "a6f82a250be3d312e8445a27a172e9beb9d8faa86a8714df7bb14ecf19a396f0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "measuring-cup",
+      "name": {
+        "en-GB": "Measuring cup",
+        "pt-BR": "Copo medidor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/measuring-cup.png",
+        "sha256": "110899cc2003e1d7cb876bba308f07c14354894665bc586aa63464ad09604025",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "serving-bowls",
+      "name": {
+        "en-GB": "Serving bowls",
+        "pt-BR": "Tigelas para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/serving-bowls.png",
+        "sha256": "3c32afe2a346b59bf214544c154ed2f15666e681daf3e7114f10bd148890c4d5",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-spoon",
+      "name": {
+        "en-GB": "Mixing spoon",
+        "pt-BR": "Colher para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-spoon.png",
+        "sha256": "1d9940f15a0fea1d57dc2c8037f49ba04ace879d689dbf0ef541116eed8c0edf",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "dressing-bowl",
+      "name": {
+        "en-GB": "Small dressing bowl",
+        "pt-BR": "Tigela pequena para o molho"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/dressing-bowl.png",
+        "sha256": "857773dbe05892c6df3596f48b4c20c890e31c3ae1550ff9a261ffc4de8e4e7f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Cook and cool the vermicelli",
+        "pt-BR": "Cozinhe e esfrie o macarrão"
+      },
+      "instruction": {
+        "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, drains it and rinses with cool water.",
+        "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, escorre e enxágua com água fria."
+      },
+      "ingredientIds": [
+        "rice-vermicelli",
+        "water"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "colander"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult only: use the hob, boiling water and hot saucepan. Children can wash vegetables away from the hob.",
+        "pt-BR": "Somente adulto: use o fogão, a água fervente e a panela quente. As crianças podem lavar os vegetais longe do fogão."
+      },
+      "safety": {
+        "en-GB": "Keep children away from the hob. An adult drains boiling water and cools noodles promptly.",
+        "pt-BR": "Mantenha as crianças longe do fogão. Um adulto escorre a água fervente e esfria o macarrão sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for hob and boiling water.",
+        "pt-BR": "Somente adulto usa o fogão e a água fervente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-01.png",
+        "sha256": "413ab67e18580a593bb68b8eb1892134b7aba00a90a56d87b7f4c14594ed10e2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Wash and prepare the vegetables",
+        "pt-BR": "Lave e prepare os vegetais"
+      },
+      "instruction": {
+        "en-GB": "Wash lettuce, mint, cucumber and carrot. An adult peels and cuts carrot and cucumber into thin sticks; tear lettuce by hand.",
+        "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto descasca e corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+      },
+      "ingredientIds": [
+        "carrot",
+        "cucumber",
+        "lettuce",
+        "mint"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife",
+        "vegetable-peeler"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash leaves and tear lettuce. An adult handles the peeler and knife.",
+        "pt-BR": "As crianças lavam as folhas e rasgam a alface. Um adulto manuseia o descascador e a faca."
+      },
+      "safety": {
+        "en-GB": "Use a stable board. Only an adult handles the sharp knife and peeler; keep fingers away from blades.",
+        "pt-BR": "Use uma tábua firme. Somente um adulto manuseia a faca afiada e o descascador; mantenha os dedos afastados das lâminas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for peeling and knife work.",
+        "pt-BR": "Somente adulto descasca e usa a faca."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-02.png",
+        "sha256": "4315f5355d612f614eee4c0e266ff5852704dacf0fce69c558f95b529fb4d061",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Mix the lime dressing",
+        "pt-BR": "Misture o molho de limão"
+      },
+      "instruction": {
+        "en-GB": "Measure lime juice, fish sauce, sugar and water into a small bowl. Stir until the sugar dissolves.",
+        "pt-BR": "Meça o suco de limão, o molho de peixe, o açúcar e a água em uma tigela pequena. Mexa até dissolver o açúcar."
+      },
+      "ingredientIds": [
+        "lime-juice",
+        "fish-sauce",
+        "sugar",
+        "water"
+      ],
+      "equipmentIds": [
+        "dressing-bowl",
+        "measuring-cup",
+        "mixing-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Children measure and stir with an adult nearby; an adult checks the fish-sauce label.",
+        "pt-BR": "As crianças medem e mexem com um adulto por perto; um adulto confere o rótulo do molho de peixe."
+      },
+      "safety": {
+        "en-GB": "Fish sauce contains fish. Keep it separate from allergen-free food and wash the measuring cup and spoon.",
+        "pt-BR": "O molho de peixe contém peixe. Mantenha separado de alimentos sem alergênicos e lave o copo medidor e a colher."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "No heat or sharp tools.",
+        "pt-BR": "Sem calor ou ferramentas afiadas."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-03.png",
+        "sha256": "33bd086cab190090bcb8c305d287c46144eba89b8764047f5b0261b74b80b4af",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Toss the salad",
+        "pt-BR": "Misture a salada"
+      },
+      "instruction": {
+        "en-GB": "Combine the cooled noodles with carrot, cucumber, lettuce and mint in a large bowl. Pour over the dressing and toss gently.",
+        "pt-BR": "Misture o macarrão frio com a cenoura, o pepino, a alface e a hortelã em uma tigela grande. Regue com o molho e misture delicadamente."
+      },
+      "ingredientIds": [
+        "rice-vermicelli",
+        "carrot",
+        "cucumber",
+        "lettuce",
+        "mint",
+        "lime-juice",
+        "fish-sauce"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "mixing-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Children toss the cooled salad; an adult checks the noodles are cool and the fish sauce is mixed evenly.",
+        "pt-BR": "As crianças misturam a salada fria; um adulto confere se o macarrão esfriou e se o molho de peixe foi distribuído."
+      },
+      "safety": {
+        "en-GB": "Use cooled noodles and clean utensils; do not leave the finished salad at room temperature for a long time.",
+        "pt-BR": "Use o macarrão frio e utensílios limpos; não deixe a salada pronta por muito tempo à temperatura ambiente."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult confirms the noodles are cool.",
+        "pt-BR": "Um adulto confirma se o macarrão esfriou."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png",
+        "sha256": "25328db7368c5f5c79efd5a519a376d1dc54a79ee01ca5c981b7b39935682130",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Serve with peanuts",
+        "pt-BR": "Sirva com amendoim"
+      },
+      "instruction": {
+        "en-GB": "Divide the salad between four bowls and sprinkle with the measured chopped roasted peanuts. Serve promptly.",
+        "pt-BR": "Divida a salada entre quatro tigelas e polvilhe o amendoim torrado picado e medido. Sirva logo."
+      },
+      "ingredientIds": [
+        "peanuts"
+      ],
+      "equipmentIds": [
+        "serving-bowls"
+      ],
+      "adultAssist": {
+        "en-GB": "Children portion and garnish. An adult labels the peanut topping and checks allergen warnings.",
+        "pt-BR": "As crianças dividem e finalizam. Um adulto identifica a cobertura de amendoim e verifica os avisos de alergênicos."
+      },
+      "safety": {
+        "en-GB": "Peanuts are a major allergen and whole nuts can be a choking risk for young children; use finely chopped nuts and keep separate.",
+        "pt-BR": "Amendoim é um alergênico importante e inteiro pode causar engasgo em crianças pequenas; use picado fino e mantenha separado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervises allergen handling and serving.",
+        "pt-BR": "Um adulto supervisiona o manuseio de alergênicos e o serviço."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-05.png",
+        "sha256": "ac761ba77a7b81387f673fd5a8bfa7304459fa8b98e57e17748ff4805b1db061",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults cook and cool vermicelli, use the knife and peeler, and supervise hot water. Children wash vegetables, measure dressing, toss the cooled salad and garnish it.",
+    "pt-BR": "Adultos cozinham e esfriam o macarrão, usam a faca e o descascador e supervisionam a água quente. Crianças lavam os vegetais, medem o molho, misturam a salada fria e finalizam."
+  },
+  "allergens": [
+    "fish",
+    "peanut"
+  ],
+  "allergen_notes": {
+    "contains": {
+      "en-GB": "Fish in fish sauce; peanut topping. Check labels and prevent cross-contact.",
+      "pt-BR": "Peixe no molho; cobertura de amendoim. Confira os rótulos e evite contato cruzado."
+    },
+    "cross_contact": {
+      "en-GB": "Fish sauce contains fish; peanuts are a separate topping. Check labels, use separate clean bowls and spoons, and keep both ingredients away from anyone with an allergy.",
+      "pt-BR": "O molho de peixe contém peixe; o amendoim é uma cobertura separada. Confira os rótulos, use tigelas e colheres limpas separadas e mantenha os dois ingredientes longe de pessoas alérgicas."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 215,
+      "proteinG": 5.0,
+      "carbohydrateG": 42.6,
+      "fatG": 2.9,
+      "fibreG": 2.7,
+      "saturatedFatG": 0.4,
+      "sodiumMg": 495
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+    "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Rice noodles, dry",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20noodles,%20dry"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Carrots, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Lettuce, green leaf, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lettuce,%20green%20leaf,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Spearmint, fresh",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Spearmint,%20fresh"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Fish sauce",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Fish%20sauce"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Sugars,%20granulated"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Water, tap",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Water,%20tap"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Peanuts, all types, dry-roasted",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Peanuts,%20all%20types,%20dry-roasted"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Finished rice noodle salad ready to serve.",
+      "pt-BR": "Salada vietnamita de macarrão de arroz pronto para servir."
+    },
+    "image": {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/finished-dish.png",
+      "sha256": "b82a48a6f0e272d8c41fd0130adf9efdab2225e78c3440cb2e63953910d452bd",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/finished-dish.png",
+      "sha256": "b82a48a6f0e272d8c41fd0130adf9efdab2225e78c3440cb2e63953910d452bd",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/rice-vermicelli.png",
+        "sha256": "be9d81c52d3b8606c2b68934873760f84285d4306fcb4b729221445f9baa944e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/carrot.png",
+        "sha256": "0a9892d62838b7f09876f10a4265958c6281c9c10de8109e149b215e4f2dd0e7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/cucumber.png",
+        "sha256": "0b5df623cdc9ad40b110ff54fce511c37009262b97f38b463f9189de47201196",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lettuce.png",
+        "sha256": "b0df4161ae05e3d0756d7e12fc360074a6f07b263484f9d9a50ab2f19796e91a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/mint.png",
+        "sha256": "47ed6e89d468b0b82b7cfb0fc0a8ec1e73f5a6dd214661c878d837e724bef682",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lime-juice.png",
+        "sha256": "5a33cb4e25beef89e7470dea88c8838a0faca168207166579061f08e520c1b8b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/fish-sauce.png",
+        "sha256": "71ee347e72ef2c716c8bee2680ce265a70f7855d1aa399598ac633837f9a2e2a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/sugar.png",
+        "sha256": "aba5f49906f6e653b77c439ffc9e7586ef9d40207eb93984e98e3d4552a18f34",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/water.png",
+        "sha256": "3f3e2a751d2a63e4ecf7e5e092a1898b3e9ebee7341476c804ea31938a1836fd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/peanuts.png",
+        "sha256": "2dc43c61ed271f8e1d53a0f431d6a1e9825ad8b6d5ffa6b2952be1553c23151d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/saucepan.png",
+        "sha256": "d343808756418a9469cb8e386c05d694bc09427eedb46881544a4a7d521173de",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/colander.png",
+        "sha256": "158a29d25b2b568a3e506bb8a22d8229f44dc49fa65020e8ec3e913ec560c6ec",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/chopping-board.png",
+        "sha256": "ada5751e7d18b404e69b479b523b003482ec593a99ae3abb804f2456595ea366",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/knife.png",
+        "sha256": "73509f03bb492877295a8c3fca1ba47d5a9c679598853d0db12bdd134a21694e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/vegetable-peeler.png",
+        "sha256": "c6ffe61790f6a1244681a23824702b156a05d3c49eadd317be0fbf33d086569a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-bowl.png",
+        "sha256": "a6f82a250be3d312e8445a27a172e9beb9d8faa86a8714df7bb14ecf19a396f0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/measuring-cup.png",
+        "sha256": "110899cc2003e1d7cb876bba308f07c14354894665bc586aa63464ad09604025",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/serving-bowls.png",
+        "sha256": "3c32afe2a346b59bf214544c154ed2f15666e681daf3e7114f10bd148890c4d5",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-spoon.png",
+        "sha256": "1d9940f15a0fea1d57dc2c8037f49ba04ace879d689dbf0ef541116eed8c0edf",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/dressing-bowl.png",
+        "sha256": "857773dbe05892c6df3596f48b4c20c890e31c3ae1550ff9a261ffc4de8e4e7f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-01.png",
+        "sha256": "413ab67e18580a593bb68b8eb1892134b7aba00a90a56d87b7f4c14594ed10e2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-02.png",
+        "sha256": "4315f5355d612f614eee4c0e266ff5852704dacf0fce69c558f95b529fb4d061",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-03.png",
+        "sha256": "33bd086cab190090bcb8c305d287c46144eba89b8764047f5b0261b74b80b4af",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png",
+        "sha256": "25328db7368c5f5c79efd5a519a376d1dc54a79ee01ca5c981b7b39935682130",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-05.png",
+        "sha256": "ac761ba77a7b81387f673fd5a8bfa7304459fa8b98e57e17748ff4805b1db061",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/finished-dish.png",
+      "sha256": "b82a48a6f0e272d8c41fd0130adf9efdab2225e78c3440cb2e63953910d452bd",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/rice-vermicelli.png",
+      "sha256": "be9d81c52d3b8606c2b68934873760f84285d4306fcb4b729221445f9baa944e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/carrot.png",
+      "sha256": "0a9892d62838b7f09876f10a4265958c6281c9c10de8109e149b215e4f2dd0e7",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/cucumber.png",
+      "sha256": "0b5df623cdc9ad40b110ff54fce511c37009262b97f38b463f9189de47201196",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lettuce.png",
+      "sha256": "b0df4161ae05e3d0756d7e12fc360074a6f07b263484f9d9a50ab2f19796e91a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/mint.png",
+      "sha256": "47ed6e89d468b0b82b7cfb0fc0a8ec1e73f5a6dd214661c878d837e724bef682",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lime-juice.png",
+      "sha256": "5a33cb4e25beef89e7470dea88c8838a0faca168207166579061f08e520c1b8b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/fish-sauce.png",
+      "sha256": "71ee347e72ef2c716c8bee2680ce265a70f7855d1aa399598ac633837f9a2e2a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/sugar.png",
+      "sha256": "aba5f49906f6e653b77c439ffc9e7586ef9d40207eb93984e98e3d4552a18f34",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/water.png",
+      "sha256": "3f3e2a751d2a63e4ecf7e5e092a1898b3e9ebee7341476c804ea31938a1836fd",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/peanuts.png",
+      "sha256": "2dc43c61ed271f8e1d53a0f431d6a1e9825ad8b6d5ffa6b2952be1553c23151d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/saucepan.png",
+      "sha256": "d343808756418a9469cb8e386c05d694bc09427eedb46881544a4a7d521173de",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/colander.png",
+      "sha256": "158a29d25b2b568a3e506bb8a22d8229f44dc49fa65020e8ec3e913ec560c6ec",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/chopping-board.png",
+      "sha256": "ada5751e7d18b404e69b479b523b003482ec593a99ae3abb804f2456595ea366",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/knife.png",
+      "sha256": "73509f03bb492877295a8c3fca1ba47d5a9c679598853d0db12bdd134a21694e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/vegetable-peeler.png",
+      "sha256": "c6ffe61790f6a1244681a23824702b156a05d3c49eadd317be0fbf33d086569a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-bowl.png",
+      "sha256": "a6f82a250be3d312e8445a27a172e9beb9d8faa86a8714df7bb14ecf19a396f0",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/measuring-cup.png",
+      "sha256": "110899cc2003e1d7cb876bba308f07c14354894665bc586aa63464ad09604025",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/serving-bowls.png",
+      "sha256": "3c32afe2a346b59bf214544c154ed2f15666e681daf3e7114f10bd148890c4d5",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-spoon.png",
+      "sha256": "1d9940f15a0fea1d57dc2c8037f49ba04ace879d689dbf0ef541116eed8c0edf",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/dressing-bowl.png",
+      "sha256": "857773dbe05892c6df3596f48b4c20c890e31c3ae1550ff9a261ffc4de8e4e7f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-01.png",
+      "sha256": "413ab67e18580a593bb68b8eb1892134b7aba00a90a56d87b7f4c14594ed10e2",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-02.png",
+      "sha256": "4315f5355d612f614eee4c0e266ff5852704dacf0fce69c558f95b529fb4d061",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-03.png",
+      "sha256": "33bd086cab190090bcb8c305d287c46144eba89b8764047f5b0261b74b80b4af",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png",
+      "sha256": "25328db7368c5f5c79efd5a519a376d1dc54a79ee01ca5c981b7b39935682130",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-05.png",
+      "sha256": "ac761ba77a7b81387f673fd5a8bfa7304459fa8b98e57e17748ff4805b1db061",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "USDA FoodData Central",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+    "artworkApproval": "Owner-approved Aaria style reference in Issue #50 comment 6367104240; source path content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult-cooked rice vermicelli; child-mixed salad and dressing",
+    "time": "35 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 109,
+    "country": "vietnam",
+    "countryCode": "VN",
+    "title": {
+      "en-GB": "Rice Noodle Salad",
+      "pt-BR": "Salada vietnamita de macarrão de arroz"
+    },
+    "description": {
+      "en-GB": "A fresh vermicelli bowl tossed with crunchy vegetables, mint and a tangy lime-fish-sauce dressing, finished with roasted peanuts.",
+      "pt-BR": "Uma tigela fresca de macarrão de arroz com vegetais crocantes, hortelã e molho cítrico de limão e peixe, finalizada com amendoim torrado."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Vietnamese rice-noodle salads have many regional and family versions. This simple bún-style salad pairs cool vermicelli with herbs, vegetables and a balanced fish-sauce dressing.",
+      "pt-BR": "Saladas vietnamitas de macarrão de arroz têm muitas versões regionais e familiares. Esta salada simples, ao estilo bún, combina macarrão frio, ervas, vegetais e molho equilibrado de peixe."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 25,
+    "totalMinutes": 35,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; adult safety boundaries remain unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "rice-vermicelli",
+        "name": {
+          "en-GB": "Rice vermicelli, dry",
+          "pt-BR": "Macarrão de arroz seco"
+        },
+        "quantity": 160,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/rice-vermicelli.png",
+          "sha256": "be9d81c52d3b8606c2b68934873760f84285d4306fcb4b729221445f9baa944e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "carrot",
+        "name": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "quantity": 120,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/carrot.png",
+          "sha256": "0a9892d62838b7f09876f10a4265958c6281c9c10de8109e149b215e4f2dd0e7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "cucumber",
+        "name": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "quantity": 200,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/cucumber.png",
+          "sha256": "0b5df623cdc9ad40b110ff54fce511c37009262b97f38b463f9189de47201196",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "lettuce",
+        "name": {
+          "en-GB": "Lettuce leaves",
+          "pt-BR": "Folhas de alface"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lettuce.png",
+          "sha256": "b0df4161ae05e3d0756d7e12fc360074a6f07b263484f9d9a50ab2f19796e91a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mint",
+        "name": {
+          "en-GB": "Fresh mint leaves",
+          "pt-BR": "Folhas de hortelã fresca"
+        },
+        "quantity": 10,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/mint.png",
+          "sha256": "47ed6e89d468b0b82b7cfb0fc0a8ec1e73f5a6dd214661c878d837e724bef682",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "lime-juice",
+        "name": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "quantity": 30,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lime-juice.png",
+          "sha256": "5a33cb4e25beef89e7470dea88c8838a0faca168207166579061f08e520c1b8b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "fish-sauce",
+        "name": {
+          "en-GB": "Fish sauce",
+          "pt-BR": "Molho de peixe"
+        },
+        "quantity": 20,
+        "unit": "mL",
+        "allergens": [
+          "fish"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/fish-sauce.png",
+          "sha256": "71ee347e72ef2c716c8bee2680ce265a70f7855d1aa399598ac633837f9a2e2a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "sugar",
+        "name": {
+          "en-GB": "Granulated sugar",
+          "pt-BR": "Açúcar granulado"
+        },
+        "quantity": 12,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/sugar.png",
+          "sha256": "aba5f49906f6e653b77c439ffc9e7586ef9d40207eb93984e98e3d4552a18f34",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "water",
+        "name": {
+          "en-GB": "Clean water",
+          "pt-BR": "Água potável"
+        },
+        "quantity": 1530,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/water.png",
+          "sha256": "3f3e2a751d2a63e4ecf7e5e092a1898b3e9ebee7341476c804ea31938a1836fd",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "peanuts",
+        "name": {
+          "en-GB": "Roasted peanuts, finely chopped",
+          "pt-BR": "Amendoim torrado picado fino"
+        },
+        "quantity": 20,
+        "unit": "g",
+        "allergens": [
+          "peanut"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/peanuts.png",
+          "sha256": "2dc43c61ed271f8e1d53a0f431d6a1e9825ad8b6d5ffa6b2952be1553c23151d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "equipment": [
+      "Saucepan",
+      "Colander",
+      "Chopping board",
+      "Sharp knife",
+      "Vegetable peeler",
+      "Large mixing bowl",
+      "Measuring cup",
+      "Serving bowls",
+      "Mixing spoon",
+      "Small dressing bowl"
+    ],
+    "equipmentItems": [
+      {
+        "id": "saucepan",
+        "name": {
+          "en-GB": "Saucepan",
+          "pt-BR": "Panela"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/saucepan.png",
+          "sha256": "d343808756418a9469cb8e386c05d694bc09427eedb46881544a4a7d521173de",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/colander.png",
+          "sha256": "158a29d25b2b568a3e506bb8a22d8229f44dc49fa65020e8ec3e913ec560c6ec",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/chopping-board.png",
+          "sha256": "ada5751e7d18b404e69b479b523b003482ec593a99ae3abb804f2456595ea366",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Sharp knife",
+          "pt-BR": "Faca afiada"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/knife.png",
+          "sha256": "73509f03bb492877295a8c3fca1ba47d5a9c679598853d0db12bdd134a21694e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "vegetable-peeler",
+        "name": {
+          "en-GB": "Vegetable peeler",
+          "pt-BR": "Descascador de legumes"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/vegetable-peeler.png",
+          "sha256": "c6ffe61790f6a1244681a23824702b156a05d3c49eadd317be0fbf33d086569a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Large mixing bowl",
+          "pt-BR": "Tigela grande para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-bowl.png",
+          "sha256": "a6f82a250be3d312e8445a27a172e9beb9d8faa86a8714df7bb14ecf19a396f0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "measuring-cup",
+        "name": {
+          "en-GB": "Measuring cup",
+          "pt-BR": "Copo medidor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/measuring-cup.png",
+          "sha256": "110899cc2003e1d7cb876bba308f07c14354894665bc586aa63464ad09604025",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "serving-bowls",
+        "name": {
+          "en-GB": "Serving bowls",
+          "pt-BR": "Tigelas para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/serving-bowls.png",
+          "sha256": "3c32afe2a346b59bf214544c154ed2f15666e681daf3e7114f10bd148890c4d5",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-spoon",
+        "name": {
+          "en-GB": "Mixing spoon",
+          "pt-BR": "Colher para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-spoon.png",
+          "sha256": "1d9940f15a0fea1d57dc2c8037f49ba04ace879d689dbf0ef541116eed8c0edf",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "dressing-bowl",
+        "name": {
+          "en-GB": "Small dressing bowl",
+          "pt-BR": "Tigela pequena para o molho"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/dressing-bowl.png",
+          "sha256": "857773dbe05892c6df3596f48b4c20c890e31c3ae1550ff9a261ffc4de8e4e7f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Cook and cool the vermicelli",
+          "pt-BR": "Cozinhe e esfrie o macarrão"
+        },
+        "instruction": {
+          "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, drains it and rinses with cool water.",
+          "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, escorre e enxágua com água fria."
+        },
+        "ingredientIds": [
+          "rice-vermicelli",
+          "water"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "colander"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult only: use the hob, boiling water and hot saucepan. Children can wash vegetables away from the hob.",
+          "pt-BR": "Somente adulto: use o fogão, a água fervente e a panela quente. As crianças podem lavar os vegetais longe do fogão."
+        },
+        "safety": {
+          "en-GB": "Keep children away from the hob. An adult drains boiling water and cools noodles promptly.",
+          "pt-BR": "Mantenha as crianças longe do fogão. Um adulto escorre a água fervente e esfria o macarrão sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for hob and boiling water.",
+          "pt-BR": "Somente adulto usa o fogão e a água fervente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-01.png",
+          "sha256": "413ab67e18580a593bb68b8eb1892134b7aba00a90a56d87b7f4c14594ed10e2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Wash and prepare the vegetables",
+          "pt-BR": "Lave e prepare os vegetais"
+        },
+        "instruction": {
+          "en-GB": "Wash lettuce, mint, cucumber and carrot. An adult peels and cuts carrot and cucumber into thin sticks; tear lettuce by hand.",
+          "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto descasca e corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+        },
+        "ingredientIds": [
+          "carrot",
+          "cucumber",
+          "lettuce",
+          "mint"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife",
+          "vegetable-peeler"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash leaves and tear lettuce. An adult handles the peeler and knife.",
+          "pt-BR": "As crianças lavam as folhas e rasgam a alface. Um adulto manuseia o descascador e a faca."
+        },
+        "safety": {
+          "en-GB": "Use a stable board. Only an adult handles the sharp knife and peeler; keep fingers away from blades.",
+          "pt-BR": "Use uma tábua firme. Somente um adulto manuseia a faca afiada e o descascador; mantenha os dedos afastados das lâminas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for peeling and knife work.",
+          "pt-BR": "Somente adulto descasca e usa a faca."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-02.png",
+          "sha256": "4315f5355d612f614eee4c0e266ff5852704dacf0fce69c558f95b529fb4d061",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Mix the lime dressing",
+          "pt-BR": "Misture o molho de limão"
+        },
+        "instruction": {
+          "en-GB": "Measure lime juice, fish sauce, sugar and water into a small bowl. Stir until the sugar dissolves.",
+          "pt-BR": "Meça o suco de limão, o molho de peixe, o açúcar e a água em uma tigela pequena. Mexa até dissolver o açúcar."
+        },
+        "ingredientIds": [
+          "lime-juice",
+          "fish-sauce",
+          "sugar",
+          "water"
+        ],
+        "equipmentIds": [
+          "dressing-bowl",
+          "measuring-cup",
+          "mixing-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Children measure and stir with an adult nearby; an adult checks the fish-sauce label.",
+          "pt-BR": "As crianças medem e mexem com um adulto por perto; um adulto confere o rótulo do molho de peixe."
+        },
+        "safety": {
+          "en-GB": "Fish sauce contains fish. Keep it separate from allergen-free food and wash the measuring cup and spoon.",
+          "pt-BR": "O molho de peixe contém peixe. Mantenha separado de alimentos sem alergênicos e lave o copo medidor e a colher."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "No heat or sharp tools.",
+          "pt-BR": "Sem calor ou ferramentas afiadas."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-03.png",
+          "sha256": "33bd086cab190090bcb8c305d287c46144eba89b8764047f5b0261b74b80b4af",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Toss the salad",
+          "pt-BR": "Misture a salada"
+        },
+        "instruction": {
+          "en-GB": "Combine the cooled noodles with carrot, cucumber, lettuce and mint in a large bowl. Pour over the dressing and toss gently.",
+          "pt-BR": "Misture o macarrão frio com a cenoura, o pepino, a alface e a hortelã em uma tigela grande. Regue com o molho e misture delicadamente."
+        },
+        "ingredientIds": [
+          "rice-vermicelli",
+          "carrot",
+          "cucumber",
+          "lettuce",
+          "mint",
+          "lime-juice",
+          "fish-sauce"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "mixing-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Children toss the cooled salad; an adult checks the noodles are cool and the fish sauce is mixed evenly.",
+          "pt-BR": "As crianças misturam a salada fria; um adulto confere se o macarrão esfriou e se o molho de peixe foi distribuído."
+        },
+        "safety": {
+          "en-GB": "Use cooled noodles and clean utensils; do not leave the finished salad at room temperature for a long time.",
+          "pt-BR": "Use o macarrão frio e utensílios limpos; não deixe a salada pronta por muito tempo à temperatura ambiente."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult confirms the noodles are cool.",
+          "pt-BR": "Um adulto confirma se o macarrão esfriou."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png",
+          "sha256": "25328db7368c5f5c79efd5a519a376d1dc54a79ee01ca5c981b7b39935682130",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Serve with peanuts",
+          "pt-BR": "Sirva com amendoim"
+        },
+        "instruction": {
+          "en-GB": "Divide the salad between four bowls and sprinkle with the measured chopped roasted peanuts. Serve promptly.",
+          "pt-BR": "Divida a salada entre quatro tigelas e polvilhe o amendoim torrado picado e medido. Sirva logo."
+        },
+        "ingredientIds": [
+          "peanuts"
+        ],
+        "equipmentIds": [
+          "serving-bowls"
+        ],
+        "adultAssist": {
+          "en-GB": "Children portion and garnish. An adult labels the peanut topping and checks allergen warnings.",
+          "pt-BR": "As crianças dividem e finalizam. Um adulto identifica a cobertura de amendoim e verifica os avisos de alergênicos."
+        },
+        "safety": {
+          "en-GB": "Peanuts are a major allergen and whole nuts can be a choking risk for young children; use finely chopped nuts and keep separate.",
+          "pt-BR": "Amendoim é um alergênico importante e inteiro pode causar engasgo em crianças pequenas; use picado fino e mantenha separado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervises allergen handling and serving.",
+          "pt-BR": "Um adulto supervisiona o manuseio de alergênicos e o serviço."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-05.png",
+          "sha256": "ac761ba77a7b81387f673fd5a8bfa7304459fa8b98e57e17748ff4805b1db061",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults cook and cool vermicelli, use the knife and peeler, and supervise hot water. Children wash vegetables, measure dressing, toss the cooled salad and garnish it.",
+      "pt-BR": "Adultos cozinham e esfriam o macarrão, usam a faca e o descascador e supervisionam a água quente. Crianças lavam os vegetais, medem o molho, misturam a salada fria e finalizam."
+    },
+    "finishedDish": {
+      "artworkPath": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/finished-dish.png",
+      "description": {
+        "en-GB": "Finished rice noodle salad ready to serve.",
+        "pt-BR": "Salada vietnamita de macarrão de arroz pronto para servir."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/finished-dish.png",
+        "sha256": "b82a48a6f0e272d8c41fd0130adf9efdab2225e78c3440cb2e63953910d452bd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 215,
+        "proteinG": 5.0,
+        "carbohydrateG": 42.6,
+        "fatG": 2.9,
+        "fibreG": 2.7,
+        "saturatedFatG": 0.4,
+        "sodiumMg": 495
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+      "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Rice noodles, dry",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20noodles,%20dry"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Carrots, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cucumber, with peel, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Lettuce, green leaf, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lettuce,%20green%20leaf,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Spearmint, fresh",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Spearmint,%20fresh"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Lime juice, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Fish sauce",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Fish%20sauce"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Sugars, granulated",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Sugars,%20granulated"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Water, tap",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Water,%20tap"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Peanuts, all types, dry-roasted",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peanuts,%20all%20types,%20dry-roasted"
+        }
+      ]
+    },
+    "allergens": [
+      "fish",
+      "peanut"
+    ],
+    "allergenNotes": {
+      "contains": {
+        "en-GB": "Fish in fish sauce; peanut topping. Check labels and prevent cross-contact.",
+        "pt-BR": "Peixe no molho; cobertura de amendoim. Confira os rótulos e evite contato cruzado."
+      },
+      "cross_contact": {
+        "en-GB": "Fish sauce contains fish; peanuts are a separate topping. Check labels, use separate clean bowls and spoons, and keep both ingredients away from anyone with an allergy.",
+        "pt-BR": "O molho de peixe contém peixe; o amendoim é uma cobertura separada. Confira os rótulos, use tigelas e colheres limpas separadas e mantenha os dois ingredientes longe de pessoas alérgicas."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/finished-dish.png",
+        "sha256": "b82a48a6f0e272d8c41fd0130adf9efdab2225e78c3440cb2e63953910d452bd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/rice-vermicelli.png",
+          "sha256": "be9d81c52d3b8606c2b68934873760f84285d4306fcb4b729221445f9baa944e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/carrot.png",
+          "sha256": "0a9892d62838b7f09876f10a4265958c6281c9c10de8109e149b215e4f2dd0e7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/cucumber.png",
+          "sha256": "0b5df623cdc9ad40b110ff54fce511c37009262b97f38b463f9189de47201196",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lettuce.png",
+          "sha256": "b0df4161ae05e3d0756d7e12fc360074a6f07b263484f9d9a50ab2f19796e91a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/mint.png",
+          "sha256": "47ed6e89d468b0b82b7cfb0fc0a8ec1e73f5a6dd214661c878d837e724bef682",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lime-juice.png",
+          "sha256": "5a33cb4e25beef89e7470dea88c8838a0faca168207166579061f08e520c1b8b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/fish-sauce.png",
+          "sha256": "71ee347e72ef2c716c8bee2680ce265a70f7855d1aa399598ac633837f9a2e2a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/sugar.png",
+          "sha256": "aba5f49906f6e653b77c439ffc9e7586ef9d40207eb93984e98e3d4552a18f34",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/water.png",
+          "sha256": "3f3e2a751d2a63e4ecf7e5e092a1898b3e9ebee7341476c804ea31938a1836fd",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/peanuts.png",
+          "sha256": "2dc43c61ed271f8e1d53a0f431d6a1e9825ad8b6d5ffa6b2952be1553c23151d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/saucepan.png",
+          "sha256": "d343808756418a9469cb8e386c05d694bc09427eedb46881544a4a7d521173de",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/colander.png",
+          "sha256": "158a29d25b2b568a3e506bb8a22d8229f44dc49fa65020e8ec3e913ec560c6ec",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/chopping-board.png",
+          "sha256": "ada5751e7d18b404e69b479b523b003482ec593a99ae3abb804f2456595ea366",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/knife.png",
+          "sha256": "73509f03bb492877295a8c3fca1ba47d5a9c679598853d0db12bdd134a21694e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/vegetable-peeler.png",
+          "sha256": "c6ffe61790f6a1244681a23824702b156a05d3c49eadd317be0fbf33d086569a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-bowl.png",
+          "sha256": "a6f82a250be3d312e8445a27a172e9beb9d8faa86a8714df7bb14ecf19a396f0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/measuring-cup.png",
+          "sha256": "110899cc2003e1d7cb876bba308f07c14354894665bc586aa63464ad09604025",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/serving-bowls.png",
+          "sha256": "3c32afe2a346b59bf214544c154ed2f15666e681daf3e7114f10bd148890c4d5",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-spoon.png",
+          "sha256": "1d9940f15a0fea1d57dc2c8037f49ba04ace879d689dbf0ef541116eed8c0edf",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/dressing-bowl.png",
+          "sha256": "857773dbe05892c6df3596f48b4c20c890e31c3ae1550ff9a261ffc4de8e4e7f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-01.png",
+          "sha256": "413ab67e18580a593bb68b8eb1892134b7aba00a90a56d87b7f4c14594ed10e2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-02.png",
+          "sha256": "4315f5355d612f614eee4c0e266ff5852704dacf0fce69c558f95b529fb4d061",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-03.png",
+          "sha256": "33bd086cab190090bcb8c305d287c46144eba89b8764047f5b0261b74b80b4af",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png",
+          "sha256": "25328db7368c5f5c79efd5a519a376d1dc54a79ee01ca5c981b7b39935682130",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-05.png",
+          "sha256": "ac761ba77a7b81387f673fd5a8bfa7304459fa8b98e57e17748ff4805b1db061",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "nutritionSource": "USDA FoodData Central",
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+      "artworkApproval": "Owner-approved Aaria reference: content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+    },
+    "safety": {
+      "en-GB": "Keep children away from the hob. An adult drains boiling water and cools noodles promptly.",
+      "pt-BR": "Mantenha as crianças longe do fogão. Um adulto escorre a água fervente e esfria o macarrão sem demora."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}

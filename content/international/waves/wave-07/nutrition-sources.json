@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0.0",
+  "source": "USDA FoodData Central generic food searches",
+  "method": "Approximate values scaled from generic FoodData Central food references and divided by four. Rice-paper wrapper mass is assumed at approximately 10 g per sheet for #108; actual wrapper sizes vary. Fish sauce and peanut butter vary substantially by brand. Liquid water contributes no energy. Not a laboratory analysis; independent nutrition/allergen review pending.",
+  "recipes": [
+    {
+      "id": 108,
+      "title": {
+        "en-GB": "Fresh Spring Rolls",
+        "pt-BR": "Rolinhos frescos vietnamitas"
+      },
+      "servings": 4,
+      "ingredient_sources": [
+        {
+          "ingredient_id": "rice-paper",
+          "food_reference": "Rice paper, dry",
+          "quantity": 8,
+          "unit": "sheets",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20paper,%20dry"
+        },
+        {
+          "ingredient_id": "rice-vermicelli",
+          "food_reference": "Rice noodles, dry",
+          "quantity": 120,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20noodles,%20dry"
+        },
+        {
+          "ingredient_id": "lettuce",
+          "food_reference": "Lettuce, green leaf, raw",
+          "quantity": 8,
+          "unit": "leaves",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lettuce,%20green%20leaf,%20raw"
+        },
+        {
+          "ingredient_id": "carrot",
+          "food_reference": "Carrots, raw",
+          "quantity": 100,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots,%20raw"
+        },
+        {
+          "ingredient_id": "cucumber",
+          "food_reference": "Cucumber, with peel, raw",
+          "quantity": 100,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+        },
+        {
+          "ingredient_id": "mint",
+          "food_reference": "Spearmint, fresh",
+          "quantity": 10,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Spearmint,%20fresh"
+        },
+        {
+          "ingredient_id": "peanut-butter",
+          "food_reference": "Peanut butter, smooth style, without salt",
+          "quantity": 30,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peanut%20butter,%20smooth%20style,%20without%20salt"
+        },
+        {
+          "ingredient_id": "lime-juice",
+          "food_reference": "Lime juice, raw",
+          "quantity": 15,
+          "unit": "mL",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+        },
+        {
+          "ingredient_id": "water",
+          "food_reference": "Water, tap",
+          "quantity": 2030,
+          "unit": "mL",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Water,%20tap"
+        }
+      ],
+      "estimated_per_serving": {
+        "energyKcal": 233,
+        "proteinG": 5.4,
+        "carbohydrateG": 43.9,
+        "fatG": 4.2,
+        "fibreG": 2.2,
+        "saturatedFatG": 0.6,
+        "sodiumMg": 140
+      },
+      "status": "ESTIMATE_REVIEW_PENDING"
+    },
+    {
+      "id": 109,
+      "title": {
+        "en-GB": "Rice Noodle Salad",
+        "pt-BR": "Salada vietnamita de macarrão de arroz"
+      },
+      "servings": 4,
+      "ingredient_sources": [
+        {
+          "ingredient_id": "rice-vermicelli",
+          "food_reference": "Rice noodles, dry",
+          "quantity": 160,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20noodles,%20dry"
+        },
+        {
+          "ingredient_id": "carrot",
+          "food_reference": "Carrots, raw",
+          "quantity": 120,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots,%20raw"
+        },
+        {
+          "ingredient_id": "cucumber",
+          "food_reference": "Cucumber, with peel, raw",
+          "quantity": 200,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+        },
+        {
+          "ingredient_id": "lettuce",
+          "food_reference": "Lettuce, green leaf, raw",
+          "quantity": 100,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lettuce,%20green%20leaf,%20raw"
+        },
+        {
+          "ingredient_id": "mint",
+          "food_reference": "Spearmint, fresh",
+          "quantity": 10,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Spearmint,%20fresh"
+        },
+        {
+          "ingredient_id": "lime-juice",
+          "food_reference": "Lime juice, raw",
+          "quantity": 30,
+          "unit": "mL",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+        },
+        {
+          "ingredient_id": "fish-sauce",
+          "food_reference": "Fish sauce",
+          "quantity": 20,
+          "unit": "mL",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Fish%20sauce"
+        },
+        {
+          "ingredient_id": "sugar",
+          "food_reference": "Sugars, granulated",
+          "quantity": 12,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Sugars,%20granulated"
+        },
+        {
+          "ingredient_id": "water",
+          "food_reference": "Water, tap",
+          "quantity": 1530,
+          "unit": "mL",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Water,%20tap"
+        },
+        {
+          "ingredient_id": "peanuts",
+          "food_reference": "Peanuts, all types, dry-roasted",
+          "quantity": 20,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peanuts,%20all%20types,%20dry-roasted"
+        }
+      ],
+      "estimated_per_serving": {
+        "energyKcal": 215,
+        "proteinG": 5.0,
+        "carbohydrateG": 42.6,
+        "fatG": 2.9,
+        "fibreG": 2.7,
+        "saturatedFatG": 0.4,
+        "sodiumMg": 495
+      },
+      "status": "ESTIMATE_REVIEW_PENDING"
+    }
+  ]
+}
