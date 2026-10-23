@@ -1,6 +1,6 @@
 # W02 ↔ W03 Magical Globe Android Integration Handoff
 
-Status: **W03 module integrated in W02 branch; Android evidence pending**
+Status: **W03 0.2 host API re-pinned locally; exact-head Android acceptance pending**
 Owner: W02 Android integration  
 Tracking: [Issue #39](https://github.com/chinkk-git/Aariamagickitchen/issues/39) · [Issue #50](https://github.com/chinkk-git/Aariamagickitchen/issues/50)  
 W02 branch: `feature/v3.3-world-map-explorer`  
@@ -22,27 +22,24 @@ The JavaScript data/navigation boundary is implemented in `tools/v3/world-advent
 
 ## W03 module API and W02 host binding
 
-W02 consumes the immutable W03 module at `fec1214f664706ca9be35d4bdb45711a94d80d3c`, copied without visual edits to `tools/v3/world-adventure-globe/`. The module remains the sole owner of globe rendering, flags, spin/Surprise Me, and country recipe-card UI.
+W02 consumes the immutable W03 module/API handoff at `294db5cea846355b7813f2de63eba9cd1f358d35`, copied without source edits to `tools/v3/world-adventure-globe/`. The module remains the sole owner of globe rendering, flags, spin/Surprise Me, and country recipe-card UI.
 
 ```js
-const controller = AariaWorldAdventureGlobe.mount(root, {
-  locale, avatarSrc, destinations, initialState,
-  onOpenRecipe, onOpenPassport, onCountrySelect
-});
-const savedState = controller.getState();
-controller.restoreState(savedState);
-controller.setLocale(locale);
-controller.setDestinations(destinations);
+const controller = AariaWorldAdventureGlobe.mount(root, hostContext, restoredState);
+const savedState = controller.serialize();
+controller.restore(savedState);
+controller.setOrientation('portrait');
+controller.refresh();
 controller.handleBack();
-controller.destroy();
+controller.dispose();
 ```
 
-W02 adapts the W03 options API to `createWorldAdventureHost(...)` and provides:
+W02 passes `createWorldAdventureHost(...)` as the module host context. The context provides:
 
 - `contractVersion`, `locale` (`en-GB` or `pt-BR`) and available country codes.
 - `getCountry(code)` → `{ code, available, reviewOnly, label, flag, recipes }`.
 - `openRecipe(id)` → routes only validated active canonical links through the W02 host.
-- `back(scope)` → delegates `country`, `passport` or `screen` Back to the W02 route/history owner.
+- `back(scope)` → retains the app-owned `country`, `passport` or `screen` Back boundary; globe selection Back stays inside the module.
 - `openPassport()` → opens the existing W02 Food Passport route.
 - `getPassportSnapshot()` → read-only saved stamp list; viewing a country or Passport never grants a stamp.
 
@@ -50,11 +47,11 @@ India remains active through its original canonical IDs `[51–65, 69, 72, 74]`.
 
 **W01 catalogue metadata handoff:** on each W01-integrated international `RECIPES` record, set `worldAdventure` to `{ countryCode: 'ITA'|'CHN'|'JPN'|'MEX'|'VNM', validationStatus: 'W01_VALIDATED', bilingualStatus: 'APPROVED', artworkStatus: 'APPROVED', safetyStatus: 'APPROVED', navigationStatus: 'ACTIVE' }` only after the corresponding W01 catalogue/content gates pass. Keep the route inactive until then. This bounded metadata interface is what allows safe 95 → 97 → 110 growth without W02 allowlist edits.
 
-The module owns its globe spin/flag selection state. It must expose serialization so W02 can preserve that state around recipe navigation, Android activity recreation and orientation changes. W02 owns Android Back and route transitions: Back from a recipe returns to the same World Adventure state; a module request to leave the screen is delegated to the host; bottom navigation remains available and app-owned. The module must not register competing global Back listeners or replace the application's history.
+The module owns its globe spin/flag selection state. Its 0.2 host contract exposes serialization so W02 can preserve that state around recipe navigation, Android activity recreation and orientation changes. W02 provides a lifecycle facade for existing route code (`getState`/`destroy` map to module `serialize`/`dispose`) and retains Android Back and route transitions: Back from a recipe returns to the same World Adventure state; bottom navigation remains available and app-owned. The module does not register competing global Back listeners or replace the application's history. W02's Android host stylesheet keeps the scaled flag hit areas at least 48 CSS pixels without editing W03's module source.
 
 ## Integration and test sequence
 
-1. W03 publishes the self-contained module and export/lifecycle notes to its own branch, then replies to the handoff request on Issue #39. No W03 files are copied or edited before that immutable handoff.
+1. W03 publishes the self-contained module and export/lifecycle notes to its own branch, then replies to the handoff request on Issue #39. W02 pins the module bytes from W03 commit `294db5c` and verifies its host-context API before Android acceptance.
 2. W02 validates the module's export shape and assets, mounts it only within the existing `world` route, injects the host context and tests disposal/re-entry. Existing production shell, bottom navigation, profile schema and canonical recipe renderer remain the owners of those functions.
 3. Verify canonical India IDs against live catalog data before enabling India. Keep W01-owned Italy/China integration outside W02 changes; keep draft content inaccessible until its owner and review gates authorize exposure.
 4. Run targeted JavaScript/contract tests first, then the fast Android build/install/launch lane. Capture actual Android phone/tablet portrait and landscape screenshots, orientation recreation, map-to-country-to-recipe-to-Back, bottom navigation, EN-GB/PT-BR, offline startup and Passport persistence. Full 95-recipe regression and separate A08/A09, artwork-rights and Android-security gates remain mandatory before merge/release.
@@ -63,7 +60,7 @@ The module owns its globe spin/flag selection state. It must expose serializatio
 
 For every integration commit, publish exact W02/W03 source SHAs, artifact and APK SHA-256 when built, package ID, actual Android screenshot/log artifacts, orientation/device matrix, mapping/95-recipe test results, offline/Back/Passport results, and independent gate states to Issues #39/#50.
 
-- **Current globe integration: Android evidence pending.** The exact W03 module is mounted inside the existing `world` route on W02's branch; the current target commit/run will determine phone/orientation smoke results.
+- **Current globe integration: Android evidence pending.** W02 re-pins the W03 0.2 host API, adapts its controller lifecycle to the app-owned route, and preserves 48px minimum Android country targets. Exact-head device smoke still determines acceptance.
 - **REVIEW_READY: PENDING** until exact-head Android screenshots and smoke pass and the owner reviews the APK.
 - **RELEASE_READY: NO.** Full regression, owner visual acceptance, and independent A08/A09, artwork-rights and Android-security gates remain separate requirements.
 - Escalate only if the owner-approved design/reference or approved avatar cannot be resolved, W03 cannot meet the proposed API without a material ownership conflict, canonical recipe mappings conflict, or an independent reviewer finds a safety/rights/security issue requiring a decision.

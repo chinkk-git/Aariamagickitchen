@@ -309,6 +309,7 @@ const magicalGlobeStyles = fs.readFileSync(path.join(here, 'world-adventure-glob
 const w02GlobeHostStyles = String.raw`
 .app.v31-world-active #screen.v31-world-screen{width:100%;height:100dvh;min-height:0;max-width:none;margin:0;padding:0;overflow:hidden}
 .app.v31-world-active .v33-world-globe-host{width:100%;height:100%;min-height:0}
+.app.v31-world-active .aria-world-globe__flag{width:68px;height:68px}
 .v33-passport-overlay{position:fixed;z-index:240;inset:0;display:grid;place-items:center;padding:16px;background:#241a3888}
 .v33-passport-overlay .w02-map-sheet{position:relative;inset:auto;width:min(620px,calc(100vw - 24px));max-height:min(82dvh,720px);overflow:auto;transform:none}
 @media(max-height:520px) and (orientation:landscape){.v33-passport-overlay .w02-map-sheet{max-height:calc(100dvh - 20px)}}

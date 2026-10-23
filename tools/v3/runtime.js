@@ -162,7 +162,6 @@ function v33WorldCatalogue(){
   onOpenRecipe:id=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState;openRecipe(id);return true},
   onBack:scope=>{if(scope==='screen'){goto('home');return true}return false},onOpenPassport:()=>{v33ShowPassport();return true}});
 }
-function v33Destinations(host){const globeIds={IND:'india',ITA:'italy',CHN:'china',JPN:'japan',MEX:'mexico',VNM:'vietnam'};return host.countries.map(code=>{const item=host.getCountry(code);return {id:globeIds[code]||'',name:item.label,flag:item.flag,available:item.available,recipes:item.recipes.map(r=>({id:r.id,title:r.title,finishedDish:r.finishedDish,routeEnabled:true})),note:item.reviewOnly?(state.language==='pt-BR'?'Prévia · revisão pendente':'Preview only · review pending'):''}}).filter(item=>item.id)}
 function v33ShowPassport(){
  const screen=document.querySelector('#screen');if(!screen)return;screen.querySelector('.v33-passport-overlay')?.remove();
  const pt=state.language==='pt-BR',stamps=[...new Set((v33WorldHost?.getPassportSnapshot?.().stamps||[]))];
@@ -174,7 +173,17 @@ function v33ShowPassport(){
 function v33MountGlobe(screen){
  if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
  screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
- v33GlobeController=window.AariaWorldAdventureGlobe.mount(screen.querySelector('#v33-world-globe-host'),{locale:v33WorldHost.locale,avatarSrc:V31_HOME_WORLD_ART.aaria,destinations:v33Destinations(v33WorldHost),initialState:v33GlobeState||undefined,onOpenRecipe:id=>v33WorldHost.openRecipe(id),onOpenPassport:()=>v33WorldHost.openPassport(),onCountrySelect:()=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState}});
+ const moduleController=window.AariaWorldAdventureGlobe.mount(screen.querySelector('#v33-world-globe-host'),{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||undefined);
+ // Keep the W03 module source immutable while preserving W02's existing app
+ // lifecycle hooks and ensuring every rendered country control remains a
+ // 48px minimum Android touch target at the globe's farthest visible depth.
+ v33GlobeController={
+  getState:()=>moduleController.serialize(),
+  destroy:()=>moduleController.dispose(),
+  handleBack:()=>moduleController.handleBack(),
+  refresh:()=>moduleController.refresh(),
+  setOrientation:value=>moduleController.setOrientation(value)
+ };
 }
 let v31WorldPage;
 v31WorldPage=function v33FixedWorldMapPage(){

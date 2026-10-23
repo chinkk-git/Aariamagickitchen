@@ -107,12 +107,14 @@ test('module handoff, Android host and production transform are wired and preser
   ]);
   assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
   assert.match(runtime,/createWorldAdventureHost\(\{canonicalRecipes:RECIPES/);
-  assert.match(runtime,/globeIds=\{IND:'india',ITA:'italy',CHN:'china',JPN:'japan',MEX:'mexico',VNM:'vietnam'\}/);
+  assert.match(runtime,/\.mount\(screen\.querySelector\('#v33-world-globe-host'\),\{\.\.\.v33WorldHost,avatarSrc:V31_HOME_WORLD_ART\.aaria\},v33GlobeState\|\|undefined\)/);
   assert.match(runtime,/avatarSrc:V31_HOME_WORLD_ART\.aaria/);
+  assert.match(runtime,/getState:\(\)=>moduleController\.serialize\(\)/);
+  assert.match(runtime,/destroy:\(\)=>moduleController\.dispose\(\)/);
   assert.match(runtime,/aria-world-globe__header/);
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);
   assert.match(moduleJs,/handleBack:/);
   assert.match(moduleJs,/Surprise/);
-  for (const contract of ["India's 18 existing recipe descriptors",'Android Back','bottom navigation','read-only','portrait','landscape','Food Passport','fec1214']) assert.ok(doc.includes(contract));
+  for (const contract of ["India's 18 existing recipe descriptors",'Android Back','bottom navigation','read-only','portrait','landscape','Food Passport','294db5cea846355b7813f2de63eba9cd1f358d35']) assert.ok(doc.includes(contract));
 });

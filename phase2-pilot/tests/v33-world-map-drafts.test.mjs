@@ -32,12 +32,13 @@ test('the draft registry stays separate and Android mounts the W03 globe with dy
   const validator = spawnSync(process.execPath, ['tools/v3/validate-v33-world-map-drafts.mjs'], { cwd: new URL('../../', import.meta.url), encoding: 'utf8' });
   assert.equal(validator.status,0,validator.stderr||validator.stdout);
   assert.match(validator.stdout,/five-country draft registry: valid/);
-  const runtime=await read('tools/v3/runtime.js');
+  const [runtime,globe]=await Promise.all([read('tools/v3/runtime.js'),read('tools/v3/world-adventure-globe/world-adventure-globe.js')]);
   assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
   assert.match(runtime,/canonicalRecipes:RECIPES/);
-  assert.match(runtime,/v33Destinations\(v33WorldHost\)/);
-  assert.match(runtime,/onOpenRecipe:id=>v33WorldHost\.openRecipe\(id\)/);
-  assert.match(runtime,/onOpenPassport:\(\)=>v33WorldHost\.openPassport\(\)/);
+  assert.match(runtime,/\.mount\(screen\.querySelector\('#v33-world-globe-host'\),\{\.\.\.v33WorldHost,avatarSrc:V31_HOME_WORLD_ART\.aaria\},v33GlobeState\|\|undefined\)/);
+  assert.match(runtime,/getState:\(\)=>moduleController\.serialize\(\)/);
+  assert.match(runtime,/destroy:\(\)=>moduleController\.dispose\(\)/);
+  assert.match(globe,/0\.2\.0-w02-host-contract/);
   assert.match(runtime,/v33GlobeController\?\.handleBack/);
 });
 
@@ -49,6 +50,10 @@ test('W03 globe assets are integrated unchanged with approved Aaria art and Andr
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);
   assert.match(runtime,/avatarSrc:V31_HOME_WORLD_ART\.aaria/);
+  assert.match(runtime,/moduleController\.serialize\(\)/);
+  assert.match(runtime,/moduleController\.dispose\(\)/);
+  assert.match(globeJs,/function mount\(root, hostContext, restoredState\)/);
+  assert.match(globeJs,/destinationsFromHost\(context\)/);
   assert.match(globeJs,/Surprise Me/);
   assert.match(globeJs,/onOpenRecipe/);
   assert.match(globeCss,/@media \(orientation:landscape\)/);
@@ -102,6 +107,7 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
   assert.match(regression,/catalogueCount !== 95/);
   assert.match(workflow,/G1 FAST PREFLIGHT[\s\S]*?W02 SAMPLE[\s\S]*?G2 TARGETED DEVICE SMOKE[\s\S]*?G3 FULL REGRESSION/);
+  assert.match(await read('tools/v3/transform-production.mjs'),/aria-world-globe__flag\{width:68px;height:68px\}/,'Android host CSS keeps scaled country hit targets at least 48px');
 });
 
 test('international adapter rejects W03 drafts and accepts only a pinned complete offline handoff', async t => {

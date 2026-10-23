@@ -55,7 +55,7 @@
         id: id, name: localized(item.name, locale) || id, flag: item.flag || FLAGS[id],
         lat: Number.isFinite(Number(item.latitude)) ? Number(item.latitude) : geo.lat,
         lon: Number.isFinite(Number(item.longitude)) ? Number(item.longitude) : geo.lon,
-        available: item.available !== false, recipes: Array.isArray(item.recipes) ? item.recipes : [],
+        available: item.available !== false, reviewOnly: item.reviewOnly === true, selectable: item.selectable !== false && (item.available !== false || item.reviewOnly === true), recipes: Array.isArray(item.recipes) ? item.recipes : [],
         note: localized(item.note, locale)
       };
     });
@@ -68,7 +68,7 @@
       y: height / 2 - Math.sin(phi) * height * 0.43, depth: depth };
   }
 
-  function mount(root, options) {
+  function mountRenderer(root, options) {
     if (!root || !root.ownerDocument) throw new Error("Aaria globe requires a DOM element.");
     options = options || {};
     var doc = root.ownerDocument;
@@ -158,7 +158,7 @@
       var width = rect.width || 1, height = rect.height || 1;
       flags.innerHTML = "";
       destinations.forEach(function (country) {
-        if (!country.available) return;
+        if (!country.selectable) return;
         var p = project(country.lat, country.lon, normAngle(state.rotation), width, height);
         if (p.depth <= 0.035) return;
         var button = doc.createElement("button");
@@ -222,7 +222,7 @@
       global.requestAnimationFrame(frame);
     }
     function surprise() {
-      var pool = destinations.filter(function (d) { return d.available; });
+      var pool = destinations.filter(function (d) { return d.available && !d.reviewOnly; });
       if (!pool.length) return;
       var candidate = pool[Math.floor(Math.random() * pool.length)];
       state.selected = null;
@@ -297,5 +297,78 @@
       destroy: function () { state.destroyed = true; state.animationToken++; if (state.observer) state.observer.disconnect(); global.removeEventListener("resize", onResize); root.classList.remove("aria-world-globe-host"); root.innerHTML = ""; }
     };
   }
-  global.AariaWorldAdventureGlobe = { mount: mount, version: "0.1.0-review" };
+  var HOST_COUNTRY_IDS = { IND: "india", ITA: "italy", CHN: "china", JPN: "japan", MEX: "mexico", VNM: "vietnam" };
+
+  function destinationsFromHost(hostContext) {
+    var codes = Array.isArray(hostContext.countries) ? hostContext.countries : Object.keys(HOST_COUNTRY_IDS);
+    return codes.map(function (code) {
+      var id = HOST_COUNTRY_IDS[String(code).toUpperCase()];
+      if (!id || typeof hostContext.getCountry !== "function") return null;
+      var country = hostContext.getCountry(code);
+      if (!country || (!country.available && !country.reviewOnly)) return null;
+      var recipes = (Array.isArray(country.recipes) ? country.recipes : []).map(function (recipe) {
+        return {
+          id: Number(recipe.id),
+          title: recipe.title,
+          finishedDish: recipe.finishedDish || recipe.image || "",
+          routeEnabled: country.available === true && recipe.canonical === true
+        };
+      });
+      var locale = chooseLocale(hostContext.locale);
+      var fallbackNames = {
+        india: { "en-GB": "India", "pt-BR": "Índia" },
+        italy: { "en-GB": "Italy", "pt-BR": "Itália" },
+        china: { "en-GB": "China", "pt-BR": "China" },
+        japan: { "en-GB": "Japan", "pt-BR": "Japão" },
+        mexico: { "en-GB": "Mexico", "pt-BR": "México" },
+        vietnam: { "en-GB": "Vietnam", "pt-BR": "Vietnã" }
+      };
+      return {
+        id: id, name: country.label || fallbackNames[id], available: country.available === true,
+        reviewOnly: country.reviewOnly === true, selectable: true,
+        note: country.reviewOnly ? (locale === "pt-BR" ? "Prévia · revisão pendente" : "Preview only · review pending") : "",
+        recipes: recipes
+      };
+    }).filter(Boolean);
+  }
+
+  function mount(root, hostContext, restoredState) {
+    if (hostContext && typeof hostContext.getCountry === "function") {
+      var context = hostContext;
+      var renderer = mountRenderer(root, {
+        locale: context.locale,
+        avatarSrc: context.avatarSrc || "tools/v3/artwork/characters/reference-derived/aaria-portrait.webp",
+        destinations: destinationsFromHost(context),
+        onOpenRecipe: function (id) { return context.openRecipe(id); },
+        onOpenPassport: function () { return context.openPassport(); }
+      });
+      if (restoredState) renderer.restoreState(restoredState);
+      return {
+        serialize: function () { return renderer.getState(); },
+        restore: function (savedState) { renderer.restoreState(savedState); },
+        setOrientation: function (orientation) {
+          if (orientation !== "portrait" && orientation !== "landscape") return;
+          root.setAttribute("data-orientation", orientation);
+          global.dispatchEvent(new Event("resize"));
+        },
+        dispose: function () { renderer.destroy(); },
+        handleBack: function () { return renderer.handleBack(); },
+        refresh: function () { renderer.setDestinations(destinationsFromHost(context)); }
+      };
+    }
+
+    var preview = mountRenderer(root, hostContext || {});
+    if (restoredState) preview.restoreState(restoredState);
+    preview.serialize = preview.getState;
+    preview.restore = preview.restoreState;
+    preview.setOrientation = function (orientation) {
+      if (orientation !== "portrait" && orientation !== "landscape") return;
+      root.setAttribute("data-orientation", orientation);
+      global.dispatchEvent(new Event("resize"));
+    };
+    preview.dispose = preview.destroy;
+    return preview;
+  }
+
+  global.AariaWorldAdventureGlobe = { mount: mount, version: "0.2.0-w02-host-contract" };
 })(window);
