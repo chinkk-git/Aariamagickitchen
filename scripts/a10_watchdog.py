@@ -7,6 +7,7 @@ separately reviewed allowlisted implementation, not a speculative rerun.
 import json
 import os
 import subprocess
+from urllib.parse import quote
 
 REPO = os.environ["GH_REPO"]
 DRY_RUN = os.getenv("A10_DRY_RUN", "true").lower() == "true"
@@ -25,10 +26,23 @@ def gh(path, method="GET", payload=None):
         raise RuntimeError(f"GitHub API failed ({p.returncode}): {p.stderr[:300]}")
     return json.loads(p.stdout) if p.stdout.strip() else {}
 
+def gh_all(path):
+    """Fetch all pages so old deduplication signatures are visible."""
+    items = []
+    for page in range(1, 51):
+        sep = '&' if '?' in path else '?'
+        batch = gh(f'{path}{sep}per_page=100&page={page}')
+        if not isinstance(batch, list):
+            raise ValueError('expected paginated GitHub list')
+        items.extend(batch)
+        if len(batch) < 100:
+            return items
+    raise RuntimeError('pagination safety limit exceeded')
+
 def check(name, cfg):
     issue, branch = cfg["issue"], cfg["branch"]
     try:
-        ref = gh(f"repos/{REPO}/branches/{branch}")
+        ref = gh(f"repos/{REPO}/branches/{quote(branch, safe='')}")
         sha = ref["commit"]["sha"]
         runs = gh(f"repos/{REPO}/actions/runs?branch={branch}&per_page=10")
         matches = [r for r in runs.get("workflow_runs", [])
@@ -50,7 +64,7 @@ def check(name, cfg):
             print(f"{name}: failed run lacks step evidence; no recovery action")
             return
         signature = f"<!-- a10-watch:{name}:{sha}:{latest['id']} -->"
-        comments = gh(f"repos/{REPO}/issues/{issue}/comments?per_page=100")
+        comments = gh_all(f"repos/{REPO}/issues/{issue}/comments")
         if any(signature in c.get("body", "") for c in comments):
             print(f"{name}: recovery already posted for run {latest['id']}")
             return
