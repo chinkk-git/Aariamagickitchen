@@ -1,10 +1,16 @@
 # V3.3 World Map — W02 Implementation Contract
 
-Status: implementation active; acceptance and independent gates not claimed
+Status: legacy fixed-map implementation retained pending W03 globe handoff; acceptance and independent gates not claimed
 Owner: W02
 Tracking: [Issue #39](https://github.com/chinkk-git/Aariamagickitchen/issues/39)
 Branch: `feature/v3.3-world-map-explorer`
-Baseline reconciled: `91f19a24c8e017b686f55224b45d78039c1f44b7`
+Baseline reconciled for this update: `40ba0c998cf3ef85e5bcc5a641fc0f6aba49825f`
+
+## Current owner decision — Magical Spinning Globe (supersedes the fixed-map direction below)
+
+The owner subsequently approved Option 1 Magical Spinning Globe and assigned its visual/interaction module to W03 on `feature/international-recipe-content`. W02 must not implement a parallel globe, flag system, spin/Surprise Me animation or recipe-card UI. W02 owns the Android host integration, `world` route, bottom navigation, Back/history, canonical data adapter, India 18 links, Food Passport wiring, offline/localization and orientation lifecycle. W01 retains exclusive Italy/China template integration. The fixed-map requirements and implementation notes below are historical for the currently shipped W02 branch and stay in place until owner-approved cutover; they are not the new target design.
+
+See [W02 ↔ W03 Magical Globe Android Integration Handoff](W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md) for the proposed module boundary, adapter behavior, dependencies, tests, evidence and readiness. Current status: `BLOCKED_FOR_W03_HANDOFF`; no globe APK or globe owner-review candidate is claimed.
 
 ## Governing owner direction
 
