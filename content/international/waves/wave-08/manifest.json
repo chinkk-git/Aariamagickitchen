@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "wave": 8,
+  "status": "READY_FOR_INTEGRATION",
+  "integration_status": "READY_FOR_INTEGRATION",
+  "source_commit": "04354d3e3c3ae298061fd1357f029cd9441b510a",
+  "canonical_recipe_count": 95,
+  "india_mapping_status": "PRESERVED; source catalogue revalidation remains pending",
+  "production_artwork_approved": true,
+  "recipes": [
+    {
+      "id": 110,
+      "country": "vietnam",
+      "title": "Vietnamese Mango Salad",
+      "recipe_json": "content/international/countries/vietnam/110-vietnamese-mango-salad/recipe.json",
+      "recipe_md": "content/international/countries/vietnam/110-vietnamese-mango-salad/recipe.md",
+      "artwork_count": 25,
+      "ingredient_count": 10,
+      "equipment_count": 9,
+      "step_count": 5,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING"
+    }
+  ],
+  "package_files": [
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/chopping-board.png",
+      "sha256": "979a214aa6194bf5ef9e75b6bf0bbf8a222e907007f977d456de4e8aa72d9642"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/dressing-bowl.png",
+      "sha256": "68a3fece030a2a08e3dfeaa89787ff685352918e5f769eba896be3bf8374a0b3"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/garnish-dish.png",
+      "sha256": "f9296de51eec0252c4edaf4f1e406ff68908c4674b0eb580f2242f28f6593c7c"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/knife.png",
+      "sha256": "9b5038dee422da49de8de98524c2ef540f61a49e1a20b6a7fb2accca000435b6"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/measuring-cup.png",
+      "sha256": "9c1e55315eb9d1002263282966824e567b830f78a71998c64894c5a04f193006"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-bowl.png",
+      "sha256": "33b61f1de0a505c34111e0383c1c5171eb50552e32660b9ed51fc74afa5c7c92"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-spoon.png",
+      "sha256": "d5ab4a52d483d11587a36c9c260eb0f2d3cff63133abcd64415c14163b55428a"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/serving-bowls.png",
+      "sha256": "1ec0ffb2f7f73d25a84e3bea61da131a1c2c09e53bb45a69862a631062efff47"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/vegetable-peeler.png",
+      "sha256": "f6b86131f1a90c7b7c94aa8f02f8afc308558f5131af6ec69f7e955756dc7389"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png",
+      "sha256": "c0920d253bb3da4030e0db0824c178de0b1c1da52b57a92453632c9933725685"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/carrot.png",
+      "sha256": "e93d51a734130e8d2e0b28878f46f763288be7323ee992112a5aeb45dad7cf73"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/coriander.png",
+      "sha256": "b8e1413da9a19c80bd94074e07b6b93299d370f9534ee6db3f9adf233f87a835"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/cucumber.png",
+      "sha256": "4b94f35caf970f384efa7ee99f2acffa6b9f7ff70f08ca666282eaeac221479b"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/fish-sauce.png",
+      "sha256": "fc33f96f270510fa85be0cfc41ba4253834e15a0e01f3036490f3ccbdc09e385"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/green-mango.png",
+      "sha256": "b090601dafce341a74bc8c2c4154196a0821c5026148d5e31383983258ab81b1"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/lime-juice.png",
+      "sha256": "35df0f91c3c969284352c947dcc9ed53b2f383e8e3034c5b2fb47986e1e22570"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/mint.png",
+      "sha256": "e42e6a264265b4bb013b1f96a01c14326e6c31c3253c6ecd7e55834ee22143cd"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/peanuts.png",
+      "sha256": "873933470788a42f7ab7c59ed560267e67f014f2b3b2138e0200ed74489eee10"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/sugar.png",
+      "sha256": "823a5584e560cbfaeae7e3dcd0b51e3220636d14f35893a8ea9b073352c4c2fa"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/water.png",
+      "sha256": "4560ca77848d1cc4d738e5ebd8ea76c19452b7c8b9c2c0643901c17f789322ca"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-01.png",
+      "sha256": "d4916725da60853fe07a87de53f3d00c1add6bc9a9188711eac5ee98b691b899"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-02.png",
+      "sha256": "64586fabf9c023aa03391ad18111ef34157d95327cbc46008e8d17788d301370"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-03.png",
+      "sha256": "6bf705b8af2089754c8759741bf735e35c0e4c82c013eb184038bccedb5de739"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-04.png",
+      "sha256": "db3caa43013641b65b2fa6d1f2463a400f4f63f30bfbff855799ac3bb3a5132a"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-05.png",
+      "sha256": "8dc09962d8a4746d712dd3b001000367caffa92fb0bc3217666643ef8206431a"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/recipe.json",
+      "sha256": "abc1744478533dc914d006f3eb099ca18d61ccb5f17cac21cffc9f00d2e399fe"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/recipe.md",
+      "sha256": "6bccfff59822fdea38125b26a32c6b9a1ee0aeb5f1f22f68a3a2f48942c922c8"
+    }
+  ],
+  "pair_sha256": "24352b8d19cab963f5f3ff5ed81c60ffd2889c467c3311b97873e10b9683fbe4",
+  "validation_ledger": "content/international/waves/wave-08/validation-ledger.json",
+  "nutrition_sources": "content/international/waves/wave-08/nutrition-sources.json",
+  "independent_gates": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING",
+    "W01_W02_runtime_acceptance": "PENDING"
+  },
+  "wave7_handoff_commit": "b5c83f93c77d65025f3dac1bcf63639b059053f9",
+  "support_files": [
+    {
+      "path": "content/international/waves/wave-08/validation-ledger.json",
+      "sha256": "5bcfa875c7287b0581656eaa681b3882110880e4f99253887c09e9596752990d"
+    },
+    {
+      "path": "content/international/waves/wave-08/nutrition-sources.json",
+      "sha256": "6d2a3f4c090112f595b1d5702e069edf95288435638f5f4177a3231f44403c7f"
+    },
+    {
+      "path": "content/international/manifest.json",
+      "sha256": "e424ce6205154698b4e59ff0ad7b55baef369a4ea7cc44584159c7aa72971be3"
+    }
+  ],
+  "validation": "Repository schema constraints, bilingual completeness, safety/allergen consistency, sourced nutrition estimates, offline image paths and local PNG SHA-256 checks passed; independent gates remain pending"
+}
