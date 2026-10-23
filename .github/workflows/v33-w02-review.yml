@@ -96,6 +96,33 @@ jobs:
           echo 'REVIEW_READY=CONDITIONAL_ON_PHONE_SMOKE' >> artifacts/v33-world-map-sample/logs/review-status.txt
           echo 'RELEASE_READY=NO' >> artifacts/v33-world-map-sample/logs/review-status.txt
 
+      - name: Enable and verify Linux KVM for Android emulator
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v33-world-map-sample/logs
+          {
+            echo "utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "runner_user=$(id)"
+            uname -a
+            free -h
+            df -h "$GITHUB_WORKSPACE"
+            if [ ! -c /dev/kvm ]; then
+              echo "/dev/kvm is missing on this runner." >&2
+              exit 1
+            fi
+            ls -l /dev/kvm
+            stat -c 'kvm_mode=%a kvm_owner=%U kvm_group=%G' /dev/kvm
+            echo "kvm_read_write_before=$(test -r /dev/kvm && test -w /dev/kvm && echo yes || echo no)"
+          } | tee artifacts/v33-world-map-sample/logs/emulator-runner-preflight.txt
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm
+          test -w /dev/kvm
+          stat -c 'kvm_mode_after=%a kvm_owner=%U kvm_group=%G' /dev/kvm | tee -a artifacts/v33-world-map-sample/logs/emulator-runner-preflight.txt
+          adb devices -l | tee artifacts/v33-world-map-sample/logs/adb-devices-before-emulator.txt
+
       - name: W02 targeted Android phone install, launch and navigation smoke
         timeout-minutes: 12
         uses: reactivecircus/android-emulator-runner@v2
