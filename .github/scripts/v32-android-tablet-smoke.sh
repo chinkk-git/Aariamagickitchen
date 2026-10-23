@@ -258,7 +258,7 @@ async function capturePtBrRecipe12(landscape){
  for(let index=0;index<4;index++){
   let active=null;
   for(let attempt=0;attempt<30;attempt++){
-   active=await evaluate('(()=>({number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".ref-safety details p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],progress:Number(step||0)+1}))()');
+   active=await evaluate('(()=>({number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".ref-safety details p")?.textContent?.trim()||"",expectedSafety:translateText(RECIPES.find(r=>Number(r.id)===12).safety,"pt-BR"),progress:Number(step||0)+1}))()');
    if(active.number===index+1)break;
    await pause(250);
   }

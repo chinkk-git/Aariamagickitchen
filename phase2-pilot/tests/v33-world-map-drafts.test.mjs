@@ -94,6 +94,8 @@ test('PT-BR tablet navigation compares labels without decorative tab icons', asy
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
   assert.match(tablet, /nav:\[\.\.\.document\.querySelectorAll\("#nav \.tab"\)\]\.map\(e=>e\.lastChild\?\.textContent\?\.trim\(\)\|\|""\)/,
     'the bilingual navigation assertion reads the label text node separately from the icon element');
+  assert.match(tablet, /expectedSafety:translateText\(RECIPES\.find\(r=>Number\(r\.id\)===12\)\.safety,"pt-BR"\)/,
+    'PT-BR step smoke compares the recipe-wide safety panel with localized canonical recipe safety');
 });
 
 test('pinch camera scales around its focal point and stays within orientation-aware map bounds', async () => {
