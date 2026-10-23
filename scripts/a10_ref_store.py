@@ -9,7 +9,7 @@ import re
 from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 
-from scripts.a10_state import Task, transition
+from scripts.a10_state import Task, transition, TRANSITIONS
 
 KEY = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 WORKERS = {"W01", "W02"}
@@ -65,10 +65,26 @@ class RefStore:
             raise InvalidTask("terminal state or attempt rollback")
         if old.exact_sha and new_task.exact_sha != old.exact_sha:
             raise InvalidTask("exact SHA mutation forbidden")
-        if old.state != new_task.state and new_task.state not in {
-            "READY", "CLAIMED", "RUNNING", "VERIFYING", "DONE", "BLOCKED", "ESCALATED"
-        }:
-            raise InvalidTask("unknown next state")
+        if new_task.state != old.state:
+            if new_task.state not in TRANSITIONS[old.state]:
+                raise InvalidTask("illegal state transition")
+            if new_task.state == "CLAIMED":
+                if new_task.attempt != old.attempt + 1:
+                    raise InvalidTask("claim must increment attempt")
+            elif new_task.attempt != old.attempt:
+                raise InvalidTask("unexpected attempt change")
+        else:
+            if new_task.state not in {"CLAIMED", "RUNNING", "VERIFYING"}:
+                raise InvalidTask("same-state write only allowed for lease renewal")
+            if new_task.attempt != old.attempt or new_task.exact_sha != old.exact_sha:
+                raise InvalidTask("heartbeat identity mismatch")
+            try:
+                previous = datetime.fromisoformat(old.lease_until.replace("Z", "+00:00"))
+                current = datetime.fromisoformat(new_task.lease_until.replace("Z", "+00:00"))
+            except (ValueError, AttributeError) as exc:
+                raise InvalidTask("invalid lease") from exc
+            if previous.tzinfo is None or current.tzinfo is None or current <= previous:
+                raise InvalidTask("heartbeat must extend lease")
         blob = self.api.put_blob(encode(new_task))
         tree = self.api.put_tree(blob)
         commit = self.api.put_commit(tree, current_sha)
