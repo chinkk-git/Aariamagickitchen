@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f0ff" />
+  <title>Magical Spinning Globe — W03 module preview</title>
+  <link rel="stylesheet" href="./world-adventure-globe.css" />
+  <style>
+    html,body{height:100%;margin:0;background:#f6f0ff}body{overflow:hidden}.demo-app{height:100dvh;position:relative}#globe-root{height:100%;min-height:0}.demo-label{position:fixed;top:2px;right:4px;z-index:10001;padding:2px 6px;border-radius:8px;background:#fff9;color:#4e3766;font:700 10px system-ui;pointer-events:none}.demo-nav{position:fixed;z-index:10000;left:0;right:0;bottom:0;height:64px;padding-bottom:env(safe-area-inset-bottom);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;background:#fff;border-top:1px solid #e6d9ed;box-shadow:0 -3px 12px #39214a18}.demo-nav button{border:0;background:transparent;color:#51356b;font:700 12px system-ui;min-height:52px}.demo-nav button[aria-current=page]{color:#9b4b9d}.demo-nav button span{display:block;font-size:19px}
+  </style>
+</head>
+<body>
+  <div class="demo-app">
+    <div id="globe-root"></div>
+    <div class="demo-label">LOCAL MODULE PREVIEW · NOT ANDROID EVIDENCE</div>
+    <nav class="demo-nav" aria-label="Demo navigation">
+      <button type="button"><span>⌂</span>Home</button><button type="button" aria-current="page"><span>🌍</span>World</button><button type="button"><span>♡</span>Saved</button><button type="button"><span>👤</span>Profile</button>
+    </nav>
+  </div>
+  <script src="./world-adventure-globe.js"></script>
+  <script>
+    (function () {
+      var root = document.getElementById("globe-root");
+      var base = "../../../content/international/countries/";
+      var countries = [
+        { id: "india", name: { "en-GB": "India", "pt-BR": "Índia" }, flag: "🇮🇳", latitude: 21, longitude: 78, available: true, note: { "en-GB": "The Android host supplies India’s verified canonical recipe routes.", "pt-BR": "O aplicativo Android fornece as rotas canônicas verificadas da Índia." }, recipes: [] },
+        { id: "italy", name: { "en-GB": "Italy", "pt-BR": "Itália" }, flag: "🇮🇹", latitude: 42.5, longitude: 12.5, available: true, recipes: [
+          { id: 96, title: { "en-GB": "Tomato Basil Pasta", "pt-BR": "Massa de tomate e manjericão" }, finishedDish: base + "italy/096-tomato-basil-pasta/artwork/finished-dish.png", routeEnabled: false },
+          { id: 97, title: { "en-GB": "Mini Caprese Skewers", "pt-BR": "Mini espetinhos caprese" }, finishedDish: base + "italy/097-mini-caprese-skewers/artwork/finished-dish.png", routeEnabled: false },
+          { id: 98, title: { "en-GB": "Air-Fryer Courgette Bites", "pt-BR": "Abobrinha crocante na air fryer" }, finishedDish: base + "italy/098-air-fryer-courgette-bites/artwork/finished-dish.png", routeEnabled: false }
+        ] },
+        { id: "china", name: { "en-GB": "China", "pt-BR": "China" }, flag: "🇨🇳", latitude: 35, longitude: 105, available: true, recipes: [
+          { id: 99, title: { "en-GB": "Vegetable Fried Rice", "pt-BR": "Arroz frito com legumes" }, finishedDish: base + "china/099-vegetable-fried-rice/artwork/finished-dish.png", routeEnabled: false },
+          { id: 100, title: { "en-GB": "Rainbow Vegetable Noodles", "pt-BR": "Macarrão arco-íris com legumes" }, finishedDish: base + "china/100-rainbow-vegetable-noodles/artwork/finished-dish.png", routeEnabled: false },
+          { id: 101, title: { "en-GB": "Cucumber Sesame Salad", "pt-BR": "Salada de pepino com gergelim" }, finishedDish: base + "china/101-cucumber-sesame-salad/artwork/finished-dish.png", routeEnabled: false }
+        ] },
+        { id: "japan", name: { "en-GB": "Japan", "pt-BR": "Japão" }, flag: "🇯🇵", latitude: 36, longitude: 138, available: true, recipes: [
+          { id: 102, title: { "en-GB": "Veggie Sushi Rolls", "pt-BR": "Rolinhos de sushi de legumes" }, finishedDish: base + "japan/102-veggie-sushi-rolls/artwork/finished-dish.png", routeEnabled: false },
+          { id: 103, title: { "en-GB": "Onigiri Rice Balls", "pt-BR": "Bolinhos de arroz onigiri" }, finishedDish: base + "japan/103-onigiri-rice-balls/artwork/finished-dish.png", routeEnabled: false },
+          { id: 104, title: { "en-GB": "Japanese Cucumber Salad", "pt-BR": "Sunomono: salada japonesa de pepino" }, finishedDish: base + "japan/104-japanese-cucumber-salad/artwork/finished-dish.png", routeEnabled: false }
+        ] },
+        { id: "mexico", name: { "en-GB": "Mexico", "pt-BR": "México" }, flag: "🇲🇽", latitude: 23, longitude: -102, available: true, recipes: [
+          { id: 105, title: { "en-GB": "Rainbow Veggie Tacos", "pt-BR": "Tacos arco-íris de legumes" }, finishedDish: base + "mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png", routeEnabled: false },
+          { id: 106, title: { "en-GB": "Black Bean Quesadillas", "pt-BR": "Quesadillas de feijão-preto" }, finishedDish: base + "mexico/106-black-bean-quesadillas/artwork/finished-dish.png", routeEnabled: false },
+          { id: 107, title: { "en-GB": "Mexican Sweetcorn Cups", "pt-BR": "Copinhos de milho ao estilo mexicano" }, finishedDish: base + "mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png", routeEnabled: false }
+        ] },
+        { id: "vietnam", name: { "en-GB": "Vietnam", "pt-BR": "Vietnã" }, flag: "🇻🇳", latitude: 16, longitude: 108, available: true, recipes: [
+          { id: 108, title: { "en-GB": "Fresh Spring Rolls", "pt-BR": "Rolinhos primavera frescos" }, finishedDish: base + "vietnam/108-fresh-spring-rolls/artwork/finished-dish.png", routeEnabled: false },
+          { id: 109, title: { "en-GB": "Rice Noodle Salad", "pt-BR": "Salada de macarrão de arroz" }, finishedDish: base + "vietnam/109-rice-noodle-salad/artwork/finished-dish.png", routeEnabled: false },
+          { id: 110, title: { "en-GB": "Vietnamese Mango Salad", "pt-BR": "Salada vietnamita de manga" }, finishedDish: base + "vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png", routeEnabled: false }
+        ] }
+      ];
+      window.globeDemo = AariaWorldAdventureGlobe.mount(root, {
+        locale: "en-GB", avatarSrc: "./assets/aaria-portrait.webp", destinations: countries,
+        onOpenPassport: function () { alert("Food Passport remains connected by the Android host."); },
+        onOpenRecipe: function (id) { alert("The host route would open canonical recipe #" + id + "."); }
+      });
+      window.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" || event.key === "Backspace") window.globeDemo.handleBack();
+      });
+    })();
+  </script>
+</body>
+</html>
