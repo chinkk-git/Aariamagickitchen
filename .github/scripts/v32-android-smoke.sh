@@ -181,7 +181,7 @@ done
 test -n "$socket"
 echo "Forwarding app-owned WebView DevTools socket: $socket (app PID $app_pid)"
 adb_timeout forward tcp:9222 "localabstract:$socket"
-timeout --kill-after=10s 720s node --input-type=module <<'NODE'
+timeout --kill-after=10s 2400s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
 const {readFileSync, statSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');

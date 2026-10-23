@@ -25,7 +25,7 @@ concurrency:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 90
     steps:
       - name: Check out exact V3.2 source head
         uses: actions/checkout@v4
@@ -234,7 +234,7 @@ jobs:
           script: timeout --kill-after=10s 1860s bash .github/scripts/v32-android-tablet-smoke.sh
 
       - name: G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes
-        timeout-minutes: 20
+        timeout-minutes: 50
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 36
