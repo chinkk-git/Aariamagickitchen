@@ -1,0 +1,2122 @@
+{
+  "schema_version": "1.0",
+  "id": 110,
+  "country": "vietnam",
+  "country_code": "VN",
+  "title": {
+    "en-GB": "Vietnamese Mango Salad",
+    "pt-BR": "Salada vietnamita de manga"
+  },
+  "description": {
+    "en-GB": "A bright Vietnamese-inspired green mango salad with crisp carrot, cucumber, herbs, tangy fish-sauce lime dressing and roasted peanuts.",
+    "pt-BR": "Uma salada fresca de manga verde ao estilo vietnamita, com cenoura crocante, pepino, ervas, molho cítrico de peixe e limão e amendoim torrado."
+  },
+  "cultural_context": {
+    "en-GB": "Vietnamese green mango salads have regional and family variations. This child-friendly version combines crisp fruit and herbs with a sweet-sour fish-sauce dressing and peanut garnish.",
+    "pt-BR": "Saladas vietnamitas de manga verde variam entre regiões e famílias. Esta versão para crianças combina fruta crocante e ervas com molho agridoce de peixe e limão e cobertura de amendoim."
+  },
+  "category": "international",
+  "method": "No-cook green mango salad; adult knife handling",
+  "time": "25 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 20,
+  "total_minutes": 25,
+  "ingredients": [
+    "350 g Firm green mango",
+    "100 g Carrot",
+    "100 g Cucumber",
+    "15 g Fresh coriander leaves",
+    "10 g Fresh mint leaves",
+    "20 mL Fresh lime juice",
+    "15 mL Fish sauce",
+    "10 g Granulated sugar",
+    "15 mL Clean water",
+    "20 g Roasted peanuts, finely chopped"
+  ],
+  "equipment": [
+    "Chopping board",
+    "Sharp knife",
+    "Vegetable peeler",
+    "Large mixing bowl",
+    "Small dressing bowl",
+    "Measuring cup",
+    "Mixing spoon",
+    "Serving bowls",
+    "Small garnish dish"
+  ],
+  "ingredientItems": [
+    {
+      "id": "green-mango",
+      "name": {
+        "en-GB": "Firm green mango",
+        "pt-BR": "Manga verde firme"
+      },
+      "quantity": 350,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/green-mango.png",
+        "sha256": "b090601dafce341a74bc8c2c4154196a0821c5026148d5e31383983258ab81b1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "carrot",
+      "name": {
+        "en-GB": "Carrot",
+        "pt-BR": "Cenoura"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/carrot.png",
+        "sha256": "e93d51a734130e8d2e0b28878f46f763288be7323ee992112a5aeb45dad7cf73",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "cucumber",
+      "name": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/cucumber.png",
+        "sha256": "4b94f35caf970f384efa7ee99f2acffa6b9f7ff70f08ca666282eaeac221479b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "coriander",
+      "name": {
+        "en-GB": "Fresh coriander leaves",
+        "pt-BR": "Folhas de coentro fresco"
+      },
+      "quantity": 15,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/coriander.png",
+        "sha256": "b8e1413da9a19c80bd94074e07b6b93299d370f9534ee6db3f9adf233f87a835",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mint",
+      "name": {
+        "en-GB": "Fresh mint leaves",
+        "pt-BR": "Folhas de hortelã fresca"
+      },
+      "quantity": 10,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/mint.png",
+        "sha256": "e42e6a264265b4bb013b1f96a01c14326e6c31c3253c6ecd7e55834ee22143cd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "lime-juice",
+      "name": {
+        "en-GB": "Fresh lime juice",
+        "pt-BR": "Suco de limão-taiti fresco"
+      },
+      "quantity": 20,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/lime-juice.png",
+        "sha256": "35df0f91c3c969284352c947dcc9ed53b2f383e8e3034c5b2fb47986e1e22570",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "fish-sauce",
+      "name": {
+        "en-GB": "Fish sauce",
+        "pt-BR": "Molho de peixe"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [
+        "fish"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/fish-sauce.png",
+        "sha256": "fc33f96f270510fa85be0cfc41ba4253834e15a0e01f3036490f3ccbdc09e385",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "sugar",
+      "name": {
+        "en-GB": "Granulated sugar",
+        "pt-BR": "Açúcar granulado"
+      },
+      "quantity": 10,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/sugar.png",
+        "sha256": "823a5584e560cbfaeae7e3dcd0b51e3220636d14f35893a8ea9b073352c4c2fa",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "water",
+      "name": {
+        "en-GB": "Clean water",
+        "pt-BR": "Água potável"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/water.png",
+        "sha256": "4560ca77848d1cc4d738e5ebd8ea76c19452b7c8b9c2c0643901c17f789322ca",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "peanuts",
+      "name": {
+        "en-GB": "Roasted peanuts, finely chopped",
+        "pt-BR": "Amendoim torrado picado fino"
+      },
+      "quantity": 20,
+      "unit": "g",
+      "allergens": [
+        "peanut"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/peanuts.png",
+        "sha256": "873933470788a42f7ab7c59ed560267e67f014f2b3b2138e0200ed74489eee10",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/chopping-board.png",
+        "sha256": "979a214aa6194bf5ef9e75b6bf0bbf8a222e907007f977d456de4e8aa72d9642",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Sharp knife",
+        "pt-BR": "Faca afiada"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/knife.png",
+        "sha256": "9b5038dee422da49de8de98524c2ef540f61a49e1a20b6a7fb2accca000435b6",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "vegetable-peeler",
+      "name": {
+        "en-GB": "Vegetable peeler",
+        "pt-BR": "Descascador de legumes"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/vegetable-peeler.png",
+        "sha256": "f6b86131f1a90c7b7c94aa8f02f8afc308558f5131af6ec69f7e955756dc7389",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Large mixing bowl",
+        "pt-BR": "Tigela grande para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-bowl.png",
+        "sha256": "33b61f1de0a505c34111e0383c1c5171eb50552e32660b9ed51fc74afa5c7c92",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "dressing-bowl",
+      "name": {
+        "en-GB": "Small dressing bowl",
+        "pt-BR": "Tigela pequena para o molho"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/dressing-bowl.png",
+        "sha256": "68a3fece030a2a08e3dfeaa89787ff685352918e5f769eba896be3bf8374a0b3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "measuring-cup",
+      "name": {
+        "en-GB": "Measuring cup",
+        "pt-BR": "Copo medidor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/measuring-cup.png",
+        "sha256": "9c1e55315eb9d1002263282966824e567b830f78a71998c64894c5a04f193006",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-spoon",
+      "name": {
+        "en-GB": "Mixing spoon",
+        "pt-BR": "Colher para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-spoon.png",
+        "sha256": "d5ab4a52d483d11587a36c9c260eb0f2d3cff63133abcd64415c14163b55428a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "serving-bowls",
+      "name": {
+        "en-GB": "Serving bowls",
+        "pt-BR": "Tigelas para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/serving-bowls.png",
+        "sha256": "1ec0ffb2f7f73d25a84e3bea61da131a1c2c09e53bb45a69862a631062efff47",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "garnish-dish",
+      "name": {
+        "en-GB": "Small garnish dish",
+        "pt-BR": "Tigela pequena para acompanhar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/garnish-dish.png",
+        "sha256": "f9296de51eec0252c4edaf4f1e406ff68908c4674b0eb580f2242f28f6593c7c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash the produce",
+        "pt-BR": "Lave os vegetais"
+      },
+      "instruction": {
+        "en-GB": "Wash the green mango, carrot, cucumber, coriander and mint under cool running water.",
+        "pt-BR": "Lave a manga verde, a cenoura, o pepino, o coentro e a hortelã em água corrente fria."
+      },
+      "ingredientIds": [
+        "green-mango",
+        "carrot",
+        "cucumber",
+        "coriander",
+        "mint"
+      ],
+      "equipmentIds": [
+        "mixing-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash the produce; an adult checks the mango is firm and ready to peel.",
+        "pt-BR": "As crianças lavam os vegetais; um adulto verifica se a manga está firme e pronta para descascar."
+      },
+      "safety": {
+        "en-GB": "Wash hands and all produce. Dry the counter before preparing food.",
+        "pt-BR": "Lave as mãos e todos os vegetais. Seque a bancada antes de preparar os alimentos."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervises washing and food preparation.",
+        "pt-BR": "Um adulto supervisiona a lavagem e o preparo dos alimentos."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-01.png",
+        "sha256": "d4916725da60853fe07a87de53f3d00c1add6bc9a9188711eac5ee98b691b899",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Peel and slice",
+        "pt-BR": "Descasque e corte"
+      },
+      "instruction": {
+        "en-GB": "An adult peels the green mango and carrot, then cuts them and the cucumber into thin matchsticks on a stable board.",
+        "pt-BR": "Um adulto descasca a manga verde e a cenoura, depois corta-as e o pepino em tiras finas sobre uma tábua firme."
+      },
+      "ingredientIds": [
+        "green-mango",
+        "carrot",
+        "cucumber"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife",
+        "vegetable-peeler"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult only: peel and cut the firm mango, carrot and cucumber. Children stay clear of the knife.",
+        "pt-BR": "Somente adulto: descasque e corte a manga firme, a cenoura e o pepino. As crianças ficam longe da faca."
+      },
+      "safety": {
+        "en-GB": "Use a stable board. Only an adult handles the peeler and sharp knife; keep fingers away from the blade.",
+        "pt-BR": "Use uma tábua firme. Somente um adulto manuseia o descascador e a faca afiada; mantenha os dedos longe da lâmina."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for peeling and sharp knife.",
+        "pt-BR": "Somente adulto descasca e usa a faca afiada."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-02.png",
+        "sha256": "64586fabf9c023aa03391ad18111ef34157d95327cbc46008e8d17788d301370",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Mix the lime dressing",
+        "pt-BR": "Misture o molho de limão"
+      },
+      "instruction": {
+        "en-GB": "Measure 20 mL lime juice, 15 mL fish sauce, 10 g sugar and 15 mL water into a small bowl. Stir until the sugar dissolves.",
+        "pt-BR": "Meça 20 mL de suco de limão, 15 mL de molho de peixe, 10 g de açúcar e 15 mL de água em uma tigela pequena. Mexa até dissolver o açúcar."
+      },
+      "ingredientIds": [
+        "lime-juice",
+        "fish-sauce",
+        "sugar",
+        "water"
+      ],
+      "equipmentIds": [
+        "dressing-bowl",
+        "measuring-cup",
+        "mixing-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Children measure and stir with an adult nearby; an adult checks the fish-sauce label.",
+        "pt-BR": "As crianças medem e mexem com um adulto por perto; um adulto confere o rótulo do molho de peixe."
+      },
+      "safety": {
+        "en-GB": "Fish sauce contains fish. Keep it separate from food for anyone with a fish allergy and wash the bowl and spoon.",
+        "pt-BR": "O molho de peixe contém peixe. Mantenha separado de alimentos para pessoas alérgicas a peixe e lave a tigela e a colher."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "No heat or sharp tools.",
+        "pt-BR": "Sem calor ou ferramentas afiadas."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-03.png",
+        "sha256": "6bf705b8af2089754c8759741bf735e35c0e4c82c013eb184038bccedb5de739",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Toss the salad",
+        "pt-BR": "Misture a salada"
+      },
+      "instruction": {
+        "en-GB": "Combine mango, carrot, cucumber, coriander and mint in a large bowl. Add the dressing and toss gently.",
+        "pt-BR": "Junte a manga, a cenoura, o pepino, o coentro e a hortelã em uma tigela grande. Adicione o molho e misture delicadamente."
+      },
+      "ingredientIds": [
+        "green-mango",
+        "carrot",
+        "cucumber",
+        "coriander",
+        "mint",
+        "lime-juice",
+        "fish-sauce"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "mixing-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Children toss the ingredients once the adult has checked the dressing and separated any allergen-free portion.",
+        "pt-BR": "As crianças misturam os ingredientes depois que o adulto conferir o molho e separar qualquer porção sem alergênicos."
+      },
+      "safety": {
+        "en-GB": "Use clean utensils and keep fish sauce separate from allergy-safe portions. Refrigerate promptly if not serving straight away.",
+        "pt-BR": "Use utensílios limpos e mantenha o molho de peixe longe de porções para pessoas alérgicas. Leve à geladeira sem demora se não for servir logo."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervises allergen separation and serving.",
+        "pt-BR": "Um adulto supervisiona a separação de alergênicos e o serviço."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-04.png",
+        "sha256": "db3caa43013641b65b2fa6d1f2463a400f4f63f30bfbff855799ac3bb3a5132a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Add peanuts and serve",
+        "pt-BR": "Adicione o amendoim e sirva"
+      },
+      "instruction": {
+        "en-GB": "Divide the salad between four bowls and sprinkle with the measured 20 g finely chopped roasted peanuts. Serve promptly.",
+        "pt-BR": "Divida a salada entre quatro tigelas e polvilhe os 20 g medidos de amendoim torrado picado fino. Sirva logo."
+      },
+      "ingredientIds": [
+        "peanuts"
+      ],
+      "equipmentIds": [
+        "serving-bowls",
+        "garnish-dish"
+      ],
+      "adultAssist": {
+        "en-GB": "Children portion and garnish. An adult identifies the peanut topping and checks allergy warnings.",
+        "pt-BR": "As crianças dividem e finalizam. Um adulto identifica a cobertura de amendoim e confere os avisos de alergia."
+      },
+      "safety": {
+        "en-GB": "Peanuts are a major allergen; keep them in a separate dish for allergy safety. Use finely chopped pieces and supervise serving.",
+        "pt-BR": "Amendoim é um alergênico importante; mantenha-o em uma tigela separada para segurança de quem tem alergia. Use pedaços picados finos e supervisione ao servir."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervises allergy-safe serving.",
+        "pt-BR": "Um adulto supervisiona o serviço seguro para alergias."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-05.png",
+        "sha256": "8dc09962d8a4746d712dd3b001000367caffa92fb0bc3217666643ef8206431a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults peel and cut firm fruit, check fish-sauce and peanut labels, and supervise allergy-safe serving. Children wash produce, measure dressing, toss the salad and help portion it.",
+    "pt-BR": "Adultos descascam e cortam a fruta firme, conferem os rótulos do molho de peixe e do amendoim e supervisionam o serviço seguro para alergias. Crianças lavam os vegetais, medem o molho, misturam a salada e ajudam a servir."
+  },
+  "allergens": [
+    "fish",
+    "peanut"
+  ],
+  "allergen_notes": {
+    "contains": {
+      "en-GB": "Fish in fish sauce; peanuts in the garnish.",
+      "pt-BR": "Peixe no molho de peixe; amendoim na finalização."
+    },
+    "cross_contact": {
+      "en-GB": "Use separate clean bowls and utensils, keep fish sauce and peanuts away from allergy-safe portions, and check all product labels.",
+      "pt-BR": "Use tigelas e utensílios limpos separados, mantenha o molho de peixe e o amendoim longe de porções para pessoas alérgicas e confira todos os rótulos."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 111,
+      "proteinG": 2.7,
+      "carbohydrateG": 20.9,
+      "fatG": 2.9,
+      "fibreG": 2.9,
+      "saturatedFatG": 0.4,
+      "sodiumMg": 320
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+    "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Mango, green, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Mango,%20green,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Carrots, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Coriander (cilantro) leaves, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Coriander%20(cilantro)%20leaves,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Spearmint, fresh",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Spearmint,%20fresh"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Fish sauce",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Fish%20sauce"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Sugars,%20granulated"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Water, tap",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Water,%20tap"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Peanuts, all types, dry-roasted",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Peanuts,%20all%20types,%20dry-roasted"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Finished vietnamese mango salad ready to serve.",
+      "pt-BR": "Salada vietnamita de manga pronto para servir."
+    },
+    "image": {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png",
+      "sha256": "c0920d253bb3da4030e0db0824c178de0b1c1da52b57a92453632c9933725685",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png",
+      "sha256": "c0920d253bb3da4030e0db0824c178de0b1c1da52b57a92453632c9933725685",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/green-mango.png",
+        "sha256": "b090601dafce341a74bc8c2c4154196a0821c5026148d5e31383983258ab81b1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/carrot.png",
+        "sha256": "e93d51a734130e8d2e0b28878f46f763288be7323ee992112a5aeb45dad7cf73",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/cucumber.png",
+        "sha256": "4b94f35caf970f384efa7ee99f2acffa6b9f7ff70f08ca666282eaeac221479b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/coriander.png",
+        "sha256": "b8e1413da9a19c80bd94074e07b6b93299d370f9534ee6db3f9adf233f87a835",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/mint.png",
+        "sha256": "e42e6a264265b4bb013b1f96a01c14326e6c31c3253c6ecd7e55834ee22143cd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/lime-juice.png",
+        "sha256": "35df0f91c3c969284352c947dcc9ed53b2f383e8e3034c5b2fb47986e1e22570",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/fish-sauce.png",
+        "sha256": "fc33f96f270510fa85be0cfc41ba4253834e15a0e01f3036490f3ccbdc09e385",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/sugar.png",
+        "sha256": "823a5584e560cbfaeae7e3dcd0b51e3220636d14f35893a8ea9b073352c4c2fa",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/water.png",
+        "sha256": "4560ca77848d1cc4d738e5ebd8ea76c19452b7c8b9c2c0643901c17f789322ca",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/peanuts.png",
+        "sha256": "873933470788a42f7ab7c59ed560267e67f014f2b3b2138e0200ed74489eee10",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/chopping-board.png",
+        "sha256": "979a214aa6194bf5ef9e75b6bf0bbf8a222e907007f977d456de4e8aa72d9642",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/knife.png",
+        "sha256": "9b5038dee422da49de8de98524c2ef540f61a49e1a20b6a7fb2accca000435b6",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/vegetable-peeler.png",
+        "sha256": "f6b86131f1a90c7b7c94aa8f02f8afc308558f5131af6ec69f7e955756dc7389",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-bowl.png",
+        "sha256": "33b61f1de0a505c34111e0383c1c5171eb50552e32660b9ed51fc74afa5c7c92",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/dressing-bowl.png",
+        "sha256": "68a3fece030a2a08e3dfeaa89787ff685352918e5f769eba896be3bf8374a0b3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/measuring-cup.png",
+        "sha256": "9c1e55315eb9d1002263282966824e567b830f78a71998c64894c5a04f193006",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-spoon.png",
+        "sha256": "d5ab4a52d483d11587a36c9c260eb0f2d3cff63133abcd64415c14163b55428a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/serving-bowls.png",
+        "sha256": "1ec0ffb2f7f73d25a84e3bea61da131a1c2c09e53bb45a69862a631062efff47",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/garnish-dish.png",
+        "sha256": "f9296de51eec0252c4edaf4f1e406ff68908c4674b0eb580f2242f28f6593c7c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-01.png",
+        "sha256": "d4916725da60853fe07a87de53f3d00c1add6bc9a9188711eac5ee98b691b899",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-02.png",
+        "sha256": "64586fabf9c023aa03391ad18111ef34157d95327cbc46008e8d17788d301370",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-03.png",
+        "sha256": "6bf705b8af2089754c8759741bf735e35c0e4c82c013eb184038bccedb5de739",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-04.png",
+        "sha256": "db3caa43013641b65b2fa6d1f2463a400f4f63f30bfbff855799ac3bb3a5132a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-05.png",
+        "sha256": "8dc09962d8a4746d712dd3b001000367caffa92fb0bc3217666643ef8206431a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png",
+      "sha256": "c0920d253bb3da4030e0db0824c178de0b1c1da52b57a92453632c9933725685",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/green-mango.png",
+      "sha256": "b090601dafce341a74bc8c2c4154196a0821c5026148d5e31383983258ab81b1",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/carrot.png",
+      "sha256": "e93d51a734130e8d2e0b28878f46f763288be7323ee992112a5aeb45dad7cf73",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/cucumber.png",
+      "sha256": "4b94f35caf970f384efa7ee99f2acffa6b9f7ff70f08ca666282eaeac221479b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/coriander.png",
+      "sha256": "b8e1413da9a19c80bd94074e07b6b93299d370f9534ee6db3f9adf233f87a835",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/mint.png",
+      "sha256": "e42e6a264265b4bb013b1f96a01c14326e6c31c3253c6ecd7e55834ee22143cd",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/lime-juice.png",
+      "sha256": "35df0f91c3c969284352c947dcc9ed53b2f383e8e3034c5b2fb47986e1e22570",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/fish-sauce.png",
+      "sha256": "fc33f96f270510fa85be0cfc41ba4253834e15a0e01f3036490f3ccbdc09e385",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/sugar.png",
+      "sha256": "823a5584e560cbfaeae7e3dcd0b51e3220636d14f35893a8ea9b073352c4c2fa",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/water.png",
+      "sha256": "4560ca77848d1cc4d738e5ebd8ea76c19452b7c8b9c2c0643901c17f789322ca",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/peanuts.png",
+      "sha256": "873933470788a42f7ab7c59ed560267e67f014f2b3b2138e0200ed74489eee10",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/chopping-board.png",
+      "sha256": "979a214aa6194bf5ef9e75b6bf0bbf8a222e907007f977d456de4e8aa72d9642",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/knife.png",
+      "sha256": "9b5038dee422da49de8de98524c2ef540f61a49e1a20b6a7fb2accca000435b6",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/vegetable-peeler.png",
+      "sha256": "f6b86131f1a90c7b7c94aa8f02f8afc308558f5131af6ec69f7e955756dc7389",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-bowl.png",
+      "sha256": "33b61f1de0a505c34111e0383c1c5171eb50552e32660b9ed51fc74afa5c7c92",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/dressing-bowl.png",
+      "sha256": "68a3fece030a2a08e3dfeaa89787ff685352918e5f769eba896be3bf8374a0b3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/measuring-cup.png",
+      "sha256": "9c1e55315eb9d1002263282966824e567b830f78a71998c64894c5a04f193006",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-spoon.png",
+      "sha256": "d5ab4a52d483d11587a36c9c260eb0f2d3cff63133abcd64415c14163b55428a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/serving-bowls.png",
+      "sha256": "1ec0ffb2f7f73d25a84e3bea61da131a1c2c09e53bb45a69862a631062efff47",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/garnish-dish.png",
+      "sha256": "f9296de51eec0252c4edaf4f1e406ff68908c4674b0eb580f2242f28f6593c7c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-01.png",
+      "sha256": "d4916725da60853fe07a87de53f3d00c1add6bc9a9188711eac5ee98b691b899",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-02.png",
+      "sha256": "64586fabf9c023aa03391ad18111ef34157d95327cbc46008e8d17788d301370",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-03.png",
+      "sha256": "6bf705b8af2089754c8759741bf735e35c0e4c82c013eb184038bccedb5de739",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-04.png",
+      "sha256": "db3caa43013641b65b2fa6d1f2463a400f4f63f30bfbff855799ac3bb3a5132a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-05.png",
+      "sha256": "8dc09962d8a4746d712dd3b001000367caffa92fb0bc3217666643ef8206431a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "USDA FoodData Central",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+    "artworkApproval": "Owner-approved Aaria style reference in Issue #50 comment 6367104240; source path content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+  },
+  "renderer": {
+    "category": "International",
+    "method": "No-cook green mango salad; adult knife handling",
+    "time": "25 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 110,
+    "country": "vietnam",
+    "countryCode": "VN",
+    "title": {
+      "en-GB": "Vietnamese Mango Salad",
+      "pt-BR": "Salada vietnamita de manga"
+    },
+    "description": {
+      "en-GB": "A bright Vietnamese-inspired green mango salad with crisp carrot, cucumber, herbs, tangy fish-sauce lime dressing and roasted peanuts.",
+      "pt-BR": "Uma salada fresca de manga verde ao estilo vietnamita, com cenoura crocante, pepino, ervas, molho cítrico de peixe e limão e amendoim torrado."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Vietnamese green mango salads have regional and family variations. This child-friendly version combines crisp fruit and herbs with a sweet-sour fish-sauce dressing and peanut garnish.",
+      "pt-BR": "Saladas vietnamitas de manga verde variam entre regiões e famílias. Esta versão para crianças combina fruta crocante e ervas com molho agridoce de peixe e limão e cobertura de amendoim."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 20,
+    "totalMinutes": 25,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; adult safety boundaries remain unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "green-mango",
+        "name": {
+          "en-GB": "Firm green mango",
+          "pt-BR": "Manga verde firme"
+        },
+        "quantity": 350,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/green-mango.png",
+          "sha256": "b090601dafce341a74bc8c2c4154196a0821c5026148d5e31383983258ab81b1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "carrot",
+        "name": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/carrot.png",
+          "sha256": "e93d51a734130e8d2e0b28878f46f763288be7323ee992112a5aeb45dad7cf73",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "cucumber",
+        "name": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/cucumber.png",
+          "sha256": "4b94f35caf970f384efa7ee99f2acffa6b9f7ff70f08ca666282eaeac221479b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "coriander",
+        "name": {
+          "en-GB": "Fresh coriander leaves",
+          "pt-BR": "Folhas de coentro fresco"
+        },
+        "quantity": 15,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/coriander.png",
+          "sha256": "b8e1413da9a19c80bd94074e07b6b93299d370f9534ee6db3f9adf233f87a835",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mint",
+        "name": {
+          "en-GB": "Fresh mint leaves",
+          "pt-BR": "Folhas de hortelã fresca"
+        },
+        "quantity": 10,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/mint.png",
+          "sha256": "e42e6a264265b4bb013b1f96a01c14326e6c31c3253c6ecd7e55834ee22143cd",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "lime-juice",
+        "name": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "quantity": 20,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/lime-juice.png",
+          "sha256": "35df0f91c3c969284352c947dcc9ed53b2f383e8e3034c5b2fb47986e1e22570",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "fish-sauce",
+        "name": {
+          "en-GB": "Fish sauce",
+          "pt-BR": "Molho de peixe"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [
+          "fish"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/fish-sauce.png",
+          "sha256": "fc33f96f270510fa85be0cfc41ba4253834e15a0e01f3036490f3ccbdc09e385",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "sugar",
+        "name": {
+          "en-GB": "Granulated sugar",
+          "pt-BR": "Açúcar granulado"
+        },
+        "quantity": 10,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/sugar.png",
+          "sha256": "823a5584e560cbfaeae7e3dcd0b51e3220636d14f35893a8ea9b073352c4c2fa",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "water",
+        "name": {
+          "en-GB": "Clean water",
+          "pt-BR": "Água potável"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/water.png",
+          "sha256": "4560ca77848d1cc4d738e5ebd8ea76c19452b7c8b9c2c0643901c17f789322ca",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "peanuts",
+        "name": {
+          "en-GB": "Roasted peanuts, finely chopped",
+          "pt-BR": "Amendoim torrado picado fino"
+        },
+        "quantity": 20,
+        "unit": "g",
+        "allergens": [
+          "peanut"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/peanuts.png",
+          "sha256": "873933470788a42f7ab7c59ed560267e67f014f2b3b2138e0200ed74489eee10",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "equipment": [
+      "Chopping board",
+      "Sharp knife",
+      "Vegetable peeler",
+      "Large mixing bowl",
+      "Small dressing bowl",
+      "Measuring cup",
+      "Mixing spoon",
+      "Serving bowls",
+      "Small garnish dish"
+    ],
+    "equipmentItems": [
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/chopping-board.png",
+          "sha256": "979a214aa6194bf5ef9e75b6bf0bbf8a222e907007f977d456de4e8aa72d9642",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Sharp knife",
+          "pt-BR": "Faca afiada"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/knife.png",
+          "sha256": "9b5038dee422da49de8de98524c2ef540f61a49e1a20b6a7fb2accca000435b6",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "vegetable-peeler",
+        "name": {
+          "en-GB": "Vegetable peeler",
+          "pt-BR": "Descascador de legumes"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/vegetable-peeler.png",
+          "sha256": "f6b86131f1a90c7b7c94aa8f02f8afc308558f5131af6ec69f7e955756dc7389",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Large mixing bowl",
+          "pt-BR": "Tigela grande para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-bowl.png",
+          "sha256": "33b61f1de0a505c34111e0383c1c5171eb50552e32660b9ed51fc74afa5c7c92",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "dressing-bowl",
+        "name": {
+          "en-GB": "Small dressing bowl",
+          "pt-BR": "Tigela pequena para o molho"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/dressing-bowl.png",
+          "sha256": "68a3fece030a2a08e3dfeaa89787ff685352918e5f769eba896be3bf8374a0b3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "measuring-cup",
+        "name": {
+          "en-GB": "Measuring cup",
+          "pt-BR": "Copo medidor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/measuring-cup.png",
+          "sha256": "9c1e55315eb9d1002263282966824e567b830f78a71998c64894c5a04f193006",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-spoon",
+        "name": {
+          "en-GB": "Mixing spoon",
+          "pt-BR": "Colher para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-spoon.png",
+          "sha256": "d5ab4a52d483d11587a36c9c260eb0f2d3cff63133abcd64415c14163b55428a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "serving-bowls",
+        "name": {
+          "en-GB": "Serving bowls",
+          "pt-BR": "Tigelas para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/serving-bowls.png",
+          "sha256": "1ec0ffb2f7f73d25a84e3bea61da131a1c2c09e53bb45a69862a631062efff47",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "garnish-dish",
+        "name": {
+          "en-GB": "Small garnish dish",
+          "pt-BR": "Tigela pequena para acompanhar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/garnish-dish.png",
+          "sha256": "f9296de51eec0252c4edaf4f1e406ff68908c4674b0eb580f2242f28f6593c7c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Wash the produce",
+          "pt-BR": "Lave os vegetais"
+        },
+        "instruction": {
+          "en-GB": "Wash the green mango, carrot, cucumber, coriander and mint under cool running water.",
+          "pt-BR": "Lave a manga verde, a cenoura, o pepino, o coentro e a hortelã em água corrente fria."
+        },
+        "ingredientIds": [
+          "green-mango",
+          "carrot",
+          "cucumber",
+          "coriander",
+          "mint"
+        ],
+        "equipmentIds": [
+          "mixing-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash the produce; an adult checks the mango is firm and ready to peel.",
+          "pt-BR": "As crianças lavam os vegetais; um adulto verifica se a manga está firme e pronta para descascar."
+        },
+        "safety": {
+          "en-GB": "Wash hands and all produce. Dry the counter before preparing food.",
+          "pt-BR": "Lave as mãos e todos os vegetais. Seque a bancada antes de preparar os alimentos."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervises washing and food preparation.",
+          "pt-BR": "Um adulto supervisiona a lavagem e o preparo dos alimentos."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-01.png",
+          "sha256": "d4916725da60853fe07a87de53f3d00c1add6bc9a9188711eac5ee98b691b899",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Peel and slice",
+          "pt-BR": "Descasque e corte"
+        },
+        "instruction": {
+          "en-GB": "An adult peels the green mango and carrot, then cuts them and the cucumber into thin matchsticks on a stable board.",
+          "pt-BR": "Um adulto descasca a manga verde e a cenoura, depois corta-as e o pepino em tiras finas sobre uma tábua firme."
+        },
+        "ingredientIds": [
+          "green-mango",
+          "carrot",
+          "cucumber"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife",
+          "vegetable-peeler"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult only: peel and cut the firm mango, carrot and cucumber. Children stay clear of the knife.",
+          "pt-BR": "Somente adulto: descasque e corte a manga firme, a cenoura e o pepino. As crianças ficam longe da faca."
+        },
+        "safety": {
+          "en-GB": "Use a stable board. Only an adult handles the peeler and sharp knife; keep fingers away from the blade.",
+          "pt-BR": "Use uma tábua firme. Somente um adulto manuseia o descascador e a faca afiada; mantenha os dedos longe da lâmina."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for peeling and sharp knife.",
+          "pt-BR": "Somente adulto descasca e usa a faca afiada."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-02.png",
+          "sha256": "64586fabf9c023aa03391ad18111ef34157d95327cbc46008e8d17788d301370",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Mix the lime dressing",
+          "pt-BR": "Misture o molho de limão"
+        },
+        "instruction": {
+          "en-GB": "Measure 20 mL lime juice, 15 mL fish sauce, 10 g sugar and 15 mL water into a small bowl. Stir until the sugar dissolves.",
+          "pt-BR": "Meça 20 mL de suco de limão, 15 mL de molho de peixe, 10 g de açúcar e 15 mL de água em uma tigela pequena. Mexa até dissolver o açúcar."
+        },
+        "ingredientIds": [
+          "lime-juice",
+          "fish-sauce",
+          "sugar",
+          "water"
+        ],
+        "equipmentIds": [
+          "dressing-bowl",
+          "measuring-cup",
+          "mixing-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Children measure and stir with an adult nearby; an adult checks the fish-sauce label.",
+          "pt-BR": "As crianças medem e mexem com um adulto por perto; um adulto confere o rótulo do molho de peixe."
+        },
+        "safety": {
+          "en-GB": "Fish sauce contains fish. Keep it separate from food for anyone with a fish allergy and wash the bowl and spoon.",
+          "pt-BR": "O molho de peixe contém peixe. Mantenha separado de alimentos para pessoas alérgicas a peixe e lave a tigela e a colher."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "No heat or sharp tools.",
+          "pt-BR": "Sem calor ou ferramentas afiadas."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-03.png",
+          "sha256": "6bf705b8af2089754c8759741bf735e35c0e4c82c013eb184038bccedb5de739",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Toss the salad",
+          "pt-BR": "Misture a salada"
+        },
+        "instruction": {
+          "en-GB": "Combine mango, carrot, cucumber, coriander and mint in a large bowl. Add the dressing and toss gently.",
+          "pt-BR": "Junte a manga, a cenoura, o pepino, o coentro e a hortelã em uma tigela grande. Adicione o molho e misture delicadamente."
+        },
+        "ingredientIds": [
+          "green-mango",
+          "carrot",
+          "cucumber",
+          "coriander",
+          "mint",
+          "lime-juice",
+          "fish-sauce"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "mixing-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Children toss the ingredients once the adult has checked the dressing and separated any allergen-free portion.",
+          "pt-BR": "As crianças misturam os ingredientes depois que o adulto conferir o molho e separar qualquer porção sem alergênicos."
+        },
+        "safety": {
+          "en-GB": "Use clean utensils and keep fish sauce separate from allergy-safe portions. Refrigerate promptly if not serving straight away.",
+          "pt-BR": "Use utensílios limpos e mantenha o molho de peixe longe de porções para pessoas alérgicas. Leve à geladeira sem demora se não for servir logo."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervises allergen separation and serving.",
+          "pt-BR": "Um adulto supervisiona a separação de alergênicos e o serviço."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-04.png",
+          "sha256": "db3caa43013641b65b2fa6d1f2463a400f4f63f30bfbff855799ac3bb3a5132a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Add peanuts and serve",
+          "pt-BR": "Adicione o amendoim e sirva"
+        },
+        "instruction": {
+          "en-GB": "Divide the salad between four bowls and sprinkle with the measured 20 g finely chopped roasted peanuts. Serve promptly.",
+          "pt-BR": "Divida a salada entre quatro tigelas e polvilhe os 20 g medidos de amendoim torrado picado fino. Sirva logo."
+        },
+        "ingredientIds": [
+          "peanuts"
+        ],
+        "equipmentIds": [
+          "serving-bowls",
+          "garnish-dish"
+        ],
+        "adultAssist": {
+          "en-GB": "Children portion and garnish. An adult identifies the peanut topping and checks allergy warnings.",
+          "pt-BR": "As crianças dividem e finalizam. Um adulto identifica a cobertura de amendoim e confere os avisos de alergia."
+        },
+        "safety": {
+          "en-GB": "Peanuts are a major allergen; keep them in a separate dish for allergy safety. Use finely chopped pieces and supervise serving.",
+          "pt-BR": "Amendoim é um alergênico importante; mantenha-o em uma tigela separada para segurança de quem tem alergia. Use pedaços picados finos e supervisione ao servir."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervises allergy-safe serving.",
+          "pt-BR": "Um adulto supervisiona o serviço seguro para alergias."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-05.png",
+          "sha256": "8dc09962d8a4746d712dd3b001000367caffa92fb0bc3217666643ef8206431a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults peel and cut firm fruit, check fish-sauce and peanut labels, and supervise allergy-safe serving. Children wash produce, measure dressing, toss the salad and help portion it.",
+      "pt-BR": "Adultos descascam e cortam a fruta firme, conferem os rótulos do molho de peixe e do amendoim e supervisionam o serviço seguro para alergias. Crianças lavam os vegetais, medem o molho, misturam a salada e ajudam a servir."
+    },
+    "finishedDish": {
+      "artworkPath": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png",
+      "description": {
+        "en-GB": "Finished vietnamese mango salad ready to serve.",
+        "pt-BR": "Salada vietnamita de manga pronto para servir."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png",
+        "sha256": "c0920d253bb3da4030e0db0824c178de0b1c1da52b57a92453632c9933725685",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 111,
+        "proteinG": 2.7,
+        "carbohydrateG": 20.9,
+        "fatG": 2.9,
+        "fibreG": 2.9,
+        "saturatedFatG": 0.4,
+        "sodiumMg": 320
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+      "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Mango, green, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Mango,%20green,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Carrots, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cucumber, with peel, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Coriander (cilantro) leaves, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Coriander%20(cilantro)%20leaves,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Spearmint, fresh",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Spearmint,%20fresh"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Lime juice, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Fish sauce",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Fish%20sauce"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Sugars, granulated",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Sugars,%20granulated"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Water, tap",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Water,%20tap"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Peanuts, all types, dry-roasted",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peanuts,%20all%20types,%20dry-roasted"
+        }
+      ]
+    },
+    "allergens": [
+      "fish",
+      "peanut"
+    ],
+    "allergenNotes": {
+      "contains": {
+        "en-GB": "Fish in fish sauce; peanuts in the garnish.",
+        "pt-BR": "Peixe no molho de peixe; amendoim na finalização."
+      },
+      "cross_contact": {
+        "en-GB": "Use separate clean bowls and utensils, keep fish sauce and peanuts away from allergy-safe portions, and check all product labels.",
+        "pt-BR": "Use tigelas e utensílios limpos separados, mantenha o molho de peixe e o amendoim longe de porções para pessoas alérgicas e confira todos os rótulos."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/finished-dish.png",
+        "sha256": "c0920d253bb3da4030e0db0824c178de0b1c1da52b57a92453632c9933725685",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/green-mango.png",
+          "sha256": "b090601dafce341a74bc8c2c4154196a0821c5026148d5e31383983258ab81b1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/carrot.png",
+          "sha256": "e93d51a734130e8d2e0b28878f46f763288be7323ee992112a5aeb45dad7cf73",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/cucumber.png",
+          "sha256": "4b94f35caf970f384efa7ee99f2acffa6b9f7ff70f08ca666282eaeac221479b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/coriander.png",
+          "sha256": "b8e1413da9a19c80bd94074e07b6b93299d370f9534ee6db3f9adf233f87a835",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/mint.png",
+          "sha256": "e42e6a264265b4bb013b1f96a01c14326e6c31c3253c6ecd7e55834ee22143cd",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/lime-juice.png",
+          "sha256": "35df0f91c3c969284352c947dcc9ed53b2f383e8e3034c5b2fb47986e1e22570",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/fish-sauce.png",
+          "sha256": "fc33f96f270510fa85be0cfc41ba4253834e15a0e01f3036490f3ccbdc09e385",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/sugar.png",
+          "sha256": "823a5584e560cbfaeae7e3dcd0b51e3220636d14f35893a8ea9b073352c4c2fa",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/water.png",
+          "sha256": "4560ca77848d1cc4d738e5ebd8ea76c19452b7c8b9c2c0643901c17f789322ca",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/ingredients/peanuts.png",
+          "sha256": "873933470788a42f7ab7c59ed560267e67f014f2b3b2138e0200ed74489eee10",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/chopping-board.png",
+          "sha256": "979a214aa6194bf5ef9e75b6bf0bbf8a222e907007f977d456de4e8aa72d9642",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/knife.png",
+          "sha256": "9b5038dee422da49de8de98524c2ef540f61a49e1a20b6a7fb2accca000435b6",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/vegetable-peeler.png",
+          "sha256": "f6b86131f1a90c7b7c94aa8f02f8afc308558f5131af6ec69f7e955756dc7389",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-bowl.png",
+          "sha256": "33b61f1de0a505c34111e0383c1c5171eb50552e32660b9ed51fc74afa5c7c92",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/dressing-bowl.png",
+          "sha256": "68a3fece030a2a08e3dfeaa89787ff685352918e5f769eba896be3bf8374a0b3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/measuring-cup.png",
+          "sha256": "9c1e55315eb9d1002263282966824e567b830f78a71998c64894c5a04f193006",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/mixing-spoon.png",
+          "sha256": "d5ab4a52d483d11587a36c9c260eb0f2d3cff63133abcd64415c14163b55428a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/serving-bowls.png",
+          "sha256": "1ec0ffb2f7f73d25a84e3bea61da131a1c2c09e53bb45a69862a631062efff47",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/equipment/garnish-dish.png",
+          "sha256": "f9296de51eec0252c4edaf4f1e406ff68908c4674b0eb580f2242f28f6593c7c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-01.png",
+          "sha256": "d4916725da60853fe07a87de53f3d00c1add6bc9a9188711eac5ee98b691b899",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-02.png",
+          "sha256": "64586fabf9c023aa03391ad18111ef34157d95327cbc46008e8d17788d301370",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-03.png",
+          "sha256": "6bf705b8af2089754c8759741bf735e35c0e4c82c013eb184038bccedb5de739",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-04.png",
+          "sha256": "db3caa43013641b65b2fa6d1f2463a400f4f63f30bfbff855799ac3bb3a5132a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/vietnam/110-vietnamese-mango-salad/artwork/steps/step-05.png",
+          "sha256": "8dc09962d8a4746d712dd3b001000367caffa92fb0bc3217666643ef8206431a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "nutritionSource": "USDA FoodData Central",
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+      "artworkApproval": "Owner-approved Aaria reference: content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+    },
+    "safety": {
+      "en-GB": "Wash hands and all produce. Dry the counter before preparing food.",
+      "pt-BR": "Lave as mãos e todos os vegetais. Seque a bancada antes de preparar os alimentos."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}
