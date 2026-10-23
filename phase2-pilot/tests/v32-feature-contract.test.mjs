@@ -285,6 +285,10 @@ test('97-recipe review catalogue checks keep all 95 original route regressions',
     'tablet G2 compares Android viewport measurements returned by WebView, never Node globals');
   assert.match(tablet, /b\.r\.width>x\.width\+1/,
     'tablet G2 row width uses the same WebView viewport measurement');
+  assert.equal((tablet.match(/last-child"\)\?\.scrollIntoView\(\{block:"center",inline:"nearest"\}\)/g) || []).length, 2,
+    'English and PT-BR ingredient captures position the last row above persistent navigation');
+  assert.doesNotMatch(tablet, /last-child"\)\?\.scrollIntoView\(\{block:"end"/,
+    'the visibility assertion does not deliberately scroll the ingredient row under navigation');
 });
 
 test('tablet G3 waits for a ready WebView title and preserves emulator logcat on failure', async () => {
