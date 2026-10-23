@@ -317,7 +317,7 @@ const w02GlobeHostStyles = String.raw`
 .app.v31-world-active .aria-world-globe__body{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,31%);gap:clamp(10px,1.6vw,24px);flex:1;min-height:0;width:100%;max-width:none;margin:0}
 .app.v31-world-active .aria-world-globe__stage{position:relative;container-type:size;min-width:0;min-height:0;overflow:visible;border:0;border-radius:28px;background:radial-gradient(ellipse at 50% 55%,rgba(255,255,255,.82),rgba(255,255,255,0) 65%)}
 .app.v31-world-active .aria-world-globe__sphere{position:absolute;left:58%;top:50%;width:min(84cqw,84cqh,820px);height:auto;aspect-ratio:1;flex:none;transform:translate(-50%,-50%)}
-.app.v31-world-active .aria-world-globe__atlas,.app.v31-world-active .aria-world-globe__flags{transform:scale(1.16);transform-origin:50% 50%}
+.app.v31-world-active .aria-world-globe__atlas,.app.v31-world-active .aria-world-globe__flags{transform:scale(1.14);transform-origin:50% 50%}
 .app.v31-world-active .aria-world-globe__flag{width:58px;height:58px;font-size:29px}
 .app.v31-world-active .aria-world-globe__guide,.app.v31-world-active .aria-world-globe__guide-copy{display:none!important}
 .app.v31-world-active .aria-world-globe__stage::before{content:"";position:absolute;z-index:0;left:58%;top:50%;width:min(94cqw,94cqh,900px);height:auto;aspect-ratio:1;border:3px dashed rgba(126,76,171,.65);border-radius:50%;box-shadow:0 0 0 9px rgba(255,214,111,.2),0 0 28px rgba(133,87,184,.28),inset 0 0 20px rgba(255,214,111,.16);transform:translate(-50%,-50%);animation:v33-orbit-turn 46s linear infinite;pointer-events:none}
