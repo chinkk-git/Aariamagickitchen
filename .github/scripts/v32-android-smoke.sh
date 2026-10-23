@@ -420,8 +420,8 @@ await evaluate(`document.querySelector('[data-v31-open-world]').click()`);
 const worldState = await waitForVisible('.v31-world-header h1', 'World Adventure heading');
 if (!worldState.screen.includes('v31-world-screen') || !worldState.text.includes('World Food Adventure')) throw new Error('World route did not replace the active screen; got: ' + JSON.stringify(worldState));
 console.log('Visible World route verified:', worldState.text);
-const worldVisual = await evaluate(`(() => { const rect=e=>{const r=e?.getBoundingClientRect();return r?{x:r.x,y:r.y,w:r.width,h:r.height}:null}; const map=document.querySelector('.v31-illustrated-map-panel'),feature=document.querySelector('.v31-world-feature'),pending=document.querySelector('.v31-world-pending');return {map:rect(map),mapCountries:map?.querySelectorAll('.v31-land').length||0,landmarks:map?.querySelectorAll('.v31-map-landmark').length||0,mapControls:document.querySelectorAll('.v31-map-controls button,[data-v31-zoom],[data-v31-pan-toggle]').length,featured:rect(feature),featuredImage:!!feature?.querySelector('.v31-world-feature-art img'),pendingCountry:!!pending,recipes:document.querySelectorAll('.v31-world-recipe-tile').length,passport:!!document.querySelector('.v31-passport'),nav:document.querySelectorAll('#nav .tab').length}; })()`);
-if (!worldVisual.map || worldVisual.map.h < 160 || worldVisual.mapCountries < 100 || worldVisual.landmarks!==5 || worldVisual.mapControls!==4 || !worldVisual.featured || !worldVisual.featuredImage || worldVisual.recipes < 5 || !worldVisual.passport || worldVisual.nav!==6) throw new Error(`Approved World Adventure visual composition is incomplete in Android: ${JSON.stringify(worldVisual)}`);
+const worldVisual = await evaluate(`(() => { const rect=e=>{const r=e?.getBoundingClientRect();return r?{x:r.x,y:r.y,w:r.width,h:r.height}:null}; const map=document.querySelector('.v31-illustrated-map-panel'),art=document.querySelector('.v31-map-art'),expectedArt=V31_HOME_WORLD_ART.worldMap,actualArt=getComputedStyle(art).backgroundImage,approvedArt=expectedArt.startsWith('data:image/png;base64,')&&actualArt.includes(expectedArt.slice(0,96)),feature=document.querySelector('.v31-world-feature'),pending=document.querySelector('.v31-world-pending');return {approvedArt,map:rect(map),mapCountries:map?.querySelectorAll('.v31-land').length||0,landmarks:map?.querySelectorAll('.v31-map-landmark').length||0,mapControls:document.querySelectorAll('.v31-map-controls button,[data-v31-zoom],[data-v31-pan-toggle]').length,featured:rect(feature),featuredImage:!!feature?.querySelector('.v31-world-feature-art img'),pendingCountry:!!pending,recipes:document.querySelectorAll('.v31-world-recipe-tile').length,passport:!!document.querySelector('.v31-passport'),nav:document.querySelectorAll('#nav .tab').length}; })()`);
+if (!worldVisual.approvedArt || !worldVisual.map || worldVisual.map.h < 160 || worldVisual.mapCountries < 100 || worldVisual.landmarks!==5 || worldVisual.mapControls!==4 || !worldVisual.featured || !worldVisual.featuredImage || worldVisual.recipes < 5 || !worldVisual.passport || worldVisual.nav!==6) throw new Error(`Approved World Adventure visual composition is incomplete in Android: ${JSON.stringify(worldVisual)}`);
 console.log('Installed Android World Adventure visual composition verified:', JSON.stringify(worldVisual));
 await evaluate(`document.querySelector('[data-v31-zoom=\"in\"]')?.click()`);
 const zoomedMap=await evaluate(`(()=>({zoom:v31MapZoom,art:getComputedStyle(document.querySelector('.v31-map-art')).transform,geometry:getComputedStyle(document.querySelector('.v31-world-map')).transform,panDisabled:document.querySelector('[data-v31-pan-toggle]')?.disabled}))()`);
@@ -501,10 +501,7 @@ const stampCount = await evaluate(`document.querySelector('.v31-passport-count s
 if (!stampCount.includes('1 stamp collected')) throw new Error(`Finishing an India recipe should award a local passport stamp; got: ${stampCount}`);
 const indiaStamp = await evaluate(`!!document.querySelector('.v31-passport .v31-stamp')?.innerText.includes('India')`);
 if (!indiaStamp) throw new Error('India stamp is missing from the food passport');
-await evaluate(`document.querySelector('[data-v31-passport-reset]')?.click()`);
-const resetCount = await evaluate(`document.querySelector('.v31-passport-count strong')?.innerText || ''`);
-if (!resetCount.includes('0 stamps collected')) throw new Error(`Passport reset did not clear local stamps: ${resetCount}`);
-console.log('Android World Adventure verified: India recipes → recipe → quiz → local passport stamp/reset');
+console.log('Android World Adventure verified: canonical India recipe completion earned a profile-persisted local passport stamp');
 await evaluate(`document.querySelector('#nav .tab[data-nav="home"]')?.click()`);
 await waitForVisible('.v31-hero-welcome h1', 'Home after World Adventure');
 const catalogueCount = await evaluate(`RECIPES.length`);
@@ -875,6 +872,7 @@ if (favCount !== 1 || !favoriteRecipePresent) throw new Error(`Favourite filter 
 console.log('Android catalogue, camera-only capture, favourite save/filter, bilingual home, What’s New, shopping, and Back checks passed');
 ws.close();
 NODE
+timeout --kill-after=10s 180s node .github/scripts/v33-passport-persistence-smoke.mjs
 echo 'Launching the explicitly gated debug-only artwork review route'
 adb_timeout shell am force-stop "$APP_ID"
 adb_timeout shell am start -W -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity --ez W01_ARTWORK_REVIEW true

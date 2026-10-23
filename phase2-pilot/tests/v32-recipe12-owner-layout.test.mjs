@@ -155,10 +155,10 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'tablet smoke compares the rendered child-friendly step copy to its renderer source while retaining the canonical source as evidence');
   assert.match(tablet, /!active\.safety[\s\S]*?active\.instruction!==active\.expectedInstruction/,
     'tablet step verification independently requires the adult safety text and correct rendered copy');
-  assert.match(tablet, /timeout --kill-after=10s 1080s node/,
-    'the two-orientation tablet image audit has enough bounded time to visit all 95 recipes');
-  assert.match(workflow, /G2 TARGETED DEVICE SMOKE[\s\S]*?timeout-minutes:\s*20/,
-    'the tablet audit timeout remains below the Android device step limit');
+  assert.match(tablet, /timeout --kill-after=10s 2520s node/,
+    'the two-orientation tablet image audit is bounded but no longer killed before all 95 recipes complete');
+  assert.match(workflow, /G2 TARGETED DEVICE SMOKE[\s\S]*?timeout-minutes:\s*50/,
+    'the tablet audit has enough Android device time to complete its full two-orientation 95-recipe sweep');
 });
 
 test('APK recipe #12 keeps the approved four illustrated step bindings', async () => {

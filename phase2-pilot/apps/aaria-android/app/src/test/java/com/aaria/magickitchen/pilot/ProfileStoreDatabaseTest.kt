@@ -130,6 +130,21 @@ class ProfileStoreDatabaseTest {
             .getJSONObject("customUnknown").getString("mustSurvive"))
     }
 
+    @Test fun completedWorldPassportStampSurvivesStoreRecreation() {
+        val created = store.createProfile("Passport", "CHEF_A", "{}")
+        val profileId = created.getString("activeId")
+        assertTrue(store.saveSnapshot(profileId, """{"done":[51],"worldStamps":["IND"]}"""))
+
+        store.close()
+        store = ProfileStore(app)
+        val reopened = store.initialize("{}")
+        val snapshot = reopened.getJSONObject("snapshot")
+
+        assertEquals(profileId, reopened.getString("activeId"))
+        assertEquals(51, snapshot.getJSONArray("done").getInt(0))
+        assertEquals("IND", snapshot.getJSONArray("worldStamps").getString(0))
+    }
+
     companion object {
         private const val DB_NAME = "my_magical_kitchen_v3.db"
     }

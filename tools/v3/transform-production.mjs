@@ -34,7 +34,7 @@ const homeWorldArt = {
   aariaCooking: readReferenceImage('tools/v3/artwork/characters/reference-derived/aaria-cooking.webp'),
   friends: readReferenceImage('tools/v3/artwork/characters/reference-derived/home-approved-dog-crop.png'),
   kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
-  worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),
+  worldMap: readReferenceImage('docs/design/references/v3.3/WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED.png'),
   destinations: Object.fromEntries(['IND', 'ITA', 'JPN', 'MEX', 'GRC'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
   avatars: Object.fromEntries(['mommy','daddy','rohan','arjun','vihaan','isha','meera','sana','diya'].map(key => [key, readReferenceImage(`tools/v3/artwork/characters/reference-derived/${key}.webp`)]))
 };

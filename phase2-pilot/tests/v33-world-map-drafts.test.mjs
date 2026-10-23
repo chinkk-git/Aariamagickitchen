@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
 
@@ -28,6 +29,25 @@ test('World map has visible accessible zoom, reset, pan and pinch pathways', asy
   assert.match(runtime, /pointercancel/);
   assert.match(css, /\.v31-map-wrap\{[^}]*touch-action:none/);
   assert.match(css, /\.v31-map-art\{[^}]*transform:translate\(var\(--v31-pan-x/);
+});
+
+test('V3.3 map art comes from the supplied approved visual reference', async () => {
+  const [transform, runtime, css, phone, tablet, approvedReference] = await Promise.all([
+    read('tools/v3/transform-production.mjs'), read('tools/v3/runtime.js'), read('tools/v3/home-world-visual.css'),
+    read('.github/scripts/v32-android-smoke.sh'), read('.github/scripts/v32-android-tablet-smoke.sh'),
+    readFile(new URL('docs/design/references/v3.3/WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED.png', root))
+  ]);
+  assert.match(transform, /worldMap: readReferenceImage\('docs\/design\/references\/v3\.3\/WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED\.png'\)/);
+  assert.match(runtime, /v31-map-reference-art[\s\S]*?V31_HOME_WORLD_ART\.worldMap/);
+  assert.match(css, /\.v31-map-reference-art \.v31-map-art\{background-position:1\.6% 2%;background-size:169% auto;background-repeat:no-repeat\}/);
+  assert.match(phone, /approvedArt=expectedArt\.startsWith\('data:image\/png;base64,'\)&&actualArt\.includes\(expectedArt\.slice\(0,96\)\)/,
+    'phone smoke confirms the approved PNG is the visible map background');
+  assert.match(tablet, /approvedArt=expectedArt\.startsWith\("data:image\/png;base64,"\)&&actualArt\.includes\(expectedArt\.slice\(0,96\)\)/,
+    'tablet smoke confirms the approved PNG is the visible map background');
+  assert.equal(createHash('sha256').update(approvedReference).digest('hex'), '1ab670c7a4e36f29a3275b2043c7edb9e85c65491ff82679e51074194dc985dc',
+    'the exact approved reference bytes remain unchanged');
+  assert.doesNotMatch(transform, /worldMap: readReferenceImage\('docs\/design\/approved-v31-world-map-crop\.webp'\)/,
+    'V3.3 runtime no longer substitutes the earlier V3.1 crop for its approved reference');
 });
 
 test('pinch camera scales around its moving focal point and stays within map bounds', async () => {
@@ -63,4 +83,34 @@ test('passport copy reports earned stamps without implying seven reviewed countr
   assert.doesNotMatch(page, /\$\{stamps\.length\}\/7/);
   assert.match(runtime, /V31_APPROVED_INDIA_RECIPE_IDS\.includes\(selected\.id\)/,
     'passport stamp completion remains constrained to the existing canonical recipe allowlist');
+});
+
+test('only completed canonical India recipes award a persistable passport stamp', async () => {
+  const [runtime, profileStore, profileRestartTest, restartSmoke, phoneSmoke] = await Promise.all([
+    read('tools/v3/runtime.js'),
+    read('phase2-pilot/apps/aaria-android/app/src/main/java/com/aaria/magickitchen/pilot/ProfileStore.kt'),
+    read('phase2-pilot/apps/aaria-android/app/src/test/java/com/aaria/magickitchen/pilot/ProfileStoreDatabaseTest.kt'),
+    read('.github/scripts/v33-passport-persistence-smoke.mjs'),
+    read('.github/scripts/v32-android-smoke.sh')
+  ]);
+  assert.match(runtime, /!state\.done\.includes\(selected\.id\)\|\|!V31_APPROVED_INDIA_RECIPE_IDS\.includes\(selected\.id\)/,
+    'incomplete recipes and non-allowlisted draft recipes cannot award a stamp');
+  assert.match(runtime, /state\.worldStamps\.push\('IND'\);save\(\)/,
+    'a newly earned stamp is saved with the active profile snapshot');
+  assert.match(runtime, /v3PersistProfileState\(\)[\s\S]*?nativeSave\(activeId,JSON\.stringify\(state\)\)/,
+    'Android saves the complete world progress state through the native profile bridge');
+  assert.match(profileStore, /class ProfileStore\(context: Context\) : SQLiteOpenHelper/,
+    'native snapshots are stored in app-private SQLite');
+  assert.match(profileStore, /put\("snapshot", snapshot\.toString\(\)\)/,
+    'profile snapshots are written as a complete state payload');
+  assert.match(profileRestartTest, /completedWorldPassportStampSurvivesStoreRecreation/,
+    'native database test reopens SQLite and checks the completed world stamp');
+  assert.match(restartSmoke, /settings', 'put', 'global', 'airplane_mode_on'/,
+    'Android smoke enables airplane mode before reopening the app');
+  assert.match(restartSmoke, /shell', 'am', 'force-stop'/,
+    'Android smoke kills and restarts the app process');
+  assert.match(restartSmoke, /v33-passport-after-restart-offline\.png/,
+    'Android smoke captures phone evidence after offline restart');
+  assert.match(phoneSmoke, /node \.github\/scripts\/v33-passport-persistence-smoke\.mjs/,
+    'passport persistence smoke is part of exact-head phone Android CI');
 });

@@ -8,6 +8,7 @@ Status: implementation in progress; no external gate is claimed passed.
 
 - Read the consolidated Issue #39 P0 contract, historical Issue #6, current World Map architecture and prior Android evidence.
 - Preserved the owner-approved map image and source notes with SHA-256 provenance under `docs/design/references/v3.3/`.
+- Wired that exact approved composite reference into the V3.3 map art layer using a CSS viewport crop; the reference bytes are embedded unchanged by the production transform. Android visual comparison is still required to verify crop positioning on phones and tablets.
 - Recovered the five-country generated concept board from project Library and recorded its identity and SHA-256 without promoting or copying generated art into runtime/repository artwork assets.
 - Registered the five requested concepts in `tools/v3/data/v3.3-world-map-country-drafts.json`, EN-GB/PT-BR localized, no canonical IDs, and with independent review gates pending.
 - Added visible zoom-in, zoom-out, reset and drag-mode controls; bounded single-pointer pan; two-pointer pinch that preserves its focal point; and a single transform for both approved map art and geographic overlay.
