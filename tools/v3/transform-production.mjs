@@ -35,7 +35,7 @@ const homeWorldArt = {
   friends: readReferenceImage('tools/v3/artwork/characters/reference-derived/home-approved-dog-crop.png'),
   kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
   worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),
-  destinations: Object.fromEntries(['IND', 'ITA', 'JPN', 'MEX', 'GRC'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
+  destinations: Object.fromEntries(['IND'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
   avatars: Object.fromEntries(['mommy','daddy','rohan','arjun','vihaan','isha','meera','sana','diya'].map(key => [key, readReferenceImage(`tools/v3/artwork/characters/reference-derived/${key}.webp`)]))
 };
 
@@ -84,31 +84,6 @@ const profileArt = {
   chefA: readAsset('approved-chef-a.webp.b64'),
   chefB: readAsset('approved-chef-b.webp.b64')
 };
-const worldGeography = JSON.parse(fs.readFileSync(path.join(here, 'data/ne_110m_admin_0_countries.geojson'), 'utf8'));
-const worldAdventureSource = JSON.parse(fs.readFileSync(path.join(here, 'data/world-adventure-pilot.json'), 'utf8'));
-const pilotReleaseApproved = ['a08', 'a09', 'duplicates', 'artwork', 'productionSchema'].every(key => worldAdventureSource.releaseGates?.[key] === 'approved');
-// Keep review-pilot recipe records and their art out of the offline production
-// runtime until every independent release gate is explicitly approved.
-const worldAdventure = {
-  ...worldAdventureSource,
-  recipes: pilotReleaseApproved ? worldAdventureSource.recipes : [],
-  nutritionRefs: pilotReleaseApproved ? worldAdventureSource.nutritionRefs : {}
-};
-const worldAdventureArt = Object.fromEntries(worldAdventure.recipes.map(recipe => [recipe.id, {
-  atlas: readWorldAdventureAsset(recipe.artwork.atlas),
-  hero: readWorldAdventureAsset(recipe.artwork.hero),
-  status: recipe.artwork.reviewStatus
-}]));
-
-function readWorldAdventureAsset(name) {
-  const file = path.join(here, 'artwork/world-adventures', name);
-  const bytes = fs.readFileSync(file);
-  if (bytes.subarray(0, 4).toString('ascii') !== 'RIFF' || bytes.subarray(8, 12).toString('ascii') !== 'WEBP') {
-    throw new Error(`Invalid WebP adventure artwork: ${name}`);
-  }
-  return `data:image/webp;base64,${bytes.toString('base64')}`;
-}
-
 const styles = String.raw`
 /* ${marker} */
 :root{--v3-ink:#34264f;--v3-plum:#4e376c;--v3-berry:#b43b7a;--v3-mint:#318d79;--v3-sky:#ddecf8;--v3-lav:#f5f0fb;--v3-paper:#fffdf8;--v3-gold:#f0c24b;--v3-line:#e7ddec;--v3-shadow:0 8px 24px #39285412}
@@ -343,17 +318,14 @@ const runtime = runtimeTemplate
   .replace('__V3_ART_JSON__', JSON.stringify(art))
   .replace('__V3_INGREDIENT_ATLAS_JSON__', JSON.stringify(ingredientAtlas))
   .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt))
-  .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))
   .replace('__V32_RECIPE_THEME_MAP_JSON__', JSON.stringify(v32RecipeThemeMap.mapping))
   .replace('__V32_REVIEW_FEATURED_IDS_JSON__', JSON.stringify(v32ReviewFeaturedIds))
   .replace('__V3_PT_RECIPE_DRAFTS_JSON__', JSON.stringify(v32PtRecipeDrafts))
   .replace('__V32_PT_GROUP_ROLE_COPY_JSON__', JSON.stringify(v32PtGroupRoleCopy))
-  .replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))
-  .replace('__V31_WORLD_ADVENTURE_ART_JSON__', JSON.stringify(worldAdventureArt))
   .replace('__V31_HOME_WORLD_ART_JSON__', JSON.stringify(homeWorldArt));
 
 if (!v32PtGroupRoleCopy.family || !v32PtGroupRoleCopy.friends) throw new Error('Family/Friends PT-BR role copy is missing from review drafts.');
-if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__|__V32_RECIPE_THEME_MAP_JSON__|__V3_PT_RECIPE_DRAFTS_JSON__|__V32_PT_GROUP_ROLE_COPY_JSON__/.test(runtime)) throw new Error('Could not embed the offline experience data.');
+if (/__V32_RECIPE_THEME_MAP_JSON__|__V3_PT_RECIPE_DRAFTS_JSON__|__V32_PT_GROUP_ROLE_COPY_JSON__/.test(runtime)) throw new Error('Could not embed the offline experience data.');
 
 
 let outputHtml = html;

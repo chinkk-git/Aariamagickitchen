@@ -55,13 +55,9 @@ if (Object.keys(themeSpec.mapping).length !== 95 || ids.some(id => themeSpec.map
 if (themeKeys.some(theme => !Object.values(themeSpec.mapping).includes(theme))) fail('All three approved V3.2 themes must be represented in the 95-recipe assignment.');
 
 const destinations = [['IND', 'India'], ['ITA', 'Italy'], ['CHN', 'China'], ['JPN', 'Japan'], ['MEX', 'Mexico'], ['VNM', 'Vietnam'], ['GRC', 'Greece']];
-if (!Array.isArray(geography.features) || geography.features.length < 150) fail('Offline country boundaries are incomplete.');
-for (const [iso, country] of destinations) {
-  if (!geography.features.some(feature => feature.properties?.ADMIN === country && (feature.properties?.ISO_A3_EH === iso || feature.properties?.ISO_A3 === iso))) fail(`Offline map is missing ${country}.`);
-}
+if (!Array.isArray(geography.features) || geography.features.length < 150) fail('Offline geographic source provenance is incomplete.');
 const destinationBlock = runtime.slice(runtime.indexOf('const V31_WORLD_DESTINATIONS=['), runtime.indexOf('const V31_DESTINATION_BY_ISO='));
-if (!destinationBlock || (destinationBlock.match(/reviewStatus:'draft'/g) || []).length !== 6 || !destinationBlock.includes("reviewStatus:'approved-reference'") || /reviewStatus:'pilot'/.test(destinationBlock)) fail('India must map existing recipes while all six new-country shelves stay draft until their release gates pass.');
-if (!destinationBlock.includes("code:'ITA'") || !destinationBlock.includes('recipeIds:[96]') || !destinationBlock.includes("code:'CHN'") || !destinationBlock.includes('recipeIds:[97,98]')) fail('The Italy and China draft shelves must reference only their matching review-pilot recipe IDs.');
+if (!destinationBlock.includes("code:'IND'") || destinationBlock.includes("code:'ITA'") || destinationBlock.includes("code:'CHN'") || destinationBlock.includes("code:'JPN'") || destinationBlock.includes("code:'MEX'") || destinationBlock.includes("code:'VNM'")) fail('Only the validated India destination may appear in live runtime navigation.');
 const approvedIndiaIds = [51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74];
 const mappedIds = runtime.match(/V31_APPROVED_INDIA_RECIPE_IDS=\[([^\]]+)\]/)?.[1].split(',').map(Number) || [];
 if (mappedIds.join(',') !== approvedIndiaIds.join(',')) fail('India must reference the verified original Indian recipe IDs without creating new records.');
@@ -73,29 +69,22 @@ if (/data-v31-(?:stamp)=|worldPassport/i.test(runtime)) fail('Unreviewed passpor
 if (!runtime.includes('data-v31-approved-recipe') || !runtime.includes('openRecipe(Number(button.dataset.v31ApprovedRecipe))')) fail('Original Indian recipes must open through the existing recipe flow.');
 if (/Mango Lassi Magic|Little Pizza Bites|Brazil|Mini Pão de Queijo/i.test(runtime)) fail('Superseded V3.1 recipe candidates must not be presented as approved destinations.');
 for (const [token, label] of [
-  ['data-v31-pin', 'large accessible map destination markers'],
+  ['data-v31-country="IND"', 'India country marker'],
   ['data-v31-open-world', 'homepage world navigation'],
   ['APPROVED ORIGINAL RECIPES', 'existing Indian recipe collection'],
   ['prefers-reduced-motion', 'reduced-motion support'],
-  ['.v31-world-map', 'geographic map layer'],
-  ['data-v33-map-viewport', 'measurable immersive map viewport']
+  ['data-w02-fixed-map', 'measurable fixed map viewport']
 ]) if (!runtime.includes(token) && !transform.includes(token)) fail(`Missing ${label}.`);
-const explorerPage=runtime.slice(runtime.lastIndexOf('v31WorldPage=function v33AdventureExplorerPage()'),runtime.indexOf('const v3OriginalCreateWeek'));
-if (!explorerPage.includes('data-v31-open-passport') || !explorerPage.includes('data-v31-zoom="reset"') || explorerPage.includes('data-v31-zoom="in"') || explorerPage.includes('data-v31-zoom="out"')) fail('Adventure Explorer must expose Food Passport and a single globe reset control without discrete zoom controls.');
-if (!visualCss.includes('.v31-world-illustrated.v33-adventure-explorer .v31-map-wrap{') || !visualCss.includes('.v31-map-world-space{') || !visualCss.includes('width:100%;height:100%;max-width:none;object-fit:contain')) fail('Adventure Explorer must use a full-content viewport and aspect-preserving approved map art.');
-if (!runtime.includes('V31_DESTINATION_BY_ISO') || !runtime.includes('v31-map-pin') || !runtime.includes('aria-pressed="${chosen}"')) fail('Map destinations must retain country identity, selected-state semantics and accessible marker controls.');
+const explorerPage=runtime.slice(runtime.lastIndexOf('v31WorldPage=function v33FixedWorldMapPage(){'),runtime.indexOf('const v3OriginalCreateWeek'));
+if (!explorerPage.includes('data-v31-open-passport') || !explorerPage.includes('data-v31-country="IND"') || explorerPage.includes('data-v31-zoom') || explorerPage.includes('data-v31-pan-toggle') || explorerPage.includes('v31MapSvg')) fail('Fixed World Map must expose Food Passport and the validated India route without camera controls.');
+if (!visualCss.includes('.w02-map-viewport{') || !visualCss.includes('.w02-map-art .v31-map-art-image{') || !visualCss.includes('object-fit:contain')) fail('Fixed World Map must use a full-content viewport and aspect-preserving approved map art.');
+if (!runtime.includes('data-v31-approved-recipe') || !runtime.includes('openRecipe(Number(button.dataset.v31ApprovedRecipe))')) fail('Original Indian recipes must open through the existing recipe flow.');
 if (!runtime.includes('aria-live="polite"') || !runtime.includes('focus({preventScroll:true})')) fail('Accessible status or focus restoration is missing.');
-if (!runtime.includes('aria-pressed="${chosen}"') || !runtime.includes('aria-label="${state.language===\'pt-BR\'?\'Mapa offline para explorar, não navegar. Fronteiras simplificadas e possivelmente disputadas.\':\'Offline map for exploring, not navigation. Borders are simplified and may be disputed.\'}"')) fail('Selected map and destination states must be announced to assistive technology in both locales.');
-if (transform.includes('max-height:300px;overflow:auto')) fail('India recipes must remain part of the page scroll instead of a nested clipped list.');
 if (!runtime.includes('<h1 tabindex="-1">') || !runtime.includes('v31WorldOpenerIndex')) fail('World entry and return focus targets are missing.');
 if (!runtime.includes(".bottom .tab[data-nav=\"world\"]") || !runtime.includes('v31WorldOpenedFromNav')) fail('World-tab return focus is missing.');
-if (!transform.includes('grid-template-columns:repeat(5,minmax(0,1fr))') || !transform.includes('.v31-primary-actions button{min-height:44px') || !transform.includes('.v31-world-header h1:focus')) fail('Five-tab navigation, focus styling or 44px primary-action targets are missing.');
-if (!visualCss.includes('.v31-map-world-space .v31-map-art-image{') || !visualCss.includes('object-fit:contain') || !runtime.includes('const V33_MAP_ASPECT=717/389') || !runtime.includes('const V33_MAP_HEIGHT=1000/V33_MAP_ASPECT') || !runtime.includes('viewBox="0 0 1000 ${V33_MAP_HEIGHT}"') || !transform.includes("worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp')")) fail('The unchanged approved map crop and geographic markers must share an aspect-preserving map-space camera.');
-if (!runtime.includes('Boundaries are simplified and may be disputed')) fail('The map must explain disputed/simplified borders.');
-if (!runtime.includes('Fronteiras simplificadas e possivelmente disputadas')) fail('The Portuguese map must explain disputed/simplified borders.');
-if (!transform.includes(".replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))") || !runtime.includes('V31_WORLD_GEOGRAPHY=__V31_WORLD_GEOGRAPHY_JSON__')) fail('Offline country data injection is missing.');
-if (!transform.includes(".replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))") || !runtime.includes('V31_WORLD_ADVENTURE=__V31_WORLD_ADVENTURE_JSON__')) fail('Offline adventure recipe data injection is missing.');
-if (!transform.includes("['a08', 'a09', 'duplicates', 'artwork', 'productionSchema'].every(key => worldAdventureSource.releaseGates?.[key] === 'approved')") || !transform.includes('recipes: pilotReleaseApproved ? worldAdventureSource.recipes : []')) fail('Review-pilot recipes must stay outside the offline production runtime until all release gates are approved.');
+if (!transform.includes("worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp')")) fail('The approved owner World Map artwork must remain the offline image source.');
+if (runtime.includes('V31_WORLD_GEOGRAPHY') || runtime.includes('v31MapSvg') || runtime.includes('v31MapPointers')) fail('The fixed map route must not load or generate runtime geography or gesture layers.');
+if (transform.includes(".replace('__V31_WORLD_ADVENTURE_JSON__'") || runtime.includes('V31_WORLD_ADVENTURE')) fail('Unvalidated review-pilot recipes and art must not be embedded in the World Map runtime.');
 if (!pilot || pilot.status !== 'review-pilot' || pilot.baseRecipeCount !== 95 || !Array.isArray(pilot.recipes) || pilot.recipes.map(x=>x.id).join(',') !== '96,97,98') fail('Pilot data must be separate from the immutable 95-record production catalog and contain only IDs 96–98.');
 const pilotTitles=new Set();
 for (const recipe of pilot.recipes) {
@@ -135,9 +124,8 @@ for (const recipe of pilot.recipes) {
   if([...usedFdcIds].some(id=>!recipe.nutritionSourceUrls?.some(url=>url===`https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=DEMO_KEY`)))fail(`Pilot recipe ${expected} is missing its direct USDA FoodData Central API record URL.`);
   if (/pizza/i.test(`${recipe.record.title} ${recipe.record.description}`)) fail('Pizza is not an eligible Italy/China pilot recipe.');
 }
-if (!runtime.includes('RECIPES.push(r)') || !runtime.includes('BATCH_ATLASES[id]=art.atlas') || !runtime.includes('data-v31-approved-recipe="${p.id}"')) fail('Offline pilot recipes and their scene atlases must enter the existing interactive recipe flow.');
-if (!transform.includes('readWorldAdventureAsset') || !transform.includes("artwork/world-adventures")) fail('World pilot artwork must be embedded locally into the offline Android build.');
+if (runtime.includes('RECIPES.push(r)') || runtime.includes('data-v31-approved-recipe="${p.id}"')) fail('Review-pilot recipes must not be published as live runtime routes.');
 if (!transform.includes('wheel|world')) fail('Android back navigation does not recognize the World screen.');
 if (!dataNotes.includes('public domain') || !dataNotes.includes('not suitable for navigation')) fail('Map source/licensing limitations are not documented.');
 if (/https?:\/\/(?:api\.mapbox\.com|maps\.googleapis\.com|tile\.openstreetmap\.org|api\.maptiler\.com)/i.test(runtime)) fail('Runtime map/recipe data must not depend on remote map services.');
-console.log(`PASS: ${recipes.length} original recipes preserved unchanged; ${geography.features.length} offline countries; India links ${approvedIndiaIds.length} original recipes; Italy/China have 3 bilingual review candidates held outside runtime; six new-country shelves remain blocked.`);
+console.log(`PASS: ${recipes.length} original recipes preserved unchanged; ${geography.features.length} offline countries; India links ${approvedIndiaIds.length} original recipes; five international country concepts remain review-only and outside runtime.`);

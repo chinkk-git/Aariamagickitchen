@@ -427,3 +427,40 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 @media(orientation:portrait){.v33-map-sheet{left:50%;bottom:clamp(14px,2vh,24px);transform:translateX(-50%);max-height:42%;width:min(500px,calc(100% - 28px))}}
 @media(orientation:landscape){.v33-map-sheet{left:auto;right:clamp(14px,2vw,26px);top:clamp(72px,10vh,100px);bottom:clamp(14px,2vh,24px);width:min(35vw,400px);max-height:none}.v33-passport-sheet{top:clamp(72px,10vh,100px);bottom:auto;max-height:70%}.v33-adventure-explorer:has(.v33-map-sheet) .v33-map-reset{right:calc(min(35vw,400px) + 38px)}}
 @media(prefers-reduced-motion:reduce){.v31-map-world-space,.v31-map-pin{transition:none!important}}
+
+/* W02 owner-approved fixed map: approved art remains unchanged; no camera UI. */
+.app.v31-world-active #screen.v31-world-screen{padding:0!important;background:#78cbd8!important}
+.w02-fixed-map-page{position:relative;display:flex;flex-direction:column;gap:4px;width:100%;height:100%;min-height:0;overflow:hidden;padding:5px 8px 2px;background:#78cbd8;color:#3f3156}
+.w02-map-header{z-index:3;display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:8px;flex:0 0 46px;min-height:46px}
+.w02-map-header h1{margin:0;text-align:center;font-size:clamp(18px,3.2vw,25px);line-height:1.1}
+.w02-map-back,.w02-passport-button{min-height:44px;border:0;border-radius:16px;background:#fffaf0;color:#4d3c64;box-shadow:0 2px 7px #28495230;font:800 15px/1 inherit}
+.w02-map-back{width:44px;font-size:25px}
+.w02-passport-button{display:flex;align-items:center;justify-content:center;gap:5px;max-width:155px;padding:5px 10px;font-size:20px}
+.w02-passport-button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+.w02-map-viewport{position:relative;display:grid;place-items:center;flex:1 1 auto;min-height:0;width:100%;overflow:hidden;background:#78cbd8;container-type:size}
+.w02-map-art{position:relative;width:min(100cqw,184.32cqh);height:min(100cqh,54.27cqw);aspect-ratio:717/389;flex:none}
+.w02-map-art .v31-map-art-image{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:contain;pointer-events:none}
+.w02-country-marker{position:absolute;left:69%;top:47%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:72px;min-height:72px;padding:5px;border:3px solid #fff;border-radius:21px;background:#fff6d9;color:#453153;box-shadow:0 4px 10px #28495255;font:inherit;transform:translate(-50%,-50%);touch-action:manipulation}
+.w02-country-marker>span{font-size:31px;line-height:1}
+.w02-country-marker>strong{font-size:12px;line-height:1.1}
+.w02-country-marker:focus-visible,.w02-map-back:focus-visible,.w02-passport-button:focus-visible,.w02-recipe-card:focus-visible,.w02-sheet-close:focus-visible{outline:3px solid #634596;outline-offset:2px}
+.w02-map-caption{z-index:2;align-self:center;margin:0 0 2px;padding:3px 9px;border-radius:12px;background:#fffaf0d9;color:#4f4561;font-size:11px;font-weight:700}
+.w02-map-sheet{position:absolute;z-index:8;inset:54px 8px 8px;display:flex;flex-direction:column;gap:8px;min-height:0;padding:13px;border:1px solid #dfd2e9;border-radius:19px;background:#fffdf8f5;box-shadow:0 8px 28px #243b4b55;backdrop-filter:blur(5px)}
+.w02-sheet-close{position:absolute;z-index:1;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:#efe4f2;color:#483256;font-size:25px}
+.w02-sheet-heading{display:flex;align-items:center;gap:10px;min-height:54px;padding-right:42px}
+.w02-sheet-heading>span{font-size:36px}
+.w02-sheet-heading small{color:#775a8b;font-size:9px;font-weight:900;letter-spacing:.06em}
+.w02-sheet-heading h2{margin:2px 0;font-size:21px}
+.w02-sheet-heading p{margin:2px 0;font-size:12px}
+.w02-country-recipes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:7px;min-height:0;overflow:auto;overscroll-behavior:contain;padding:2px 3px 5px}
+.w02-recipe-card{display:grid;grid-template-columns:58px minmax(0,1fr) 20px;align-items:center;gap:8px;min-height:68px;padding:5px 8px;border:1px solid #e7dbea;border-radius:14px;background:#fff;color:#3f3156;text-align:left;font:inherit}
+.w02-recipe-card-art,.w02-recipe-card-art>*{display:block;width:58px;height:54px;overflow:hidden;border-radius:10px;object-fit:cover}
+.w02-recipe-card>span:nth-child(2){display:grid;gap:3px;min-width:0}
+.w02-recipe-card strong{font-size:12px;line-height:1.2}
+.w02-recipe-card small{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;color:#655a70;font-size:10px;line-height:1.2}
+.w02-recipe-card>b{color:#76518c;font-size:18px}
+.w02-passport-stamps{display:flex;flex-wrap:wrap;gap:8px}
+.w02-passport-empty{margin:8px 0;font-size:14px}
+@media(min-width:760px){.w02-fixed-map-page{padding:8px 16px 4px}.w02-map-header{flex-basis:52px}.w02-map-header h1{font-size:26px}.w02-map-art{width:min(100cqw,184.32cqh);height:min(100cqh,54.27cqw)}.w02-country-marker{min-width:84px;min-height:84px}.w02-country-marker>span{font-size:37px}.w02-country-marker>strong{font-size:14px}.w02-map-sheet{inset:60px auto 10px 50%;width:min(590px,56vw);transform:translateX(-50%)}.w02-country-recipes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-height:520px) and (orientation:landscape){.w02-fixed-map-page{gap:1px;padding:2px 8px}.w02-map-header{flex-basis:38px;min-height:38px}.w02-map-back,.w02-passport-button{min-height:36px}.w02-map-art{width:min(100cqw,184.32cqh);height:min(100cqh,54.27cqw)}.w02-map-caption{font-size:9px}.w02-map-sheet{inset:42px 8px 5px auto;width:min(55vw,560px)}}
+@media(prefers-reduced-motion:reduce){.w02-map-sheet{scroll-behavior:auto}}

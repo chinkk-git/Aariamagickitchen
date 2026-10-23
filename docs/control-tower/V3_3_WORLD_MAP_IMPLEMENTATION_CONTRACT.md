@@ -1,125 +1,57 @@
-# V3.3 World Map Explorer — W02 Implementation Contract
+# V3.3 World Map — W02 Implementation Contract
 
 Status: implementation active; acceptance and independent gates not claimed
-Owner: W02  
-Tracking: [Issue #39](https://github.com/chinkk-git/Aariamagickitchen/issues/39)  
-Branch: `feature/v3.3-world-map-explorer`  
-Baseline reviewed: `31bd397914b931688ef34b34882cf389d00715ac`
+Owner: W02
+Tracking: [Issue #39](https://github.com/chinkk-git/Aariamagickitchen/issues/39)
+Branch: `feature/v3.3-world-map-explorer`
+Baseline reconciled: `91f19a24c8e017b686f55224b45d78039c1f44b7`
 
-## Owner redesign override — 2026-10-23
+## Governing owner direction
 
-This directive supersedes earlier V3.3 layout and control details in this contract. The previous sample presentation is rejected; its historical APK, hash and successful phone navigation trace are retained as diagnostics only. The replacement must be an immersive Adventure Explorer, and owner visual approval is mandatory before acceptance.
+The owner’s latest Issue #39 directive (2026-10-23, comment `6366595097`) supersedes earlier zoom/pan Adventure Explorer plans. The prior framed/gesture sample remains rejected. W02 is the only writer on this branch. W01 retains exclusive ownership of `feature/v3.2-magical-cookbook`; W03 retains exclusive ownership of `feature/international-recipe-content`. No merge, production deployment or release is authorized.
 
-- The actual Android map viewport must occupy 85–95% of usable content area after system insets and persistent navigation are excluded. Measure rendered bounds on device. Remove the framed card, capped map height, redundant headings and unused page sections.
-- Keep the verified owner-approved World Map source image unchanged. Preserve its intrinsic aspect ratio. Portrait begins at a useful India/Asia-adjacent focus and supports natural horizontal exploration; the entire map remains reachable by bounded pan. Landscape defaults to a near edge-to-edge world overview.
-- Use a single uniform camera transform for approved art, geographic overlay and country markers. Support one-finger drag, pointer-centred two-finger pinch and one floating globe reset only; remove plus/minus and pan-mode controls. Clamp camera translation to rendered map bounds and retain marker/map alignment.
-- Destination taps open a compact, localized preview over the map. India exposes exactly the existing 18 canonical IDs. Italy, China, Japan, Mexico and Vietnam are review-only; they have no recipe links, rewards or canonical count contribution.
-- Food Passport reads existing profile progress and completion state. Viewing a country never grants a stamp. Offline/restart behavior and map restoration across preview, recipe Back and orientation remain required.
-- Capture actual app screenshots for phone/tablet in portrait/landscape, zoomed map, preview, recipe and passport. G1/G2/G3 and full canonical 95-route coverage remain unchanged. A08, A09, artwork rights and Android security are separate evidence gates.
+- Use the existing owner-approved illustrated World Map image `docs/design/approved-v31-world-map-crop.webp` (SHA-256 `5296a636c86f2d0f8a12c60406fa366723cb442c292cc2d3bd6b3f1b90afa353`) as a fixed background. Preserve its 717×389 aspect ratio and bytes. Do not generate or substitute map art.
+- Show only destinations with validated canonical recipe links. India is the only live destination now and links exactly to IDs 51–65, 69, 72 and 74. Italy, China, Japan, Mexico and Vietnam remain review-only concepts; they are not live recipe routes or rewards.
+- A country tap opens that country’s recipe cards directly over the map. A recipe card uses the existing recipe detail, ingredients and steps route. Android Back returns to the same country cards. The Food Passport remains reachable with a compact in-map control.
+- Remove pan, pinch, zoom buttons, globe reset, travel animation and unnecessary intermediate preview/game mechanics. The fixed route does not parse or draw full-world geographic polygons.
+- Work offline, in EN-GB and PT-BR, on phones/tablets and portrait/landscape. Keep the viewport visually dominant and its rendered occupancy measurable; preserve the full illustration without stretching or essential-geography cropping. Country targets are at least 48 CSS px in the Android smoke. Maintain Android Back, keyboard/TalkBack names, focus, text scaling and reduced motion.
+- Food Passport state comes only from completed canonical recipe events. Viewing a country or opening the passport grants nothing. Preserve profile data and offline/restart persistence.
+- Keep all 95 canonical records, IDs and existing routes unchanged. G1 → W02 sample → G2 → G3 and all 95 G3 recipe checks remain mandatory. A08 child protection, A09 child experience, artwork rights, nutrition/culture and Android security are distinct gates. Owner visual approval is still required.
 
-### V3.3 camera and view-state strategy
+## Architecture
 
-The map viewport is a clipped `data-v33-map-viewport`; a shared `v31-map-world-space` provides the aspect-locked base dimensions and uniform camera transform. Portrait base width is derived from usable map height at the unchanged crop's 717:389 aspect; this makes horizontal exploration intentional without shrinking the map. Landscape fits the full map into the viewport. Pan bounds derive from the transformed map-space dimensions and viewport rectangle, not the outer screen or fixed zoom multipliers. Country marker hit geometry is counter-scaled to remain readable while its geographic anchor follows the same world-space transform.
+Reuse the existing production HTML/JavaScript transformed by `tools/v3/transform-production.mjs`, the V3.1 World route in `tools/v3/runtime.js`, its approved artwork and the existing Android WebView app. Do not add a second application shell or change the W01 recipe layout.
 
-The country preview and Food Passport are dismissible overlays recorded in browser history. This lets Android Back close the top-level panel first. Recipe navigation adds a route entry above that panel, so Back returns to the selected country and the exact camera. Orientation resize recalculates the orientation-appropriate default and keeps preview state; returning from a recipe does not reset the map.
+The fixed route uses one image element and one India button positioned in the approved art’s normalized local frame. It renders only the 18 allowlisted canonical India records in a scrollable country sheet. Recipe cards call the existing `openRecipe` route. Country/passport sheets use the existing browser history so system Back closes them in the expected order. The route omits the 177-feature GeoJSON payload and SVG polygon generation, which is not needed for a fixed illustrated background and is under investigation as a contributor to the previous slow/stale framebuffer capture.
 
-### Redesign evidence thresholds
+Profile progress remains in the existing profile store. The UI reads India stamps from saved profile state, while the completion listener remains restricted to completed IDs in `V31_APPROVED_INDIA_RECIPE_IDS`. No schema migration or automatic reward is introduced.
 
-Phone and tablet Android smoke must calculate `mapRect.width * mapRect.height / (usableScreenRect.width * usableScreenRect.height)` from rendered bounds and require 0.85–0.95. It also checks zero frame/border, the map-space aspect, the approved source image's natural and rendered ratios, country marker anchors before/after camera motion, and actual landscape/portrait viewport dimensions. The phone smoke injects two-pointer touch through WebView DevTools and one-finger `adb` swipe; it verifies zoom/pan change, bounds, globe reset, PT-BR and EN-GB preview, canonical recipe #51, Android Back restoration and a non-rewarding Passport view. Tablet smoke captures both real orientations while its full 95-recipe artwork audit continues unchanged.
+## W03 import adapter
 
-## Governing decisions
+W03’s branch and content remain W03-owned. W02 provides `tools/v3/international-recipe-adapter.mjs` and the initial contract; no unapproved W03 content is imported into the app.
 
-Issue #39's 2026-10-22 owner override authorizes isolated W02 development in parallel with W01. W01 continues to own `feature/v3.2-magical-cookbook`; W02 owns only this branch. No merge, release or production change is authorized.
+The adapter requires an exact immutable source commit and a `content/international/manifest.json` at that snapshot. It fails closed unless the manifest is `schema_version: 1.0`, `integration_status: READY_FOR_INTEGRATION`, has `source_commit` equal to the pinned commit, preserves the 95-record base and validated India mapping, and records owner artwork approval. Each entry must have a unique final ID above 95, a supported country slug, `READY_FOR_INTEGRATION`, recipe JSON/Markdown paths, artwork readiness, separate explicit review states, and local artwork paths with matching SHA-256 hashes.
 
-The owner-approved visual reference is `WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED.png`, supplied in `Aaria_World_Map_Approved_Design_Package.zip`. The local package SHA-256 is `46233d2b615cbacf6ea664413a9cac9e5a3b590dbbddf09bff58326aebd686c0`; the image SHA-256 is `1ab670c7a4e36f29a3275b2043c7edb9e85c65491ff82679e51074194dc985dc`, matching the checksum stated in the owner-supplied design brief. Commit the reference/design sources with provenance. Do not substitute invented/generated artwork. The concept board is design direction only. Runtime uses the existing protected World Map illustration `docs/design/approved-v31-world-map-crop.webp` (SHA-256 `5296a636c86f2d0f8a12c60406fa366723cb442c292cc2d3bd6b3f1b90afa353`) unchanged. Its 717×389 aspect ratio sets the map-space projection; the image is rendered with `object-fit: contain`. The concept board itself is not placed in the runtime map layer; its artwork rights remain an independent gate.
+Recipe JSON must include matching ID/country, EN-GB and PT-BR title/instructions, ingredients, equipment, ordered steps, allergens, bilingual adult-assistance guidance, and sourced per-serving nutrition or explicitly sourced unknowns. Each separate image asset is hash-checked and packaged as an offline data URI. A08/A09, nutrition, culture, duplicate and security statuses are returned as-is; the adapter never marks a pending review passed. Current W03 draft manifests are expected to be rejected. W02 consumes an immutable validated pair only after W03 posts it and the owner approves the first-artwork gate.
 
-Issue #39 supersedes the older package text that said implementation was deferred. The approved image and canonical data govern appearance and content; the mockup's sample recipes, country counts and passport states are not production data.
+W02 posted the proposed manifest/path contract to Issue #50 comment `6366700295`; any W03 schema incompatibility is an integration blocker, not permission to alter W03 files.
 
-## Architecture strategy
+## Acceptance and test strategy
 
-### Reuse first
-
-- Preserve the single offline HTML/JavaScript experience transformed from `index.html` by `tools/v3/transform-production.mjs` and rendered by the existing Android WebView app in `phase2-pilot/apps/aaria-android`.
-- Extend the existing V3.1 World route and styles/data in `tools/v3/runtime.js`, existing geography and world-adventure records, and the profile persistence contract. Do not create a second Android app shell or replace WebView with Compose.
-- Keep the repository's existing Gradle, Node validation, Android test and GitHub Actions conventions. Pin all evidence to the exact source SHA.
-- Reuse current map/geography data and approved art only after verifying source, country association and rights. Keep geospatial marker coordinates normalized to the authored map coordinate system and apply one bounded uniform transform to both geography and markers.
-
-### State and input model
-
-Implement a deterministic World Explorer state with overview, selected-country preview/list, landmark fact and passport views. A single state owner controls selection, zoom/pan, scroll, current panel and language. Opening and closing a panel or changing orientation must restore the map camera and prior selection.
-
-Use pointer/touch gestures with movement threshold and pointer-cancel handling: taps select; one-finger drags pan; two-pointer pinch zooms around the gesture centre; the globe control resets to the orientation default. Do not add separate zoom controls or pan mode. Bound translation so the full map remains discoverable, clamp zoom, and keep marker targets large at every scale. No GPS is needed or permitted.
-
-Passport stamps derive only from durable, verified recipe-completion events already present in the child profile. Do not manufacture completion state or progress counts. Add migration-safe fields only if the existing persisted model lacks the needed relationship; preserve existing profile data and test old-profile upgrade.
-
-### Data and content model
-
-- The 95 canonical recipe records are the sole production recipe catalogue. Preserve IDs, routes, names, warnings, images and existing functionality.
-- Map each destination to a validated ISO country code and one or more original recipe IDs only where repository data supports that relationship. No mockup filler. Empty destinations must be omitted or show an honest localized empty state.
-- Country and landmark copy, flags, geography and artwork require a source/provenance record and factual review. Keep EN-GB and PT-BR strings in the existing localization pattern.
-- All required content is bundled; no runtime network, map tiles, account, remote persistence or paid API is allowed.
-
-## Acceptance criteria
-
-### Visual and responsive
-- Actual map viewport area is 85–95% of usable content area in each phone/tablet orientation, measured from rendered Android geometry; no small frame or excessive margin.
-- Phone portrait begins with a large map view that supports natural horizontal exploration; phone landscape and both tablet orientations remain near edge-to-edge and usable.
-- Country preview remains compact/dismissible and does not destroy the map camera. Food Passport is reachable without displacing the map or covering persistent navigation.
-- Keep the approved source ratio, full-map reachability and marker anchors; no stretching or inaccessible geography. Capture all four form factors and document any approved-reference deviation.
-
-### Interaction, data, storage, offline and accessibility
-- One-finger drag, two-finger pinch and globe reset work within bounds; drag never opens a marker; selected anchors remain aligned to the approved map.
-- Country preview, recipe list, landmark fact, passport and system Back follow the approved state transitions; closing detail restores camera and selection.
-- All 95 original recipe routes remain reachable; displayed country recipes use canonical IDs and data. No mockup-only recipe or unsupported country mapping appears.
-- Passport earns a country stamp only after a mapped recipe is genuinely completed; progress survives process death, restart, offline use and app upgrade without profile loss.
-- Map, facts, previews, recipe route and passport work in airplane mode.
-- EN-GB and PT-BR copy exists for all new labels, facts and empty states and fits each layout.
-- Country destinations are keyboard/TalkBack actionable; markers and floating controls meet 44 CSS px target sizing where applicable. Pinch has bounded movement and a globe recovery/reset action; focus, text scaling and reduced motion are checked.
-- No timer, geolocation, tracking, ads, public sharing, chat, leaderboards or child-risk external navigation.
-
-### Independent gates and delivery
-- A03 technical review, A08 safety, A09 age 8–10 experience, artwork rights/provenance and Android security/update are separately recorded as PASS or BLOCKED with evidence.
-- Exact-head CI, emulator interaction/offline/state tests, four-form-factor screenshots, APK metadata/hash and known limitations are attached to Issue #39.
-- No merge, production deployment or release occurs under this contract.
-
-## Test plan
-
-| Layer | Required proof |
+| Area | Required evidence |
 |---|---|
-| Source/data contracts | Canonical 95/95 IDs and route preservation; ISO code validity; recipe ID/name/art association; no unsupported or mockup-only recipe; locale completeness; asset checksums/provenance. |
-| Unit/model | Camera transform, pointer threshold/cancel, pinch centre, pan/zoom bounds, map selection, state transitions, stamp derivation, migration and persistence. Deterministic inputs; no timing-based tests. |
-| UI/interaction | Tap, one-finger drag, two-finger pinch, globe reset, country preview, recipe launch/return, passport, Android Back, orientation and language switch. |
-| Visual | Compare actual Android screenshots with the approved reference for phone portrait/landscape and tablet portrait/landscape. Verify no distortion, clipped actions, overlapped navigation or unreadable copy. |
-| Offline/regression | Airplane-mode map flow and existing 95 recipe routes, favourites, planner, shopping, home, profile, navigation, Classic coexistence and app Back. |
-| Accessibility | TalkBack names/roles, focus order, destination keyboard access, reset/recovery, target size, font scaling, contrast and reduced motion. A09 assesses whether pinch/drag discoverability is sufficient for ages 8–10. |
-| Performance/security | Smooth map pan/zoom on supported emulator/device tiers; bounded memory/asset size; no accidental network/GPS permissions or unsafe WebView bridge access. Signing/update checks remain the existing Android security gate. |
-| Independent review | A03, A08, A09, rights/provenance and Android security each produce separate evidence and decision. |
+| Fixed map geometry | On Android, measure the actual screen, viewport, artwork, image intrinsic/rendered ratio, marker rectangle and marker location. Require usable viewport occupancy 85–95% where device geometry permits, aspect preservation, zero map frame, target size ≥48 CSS px, and no hidden pan/zoom controls. |
+| Phone sample | Clean install/launch; real Android touch Home → World Map → India; capture framebuffer and logs; verify 18 unique canonical IDs; open recipe 51; Android Back returns to India cards; capture portrait and landscape, cards, recipe and Passport. |
+| Tablet G2 | Measure/capture fixed map in portrait and landscape. Preserve recipe #12 EN-GB/PT-BR detail, ingredients, steps, completion and accessibility checks. |
+| G3 | Preserve the full 95 canonical recipe-route sweep, language/safety checks, screenshot manifest, Home/World screenshots and Passport completion behavior. |
+| Food Passport | Opening country/Passport grants no stamp. Existing completed progress survives process death and airplane-mode restart. |
+| W03 adapter | Unit tests reject drafts, wrong pinned commit, ID collisions, missing bilingual fields/files/assets and tampered hashes; a complete pinned fixture becomes a local offline bundle while review states remain independent. |
+| Regression/security | `npm test --prefix phase2-pilot`, V3.1 canonical validator, V3.3 draft validator, production transform, JS/shell syntax, workflow YAML, Android package/signing checks and `git diff --check`. Exact-head CI only; do not cancel active runs or weaken gates. |
 
-## Dependencies and escalation
+## Dependencies, evidence and escalation
 
-### Available
-- Current W02 branch head and existing offline WebView/JS architecture.
-- Canonical production catalogue and current world/geography data.
-- Owner-approved image/design package, checksum-verified in the source workspace.
-- Existing Android build and CI conventions.
+Available dependencies are the existing canonical catalogue, approved image, production transformer, WebView application, offline profile persistence, Gradle build and Android CI. The existing five-country draft registry remains separately validated and outside map runtime.
 
-### Open dependencies
-- The owner-supplied approved image and source design notes are now versioned under `docs/design/references/v3.3/`; comparison still requires exact-head Android screenshots and independent visual review.
-- The newly supplied five-country concept board is model-generated and kept only as a hashed provenance note; it is not cleared runtime artwork.
-- Runtime asset use requires the independent artwork-rights/provenance review; approval of a visual reference alone does not close that gate.
-- Exact country-to-recipe relations and reviewed landmark copy must be supported by canonical repository records and verified sources.
-- A08, A09 and Android security are independent reviewers, not implementer self-checks.
+Every Issue #39 update must include source commit, CI run link and per-gate result, artifact links, APK package/SHA when available, actual Android screenshots/geometry/logs, canonical 95 and India 18 evidence, adapter snapshot when integrated, limitations, and independent A08/A09/rights/security status. Historical screenshots/CI remain diagnostic and must not be described as approval for the redesigned map.
 
-### Escalate only when
-- An essential design decision cannot be read from the approved reference or current owner directives.
-- The canonical 95 records do not support a proposed mapping/content relationship.
-- A mandatory asset, provenance record, localization review or platform input is unavailable and blocks that specific work.
-- A safety, privacy, licensing or Android security finding requires an owner decision or halts a potentially unsafe path.
-- The authorized branch is no longer isolated or a write collision is detected.
-
-While an independent gate is pending, continue implementation and non-gated tests with approved/cleared assets; mark the affected acceptance item blocked. Never report a gate as passed without its reviewer evidence.
-
-## Initial checkpoint
-
-- W02 and W01 branch refs were read at `31bd397914b931688ef34b34882cf389d00715ac`; no W01-only branch edits are part of this profile commit.
-- Profile/contract are planning artifacts. They are not evidence that the map feature, Android QA, independent gates or release acceptance have passed.
+Escalate only when required owner-approved artwork is missing/ambiguous, the owner’s visual direction is contradictory, a W03 handoff does not meet its posted contract, or an independent reviewer/owner decision is required. Engineering failures are diagnosed and fixed on W02’s branch without waiting for routine documentation approval.
