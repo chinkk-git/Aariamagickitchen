@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 3988)
+Total output lines: 304
+
 name: Aaria V3.2 shared recipe renderer and test APK
 
 on:
@@ -19,7 +22,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: aaria-v32-android
+  group: aaria-android-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -120,76 +123,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: aaria-magical-kitchen-v3.2-test-apk
-          path: artifacts/v32-previous-preview-apk
-          repository: chinkk-git/Aariamagickitchen
-          run-id: 39662030525
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Download prior uniquely identified V3.2 review APK for coexistence
-        uses: actions/download-artifact@v4
-        with:
-          name: aaria-magical-kitchen-v3.2-test-apk
-          path: artifacts/v32-previous-review-apk
-          repository: chinkk-git/Aariamagickitchen
-          run-id: 39666012130
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Verify prior V3.2 review APK identity and integrity
-        run: |
-          set -euo pipefail
-          prior=artifacts/v32-previous-review-apk/app-debug.apk
-          test -s "$prior"
-          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
-          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
-          "$aapt" dump badging "$prior" > artifacts/v32-diagnostics/prior-review-apk-badging.txt
-          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32review70' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/prior-review-apk-badging.txt
-          "$apksigner" verify --print-certs "$prior" > artifacts/v32-diagnostics/prior-review-apk-signer.txt
-          grep -Fq 'certificate SHA-256 digest: 6635474c461b5ae5e6206624e1be07184258df35e94782aeb236308e9e013c46' artifacts/v32-diagnostics/prior-review-apk-signer.txt
-          echo 'c7cd47fe6b18c7da1053ef355aad7f634ae306a1306ce7718950bcb26f73333b  '"$prior" | sha256sum --check
-          sha256sum "$prior" | tee artifacts/v32-diagnostics/prior-review-apk-sha256.txt
-
-      - name: Verify previous V3.2 preview identity for coexistence test
-        if: github.run_number == 74
-        run: |
-          set -euo pipefail
-          prior=artifacts/v32-previous-preview-apk/app-debug.apk
-          test -s "$prior"
-          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
-          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
-          "$aapt" dump badging "$prior" > artifacts/v32-diagnostics/previous-v32-apk-badging.txt
-          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32preview' versionCode='7' versionName='1.0.3'" artifacts/v32-diagnostics/previous-v32-apk-badging.txt
-          "$apksigner" verify --print-certs "$prior" > artifacts/v32-diagnostics/previous-v32-apk-signer.txt
-          grep -Fq "certificate SHA-256 digest: 59a4885f3baacb9434f99e0c6cf3373b9ae6b8384d254627c2ab40361dfcde44" artifacts/v32-diagnostics/previous-v32-apk-signer.txt
-          sha256sum "$prior" | tee artifacts/v32-diagnostics/previous-v32-apk-sha256.txt
-
-      - name: Download Classic preview for nondestructive coexistence check
-        uses: actions/download-artifact@v4
-        with:
-          name: aaria-magical-kitchen-w01-unified-preview-apk
-          path: artifacts/v31-baseline-apk
-          repository: chinkk-git/Aariamagickitchen
-          run-id: 39528150224
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enable and verify Linux KVM for Android emulator
-        run: |
-          set -euo pipefail
-          mkdir -p artifacts/v32-diagnostics
-          {
-            echo "utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            echo "runner_user=$(id)"
-            uname -a
-            free -h
-            df -h "$GITHUB_WORKSPACE"
-            if [ ! -c /dev/kvm ]; then
-              echo "/dev/kvm is missing on this runner." >&2
-              exit 1
-            fi
-            ls -l /dev/kvm
-            stat -c 'kvm_mode=%a kvm_owner=%U kvm_group=%G' /dev/kvm
-            echo "kvm_read_write_before=$(test -r /dev/kvm && test -w /dev/kvm && echo yes || echo no)"
-          } | tee artifacts/v32-diagnostics/emulator-runner-preflight.txt
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          path: artifac…988 tokens truncated…m"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
           sudo chmod 0666 /dev/kvm
