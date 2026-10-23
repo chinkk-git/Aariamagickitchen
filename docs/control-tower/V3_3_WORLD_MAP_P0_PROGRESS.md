@@ -17,16 +17,18 @@ Status: implementation in progress; no external gate is claimed passed.
 - Added W02 to the existing Android CI branch trigger and included the V3.3 data validator in G1.
 - Reconciled Android run `39882408447` against W01's later run `39882586213`: the W02 failure was the tablet smoke comparing a 788.66 px ingredient grid to 68% of the full 1280 px viewport. W01's tablet run passed after its smoke harness measured the actual ingredient panel; this W02 change ports that evidence-based **test-only** measurement and leaves recipe layout untouched.
 - Added a distinct debug-only W02 package suffix (`.v33map<run>`) and sample APK artifact name. This prevents the first World Map sample from colliding with V3.1/V3.2 review installs and gives it a clearly identified sample label.
+- Reconciled runs `39890152088` and `39891777820` on W02 heads `076024c…` and `204493e…`. Both passed build/G1 then exited G2 with code 124 in the full tablet recipe-image audit. The Node audit was hard-limited to 1,080 seconds; run 136 reached tablet-landscape recipe 90/95 before termination. Extended the bounded Node limit to 2,520 seconds, G2 to 50 minutes and the job to 90 minutes. The two-orientation 95-recipe audit and G3's full phone 95/95 checks remain intact.
+- Added a W02-only clean Pixel 3a API 35 sample step ahead of G2. Run `39940928305` built and verified package `com.aaria.magickitchen.pilot.v33map139`, installed/launched it, and archived APK SHA-256 `534571d8b43ac18a914d983e667873271d2e8579dea5f9db1b0932421509e924`. The first harness attempt did not reach route validation: the fresh emulator showed a Quickstep ANR overlay and the Home selector was stale. Failure screenshot/logs are in artifact `12496371620`. Added a stable-launcher/one-reboot preflight and corrected the Home selector; an exact-head rerun is required before sample acceptance.
 
 ## Local evidence
 
-- `npm test --prefix phase2-pilot`: 56/56 passed after the W02 geometry-harness and APK-identity changes.
+- `npm test --prefix phase2-pilot`: 58/58 passed after the approved-reference and Food Passport checks.
 - `node tools/v3/validate-v33-world-map-drafts.mjs`: passed.
 - `node tools/v3/validate-v31.mjs`: passed; 95 original recipes, 177 offline countries, existing India links preserved.
-- `bash -n` passed for the Android phone/tablet smoke scripts; `git diff --check` passed.
+- `node tools/v3/verify-v32-reference-assets.mjs`: passed.
+- `node --check` and `bash -n` passed for W02/Android smoke scripts; workflow YAML parses; `git diff --check` passed.
 - Production transform completed and emitted map zoom controls. A scan of that transformed output confirmed none of the five new concept recipe names leaked into runtime.
-- `git diff --check` passed before the latest documentation and localization edits; rerun required before commit.
-- Android Gradle/SDK is not installed in the local execution environment. Exact-head CI and emulator evidence are still required; no APK or Android screenshot acceptance is claimed.
+- Local Android Gradle/SDK/ADB are unavailable. Exact-head CI run `39940928305` passed build/G1 and produced APK/evidence artifacts, but its sample route smoke failed before navigation; G2/G3 were therefore skipped. No successful phone map screenshot or Android persistence-on-restart result is claimed yet.
 
 ## Remaining evidence and independent gates
 

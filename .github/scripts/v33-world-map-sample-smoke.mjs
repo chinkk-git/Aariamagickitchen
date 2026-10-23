@@ -93,7 +93,7 @@ const evidence = {
 try {
   session = await connect();
   await waitFor(session.evaluate,
-    `(()=>{const e=document.querySelector('.v31-hero-copy h1');const r=e?.getBoundingClientRect();return {visible:!!e&&!!r&&r.width>0&&r.height>0,text:e?.textContent?.trim()||''}})()`,
+    `(()=>{const e=document.querySelector('.v31-hero-welcome h1');const r=e?.getBoundingClientRect();return {visible:!!e&&!!r&&r.width>0&&r.height>0,text:e?.textContent?.trim()||''}})()`,
     'Home');
   const profileDialog = await session.evaluate(`(()=>{const d=document.querySelector('#v3ProfileDialog'),r=d?.getBoundingClientRect();return !!d&&!!r&&r.width>0&&r.height>0&&getComputedStyle(d).display!=='none'})()`);
   if (profileDialog) {
