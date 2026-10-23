@@ -33,28 +33,32 @@ test('Adventure Explorer uses natural drag/pinch, bounded globe reset and large 
   assert.match(css,/\.v31-map-pin\{[^}]*pointer-events:all/);
 });
 
-test('V3.3 map art comes from the supplied approved visual reference', async () => {
-  const [transform, runtime, css, phone, tablet, approvedReference] = await Promise.all([
+test('V3.3 runtime keeps the approved map crop and uses the concept board as direction only', async () => {
+  const [transform, runtime, css, phone, tablet, approvedReference, approvedMapCrop] = await Promise.all([
     read('tools/v3/transform-production.mjs'), read('tools/v3/runtime.js'), read('tools/v3/home-world-visual.css'),
     read('.github/scripts/v32-android-smoke.sh'), read('.github/scripts/v32-android-tablet-smoke.sh'),
-    readFile(new URL('docs/design/references/v3.3/WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED.png', root))
+    readFile(new URL('docs/design/references/v3.3/WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED.png', root)),
+    readFile(new URL('docs/design/approved-v31-world-map-crop.webp', root))
   ]);
-  assert.match(transform, /worldMap: readReferenceImage\('docs\/design\/references\/v3\.3\/WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED\.png'\)/);
-  assert.match(runtime, /v31-map-reference-art[\s\S]*?V31_HOME_WORLD_ART\.worldMap/);
+  assert.match(transform, /worldMap: readReferenceImage\('docs\/design\/approved-v31-world-map-crop\.webp'\)/);
+  assert.doesNotMatch(transform, /worldMap: readReferenceImage\('docs\/design\/references\/v3\.3\/WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED\.png'\)/,
+    'the concept board is not substituted for the runtime illustration');
   assert.match(runtime, /class="v31-map-art-image" alt=""[\s\S]*?mapArt\.src=V31_HOME_WORLD_ART\.worldMap/,
-    'the full approved PNG is assigned as an image source instead of a multi-megabyte inline CSS URL');
-  assert.match(css, /\.v31-map-world-space \.v31-map-art-image\{[^}]*width:169%;/);
-  assert.match(phone, /approvedArt=expected\.startsWith\('data:image\/png;base64,'\)&&art\?\.src===expected&&art\.complete&&art\.naturalWidth>0/,
-    'phone smoke confirms the approved PNG is fully loaded in the map layer');
-  assert.match(tablet, /approvedArt=expectedArt\.startsWith\("data:image\/png;base64,"\)&&image\?\.src===expectedArt&&image\.complete&&image\.naturalWidth>0/,
-    'tablet smoke confirms the approved PNG is fully loaded in the map layer');
+    'the existing approved map crop is assigned as an image source');
+  assert.match(css, /\.v31-map-world-space \.v31-map-art-image\{[^}]*width:100%;height:100%;[^}]*object-fit:contain/,
+    'the unchanged World Map crop keeps its full aspect-ratio-preserving bounds');
+  assert.match(runtime, /const V33_MAP_ASPECT=717\/389[\s\S]*?const V33_MAP_HEIGHT=1000\/V33_MAP_ASPECT/);
+  assert.match(phone, /approvedArt=expected\.startsWith\('data:image\/webp;base64,'\)&&art\?\.src===expected&&art\.complete&&art\.naturalWidth>0/,
+    'phone smoke confirms the approved WebP map crop is fully loaded');
+  assert.match(tablet, /approvedArt=expectedArt\.startsWith\("data:image\/webp;base64,"\)&&image\?\.src===expectedArt&&image\.complete&&image\.naturalWidth>0/,
+    'tablet smoke confirms the approved WebP map crop is fully loaded');
   assert.equal(createHash('sha256').update(approvedReference).digest('hex'), '1ab670c7a4e36f29a3275b2043c7edb9e85c65491ff82679e51074194dc985dc',
-    'the exact approved reference bytes remain unchanged');
-  assert.doesNotMatch(transform, /worldMap: readReferenceImage\('docs\/design\/approved-v31-world-map-crop\.webp'\)/,
-    'V3.3 runtime no longer substitutes the earlier V3.1 crop for its approved reference');
+    'the exact owner-approved concept-board bytes remain unchanged as design provenance');
+  assert.equal(createHash('sha256').update(approvedMapCrop).digest('hex'), '5296a636c86f2d0f8a12c60406fa366723cb442c292cc2d3bd6b3f1b90afa353',
+    'the pre-existing approved World Map crop bytes remain unchanged for runtime use');
 });
 
-test('phone World Map screenshot capture accepts the high-detail approved PNG', async () => {
+test('phone World Map screenshot capture accepts the approved map crop', async () => {
   const smoke = await read('.github/scripts/v33-world-map-sample-smoke.mjs');
   assert.match(smoke, /execFileSync\('adb',[\s\S]*?maxBuffer:\s*64\s*\*\s*1024\s*\*\s*1024/,
     'the Android screenshot pipe has enough capacity for the approved illustrated map');

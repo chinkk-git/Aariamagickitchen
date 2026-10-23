@@ -42,6 +42,13 @@ Status: implementation in progress; no external gate is claimed passed.
 - Production transform completed and emitted map zoom controls. A scan of that transformed output confirmed none of the five new concept recipe names leaked into runtime.
 - Local Android Gradle/SDK/ADB are unavailable. Exact-head run `39944765865` produced the accepted phone sample artifacts and matching APK-byte hash; tablet 95-recipe images ran in both orientations, but the PT-BR #12 navigation-label assertion failed after those loops, so G3 did not run. Android persistence-on-restart and full G3 evidence remain outstanding.
 
+
+## Owner art-use correction (2026-10-23)
+
+- The V3.3 concept board `WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED.png` is design direction only. It is not embedded in the live map, because the board includes example UI and unapproved recipe/passport content.
+- Runtime now uses the unchanged, rights-tracked illustration `docs/design/approved-v31-world-map-crop.webp` (SHA-256 `5296a636c86f2d0f8a12c60406fa366723cb442c292cc2d3bd6b3f1b90afa353`). The projection and camera use its 717:389 aspect; `object-fit: contain` retains the full crop. The concept-board bytes remain unchanged for comparison.
+- The marker inverse-scale defect was reproduced in Android run #39952628337 and corrected. Exact-head CI is still required to confirm marker geometry, the offline Food Passport restart flow, and G1/G2/G3.
+
 ## Remaining evidence and independent gates
 
 1. Run exact W02-head GitHub Actions Android build and phone/tablet smoke. Confirm the uniquely identified V3.3 sample package installs and launches; verify real map navigation and gestures, offline/local persistence, language, screenshots and APK checksum.
