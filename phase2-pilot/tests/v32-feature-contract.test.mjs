@@ -220,6 +220,12 @@ test('tablet G3 waits for a ready WebView title and preserves emulator logcat on
     'startup readiness remains bounded and reports the last observed target');
   assert.match(tablet, /ws\.addEventListener\('close',event=>\{const error=new Error\('Tablet WebView DevTools socket closed:/,
     'a lost DevTools socket immediately fails pending protocol commands with the close code');
+  assert.match(tablet, /for\(let attempt=1;attempt<=6&&!ws;attempt\+\+\)/,
+    'a transient tablet DevTools handshake failure gets at most six bounded connection attempts');
+  assert.match(tablet, /DevTools WebSocket open timed out after 5 seconds/,
+    'each tablet DevTools handshake attempt has a five-second deadline');
+  assert.match(tablet, /failed after 6 bounded attempts:[\s\S]*?target=/,
+    'exhausted handshake retries report the last error and WebView target');
   assert.match(tablet, /trap capture_tablet_logcat_on_exit EXIT/);
   assert.match(tablet, /logcat -d -t 4000/,
     'tablet emulator logcat is retained in diagnostics when the smoke fails');

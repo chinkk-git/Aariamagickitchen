@@ -76,8 +76,33 @@ for(let i=0;i<60&&!target;i++){
 }
 if(!target)throw Error('Tablet app-owned WebView target did not become title-ready within 30 seconds: '+JSON.stringify(lastCandidate&&{url:lastCandidate.url,title:lastCandidate.title,id:lastCandidate.id}));
 console.log('Tablet WebView DevTools target: '+JSON.stringify({url:target.url,title:target.title,id:target.id}));
-const ws=new WebSocket(target.webSocketDebuggerUrl);
-await new Promise((resolve,reject)=>{ws.addEventListener('open',resolve,{once:true});ws.addEventListener('error',reject,{once:true})});
+let ws=null;
+let lastConnectionError=null;
+for(let attempt=1;attempt<=6&&!ws;attempt++){
+  let candidate=null;
+  try{
+    const targets=await(await fetch('http://127.0.0.1:9223/json',{signal:AbortSignal.timeout(2500)})).json();
+    target=targets.find(x=>x.type==='page'&&x.webSocketDebuggerUrl&&x.url?.includes('appassets.androidplatform.net')&&x.title?.includes('Magical Kitchen'))||target;
+    candidate=new WebSocket(target.webSocketDebuggerUrl);
+    await new Promise((resolve,reject)=>{
+      let settled=false;
+      const finish=(fn,value)=>{if(settled)return;settled=true;clearTimeout(timer);fn(value)};
+      const timer=setTimeout(()=>finish(reject,new Error('DevTools WebSocket open timed out after 5 seconds')),5000);
+      candidate.addEventListener('open',()=>finish(resolve),{once:true});
+      candidate.addEventListener('error',event=>finish(reject,event.error||new Error('DevTools WebSocket error before open: '+String(event.message||event.type))),{once:true});
+      candidate.addEventListener('close',event=>finish(reject,new Error('DevTools WebSocket closed before open: '+JSON.stringify({code:event.code,reason:event.reason,wasClean:event.wasClean}))),{once:true});
+    });
+    ws=candidate;
+    if(attempt>1)console.log('Tablet DevTools WebSocket connected after bounded retry '+attempt+'/6');
+  }catch(error){
+    lastConnectionError=error;
+    try{candidate?.close()}catch{}
+    ws=null;
+    console.warn('Tablet DevTools WebSocket startup attempt '+attempt+'/6 failed: '+String(error?.stack||error));
+    if(attempt<6)await pause(1000);
+  }
+}
+if(!ws)throw new Error('Tablet WebView DevTools WebSocket failed after 6 bounded attempts: '+String(lastConnectionError?.stack||lastConnectionError)+'; target='+JSON.stringify({url:target.url,title:target.title,id:target.id}));
 let seq=0;const pending=new Map();
 ws.addEventListener('close',event=>{const error=new Error('Tablet WebView DevTools socket closed: '+JSON.stringify({code:event.code,reason:event.reason,wasClean:event.wasClean}));console.error(error.message);for(const request of pending.values()){clearTimeout(request.timer);request.reject(error)}pending.clear()});
 ws.addEventListener('error',event=>console.error('Tablet WebView DevTools socket error: '+String(event.message||event.type)));
