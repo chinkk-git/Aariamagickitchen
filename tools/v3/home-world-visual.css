@@ -444,7 +444,7 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .w02-country-marker>span{font-size:31px;line-height:1}
 .w02-country-marker>strong{font-size:12px;line-height:1.1}
 .w02-country-marker:focus-visible,.w02-map-back:focus-visible,.w02-passport-button:focus-visible,.w02-recipe-card:focus-visible,.w02-sheet-close:focus-visible{outline:3px solid #634596;outline-offset:2px}
-.w02-map-caption{z-index:2;align-self:center;margin:0 0 2px;padding:3px 9px;border-radius:12px;background:#fffaf0d9;color:#4f4561;font-size:11px;font-weight:700}
+.w02-map-caption{position:absolute;z-index:2;left:50%;bottom:6px;max-width:calc(100% - 24px);transform:translateX(-50%);margin:0;padding:3px 9px;border-radius:12px;background:#fffaf0d9;color:#4f4561;font-size:11px;font-weight:700;text-align:center;white-space:nowrap}
 .w02-map-sheet{position:absolute;z-index:8;inset:54px 8px 8px;display:flex;flex-direction:column;gap:8px;min-height:0;padding:13px;border:1px solid #dfd2e9;border-radius:19px;background:#fffdf8f5;box-shadow:0 8px 28px #243b4b55;backdrop-filter:blur(5px)}
 .w02-sheet-close{position:absolute;z-index:1;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:#efe4f2;color:#483256;font-size:25px}
 .w02-sheet-heading{display:flex;align-items:center;gap:10px;min-height:54px;padding-right:42px}

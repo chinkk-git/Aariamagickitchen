@@ -50,6 +50,7 @@ test('fixed map keeps the owner-approved image bytes, aspect ratio and direct ro
   assert.match(runtime,/mapArt\.src=V31_HOME_WORLD_ART\.worldMap/);
   assert.match(css,/\.w02-map-art \.v31-map-art-image\{[^}]*object-fit:contain/);
   assert.match(css,/\.w02-map-viewport\{[^}]*flex:1 1 auto/);
+  assert.match(css,/\.w02-map-caption\{[^}]*position:absolute/,'map guidance stays over the viewport so its full Android-rendered area is available to the map');
   assert.match(smoke,/vr\.width\*vr\.height\/\(sr\.width\*sr\.height\)/);
   assert.match(smoke,/world-map-phone-portrait/);
   assert.match(smoke,/world-map-phone-landscape/);
