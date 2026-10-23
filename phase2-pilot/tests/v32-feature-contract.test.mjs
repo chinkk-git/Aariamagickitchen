@@ -289,6 +289,8 @@ test('97-recipe review catalogue checks keep all 95 original route regressions',
     'English and PT-BR ingredient captures position the last row above persistent navigation');
   assert.doesNotMatch(tablet, /last-child"\)\?\.scrollIntoView\(\{block:"end"/,
     'the visibility assertion does not deliberately scroll the ingredient row under navigation');
+  assert.match(tablet, /rowVisible&&\(!navVisible\|\|c\.bottom<=n\.top\+1\)/,
+    'ingredient rows stay within the viewport and clear the nav when approved CSS displays it');
 });
 
 test('tablet G3 waits for a ready WebView title and preserves emulator logcat on failure', async () => {
