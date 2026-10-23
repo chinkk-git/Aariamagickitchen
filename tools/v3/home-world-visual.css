@@ -367,3 +367,5 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
   min-width:0;
   box-sizing:border-box;
 }
+.v31-map-reference-art .v31-map-art{overflow:hidden}
+.v31-map-reference-art .v31-map-art-image{position:absolute;left:-1.1%;top:-1.95%;display:block;width:169%;max-width:none;height:auto;pointer-events:none}

@@ -39,11 +39,13 @@ test('V3.3 map art comes from the supplied approved visual reference', async () 
   ]);
   assert.match(transform, /worldMap: readReferenceImage\('docs\/design\/references\/v3\.3\/WORLD_MAP_EXPLORER_VISUAL_REFERENCE_APPROVED\.png'\)/);
   assert.match(runtime, /v31-map-reference-art[\s\S]*?V31_HOME_WORLD_ART\.worldMap/);
-  assert.match(css, /\.v31-map-reference-art \.v31-map-art\{background-position:1\.6% 2%;background-size:169% auto;background-repeat:no-repeat\}/);
-  assert.match(phone, /approvedArt=expectedArt\.startsWith\('data:image\/png;base64,'\)&&actualArt\.includes\(expectedArt\.slice\(0,96\)\)/,
-    'phone smoke confirms the approved PNG is the visible map background');
-  assert.match(tablet, /approvedArt=expectedArt\.startsWith\("data:image\/png;base64,"\)&&actualArt\.includes\(expectedArt\.slice\(0,96\)\)/,
-    'tablet smoke confirms the approved PNG is the visible map background');
+  assert.match(runtime, /class="v31-map-art-image" alt=""[\s\S]*?mapArt\.src=V31_HOME_WORLD_ART\.worldMap/,
+    'the full approved PNG is assigned as an image source instead of a multi-megabyte inline CSS URL');
+  assert.match(css, /\.v31-map-reference-art \.v31-map-art-image\{[^}]*width:169%;/);
+  assert.match(phone, /approvedArt=expectedArt\.startsWith\('data:image\/png;base64,'\)&&actualArt===expectedArt&&art\.complete&&art\.naturalWidth>0/,
+    'phone smoke confirms the approved PNG is fully loaded in the map layer');
+  assert.match(tablet, /approvedArt=expectedArt\.startsWith\("data:image\/png;base64,"\)&&actualArt===expectedArt&&art\?\.complete&&art\.naturalWidth>0/,
+    'tablet smoke confirms the approved PNG is fully loaded in the map layer');
   assert.equal(createHash('sha256').update(approvedReference).digest('hex'), '1ab670c7a4e36f29a3275b2043c7edb9e85c65491ff82679e51074194dc985dc',
     'the exact approved reference bytes remain unchanged');
   assert.doesNotMatch(transform, /worldMap: readReferenceImage\('docs\/design\/approved-v31-world-map-crop\.webp'\)/,
