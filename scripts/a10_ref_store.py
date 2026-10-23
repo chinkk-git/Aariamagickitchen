@@ -61,6 +61,14 @@ class RefStore:
             raise Conflict("stale task revision")
         if old.worker != new_task.worker:
             raise InvalidTask("worker reassignment forbidden")
+        if old.state == "DONE" or new_task.attempt < old.attempt:
+            raise InvalidTask("terminal state or attempt rollback")
+        if old.exact_sha and new_task.exact_sha != old.exact_sha:
+            raise InvalidTask("exact SHA mutation forbidden")
+        if old.state != new_task.state and new_task.state not in {
+            "READY", "CLAIMED", "RUNNING", "VERIFYING", "DONE", "BLOCKED", "ESCALATED"
+        }:
+            raise InvalidTask("unknown next state")
         blob = self.api.put_blob(encode(new_task))
         tree = self.api.put_tree(blob)
         commit = self.api.put_commit(tree, current_sha)
