@@ -342,7 +342,30 @@ async function clickWebViewSelector(selector, label = selector) {
   return true;
 }
 async function assertRecipe12IngredientGrid(label) {
-  const layout=await evaluate(`(()=>{const grid=document.querySelector('.ref-ingredient-grid'),screen=document.querySelector('#screen'),main=document.querySelector('.reference-main');if(!grid||!screen||!main)return {missing:true};const cards=[...grid.querySelectorAll('.ref-ingredient')],cols=getComputedStyle(grid).gridTemplateColumns.trim().split(/\\s+/).length,boxes=cards.map(card=>{const art=card.querySelector('.ref-ingredient-icon'),name=card.querySelector('.ref-ingredient-icon + span'),input=card.querySelector('input[type=checkbox]'),cr=card.getBoundingClientRect(),ar=art?.getBoundingClientRect(),nr=name?.getBoundingClientRect(),ir=input?.getBoundingClientRect(),range=document.createRange();if(name)range.selectNodeContents(name);const lines=[...range.getClientRects()];return {card:{left:cr.left,right:cr.right,top:cr.top,bottom:cr.bottom},art:ar&&{left:ar.left,right:ar.right,top:ar.top,bottom:ar.bottom},name:nr&&{left:nr.left,right:nr.right,top:nr.top,bottom:nr.bottom,scrollWidth:name.scrollWidth,clientWidth:name.clientWidth,lines:lines.length},input:ir&&{width:ir.width,height:ir.height,labels:input.labels?.length||0,labelText:input.closest('label')?.innerText||''}}});return {width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth,screen:screen.getBoundingClientRect().width,main:main.getBoundingClientRect().width,grid:grid.getBoundingClientRect().width,cols,rows:new Set(boxes.map(x=>Math.round(x.card.top))).size,count:cards.length,boxes}})()`);
+  const layout=await evaluate(`(()=>{
+    const grid=document.querySelector('.ref-ingredient-grid'),screen=document.querySelector('#screen'),main=document.querySelector('.reference-main');
+    if(!grid||!screen||!main)return {missing:true};
+    const cards=[...grid.querySelectorAll('.ref-ingredient')];
+    const cols=getComputedStyle(grid).gridTemplateColumns.trim().split(/\\s+/).length;
+    const boxes=cards.map(card=>{
+      const art=card.querySelector('.ref-ingredient-icon'),name=card.querySelector('.ref-ingredient-icon + span'),input=card.querySelector('input[type=checkbox]');
+      const cr=card.getBoundingClientRect(),ar=art?.getBoundingClientRect(),nr=name?.getBoundingClientRect(),ir=input?.getBoundingClientRect();
+      const cardStyle=getComputedStyle(card),nameStyle=name&&getComputedStyle(name);
+      const px=value=>Number.parseFloat(value)||0;
+      let textColumnWidth=cr.width-px(cardStyle.paddingLeft)-px(cardStyle.paddingRight)-px(cardStyle.borderLeftWidth)-px(cardStyle.borderRightWidth);
+      if(cardStyle.display==='grid'&&nameStyle){
+        const column=Number.parseInt(nameStyle.gridColumnStart,10);
+        const tracks=cardStyle.gridTemplateColumns.trim().split(/\\s+/).map(px);
+        if(Number.isInteger(column)&&column>0&&tracks[column-1])textColumnWidth=tracks[column-1];
+      }else if(cardStyle.display==='flex'&&cardStyle.flexDirection.startsWith('row')){
+        textColumnWidth-= (ar?.width||0)+px(cardStyle.columnGap);
+        if(input&&getComputedStyle(input).position!=='absolute')textColumnWidth-= (ir?.width||0)+px(cardStyle.columnGap);
+      }
+      const range=document.createRange();if(name)range.selectNodeContents(name);const lines=[...range.getClientRects()];
+      return {card:{left:cr.left,right:cr.right,top:cr.top,bottom:cr.bottom},textColumnWidth,art:ar&&{left:ar.left,right:ar.right,top:ar.top,bottom:ar.bottom},name:nr&&{left:nr.left,right:nr.right,top:nr.top,bottom:nr.bottom,scrollWidth:name.scrollWidth,clientWidth:name.clientWidth,lines:lines.length},input:ir&&{width:ir.width,height:ir.height,labels:input.labels?.length||0,labelText:input.closest('label')?.innerText||''}};
+    });
+    return {width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth,screen:screen.getBoundingClientRect().width,main:main.getBoundingClientRect().width,grid:grid.getBoundingClientRect().width,cols,rows:new Set(boxes.map(x=>Math.round(x.card.top))).size,count:cards.length,boxes};
+  })()`);
   if(layout.missing||layout.count!==6||layout.cols<1||layout.cols>6||layout.rows!==Math.ceil(6/layout.cols)||layout.documentWidth>layout.width+1||layout.grid<layout.width*.68||layout.main<layout.width*.82)throw new Error(`${label}: #12 approved ingredient grid does not use the phone viewport or has invalid card geometry: ${JSON.stringify(layout)}`);
   for(const [i,card] of layout.boxes.entries()){
     const overlap=card.art&&card.name&&card.art.right>card.name.left&&card.art.left<card.name.right&&card.art.bottom>card.name.top&&card.art.top<card.name.bottom;
@@ -355,7 +378,7 @@ async function assertNarrowPtBrIngredientGrid() {
   try {
     await pause(300);
     const layout=await assertRecipe12IngredientGrid('PT-BR 320 CSS-pixel phone viewport');
-    if(Math.min(...layout.boxes.map(card=>card.name.clientWidth))<50)throw new Error('PT-BR ingredient text column is too narrow at 320 CSS pixels: '+JSON.stringify(layout));
+    if(Math.min(...layout.boxes.map(card=>card.textColumnWidth))<50)throw new Error('PT-BR ingredient text column is too narrow at 320 CSS pixels: '+JSON.stringify(layout));
   } finally {
     await command('Emulation.clearDeviceMetricsOverride');
     await pause(300);

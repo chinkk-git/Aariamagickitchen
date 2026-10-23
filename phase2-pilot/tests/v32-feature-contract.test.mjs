@@ -159,6 +159,10 @@ test('recipe 12 ingredient cards use the approved reference renderer with labele
 test('phone and tablet Android capture the visible PT-BR ingredient grid and reset recipe progress per orientation', async () => {
   const phone = await read('.github/scripts/v32-android-smoke.sh');
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
+  assert.match(phone, /textColumnWidth=cr\.width-px\(cardStyle\.paddingLeft\)[\s\S]*?layout\.boxes\.map\(card=>card\.textColumnWidth\)\)<50/,
+    'the 320px guard measures available ingredient text column width, not a short label’s intrinsic glyph width');
+  assert.doesNotMatch(phone, /layout\.boxes\.map\(card=>card\.name\.clientWidth\)\)<50/,
+    'a short localized ingredient label must not be misreported as a narrow text column');
   assert.match(phone, /prepareVisibleRecipeCapture\('\.ref-ingredient-grid','PT-BR #12 Ingredients '\+orientation\)/);
   assert.match(phone, /v32-recipe-12-pt-br-ingredients-'\+orientation\+'\.png/);
   assert.match(phone, /state\.done=\(state\.done\|\|\[\]\)\.filter\(x=>Number\(x\)!==12\);state\.myCreations=/,
