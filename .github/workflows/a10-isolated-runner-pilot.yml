@@ -24,8 +24,10 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Verify contract tests
-        run: python3 -m unittest discover -s tests -p 'test_a10_*.py' -v
+      - name: Verify runner contract and task-state tests
+        run: |
+          python3 -m unittest discover -s tests -p 'test_a10_*.py' -v
+          python3 -m unittest discover -s tests -p 'test_a10_state.py' -v
       - name: Validate immutable inspect-only manifest
         env:
           WORKER: ${{ inputs.worker }}
