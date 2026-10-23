@@ -201,6 +201,16 @@ test('international Android review explicitly sets orientation after tablet smok
     'the review route does not rely on emulator sensor rotation after G2 has disabled auto-rotate');
 });
 
+test('international Android screenshot capture is bounded above 1 MiB and proves every localized illustrated step', async () => {
+  const review = await read('.github/scripts/w01-international-review-smoke.mjs');
+  assert.match(review, /execFileSync\('timeout',[\s\S]*?timeout:70_000,maxBuffer:16\*1024\*1024/,
+    'ADB screenshot capture has a bounded process deadline and enough buffer for full-resolution PNG bytes');
+  assert.match(review, /async function captureStep\([\s\S]*?expectedInstruction:source\.instruction[\s\S]*?expectedImage:source\.image\?\.path\|\|source\.image[\s\S]*?imageLoaded:[\s\S]*?expectedSafety:source\.safety[\s\S]*?expectedAdultAssist:source\.adultAssist/,
+    'every visible step is checked against its locale package, correct loaded artwork and safety/adult-role copy');
+  assert.match(review, /await captureStep\(recipeIndex,id,locale,0,landscape,tag\)[\s\S]*?await captureStep\(recipeIndex,id,locale,index,landscape,tag\)/,
+    'phone and tablet evidence captures every guided step in both locales and orientations');
+});
+
 test('Android visual regression emulators use stable SwiftShader rendering', async () => {
   const workflow = await read('.github/workflows/v32-android.yml');
   const deviceGates = workflow.match(/emulator-options:[^\n]+/g) || [];

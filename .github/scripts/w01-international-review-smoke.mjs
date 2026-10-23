@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-const adb=args=>execFileSync('timeout',['--kill-after=10s','60s','adb',...args]);
+const adb=args=>execFileSync('timeout',['--kill-after=10s','60s','adb',...args],{timeout:70_000,maxBuffer:16*1024*1024});
 mkdirSync('artifacts/v32-android-screenshots/international-wave-1',{recursive:true});
 mkdirSync('artifacts/v32-diagnostics',{recursive:true});
 let target;
@@ -26,6 +26,16 @@ assert.equal(initial.template,'recipe-step-v1');assert.ok(initial.hasIngredients
 assert.equal(initial.assets.length,42);assert.ok(initial.assets.every(x=>x.ok&&x.png&&x.size>1000),'All 42 package artwork images must load from local appassets');assert.deepEqual(initial.external,[],'Offline route must not request external resources');assert.match(initial.csp,/connect-src 'self'/);
 const screenshots=[];
 function capture(name,landscape){const bytes=adb(['exec-out','screencap','-p']);assert.ok(bytes.length>10000,name+' screenshot is unexpectedly small');assert.equal(bytes.toString('ascii',1,4),'PNG');const width=bytes.readUInt32BE(16),height=bytes.readUInt32BE(20);assert.equal(width>height,landscape,name+' screenshot orientation mismatch');const path='artifacts/v32-android-screenshots/international-wave-1/'+name+'.png';writeFileSync(path,bytes);const digest=createHash('sha256').update(readFileSync(path)).digest('hex');screenshots.push({path,width,height,bytes:bytes.length,sha256:digest});}
+async function captureStep(recipeIndex,id,locale,index,landscape,tag){
+  const step=await evaluate(`(()=>{const source=packageData[${recipeIndex}].locales[${JSON.stringify(locale)}].steps[${index}],card=document.querySelector('#app .ref-step-card.active'),image=card?.querySelector('.v32-r12-step-visual img'),safety=card?.querySelector('.v32-r12-safety')?.innerText||'';return {index:Number(card?.dataset.stepIndex||0),title:card?.querySelector('.ref-step-title strong')?.textContent?.trim()||'',expectedTitle:source.title,instruction:card?.querySelector('[data-original-source="recipe-step"]')?.textContent?.trim()||'',expectedInstruction:source.instruction,image:image?.getAttribute('src')||'',expectedImage:source.image?.path||source.image,imageLoaded:!!image?.complete&&image.naturalWidth>0,safety,expectedSafety:source.safety,expectedAdultAssist:source.adultAssist}})()`);
+  assert.equal(step.index,index+1,`Recipe #${id} step ${index+1} did not render`);
+  assert.equal(step.title,step.expectedTitle,`Recipe #${id} step ${index+1} title does not match ${locale}`);
+  assert.equal(step.instruction,step.expectedInstruction,`Recipe #${id} step ${index+1} instruction does not match ${locale}`);
+  assert.equal(step.image,step.expectedImage,`Recipe #${id} step ${index+1} uses the wrong illustrated asset`);
+  assert.ok(step.imageLoaded,`Recipe #${id} step ${index+1} illustration did not load`);
+  assert.ok(step.safety.includes(step.expectedSafety)&&step.safety.includes(step.expectedAdultAssist),`Recipe #${id} step ${index+1} safety/adult role copy is incomplete`);
+  await pause(150);capture(tag+'-step-'+String(index+1).padStart(2,'0'),landscape);
+}
 const orientationTrace=[];
 async function setOrientation(landscape){
   const target=landscape?'landscape':'portrait';
@@ -64,9 +74,10 @@ for(const landscape of [false,true]){
     const state=await evaluate(`(()=>{document.querySelector('#locale').value=${JSON.stringify(locale)};document.querySelector('#locale').dispatchEvent(new Event('change'));document.querySelector(${JSON.stringify(id===96?'#r96':'#r99')}).click();window.scrollTo(0,0);const r=packageData[${recipeIndex}].locales[${JSON.stringify(locale)}];return {id:r.id,title:r.title,ingredientCount:r.ingredients.length,equipmentCount:r.equipmentItems.length,stepCount:r.steps.length,adultHelp:r.adultHelp,crossContact:r.crossContact}})()`);
     assert.equal(state.id,id);assert.ok(state.title&&state.ingredientCount>0&&state.equipmentCount>0&&state.stepCount>0);assert.ok(state.adultHelp&&state.crossContact,'Safety and cross-contact disclosures must be rendered');
     await waitImages();await pause(350);const tag=(landscape?'landscape':'portrait')+'-'+id+'-'+locale;
-    const detail=await evaluate(`(()=>({title:document.querySelector('#app .v32-r12-title-block h1')?.textContent,ingredients:document.querySelectorAll('#app .v32-r12-ingredients .ref-ingredient').length,safety:document.querySelector('#app .v32-r12-safety')?.innerText,step:Number(document.querySelector('#app .ref-step-card.active')?.dataset.stepIndex||0)}))()`);
-    assert.equal(detail.title,state.title);assert.equal(detail.ingredients,state.ingredientCount);assert.ok(detail.safety);capture(tag+'-ingredients',landscape);
-    for(let index=1;index<state.stepCount;index++){await evaluate("document.querySelector('#next').click()");const step=await evaluate(`Number(document.querySelector('#app .ref-step-card.active')?.dataset.stepIndex||0)`);assert.equal(step,index+1,`Recipe #${id} Guided Step ${index+1} navigation failed`);await waitImages()}
+    const detail=await evaluate(`(()=>({title:document.querySelector('#app .v32-r12-title-block h1')?.textContent,ingredients:document.querySelectorAll('#app .v32-r12-ingredients .ref-ingredient').length,safety:document.querySelector('#app .v32-r12-recipe-safety')?.innerText||'',crossContact:packageData[${recipeIndex}].locales[${JSON.stringify(locale)}].crossContact,adultHelp:packageData[${recipeIndex}].locales[${JSON.stringify(locale)}].adultHelp}))()`);
+    assert.equal(detail.title,state.title);assert.equal(detail.ingredients,state.ingredientCount);assert.ok(detail.safety.includes(detail.crossContact)&&detail.safety.includes(detail.adultHelp),'Recipe cross-contact and adult-help disclosures must match the locale package');capture(tag+'-ingredients',landscape);
+    await captureStep(recipeIndex,id,locale,0,landscape,tag);
+    for(let index=1;index<state.stepCount;index++){await evaluate("document.querySelector('#next').click()");const step=await evaluate(`Number(document.querySelector('#app .ref-step-card.active')?.dataset.stepIndex||0)`);assert.equal(step,index+1,`Recipe #${id} Guided Step ${index+1} navigation failed`);await waitImages();await captureStep(recipeIndex,id,locale,index,landscape,tag)}
     const final=await evaluate(`(()=>({step:Number(document.querySelector('#app .ref-step-card.active')?.dataset.stepIndex||0),count:packageData[${recipeIndex}].locales[${JSON.stringify(locale)}].steps.length,safety:document.querySelector('#app .v32-r12-safety')?.innerText}))()`);
     assert.equal(final.step,final.count);assert.ok(final.safety);await evaluate("document.querySelector('#next').click()");assert.match(await evaluate("document.querySelector('#app .v32-r12-completion')?.innerText||''"),/RECIPE COMPLETE|RECEITA CONCLUÍDA/i);await pause(250);capture(tag+'-completion',landscape);
     matrix.push({recipeId:id,locale,orientation:landscape?'landscape':'portrait',ingredients:state.ingredientCount,equipment:state.equipmentCount,steps:state.stepCount,status:'PASS'});
