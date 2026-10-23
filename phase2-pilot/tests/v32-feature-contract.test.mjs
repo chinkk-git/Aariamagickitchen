@@ -207,6 +207,8 @@ test('international Android screenshot capture is bounded above 1 MiB and proves
     'ADB screenshot capture has a bounded process deadline and enough buffer for full-resolution PNG bytes');
   assert.match(review, /async function captureStep\([\s\S]*?expectedInstruction:source\.instruction[\s\S]*?expectedImage:source\.image\?\.path\|\|source\.image[\s\S]*?imageLoaded:[\s\S]*?expectedSafety:source\.safety[\s\S]*?expectedAdultAssist:source\.adultAssist/,
     'every visible step is checked against its locale package, correct loaded artwork and safety/adult-role copy');
+  assert.ok(review.includes('normalizedImage:') && review.includes(".replace(/^\\\\/international-wave-1\\\\//,''"),
+    'the offline WebView route prefix is removed before comparing its image URL with the source-relative pinned asset path');
   assert.match(review, /await captureStep\(recipeIndex,id,locale,0,landscape,tag\)[\s\S]*?await captureStep\(recipeIndex,id,locale,index,landscape,tag\)/,
     'phone and tablet evidence captures every guided step in both locales and orientations');
 });
