@@ -74,6 +74,7 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/Input\.dispatchTouchEvent/,'sample taps the country marker through Android WebView input');
   assert.match(phone,/const mapShot=screenshot\('world-map-phone-portrait'\)/);
   assert.match(phone,/countryShot\.sha256===mapShot\.sha256/,'Android country preview evidence must contain the rendered card overlay, not a stale map frame');
+  assert.match(phone,/adb\(\['emu','rotate'\]\)/,'phone orientation smoke must rotate the emulator and verify its actual display rotation');
   assert.match(await read('tools/v3/runtime.js'),/e\.state\?\.v31Panel==='country'&&location\.hash==='#aria\/world'[\s\S]*?view='world';v31MapPanel='country'/,'Android Back from recipe restores the India card panel state');
   assert.match(phone,/cmd','connectivity','airplane-mode','enable/);
   assert.match(phone,/food-passport-offline-restart-persistence/);

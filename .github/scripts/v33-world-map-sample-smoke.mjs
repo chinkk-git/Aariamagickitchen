@@ -91,18 +91,34 @@ async function tap(session, selector, label) {
   return point;
 }
 
+async function currentRotation() {
+  const status=adb(['shell','dumpsys','window']).toString('utf8');
+  const rotation=status.match(/mRotation=(\d)/)?.[1]||status.match(/mRotation=ROTATION_(0|90|180|270)/)?.[1];
+  const normalized=rotation==='90'?'1':rotation==='180'?'2':rotation==='270'?'3':rotation;
+  if(!['0','1','2','3'].includes(normalized||''))throw new Error(`Could not read Android display rotation: ${rotation||'unknown'}`);
+  return Number(normalized);
+}
+
 async function setOrientation(session, landscape) {
-  adb(['shell','settings','put','system','accelerometer_rotation','0']);
-  const rotations = landscape ? [1,3,0,2] : [0,2,1,3];
-  for (const rotation of rotations) {
-    adb(['shell','settings','put','system','user_rotation',String(rotation)]);
-    for (let i=0;i<20;i++) {
+  let lastViewport=null,lastRotation=await currentRotation();
+  for(let turn=0;turn<4;turn++){
+    lastRotation=await currentRotation();
+    if((lastRotation%2===1)===landscape){
+      let stable=0;
+      for(let i=0;i<20;i++){
+        await pause(300);
+        lastViewport=await session.evaluate('({width:innerWidth,height:innerHeight})');
+        if((lastViewport.width>lastViewport.height)===landscape){if(++stable===3)return lastViewport}else stable=0;
+      }
+    }
+    adb(['emu','rotate']);
+    for(let i=0;i<20;i++){
       await pause(300);
-      const viewport = await session.evaluate('({width:innerWidth,height:innerHeight})');
-      if ((viewport.width > viewport.height) === landscape) return viewport;
+      lastRotation=await currentRotation();
+      if((lastRotation%2===1)===landscape)break;
     }
   }
-  throw new Error(`Phone emulator did not reach ${landscape?'landscape':'portrait'} orientation`);
+  throw new Error(`Phone emulator did not reach ${landscape?'landscape':'portrait'} orientation: ${JSON.stringify({rotation:lastRotation,viewport:lastViewport})}`);
 }
 
 let session;
