@@ -18,8 +18,11 @@
     "asset_paths_present_in_source_tree": true,
     "asset_sha256_fields_well_formed": true,
     "duplicate_asset_hashes_after_corrections": "NONE_WITHIN_REMAINING_PACKAGES",
-    "nutrition": "ESTIMATES_REVIEW_PENDING",
-    "independent_gates": "PENDING"
+    "nutrition": "SOURCE_LINKED_ESTIMATES_PRESENT; INDEPENDENT_REVIEW_PENDING",
+    "independent_gates": "PENDING",
+    "allergen_notes_cross_reference": "PASS; 3 unrelated copy-paste notes corrected in #097, #100 and #107",
+    "safety_allergen": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING",
+    "allergen_cross_contact_language": "EN-GB_AND_PT-BR_PRESENT_FOR_ALL_13"
   },
   "global_gates": {
     "A08": "PENDING",
@@ -47,10 +50,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "milk"
@@ -80,10 +85,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "egg",
@@ -116,10 +123,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "gluten",
@@ -152,10 +161,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "gluten",
@@ -188,10 +199,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [],
       "review_status": {
@@ -219,10 +232,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "sesame"
@@ -252,10 +267,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "sesame"
@@ -285,10 +302,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [],
       "review_status": {
@@ -316,10 +335,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "milk"
@@ -349,10 +370,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "egg",
@@ -383,10 +406,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "peanut"
@@ -416,10 +441,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "fish",
@@ -450,10 +477,12 @@
         "bilingual": "PASS_STRUCTURAL",
         "ingredient_equipment_references": "PASS",
         "artwork": "PASS",
-        "nutrition": "ESTIMATE_REVIEW_PENDING",
+        "nutrition": "SOURCE_LINKED_ESTIMATE_PRESENT; INDEPENDENT_REVIEW_PENDING",
         "safety_allergen": "CONTENT_RECORDED_REVIEW_PENDING",
         "canonical_id_country": "PASS_PACKAGE_METADATA",
-        "independent_reviews": "PENDING"
+        "independent_reviews": "PENDING",
+        "allergen_notes_cross_reference": "PASS",
+        "child_safety_fields": "BILINGUAL_ADULT_ASSIST_AND_STEP_WARNINGS_PRESENT; INDEPENDENT_REVIEW_PENDING"
       },
       "known_allergen_labels": [
         "fish",
@@ -469,5 +498,14 @@
       },
       "content_errors": []
     }
-  ]
+  ],
+  "content_audit": {
+    "audited_at": "2026-10-23",
+    "scope": "Remaining 13 existing packages: ingredient-linked allergen notes, bilingual adult assistance and per-step safety warnings, and required per-serving nutrient values/source links.",
+    "findings": [
+      "All 13 packages have bilingual adult-assistance text, bilingual step safety warnings, complete per-serving nutrient fields and source links.",
+      "Corrected unrelated cross-contact note text in #097, #100 and #107.",
+      "Independent nutrition/allergen, child-safety and cultural reviews remain pending."
+    ]
+  }
 }

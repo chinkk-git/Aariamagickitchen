@@ -522,15 +522,15 @@
       "pt-BR": "Ovo na maionese; leite no queijo Cotija. Confira os rótulos e avisos de contato cruzado."
     },
     "cross_contact": {
-      "en-GB": "Check every label, including vinegar, seaweed and packaged toppings; use clean separate utensils and surfaces for allergies.",
-      "pt-BR": "Confira todos os rótulos, inclusive os de vinagre, algas e coberturas embaladas; use superfícies e utensílios limpos e separados em caso de alergia."
+      "en-GB": "Check labels for allergens and cross-contact, especially mayonnaise and Cotija cheese. Mayonnaise contains egg and Cotija contains milk; use clean utensils and surfaces for allergy-safe portions.",
+      "pt-BR": "Confira os rótulos para alergênicos e contato cruzado, especialmente da maionese e do queijo Cotija. A maionese contém ovo e o Cotija contém leite; use utensílios e superfícies limpos para porções destinadas a pessoas com alergia."
     }
   },
   "nutrition": {
     "per_serving": {
       "energyKcal": 188,
-      "proteinG": 6.0,
-      "carbohydrateG": 22.0,
+      "proteinG": 6,
+      "carbohydrateG": 22,
       "fatG": 10.3,
       "fibreG": 2.5,
       "saturatedFatG": 3.1,
@@ -1450,8 +1450,8 @@
     "nutrition": {
       "per_serving": {
         "energyKcal": 188,
-        "proteinG": 6.0,
-        "carbohydrateG": 22.0,
+        "proteinG": 6,
+        "carbohydrateG": 22,
         "fatG": 10.3,
         "fibreG": 2.5,
         "saturatedFatG": 3.1,

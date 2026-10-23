@@ -456,8 +456,8 @@
       "milk"
     ],
     "cross_contact": {
-      "en-GB": "Check ingredient packaging for allergens and cross-contact. The mozzarella contains milk; balsamic vinegar may contain sulphites. Noodles contain wheat/gluten, soy sauce contains soy and wheat, and sesame oil contains sesame.",
-      "pt-BR": "Confira as embalagens para alergênicos e contato cruzado. A muçarela contém leite; o vinagre balsâmico pode conter sulfitos. O macarrão contém trigo/glúten, o molho de soja contém soja e trigo, e o óleo de gergelim contém gergelim."
+      "en-GB": "Check ingredient packaging for declared allergens and cross-contact. Mozzarella contains milk; balsamic vinegar may contain sulphites. Use clean utensils and surfaces for allergy-safe portions.",
+      "pt-BR": "Confira as embalagens para alergênicos declarados e contato cruzado. A muçarela contém leite; o vinagre balsâmico pode conter sulfitos. Use utensílios e superfícies limpos para porções destinadas a pessoas com alergia."
     }
   },
   "nutrition": {
@@ -466,7 +466,7 @@
       "proteinG": 10.8,
       "carbohydrateG": 5.1,
       "fatG": 11.8,
-      "fibreG": 1.0,
+      "fibreG": 1,
       "saturatedFatG": 5.4,
       "sodiumMg": 210
     },
@@ -1268,7 +1268,7 @@
         "proteinG": 10.8,
         "carbohydrateG": 5.1,
         "fatG": 11.8,
-        "fibreG": 1.0,
+        "fibreG": 1,
         "saturatedFatG": 5.4,
         "sodiumMg": 210
       },
