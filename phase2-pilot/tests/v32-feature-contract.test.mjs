@@ -169,6 +169,14 @@ test('phone and tablet Android capture the visible PT-BR ingredient grid and res
   assert.match(tablet, /recipe-12-pt-br-ingredients-'\+suffix/);
   assert.match(tablet, /state\.language="pt-BR";state\.done=\(state\.done\|\|\[\]\)\.filter\(x=>Number\(x\)!==12\);state\.myCreations=/,
     'each tablet orientation clears only disposable recipe 12 completion state');
+  assert.match(tablet, /const ptNav=await evaluate\(navigationSummaryExpression\(\)\)/,
+    'tablet PT-BR navigation reads the icon-safe label summary');
+  assert.match(tablet, /ptNav\.map\(x=>x\.label\)\.join\('\|'\)!=='Início\|Receitas\|Aventura\|Despensa\|Planejar\|Criações'/,
+    'tablet PT-BR navigation validates localized labels without decorative icon text');
+  assert.match(tablet, /ptNav\.map\(x=>x\.id\)\.join\('\|'\)!=='home\|library\|world\|groceries\|week\|creations'/,
+    'tablet PT-BR navigation retains the exact six-route identity check');
+  assert.doesNotMatch(tablet, /nav:\[\.\.\.document\.querySelectorAll\("#nav \.tab"\)\]\.map\(e=>e\.textContent\.trim\(\)\)/,
+    'tablet PT-BR route assertion does not mistake decorative icons for visible labels');
   assert.match(tablet, /step=0;save\(\);render\(\)/,
     'each tablet orientation starts the PT-BR pilot at step one');
 });

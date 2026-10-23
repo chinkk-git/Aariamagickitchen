@@ -248,8 +248,9 @@ async function capturePtBrRecipe12(landscape){
  const expectedColumns=null;
  await assertRecipe12IngredientGrid('PT-BR #12 tablet '+(landscape?'landscape':'portrait'));
  const detailState=await prepareVisibleRecipeCapture('.ref-hero h1','PT-BR #12 detail');
- const detailCheck=await evaluate('(()=>({title:document.querySelector(".ref-hero h1")?.textContent?.trim()||"",expected:PT_RECIPES[12].title,ingredient:[...document.querySelectorAll(".ref-ingredient-grid .ref-ingredient")].map(e=>(e.innerText||e.textContent||"").replace(/\\s+/g," ").trim()).join("|"),expectedIngredient:PT_RECIPES[12].ingredients[0],nav:[...document.querySelectorAll("#nav .tab")].map(e=>e.textContent.trim()).join("|"),navIds:[...document.querySelectorAll("#nav .tab")].map(e=>e.dataset.nav).join("|")}))()');
- if(detailCheck.title!==detailCheck.expected||!detailCheck.ingredient.includes(detailCheck.expectedIngredient)||detailCheck.nav!=='Início|Receitas|Aventura|Despensa|Planejar|Criações'||detailCheck.navIds!=='home|library|world|groceries|week|creations')throw Error('PT-BR #12 detail/navigation content mismatch: '+JSON.stringify(detailCheck));
+ const detailCheck=await evaluate('(()=>({title:document.querySelector(".ref-hero h1")?.textContent?.trim()||"",expected:PT_RECIPES[12].title,ingredient:[...document.querySelectorAll(".ref-ingredient-grid .ref-ingredient")].map(e=>(e.innerText||e.textContent||"").replace(/\\s+/g," ").trim()).join("|"),expectedIngredient:PT_RECIPES[12].ingredients[0]}))()');
+ const ptNav=await evaluate(navigationSummaryExpression());
+ if(detailCheck.title!==detailCheck.expected||!detailCheck.ingredient.includes(detailCheck.expectedIngredient)||ptNav.map(x=>x.label).join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações'||ptNav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations')throw Error('PT-BR #12 detail/navigation content mismatch: '+JSON.stringify({detailCheck,ptNav}));
  const suffix=landscape?'landscape':'portrait';
  const detail=await screenshot('recipe-12-pt-br-detail-'+suffix,landscape);
  const ingredientsState=await prepareVisibleRecipeCapture('.ref-ingredient-grid','PT-BR #12 Ingredients '+suffix);
