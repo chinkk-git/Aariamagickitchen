@@ -392,11 +392,14 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .v31-map-pins{pointer-events:auto}
 .v31-map-pin{cursor:pointer;pointer-events:all;filter:drop-shadow(0 3px 2px #24466375);transition:filter .14s ease}
 .v31-map-pin .v31-pin-halo{fill:#fff9d9;stroke:#6c4c89;stroke-width:5;vector-effect:non-scaling-stroke}
+.v31-map-pin .v31-pin-hit{fill:#fff0;stroke:none;pointer-events:all}
+.v31-map-pin .v31-pin-anchor{fill:#fff0;stroke:none;pointer-events:none}
 .v31-map-pin .v31-pin-disc{fill:#f7a84f;stroke:#fff;stroke-width:4;vector-effect:non-scaling-stroke}
 .v31-map-pin.is-selected .v31-pin-disc{fill:#ea68a8;stroke:#fff7bd;stroke-width:6}
 .v31-map-pin.is-review .v31-pin-disc{fill:#8b71bc}
 .v31-map-pin .v31-pin-label-bg{fill:#fff9e9;stroke:#704f8b;stroke-width:3;vector-effect:non-scaling-stroke}
-.v31-map-pin .v31-pin-label{fill:#3d2959;font-family:system-ui,sans-serif;font-size:17px;font-weight:800;paint-order:stroke;stroke:#fff;stroke-width:1px}
+.v31-map-pin .v31-pin-flag{font-size:42px}
+.v31-map-pin .v31-pin-label{fill:#3d2959;font-family:system-ui,sans-serif;font-size:38px;font-weight:800;paint-order:stroke;stroke:#fff;stroke-width:1px}
 .v31-map-pin:focus .v31-pin-halo{stroke:#ffdf49;stroke-width:8}
 .v31-map-pin:active{filter:drop-shadow(0 1px 1px #24466375)}
 .v33-map-reset{position:absolute;z-index:5;top:clamp(74px,10vh,100px);right:clamp(14px,2vw,26px);display:grid;place-items:center;width:50px;height:50px;min-width:50px;min-height:50px;padding:0;border:1px solid #ffffffd0;border-radius:50%;background:#fff;color:#65428e;font-size:25px;box-shadow:0 3px 12px #17385140}
