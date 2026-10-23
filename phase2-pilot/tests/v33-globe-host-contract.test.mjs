@@ -107,6 +107,8 @@ test('module handoff, Android host and production transform are wired and preser
   ]);
   assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
   assert.match(runtime,/createWorldAdventureHost\(\{canonicalRecipes:RECIPES/);
+  assert.match(runtime,/globeIds=\{IND:'india',ITA:'italy',CHN:'china',JPN:'japan',MEX:'mexico',VNM:'vietnam'\}/);
+  assert.match(runtime,/avatarSrc:V31_HOME_WORLD_ART\.aaria/);
   assert.match(runtime,/aria-world-globe__header/);
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);

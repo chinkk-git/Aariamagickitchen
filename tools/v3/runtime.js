@@ -162,7 +162,7 @@ function v33WorldCatalogue(){
   onOpenRecipe:id=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState;openRecipe(id);return true},
   onBack:scope=>{if(scope==='screen'){goto('home');return true}return false},onOpenPassport:()=>{v33ShowPassport();return true}});
 }
-function v33Destinations(host){return host.countries.map(code=>{const item=host.getCountry(code);return {id:code.toLowerCase(),name:item.label,flag:item.flag,available:item.available,recipes:item.recipes.map(r=>({id:r.id,title:r.title,finishedDish:r.finishedDish,routeEnabled:true})),note:item.reviewOnly?(state.language==='pt-BR'?'Prévia · revisão pendente':'Preview only · review pending'):''}})}
+function v33Destinations(host){const globeIds={IND:'india',ITA:'italy',CHN:'china',JPN:'japan',MEX:'mexico',VNM:'vietnam'};return host.countries.map(code=>{const item=host.getCountry(code);return {id:globeIds[code]||'',name:item.label,flag:item.flag,available:item.available,recipes:item.recipes.map(r=>({id:r.id,title:r.title,finishedDish:r.finishedDish,routeEnabled:true})),note:item.reviewOnly?(state.language==='pt-BR'?'Prévia · revisão pendente':'Preview only · review pending'):''}}).filter(item=>item.id)}
 function v33ShowPassport(){
  const screen=document.querySelector('#screen');if(!screen)return;screen.querySelector('.v33-passport-overlay')?.remove();
  const pt=state.language==='pt-BR',stamps=[...new Set((v33WorldHost?.getPassportSnapshot?.().stamps||[]))];
@@ -174,7 +174,7 @@ function v33ShowPassport(){
 function v33MountGlobe(screen){
  if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
  screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
- v33GlobeController=window.AariaWorldAdventureGlobe.mount(screen.querySelector('#v33-world-globe-host'),{locale:v33WorldHost.locale,avatarSrc:V31_HOME_WORLD_ART.aria,destinations:v33Destinations(v33WorldHost),initialState:v33GlobeState||undefined,onOpenRecipe:id=>v33WorldHost.openRecipe(id),onOpenPassport:()=>v33WorldHost.openPassport(),onCountrySelect:()=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState}});
+ v33GlobeController=window.AariaWorldAdventureGlobe.mount(screen.querySelector('#v33-world-globe-host'),{locale:v33WorldHost.locale,avatarSrc:V31_HOME_WORLD_ART.aaria,destinations:v33Destinations(v33WorldHost),initialState:v33GlobeState||undefined,onOpenRecipe:id=>v33WorldHost.openRecipe(id),onOpenPassport:()=>v33WorldHost.openPassport(),onCountrySelect:()=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState}});
 }
 let v31WorldPage;
 v31WorldPage=function v33FixedWorldMapPage(){

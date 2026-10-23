@@ -48,7 +48,7 @@ test('W03 globe assets are integrated unchanged with approved Aaria art and Andr
   ]);
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);
-  assert.match(runtime,/avatarSrc:V31_HOME_WORLD_ART\.aria/);
+  assert.match(runtime,/avatarSrc:V31_HOME_WORLD_ART\.aaria/);
   assert.match(globeJs,/Surprise Me/);
   assert.match(globeJs,/onOpenRecipe/);
   assert.match(globeCss,/@media \(orientation:landscape\)/);
