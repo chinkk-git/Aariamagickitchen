@@ -25,7 +25,7 @@ concurrency:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     steps:
       - name: Check out exact V3.2 source head
         uses: actions/checkout@v4
@@ -207,7 +207,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check Pillow==11.3.0
 
       - name: G2 TARGETED DEVICE SMOKE — recipe #12 on Pixel Tablet first
-        timeout-minutes: 20
+        timeout-minutes: 10
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 35
@@ -217,8 +217,21 @@ jobs:
           emulator-boot-timeout: 300
           disable-animations: true
           disable-linux-hw-accel: false
-          script: bash .github/scripts/v32-android-tablet-smoke.sh
+          script: V32_G2_TARGETED_ONLY=1 bash .github/scripts/v32-android-tablet-smoke.sh
 
+
+      - name: G3 FULL TABLET IMAGE REGRESSION — all 95 recipes in portrait and landscape
+        timeout-minutes: 35
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_tablet
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-boot-timeout: 300
+          disable-animations: true
+          disable-linux-hw-accel: false
+          script: timeout --kill-after=10s 1860s bash .github/scripts/v32-android-tablet-smoke.sh
 
       - name: G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes
         timeout-minutes: 20

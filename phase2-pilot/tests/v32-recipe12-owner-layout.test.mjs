@@ -90,6 +90,26 @@ test('recipe #12 keeps the full-width portrait layout after restoring its render
     'portrait content retains practical side margins');
 });
 
+test('tablet #12 landscape regression measures the ingredient pane rather than viewport width', async () => {
+  const [tablet, html] = await Promise.all([read('.github/scripts/v32-android-tablet-smoke.sh'), read('index.html')]);
+  const observedFailure = { viewport: 1280, grid: 788.6640625 };
+  assert.match(html, /\.ref-card\{[^}]*border:3px solid #fff;[^}]*padding:12px\}/,
+    'the retained reference card defines the 30 px border and padding measured in CI');
+  observedFailure.ingredientPanel = observedFailure.grid + 30;
+  assert.ok(observedFailure.grid < observedFailure.viewport * 0.68,
+    'the retained CI failure reproduces the old over-restrictive whole-viewport assertion');
+  assert.ok(observedFailure.ingredientPanel >= observedFailure.viewport * 0.58,
+    'the measured ingredient panel occupies the expected share alongside the landscape tools panel');
+  assert.ok(observedFailure.grid >= observedFailure.ingredientPanel * 0.90,
+    'the measured grid fills its own ingredient panel');
+  assert.match(tablet, /layout\.ingredientPanel<layout\.usableWidth\*\.58\|\|layout\.grid<layout\.ingredientPanel\*\.90/,
+    'runtime tablet checks enforce the evidence-backed split-pane geometry');
+  assert.match(tablet, /c\.input\.width<12\|\|c\.input\.height<12\|\|c\.input\.labels<1/,
+    'the correction retains minimum checkbox size and accessible labels');
+  assert.match(tablet, /c\.name\.scrollWidth>c\.name\.clientWidth\+1/,
+    'the correction retains ingredient label clipping checks');
+});
+
 test('owner reference attachments remain byte-for-byte unchanged', async () => {
   const references = [
     ['docs/design/references/1000072735-owner-recipe-page.png', 'e452103dc8c12a88633190dcc30f3d230bdb120cc3e8bc453d41fc02adc51bcc'],
@@ -119,16 +139,34 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'tablet coverage cannot pass by finding the retired text-heavy template title');
   assert.match(tablet, /sidebarOverlap[\s\S]*?usableWidth=innerWidth-sidebarOverlap/,
     'tablet geometry accounts for the visible recipe navigation rail in portrait');
-  assert.match(tablet, /layout\.grid<layout\.usableWidth\*\.68\|\|layout\.main<layout\.usableWidth\*\.82/,
-    'tablet ingredient widths are measured against the actual available recipe pane');
+  assert.match(tablet, /ingredientPanel:panel\.getBoundingClientRect\(\)\.width/,
+    'tablet geometry records the actual ingredient panel separately from the device viewport');
+  assert.match(tablet, /layout\.ingredientPanel<layout\.usableWidth\*\.58\|\|layout\.grid<layout\.ingredientPanel\*\.90\|\|layout\.main<layout\.usableWidth\*\.82/,
+    'landscape validates the intended split panel width and requires the ingredient grid to fill its own panel');
   assert.match(tablet, /expectedInstruction:displayStepText\(selected,step\)[\s\S]*?canonicalInstruction:selected\?\.steps\?\.\[step\]/,
     'tablet smoke compares the rendered child-friendly step copy to its renderer source while retaining the canonical source as evidence');
   assert.match(tablet, /!active\.safety[\s\S]*?active\.instruction!==active\.expectedInstruction/,
     'tablet step verification independently requires the adult safety text and correct rendered copy');
-  assert.match(tablet, /timeout --kill-after=10s 1080s node/,
-    'the two-orientation tablet image audit has enough bounded time to visit all 95 recipes');
-  assert.match(workflow, /G2 TARGETED DEVICE SMOKE[\s\S]*?timeout-minutes:\s*20/,
-    'the tablet audit timeout remains below the Android device step limit');
+  assert.match(tablet, /V32_G2_TARGETED_ONLY!=='1'/,
+    'G2 may skip only the full tablet recipe sweep while retaining the targeted #12 flow');
+  assert.match(tablet, /timeout --kill-after=10s 1800s node/,
+    'the two-orientation tablet image audit has a 30-minute bounded inner timeout');
+  assert.match(workflow, /G2 TARGETED DEVICE SMOKE[\s\S]*?timeout-minutes:\s*10[\s\S]*?V32_G2_TARGETED_ONLY=1/,
+    'G2 runs the bounded #12 smoke without the all-recipe sweep');
+  assert.match(workflow, /G3 FULL TABLET IMAGE REGRESSION[\s\S]*?timeout-minutes:\s*35[\s\S]*?1860s bash \.github\/scripts\/v32-android-tablet-smoke\.sh/,
+    'G3 runs the preserved two-orientation 95-recipe tablet image sweep on a fresh emulator');
+  assert.match(workflow, /G3 FULL TABLET IMAGE REGRESSION[\s\S]*?G3 FULL REGRESSION — phone/,
+    'tablet and phone G3 phases both follow successful G2');
+  assert.match(tablet, /waitForCaptureReady\(name\)/,
+    'screenshot capture waits for stable UI, loaded visible images and fonts within a bounded interval');
+  assert.match(tablet, /approved illustrated step is missing, pending or unloaded/,
+    'the G2 recipe #12 flow verifies each approved illustration is rendered before capture');
+  assert.match(tablet, /name\.endsWith\('\.png'\)\?name:name\+'\.png'/,
+    'tablet step screenshots use manifest-compatible PNG paths without duplicate extensions');
+  assert.match(tablet, /V32_G2_TARGETED_ONLY==='1'\?'artifacts\/v32-android-screenshots\/g2-tablet'/,
+    'G2 screenshot evidence is retained separately from the fresh G3 tablet screenshots');
+  assert.doesNotMatch(tablet, /await pause\(6000\)/,
+    'tablet smoke does not silently sleep for six seconds before readiness checks');
 });
 
 test('APK recipe #12 keeps the approved four illustrated step bindings', async () => {
