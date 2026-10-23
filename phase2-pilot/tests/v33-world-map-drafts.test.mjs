@@ -85,7 +85,10 @@ test('Adventure Explorer acceptance harness measures real Android geometry and c
   assert.match(phone, /markerGeometry\.some\(m=>m\.hitWidth<44\|\|m\.hitHeight<44\|\|m\.anchorError>2\)/,
     'country markers keep accessible hit areas and map-coordinate alignment through real zoom and pan');
   assert.match(phone, /food-passport-offline-restart-persistence/);
-  assert.match(phone, /airplane_mode_on/);
+  assert.match(phone, /cmd','connectivity','airplane-mode','enable/);
+  assert.match(phone, /cmd','connectivity','airplane-mode'\]\)\.toString\('utf8'\)\.trim\(\)\.toLowerCase\(\)/);
+  assert.doesNotMatch(phone, /AIRPLANE_MODE/,
+    'the API 35 offline smoke uses the supported connectivity shell command instead of a protected broadcast');
   assert.match(phone, /passport-back-restores-map-position/);
   assert.match(phone, /PT-BR-country-preview/);
   assert.match(tablet, /map\.occupancy<0\.85\|\|map\.occupancy>0\.95/);

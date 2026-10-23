@@ -211,14 +211,14 @@ try {
   const seeded=await session.evaluate(`(()=>{state.done=[51];state.worldStamps=['IND'];save();return {done:(state.done||[]).map(Number),worldStamps:(state.worldStamps||[]).slice()}})()`);
   if(seeded.done.join(',')!=='51'||seeded.worldStamps.join(',')!=='IND')throw new Error(`Could not prepare clean-emulator persistence fixture: ${JSON.stringify(seeded)}`);
   evidence.flow.push({step:'prepare-clean-emulator-persistence-fixture',...seeded,fixtureOnly:true,status:'PASS'});
-  session.ws.close();adb(['shell','am','force-stop',appId]);adb(['shell','settings','put','global','airplane_mode_on','1']);adb(['shell','am','broadcast','-a','android.intent.action.AIRPLANE_MODE','--ez','state','true']);
+  session.ws.close();adb(['shell','am','force-stop',appId]);adb(['shell','cmd','connectivity','airplane-mode','enable']);
   adb(['shell','monkey','-p',appId,'1']);await pause(1200);session=await connect();
   await waitFor(session.evaluate,`(()=>{const e=document.querySelector('.v31-hero-welcome h1'),r=e?.getBoundingClientRect();return {visible:!!e&&!!r&&r.width>0&&r.height>0}})()`,'offline relaunch Home');
   await session.evaluate(`(()=>{document.querySelector('[data-v31-open-world]')?.click();return true})()`);
   await waitFor(session.evaluate,evalWorld,'offline relaunch World Map');
   const persistedPassport=await session.evaluate(`(()=>{document.querySelector('.v33-passport-button')?.click();return {title:document.querySelector('#v33-passport-title')?.textContent?.trim()||'',stamps:[...document.querySelectorAll('.v33-passport-stamps .v31-stamp')].map(x=>x.textContent.trim()),done:(state.done||[]).map(Number),worldStamps:(state.worldStamps||[]).slice()}})()`);
-  const deviceAirplane=adb(['shell','settings','get','global','airplane_mode_on']).toString('utf8').trim();
-  if(persistedPassport.title!=='My Food Passport'||persistedPassport.stamps.length!==1||!persistedPassport.stamps[0].includes('India')||persistedPassport.done.join(',')!=='51'||persistedPassport.worldStamps.join(',')!=='IND'||deviceAirplane!=='1')throw new Error(`Food Passport did not persist its completed canonical recipe stamp across offline relaunch: ${JSON.stringify({persistedPassport,deviceAirplane})}`);
+  const deviceAirplane=adb(['shell','cmd','connectivity','airplane-mode']).toString('utf8').trim().toLowerCase();
+  if(persistedPassport.title!=='My Food Passport'||persistedPassport.stamps.length!==1||!persistedPassport.stamps[0].includes('India')||persistedPassport.done.join(',')!=='51'||persistedPassport.worldStamps.join(',')!=='IND'||deviceAirplane!=='enabled')throw new Error(`Food Passport did not persist its completed canonical recipe stamp across offline relaunch: ${JSON.stringify({persistedPassport,deviceAirplane})}`);
   evidence.flow.push({step:'food-passport-offline-restart-persistence',...persistedPassport,deviceAirplane,status:'PASS'});
   evidence.screenshots.push(screenshot('food-passport-phone-portrait'));
   evidence.status='PASS';evidence.completedAt=new Date().toISOString();
@@ -229,8 +229,7 @@ try {
   writeFileSync('artifacts/v33-world-map-sample/sample-smoke.json',`${JSON.stringify(evidence,null,2)}\n`);
   throw error;
 } finally {
-  adb(['shell','settings','put','global','airplane_mode_on','0']);
-  adb(['shell','am','broadcast','-a','android.intent.action.AIRPLANE_MODE','--ez','state','false']);
+  try { adb(['shell','cmd','connectivity','airplane-mode','disable']); } catch { /* the emulator is disposable; keep cleanup from masking the recorded smoke failure */ }
   adb(['shell','settings','put','system','accelerometer_rotation','1']);
   if(session?.ws?.readyState===WebSocket.OPEN)session.ws.close();
 }
