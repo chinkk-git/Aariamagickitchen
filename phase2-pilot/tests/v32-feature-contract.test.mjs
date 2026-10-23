@@ -211,6 +211,34 @@ test('international Android screenshot capture is bounded above 1 MiB and proves
     'phone and tablet evidence captures every guided step in both locales and orientations');
 });
 
+test('production international ingredient rows stay compact, contained and measured on Android', async () => {
+  const [runtime, tablet, phone, builder, template, workflow] = await Promise.all([
+    read('tools/v3/runtime.js'),
+    read('.github/scripts/v32-android-tablet-smoke.sh'),
+    read('.github/scripts/v32-android-smoke.sh'),
+    read('tools/v3/artwork/build-international-review.mjs'),
+    read('tools/v3/artwork/wave1-review.template.html'),
+    read('.github/workflows/v32-android.yml')
+  ]);
+  assert.match(runtime, /\.v32-international-recipe \.ref-ingredient-icon img\{[^}]*width:100%;height:100%;max-width:100%;max-height:100%;[^}]*object-fit:contain/,
+    'production checklist thumbnails are clipped to a fixed square and contain the complete approved image');
+  assert.match(runtime, /\.v32-international-recipe \.ref-ingredient\{[^}]*grid-template-columns:40px minmax\(0,1fr\) 44px;[^}]*min-height:60px;[^}]*overflow:hidden/,
+    'production checklist uses compact rows with independent art, text and touch target columns');
+  assert.match(runtime, /\.v32-international-recipe \.ref-ingredient input\[type=checkbox\][^{]*\{[^}]*width:24px;height:24px/,
+    'production checkboxes remain visibly sized and actionable');
+  assert.match(tablet, /async function assertInternationalIngredientLayout[\s\S]*?imageEscapes[\s\S]*?overlap\([\s\S]*?height>96[\s\S]*?labels<1/,
+    'real Android tablet assertions cover image bounds, text overlap, row size, accessible labels and rendered images');
+  assert.match(tablet, /international-\x27\+id\+\x27-ingredients-\x27\+orientationName/,
+    'tablet G2 captures the production ingredient list for each new recipe and orientation');
+  assert.match(phone, /internationalProductionEvidence[\s\S]*?for\(const id of \[96,99\]\)[\s\S]*?row\.card\.height>96[\s\S]*?production-international-\$\{id\}-phone-/,
+    'phone G3 captures and bounds-checks both production international ingredient lists');
+  assert.match(builder, /debugRouteSharesProductionArtwork:true/);
+  assert.match(template, /const image=x=>\x27\/international-wave-1\/\x27/,
+    'debug review images resolve to the identical offline production asset path');
+  assert.match(workflow, /artwork-review\/international-wave-1\/content[\s\S]*?\)\" -eq 0/,
+    'APK package verification rejects duplicated review-only copies of the international artwork');
+});
+
 test('Android visual regression emulators use stable SwiftShader rendering', async () => {
   const workflow = await read('.github/workflows/v32-android.yml');
   const deviceGates = workflow.match(/emulator-options:[^\n]+/g) || [];

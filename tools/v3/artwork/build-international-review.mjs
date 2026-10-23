@@ -2,7 +2,7 @@
 // Builds the pinned Wave 1 package into an isolated Android debug review route.
 // This never writes to the production recipe renderer or canonical catalogue.
 import {createHash} from 'node:crypto';
-import {copyFileSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
+import {copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import {join, resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 
@@ -19,9 +19,8 @@ const productionRoute = join(root, 'phase2-pilot/apps/aaria-android/app/src/main
 mkdirSync(route, {recursive: true});
 mkdirSync(productionRoute, {recursive: true});
 for (const item of sourceLock.package_files) {
-  const destination = join(route, item.path);
-  mkdirSync(resolve(destination, '..'), {recursive: true});
-  copyFileSync(join(root, item.path), destination);
+  const debugDestination = join(route, item.path);
+  rmSync(debugDestination, {force: true});
   const productionDestination = join(productionRoute, item.path);
   mkdirSync(resolve(productionDestination, '..'), {recursive: true});
   copyFileSync(join(root, item.path), productionDestination);
@@ -38,5 +37,5 @@ const template=readFileSync(join(root,'tools/v3/artwork/wave1-review.template.ht
 writeFileSync(join(route, 'index.html'), template);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const images = sourceLock.package_files.filter(item => item.path.endsWith('.png'));
-if(images.length!==42||images.some(item=>hash(readFileSync(join(route,item.path)))!==item.sha256)) throw new Error('Debug route did not stage all 42 pinned artwork files byte-for-byte');
-console.log(JSON.stringify({route:'artwork-review/international-wave-1/index.html',sourceCommit:prepared.sourceCommit,recipeIds:prepared.recipes.map(x=>x.id),packagePairSha256:prepared.pairSha256,artworkFiles:images.length,offline:true,productionArtworkCopied:true,productionCatalogueIntegration:'transform-production.mjs'}));
+if(images.length!==42||images.some(item=>hash(readFileSync(join(productionRoute,item.path)))!==item.sha256)) throw new Error('Production route did not stage all 42 pinned artwork files byte-for-byte');
+console.log(JSON.stringify({route:'artwork-review/international-wave-1/index.html',sourceCommit:prepared.sourceCommit,recipeIds:prepared.recipes.map(x=>x.id),packagePairSha256:prepared.pairSha256,artworkFiles:images.length,offline:true,productionArtworkCopied:true,debugRouteSharesProductionArtwork:true,productionCatalogueIntegration:'transform-production.mjs'}));

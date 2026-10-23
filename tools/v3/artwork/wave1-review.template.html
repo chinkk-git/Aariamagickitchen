@@ -11,7 +11,7 @@ __APPROVED_RECIPE_CSS__
 <script>
 const packageData=__RECIPE_DATA__;let recipeIndex=0,locale='en-GB',stepIndex=0,completed=false;
 const app=document.querySelector('#screen'),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const text=x=>typeof x==='object'&&x?x[locale]:x;const image=x=>esc(x?.path||x||'');
+const text=x=>typeof x==='object'&&x?x[locale]:x;const image=x=>'/international-wave-1/'+esc(String(x?.path||x||'').replace(/^\/+/,''));
 const labels=()=>locale==='pt-BR'?{step:'ETAPA',of:'DE',previous:'← Anterior',next:'Próxima etapa →',finish:'Concluir →',complete:'RECEITA CONCLUÍDA',dish:'Prato pronto',adult:'Ajuda de adulto',safety:'Segurança'}:{step:'STEP',of:'OF',previous:'← Previous',next:'Next step →',finish:'Finish →',complete:'RECIPE COMPLETE',dish:'Finished dish',adult:'Adult help',safety:'Safety'};
 function render(){const r=packageData[recipeIndex].locales[locale],step=r.steps[stepIndex],ui=labels(),title=text(r.title),steps=r.steps;
 const ingredients=r.ingredients.map((x,i)=>'<label class="ref-ingredient"><span class="v32-r12-ingredient-art"><img class="v3-ingredient-art" src="'+image(x.image)+'" alt=""></span><span class="v32-r12-ingredient-name">'+esc(text(x.name))+' · '+esc(x.quantity)+' '+esc(x.unit)+'</span><input type="checkbox" aria-label="'+esc(text(x.name))+'"><i aria-hidden="true">○</i></label>').join('');

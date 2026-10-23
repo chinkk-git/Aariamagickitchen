@@ -87,7 +87,8 @@ jobs:
           test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/international-wave-1/index.html')" -eq 1
           test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/international-wave-1/recipes.json')" -eq 1
           unzip -p "$apk" assets/artwork-review/international-wave-1/recipes.json | grep -Fq '451ab0bf8a3ab1867cf004a113d3d8e6896ccf60'
-          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/international-wave-1/content/international/countries/(italy|china)/')" -eq 46
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/international-wave-1/content/international/countries/(italy|china)/' || true)" -eq 0
+          unzip -p "$apk" assets/artwork-review/international-wave-1/index.html | grep -Fq "'/international-wave-1/'"
           unzip -p "$apk" assets/index.html | grep -Fq 'Tomato Basil Pasta'
           unzip -p "$apk" assets/index.html | grep -Fq 'Vegetable Fried Rice'
           unzip -p "$apk" assets/index.html | grep -Fq 'New Recipes'
@@ -233,6 +234,9 @@ jobs:
           disable-linux-hw-accel: false
           script: V32_G2_TARGETED_ONLY=1 bash .github/scripts/v32-android-tablet-smoke.sh
 
+      - name: Measure APK size and embedded artwork
+        if: success()
+        run: python tools/v3/qa/analyze-apk-size.py phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload targeted owner-review APK after G2 smoke
         if: success()
@@ -240,6 +244,22 @@ jobs:
         with:
           name: aaria-magical-kitchen-v3.2-owner-review-apk
           path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload targeted Android screenshots and APK size evidence after G2
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-corrected-g2-evidence
+          path: |
+            artifacts/v32-android-screenshots/g2-tablet/
+            artifacts/v32-diagnostics/tablet-smoke.json
+            artifacts/v32-diagnostics/apk-size-analysis.json
+            artifacts/v32-diagnostics/apk-size-analysis.md
+            artifacts/v32-diagnostics/apk-sha256.txt
+            artifacts/v32-diagnostics/test-apk-badging.txt
+            artifacts/v32-diagnostics/test-apk-signer.txt
           if-no-files-found: error
           retention-days: 30
 
