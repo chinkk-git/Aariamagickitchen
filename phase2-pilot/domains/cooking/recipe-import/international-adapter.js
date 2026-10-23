@@ -203,7 +203,8 @@ export function adaptRecipeForRenderer(recipe, locale = 'en-GB') {
       unit: item.unit,
       optional: item.optional === true
     })),
-    equipment: recipe.equipment.map(item => ({...item, name: pick(item.name), imageAsset: item.image.path})),
+    equipment: recipe.equipment.map(item => pick(item.name)),
+    equipmentItems: recipe.equipment.map(item => ({...item, name: pick(item.name), imageAsset: item.image.path})),
     steps: recipe.steps.map(step => ({
       ...step,
       title: pick(step.title),

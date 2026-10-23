@@ -19,7 +19,7 @@ The adapter follows the package requirements in Issue #50 and maps fields into t
 
 ## Gates and renderer mapping
 
-`prepareInternationalRecipeImport()` validates the immutable handoff and maps package fields to the renderer’s current `title`, `ingredients`, `equipment`, `steps`, `finishedDish`, `artworkIds`, and localization fields. It rejects draft/incomplete bundles, collisions with existing recipe IDs, invalid language pairs, missing files, hash mismatches, unsafe asset paths, step-reference errors, and incomplete nutrition status. It has no filesystem or catalog writes.
+`prepareInternationalRecipeImport()` validates the immutable handoff and maps package fields to the renderer’s current `title`, `ingredients`, string-list `equipment`, `steps`, `finishedDish`, `artworkIds`, and localization fields. It exposes richer image/role records as `equipmentItems` for the wide Ingredients template while keeping the renderer’s existing equipment contract intact. It rejects draft/incomplete bundles, collisions with existing recipe IDs, invalid language pairs, missing files, hash mismatches, unsafe asset paths, step-reference errors, and incomplete nutrition status. It has no filesystem or catalog writes.
 
 `authorizeInternationalRecipeImport()` additionally requires an explicit owner `APPROVED` decision bound to the exact W03 commit, the first step-artwork SHA-256 and the phone/tablet template screenshot SHA-256. Until then, no import records are produced. Even after that one-time artwork gate, output remains `REVIEW_ONLY`; A08/A09, nutrition/allergen review, rights, security, Android acceptance and release are separate gates.
 

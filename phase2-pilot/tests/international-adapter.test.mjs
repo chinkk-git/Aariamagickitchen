@@ -68,7 +68,9 @@ test('adapter validates an immutable bilingual package and maps fields onto Ingr
   const english = prepared.recipes[0];
   assert.equal(english.title,'Fixture alpha');
   assert.equal(english.ingredients[0].name,'Fixture ingredient');
-  assert.equal(english.equipment[0].name,'Fixture bowl');
+  assert.deepEqual(english.equipment,['Fixture bowl'],'the existing renderer retains its equipment string contract');
+  assert.equal(english.equipmentItems[0].name,'Fixture bowl','the Ingredients template receives role and image metadata separately');
+  assert.equal(english.equipmentItems[0].imageAsset,english.equipmentItems[0].image.path);
   assert.equal(english.steps[0].instruction,'Fixture instruction');
   assert.equal(english.steps[0].art,english.steps[0].image.path);
   assert.equal(english.finishedDish,english.artwork.finishedDish.path);
