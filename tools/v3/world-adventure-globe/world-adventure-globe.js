@@ -207,7 +207,7 @@
         button.className = "aria-world-globe__flag" + (state.pending === country.id ? " is-pending" : "") + (state.selected === country.id ? " is-selected" : "");
         button.style.left = p.x + "px";
         button.style.top = p.y + "px";
-        button.style.setProperty("--flag-depth", String(Math.max(0.72, Math.min(1, p.depth))));
+        button.style.setProperty("--flag-depth", String(Math.max(0.8, Math.min(1, p.depth))));
         button.setAttribute("aria-label", state.pending === country.id ? country.name + ", " + words.tapFlag : country.name);
         button.setAttribute("aria-pressed", state.selected === country.id ? "true" : "false");
         button.textContent = country.flag;

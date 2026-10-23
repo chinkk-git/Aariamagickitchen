@@ -16,7 +16,7 @@
 .aria-globe-map-land:nth-child(4n){fill:#50aa63;}
 .aria-world-globe__shine{position:absolute;inset:0;border-radius:50%;pointer-events:none;background:radial-gradient(ellipse at 35% 24%,rgba(255,255,255,.28),transparent 39%),radial-gradient(ellipse at 55% 50%,transparent 43%,rgba(5,47,86,.15) 71%,rgba(3,39,75,.38) 99%),linear-gradient(100deg,rgba(255,255,255,.06),transparent 42%,rgba(0,45,93,.16));z-index:2;}
 .aria-world-globe__flags{position:absolute;inset:0;z-index:3;pointer-events:none;}
-.aria-world-globe__flag{pointer-events:auto;position:absolute;transform:translate(-50%,-50%) scale(var(--flag-depth));width:52px;height:52px;padding:0;border:3px solid #fff;border-radius:50%;background:#fff;box-shadow:0 4px 10px rgba(19,47,67,.3);font-size:27px;line-height:1;cursor:pointer;touch-action:manipulation;transition:box-shadow .16s ease,transform .16s ease;}
+.aria-world-globe__flag{pointer-events:auto;position:absolute;transform:translate(-50%,-50%) scale(var(--flag-depth));width:54px;height:54px;padding:0;border:3px solid #fff;border-radius:50%;background:#fff;box-shadow:0 4px 10px rgba(19,47,67,.3);font-size:27px;line-height:1;cursor:pointer;touch-action:manipulation;transition:box-shadow .16s ease,transform .16s ease;}
 .aria-world-globe__flag:hover,.aria-world-globe__flag:focus-visible{z-index:5;outline:3px solid #ffc84d;outline-offset:2px;}
 .aria-world-globe__flag.is-selected,.aria-world-globe__flag.is-pending{border-color:#ffd34d;box-shadow:0 0 0 7px rgba(255,208,66,.4),0 5px 16px rgba(19,47,67,.38);animation:aria-flag-pulse 1.1s ease-in-out infinite alternate;}
 @keyframes aria-flag-pulse{from{box-shadow:0 0 0 3px rgba(255,208,66,.25),0 4px 10px rgba(19,47,67,.3)}to{box-shadow:0 0 0 9px rgba(255,208,66,.45),0 5px 16px rgba(19,47,67,.38)}}

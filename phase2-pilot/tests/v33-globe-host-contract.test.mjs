@@ -114,11 +114,12 @@ test('host delegates recipe, Back and Passport navigation and localizes country 
 });
 
 test('module handoff, Android host and production transform are wired and preserve screen ownership', async () => {
-  const [doc,runtime,transform,moduleJs,smoke] = await Promise.all([
+  const [doc,runtime,transform,moduleJs,moduleCss,smoke] = await Promise.all([
     readFile(new URL('../../docs/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/runtime.js', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/transform-production.mjs', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/world-adventure-globe/world-adventure-globe.js', import.meta.url),'utf8'),
+    readFile(new URL('../../tools/v3/world-adventure-globe/world-adventure-globe.css', import.meta.url),'utf8'),
     readFile(new URL('../../.github/scripts/v33-world-map-sample-smoke.mjs', import.meta.url),'utf8')
   ]);
   assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
@@ -133,6 +134,7 @@ test('module handoff, Android host and production transform are wired and preser
   assert.ok(/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags\{transform:scale\(1\.12\)/.test(transform),'the host scales atlas and flags together without pushing touch targets outside the stage');
   assert.ok(!/aria-globe-map-copy path\{transform:scale/.test(transform),'Natural Earth land and flags keep the same orthographic projection without local path distortion');
   assert.ok(/landPathCount\s*<\s*30[\s\S]*?landBoundsCoverage\s*<\s*\.48[\s\S]*?flagsInStage/.test(smoke),'the real-device smoke checks substantial projected land coverage and keeps every flag target inside the stage');
+  assert.ok(/width:54px;height:54px/.test(moduleCss) && /Math\.max\(0\.8, Math\.min\(1, p\.depth\)\)/.test(moduleJs),'phone hit targets retain at least 48 CSS px after depth and shared projection scaling');
   assert.match(transform,/v33-orbit-turn/);
   assert.match(transform,/v33-sparkle-twinkle/);
   assert.match(transform,/aspect-ratio:1;border:3px dashed/,'the orbit remains a mathematically circular ring');

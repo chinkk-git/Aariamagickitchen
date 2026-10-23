@@ -60,7 +60,7 @@ The module owns its globe spin/flag selection state. Its host contract exposes s
 
 For every integration commit, publish exact W02/W03 source SHAs, artifact and APK SHA-256 when built, package ID, actual Android screenshot/log artifacts, orientation/device matrix, mapping/95-recipe test results, offline/Back/Passport results, and independent gate states to Issues #39/#50.
 
-- **Current globe integration: Android evidence pending.** W02 integrates W03 module `0.3.0-natural-earth-orthographic`, adapts its unchanged host API to the app-owned route, and preserves 48px minimum Android country targets. Exact-head device smoke still determines acceptance.
+- **Current globe integration: Android evidence pending.** W02 integrates W03 module `0.3.0-natural-earth-orthographic` and adapts its unchanged host API to the app-owned route. Country flags use a 54px base target with depth clamped at 0.8; the shared map/flag projection is verified on-device to keep rendered hit targets at least 48 CSS px and contained within the stage. The prior exact-head phone capture measured 46.77px and failed this gate, so acceptance requires a passing rerun.
 - **REVIEW_READY: PENDING** until exact-head Android screenshots and smoke pass and the owner reviews the APK.
 - **RELEASE_READY: NO.** Full regression, owner visual acceptance, and independent A08/A09, artwork-rights and Android-security gates remain separate requirements.
 - Escalate only if the owner-approved design/reference or approved avatar cannot be resolved, W03 cannot meet the proposed API without a material ownership conflict, canonical recipe mappings conflict, or an independent reviewer finds a safety/rights/security issue requiring a decision.
