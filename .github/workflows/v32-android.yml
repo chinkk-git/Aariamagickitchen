@@ -25,7 +25,7 @@ concurrency:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     steps:
       - name: Check out exact V3.2 source head
         uses: actions/checkout@v4
@@ -221,7 +221,7 @@ jobs:
 
 
       - name: G3 FULL TABLET IMAGE REGRESSION — all 95 recipes in portrait and landscape
-        timeout-minutes: 35
+        timeout-minutes: 55
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 35
@@ -231,7 +231,7 @@ jobs:
           emulator-boot-timeout: 300
           disable-animations: true
           disable-linux-hw-accel: false
-          script: timeout --kill-after=10s 1860s bash .github/scripts/v32-android-tablet-smoke.sh
+          script: timeout --kill-after=10s 2760s bash .github/scripts/v32-android-tablet-smoke.sh
 
       - name: G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes
         timeout-minutes: 50

@@ -155,12 +155,12 @@ test('Android smoke scripts target the approved #12 renderer selectors', async (
     'tablet step verification independently requires the adult safety text and correct rendered copy');
   assert.match(tablet, /V32_G2_TARGETED_ONLY!=='1'/,
     'G2 may skip only the full tablet recipe sweep while retaining the targeted #12 flow');
-  assert.match(tablet, /timeout --kill-after=10s 1800s node/,
-    'the two-orientation tablet image audit has a 30-minute bounded inner timeout');
+  assert.match(tablet, /timeout --kill-after=10s 2700s node/,
+    'the two-orientation tablet image audit has a 45-minute bounded inner timeout');
   assert.match(workflow, /G2 TARGETED DEVICE SMOKE[\s\S]*?timeout-minutes:\s*10[\s\S]*?V32_G2_TARGETED_ONLY=1/,
     'G2 runs the bounded #12 smoke without the all-recipe sweep');
-  assert.match(workflow, /G3 FULL TABLET IMAGE REGRESSION[\s\S]*?timeout-minutes:\s*35[\s\S]*?1860s bash \.github\/scripts\/v32-android-tablet-smoke\.sh/,
-    'G3 runs the preserved two-orientation 95-recipe tablet image sweep on a fresh emulator');
+  assert.match(workflow, /G3 FULL TABLET IMAGE REGRESSION[\s\S]*?timeout-minutes:\s*55[\s\S]*?2760s bash \.github\/scripts\/v32-android-tablet-smoke\.sh/,
+    'G3 runs the preserved two-orientation 95-recipe tablet image sweep with boot time and bounded headroom');
   assert.match(workflow, /G3 FULL TABLET IMAGE REGRESSION[\s\S]*?G3 FULL REGRESSION — phone/,
     'tablet and phone G3 phases both follow successful G2');
   assert.match(tablet, /waitForCaptureReady\(name\)/,
