@@ -170,16 +170,26 @@ function v33ShowPassport(){
  screen.insertAdjacentHTML('beforeend',`<div class="v33-passport-overlay"><section class="w02-map-sheet w02-passport-sheet" role="dialog" aria-modal="true" aria-labelledby="v33-passport-title"><button class="w02-sheet-close" type="button" data-v33-passport-close aria-label="${pt?'Fechar passaporte culinário':'Close Food Passport'}">×</button><div class="w02-sheet-heading"><span aria-hidden="true">📔</span><div><small>${pt?'PASSAPORTE CULINÁRIO':'FOOD PASSPORT'}</small><h2 id="v33-passport-title" tabindex="-1">${pt?'Meu passaporte culinário':'My Food Passport'}</h2><p>${count} · ${pt?'selos aparecem após concluir uma receita aprovada.':'stamps are earned after completing an approved recipe.'}</p></div></div>${stamps.length?`<div class="w02-passport-stamps">${stamps.map(code=>`<span class="v31-stamp">${flags[code]||'⭐'} ${names[code]||code}</span>`).join('')}</div>`:`<p class="w02-passport-empty">${pt?'Conclua uma receita aprovada para ganhar seu primeiro selo.':'Complete an approved recipe to earn your first stamp.'}</p>`}</section></div>`);
  screen.querySelector('#v33-passport-title')?.focus({preventScroll:true});
 }
+function v33KeepFlagsInsideSphere(host){
+ const sphere=host.querySelector('.aria-world-globe__sphere'),flags=host.querySelector('.aria-world-globe__flags');
+ if(!sphere||!flags)return ()=>{};
+ const fit=()=>{const b=sphere.getBoundingClientRect(),cx=b.left+b.width/2,cy=b.top+b.height/2,r=Math.min(b.width,b.height)/2-2,r2=r*r;
+  for(const flag of flags.querySelectorAll('.aria-world-globe__flag')){const q=flag.getBoundingClientRect(),corners=[[q.left,q.top],[q.right,q.top],[q.left,q.bottom],[q.right,q.bottom]];if(corners.some(([x,y])=>(x-cx)*(x-cx)+(y-cy)*(y-cy)>r2))flag.remove()}
+ };
+ const schedule=()=>requestAnimationFrame(fit),observer=new MutationObserver(schedule),resizer=new ResizeObserver(schedule);
+ observer.observe(flags,{childList:true});resizer.observe(sphere);fit();
+ return ()=>{observer.disconnect();resizer.disconnect()};
+}
 function v33MountGlobe(screen){
  if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
  screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
- const moduleController=window.AariaWorldAdventureGlobe.mount(screen.querySelector('#v33-world-globe-host'),{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||{rotation:-78});
+ const host=screen.querySelector('#v33-world-globe-host'),moduleController=window.AariaWorldAdventureGlobe.mount(host,{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||{rotation:-78}),stopFlagFit=v33KeepFlagsInsideSphere(host);
  // Keep the W03 module source immutable while preserving W02's existing app
  // lifecycle hooks and ensuring every rendered country control remains a
  // 48px minimum Android touch target at the globe's farthest visible depth.
  v33GlobeController={
   getState:()=>moduleController.serialize(),
-  destroy:()=>moduleController.dispose(),
+  destroy:()=>{stopFlagFit();moduleController.dispose()},
   handleBack:()=>moduleController.handleBack(),
   refresh:()=>moduleController.refresh(),
   setOrientation:value=>moduleController.setOrientation(value)
