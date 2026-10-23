@@ -329,6 +329,10 @@ const v32RecipeThemeMap = JSON.parse(fs.readFileSync(path.join(here, 'data/v3.2-
 const v32ReviewFeaturedIds = (process.env.V32_REVIEW_FEATURED_IDS || '').split(',').map(x => x.trim()).filter(Boolean).map(Number);
 const v32CanonicalIds = new Set(Object.keys(v32RecipeThemeMap.mapping).map(Number));
 if (new Set(v32ReviewFeaturedIds).size !== v32ReviewFeaturedIds.length || v32ReviewFeaturedIds.some(id => !Number.isInteger(id) || !v32CanonicalIds.has(id))) throw new Error('V32_REVIEW_FEATURED_IDS must contain unique canonical recipe IDs.');
+const internationalPackagePath = path.join(root, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
+const internationalPackage = JSON.parse(fs.readFileSync(internationalPackagePath, 'utf8'));
+if (internationalPackage.sourceCommit !== '451ab0bf8a3ab1867cf004a113d3d8e6896ccf60' || JSON.stringify(internationalPackage.recipes.map(recipe => recipe.id)) !== JSON.stringify([96,99])) throw new Error('Production catalogue must consume the pinned W03 #096/#099 package.');
+const v32InternationalRecipes = internationalPackage.recipes;
 const v32PtRecipeDrafts = {};
 const v32PtGroupRoleCopy = {};
 for (const name of ['pt-BR-recipes-66-80-review.json','pt-BR-recipes-81-95-review.json']) {
@@ -346,6 +350,7 @@ const runtime = runtimeTemplate
   .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))
   .replace('__V32_RECIPE_THEME_MAP_JSON__', JSON.stringify(v32RecipeThemeMap.mapping))
   .replace('__V32_REVIEW_FEATURED_IDS_JSON__', JSON.stringify(v32ReviewFeaturedIds))
+  .replace('__V32_INTERNATIONAL_RECIPES_JSON__', JSON.stringify(v32InternationalRecipes))
   .replace('__V3_PT_RECIPE_DRAFTS_JSON__', JSON.stringify(v32PtRecipeDrafts))
   .replace('__V32_PT_GROUP_ROLE_COPY_JSON__', JSON.stringify(v32PtGroupRoleCopy))
   .replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))

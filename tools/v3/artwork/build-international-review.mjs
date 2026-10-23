@@ -15,14 +15,21 @@ sourceFiles[sourceLock.source_style_guide_path] = readFileSync(join(root, source
 const {preparePinnedW03WaveOne} = await import(pathToFileURL(join(root, 'phase2-pilot/domains/cooking/recipe-import/international-adapter.js')));
 const prepared = preparePinnedW03WaveOne({sourceLock, files: sourceFiles});
 const route = join(root, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1');
+const productionRoute = join(root, 'phase2-pilot/apps/aaria-android/app/src/main/assets/international-wave-1');
 mkdirSync(route, {recursive: true});
+mkdirSync(productionRoute, {recursive: true});
 for (const item of sourceLock.package_files) {
   const destination = join(route, item.path);
   mkdirSync(resolve(destination, '..'), {recursive: true});
   copyFileSync(join(root, item.path), destination);
+  const productionDestination = join(productionRoute, item.path);
+  mkdirSync(resolve(productionDestination, '..'), {recursive: true});
+  copyFileSync(join(root, item.path), productionDestination);
 }
 const recipes = prepared.recipes.map(recipe => ({id:recipe.id,country:recipe.country,title:recipe.title,locales:recipe.locales,artworkAssetPaths:recipe.artworkAssetPaths}));
-writeFileSync(join(route, 'recipes.json'), JSON.stringify({sourceCommit:prepared.sourceCommit,sourceManifestSha256:prepared.sourceManifestSha256,pairSha256:prepared.pairSha256,recipes}, null, 2)+'\n');
+const recipePackage = {sourceCommit:prepared.sourceCommit,sourceManifestSha256:prepared.sourceManifestSha256,pairSha256:prepared.pairSha256,recipes};
+writeFileSync(join(route, 'recipes.json'), JSON.stringify(recipePackage, null, 2)+'\n');
+writeFileSync(join(productionRoute, 'recipes.json'), JSON.stringify(recipePackage, null, 2)+'\n');
 const approvedRecipeCss=readFileSync(join(root,'tools/v3/home-world-visual.css'),'utf8');
 const template=readFileSync(join(root,'tools/v3/artwork/wave1-review.template.html'),'utf8')
   .replace('__APPROVED_RECIPE_CSS__',()=>approvedRecipeCss)

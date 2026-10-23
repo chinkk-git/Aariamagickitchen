@@ -55,6 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dist artifacts/v32-diagnostics phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes
+          node tools/v3/artwork/build-international-review.mjs
           V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_2.html
           cp dist/Aaria_Magical_Kitchen_V3_2.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           cp tools/v3/artwork/recipe-dishes-draft/manifest.json phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
@@ -65,12 +66,11 @@ jobs:
       - name: Build isolated debug-only artwork review routes
         run: |
           node tools/v3/artwork/batches/batch-01/build-android-review.mjs
-          node tools/v3/artwork/build-international-review.mjs
 
       - name: Run Android unit tests and assemble isolated test APK
         run: V32_REVIEW_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
 
-      - name: Verify test package, 95 recipes and draft-only artwork payload
+      - name: Verify test package, 97 recipes and pinned review-only artwork payload
         run: |
           set -euo pipefail
           mkdir -p artifacts/v32-diagnostics
@@ -88,15 +88,17 @@ jobs:
           test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/international-wave-1/recipes.json')" -eq 1
           unzip -p "$apk" assets/artwork-review/international-wave-1/recipes.json | grep -Fq '451ab0bf8a3ab1867cf004a113d3d8e6896ccf60'
           test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/international-wave-1/content/international/countries/(italy|china)/')" -eq 46
-          if unzip -p "$apk" assets/index.html | grep -Eiq 'Tomato Basil Pasta|Vegetable Fried Rice|"id"[[:space:]]*:[[:space:]]*(96|99)'; then
-            echo 'Wave 1 recipes must stay out of the canonical production renderer.' >&2
-            exit 1
-          fi
+          unzip -p "$apk" assets/index.html | grep -Fq 'Tomato Basil Pasta'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Vegetable Fried Rice'
+          unzip -p "$apk" assets/index.html | grep -Fq 'New Recipes'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Novas receitas'
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/international-wave-1/content/international/countries/(italy|china)/')" -eq 46
           if unzip -p "$apk" assets/index.html | grep -Fq 'Draft artwork review'; then
             echo 'Debug-only artwork review must not be included in the runtime page.' >&2
             exit 1
           fi
           unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/international-wave-1/recipes.json'
           unzip -p "$apk" assets/index.html | grep -Fq 'Spin My Week'
           unzip -p "$apk" assets/index.html | grep -Fq 'data-v32-theme'
           unzip -p "$apk" assets/index.html | grep -Fq 'Cozinha mágica da Aaria'
@@ -232,6 +234,15 @@ jobs:
           script: V32_G2_TARGETED_ONLY=1 bash .github/scripts/v32-android-tablet-smoke.sh
 
 
+      - name: Upload targeted owner-review APK after G2 smoke
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-owner-review-apk
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
       - name: G3 FULL TABLET IMAGE REGRESSION — all 95 recipes in portrait and landscape
         timeout-minutes: 55
         uses: reactivecircus/android-emulator-runner@v2
@@ -291,15 +302,6 @@ jobs:
           else
             echo 'recipe12_step_reference_comparison=BLOCKED_MISSING_PHONE_SCREENSHOT' > artifacts/v32-diagnostics/recipe12-step-reference-comparison-status.txt
           fi
-
-      - name: Upload isolated V3.2 test APK
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: aaria-magical-kitchen-v3.2-test-apk
-          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: warn
-          retention-days: 30
 
       - name: Upload screenshots and gate evidence
         if: always()

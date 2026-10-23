@@ -576,11 +576,11 @@ console.log('Shopping list and parent-mediated share control are present; no ext
 await evaluate(`document.querySelector('#nav .tab[data-nav="home"]')?.click()`);
 await waitForVisible('.v31-hero-welcome h1', 'Home before recipe/favorites checks');
 await evaluate(`document.querySelector('.v31-action-tiles [data-nav="library"]')?.click()`);
-const libraryReady = await waitForVisible('.recipe-card', '95-recipe library');
+const libraryReady = await waitForVisible('.recipe-card', '97-recipe library');
 const libraryCards = await evaluate(`document.querySelectorAll('#screen .recipe-card').length`);
-if (libraryCards !== 95) throw new Error(`Recipe library should show all 95 recipes; found ${libraryCards}`);
+if (libraryCards !== 97) throw new Error(`Recipe library should show all 95 recipes; found ${libraryCards}`);
 const themeReport = await evaluate(`(() => { const cards=[...document.querySelectorAll('#screen .recipe-card')]; return {count:cards.length, themes:[...new Set(cards.map(x=>x.dataset.v32Theme))].sort(), samples:Object.fromEntries(['12','76','5'].map(id=>[id,[...document.querySelectorAll('#screen [data-open]')].find(card=>card.dataset.open===id)?.dataset.v32Theme||'']))}; })()`);
-if(themeReport.count!==95||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['12']!=='playful-purple'||themeReport.samples['76']!=='fresh-green'||themeReport.samples['5']!=='sunny-orange') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 95 recipes: ${JSON.stringify(themeReport)}`);
+if(themeReport.count!==97||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['12']!=='playful-purple'||themeReport.samples['76']!=='fresh-green'||themeReport.samples['5']!=='sunny-orange') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 95 recipes: ${JSON.stringify(themeReport)}`);
 await captureScreenshot('v32-three-theme-library-portrait.png','All three recipe themes',recipeDigest);
 console.log('V3.2 renderer exposes all three stable recipe themes across all 95 original IDs:',JSON.stringify(themeReport));
 const filterReport=await evaluate(`(()=>{const select=document.querySelector('[data-appliance-filter]');if(!select)throw Error('Cooking-method filter is missing');select.value='Air fryer';select.dispatchEvent(new Event('change',{bubbles:true}));const ids=[...document.querySelectorAll('#screen .recipe-card[data-open]')].map(x=>Number(x.dataset.open));return {ids,allAirFryer:ids.length>0&&ids.every(id=>/air[ -]?fryer/i.test(RECIPES.find(r=>r.id===id)?.method||''))}})()`);
@@ -836,7 +836,7 @@ async function capturePtBr12Orientation(orientation){
  for(let index=0;index<4;index++){
   let copy=null;
   for(let attempt=0;attempt<30;attempt++){
-   copy=await evaluate('(()=>({step:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedStep:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".ref-safety details p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
+   copy=await evaluate('(()=>({step:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedStep:PT_RECIPES[12].steps['+index+'],safety:document.querySelector(".ref-step-card.active .v32-r12-safety p")?.textContent?.trim()||"",expectedSafety:v32PilotRecipePresentation[12].safety.pt['+index+'],number:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0)}))()');
    if(copy.number===index+1)break;
    await pause(250);
   }
