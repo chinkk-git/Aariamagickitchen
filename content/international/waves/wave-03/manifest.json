@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0-draft",
+  "wave": 3,
+  "status": "DRAFT_NOT_READY",
+  "recipes": [
+    {
+      "id": 97,
+      "country": "italy",
+      "title": "Mini Caprese Skewers",
+      "artwork_ready": false,
+      "nutrition_status": "PENDING_SOURCE_LOOKUP"
+    },
+    {
+      "id": 100,
+      "country": "china",
+      "title": "Rainbow Vegetable Noodles",
+      "artwork_ready": false,
+      "nutrition_status": "PENDING_SOURCE_LOOKUP"
+    }
+  ],
+  "wave2_handoff_commit": "9194a95560df1b28f39523ef2ec99e081db1c17c"
+}

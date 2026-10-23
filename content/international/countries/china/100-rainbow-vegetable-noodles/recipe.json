@@ -1,0 +1,841 @@
+{
+  "schema_version": "1.0-draft",
+  "id": 100,
+  "country": "china",
+  "country_code": "CN",
+  "title": {
+    "en-GB": "Rainbow Vegetable Noodles",
+    "pt-BR": "Macarrão arco-íris com legumes"
+  },
+  "description": {
+    "en-GB": "A quick family noodle dish with colourful vegetables and a soy-sesame dressing, inspired by Chinese home-style cooking.",
+    "pt-BR": "Um prato rápido de macarrão com legumes coloridos e molho de soja e gergelim, inspirado na cozinha caseira chinesa."
+  },
+  "cultural_context": {
+    "en-GB": "A quick family noodle dish with colourful vegetables and a soy-sesame dressing, inspired by Chinese home-style cooking.",
+    "pt-BR": "Um prato rápido de macarrão com legumes coloridos e molho de soja e gergelim, inspirado na cozinha caseira chinesa."
+  },
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 20,
+  "total_minutes": 35,
+  "ingredients": [
+    {
+      "id": "wheat-noodles",
+      "name": {
+        "en-GB": "Dried wheat noodles",
+        "pt-BR": "Macarrão de trigo seco"
+      },
+      "quantity": 240,
+      "unit": "g",
+      "allergens": [
+        "wheat",
+        "gluten"
+      ],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "broccoli",
+      "name": {
+        "en-GB": "Broccoli florets",
+        "pt-BR": "Floretes de brócolis"
+      },
+      "quantity": 150,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "carrot",
+      "name": {
+        "en-GB": "Carrot",
+        "pt-BR": "Cenoura"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "red-pepper",
+      "name": {
+        "en-GB": "Red bell pepper",
+        "pt-BR": "Pimentão vermelho"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "spring-onion",
+      "name": {
+        "en-GB": "Spring onion",
+        "pt-BR": "Cebolinha"
+      },
+      "quantity": 30,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "garlic",
+      "name": {
+        "en-GB": "Garlic clove",
+        "pt-BR": "Dente de alho"
+      },
+      "quantity": 1,
+      "unit": "clove",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "soy-sauce",
+      "name": {
+        "en-GB": "Reduced-sodium soy sauce",
+        "pt-BR": "Molho de soja com menos sódio"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [
+        "soy",
+        "wheat",
+        "gluten"
+      ],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "sesame-oil",
+      "name": {
+        "en-GB": "Sesame oil",
+        "pt-BR": "Óleo de gergelim"
+      },
+      "quantity": 5,
+      "unit": "mL",
+      "allergens": [
+        "sesame"
+      ],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "neutral-oil",
+      "name": {
+        "en-GB": "Neutral cooking oil",
+        "pt-BR": "Óleo neutro para cozinhar"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "water",
+      "name": {
+        "en-GB": "Water for noodles",
+        "pt-BR": "Água para o macarrão"
+      },
+      "quantity": 1500,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "saucepan",
+      "name": {
+        "en-GB": "Large saucepan",
+        "pt-BR": "Panela grande"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "wok",
+      "name": {
+        "en-GB": "Wok",
+        "pt-BR": "Wok"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "spatula",
+      "name": {
+        "en-GB": "Wok spatula",
+        "pt-BR": "Espátula para wok"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "small-bowl",
+      "name": {
+        "en-GB": "Small bowl",
+        "pt-BR": "Tigela pequena"
+      },
+      "role": "shared",
+      "artwork": null
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash and prepare",
+        "pt-BR": "Lave e prepare"
+      },
+      "instruction": {
+        "en-GB": "Wash vegetables. An adult cuts carrot, pepper and spring onion on a stable board; children tear broccoli into florets.",
+        "pt-BR": "Lave os legumes. Um adulto corta cenoura, pimentão e cebolinha em tábua estável; crianças separam o brócolis em floretes."
+      },
+      "ingredientIds": [
+        "broccoli",
+        "carrot",
+        "red-pepper",
+        "spring-onion"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "colander",
+        "wok",
+        "spatula",
+        "chopping-board",
+        "knife",
+        "small-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Cook the noodles",
+        "pt-BR": "Cozinhe o macarrão"
+      },
+      "instruction": {
+        "en-GB": "An adult boils the water and cooks noodles following the packet. Drain carefully; hot water and steam can burn.",
+        "pt-BR": "Um adulto ferve a água e cozinha o macarrão conforme a embalagem. Escorra com cuidado; água e vapor quentes podem queimar."
+      },
+      "ingredientIds": [
+        "wheat-noodles",
+        "water"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "colander",
+        "wok",
+        "spatula",
+        "chopping-board",
+        "knife",
+        "small-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Mix the dressing",
+        "pt-BR": "Misture o molho"
+      },
+      "instruction": {
+        "en-GB": "Stir soy sauce, sesame oil and a splash of water in a small bowl. Check labels for allergens.",
+        "pt-BR": "Misture o molho de soja, o óleo de gergelim e um pouco de água em uma tigela. Confira os rótulos para alergênicos."
+      },
+      "ingredientIds": [
+        "soy-sauce",
+        "sesame-oil",
+        "water"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "colander",
+        "wok",
+        "spatula",
+        "chopping-board",
+        "knife",
+        "small-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Cook the vegetables",
+        "pt-BR": "Cozinhe os legumes"
+      },
+      "instruction": {
+        "en-GB": "An adult heats neutral oil in a wok, adds garlic and vegetables and stirs until tender-crisp. Keep children away from the hot wok.",
+        "pt-BR": "Um adulto aquece o óleo neutro em uma wok, acrescenta alho e legumes e mexe até ficarem macios e crocantes. Mantenha crianças longe da wok quente."
+      },
+      "ingredientIds": [
+        "neutral-oil",
+        "garlic",
+        "broccoli",
+        "carrot",
+        "red-pepper",
+        "spring-onion"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "colander",
+        "wok",
+        "spatula",
+        "chopping-board",
+        "knife",
+        "small-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Combine and serve",
+        "pt-BR": "Misture e sirva"
+      },
+      "instruction": {
+        "en-GB": "An adult adds drained noodles and dressing to the wok and stirs until steaming hot. Serve promptly.",
+        "pt-BR": "Um adulto acrescenta o macarrão escorrido e o molho à wok e mexe até ficar bem quente. Sirva logo."
+      },
+      "ingredientIds": [
+        "wheat-noodles",
+        "soy-sauce",
+        "sesame-oil"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "colander",
+        "wok",
+        "spatula",
+        "chopping-board",
+        "knife",
+        "small-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    }
+  ],
+  "allergens": [
+    "gluten",
+    "sesame",
+    "soy",
+    "wheat"
+  ],
+  "allergen_notes": {
+    "cross_contact": {
+      "en-GB": "Check all packaging for allergens and cross-contact.",
+      "pt-BR": "Confira todas as embalagens para alergênicos e contato cruzado."
+    }
+  },
+  "nutrition": {
+    "per_serving": null,
+    "status": "PENDING_SOURCE_LOOKUP_AND_CALCULATION",
+    "sources": []
+  },
+  "artwork": {
+    "status": "NOT_STARTED",
+    "artwork_assets": []
+  },
+  "artwork_assets": [],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "equipment": [
+    "Large saucepan",
+    "Colander",
+    "Wok",
+    "Wok spatula",
+    "Chopping board",
+    "Kitchen knife",
+    "Small bowl"
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults handle sharp knives and, for noodles, all hot water and wok cooking. Children wash, tear, mix and assemble with supervision.",
+    "pt-BR": "Adultos cuidam das facas afiadas e, no macarrão, de toda água quente e do cozimento na wok. Crianças lavam, separam, misturam e montam com supervisão."
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult stovetop",
+    "time": "35 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0-draft",
+    "status": "DRAFT_NOT_READY",
+    "id": 100,
+    "country": "china",
+    "title": {
+      "en-GB": "Rainbow Vegetable Noodles",
+      "pt-BR": "Macarrão arco-íris com legumes"
+    },
+    "description": {
+      "en-GB": "A quick family noodle dish with colourful vegetables and a soy-sesame dressing, inspired by Chinese home-style cooking.",
+      "pt-BR": "Um prato rápido de macarrão com legumes coloridos e molho de soja e gergelim, inspirado na cozinha caseira chinesa."
+    },
+    "servings": 4,
+    "ingredients": [
+      {
+        "id": "wheat-noodles",
+        "name": {
+          "en-GB": "Dried wheat noodles",
+          "pt-BR": "Macarrão de trigo seco"
+        },
+        "quantity": 240,
+        "unit": "g",
+        "allergens": [
+          "wheat",
+          "gluten"
+        ],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "broccoli",
+        "name": {
+          "en-GB": "Broccoli florets",
+          "pt-BR": "Floretes de brócolis"
+        },
+        "quantity": 150,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "carrot",
+        "name": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "red-pepper",
+        "name": {
+          "en-GB": "Red bell pepper",
+          "pt-BR": "Pimentão vermelho"
+        },
+        "quantity": 120,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "spring-onion",
+        "name": {
+          "en-GB": "Spring onion",
+          "pt-BR": "Cebolinha"
+        },
+        "quantity": 30,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "garlic",
+        "name": {
+          "en-GB": "Garlic clove",
+          "pt-BR": "Dente de alho"
+        },
+        "quantity": 1,
+        "unit": "clove",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "soy-sauce",
+        "name": {
+          "en-GB": "Reduced-sodium soy sauce",
+          "pt-BR": "Molho de soja com menos sódio"
+        },
+        "quantity": 30,
+        "unit": "mL",
+        "allergens": [
+          "soy",
+          "wheat",
+          "gluten"
+        ],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "sesame-oil",
+        "name": {
+          "en-GB": "Sesame oil",
+          "pt-BR": "Óleo de gergelim"
+        },
+        "quantity": 5,
+        "unit": "mL",
+        "allergens": [
+          "sesame"
+        ],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "neutral-oil",
+        "name": {
+          "en-GB": "Neutral cooking oil",
+          "pt-BR": "Óleo neutro para cozinhar"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "water",
+        "name": {
+          "en-GB": "Water for noodles",
+          "pt-BR": "Água para o macarrão"
+        },
+        "quantity": 1500,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      }
+    ],
+    "equipmentItems": [
+      {
+        "id": "saucepan",
+        "name": {
+          "en-GB": "Large saucepan",
+          "pt-BR": "Panela grande"
+        },
+        "role": "adult",
+        "artwork": null
+      },
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "role": "adult",
+        "artwork": null
+      },
+      {
+        "id": "wok",
+        "name": {
+          "en-GB": "Wok",
+          "pt-BR": "Wok"
+        },
+        "role": "adult",
+        "artwork": null
+      },
+      {
+        "id": "spatula",
+        "name": {
+          "en-GB": "Wok spatula",
+          "pt-BR": "Espátula para wok"
+        },
+        "role": "adult",
+        "artwork": null
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "adult",
+        "artwork": null
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Kitchen knife",
+          "pt-BR": "Faca de cozinha"
+        },
+        "role": "adult",
+        "artwork": null
+      },
+      {
+        "id": "small-bowl",
+        "name": {
+          "en-GB": "Small bowl",
+          "pt-BR": "Tigela pequena"
+        },
+        "role": "shared",
+        "artwork": null
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Wash and prepare",
+          "pt-BR": "Lave e prepare"
+        },
+        "instruction": {
+          "en-GB": "Wash vegetables. An adult cuts carrot, pepper and spring onion on a stable board; children tear broccoli into florets.",
+          "pt-BR": "Lave os legumes. Um adulto corta cenoura, pimentão e cebolinha em tábua estável; crianças separam o brócolis em floretes."
+        },
+        "ingredientIds": [
+          "broccoli",
+          "carrot",
+          "red-pepper",
+          "spring-onion"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "colander",
+          "wok",
+          "spatula",
+          "chopping-board",
+          "knife",
+          "small-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Cook the noodles",
+          "pt-BR": "Cozinhe o macarrão"
+        },
+        "instruction": {
+          "en-GB": "An adult boils the water and cooks noodles following the packet. Drain carefully; hot water and steam can burn.",
+          "pt-BR": "Um adulto ferve a água e cozinha o macarrão conforme a embalagem. Escorra com cuidado; água e vapor quentes podem queimar."
+        },
+        "ingredientIds": [
+          "wheat-noodles",
+          "water"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "colander",
+          "wok",
+          "spatula",
+          "chopping-board",
+          "knife",
+          "small-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Mix the dressing",
+          "pt-BR": "Misture o molho"
+        },
+        "instruction": {
+          "en-GB": "Stir soy sauce, sesame oil and a splash of water in a small bowl. Check labels for allergens.",
+          "pt-BR": "Misture o molho de soja, o óleo de gergelim e um pouco de água em uma tigela. Confira os rótulos para alergênicos."
+        },
+        "ingredientIds": [
+          "soy-sauce",
+          "sesame-oil",
+          "water"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "colander",
+          "wok",
+          "spatula",
+          "chopping-board",
+          "knife",
+          "small-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Cook the vegetables",
+          "pt-BR": "Cozinhe os legumes"
+        },
+        "instruction": {
+          "en-GB": "An adult heats neutral oil in a wok, adds garlic and vegetables and stirs until tender-crisp. Keep children away from the hot wok.",
+          "pt-BR": "Um adulto aquece o óleo neutro em uma wok, acrescenta alho e legumes e mexe até ficarem macios e crocantes. Mantenha crianças longe da wok quente."
+        },
+        "ingredientIds": [
+          "neutral-oil",
+          "garlic",
+          "broccoli",
+          "carrot",
+          "red-pepper",
+          "spring-onion"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "colander",
+          "wok",
+          "spatula",
+          "chopping-board",
+          "knife",
+          "small-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Combine and serve",
+          "pt-BR": "Misture e sirva"
+        },
+        "instruction": {
+          "en-GB": "An adult adds drained noodles and dressing to the wok and stirs until steaming hot. Serve promptly.",
+          "pt-BR": "Um adulto acrescenta o macarrão escorrido e o molho à wok e mexe até ficar bem quente. Sirva logo."
+        },
+        "ingredientIds": [
+          "wheat-noodles",
+          "soy-sauce",
+          "sesame-oil"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "colander",
+          "wok",
+          "spatula",
+          "chopping-board",
+          "knife",
+          "small-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      }
+    ],
+    "allergens": [
+      "gluten",
+      "sesame",
+      "soy",
+      "wheat"
+    ],
+    "nutrition": {
+      "per_serving": null,
+      "status": "PENDING_SOURCE_LOOKUP_AND_CALCULATION",
+      "sources": []
+    }
+  }
+}
