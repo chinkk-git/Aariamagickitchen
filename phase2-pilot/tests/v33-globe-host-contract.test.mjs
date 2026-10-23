@@ -74,10 +74,7 @@ test('Portuguese locale passes localized country and recipe labels through the s
 
 test('missing any India mapping fails closed instead of exposing a partial destination', () => {
   const recipes = makeRecipes().filter(recipe => recipe.id !== 65);
-  const { host } = setup({ canonicalRecipes: recipes });
-  assert.equal(host.getCountry('IND').available, false);
-  assert.deepEqual(host.getCountry('IND').recipes, []);
-  assert.equal(host.openRecipe(51), false);
+  assert.throws(() => setup({ canonicalRecipes: recipes }), /95-recipe catalogue/);
 });
 
 test('host rejects catalogue count or ID mutations instead of masking canonical drift', () => {
