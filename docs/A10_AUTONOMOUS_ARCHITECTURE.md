@@ -39,3 +39,9 @@ Replace manual copy/paste coordination with auditable task dispatch, bounded age
 
 ## Definition of done
 A new GitHub task can be claimed, executed, tested, corrected and closed by a scoped worker without copy/paste; A10 reports exact evidence; unsafe/ambiguous situations stop for approval. Demonstrate in a pilot before broad rollout.
+
+## Isolated runner pilot implementation (2026-10-22)
+- Added `scripts/a10_job_contract.py`: strict schema, exact SHA, W01/W02 branch allowlist, governing issue check, inspect-only mode, ten-minute maximum, one attempt.
+- Added `tests/test_a10_job_contract.py`: branch crossover, injection field, execution mode, retry and type validation tests.
+- Added manual-only `.github/workflows/a10-isolated-runner-pilot.yml` with `contents: read`, concurrency lock and inspect-only job. No coding-agent execution, writes or CI reruns.
+- Next phase requires owner-approved agent runtime, authenticated scoped credentials and verified CI before switching from inspect to any code-changing mode. Scheduled workflows on the unmerged feature branch do not run.
