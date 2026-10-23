@@ -76,15 +76,23 @@ test('Adventure Explorer acceptance harness measures real Android geometry and c
   assert.match(phone, /g\.occupancy\s*<\s*0\.85\s*\|\|\s*g\.occupancy\s*>\s*0\.95/);
   assert.match(phone, /Input\.dispatchTouchEvent'[\s\S]*?two-finger-pinch|Input\.dispatchTouchEvent/,
     'the phone sample exercises a real WebView pinch through Android DevTools input');
+  assert.match(phone, /homeWorldTarget[\s\S]*?Input\.dispatchTouchEvent[\s\S]*?World Map with approved art/,
+    'Home-to-World navigation uses actual Android touch input and waits for the map route');
   assert.match(phone, /input','touchscreen','swipe/,'one-finger pan is driven through Android input');
   for (const shot of ['world-map-phone-portrait','world-map-phone-landscape','zoomed-continent-phone-portrait',
     'country-preview-phone-portrait','recipe-navigation-phone-portrait','food-passport-phone-portrait']) {
     assert.ok(phone.includes(shot), `phone evidence captures ${shot}`);
   }
   assert.match(phone, /android-back-restores-map-position/);
-  assert.match(phone, /markerGeometry\.some\(m=>m\.hitWidth<44\|\|m\.hitHeight<44\|\|m\.anchorError>2\|\|m\.coordinateError>0\.1\)/,
-    'country markers keep accessible hit areas and map-coordinate alignment through real zoom and pan');
+  assert.match(phone, /hit\?\.getBBox\(\)[\s\S]*?pin\.getScreenCTM\(\)[\s\S]*?geographicAnchorError/,
+    'marker hit bounds and geographic anchors are measured in the rendered SVG screen transform');
+  assert.match(phone, /markerGeometry\.some\(m=>m\.hitWidth<44\|\|m\.hitHeight<44\|\|m\.geographicAnchorError>2\)/,
+    'country markers keep accessible hit areas and geographic alignment through real zoom and pan');
   assert.match(phone, /g\.overlapPairs\?\.length/);
+  assert.match(phone, /Input\.dispatchTouchEvent',\{type:'touchStart'[\s\S]*?android-touch-country-marker/,
+    'country selection is proven with a rendered marker touch, not a synthetic DOM click');
+  assert.match(phone, /worldScreenshot\.sha256\s*===\s*homeScreenshot\.sha256/,
+    'Android screenshot pixels must change from Home after the map route loads');
   assert.match(tablet, /map\.overlapPairs\.length/,
     'tablet markers are checked for overlapping touch targets in both orientations');
   assert.match(phone, /food-passport-offline-restart-persistence/);
