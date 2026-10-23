@@ -1,7 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {adaptRecipeForRenderer, authorizeInternationalRecipeImport, prepareInternationalRecipeImport} from '../domains/cooking/recipe-import/international-adapter.js';
+import {readFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {adaptRecipeForRenderer, authorizeInternationalRecipeImport, prepareInternationalRecipeImport, preparePinnedW03WaveOne} from '../domains/cooking/recipe-import/international-adapter.js';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const sourceCommit = 'a'.repeat(40);
@@ -100,4 +103,36 @@ test('adapter fails closed on draft packages, canonical ID collisions and artwor
   const damaged = makeFixture();
   damaged.files[damaged.recipes[0].steps[0].image.path] = Buffer.from('changed after manifest');
   assert.throws(()=>prepareInternationalRecipeImport(damaged),/SHA-256 mismatch/);
+});
+
+test('owner-pinned W03 Wave 1 packages verify all files and map both recipes for EN-GB/PT-BR review', () => {
+  const repoRoot=resolve(fileURLToPath(new URL('../..',import.meta.url)));
+  const sourceLock=JSON.parse(readFileSync(resolve(repoRoot,'phase2-pilot/domains/cooking/recipe-import/wave1-source-lock.json'),'utf8'));
+  const files={};
+  files[sourceLock.source_manifest_path]=readFileSync(resolve(repoRoot,sourceLock.source_manifest_path));
+  files[sourceLock.source_style_guide_path]=readFileSync(resolve(repoRoot,sourceLock.source_style_guide_path));
+  for(const entry of sourceLock.package_files)files[entry.path]=readFileSync(resolve(repoRoot,entry.path));
+  const imported=preparePinnedW03WaveOne({sourceLock,files,canonicalIds:Array.from({length:95},(_,i)=>i+1)});
+  assert.equal(imported.sourceCommit,'451ab0bf8a3ab1867cf004a113d3d8e6896ccf60');
+  assert.equal(imported.recipes.length,2);
+  assert.deepEqual(imported.recipes.map(r=>r.id),[96,99]);
+  const pasta=imported.recipes[0];
+  assert.equal(pasta.locales['en-GB'].title,'Tomato Basil Pasta');
+  assert.equal(pasta.locales['pt-BR'].title,'Massa com tomate e manjericão');
+  assert.equal(pasta.locales['pt-BR'].steps.length,5);
+  assert.equal(pasta.locales['en-GB'].nutrition.verificationStatus,'ESTIMATE_REVIEW_PENDING');
+  assert.equal(pasta.locales['en-GB'].publicationStatus,'INTERNATIONAL REVIEW ONLY — NOT RELEASED');
+  assert.ok(pasta.locales['en-GB'].equipmentItems.some(item=>item.role==='adult'));
+  const friedRice=imported.recipes[1];
+  assert.equal(friedRice.locales['en-GB'].title,'Vegetable Fried Rice');
+  assert.equal(friedRice.locales['pt-BR'].title,'Arroz frito com legumes');
+  assert.equal(friedRice.locales['en-GB'].steps.length,5);
+  assert.equal(friedRice.locales['en-GB'].nutrition.perServing.sodiumMg,null);
+  assert.equal(friedRice.locales['en-GB'].nutrition.verificationStatus,'ESTIMATE_REVIEW_PENDING');
+  assert.equal(friedRice.artworkAssetPaths.length,22);
+  const damaged={...files};
+  damaged['content/international/countries/china/099-vegetable-fried-rice/recipe.json']=Buffer.from('changed');
+  assert.throws(()=>preparePinnedW03WaveOne({sourceLock,files:damaged,canonicalIds:[]}),/SHA-256 differs/);
+  assert.throws(()=>preparePinnedW03WaveOne({sourceLock:{...sourceLock,source_commit:'c'.repeat(40)},files,canonicalIds:[]}),/must pin owner-selected W03 commit/);
+  assert.throws(()=>preparePinnedW03WaveOne({sourceLock,files,canonicalIds:[96]}),/collides with an existing canonical recipe ID/);
 });

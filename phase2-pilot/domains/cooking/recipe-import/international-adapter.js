@@ -4,6 +4,7 @@ const LOCALES = ['en-GB', 'pt-BR'];
 const NUTRIENTS = ['kcal','proteinG','carbohydrateG','totalFatG','saturatedFatG','fiberG','sugarG','sodiumMg'];
 const HASH = /^[a-f0-9]{64}$/i;
 const COMMIT = /^[a-f0-9]{40}$/i;
+const W03_WAVE1_SOURCE_COMMIT = '451ab0bf8a3ab1867cf004a113d3d8e6896ccf60';
 
 const fail = (path, message) => { throw new Error(`${path}: ${message}`); };
 const isObject = value => !!value && typeof value === 'object' && !Array.isArray(value);
@@ -225,3 +226,146 @@ export function adaptRecipeForRenderer(recipe, locale = 'en-GB') {
 }
 
 function pickFor(value, locale) { return isObject(value) ? value[locale] : value; }
+
+/**
+ * Verify W03's published Wave 1 package at the owner-pinned immutable commit
+ * and map its v1 content schema into review-only Ingredients/Guided Steps
+ * records. The manifest/ledger on newer W03 heads are not treated as proof for
+ * bytes from this older pinned commit; the W01 source lock binds these bytes.
+ */
+export function preparePinnedW03WaveOne({sourceLock, files, canonicalIds = []}) {
+  if (!isObject(sourceLock) || sourceLock.source_commit !== W03_WAVE1_SOURCE_COMMIT) {
+    fail('sourceLock.source_commit', `must pin owner-selected W03 commit ${W03_WAVE1_SOURCE_COMMIT}`);
+  }
+  const manifestBytes = files?.[sourceLock.source_manifest_path];
+  if (manifestBytes == null || sha256(manifestBytes) !== sourceLock.source_manifest_sha256) {
+    fail('sourceLock.source_manifest_sha256', 'pinned W03 source manifest is missing or has changed');
+  }
+  const manifest = JSON.parse(Buffer.from(manifestBytes).toString('utf8'));
+  const styleBytes = files?.[sourceLock.source_style_guide_path];
+  if (styleBytes == null || sha256(styleBytes) !== sourceLock.source_style_guide_sha256) {
+    fail('sourceLock.source_style_guide_sha256', 'approved artwork style guide is missing or has changed');
+  }
+  if (!Array.isArray(sourceLock.package_files) || sourceLock.package_files.length !== 46) {
+    fail('sourceLock.package_files', 'must bind the two recipe documents and all 42 artwork files');
+  }
+  const seenPaths = new Set();
+  const packageEntries = sourceLock.package_files.map(entry => {
+    if (!isObject(entry) || !isText(entry.path) || !HASH.test(entry.sha256 || '') || seenPaths.has(entry.path)) {
+      fail('sourceLock.package_files', 'each entry needs a unique path and SHA-256');
+    }
+    if (!entry.path.startsWith('content/international/countries/') || entry.path.split('/').includes('..')) {
+      fail(`sourceLock.package_files.${entry.path}`, 'must stay under the pinned recipe package');
+    }
+    seenPaths.add(entry.path);
+    const bytes = files[entry.path];
+    if (bytes == null || sha256(bytes) !== entry.sha256.toLowerCase()) {
+      fail(`sourceLock.package_files.${entry.path}`, 'pinned package file is missing or SHA-256 differs');
+    }
+    return `${entry.path.replaceAll('\\', '/')}\t${entry.sha256.toLowerCase()}`;
+  }).sort();
+  const pairSha256 = sha256(packageEntries.join('\n'));
+  if (pairSha256 !== sourceLock.pair_sha256) fail('sourceLock.pair_sha256', 'does not match the pinned package files');
+
+  const ready = (manifest.recipes || []).filter(item => item.status === 'READY_FOR_INTEGRATION');
+  const expectedIds = [96, 99];
+  if (JSON.stringify(ready.map(item => Number(item.proposed_id)).sort((a,b)=>a-b)) !== JSON.stringify(expectedIds)) {
+    fail('source manifest recipes', 'pinned package must contain exactly ready recipes #096 and #099');
+  }
+  if (manifest.canonical_existing_recipe_count !== 95) fail('source manifest canonical_existing_recipe_count', 'must preserve the 95-recipe baseline');
+  if (manifest.production_artwork_approved !== true) fail('source manifest production_artwork_approved', 'must retain the owner-approved visual checkpoint');
+
+  const canonical = new Set(canonicalIds.map(Number));
+  const recipes = expectedIds.map(id => {
+    const entry = ready.find(item => Number(item.proposed_id) === id);
+    const jsonPath = entry.recipe_json.startsWith('content/international/') ? entry.recipe_json : `content/international/${entry.recipe_json}`;
+    const mdPath = entry.recipe_md.startsWith('content/international/') ? entry.recipe_md : `content/international/${entry.recipe_md}`;
+    if (!seenPaths.has(jsonPath) || !seenPaths.has(mdPath)) fail(`recipe ${id}`, 'recipe JSON and Markdown must be in the immutable package lock');
+    const recipeBytes = files[jsonPath];
+    const recipe = JSON.parse(Buffer.from(recipeBytes).toString('utf8'));
+    const c = recipe.content;
+    if (recipe.id !== id || !isObject(c) || c.id !== id || c.status !== 'READY_FOR_INTEGRATION') fail(`recipe ${id}`, 'content record is incomplete or ID does not match');
+    if (canonical.has(id)) fail(`recipe ${id}`, 'collides with an existing canonical recipe ID');
+    if (recipe.renderer?.id !== id || entry.canonical_id_verified !== true) fail(`recipe ${id}`, 'renderer and canonical ID verification must match the package ID');
+    for (const value of [c.title,c.description,c.culturalContext,recipe.adult_assistance,recipe.allergen_notes?.crossContact]) localized(value, `recipe ${id} localized fields`);
+    if (!Array.isArray(c.ingredients) || !c.ingredients.length || !Array.isArray(c.equipment) || !c.equipment.length || !Array.isArray(c.steps) || !c.steps.length) fail(`recipe ${id}`, 'ingredients, equipment and guided steps are required');
+    if (!Array.isArray(recipe.allergens) || !isObject(recipe.nutrition?.per_serving) || !Array.isArray(recipe.nutrition?.sources) || !recipe.nutrition.sources.length) fail(`recipe ${id}`, 'allergens and sourced nutrition fields are required');
+    if (!/PENDING|ESTIMATE/i.test(recipe.nutrition.status || '')) fail(`recipe ${id}.nutrition.status`, 'nutrition must remain explicitly pending independent review');
+    const reviews = recipe.reviews || {};
+    for (const gate of ['A08ChildProtection','A09ChildExperience','nutrition','translation','cultural','artworkRights','security']) {
+      if (!isText(reviews[gate]) || /^(PASS|APPROVED|VERIFIED)$/i.test(reviews[gate])) fail(`recipe ${id}.reviews.${gate}`, 'independent review must remain explicitly pending');
+    }
+
+    const assetRefs = recipe.artwork_assets;
+    if (!Array.isArray(assetRefs) || !assetRefs.length) fail(`recipe ${id}.artwork_assets`, 'must enumerate every offline artwork asset');
+    const assetIds = new Set();
+    const assetMap = new Map();
+    for (const ref of assetRefs) {
+      if (!isObject(ref) || !isText(ref.path) || !HASH.test(ref.sha256 || '') || !isText(ref.provenance) || !isText(ref.license) || !isText(ref.rights_status)) fail(`recipe ${id}.artwork_assets`, 'asset provenance, license, rights state and hash are required');
+      if (!ref.path.startsWith('content/international/countries/') || ref.path.split('/').includes('..') || !seenPaths.has(ref.path)) fail(`recipe ${id}.artwork_assets.${ref.path}`, 'asset must be included in the pinned package');
+      const bytes = files[ref.path];
+      if (sha256(bytes) !== ref.sha256.toLowerCase()) fail(`recipe ${id}.artwork_assets.${ref.path}`, 'asset SHA-256 mismatch');
+      if (Buffer.from(bytes).subarray(0,8).toString('hex') !== '89504e470d0a1a0a') fail(`recipe ${id}.artwork_assets.${ref.path}`, 'asset is not a PNG image');
+      assetIds.add(ref.path); assetMap.set(ref.path, ref);
+    }
+    const expectedImages = [recipe.artwork?.finished_dish, ...(recipe.artwork?.ingredient_images || []), ...(recipe.artwork?.equipment_images || []), ...(recipe.artwork?.step_images || [])];
+    for (const ref of expectedImages) if (!ref || !assetIds.has(ref.path)) fail(`recipe ${id}.artwork`, 'finished dish, ingredient, equipment and step images must all be included');
+    const ingredientIds = new Set(c.ingredients.map(x=>x.id));
+    const equipmentIds = new Set(c.equipment.map(x=>x.id));
+    const ingredients = c.ingredients.map((item,index) => {
+      localized(item.name, `recipe ${id}.ingredients[${index}].name`);
+      if (!isText(item.id) || !Number.isFinite(item.quantity) || item.quantity <= 0 || !isText(item.unit)) fail(`recipe ${id}.ingredients[${index}]`, 'requires a stable ID and exact amount');
+      return {...item, image: item.artwork, imageAsset:item.artwork.path};
+    });
+    const equipment = c.equipment.map((item,index) => {
+      localized(item.name, `recipe ${id}.equipment[${index}].name`);
+      const roleText=String(item.role||'').trim().toLowerCase();
+      const role=roleText.startsWith('adult')?'adult':roleText.startsWith('child')?'child':roleText.startsWith('shared')?'shared':null;
+      if (!isText(item.id) || !role) fail(`recipe ${id}.equipment[${index}]`, 'requires an ID and an explicit child/adult/shared role');
+      return {...item, role, roleDescription:item.role, image: item.artwork, imageAsset:item.artwork.path};
+    });
+    const steps = c.steps.map((step,index) => {
+      for (const field of ['title','instruction','adultAssist','safety']) localized(step[field], `recipe ${id}.steps[${index}].${field}`);
+      if (step.ingredientIds.some(ref=>!ingredientIds.has(ref)) || step.equipmentIds.some(ref=>!equipmentIds.has(ref))) fail(`recipe ${id}.steps[${index}]`, 'contains an unknown ingredient or equipment reference');
+      return {...step, order:index+1, image:step.artwork, art:step.artwork.path};
+    });
+    const per = recipe.nutrition.per_serving;
+    const nutrition = {
+      perServing:{kcal:per.energyKcal,proteinG:per.proteinG,carbohydrateG:per.carbohydrateG,totalFatG:per.fatG,saturatedFatG:per.saturatedFatG,fiberG:per.fibreG,sugarG:null,sodiumMg:per.sodiumMg},
+      servingSize:`1 of ${c.servings} servings`,
+      verificationStatus:recipe.nutrition.status,
+      dataSource:recipe.nutrition.sources.map(s=>`${s.source}${s.fdcId?` FDC ${s.fdcId}`:''}`).join('; '),
+      calculationMethod:`${recipe.nutrition.method} ${recipe.nutrition.basis}`.trim(),
+      reviewDate:null
+    };
+    for (const [key,value] of Object.entries(nutrition.perServing)) if (value !== null && (!Number.isFinite(value) || value < 0)) fail(`recipe ${id}.nutrition.${key}`, 'must be non-negative or null when not calculated');
+    const finishedDish=recipe.artwork.finished_dish;
+    const localizedRecord=locale=>({
+      ...recipe.renderer,
+      id,
+      country:c.country,
+      category:c.category,
+      title:c.title[locale],
+      description:c.description[locale],
+      servings:c.servings,
+      estimatedHandsOnMinutes:c.activeMinutes,
+      durationStatus:'ESTIMATED — NOT INDEPENDENTLY VERIFIED',
+      ingredients:ingredients.map(item=>({...item,name:item.name[locale],quantity:item.quantity,unit:item.unit,optional:item.optional===true})),
+      equipment:equipment.map(item=>item.name[locale]),
+      equipmentItems:equipment.map(item=>({...item,name:item.name[locale]})),
+      allergens:[...recipe.allergens],
+      adultHelp:recipe.adult_assistance[locale],
+      crossContact:recipe.allergen_notes.crossContact[locale],
+      nutrition,
+      steps:steps.map(step=>({...step,title:step.title[locale],instruction:step.instruction[locale],safety:step.safety[locale],adultAssist:step.adultAssist[locale]})),
+      finishedDish:finishedDish.path,
+      artwork:{finishedDish},
+      artworkIds:[...assetIds],
+      international:{sourceCommit:W03_WAVE1_SOURCE_COMMIT,locale,reviews:{...reviews},nutritionSources:recipe.nutrition.sources,sourceJson:jsonPath,sourceMarkdown:mdPath},
+      publicationStatus:'INTERNATIONAL REVIEW ONLY — NOT RELEASED'
+    });
+    return {id,country:c.country,title:{...c.title},sourceJson:jsonPath,sourceMarkdown:mdPath,locales:{'en-GB':localizedRecord('en-GB'),'pt-BR':localizedRecord('pt-BR')},artworkAssetPaths:[...assetIds]};
+  });
+  if (sourceLock.artwork_file_count !== 42 || recipes.reduce((n,r)=>n+r.artworkAssetPaths.length,0)!==42) fail('sourceLock.artwork_file_count', 'must equal 42 distinct Wave 1 images');
+  return Object.freeze({sourceCommit:W03_WAVE1_SOURCE_COMMIT,sourceManifestSha256:sourceLock.source_manifest_sha256,pairSha256,recipes});
+}

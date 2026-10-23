@@ -63,7 +63,9 @@ jobs:
           echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
 
       - name: Build isolated debug-only artwork review routes
-        run: node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+        run: |
+          node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          node tools/v3/artwork/build-international-review.mjs
 
       - name: Run Android unit tests and assemble isolated test APK
         run: V32_REVIEW_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
@@ -82,6 +84,14 @@ jobs:
           grep -Fq "com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER}.share" artifacts/v32-diagnostics/test-apk-manifest.txt
           test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/index.html')" -eq 1
           unzip -p "$apk" assets/artwork-review/index.html | grep -Fq '<title>Draft artwork review — Batches 01–05</title>'
+          test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/international-wave-1/index.html')" -eq 1
+          test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/international-wave-1/recipes.json')" -eq 1
+          unzip -p "$apk" assets/artwork-review/international-wave-1/recipes.json | grep -Fq '451ab0bf8a3ab1867cf004a113d3d8e6896ccf60'
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/international-wave-1/content/international/countries/(italy|china)/')" -eq 46
+          if unzip -p "$apk" assets/index.html | grep -Eiq 'Tomato Basil Pasta|Vegetable Fried Rice|"id"[[:space:]]*:[[:space:]]*(96|99)'; then
+            echo 'Wave 1 recipes must stay out of the canonical production renderer.' >&2
+            exit 1
+          fi
           if unzip -p "$apk" assets/index.html | grep -Fq 'Draft artwork review'; then
             echo 'Debug-only artwork review must not be included in the runtime page.' >&2
             exit 1
@@ -109,6 +119,8 @@ jobs:
           node tools/v3/validate-pt-br-review-drafts.mjs
           node --check tools/v3/runtime.js
           node --check tools/v3/transform-production.mjs
+          node --check tools/v3/artwork/build-international-review.mjs
+          node --check .github/scripts/w01-international-review-smoke.mjs
           node tools/v3/verify-v32-reference-assets.mjs
           node --check tools/v3/qa/android-system-image.mjs
           node --check tools/v3/qa/android-evidence-manifest.mjs

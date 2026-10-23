@@ -365,3 +365,18 @@ console.log(JSON.stringify(report));
 ws.close();
 NODE
 
+echo 'Launching the pinned, offline international Wave 1 debug review route on tablet'
+adb_timeout shell am force-stop "$APP_ID"
+adb_timeout shell am start -W -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity --ez W01_ARTWORK_REVIEW true --ez W01_INTERNATIONAL_REVIEW true
+adb_timeout forward --remove tcp:9222 >/dev/null 2>&1 || true
+international_socket=""
+for attempt in $(seq 1 30); do
+  international_pid=$(adb_poll_timeout shell pidof "$APP_ID" 2>/dev/null | tr -d '\r' | awk '{print $1}' || true)
+  if [ -n "$international_pid" ]; then international_socket=$(adb_poll_timeout shell cat /proc/net/unix 2>/dev/null | grep -o "webview_devtools_remote_${international_pid}" | head -1 || true); fi
+  [ -n "$international_socket" ] && break
+  sleep 2
+done
+test -n "$international_socket"
+adb_timeout forward tcp:9222 "localabstract:$international_socket"
+timeout --kill-after=10s 180s node .github/scripts/w01-international-review-smoke.mjs
+
