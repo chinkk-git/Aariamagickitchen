@@ -1,0 +1,286 @@
+{
+  "schema_version": "1.0.0",
+  "wave": 7,
+  "status": "READY_FOR_INTEGRATION",
+  "integration_status": "READY_FOR_INTEGRATION",
+  "source_commit": "a7c94d50dda874a7b2be2b1ee97479f347f4d4a5",
+  "canonical_recipe_count": 95,
+  "india_mapping_status": "VALIDATED_UNCHANGED",
+  "production_artwork_approved": true,
+  "recipes": [
+    {
+      "id": 108,
+      "country": "vietnam",
+      "title": "Fresh Spring Rolls",
+      "recipe_json": "content/international/countries/vietnam/108-fresh-spring-rolls/recipe.json",
+      "recipe_md": "content/international/countries/vietnam/108-fresh-spring-rolls/recipe.md",
+      "artwork_count": 26,
+      "ingredient_count": 9,
+      "equipment_count": 11,
+      "step_count": 5,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING"
+    },
+    {
+      "id": 109,
+      "country": "vietnam",
+      "title": "Rice Noodle Salad",
+      "recipe_json": "content/international/countries/vietnam/109-rice-noodle-salad/recipe.json",
+      "recipe_md": "content/international/countries/vietnam/109-rice-noodle-salad/recipe.md",
+      "artwork_count": 26,
+      "ingredient_count": 10,
+      "equipment_count": 10,
+      "step_count": 5,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING"
+    }
+  ],
+  "package_files": [
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/chopping-board.png",
+      "sha256": "4fc804fea218fb16db2141fc17071c6a3b64c70c3c8a1c09ed2ef5417f4fb71d"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/clean-tea-towel.png",
+      "sha256": "a20dd480ddb599c2193f0950e251f98a6d6486e25a045095546c2fd12efb5fb4"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/colander.png",
+      "sha256": "b38cc76f81d50dd17018f4a0b144d4ffbb8e3ed65bededce26815261e04b07a3"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/knife.png",
+      "sha256": "4ec4df4168070b3fef2175d9c4219489924940ae2497f7b35b539c8effa0670a"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/measuring-cup.png",
+      "sha256": "2e7eab9551222bad643fa64d4089b79528d8685e26f2c07c2ebf9c9917e97fa1"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/mixing-spoon.png",
+      "sha256": "edd70126d159de0c034eaafa001d9ef4cd050918673f8375e55d9de3d454db4e"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/saucepan.png",
+      "sha256": "60732cad6353854015faea0e1f35035f44b6fed6acf7ac0ed8ae5a823f2aa038"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/serving-platter.png",
+      "sha256": "8f024f66356673b6bda6690a98a70b10e3afade8f8efb200b7931a532c9546e7"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/shallow-water-dish.png",
+      "sha256": "68f1fa302bf03ab3667a8a148ea5e425a9a7a8dce22fe30ae1d022622f4fd7db"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/small-dip-bowl.png",
+      "sha256": "ea4c34d3bef48a6058621ba5889114c42ad6656c367deba5d0068bd2dc39180e"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/vegetable-peeler.png",
+      "sha256": "13175f4567ce6029a2152ec8f841ba3c641f944046c07ad193e4319ebf4ae31d"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/finished-dish.png",
+      "sha256": "c387b3ca6848550e1666b3490300b9e041eaac3510e7c3f98f1799e4e9060d0a"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/carrot.png",
+      "sha256": "02e0304eee822bba568aaa33aefdcaebc0564338b9241389526ab98e63e95106"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/cucumber.png",
+      "sha256": "c9e1a058f526ee024c3bef914b486dcd0e91bd3892919133c20ffd1acebb61f4"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lettuce.png",
+      "sha256": "d01cd68a00391152e9ec141b23f14ecd68b37f1864db2b986ade830671571c22"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lime-juice.png",
+      "sha256": "e9f1a68bf81ba15d36fb07cb7a9bb7bc92fd6ea5c6d7cb84a99828af752479ad"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/mint.png",
+      "sha256": "f421102356b1bff37b3f857799ddab7354e98bd6d609787c12f78072c29a6c51"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/peanut-butter.png",
+      "sha256": "bfee36b981fd6dd35b12dbd05a9452341128a034b55c6d7b6889f16fed4b2cac"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-paper.png",
+      "sha256": "6f225925dd2187a1e66f0e5379960f7ee7a428609c6fb584e13b277ce0709dcb"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-vermicelli.png",
+      "sha256": "0655e8b52c79394fda9985713f316118314ffeb425ff81df79209aa8cc225d4e"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/water.png",
+      "sha256": "00f5498a8ad0a106c93b8a1a352ee82db50954742712a370d8361944f19b4c46"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-01.png",
+      "sha256": "b086a02098961a0cf987802f77620ded7d183d01c7d83e12bd290e93a6d3da7b"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-02.png",
+      "sha256": "6ad74d8280f01eea4f3a924865e60291d0a6459d25dca2883565fdff3e5cbc78"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-03.png",
+      "sha256": "dd2cee1fb9066a42484311382a8e668a958b157c9dca952fb5bd010433d5abf7"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-04.png",
+      "sha256": "b8b49961c911d17359e7c4f7a34ffe6ecc797714b204c0274d7939bf7bb28016"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-05.png",
+      "sha256": "180861b154d15ab64f18e984cb4299eb265b27f94e465b5a27ddd1556b071d6b"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/recipe.json",
+      "sha256": "a620779dc7498252a75769b1061672ff27374aaaace11d7e045628ae21a1e491"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/recipe.md",
+      "sha256": "f59ea90fb8dc78eada88a19a188b498305df0422c5cfd91dc6bad3785863e64d"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/chopping-board.png",
+      "sha256": "ada5751e7d18b404e69b479b523b003482ec593a99ae3abb804f2456595ea366"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/colander.png",
+      "sha256": "158a29d25b2b568a3e506bb8a22d8229f44dc49fa65020e8ec3e913ec560c6ec"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/dressing-bowl.png",
+      "sha256": "857773dbe05892c6df3596f48b4c20c890e31c3ae1550ff9a261ffc4de8e4e7f"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/knife.png",
+      "sha256": "73509f03bb492877295a8c3fca1ba47d5a9c679598853d0db12bdd134a21694e"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/measuring-cup.png",
+      "sha256": "110899cc2003e1d7cb876bba308f07c14354894665bc586aa63464ad09604025"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-bowl.png",
+      "sha256": "a6f82a250be3d312e8445a27a172e9beb9d8faa86a8714df7bb14ecf19a396f0"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/mixing-spoon.png",
+      "sha256": "1d9940f15a0fea1d57dc2c8037f49ba04ace879d689dbf0ef541116eed8c0edf"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/saucepan.png",
+      "sha256": "d343808756418a9469cb8e386c05d694bc09427eedb46881544a4a7d521173de"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/serving-bowls.png",
+      "sha256": "3c32afe2a346b59bf214544c154ed2f15666e681daf3e7114f10bd148890c4d5"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/equipment/vegetable-peeler.png",
+      "sha256": "c6ffe61790f6a1244681a23824702b156a05d3c49eadd317be0fbf33d086569a"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/finished-dish.png",
+      "sha256": "b82a48a6f0e272d8c41fd0130adf9efdab2225e78c3440cb2e63953910d452bd"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/carrot.png",
+      "sha256": "0a9892d62838b7f09876f10a4265958c6281c9c10de8109e149b215e4f2dd0e7"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/cucumber.png",
+      "sha256": "0b5df623cdc9ad40b110ff54fce511c37009262b97f38b463f9189de47201196"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/fish-sauce.png",
+      "sha256": "71ee347e72ef2c716c8bee2680ce265a70f7855d1aa399598ac633837f9a2e2a"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lettuce.png",
+      "sha256": "b0df4161ae05e3d0756d7e12fc360074a6f07b263484f9d9a50ab2f19796e91a"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/lime-juice.png",
+      "sha256": "5a33cb4e25beef89e7470dea88c8838a0faca168207166579061f08e520c1b8b"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/mint.png",
+      "sha256": "47ed6e89d468b0b82b7cfb0fc0a8ec1e73f5a6dd214661c878d837e724bef682"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/peanuts.png",
+      "sha256": "2dc43c61ed271f8e1d53a0f431d6a1e9825ad8b6d5ffa6b2952be1553c23151d"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/rice-vermicelli.png",
+      "sha256": "be9d81c52d3b8606c2b68934873760f84285d4306fcb4b729221445f9baa944e"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/sugar.png",
+      "sha256": "aba5f49906f6e653b77c439ffc9e7586ef9d40207eb93984e98e3d4552a18f34"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/ingredients/water.png",
+      "sha256": "3f3e2a751d2a63e4ecf7e5e092a1898b3e9ebee7341476c804ea31938a1836fd"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-01.png",
+      "sha256": "413ab67e18580a593bb68b8eb1892134b7aba00a90a56d87b7f4c14594ed10e2"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-02.png",
+      "sha256": "4315f5355d612f614eee4c0e266ff5852704dacf0fce69c558f95b529fb4d061"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-03.png",
+      "sha256": "33bd086cab190090bcb8c305d287c46144eba89b8764047f5b0261b74b80b4af"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png",
+      "sha256": "25328db7368c5f5c79efd5a519a376d1dc54a79ee01ca5c981b7b39935682130"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-05.png",
+      "sha256": "ac761ba77a7b81387f673fd5a8bfa7304459fa8b98e57e17748ff4805b1db061"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/recipe.json",
+      "sha256": "28b5846fc3cb4ba23c5af0d28fa02d9228a5ff205c6e27ead88dfb9b70421ac7"
+    },
+    {
+      "path": "content/international/countries/vietnam/109-rice-noodle-salad/recipe.md",
+      "sha256": "200b649781094aaf44525ba45931040d8d3f97ff5ae94eecd90523033ba072b7"
+    }
+  ],
+  "pair_sha256": "7b630c9ec43077cb517318ed804f52f2a5d070d5d161756c863efd098625ca85",
+  "validation_ledger": "content/international/waves/wave-07/validation-ledger.json",
+  "nutrition_sources": "content/international/waves/wave-07/nutrition-sources.json",
+  "independent_gates": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING",
+    "W01_W02_runtime_acceptance": "PENDING"
+  },
+  "wave6_handoff_commit": "d839c961d7eed598f4a9f7a2d0fe5d6bc0af11e6",
+  "support_files": [
+    {
+      "path": "content/international/waves/wave-07/validation-ledger.json",
+      "sha256": "7853114beb452e8263e42453877ae8a7454bb44c1d83e6891278fafbd2c9f82a"
+    },
+    {
+      "path": "content/international/waves/wave-07/nutrition-sources.json",
+      "sha256": "d01392c2a90d46e1d9f2683f5db57970214a144989d80d80559585cfbb5d1525"
+    }
+  ],
+  "validation": "Repository schema constraints, bilingual completeness, item references, safety/allergen consistency, sourced nutrition estimates, offline artwork paths and local PNG SHA-256 checks passed; independent gates remain pending"
+}
