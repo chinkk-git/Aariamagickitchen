@@ -100,6 +100,7 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/Tap the highlighted flag/,'phone smoke follows the current Surprise Me hint copy');
   assert.match(phone,/android-touch-selects-suggested-flag/,'phone smoke explicitly touches the Surprise Me destination');
   assert.match(phone,/selectedCountry\.selected!==surprise\.pending/,'phone verifies the explicit touch selected the pending destination without coupling to host label shape');
+  assert.match(phone,/selectedCountry\.name!==selectedCountry\.flagName/,'phone verifies the selected flag label matches the visible country panel');
   assert.match(phone,/android-touch-selects-india-flag-for-canonical-recipe-check/,'phone smoke selects India after Surprise Me when needed');
   assert.match(phone,/Open canonical recipe #51/,'phone recipe navigation is a real Android touch');
   assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
