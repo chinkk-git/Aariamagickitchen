@@ -44,11 +44,11 @@ def transition(task, next_state, *, now=None, lease_until="", exact_sha=""):
         until = datetime.fromisoformat(task.lease_until.replace("Z", "+00:00"))
         if until.tzinfo is None or until <= clock:
             raise ValueError("expired or naive lease")
-    if next_state == "VERIFYING":
+    if next_state in {"VERIFYING", "DONE"} and task.state == "VERIFYING" or next_state == "VERIFYING":
         clock = now or datetime.now(timezone.utc)
         until = datetime.fromisoformat(task.lease_until.replace("Z", "+00:00"))
-        if until <= clock:
-            raise ValueError("cannot verify after lease expiration")
+        if until.tzinfo is None or until <= clock:
+            raise ValueError("cannot verify or complete after lease expiration")
     return Task(task.key, task.worker, next_state, task.attempt,
                 task.lease_until if next_state in {"RUNNING", "VERIFYING"} else "",
                 task.exact_sha)
