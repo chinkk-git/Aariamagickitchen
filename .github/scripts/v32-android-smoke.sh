@@ -520,7 +520,7 @@ console.log('Android World Adventure verified: India recipes → recipe → quiz
 await evaluate(`document.querySelector('#nav .tab[data-nav="home"]')?.click()`);
 await waitForVisible('.v31-hero-welcome h1', 'Home after World Adventure');
 const catalogueCount = await evaluate(`RECIPES.length`);
-if (catalogueCount !== 95) throw new Error(`Android catalogue should contain exactly 95 production recipes; found ${catalogueCount}`);
+if (catalogueCount !== 97) throw new Error(`Android catalogue should contain exactly 97 production recipes (95 original plus #096 and #099); found ${catalogueCount}`);
 await evaluate(`document.querySelector('#nav .tab[data-nav="week"]')?.click()`);
 await waitForVisible('.daycard', 'Planner before Spin My Week');
 await evaluate(`document.querySelector('#screen [data-action="open-week-wheel"]')?.click()`);
@@ -578,16 +578,16 @@ await waitForVisible('.v31-hero-welcome h1', 'Home before recipe/favorites check
 await evaluate(`document.querySelector('.v31-action-tiles [data-nav="library"]')?.click()`);
 const libraryReady = await waitForVisible('.recipe-card', '97-recipe library');
 const libraryCards = await evaluate(`document.querySelectorAll('#screen .recipe-card').length`);
-if (libraryCards !== 97) throw new Error(`Recipe library should show all 95 recipes; found ${libraryCards}`);
+if (libraryCards !== 97) throw new Error(`Recipe library should show all 97 searchable recipes; found ${libraryCards}`);
 const themeReport = await evaluate(`(() => { const cards=[...document.querySelectorAll('#screen .recipe-card')]; return {count:cards.length, themes:[...new Set(cards.map(x=>x.dataset.v32Theme))].sort(), samples:Object.fromEntries(['12','76','5'].map(id=>[id,[...document.querySelectorAll('#screen [data-open]')].find(card=>card.dataset.open===id)?.dataset.v32Theme||'']))}; })()`);
-if(themeReport.count!==97||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['12']!=='playful-purple'||themeReport.samples['76']!=='fresh-green'||themeReport.samples['5']!=='sunny-orange') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 95 recipes: ${JSON.stringify(themeReport)}`);
+if(themeReport.count!==97||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['12']!=='playful-purple'||themeReport.samples['76']!=='fresh-green'||themeReport.samples['5']!=='sunny-orange') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 97 searchable recipes: ${JSON.stringify(themeReport)}`);
 await captureScreenshot('v32-three-theme-library-portrait.png','All three recipe themes',recipeDigest);
-console.log('V3.2 renderer exposes all three stable recipe themes across all 95 original IDs:',JSON.stringify(themeReport));
+console.log('V3.2 renderer exposes all three stable recipe themes across the 97-recipe catalogue:',JSON.stringify(themeReport));
 const filterReport=await evaluate(`(()=>{const select=document.querySelector('[data-appliance-filter]');if(!select)throw Error('Cooking-method filter is missing');select.value='Air fryer';select.dispatchEvent(new Event('change',{bubbles:true}));const ids=[...document.querySelectorAll('#screen .recipe-card[data-open]')].map(x=>Number(x.dataset.open));return {ids,allAirFryer:ids.length>0&&ids.every(id=>/air[ -]?fryer/i.test(RECIPES.find(r=>r.id===id)?.method||''))}})()`);
-if(!filterReport.allAirFryer||filterReport.ids.length>=95)throw new Error(`Air fryer filter returned invalid recipes: ${JSON.stringify(filterReport)}`);
+if(!filterReport.allAirFryer||filterReport.ids.length>=97)throw new Error(`Air fryer filter returned invalid recipes: ${JSON.stringify(filterReport)}`);
 await evaluate(`(()=>{const select=document.querySelector('[data-appliance-filter]');select.value='All';select.dispatchEvent(new Event('change',{bubbles:true}));return true})()`);
 const breakfastCount=await evaluate("(()=>{const button=document.querySelector('#screen button[data-filter=Breakfast]');if(!button)throw Error('Breakfast category filter is missing');button.click();const cards=[...document.querySelectorAll('#screen .recipe-card[data-open]')];return {count:cards.length,allBreakfast:cards.length>0&&cards.every(x=>RECIPES.find(r=>r.id===Number(x.dataset.open))?.category==='Breakfast')}})()");
-if(!breakfastCount.allBreakfast||breakfastCount.count>=95)throw new Error('Breakfast filter returned invalid recipes: '+JSON.stringify(breakfastCount));
+if(!breakfastCount.allBreakfast||breakfastCount.count>=97)throw new Error('Breakfast filter returned invalid recipes: '+JSON.stringify(breakfastCount));
 await evaluate("document.querySelector('#screen button[data-filter=All]')?.click()");
 await evaluate("document.querySelector('#nav .tab[data-nav=home]')?.click()");
 await waitForVisible('.v31-tile-surprise','Home Surprise Me action');
@@ -706,7 +706,7 @@ const recipeImageEvidence=[];
 let recipeImageScreenshotDigest=null;
 for(let recipeId=1;recipeId<=95;recipeId++){
   if(recipeId===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
-  const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
+  const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(cards.length!==97||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
   if(!card?.title||!card.theme)throw new Error(`Recipe ${recipeId} is missing its catalogue card or deterministic theme`);
   if(card.catalogueCount!==undefined)throw new Error(`Recipe ${recipeId} route sweep is not on the full recipe catalogue: ${JSON.stringify(card)}`);
   await pause(250);
@@ -768,7 +768,7 @@ for(let recipeId=1;recipeId<=95;recipeId++){
   await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
   const returned=await waitForVisible('.recipe-card[data-open="1"]',`Recipe catalogue after ${recipeId}`);
   const returnCount=await evaluate(`document.querySelectorAll('#screen .recipe-card[data-open]').length`);
-  if(returnCount!==95)throw new Error(`Recipe catalogue after ${recipeId} contains ${returnCount} cards, expected 95; screen=${returned.screen}`);
+  if(returnCount!==97)throw new Error(`Recipe catalogue after ${recipeId} contains ${returnCount} cards, expected 97; screen=${returned.screen}`);
 }
 if(routeCoverage.length!==95||new Set(routeCoverage).size!==95)throw new Error(`Expected unique detail route coverage 95/95, got ${routeCoverage.length}`);
 await rotateTo(1);await waitForWebViewOrientation(true);

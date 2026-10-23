@@ -266,6 +266,27 @@ test('phone G3 keeps both complete 95-recipe sweeps enabled within bounded execu
     'the enclosing job can accommodate ordered G1, G2 and both G3 gates');
 });
 
+test('97-recipe review catalogue checks keep all 95 original route regressions', async () => {
+  const phone = await read('.github/scripts/v32-android-smoke.sh');
+  const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
+  assert.match(phone, /catalogueCount !== 97/,
+    'phone G3 expects both integrated recipes in the full production catalogue');
+  assert.match(phone, /libraryCards !== 97/,
+    'phone G3 requires all 97 searchable recipe cards');
+  assert.match(phone, /cards\.length!==97/,
+    'original route sweeps execute against the 97-card catalogue');
+  assert.match(phone, /returnCount!==97/,
+    'route back-navigation restores the full 97-card catalogue');
+  assert.equal((phone.match(/for\(let recipeId=1;recipeId<=95;recipeId\+\+\)\{/g) || []).length, 2,
+    'both original phone route sweeps remain complete for IDs 1–95');
+  assert.match(phone, /routeCoverage\.length!==95\|\|new Set\(routeCoverage\)\.size!==95/,
+    'the original 95 distinct route checks remain mandatory');
+  assert.match(tablet, /x\.documentWidth>x\.width\+1\|\|x\.grid>x\.width\+1/,
+    'tablet G2 compares Android viewport measurements returned by WebView, never Node globals');
+  assert.match(tablet, /b\.r\.width>x\.width\+1/,
+    'tablet G2 row width uses the same WebView viewport measurement');
+});
+
 test('tablet G3 waits for a ready WebView title and preserves emulator logcat on failure', async () => {
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
   assert.match(tablet, /title\?\.includes\('Magical Kitchen'\)/,
