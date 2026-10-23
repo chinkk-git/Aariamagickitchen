@@ -1,0 +1,26 @@
+name: A10 Safe Pull Request Validation
+on:
+  pull_request:
+    paths:
+      - 'scripts/a10_*.py'
+      - 'tests/test_a10_*.py'
+      - '.github/workflows/a10-*.yml'
+      - 'docs/A10_*.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: a10-pr-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python unit tests
+        run: python3 -m unittest discover -s tests -p 'test_a10_*.py' -v
+      - name: Offline integration pilot
+        run: python3 -m scripts.a10_offline_pilot
+      - name: Syntax compilation
+        run: python3 -m compileall -q scripts tests
