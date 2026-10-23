@@ -222,6 +222,8 @@ test('production international ingredient rows stay compact, contained and measu
   ]);
   assert.match(runtime, /\.v32-international-recipe \.ref-ingredient-icon img\{[^}]*width:100%;height:100%;max-width:100%;max-height:100%;[^}]*object-fit:contain/,
     'production checklist thumbnails are clipped to a fixed square and contain the complete approved image');
+  assert.match(runtime, /\.v32-international-recipe \.ref-tools \.tool-illustration\{[^}]*width:52px;height:44px;[^}]*overflow:hidden[^}]*\}\.v32-international-recipe \.ref-tools \.tool-illustration img\{[^}]*width:100%;height:100%;max-width:100%;max-height:100%;[^}]*object-fit:contain/,
+    'production equipment illustrations remain contained in small frames beside readable tool labels');
   assert.match(runtime, /\.v32-international-recipe \.ref-ingredient\{[^}]*grid-template-columns:40px minmax\(0,1fr\) 44px;[^}]*min-height:60px;[^}]*overflow:hidden/,
     'production checklist uses compact rows with independent art, text and touch target columns');
   assert.match(runtime, /\.v32-international-recipe \.ref-ingredient input\[type=checkbox\][^{]*\{[^}]*width:24px;height:24px/,
@@ -230,6 +232,8 @@ test('production international ingredient rows stay compact, contained and measu
     'two/three-column international rows override the shared auto-fit landscape grid at tablet widths');
   assert.match(tablet, /async function assertInternationalIngredientLayout[\s\S]*?imageEscapes[\s\S]*?overlap\([\s\S]*?height>96[\s\S]*?labels<1/,
     'real Android tablet assertions cover image bounds, text overlap, row size, accessible labels and rendered images');
+  assert.match(tablet, /async function assertInternationalEquipmentContainment[\s\S]*?const escapes[\s\S]*?overlap\(b\.wrap,b\.name\)[\s\S]*?overlap\(b\.name,b\.role\)[\s\S]*?assertInternationalEquipmentContainment\('Production #'/,
+    'real Android tablet assertions prove international equipment art stays within its wrapper and does not cover either label');
   assert.match(tablet, /international-\x27\+id\+\x27-ingredients-\x27\+orientationName/,
     'tablet G2 captures the production ingredient list for each new recipe and orientation');
   assert.match(phone, /internationalProductionEvidence[\s\S]*?for\(const id of \[96,99\]\)[\s\S]*?row\.card\.height>96[\s\S]*?production-international-\$\{id\}-phone-/,
