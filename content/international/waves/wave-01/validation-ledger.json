@@ -35,5 +35,7 @@
     "Nutrition values are estimates requiring independent review; soy sauce sodium is based on USDA low-sodium reference data and varies by product label.",
     "Rights, A08, A09, nutrition/allergen, translation/cultural and security reviews were not performed by W03.",
     "India mapping was not revalidated; canonical 95 source catalogue remained unchanged."
-  ]
+  ],
+  "source_commit": "bb3f3936f51d4b3f0088ec6e8570b62390b40be7",
+  "manifest_sha256": "713529c9edea899612155f102aae5de5868a07ee3b63c841586146034960ead0"
 }

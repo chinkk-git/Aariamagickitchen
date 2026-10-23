@@ -3,7 +3,7 @@
   "status": "READY_FOR_INTEGRATION",
   "integration_status": "READY_FOR_INTEGRATION",
   "production_artwork_approved": true,
-  "source_commit": "6186c7d7999f72438c526d938f8363bf83ef9c17",
+  "source_commit": "bb3f3936f51d4b3f0088ec6e8570b62390b40be7",
   "source_branch": "feature/international-recipe-content",
   "wave": 1,
   "canonical_existing_recipe_count": 95,
