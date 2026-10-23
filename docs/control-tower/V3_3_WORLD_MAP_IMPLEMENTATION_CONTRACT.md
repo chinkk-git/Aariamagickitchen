@@ -1,6 +1,6 @@
 # V3.3 World Map Explorer — W02 Implementation Contract
 
-Status: initial architecture and test strategy  
+Status: implementation active; acceptance and independent gates not claimed
 Owner: W02  
 Tracking: [Issue #39](https://github.com/chinkk-git/Aariamagickitchen/issues/39)  
 Branch: `feature/v3.3-world-map-explorer`  
@@ -85,7 +85,8 @@ Passport stamps derive only from durable, verified recipe-completion events alre
 - Existing Android build and CI conventions.
 
 ### Open dependencies
-- The owner-supplied approved image is not yet versioned in this repository; add it and the original design notes with provenance before claiming comparison or visual parity.
+- The owner-supplied approved image and source design notes are now versioned under `docs/design/references/v3.3/`; comparison still requires exact-head Android screenshots and independent visual review.
+- The newly supplied five-country concept board is model-generated and kept only as a hashed provenance note; it is not cleared runtime artwork.
 - Runtime asset use requires the independent artwork-rights/provenance review; approval of a visual reference alone does not close that gate.
 - Exact country-to-recipe relations and reviewed landmark copy must be supported by canonical repository records and verified sources.
 - A08, A09 and Android security are independent reviewers, not implementer self-checks.

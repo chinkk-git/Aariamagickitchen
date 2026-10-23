@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - feature/v3.2-magical-cookbook
+      - feature/v3.3-world-map-explorer
     paths:
       - 'index.html'
       - 'tools/v3/**'
@@ -106,6 +107,7 @@ jobs:
           set -euo pipefail
           npm test --prefix phase2-pilot
           node tools/v3/validate-v31.mjs
+          node tools/v3/validate-v33-world-map-drafts.mjs
           node tools/v3/validate-pt-br-review-drafts.mjs
           node --check tools/v3/runtime.js
           node --check tools/v3/transform-production.mjs
