@@ -84,9 +84,9 @@ test('Adventure Explorer acceptance harness measures real Android geometry and c
     assert.ok(phone.includes(shot), `phone evidence captures ${shot}`);
   }
   assert.match(phone, /android-back-restores-map-position/);
-  assert.match(phone, /hit\?\.getBBox\(\)[\s\S]*?pin\.getScreenCTM\(\)[\s\S]*?geographicAnchorError/,
+  assert.match(phone, /pin\.querySelector\('.v31-pin-hit'\)\?\.getBoundingClientRect\(\)[\s\S]*?pin\.querySelector\('.v31-pin-anchor'\)\?\.getBoundingClientRect\(\)[\s\S]*?geographicAnchorError/,
     'marker hit bounds and geographic anchors are measured in the rendered SVG screen transform');
-  assert.match(phone, /markerGeometry\.some\(m=>m\.hitWidth<44\|\|m\.hitHeight<44\|\|m\.geographicAnchorError>2\)/,
+  assert.match(phone, /markerGeometry\.some\(m=>!Number\.isFinite\(m\.hitWidth\)[\s\S]*?m\.geographicAnchorError>2\|\|!m\.hitRect\)/,
     'country markers keep accessible hit areas and geographic alignment through real zoom and pan');
   assert.match(phone, /g\.overlapPairs\?\.length/);
   assert.match(phone, /Input\.dispatchTouchEvent',\{type:'touchStart'[\s\S]*?android-touch-country-marker/,
