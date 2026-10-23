@@ -107,13 +107,13 @@ try {
   const openedWorld = await session.evaluate(`(()=>{const button=document.querySelector('[data-v31-open-world]');if(!button)return false;button.click();return true})()`);
   if (!openedWorld) throw new Error('Home Explore the World control was missing');
   const world = await waitFor(session.evaluate,
-    `(()=>{const e=document.querySelector('.v31-world-header h1'),map=document.querySelector('.v31-map-art'),r=e?.getBoundingClientRect(),expected=V31_HOME_WORLD_ART?.worldMap||'',actual=map?getComputedStyle(map).backgroundImage:'';return {visible:!!e&&!!r&&r.width>0&&r.height>0,heading:e?.textContent?.trim()||'',approvedArt:expected.startsWith('data:image/png;base64,')&&actual.includes(expected.slice(0,96)),recipeCount:document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length}})()`,
+    `(()=>{const e=document.querySelector('.v31-world-header h1'),map=document.querySelector('.v31-map-art'),panel=document.querySelector('.v31-map-reference-art'),r=e?.getBoundingClientRect(),expected=V31_HOME_WORLD_ART?.worldMap||'',actual=map?getComputedStyle(map).backgroundImage:'',panelValue=panel?getComputedStyle(panel).getPropertyValue('--v31-world-map-art'):'';return {visible:!!e&&!!r&&r.width>0&&r.height>0,heading:e?.textContent?.trim()||'',approvedArt:expected.startsWith('data:image/png;base64,')&&actual.includes(expected.slice(0,96)),expectedPrefix:expected.slice(0,48),expectedLength:expected.length,backgroundPrefix:actual.slice(0,120),backgroundLength:actual.length,panelValuePrefix:panelValue.slice(0,120),recipeCount:document.querySelectorAll('.v31-approved-recipes [data-v31-approved-recipe]').length}})()`,
     'World Map');
+  if (world.visible) evidence.screenshots.push(screenshot('world-map-phone-portrait'));
   if (world.heading !== 'World Food Adventure' || !world.approvedArt || world.recipeCount !== 18) {
     throw new Error(`World Map sample verification failed: ${JSON.stringify(world)}`);
   }
   evidence.flow.push({ step: 'home-to-world-map', ...world, status: 'PASS' });
-  evidence.screenshots.push(screenshot('world-map-phone-portrait'));
 
   const openedRecipe = await session.evaluate(`(()=>{const recipe=document.querySelector('.v31-approved-recipes [data-v31-approved-recipe="51"]');if(!recipe)return false;recipe.click();return true})()`);
   if (!openedRecipe) throw new Error('Canonical India recipe 51 link was missing from the World Map');
