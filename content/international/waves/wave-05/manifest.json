@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.0.0",
+  "wave": 5,
+  "status": "READY_FOR_INTEGRATION",
+  "integration_status": "READY_FOR_INTEGRATION",
+  "source_commit": "77e586097e1d868d511d27248c8910db3d1657ff",
+  "canonical_recipe_count": 95,
+  "india_mapping_status": "VALIDATED_UNCHANGED",
+  "production_artwork_approved": true,
+  "recipes": [
+    {
+      "id": 103,
+      "country": "japan",
+      "title": "Onigiri Rice Balls",
+      "recipe_json": "content/international/countries/japan/103-onigiri-rice-balls/recipe.json",
+      "recipe_md": "content/international/countries/japan/103-onigiri-rice-balls/recipe.md",
+      "artwork_count": 19,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING"
+    },
+    {
+      "id": 106,
+      "country": "mexico",
+      "title": "Black Bean Quesadillas",
+      "recipe_json": "content/international/countries/mexico/106-black-bean-quesadillas/recipe.json",
+      "recipe_md": "content/international/countries/mexico/106-black-bean-quesadillas/recipe.md",
+      "artwork_count": 22,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING"
+    }
+  ],
+  "package_files": [
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/colander.png",
+      "sha256": "162e570f96c66a12e73ccaa8df1c013769196aaaee9e593c7cd08df52b124518"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/cooling-tray.png",
+      "sha256": "f8c8fe9d4cee6143423474748b526907e128bd58890ea62043a8edca85313341"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png",
+      "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/mixing-bowl.png",
+      "sha256": "c960cbf3f5faf19b25283cd9188d0651e390aed131c4c70352f04def0d2bb9a2"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-mold.png",
+      "sha256": "ef9a51c37897fbd89c4994670bdcae0b216aa8e8d7d717e044112dc73de69f6f"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png",
+      "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png",
+      "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/serving-plate.png",
+      "sha256": "fb6d84444839a97b20c49bb529a9cdf031f9a4e0cdcc5bf9e949ca91c4b675fb"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/finished-dish.png",
+      "sha256": "7f4e15121566deeda84f1baca16e007d19d8151f3fe18943a5e159ee5d9ddd26"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/nori.png",
+      "sha256": "56304a75f815ff26b17fa2a898c365288116fb4352c5b09606c1118f389643dd"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/salt.png",
+      "sha256": "80e741549783080e5357ed9bd5ccf33c2130356e1e7ca7840efe490a6ef198de"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sesame-seeds.png",
+      "sha256": "162b042301ef146f378a6f37d80f09963f0f9116eaaa3ce02cc1e8bdd590f741"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sushi-rice.png",
+      "sha256": "cb6e5fd75ecff7783b7cf9ddc75c7493d0cec4f80867f0219e0ee3e148a26d4a"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/water.png",
+      "sha256": "9170fdff5341e64ce7d83518fe8e0679152db5a86245dd804d99d7ea18212de9"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-01.png",
+      "sha256": "d4c8914f37b1cd590fee438eb6fe6715c332c60f90c3f9dde600a5743a54cdfe"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-02.png",
+      "sha256": "74fd3e2952814023afb5137bd2edb1d38b4fe1269d674d1bdedaf558c887f0c2"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-03.png",
+      "sha256": "915d13d60f3564b351a41b8dafcba3e139fa21b18a31bf98d26533d10a4cf7d1"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-04.png",
+      "sha256": "f90b3c0459494ba700c422db3c1f6aad7796885b5d5aaaf1a636300afbbbf240"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-05.png",
+      "sha256": "1e6ff0fde1130e7ffddd8c40959a3ccae55826701ff1e119f6699bdf3dda02f5"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/recipe.json",
+      "sha256": "6705d7ec91af551b0240e4957eeee7ad065d755acb12c0d14f3f429d0cebb23d"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/recipe.md",
+      "sha256": "e2ba1f6eed40e94de302cf134bb7c39db183f8b0fb63701e09eb05815054a520"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png",
+      "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png",
+      "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png",
+      "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/measuring-spoon.png",
+      "sha256": "33a85136fa8346b15d0c55355cb8d639ad3c480656f71dd0fa6c9132188e0162"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png",
+      "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/serving-plate.png",
+      "sha256": "2238dfae9a4974827b468736df13868ea5300b78243edf7bb5439ff307f736aa"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/skillet.png",
+      "sha256": "3a92d74000a0d861650adcc6f68e8a852f2e5db4a544b75577a38f15f44517c5"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/spatula.png",
+      "sha256": "c334fa1e841cbd72e51f9d0988b9488acd71616b0e2604f973ae34fa5da5a82c"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/finished-dish.png",
+      "sha256": "60395c6ee260a7e7f26cf6276090781ba79cb060411bdd276cfa9172a1ab9cd3"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/black-beans.png",
+      "sha256": "7e6b532510df81fd93cf076369ef30f9a0939cd8859f888cdba65ab113625c7b"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/cheddar.png",
+      "sha256": "3ab6a92cddc7a2dbdab16d982f6c10aa7ca6c60ffe03078b2cee8da4392c6f1d"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/corn-tortillas.png",
+      "sha256": "29a6a81dad57b1d27d2ea06121c4e2700d28597b961689e80bb50b01061d1f7f"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/lime.png",
+      "sha256": "701e9ba7d5d432a53ea6d98bf25fd18b2c48e02af8040afdbd5e9e72b586d44c"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/olive-oil.png",
+      "sha256": "4e354da06ca5e9a98afb2aa52722851abdcaf35cd68cc40334a3756d26f9e75b"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/red-pepper.png",
+      "sha256": "b8da4ec5df7aaa78127193939aa1eba0f83b69f384c65e3bd00755aee0cd7dd7"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/sweetcorn.png",
+      "sha256": "bd0d51d49feb39ee23e3896d22bba40a4a4cdbff87bf4035595c0d2a7320d69c"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/tomato.png",
+      "sha256": "26b43b3444f8213fe284f2cf5343cf2ebd61aeb46e87ac566aff19d1f666b7fb"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-01.png",
+      "sha256": "9d66e6ba4de8f8bee44de7888bdb49064588ade4a9705298419ff6839c030b1a"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-02.png",
+      "sha256": "45283b2a7f4f014c5c0a7162a6136473366f35a522263496bda74b6099acc566"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-03.png",
+      "sha256": "ea806f2495785d152df5b830398e95fba4a72ed3254eef00f41907a874ee622b"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-04.png",
+      "sha256": "e41f5ace5e2d309d3ca989480cd7fbaa3a32f60fbb720777cfdeb563a322a743"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-05.png",
+      "sha256": "98ce9f559808e0aa626e14750bade2d164ec517a917bf6857b49a78cfc9175b0"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/recipe.json",
+      "sha256": "330c190fb0412b4df86e83619fdf4d5ba23c3f50b233b54aba3a8436e403e01b"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/recipe.md",
+      "sha256": "46334ff4686db974a47915be175ba0ee75b2d69edbf52baefbb3eeddc19e4b8f"
+    }
+  ],
+  "pair_sha256": "c2560ae99bbba87681baf7049aebb991674f9326ab707970e47ca65fdd18ffa3",
+  "validation_ledger": "content/international/waves/wave-05/validation-ledger.json",
+  "nutrition_sources": "content/international/waves/wave-05/nutrition-sources.json",
+  "independent_gates": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "wave4_handoff_commit": "77e586097e1d868d511d27248c8910db3d1657ff",
+  "support_files": [
+    {
+      "path": "content/international/waves/wave-05/validation-ledger.json",
+      "sha256": "3fb3b711b0f32abc80a6042e8baf56e981011bd7672c8ef6598ebfdec9f89372"
+    },
+    {
+      "path": "content/international/waves/wave-05/nutrition-sources.json",
+      "sha256": "11bb8b70342688623abc3737e54fea6d11b5afd3302b6c2fe33047ceb647cc9f"
+    }
+  ],
+  "validation": "Repository schema constraints, bilingual steps, content safety, nutrition source ledger, offline paths and local asset SHA-256 checks passed; independent gates pending"
+}
