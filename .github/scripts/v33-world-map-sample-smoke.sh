@@ -71,16 +71,32 @@ adb shell pm path "$APP_ID" | tee artifacts/v33-world-map-sample/logs/package-pa
 wait_for_stable_launcher
 adb shell am start -W -n "$APP_ID"/com.aaria.magickitchen.pilot.MainActivity | tee artifacts/v33-world-map-sample/logs/launch.txt
 
-pid=''
-socket=''
-for attempt in $(seq 1 45); do
-  pid="$(adb shell pidof "$APP_ID" 2>/dev/null | tr -d '\r' | awk '{print $1}' || true)"
-  if [ -n "$pid" ]; then
+# A cold-started WebView can briefly leave an old app PID ahead of the active
+# process in `pidof`. Do not forward to the first socket-shaped match: prove
+# that the forwarded socket serves this app's DevTools page before continuing.
+adb forward --remove tcp:9224 >/dev/null 2>&1 || true
+connected=''
+for attempt in $(seq 1 60); do
+  pids="$(adb shell pidof "$APP_ID" 2>/dev/null | tr -d '\r' || true)"
+  for pid in $pids; do
+    case "$pid" in ''|*[!0-9]*) continue ;; esac
     socket="$(adb shell cat /proc/net/unix 2>/dev/null | grep -o "webview_devtools_remote_${pid}" | head -1 || true)"
-  fi
-  [ -n "$socket" ] && break
+    [ -n "$socket" ] || continue
+    adb forward --remove tcp:9224 >/dev/null 2>&1 || true
+    if adb forward tcp:9224 "localabstract:$socket" >/dev/null 2>&1 \
+      && node -e 'fetch("http://127.0.0.1:9224/json").then(r=>r.json()).then(t=>process.exit(Array.isArray(t)&&t.some(x=>x.type==="page"&&x.webSocketDebuggerUrl&&(String(x.url||"").includes("appassets.androidplatform.net")||String(x.title||"").includes("Magical Kitchen")))?0:1)).catch(()=>process.exit(1))'; then
+      printf 'Connected Android WebView DevTools pid=%s socket=%s\n' "$pid" "$socket" | tee artifacts/v33-world-map-sample/logs/devtools-target.txt
+      connected='yes'
+      break 2
+    fi
+  done
   sleep 1
 done
-test -n "$socket"
-adb forward tcp:9224 "localabstract:$socket"
+if [ "$connected" != 'yes' ]; then
+  adb shell pidof "$APP_ID" > artifacts/v33-world-map-sample/logs/devtools-pids.txt 2>&1 || true
+  adb shell cat /proc/net/unix | grep 'webview_devtools_remote_' > artifacts/v33-world-map-sample/logs/devtools-sockets.txt 2>&1 || true
+  adb forward --list > artifacts/v33-world-map-sample/logs/devtools-forwards.txt 2>&1 || true
+  echo 'No live app-owned WebView DevTools page became available from the current app process' >&2
+  exit 1
+fi
 ANDROID_TEST_APP_ID="$APP_ID" node .github/scripts/v33-world-map-sample-smoke.mjs

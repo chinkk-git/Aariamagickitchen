@@ -59,8 +59,8 @@ test('fixed map keeps the owner-approved image bytes, aspect ratio and direct ro
 });
 
 test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 coverage', async () => {
-  const [phone,tablet,workflow,regression]=await Promise.all([
-    read('.github/scripts/v33-world-map-sample-smoke.mjs'),read('.github/scripts/v32-android-tablet-smoke.sh'),
+  const [phone,phoneLaunch,tablet,workflow,regression]=await Promise.all([
+    read('.github/scripts/v33-world-map-sample-smoke.mjs'),read('.github/scripts/v33-world-map-sample-smoke.sh'),read('.github/scripts/v32-android-tablet-smoke.sh'),
     read('.github/workflows/v32-android.yml'),read('.github/scripts/v32-android-smoke.sh')
   ]);
   for (const script of [phone,tablet,regression]) {
@@ -74,6 +74,9 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/const mapShot=screenshot\('world-map-phone-portrait'\)/);
   assert.match(phone,/cmd','connectivity','airplane-mode','enable/);
   assert.match(phone,/food-passport-offline-restart-persistence/);
+  assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
+  assert.match(phoneLaunch,/127\.0\.0\.1:9224\/json/,'sample verifies a live app-owned DevTools page before connecting');
+  assert.match(phoneLaunch,/devtools-sockets\.txt/,'sample records process/socket diagnostics if DevTools stays unavailable');
   assert.match(tablet,/world-map-tablet-"\+orientationName/);
   assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
   assert.match(regression,/catalogueCount !== 95/);
