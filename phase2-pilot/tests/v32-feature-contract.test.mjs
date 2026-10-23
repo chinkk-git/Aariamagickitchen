@@ -184,3 +184,13 @@ test('phone and tablet Android capture the visible PT-BR ingredient grid and res
   assert.match(tablet, /step=0;save\(\);render\(\)/,
     'each tablet orientation starts the PT-BR pilot at step one');
 });
+
+test('Android visual regression emulators use stable SwiftShader rendering', async () => {
+  const workflow = await read('.github/workflows/v32-android.yml');
+  const deviceGates = workflow.match(/emulator-options:[^\n]+/g) || [];
+  assert.equal(deviceGates.length, 3, 'G2 tablet, G3 tablet and G3 phone each configure emulator graphics');
+  assert.ok(deviceGates.every(options => /-gpu swiftshader(?:\s|$)/.test(options)),
+    'all screenshot gates use the supported SwiftShader renderer');
+  assert.doesNotMatch(workflow, /-gpu swiftshader_indirect/,
+    'the unstable indirect graphics mode that caused G3 WebView renderer loss is not reintroduced');
+});
