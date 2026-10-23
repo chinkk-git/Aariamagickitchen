@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0.0",
+  "source": "USDA FoodData Central generic food searches",
+  "method": "Approximate values calculated from generic reference foods scaled to exact recipe ingredient quantities and divided by four servings. Liquids use approximate 1 g/mL where a food-specific density is unavailable. Values are rounded; branded foods, draining and ingredient composition vary. Independent review remains pending.",
+  "recipes": [
+    {
+      "id": 104,
+      "title": {
+        "en-GB": "Japanese Cucumber Salad",
+        "pt-BR": "Salada japonesa de pepino"
+      },
+      "servings": 4,
+      "ingredient_references": [
+        {
+          "food": "Cucumber, with peel, raw",
+          "quantity_in_recipe": 400,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+        },
+        {
+          "food": "Vinegar, rice",
+          "quantity_in_recipe": 30,
+          "unit": "mL",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar,%20rice"
+        },
+        {
+          "food": "Sugars, granulated",
+          "quantity_in_recipe": 8,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Sugars,%20granulated"
+        },
+        {
+          "food": "Salt, table",
+          "quantity_in_recipe": 2,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Salt,%20table"
+        },
+        {
+          "food": "Seeds, sesame seeds, whole, dried",
+          "quantity_in_recipe": 5,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Seeds,%20sesame%20seeds,%20whole,%20dried"
+        },
+        {
+          "food": "Seaweed, wakame, dried",
+          "quantity_in_recipe": 5,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Seaweed,%20wakame,%20dried"
+        }
+      ],
+      "estimated_per_serving": {
+        "energyKcal": 32,
+        "proteinG": 0.9,
+        "carbohydrateG": 6.0,
+        "fatG": 0.7,
+        "fibreG": 0.7,
+        "saturatedFatG": 0.1,
+        "sodiumMg": 211
+      },
+      "status": "ESTIMATE_REVIEW_PENDING"
+    },
+    {
+      "id": 107,
+      "title": {
+        "en-GB": "Mexican Sweetcorn Cups",
+        "pt-BR": "Copinhos mexicanos de milho"
+      },
+      "servings": 4,
+      "ingredient_references": [
+        {
+          "food": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+          "quantity_in_recipe": 400,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Corn,%20sweet,%20yellow,%20cooked,%20boiled,%20drained,%20without%20salt"
+        },
+        {
+          "food": "Lime juice, raw",
+          "quantity_in_recipe": 30,
+          "unit": "mL",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+        },
+        {
+          "food": "Salad dressing, mayonnaise",
+          "quantity_in_recipe": 30,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Salad%20dressing,%20mayonnaise"
+        },
+        {
+          "food": "Cheese, Cotija",
+          "quantity_in_recipe": 40,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese,%20Cotija"
+        },
+        {
+          "food": "Coriander (cilantro) leaves, raw",
+          "quantity_in_recipe": 10,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Coriander%20(cilantro)%20leaves,%20raw"
+        },
+        {
+          "food": "Salt, table",
+          "quantity_in_recipe": 1,
+          "unit": "g",
+          "source": "USDA FoodData Central",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Salt,%20table"
+        }
+      ],
+      "estimated_per_serving": {
+        "energyKcal": 188,
+        "proteinG": 6.0,
+        "carbohydrateG": 22.0,
+        "fatG": 10.3,
+        "fibreG": 2.5,
+        "saturatedFatG": 3.1,
+        "sodiumMg": 308
+      },
+      "status": "ESTIMATE_REVIEW_PENDING"
+    }
+  ]
+}

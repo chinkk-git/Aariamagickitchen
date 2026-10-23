@@ -1,0 +1,1748 @@
+{
+  "schema_version": "1.0",
+  "id": 104,
+  "country": "japan",
+  "country_code": "JP",
+  "title": {
+    "en-GB": "Japanese Cucumber Salad",
+    "pt-BR": "Salada japonesa de pepino"
+  },
+  "description": {
+    "en-GB": "A cool, lightly sweet and tangy cucumber salad with wakame and sesame, inspired by Japanese sunomono.",
+    "pt-BR": "Uma salada fresca de pepino, levemente agridoce, com wakame e gergelim, inspirada no sunomono japonês."
+  },
+  "cultural_context": {
+    "en-GB": "Sunomono refers to Japanese vinegared dishes; ingredients and seasoning vary by household and region. This child-friendly version uses cucumber, wakame and sesame.",
+    "pt-BR": "Sunomono se refere a pratos japoneses temperados com vinagre; ingredientes e temperos variam entre famílias e regiões. Esta versão para crianças usa pepino, wakame e gergelim."
+  },
+  "category": "international",
+  "method": "No-cook cucumber salad; adult knife handling",
+  "time": "30 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 20,
+  "total_minutes": 30,
+  "ingredients": [
+    "400 g Cucumber",
+    "30 mL Unseasoned rice vinegar",
+    "8 g Caster sugar",
+    "2 g Fine salt",
+    "5 g Toasted sesame seeds",
+    "5 g Dried wakame"
+  ],
+  "equipment": [
+    "Chopping board",
+    "Sharp knife",
+    "Mixing bowl",
+    "Colander",
+    "Small bowl",
+    "Measuring spoon",
+    "Serving dish",
+    "Mixing spoon"
+  ],
+  "ingredientItems": [
+    {
+      "id": "cucumber",
+      "name": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "quantity": 400,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/cucumber.png",
+        "sha256": "7c3263efeb0bf35f085f023224b59b2f9ba4d44817bdb9986183649fc6a3a904",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "rice-vinegar",
+      "name": {
+        "en-GB": "Unseasoned rice vinegar",
+        "pt-BR": "Vinagre de arroz sem tempero"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/rice-vinegar.png",
+        "sha256": "0942625c589a39004d42e51f8cbd5c4c594258fdc3e2dc03acd2fef33c598ff0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "sugar",
+      "name": {
+        "en-GB": "Caster sugar",
+        "pt-BR": "Açúcar refinado"
+      },
+      "quantity": 8,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sugar.png",
+        "sha256": "5687c291b93f1abca3df0c4e173a93571f196e026c1f51229d6ce1ae886b9a4a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "salt",
+      "name": {
+        "en-GB": "Fine salt",
+        "pt-BR": "Sal fino"
+      },
+      "quantity": 2,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/salt.png",
+        "sha256": "4093332e27f7089523590da6f41bb18aaaa2f4c9bd6049ad70be3ebb223c3fb9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "sesame-seeds",
+      "name": {
+        "en-GB": "Toasted sesame seeds",
+        "pt-BR": "Gergelim torrado"
+      },
+      "quantity": 5,
+      "unit": "g",
+      "allergens": [
+        "sesame"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sesame-seeds.png",
+        "sha256": "f992b474b63fd3cc5be630d42ba6b6f77481b513b14e229411d2f263079d6660",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "wakame",
+      "name": {
+        "en-GB": "Dried wakame",
+        "pt-BR": "Wakame seco"
+      },
+      "quantity": 5,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/wakame.png",
+        "sha256": "e60df34001b7553853a10f9a424247c1148fd4e3e7cc1285aeead37c5261980d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png",
+        "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Sharp knife",
+        "pt-BR": "Faca afiada"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png",
+        "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-bowl.png",
+        "sha256": "67b588a8df1074e5eb80215f107d50abf39dd70565164ededf3527b223525957",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/colander.png",
+        "sha256": "28e2f5500d3a34e32cf5f8afaab5f40e90f93a11273e705ce7bb99d296717477",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "small-bowl",
+      "name": {
+        "en-GB": "Small bowl",
+        "pt-BR": "Tigela pequena"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/small-bowl.png",
+        "sha256": "9f020f2afd35774e37691550d5beb859ce3805360a6466bde7e96b152913afd9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "measuring-spoon",
+      "name": {
+        "en-GB": "Measuring spoon",
+        "pt-BR": "Colher medidora"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/measuring-spoon.png",
+        "sha256": "4646385c40d5b5270cdb458eae821b553f74ecfc33d73f68c47ead46aa53aa7e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "serving-dish",
+      "name": {
+        "en-GB": "Serving dish",
+        "pt-BR": "Travessa para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/serving-dish.png",
+        "sha256": "4c42df2156c91dee7f05fc104fb708e90abe457bc5d1df4320905d4fb273415b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "mixing-spoon",
+      "name": {
+        "en-GB": "Mixing spoon",
+        "pt-BR": "Colher para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-spoon.png",
+        "sha256": "dc7a54e3cce964bbd8f8467eff7c67aa8fc81a05aad60c29d12a4884b80ab0c6",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash cucumber and rehydrate wakame",
+        "pt-BR": "Lave o pepino e hidrate o wakame"
+      },
+      "instruction": {
+        "en-GB": "Wash the cucumbers. Place the dried wakame in cool water for 5 minutes, then drain it.",
+        "pt-BR": "Lave os pepinos. Deixe o wakame seco de molho em água fria por 5 minutos e depois escorra."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "wakame"
+      ],
+      "equipmentIds": [
+        "colander",
+        "mixing-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash produce and soak seaweed with an adult nearby.",
+        "pt-BR": "As crianças lavam os vegetais e hidratam a alga com um adulto por perto."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult supervises the sink and checks the wakame for tough pieces.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto supervisiona a pia e verifica se há pedaços duros no wakame."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervision for the sink; adult handles sharp knives in the next step.",
+        "pt-BR": "Supervisão adulta na pia; um adulto manuseia facas afiadas na próxima etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-01.png",
+        "sha256": "fceb75a6f2cd4100d983511c087118fb65b4d2c51aa2674043926a4de5a2e6a7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Slice the cucumbers",
+        "pt-BR": "Fatie os pepinos"
+      },
+      "instruction": {
+        "en-GB": "An adult slices the cucumbers very thinly on a stable board.",
+        "pt-BR": "Um adulto fatia os pepinos bem finos em uma tábua firme."
+      },
+      "ingredientIds": [
+        "cucumber"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult only: slice the cucumbers. Children can move the slices to a bowl after the knife is put away.",
+        "pt-BR": "Somente adulto: fatie os pepinos. As crianças podem passar as fatias para uma tigela depois que a faca for guardada."
+      },
+      "safety": {
+        "en-GB": "Use a stable chopping board; keep fingers clear. Only an adult uses the sharp knife.",
+        "pt-BR": "Use uma tábua firme e mantenha os dedos afastados. Somente um adulto usa a faca afiada."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for knife handling.",
+        "pt-BR": "Somente adulto manuseia a faca."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-02.png",
+        "sha256": "dd1e45d7fedce649f41c6f80dd8d23a2ebd6d22edde86fa336162d29c0d21a61",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Salt, rest and drain",
+        "pt-BR": "Salgue, aguarde e escorra"
+      },
+      "instruction": {
+        "en-GB": "Toss cucumber slices with the measured salt. Rest for 10 minutes, then gently squeeze and drain away the liquid.",
+        "pt-BR": "Misture as fatias de pepino com o sal medido. Aguarde 10 minutos, depois esprema delicadamente e descarte o líquido."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "salt"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "colander"
+      ],
+      "adultAssist": {
+        "en-GB": "Children sprinkle the measured salt and gently squeeze cucumber with clean hands under supervision.",
+        "pt-BR": "As crianças polvilham o sal medido e espremem delicadamente o pepino com as mãos limpas, sob supervisão."
+      },
+      "safety": {
+        "en-GB": "Keep the bowl on a stable surface; wash hands before touching food.",
+        "pt-BR": "Mantenha a tigela em uma superfície firme; lave as mãos antes de tocar nos alimentos."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "No heat; an adult supervises squeezing and draining.",
+        "pt-BR": "Sem calor; um adulto supervisiona ao espremer e escorrer."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-03.png",
+        "sha256": "9e5381ea2f80205ec0201a7466e971029b21dd6ea4694280003075064ed31bbb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Mix the dressing",
+        "pt-BR": "Misture o molho"
+      },
+      "instruction": {
+        "en-GB": "Stir rice vinegar and sugar in a small bowl until the sugar dissolves. Add sesame seeds, wakame and drained cucumber; toss gently.",
+        "pt-BR": "Mexa o vinagre de arroz e o açúcar em uma tigela pequena até dissolver. Junte o gergelim, o wakame e o pepino escorrido; misture delicadamente."
+      },
+      "ingredientIds": [
+        "rice-vinegar",
+        "sugar",
+        "sesame-seeds",
+        "wakame",
+        "cucumber"
+      ],
+      "equipmentIds": [
+        "small-bowl",
+        "measuring-spoon",
+        "mixing-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Children measure and stir the dressing, then combine the ingredients with an adult nearby.",
+        "pt-BR": "As crianças medem e mexem o molho, depois misturam os ingredientes com um adulto por perto."
+      },
+      "safety": {
+        "en-GB": "Check vinegar and sesame labels for allergens and use clean utensils.",
+        "pt-BR": "Confira os rótulos do vinagre e do gergelim para identificar alergênicos e use utensílios limpos."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "No heat or knife; adult supervises handling and serving.",
+        "pt-BR": "Sem calor ou faca; um adulto supervisiona o preparo e o serviço."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-04.png",
+        "sha256": "5828fd8b5eca2eeb86bbfd6ee982e99f3bbab7f7a89c99eeaa175f9d5e0ab1f1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Chill and serve",
+        "pt-BR": "Leve à geladeira e sirva"
+      },
+      "instruction": {
+        "en-GB": "Cover and chill for 10 minutes, then serve the cucumber salad cold.",
+        "pt-BR": "Tampe e leve à geladeira por 10 minutos; sirva a salada fria."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "wakame",
+        "sesame-seeds"
+      ],
+      "equipmentIds": [
+        "serving-dish"
+      ],
+      "adultAssist": {
+        "en-GB": "Children can transfer salad to the serving dish; an adult checks refrigeration and portions.",
+        "pt-BR": "As crianças podem passar a salada para a travessa; um adulto confere a refrigeração e serve as porções."
+      },
+      "safety": {
+        "en-GB": "Refrigerate promptly and keep chilled until serving. Do not leave leftovers at room temperature.",
+        "pt-BR": "Leve à geladeira sem demora e mantenha refrigerado até servir. Não deixe sobras à temperatura ambiente."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles the refrigerator and serving dish if glass or heavy.",
+        "pt-BR": "Um adulto manuseia a geladeira e a travessa se forem de vidro ou pesadas."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-05.png",
+        "sha256": "4113a6dd1336780b347c3e56fcb464b668c3104e2b97185b5ab8a4099478c7c3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults handle slicing and oversee draining; children wash vegetables, measure and mix the dressing, and help plate the chilled salad.",
+    "pt-BR": "Adultos fatiam e supervisionam ao escorrer; crianças lavam os vegetais, medem e misturam o molho e ajudam a servir a salada fria."
+  },
+  "allergens": [
+    "sesame"
+  ],
+  "allergen_notes": {
+    "contains": {
+      "en-GB": "Sesame. Wakame products can carry cross-contact warnings; check the packet.",
+      "pt-BR": "Gergelim. Produtos de wakame podem ter avisos de contato cruzado; confira a embalagem."
+    },
+    "cross_contact": {
+      "en-GB": "Check every label, including vinegar, seaweed and packaged toppings; use clean separate utensils and surfaces for allergies.",
+      "pt-BR": "Confira todos os rótulos, inclusive os de vinagre, algas e coberturas embaladas; use superfícies e utensílios limpos e separados em caso de alergia."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 32,
+      "proteinG": 0.9,
+      "carbohydrateG": 6.0,
+      "fatG": 0.7,
+      "fibreG": 0.7,
+      "saturatedFatG": 0.1,
+      "sodiumMg": 211
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+    "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Vinegar, rice",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar,%20rice"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Sugars,%20granulated"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Salt, table",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Salt,%20table"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Seeds, sesame seeds, whole, dried",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Seeds,%20sesame%20seeds,%20whole,%20dried"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Seaweed, wakame, dried",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Seaweed,%20wakame,%20dried"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Finished japanese cucumber salad ready to serve.",
+      "pt-BR": "Salada japonesa de pepino pronto para servir."
+    },
+    "image": {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/finished-dish.png",
+      "sha256": "9776aaf7cf8a5f0535e75ddc38fdc9da42825af3ccd4dec812834262028ddafe",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/finished-dish.png",
+      "sha256": "9776aaf7cf8a5f0535e75ddc38fdc9da42825af3ccd4dec812834262028ddafe",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/cucumber.png",
+        "sha256": "7c3263efeb0bf35f085f023224b59b2f9ba4d44817bdb9986183649fc6a3a904",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/rice-vinegar.png",
+        "sha256": "0942625c589a39004d42e51f8cbd5c4c594258fdc3e2dc03acd2fef33c598ff0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sugar.png",
+        "sha256": "5687c291b93f1abca3df0c4e173a93571f196e026c1f51229d6ce1ae886b9a4a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/salt.png",
+        "sha256": "4093332e27f7089523590da6f41bb18aaaa2f4c9bd6049ad70be3ebb223c3fb9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sesame-seeds.png",
+        "sha256": "f992b474b63fd3cc5be630d42ba6b6f77481b513b14e229411d2f263079d6660",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/wakame.png",
+        "sha256": "e60df34001b7553853a10f9a424247c1148fd4e3e7cc1285aeead37c5261980d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png",
+        "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png",
+        "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-bowl.png",
+        "sha256": "67b588a8df1074e5eb80215f107d50abf39dd70565164ededf3527b223525957",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/colander.png",
+        "sha256": "28e2f5500d3a34e32cf5f8afaab5f40e90f93a11273e705ce7bb99d296717477",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/small-bowl.png",
+        "sha256": "9f020f2afd35774e37691550d5beb859ce3805360a6466bde7e96b152913afd9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/measuring-spoon.png",
+        "sha256": "4646385c40d5b5270cdb458eae821b553f74ecfc33d73f68c47ead46aa53aa7e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/serving-dish.png",
+        "sha256": "4c42df2156c91dee7f05fc104fb708e90abe457bc5d1df4320905d4fb273415b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-spoon.png",
+        "sha256": "dc7a54e3cce964bbd8f8467eff7c67aa8fc81a05aad60c29d12a4884b80ab0c6",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-01.png",
+        "sha256": "fceb75a6f2cd4100d983511c087118fb65b4d2c51aa2674043926a4de5a2e6a7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-02.png",
+        "sha256": "dd1e45d7fedce649f41c6f80dd8d23a2ebd6d22edde86fa336162d29c0d21a61",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-03.png",
+        "sha256": "9e5381ea2f80205ec0201a7466e971029b21dd6ea4694280003075064ed31bbb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-04.png",
+        "sha256": "5828fd8b5eca2eeb86bbfd6ee982e99f3bbab7f7a89c99eeaa175f9d5e0ab1f1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-05.png",
+        "sha256": "4113a6dd1336780b347c3e56fcb464b668c3104e2b97185b5ab8a4099478c7c3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/finished-dish.png",
+      "sha256": "9776aaf7cf8a5f0535e75ddc38fdc9da42825af3ccd4dec812834262028ddafe",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/cucumber.png",
+      "sha256": "7c3263efeb0bf35f085f023224b59b2f9ba4d44817bdb9986183649fc6a3a904",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/rice-vinegar.png",
+      "sha256": "0942625c589a39004d42e51f8cbd5c4c594258fdc3e2dc03acd2fef33c598ff0",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sugar.png",
+      "sha256": "5687c291b93f1abca3df0c4e173a93571f196e026c1f51229d6ce1ae886b9a4a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/salt.png",
+      "sha256": "4093332e27f7089523590da6f41bb18aaaa2f4c9bd6049ad70be3ebb223c3fb9",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sesame-seeds.png",
+      "sha256": "f992b474b63fd3cc5be630d42ba6b6f77481b513b14e229411d2f263079d6660",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/wakame.png",
+      "sha256": "e60df34001b7553853a10f9a424247c1148fd4e3e7cc1285aeead37c5261980d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png",
+      "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png",
+      "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-bowl.png",
+      "sha256": "67b588a8df1074e5eb80215f107d50abf39dd70565164ededf3527b223525957",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/colander.png",
+      "sha256": "28e2f5500d3a34e32cf5f8afaab5f40e90f93a11273e705ce7bb99d296717477",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/small-bowl.png",
+      "sha256": "9f020f2afd35774e37691550d5beb859ce3805360a6466bde7e96b152913afd9",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/measuring-spoon.png",
+      "sha256": "4646385c40d5b5270cdb458eae821b553f74ecfc33d73f68c47ead46aa53aa7e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/serving-dish.png",
+      "sha256": "4c42df2156c91dee7f05fc104fb708e90abe457bc5d1df4320905d4fb273415b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-spoon.png",
+      "sha256": "dc7a54e3cce964bbd8f8467eff7c67aa8fc81a05aad60c29d12a4884b80ab0c6",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-01.png",
+      "sha256": "fceb75a6f2cd4100d983511c087118fb65b4d2c51aa2674043926a4de5a2e6a7",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-02.png",
+      "sha256": "dd1e45d7fedce649f41c6f80dd8d23a2ebd6d22edde86fa336162d29c0d21a61",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-03.png",
+      "sha256": "9e5381ea2f80205ec0201a7466e971029b21dd6ea4694280003075064ed31bbb",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-04.png",
+      "sha256": "5828fd8b5eca2eeb86bbfd6ee982e99f3bbab7f7a89c99eeaa175f9d5e0ab1f1",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-05.png",
+      "sha256": "4113a6dd1336780b347c3e56fcb464b668c3104e2b97185b5ab8a4099478c7c3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "USDA FoodData Central",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+    "artworkApproval": "Owner-approved Aaria style reference in Issue #50 comment 6367104240; source path content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+  },
+  "renderer": {
+    "category": "International",
+    "method": "No-cook cucumber salad; adult knife handling",
+    "time": "30 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 104,
+    "country": "japan",
+    "countryCode": "JP",
+    "title": {
+      "en-GB": "Japanese Cucumber Salad",
+      "pt-BR": "Salada japonesa de pepino"
+    },
+    "description": {
+      "en-GB": "A cool, lightly sweet and tangy cucumber salad with wakame and sesame, inspired by Japanese sunomono.",
+      "pt-BR": "Uma salada fresca de pepino, levemente agridoce, com wakame e gergelim, inspirada no sunomono japonês."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Sunomono refers to Japanese vinegared dishes; ingredients and seasoning vary by household and region. This child-friendly version uses cucumber, wakame and sesame.",
+      "pt-BR": "Sunomono se refere a pratos japoneses temperados com vinagre; ingredientes e temperos variam entre famílias e regiões. Esta versão para crianças usa pepino, wakame e gergelim."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 20,
+    "totalMinutes": 30,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; adult safety boundaries remain unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "cucumber",
+        "name": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "quantity": 400,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/cucumber.png",
+          "sha256": "7c3263efeb0bf35f085f023224b59b2f9ba4d44817bdb9986183649fc6a3a904",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "rice-vinegar",
+        "name": {
+          "en-GB": "Unseasoned rice vinegar",
+          "pt-BR": "Vinagre de arroz sem tempero"
+        },
+        "quantity": 30,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/rice-vinegar.png",
+          "sha256": "0942625c589a39004d42e51f8cbd5c4c594258fdc3e2dc03acd2fef33c598ff0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "sugar",
+        "name": {
+          "en-GB": "Caster sugar",
+          "pt-BR": "Açúcar refinado"
+        },
+        "quantity": 8,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sugar.png",
+          "sha256": "5687c291b93f1abca3df0c4e173a93571f196e026c1f51229d6ce1ae886b9a4a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "salt",
+        "name": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "quantity": 2,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/salt.png",
+          "sha256": "4093332e27f7089523590da6f41bb18aaaa2f4c9bd6049ad70be3ebb223c3fb9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "sesame-seeds",
+        "name": {
+          "en-GB": "Toasted sesame seeds",
+          "pt-BR": "Gergelim torrado"
+        },
+        "quantity": 5,
+        "unit": "g",
+        "allergens": [
+          "sesame"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sesame-seeds.png",
+          "sha256": "f992b474b63fd3cc5be630d42ba6b6f77481b513b14e229411d2f263079d6660",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "wakame",
+        "name": {
+          "en-GB": "Dried wakame",
+          "pt-BR": "Wakame seco"
+        },
+        "quantity": 5,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/wakame.png",
+          "sha256": "e60df34001b7553853a10f9a424247c1148fd4e3e7cc1285aeead37c5261980d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "equipment": [
+      "Chopping board",
+      "Sharp knife",
+      "Mixing bowl",
+      "Colander",
+      "Small bowl",
+      "Measuring spoon",
+      "Serving dish",
+      "Mixing spoon"
+    ],
+    "equipmentItems": [
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png",
+          "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Sharp knife",
+          "pt-BR": "Faca afiada"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png",
+          "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Mixing bowl",
+          "pt-BR": "Tigela para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-bowl.png",
+          "sha256": "67b588a8df1074e5eb80215f107d50abf39dd70565164ededf3527b223525957",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/colander.png",
+          "sha256": "28e2f5500d3a34e32cf5f8afaab5f40e90f93a11273e705ce7bb99d296717477",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "small-bowl",
+        "name": {
+          "en-GB": "Small bowl",
+          "pt-BR": "Tigela pequena"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/small-bowl.png",
+          "sha256": "9f020f2afd35774e37691550d5beb859ce3805360a6466bde7e96b152913afd9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "measuring-spoon",
+        "name": {
+          "en-GB": "Measuring spoon",
+          "pt-BR": "Colher medidora"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/measuring-spoon.png",
+          "sha256": "4646385c40d5b5270cdb458eae821b553f74ecfc33d73f68c47ead46aa53aa7e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "serving-dish",
+        "name": {
+          "en-GB": "Serving dish",
+          "pt-BR": "Travessa para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/serving-dish.png",
+          "sha256": "4c42df2156c91dee7f05fc104fb708e90abe457bc5d1df4320905d4fb273415b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "mixing-spoon",
+        "name": {
+          "en-GB": "Mixing spoon",
+          "pt-BR": "Colher para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-spoon.png",
+          "sha256": "dc7a54e3cce964bbd8f8467eff7c67aa8fc81a05aad60c29d12a4884b80ab0c6",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Wash cucumber and rehydrate wakame",
+          "pt-BR": "Lave o pepino e hidrate o wakame"
+        },
+        "instruction": {
+          "en-GB": "Wash the cucumbers. Place the dried wakame in cool water for 5 minutes, then drain it.",
+          "pt-BR": "Lave os pepinos. Deixe o wakame seco de molho em água fria por 5 minutos e depois escorra."
+        },
+        "ingredientIds": [
+          "cucumber",
+          "wakame"
+        ],
+        "equipmentIds": [
+          "colander",
+          "mixing-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash produce and soak seaweed with an adult nearby.",
+          "pt-BR": "As crianças lavam os vegetais e hidratam a alga com um adulto por perto."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult supervises the sink and checks the wakame for tough pieces.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto supervisiona a pia e verifica se há pedaços duros no wakame."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervision for the sink; adult handles sharp knives in the next step.",
+          "pt-BR": "Supervisão adulta na pia; um adulto manuseia facas afiadas na próxima etapa."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-01.png",
+          "sha256": "fceb75a6f2cd4100d983511c087118fb65b4d2c51aa2674043926a4de5a2e6a7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Slice the cucumbers",
+          "pt-BR": "Fatie os pepinos"
+        },
+        "instruction": {
+          "en-GB": "An adult slices the cucumbers very thinly on a stable board.",
+          "pt-BR": "Um adulto fatia os pepinos bem finos em uma tábua firme."
+        },
+        "ingredientIds": [
+          "cucumber"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult only: slice the cucumbers. Children can move the slices to a bowl after the knife is put away.",
+          "pt-BR": "Somente adulto: fatie os pepinos. As crianças podem passar as fatias para uma tigela depois que a faca for guardada."
+        },
+        "safety": {
+          "en-GB": "Use a stable chopping board; keep fingers clear. Only an adult uses the sharp knife.",
+          "pt-BR": "Use uma tábua firme e mantenha os dedos afastados. Somente um adulto usa a faca afiada."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for knife handling.",
+          "pt-BR": "Somente adulto manuseia a faca."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-02.png",
+          "sha256": "dd1e45d7fedce649f41c6f80dd8d23a2ebd6d22edde86fa336162d29c0d21a61",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Salt, rest and drain",
+          "pt-BR": "Salgue, aguarde e escorra"
+        },
+        "instruction": {
+          "en-GB": "Toss cucumber slices with the measured salt. Rest for 10 minutes, then gently squeeze and drain away the liquid.",
+          "pt-BR": "Misture as fatias de pepino com o sal medido. Aguarde 10 minutos, depois esprema delicadamente e descarte o líquido."
+        },
+        "ingredientIds": [
+          "cucumber",
+          "salt"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "colander"
+        ],
+        "adultAssist": {
+          "en-GB": "Children sprinkle the measured salt and gently squeeze cucumber with clean hands under supervision.",
+          "pt-BR": "As crianças polvilham o sal medido e espremem delicadamente o pepino com as mãos limpas, sob supervisão."
+        },
+        "safety": {
+          "en-GB": "Keep the bowl on a stable surface; wash hands before touching food.",
+          "pt-BR": "Mantenha a tigela em uma superfície firme; lave as mãos antes de tocar nos alimentos."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "No heat; an adult supervises squeezing and draining.",
+          "pt-BR": "Sem calor; um adulto supervisiona ao espremer e escorrer."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-03.png",
+          "sha256": "9e5381ea2f80205ec0201a7466e971029b21dd6ea4694280003075064ed31bbb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Mix the dressing",
+          "pt-BR": "Misture o molho"
+        },
+        "instruction": {
+          "en-GB": "Stir rice vinegar and sugar in a small bowl until the sugar dissolves. Add sesame seeds, wakame and drained cucumber; toss gently.",
+          "pt-BR": "Mexa o vinagre de arroz e o açúcar em uma tigela pequena até dissolver. Junte o gergelim, o wakame e o pepino escorrido; misture delicadamente."
+        },
+        "ingredientIds": [
+          "rice-vinegar",
+          "sugar",
+          "sesame-seeds",
+          "wakame",
+          "cucumber"
+        ],
+        "equipmentIds": [
+          "small-bowl",
+          "measuring-spoon",
+          "mixing-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Children measure and stir the dressing, then combine the ingredients with an adult nearby.",
+          "pt-BR": "As crianças medem e mexem o molho, depois misturam os ingredientes com um adulto por perto."
+        },
+        "safety": {
+          "en-GB": "Check vinegar and sesame labels for allergens and use clean utensils.",
+          "pt-BR": "Confira os rótulos do vinagre e do gergelim para identificar alergênicos e use utensílios limpos."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "No heat or knife; adult supervises handling and serving.",
+          "pt-BR": "Sem calor ou faca; um adulto supervisiona o preparo e o serviço."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-04.png",
+          "sha256": "5828fd8b5eca2eeb86bbfd6ee982e99f3bbab7f7a89c99eeaa175f9d5e0ab1f1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Chill and serve",
+          "pt-BR": "Leve à geladeira e sirva"
+        },
+        "instruction": {
+          "en-GB": "Cover and chill for 10 minutes, then serve the cucumber salad cold.",
+          "pt-BR": "Tampe e leve à geladeira por 10 minutos; sirva a salada fria."
+        },
+        "ingredientIds": [
+          "cucumber",
+          "wakame",
+          "sesame-seeds"
+        ],
+        "equipmentIds": [
+          "serving-dish"
+        ],
+        "adultAssist": {
+          "en-GB": "Children can transfer salad to the serving dish; an adult checks refrigeration and portions.",
+          "pt-BR": "As crianças podem passar a salada para a travessa; um adulto confere a refrigeração e serve as porções."
+        },
+        "safety": {
+          "en-GB": "Refrigerate promptly and keep chilled until serving. Do not leave leftovers at room temperature.",
+          "pt-BR": "Leve à geladeira sem demora e mantenha refrigerado até servir. Não deixe sobras à temperatura ambiente."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles the refrigerator and serving dish if glass or heavy.",
+          "pt-BR": "Um adulto manuseia a geladeira e a travessa se forem de vidro ou pesadas."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-05.png",
+          "sha256": "4113a6dd1336780b347c3e56fcb464b668c3104e2b97185b5ab8a4099478c7c3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults handle slicing and oversee draining; children wash vegetables, measure and mix the dressing, and help plate the chilled salad.",
+      "pt-BR": "Adultos fatiam e supervisionam ao escorrer; crianças lavam os vegetais, medem e misturam o molho e ajudam a servir a salada fria."
+    },
+    "finishedDish": {
+      "artworkPath": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/finished-dish.png",
+      "description": {
+        "en-GB": "Finished japanese cucumber salad ready to serve.",
+        "pt-BR": "Salada japonesa de pepino pronto para servir."
+      },
+      "image": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/finished-dish.png",
+        "sha256": "9776aaf7cf8a5f0535e75ddc38fdc9da42825af3ccd4dec812834262028ddafe",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 32,
+        "proteinG": 0.9,
+        "carbohydrateG": 6.0,
+        "fatG": 0.7,
+        "fibreG": 0.7,
+        "saturatedFatG": 0.1,
+        "sodiumMg": 211
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+      "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cucumber, with peel, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Vinegar, rice",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar,%20rice"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Sugars, granulated",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Sugars,%20granulated"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Salt, table",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Salt,%20table"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Seeds, sesame seeds, whole, dried",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Seeds,%20sesame%20seeds,%20whole,%20dried"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Seaweed, wakame, dried",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Seaweed,%20wakame,%20dried"
+        }
+      ]
+    },
+    "allergens": [
+      "sesame"
+    ],
+    "allergenNotes": {
+      "contains": {
+        "en-GB": "Sesame. Wakame products can carry cross-contact warnings; check the packet.",
+        "pt-BR": "Gergelim. Produtos de wakame podem ter avisos de contato cruzado; confira a embalagem."
+      },
+      "cross_contact": {
+        "en-GB": "Check every label, including vinegar, seaweed and packaged toppings; use clean separate utensils and surfaces for allergies.",
+        "pt-BR": "Confira todos os rótulos, inclusive os de vinagre, algas e coberturas embaladas; use superfícies e utensílios limpos e separados em caso de alergia."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/finished-dish.png",
+        "sha256": "9776aaf7cf8a5f0535e75ddc38fdc9da42825af3ccd4dec812834262028ddafe",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/cucumber.png",
+          "sha256": "7c3263efeb0bf35f085f023224b59b2f9ba4d44817bdb9986183649fc6a3a904",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/rice-vinegar.png",
+          "sha256": "0942625c589a39004d42e51f8cbd5c4c594258fdc3e2dc03acd2fef33c598ff0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sugar.png",
+          "sha256": "5687c291b93f1abca3df0c4e173a93571f196e026c1f51229d6ce1ae886b9a4a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/salt.png",
+          "sha256": "4093332e27f7089523590da6f41bb18aaaa2f4c9bd6049ad70be3ebb223c3fb9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sesame-seeds.png",
+          "sha256": "f992b474b63fd3cc5be630d42ba6b6f77481b513b14e229411d2f263079d6660",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/wakame.png",
+          "sha256": "e60df34001b7553853a10f9a424247c1148fd4e3e7cc1285aeead37c5261980d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png",
+          "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png",
+          "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-bowl.png",
+          "sha256": "67b588a8df1074e5eb80215f107d50abf39dd70565164ededf3527b223525957",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/colander.png",
+          "sha256": "28e2f5500d3a34e32cf5f8afaab5f40e90f93a11273e705ce7bb99d296717477",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/small-bowl.png",
+          "sha256": "9f020f2afd35774e37691550d5beb859ce3805360a6466bde7e96b152913afd9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/measuring-spoon.png",
+          "sha256": "4646385c40d5b5270cdb458eae821b553f74ecfc33d73f68c47ead46aa53aa7e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/serving-dish.png",
+          "sha256": "4c42df2156c91dee7f05fc104fb708e90abe457bc5d1df4320905d4fb273415b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-spoon.png",
+          "sha256": "dc7a54e3cce964bbd8f8467eff7c67aa8fc81a05aad60c29d12a4884b80ab0c6",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-01.png",
+          "sha256": "fceb75a6f2cd4100d983511c087118fb65b4d2c51aa2674043926a4de5a2e6a7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-02.png",
+          "sha256": "dd1e45d7fedce649f41c6f80dd8d23a2ebd6d22edde86fa336162d29c0d21a61",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-03.png",
+          "sha256": "9e5381ea2f80205ec0201a7466e971029b21dd6ea4694280003075064ed31bbb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-04.png",
+          "sha256": "5828fd8b5eca2eeb86bbfd6ee982e99f3bbab7f7a89c99eeaa175f9d5e0ab1f1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        },
+        {
+          "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-05.png",
+          "sha256": "4113a6dd1336780b347c3e56fcb464b668c3104e2b97185b5ab8a4099478c7c3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "nutritionSource": "USDA FoodData Central",
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+      "artworkApproval": "Owner-approved Aaria reference: content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+    },
+    "safety": {
+      "en-GB": "Wash hands and produce. An adult supervises the sink and checks the wakame for tough pieces.",
+      "pt-BR": "Lave as mãos e os vegetais. Um adulto supervisiona a pia e verifica se há pedaços duros no wakame."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}

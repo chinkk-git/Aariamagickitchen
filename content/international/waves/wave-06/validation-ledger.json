@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0.0",
+  "wave": 6,
+  "recipes": [
+    {
+      "id": 104,
+      "country": "japan",
+      "title": "Japanese Cucumber Salad"
+    },
+    {
+      "id": 107,
+      "country": "mexico",
+      "title": "Mexican Sweetcorn Cups"
+    }
+  ],
+  "checks": {
+    "canonical_ids": {
+      "status": "PASS",
+      "evidence": "IDs 104 and 107 correspond to the approved catalogue entries; no collision with IDs 1–95 or Waves 1–5 (96–103, 105–106)."
+    },
+    "recipe_schema_constraints": {
+      "status": "PASS",
+      "evidence": "Repository recipe schema required/type/enum/ref/minimum/pattern/const constraints checked locally; no standalone jsonschema package is installed."
+    },
+    "bilingual_completeness": {
+      "status": "PASS",
+      "evidence": "Non-empty en-GB and pt-BR titles, descriptions, cultural context, adult assistance, allergen notes and five step title/instruction/safety fields in each JSON; both language labels and content in each Markdown."
+    },
+    "ingredient_equipment_step_references": {
+      "status": "PASS",
+      "evidence": "Step ingredient/equipment IDs resolve to the item arrays; each recipe has exact quantities, four servings and child/adult task assignments."
+    },
+    "artwork_consistency": {
+      "status": "PASS",
+      "evidence": "One finished dish, each ingredient and equipment item, and five distinct step images per recipe; recipe step IDs and art paths correspond; asset paths are repository-relative and offline; all image files are valid PNGs with SHA-256 entries."
+    },
+    "safety_and_allergens": {
+      "status": "PASS_CONTENT_CHECK",
+      "evidence": "Adult-only hob/boiling water/knife handling is explicitly assigned; food handling, chilled storage and cross-contact checks are recorded; allergen IDs match ingredient declarations."
+    },
+    "nutrition_sources_and_calculation": {
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "evidence": "Per-portion values are approximate sums of generic USDA FoodData Central references in nutrition-sources.json; brand variation and ingredient composition affect totals; independent nutrition/allergen review is pending."
+    },
+    "adapter_contract": {
+      "status": "PASS_CONTENT_SHAPE",
+      "evidence": "Retains recipe schema v1.0, renderer fields, item arrays, nested content adapter fields, relative artwork paths and typed per-step metadata; runtime/Android integration not tested."
+    },
+    "canonical_95_preservation": {
+      "status": "PASS",
+      "evidence": "Existing international manifest still declares 95 canonical recipes; India mapping untouched."
+    },
+    "independent_A08": {
+      "status": "PENDING"
+    },
+    "independent_A09": {
+      "status": "PENDING"
+    },
+    "independent_nutrition_allergen": {
+      "status": "PENDING"
+    },
+    "independent_translation_cultural": {
+      "status": "PENDING"
+    },
+    "artwork_rights": {
+      "status": "PENDING_REVIEW"
+    },
+    "security": {
+      "status": "PENDING"
+    },
+    "W01_W02_runtime_acceptance": {
+      "status": "PENDING"
+    }
+  },
+  "artwork_style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+  "approved_issue_comment": 6367104240,
+  "pair_sha256": "43b3df44da51f392ea5a49be04bb2e1f96f31dd14d4ae40b13feaf1b52e13e7c",
+  "package_files": [
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png",
+      "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/colander.png",
+      "sha256": "28e2f5500d3a34e32cf5f8afaab5f40e90f93a11273e705ce7bb99d296717477"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png",
+      "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/measuring-spoon.png",
+      "sha256": "4646385c40d5b5270cdb458eae821b553f74ecfc33d73f68c47ead46aa53aa7e"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-bowl.png",
+      "sha256": "67b588a8df1074e5eb80215f107d50abf39dd70565164ededf3527b223525957"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/mixing-spoon.png",
+      "sha256": "dc7a54e3cce964bbd8f8467eff7c67aa8fc81a05aad60c29d12a4884b80ab0c6"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/serving-dish.png",
+      "sha256": "4c42df2156c91dee7f05fc104fb708e90abe457bc5d1df4320905d4fb273415b"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/small-bowl.png",
+      "sha256": "9f020f2afd35774e37691550d5beb859ce3805360a6466bde7e96b152913afd9"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/finished-dish.png",
+      "sha256": "9776aaf7cf8a5f0535e75ddc38fdc9da42825af3ccd4dec812834262028ddafe"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/cucumber.png",
+      "sha256": "7c3263efeb0bf35f085f023224b59b2f9ba4d44817bdb9986183649fc6a3a904"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/rice-vinegar.png",
+      "sha256": "0942625c589a39004d42e51f8cbd5c4c594258fdc3e2dc03acd2fef33c598ff0"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/salt.png",
+      "sha256": "4093332e27f7089523590da6f41bb18aaaa2f4c9bd6049ad70be3ebb223c3fb9"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sesame-seeds.png",
+      "sha256": "f992b474b63fd3cc5be630d42ba6b6f77481b513b14e229411d2f263079d6660"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/sugar.png",
+      "sha256": "5687c291b93f1abca3df0c4e173a93571f196e026c1f51229d6ce1ae886b9a4a"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/ingredients/wakame.png",
+      "sha256": "e60df34001b7553853a10f9a424247c1148fd4e3e7cc1285aeead37c5261980d"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-01.png",
+      "sha256": "fceb75a6f2cd4100d983511c087118fb65b4d2c51aa2674043926a4de5a2e6a7"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-02.png",
+      "sha256": "dd1e45d7fedce649f41c6f80dd8d23a2ebd6d22edde86fa336162d29c0d21a61"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-03.png",
+      "sha256": "9e5381ea2f80205ec0201a7466e971029b21dd6ea4694280003075064ed31bbb"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-04.png",
+      "sha256": "5828fd8b5eca2eeb86bbfd6ee982e99f3bbab7f7a89c99eeaa175f9d5e0ab1f1"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/artwork/steps/step-05.png",
+      "sha256": "4113a6dd1336780b347c3e56fcb464b668c3104e2b97185b5ab8a4099478c7c3"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/recipe.json",
+      "sha256": "6adcc20246a34b0f93afe28cf1b3ff682900fb3b12e2d5df57f9c359ee0f7e26"
+    },
+    {
+      "path": "content/international/countries/japan/104-japanese-cucumber-salad/recipe.md",
+      "sha256": "7e6b0e7f1d0c4b8d9455809c24ebd8b847b9a4c215b7b80f28023c89bc41c1e7"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
+      "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
+      "sha256": "e6067636259980b34cc236ce88fc9ae3bfbbd713910d112ac010a67fc47db605"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
+      "sha256": "9a95c36f4f25b0f7e629a6d1409320bf9dbda001014e4b682c24607aaf636949"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
+      "sha256": "1482c1292b4f46a17d01b6e88dc00a22abcf3c9ef02a599c0aa91d47b14b19de"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/saucepan.png",
+      "sha256": "f82920133863d6a1cd23ec0d14bab013c3b67790ab96944ee81f7446c494895e"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
+      "sha256": "32e10fd8fcf3dcbaee7d4826fbe0fbdfa9a571bc155455d055ab86e0b88290ab"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
+      "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
+      "sha256": "61d65362d1908c16157caa801b4aaa689e485be3a80e341ebc25d6c2245c49dc"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
+      "sha256": "a7483d64d84676c916e8740690b7875973e3f83f59370b09ed16cdc2f28357e6"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
+      "sha256": "d7edeb339f1efccb3d894c221d36071081153af1cb038562c21fa2337a0b08fe"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
+      "sha256": "1e1b0049f860de46df45ef7cc86b0f92c19b7194a6d80dce98a46bd8673f5996"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
+      "sha256": "dbd737cc7cec755fa98ab286bb2721fdc48be4ad8abf81d66f76d9c8843c8b29"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
+      "sha256": "28ed8452f2270543e0583c165f0aac73f9ea1963cba7fa78263177fd67a16008"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/sweetcorn.png",
+      "sha256": "d3899bc9b7b85aa588dd7dccace1817a5c20254fb9634fa49aaa069076ca98c3"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
+      "sha256": "b1fce886f1d5efc696ba44f5c1db17e993810e13ce0c9191db9a094d8ad6c9b3"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
+      "sha256": "51273e9e40469f9c4a3cd8bf7e9b931f4b5bef962f7f4f3462b6f0d2a0ef21a9"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
+      "sha256": "37e52f5b17d4eed822d1767acded4aeeed2013aa2520bf660e470f3327d5653a"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
+      "sha256": "fe1a5f9f0615e6cceec57c9a8d9b1ced6e2507423f289a2a314962aaff1263fe"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
+      "sha256": "a17d84a73de42f19970e4ca0d08567c4ee81e76e2135ce9d5adfc45b12b73b8f"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/recipe.json",
+      "sha256": "813cfd0428a29b4091b768af74a7ae4d03e651ab1a3b04cf84bad4ee450af1fd"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/recipe.md",
+      "sha256": "28642e94d0659b04e4d5eb88a1cc39094530a8b067da4057148bbaa882022b0c"
+    }
+  ],
+  "nutrition_sources": {
+    "path": "content/international/waves/wave-06/nutrition-sources.json",
+    "sha256": "9ccb88474ad1b1ec69eb666f9e9cf96f78ff6cffaccb1a50a194ffd0dd12efa5"
+  }
+}
