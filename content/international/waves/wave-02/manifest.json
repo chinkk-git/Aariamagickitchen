@@ -3,7 +3,7 @@
   "wave": 2,
   "status": "READY_FOR_INTEGRATION",
   "integration_status": "READY_FOR_INTEGRATION",
-  "source_commit": "07a414a32a0d87892eb388b72800723006adfac3",
+  "source_commit": "5c88df0f72d18f528a6179bc7408f11117d08a18",
   "canonical_recipe_count": 95,
   "india_mapping_status": "VALIDATED_UNCHANGED",
   "production_artwork_approved": true,
@@ -237,7 +237,7 @@
       "sha256": "1ade414722605da2acd3a12ec9410f150d6bc8b2ffdc3255344c3df22b7f7d9e"
     }
   ],
-  "validation": "LOCAL_CONTENT_CHECKS_PASS; external independent and runtime gates pending",
+  "validation": "CONTENT_SCHEMA_SHAPE, BILINGUAL, SAFETY_FIELDS, ARTWORK_PATHS_AND_SHA256, PAIR_HASH, IDS, AND NUTRITION_SOURCE_RECORDS PASS; independent gates and runtime adapter acceptance remain pending",
   "wave1_handoff_commit": "c9dd936ae2495684452faa4572172a566fd5c36b",
   "notes": [
     "These are new immutable Wave 2 source records; no Wave 1 source file or commit is modified.",
