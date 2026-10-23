@@ -1,8 +1,12 @@
 # 102 — Veggie Sushi Rolls / Rolinhos de sushi com legumes
 
-- Status: DRAFT_NOT_READY | Country: japan (JP) | Serves 4 | Ages 8–10
-- EN-GB: A family-friendly, vegetable-only sushi roll inspired by Japanese home cooking; no raw fish is used.
-- PT-BR: Um sushi de legumes para fazer em família, inspirado na cozinha caseira japonesa; não leva peixe cru.
+- Status: READY_FOR_INTEGRATION (content/artwork/schema completeness only; independent reviews pending) | Country: japan | Serves 4 | Ages 8–10
+- EN-GB: Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.
+- PT-BR: Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão.
+
+## Cultural context
+- EN-GB: Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.
+- PT-BR: Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão.
 
 ## Ingredients
 - 200 g — Short-grain sushi rice / Arroz para sushi de grão curto
@@ -15,56 +19,71 @@
 - 150 g — Ripe avocado / Abacate maduro
 
 ## Equipment
-- Lidded saucepan / Panela com tampa — role adult
-- Rice paddle or wooden spoon / Espátula de arroz ou colher de pau — role shared
-- Small bowl / Tigela pequena — role shared
-- Sushi rolling mat / Esteira para enrolar sushi — role shared
-- Chopping board / Tábua de corte — role adult
-- Sharp kitchen knife / Faca afiada de cozinha — role adult
-- Measuring cup / Copo medidor — role shared
+- Lidded saucepan / Panela com tampa — adult
+- Rice paddle or wooden spoon / Espátula de arroz ou colher de pau — shared
+- Small bowl / Tigela pequena — shared
+- Sushi rolling mat / Esteira para enrolar sushi — shared
+- Chopping board / Tábua de corte — adult
+- Sharp kitchen knife / Faca afiada de cozinha — adult
+- Measuring cup / Copo medidor — shared
+- Colander / Escorredor — shared
 
 ## Steps
 
 ### step-01 — Prepare the vegetables / Prepare os legumes
-- EN-GB: Wash hands and rinse the cucumber and carrot. An adult cuts them into thin sticks and prepares the avocado.
-- PT-BR: Lave as mãos e enxágue o pepino e a cenoura. Um adulto corta os legumes em tiras finas e prepara o abacate.
-- Safety EN-GB: An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.
-- Segurança PT-BR: Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora.
+- EN-GB: Wash the cucumber, carrot and avocado. An adult cuts them into thin sticks on a stable board.
+- PT-BR: Lave o pepino, a cenoura e o abacate. Um adulto corta tudo em tiras finas sobre uma tábua estável.
+- Adult help EN-GB: An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.
+- Ajuda de adulto PT-BR: Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão.
+- Safety EN-GB: Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.
+- Segurança PT-BR: Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente.
+- Illustration: `content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png` (SHA-256 `2058c2a7c21b63b7de8c27159b4fee9ed24528b0dd532b876c13415c2d1b22ed`)
 
 ### step-02 — Rinse the rice / Lave o arroz
-- EN-GB: Rinse the rice in a bowl until the water is mostly clear. Drain it well.
-- PT-BR: Lave o arroz em uma tigela até a água sair quase transparente. Escorra bem.
-- Safety EN-GB: An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.
-- Segurança PT-BR: Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora.
+- EN-GB: Rinse the rice in cool water until the water is mostly clear, then drain well.
+- PT-BR: Lave o arroz em água fria até que a água fique quase transparente e escorra bem.
+- Adult help EN-GB: An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.
+- Ajuda de adulto PT-BR: Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão.
+- Safety EN-GB: Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.
+- Segurança PT-BR: Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente.
+- Illustration: `content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png` (SHA-256 `c7a1028f603b46e95fab159457de73b5f46ecd947576e27898c5baf89556db86`)
 
 ### step-03 — Cook and cool the rice / Cozinhe e esfrie o arroz
-- EN-GB: An adult cooks the rice with measured water, then spreads it in a shallow clean tray to cool quickly. Keep it covered and do not leave it sitting out.
-- PT-BR: Um adulto cozinha o arroz com a água medida e depois o espalha em uma travessa limpa e rasa para esfriar rapidamente. Mantenha coberto e não deixe parado à temperatura ambiente.
-- Safety EN-GB: An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.
-- Segurança PT-BR: Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora.
+- EN-GB: An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly.
+- PT-BR: Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente.
+- Adult help EN-GB: An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.
+- Ajuda de adulto PT-BR: Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão.
+- Safety EN-GB: Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.
+- Segurança PT-BR: Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente.
+- Illustration: `content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png` (SHA-256 `99cc819ef79e08dec01500bfde0ea20984873485621fef4f0dcb38d85db1529c`)
 
-### step-04 — Season and spread the rice / Tempere e espalhe o arroz
-- EN-GB: An adult mixes rice vinegar and sugar into the cooled rice. Place one nori sheet on the mat and spread a thin layer of rice, leaving a small strip clear at the far edge.
-- PT-BR: Um adulto mistura o vinagre de arroz e o açúcar ao arroz já frio. Coloque uma folha de nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa sem arroz na borda distante.
-- Safety EN-GB: An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.
-- Segurança PT-BR: Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora.
+### step-04 — Season and spread / Tempere e espalhe
+- EN-GB: An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.
+- PT-BR: Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda distante.
+- Adult help EN-GB: An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.
+- Ajuda de adulto PT-BR: Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão.
+- Safety EN-GB: Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.
+- Segurança PT-BR: Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente.
+- Illustration: `content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png` (SHA-256 `a23036bba9ac96653fac969f1228865d6fd675cc90a2650f9c6cfafad4a61139`)
 
-### step-05 — Fill, roll and serve / Recheie, enrole e sirva
-- EN-GB: Lay cucumber, carrot and avocado across the rice. Roll firmly with the mat. An adult slices the roll with a clean sharp knife; eat promptly and refrigerate leftovers.
-- PT-BR: Coloque pepino, cenoura e abacate sobre o arroz. Enrole com firmeza usando a esteira. Um adulto corta o rolo com uma faca limpa e afiada; consuma logo e refrigere as sobras.
-- Safety EN-GB: An adult handles hot rice and sharp knives. Cool cooked rice quickly, keep covered and refrigerated if not serving promptly; prepare only what will be eaten and refrigerate leftovers promptly.
-- Segurança PT-BR: Um adulto cuida do arroz quente e das facas afiadas. Esfrie o arroz rapidamente, mantenha coberto e refrigerado se não for servir logo; prepare apenas o que será consumido e refrigere as sobras sem demora.
-
-## Nutrition
-- Per-serving values are not calculated yet. USDA FoodData Central ingredient records and weighed-portion calculations are pending; this recipe is not ready for integration.
+### step-05 — Fill, roll and slice / Recheie, enrole e corte
+- EN-GB: Add cucumber, carrot and avocado sticks. Roll firmly with the mat. An adult slices the roll; serve promptly.
+- PT-BR: Coloque tiras de pepino, cenoura e abacate. Enrole com firmeza usando a esteira. Um adulto corta o rolo; sirva logo.
+- Adult help EN-GB: An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.
+- Ajuda de adulto PT-BR: Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão.
+- Safety EN-GB: Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.
+- Segurança PT-BR: Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente.
+- Illustration: `content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png` (SHA-256 `897b6f2a0175fb9f69a0eef4b22b3387d950d3b8ee5614dbccbc9b84613ac445`)
 
 ## Allergens and cross-contact
-- Declared recipe allergens: none of the listed ingredients are among the major allergens, but product labels and cross-contact statements must be checked.
-- EN-GB: Check nori and vinegar labels for declared allergens and cross-contact; use clean hands and equipment.
-- PT-BR: Confira nos rótulos do nori e do vinagre os alergênicos e avisos de contato cruzado; use mãos e utensílios limpos.
+- Declared recipe allergens: none from listed ingredients.
+- EN-GB: Check the nori, rice vinegar and packaged rice labels for declared allergens and cross-contact; nori can be processed on shared lines. Use clean hands and equipment.
+- PT-BR: Confira nos rótulos do nori, do vinagre de arroz e do arroz embalado os alergênicos e avisos de contato cruzado; o nori pode ser processado em linhas compartilhadas. Use mãos e utensílios limpos.
 
-## Artwork
-- Not started. Separate finished dish, ingredient, equipment and five step images are still required.
+## Nutrition per serving
+- {"energyKcal": 270, "proteinG": 5.3, "carbohydrateG": 46.4, "fatG": 6.1, "fibreG": 4.8, "saturatedFatG": 1.0, "sodiumMg": 85}
+- Estimate basis: Approximate calculation from weighed recipe quantities and generic USDA FDC ingredient references; rice dry weight is used before cooking; nori sheet mass and product nutrient values vary. Rounded per portion; not a laboratory analysis.
+- Nutrient source: USDA FoodData Central ingredient searches (individual source links in recipe.json); independent nutrition/allergen review remains pending.
 
 ## Independent gates
-- A08: PENDING; A09: PENDING; nutrition/allergen: PENDING; translation/culture: PENDING; rights: PENDING_REVIEW; security: PENDING.
+- A08: PENDING; A09: PENDING; nutrition/allergen: PENDING; translation/cultural: PENDING; artwork rights: PENDING_REVIEW; security: PENDING.

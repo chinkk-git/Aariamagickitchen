@@ -1,33 +1,272 @@
 {
-  "schema_version": "1.0-draft",
+  "schema_version": "1.0.0",
   "wave": 2,
-  "status": "DRAFT_NOT_READY",
-  "source_commit": "c9dd936ae2495684452faa4572172a566fd5c36b",
+  "status": "READY_FOR_INTEGRATION",
+  "integration_status": "READY_FOR_INTEGRATION",
+  "source_commit": "07a414a32a0d87892eb388b72800723006adfac3",
+  "canonical_recipe_count": 95,
+  "india_mapping_status": "VALIDATED_UNCHANGED",
+  "production_artwork_approved": true,
   "recipes": [
     {
       "id": 102,
       "country": "japan",
       "title": "Veggie Sushi Rolls",
-      "recipe_json": "countries/japan/102-veggie-sushi-rolls/recipe.json",
-      "recipe_md": "countries/japan/102-veggie-sushi-rolls/recipe.md",
-      "artwork_ready": false,
-      "nutrition_status": "PENDING_NUTRIENT_SOURCE_LOOKUP"
+      "recipe_json": "content/international/countries/japan/102-veggie-sushi-rolls/recipe.json",
+      "recipe_md": "content/international/countries/japan/102-veggie-sushi-rolls/recipe.md",
+      "artwork_count": 22,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING",
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      }
     },
     {
       "id": 105,
       "country": "mexico",
       "title": "Rainbow Veggie Tacos",
-      "recipe_json": "countries/mexico/105-rainbow-veggie-tacos/recipe.json",
-      "recipe_md": "countries/mexico/105-rainbow-veggie-tacos/recipe.md",
-      "artwork_ready": false,
-      "nutrition_status": "PENDING_NUTRIENT_SOURCE_LOOKUP"
+      "recipe_json": "content/international/countries/mexico/105-rainbow-veggie-tacos/recipe.json",
+      "recipe_md": "content/international/countries/mexico/105-rainbow-veggie-tacos/recipe.md",
+      "artwork_count": 22,
+      "nutrition_status": "ESTIMATE_REVIEW_PENDING",
+      "review_status": {
+        "A08": "PENDING",
+        "A09": "PENDING",
+        "nutrition_allergen": "PENDING",
+        "translation_cultural": "PENDING",
+        "artwork_rights": "PENDING_REVIEW",
+        "security": "PENDING"
+      }
     }
   ],
-  "next_steps": [
-    "Resolve canonical IDs and source nutrition values.",
-    "Finalize exact recipe schema against W01/W02 adapter.",
-    "Generate every distinct ingredient, equipment, finished-dish and step illustration after content lock.",
-    "Run full validation before any integration handoff."
+  "package_files": [
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
+      "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
+      "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
+      "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
+      "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
+      "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
+      "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
+      "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
+      "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/finished-dish.png",
+      "sha256": "a6f6c0c3f87ab8119d75b45511ed0e5a2a29575105722e0fababda9f8de0d4fc"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/avocado.png",
+      "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/carrot.png",
+      "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/cucumber.png",
+      "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/nori.png",
+      "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/rice-vinegar.png",
+      "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sugar.png",
+      "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sushi-rice.png",
+      "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/water.png",
+      "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png",
+      "sha256": "2058c2a7c21b63b7de8c27159b4fee9ed24528b0dd532b876c13415c2d1b22ed"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
+      "sha256": "c7a1028f603b46e95fab159457de73b5f46ecd947576e27898c5baf89556db86"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png",
+      "sha256": "99cc819ef79e08dec01500bfde0ea20984873485621fef4f0dcb38d85db1529c"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png",
+      "sha256": "a23036bba9ac96653fac969f1228865d6fd675cc90a2650f9c6cfafad4a61139"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png",
+      "sha256": "897b6f2a0175fb9f69a0eef4b22b3387d950d3b8ee5614dbccbc9b84613ac445"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/recipe.json",
+      "sha256": "3bc4cffd4ac6fe0036b9344771338e31bb2be04cceba4142ac3b3b0a1e2afe77"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/recipe.md",
+      "sha256": "edbc2d36395c6f395c66422842b6fe1d02c98cd30eebe3239453c92f18a6e1e3"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
+      "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
+      "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
+      "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
+      "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
+      "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
+      "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
+      "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
+      "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png",
+      "sha256": "e16b6c81d989d32c9b7dc5b79c1f495403ffb5164e3a8df09beca1c3270f17ad"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/avocado.png",
+      "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/black-beans.png",
+      "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/corn-tortillas.png",
+      "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lettuce.png",
+      "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lime.png",
+      "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/red-pepper.png",
+      "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/sweetcorn.png",
+      "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
+      "sha256": "68a1730b448d4c4d47224246a14d20dc62fe47c19d77301d9892a33b76242f09"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png",
+      "sha256": "a62ee1a72a82f6de7093ad385e0fc777a2de3b3b52f8bc94ef3df9c132a21e5b"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png",
+      "sha256": "71269e6441eadefd4fd51d19c6376af85dd6fce015d675952b5658741f77c794"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png",
+      "sha256": "3d825d47184cda7673c5fe4b742b86f3a04b439176d52060c1305df41f1790c4"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png",
+      "sha256": "4ba070e301f90de563c81ece60f9fb8c7104349877f7522ad69b3b1c5a2b8f17"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png",
+      "sha256": "6d6477d28bd0d08f679a76577aa1b4d7dd33a83e36319b1cca329c42efd88c04"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/recipe.json",
+      "sha256": "cf57c1414a41e7c548540eb475831698d2c5f31cf6f97e7f475129448b240385"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/recipe.md",
+      "sha256": "1ade414722605da2acd3a12ec9410f150d6bc8b2ffdc3255344c3df22b7f7d9e"
+    }
   ],
-  "wave1_handoff_commit": "c9dd936ae2495684452faa4572172a566fd5c36b"
+  "validation": "LOCAL_CONTENT_CHECKS_PASS; external independent and runtime gates pending",
+  "wave1_handoff_commit": "c9dd936ae2495684452faa4572172a566fd5c36b",
+  "notes": [
+    "These are new immutable Wave 2 source records; no Wave 1 source file or commit is modified.",
+    "Generated assets use owner-approved visual reference. Rights review remains pending.",
+    "W01/W02 adapter acceptance and independent reviews are not claimed."
+  ],
+  "pair_sha256": "d243f38ac86764631e75e4cb3b2f335081549acbf246abaaf23eaec20a4ad78e",
+  "validation_ledger": "content/international/waves/wave-02/validation-ledger.json",
+  "nutrition_sources": "content/international/waves/wave-02/nutrition-sources.csv",
+  "wave1_correction": {
+    "path": "content/international/corrections/wave-01/v1/correction.json",
+    "status": "VERSIONED_CORRECTION_FOR_W01_REVIEW"
+  },
+  "support_files": [
+    {
+      "path": "content/international/waves/wave-02/nutrition-sources.csv",
+      "sha256": "56c722a83fa140d83ed27847ee6b005a4785c38858cab1e56f5a0bcd763356ad"
+    },
+    {
+      "path": "content/international/waves/wave-02/validation-ledger.json",
+      "sha256": "d12ef8caa6e1d168bf89f5cb4d587a6c67a9ce034d259b8743c4d012d1f940a6"
+    },
+    {
+      "path": "content/international/corrections/wave-01/v1/correction.json",
+      "sha256": "e223d9d888ea77173a8164ab6dfd67ad12fa3ee9179f3933b35b36ae957fb956"
+    },
+    {
+      "path": "content/international/corrections/wave-01/v1/correction.md",
+      "sha256": "6e086f33d4e690e592622758940abb4407a0487097c7c77c16805253433ed38c"
+    }
+  ]
 }

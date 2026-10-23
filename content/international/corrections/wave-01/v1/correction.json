@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "correction_id": "W03-W1-CN-099-NUTRITION-v1",
+  "target_recipe_id": 99,
+  "country": "china",
+  "title": "Vegetable Fried Rice nutrition completion",
+  "status": "VERSIONED_CORRECTION_FOR_W01_REVIEW",
+  "immutable_wave1_commit": "c9dd936ae2495684452faa4572172a566fd5c36b",
+  "initial_candidate_commit": "451ab0bf8a3ab1867cf004a113d3d8e6896ccf60",
+  "change_summary": [
+    "Initial estimate omitted soy sauce and spring onion from numeric totals.",
+    "Initial sodium value was null.",
+    "Later immutable handoff c9dd936 already includes the correction values below; this addendum records the delta so W01 does not import the earlier incomplete values."
+  ],
+  "corrected_per_serving": {
+    "energyKcal": 276,
+    "proteinG": 9.2,
+    "carbohydrateG": 47.7,
+    "fatG": 5.3,
+    "fibreG": 1.9,
+    "saturatedFatG": 1.0,
+    "sodiumMg": 193
+  },
+  "calculation_notes": "Includes all measured recipe ingredients, including 15 mL low-sodium soy sauce approximated as 16 g (USDA FDC 172473) and spring onion (USDA FDC 170005), divided by four portions. Brand sodium varies; estimates require independent nutrition review.",
+  "sources": [
+    {
+      "fdcId": 172473,
+      "food": "Soy sauce made from soy and wheat (shoyu), low sodium",
+      "url": "https://fdc.nal.usda.gov/food-details/172473/nutrients"
+    },
+    {
+      "fdcId": 170005,
+      "food": "Onions, spring, raw",
+      "url": "https://fdc.nal.usda.gov/food-details/170005/nutrients"
+    }
+  ],
+  "review_status": {
+    "W01_coordination": "PENDING_ACKNOWLEDGEMENT",
+    "nutrition_allergen": "PENDING_INDEPENDENT_REVIEW"
+  },
+  "immutable_source_file": "content/international/countries/china/099-vegetable-fried-rice/recipe.json"
+}
