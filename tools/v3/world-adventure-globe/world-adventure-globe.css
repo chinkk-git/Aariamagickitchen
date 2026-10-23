@@ -11,9 +11,9 @@
 .aria-world-globe__stage.is-dragging{cursor:grabbing;touch-action:none;}
 .aria-world-globe__sphere{position:relative;width:min(100%,calc(100vh - var(--aria-globe-nav-height) - 142px));height:auto;aspect-ratio:1;border-radius:50%;overflow:hidden;isolation:isolate;border:4px solid rgba(255,255,255,.95);box-shadow:inset -30px -12px 42px rgba(13,57,91,.38),inset 15px 14px 22px rgba(255,255,255,.58),0 14px 30px rgba(28,64,89,.23);background:radial-gradient(circle at 34% 27%,#92e7ff 0%,#52bbec 43%,#2292d1 75%,#146aa9 100%);}
 .aria-world-globe__atlas{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;pointer-events:none;}
-.aria-globe-map-copy path{fill:#65bd69;stroke:#438c51;stroke-width:5;stroke-linejoin:round;paint-order:stroke;filter:drop-shadow(2px 4px 2px rgba(31,91,68,.24));}
-.aria-globe-map-copy path:nth-child(3n){fill:#80ca68;}
-.aria-globe-map-copy path:nth-child(4n){fill:#50aa63;}
+.aria-globe-map-land{fill:#65bd69;stroke:#438c51;stroke-width:2;stroke-linejoin:round;paint-order:stroke;filter:drop-shadow(1px 2px 1px rgba(31,91,68,.24));}
+.aria-globe-map-land:nth-child(3n){fill:#80ca68;}
+.aria-globe-map-land:nth-child(4n){fill:#50aa63;}
 .aria-world-globe__shine{position:absolute;inset:0;border-radius:50%;pointer-events:none;background:radial-gradient(ellipse at 35% 24%,rgba(255,255,255,.28),transparent 39%),radial-gradient(ellipse at 55% 50%,transparent 43%,rgba(5,47,86,.15) 71%,rgba(3,39,75,.38) 99%),linear-gradient(100deg,rgba(255,255,255,.06),transparent 42%,rgba(0,45,93,.16));z-index:2;}
 .aria-world-globe__flags{position:absolute;inset:0;z-index:3;pointer-events:none;}
 .aria-world-globe__flag{pointer-events:auto;position:absolute;transform:translate(-50%,-50%) scale(var(--flag-depth));width:52px;height:52px;padding:0;border:3px solid #fff;border-radius:50%;background:#fff;box-shadow:0 4px 10px rgba(19,47,67,.3);font-size:27px;line-height:1;cursor:pointer;touch-action:manipulation;transition:box-shadow .16s ease,transform .16s ease;}

@@ -131,8 +131,8 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);
   assert.ok(/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags\{transform:scale\(1\.12\)/.test(transform),'the host scales atlas and flags together without pushing touch targets outside the stage');
-  assert.ok(/aria-globe-map-copy path\{transform:scale\(1\.28\);transform-box:fill-box/.test(transform),'the host enlarges recognizable land paths around their own centers without moving country flags');
-  assert.ok(/landScale\s*<\s*1\.25[\s\S]*?flagsInStage/.test(smoke),'the real-device smoke checks enlarged land paths and keeps all flag targets inside the stage');
+  assert.ok(!/aria-globe-map-copy path\{transform:scale/.test(transform),'Natural Earth land and flags keep the same orthographic projection without local path distortion');
+  assert.ok(/landPathCount\s*<\s*30[\s\S]*?landBoundsCoverage\s*<\s*\.48[\s\S]*?flagsInStage/.test(smoke),'the real-device smoke checks substantial projected land coverage and keeps every flag target inside the stage');
   assert.match(transform,/v33-orbit-turn/);
   assert.match(transform,/v33-sparkle-twinkle/);
   assert.match(transform,/aspect-ratio:1;border:3px dashed/,'the orbit remains a mathematically circular ring');
@@ -140,7 +140,7 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(transform,/grid-template-columns:minmax\(0,1fr\) minmax\(245px,32%\)/,'landscape uses a full-width map and country panel');
   assert.match(transform,/position:fixed;z-index:2;inset:env\(safe-area-inset-top\) 0 calc\(76px/,'the globe screen fills the Android viewport above persistent navigation');
   assert.match(transform,/prefers-reduced-motion:reduce\).*stage::before/);
-  assert.match(transform,/aria-world-globe__guide\{[^}]*height:88cqh;[^}]*max-width:30cqw/,'the host reserves a large integrated guide side of the hero composition');
+  assert.match(transform,/aria-world-globe__guide,\.app\.v31-world-active \.aria-world-globe__guide-copy\{display:none!important/,'the rejected non-pointing portrait is not shown while the approved pointing export is unavailable');
   assert.match(transform,/max-width:900px\) and \(orientation:landscape\)/,'phone landscape receives its own width-filling layout');
   const workflow=await readFile(new URL('../../.github/workflows/v33-w02-review.yml',import.meta.url),'utf8');
   assert.match(workflow,/publish_apk:[\s\S]*?default: false/,'real screenshots are captured before review APK publication is enabled');
@@ -148,5 +148,6 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(workflow,/OWNER_APPROVED=NO[\s\S]*?REVIEW_READY=NO[\s\S]*?RELEASE_READY=NO/);
   assert.match(moduleJs,/handleBack:/);
   assert.match(moduleJs,/Surprise/);
-  for (const contract of ["India's 18 existing recipe descriptors",'Android Back','bottom navigation','read-only','portrait','landscape','Food Passport','294db5cea846355b7813f2de63eba9cd1f358d35']) assert.ok(doc.includes(contract));
+  assert.match(moduleJs,/0\.3\.0-natural-earth-orthographic/);
+  for (const contract of ["India's 18 existing recipe descriptors",'Android Back','bottom navigation','read-only','portrait','landscape','Food Passport','dc1bd7d45f643a939936fb8c95ac6c424b3f012d','Natural Earth']) assert.ok(doc.includes(contract));
 });

@@ -38,14 +38,15 @@ test('the draft registry stays separate and Android mounts the W03 globe with dy
   assert.match(runtime,/\.mount\(screen\.querySelector\('#v33-world-globe-host'\),\{\.\.\.v33WorldHost,avatarSrc:V31_HOME_WORLD_ART\.aaria\},v33GlobeState\|\|undefined\)/);
   assert.match(runtime,/getState:\(\)=>moduleController\.serialize\(\)/);
   assert.match(runtime,/destroy:\(\)=>moduleController\.dispose\(\)/);
-  assert.match(globe,/0\.2\.0-w02-host-contract/);
+  assert.match(globe,/0\.3\.0-natural-earth-orthographic/);
   assert.match(runtime,/v33GlobeController\?\.handleBack/);
 });
 
-test('W03 globe assets are integrated unchanged with approved Aaria art and Android visual evidence hooks', async () => {
-  const [transform,runtime,globeJs,globeCss,smoke,avatar]=await Promise.all([
+test('W03 Natural Earth globe is integrated unchanged; rejected portrait is withheld pending approved pointing art', async () => {
+  const [transform,runtime,globeJs,globeCss,smoke,avatar,landArchive,provenance]=await Promise.all([
     read('tools/v3/transform-production.mjs'),read('tools/v3/runtime.js'),read('tools/v3/world-adventure-globe/world-adventure-globe.js'),read('tools/v3/world-adventure-globe/world-adventure-globe.css'),
-    read('.github/scripts/v33-world-map-sample-smoke.mjs'),readFile(new URL('tools/v3/world-adventure-globe/aaria-portrait.webp',root))
+    read('.github/scripts/v33-world-map-sample-smoke.mjs'),readFile(new URL('tools/v3/world-adventure-globe/aaria-portrait.webp',root)),
+    readFile(new URL('tools/v3/world-adventure-globe/data/ne_110m_land.zip',root)),read('tools/v3/world-adventure-globe/MAP-PROVENANCE.md')
   ]);
   assert.match(transform,/magicalGlobeScript/);
   assert.match(transform,/magicalGlobeStyles/);
@@ -53,17 +54,25 @@ test('W03 globe assets are integrated unchanged with approved Aaria art and Andr
   assert.match(runtime,/moduleController\.serialize\(\)/);
   assert.match(runtime,/moduleController\.dispose\(\)/);
   assert.match(globeJs,/function mount\(root, hostContext, restoredState\)/);
+  assert.match(globeJs,/var LAND_POLYGONS =/);
+  assert.match(globeJs,/aria-globe-map-land/);
+  assert.match(globeJs,/0\.3\.0-natural-earth-orthographic/);
   assert.match(globeJs,/destinationsFromHost\(context\)/);
   assert.match(globeJs,/Surprise Me/);
   assert.match(globeJs,/onOpenRecipe/);
   assert.match(globeCss,/@media \(orientation:landscape\)/);
   assert.equal(createHash('sha256').update(avatar).digest('hex'),'0268a8739595178a6e6ed0eb130a4bfc96c65d559130c3fea686239bd664a8d9');
+  assert.equal(createHash('sha256').update(landArchive).digest('hex'),'1926c621afd6ac67c3f36639bb1236134a48d82226dc675d3e3df53d02d2a3de');
+  assert.match(provenance,/Natural Earth 1:110m Physical Vectors/);
+  assert.match(provenance,/public domain/);
   assert.match(smoke,/world-map-phone-portrait/);
   assert.match(smoke,/world-map-phone-landscape/);
   assert.match(smoke,/country-preview-phone-portrait/);
   assert.match(smoke,/surprise-me-waits-for-explicit-flag-selection/);
   assert.match(smoke,/android-touch-selects-suggested-flag/);
   assert.match(smoke,/food-passport-offline-restart-persistence/);
+  assert.match(smoke,/pointingAariaArtwork:'BLOCKED_MISSING_APPROVED_EXPORT'/);
+  assert.match(smoke,/avatar\.visible/);
 });
 
 test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 coverage', async () => {
@@ -130,7 +139,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   const transform=await read('tools/v3/transform-production.mjs');
   assert.match(transform,/aria-world-globe__flag\{width:58px;height:58px;/,'Android host CSS keeps the enlarged country hit targets above 48px');
   assert.match(transform,/aria-world-globe__sphere\{position:absolute;left:58%;top:50%;width:min\(84cqw,84cqh,820px\);/,'Android phone landscape globe scales to available width and height');
-  assert.match(transform,/aria-globe-map-copy path\{transform:scale\(1\.28\);transform-box:fill-box/,'recognizable land geometry grows independently of the geospatial flag layer');
+  assert.match(transform,/aria-world-globe__guide,\.app\.v31-world-active \.aria-world-globe__guide-copy\{display:none!important/,'the rejected non-pointing portrait is not rendered as the approved pointing illustration');
+  assert.match(transform,/aria-world-globe__atlas,\.app\.v31-world-active \.aria-world-globe__flags\{transform:scale\(1\.12\)/,'the host preserves the same orthographic scale for Natural Earth land and geographic flags');
   assert.match(transform,/width:min\(94cqw,94cqh,900px\);height:auto;aspect-ratio:1/,'the orbit is a viewport-contained circle');
 });
 
