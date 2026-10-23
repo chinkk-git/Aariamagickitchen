@@ -159,13 +159,31 @@ for(const item of V32_INTERNATIONAL_RECIPES){
  STEP_GUIDES[id]=en.steps.map(x=>({title:x.title,tip:x.safety,adultAssist:x.adultAssist,art:V32_INTL_ROOT+x.image.path}));
  V32_INTL_BY_ID.set(id,{record:r,item});
 }
+function v32InternationalUnit(unit,pt){
+ if(!pt)return unit;
+ const localized={
+  'clove (about 3 g)':'unidade (cerca de 3 g)',
+  'large eggs (about 100 g without shells)':'unidades grandes (cerca de 100 g sem casca)',
+  'stalks (about 20 g)':'talos (cerca de 20 g)'
+ };
+ return localized[String(unit)]||unit;
+}
+function v32InternationalRole(role,pt){
+ if(!pt)return role;
+ const localized={
+  'adult':'Somente um adulto',
+  'shared under adult supervision':'Uso compartilhado sob supervisão de um adulto',
+  'shared when cool':'Uso compartilhado após esfriar'
+ };
+ return localized[String(role||'').trim().toLowerCase()]||role;
+}
 function v32InternationalDetail(source,item){
  const pt=state.language==='pt-BR',record=item.locales[pt?'pt-BR':'en-GB'],id=Number(item.id),n=Number(step)||0;
  const steps=record.steps,ingredients=record.ingredients,checks=state.checks[id]||[],finished=(state.done||[]).some(x=>Number(x)===id);
  const a=value=>V32_INTL_ROOT+String(value||''),safety=steps.map(x=>x.safety).filter(Boolean).join(' ');
  const equipment=record.equipmentItems||[],allergens=record.allergens||[],nutrition=record.nutrition||{};
- const ingredientMarkup=ingredients.map((x,i)=>'<label class="ref-ingredient"><span class="ref-ingredient-icon"><img src="'+a(x.image.path)+'" alt=""></span><span>'+safe(x.name)+' · '+safe(String(x.quantity))+' '+safe(x.unit)+'</span><input type="checkbox" data-check="'+i+'" '+(checks.includes(i)?'checked':'')+'></label>').join('');
- const equipmentMarkup=equipment.map(x=>'<div class="ref-tool"><span class="tool-illustration"><img src="'+a(x.image.path)+'" alt=""></span><strong>'+safe(x.name)+'</strong><small>'+safe(x.roleDescription||x.role||'')+'</small></div>').join('');
+ const ingredientMarkup=ingredients.map((x,i)=>'<label class="ref-ingredient"><span class="ref-ingredient-icon"><img src="'+a(x.image.path)+'" alt=""></span><span>'+safe(x.name)+' · '+safe(String(x.quantity))+' '+safe(v32InternationalUnit(x.unit,pt))+'</span><input type="checkbox" data-check="'+i+'" '+(checks.includes(i)?'checked':'')+'></label>').join('');
+ const equipmentMarkup=equipment.map(x=>'<div class="ref-tool"><span class="tool-illustration"><img src="'+a(x.image.path)+'" alt=""></span><strong>'+safe(x.name)+'</strong><small>'+safe(v32InternationalRole(x.roleDescription||x.role||'',pt))+'</small></div>').join('');
  const active=Math.max(0,Math.min(steps.length-1,n));
  const flow=finished?'<section class="ref-card" role="status"><h2>✨ '+(pt?'Receita concluída':'Recipe complete')+'</h2><p>'+safe(record.adultHelp||'')+'</p><button data-nav="library">'+(pt?'Voltar às receitas':'Back to recipes')+'</button></section>':'<section class="ref-cook-area"><div class="ref-step-grid" data-step-count="'+steps.length+'"><article class="ref-step-card active"><h2 class="ref-step-title"><span class="ref-step-number">'+(active+1)+'</span><strong>'+safe(steps[active].title)+'</strong></h2><figure class="v32-intl-step-art"><img src="'+a(steps[active].image.path)+'" alt="'+(pt?'Ilustração da etapa ':'Illustration for step ')+(active+1)+'"></figure><div class="ref-step-copy"><p>'+safe(steps[active].instruction)+'</p></div><p class="v31-step-adult-cue">'+safe(steps[active].adultAssist)+'</p><details class="ref-safety" open><summary>'+(pt?'Segurança e ajuda de um adulto':'Safety and adult help')+'</summary><p>'+safe(steps[active].safety)+'</p></details></article></div><div class="ref-step-actions"><button class="ref-back" data-action="prevstep" '+(active===0?'disabled':'')+'>'+(pt?'← Anterior':'← Previous')+'</button><span>'+(active+1)+' '+(pt?'de':'of')+' '+steps.length+'</span><button class="ref-next '+(active===steps.length-1?'finish-step':'')+'" data-action="nextstep">'+(active===steps.length-1?(pt?'Concluir':'Finish'):(pt?'Próxima etapa →':'Next step →'))+'</button></div></section>';
  return '<article class="v32-international-recipe" data-recipe-id="'+id+'"><header class="ref-hero"><button type="button" data-nav="library">'+(pt?'← Receitas':'← Recipes')+'</button><p class="v3-eyebrow">'+(pt?'RECEITA INTERNACIONAL · PARA REVISÃO':'INTERNATIONAL RECIPE · REVIEW BUILD')+'</p><h1 tabindex="-1">'+safe(record.title)+'</h1><p>'+safe(record.description||'')+'</p><p>'+safe(source.emoji)+' '+safe(source.country)+' · '+safe(source.time)+' · '+(pt?'Rende ':'Makes ')+source.servings+'</p><button class="ref-favorite" data-action="favorite">'+((state.favorites||[]).includes(id)?'♥':'♡')+' '+(pt?'Favorita':'Favourite')+'</button></header><figure class="v32-intl-finished"><img src="'+a(record.finishedDish)+'" alt="'+(pt?'Prato pronto: ':'Finished dish: ')+safe(record.title)+'"></figure><section class="ref-card"><h2>🥣 '+(pt?'Ingredientes':'Ingredients')+'</h2><div class="ref-ingredient-grid">'+ingredientMarkup+'</div></section><section class="ref-card"><h2>🍴 '+(pt?'Equipamentos':'Equipment')+'</h2><div class="ref-tools">'+equipmentMarkup+'</div></section>'+flow+'<details open class="storybook-safety"><summary>🛡️ '+(pt?'Segurança completa da receita':'Full recipe safety')+'</summary><p>'+safe(safety)+'</p><p>'+safe(record.crossContact||'')+'</p></details><section class="ref-card"><h2>🧾 '+(pt?'Alergênicos e nutrição':'Allergens and nutrition')+'</h2><p><strong>'+(pt?'Alergênicos declarados':'Declared allergens')+':</strong> '+safe(allergens.length?allergens.join(', '):(pt?'nenhum declarado':'none declared'))+'</p><p>'+safe(nutrition.verificationStatus||'Nutrition review pending')+' · '+safe(nutrition.dataSource||'')+'</p><p>'+safe(nutrition.calculationMethod||'')+'</p></section></article>';

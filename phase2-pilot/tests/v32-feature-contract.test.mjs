@@ -226,6 +226,10 @@ test('production international ingredient rows stay compact, contained and measu
     'production checklist thumbnails are clipped to a fixed square and contain the complete approved image');
   assert.match(runtime, /\.v32-international-recipe \.ref-tools \.tool-illustration\{[^}]*width:52px;height:44px;[^}]*overflow:hidden[^}]*\}\.v32-international-recipe \.ref-tools \.tool-illustration img\{[^}]*width:100%;height:100%;max-width:100%;max-height:100%;[^}]*object-fit:contain/,
     'production equipment illustrations remain contained in small frames beside readable tool labels');
+  assert.match(runtime, /function v32InternationalUnit\(unit,pt\)[\s\S]*?'clove \(about 3 g\)':'unidade \(cerca de 3 g\)'[\s\S]*?'large eggs \(about 100 g without shells\)':'unidades grandes \(cerca de 100 g sem casca\)'[\s\S]*?'stalks \(about 20 g\)':'talos \(cerca de 20 g\)'[\s\S]*?safe\(v32InternationalUnit\(x\.unit,pt\)\)/,
+    'Portuguese ingredient rows localize the source package unit descriptions without changing the audited amounts');
+  assert.match(runtime, /function v32InternationalRole\(role,pt\)[\s\S]*?'adult':'Somente um adulto'[\s\S]*?'shared under adult supervision':'Uso compartilhado sob supervisão de um adulto'[\s\S]*?'shared when cool':'Uso compartilhado após esfriar'[\s\S]*?safe\(v32InternationalRole\(x\.roleDescription\|\|x\.role\|\|'',pt\)\)/,
+    'Portuguese equipment responsibilities preserve adult-only/shared roles in localized wording');
   assert.match(runtime, /\.v32-international-recipe \.ref-ingredient\{[^}]*grid-template-columns:40px minmax\(0,1fr\) 44px;[^}]*min-height:60px;[^}]*overflow:hidden/,
     'production checklist uses compact rows with independent art, text and touch target columns');
   assert.match(runtime, /\.v32-international-recipe \.ref-ingredient input\[type=checkbox\][^{]*\{[^}]*width:24px;height:24px/,
