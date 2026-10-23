@@ -9,10 +9,35 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const screenshots = 'artifacts/v33-world-map-sample/screenshots';
 mkdirSync(screenshots, { recursive: true });
 
+async function refreshForwardedWebView() {
+  let forwardedSocket='';
+  for(let attempt=0;attempt<60;attempt++){
+    const pids=adb(['shell','pidof',appId]).toString('utf8').trim().split(/\s+/).filter(pid=>/^\d+$/.test(pid));
+    for(const pid of pids){
+      const sockets=adb(['shell','cat','/proc/net/unix']).toString('utf8');
+      const socket=sockets.match(new RegExp(`webview_devtools_remote_${pid}`))?.[0];
+      if(!socket)continue;
+      if(socket!==forwardedSocket){
+        adb(['forward','--remove','tcp:9224']);
+        adb(['forward','tcp:9224',`localabstract:${socket}`]);
+        forwardedSocket=socket;
+      }
+      try{
+        const targets=await(await fetch('http://127.0.0.1:9224/json')).json();
+        const target=Array.isArray(targets)?targets.find(item=>item.type==='page'&&item.webSocketDebuggerUrl&&(item.url?.includes('appassets.androidplatform.net')||item.title?.includes('Magical Kitchen'))):null;
+        if(target)return target;
+      }catch{}
+    }
+    await pause(500);
+  }
+  throw new Error('Could not re-forward 9224 to the rotated app-owned WebView DevTools socket');
+}
+
 async function connect({ refresh = false } = {}) {
   let target;
   let lastTargets = [];
   if (!refresh) try { target = JSON.parse(process.env.ANDROID_DEVTOOLS_TARGET || 'null'); } catch { }
+  else target=await refreshForwardedWebView();
   if (!target) {
     for (let attempt = 0; attempt < 60; attempt++) {
       try {
