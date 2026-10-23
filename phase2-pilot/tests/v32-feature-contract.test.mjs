@@ -261,6 +261,25 @@ test('Android visual regression emulators use stable SwiftShader rendering', asy
     'the unstable indirect graphics mode that caused G3 WebView renderer loss is not reintroduced');
 });
 
+test('owner-review Android workflow publishes G1/G2 artifacts without waiting for G3', async () => {
+  const workflow = await read('.github/workflows/v32-android.yml');
+  assert.match(workflow, /owner_review_only:[\s\S]*?type: boolean[\s\S]*?default: false/,
+    'manual runs expose an explicit owner-review-only switch');
+  assert.match(workflow, /group: aaria-android-\$\{\{ github\.ref_name \}\}-\$\{\{[\s\S]*?github\.sha \|\| 'full' \}\}/,
+    'owner-review runs use a head-specific concurrency slot while full regressions remain serialized');
+  assert.match(workflow, /Upload targeted owner-review APK after G2 smoke[\s\S]*?G3 FULL TABLET IMAGE REGRESSION/,
+    'the owner-review APK is uploaded before any full G3 work begins');
+  for (const step of [
+    'G3 FULL TABLET IMAGE REGRESSION — all 95 recipes in portrait and landscape',
+    'G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes',
+    'Require complete Android screenshot manifest and 95-route regression'
+  ]) {
+    const escaped = step.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    assert.match(workflow, new RegExp(`- name: ${escaped}\\n\\s+if: env\\.V32_OWNER_REVIEW_ONLY != 'true'`),
+      `${step} remains mandatory for full runs but does not block G1/G2 owner review`);
+  }
+});
+
 test('phone G3 keeps both complete 95-recipe sweeps enabled within bounded execution limits', async () => {
   const phone = await read('.github/scripts/v32-android-smoke.sh');
   const workflow = await read('.github/workflows/v32-android.yml');

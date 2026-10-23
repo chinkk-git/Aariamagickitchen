@@ -2,6 +2,12 @@ name: Aaria V3.2 shared recipe renderer and test APK
 
 on:
   workflow_dispatch:
+    inputs:
+      owner_review_only:
+        description: Run the installable owner-review G1/G2 gates without waiting for full G3 regression
+        required: false
+        type: boolean
+        default: false
   push:
     branches:
       - feature/v3.2-magical-cookbook
@@ -19,13 +25,15 @@ permissions:
   contents: read
 
 concurrency:
-  group: aaria-android-${{ github.ref_name }}
+  group: aaria-android-${{ github.ref_name }}-${{ ((github.event_name == 'workflow_dispatch' && inputs.owner_review_only) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[owner-review-only]'))) && github.sha || 'full' }}
   cancel-in-progress: false
 
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    env:
+      V32_OWNER_REVIEW_ONLY: ${{ (github.event_name == 'workflow_dispatch' && inputs.owner_review_only) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[owner-review-only]')) }}
     steps:
       - name: Check out exact V3.2 source head
         uses: actions/checkout@v4
@@ -264,6 +272,7 @@ jobs:
           retention-days: 30
 
       - name: G3 FULL TABLET IMAGE REGRESSION — all 95 recipes in portrait and landscape
+        if: env.V32_OWNER_REVIEW_ONLY != 'true'
         timeout-minutes: 55
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -277,6 +286,7 @@ jobs:
           script: timeout --kill-after=10s 2760s bash .github/scripts/v32-android-tablet-smoke.sh
 
       - name: G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes
+        if: env.V32_OWNER_REVIEW_ONLY != 'true'
         timeout-minutes: 50
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -290,11 +300,12 @@ jobs:
           script: bash .github/scripts/v32-android-smoke.sh
 
       - name: Require complete Android screenshot manifest and 95-route regression
+        if: env.V32_OWNER_REVIEW_ONLY != 'true'
         run: node tools/v3/qa/android-evidence-manifest.mjs
 
 
       - name: Compare phone and tablet screens with approved Home and World references
-        if: always()
+        if: always() && env.V32_OWNER_REVIEW_ONLY != 'true'
         run: |
           set -euo pipefail
           mkdir -p artifacts/v31-android-screenshots artifacts/v31-diagnostics artifacts/v32-diagnostics
@@ -324,7 +335,7 @@ jobs:
           fi
 
       - name: Upload screenshots and gate evidence
-        if: always()
+        if: always() && env.V32_OWNER_REVIEW_ONLY != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: aaria-magical-kitchen-v3.2-test-evidence
