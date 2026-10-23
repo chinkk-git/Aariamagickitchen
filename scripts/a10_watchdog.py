@@ -56,7 +56,7 @@ def check(name, cfg):
             print(f"{name}: recovery already posted for run {latest['id']}")
             return
         msg = (f"{signature}\n### P0 — A10 evidence-backed CI blocker ({name})\n"
-               f"- Branch: \`{branch}\`; exact HEAD: \`{sha}\`\n"
+               f"- Branch: `{branch}`; exact HEAD: `{sha}`\n"
                f"- Failed run: {latest['html_url']}\n"
                f"- Failed steps: {', '.join(failed_steps[:8])}\n"
                "- Next action: inspect failed job logs/artifacts, isolate demonstrated cause, "
