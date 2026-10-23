@@ -44,7 +44,7 @@ def transition(task, next_state, *, now=None, lease_until="", exact_sha=""):
         until = datetime.fromisoformat(task.lease_until.replace("Z", "+00:00"))
         if until.tzinfo is None or until <= clock:
             raise ValueError("expired or naive lease")
-    if next_state in {"VERIFYING", "DONE"} and task.state == "VERIFYING" or next_state == "VERIFYING":
+    if next_state == "VERIFYING" or (task.state == "VERIFYING" and next_state == "DONE"):
         clock = now or datetime.now(timezone.utc)
         until = datetime.fromisoformat(task.lease_until.replace("Z", "+00:00"))
         if until.tzinfo is None or until <= clock:
