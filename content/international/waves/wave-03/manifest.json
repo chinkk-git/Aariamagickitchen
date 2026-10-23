@@ -8,14 +8,16 @@
       "country": "italy",
       "title": "Mini Caprese Skewers",
       "artwork_ready": false,
-      "nutrition_status": "PENDING_SOURCE_LOOKUP"
+      "nutrition_status": "PENDING_SOURCE_LOOKUP",
+      "path": "countries/italy/097-mini-caprese-skewers"
     },
     {
       "id": 100,
       "country": "china",
       "title": "Rainbow Vegetable Noodles",
       "artwork_ready": false,
-      "nutrition_status": "PENDING_SOURCE_LOOKUP"
+      "nutrition_status": "PENDING_SOURCE_LOOKUP",
+      "path": "countries/china/100-rainbow-vegetable-noodles"
     }
   ],
   "wave2_handoff_commit": "9194a95560df1b28f39523ef2ec99e081db1c17c"

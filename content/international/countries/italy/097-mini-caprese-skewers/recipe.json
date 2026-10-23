@@ -1,0 +1,565 @@
+{
+  "schema_version": "1.0-draft",
+  "id": 97,
+  "country": "italy",
+  "country_code": "IT",
+  "title": {
+    "en-GB": "Mini Caprese Skewers",
+    "pt-BR": "Mini espetinhos caprese"
+  },
+  "description": {
+    "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+    "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+  },
+  "cultural_context": {
+    "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+    "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+  },
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 20,
+  "total_minutes": 25,
+  "ingredients": [
+    {
+      "id": "cherry-tomatoes",
+      "name": {
+        "en-GB": "Cherry tomatoes",
+        "pt-BR": "Tomates-cereja"
+      },
+      "quantity": 240,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "mini-mozzarella",
+      "name": {
+        "en-GB": "Mini mozzarella balls",
+        "pt-BR": "Bol mini de muçarela"
+      },
+      "quantity": 200,
+      "unit": "g",
+      "allergens": [
+        "milk"
+      ],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "basil",
+      "name": {
+        "en-GB": "Fresh basil leaves",
+        "pt-BR": "Folhas de manjericão fresco"
+      },
+      "quantity": 16,
+      "unit": "leaves",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "olive-oil",
+      "name": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    },
+    {
+      "id": "balsamic-vinegar",
+      "name": {
+        "en-GB": "Balsamic vinegar",
+        "pt-BR": "Vinagre balsâmico"
+      },
+      "quantity": 10,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": null
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "blunt-skewers",
+      "name": {
+        "en-GB": "Blunt skewers",
+        "pt-BR": "Espetos sem ponta"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "role": "adult",
+      "artwork": null
+    },
+    {
+      "id": "small-bowl",
+      "name": {
+        "en-GB": "Small bowl",
+        "pt-BR": "Tigela pequena"
+      },
+      "role": "shared",
+      "artwork": null
+    },
+    {
+      "id": "serving-plate",
+      "name": {
+        "en-GB": "Serving plate",
+        "pt-BR": "Prato para servir"
+      },
+      "role": "shared",
+      "artwork": null
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash and dry",
+        "pt-BR": "Lave e seque"
+      },
+      "instruction": {
+        "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+        "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+      },
+      "ingredientIds": [
+        "cherry-tomatoes",
+        "basil"
+      ],
+      "equipmentIds": [
+        "blunt-skewers",
+        "chopping-board",
+        "knife",
+        "small-bowl",
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Prepare the tomatoes",
+        "pt-BR": "Prepare os tomates"
+      },
+      "instruction": {
+        "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+        "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+      },
+      "ingredientIds": [
+        "cherry-tomatoes"
+      ],
+      "equipmentIds": [
+        "blunt-skewers",
+        "chopping-board",
+        "knife",
+        "small-bowl",
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Build the skewers",
+        "pt-BR": "Monte os espetinhos"
+      },
+      "instruction": {
+        "en-GB": "Thread tomato halves, basil leaves and mozzarella onto blunt skewers. Adults supervise; use short, blunt picks.",
+        "pt-BR": "Coloque tomates, manjericão e muçarela em espetos sem ponta. Um adulto supervisiona; use palitos curtos e sem ponta."
+      },
+      "ingredientIds": [
+        "cherry-tomatoes",
+        "basil",
+        "mini-mozzarella"
+      ],
+      "equipmentIds": [
+        "blunt-skewers",
+        "chopping-board",
+        "knife",
+        "small-bowl",
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Dress and serve",
+        "pt-BR": "Tempere e sirva"
+      },
+      "instruction": {
+        "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+        "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+      },
+      "ingredientIds": [
+        "olive-oil",
+        "balsamic-vinegar"
+      ],
+      "equipmentIds": [
+        "blunt-skewers",
+        "chopping-board",
+        "knife",
+        "small-bowl",
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+        "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+        "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+      },
+      "artwork": null
+    }
+  ],
+  "allergens": [
+    "milk"
+  ],
+  "allergen_notes": {
+    "cross_contact": {
+      "en-GB": "Check all packaging for allergens and cross-contact.",
+      "pt-BR": "Confira todas as embalagens para alergênicos e contato cruzado."
+    }
+  },
+  "nutrition": {
+    "per_serving": null,
+    "status": "PENDING_SOURCE_LOOKUP_AND_CALCULATION",
+    "sources": []
+  },
+  "artwork": {
+    "status": "NOT_STARTED",
+    "artwork_assets": []
+  },
+  "artwork_assets": [],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "equipment": [
+    "Blunt skewers",
+    "Chopping board",
+    "Kitchen knife",
+    "Small bowl",
+    "Serving plate"
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults handle sharp knives and, for noodles, all hot water and wok cooking. Children wash, tear, mix and assemble with supervision.",
+    "pt-BR": "Adultos cuidam das facas afiadas e, no macarrão, de toda água quente e do cozimento na wok. Crianças lavam, separam, misturam e montam com supervisão."
+  },
+  "renderer": {
+    "category": "International",
+    "method": "No-cook assembly",
+    "time": "25 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0-draft",
+    "status": "DRAFT_NOT_READY",
+    "id": 97,
+    "country": "italy",
+    "title": {
+      "en-GB": "Mini Caprese Skewers",
+      "pt-BR": "Mini espetinhos caprese"
+    },
+    "description": {
+      "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+      "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+    },
+    "servings": 4,
+    "ingredients": [
+      {
+        "id": "cherry-tomatoes",
+        "name": {
+          "en-GB": "Cherry tomatoes",
+          "pt-BR": "Tomates-cereja"
+        },
+        "quantity": 240,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "mini-mozzarella",
+        "name": {
+          "en-GB": "Mini mozzarella balls",
+          "pt-BR": "Bol mini de muçarela"
+        },
+        "quantity": 200,
+        "unit": "g",
+        "allergens": [
+          "milk"
+        ],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "basil",
+        "name": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "quantity": 16,
+        "unit": "leaves",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "olive-oil",
+        "name": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      },
+      {
+        "id": "balsamic-vinegar",
+        "name": {
+          "en-GB": "Balsamic vinegar",
+          "pt-BR": "Vinagre balsâmico"
+        },
+        "quantity": 10,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": null
+      }
+    ],
+    "equipmentItems": [
+      {
+        "id": "blunt-skewers",
+        "name": {
+          "en-GB": "Blunt skewers",
+          "pt-BR": "Espetos sem ponta"
+        },
+        "role": "shared",
+        "artwork": null
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "adult",
+        "artwork": null
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Kitchen knife",
+          "pt-BR": "Faca de cozinha"
+        },
+        "role": "adult",
+        "artwork": null
+      },
+      {
+        "id": "small-bowl",
+        "name": {
+          "en-GB": "Small bowl",
+          "pt-BR": "Tigela pequena"
+        },
+        "role": "shared",
+        "artwork": null
+      },
+      {
+        "id": "serving-plate",
+        "name": {
+          "en-GB": "Serving plate",
+          "pt-BR": "Prato para servir"
+        },
+        "role": "shared",
+        "artwork": null
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Wash and dry",
+          "pt-BR": "Lave e seque"
+        },
+        "instruction": {
+          "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+          "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+        },
+        "ingredientIds": [
+          "cherry-tomatoes",
+          "basil"
+        ],
+        "equipmentIds": [
+          "blunt-skewers",
+          "chopping-board",
+          "knife",
+          "small-bowl",
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Prepare the tomatoes",
+          "pt-BR": "Prepare os tomates"
+        },
+        "instruction": {
+          "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+          "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+        },
+        "ingredientIds": [
+          "cherry-tomatoes"
+        ],
+        "equipmentIds": [
+          "blunt-skewers",
+          "chopping-board",
+          "knife",
+          "small-bowl",
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Build the skewers",
+          "pt-BR": "Monte os espetinhos"
+        },
+        "instruction": {
+          "en-GB": "Thread tomato halves, basil leaves and mozzarella onto blunt skewers. Adults supervise; use short, blunt picks.",
+          "pt-BR": "Coloque tomates, manjericão e muçarela em espetos sem ponta. Um adulto supervisiona; use palitos curtos e sem ponta."
+        },
+        "ingredientIds": [
+          "cherry-tomatoes",
+          "basil",
+          "mini-mozzarella"
+        ],
+        "equipmentIds": [
+          "blunt-skewers",
+          "chopping-board",
+          "knife",
+          "small-bowl",
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Dress and serve",
+          "pt-BR": "Tempere e sirva"
+        },
+        "instruction": {
+          "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+          "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+        },
+        "ingredientIds": [
+          "olive-oil",
+          "balsamic-vinegar"
+        ],
+        "equipmentIds": [
+          "blunt-skewers",
+          "chopping-board",
+          "knife",
+          "small-bowl",
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "An adult handles sharp tools and heat; children work with an adult beside them.",
+          "pt-BR": "Um adulto cuida das ferramentas afiadas e do calor; as crianças trabalham com um adulto ao lado."
+        },
+        "safety": {
+          "en-GB": "Wash hands, use clean equipment and check labels. Adult-only knife and heat tasks.",
+          "pt-BR": "Lave as mãos, use utensílios limpos e confira os rótulos. Facas e calor são tarefas exclusivas de adultos."
+        },
+        "artwork": null
+      }
+    ],
+    "allergens": [
+      "milk"
+    ],
+    "nutrition": {
+      "per_serving": null,
+      "status": "PENDING_SOURCE_LOOKUP_AND_CALCULATION",
+      "sources": []
+    }
+  }
+}
