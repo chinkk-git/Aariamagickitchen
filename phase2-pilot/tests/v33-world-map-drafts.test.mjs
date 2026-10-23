@@ -81,6 +81,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(await read('tools/v3/runtime.js'),/e\.state\?\.v31Panel==='country'&&location\.hash==='#aria\/world'[\s\S]*?view='world';v31MapPanel='country'/,'Android Back from recipe restores the India card panel state');
   assert.match(phone,/cmd','connectivity','airplane-mode','enable/);
   assert.match(phone,/food-passport-offline-restart-persistence/);
+  assert.match(phone,/complete-canonical-recipe-through-real-step-controls/,'passport restart evidence must follow canonical recipe completion through rendered step controls');
+  assert.doesNotMatch(phone,/state\.done=\[51\]|state\.worldStamps=\['IND'\]/,'passport persistence smoke must not seed earned progress directly');
   assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
   assert.match(phoneLaunch,/127\.0\.0\.1:9224\/json/,'sample verifies a live app-owned DevTools page before connecting');
   assert.match(phoneLaunch,/pm clear \"\$APP_ID\"/,'sample clears the fresh app profile before launching the app');
