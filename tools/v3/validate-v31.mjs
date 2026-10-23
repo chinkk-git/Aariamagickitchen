@@ -73,24 +73,24 @@ if (/data-v31-(?:stamp)=|worldPassport/i.test(runtime)) fail('Unreviewed passpor
 if (!runtime.includes('data-v31-approved-recipe') || !runtime.includes('openRecipe(Number(button.dataset.v31ApprovedRecipe))')) fail('Original Indian recipes must open through the existing recipe flow.');
 if (/Mango Lassi Magic|Little Pizza Bites|Brazil|Mini Pão de Queijo/i.test(runtime)) fail('Superseded V3.1 recipe candidates must not be presented as approved destinations.');
 for (const [token, label] of [
-  ['data-v31-country-select', 'accessible country selection list'],
-  ['data-v31-country-search', 'destination search'],
-  ['data-v31-no-results', 'search empty state'],
+  ['data-v31-pin', 'large accessible map destination markers'],
   ['data-v31-open-world', 'homepage world navigation'],
-  ['New recipes will appear after child-safety, allergen, nutrition, cultural and duplicate reviews.', 'draft recipe lock copy'],
   ['APPROVED ORIGINAL RECIPES', 'existing Indian recipe collection'],
   ['prefers-reduced-motion', 'reduced-motion support'],
-  ['.v31-world-map', 'pan and zoom map styling']
+  ['.v31-world-map', 'geographic map layer'],
+  ['data-v33-map-viewport', 'measurable immersive map viewport']
 ]) if (!runtime.includes(token) && !transform.includes(token)) fail(`Missing ${label}.`);
-if (!visualCss.includes('.v31-illustrated-map-panel .v31-map-wrap{') || !visualCss.includes('aspect-ratio:1.7') || !visualCss.includes('center/contain')) fail('World Map must preserve the approved source ratio and contain the full reference artwork in every orientation.');
-if (!runtime.includes('data-v31-country-select') || !runtime.includes('data-v31-country-search') || !runtime.includes('V31_DESTINATION_BY_ISO') || !runtime.includes('v31-destination')) fail('World Map must retain accessible country selection, search and canonical destination markers while gesture polish is deferred.');
+const explorerPage=runtime.slice(runtime.lastIndexOf('v31WorldPage=function v33AdventureExplorerPage()'),runtime.indexOf('const v3OriginalCreateWeek'));
+if (!explorerPage.includes('data-v31-open-passport') || !explorerPage.includes('data-v31-zoom="reset"') || explorerPage.includes('data-v31-zoom="in"') || explorerPage.includes('data-v31-zoom="out"')) fail('Adventure Explorer must expose Food Passport and a single globe reset control without discrete zoom controls.');
+if (!visualCss.includes('.v31-world-illustrated.v33-adventure-explorer .v31-map-wrap{') || !visualCss.includes('.v31-map-world-space{') || !visualCss.includes('width:169%;height:auto')) fail('Adventure Explorer must use a full-content viewport and aspect-preserving approved map art.');
+if (!runtime.includes('V31_DESTINATION_BY_ISO') || !runtime.includes('v31-map-pin') || !runtime.includes('aria-pressed="${chosen}"')) fail('Map destinations must retain country identity, selected-state semantics and accessible marker controls.');
 if (!runtime.includes('aria-live="polite"') || !runtime.includes('focus({preventScroll:true})')) fail('Accessible status or focus restoration is missing.');
-if (!runtime.includes('aria-pressed="${v31SelectedCountry===code}"') || !runtime.includes('aria-pressed="${x.code===c.code}"')) fail('Selected map and destination states must be announced to assistive technology.');
+if (!runtime.includes('aria-pressed="${chosen}"') || !runtime.includes('aria-label="${state.language===\'pt-BR\'?\'Mapa offline para explorar, não navegar. Fronteiras simplificadas e possivelmente disputadas.\':\'Offline map for exploring, not navigation. Borders are simplified and may be disputed.\'}"')) fail('Selected map and destination states must be announced to assistive technology in both locales.');
 if (transform.includes('max-height:300px;overflow:auto')) fail('India recipes must remain part of the page scroll instead of a nested clipped list.');
 if (!runtime.includes('<h1 tabindex="-1">') || !runtime.includes('v31WorldOpenerIndex')) fail('World entry and return focus targets are missing.');
 if (!runtime.includes(".bottom .tab[data-nav=\"world\"]") || !runtime.includes('v31WorldOpenedFromNav')) fail('World-tab return focus is missing.');
 if (!transform.includes('grid-template-columns:repeat(5,minmax(0,1fr))') || !transform.includes('.v31-primary-actions button{min-height:44px') || !transform.includes('.v31-world-header h1:focus')) fail('Five-tab navigation, focus styling or 44px primary-action targets are missing.');
-if (!visualCss.includes('.v31-illustrated-map-panel .v31-map-wrap{') || !visualCss.includes('aspect-ratio:1.7') || !visualCss.includes('background:var(--v31-world-map-art) center/contain no-repeat')) fail('World Map must use the approved illustrated artwork at its source ratio without crop or stretch.');
+if (!visualCss.includes('.v31-map-world-space .v31-map-art-image{') || !visualCss.includes('width:169%;height:auto') || !runtime.includes('viewBox="0 0 1000 571.4"')) fail('Map art and geographic markers must share an aspect-preserving map-space camera.');
 if (!runtime.includes('Boundaries are simplified and may be disputed')) fail('The map must explain disputed/simplified borders.');
 if (!runtime.includes('Fronteiras simplificadas e possivelmente disputadas')) fail('The Portuguese map must explain disputed/simplified borders.');
 if (!transform.includes(".replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))") || !runtime.includes('V31_WORLD_GEOGRAPHY=__V31_WORLD_GEOGRAPHY_JSON__')) fail('Offline country data injection is missing.');

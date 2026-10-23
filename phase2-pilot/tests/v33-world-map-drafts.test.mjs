@@ -15,20 +15,22 @@ test('V3.3 country concepts remain five localized drafts outside the 95-recipe r
   assert.match(validator.stdout, /five-country draft registry: valid/);
 });
 
-test('World map has visible accessible zoom, reset, pan and pinch pathways', async () => {
+test('Adventure Explorer uses natural drag/pinch, bounded globe reset and large country markers', async () => {
   const [runtime, css] = await Promise.all([
     read('tools/v3/runtime.js'), read('tools/v3/home-world-visual.css')
   ]);
-  for (const control of ['data-v31-zoom="out"','data-v31-zoom="in"','data-v31-zoom="reset"','data-v31-pan-toggle']) {
-    assert.ok(runtime.includes(control), `rendered World route includes ${control}`);
-  }
-  assert.match(runtime, /aria-label="\$\{pt\?'Controles do mapa':'Map controls'\}"/);
+  const page=runtime.slice(runtime.lastIndexOf('v31WorldPage=function v33AdventureExplorerPage()'),runtime.indexOf('const v3OriginalCreateWeek'));
+  assert.match(page,/data-v31-zoom="reset"/,'one floating globe button resets the orientation-aware view');
+  assert.doesNotMatch(page,/data-v31-zoom="(?:in|out)"|data-v31-pan-toggle/,'separate zoom and pan-mode controls are removed');
+  assert.match(runtime,/data-v31-pin="\$\{safe\(c\.code\)\}"[\s\S]*?role="button" tabindex="0"/);
   assert.match(runtime, /v31MapPointers=new Map\(\);let v31MapPinch=null/);
   assert.match(runtime, /v31PinchMetrics\(v31PointerPair\(\)\)/);
   assert.match(runtime, /v31ClampMapCamera\(\)/);
   assert.match(runtime, /pointercancel/);
-  assert.match(css, /\.v31-map-wrap\{[^}]*touch-action:none/);
-  assert.match(css, /\.v31-map-art\{[^}]*transform:translate\(var\(--v31-pan-x/);
+  assert.match(runtime,/Math\.max\(1,Math\.min\(3,start\.zoom\*current\.distance\/start\.distance\)\)/,'pinch zoom is smoothly bounded between 1× and 3×');
+  assert.match(css,/\.v31-map-world-space\{[^}]*transform:translate\(-50%,-50%\) translate\(var\(--v31-pan-x/);
+  assert.match(css,/\.v31-world-illustrated\.v33-adventure-explorer \.v31-map-wrap\{[^}]*touch-action:none/);
+  assert.match(css,/\.v31-map-pin\{[^}]*pointer-events:all/);
 });
 
 test('V3.3 map art comes from the supplied approved visual reference', async () => {
@@ -41,10 +43,10 @@ test('V3.3 map art comes from the supplied approved visual reference', async () 
   assert.match(runtime, /v31-map-reference-art[\s\S]*?V31_HOME_WORLD_ART\.worldMap/);
   assert.match(runtime, /class="v31-map-art-image" alt=""[\s\S]*?mapArt\.src=V31_HOME_WORLD_ART\.worldMap/,
     'the full approved PNG is assigned as an image source instead of a multi-megabyte inline CSS URL');
-  assert.match(css, /\.v31-map-reference-art \.v31-map-art-image\{[^}]*width:169%;/);
-  assert.match(phone, /approvedArt=expectedArt\.startsWith\('data:image\/png;base64,'\)&&actualArt===expectedArt&&art\.complete&&art\.naturalWidth>0/,
+  assert.match(css, /\.v31-map-world-space \.v31-map-art-image\{[^}]*width:169%;/);
+  assert.match(phone, /approvedArt=expected\.startsWith\('data:image\/png;base64,'\)&&art\?\.src===expected&&art\.complete&&art\.naturalWidth>0/,
     'phone smoke confirms the approved PNG is fully loaded in the map layer');
-  assert.match(tablet, /approvedArt=expectedArt\.startsWith\("data:image\/png;base64,"\)&&actualArt===expectedArt&&art\?\.complete&&art\.naturalWidth>0/,
+  assert.match(tablet, /approvedArt=expectedArt\.startsWith\("data:image\/png;base64,"\)&&image\?\.src===expectedArt&&image\.complete&&image\.naturalWidth>0/,
     'tablet smoke confirms the approved PNG is fully loaded in the map layer');
   assert.equal(createHash('sha256').update(approvedReference).digest('hex'), '1ab670c7a4e36f29a3275b2043c7edb9e85c65491ff82679e51074194dc985dc',
     'the exact approved reference bytes remain unchanged');
@@ -58,17 +60,47 @@ test('phone World Map screenshot capture accepts the high-detail approved PNG', 
     'the Android screenshot pipe has enough capacity for the approved illustrated map');
 });
 
+test('Adventure Explorer acceptance harness measures real Android geometry and captures all required views', async () => {
+  const [phone, tablet, phoneRegression, workflow] = await Promise.all([
+    read('.github/scripts/v33-world-map-sample-smoke.mjs'),
+    read('.github/scripts/v32-android-tablet-smoke.sh'),
+    read('.github/scripts/v32-android-smoke.sh'),
+    read('.github/workflows/v32-android.yml')
+  ]);
+  assert.match(phone, /wrapRect\.width\*wrapRect\.height\/\(screenRect\.width\*screenRect\.height\)/,
+    'phone occupancy comes from Android-rendered screen and map bounds');
+  assert.match(phone, /g\.occupancy\s*<\s*0\.85\s*\|\|\s*g\.occupancy\s*>\s*0\.95/);
+  assert.match(phone, /Input\.dispatchTouchEvent'[\s\S]*?two-finger-pinch|Input\.dispatchTouchEvent/,
+    'the phone sample exercises a real WebView pinch through Android DevTools input');
+  assert.match(phone, /input','touchscreen','swipe/,'one-finger pan is driven through Android input');
+  for (const shot of ['world-map-phone-portrait','world-map-phone-landscape','zoomed-continent-phone-portrait',
+    'country-preview-phone-portrait','recipe-navigation-phone-portrait','food-passport-phone-portrait']) {
+    assert.ok(phone.includes(shot), `phone evidence captures ${shot}`);
+  }
+  assert.match(phone, /android-back-restores-map-position/);
+  assert.match(phone, /PT-BR-country-preview/);
+  assert.match(tablet, /map\.occupancy<0\.85\|\|map\.occupancy>0\.95/);
+  assert.match(tablet, /world-map-tablet-"\+orientationName/);
+  assert.match(phoneRegression, /Natural pinch zoom[\s\S]*?Natural one-finger drag/);
+  assert.match(phoneRegression, /worldVisual\.occupancy<0\.85[\s\S]*?worldVisual\.occupancy>0\.95/);
+  assert.match(phoneRegression, /countryPreview\.recipeCount!==18/);
+  assert.match(phoneRegression, /for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,
+    'G3 retains the full canonical 95-recipe route loop');
+  assert.match(workflow, /G2 TARGETED DEVICE SMOKE[\s\S]*?G3 FULL REGRESSION/);
+  assert.match(workflow, /G3 FULL REGRESSION[\s\S]*?v32-android-smoke\.sh/);
+});
+
 test('PT-BR tablet navigation compares labels without decorative tab icons', async () => {
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
   assert.match(tablet, /nav:\[\.\.\.document\.querySelectorAll\("#nav \.tab"\)\]\.map\(e=>e\.lastChild\?\.textContent\?\.trim\(\)\|\|""\)/,
     'the bilingual navigation assertion reads the label text node separately from the icon element');
 });
 
-test('pinch camera scales around its moving focal point and stays within map bounds', async () => {
+test('pinch camera scales around its focal point and stays within orientation-aware map bounds', async () => {
   const runtime = await read('tools/v3/runtime.js');
   const declaration = runtime.match(/function v31CalculatePinchCamera\(start,current,viewport\)\{[\s\S]*?\n\}/)?.[0];
   assert.ok(declaration, 'pure pinch camera calculation is present');
-  const calculate = new Function(`${declaration}; return v31CalculatePinchCamera;`)();
+  const calculate = new Function(`let v31MapBaseWidth=1400,v31MapBaseHeight=800;${declaration}; return v31CalculatePinchCamera;`)();
   const viewport = { left: 0, top: 0, width: 400, height: 300 };
   const zoomIn = calculate(
     { x: 200, y: 200, distance: 100, zoom: 1, panX: 0, panY: 0 },
@@ -79,19 +111,19 @@ test('pinch camera scales around its moving focal point and stays within map bou
     { x: 200, y: 150, distance: 100, zoom: 2, panX: 0, panY: 0 },
     { x: 900, y: 900, distance: 1000 }, viewport
   );
-  assert.equal(bounded.zoom, 2.5);
-  assert.ok(Math.abs(bounded.x) <= 300 && Math.abs(bounded.y) <= 225);
+  assert.equal(bounded.zoom, 3);
+  assert.ok(Math.abs(bounded.x) <= 1900 && Math.abs(bounded.y) <= 1050);
   const resetLimit = calculate(
     { x: 200, y: 150, distance: 100, zoom: 2, panX: 0, panY: 0 },
     { x: 900, y: 900, distance: 10 }, viewport
   );
   assert.equal(resetLimit.zoom, 1);
-  assert.deepEqual([resetLimit.x, resetLimit.y], [0, 0]);
+  assert.ok(Math.abs(resetLimit.x) <= 500 && Math.abs(resetLimit.y) <= 250);
 });
 
 test('passport copy reports earned stamps without implying seven reviewed countries', async () => {
   const runtime = await read('tools/v3/runtime.js');
-  const page = runtime.slice(runtime.indexOf('v31WorldPage=function v31ApprovedWorldPage()'), runtime.indexOf('const v3OriginalCreateWeek'));
+  const page = runtime.slice(runtime.lastIndexOf('v31WorldPage=function v33AdventureExplorerPage()'), runtime.indexOf('const v3OriginalCreateWeek'));
   assert.match(page, /const stampCountLabel=pt\?/);
   assert.match(page, /\$\{stampCountLabel\}/);
   assert.doesNotMatch(page, /\$\{stamps\.length\}\/7/);

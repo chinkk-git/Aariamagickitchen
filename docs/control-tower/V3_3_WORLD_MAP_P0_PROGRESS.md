@@ -4,6 +4,15 @@ Tracking: [Issue #39](https://github.com/chinkk-git/Aariamagickitchen/issues/39)
 Branch: `feature/v3.3-world-map-explorer`  
 Status: implementation in progress; no external gate is claimed passed.
 
+## 2026-10-23 owner redesign — current checkpoint
+
+- **Presentation status:** the previous World Map sample is **rejected** for its small framed map and unintuitive zoom controls. The successful historical Home → World Map → recipe #51 → Android Back trace, APK, byte hash and screenshots remain linked below as diagnostic history only. They do not approve the old visual design.
+- **Reconciled branch head:** `8a54dbf6bdac5e8bf7917743cf19a90e6dadfc45`; W01 remains isolated on `feature/v3.2-magical-cookbook`.
+- **Prior exact-head CI:** Android [#39948915089](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39948915089) was active at redesign kickoff. Its G1 and phone sample passed so far; tablet G2 was still running. It tests the rejected presentation and will be preserved without interruption. No redesign change is pushed until that run completes and is reconciled.
+- **Current implementation contract:** use an 85–95% measured Android map viewport with the unchanged approved art; aspect-locked shared camera for art/geography/pins; natural pinch/drag; one globe reset; compact in-map country preview and Food Passport; only the 18 existing canonical India links. Portrait begins focused near India for horizontal exploration; landscape fits the world. No draft country links or viewing rewards.
+- **Acceptance evidence planned:** phone/tablet portrait and landscape geometry plus real screenshots; zoomed continent, country preview, canonical recipe and Passport; CDP two-touch pinch, Android one-finger swipe, bounded/reset/marker-anchor assertions; EN-GB/PT-BR; recipe Back position restoration; full 95-recipe gates unchanged.
+- **No redesign APK or screenshot is accepted yet.** A08 child protection, A09 child experience, artwork rights and Android security remain independent gates; owner visual approval is required. No merge or release.
+
 ## Completed on W02
 
 - Read the consolidated Issue #39 P0 contract, historical Issue #6, current World Map architecture and prior Android evidence.
@@ -11,7 +20,7 @@ Status: implementation in progress; no external gate is claimed passed.
 - Wired that exact approved composite reference into the V3.3 map art layer using a CSS viewport crop; the reference bytes are embedded unchanged by the production transform. Android visual comparison is still required to verify crop positioning on phones and tablets.
 - Recovered the five-country generated concept board from project Library and recorded its identity and SHA-256 without promoting or copying generated art into runtime/repository artwork assets.
 - Registered the five requested concepts in `tools/v3/data/v3.3-world-map-country-drafts.json`, EN-GB/PT-BR localized, no canonical IDs, and with independent review gates pending.
-- Added visible zoom-in, zoom-out, reset and drag-mode controls; bounded single-pointer pan; two-pointer pinch that preserves its focal point; and a single transform for both approved map art and geographic overlay.
+- Historical pre-redesign prototype had zoom-in, zoom-out and drag-mode controls; the owner rejected that presentation. The redesign removes these controls and keeps only natural pinch/drag plus the globe reset. Earlier gesture/unit evidence remains useful but does not validate the replacement screen.
 - Changed the passport counter to report earned stamps only. The existing stamp award remains tied to actual completion of an allowlisted canonical India recipe; no draft concept can create a stamp.
 - Added registry/gesture/passport regression checks and updated the Android phone/tablet smoke expectations to exercise the controls and one real map drag.
 - Added W02 to the existing Android CI branch trigger and included the V3.3 data validator in G1.

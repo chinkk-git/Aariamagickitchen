@@ -6,6 +6,27 @@ Tracking: [Issue #39](https://github.com/chinkk-git/Aariamagickitchen/issues/39)
 Branch: `feature/v3.3-world-map-explorer`  
 Baseline reviewed: `31bd397914b931688ef34b34882cf389d00715ac`
 
+## Owner redesign override — 2026-10-23
+
+This directive supersedes earlier V3.3 layout and control details in this contract. The previous sample presentation is rejected; its historical APK, hash and successful phone navigation trace are retained as diagnostics only. The replacement must be an immersive Adventure Explorer, and owner visual approval is mandatory before acceptance.
+
+- The actual Android map viewport must occupy 85–95% of usable content area after system insets and persistent navigation are excluded. Measure rendered bounds on device. Remove the framed card, capped map height, redundant headings and unused page sections.
+- Keep the verified owner-approved World Map source image unchanged. Preserve its intrinsic aspect ratio. Portrait begins at a useful India/Asia-adjacent focus and supports natural horizontal exploration; the entire map remains reachable by bounded pan. Landscape defaults to a near edge-to-edge world overview.
+- Use a single uniform camera transform for approved art, geographic overlay and country markers. Support one-finger drag, pointer-centred two-finger pinch and one floating globe reset only; remove plus/minus and pan-mode controls. Clamp camera translation to rendered map bounds and retain marker/map alignment.
+- Destination taps open a compact, localized preview over the map. India exposes exactly the existing 18 canonical IDs. Italy, China, Japan, Mexico and Vietnam are review-only; they have no recipe links, rewards or canonical count contribution.
+- Food Passport reads existing profile progress and completion state. Viewing a country never grants a stamp. Offline/restart behavior and map restoration across preview, recipe Back and orientation remain required.
+- Capture actual app screenshots for phone/tablet in portrait/landscape, zoomed map, preview, recipe and passport. G1/G2/G3 and full canonical 95-route coverage remain unchanged. A08, A09, artwork rights and Android security are separate evidence gates.
+
+### V3.3 camera and view-state strategy
+
+The map viewport is a clipped `data-v33-map-viewport`; a shared `v31-map-world-space` provides the aspect-locked base dimensions and uniform camera transform. Portrait base width is derived from usable map height at the approved crop's 1.75 map-space aspect; this makes horizontal exploration intentional without shrinking the map. Landscape fits the full map into the viewport. Pan bounds derive from the transformed map-space dimensions and viewport rectangle, not the outer screen or fixed zoom multipliers. Country marker hit geometry is counter-scaled to remain readable while its geographic anchor follows the same world-space transform.
+
+The country preview and Food Passport are dismissible overlays recorded in browser history. This lets Android Back close the top-level panel first. Recipe navigation adds a route entry above that panel, so Back returns to the selected country and the exact camera. Orientation resize recalculates the orientation-appropriate default and keeps preview state; returning from a recipe does not reset the map.
+
+### Redesign evidence thresholds
+
+Phone and tablet Android smoke must calculate `mapRect.width * mapRect.height / (usableScreenRect.width * usableScreenRect.height)` from rendered bounds and require 0.85–0.95. It also checks zero frame/border, the map-space aspect, the approved source image's natural and rendered ratios, country marker anchors before/after camera motion, and actual landscape/portrait viewport dimensions. The phone smoke injects two-pointer touch through WebView DevTools and one-finger `adb` swipe; it verifies zoom/pan change, bounds, globe reset, PT-BR and EN-GB preview, canonical recipe #51, Android Back restoration and a non-rewarding Passport view. Tablet smoke captures both real orientations while its full 95-recipe artwork audit continues unchanged.
+
 ## Governing decisions
 
 Issue #39's 2026-10-22 owner override authorizes isolated W02 development in parallel with W01. W01 continues to own `feature/v3.2-magical-cookbook`; W02 owns only this branch. No merge, release or production change is authorized.
@@ -27,7 +48,7 @@ Issue #39 supersedes the older package text that said implementation was deferre
 
 Implement a deterministic World Explorer state with overview, selected-country preview/list, landmark fact and passport views. A single state owner controls selection, zoom/pan, scroll, current panel and language. Opening and closing a panel or changing orientation must restore the map camera and prior selection.
 
-Use pointer/touch gestures with movement threshold and pointer-cancel handling: taps select; drags pan; two-pointer pinch zooms around the gesture center; explicit zoom/reset and a country list provide accessible alternatives. Bound translation so the map remains discoverable, clamp zoom, and keep marker targets large at every scale. No GPS is needed or permitted.
+Use pointer/touch gestures with movement threshold and pointer-cancel handling: taps select; one-finger drags pan; two-pointer pinch zooms around the gesture centre; the globe control resets to the orientation default. Do not add separate zoom controls or pan mode. Bound translation so the full map remains discoverable, clamp zoom, and keep marker targets large at every scale. No GPS is needed or permitted.
 
 Passport stamps derive only from durable, verified recipe-completion events already present in the child profile. Do not manufacture completion state or progress counts. Add migration-safe fields only if the existing persisted model lacks the needed relationship; preserve existing profile data and test old-profile upgrade.
 
@@ -41,21 +62,19 @@ Passport stamps derive only from durable, verified recipe-completion events alre
 ## Acceptance criteria
 
 ### Visual and responsive
-- Reproduce the approved reference's map-first composition, illustrated treatment, header, country panel, controls and passport hierarchy using approved/rights-cleared app assets.
-- Phone portrait: map-first viewport, collapsible country sheet and bottom navigation that remains visible.
-- Phone landscape: map remains dominant with compact, dismissible details and safe-area-aware controls.
-- Tablet portrait: map and expandable detail panel remain usable without shrinking the map to a desktop thumbnail.
-- Tablet landscape: map on the left and scrollable country detail rail on the right; no overlap with fixed controls or navigation.
-- Keep source aspect ratios; do not distort or hide essential map content. Capture all four form factors and document any approved-reference deviation.
+- Actual map viewport area is 85–95% of usable content area in each phone/tablet orientation, measured from rendered Android geometry; no small frame or excessive margin.
+- Phone portrait begins with a large map view that supports natural horizontal exploration; phone landscape and both tablet orientations remain near edge-to-edge and usable.
+- Country preview remains compact/dismissible and does not destroy the map camera. Food Passport is reachable without displacing the map or covering persistent navigation.
+- Keep the approved source ratio, full-map reachability and marker anchors; no stretching or inaccessible geography. Capture all four form factors and document any approved-reference deviation.
 
 ### Interaction, data, storage, offline and accessibility
-- Drag/pinch/zoom controls/reset work within bounds; drag never opens a marker; tap/list selections resolve to the same verified country.
+- One-finger drag, two-finger pinch and globe reset work within bounds; drag never opens a marker; selected anchors remain aligned to the approved map.
 - Country preview, recipe list, landmark fact, passport and system Back follow the approved state transitions; closing detail restores camera and selection.
 - All 95 original recipe routes remain reachable; displayed country recipes use canonical IDs and data. No mockup-only recipe or unsupported country mapping appears.
 - Passport earns a country stamp only after a mapped recipe is genuinely completed; progress survives process death, restart, offline use and app upgrade without profile loss.
 - Map, facts, previews, recipe route and passport work in airplane mode.
 - EN-GB and PT-BR copy exists for all new labels, facts and empty states and fits each layout.
-- Gesture operations have button/list equivalents; touch targets meet the design requirement (44 CSS px where applicable); labels, focus order, TalkBack, text scaling and reduced-motion behavior are checked.
+- Country destinations are keyboard/TalkBack actionable; markers and floating controls meet 44 CSS px target sizing where applicable. Pinch has bounded movement and a globe recovery/reset action; focus, text scaling and reduced motion are checked.
 - No timer, geolocation, tracking, ads, public sharing, chat, leaderboards or child-risk external navigation.
 
 ### Independent gates and delivery
@@ -68,11 +87,11 @@ Passport stamps derive only from durable, verified recipe-completion events alre
 | Layer | Required proof |
 |---|---|
 | Source/data contracts | Canonical 95/95 IDs and route preservation; ISO code validity; recipe ID/name/art association; no unsupported or mockup-only recipe; locale completeness; asset checksums/provenance. |
-| Unit/model | Camera transform, pointer threshold/cancel, pinch center, pan/zoom bounds, map selection, state transitions, stamp derivation, migration and persistence. Deterministic inputs; no timing-based tests. |
-| UI/interaction | Tap, drag, pinch, zoom buttons, reset, destination list, country preview, recipe launch/return, landmark fact, passport, Back, orientation and language switch. |
+| Unit/model | Camera transform, pointer threshold/cancel, pinch centre, pan/zoom bounds, map selection, state transitions, stamp derivation, migration and persistence. Deterministic inputs; no timing-based tests. |
+| UI/interaction | Tap, one-finger drag, two-finger pinch, globe reset, country preview, recipe launch/return, passport, Android Back, orientation and language switch. |
 | Visual | Compare actual Android screenshots with the approved reference for phone portrait/landscape and tablet portrait/landscape. Verify no distortion, clipped actions, overlapped navigation or unreadable copy. |
 | Offline/regression | Airplane-mode map flow and existing 95 recipe routes, favourites, planner, shopping, home, profile, navigation, Classic coexistence and app Back. |
-| Accessibility | TalkBack names/roles, focus order, non-gesture alternative, target size, font scaling, contrast and reduced motion. |
+| Accessibility | TalkBack names/roles, focus order, destination keyboard access, reset/recovery, target size, font scaling, contrast and reduced motion. A09 assesses whether pinch/drag discoverability is sufficient for ages 8–10. |
 | Performance/security | Smooth map pan/zoom on supported emulator/device tiers; bounded memory/asset size; no accidental network/GPS permissions or unsafe WebView bridge access. Signing/update checks remain the existing Android security gate. |
 | Independent review | A03, A08, A09, rights/provenance and Android security each produce separate evidence and decision. |
 

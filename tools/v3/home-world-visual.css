@@ -369,3 +369,58 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 }
 .v31-map-reference-art .v31-map-art{overflow:hidden}
 .v31-map-reference-art .v31-map-art-image{position:absolute;left:-1.1%;top:-1.95%;display:block;width:169%;max-width:none;height:auto;pointer-events:none}
+
+/* V3.3 owner-directed Adventure Explorer: the existing approved illustration
+   stays intact while one map-space owns the art, geographic overlay and pins. */
+.app.v31-world-active{width:100%;max-width:none;height:100dvh;min-height:100dvh;margin:0;overflow:hidden}
+.app.v31-world-active #screen.v31-world-screen{position:fixed;z-index:2;inset:env(safe-area-inset-top) 0 calc(76px + env(safe-area-inset-bottom));width:100%;height:auto;max-width:none;margin:0;padding:0!important;overflow:hidden;animation:none;background:#46a6c3}
+.v33-adventure-explorer{position:relative;display:block;width:100%;height:100%;max-width:none!important;margin:0;overflow:hidden;background:#42a6c5;isolation:isolate}
+.v33-map-header{position:absolute;z-index:5;top:clamp(14px,2vh,22px);left:clamp(14px,2vw,26px);right:clamp(14px,2vw,26px);display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:10px;pointer-events:none}
+.v33-map-header>*{pointer-events:auto}
+.v33-map-header .v31-back{display:grid;place-items:center;width:48px;height:48px;min-height:48px;padding:0;border:1px solid #ffffffc9;border-radius:50%;background:#fff;color:#573675;font-size:27px;box-shadow:0 3px 12px #17385140}
+.v33-map-header h1{justify-self:start;margin:0;padding:8px 13px;border:1px solid #ffffffb8;border-radius:16px;background:#fffdf0e8;color:#462c64;font-family:Georgia,"Times New Roman",serif;font-size:clamp(14px,2vw,19px);line-height:1;box-shadow:0 3px 12px #17385130}
+.v33-passport-button{display:flex;align-items:center;gap:6px;min-width:48px;min-height:48px;padding:6px 11px;border:1px solid #ffffffc9;border-radius:24px;background:#fff7dc;color:#563371;font-size:18px;font-weight:850;box-shadow:0 3px 12px #17385130}
+.v33-passport-button span{font-size:clamp(10px,1.4vw,13px);white-space:nowrap}
+.v31-world-illustrated.v33-adventure-explorer .v31-map-wrap{position:absolute;z-index:1;inset:clamp(12px,1.5vw,24px);width:auto;height:auto;max-height:none;aspect-ratio:auto;overflow:hidden;border:0;border-radius:0;background:#49abc6;box-shadow:none;touch-action:none;overscroll-behavior:contain;user-select:none;-webkit-user-select:none}
+.v31-map-world-space{position:absolute;left:50%;top:50%;overflow:visible;transform:translate(-50%,-50%) translate(var(--v31-pan-x,0),var(--v31-pan-y,0)) scale(var(--v31-zoom,1));transform-origin:center;transition:transform .18s cubic-bezier(.2,.7,.2,1);will-change:transform;touch-action:none}
+.v31-map-world-space.is-gesturing{transition:none}
+.v31-map-world-space .v31-map-art{position:absolute;inset:0;overflow:visible;border-radius:0;background:none;transform:none;pointer-events:none}
+.v31-map-world-space .v31-map-art-image{position:absolute;left:-1.1%;top:-1.95%;display:block;width:169%;height:auto;max-width:none;object-fit:fill;pointer-events:none}
+.v31-map-world-space .v31-world-map{position:absolute;inset:0;width:100%;height:100%;overflow:visible;opacity:1;transform:none;transition:none;touch-action:none;pointer-events:none}
+.v31-map-world-space .v31-land{fill:#fff0;stroke:#fff0;stroke-width:1;pointer-events:none}
+.v31-map-world-space .v31-land.is-selected{fill:#ffd35a35;stroke:#fff8d2;stroke-width:2;vector-effect:non-scaling-stroke}
+.v31-map-pins{pointer-events:auto}
+.v31-map-pin{cursor:pointer;pointer-events:all;filter:drop-shadow(0 3px 2px #24466375);transition:filter .14s ease}
+.v31-map-pin .v31-pin-halo{fill:#fff9d9;stroke:#6c4c89;stroke-width:5;vector-effect:non-scaling-stroke}
+.v31-map-pin .v31-pin-disc{fill:#f7a84f;stroke:#fff;stroke-width:4;vector-effect:non-scaling-stroke}
+.v31-map-pin.is-selected .v31-pin-disc{fill:#ea68a8;stroke:#fff7bd;stroke-width:6}
+.v31-map-pin.is-review .v31-pin-disc{fill:#8b71bc}
+.v31-map-pin .v31-pin-label-bg{fill:#fff9e9;stroke:#704f8b;stroke-width:3;vector-effect:non-scaling-stroke}
+.v31-map-pin .v31-pin-label{fill:#3d2959;font-family:system-ui,sans-serif;font-size:17px;font-weight:800;paint-order:stroke;stroke:#fff;stroke-width:1px}
+.v31-map-pin:focus .v31-pin-halo{stroke:#ffdf49;stroke-width:8}
+.v31-map-pin:active{filter:drop-shadow(0 1px 1px #24466375)}
+.v33-map-reset{position:absolute;z-index:5;top:clamp(74px,10vh,100px);right:clamp(14px,2vw,26px);display:grid;place-items:center;width:50px;height:50px;min-width:50px;min-height:50px;padding:0;border:1px solid #ffffffd0;border-radius:50%;background:#fff;color:#65428e;font-size:25px;box-shadow:0 3px 12px #17385140}
+.v33-map-sheet{position:absolute;z-index:6;left:clamp(14px,2vw,26px);bottom:clamp(14px,2vh,24px);width:min(460px,calc(100% - 28px));max-height:min(44%,430px);overflow:hidden;padding:16px;border:1px solid #ffffffd6;border-radius:22px;background:#fffaf1f2;color:#3d2c50;box-shadow:0 8px 24px #17385160;backdrop-filter:blur(10px)}
+.v33-country-preview{display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px}
+.v33-sheet-close{position:absolute;z-index:2;top:8px;right:8px;display:grid;place-items:center;width:44px;height:44px;min-width:44px;min-height:44px;border:1px solid #e3d6e6;border-radius:50%;background:#fff;color:#553673;font-size:27px;font-weight:600}
+.v33-country-heading{display:grid;grid-template-columns:48px minmax(0,1fr) 74px;align-items:center;gap:10px;padding-right:34px}
+.v33-country-heading .v33-country-flag{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#fff;font-size:29px;box-shadow:0 2px 7px #442c5018}
+.v33-country-heading h2,.v33-passport-heading h2{margin:1px 0 0;color:#4c3170;font-family:Georgia,"Times New Roman",serif;font-size:clamp(19px,2.4vw,27px);line-height:1.05}
+.v33-country-heading .v31-destination-illustration{width:70px;height:64px}
+.v33-preview-recipes{display:grid;grid-template-rows:auto minmax(0,1fr);gap:6px;min-height:0;color:#674681;font-size:12px}
+.v33-preview-recipe-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:5px;overflow:auto;overscroll-behavior:contain;padding:1px 3px 5px 0}
+.v33-preview-recipe-list button{display:flex;align-items:center;justify-content:space-between;gap:5px;min-width:0;min-height:42px;padding:6px 9px;border:1px solid #e7d8e9;border-radius:12px;background:#fff;color:#4a345e;font-size:12px;font-weight:750;text-align:left}
+.v33-preview-recipe-list button span{flex:none;color:#9253b8;font-size:18px}
+.v33-review-only-note{margin:0;padding:10px 12px;border:1px dashed #d8c4df;border-radius:14px;background:#fff;color:#665975;font-size:13px;line-height:1.4}
+.v33-passport-sheet{right:clamp(14px,2vw,26px);left:auto;width:min(360px,calc(100% - 28px));max-height:48%;padding:18px}
+.v33-passport-heading{display:flex;align-items:center;gap:12px;padding-right:30px}
+.v33-passport-heading>span{font-size:42px}
+.v33-passport-heading p{margin:5px 0 0;color:#6b5a78;font-size:12px}
+.v33-passport-stamps{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.v33-passport-stamps .v31-stamp{display:inline-flex;align-items:center;min-height:42px;padding:8px 12px;border:1px solid #e5d4c1;border-radius:13px;background:#fff2cb;color:#4f3b62;font-weight:800}
+.v33-map-live{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.app.v31-world-active #nav.bottom{z-index:20}
+.app.v31-world-active .ambient{display:none}
+@media(orientation:portrait){.v33-map-sheet{left:50%;bottom:clamp(14px,2vh,24px);transform:translateX(-50%);max-height:42%;width:min(500px,calc(100% - 28px))}}
+@media(orientation:landscape){.v33-map-sheet{left:auto;right:clamp(14px,2vw,26px);top:clamp(72px,10vh,100px);bottom:clamp(14px,2vh,24px);width:min(35vw,400px);max-height:none}.v33-passport-sheet{top:clamp(72px,10vh,100px);bottom:auto;max-height:70%}.v33-adventure-explorer:has(.v33-map-sheet) .v33-map-reset{right:calc(min(35vw,400px) + 38px)}}
+@media(prefers-reduced-motion:reduce){.v31-map-world-space,.v31-map-pin{transition:none!important}}
