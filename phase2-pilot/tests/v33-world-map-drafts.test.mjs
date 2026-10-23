@@ -99,6 +99,7 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/flags\.includes\('India'\)/,'after resetting to EN-GB the globe tap must use the English flag label');
   assert.match(phone,/Tap the highlighted flag/,'phone smoke follows the current Surprise Me hint copy');
   assert.match(phone,/android-touch-selects-suggested-flag/,'phone smoke explicitly touches the Surprise Me destination');
+  assert.match(phone,/selectedCountry\.selected!==surprise\.pending/,'phone verifies the explicit touch selected the pending destination without coupling to host label shape');
   assert.match(phone,/android-touch-selects-india-flag-for-canonical-recipe-check/,'phone smoke selects India after Surprise Me when needed');
   assert.match(phone,/Open canonical recipe #51/,'phone recipe navigation is a real Android touch');
   assert.match(phoneLaunch,/for pid in \$pids/,'sample checks every current app process instead of forwarding to the first pid');
@@ -118,6 +119,10 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(tablet,/world-recipe-51-tablet-/,'tablet captures recipe navigation from the globe');
   assert.match(tablet,/keyevent','4/,'tablet verifies Android Back restores the selected country panel');
   assert.match(tablet,/world-map-geometry-/,'tablet records live globe geometry in portrait and landscape');
+  assert.match(regression,/isW02Globe/,'G3 follows the W03 globe when the exact Android package is W02');
+  assert.match(regression,/W03 India must expose exactly its 18 canonical recipes/,'G3 retains the 18-link India contract');
+  assert.match(regression,/Food Passport after canonical recipe completion/,'G3 validates the current Food Passport after recipe completion');
+  assert.match(regression,/sphere\.width<180/,'G3 checks the landscape sphere minimum');
   assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
   assert.match(regression,/catalogueCount !== 95/);
   assert.match(workflow,/G1 FAST PREFLIGHT[\s\S]*?W02 SAMPLE[\s\S]*?G2 TARGETED DEVICE SMOKE[\s\S]*?G3 FULL REGRESSION/);
