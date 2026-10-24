@@ -1,12 +1,12 @@
 # W03 Independent Quality-Gate Matrix — 2026-10-24
 
-Reviewed W03 branch: `feature/international-recipe-content` at source-review HEAD `4e23d695f4622083c421512c27b201ffce4b4af4`. This matrix is committed separately after review. It covers recipe packages #096–#110 only; the remaining 13 stay outside W01's 97-recipe APK.
+Reviewed and remediated on W03 branch `feature/international-recipe-content`; the final exact commit is recorded in Issues #50 and #51. This matrix covers #096–#110 only; the remaining 13 stay outside W01's 97-recipe APK.
 
 ## Status meaning and review boundary
 
 - **PASS** means the stated W03 source-level check passed.
 - **BLOCKED** means an independent signoff or evidence that cannot be established from this repository is still required. A W03 screen passing does not turn a reviewer-dependent gate into PASS.
-- No gate was marked FAIL. Four verified copy/safety issues and three generic safety-cue issues were corrected; the final checks below passed.
+- No gate was marked FAIL. Copy/safety defects and renderer locale drift were corrected. Source-grounded bilingual accessibility descriptions were added; independent approval and app-level accessibility results remain pending.
 
 A08 is a W03 source review of each recipe's adult roles, sharp tools, heat, food hygiene, allergens and serving/storage cues. All 15 source screens passed after correction. The formal A08 review fields remain pending, so the independent signoff status is BLOCKED. A09 remains BLOCKED because there is no documented age 8–10 child-experience walkthrough or reviewer result. All 15 packages specify ages 8–10 and five steps.
 
@@ -40,7 +40,7 @@ A08 is a W03 source review of each recipe's adult roles, sharp tools, heat, food
 | Allergens | Ingredient-flag/declaration consistency PASS for 15/15; independent label gate BLOCKED for 15/15 | In every package, the union of ingredient allergen flags matches the recipe-level declaration. This does not verify brands, precautionary statements or manufacturing cross-contact. | Review labels for the selected ingredient products, including relevant may-contain statements, and verify the localized allergy/cross-contact advice. |
 | EN-GB/PT-BR and cultural authenticity | W03 language/source screen and mirrored-field parity PASS for 15/15; independent gate BLOCKED for 15/15 | Reviewed localized instructions and adult/safety metadata; #096 PT-BR, #105 can-opening, #107 and #109 safety copy were corrected. All five step instruction/safety fields match between root and nested representations after final validation. | Obtain independent EN-GB and Brazilian Portuguese language review and a culturally knowledgeable review for each country's food framing; record findings and corrections. |
 | Artwork provenance, licensing and rights | BLOCKED for 15/15 | Existing register covers 324 asset refs and records generated-project provenance, hashes and rights-review fields. No artwork was changed in this pass. Rights status remains pending; Aaria style approval in Issue #50 comment 6367104240 is not a rights clearance. | Complete documented rights/licence review for every referenced artwork asset and update the register with reviewer, evidence and decision. |
-| Accessibility | BLOCKED for 15/15 | The verified artwork inventory has 0/324 explicit alt-text entries; no integrated screen-reader or contrast results are recorded. Equipment remains text-only pastel chips as approved; no equipment icons were added. | Add localized alt text where images convey information or mark decorative assets appropriately; run screen-reader and contrast checks on the integrated renderer and record evidence. |
+| Accessibility | BLOCKED for 15/15 | All 202 visible non-equipment artwork references now have bilingual alt_text with source/status metadata (15 finished-dish descriptions, 75 step illustrations linked to localized instructions, and 112 ingredient illustrations linked to localized ingredient names). The 122 equipment-art references are marked NOT_RENDERED_APPROVED_TEXT_CHIP; equipment remains pastel text chips. No independent accessibility review or integrated screen-reader/contrast result is recorded. Equipment remains text-only pastel chips as approved; no equipment icons were added. | Independently review whether each source-derived description adds useful information or should be decorative when adjacent text already supplies it; map approved descriptions to accessible names in the renderer; test keyboard/screen-reader reading order, text-chip names, contrast and zoom at supported sizes; record device, version and results. |
 | Content security | Source scan PASS for 15/15 | JSON and Markdown scan found no `javascript:`, script/iframe tags or inline event-handler patterns. | Re-run app-level rendering/security checks during authorized post-merge integration; no APK was built by W03. |
 
 Food-safety references used for the source review:
@@ -48,16 +48,34 @@ Food-safety references used for the source review:
 - [FSA advice on cooking and leftovers](https://www.food.gov.uk/food-safety-and-hygiene/food-safety-and-hygiene-at-home) — leftovers should be refrigerated within two hours and eaten within 48 hours or frozen.
 - [FSA allergen information best practice](https://www.food.gov.uk/business-guidance/allergen-information-for-non-prepacked-foods-best-practice-approach)
 
+## Specific closeout tasks for every BLOCKED gate
+
+These are required evidence items; they are not approvals.
+
+| Gate | Required reviewer evidence and exact remediation |
+|---|---|
+| A08 child protection | A reviewer independent of content authoring records reviewer/date and PASS/FAIL by recipe ID. For each row above, verify adult-only knife/hob/boiling/hot appliance/steam tasks, child stand-back boundary, adult handoff before tasting/serving, raw egg/cooked-rice controls where present, allergen separation, and storage wording. Any unsafe line must be corrected in both locales and both active recipe mirrors, then the affected recipe validator rerun. |
+| A09 child experience | Record an age 8–10 moderated walkthrough for each recipe under the project’s child-safeguarding/consent process. Capture whether the child understands step sequence, adult-only boundaries, equipment text chips, ingredient names, reading burden and safe stop points. Log observed issues per ID, revise, and retest the changed recipe; reviewer signs the final version. |
+| Nutrition | Independent reviewer recalculates per-serving values from listed gram/mL quantities, servings, edible portions and named source records; document source IDs, yield assumptions, rounding and discrepancy resolution. For #096, keep sodium null until pasta/tomato label sodium and defensible salt-retention evidence (or a measured retention method) are available; never substitute zero. |
+| Allergens | Check the actual selected product labels and precautionary/may-contain text for every declared allergen and cross-contact note. Compare those results to ingredient flags and recipe declarations, inspect separate utensil/portion guidance, update EN-GB/PT-BR where needed, and record the label/source and reviewer per recipe. |
+| EN-GB/PT-BR translation | Independent bilingual reviewers compare title, cultural context, ingredient names/quantities/units, all five instructions, safety/adult-assistance cues and hero/asset descriptions against the source recipe. Record specific locale corrections, confirm the JSON mirrors and Markdown, and sign each recipe. |
+| Cultural authenticity | A reviewer with relevant culinary/cultural knowledge for Italy, China, Japan, Mexico or Vietnam checks each country’s three recipes: naming, dish characterization, ingredient choices and claims about regional/family practice. Require sourced corrections for overgeneralization and preserve regional/family variation language where appropriate. Record reviewer, sources and decision per ID. |
+| Artwork rights | Rights reviewer records the source/generation record, license/terms basis and usage decision for each of the 324 referenced assets; resolve any missing/uncertain basis and update the provenance register with evidence and reviewer. The style-reference approval is not a rights decision. Equipment artwork stays unused under the approved text-chip board. |
+| Accessibility | Review localized alt_text and its source/status for all 202 visible artwork references; decide where ingredient/step descriptions duplicate adjacent text and should be exposed as decorative. Confirm equipment images stay out of the rendered UI. Then wire the approved role/text into the renderer and record screen-reader order, keyboard access, text scaling/zoom, contrast and focus results for phone/tablet. |
+| Content security | Source-string scan passed. At authorized integration, test safely rendered recipe text and alt text for HTML/script injection, URL handling, escaping and unexpected markup; retain exact-head logs. W03 must not start an Android build for this gate. |
+
 ## Revalidation results
 
 - 15/15 recipe JSON files parsed successfully and retained five steps.
-- 15/15 active EN-GB/PT-BR instructions and safety fields match their nested content mirrors.
+- 15/15 active EN-GB/PT-BR instructions and safety fields match their nested content mirrors; the pilot renderer step arrays also match canonical EN-GB/PT-BR instructions.
 - 15/15 include bilingual adult-assistance metadata and ages 8–10.
 - 15/15 ingredient allergen flags match recipe-level declarations.
 - 15/15 JSON and Markdown source string scans passed.
+- 202/202 visible artwork refs have bilingual source-derived alt metadata and 122 equipment-art refs are explicitly marked not rendered by the approved text-chip board.
+- Finished-dish descriptions are mirrored in both JSON representations; five generic/malformed descriptions were corrected.
 - Corrected Markdown was confirmed for #096, #105, #107 and #109.
 - No artwork, canonical-country mapping, W01/W02 branch or APK integration files were changed in this pass.
 
 ## Blockers and boundary
 
-The source work is complete, but independent reviewer-dependent gates remain open for A08, A09, nutrition, product-label allergens, EN-GB/PT-BR language, cultural authenticity and artwork rights. Accessibility descriptions and integrated screen-reader/contrast evidence also remain outstanding. #096 sodium remains unknown. W03 has not merged, released, started an Android integration build, or added the remaining 13 recipes to W01's 97-recipe APK.
+The W03 source work is complete for this pass, but independent reviewer-dependent gates remain open for A08, A09, nutrition, product-label allergens, EN-GB/PT-BR language, cultural authenticity, artwork rights and accessibility. Source-derived alt text is now populated; integrated semantic and screen-reader/contrast evidence is still outstanding. #096 sodium remains unknown. W03 has not merged, released, started an Android integration build, or added the remaining 13 recipes to W01's 97-recipe APK.
