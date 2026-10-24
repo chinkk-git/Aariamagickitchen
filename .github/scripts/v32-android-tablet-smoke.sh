@@ -72,7 +72,9 @@ async function dismissSystemAnr(){
     return true;
   }catch{return false}
 }
-let target=null,lastTargets=[];
+ await pause(5000);
+ console.log('Allowing Pixel Tablet first-boot activity/configuration changes to settle before attaching WebView DevTools');
+ let target=null,lastTargets=[];
 for(let i=0;i<60&&!target;i++){
   try{const list=await(await fetch('http://127.0.0.1:9223/json')).json();lastTargets=list.map(x=>({url:x.url,title:x.title,type:x.type}));target=list.find(x=>x.type==='page'&&x.webSocketDebuggerUrl&&x.title?.includes('Magical Kitchen'))}catch{}
   if(!target)await pause(500);

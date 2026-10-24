@@ -96,6 +96,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
     'G2 does not confuse the four path segments of the approved SVG with four separate arrows');
   assert.match(tablet,/for\(const id of \[96,99\]\)for\(const locale of \['en-GB','pt-BR'\]\)\{\s*await click\('#nav \.tab\[data-nav="home"\]'[\s\S]*?Home before international '[+][^;]+;await waitFor\('\.v31-hero-welcome h1','Home before international '/,
     'G2 explicitly navigates from the library back to Home before checking Home New Recipes routes');
+  assert.match(tablet,/await pause\(5000\);\s*console\.log\('Allowing Pixel Tablet first-boot activity\/configuration changes to settle before attaching WebView DevTools'\);\s*let target=null,lastTargets=\[\];/,
+    'G2 waits for first-boot Activity/WebView recreation to settle before attaching to the DevTools target');
   assert.match(phone,/orientation/);
   assert.match(phone,/aria-world-globe/);
   assert.match(phone,/aria-world-globe__recipe/);
