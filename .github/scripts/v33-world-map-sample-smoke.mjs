@@ -342,6 +342,7 @@ try {
   evidence.motion.push({device:'phone',orientation:'landscape',mode:'reduced-motion',rotationDegrees:reducedLandscapeDegrees,orbit:reducedLandscapeEnd.orbit,sparkles:reducedLandscapeEnd.sparkles,stars:reducedLandscapeEnd.stars,particles:reducedLandscapeEnd.particles,frames:[reducedLandscapeStart.frame.name,reducedLandscapeEnd.frame.name],status:'PASS'});
   evidence.flow.push({step:'globe-orientation-reflow',orientation:'landscape',viewport:await session.evaluate('({width:innerWidth,height:innerHeight})'),status:'PASS'});
   session=await setOrientation(session,false);
+  await setMotionPreference(session,'reduce');
 
   await session.evaluate(`(()=>{state.language='pt-BR';render()})()`);
   let indiaPtMarker=false;for(let attempt=0;attempt<8;attempt++){indiaPtMarker=await session.evaluate(`(()=>{const f=document.querySelector('.aria-world-globe__flag[aria-label="Índia"]'),r=f?.getBoundingClientRect();return !!f&&!!r&&r.width>=48&&r.height>=48})()`);if(indiaPtMarker)break;await dragGlobe(session,attempt%2===0?160:-320)}if(!indiaPtMarker)throw new Error('Could not rotate the localized PT-BR India marker into the visible hemisphere');
