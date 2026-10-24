@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const runtime = await readFile(path.join(root, 'tools/v3/runtime.js'), 'utf8');
 const transform = await readFile(path.join(root, 'tools/v3/transform-production.mjs'), 'utf8');
+const phoneSmoke = await readFile(path.join(root, '.github/scripts/v32-android-smoke.sh'), 'utf8');
 const hostStyles = transform.match(/const w02GlobeHostStyles = String\.raw`([\s\S]*?)`;\nconst v32RecipeThemeMap/)?.[1];
 
 test('approved portrait World design adds localized spin guidance and keeps the W03 globe renderer immutable', async () => {
@@ -15,6 +16,10 @@ test('approved portrait World design adds localized spin guidance and keeps the 
   assert.match(runtime, /Swipe to spin the globe!/);
   assert.match(runtime, /Deslize para girar o globo!/);
   assert.match(runtime, /class="v33-spin-arrows"/);
+  assert.match(phoneSmoke, /arrows\.querySelectorAll\('path'\)\.length>=2/,
+    'G3 accepts the approved arrow SVG with its two curved strokes and two arrowhead paths');
+  assert.doesNotMatch(phoneSmoke, /arrows\.querySelectorAll\('path'\)\.length===2/,
+    'G3 does not reject the four-path arrow artwork as a missing hint');
   assert.match(runtime, /stage\.addEventListener\('pointerup'/);
   assert.match(runtime, /rotated>=8/);
   assert.match(runtime, /stage\.classList\.add\('has-user-spun'\)/);
