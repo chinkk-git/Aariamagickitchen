@@ -216,6 +216,33 @@
         },
         "rights_status": {
           "type": "string"
+        },
+        "alt_text": {
+          "type": "object",
+          "required": [
+            "en-GB",
+            "pt-BR"
+          ],
+          "properties": {
+            "en-GB": {
+              "type": "string"
+            },
+            "pt-BR": {
+              "type": "string"
+            }
+          }
+        },
+        "alt_text_source": {
+          "type": "string",
+          "description": "Source field used to write the localized accessibility description."
+        },
+        "alt_text_status": {
+          "type": "string",
+          "description": "Review state of the localized accessibility description."
+        },
+        "accessibility_role": {
+          "type": "string",
+          "description": "Approved rendering role; equipment images are not rendered on the text-chip prep board."
         }
       }
     }
