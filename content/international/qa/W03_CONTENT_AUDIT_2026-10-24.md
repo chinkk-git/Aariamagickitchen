@@ -6,7 +6,7 @@ This audit covers source bundles #096–#110 on `feature/international-recipe-co
 
 Executed checks:
 
-- `python3 content/international/qa/validate_bundles.py --canonical-index /tmp/aaria-main-index.html --canonical-commit 4e8e629c80c68d64c28b7dbc8f07d0f40fc40344` — 15 recipes; current India mapping checked; 0 structural errors; 1 explicit warning for #096 sodium.
+- `python3 content/international/qa/validate_bundles.py --canonical-index index.html --canonical-commit 4e8e629c80c68d64c28b7dbc8f07d0f40fc40344` — 15 recipes; current India mapping checked; 0 structural errors; 1 explicit warning for #096 sodium.
 - `python3 content/international/qa/build_audit.py` — 15 recipes; 324 referenced asset paths; 0 missing assets; 0 SHA-256 mismatches; 15 duplicate groups overall and among the remaining 13, all from shared equipment artwork; 0 non-equipment duplicate groups among the remaining 13.
 - Checked all 15 English cooking-step sequences against their recorded adult-assistance and safety cues. The local audit covers hazard presence and readable instructions; A08/A09 review remains pending.
 - Reviewed the recipe records for bilingual field presence, ingredient IDs/quantities/units, declared allergen coverage, equipment names, step references, nutrition fields and explicit review statuses.
