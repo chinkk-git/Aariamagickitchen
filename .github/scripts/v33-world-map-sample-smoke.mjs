@@ -344,7 +344,7 @@ try {
 
   let indiaVisible=false;for(let attempt=0;attempt<6;attempt++){indiaVisible=await session.evaluate(`!!document.querySelector('.aria-world-globe__flag[aria-label="India"]')`);if(indiaVisible)break;await dragGlobe(session,attempt%2===0?160:-320)}if(!indiaVisible)throw new Error('Could not rotate India into view before the PT-BR globe check');
   await session.evaluate(`document.querySelector('.aria-world-globe__flag[aria-label="India"]')?.click()`);
-  const selectedIndiaForLocale=await waitFor(session.evaluate,`(()=>{const s=v33GlobeController?.getState?.()||{};return {selected:s.selected,flag:!!document.querySelector('.aria-world-globe__flag[aria-label="India"]')}})()`,'pin India on the globe before locale rerender');
+  const selectedIndiaForLocale=await waitFor(session.evaluate,`(()=>{const s=v33GlobeController?.getState?.()||{},flag=!!document.querySelector('.aria-world-globe__flag[aria-label="India"]');return {visible:s.selected==='india'&&flag,selected:s.selected,flag}})()`,'pin India on the globe before locale rerender');
   if(selectedIndiaForLocale.selected!=='india'||!selectedIndiaForLocale.flag)throw new Error(`Could not pin India in view for deterministic PT-BR rerender: ${JSON.stringify(selectedIndiaForLocale)}`);
   await session.evaluate(`(()=>{state.language='pt-BR';render()})()`);
   const locale=await waitFor(session.evaluate,`(()=>{const heading=document.querySelector('.aria-world-globe__eyebrow')?.textContent?.trim()||'',flag=document.querySelector('.aria-world-globe__flag[aria-label="Índia"]');return {visible:heading==='Aventura pelo mundo'&&!!flag,heading,marker:flag?.textContent?.trim()||'',label:flag?.getAttribute('aria-label')||''}})()`,'PT-BR globe and visible India flag');
