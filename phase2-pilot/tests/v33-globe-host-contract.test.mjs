@@ -132,6 +132,7 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(runtime,/destroy:\(\)=>\{clearInterval\(idleMotion\);magic\.remove\(\);flagFit\.dispose\(\);moduleController\.dispose\(\)\}/);
   assert.match(runtime,/moduleController\.restore\(\{\.\.\.current,rotation:current\.rotation\+elapsed\*\.002\}\);flagFit\.fit\(\)/,'moving country targets are synchronously refitted to the visible sphere after every W03 projection update');
   assert.match(runtime,/v33-globe-magic-decor/,'the host adds accessible-hidden, decorative sparkle elements around the accepted globe');
+  assert.match(runtime,/v33-globe-magic-particle/,'the magical scene includes decorative drifting particles around the globe');
   assert.match(runtime,/setInterval\(\(\)=>\{[\s\S]*?prefers-reduced-motion: reduce[\s\S]*?moduleController\.restore/,'idle globe rotation uses the W03 restore API, pauses for reduced motion and preserves country geometry');
   assert.match(runtime,/aria-world-globe__header/);
   assert.match(transform,/magicalGlobeScript/);
@@ -143,12 +144,13 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(transform,/v33-orbit-turn/);
   assert.match(transform,/v33-sparkle-twinkle/);
   assert.match(transform,/v33-star-twinkle/,'individual stars twinkle asynchronously in animation-enabled mode');
+  assert.match(transform,/v33-particle-drift/,'small magical particles drift around the globe in animation-enabled mode');
   assert.match(transform,/aspect-ratio:1;border:3px dashed/,'the orbit remains a mathematically circular ring');
   assert.doesNotMatch(transform,/scaleY\(/,'the host must not squash the orbit into an ellipse');
   assert.match(transform,/grid-template-columns:minmax\(0,1fr\) minmax\(245px,32%\)/,'landscape uses a full-width map and country panel');
   assert.match(transform,/position:fixed;z-index:2;inset:env\(safe-area-inset-top\) 0 calc\(76px/,'the globe screen fills the Android viewport above persistent navigation');
   assert.match(transform,/prefers-reduced-motion:reduce\).*stage::before/);
-  assert.match(transform,/v33-globe-magic-star\{animation:none\}/,'static stars remain visible when reduced motion is requested');
+  assert.match(transform,/v33-globe-magic-star,\.app\.v31-world-active \.v33-globe-magic-particle\{animation:none\}/,'stars and decorative particles become static when reduced motion is requested');
   assert.match(transform,/aria-world-globe__guide,\.app\.v31-world-active \.aria-world-globe__guide-copy\{display:none!important/,'the rejected non-pointing portrait is not shown while the approved pointing export is unavailable');
   assert.match(transform,/max-width:900px\) and \(orientation:landscape\)/,'phone landscape receives its own width-filling layout');
   const workflow=await readFile(new URL('../../.github/workflows/v33-w02-review.yml',import.meta.url),'utf8');
@@ -157,6 +159,9 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(workflow,/disable-animations: false/,'the Android review emulator permits real CSS animation evidence');
   assert.match(smoke,/Emulation\.setEmulatedMedia/,'Android smoke explicitly tests animation-enabled and reduced-motion modes');
   assert.match(smoke,/mode:'animation-enabled'/);
+  assert.match(smoke,/particles\.length!==6[\s\S]*?v33-particle-drift/,'genuine Android motion evidence checks all six drifting particles');
+  assert.match(smoke,/reducedPortraitStart\.particles\.some\(name=>name!=='none'\)/,'Android reduced-motion screenshots verify static particles');
+  assert.match(smoke,/Could not rotate India into view before the PT-BR globe check[\s\S]*?PT-BR globe and visible India flag/,'the PT-BR Android check brings India into view and waits for its localized flag before asserting');
   assert.match(smoke,/Reduced-motion .*remain static/);
   assert.match(smoke,/android-back-restores-country-cards'[\s\S]*?setMotionPreference\(session,'reduce'\)[\s\S]*?stableScreenshot\(session,'world-map-back-phone-portrait'/,'stable Android Back screenshots freeze the continuously rotating globe before framebuffer settling');
   assert.match(workflow,/OWNER_APPROVED=NO[\s\S]*?REVIEW_READY=NO[\s\S]*?RELEASE_READY=NO/);

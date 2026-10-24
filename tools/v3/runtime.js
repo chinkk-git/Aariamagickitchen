@@ -186,7 +186,7 @@ function v33MountGlobe(screen){
  const host=screen.querySelector('#v33-world-globe-host'),moduleController=window.AariaWorldAdventureGlobe.mount(host,{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||{rotation:-78}),flagFit=v33KeepFlagsInsideSphere(host);
  const stage=host.querySelector('.aria-world-globe__stage'),magic=document.createElement('div');
  magic.className='v33-globe-magic-decor';magic.setAttribute('aria-hidden','true');
- magic.innerHTML='<span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span>';
+ magic.innerHTML='<span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span>';
  stage.append(magic);
  let idleMotionAt=performance.now();
  const idleMotion=setInterval(()=>{
