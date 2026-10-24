@@ -20,6 +20,11 @@ test('approved portrait World design adds localized spin guidance and keeps the 
     'G3 accepts the approved arrow SVG with its two curved strokes and two arrowhead paths');
   assert.doesNotMatch(phoneSmoke, /arrows\.querySelectorAll\('path'\)\.length===2/,
     'G3 does not reject the four-path arrow artwork as a missing hint');
+  const spinCheck = phoneSmoke.indexOf('Android globe spin did not dismiss portrait hint');
+  const cleanReset = phoneSmoke.indexOf('setTimeout(()=>location.reload(),0);true', spinCheck);
+  const landscapeCheck = phoneSmoke.indexOf('await rotateTo(1)', spinCheck);
+  assert.ok(spinCheck >= 0 && cleanReset > spinCheck && cleanReset < landscapeCheck,
+    'G3 resets the intentional globe rotation before checking the independent landscape and India-pin baseline');
   assert.match(runtime, /stage\.addEventListener\('pointerup'/);
   assert.match(runtime, /rotated>=8/);
   assert.match(runtime, /stage\.classList\.add\('has-user-spun'\)/);
