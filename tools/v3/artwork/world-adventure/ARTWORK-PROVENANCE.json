@@ -1,0 +1,62 @@
+{
+  "source_reference": {
+    "path": "a_vibrant_colorful_cartoon_3d_illustration_style-1.png",
+    "commit": "8440862",
+    "commit_full_sha": "8440862262d7114f25616f7432e3f2ab79849253",
+    "dimensions_px": [
+      1536,
+      1024
+    ],
+    "bytes": 3388710,
+    "sha256": "433b0fe9e93d7f97af3a9063941d5619039fc60b28be8d50f4d522fecde37430",
+    "owner_uploaded": true
+  },
+  "assets": [
+    {
+      "role": "standalone Aaria pointing character cutout",
+      "provenance": "AI-assisted transparent-background derivative created from owner-approved Magical World source image; generated using built-in image_gen edit mode after viewing the source in this session.",
+      "source": "a_vibrant_colorful_cartoon_3d_illustration_style-1.png at source commit 8440862 (full SHA recorded below)",
+      "rights": "Visual concept approved by repository owner in Issue #50 comment #6378006707. Owner authorized creation of this derivative in Issue #50 comment #6378063993. No separate license statement is present in the repository; usage rights beyond this project handoff are not asserted.",
+      "path": "docs/prototypes/world-adventure-globe/assets/aaria-pointing-approved.png",
+      "format": "PNG RGBA",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "bytes": 2133154,
+      "sha256": "6f4efb16e9c790cdae64957089639ccfd41c66b932e7e7d8147477bac60f4afb",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "generation_prompt": "Create a background-extracted cutout for an Android app. Image 1 is the owner-approved Magical World illustration and exact visual reference. Extract the large Aaria character at the left: friendly child chef with large brown eyes, dark wavy hair and pink bow, white chef hat with pink heart, white-and-pink chef uniform and apron, raised arm pointing toward the globe, wooden spoon in her other hand. Preserve her recognisable face, outfit, pose, colors and polished 3D children’s illustration style. Show the entire character uncropped, centered with transparent padding, detailed clean edges and true transparent background. Remove all scene/background content. Keep only Aaria and the spoon. Exclude the globe, flags, dog, sparkles, books, scenery, UI, text and logos. Do not invent a different design or alter the pose.",
+      "generator": "OpenAI built-in image_gen edit mode; 1 owner-approved reference image"
+    },
+    {
+      "role": "separate magical sparkle / glitter-trail decoration",
+      "provenance": "AI-generated derivative decoration matching motifs in the owner-approved Magical World source image; generated using built-in image_gen with the source as style reference.",
+      "source": "a_vibrant_colorful_cartoon_3d_illustration_style-1.png at source commit 8440862 (full SHA recorded below)",
+      "rights": "Visual concept approved by repository owner in Issue #50 comment #6378006707. Owner authorized supporting decor assets in Issue #50 comment #6378063993. No separate license statement is present in the repository; usage rights beyond this project handoff are not asserted.",
+      "path": "docs/prototypes/world-adventure-globe/assets/magic-sparkle-trail.png",
+      "format": "PNG RGBA",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "bytes": 1770360,
+      "sha256": "46f3c19aad266913a42af9eeab5df4ec5c9c6074ac54a1f902f41243bf0d9f51",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "generation_prompt": "Create a small reusable magical decoration asset for the Android Magical World screen. Use Image 1 only as the owner-approved visual style reference. A separate transparent PNG containing a loose cluster of golden five-point sparkles, tiny points of light, and a curved dotted glitter trail, matching the warm luminous sparkle motifs around the globe in Image 1. Keep the cluster compact with clean alpha edges and empty transparent space around it. No character, globe, flags, scenery, UI, text, logos, or watermark.",
+      "generator": "OpenAI built-in image_gen with the owner-approved reference image as style reference"
+    }
+  ],
+  "notes": [
+    "The Aaria image is an AI-assisted reconstruction/cutout based on the owner-approved visual reference, not a pixel-exact extraction or recovery of an original layered character source.",
+    "Decor is optional and separate; the interactive globe, flags, scene background, controls and UI are excluded.",
+    "Both PNGs have alpha channels; W02 should fit/position the character per phone and tablet layout and keep globe and controls independently rendered.",
+    "Source provenance/owner approval is documented in Issues #50 comments #6378006707 and #6378063993."
+  ]
+}

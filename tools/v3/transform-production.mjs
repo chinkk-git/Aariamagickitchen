@@ -35,8 +35,12 @@ const homeWorldArt = {
   friends: readReferenceImage('tools/v3/artwork/characters/reference-derived/home-approved-dog-crop.png'),
   kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
   worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),
-  destinations: Object.fromEntries(['IND', 'ITA', 'JPN', 'MEX', 'GRC'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
+  destinations: Object.fromEntries(['IND'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
   avatars: Object.fromEntries(['mommy','daddy','rohan','arjun','vihaan','isha','meera','sana','diya'].map(key => [key, readReferenceImage(`tools/v3/artwork/characters/reference-derived/${key}.webp`)]))
+};
+const worldAdventureArtwork = {
+  pointingAaria: readReferenceImage('tools/v3/artwork/world-adventure/aaria-pointing-approved.png'),
+  sparkleTrail: readReferenceImage('tools/v3/artwork/world-adventure/magic-sparkle-trail.png')
 };
 
 const art = Object.fromEntries([
@@ -84,31 +88,6 @@ const profileArt = {
   chefA: readAsset('approved-chef-a.webp.b64'),
   chefB: readAsset('approved-chef-b.webp.b64')
 };
-const worldGeography = JSON.parse(fs.readFileSync(path.join(here, 'data/ne_110m_admin_0_countries.geojson'), 'utf8'));
-const worldAdventureSource = JSON.parse(fs.readFileSync(path.join(here, 'data/world-adventure-pilot.json'), 'utf8'));
-const pilotReleaseApproved = ['a08', 'a09', 'duplicates', 'artwork', 'productionSchema'].every(key => worldAdventureSource.releaseGates?.[key] === 'approved');
-// Keep review-pilot recipe records and their art out of the offline production
-// runtime until every independent release gate is explicitly approved.
-const worldAdventure = {
-  ...worldAdventureSource,
-  recipes: pilotReleaseApproved ? worldAdventureSource.recipes : [],
-  nutritionRefs: pilotReleaseApproved ? worldAdventureSource.nutritionRefs : {}
-};
-const worldAdventureArt = Object.fromEntries(worldAdventure.recipes.map(recipe => [recipe.id, {
-  atlas: readWorldAdventureAsset(recipe.artwork.atlas),
-  hero: readWorldAdventureAsset(recipe.artwork.hero),
-  status: recipe.artwork.reviewStatus
-}]));
-
-function readWorldAdventureAsset(name) {
-  const file = path.join(here, 'artwork/world-adventures', name);
-  const bytes = fs.readFileSync(file);
-  if (bytes.subarray(0, 4).toString('ascii') !== 'RIFF' || bytes.subarray(8, 12).toString('ascii') !== 'WEBP') {
-    throw new Error(`Invalid WebP adventure artwork: ${name}`);
-  }
-  return `data:image/webp;base64,${bytes.toString('base64')}`;
-}
-
 const styles = String.raw`
 /* ${marker} */
 :root{--v3-ink:#34264f;--v3-plum:#4e376c;--v3-berry:#b43b7a;--v3-mint:#318d79;--v3-sky:#ddecf8;--v3-lav:#f5f0fb;--v3-paper:#fffdf8;--v3-gold:#f0c24b;--v3-line:#e7ddec;--v3-shadow:0 8px 24px #39285412}
@@ -325,6 +304,69 @@ html,body{min-height:100%;background:#f8f5fb;color:var(--v3-ink)}
 `;
 
 const runtimeTemplate = fs.readFileSync(path.join(here, 'runtime.js'), 'utf8');
+const worldAdventureHost = fs.readFileSync(path.join(here, 'world-adventure-host.mjs'), 'utf8')
+  .replace(/^export const /gm, 'const ')
+  .replace(/^export function /gm, 'function ')
+  + '\nwindow.createWorldAdventureHost=createWorldAdventureHost;';
+const magicalGlobeScript = fs.readFileSync(path.join(here, 'world-adventure-globe/world-adventure-globe.js'), 'utf8');
+const magicalGlobeStyles = fs.readFileSync(path.join(here, 'world-adventure-globe/world-adventure-globe.css'), 'utf8');
+const w02GlobeHostStyles = String.raw`
+.app.v31-world-active{width:100vw!important;max-width:none!important;height:100dvh;min-height:0;margin:0;overflow:hidden}
+.app.v31-world-active #screen.v31-world-screen{position:fixed;z-index:2;inset:env(safe-area-inset-top) 0 calc(76px + env(safe-area-inset-bottom));width:100vw;height:auto;min-height:0;max-width:none;margin:0;padding:0;overflow:hidden}
+.app.v31-world-active .v33-world-globe-host{position:relative;display:block;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden}
+.app.v31-world-active .aria-world-globe{position:relative;display:flex;width:100%;height:100%;min-height:0;max-width:none;padding:8px clamp(10px,1.4vw,22px);gap:8px;overflow:hidden;background:radial-gradient(ellipse at 50% 55%,#fff8df 0%,#fbf2ff 60%,#f0e3fb 100%)}
+.app.v31-world-active .aria-world-globe__header{position:relative;z-index:6;flex:0 0 auto;min-height:50px;max-width:none;width:100%;gap:12px}
+.app.v31-world-active .aria-world-globe__header h1{font-size:clamp(16px,2.3vw,26px)}
+.app.v31-world-active .aria-world-globe__passport,.app.v31-world-active .aria-world-globe__surprise{min-height:48px}
+.app.v31-world-active .aria-world-globe__body{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,31%);gap:clamp(10px,1.6vw,24px);flex:1;min-height:0;width:100%;max-width:none;margin:0}
+.app.v31-world-active .aria-world-globe__stage{position:relative;container-type:size;min-width:0;min-height:0;overflow:visible;border:0;border-radius:28px;background:radial-gradient(ellipse at 50% 55%,rgba(255,255,255,.82),rgba(255,255,255,0) 65%)}
+.app.v31-world-active .aria-world-globe__sphere{position:absolute;z-index:2;left:58%;top:50%;width:min(84cqw,84cqh,820px);height:auto;aspect-ratio:1;flex:none;transform:translate(-50%,-50%)}
+.app.v31-world-active .aria-world-globe__atlas,.app.v31-world-active .aria-world-globe__flags{transform:scale(1.14);transform-origin:50% 50%}
+.app.v31-world-active .aria-world-globe__flag{width:58px;height:58px;font-size:29px}
+.app.v31-world-active .aria-world-globe__guide{z-index:1;display:block!important;left:0;bottom:-1%;height:78cqh;width:auto;max-width:40cqw;object-fit:contain;object-position:bottom left;filter:drop-shadow(0 8px 12px rgba(65,40,89,.34));pointer-events:none}
+.app.v31-world-active .aria-world-globe__guide-copy{display:none!important}
+.app.v31-world-active .v33-globe-sparkle-trail{position:absolute;z-index:1;left:11%;top:11%;width:min(48cqw,360px);height:auto;object-fit:contain;opacity:.62;filter:drop-shadow(0 0 9px rgba(255,199,77,.4));pointer-events:none}
+.app.v31-world-active .aria-world-globe__stage::before{content:"";position:absolute;z-index:0;left:58%;top:50%;width:min(94cqw,94cqh,900px);height:auto;aspect-ratio:1;border:3px dashed rgba(126,76,171,.65);border-radius:50%;background:radial-gradient(circle at 50% 0%,#fff 0 3px,#ffe78a 4px 6px,transparent 8px);box-shadow:0 0 0 9px rgba(255,214,111,.2),0 0 28px rgba(133,87,184,.28),inset 0 0 20px rgba(255,214,111,.16);transform:translate(-50%,-50%);animation:v33-orbit-turn 46s linear infinite;pointer-events:none}
+.app.v31-world-active .aria-world-globe__stage::after{content:"";position:absolute;z-index:3;inset:0;background:radial-gradient(circle at 8% 22%,#fff8b7 0 3px,transparent 4px),radial-gradient(circle at 88% 19%,#fff 0 2px,transparent 4px),radial-gradient(circle at 91% 72%,#ffe69b 0 3px,transparent 4px),radial-gradient(circle at 12% 78%,#fff 0 2px,transparent 4px),radial-gradient(circle at 50% 5%,#fff 0 2px,transparent 4px),radial-gradient(circle at 52% 94%,#fff8b7 0 3px,transparent 4px),radial-gradient(circle at 24% 8%,#fff 0 1.5px,transparent 4px),radial-gradient(circle at 78% 91%,#fff 0 2px,transparent 4px);filter:drop-shadow(0 0 6px #fff2a8);animation:v33-sparkle-twinkle 2.2s ease-in-out infinite alternate;pointer-events:none}
+.app.v31-world-active .v33-globe-magic-decor{position:absolute;z-index:4;inset:0;overflow:hidden;pointer-events:none}
+.app.v31-world-active .v33-globe-magic-star{position:absolute;display:block;color:#fff5a8;font-size:clamp(15px,2.2cqh,25px);line-height:1;text-shadow:0 0 5px #fff,0 0 13px #ffd55e;animation:v33-star-twinkle 1.7s ease-in-out infinite alternate;will-change:opacity,transform}
+.app.v31-world-active .v33-globe-magic-star:nth-child(1){left:8%;top:18%;animation-delay:-.2s}
+.app.v31-world-active .v33-globe-magic-star:nth-child(2){right:9%;top:24%;color:#d9c7ff;animation-duration:2.4s;animation-delay:-1.2s}
+.app.v31-world-active .v33-globe-magic-star:nth-child(3){left:12%;bottom:17%;animation-duration:2.1s;animation-delay:-.7s}
+.app.v31-world-active .v33-globe-magic-star:nth-child(4){right:10%;bottom:22%;color:#ffcf79;animation-duration:1.5s;animation-delay:-.4s}
+.app.v31-world-active .v33-globe-magic-star:nth-child(5){left:48%;top:7%;font-size:clamp(12px,1.7cqh,19px);animation-duration:2.6s;animation-delay:-1.7s}
+.app.v31-world-active .v33-globe-magic-star:nth-child(6){left:47%;bottom:8%;font-size:clamp(12px,1.7cqh,19px);animation-duration:1.9s;animation-delay:-.9s}
+.app.v31-world-active .v33-globe-magic-star:nth-child(7){left:5%;top:54%;color:#d9c7ff;animation-duration:2.3s;animation-delay:-1.1s}
+.app.v31-world-active .v33-globe-magic-star:nth-child(8){right:5%;top:56%;font-size:clamp(12px,1.7cqh,19px);animation-duration:1.6s;animation-delay:-.5s}
+.app.v31-world-active .v33-globe-magic-particle{position:absolute;display:block;width:5px;height:5px;border-radius:50%;background:#fff7ad;box-shadow:0 0 5px 2px rgba(255,246,174,.8),0 0 12px 4px rgba(213,192,255,.34);animation:v33-particle-drift 3.8s ease-in-out infinite;will-change:opacity,transform}
+.app.v31-world-active .v33-globe-magic-particle:nth-child(9){left:8%;top:47%;animation-delay:-.8s}
+.app.v31-world-active .v33-globe-magic-particle:nth-child(10){right:8%;top:43%;background:#ded0ff;animation-delay:-2.1s}
+.app.v31-world-active .v33-globe-magic-particle:nth-child(11){left:20%;top:12%;animation-delay:-1.7s}
+.app.v31-world-active .v33-globe-magic-particle:nth-child(12){right:17%;top:11%;background:#ffd67f;animation-delay:-.3s}
+.app.v31-world-active .v33-globe-magic-particle:nth-child(13){left:20%;bottom:12%;background:#ded0ff;animation-delay:-2.8s}
+.app.v31-world-active .v33-globe-magic-particle:nth-child(14){right:17%;bottom:10%;animation-delay:-1.2s}
+.app.v31-world-active .aria-world-globe__guide{left:clamp(4px,1vw,14px);bottom:clamp(8px,2vh,20px);height:88cqh;width:auto;max-width:30cqw;object-fit:contain;object-position:bottom left;filter:drop-shadow(0 8px 12px rgba(65,40,89,.34));pointer-events:none}
+.app.v31-world-active .aria-world-globe__guide-copy{left:clamp(84px,19cqw,240px);bottom:clamp(12px,2vh,22px);max-width:min(28%,290px)}
+.app.v31-world-active .aria-world-globe__guide-hand{display:none!important}
+.app.v31-world-active .aria-world-globe__panel{position:relative;z-index:5;min-width:0;min-height:0;max-height:100%;}
+.app.v31-world-active .aria-world-globe__controls{right:clamp(10px,1.4vw,22px);bottom:clamp(10px,1.4vh,18px)}
+.app.v31-world-active .aria-world-globe__surprise{min-width:clamp(136px,17cqw,190px);min-height:52px}
+.app.v31-world-active #nav.bottom{z-index:20}
+.app.v31-world-active .v33-passport-overlay{z-index:240}
+@keyframes v33-orbit-turn{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes v33-sparkle-twinkle{from{opacity:.55}to{opacity:1}}
+@keyframes v33-star-twinkle{from{opacity:.42;transform:scale(.72) rotate(-12deg)}to{opacity:1;transform:scale(1.12) rotate(12deg)}}
+@keyframes v33-particle-drift{0%{opacity:.28;transform:translate3d(0,6px,0) scale(.65)}50%{opacity:.95;transform:translate3d(5px,-4px,0) scale(1.15)}100%{opacity:.35;transform:translate3d(-2px,-11px,0) scale(.72)}}
+.v33-passport-overlay{position:fixed;z-index:240;inset:0;display:grid;place-items:center;padding:16px;background:#241a3888}
+.v33-passport-overlay .w02-map-sheet{position:relative;inset:auto;width:min(620px,calc(100vw - 24px));max-height:min(82dvh,720px);overflow:auto;transform:none}
+@media(orientation:portrait){.app.v31-world-active .aria-world-globe{gap:6px}.app.v31-world-active .aria-world-globe__header{min-height:48px}.app.v31-world-active .aria-world-globe__body{display:block}.app.v31-world-active .aria-world-globe__stage{position:absolute;inset:0 0 27% 0}.app.v31-world-active .aria-world-globe__sphere{left:62%;width:min(70cqw,82cqh,440px)}.app.v31-world-active .aria-world-globe__stage::before{left:62%;width:min(78cqw,90cqh,490px)}.app.v31-world-active .aria-world-globe__panel{position:absolute;left:0;right:0;bottom:0;height:25%;min-height:132px;border-radius:20px}.app.v31-world-active .aria-world-globe__guide{height:78cqh;max-width:40cqw}.app.v31-world-active .v33-globe-sparkle-trail{left:14%;top:9%;width:min(54cqw,300px)}.app.v31-world-active .aria-world-globe__guide-copy{left:clamp(90px,25cqw,180px);bottom:10px;max-width:29%}.app.v31-world-active .aria-world-globe__controls{bottom:10px}.app.v31-world-active .aria-world-globe__surprise{min-width:140px}}
+@media(orientation:portrait){.app.v31-world-active .aria-world-globe__sphere{z-index:2}.app.v31-world-active .aria-world-globe__guide{left:clamp(4px,4cqw,28px);bottom:0;width:min(74cqw,480px);height:auto;max-width:none}.app.v31-world-active .aria-world-globe__guide-hand{position:absolute;z-index:4;display:block!important;left:clamp(4px,4cqw,28px);bottom:0;width:min(74cqw,480px);height:auto;max-width:none;clip-path:polygon(61% 39%,100% 27%,100% 35%,78% 42%,66% 46%);filter:drop-shadow(0 5px 7px rgba(65,40,89,.24));pointer-events:none}.app.v31-world-active .aria-world-globe__flags{position:absolute;z-index:6;transform:scale(1.105);transform-origin:50% 50%}.app.v31-world-active .aria-world-globe__panel.is-portrait-dismissed{display:none!important}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay{position:fixed!important;z-index:250!important;inset:env(safe-area-inset-top) 0 0!important;width:100vw;height:calc(100dvh - env(safe-area-inset-top));max-height:none;min-height:0;border:0;border-radius:0!important;box-shadow:none;display:flex;overflow:hidden;padding:0 0 env(safe-area-inset-bottom)}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__panel-head{flex:0 0 auto;min-height:86px;padding:14px 16px}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__close{flex-basis:60px;width:60px;height:60px;font-size:42px;font-weight:700;box-shadow:0 3px 0 #d3c0df}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__note{flex:0 0 auto;margin:12px 18px 0;font-size:15px}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__recipe-list{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:14px 16px 24px;gap:12px}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__recipe{min-height:96px;padding:12px;gap:14px;border-radius:20px}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__dish,.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__dish-placeholder{width:68px;height:68px;flex-basis:68px}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__recipe-copy strong{font-size:18px;line-height:1.25}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__recipe-copy small{font-size:14px}.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__open,.app.v31-world-active .aria-world-globe__panel.is-portrait-overlay .aria-world-globe__lock{font-size:24px}}
+@media(orientation:landscape){.app.v31-world-active .aria-world-globe{padding:7px 12px;gap:6px}.app.v31-world-active .aria-world-globe__header{min-height:40px}.app.v31-world-active .aria-world-globe__body{grid-template-columns:minmax(0,1fr) minmax(245px,32%);gap:12px}.app.v31-world-active .aria-world-globe__stage{border-radius:22px}.app.v31-world-active .aria-world-globe__sphere{left:58%;width:min(84cqw,84cqh,660px)}.app.v31-world-active .aria-world-globe__stage::before{left:58%;width:min(94cqw,94cqh,740px)}.app.v31-world-active .aria-world-globe__flag{width:54px;height:54px}.app.v31-world-active .aria-world-globe__guide{height:88cqh;max-width:27cqw}.app.v31-world-active .aria-world-globe__guide-copy{left:clamp(84px,20cqw,200px);bottom:8px;max-width:26%}.app.v31-world-active .aria-world-globe__panel-head{padding:9px 10px}.app.v31-world-active .aria-world-globe__recipe-list{padding:8px;gap:7px}.app.v31-world-active .aria-world-globe__recipe{min-height:56px}.app.v31-world-active .aria-world-globe__dish,.app.v31-world-active .aria-world-globe__dish-placeholder{width:44px;height:44px;flex-basis:44px}}
+@media(max-width:900px) and (orientation:landscape){.app.v31-world-active .aria-world-globe__body{grid-template-columns:minmax(0,1fr) minmax(220px,34%);gap:7px}.app.v31-world-active .aria-world-globe__header h1{max-width:35vw}.app.v31-world-active .aria-world-globe__guide{max-width:25cqw}}
+@media(prefers-reduced-motion:reduce){.app.v31-world-active .aria-world-globe__stage::before,.app.v31-world-active .aria-world-globe__stage::after,.app.v31-world-active .v33-globe-magic-star,.app.v31-world-active .v33-globe-magic-particle{animation:none}.app.v31-world-active .aria-world-globe__stage::before{border-style:dotted}.app.v31-world-active .aria-world-globe__flag.is-pending,.app.v31-world-active .aria-world-globe__flag.is-selected{animation:none}}
+.app.v31-world-active .v33-spin-hint{display:none}
+@media(orientation:portrait){.app.v31-world-active .aria-world-globe__sphere{left:61%;width:min(84cqw,90cqh,520px)}.app.v31-world-active .aria-world-globe__stage::before{left:61%;width:min(96cqw,100cqh,600px)}.app.v31-world-active .aria-world-globe__guide{z-index:4;left:clamp(4px,2cqw,14px);bottom:0;width:min(36cqw,230px);height:auto;max-width:none;object-fit:contain;object-position:bottom left}.app.v31-world-active .aria-world-globe__guide-hand{z-index:5;left:clamp(4px,2cqw,14px);bottom:0;width:min(36cqw,230px);height:auto;max-width:none}.app.v31-world-active .aria-world-globe__flags{z-index:6}.app.v31-world-active .v33-spin-hint{position:absolute;z-index:8;left:40%;bottom:17%;display:flex;align-items:center;justify-content:center;width:min(50cqw,230px);min-height:38px;margin:0;color:#6433a4;text-align:center;font-size:clamp(13px,3.2cqw,17px);font-weight:900;line-height:1.15;text-shadow:0 1px 2px #fff,0 0 5px #fff;transition:opacity .42s ease,visibility 0s linear .42s}.app.v31-world-active .v33-spin-arrows{position:absolute;left:50%;top:-23px;width:92%;height:28px;overflow:visible;transform:translateX(-50%);fill:none;stroke:#713ab0;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;opacity:.82;filter:drop-shadow(0 1px 2px #fff)}.app.v31-world-active .v33-spin-hint span{position:relative;z-index:1}.app.v31-world-active .aria-world-globe__stage.has-user-spun .v33-spin-hint{opacity:0;visibility:hidden}.app.v31-world-active .aria-world-globe__stage.has-user-spun .v33-spin-arrows{opacity:0}@media(prefers-reduced-motion:reduce){.app.v31-world-active .v33-spin-hint,.app.v31-world-active .v33-spin-arrows{transition:none!important}.app.v31-world-active .aria-world-globe__stage.has-user-spun .v33-spin-hint{opacity:0;visibility:hidden}}}
+`;
 const v32RecipeThemeMap = JSON.parse(fs.readFileSync(path.join(here, 'data/v3.2-recipe-theme-map.json'), 'utf8'));
 const v32ReviewFeaturedIds = (process.env.V32_REVIEW_FEATURED_IDS || '').split(',').map(x => x.trim()).filter(Boolean).map(Number);
 const v32CanonicalIds = new Set(Object.keys(v32RecipeThemeMap.mapping).map(Number));
@@ -347,18 +389,16 @@ const runtime = runtimeTemplate
   .replace('__V3_ART_JSON__', JSON.stringify(art))
   .replace('__V3_INGREDIENT_ATLAS_JSON__', JSON.stringify(ingredientAtlas))
   .replace('__V3_PROFILE_ART_JSON__', JSON.stringify(profileArt))
-  .replace('__V31_WORLD_GEOGRAPHY_JSON__', JSON.stringify(worldGeography))
   .replace('__V32_RECIPE_THEME_MAP_JSON__', JSON.stringify(v32RecipeThemeMap.mapping))
   .replace('__V32_REVIEW_FEATURED_IDS_JSON__', JSON.stringify(v32ReviewFeaturedIds))
   .replace('__V32_INTERNATIONAL_RECIPES_JSON__', JSON.stringify(v32InternationalRecipes))
   .replace('__V3_PT_RECIPE_DRAFTS_JSON__', JSON.stringify(v32PtRecipeDrafts))
   .replace('__V32_PT_GROUP_ROLE_COPY_JSON__', JSON.stringify(v32PtGroupRoleCopy))
-  .replace('__V31_WORLD_ADVENTURE_JSON__', JSON.stringify(worldAdventure))
-  .replace('__V31_WORLD_ADVENTURE_ART_JSON__', JSON.stringify(worldAdventureArt))
-  .replace('__V31_HOME_WORLD_ART_JSON__', JSON.stringify(homeWorldArt));
+  .replace('__V31_HOME_WORLD_ART_JSON__', JSON.stringify(homeWorldArt))
+  .replace('__V33_WORLD_ARTWORK_JSON__', JSON.stringify(worldAdventureArtwork));
 
 if (!v32PtGroupRoleCopy.family || !v32PtGroupRoleCopy.friends) throw new Error('Family/Friends PT-BR role copy is missing from review drafts.');
-if (/__V31_WORLD_(?:GEOGRAPHY|ADVENTURE)(?:_ART)?_JSON__|__V32_RECIPE_THEME_MAP_JSON__|__V3_PT_RECIPE_DRAFTS_JSON__|__V32_PT_GROUP_ROLE_COPY_JSON__/.test(runtime)) throw new Error('Could not embed the offline experience data.');
+if (/__V32_RECIPE_THEME_MAP_JSON__|__V3_PT_RECIPE_DRAFTS_JSON__|__V32_PT_GROUP_ROLE_COPY_JSON__|__V33_WORLD_ARTWORK_JSON__/.test(runtime)) throw new Error('Could not embed the offline experience data.');
 
 
 let outputHtml = html;
@@ -398,9 +438,8 @@ const guardedPtRecipeTranslationLoop = "for(const r of RECIPES)r.steps.forEach((
 if (!outputHtml.includes(ptRecipeTranslationLoop)) throw new Error('Expected PT recipe translation registration loop was not found');
 outputHtml = outputHtml.replace(ptRecipeTranslationLoop, guardedPtRecipeTranslationLoop);
 
-outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}\n${homeWorldStyles}</style><script id="aaria-v3-layer">${runtime}</script></body>`);
+outputHtml = outputHtml.replace('</body>', `<style id="aaria-v3-styles">${styles}\n${homeWorldStyles}\n${magicalGlobeStyles}\n${w02GlobeHostStyles}</style><script id="aaria-v3-layer">${worldAdventureHost}\n${magicalGlobeScript}\n${runtime}</script></body>`);
 if (outputHtml === html || !outputHtml.includes(marker)) throw new Error('Could not append the V3 layer to the production HTML.');
 fs.mkdirSync(path.dirname(output), { recursive: true });
 fs.writeFileSync(output, outputHtml);
 console.log(`Built ${output} (${outputHtml.length.toLocaleString()} chars) from ${input}`);
-

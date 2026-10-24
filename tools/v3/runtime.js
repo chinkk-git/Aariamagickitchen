@@ -2,10 +2,8 @@
 const V3_ART=__V3_ART_JSON__;
 const V3_INGREDIENT_ATLAS=__V3_INGREDIENT_ATLAS_JSON__;
 const V3_PROFILE_ART=__V3_PROFILE_ART_JSON__;
-const V31_WORLD_GEOGRAPHY=__V31_WORLD_GEOGRAPHY_JSON__;
-const V31_WORLD_ADVENTURE=__V31_WORLD_ADVENTURE_JSON__;
-const V31_WORLD_ADVENTURE_ART=__V31_WORLD_ADVENTURE_ART_JSON__;
 const V31_HOME_WORLD_ART=__V31_HOME_WORLD_ART_JSON__;
+const V33_WORLD_ARTWORK=__V33_WORLD_ARTWORK_JSON__;
 const V32_RECIPE_THEME_MAP=__V32_RECIPE_THEME_MAP_JSON__;
 const V32_REVIEW_FEATURED_IDS=__V32_REVIEW_FEATURED_IDS_JSON__;
 const V32_INTERNATIONAL_RECIPES=__V32_INTERNATIONAL_RECIPES_JSON__;
@@ -99,44 +97,6 @@ for(const [id,a] of Object.entries(V3_ART)){
   const stepCells=Number(id)===3?[0,1,2,3,4]:[1,2,3,4].includes(Number(id))?[0,1,2,3]:[1,2,3,4];
   BATCH_META[id]={...(BATCH_META[id]||{}),stepCells};
 }
-// The 95 production records stay untouched in index.html. These pilot recipes
-// are appended only to the V3.1 offline build and use the existing recipe flow.
-for(const pilot of V31_WORLD_ADVENTURE.recipes){
- const id=pilot.id,r=pilot.record,art=V31_WORLD_ADVENTURE_ART[id];
- if(!RECIPES.some(existing=>existing.id===id))RECIPES.push(r);
- PT_RECIPES[id]={...(PT_RECIPES[id]||{}),...pilot.pt};
- NUTRITION_PLANS[id]=pilot.nutritionPlan;
- for(const [key,ref] of Object.entries(V31_WORLD_ADVENTURE.nutritionRefs))NUTRIENT_REFS[`v31_${key}`]=ref;
- BATCH_ATLASES[id]=art.atlas;
- NEW_RECIPE_ART[id]={atlas:art.atlas,storyboard:art.atlas,hero:art.hero,dish:art.hero,cellAspect:1,status:art.status};
- BATCH_META[id]={title:pilot.pt.title,steps:pilot.pt.steps,titles:pilot.record.steps.map((_,i)=>`Step ${i+1}`),tools:pilot.record.equipment,line:pilot.record.description,stepCells:[0,1,2,3,4,5]};
- STEP_GUIDES[id]=pilot.record.steps.map((title,i)=>({title,emoji:r.emoji,tip:pilot.record.safety}));
- pilot.record.steps.forEach((text,i)=>{if(pilot.pt.steps?.[i])PT_TRANSLATIONS[text]=pilot.pt.steps[i]});
-}
-
-home=function v3Home(){
- const stats=homeStats();
- const recent=[...(state.done||[])].reverse().map(find).filter(Boolean);
- const favs=(state.favorites||[]).map(find).filter(Boolean);
- const family=RECIPES.find(r=>r.category==='Cooking with Mommy & Daddy');
- const friends=RECIPES.find(r=>r.category==='Cooking with Friends');
- const preferred=[...favs.slice(0,4),...recent.slice(0,4),family,friends,...RECIPES];
- const picks=[...new Map(preferred.filter(Boolean).map(r=>[r.id,r])).values()].slice(0,12);
- const pt=state.language==='pt-BR';
- const title=pt?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
- const aaria=avatar('v3-hero-avatar');
- return `<section class="v3-home" aria-label="${title}">
-  <header class="v3-home-top"><div class="v3-brand"><span class="v3-brand-mark" aria-hidden="true">✨</span><span>${title}<small>${pt?'Sua cozinha · Suas criações · Sua magia':'Your kitchen · Your creations · Your magic'}</small></span></div><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
-  <section class="v31-home-hero"><div class="v31-hero-copy"><span class="v3-eyebrow">${pt?'✨ AVENTURAS NA COZINHA':'✨ LITTLE KITCHEN ADVENTURES'}</span><h1>${pt?'O que vamos criar hoje?':'What shall we make today?'}</h1><p>${pt?'Escolha uma receita ou explore sabores do mundo.':'Pick a recipe or explore flavours around the world.'}</p><div class="v31-primary-actions"><button class="v3-primary" data-nav="library">${pt?'Vamos cozinhar':'Let’s Cook'} <span aria-hidden="true">→</span></button><button class="v31-world-primary" data-v31-open-world>${pt?'Explorar o mundo':'Explore the World'} <span aria-hidden="true">🌍</span></button></div></div><div class="v31-hero-art">${aaria}<span class="v31-sparkle v31-sparkle-a" aria-hidden="true">✦</span><span class="v31-sparkle v31-sparkle-b" aria-hidden="true">✧</span></div></section>
-  <section class="v31-shortcuts" aria-label="${pt?'Atalhos da cozinha':'Kitchen shortcuts'}"><button class="v31-shortcut v31-surprise" data-action="open-wheel"><span aria-hidden="true">🎁</span><span><strong>${pt?'Surpresa!':'Surprise Me'}</strong><small>${pt?'Uma receita escolhida na roda':'Spin for a recipe'}</small></span></button><button class="v31-shortcut v31-week-spin" data-action="open-week-wheel"><span aria-hidden="true">🎡</span><span><strong>${pt?'Monte minha semana':'Spin My Week'}</strong><small>${pt?'Escolha 7 receitas para a semana':'Spin for seven recipes this week'}</small></span></button><button class="v31-shortcut v31-planner" data-nav="week"><span aria-hidden="true">🗓️</span><span><strong>${pt?'Meu planejador':'My Planner'}</strong><small>${pt?'Planeje a semana em família':'Plan a fun week together'}</small></span></button></section>
-  <div class="v3-section-head v31-board-heading"><div><h2>${pt?'Meu livro de receitas':'My recipe book'}</h2><p>${pt?'Uma coleção visual para escolher sua próxima aventura.':'A picture-led collection for your next kitchen adventure.'}</p></div><button class="text-link" data-nav="library">${pt?'Ver todas':'Browse all'} →</button></div>
-  <section class="v31-pinterest-board" aria-label="${pt?'Meu livro de receitas':'My recipe book'}">${picks.map(homeTile).join('')}</section>
-  <section class="v31-world-shelf"><div class="v3-section-head"><div><h2>${pt?'Aventuras de comida pelo mundo':'World Food Adventures'}</h2><p>${pt?'Conheça um lugar novo, um sabor de cada vez.':'Meet a new place, one flavour at a time.'}</p></div><button class="text-link" data-v31-open-world>${pt?'Explorar':'Explore'} →</button></div><button class="v31-world-card" data-v31-open-world><span class="v31-world-globe" aria-hidden="true">🌏</span><span><strong>${pt?'Seu passaporte culinário':'Your food explorer passport'}</strong><small>${pt?'Sete destinos para descobrir no mapa':'Seven destinations to discover on the map'}</small></span><span class="v31-country-flags" aria-hidden="true">🇮🇳 🇮🇹 🇨🇳 🇯🇵 🇲🇽 🇻🇳 🇬🇷</span><span class="v31-card-arrow" aria-hidden="true">→</span></button></section>
-  <section class="v31-collection-links"><div class="v3-section-head"><div><h2>${pt?'Cozinhe junto':'Cook together'}</h2><p>${pt?'Com as pessoas que você gosta.':'With the people you love.'}</p></div></div><div class="v31-collection-grid"><button data-nav="family">👨‍👩‍👧 <strong>${pt?'Com a família':'With Family'}</strong></button><button data-nav="friends">🧑‍🍳 <strong>${pt?'Com amigos':'With Friends'}</strong></button></div></section>
-  <nav class="v3-quick-links" aria-label="${pt?'Mais atividades':'More activities'}"><button data-nav="rewards">🏆 ${pt?'Prêmios':'Awards'} · ${stats.badges}</button><button data-nav="creations">🎨 ${pt?'Minhas criações':'My Creations'}</button><button data-nav="stories">🧚 ${pt?'Histórias e música':'Stories and music'}</button><button data-action="groceries-choose">🛒 ${pt?'Lista de compras':'Shopping list'}</button><button data-nav="settings">⚙️ ${pt?'Configurações':'Settings'}</button></nav>
- </section>`;
-};
-
 function v32ReviewFeaturedDescription(recipe,pt){
  const description=pt?(PT_RECIPES[recipe.id]?.description||recipe.description):recipe.description;
  return description||'';
@@ -251,7 +211,7 @@ home=function v31ApprovedHome(){
  const featured=find(12);
  const currentReviewFeatured=V32_REVIEW_FEATURED_IDS.map(find).filter(Boolean);
  const featuredMarkup=currentReviewFeatured.length?`<section class="v31-featured-section v32-review-featured-section"><div class="v31-section-title"><div><h2>⭐ ${pt?'Receitas em destaque':'Featured Recipes'}</h2><p>${pt?'Prontas para revisão do responsável':'Ready for owner review'}</p></div><button class="text-link" data-nav="library">${pt?'Ver todas':'See all'} →</button></div><div class="v32-review-featured-rail" role="group" aria-label="${pt?'Receitas em destaque desta revisão':'Featured recipes in this review'}" data-v32-featured-ids="${currentReviewFeatured.map(recipe=>recipe.id).join(',')}">${currentReviewFeatured.map(recipe=>{const description=v32ReviewFeaturedDescription(recipe,pt);return `<button class="v31-featured-card v32-review-featured-card" data-open="${recipe.id}" data-v32-review-featured-id="${recipe.id}" aria-label="${safe(pt?(PT_RECIPES[recipe.id]?.title||recipe.title):recipe.title)}"><span class="v31-featured-art">${homeDishThumb(recipe)}</span><span class="v31-featured-copy"><span class="v31-featured-kicker">${pt?'PRONTA PARA REVISÃO':'READY FOR REVIEW'}</span><strong>${safe(pt?(PT_RECIPES[recipe.id]?.title||recipe.title):recipe.title)}</strong>${description?`<small>${safe(description)}</small>`:''}<span class="v31-featured-meta">◷ ${safe(recipe.time||'')}　♧ ${pt?'Rende':'Makes'} ${safe(recipe.yieldText||'')}</span></span></button>`}).join('')}</div></section>`:'';
- const countries=['IND','ITA','JPN','MEX','GRC'].map(code=>V31_DESTINATION_BY_ISO[code]).filter(Boolean);
+ const countries=['IND'].map(code=>V31_DESTINATION_BY_ISO[code]).filter(Boolean);
  const headline=pt?'O que vamos cozinhar hoje?':'What shall we cook today?';
  return `<section class="v31-approved-home" aria-label="${pt?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen'}">
   <header class="v31-approved-header"><img class="v31-brand-lockup" src="${V31_HOME_WORLD_ART.brand}" alt="Aaria’s Magical Kitchen"><button type="button" class="v31-header-greeting" data-v3-profile-open aria-label="${pt?'Trocar perfil da cozinha':'Switch kitchen profile'}"><img src="${V31_HOME_WORLD_ART.aaria}" alt=""><span><strong>${pt?'Oi, Aaria!':'Hi Aaria!'}</strong><small>${pt?'Pronta para uma aventura saborosa?':'Ready for a tasty adventure?'}</small></span></button><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
@@ -259,7 +219,7 @@ home=function v31ApprovedHome(){
   <nav class="v31-action-tiles" aria-label="${pt?'Aventuras da cozinha':'Kitchen adventures'}"><button class="v31-action-tile v31-tile-cook" data-nav="library"><span>♨️</span><strong>${pt?'Vamos cozinhar!':'Let’s Cook!'}</strong><small>${pt?'Explore todas as receitas':'Explore all recipes'}</small></button><button class="v31-action-tile v31-tile-world" data-v31-open-world><span>🌍</span><strong>${pt?'Aventura pelo mundo':'World Adventure'}</strong><small>${pt?'Cozinhe ao redor do mundo':'Cook around the world'}</small></button><button class="v31-action-tile v31-tile-surprise" data-action="open-wheel"><span>🎲</span><strong>${pt?'Surpresa!':'Surprise Me!'}</strong><small>${pt?'Encontre uma receita':'Find a random recipe'}</small></button><button class="v31-action-tile v31-tile-planner" data-nav="week"><span>▦</span><strong>${pt?'Meu planejador':'My Planner'}</strong><small>${pt?'Planeje sua semana saborosa':'Plan your tasty week'}</small></button></nav>
   ${V32_INTERNATIONAL_RECIPES.length?'<section class="v32-new-recipes"><div class="v31-section-title"><div><h2>✨ '+(pt?'Novas receitas':'New Recipes')+'</h2><p>'+(pt?'Receitas internacionais ilustradas.':'Illustrated international recipes.')+'</p></div><button class="text-link" data-nav="library">'+(pt?'Ver todas':'See all')+' →</button></div><div class="v32-new-recipes-grid" role="group" tabindex="0" aria-label="'+(pt?'Novas receitas internacionais':'New international recipes')+'">'+V32_INTERNATIONAL_RECIPES.map(item=>{const id=Number(item.id),r=RECIPES.find(x=>Number(x.id)===id),title=pt?(PT_RECIPES[id]?.title||r.title):r.title;return '<button class="home-tile v31-pinterest-tile v32-new-recipe-card" data-open="'+id+'" aria-label="'+safe(title)+' — '+(pt?'Nova receita':'New recipe')+'"><img src="'+(NEW_RECIPE_ART[id]?.dish||'')+'" alt=""><span class="v32-new-recipe-badge">'+(pt?'NOVA':'NEW')+'</span><strong>'+safe(title)+'</strong><small>'+safe(r.country)+'</small></button>'}).join('')+'</div></section>':''}
   ${featuredMarkup||`<section class="v31-featured-section"><div class="v31-section-title"><h2>⭐ ${pt?'Receita em destaque':'Featured Recipe'}</h2><button class="text-link" data-nav="library">${pt?'Ver todas':'See all'} →</button></div><button class="v31-featured-card" data-open="${featured.id}"><span class="v31-featured-art">${homeDishThumb(featured)}</span><span class="v31-featured-copy"><span class="v31-featured-kicker">${pt?'FÁCIL E DIVERTIDA':'EASY & FUN'}</span><strong>${safe(pt?(PT_RECIPES[featured.id]?.title||featured.title):featured.title)}</strong><small>${safe((pt?(PT_RECIPES[featured.id]?.description||featured.description):featured.description)||(pt?'Uma receita gostosa para preparar juntos.':'A tasty recipe to make together.'))}</small><span class="v31-featured-meta">◷ ${safe(featured.time||'15 min')}　 ♧ ${pt?'Fácil':'Easy'}　 ♧ ${pt?'Porções':'Serves'} ${safe(featured.servings||'2')}</span></span><span class="v31-featured-heart" aria-hidden="true">♡</span></button></section>`}
-  <section class="v31-world-shelf"><div class="v31-section-title"><div><h2>🌍 ${pt?'Aventura de comida pelo mundo':'World Food Adventure'}</h2><p>${pt?'Descubra pratos deliciosos de todo o mundo!':'Discover delicious dishes from around the world!'}</p></div><button class="text-link" data-v31-open-world>${pt?'Explorar mapa':'Explore the map'} →</button></div><div class="v31-destination-rail">${countries.map((c,i)=>{const id=c.code==='IND'?51:null,r=id?find(id):null;const recipeTitle=r?(pt?(PT_RECIPES[id]?.title||r.title):r.title):(pt?'Novas receitas em revisão':'New recipes under review');return `<button class="v31-destination-tile${i===0?' is-featured':''}" data-v31-card-country="${c.code}"><span class="v31-destination-art v31-country-${c.code.toLowerCase()}"><img src="${V31_HOME_WORLD_ART.destinations[c.code]}" alt="" loading="lazy" decoding="async">${i===0?'<i aria-hidden="true">✦</i>':''}</span><strong>${pt?c.pt:c.en}</strong><small>${safe(recipeTitle)}</small></button>`}).join('')}</div></section>
+  <section class="v31-world-shelf"><div class="v31-section-title"><div><h2>🌍 ${pt?'Aventura de comida pelo mundo':'World Food Adventures'}</h2><p>${pt?'Descubra pratos deliciosos de todo o mundo!':'Discover delicious dishes from around the world!'}</p></div><button class="text-link" data-v31-open-world>${pt?'Explorar mapa':'Explore the map'} →</button></div><div class="v31-destination-rail">${countries.map((c,i)=>{const id=c.code==='IND'?51:null,r=id?find(id):null;const recipeTitle=r?(pt?(PT_RECIPES[id]?.title||r.title):r.title):(pt?'Novas receitas em revisão':'New recipes under review');return `<button class="v31-destination-tile${i===0?' is-featured':''}" data-v31-card-country="${c.code}"><span class="v31-destination-art v31-country-${c.code.toLowerCase()}"><img src="${V31_HOME_WORLD_ART.destinations[c.code]}" alt="" loading="lazy" decoding="async">${i===0?'<i aria-hidden="true">✦</i>':''}</span><strong>${pt?c.pt:c.en}</strong><small>${safe(recipeTitle)}</small></button>`}).join('')}</div></section>
   <section class="v31-home-quick-links" aria-label="${pt?'Mais aventuras':'More adventures'}"><button data-action="open-week-wheel">🎡 ${pt?'Monte minha semana':'Spin My Week'}</button><button data-nav="stories">🎵 ${pt?'Histórias e música':'Stories & Music'}</button><button data-nav="family">💛 ${pt?'Cozinhar com a família':'Cook with Family'}</button><button data-nav="friends">🌈 ${pt?'Cozinhar com amigos':'Cook with Friends'}</button><button data-nav="groceries">🧺 ${pt?'Lista de compras':'Shopping list'}</button></section>
  </section>`;
 };
@@ -299,59 +259,85 @@ groceries=function v31PantryShortcuts(){
 };
 
 const V31_APPROVED_INDIA_RECIPE_IDS=[51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74];
-const V31_WORLD_DESTINATIONS=[
- {code:'IND',iso:'IND',en:'India',pt:'Índia',flag:'🇮🇳',factEn:'Explore existing Indian recipes from Aaria’s original kitchen collection.',factPt:'Explore receitas indianas existentes da coleção original da cozinha da Aaria.',reviewStatus:'approved-reference'},
- {code:'ITA',iso:'ITA',en:'Italy',pt:'Itália',flag:'🇮🇹',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',recipeIds:[96],reviewStatus:'draft'},
- {code:'CHN',iso:'CHN',en:'China',pt:'China',flag:'🇨🇳',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',recipeIds:[97,98],reviewStatus:'draft'},
- {code:'JPN',iso:'JPN',en:'Japan',pt:'Japão',flag:'🇯🇵',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
- {code:'MEX',iso:'MEX',en:'Mexico',pt:'México',flag:'🇲🇽',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
- {code:'VNM',iso:'VNM',en:'Vietnam',pt:'Vietnã',flag:'🇻🇳',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'},
- {code:'GRC',iso:'GRC',en:'Greece',pt:'Grécia',flag:'🇬🇷',factEn:'New recipe adventures are being reviewed before they are added.',factPt:'Novas aventuras de receitas estão sendo revisadas antes de serem adicionadas.',reviewStatus:'draft'}
-];
+const V31_WORLD_DESTINATIONS=[{code:'IND',iso:'IND',en:'India',pt:'Índia',flag:'🇮🇳',factEn:'Explore the original Indian recipes in Aaria’s kitchen.',factPt:'Explore as receitas indianas originais da cozinha da Aaria.',reviewStatus:'approved-reference'}];
 const V31_DESTINATION_BY_ISO=Object.fromEntries(V31_WORLD_DESTINATIONS.map(x=>[x.code,x]));
-let v31SelectedCountry='IND';
-function v31MapPoint(coord){const lon=Number(coord[0]),lat=Math.max(-85,Math.min(85,Number(coord[1])));return [((lon+180)/360*1000).toFixed(1),((85-lat)/170*500).toFixed(1)]}
-function v31RingPath(ring){if(!Array.isArray(ring)||ring.length<4)return '';return ring.map((point,i)=>{const [x,y]=v31MapPoint(point);return `${i?'L':'M'}${x} ${y}`}).join(' ')+'Z'}
-function v31GeometryPath(geometry){if(!geometry)return '';const polys=geometry.type==='Polygon'?[geometry.coordinates]:geometry.type==='MultiPolygon'?geometry.coordinates:[];return polys.map(poly=>poly.map(v31RingPath).filter(Boolean).join(' ')).filter(Boolean).join(' ')}
-function v31Flag(code){const country=V31_DESTINATION_BY_ISO[code];return country?.flag||'🌍'}
-function v31MapSvg(){
- const features=V31_WORLD_GEOGRAPHY.features||[];
- const paths=features.map(feature=>{const p=feature.properties||{},code=p.ISO_A3_EH||p.ISO_A3||p.ADM0_A3||'',name=p.ADMIN||p.NAME||'Country',d=v31GeometryPath(feature.geometry),available=!!V31_DESTINATION_BY_ISO[code];if(!d)return '';return `<path class="v31-land${available?' v31-destination':''}${available&&v31SelectedCountry===code?' is-selected':''}" d="${d}"${available?` data-v31-country="${safe(code)}" data-v31-name="${safe(name)}" tabindex="0" role="button" aria-pressed="${v31SelectedCountry===code}" aria-label="${safe(name)} · ${state.language==='pt-BR'?'Destino disponível':'Adventure available'}"`:' aria-hidden="true"'}/>`}).join('');
- return `<div class="v31-map-wrap${v31MapPanMode?' is-pan-mode':''}"><svg class="v31-world-map" viewBox="0 0 1000 500" role="group" aria-label="${state.language==='pt-BR'?'Mapa interativo do mundo':'Interactive world map'}"><defs><linearGradient id="v31-ocean" x2="0" y2="1"><stop stop-color="#dff4f5"/><stop offset="1" stop-color="#c8e7ed"/></linearGradient></defs><rect width="1000" height="500" rx="30" fill="url(#v31-ocean)"/><g class="v31-graticule" aria-hidden="true"><path d="M0 125H1000M0 250H1000M0 375H1000M250 0V500M500 0V500M750 0V500"/></g><g class="v31-countries">${paths}</g></svg></div>`;
+let v31SelectedCountry='IND',v31MapPanel='';
+let v33GlobeController=null,v33GlobeState=null,v33WorldHost=null,v33SpinHintDismissed=false;
+function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\b[^>]*\bsrc=["']([^"']+)["']/i)?.[1]||'';return src.startsWith('data:image/')?src:''}catch{return ''}}
+function v33WorldCatalogue(){
+ const getLocalizedRecipe=(recipe,locale)=>{const pt=PT_RECIPES[recipe.id]||{};return {title:locale==='pt-BR'?(pt.title||''):recipe.title,description:locale==='pt-BR'?(pt.description||''):recipe.description,finishedDish:v33FinishedDishSource(recipe)}};
+ return createWorldAdventureHost({canonicalRecipes:RECIPES,locale:state.language==='pt-BR'?'pt-BR':'en-GB',passportSnapshot:{worldStamps:state.worldStamps},getLocalizedRecipe,
+  onOpenRecipe:id=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState;openRecipe(id);return true},
+  onBack:scope=>{if(scope==='screen'){goto('home');return true}return false},onOpenPassport:()=>{v33ShowPassport();return true}});
 }
-function v31DestinationIllustration(code){
- const label=V31_DESTINATION_BY_ISO[code]?.en||'World food';
- return `<svg viewBox="0 0 110 100" class="v31-destination-illustration" role="img" aria-label="${safe(label+' food adventure illustration')}"><ellipse cx="55" cy="88" rx="39" ry="6" fill="#67517a" opacity=".12"/><path d="M22 31q33-24 66 0v43q-33 24-66 0Z" fill="#fffaf0" stroke="#7d5b99" stroke-width="3"/><path d="M30 36q25-17 50 0v31q-25 17-50 0Z" fill="#f2eafd"/><path d="M55 34v39" stroke="#d0bfdc" stroke-width="2"/><path d="M38 47q7-8 14 0t-1 12q-8 4-13-2Z" fill="#8bbd78"/><path d="M63 45h11v15H63z" fill="#f0c267"/><path d="M38 68q8-8 16-1" fill="none" stroke="#e47d68" stroke-width="4" stroke-linecap="round"/><path d="M67 68q6-5 11 0" fill="none" stroke="#8eb8d1" stroke-width="4" stroke-linecap="round"/><path d="M55 11v9m-5-5h10" stroke="#d79b32" stroke-width="3" stroke-linecap="round"/></svg>`;
+function v33ShowPassport(){
+ const screen=document.querySelector('#screen');if(!screen)return;screen.querySelector('.v33-passport-overlay')?.remove();
+ const pt=state.language==='pt-BR',stamps=[...new Set((v33WorldHost?.getPassportSnapshot?.().stamps||[]))];
+ const names={IND:pt?'Índia':'India',ITA:pt?'Itália':'Italy',CHN:'China',JPN:pt?'Japão':'Japan',MEX:pt?'México':'Mexico',VNM:pt?'Vietnã':'Vietnam'},flags={IND:'🇮🇳',ITA:'🇮🇹',CHN:'🇨🇳',JPN:'🇯🇵',MEX:'🇲🇽',VNM:'🇻🇳'};
+ const count=pt?`${stamps.length} selo${stamps.length===1?'':'s'} ganho${stamps.length===1?'':'s'}`:`${stamps.length} stamp${stamps.length===1?'':'s'} earned`;
+ screen.insertAdjacentHTML('beforeend',`<div class="v33-passport-overlay"><section class="w02-map-sheet w02-passport-sheet" role="dialog" aria-modal="true" aria-labelledby="v33-passport-title"><button class="w02-sheet-close" type="button" data-v33-passport-close aria-label="${pt?'Fechar passaporte culinário':'Close Food Passport'}">×</button><div class="w02-sheet-heading"><span aria-hidden="true">📔</span><div><small>${pt?'PASSAPORTE CULINÁRIO':'FOOD PASSPORT'}</small><h2 id="v33-passport-title" tabindex="-1">${pt?'Meu passaporte culinário':'My Food Passport'}</h2><p>${count} · ${pt?'selos aparecem após concluir uma receita aprovada.':'stamps are earned after completing an approved recipe.'}</p></div></div>${stamps.length?`<div class="w02-passport-stamps">${stamps.map(code=>`<span class="v31-stamp">${flags[code]||'⭐'} ${names[code]||code}</span>`).join('')}</div>`:`<p class="w02-passport-empty">${pt?'Conclua uma receita aprovada para ganhar seu primeiro selo.':'Complete an approved recipe to earn your first stamp.'}</p>`}</section></div>`);
+ screen.querySelector('#v33-passport-title')?.focus({preventScroll:true});
 }
-let v31MapZoom=1,v31PanX=0,v31PanY=0,v31MapPanMode=false,v31MapDrag=null,v31MapSuppressClick=false;
-function v31ApplyMapTransform(){if(v31MapZoom<=1){v31MapPanMode=false;v31MapDrag=null}const wrap=document.querySelector('.v31-map-wrap');if(!wrap)return;wrap.classList.toggle('is-pan-mode',v31MapPanMode);wrap.style.setProperty('--v31-zoom',String(v31MapZoom));wrap.style.setProperty('--v31-pan-x',`${v31PanX}px`);wrap.style.setProperty('--v31-pan-y',`${v31PanY}px`);const toggle=document.querySelector('[data-v31-pan-toggle]');if(toggle){toggle.disabled=v31MapZoom<=1;toggle.setAttribute('aria-pressed',String(v31MapPanMode));toggle.textContent=state.language==='pt-BR'?(v31MapPanMode?'Concluir':'Mover mapa'):(v31MapPanMode?'Done':'Move map');toggle.setAttribute('aria-label',state.language==='pt-BR'?(v31MapZoom<=1?'Aumente o zoom para mover o mapa.':v31MapPanMode?'Mover mapa ativado. Arraste o mapa; toque em Concluir para rolar a página.':'Mover mapa. Ative para arrastar em todas as direções.'):(v31MapZoom<=1?'Zoom in before moving the map.':v31MapPanMode?'Map movement on. Drag the map; choose Done to scroll the page.':'Move map. Turn on to drag in every direction.'))}}
-function v31WorldPage(){
- const pt=state.language==='pt-BR',c=V31_WORLD_DESTINATIONS.find(x=>x.code===v31SelectedCountry)||V31_WORLD_DESTINATIONS[0];
+function v33KeepFlagsInsideSphere(host){
+ const sphere=host.querySelector('.aria-world-globe__sphere'),flags=host.querySelector('.aria-world-globe__flags');
+ if(!sphere||!flags)return {fit:()=>{},dispose:()=>{}};
+ const fit=()=>{const b=sphere.getBoundingClientRect(),cx=b.left+b.width/2,cy=b.top+b.height/2,r=Math.min(b.width,b.height)/2-2,r2=r*r;
+  for(const flag of flags.querySelectorAll('.aria-world-globe__flag')){const q=flag.getBoundingClientRect(),corners=[[q.left,q.top],[q.right,q.top],[q.left,q.bottom],[q.right,q.bottom]];if(corners.some(([x,y])=>(x-cx)*(x-cx)+(y-cy)*(y-cy)>r2))flag.remove()}
+ };
+ const schedule=()=>requestAnimationFrame(fit),observer=new MutationObserver(schedule),resizer=new ResizeObserver(schedule);
+ observer.observe(flags,{childList:true});resizer.observe(sphere);fit();
+ return {fit,dispose:()=>{observer.disconnect();resizer.disconnect()}};
+}
+function v33MountGlobe(screen){
+ if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
+ screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
+ const host=screen.querySelector('#v33-world-globe-host'),moduleController=window.AariaWorldAdventureGlobe.mount(host,{...v33WorldHost,avatarSrc:V33_WORLD_ARTWORK.pointingAaria},v33GlobeState||{rotation:-78}),flagFit=v33KeepFlagsInsideSphere(host);
+ const stage=host.querySelector('.aria-world-globe__stage'),guideHand=host.querySelector('.aria-world-globe__guide').cloneNode(),magic=document.createElement('div');
+ guideHand.className='aria-world-globe__guide-hand';guideHand.alt='';guideHand.setAttribute('aria-hidden','true');stage.append(guideHand);
+ const sparkle=document.createElement('img');sparkle.className='v33-globe-sparkle-trail';sparkle.src=V33_WORLD_ARTWORK.sparkleTrail;sparkle.alt='';sparkle.setAttribute('aria-hidden','true');stage.append(sparkle);
+ const spinHint=document.createElement('div');spinHint.className='v33-spin-hint';spinHint.setAttribute('role','note');
+ spinHint.innerHTML='<svg class="v33-spin-arrows" viewBox="0 0 160 42" aria-hidden="true" focusable="false"><path d="M8 31C23 8 53 5 75 19"/><path d="m67 10 10 10-14 2"/><path d="M152 11c-15 23-45 26-67 12"/><path d="m93 32-10-10 14-2"/></svg><span></span>';
+ spinHint.querySelector('span').textContent=state.language==='pt-BR'?'Deslize para girar o globo!':'Swipe to spin the globe!';
+ if(v33SpinHintDismissed)stage.classList.add('has-user-spun');stage.append(spinHint);
+ let spinStartRotation=null;
+ stage.addEventListener('pointerdown',event=>{if(event.target.closest('button'))return;spinStartRotation=moduleController.serialize().rotation;});
+ stage.addEventListener('pointerup',()=>{if(spinStartRotation===null)return;const rotated=Math.abs(moduleController.serialize().rotation-spinStartRotation);spinStartRotation=null;if(rotated>=8){v33SpinHintDismissed=true;stage.classList.add('has-user-spun');}});
+ stage.addEventListener('pointercancel',()=>{spinStartRotation=null;});
+ magic.className='v33-globe-magic-decor';magic.setAttribute('aria-hidden','true');
+ magic.innerHTML='<span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span>';
+ stage.append(magic);
+ let idleMotionAt=performance.now();
+ const idleMotion=setInterval(()=>{
+  const now=performance.now(),elapsed=Math.min(800,Math.max(0,now-idleMotionAt));idleMotionAt=now;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||document.visibilityState==='hidden'||stage.classList.contains('is-dragging'))return;
+  const current=moduleController.serialize();if(current.selected||current.pending)return;
+  // Reuse the immutable W03 restore API so the Natural Earth projection and
+  // country flags advance together; four updates per second keep CPU modest.
+  moduleController.restore({...current,rotation:current.rotation+elapsed*.002});flagFit.fit();
+ },250);
+ // Keep the W03 module source immutable while preserving W02's existing app
+ // lifecycle hooks and ensuring every rendered country control remains a
+ // 48px minimum Android touch target at the globe's farthest visible depth.
+ v33GlobeController={
+  getState:()=>moduleController.serialize(),
+  destroy:()=>{clearInterval(idleMotion);magic.remove();flagFit.dispose();moduleController.dispose()},
+  handleBack:()=>moduleController.handleBack(),
+  refresh:()=>moduleController.refresh(),
+  setOrientation:value=>moduleController.setOrientation(value)
+ };
+}
+let v31WorldPage;
+v31WorldPage=function v33FixedWorldMapPage(){
+ const pt=state.language==='pt-BR';
  state.worldStamps=Array.isArray(state.worldStamps)?state.worldStamps:[];
- const stamps=state.worldStamps.filter(code=>V31_WORLD_DESTINATIONS.some(destination=>destination.code===code));
- const countries=V31_WORLD_DESTINATIONS.map(x=>`<button class="v31-country-choice${x.code===c.code?' is-selected':''}" aria-pressed="${x.code===c.code}" data-v31-country="${x.code}" data-v31-country-choice data-v31-search-name="${safe((pt?x.pt:x.en).toLowerCase())}"><span>${x.flag}</span><span>${pt?x.pt:x.en}</span></button>`).join('');
- const indiaRecipes=c.code==='IND'?V31_APPROVED_INDIA_RECIPE_IDS.map(id=>find(id)).filter(Boolean):[];
- const pilotRecipes=(c.recipeIds||[]).map(id=>V31_WORLD_ADVENTURE.recipes.find(recipe=>recipe.id===id)).filter(Boolean);
- const adventureContent=indiaRecipes.length?`<div class="v31-approved-recipes"><span class="v31-preview-tag">${pt?'RECEITAS ORIGINAIS APROVADAS':'APPROVED ORIGINAL RECIPES'}</span><p>${pt?'Receitas do catálogo original, sem alterar seus IDs ou funcionamento.':'Recipes from the original catalog; their IDs and existing features stay unchanged.'}</p><div>${indiaRecipes.map(r=>`<button data-v31-approved-recipe="${r.id}">${safe(pt?(PT_RECIPES[r.id]?.title||r.title):r.title)} <span aria-hidden="true">→</span></button>`).join('')}</div></div>`:pilotRecipes.length?`<div class="v31-adventure-recipes"><span class="v31-preview-tag">${pt?'PILOTO DE AVENTURA · EM REVISÃO':'ADVENTURE PILOT · IN REVIEW'}</span><p class="v31-review-note">${pt?'Receitas piloto disponíveis para teste; aprovação editorial e de segurança ainda pendente.':'Pilot recipes are available for testing; editorial and safety approval is still pending.'}</p>${pilotRecipes.map(p=>`<article class="v31-adventure-recipe"><img src="${V31_WORLD_ADVENTURE_ART[p.id].hero}" alt="${safe(p.record.title)} — illustrated recipe scene" loading="lazy"><div><h3>${safe(pt?p.pt.title:p.record.title)}</h3><p>${safe(pt?p.pt.description:p.record.description)}</p><small>${safe(p.record.method)} · ${p.record.servings} ${pt?'porções':'servings'} · ${safe((p.record.allergens||[]).join(', ')|| (pt?'sem alergênicos declarados':'no declared allergens'))}</small><button class="v31-preview-button" data-v31-approved-recipe="${p.id}">${pt?'Abrir receita':'Open recipe'} <span aria-hidden="true">→</span></button></div></article>`).join('')}</div>`:`<div class="v31-recipe-preview"><span class="v31-preview-tag">${pt?'REVISÃO PENDENTE':'REVIEW PENDING'}</span><h3>${pt?'Novas aventuras culinárias em revisão':'New cooking adventures under review'}</h3><p class="v31-review-note">${pt?'Receitas novas só aparecerão após a revisão de segurança infantil, alergênicos, nutrição, cultura e duplicatas.':'New recipes will appear after child-safety, allergen, nutrition, cultural and duplicate reviews.'}</p></div>`;
- const passport=stamps.length?stamps.map(code=>{const x=V31_DESTINATION_BY_ISO[code];return `<span class="v31-stamp">${x.flag} ${pt?x.pt:x.en}</span>`}).join(''):`<p>${pt?'Complete uma aventura aprovada para ganhar seu primeiro selo.':'Finish an approved adventure to earn your first stamp.'}</p>`;
- return `<section class="v31-world-page"><header class="v31-world-header"><button class="v31-back" data-v31-back aria-label="${pt?'Voltar para início':'Back home'}">←</button><div><span class="v3-eyebrow">${pt?'PASSAPORTE CULINÁRIO':'FOOD EXPLORER PASSPORT'}</span><h1 tabindex="-1">${pt?'Aventuras pelo mundo':'World Food Adventures'}</h1><p>${pt?'Explore destinos e sabores com sua família.':'Explore destinations and flavours with your family.'}</p></div><div class="v31-passport-count" aria-label="${pt?`${stamps.length} de 7 selos ganhos`:`${stamps.length} of 7 stamps earned`}">📔 <strong>${stamps.length}/7 ${pt?'selos':'stamps'}</strong></div></header><div class="v31-world-layout"><section class="v31-map-panel" aria-label="${pt?'Mapa':'Map'}"><div class="v31-map-title"><strong>${pt?'Escolha um destino':'Choose a destination'}</strong><small>${pt?'Toque no mapa ou use a lista.':'Tap the map or use the country list.'}</small></div>${v31MapSvg()}<label class="v31-country-select-label">${pt?'Buscar destino':'Search destinations'}<input type="search" data-v31-country-search placeholder="${pt?'Digite um país':'Type a country'}" autocomplete="off"></label><p class="v31-search-result" data-v31-search-result aria-live="polite"></p><label class="v31-country-select-label">${pt?'Lista de destinos':'Destination list'}<select data-v31-country-select aria-label="${pt?'Escolha um país':'Choose a country'}">${V31_WORLD_DESTINATIONS.map(x=>`<option value="${x.code}"${x.code===c.code?' selected':''}>${x.flag} ${pt?x.pt:x.en}</option>`).join('')}</select></label></section><aside class="v31-destination-card" aria-live="polite"><div class="v31-destination-banner"><span class="v31-destination-flag" aria-hidden="true">${c.flag}</span>${v31DestinationIllustration(c.code)}</div><span class="v3-eyebrow">${pt?'DESTINO':'DESTINATION'}</span><h2>${pt?c.pt:c.en}</h2><p class="v31-food-fact">${pt?c.factPt:c.factEn}</p>${adventureContent}</aside></div><section class="v31-country-list"><h2>${pt?'Destinos disponíveis':'Available destinations'}</h2><div>${countries}</div><p class="v31-no-results" data-v31-no-results hidden>${pt?'Nenhum destino encontrado. Apague a busca para ver todos.':'No destinations found. Clear your search to see all.'}</p></section><section class="v31-passport" aria-live="polite"><div><h2>${pt?'Meu passaporte culinário':'My food passport'}</h2>${passport}</div><button type="button" data-v31-passport-reset ${stamps.length?'':'disabled'}>${pt?'Redefinir selos':'Reset stamps'}</button></section><p class="v31-map-source">${pt?'Mapa offline: Natural Earth, escala 1:110m.':'Offline map: Natural Earth, 1:110m scale.'} ${pt?'Fronteiras simplificadas e possivelmente disputadas; mapa para exploração, não navegação.':'Boundaries are simplified and may be disputed; for exploration, not navigation.'}</p></section>`;
-}
-
-v31WorldPage=function v31ApprovedWorldPage(){
- const pt=state.language==='pt-BR',c=V31_WORLD_DESTINATIONS.find(x=>x.code===v31SelectedCountry)||V31_WORLD_DESTINATIONS[0];
- state.worldStamps=Array.isArray(state.worldStamps)?state.worldStamps:[];
- const stamps=state.worldStamps.filter(code=>V31_WORLD_DESTINATIONS.some(destination=>destination.code===code));
- const countries=V31_WORLD_DESTINATIONS.map(x=>`<button class="v31-country-choice${x.code===c.code?' is-selected':''}" aria-pressed="${x.code===c.code}" data-v31-country="${x.code}" data-v31-country-choice data-v31-search-name="${safe((pt?x.pt:x.en).toLowerCase())}"><span>${x.flag}</span><span>${pt?x.pt:x.en}</span></button>`).join('');
- const ids=c.code==='IND'?V31_APPROVED_INDIA_RECIPE_IDS:[];
- const recipes=ids.map(id=>find(id)).filter(Boolean),featured=recipes.find(r=>Number(r.id)===51)||null;
- const passport=stamps.length?stamps.map(code=>{const x=V31_DESTINATION_BY_ISO[code];return `<span class="v31-stamp">${x.flag} ${pt?x.pt:x.en}</span>`}).join(''):`<p>${pt?'Complete uma aventura aprovada para ganhar seu primeiro selo.':'Complete an approved adventure to earn your first stamp.'}</p>`;
- const featuredMarkup=featured?`<button class="v31-world-feature" data-v31-approved-recipe="${featured.id}"><span class="v31-world-feature-art">${homeDishThumb(featured)}</span><span class="v31-world-feature-copy"><small>${pt?'DESTINO EM DESTAQUE':'FEATURED DESTINATION'}</small><strong>${c.flag} ${pt?c.pt:c.en}</strong><b>${safe(pt?(PT_RECIPES[featured.id]?.title||featured.title):featured.title)}</b><span>${safe((pt?(PT_RECIPES[featured.id]?.description||featured.description):featured.description)||(pt?'Uma receita gostosa para preparar juntos.':'A tasty recipe to make together.'))}</span><em>🌿 ${pt?'Receita do catálogo original':'Original catalog recipe'}</em><span class="v31-world-cook">${pt?'Vamos cozinhar!':'Let’s Cook!'} →</span></span></button>`:`<section class="v31-world-pending"><span class="v31-world-pending-icon">${c.flag}</span><div><small>${pt?'DESTINO EM REVISÃO':'DESTINATION UNDER REVIEW'}</small><h2>${pt?c.pt:c.en}</h2><p>${pt?'Novas receitas e ilustrações só aparecerão após as revisões independentes de segurança, nutrição, cultura e direitos autorais.':'New recipes and illustrations will appear after independent safety, nutrition, cultural, and artwork-rights reviews.'}</p></div></section>`;
- return `<section class="v31-world-page v31-world-illustrated"><header class="v31-world-header"><button class="v31-back" data-v31-back aria-label="${pt?'Voltar para início':'Back home'}">←</button><div><span class="v3-eyebrow">${pt?'PASSAPORTE DO EXPLORADOR':'FOOD EXPLORER PASSPORT'}</span><h1 tabindex="-1">${pt?'Aventura de comida pelo mundo':'World Food Adventure'}</h1><p>${pt?'Explore países, experimente sabores e colecione selos!':'Explore countries, try new flavours and collect passport stamps!'}</p></div><div class="v31-passport-count" aria-label="${pt?`${stamps.length} de 7 selos ganhos`:`${stamps.length} of 7 stamps earned`}">📔 <strong>${stamps.length}/7 ${pt?'selos':'stamps'}</strong></div></header>
-  <section class="v31-illustrated-map-panel${pt?'':' v31-map-reference-art'}" style="${pt?'':`--v31-world-map-art:url('${V31_HOME_WORLD_ART.worldMap}')`}" aria-label="${pt?'Mapa de aventuras pelo mundo':'World adventure map'}"><div class="v31-map-decoration" aria-hidden="true"><span class="v31-map-landmark v31-landmark-america">🌮<small>${pt?'América do Norte':'North America'}</small></span><span class="v31-map-landmark v31-landmark-europe">🍕<small>${pt?'Europa':'Europe'}</small></span><span class="v31-map-landmark v31-landmark-asia">🍜<small>${pt?'Ásia':'Asia'}</small></span><span class="v31-map-landmark v31-landmark-africa">🥘<small>${pt?'África':'Africa'}</small></span><span class="v31-map-landmark v31-landmark-oceania">🍍<small>Oceania</small></span></div>${v31MapSvg()}<p class="v31-map-source">${pt?'Mapa offline simplificado para explorar, não navegar.':'Offline simplified map for exploring, not navigation.'}</p><div class="v31-world-map-search"><label>${pt?'Buscar destino':'Search destinations'}<input type="search" data-v31-country-search placeholder="${pt?'Digite um país':'Type a country'}" autocomplete="off"></label><label>${pt?'Lista de destinos':'Destination list'}<select data-v31-country-select aria-label="${pt?'Escolha um país':'Choose a country'}">${V31_WORLD_DESTINATIONS.map(x=>`<option value="${x.code}"${x.code===c.code?' selected':''}>${x.flag} ${pt?x.pt:x.en}</option>`).join('')}</select></label></div><p class="v31-search-result" data-v31-search-result aria-live="polite"></p></section>
-  ${featuredMarkup}
-  ${recipes.length?`<section class="v31-world-recipes v31-approved-recipes"><div class="v31-section-title"><div><h2>${pt?'Mais receitas da Ásia':'More Recipes from Asia'}</h2><p>${pt?'Receitas originais já disponíveis':'Original recipes already in your kitchen'}</p></div><button class="text-link" data-nav="library">${pt?'Ver todas':'See all'} →</button></div><div class="v31-world-recipe-rail">${recipes.map(r=>`<button class="v31-world-recipe-tile" data-v31-approved-recipe="${r.id}"><span>${homeDishThumb(r)}</span><strong>${safe(pt?(PT_RECIPES[r.id]?.title||r.title):r.title)}</strong></button>`).join('')}</div></section>`:''}
-  <section class="v31-country-list v31-world-countries"><h2>${pt?'Escolha seu próximo destino':'Choose your next destination'}</h2><div>${countries}</div><p class="v31-no-results" data-v31-no-results hidden>${pt?'Nenhum destino encontrado.':'No destinations found.'}</p></section>
-  <section class="v31-passport" aria-live="polite"><div><h2>${pt?'Meu passaporte culinário':'My food passport'}</h2>${passport}</div><button type="button" data-v31-passport-reset ${stamps.length?'':'disabled'}>${pt?'Redefinir selos':'Reset stamps'}</button></section></section>`;
+ // India is the only destination backed by validated canonical recipe links.
+ // Preserve profile data, but do not display stamps for unvalidated countries.
+ const stamps=state.worldStamps.filter(code=>code==='IND');
+ const countLabel=pt?`${stamps.length} selo${stamps.length===1?'':'s'} ganho${stamps.length===1?'':'s'}`:`${stamps.length} stamp${stamps.length===1?'':'s'} earned`;
+ const recipes=V31_APPROVED_INDIA_RECIPE_IDS.map(id=>find(id)).filter(Boolean);
+ const countryCard=v31MapPanel==='country'?`<section class="w02-map-sheet w02-country-sheet" role="dialog" aria-labelledby="v33-country-title"><button class="w02-sheet-close" type="button" data-v31-panel-close aria-label="${pt?'Fechar receitas da Índia':'Close India recipes'}">×</button><div class="w02-sheet-heading"><span aria-hidden="true">🇮🇳</span><div><small>${pt?'RECEITAS ORIGINAIS APROVADAS':'APPROVED ORIGINAL RECIPES'}</small><h2 id="v33-country-title" tabindex="-1">${pt?'Índia':'India'}</h2><p>${pt?'Escolha uma receita para cozinhar.':'Choose a recipe to cook.'}</p></div></div><div class="w02-country-recipes" aria-label="${pt?'18 receitas canônicas da Índia':'18 canonical India recipes'}">${recipes.map(r=>`<button class="w02-recipe-card" type="button" data-v31-approved-recipe="${r.id}"><span class="w02-recipe-card-art">${homeDishThumb(r)}</span><span><strong>${safe(pt?(PT_RECIPES[r.id]?.title||r.title):r.title)}</strong><small>${safe(pt?(PT_RECIPES[r.id]?.description||r.description||''):r.description||'')}</small></span><b aria-hidden="true">→</b></button>`).join('')}</div></section>`:'';
+ const passport=v31MapPanel==='passport'?`<section class="w02-map-sheet w02-passport-sheet" role="dialog" aria-labelledby="v33-passport-title"><button class="w02-sheet-close" type="button" data-v31-panel-close aria-label="${pt?'Fechar passaporte':'Close Food Passport'}">×</button><div class="w02-sheet-heading"><span aria-hidden="true">📔</span><div><small>${pt?'PASSAPORTE CULINÁRIO':'FOOD PASSPORT'}</small><h2 id="v33-passport-title" tabindex="-1">${pt?'Meu passaporte culinário':'My Food Passport'}</h2><p>${safe(countLabel)} · ${pt?'selos aparecem após concluir uma receita aprovada.':'stamps are earned after completing an approved recipe.'}</p></div></div>${stamps.length?`<div class="w02-passport-stamps">${stamps.map(()=>'<span class="v31-stamp">🇮🇳 India</span>').join('')}</div>`:`<p class="w02-passport-empty">${pt?'Conclua uma receita aprovada para ganhar seu primeiro selo.':'Complete an approved recipe to earn your first stamp.'}</p>`}</section>`:'';
+ return `<section class="w02-fixed-map-page"><header class="w02-map-header"><button class="w02-map-back" type="button" data-v31-back aria-label="${pt?'Voltar para início':'Back home'}">←</button><h1 tabindex="-1">${pt?'Mapa do mundo':'World Map'}</h1><button type="button" class="w02-passport-button" data-v31-open-passport aria-label="${pt?'Abrir passaporte culinário':'Open Food Passport'}">📔 <span>${safe(countLabel)}</span></button></header><div class="w02-map-viewport" data-w02-fixed-map role="region" aria-label="${pt?'Mapa ilustrado offline para explorar, não para navegação':'Offline illustrated map for exploring, not navigation'}"><div class="w02-map-art"><img class="v31-map-art-image" alt="${pt?'Mapa ilustrado do mundo':'Illustrated world map'}"><button type="button" class="w02-country-marker" data-v31-country="IND" aria-label="${pt?'Índia: ver 18 receitas aprovadas':'India: view 18 approved recipes'}"><span aria-hidden="true">🇮🇳</span><strong>${pt?'Índia':'India'}</strong></button></div></div><p class="w02-map-caption">${pt?'Toque em Índia para ver as receitas.':'Tap India to see its recipes.'}</p>${countryCard}${passport}</section>`;
 };
 
 const v3OriginalCreateWeek=createWeek;
@@ -450,18 +436,15 @@ nutritionValue=function v32SafeNutritionValue(r){
 render=function v3Render(){
  document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
  if(view==='world'){
-  const active=document.activeElement,previousView=window.v31PreviousView||'home';
-  const focusCode=active?.closest?.('[data-v31-country]')?.dataset.v31Country||'';
-  const focusType=active?.matches?.('[data-v31-country-select]')?'select':active?.matches?.('[data-v31-country-search]')?'search':active?.closest?.('.v31-map-pin')?'pin':active?.closest?.('.v31-country-choice')?'list':active?.matches?.('.v31-land')?'map':'';
-  const screen=document.querySelector('#screen');if(screen){screen.className='page v31-world-screen';screen.innerHTML=v31WorldPage()}
+  const previousView=window.v31PreviousView||'home';
+  const screen=document.querySelector('#screen');if(screen){screen.className='page v31-world-screen';v33MountGlobe(screen)}
   const app=document.querySelector('.app');app?.classList.remove('home-dashboard');app?.classList.add('v31-world-active');app?.classList.toggle('reduce-motion',!!state.reducedMotion);
   document.body.classList.remove('v3-screen-home');document.body.classList.add('v31-screen-world');document.querySelectorAll('.bottom .tab').forEach(b=>b.classList.toggle('active',b.dataset.nav==='world'));
-  v31ApplyMapTransform();
-  const selector=focusType==='select'?'[data-v31-country-select]':focusType==='search'?'[data-v31-country-search]':focusType==='pin'?`.v31-map-pin[data-v31-country="${focusCode}"]`:focusType==='list'?`.v31-country-choice[data-v31-country="${focusCode}"]`:focusType==='map'?`.v31-land[data-v31-country="${focusCode}"]`:'';
-  if(selector)document.querySelector(selector)?.focus({preventScroll:true});else if(previousView!=='world')document.querySelector('.v31-world-header h1')?.focus({preventScroll:true});
+  if(previousView!=='world')screen?.querySelector('.aria-world-globe__header h1')?.focus({preventScroll:true});
   window.v31PreviousView='world';
   return;
  }
+ if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy();v33GlobeController=null;v33WorldHost=null}
  window.v31PreviousView=view;
  v3BaseRender();
  // The base renderer appends the current page class while the world renderer
@@ -537,27 +520,37 @@ document.addEventListener('click',async e=>{
  }
 });
 document.addEventListener('click',e=>{
- if(v31MapSuppressClick){v31MapSuppressClick=false;e.preventDefault();return}
- const target=e.target.closest('[data-v31-country]');
- if(target){v31SelectedCountry=target.dataset.v31Country;render();return}
+ if(e.target.closest?.('[data-v33-passport-close]')){document.querySelector('.v33-passport-overlay')?.remove();document.querySelector('.aria-world-globe__passport')?.focus({preventScroll:true});return}
+  const target=e.target.closest('[data-v31-country]');
+  if(target){v31SelectedCountry=target.dataset.v31Country;v31MapPanel='country';history.pushState({v31Panel:'country'},'',location.hash);render();document.querySelector('#v33-country-title')?.focus({preventScroll:true});return}
  const button=e.target.closest('button');if(!button)return;
  if(button.dataset.v31ApprovedRecipe){openRecipe(Number(button.dataset.v31ApprovedRecipe));return}
- 
  if(button.hasAttribute('data-v31-passport-reset')){state.worldStamps=[];save();render();return}
+  if(button.hasAttribute('data-v31-open-passport')){v31MapPanel='passport';history.pushState({v31Panel:'passport'},'',location.hash);render();document.querySelector('#v33-passport-title')?.focus({preventScroll:true});return}
+  if(button.hasAttribute('data-v31-panel-close')){history.back();return}
  if(button.hasAttribute('data-v31-open-world')){window.v31WorldOpenedFromNav=false;window.v31WorldOpenerIndex=[...document.querySelectorAll('[data-v31-open-world]')].indexOf(button);goto('world');return}
- if(button.hasAttribute('data-v31-back')){goto('home');if(window.v31WorldOpenedFromNav)document.querySelector('.bottom .tab[data-nav="world"]')?.focus({preventScroll:true});else{const openers=[...document.querySelectorAll('[data-v31-open-world]')];(openers[window.v31WorldOpenerIndex]||openers[0])?.focus({preventScroll:true})}window.v31WorldOpenedFromNav=false;return}
- if(button.hasAttribute('data-v31-pan-toggle')){v31MapPanMode=!v31MapPanMode;v31ApplyMapTransform();button.setAttribute('aria-pressed',String(v31MapPanMode));button.setAttribute('aria-label',state.language==='pt-BR'?(v31MapPanMode?'Mover mapa ativado. Arraste o mapa; toque em Concluir para rolar a página.':'Mover mapa. Ative para arrastar em todas as direções.'):(v31MapPanMode?'Map movement on. Drag the map; choose Done to scroll the page.':'Move map. Turn on to drag in every direction.'));button.textContent=state.language==='pt-BR'?(v31MapPanMode?'Concluir':'Mover mapa'):(v31MapPanMode?'Done':'Move map');return}
- if(button.dataset.v31Zoom){if(button.dataset.v31Zoom==='in')v31MapZoom=Math.min(2.5,v31MapZoom+.25);else if(button.dataset.v31Zoom==='out')v31MapZoom=Math.max(1,v31MapZoom-.25);else{v31MapZoom=1;v31PanX=0;v31PanY=0}const rect=document.querySelector('.v31-map-wrap')?.getBoundingClientRect();if(rect){const maxX=Math.max(0,(v31MapZoom-1)*rect.width/2),maxY=Math.max(0,(v31MapZoom-1)*rect.height/2);v31PanX=Math.max(-maxX,Math.min(maxX,v31PanX));v31PanY=Math.max(-maxY,Math.min(maxY,v31PanY))}v31ApplyMapTransform();return}
+  if(button.hasAttribute('data-v31-back')){v31MapPanel='';goto('home');if(window.v31WorldOpenedFromNav)document.querySelector('.bottom .tab[data-nav="world"]')?.focus({preventScroll:true});else{const openers=[...document.querySelectorAll('[data-v31-open-world]')];(openers[window.v31WorldOpenerIndex]||openers[0])?.focus({preventScroll:true})}window.v31WorldOpenedFromNav=false;return}
 });
-document.addEventListener('click',e=>{const button=e.target.closest('button[data-action="nextstep"].finish-step');if(!button||!selected||!state.done.includes(selected.id)||!V31_APPROVED_INDIA_RECIPE_IDS.includes(selected.id))return;state.worldStamps=Array.isArray(state.worldStamps)?state.worldStamps:[];if(!state.worldStamps.includes('IND')){state.worldStamps.push('IND');save()}});
-document.addEventListener('change',e=>{const select=e.target;if(select.matches('[data-v31-country-select]')){v31SelectedCountry=select.value;render()}});
-document.addEventListener('input',e=>{const input=e.target;if(!input.matches('[data-v31-country-search]'))return;const query=input.value.trim().toLocaleLowerCase(),choices=[...document.querySelectorAll('[data-v31-country-choice]')];let count=0;choices.forEach(button=>{button.hidden=!!query&&!button.dataset.v31SearchName.includes(query);if(!button.hidden)count++});const noResults=document.querySelector('[data-v31-no-results]'),result=document.querySelector('[data-v31-search-result]');if(noResults)noResults.hidden=count>0;if(result)result.textContent=query?(state.language==='pt-BR'?`${count} destino(s) encontrado(s).`:`${count} destination(s) found.`):''});
-document.addEventListener('keydown',e=>{const path=e.target.closest?.('[data-v31-country]');if(path&&['Enter',' '].includes(e.key)){e.preventDefault();v31SelectedCountry=path.dataset.v31Country;render()}});
-document.addEventListener('pointerdown',e=>{const wrap=e.target.closest?.('.v31-map-wrap');if(!wrap||!v31MapPanMode||e.button!==0)return;v31MapDrag={id:e.pointerId,x:e.clientX,y:e.clientY,panX:v31PanX,panY:v31PanY,moved:false}});
-document.addEventListener('pointermove',e=>{if(!v31MapDrag||v31MapDrag.id!==e.pointerId)return;const dx=e.clientX-v31MapDrag.x,dy=e.clientY-v31MapDrag.y;if(Math.abs(dx)+Math.abs(dy)>5)v31MapDrag.moved=true;if(v31MapDrag.moved){const rect=document.querySelector('.v31-map-wrap')?.getBoundingClientRect();const maxX=rect?Math.max(0,(v31MapZoom-1)*rect.width/2):Infinity,maxY=rect?Math.max(0,(v31MapZoom-1)*rect.height/2):Infinity;v31PanX=Math.max(-maxX,Math.min(maxX,v31MapDrag.panX+dx));v31PanY=Math.max(-maxY,Math.min(maxY,v31MapDrag.panY+dy));v31ApplyMapTransform()}});
-document.addEventListener('pointerup',e=>{if(!v31MapDrag||v31MapDrag.id!==e.pointerId)return;v31MapSuppressClick=v31MapDrag.moved;v31MapDrag=null});
-document.addEventListener('pointercancel',()=>{v31MapDrag=null});
-window.addEventListener('hashchange',()=>{if(!location.hash&&view!=='home'){view='home';render()}});
+function v33CountryForCompletedRecipe(id){
+ if(V31_APPROVED_INDIA_RECIPE_IDS.includes(Number(id)))return 'IND';
+ const recipe=RECIPES.find(item=>Number(item.id)===Number(id)),meta=recipe?.worldAdventure;
+ return meta?.validationStatus==='W01_VALIDATED'&&meta?.navigationStatus==='ACTIVE'&&['ITA','CHN','JPN','MEX','VNM'].includes(meta.countryCode)&&meta.bilingualStatus==='APPROVED'&&meta.artworkStatus==='APPROVED'&&meta.safetyStatus==='APPROVED'?meta.countryCode:null;
+}
+document.addEventListener('click',e=>{const button=e.target.closest('button[data-action="nextstep"].finish-step');if(!button||!selected||!state.done.includes(selected.id))return;const code=v33CountryForCompletedRecipe(selected.id);if(!code)return;state.worldStamps=Array.isArray(state.worldStamps)?state.worldStamps:[];if(!state.worldStamps.includes(code)){state.worldStamps.push(code);save()}});
+document.addEventListener('backbutton',e=>{if(view!=='world')return;if(document.querySelector('.v33-passport-overlay')){document.querySelector('.v33-passport-overlay').remove();e.preventDefault();e.stopImmediatePropagation();return}if(v33GlobeController?.handleBack?.()){e.preventDefault();e.stopImmediatePropagation()}},true);
+document.addEventListener('keydown',e=>{if(view!=='world'||!['Escape','Backspace','BrowserBack'].includes(e.key))return;if(document.querySelector('.v33-passport-overlay')){document.querySelector('.v33-passport-overlay').remove();e.preventDefault();e.stopImmediatePropagation();return}if(v33GlobeController?.handleBack?.()){e.preventDefault();e.stopImmediatePropagation()}},true);
+window.addEventListener('popstate',e=>{
+  // Recipe navigation changes the hash, but the prior history entry is the
+  // country-card panel state at #aria/world. Restore that panel explicitly;
+  // the base hash router intentionally does not know about the World route.
+  if(e.state?.v31Panel==='country'&&location.hash==='#aria/world'){
+   view='world';v31MapPanel='country';e.preventDefault();e.stopImmediatePropagation();render();return;
+  }
+  // A subsequent Back from the country panel returns to the fixed map.
+  if(view==='world'&&v31MapPanel){v31MapPanel='';e.preventDefault();e.stopImmediatePropagation();render()}
+},true);
+
+ window.addEventListener('hashchange',()=>{if(!location.hash&&view!=='home'){view='home';v31MapPanel='';render()}});
 document.addEventListener('change',e=>{
  const input=e.target;if(input.matches('[data-v3-parent]')){state.parentContacts??={mommy:'',daddy:''};state.parentContacts[input.dataset.v3Parent]=input.value.trim();save();notice('Family contact saved on this device.');}
 });
