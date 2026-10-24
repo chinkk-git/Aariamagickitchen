@@ -310,7 +310,7 @@ test('international active step text restores the exact audited locale instructi
   const html = '<div class="ref-step-copy v32-r12-instruction"><p data-original-source="recipe-step">formatted copy</p></div>';
   for (const recipe of [italy, china]) {
     for (const locale of ['en-GB', 'pt-BR']) {
-      for (const index of [0, 1]) {
+      for (const index of recipe.steps.map((_, position) => position)) {
         const expected = recipe.steps[index].instruction[locale];
         const steps = recipe.steps.map(step => ({instruction: step.instruction[locale]}));
         const restored = restore(html, steps, index);
