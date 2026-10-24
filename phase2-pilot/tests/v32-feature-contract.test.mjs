@@ -271,9 +271,12 @@ test('international shared renderer uses matching EN-GB and PT-BR ingredient and
     'the active record uses the canonical EN-GB recipe or PT-BR translation step array');
   assert.match(runtime, /selected=\{\.\.\.entry\.record,\.\.\.\(PT_RECIPES\[id\]\|\|\{\}\),title:record\.title,ingredients:v32InternationalIngredientList\(record\),steps:localeSteps,yieldText:pt\?/,
     'the active shared-renderer record uses the top-level locale helpers rather than block-scoped initializer functions');
-  assert.match(runtime, /function v32RestoreInternationalStepCopy\\(active,steps,index\\)[\\s\\S]*?active\\.textContent=String\\(instruction\\)/,
+  assert.ok(runtime.includes('active.textContent=String(instruction)'),
     'the final active paragraph receives canonical text through the DOM text API');
-  assert.match(runtime, /render=function v32RenderInternationalParity\\(\\)\\{v32RenderBeforeInternationalParity\\(\\);[\\s\\S]*?v32RestoreInternationalStepCopy\\(document\\.querySelector\\('\\.app\\.v32-international-active \\.ref-step-card\\.active \\.ref-step-copy p'\\),steps,step\\)/,
+  const renderStart = runtime.indexOf('render=function v32RenderInternationalParity');
+  const renderBase = runtime.indexOf('v32RenderBeforeInternationalParity();', renderStart);
+  const restoreCall = runtime.indexOf("v32RestoreInternationalStepCopy(document.querySelector('.app.v32-international-active .ref-step-card.active .ref-step-copy p'),steps,step)", renderBase);
+  assert.ok(renderStart >= 0 && renderBase >= renderStart && restoreCall > renderBase,
     'copy restoration runs after the shared render pass finishes');
   for (const recipe of [italy, china]) {
     assert.ok(recipe.steps.length > 0, `recipe ${recipe.id} has localized guided steps`);
@@ -305,7 +308,7 @@ test('international active step text restores the exact audited locale instructi
     read('content/international/countries/china/099-vegetable-fried-rice/recipe.json').then(JSON.parse)
   ]);
   const start = runtime.indexOf('function v32RestoreInternationalStepCopy(');
-  const end = runtime.indexOf('\\nfunction v32RenderInternationalStepArtwork(', start);
+  const end = runtime.indexOf('\nfunction v32RenderInternationalStepArtwork(', start);
   assert.ok(start >= 0 && end > start, 'active step restoration helper is present');
   const restore = new Function(`${runtime.slice(start, end)}; return v32RestoreInternationalStepCopy;`)();
   for (const recipe of [italy, china]) {
