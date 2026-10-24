@@ -94,6 +94,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
     'G2 accepts a multi-path arrow SVG only when it has at least two paths and non-zero rendered geometry');
   assert.doesNotMatch(tablet,/querySelectorAll\('path'\)\.length===2/,
     'G2 does not confuse the four path segments of the approved SVG with four separate arrows');
+  assert.match(tablet,/for\(const id of \[96,99\]\)for\(const locale of \['en-GB','pt-BR'\]\)\{\s*await click\('#nav \.tab\[data-nav="home"\]'[\s\S]*?Home before international '[+][^;]+;await waitFor\('\.v31-hero-welcome h1','Home before international '/,
+    'G2 explicitly navigates from the library back to Home before checking Home New Recipes routes');
   assert.match(phone,/orientation/);
   assert.match(phone,/aria-world-globe/);
   assert.match(phone,/aria-world-globe__recipe/);

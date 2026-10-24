@@ -235,7 +235,8 @@ await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcom
     return result;
   }
   for(const id of [96,99])for(const locale of ['en-GB','pt-BR']){
-    await evaluate(`state.language=${JSON.stringify(locale)};save();render()`);await waitFor('.v31-hero-welcome h1','Home before international '+id+' '+locale);
+    await click('#nav .tab[data-nav="home"]','Home before international '+id+' '+locale);await waitFor('.v31-hero-welcome h1','Home before international '+id+' '+locale);
+    await evaluate(`state.language=${JSON.stringify(locale)};save();render()`);await waitFor('.v31-hero-welcome h1','Localized Home before international '+id+' '+locale);
     const clickState=await evaluate(`(()=>{const button=document.querySelector('.v32-new-recipe-card[data-open="${id}"]');button?.click();return {clicked:!!button,recordAvailable:RECIPES.some(r=>Number(r.id)===${id}),openRecipeType:typeof openRecipe,viewAfter:view,selectedId:Number(selected?.id||0)}})()`);
     if(!clickState.clicked||!clickState.recordAvailable||clickState.selectedId!==id)throw Error('Home New Recipes recipe click did not open the shared route: '+JSON.stringify(clickState));
     await waitFor('.ref-hero h1','Home New Recipes recipe '+id);
