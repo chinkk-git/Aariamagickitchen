@@ -69,3 +69,12 @@ Updated: 2026-10-24 (UTC)
 - Owner approval: **NO**
 - Review ready: **NO** (final title fix and full exact-head Android gates are still pending)
 - Release ready: **NO**
+
+
+## Live CI update — 2026-10-24 UTC
+
+- Reconciled branch ref currently includes this document at the prior handover commit; the latest implementation code remains e3078bd1cf6c48f59d5513de6506c5f8919e26da. The local clone at /tmp/aaria-w01-clone is clean; its code tree matches the e3078bd tree.
+- Run #276 (intermediate source 477ec186ad8ea633f0ba1f3b9ea6407ac97322f4): G1/G2 passed and the all-95 tablet G3 completed successfully. Full phone/bilingual G3 is in progress with no failure reported as of this update. This run is not final because its Home screenshot predates the localized two-line title correction.
+- Run #277 (corrected source e3078bd1cf6c48f59d5513de6506c5f8919e26da) remains queued behind run #276. It has not yet produced an APK or evidence artifacts.
+- Status comments posted to #45 comment 6385378100 and #51 comment 6385378273. Next: monitor #276 phone G3, then run #277; inspect exact-head logs, APK and genuine Android evidence; publish only after gates pass.
+- Owner approval: NO. Review ready: NO. Release ready: NO.
