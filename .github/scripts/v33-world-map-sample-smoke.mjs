@@ -319,6 +319,7 @@ try {
   const returned=await waitFor(session.evaluate,`(()=>{const h=document.querySelector('.aria-world-globe__panel-head h2'),r=h?.getBoundingClientRect();return {visible:!!h&&!!r&&r.width>0&&r.height>0,route:typeof view==='undefined'?'unknown':view,country:h?.textContent?.trim()||'',cards:document.querySelectorAll('.aria-world-globe__recipe[data-recipe-id]').length}})()`,'Android Back to India recipe cards');
   if(returned.route!=='world'||returned.country!=='India'||returned.cards!==18)throw new Error(`Android Back did not restore the India cards: ${JSON.stringify(returned)}`);
   evidence.flow.push({step:'android-back-restores-country-cards',...returned,status:'PASS'});
+  await setMotionPreference(session,'reduce');
   const backShot=await stableScreenshot(session,'world-map-back-phone-portrait','portrait',recipeShot.sha256);evidence.screenshots.push(backShot);
 
   adb(['shell','input','keyevent','4']);await pause(400);session=await setOrientation(session,true);

@@ -157,6 +157,7 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(smoke,/Emulation\.setEmulatedMedia/,'Android smoke explicitly tests animation-enabled and reduced-motion modes');
   assert.match(smoke,/mode:'animation-enabled'/);
   assert.match(smoke,/Reduced-motion .*remain static/);
+  assert.match(smoke,/android-back-restores-country-cards'[\s\S]*?setMotionPreference\(session,'reduce'\)[\s\S]*?stableScreenshot\(session,'world-map-back-phone-portrait'/,'stable Android Back screenshots freeze the continuously rotating globe before framebuffer settling');
   assert.match(workflow,/OWNER_APPROVED=NO[\s\S]*?REVIEW_READY=NO[\s\S]*?RELEASE_READY=NO/);
   assert.match(moduleJs,/handleBack:/);
   assert.match(moduleJs,/Surprise/);
