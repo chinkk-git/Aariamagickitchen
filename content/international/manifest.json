@@ -4,7 +4,7 @@
   "owner_approved_candidate_names": true,
   "production_artwork_approved": true,
   "canonical_existing_recipe_count": 95,
-  "india_mapping_status": "PENDING_REVALIDATION",
+  "india_mapping_status": "VALIDATED_REFERENCE_ONLY",
   "id_assignment": "96–110 verified collision-free against canonical 1–95; draft IDs remain hidden until app integration and review",
   "recipes": [
     {

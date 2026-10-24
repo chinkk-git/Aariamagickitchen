@@ -6,7 +6,7 @@ This audit covers source bundles #096–#110 on `feature/international-recipe-co
 
 Executed checks:
 
-- `python3 content/international/qa/validate_bundles.py` — 15 recipes; 0 structural errors; 1 explicit warning for #096 sodium.
+- `python3 content/international/qa/validate_bundles.py --canonical-index /tmp/aaria-main-index.html --canonical-commit 4e8e629c80c68d64c28b7dbc8f07d0f40fc40344` — 15 recipes; current India mapping checked; 0 structural errors; 1 explicit warning for #096 sodium.
 - `python3 content/international/qa/build_audit.py` — 15 recipes; 324 referenced asset paths; 0 missing assets; 0 SHA-256 mismatches; 15 duplicate groups overall and among the remaining 13, all from shared equipment artwork; 0 non-equipment duplicate groups among the remaining 13.
 - Checked all 15 English cooking-step sequences against their recorded adult-assistance and safety cues. The local audit covers hazard presence and readable instructions; A08/A09 review remains pending.
 - Reviewed the recipe records for bilingual field presence, ingredient IDs/quantities/units, declared allergen coverage, equipment names, step references, nutrition fields and explicit review statuses.
@@ -48,9 +48,9 @@ The two W01 pilot recipes are #096 Italy and #099 China. The other thirteen rema
 - No missing-asset or hash-integrity failures were found. The asset checker reports duplicate equipment-art references; these do not affect the text-chip equipment design.
 - Numerical nutrition estimates remain estimates and are marked for review. #096 additionally lacks a defensible sodium value.
 - Independent A08 child-safety, A09 age 8–10 usability, nutrition/allergen, translation/cultural, artwork-rights and security gates remain pending. Field presence and a source audit do not equal independent approval.
-- India mapping remains `PENDING_REVALIDATION`: the branch file marks IDs 51–65 as a reference-only mapping based on source commit `4e8e629c80c68d64c28b7dbc8f07d0f40fc40344`; the current default-branch recipe source was not retrievable via the connected repository file interface, so this audit does not claim a fresh comparison.
+- India mapping was revalidated against current `main` at `4e8e629c80c68d64c28b7dbc8f07d0f40fc40344` by fetching and parsing the actual `index.html` RECIPES array: 95 recipes, contiguous IDs 1–95, and 15 India-category entries. IDs 51–65 and their titles match the branch’s 15-row reference mapping exactly. No IDs were duplicated or renumbered; the mapping remains reference-only.
 - The most recent Control Tower evidence still says W01/W02 integration is not merged. No integration or APK build was started. Post-merge baseline reconciliation and Android acceptance remain blocked on explicit merge confirmation.
 
 ## Scope estimate
 
-No recipe drafting or new food-illustration production is currently required. Remaining W03 work is the #096 sodium source/retention resolution, independent review gates for 15 packages, fresh India mapping verification, and after Control Tower merge confirmation, a safe baseline reconciliation plus integration QA. Review turnaround is external, so a duration estimate is not reliable yet.
+No recipe drafting or new food-illustration production is currently required. Remaining W03 work is the #096 sodium source/retention resolution, independent review gates for 15 packages, and after Control Tower merge confirmation, a safe baseline reconciliation plus integration QA. Review turnaround is external, so a duration estimate is not reliable yet.

@@ -5,11 +5,17 @@ This validates source files only. It does not substitute for independent A08/A09
 rights, translation, nutrition/allergen, cultural, or security review.
 """
 from __future__ import annotations
+import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser()
+parser.add_argument("--canonical-index", type=Path, help="optional current canonical index.html to verify India mapping")
+parser.add_argument("--canonical-commit", help="commit SHA for --canonical-index")
+args = parser.parse_args()
 LOCALES = ("en-GB", "pt-BR")
 errors: list[str] = []
 warnings: list[str] = []
@@ -34,6 +40,13 @@ if sorted(ids) != list(range(96, 111)):
     fail("manifest", f"IDs are not exactly 96–110: {ids}")
 if len(set(ids)) != len(ids):
     fail("manifest", "duplicate recipe IDs")
+country_counts = {}
+for entry in entries:
+    country = entry.get("country")
+    country_counts[country] = country_counts.get(country, 0) + 1
+if country_counts != {"italy": 3, "china": 3, "japan": 3, "mexico": 3, "vietnam": 3}:
+    fail("manifest", f"expected three recipes each for Italy, China, Japan, Mexico and Vietnam: {country_counts}")
+country_codes = {"italy": "IT", "china": "CN", "japan": "JP", "mexico": "MX", "vietnam": "VN"}
 
 for entry in entries:
     rid = entry.get("proposed_id")
@@ -52,6 +65,9 @@ for entry in entries:
         fail(where, f"JSON ID {recipe.get('id')} does not match manifest")
     if recipe.get("country", "").lower() != entry.get("country", "").lower():
         fail(where, "country does not match manifest")
+    expected_code = country_codes.get(str(entry.get("country", "")).lower())
+    if expected_code and recipe.get("country_code") != expected_code:
+        fail(where, f"country code should be {expected_code}, found {recipe.get('country_code')!r}")
     bilingual(recipe.get("title"), f"{where} title")
     for key in ("description", "cultural_context"):
         bilingual(recipe.get(key), f"{where} {key}")
@@ -139,8 +155,33 @@ for entry in entries:
         if not any(reviews.get(name) for name in names):
             fail(where, f"review gate {gate} lacks explicit status")
 
+if args.canonical_index:
+    mapping_path = ROOT / "india/existing-recipe-mapping.json"
+    mapping = json.loads(mapping_path.read_text())
+    canonical_text = args.canonical_index.read_text()
+    match = re.search(r"RECIPES=(\[.*?\]);", canonical_text, flags=re.DOTALL)
+    if not match:
+        fail("India mapping", "could not find canonical RECIPES array")
+    else:
+        try:
+            canonical = json.loads(match.group(1))
+            canonical_ids = [item.get("id") for item in canonical]
+            if canonical_ids != list(range(1, 96)):
+                fail("India mapping", "canonical catalog is not contiguous IDs 1–95")
+            india = {item.get("id"): item.get("title") for item in canonical if item.get("category", "").lower() == "indian"}
+            mapping_rows = mapping.get("recipes", [])
+            listed = {item.get("id"): item.get("title") for item in mapping_rows}
+            if len(mapping_rows) != 15 or len(listed) != len(mapping_rows):
+                fail("India mapping", "mapping must contain 15 unique canonical recipes")
+            if india != listed:
+                fail("India mapping", "IDs/titles differ from canonical India records")
+            if args.canonical_commit and mapping.get("source_commit") != args.canonical_commit:
+                fail("India mapping", "mapping source_commit differs from the supplied canonical commit")
+        except Exception as exc:
+            fail("India mapping", f"could not validate canonical data: {exc}")
+
 print(f"Recipes checked: {len(entries)} (IDs 096–110)")
-print("Checks: identity/country, bilingual fields, ingredient quantities/units, allergen coverage, equipment names, adult-assistance, step references/safety, nutrition fields and review gate status")
+print("Checks: identity/country, bilingual fields, ingredient quantities/units, allergen coverage, equipment names, adult-assistance, step references/safety, nutrition fields and review gate status" + ("; current canonical India mapping" if args.canonical_index else ""))
 print(f"Errors: {len(errors)}")
 for item in errors:
     print(f"ERROR {item}")
