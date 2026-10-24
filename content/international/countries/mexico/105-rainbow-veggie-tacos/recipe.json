@@ -438,7 +438,9 @@
       },
       "instruction": {
         "en-GB": "With adult help, open the tins. Drain and rinse the black beans and sweetcorn in a colander.",
-        "pt-BR": "Com ajuda de um adulto, abra as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+        "pt-BR": "Com ajuda de um adulto, abra as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor.",
+        "en": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+        "pt": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
       },
       "ingredientIds": [
         "black-beans",
@@ -1435,7 +1437,9 @@
         },
         "instruction": {
           "en-GB": "With adult help, open the tins. Drain and rinse the black beans and sweetcorn in a colander.",
-          "pt-BR": "Com ajuda de um adulto, abra as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+          "pt-BR": "Com ajuda de um adulto, abra as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor.",
+          "en": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+          "pt": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
         },
         "ingredientIds": [
           "black-beans",
