@@ -218,6 +218,8 @@ test('international recipes reuse the approved renderer and fail closed on layou
     read('index.html'), read('tools/v3/runtime.js'), read('.github/scripts/v32-android-tablet-smoke.sh'), read('.github/scripts/v32-android-smoke.sh')
   ]);
   assert.match(runtime, /v32RenderCompactInternationalIngredients\(batchReferenceRecipe\(\),selected\)/, 'both international IDs reuse the canonical renderer and add scoped compact labels after render');
+  assert.match(runtime, /v32RenderInternationalEquipment\(html,record,pt\)/, 'international equipment adapts the canonical equipment grid after the shared renderer');
+  assert.match(runtime, /item\.image\?\.path\|\|item\.imageAsset[\s\S]*?class="kitchen-icon"[\s\S]*?class="v32-tool-role"/, 'equipment keeps the pinned illustration and localized adult/shared role inside each canonical tool card');
   assert.doesNotMatch(runtime, /function v32InternationalDetail|\.v32-international-recipe \./, 'the rejected custom international renderer and its layout rules are removed');
   assert.match(runtime, /v32CompactIngredients[\s\S]*?v32ShortAmount/, 'compact ingredient labels retain concise amounts and source-linked accessible names');
   assert.match(runtime, /declaredAllergens:[^,]*record\.allergens/, 'W03 allergen declarations are passed into the standard allergen panel');
