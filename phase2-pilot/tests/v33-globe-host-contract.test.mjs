@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { createWorldAdventureHost, WORLD_ADVENTURE_INDIA_RECIPE_IDS } from '../../tools/v3/world-adventure-host.mjs';
 
@@ -114,18 +115,25 @@ test('host delegates recipe, Back and Passport navigation and localizes country 
 });
 
 test('module handoff, Android host and production transform are wired and preserve screen ownership', async () => {
-  const [doc,runtime,transform,moduleJs,moduleCss,smoke] = await Promise.all([
+  const [doc,runtime,transform,moduleJs,moduleCss,smoke,artwork,decor,tabletSmoke] = await Promise.all([
     readFile(new URL('../../docs/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/runtime.js', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/transform-production.mjs', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/world-adventure-globe/world-adventure-globe.js', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/world-adventure-globe/world-adventure-globe.css', import.meta.url),'utf8'),
-    readFile(new URL('../../.github/scripts/v33-world-map-sample-smoke.mjs', import.meta.url),'utf8')
+    readFile(new URL('../../.github/scripts/v33-world-map-sample-smoke.mjs', import.meta.url),'utf8'),
+    readFile(new URL('../../tools/v3/artwork/world-adventure/aaria-pointing-approved.png', import.meta.url)),
+    readFile(new URL('../../tools/v3/artwork/world-adventure/magic-sparkle-trail.png', import.meta.url)),
+    readFile(new URL('../../.github/scripts/v32-android-tablet-smoke.sh', import.meta.url),'utf8')
   ]);
+  assert.equal(artwork.subarray(0,8).toString('hex'),'89504e470d0a1a0a','approved pointing Aaria remains a transparent PNG source asset');
+  assert.equal(decor.subarray(0,8).toString('hex'),'89504e470d0a1a0a','sparkle trail remains a transparent PNG source asset');
+  assert.equal(createHash('sha256').update(artwork).digest('hex'),'6f4efb16e9c790cdae64957089639ccfd41c66b932e7e7d8147477bac60f4afb','pointing Aaria bytes match W03 immutable handoff');
+  assert.equal(createHash('sha256').update(decor).digest('hex'),'46f3c19aad266913a42af9eeab5df4ec5c9c6074ac54a1f902f41243bf0d9f51','sparkle art bytes match W03 immutable handoff');
   assert.match(runtime,/AariaWorldAdventureGlobe\.mount/);
   assert.match(runtime,/createWorldAdventureHost\(\{canonicalRecipes:RECIPES/);
-  assert.match(runtime,/host=screen\.querySelector\('#v33-world-globe-host'\),moduleController=window\.AariaWorldAdventureGlobe\.mount\(host,\{\.\.\.v33WorldHost,avatarSrc:V31_HOME_WORLD_ART\.aaria\},v33GlobeState\|\|\{rotation:-78\}\)/,'the first view centres India to keep its tappable flag inside the sphere');
-  assert.match(runtime,/avatarSrc:V31_HOME_WORLD_ART\.aaria/);
+  assert.match(runtime,/host=screen\.querySelector\('#v33-world-globe-host'\),moduleController=window\.AariaWorldAdventureGlobe\.mount\(host,\{\.\.\.v33WorldHost,avatarSrc:V33_WORLD_ARTWORK\.pointingAaria\},v33GlobeState\|\|\{rotation:-78\}\)/,'the original interactive module receives the approved transparent pointing Aaria without replacing globe geometry');
+  assert.match(runtime,/V33_WORLD_ARTWORK\.sparkleTrail/,'the separate approved-style sparkle asset is embedded for offline use');
   assert.match(runtime,/getState:\(\)=>moduleController\.serialize\(\)/);
   assert.match(runtime,/function v33KeepFlagsInsideSphere\(host\)/,'W02 keeps the W03 API unchanged while filtering clipped country targets in the host');
   assert.match(runtime,/corners\.some\(\(\[x,y\]\)=>\(x-cx\)\*\(x-cx\)\+\(y-cy\)\*\(y-cy\)>r2\)\)flag\.remove\(\)/,'the host removes any flag whose full hit target exceeds the globe circle');
@@ -151,7 +159,8 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(transform,/position:fixed;z-index:2;inset:env\(safe-area-inset-top\) 0 calc\(76px/,'the globe screen fills the Android viewport above persistent navigation');
   assert.match(transform,/prefers-reduced-motion:reduce\).*stage::before/);
   assert.match(transform,/v33-globe-magic-star,\.app\.v31-world-active \.v33-globe-magic-particle\{animation:none\}/,'stars and decorative particles become static when reduced motion is requested');
-  assert.match(transform,/aria-world-globe__guide,\.app\.v31-world-active \.aria-world-globe__guide-copy\{display:none!important/,'the rejected non-pointing portrait is not shown while the approved pointing export is unavailable');
+  assert.match(transform,/aria-world-globe__guide\{z-index:1;display:block!important/,'the large approved pointing Aaria is integrated beside and behind the interactive globe');
+  assert.match(transform,/v33-globe-sparkle-trail\{position:absolute;z-index:1/,'sparkle art stays behind the sphere so it cannot obscure country flags');
   assert.match(transform,/max-width:900px\) and \(orientation:landscape\)/,'phone landscape receives its own width-filling layout');
   const workflow=await readFile(new URL('../../.github/workflows/v33-w02-review.yml',import.meta.url),'utf8');
   assert.match(workflow,/publish_apk:[\s\S]*?default: false/,'real screenshots are captured before review APK publication is enabled');
@@ -161,7 +170,9 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(smoke,/mode:'animation-enabled'/);
   assert.match(smoke,/particles\.length!==6[\s\S]*?v33-particle-drift/,'genuine Android motion evidence checks all six drifting particles');
   assert.match(smoke,/reducedPortraitStart\.particles\.some\(name=>name!=='none'\)/,'Android reduced-motion screenshots verify static particles');
-  assert.match(smoke,/Could not rotate India into view before the PT-BR globe check[\s\S]*?PT-BR globe and visible India flag/,'the PT-BR Android check brings India into view and waits for its localized flag before asserting');
+  assert.match(smoke,/pin India on the globe before locale rerender[\s\S]*?PT-BR globe and visible India flag/,'the PT-BR Android check pins India to prevent autonomous rotation from racing the localized rerender');
+  assert.match(smoke,/pointingAariaArtwork:avatar\?\.src\.includes\('data:image\/png;base64,'\)/,'real Android evidence verifies the approved pointing PNG is rendered');
+  assert.match(tabletSmoke,/guideVisible:[\s\S]*?sparkleVisible:[\s\S]*?globe\.guideVisible[\s\S]*?globe\.sparkleVisible/,'tablet Android portrait and landscape evidence requires visible Aaria and sparkle artwork');
   assert.match(smoke,/Reduced-motion .*remain static/);
   assert.match(smoke,/android-back-restores-country-cards'[\s\S]*?setMotionPreference\(session,'reduce'\)[\s\S]*?stableScreenshot\(session,'world-map-back-phone-portrait'/,'stable Android Back screenshots freeze the continuously rotating globe before framebuffer settling');
   assert.match(workflow,/OWNER_APPROVED=NO[\s\S]*?REVIEW_READY=NO[\s\S]*?RELEASE_READY=NO/);

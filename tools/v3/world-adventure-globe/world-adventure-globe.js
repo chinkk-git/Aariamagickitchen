@@ -94,6 +94,7 @@
     var live = root.querySelector(".aria-world-globe__sr");
     var guide = root.querySelector(".aria-world-globe__guide");
     guide.src = options.avatarSrc || "./assets/aaria-portrait.webp";
+    guide.alt = locale === "pt-BR" ? "Aaria, sua guia de culinária" : "Aaria, your cooking guide";
     root.querySelector(".aria-world-globe__guide-copy").textContent = locale === "pt-BR" ? "Vamos explorar!" : "Let’s explore!";
 
     function globePoint(lon, lat, rotation) {

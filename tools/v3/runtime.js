@@ -3,6 +3,7 @@ const V3_ART=__V3_ART_JSON__;
 const V3_INGREDIENT_ATLAS=__V3_INGREDIENT_ATLAS_JSON__;
 const V3_PROFILE_ART=__V3_PROFILE_ART_JSON__;
 const V31_HOME_WORLD_ART=__V31_HOME_WORLD_ART_JSON__;
+const V33_WORLD_ARTWORK=__V33_WORLD_ARTWORK_JSON__;
 const V32_RECIPE_THEME_MAP=__V32_RECIPE_THEME_MAP_JSON__;
 const V32_REVIEW_FEATURED_IDS=__V32_REVIEW_FEATURED_IDS_JSON__;
 const V32_PT_RECIPE_DRAFTS=__V3_PT_RECIPE_DRAFTS_JSON__;
@@ -183,8 +184,9 @@ function v33KeepFlagsInsideSphere(host){
 function v33MountGlobe(screen){
  if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
  screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
- const host=screen.querySelector('#v33-world-globe-host'),moduleController=window.AariaWorldAdventureGlobe.mount(host,{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||{rotation:-78}),flagFit=v33KeepFlagsInsideSphere(host);
+ const host=screen.querySelector('#v33-world-globe-host'),moduleController=window.AariaWorldAdventureGlobe.mount(host,{...v33WorldHost,avatarSrc:V33_WORLD_ARTWORK.pointingAaria},v33GlobeState||{rotation:-78}),flagFit=v33KeepFlagsInsideSphere(host);
  const stage=host.querySelector('.aria-world-globe__stage'),magic=document.createElement('div');
+ const sparkle=document.createElement('img');sparkle.className='v33-globe-sparkle-trail';sparkle.src=V33_WORLD_ARTWORK.sparkleTrail;sparkle.alt='';sparkle.setAttribute('aria-hidden','true');stage.append(sparkle);
  magic.className='v33-globe-magic-decor';magic.setAttribute('aria-hidden','true');
  magic.innerHTML='<span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span>';
  stage.append(magic);
