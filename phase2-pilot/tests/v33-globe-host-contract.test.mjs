@@ -173,7 +173,16 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(smoke,/aria-label="Índia"[\s\S]*?PT-BR globe and visible India flag/,'the PT-BR Android check rotates its localized marker into view before checking it');
   assert.match(smoke,/tap\(session,'\.aria-world-globe__flag\[aria-label="Índia"\]'[\s\S]*?PT-BR India marker selection/,'the PT-BR Android check selects the localized India marker through real Android touch input');
   assert.match(smoke,/session=await setOrientation\(session,false\);\s*await setMotionPreference\(session,'reduce'\)[\s\S]*?state\.language='pt-BR'/,'the PT-BR marker check freezes globe rotation after Android recreates the portrait WebView');
-  assert.match(smoke,/pointingAariaArtwork:avatar\?\.src\.includes\('data:image\/png;base64,'\)/,'real Android evidence verifies the approved pointing PNG is rendered');
+  assert.match(smoke,/pointingAariaArtwork:avatar\?\.src===V33_WORLD_ARTWORK\.pointingAaria/,'real Android evidence verifies the exact approved pointing PNG is rendered');
+  assert.match(smoke,/requirePointingHand && \(!map\.pointingHand\.visible \|\| map\.pointingHand\.overlapArea < 1 \|\| !map\.pointingHand\.flagsAbove \|\| !map\.pointingHand\.flagsInStage\)/,'portrait Android evidence requires the pointing hand in front while flags stay above it');
+  assert.match(smoke,/full-screen India recipe list and X close/);
+  assert.match(smoke,/portrait-x-closes-country-list-preserving-globe-state/);
+  assert.match(smoke,/android-back-closes-country-list-preserving-globe-state/);
+  assert.match(smoke,/approved-landscape-layout-and-layering-non-regression/);
+  assert.match(smoke,/cardMinHeight<88/,'portrait recipe cards keep comfortable readable touch targets');
+  assert.match(moduleJs,/state\.selected && isPortrait\(\) && state\.portraitOverlayOpen/,'Android Back closes the portrait overlay before clearing the selection');
+  assert.match(transform,/aria-world-globe__panel\.is-portrait-overlay\{position:fixed!important/,'the portrait list fills the screen in its own overlay');
+  assert.match(transform,/aria-world-globe__flags\{position:absolute;z-index:6/,'country flags stay above the portrait pointing-hand layer');
   assert.match(tabletSmoke,/guideVisible:[\s\S]*?sparkleVisible:[\s\S]*?globe\.guideVisible[\s\S]*?globe\.sparkleVisible/,'tablet Android portrait and landscape evidence requires visible Aaria and sparkle artwork');
   assert.match(smoke,/Reduced-motion .*remain static/);
   assert.match(smoke,/android-back-restores-country-cards'[\s\S]*?setMotionPreference\(session,'reduce'\)[\s\S]*?stableScreenshot\(session,'world-map-back-phone-portrait'/,'stable Android Back screenshots freeze the continuously rotating globe before framebuffer settling');

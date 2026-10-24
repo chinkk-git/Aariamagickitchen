@@ -185,7 +185,8 @@ function v33MountGlobe(screen){
  if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
  screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
  const host=screen.querySelector('#v33-world-globe-host'),moduleController=window.AariaWorldAdventureGlobe.mount(host,{...v33WorldHost,avatarSrc:V33_WORLD_ARTWORK.pointingAaria},v33GlobeState||{rotation:-78}),flagFit=v33KeepFlagsInsideSphere(host);
- const stage=host.querySelector('.aria-world-globe__stage'),magic=document.createElement('div');
+ const stage=host.querySelector('.aria-world-globe__stage'),guideHand=host.querySelector('.aria-world-globe__guide').cloneNode(),magic=document.createElement('div');
+ guideHand.className='aria-world-globe__guide-hand';guideHand.alt='';guideHand.setAttribute('aria-hidden','true');stage.append(guideHand);
  const sparkle=document.createElement('img');sparkle.className='v33-globe-sparkle-trail';sparkle.src=V33_WORLD_ARTWORK.sparkleTrail;sparkle.alt='';sparkle.setAttribute('aria-hidden','true');stage.append(sparkle);
  magic.className='v33-globe-magic-decor';magic.setAttribute('aria-hidden','true');
  magic.innerHTML='<span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span><span class="v33-globe-magic-particle"></span>';

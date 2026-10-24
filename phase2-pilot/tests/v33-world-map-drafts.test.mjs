@@ -76,8 +76,11 @@ test('W03 Natural Earth geometry remains intact and the approved pointing-Aaria 
   assert.match(smoke,/surprise-me-waits-for-explicit-flag-selection/);
   assert.match(smoke,/android-touch-selects-suggested-flag/);
   assert.match(smoke,/food-passport-offline-restart-persistence/);
-  assert.match(smoke,/pointingAariaArtwork:avatar\?\.src\.includes\('data:image\/png;base64,'\)\?'approved-transparent-png':'missing'/,'the Android smoke now requires the W03 approved transparent pointing character');
+  assert.match(smoke,/pointingAariaArtwork:avatar\?\.src===V33_WORLD_ARTWORK\.pointingAaria\?'approved-transparent-png':'missing'/,'the Android smoke now requires the exact W03 approved transparent pointing character');
   assert.match(smoke,/avatar\.visible/);
+  assert.match(smoke,/pointingHand\.overlapArea/);
+  assert.match(smoke,/portrait-x-closes-country-list-preserving-globe-state/);
+  assert.match(smoke,/android-back-closes-country-list-preserving-globe-state/);
 });
 
 test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 coverage', async () => {
