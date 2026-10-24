@@ -216,8 +216,8 @@ async function pageSet(landscape){
       if(!ingredientState.visible)throw Error('EN-GB #12 tablet Ingredients grid is not visible before screenshot capture');
       ingredientScreenshot=await screenshot('recipe-12-ingredients-'+orientationName,landscape);
     }
-    const flow=await evaluate('(()=>({selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".ref-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),pilot:!!document.querySelector(".reference-layout")}))()');flow.nav=await evaluate(navigationSummaryExpression());
-    if(flow.selectedId!==id||flow.activeCount!==1||flow.activeStep!==1)throw Error('Recipe template first-step state failed: '+JSON.stringify({id,flow}));
+    const flow=await evaluate(`(()=>{const source=RECIPES.find(recipe=>Number(recipe.id)===${id});return {selectedId:Number(selected?.id||0),stepCount:Number(document.querySelector(".ref-step-grid")?.dataset.stepCount)||document.querySelectorAll(".ref-step-card").length,activeCount:document.querySelectorAll(".ref-step-card.active").length,activeStep:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedInstruction:source?.steps?.[0]||"",pilot:!!document.querySelector(".reference-layout")}})()`);flow.nav=await evaluate(navigationSummaryExpression());
+    if(flow.selectedId!==id||flow.activeCount!==1||flow.activeStep!==1||(id>95&&(!flow.expectedInstruction||flow.instruction!==flow.expectedInstruction)))throw Error('Recipe template first-step state or EN-GB localized instruction failed: '+JSON.stringify({id,flow}));
     if(id===12&&(flow.stepCount!==4||!flow.pilot||flow.nav.map(x=>x.label).join('|')!=='Home|Recipes|World Adventure|Magic Pantry|Planner|My Creations'||flow.nav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations'))throw Error('Recipe 12 pilot contract or exact six-button navigation failed: '+JSON.stringify(flow));
     const stepFiles=[];
     if(id===12){
@@ -237,6 +237,7 @@ async function pageSet(landscape){
         let previousInternationalStep=readFileSync(productionIngredientScreenshot.path);
         for(let index=1;index<=flow.stepCount;index++){
           await waitForActiveStep(index,'Production international #'+id+' '+orientationName);
+          const localizedEnStep=await evaluate(`(()=>({instruction:document.querySelector(".app.v32-international-active .ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:RECIPES.find(recipe=>Number(recipe.id)===${id})?.steps?.[${index-1}]||""}))()`);if(!localizedEnStep.expected||localizedEnStep.instruction!==localizedEnStep.expected)throw Error('EN-GB international step content mismatch: '+JSON.stringify({id,index,localizedEnStep}));
           await assertInternationalGuidedStepLayout('Production international #'+id+' step '+index+' '+orientationName);
           await evaluate('document.querySelector(".app.v32-international-active .v32-international-step-art")?.scrollIntoView({block:"center",inline:"nearest"})');
           const name='international-'+id+'-step-'+index+'-'+orientationName;
@@ -263,7 +264,7 @@ async function pageSet(landscape){
       await evaluate('state.done=(state.done||[]).filter(x=>Number(x)!=='+id+');step=0;save();render()');
       await evaluate('state.language="pt-BR";save();render()');await waitFor('.ref-hero h1','PT-BR international recipe '+id);await waitForCaptureReady('PT-BR international route '+id+' '+orientationName);
       const ptRoute=await evaluate('(()=>({id:Number(selected?.id||0),title:document.querySelector(".ref-hero h1")?.textContent?.trim()||"",instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",adult:document.querySelector(".v32-step-adult-assist p")?.textContent?.trim()||"",safety:document.querySelector(".v32-step-safety")?.textContent?.trim()||"",images:[...document.querySelectorAll(".app.v32-international-active img")].filter(x=>x.getBoundingClientRect().height>0).map(x=>x.complete&&x.naturalWidth>0)}))()');
-      const expected=await evaluate('PT_RECIPES['+id+']');if(ptRoute.id!==id||ptRoute.title!==expected?.title||!ptRoute.instruction||!ptRoute.adult||!ptRoute.safety||ptRoute.images.some(x=>!x))throw Error('PT-BR offline international guided flow failed: '+JSON.stringify(ptRoute));
+      const expected=await evaluate('PT_RECIPES['+id+']');if(ptRoute.id!==id||ptRoute.title!==expected?.title||ptRoute.instruction!==expected?.steps?.[0]||!ptRoute.adult||!ptRoute.safety||ptRoute.images.some(x=>!x))throw Error('PT-BR offline international guided flow failed: '+JSON.stringify(ptRoute));
       await assertInternationalIngredientLayout('Production PT-BR #'+String(id).padStart(3,'0')+' '+orientationName);
       await prepareVisibleRecipeCapture('.app.v32-international-active .ref-ingredient-grid','Production PT-BR #'+id+' ingredients '+orientationName);
       await evaluate('document.querySelector(".app.v32-international-active .ref-ingredient-grid .ref-ingredient:last-child")?.scrollIntoView({block:"center",inline:"nearest"})');
@@ -272,6 +273,7 @@ async function pageSet(landscape){
       let previousPtStep=readFileSync(ptIngredientShot.path);
       for(let index=1;index<=flow.stepCount;index++){
         await waitForActiveStep(index,'PT-BR production international #'+id+' '+orientationName);
+        const localizedPtStep=await evaluate(`(()=>({instruction:document.querySelector(".app.v32-international-active .ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expected:PT_RECIPES[${id}]?.steps?.[${index-1}]||""}))()`);if(!localizedPtStep.expected||localizedPtStep.instruction!==localizedPtStep.expected)throw Error('PT-BR international step content mismatch: '+JSON.stringify({id,index,localizedPtStep}));
         await assertInternationalGuidedStepLayout('PT-BR production international #'+id+' step '+index+' '+orientationName);
         await evaluate('document.querySelector(".app.v32-international-active .v32-international-step-art")?.scrollIntoView({block:"center",inline:"nearest"})');
         const ptStep=await screenshot('international-'+id+'-step-'+index+'-pt-br-'+orientationName,landscape,{previousPng:previousPtStep,assertExpectedUi:async()=>{await waitForActiveStep(index,'PT-BR step capture');await assertInternationalGuidedStepLayout('PT-BR step capture '+index)}});

@@ -245,6 +245,34 @@ test('international recipes reuse the approved renderer and fail closed on layou
   assert.match(phone, /ref-ingredient-grid/, 'phone G3 captures the canonical international checklist for the original 95-route regression matrix');
 });
 
+test('international shared renderer uses matching EN-GB and PT-BR ingredient and step records', async () => {
+  const [runtime, tablet, italy, china] = await Promise.all([
+    read('tools/v3/runtime.js'),
+    read('.github/scripts/v32-android-tablet-smoke.sh'),
+    read('content/international/countries/italy/096-tomato-basil-pasta/recipe.json').then(JSON.parse),
+    read('content/international/countries/china/099-vegetable-fried-rice/recipe.json').then(JSON.parse)
+  ]);
+  assert.match(runtime, /selected=\{\.\.\.entry\.record,\.\.\.\(PT_RECIPES\[id\]\|\|\{\}\),title:record\.title,ingredients:list\(record\),steps:toSteps\(record\)/,
+    'the active shared-renderer record overrides spread PT-BR fallbacks with the selected locale data');
+  for (const recipe of [italy, china]) {
+    assert.ok(recipe.steps.length > 0, `recipe ${recipe.id} has localized guided steps`);
+    for (const locale of ['en-GB', 'pt-BR']) {
+      assert.ok(recipe.steps.every(step => step.instruction?.[locale]?.trim()),
+        `recipe ${recipe.id} provides every ${locale} instruction`);
+    }
+    assert.notEqual(recipe.steps[0].instruction['en-GB'], recipe.steps[0].instruction['pt-BR'],
+      `recipe ${recipe.id} keeps distinct EN-GB and PT-BR first-step copy`);
+  }
+  assert.match(tablet, /expectedInstruction:source\?\.steps\?\.\[0\]/,
+    'G2 checks the visible EN-GB first instruction against the recipe record');
+  assert.match(tablet, /localizedEnStep\.instruction!==localizedEnStep\.expected/,
+    'G2 checks every EN-GB guided step against its locale record');
+  assert.match(tablet, /ptRoute\.instruction!==expected\?\.steps\?\.\[0\]/,
+    'G2 checks the visible PT-BR first instruction against the localized record');
+  assert.match(tablet, /localizedPtStep\.instruction!==localizedPtStep\.expected/,
+    'G2 checks every PT-BR guided step against its locale record');
+});
+
 test('international compact ingredient labels preserve salt and cooking water names in both locales', async () => {
   const runtime = await read('tools/v3/runtime.js');
   const start = runtime.indexOf('function v32ShortIngredient(');
