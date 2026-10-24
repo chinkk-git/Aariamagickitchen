@@ -166,8 +166,14 @@ async function dragGlobe(session, dx) {
   const point=await session.evaluate(`(()=>{const e=document.querySelector('.aria-world-globe__stage'),r=e?.getBoundingClientRect();return {visible:!!r&&r.width>0&&r.height>0,x:r?(r.left+r.right)/2:0,y:r?(r.top+r.bottom)/2:0}})()`);
   if(!point.visible)throw new Error('Magical Spinning Globe drag stage is missing');
   await session.command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:point.x,y:point.y,id:93}]});
+  await pause(80);
   await session.command('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:point.x+dx,y:point.y,id:93}]});
-  await session.command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await pause(220);
+  await pause(100);
+  // End with a stationary move so synthetic touch timing cannot add a large
+  // inertial fling that sends a target flag straight back behind the globe.
+  await session.command('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:point.x+dx,y:point.y,id:93}]});
+  await pause(80);
+  await session.command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await pause(250);
 }
 
 async function tapAfterAndroidScroll(session, selector, label) {
@@ -345,8 +351,9 @@ try {
   await setMotionPreference(session,'reduce');
 
   await session.evaluate(`(()=>{state.language='pt-BR';render()})()`);
-  let indiaPtMarker=false;for(let attempt=0;attempt<8;attempt++){indiaPtMarker=await session.evaluate(`(()=>{const f=document.querySelector('.aria-world-globe__flag[aria-label="Índia"]'),r=f?.getBoundingClientRect();return !!f&&!!r&&r.width>=48&&r.height>=48})()`);if(indiaPtMarker)break;await dragGlobe(session,attempt%2===0?160:-320)}if(!indiaPtMarker)throw new Error('Could not rotate the localized PT-BR India marker into the visible hemisphere');
-  const locale=await waitFor(session.evaluate,`(()=>{const heading=document.querySelector('.aria-world-globe__eyebrow')?.textContent?.trim()||'',flag=document.querySelector('.aria-world-globe__flag[aria-label="Índia"]');return {visible:heading==='Aventura pelo mundo'&&!!flag,heading,marker:flag?.textContent?.trim()||'',label:flag?.getAttribute('aria-label')||''}})()`,'PT-BR globe and visible India flag');
+  const ptIndiaStatus=`(()=>{const heading=document.querySelector('.aria-world-globe__eyebrow')?.textContent?.trim()||'',flag=document.querySelector('.aria-world-globe__flag[aria-label="Índia"]'),sphere=document.querySelector('.aria-world-globe__sphere'),r=flag?.getBoundingClientRect(),s=sphere?.getBoundingClientRect(),style=flag?getComputedStyle(flag):null;const cx=s?(s.left+s.right)/2:0,cy=s?(s.top+s.bottom)/2:0,rad=s?Math.min(s.width,s.height)/2-2:0,corners=r?[[r.left,r.top],[r.right,r.top],[r.left,r.bottom],[r.right,r.bottom]]:[];const contained=!!r&&!!s&&corners.every(([x,y])=>(x-cx)*(x-cx)+(y-cy)*(y-cy)<=rad*rad);return {visible:heading==='Aventura pelo mundo'&&!!flag&&flag.isConnected&&!!r&&r.width>=48&&r.height>=48&&!!style&&style.display!=='none'&&style.visibility!=='hidden'&&Number(style.opacity)>.05&&contained,heading,marker:flag?.textContent?.trim()||'',label:flag?.getAttribute('aria-label')||'',rotation:Number(v33GlobeController?.getState?.().rotation||0),contained}})()`;
+  let indiaPtMarker=false,ptIndia=null;for(let attempt=0;attempt<8;attempt++){ptIndia=await session.evaluate(ptIndiaStatus);if(ptIndia.visible){await pause(120);ptIndia=await session.evaluate(ptIndiaStatus);if(ptIndia.visible){indiaPtMarker=true;break}}const current=Number(ptIndia.rotation),target=-78,delta=((target-current+540)%360)-180;await dragGlobe(session,Math.max(-100,Math.min(100,delta/.55)))}if(!indiaPtMarker)throw new Error(`Could not rotate the localized PT-BR India marker fully into view: ${JSON.stringify(ptIndia)}`);
+  const locale=await waitFor(session.evaluate,ptIndiaStatus,'PT-BR globe and visible India flag');
   if(locale.heading!=='Aventura pelo mundo'||locale.marker!=='🇮🇳'||!locale.label.includes('Índia'))throw new Error(`PT-BR globe localisation failed: ${JSON.stringify(locale)}`);
   evidence.flow.push({step:'PT-BR-globe-localisation',...locale,status:'PASS'});
   const ptIndiaTarget=await tap(session,'.aria-world-globe__flag[aria-label="Índia"]','Select localized PT-BR India marker');

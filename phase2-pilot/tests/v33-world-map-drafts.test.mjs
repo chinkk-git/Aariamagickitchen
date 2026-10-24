@@ -153,6 +153,9 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(regression,/homeVisual\.destinationTiles!==1/,'Android home smoke must require exactly one validated destination');
   assert.match(regression,/JSON\.stringify\(homeVisual\.destinationCodes\)!==/,'Android home smoke must verify that the single destination is India');
   assert.match(regression,/homeVisual\.indiaTileVisible/,'Android home smoke must verify the India destination has visible geometry');
+  assert.match(phone,/target=-78/,'PT-BR smoke aims the India marker at the globe centre using real Android touch movement');
+  assert.match(phone,/const contained=!!r&&!!s&&corners\\.every/,'PT-BR India acceptance requires the flag to remain fully visible inside the globe');
+  assert.match(phone,/stationary move so synthetic touch timing cannot add a large/,'globe touch smoke settles its real drag before checking the marker');
   assert.match(workflow,/G1 FAST PREFLIGHT[\s\S]*?W02 SAMPLE[\s\S]*?G2 TARGETED DEVICE SMOKE[\s\S]*?G3 FULL REGRESSION/);
   const transform=await read('tools/v3/transform-production.mjs');
   assert.match(transform,/aria-world-globe__flag\{width:58px;height:58px;/,'Android host CSS keeps the enlarged country hit targets above 48px');
