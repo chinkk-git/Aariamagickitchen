@@ -164,7 +164,7 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(transform,/max-width:900px\) and \(orientation:landscape\)/,'phone landscape receives its own width-filling layout');
   const workflow=await readFile(new URL('../../.github/workflows/v33-w02-review.yml',import.meta.url),'utf8');
   assert.match(workflow,/publish_apk:[\s\S]*?default: false/,'real screenshots are captured before review APK publication is enabled');
-  assert.match(workflow,/if: success\(\) && inputs\.publish_apk == true/);
+  assert.match(workflow,/if: success\(\) && \(inputs\.publish_apk == true \|\| github\.event_name == 'push'\)/,'a passing exact-head push publishes its installable review APK after device smoke');
   assert.match(workflow,/disable-animations: false/,'the Android review emulator permits real CSS animation evidence');
   assert.match(smoke,/Emulation\.setEmulatedMedia/,'Android smoke explicitly tests animation-enabled and reduced-motion modes');
   assert.match(smoke,/mode:'animation-enabled'/);
