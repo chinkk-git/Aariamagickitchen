@@ -183,7 +183,7 @@ echo "Forwarding app-owned WebView DevTools socket: $socket (app PID $app_pid)"
 adb_timeout forward tcp:9222 "localabstract:$socket"
 timeout --kill-after=10s 1140s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
-const {readFileSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
+const {readFileSync, statSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');
 const {clickByDatasetExpression, clickSelectorExpression, findByDatasetExpression, navigationSummaryExpression} = await import('./tools/v3/android-webview-smoke-expressions.mjs');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
