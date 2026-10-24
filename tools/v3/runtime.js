@@ -496,7 +496,7 @@ document.addEventListener('click',async e=>{
   document.querySelector(`[data-share-photo="${id}"][capture]`)?.click();return;
  }
 });
-document.addEventListener('click',e=>{
+window.addEventListener('click',e=>{
  const button=e.target.closest('.v32-new-recipe-card[data-open]');
  if(!button)return;
  e.preventDefault();
