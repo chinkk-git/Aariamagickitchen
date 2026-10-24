@@ -668,9 +668,9 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   if(id===12&&(!flow.pilot||flow.stepCount!==4||flow.nav.map(x=>x.label).join('|')!=='Home|Recipes|World Adventure|Magic Pantry|Planner|My Creations'||flow.nav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations'))throw new Error('Recipe 12 pilot contract or exact six-button navigation failed: '+JSON.stringify(flow));
   const stepFiles=[];
   for(let index=1;index<=flow.stepCount;index++){
-    const current=await evaluate('(()=>({step:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),safety:document.querySelector(".ref-safety details p")?.textContent||"",progress:Number(step||0)+1,instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedInstruction:selected?.steps?.[step]||""}))()');
+    const current=await evaluate('(()=>({step:Number(document.querySelector(".ref-step-card.active .ref-step-number")?.textContent||0),safety:document.querySelector(".ref-safety details p")?.textContent||"",progress:Number(step||0)+1,instruction:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedInstruction:displayStepText(selected,step)||"",canonicalInstruction:selected?.steps?.[step]||""}))()');
     if(current.step!==index)throw new Error('Phone exemplar step progression mismatch: '+JSON.stringify({id,index,current}));
-    if(id===12&&(!current.safety||current.progress!==index||current.instruction!==current.expectedInstruction))throw new Error('Recipe 12 is missing canonical step text, per-step safety or progress: '+JSON.stringify(current));
+    if(id===12&&(!current.canonicalInstruction||!current.safety||current.progress!==index||current.instruction!==current.expectedInstruction))throw new Error('Recipe 12 rendered step copy, canonical source, per-step safety or progress is missing: '+JSON.stringify(current));
     if(id===12||index===1){
       await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"start"})');
       const stepName=id===12?'v32-recipe-12-step-'+index+'-'+orientation+'.png':'v32-recipe-'+id+'-active-step-'+orientation+'.png';
