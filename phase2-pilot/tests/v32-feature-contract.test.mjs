@@ -269,6 +269,10 @@ test('international shared renderer uses matching EN-GB and PT-BR ingredient and
     'localized ingredient and step helpers are defined outside the per-recipe initialization loop');
   assert.match(runtime, /selected=\{\.\.\.entry\.record,\.\.\.\(PT_RECIPES\[id\]\|\|\{\}\),title:record\.title,ingredients:v32InternationalIngredientList\(record\),steps:v32InternationalSteps\(record\),yieldText:pt\?/,
     'the active shared-renderer record uses the top-level locale helpers rather than block-scoped initializer functions');
+  assert.match(runtime, /function v32RenderInternationalStepCopy\(html,steps,index\)[\s\S]*?safe\(instruction\)/,
+    'the active copy card is restored from the approved localized step record after the shared renderer formats it');
+  assert.match(runtime, /v32RenderInternationalStepCopy\(html,record\.steps,step\)/,
+    'each active EN-GB or PT-BR step card receives the exact locale-specific source instruction');
   for (const recipe of [italy, china]) {
     assert.ok(recipe.steps.length > 0, `recipe ${recipe.id} has localized guided steps`);
     for (const locale of ['en-GB', 'pt-BR']) {
