@@ -1,5 +1,31 @@
 recipe_id,locale,content,status
-96,en-GB,title/ingredients/equipment/steps/safety,COMPLETE_DRAFT
-96,pt-BR,title/ingredients/equipment/steps/safety,COMPLETE_DRAFT
-99,en-GB,title/ingredients/equipment/steps/safety,COMPLETE_DRAFT
-99,pt-BR,title/ingredients/equipment/steps/safety,COMPLETE_DRAFT
+96,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+96,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+97,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+97,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+98,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+98,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+99,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+99,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+100,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+100,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+101,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+101,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+102,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+102,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+103,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+103,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+104,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+104,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+105,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+105,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+106,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+106,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+107,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+107,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+108,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+108,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+109,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+109,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+110,en-GB,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
+110,pt-BR,title/context/ingredients/equipment/5 steps/adult assistance/safety,W03_DESK_REVIEW_PASS;CULTURAL_REVIEW_BLOCKED
