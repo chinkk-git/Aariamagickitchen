@@ -486,10 +486,10 @@
         "pt-BR": "As crianças polvilham o queijo e o coentro medidos; adultos manuseiam laticínios refrigerados e conferem os rótulos."
       },
       "safety": {
-        "en-GB": "Keep cheese refrigerated until needed; discard food left out for more than 2 hours (1 hour in hot conditions). Check for dairy and egg allergens.",
-        "pt-BR": "Mantenha o queijo refrigerado até usar; descarte alimentos deixados fora da geladeira por mais de 2 horas (1 hora em calor intenso). Verifique alergênicos de leite e ovo.",
-        "en": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer.",
-        "pt": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo."
+        "en-GB": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens.",
+        "pt-BR": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo.",
+        "en": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens.",
+        "pt": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo."
       },
       "heatOrKnifeCue": {
         "en-GB": "Adult supervises food temperatures and serving.",
@@ -1407,10 +1407,10 @@
           "pt-BR": "As crianças polvilham o queijo e o coentro medidos; adultos manuseiam laticínios refrigerados e conferem os rótulos."
         },
         "safety": {
-          "en-GB": "Keep cheese refrigerated until needed; discard food left out for more than 2 hours (1 hour in hot conditions). Check for dairy and egg allergens.",
-          "pt-BR": "Mantenha o queijo refrigerado até usar; descarte alimentos deixados fora da geladeira por mais de 2 horas (1 hora em calor intenso). Verifique alergênicos de leite e ovo.",
-          "en": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer.",
-          "pt": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo."
+          "en-GB": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens.",
+          "pt-BR": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo.",
+          "en": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens.",
+          "pt": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo."
         },
         "heatOrKnifeCue": {
           "en-GB": "Adult supervises food temperatures and serving.",
