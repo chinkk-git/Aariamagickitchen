@@ -248,8 +248,8 @@ test('international recipes reuse the approved renderer and fail closed on layou
 test('international home recipe cards open their shared-renderer recipe routes', async () => {
   const runtime = await read('tools/v3/runtime.js');
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
-  assert.match(runtime, /window\.addEventListener\('click',e=>\{[\s\S]*?closest\('\.v32-new-recipe-card\[data-open\]'\)[\s\S]*?e\.stopPropagation\(\)[\s\S]*?openRecipe\(id\)[\s\S]*?selected=recipe;view='recipe';render\(\)/,
-    'a window capture handler opens international IDs in the canonical recipe state if the legacy route delegate leaves Home active');
+  assert.match(runtime, /class="home-tile v31-pinterest-tile v32-new-recipe-card" data-open=/,
+    'international Home cards use the same tile classes as working production recipe navigation');
   assert.match(tablet, /click\('\.v32-new-recipe-card\[data-open="'\+id\+'"\]'/,
     'tablet G2 activates the intended #096/#099 Home card before verifying its recipe detail');
 });
