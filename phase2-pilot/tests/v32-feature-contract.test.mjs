@@ -252,8 +252,8 @@ test('international shared renderer uses matching EN-GB and PT-BR ingredient and
     read('content/international/countries/italy/096-tomato-basil-pasta/recipe.json').then(JSON.parse),
     read('content/international/countries/china/099-vegetable-fried-rice/recipe.json').then(JSON.parse)
   ]);
-  assert.match(runtime, /selected=\{\.\.\.entry\.record,\.\.\.\(PT_RECIPES\[id\]\|\|\{\}\),title:record\.title,ingredients:list\(record\),steps:toSteps\(record\)/,
-    'the active shared-renderer record overrides spread PT-BR fallbacks with the selected locale data');
+  assert.match(runtime, /selected=\{\.\.\.entry\.record,\.\.\.\(PT_RECIPES\[id\]\|\|\{\}\),title:record\.title,ingredients:list\(record\),steps:toSteps\(record\),yieldText:pt\?/,
+    'the active shared-renderer record overrides spread PT-BR fallbacks with localized ingredients, steps and yield');
   for (const recipe of [italy, china]) {
     assert.ok(recipe.steps.length > 0, `recipe ${recipe.id} has localized guided steps`);
     for (const locale of ['en-GB', 'pt-BR']) {
@@ -271,6 +271,10 @@ test('international shared renderer uses matching EN-GB and PT-BR ingredient and
     'G2 checks the visible PT-BR first instruction against the localized record');
   assert.match(tablet, /localizedPtStep\.instruction!==localizedPtStep\.expected/,
     'G2 checks every PT-BR guided step against its locale record');
+  assert.match(tablet, /assertInternationalCompactIngredientLabels\(id,'en-GB'\)/,
+    'G2 checks the corrected EN-GB names and quantities for tomato, salt, water and soy sauce');
+  assert.match(tablet, /assertInternationalCompactIngredientLabels\(id,'pt-BR'\)/,
+    'G2 checks the corrected PT-BR names and quantities for tomato, salt, water and soy sauce');
 });
 
 test('international compact ingredient labels preserve salt and cooking water names in both locales', async () => {
@@ -285,6 +289,12 @@ test('international compact ingredient labels preserve salt and cooking water na
   assert.equal(shortName('Sal para a água do macarrão', true), 'Sal');
   assert.equal(shortName('Água para cozinhar o macarrão', true), 'Água');
   assert.equal(shortName('Espaguete seco', true), 'Espaguete');
+  assert.equal(shortName('Chopped tinned tomatoes, no added salt', false), 'Tomatoes');
+  assert.equal(shortName('Tomates picados em lata, sem sal adicionado', true), 'Tomates');
+  assert.equal(shortName('Reduced-salt soy sauce', false), 'Soy sauce');
+  assert.equal(shortName('Molho de soja com teor reduzido de sal', true), 'Molho de soja');
+  assert.match((await read('.github/scripts/v32-android-tablet-smoke.sh')), /makes\\s\+makes|rende\\s\+rende/i,
+    'G2 rejects repeated localized yield labels in both languages');
 });
 
 test('Android visual regression emulators use stable SwiftShader rendering', async () => {
