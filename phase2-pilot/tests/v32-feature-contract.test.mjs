@@ -219,12 +219,16 @@ test('international recipes reuse the approved renderer and fail closed on layou
   ]);
   assert.match(runtime, /v32RenderCompactInternationalIngredients\(batchReferenceRecipe\(\),selected\)/, 'both international IDs reuse the canonical renderer and add scoped compact labels after render');
   assert.match(runtime, /v32RenderInternationalEquipment\(html,record,pt\)/, 'international equipment adapts the canonical equipment grid after the shared renderer');
+  assert.match(runtime, /function v32RenderInternationalStepArtwork\(html,steps\)[\s\S]*?step\.image\?\.path[\s\S]*?v32-international-step-art[\s\S]*?loading="eager"[\s\S]*?Unexpected extra pending international step-art slot/, 'canonical pending figure slots bind each pinned W03 step illustration and reject missing or extra art');
+  assert.match(runtime, /v32RenderInternationalStepArtwork\(html,record\.steps\)/, 'international cooking flow adapts the canonical illustrated step cards after shared rendering');
   assert.match(runtime, /item\.image\?\.path\|\|item\.imageAsset[\s\S]*?class="kitchen-icon"[\s\S]*?class="v32-tool-role"/, 'equipment keeps the pinned illustration and localized adult/shared role inside each canonical tool card');
   assert.doesNotMatch(runtime, /function v32InternationalDetail|\.v32-international-recipe \./, 'the rejected custom international renderer and its layout rules are removed');
   assert.match(runtime, /v32CompactIngredients[\s\S]*?v32ShortAmount/, 'compact ingredient labels retain concise amounts and source-linked accessible names');
   assert.match(runtime, /declaredAllergens:[^,]*record\.allergens/, 'W03 allergen declarations are passed into the standard allergen panel');
   assert.match(runtime, /internationalNutrition:[\s\S]*?nutritionSources/, 'audited nutrition values and provenance flow into the standard nutrition table');
   assert.match(runtime, /v32-international-active \.ref-ingredient-grid\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)!important/, 'three-column compact layout uses the canonical ingredient grid');
+  assert.match(runtime, /v32-international-active \.ref-step-grid\{display:grid!important;grid-template-columns:minmax\(0,1fr\)!important/, 'tablet portrait no longer squeezes the active canonical step into the original multi-column card rail');
+  assert.match(runtime, /@media\(orientation:landscape\)[\s\S]*?ref-step-photo\.v32-international-step-art\{grid-column:1[\s\S]*?ref-step-copy\{grid-column:2/, 'landscape keeps large canonical step art side by side with instructions');
   assert.match(runtime, /v32RenderCompactInternationalIngredients[\s\S]*?aria-label=[\s\S]*?v32-ingredient-label/, 'canonical ingredient cards retain native checkboxes with accessible compact name/amount fields');
   assert.match(runtime, /nutritionResults=function[\s\S]*?nutritionPanel=function[\s\S]*?nutrition-table/, 'international nutrition extends the standard per-serving table with reviewed values and adult-only provenance');
   assert.match(runtime, /familyTeamMarkup=function[\s\S]*?v32-step-adult-assist[\s\S]*?v32-step-safety/, 'illustrated canonical steps retain localized adult-assist and safety guidance');
