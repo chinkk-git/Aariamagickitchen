@@ -207,8 +207,8 @@
     {
       "id": "water",
       "name": {
-        "en-GB": "Warm water (for wrappers and dip)",
-        "pt-BR": "Água morna (para o papel e o molho)"
+        "en-GB": "Water (for noodles, dip and wrappers)",
+        "pt-BR": "Água (para o macarrão, o molho e o papel)"
       },
       "quantity": 2030,
       "unit": "mL",
@@ -1374,8 +1374,8 @@
       {
         "id": "water",
         "name": {
-          "en-GB": "Warm water (for wrappers and dip)",
-          "pt-BR": "Água morna (para o papel e o molho)"
+          "en-GB": "Water (for noodles, dip and wrappers)",
+          "pt-BR": "Água (para o macarrão, o molho e o papel)"
         },
         "quantity": 2030,
         "unit": "mL",

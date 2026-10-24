@@ -373,8 +373,8 @@
         "pt-BR": "Prepare a cobertura"
       },
       "instruction": {
-        "en-GB": "Beat the egg in a bowl. Mix breadcrumbs, Parmesan and salt in another bowl.",
-        "pt-BR": "Bata o ovo em uma tigela. Misture a farinha de rosca, o parmesão e o sal em outra tigela."
+        "en-GB": "An adult cracks and beats the egg in one bowl. In another bowl, mix the breadcrumbs, Parmesan and salt.",
+        "pt-BR": "Um adulto quebra e bate o ovo em uma tigela. Em outra tigela, misture a farinha de rosca, o parmesão e o sal."
       },
       "ingredientIds": [
         "egg",
@@ -419,8 +419,8 @@
         "pt-BR": "Empane a abobrinha"
       },
       "instruction": {
-        "en-GB": "Dip each round in egg, then crumbs. Drizzle or brush with the measured olive oil.",
-        "pt-BR": "Passe cada rodela no ovo e depois na mistura de farinha. Regue ou pincele com o azeite medido."
+        "en-GB": "Using a fork, an adult coats each round in egg, then crumbs. Children can help transfer slices with clean utensils, without touching raw egg. Drizzle or brush with the measured olive oil.",
+        "pt-BR": "Com um garfo, um adulto passa cada rodela no ovo e depois na mistura de farinha. As crianças podem ajudar a transferir as rodelas com utensílios limpos, sem tocar no ovo cru. Regue ou pincele com o azeite medido."
       },
       "ingredientIds": [
         "courgette",
@@ -1368,8 +1368,8 @@
           "pt-BR": "Prepare a cobertura"
         },
         "instruction": {
-          "en-GB": "Beat the egg in a bowl. Mix breadcrumbs, Parmesan and salt in another bowl.",
-          "pt-BR": "Bata o ovo em uma tigela. Misture a farinha de rosca, o parmesão e o sal em outra tigela."
+          "en-GB": "An adult cracks and beats the egg in one bowl. In another bowl, mix the breadcrumbs, Parmesan and salt.",
+          "pt-BR": "Um adulto quebra e bate o ovo em uma tigela. Em outra tigela, misture a farinha de rosca, o parmesão e o sal."
         },
         "ingredientIds": [
           "egg",
@@ -1414,8 +1414,8 @@
           "pt-BR": "Empane a abobrinha"
         },
         "instruction": {
-          "en-GB": "Dip each round in egg, then crumbs. Drizzle or brush with the measured olive oil.",
-          "pt-BR": "Passe cada rodela no ovo e depois na mistura de farinha. Regue ou pincele com o azeite medido."
+          "en-GB": "Using a fork, an adult coats each round in egg, then crumbs. Children can help transfer slices with clean utensils, without touching raw egg. Drizzle or brush with the measured olive oil.",
+          "pt-BR": "Com um garfo, um adulto passa cada rodela no ovo e depois na mistura de farinha. As crianças podem ajudar a transferir as rodelas com utensílios limpos, sem tocar no ovo cru. Regue ou pincele com o azeite medido."
         },
         "ingredientIds": [
           "courgette",

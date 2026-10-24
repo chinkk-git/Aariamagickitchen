@@ -69,7 +69,7 @@
 
 ## Nutrition per serving (estimate; review pending)
 - 308 kcal; protein 10.1 g; carbohydrate 56.2 g; fat 4.8 g; fibre 3.4 g; saturated fat 0.8 g; sodium not calculated.
-- Estimated from ingredient weights and USDA FoodData Central SR Legacy per-100-g values; dry pasta is used as the measured recipe input; no optional toppings included. Values are approximate and need nutrition review. Sodium not calculated because canned tomato labels vary and salt is optional. Ingredient weights scaled against USDA FoodData Central SR Legacy reference foods; values are estimates, not laboratory analyses.
+- Estimated from ingredient weights and USDA FoodData Central SR Legacy per-100-g values; dry pasta is used as the measured recipe input; no optional toppings included. Values are approximate and need nutrition review. Sodium remains unreported because salt is added to the pasta water and then drained, so retained salt is unknown; sodium in pasta products also varies by brand. Do not treat sodium as zero. Ingredient weights scaled against USDA FoodData Central SR Legacy reference foods; values are estimates, not laboratory analyses.
 
 ### Nutrition sources
 - USDA FoodData Central SR Legacy: [Pasta, dry, enriched (FDC 169736)](https://fdc.nal.usda.gov/food-details/169736/nutrients)

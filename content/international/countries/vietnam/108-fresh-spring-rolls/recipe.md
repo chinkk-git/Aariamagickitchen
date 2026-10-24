@@ -27,7 +27,7 @@
 
 - 15 mL Fresh lime juice / Suco de limão-taiti fresco
 
-- 2030 mL Warm water (for wrappers and dip) / Água morna (para o papel e o molho)
+- 2030 mL Water (for noodles, dip and wrappers) / Água (para o macarrão, o molho e o papel)
 
 ## Equipment / Equipamentos
 

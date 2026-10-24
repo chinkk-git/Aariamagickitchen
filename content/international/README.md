@@ -19,7 +19,6 @@ content/international/
       artwork/
         finished-dish.png
         ingredients/<ingredient-id>.png
-        equipment/<equipment-id>.png
         steps/step-01.png
     china/
     japan/
@@ -37,7 +36,7 @@ The numbered directory and IDs are **provisional** until checked against the liv
 ## Mandatory per-recipe `recipe.md`
 1. Identity: stable ID, country, original cultural context, category, EN-GB/PT-BR titles, servings, total/active time, age suitability, review state.
 2. Ingredients: stable ingredient ID, exact metric quantity, unit, substitutions, serving-scaling policy, allergens and ingredient-art path; no pork/ham.
-3. You'll Need: precise equipment checklist, tool icon path, child/adult role.
+3. You'll Need: precise localized equipment checklist and child/adult role. The approved Magic Recipe Prep Board displays localized equipment names as text chips; equipment icons are neither required nor generated.
 4. Steps: ordered step ID; EN-GB/PT-BR instruction; single visible action; exact ingredients and equipment used; step image path; adult-assist/heat/knife/cross-contamination cues; no timers.
 5. Finished dish: exact hero asset path, accurate visual description and source/provenance.
 6. Nutrition: values per serving, calculation method, primary source citations and unknown/pending fields (never fabricate).
@@ -45,7 +44,7 @@ The numbered directory and IDs are **provisional** until checked against the liv
 8. QA: A09 age 8–10 usability, cultural review, translation review, rights, art consistency and evidence.
 
 ## Artwork production rules
-Produce **one finished-dish illustration per recipe, separate ingredient/equipment illustrations as needed, and one accurate action illustration for EVERY step**. Save each image as an actual separate asset (not a collage). Use approved phone/tablet Ingredients & Steps prototype as visual baseline; preserve approved original characters/identities and do not invent lookalikes. Step illustrations must show the specific cooking action, utensils and food state; no unrelated generic art. Include exact asset filenames, dimensions, SHA-256, generation/source details, licensing/rights and review state. Previously displayed food search images were **style references**, not production assets.
+Produce **one finished-dish illustration per recipe, ingredient illustrations as needed, and one accurate action illustration for EVERY step**. Equipment illustrations are not part of the approved Prep Board; retain actual equipment names and adult-assistance metadata as localized text. Save each image as an actual separate asset (not a collage). Use the approved phone/tablet Ingredients & Steps prototype as visual baseline; preserve approved original characters/identities and do not invent lookalikes. Step illustrations must show the specific cooking action, utensils and food state; no unrelated generic art. Include exact asset filenames, dimensions, SHA-256, generation/source details, licensing/rights and review state. Previously displayed food search images were **style references**, not production assets.
 
 ## Mandatory quality gates
 Deterministic validation: manifest completeness; unique IDs and no collision with canonical 1–95; ingredient amounts and equipment referenced by steps; EN-GB/PT-BR parity; step numbering and image existence; asset provenance; correct country routing; no fake nutrition; all allergen and adult-assist fields. Record separate independent A08/A09, rights, nutrition and security gates. Never mark pending as passed.
