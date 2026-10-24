@@ -125,6 +125,7 @@ function screenshot(name, orientation = 'portrait') {
 }
 
 async function stableScreenshot(session,name,orientation='portrait',previousSha256=null){
+  if(await session.evaluate(`!!document.querySelector('.aria-world-globe__stage')`))await setMotionPreference(session,'reduce');
   let previousFrame=null,lastFrame=null,repeats=0;
   for(let attempt=0;attempt<14;attempt++){
     await session.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');

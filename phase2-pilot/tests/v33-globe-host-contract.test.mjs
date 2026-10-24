@@ -176,6 +176,7 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(tabletSmoke,/guideVisible:[\s\S]*?sparkleVisible:[\s\S]*?globe\.guideVisible[\s\S]*?globe\.sparkleVisible/,'tablet Android portrait and landscape evidence requires visible Aaria and sparkle artwork');
   assert.match(smoke,/Reduced-motion .*remain static/);
   assert.match(smoke,/android-back-restores-country-cards'[\s\S]*?setMotionPreference\(session,'reduce'\)[\s\S]*?stableScreenshot\(session,'world-map-back-phone-portrait'/,'stable Android Back screenshots freeze the continuously rotating globe before framebuffer settling');
+  assert.match(smoke,/async function stableScreenshot[\s\S]*?querySelector\('\.aria-world-globe__stage'\)[\s\S]*?setMotionPreference\(session,'reduce'\)/,'every still screenshot with an open globe freezes motion before checking framebuffer stability');
   assert.match(smoke,/state\.language='en-GB';render\(\)[\s\S]{0,80}setMotionPreference\(session,'reduce'\)[\s\S]*?stableScreenshot\(session,'world-map-before-empty-passport-phone-portrait'/,'Passport still captures explicitly freeze the idle globe animation first');
   assert.match(workflow,/OWNER_APPROVED=NO[\s\S]*?REVIEW_READY=NO[\s\S]*?RELEASE_READY=NO/);
   assert.match(moduleJs,/handleBack:/);
