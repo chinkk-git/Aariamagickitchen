@@ -191,7 +191,7 @@ async function pageSet(landscape){
   await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcome h1','Home before library');await click('.v31-action-tiles [data-nav="library"]','Recipe library');await waitFor('.recipe-card','97-recipe library');
   const library=await evaluate('(()=>({count:document.querySelectorAll("#screen .recipe-card").length,themeIds:[12,76,5].map(id=>[...document.querySelectorAll("#screen [data-open]")].find(card=>card.dataset.open===String(id))?.dataset.v32Theme||"")}))()');
   if(library.count!==97||library.themeIds.join(',')!=='playful-purple,fresh-green,sunny-orange')throw Error('Tablet catalogue/theme audit failed: '+JSON.stringify(library));
-  const exemplarExpected={12:{title:'Cheesy Corn Pancakes',theme:'playful-purple'},76:{title:'Rainbow Vegetable Noodle Toss',theme:'fresh-green'},5:{title:'Mini Pizza Bread Cups',theme:'sunny-orange'},96:{title:'Tomato Basil Pasta',theme:'unknown'},99:{title:'Vegetable Fried Rice',theme:'unknown'}};
+  const exemplarExpected={12:{title:'Cheesy Corn Pancakes',theme:'playful-purple'},76:{title:'Rainbow Vegetable Noodle Toss',theme:'fresh-green'},5:{title:'Mini Pizza Bread Cups',theme:'sunny-orange'},96:{title:'Tomato Basil Pasta',theme:'sunny-orange'},99:{title:'Vegetable Fried Rice',theme:'fresh-green'}};
   const libraryA11y=await audit('library');const libshot=await screenshot('library-'+(landscape?'landscape':'portrait'),landscape);
   const themeShots=[];
   for(const id of [12,76,5,96,99]){
