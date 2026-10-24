@@ -353,7 +353,7 @@ try {
   const ptCards=await session.evaluate(`({title:document.querySelector('.aria-world-globe__panel-head h2')?.textContent?.trim()||'',count:document.querySelectorAll('.aria-world-globe__recipe[data-recipe-id]').length,first:document.querySelector('.aria-world-globe__recipe strong')?.textContent?.trim()||''})`);
   if(ptCards.title!=='Índia'||ptCards.count!==18)throw new Error(`PT-BR India cards failed: ${JSON.stringify(ptCards)}`);
   evidence.flow.push({step:'PT-BR-country-cards',...ptCards,status:'PASS'});
-  await session.evaluate(`v33GlobeController?.handleBack?.()`);await pause(300);await session.evaluate(`state.language='en-GB';render()`);
+  await session.evaluate(`v33GlobeController?.handleBack?.()`);await pause(300);await session.evaluate(`state.language='en-GB';render()`);await setMotionPreference(session,'reduce');
 
   const emptyPassportBase=await stableScreenshot(session,'world-map-before-empty-passport-phone-portrait');evidence.screenshots.push(emptyPassportBase);
   await tap(session,'.aria-world-globe__passport','Open empty Food Passport');
