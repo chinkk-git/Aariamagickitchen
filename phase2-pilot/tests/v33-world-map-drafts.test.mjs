@@ -150,6 +150,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(regression,/isW02Globe/,'G3 follows the W03 globe when the exact Android package is W02');
   assert.match(regression,/W03 India must expose exactly its 18 canonical recipes/,'G3 retains the 18-link India contract');
   assert.match(regression,/Food Passport after canonical recipe completion/,'G3 validates the current Food Passport after recipe completion');
+  assert.match(regression,/steps:Number\(document.querySelector\("\\.ref-step-grid"\)\?\.dataset\.stepCount\|\|document.querySelectorAll\("\\.ref-step-grid > \\.ref-step-card"\)\.length\|\|0\)/,'G3 counts the rendered recipe step cards when the optional data-step-count attribute is absent');
+  assert.match(regression,/acceptance\.steps!==4/,'G3 still requires all four canonical recipe 12 steps');
   assert.match(regression,/sphere\.width<180/,'G3 checks the landscape sphere minimum');
   assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
   assert.match(regression,/catalogueCount !== 95/);
