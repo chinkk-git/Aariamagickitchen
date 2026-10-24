@@ -188,8 +188,9 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(smoke,/android-back-restores-country-cards'[\s\S]*?setMotionPreference\(session,'reduce'\)[\s\S]*?stableScreenshot\(session,'world-map-back-phone-portrait'/,'stable Android Back screenshots freeze the continuously rotating globe before framebuffer settling');
   assert.match(smoke,/async function stableScreenshot[\s\S]*?querySelector\('\.aria-world-globe__stage'\)[\s\S]*?setMotionPreference\(session,'reduce'\)/,'every still screenshot with an open globe freezes motion before checking framebuffer stability');
   assert.match(smoke,/state\.language='en-GB';render\(\)[\s\S]*?adb\(\['shell','input','keyevent','4'\]\)[\s\S]*?localeBackDismiss[\s\S]*?setMotionPreference\(session,'reduce'\)[\s\S]*?stableScreenshot\(session,'world-map-before-empty-passport-phone-portrait'/,'Passport setup dismisses the locale-restored overlay with Android Back, preserves globe state, then freezes motion before capture');
-  assert.match(smoke,/localeBackDismiss\.rotationDelta=rotationDistance\(dismissRotation,localeBackDismiss\.rotation\)/,'locale-restored Android Back records rotation drift while idle-spin continues');
-  assert.match(smoke,/localeBackDismiss\.rotationDelta>5/,'locale-restored Android Back still rejects rotation jumps beyond bounded natural-spin drift');
+  assert.match(smoke,/rotationBeforeLocaleRender[\s\S]*state\.language='en-GB';render\(\)[\s\S]*localeBackStartRotation[\s\S]*localeRenderRotationDelta>3/,'locale rerender must preserve globe rotation while idle-spin advances');
+  assert.match(smoke,/localeBackStartRotation[\s\S]*adb\(\['shell','input','keyevent','4'\]\)[\s\S]*localeBackDismiss\.rotationDelta=rotationDistance\(localeBackStartRotation,localeBackDismiss\.rotation\)/,'real Android Back preserves rotation measured immediately before the key event');
+  assert.match(smoke,/localeBackDismiss\.rotationDelta>3/,'locale-restored Android Back still rejects rotation resets or jumps beyond bounded natural-spin drift');
   assert.match(workflow,/OWNER_APPROVED=NO[\s\S]*?REVIEW_READY=NO[\s\S]*?RELEASE_READY=NO/);
   assert.match(moduleJs,/handleBack:/);
   assert.match(moduleJs,/Surprise/);
