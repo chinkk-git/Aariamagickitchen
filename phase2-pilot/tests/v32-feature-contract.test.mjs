@@ -269,7 +269,7 @@ test('international shared renderer uses matching EN-GB and PT-BR ingredient and
     'localized ingredient and step helpers are defined outside the per-recipe initialization loop');
   assert.match(runtime, /selected=\{\.\.\.entry\.record,\.\.\.\(PT_RECIPES\[id\]\|\|\{\}\),title:record\.title,ingredients:v32InternationalIngredientList\(record\),steps:v32InternationalSteps\(record\),yieldText:pt\?/,
     'the active shared-renderer record uses the top-level locale helpers rather than block-scoped initializer functions');
-  assert.match(runtime, /function v32RenderInternationalStepCopy\(html,steps,index\)[\s\S]*?safe\(instruction\)/,
+  assert.match(runtime, /function v32RenderInternationalStepCopy\(html,steps,index\)[\s\S]*?const escaped=String\(instruction\)\.replace\(/,
     'the active copy card is restored from the approved localized step record after the shared renderer formats it');
   assert.match(runtime, /v32RenderInternationalStepCopy\(html,record\.steps,step\)/,
     'each active EN-GB or PT-BR step card receives the exact locale-specific source instruction');
@@ -305,8 +305,7 @@ test('international active step text restores the exact audited locale instructi
   const start = runtime.indexOf('function v32RenderInternationalStepCopy(');
   const end = runtime.indexOf('\nfunction v32RenderInternationalStepArtwork(', start);
   assert.ok(start >= 0 && end > start, 'active step restoration helper is present');
-  const restore = new Function('safe', `${runtime.slice(start, end)}; return v32RenderInternationalStepCopy;`)(value =>
-    String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;'));
+  const restore = new Function(`${runtime.slice(start, end)}; return v32RenderInternationalStepCopy;`)();
   const html = '<div class="ref-step-copy v32-r12-instruction"><p data-original-source="recipe-step">formatted copy</p></div>';
   for (const recipe of [italy, china]) {
     for (const locale of ['en-GB', 'pt-BR']) {
