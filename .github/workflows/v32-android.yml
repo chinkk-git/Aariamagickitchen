@@ -25,7 +25,7 @@ permissions:
 
 concurrency:
   group: aaria-android-${{ github.ref_name }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.ref_name == 'feature/w01-magical-world-review-build' }}
 
 jobs:
   test-and-build:
@@ -254,7 +254,7 @@ jobs:
           retention-days: 14
 
       - name: G2 TARGETED DEVICE SMOKE — recipe 12 on Pixel Tablet first
-        timeout-minutes: 60
+        timeout-minutes: 35
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 35

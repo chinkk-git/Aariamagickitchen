@@ -49,7 +49,7 @@ for attempt in $(seq 1 30); do
 done
 [ -n "$socket" ] || { echo "Tablet WebView debug socket was not created" >&2; exit 1; }
 adb_timeout -s "$ANDROID_SERIAL" forward tcp:9223 "localabstract:$socket"
-timeout --kill-after=10s 3300s node --input-type=module <<'NODE'
+timeout --kill-after=10s 1800s node --input-type=module <<'NODE'
 import {execFileSync} from 'node:child_process';
 import {mkdirSync,readFileSync,unlinkSync,writeFileSync} from 'node:fs';
 import {clickByDatasetExpression,clickSelectorExpression,navigationSummaryExpression} from './tools/v3/android-webview-smoke-expressions.mjs';
@@ -267,7 +267,9 @@ await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcom
   }
   await evaluate('state.language="en-GB";save();render()');
   const recipeVisualEvidence=[];
-  for(const id of [...Array.from({length:95},(_,index)=>index+1),96,99]){
+  // G2 is a targeted tablet gate. G3 covers every integrated route on phone;
+  // keep tablet artwork verification to the owner pilot and both new recipes.
+  for(const id of [12,96,99]){
     const orientationName=landscape?'landscape':'portrait';
     await clickRecipeCard(id,'All-recipe tablet image audit');
     await waitFor('.ref-hero h1','Recipe '+id+' tablet '+orientationName+' visual audit');
@@ -295,7 +297,7 @@ await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcom
     const status=dish.loaded&&dish.association&&steps.every(item=>item.status==='PASS')?'PASS':dish.candidateCount===0||steps.some(item=>item.status==='FAIL')?'FAIL':'NOT TESTED';
     recipeVisualEvidence.push({recipeId:id,title:detail.title,device:'tablet',orientation:orientationName,status,finishedDish:dish,steps,screenshots:[detailShot.path,firstStepShot?.path].filter(Boolean)});
     await click('#nav .tab[data-nav="library"]','Recipe library after image audit '+id);await waitFor('.recipe-card[data-open="1"]','Library after image audit '+id);
-    if(id%10===0||id===96||id===99)console.log(`Verified tablet ${orientationName} recipe image ${id}; coverage ${recipeVisualEvidence.length}/97`);
+    console.log(`Verified tablet ${orientationName} representative recipe image ${id}; coverage ${recipeVisualEvidence.length}/3`);
   }
   writeFileSync(`artifacts/v32-diagnostics/recipe-image-verification-tablet-${landscape?'landscape':'portrait'}.json`,JSON.stringify({schemaVersion:1,device:'tablet',orientation:landscape?'landscape':'portrait',recipeCount:recipeVisualEvidence.length,recipes:recipeVisualEvidence},null,2)+'\n');
   return {home,homeNewRecipes,avatarScenes,world,library:libshot,themeShots,internationalScreens,recipeVisualEvidence,accessibility:{home:homeA11y,world:worldA11y,library:libraryA11y},worldMap:globe,worldInteraction:restored}

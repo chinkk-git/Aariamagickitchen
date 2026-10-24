@@ -450,19 +450,19 @@ test('tablet G3 waits for a ready WebView title and preserves emulator logcat on
     'tablet emulator logcat is retained in diagnostics when the smoke fails');
 });
 
-test('tablet G3 keeps both complete 95-recipe image sweeps under aligned bounded deadlines', async () => {
+test('tablet G2 keeps representative image checks under bounded deadlines while phone coverage remains full', async () => {
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
   const workflow = await read('.github/workflows/v32-android.yml');
-  assert.match(tablet, /for\(const id of \[\.\.\.Array\.from\(\{length:95\},\(_,index\)=>index\+1\),96,99\]\)/,
-    'each tablet orientation checks 95 originals plus pilots #096/#099 and step images');
+  assert.match(tablet, /for\(const id of \[12,96,99\]\)/,
+    'each tablet orientation checks owner pilot #12 and international recipes #096/#099 with step images');
   assert.match(tablet, /recipe-image-verification-tablet-\$\{landscape\?'landscape':'portrait'\}/,
-    'portrait and landscape receive separate full image evidence reports');
+    'portrait and landscape receive separate representative image evidence reports');
   assert.match(tablet, /steps\.every\(item=>item\.status==='PASS'\)/,
     'every recipe step image assertion remains required for a recipe PASS');
-  assert.match(tablet, /timeout --kill-after=10s 3300s node --input-type=module/,
-    'the tablet browser harness has a bounded 55-minute deadline');
-  assert.match(workflow, /timeout-minutes: 60\n\s+uses: reactivecircus\/android-emulator-runner@v2\n\s+with:[\s\S]*?emulator-boot-timeout: 300[\s\S]*?script: bash \.github\/scripts\/v32-android-tablet-smoke\.sh/,
-    'the tablet action includes emulator boot and headroom over its bounded harness');
+  assert.match(tablet, /timeout --kill-after=10s 1800s node --input-type=module/,
+    'the tablet browser harness has a bounded 30-minute deadline after removing the duplicate 97-recipe sweep');
+  assert.match(workflow, /timeout-minutes: 35\n\s+uses: reactivecircus\/android-emulator-runner@v2\n\s+with:[\s\S]*?emulator-boot-timeout: 300[\s\S]*?script: bash \.github\/scripts\/v32-android-tablet-smoke\.sh/,
+    'the tablet action includes emulator boot and bounded headroom over the lighter harness');
   assert.match(workflow, /timeout-minutes: 120/,
     'the sequential G1/G2/tablet/phone gates fit within a bounded job deadline');
 });
