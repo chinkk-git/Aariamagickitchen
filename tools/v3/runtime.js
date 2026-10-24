@@ -501,7 +501,10 @@ window.addEventListener('click',e=>{
  if(!button)return;
  e.preventDefault();
  e.stopPropagation();
- openRecipe(Number(button.dataset.open));
+ const id=Number(button.dataset.open),recipe=RECIPES.find(item=>Number(item.id)===id);
+ if(!recipe)return;
+ openRecipe(id);
+ if(view!=='recipe'||Number(selected?.id)!==id){selected=recipe;view='recipe';render()}
 },true);
 document.addEventListener('click',e=>{
  if(v31MapSuppressClick){v31MapSuppressClick=false;e.preventDefault();return}
