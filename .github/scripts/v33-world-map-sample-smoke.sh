@@ -7,6 +7,15 @@ APK=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
 adb_timeout() { timeout --kill-after=10s 90s adb "$@"; }
 adb_poll_timeout() { timeout --kill-after=2s 5s adb "$@"; }
 
+tap_anr_wait_action() {
+  adb_poll_timeout shell uiautomator dump /sdcard/w02-anr-window.xml >/dev/null 2>&1 || return 1
+  hierarchy="$(adb_poll_timeout shell cat /sdcard/w02-anr-window.xml 2>/dev/null | tr -d '\r' || true)"
+  bounds="$(printf '%s' "$hierarchy" | node -e 'let s="";process.stdin.on("data",x=>s+=x).on("end",()=>{const n=(s.match(/<node\b[^>]*>/g)||[]).find(x=>/\btext="Wait"/.test(x));const m=n?.match(/\bbounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/);if(m)process.stdout.write(`${Math.round((+m[1]+ +m[3])/2)},${Math.round((+m[2]+ +m[4])/2)}`)})' 2>/dev/null || true)"
+  [ -n "$bounds" ] || return 1
+  echo "System UI ANR detected; selecting the Android Wait action at $bounds" >&2
+  adb_timeout shell input tap "${bounds%,*}" "${bounds#*,}"
+}
+
 on_exit() {
   result=$?
   trap - EXIT
@@ -24,12 +33,17 @@ wait_for_stable_launcher() {
   adb_timeout shell am start -W -a android.intent.action.MAIN -c android.intent.category.HOME
   stable=0
   rebooted=0
+  anr_waits=0
   for attempt in $(seq 1 45); do
     windows="$(adb_poll_timeout shell dumpsys window windows 2>/dev/null || true)"
     activities="$(adb_poll_timeout shell dumpsys activity activities 2>/dev/null || true)"
     anr_window="$(printf '%s' "$windows" | grep -Ei 'Window\{[^}]*Application Not Responding|WindowStateAnimator\{[^}]*Application Not Responding' | head -1 || true)"
     if [ -n "$anr_window" ]; then
       stable=0
+      if tap_anr_wait_action; then
+        anr_waits=$((anr_waits + 1))
+        if [ "$anr_waits" -lt 4 ]; then sleep 3; continue; fi
+      fi
       if [ "$rebooted" -eq 0 ]; then
         echo "Quickstep ANR before sample launch; rebooting the clean emulator once: $anr_window" >&2
         rebooted=1
@@ -42,6 +56,7 @@ wait_for_stable_launcher() {
         done
         [ "$booted" = 1 ] || { echo 'Clean sample emulator did not reboot successfully' >&2; return 1; }
         adb_timeout shell am start -W -a android.intent.action.MAIN -c android.intent.category.HOME
+        anr_waits=0
       else
         echo "Quickstep still shows an ANR after reboot: $anr_window" >&2
         return 1

@@ -99,6 +99,9 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(phone,/connect\(\{refresh:true\}\)/,'phone smoke must reconnect to the app-owned WebView after Android orientation recreates DevTools');
   assert.match(phone,/adb\(\['forward','tcp:9224',`localabstract:\$\{socket\}`\]\)/,'rotation reconnect must forward the current app process DevTools socket');
   assert.match(phone,/attempt<\(refresh\?6:2\)/,'the sample retries a transient WebView handshake after orientation recreates its target');
+  assert.match(phoneLaunch,/uiautomator dump \/sdcard\/w02-anr-window\.xml/,'Android smoke recovers the emulator System UI ANR using the actual accessible dialog bounds');
+  assert.match(phoneLaunch,/text="Wait"/);
+  assert.match(phoneLaunch,/anr_waits" -lt 4/,'the launcher warmup tries the system Wait action before rebooting a transient emulator ANR');
   assert.match(await read('tools/v3/runtime.js'),/v33GlobeState=v33GlobeController\?\.getState\?\.\(\)\|\|v33GlobeState/,'World state is serialized before opening a canonical recipe so Back can restore the same country');
   assert.match(phone,/cmd','connectivity','airplane-mode','enable/);
   assert.match(phone,/food-passport-offline-restart-persistence/);
