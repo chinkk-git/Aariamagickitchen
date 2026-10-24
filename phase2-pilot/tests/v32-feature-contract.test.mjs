@@ -464,6 +464,8 @@ test('owner visual corrections use a compact carousel and no miniature equipment
     'Home New Recipes renders in a horizontally scrollable flex rail');
   assert.match(runtime, /\.app \.v32-new-recipe-card\{position:relative!important;display:grid!important;flex:0 0 clamp\(176px,28vw,224px\)!important;[^}]*max-height:190px!important/,
     'Home recipe art is constrained to thumbnail-sized compact cards');
+  assert.match(runtime, /\.app \.v32-new-recipe-card strong\{[^}]*-webkit-line-clamp:2!important;[^}]*white-space:normal!important/,
+    'localized carousel titles may wrap over two compact lines instead of being cut off');
   assert.match(runtime, /v32-new-recipes-grid" role="group" tabindex="0" aria-label="'\+\(pt\?'Novas receitas internacionais':'New international recipes'\)/,
     'carousel is keyboard reachable and labelled in EN-GB/PT-BR');
   assert.match(runtime, /class="v32-new-recipe-badge"/, 'New Recipe cards carry a NEW badge');
@@ -481,6 +483,8 @@ test('Android tablet verifies EN-GB and PT-BR Home carousel layout in both orien
     'English Home carousel must pass live size, badge, image and horizontal-rail checks');
   assert.match(tablet, /PT-BR Home New Recipes compact carousel failed/,
     'Portuguese Home carousel must pass the same live layout checks');
+  assert.match(tablet, /x\.title\.lines>2\|\|x\.title\.scrollWidth>x\.title\.clientWidth\+1\|\|x\.title\.scrollHeight>x\.title\.clientHeight\+1/,
+    'the Android device test rejects clipped or truncated localized carousel titles');
   assert.match(tablet, /new-recipes-pt-br-'\+\(landscape\?'landscape':'portrait'\)/,
     'Android captures the localized carousel in portrait and landscape');
   assert.doesNotMatch(tablet, /if\(!landscape\)\{await evaluate\('state\.language="pt-BR"/,
