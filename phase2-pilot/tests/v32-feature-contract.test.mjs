@@ -225,8 +225,9 @@ test('international recipes reuse the approved renderer and fail closed on layou
   assert.match(runtime, /v32RenderInternationalEquipment\(html,record,pt\)/, 'international equipment adapts the canonical equipment grid after the shared renderer');
   assert.match(runtime, /function v32RenderInternationalStepArtwork\(html,steps\)[\s\S]*?step\.image\?\.path[\s\S]*?v32-international-step-art[\s\S]*?loading="eager"[\s\S]*?Unexpected extra pending international step-art slot/, 'canonical pending figure slots bind each pinned W03 step illustration and reject missing or extra art');
   assert.match(runtime, /v32RenderInternationalStepArtwork\(html,record\.steps\)/, 'international cooking flow adapts the canonical illustrated step cards after shared rendering');
-  assert.match(runtime, /function v32InternationalToolIcon\(item\)[\s\S]*?TOOL_VECTORS\[key\][\s\S]*?iconSvg\(vector\[0\],vector\[1\]\)/, 'international equipment reuses the original template SVG tool icons');
-  assert.match(runtime, /return '<div class="ref-tool"><span class="tool-illustration">'\+v32InternationalToolIcon\(item\)[\s\S]*?class="v32-tool-role"/, 'international equipment uses simple template icons, names and safety roles without photo artwork');
+  assert.match(runtime, /return '<div class="ref-tool"><span class="v32-equipment-chip">'\+safe\(name\)[\s\S]*?class="v32-tool-role"/, 'international equipment uses localized text chips and retains safety roles');
+  assert.match(runtime, /function v32ApplyMagicPrepBoard\([\s\S]*?\.ref-tool-grid \.ref-tool[\s\S]*?\.v32-r12-equipment-list li[\s\S]*?v32-equipment-chip/, 'the shared render wrapper converts original and recipe #12 templates into the approved chip board');
+  assert.match(runtime, /v32-magic-prep-board-style[\s\S]*?flex-wrap:wrap!important[\s\S]*?border-radius:999px!important/, 'pastel equipment chips wrap naturally across orientations');
   assert.doesNotMatch(runtime, /v32RenderInternationalEquipment[\s\S]*?\.map\(\(item,index\)=>\{const image=item\.image/, 'international equipment no longer inserts W03 product pictures into the equipment grid');
   assert.match(runtime, /function v32InternationalIngredientPicture\(text\)[\s\S]*?spaghetti\|espaguete\|pasta seca[\s\S]*?garlic\|alho[\s\S]*?basil\|manjeric[\s\S]*?Peas and carrots[\s\S]*?Spring onion[\s\S]*?Neutral cooking oil[\s\S]*?Soy sauce[\s\S]*?v32-intl-ingredient-icon/, 'international-only ingredient pictograms cover the previously unsupported names');
   assert.match(runtime, /V32_INTL_BY_ID\?\.has\(Number\(selected\?\.id\)\)\?v32InternationalIngredientPicture\(text\):v32BaseBatchIngredientPictureForOriginalRecipes\(text\)/, 'ingredient-specific additions are scoped to #096/#099 and leave original recipe icons unchanged');
@@ -248,7 +249,7 @@ test('international recipes reuse the approved renderer and fail closed on layou
   assert.match(tablet, /sideBySide[\s\S]*?landscape&&!x\.sideBySide/, 'tablet G2 requires artwork beside instructions in landscape');
   assert.match(tablet, /previousInternationalStep=readFileSync\(productionIngredientScreenshot\.path\)[\s\S]*?previousPng:previousInternationalStep[\s\S]*?previousInternationalStep=readFileSync\(shot\.path\)/, 'every captured international step is checked against the preceding real Android frame and expected WebView step state');
   assert.match(tablet, /previousPtStep=readFileSync\(ptIngredientShot\.path\)[\s\S]*?previousPng:previousPtStep/, 'PT-BR step screenshots also fail closed on duplicate capture frames');
-  assert.match(tablet, /ref-tool-grid[\s\S]*?v32-tool-role/, 'equipment evidence checks the approved grid and role labels');
+  assert.match(tablet, /v32-equipment-chip[\s\S]*?v32-tool-role[\s\S]*?x\.icon/, 'equipment evidence checks text chips, role labels, and absence of equipment imagery');
   assert.match(phone, /production-international-\$\{id\}-phone-/);
   assert.match(phone, /ref-ingredient-grid/, 'phone G3 captures the canonical international checklist for the original 95-route regression matrix');
 });
@@ -473,10 +474,8 @@ test('owner visual corrections use a compact carousel and no miniature equipment
   assert.match(runtime, /v32-new-recipes-grid" role="group" tabindex="0" aria-label="'\+\(pt\?'Novas receitas internacionais':'New international recipes'\)/,
     'carousel is keyboard reachable and labelled in EN-GB/PT-BR');
   assert.match(runtime, /class="v32-new-recipe-badge"/, 'New Recipe cards carry a NEW badge');
-  assert.match(runtime, /function v32InternationalToolIcon\(item\)[\s\S]*?const vector=key&&TOOL_VECTORS\[key\][\s\S]*?return iconSvg\(vector\[0\],vector\[1\]\)/,
-    'equipment icon resolver uses the original simple SVG tool vocabulary');
-  assert.match(runtime, /function v32RenderInternationalEquipment\(html,record,pt\)[\s\S]*?v32InternationalToolIcon\(item\)[\s\S]*?v32-tool-role/,
-    'equipment grid contains the simple icon, translated name and adult role');
+  assert.match(runtime, /function v32RenderInternationalEquipment\(html,record,pt\)[\s\S]*?v32-equipment-chip[\s\S]*?v32-tool-role/,
+    'international equipment grid contains localized name chips and adult roles');
   assert.doesNotMatch(runtime, /function v32RenderInternationalEquipment\(html,record,pt\)[\s\S]*?const image=item\.image/,
     'equipment photos are not inserted into recipe equipment cards');
 });
@@ -523,16 +522,17 @@ test('international ingredient pictograms cover both recipes and locales without
     'the original 95 recipe icon function is preserved and only the two pilots receive the new mapping');
 });
 
-test('approved equipment IDs in #096/#099 resolve to original template SVGs rather than art files', async () => {
+test('approved equipment IDs in #096/#099 render as localized prep-board chips without imagery', async () => {
   const runtime = await read('tools/v3/runtime.js');
-  const helper = runtime.match(/function v32InternationalToolIcon\(item\)\s*\{[\s\S]*?\n\}/);
-  assert.ok(helper, 'equipment icon resolver exists');
-  const vectors = Object.fromEntries(['pan','sieve','bowl','spoon','board','knife','spatula','fork','plate'].map(key => [key,[key,`<path data-tool="${key}"/>`]]));
-  const iconSvg = (label, body) => `<svg class="kitchen-icon" aria-label="${label}">${body}</svg>`;
-  const render = new Function('TOOL_VECTORS','iconSvg',`${helper[0]}; return v32InternationalToolIcon;`)(vectors,iconSvg);
-  for (const id of ['large-pot','small-pan','colander','mixing-bowl','wooden-spoon','chopping-board','knife','wok','spatula','fork','measuring-spoon','plate','rice-container','serving-bowl']) {
-    const svg = render({id,name:{'en-GB':id.replaceAll('-',' ')}});
-    assert.match(svg, /<svg class="kitchen-icon"/, `${id} uses a template tool illustration`);
-    assert.doesNotMatch(svg, /<img|\.png|\.jpg|artwork/, `${id} does not use a miniature photo asset`);
+  const helper = runtime.match(/function v32RenderInternationalEquipment\(html,record,pt\)\s*\{[\s\S]*?\n\}/);
+  assert.ok(helper, 'international equipment renderer exists');
+  const render = new Function('safe','v32InternationalRole',`${helper[0]}; return v32RenderInternationalEquipment;`)(value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;'),role=>role==='adult'?'Adult handles':'Child-safe');
+  for (const locale of ['en-GB','pt-BR']) {
+    const items=['large-pot','small-pan','colander','mixing-bowl','wooden-spoon','chopping-board','knife','wok','spatula','fork','measuring-spoon','plate','rice-container','serving-bowl'].map((id,index)=>({id,name:{'en-GB':id.replaceAll('-',' '),'pt-BR':`Utensílio ${index+1}`},role:index===0?'adult':'child'}));
+    const html=render('<div class="ref-tool-grid"></div>',{equipmentItems:items},locale==='pt-BR');
+    assert.equal((html.match(/class="v32-equipment-chip"/g)||[]).length,items.length,`${locale} preserves every actual equipment name`);
+    assert.match(html,locale==='pt-BR'?/Utensílio 1/:/large pot/);
+    assert.match(html,/class="v32-tool-role"/,'adult/child role guidance remains present');
+    assert.doesNotMatch(html,/<svg|<img|\.png|\.jpg|placeholder/i,'equipment presentation contains no imagery or placeholders');
   }
 });
