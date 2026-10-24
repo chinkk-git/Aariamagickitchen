@@ -303,7 +303,7 @@ test('international active step text restores the exact audited locale instructi
     read('content/international/countries/china/099-vegetable-fried-rice/recipe.json').then(JSON.parse)
   ]);
   const start = runtime.indexOf('function v32RenderInternationalStepCopy(');
-  const end = runtime.indexOf('\\nfunction v32RenderInternationalStepArtwork(', start);
+  const end = runtime.indexOf('\nfunction v32RenderInternationalStepArtwork(', start);
   assert.ok(start >= 0 && end > start, 'active step restoration helper is present');
   const restore = new Function('safe', `${runtime.slice(start, end)}; return v32RenderInternationalStepCopy;`)(value =>
     String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;'));
