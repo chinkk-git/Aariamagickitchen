@@ -35,8 +35,8 @@
 - PT-BR: Lave a alface, os pimentões, o limão e o abacate em água corrente limpa. Escorra e seque.
 - Adult help EN-GB: An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.
 - Ajuda de adulto PT-BR: Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas.
-- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
-- Segurança PT-BR: Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado.
+- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. An adult opens the tins; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
+- Segurança PT-BR: Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Um adulto abre as latas; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado.
 - Illustration: `content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png` (SHA-256 `a62ee1a72a82f6de7093ad385e0fc777a2de3b3b52f8bc94ef3df9c132a21e5b`)
 
 ### step-02 — Prepare the colourful toppings / Prepare os acompanhamentos coloridos
@@ -49,8 +49,8 @@
 - Illustration: `content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png` (SHA-256 `71269e6441eadefd4fd51d19c6376af85dd6fce015d675952b5658741f77c794`)
 
 ### step-03 — Drain the beans and corn / Escorra o feijão e o milho
-- EN-GB: With adult help, open the tins. Drain and rinse the black beans and sweetcorn in a colander.
-- PT-BR: Com ajuda de um adulto, abra as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor.
+- EN-GB: An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.
+- PT-BR: Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor.
 - Adult help EN-GB: An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.
 - Ajuda de adulto PT-BR: Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas.
 - Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
