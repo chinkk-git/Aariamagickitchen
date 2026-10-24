@@ -84,10 +84,16 @@ test('W03 Natural Earth geometry remains intact and the approved pointing-Aaria 
 });
 
 test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 coverage', async () => {
-  const [phone,phoneLaunch,tablet,workflow,regression]=await Promise.all([
+  const [phone,phoneLaunch,tablet,workflow,regression,runtime]=await Promise.all([
     read('.github/scripts/v33-world-map-sample-smoke.mjs'),read('.github/scripts/v33-world-map-sample-smoke.sh'),read('.github/scripts/v32-android-tablet-smoke.sh'),
-    read('.github/workflows/v32-android.yml'),read('.github/scripts/v32-android-smoke.sh')
+    read('.github/workflows/v32-android.yml'),read('.github/scripts/v32-android-smoke.sh'),read('tools/v3/runtime.js')
   ]);
+  const spinArrowMarkup=runtime.match(/spinHint\.innerHTML='([^']+)'/)?.[1]||'';
+  assert.equal((spinArrowMarkup.match(/<path\b/g)||[]).length,4,'the portrait spin SVG contains two curved arrows and two arrowheads');
+  assert.match(tablet,/arrowsPathCount:arrowPaths\?\.length\|\|0,arrowsVisible:!!arrowPaths&&arrowPaths\.length>=2&&!!arrowRect&&arrowRect\.width>0&&arrowRect\.height>0/,
+    'G2 accepts a multi-path arrow SVG only when it has at least two paths and non-zero rendered geometry');
+  assert.doesNotMatch(tablet,/querySelectorAll\('path'\)\.length===2/,
+    'G2 does not confuse the four path segments of the approved SVG with four separate arrows');
   assert.match(phone,/orientation/);
   assert.match(phone,/aria-world-globe/);
   assert.match(phone,/aria-world-globe__recipe/);
