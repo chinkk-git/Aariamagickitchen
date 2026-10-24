@@ -11,7 +11,7 @@ Executed checks:
 - Checked all 15 English cooking-step sequences against their recorded adult-assistance and safety cues. The local audit covers hazard presence and readable instructions; A08/A09 review remains pending.
 - Reviewed the recipe records for bilingual JSON and Markdown locale markers, ingredient IDs/quantities/units, exact allergen declaration parity with ingredient flags, equipment names, step references, nutrition fields, explicit review statuses, unsafe-content patterns and finished-dish artwork path/provenance consistency.
 
-The preview renderer regenerated all 15 source-content layouts after the text edits. I visually inspected the updated #096, #099, #102 and #103 full previews; the refreshed contact sheets are linked below. These are source-content previews, not Android screenshots. These are source-content previews, not Android screenshots. This turn directly displayed the #096 ingredient-page content preview; its values and text chips are readable at phone-prototype scale. Artwork-rights clearance remains pending.
+The preview renderer regenerated all 15 source-content layouts after the text edits. I visually inspected the updated #096, #099, #102 and #103 full previews; the refreshed contact sheets are linked below. These are source-content previews, not Android screenshots. Artwork-rights clearance remains pending.
 
 ## Recipe inventory
 
