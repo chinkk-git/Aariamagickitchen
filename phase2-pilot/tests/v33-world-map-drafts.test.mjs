@@ -150,6 +150,7 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(regression,/sphere\.width<180/,'G3 checks the landscape sphere minimum');
   assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
   assert.match(regression,/catalogueCount !== 95/);
+  assert.match(regression,/destinationTiles!==1[\s\S]*?destinationCodes\)!==\'[\"IND\"]\'[\s\S]*?indiaTileVisible/,'Android home smoke must require the single visible India destination in the W02 validated catalogue');
   assert.match(workflow,/G1 FAST PREFLIGHT[\s\S]*?W02 SAMPLE[\s\S]*?G2 TARGETED DEVICE SMOKE[\s\S]*?G3 FULL REGRESSION/);
   const transform=await read('tools/v3/transform-production.mjs');
   assert.match(transform,/aria-world-globe__flag\{width:58px;height:58px;/,'Android host CSS keeps the enlarged country hit targets above 48px');
