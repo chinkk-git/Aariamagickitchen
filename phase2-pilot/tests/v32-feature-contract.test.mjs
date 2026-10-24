@@ -221,7 +221,11 @@ test('international recipes reuse the approved renderer and fail closed on layou
   assert.match(runtime, /v32RenderInternationalEquipment\(html,record,pt\)/, 'international equipment adapts the canonical equipment grid after the shared renderer');
   assert.match(runtime, /function v32RenderInternationalStepArtwork\(html,steps\)[\s\S]*?step\.image\?\.path[\s\S]*?v32-international-step-art[\s\S]*?loading="eager"[\s\S]*?Unexpected extra pending international step-art slot/, 'canonical pending figure slots bind each pinned W03 step illustration and reject missing or extra art');
   assert.match(runtime, /v32RenderInternationalStepArtwork\(html,record\.steps\)/, 'international cooking flow adapts the canonical illustrated step cards after shared rendering');
-  assert.match(runtime, /item\.image\?\.path\|\|item\.imageAsset[\s\S]*?class="kitchen-icon"[\s\S]*?class="v32-tool-role"/, 'equipment keeps the pinned illustration and localized adult/shared role inside each canonical tool card');
+  assert.match(runtime, /function v32InternationalToolIcon\(item\)[\s\S]*?TOOL_VECTORS\[key\][\s\S]*?iconSvg\(vector\[0\],vector\[1\]\)/, 'international equipment reuses the original template SVG tool icons');
+  assert.match(runtime, /return '<div class="ref-tool"><span class="tool-illustration">'\+v32InternationalToolIcon\(item\)[\s\S]*?class="v32-tool-role"/, 'international equipment uses simple template icons, names and safety roles without photo artwork');
+  assert.doesNotMatch(runtime, /v32RenderInternationalEquipment[\s\S]*?\.map\(\(item,index\)=>\{const image=item\.image/, 'international equipment no longer inserts W03 product pictures into the equipment grid');
+  assert.match(runtime, /function v32InternationalIngredientPicture\(text\)[\s\S]*?spaghetti\|espaguete\|pasta seca[\s\S]*?garlic\|alho[\s\S]*?basil\|manjeric[\s\S]*?Peas and carrots[\s\S]*?Spring onion[\s\S]*?Neutral cooking oil[\s\S]*?Soy sauce[\s\S]*?v32-intl-ingredient-icon/, 'international-only ingredient pictograms cover the previously unsupported names');
+  assert.match(runtime, /V32_INTL_BY_ID\?\.has\(Number\(selected\?\.id\)\)\?v32InternationalIngredientPicture\(text\):v32BaseBatchIngredientPictureForOriginalRecipes\(text\)/, 'ingredient-specific additions are scoped to #096/#099 and leave original recipe icons unchanged');
   assert.doesNotMatch(runtime, /function v32InternationalDetail|\.v32-international-recipe \./, 'the rejected custom international renderer and its layout rules are removed');
   assert.match(runtime, /v32CompactIngredients[\s\S]*?v32ShortAmount/, 'compact ingredient labels retain concise amounts and source-linked accessible names');
   assert.match(runtime, /declaredAllergens:[^,]*record\.allergens/, 'W03 allergen declarations are passed into the standard allergen panel');
@@ -452,4 +456,63 @@ test('tablet G3 keeps both complete 95-recipe image sweeps under aligned bounded
     'the tablet action includes emulator boot and headroom over its bounded harness');
   assert.match(workflow, /timeout-minutes: 120/,
     'the sequential G1/G2/tablet/phone gates fit within a bounded job deadline');
+});
+
+test('owner visual corrections use a compact carousel and no miniature equipment photos', async () => {
+  const runtime = await read('tools/v3/runtime.js');
+  assert.match(runtime, /\.app \.v32-new-recipes-grid\{display:flex!important;flex-wrap:nowrap!important;[^}]*overflow-x:auto!important/,
+    'Home New Recipes renders in a horizontally scrollable flex rail');
+  assert.match(runtime, /\.app \.v32-new-recipe-card\{position:relative!important;display:grid!important;flex:0 0 clamp\(176px,28vw,224px\)!important;[^}]*max-height:190px!important/,
+    'Home recipe art is constrained to thumbnail-sized compact cards');
+  assert.match(runtime, /v32-new-recipes-grid" role="group" tabindex="0" aria-label="'\+\(pt\?'Novas receitas internacionais':'New international recipes'\)/,
+    'carousel is keyboard reachable and labelled in EN-GB/PT-BR');
+  assert.match(runtime, /class="v32-new-recipe-badge"/, 'New Recipe cards carry a NEW badge');
+  assert.match(runtime, /function v32InternationalToolIcon\(item\)[\s\S]*?const vector=key&&TOOL_VECTORS\[key\][\s\S]*?return iconSvg\(vector\[0\],vector\[1\]\)/,
+    'equipment icon resolver uses the original simple SVG tool vocabulary');
+  assert.match(runtime, /function v32RenderInternationalEquipment\(html,record,pt\)[\s\S]*?v32InternationalToolIcon\(item\)[\s\S]*?v32-tool-role/,
+    'equipment grid contains the simple icon, translated name and adult role');
+  assert.doesNotMatch(runtime, /function v32RenderInternationalEquipment\(html,record,pt\)[\s\S]*?const image=item\.image/,
+    'equipment photos are not inserted into recipe equipment cards');
+});
+
+test('international ingredient pictograms cover both recipes and locales without changing original icon routing', async () => {
+  const runtime = await read('tools/v3/runtime.js');
+  const helper = runtime.match(/function v32InternationalIngredientPicture\(text\)\s*\{[\s\S]*?\n\}/);
+  assert.ok(helper, 'international pictogram renderer exists');
+  const iconSvg = (label, body) => `<svg class="kitchen-icon" role="img" aria-label="${label}">${body}</svg>`;
+  const basePicture = text => `<svg class="kitchen-icon" role="img" aria-label="${text}"><circle cx="20" cy="20" r="10"/></svg>`;
+  const picture = new Function('iconSvg', 'v32BaseBatchIngredientPictureForOriginalRecipes', `${helper[0]}; return v32InternationalIngredientPicture;`)(iconSvg, basePicture);
+  const names = [
+    ['Dried spaghetti','Dried spaghetti'], ['Espaguete seco','Dried spaghetti'],
+    ['Garlic clove','Garlic'], ['Dente de alho','Garlic'],
+    ['Fresh basil leaves','Fresh basil'], ['Folhas de manjericão fresco','Fresh basil'],
+    ['Frozen peas and diced carrots','Peas and carrots'], ['Ervilhas e cenoura em cubos congeladas','Peas and carrots'],
+    ['Spring onion','Spring onion'], ['Cebolinha','Spring onion'],
+    ['Neutral cooking oil','Neutral cooking oil'], ['Óleo neutro para cozinhar','Neutral cooking oil'],
+    ['Reduced-salt soy sauce','Soy sauce'], ['Molho de soja com pouco sal','Soy sauce']
+  ];
+  for (const [source, label] of names) {
+    const svg = picture(source);
+    assert.match(svg, new RegExp(`aria-label="${label}"`), `${source} maps to its dedicated ingredient pictogram`);
+    assert.match(svg, /v32-intl-ingredient-icon/, `${source} is marked for Android assertions`);
+    assert.doesNotMatch(svg, /<rect x="20" y="22" width="24" height="20"/, `${source} has no generic square placeholder`);
+  }
+  for (const source of ['Tomatoes','Olive oil','Salt','Water','Cooked rice','Eggs'])
+    assert.match(picture(source), /v32-intl-ingredient-icon/, `${source} keeps its established hand-drawn canonical picture`);
+  assert.match(runtime, /const v32BaseBatchIngredientPictureForOriginalRecipes=batchIngredientPicture;[\s\S]*?function v32ScopedInternationalIngredientPicture[\s\S]*?V32_INTL_BY_ID\?\.has\(Number\(selected\?\.id\)\)/,
+    'the original 95 recipe icon function is preserved and only the two pilots receive the new mapping');
+});
+
+test('approved equipment IDs in #096/#099 resolve to original template SVGs rather than art files', async () => {
+  const runtime = await read('tools/v3/runtime.js');
+  const helper = runtime.match(/function v32InternationalToolIcon\(item\)\s*\{[\s\S]*?\n\}/);
+  assert.ok(helper, 'equipment icon resolver exists');
+  const vectors = Object.fromEntries(['pan','sieve','bowl','spoon','board','knife','spatula','fork','plate'].map(key => [key,[key,`<path data-tool="${key}"/>`]]));
+  const iconSvg = (label, body) => `<svg class="kitchen-icon" aria-label="${label}">${body}</svg>`;
+  const render = new Function('TOOL_VECTORS','iconSvg',`${helper[0]}; return v32InternationalToolIcon;`)(vectors,iconSvg);
+  for (const id of ['large-pot','small-pan','colander','mixing-bowl','wooden-spoon','chopping-board','knife','wok','spatula','fork','measuring-spoon','plate','rice-container','serving-bowl']) {
+    const svg = render({id,name:{'en-GB':id.replaceAll('-',' ')}});
+    assert.match(svg, /<svg class="kitchen-icon"/, `${id} uses a template tool illustration`);
+    assert.doesNotMatch(svg, /<img|\.png|\.jpg|artwork/, `${id} does not use a miniature photo asset`);
+  }
 });
