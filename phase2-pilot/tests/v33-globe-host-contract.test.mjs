@@ -170,8 +170,8 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(smoke,/mode:'animation-enabled'/);
   assert.match(smoke,/particles\.length!==6[\s\S]*?v33-particle-drift/,'genuine Android motion evidence checks all six drifting particles');
   assert.match(smoke,/reducedPortraitStart\.particles\.some\(name=>name!=='none'\)/,'Android reduced-motion screenshots verify static particles');
-  assert.match(smoke,/pin India on the globe before locale rerender[\s\S]*?PT-BR globe and visible India flag/,'the PT-BR Android check pins India to prevent autonomous rotation from racing the localized rerender');
-  assert.match(smoke,/visible:s\.selected==='india'&&flag/,'the India pin predicate supplies the visibility field required by the shared Android wait helper');
+  assert.match(smoke,/aria-label="Índia"[\s\S]*?PT-BR globe and visible India flag/,'the PT-BR Android check rotates its localized marker into view before checking it');
+  assert.match(smoke,/tap\(session,'\.aria-world-globe__flag\[aria-label="Índia"\]'[\s\S]*?PT-BR India marker selection/,'the PT-BR Android check selects the localized India marker through real Android touch input');
   assert.match(smoke,/pointingAariaArtwork:avatar\?\.src\.includes\('data:image\/png;base64,'\)/,'real Android evidence verifies the approved pointing PNG is rendered');
   assert.match(tabletSmoke,/guideVisible:[\s\S]*?sparkleVisible:[\s\S]*?globe\.guideVisible[\s\S]*?globe\.sparkleVisible/,'tablet Android portrait and landscape evidence requires visible Aaria and sparkle artwork');
   assert.match(smoke,/Reduced-motion .*remain static/);

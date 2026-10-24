@@ -68,6 +68,9 @@ test('W03 Natural Earth geometry remains intact and the approved pointing-Aaria 
   assert.match(provenance,/public domain/);
   assert.match(smoke,/world-map-phone-portrait/);
   assert.match(smoke,/world-map-phone-landscape/);
+  assert.match(smoke,/assertMap\(landscape,'phone landscape',\{requireVisibleIndia:false\}\)/,'landscape geometry accepts India rotating to the back hemisphere while retaining country data coverage');
+  assert.match(smoke,/PT-BR-touch-selects-India-marker/,'PT-BR smoke verifies real touch selection of the localized India marker');
+  assert.match(smoke,/aria-label="Índia"/,'PT-BR smoke targets the localized India marker after rotating it into view');
   assert.match(smoke,/country-preview-phone-portrait/);
   assert.match(smoke,/surprise-me-waits-for-explicit-flag-selection/);
   assert.match(smoke,/android-touch-selects-suggested-flag/);
