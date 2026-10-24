@@ -419,7 +419,8 @@ class MainActivity : Activity() {
             val startPath = DebugArtworkReviewRoute.resolve(
                 isDebugBuild = BuildConfig.DEBUG,
                 reviewEnabled = intent.getBooleanExtra("W01_ARTWORK_REVIEW", false),
-                batch = intent.getStringExtra("W01_ARTWORK_BATCH")
+                batch = intent.getStringExtra("W01_ARTWORK_BATCH"),
+                internationalReview = intent.getBooleanExtra("W01_INTERNATIONAL_REVIEW", false)
             )
             loadUrl("https://appassets.androidplatform.net/$startPath")
         }

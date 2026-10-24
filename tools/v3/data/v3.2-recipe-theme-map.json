@@ -101,7 +101,9 @@
     "92": "fresh-green",
     "93": "sunny-orange",
     "94": "playful-purple",
-    "95": "fresh-green"
+    "95": "fresh-green",
+    "96": "sunny-orange",
+    "99": "fresh-green"
   },
   "referenceOverrides": {
     "5": "sunny-orange",

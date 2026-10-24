@@ -156,8 +156,9 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(regression,/!current\.canonicalInstruction\|\|!current\.safety\|\|current\.progress!==index\|\|current\.instruction!==current\.expectedInstruction/,'phone G3 still requires canonical source, adult safety, exact progress and renderer-matched copy');
   assert.match(regression,/acceptance\.steps!==4/,'G3 still requires all four canonical recipe 12 steps');
   assert.match(regression,/sphere\.width<180/,'G3 checks the landscape sphere minimum');
-  assert.match(regression,/for\s*\(let recipeId\s*=\s*1;\s*recipeId\s*<=\s*95;\s*recipeId\+\+\)/,'G3 still routes all 95 canonical recipes');
-  assert.match(regression,/catalogueCount !== 95/);
+  assert.match(regression,/const integratedRecipeIds=\[\.\.\.Array\.from\(\{length:95\},\(_,index\)=>index\+1\),96,99\]/,'G3 sweeps the 95 originals plus the approved Italy and China pilots');
+  assert.match(regression,/for\(const recipeId of integratedRecipeIds\)/,'G3 routes only IDs 1–95, #096 and #099');
+  assert.match(regression,/catalogueCount !== 97/);
   assert.match(regression,/homeVisual\.destinationTiles!==1/,'Android home smoke must require exactly one validated destination');
   assert.match(regression,/JSON\.stringify\(homeVisual\.destinationCodes\)!==/,'Android home smoke must verify that the single destination is India');
   assert.match(regression,/homeVisual\.indiaTileVisible/,'Android home smoke must verify the India destination has visible geometry');

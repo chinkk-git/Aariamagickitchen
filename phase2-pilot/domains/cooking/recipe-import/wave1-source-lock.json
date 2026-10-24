@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.0",
+  "source_commit": "451ab0bf8a3ab1867cf004a113d3d8e6896ccf60",
+  "source_branch": "feature/international-recipe-content",
+  "source_manifest_path": "content/international/manifest.json",
+  "source_manifest_sha256": "246652d2000c5a9766852850c4f6753acbd23fb77947291afa350a7e20e0055b",
+  "source_style_guide_path": "content/international/ARTWORK_STYLE_GUIDE.json",
+  "source_style_guide_sha256": "c5bae8f2d62c75ac5207cfd92325d1b298c52c62f1750f82b323acda0a5272ab",
+  "recipe_ids": [
+    96,
+    99
+  ],
+  "canonical_recipe_count": 95,
+  "package_file_count": 46,
+  "artwork_file_count": 42,
+  "package_files": [
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/chopping-board.png",
+      "sha256": "f0aa30d99b14a9796f90f4c9e08daf491ec0ef7defb95649bf64fa6846c62e58",
+      "size": 368449
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/fork.png",
+      "sha256": "0c3aa043de21dae7ca25032755356a6fbd3f6f32e4757902551c90504f79d38b",
+      "size": 374433
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/knife.png",
+      "sha256": "df0ece429fe6b2983df89fd2b96734632c49c8b24713b3d0a33d9d4314c6fa8d",
+      "size": 380852
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png",
+      "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
+      "size": 377814
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/mixing-bowl.png",
+      "sha256": "cfcc238e750a3a6a7b6dfcd802ca9b51b5af8196d7d1a0083c2166f424e3fa19",
+      "size": 369518
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/plate.png",
+      "sha256": "2d0539b5062d0c6e354dee84a398bb379d15e1784f93dee67b2ea780efbe8764",
+      "size": 370227
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/rice-container.png",
+      "sha256": "49caa57c22c77867a6d156400f5896160dee6885b51522e9f4703478838f5b81",
+      "size": 347374
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/serving-bowl.png",
+      "sha256": "32d563c25a1ab2b68d61f813d75538c6be533f074c6351af7011059eca17a95b",
+      "size": 381397
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/spatula.png",
+      "sha256": "9faeb11586a197a37cb21b66429193671537f55402bd805a9215fe382821f480",
+      "size": 381904
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/wok.png",
+      "sha256": "d6acf66a521e7e453429e17c0ed7610a767a32a3a418c7cd270eb9b669de68c5",
+      "size": 394794
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png",
+      "sha256": "dc493994e39dd4cec46d85a3dee60d65b8d73c9b130cae2c15d9184a5e148060",
+      "size": 498670
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/ingredients/egg.png",
+      "sha256": "6d36288e49f68cd9ae5ac13de638bbe7cb16a24095e386fdd92e8deadb07e5df",
+      "size": 364757
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/ingredients/neutral-oil.png",
+      "sha256": "1127dc730cbb8ffa349c71b719347c764208cebd37bb8620e073bcf71d278c87",
+      "size": 398573
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/ingredients/peas-carrots.png",
+      "sha256": "6fe24c2327953c9e2d59ebd91cdc0d70a26bada15cf3aa8a273b2059dffd97b0",
+      "size": 404859
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/ingredients/rice-cooked-chilled.png",
+      "sha256": "169c8f8a33121ce8e7bab8b9f8f22f5182b1a727c9ecc8b53c2664cea8fd1996",
+      "size": 379174
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/ingredients/soy-sauce.png",
+      "sha256": "2f950a727a2793e32b9f594333ab668cf4830dcdaf0957f893f73bc83d55c2fa",
+      "size": 384993
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/ingredients/spring-onion.png",
+      "sha256": "6951b427f8ece2296bea0d2415e688b1b80b53bf9c01dee4a1116f3085bf9bdf",
+      "size": 406465
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-01.png",
+      "sha256": "1f2f2261d8f4637449ad3c4a136123e054ccee405857e94039c542403c20e93a",
+      "size": 506732
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-02.png",
+      "sha256": "d6dd6afbcf8769ab48c6de45217a1234aa94e2573daa9fa205f5631e8e633a55",
+      "size": 500593
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-03.png",
+      "sha256": "5aedd468a04cd0149b2698995a50a4cfe12d70ed6cb05ff8d0624dfe9739d72d",
+      "size": 505482
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-04.png",
+      "sha256": "951ccbf4e2550d271bec68ef8d06557e5903479d3202d5a2e5c9044b0b148a28",
+      "size": 503616
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-05.png",
+      "sha256": "1670ff3ace2442c8f9f217efbdb389e8b66330b3554f041616b4063c5921e8e5",
+      "size": 493515
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/recipe.json",
+      "sha256": "d5726030105142ee4a2cbc322fe56989049b72864b549b7496c014f791dbdea8",
+      "size": 98768
+    },
+    {
+      "path": "content/international/countries/china/099-vegetable-fried-rice/recipe.md",
+      "sha256": "a858cc1e337e2ac6b544017c2759fd66fd6f9ec9b1df79bd2fd93ca6112b6482",
+      "size": 12356
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
+      "sha256": "f0aa30d99b14a9796f90f4c9e08daf491ec0ef7defb95649bf64fa6846c62e58",
+      "size": 368449
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
+      "sha256": "05bb57eb39b78e1890542fd98d4bc021754d2599fbe3f565d89870410261c27f",
+      "size": 395842
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
+      "sha256": "581bc24d12df46c90c5564d4ea245e13bb8868ba0435df22c1041c94a8e3e0be",
+      "size": 404445
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/large-pot.png",
+      "sha256": "36e4f52dc0ac6da837db5b8eb47015c6aa2cd0bbf23a7861f7b1c9e974d8c0b0",
+      "size": 394456
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
+      "sha256": "b3e48e31ca949891de2a070203b57eff8d7fac4d372019cf8886a2b48abcc88d",
+      "size": 397501
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
+      "sha256": "95eb48fc050e5e849b884b2b4d0b6cdedc88bf2493577a39ab373d98033b8684",
+      "size": 367618
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
+      "sha256": "0e6b42ff341c64e9c17bb70e2c13607de9cad5de88067a8ca987dbca85ec839d",
+      "size": 375610
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
+      "sha256": "3b30fd4f9444a7ae151844702ee7383fb5c0011a54a936ff0f3ef9da4ee61fc7",
+      "size": 477987
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
+      "sha256": "b83da7601a2f7bbb2293bd2694c4b1bc816a03c7801a63afda179e428e9a3f25",
+      "size": 404215
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
+      "sha256": "c832cf1a3814d75a80d925fa3218394c03111a446ae074ebb8be1bc831f6306f",
+      "size": 352217
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
+      "sha256": "c6c62d599b2dda50cc4f0978e19ae49abe23e80a9517423e29d18b4083705967",
+      "size": 378087
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
+      "sha256": "2371f43a568fbf2918f5445149e567319101cf1dfbd00dee8a2d311ef3eef7fd",
+      "size": 329356
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/spaghetti-dry.png",
+      "sha256": "bfed3869475dfc1c3ce7c2ba0230a0639afbc7aad40dd86edb30d298ff85368b",
+      "size": 378839
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
+      "sha256": "12a3222cd1a2e31ad6bdbf99bc133eeb9181b9cf22265f20c337dabda561a49d",
+      "size": 411228
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
+      "sha256": "8fba2dfa9d22e7b9028f10412c115d36195823f54f32914bbf97d2fd8a229662",
+      "size": 378741
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
+      "sha256": "fcf613a74f1cd3cd1380cb2251c4c66413ce3cd885dafa87a447554c016de2c4",
+      "size": 486375
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec",
+      "size": 1419361
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
+      "sha256": "7df6224d78c18a9f252607a114aa96388fb3b6ef446d2ca69c96634340181ddf",
+      "size": 485406
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
+      "sha256": "58c35c49c9bf56cb6bc22e2f78fb2694659b2a1191ce376c35d93e8ec402d8f0",
+      "size": 480047
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
+      "sha256": "7f776d9620c7b44413cb49761aba527efdb6ec429bf007db87f2a34fd6e5021e",
+      "size": 515057
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/recipe.json",
+      "sha256": "f7fe4b08aabb5d57ebdf6f285979c63f662c31b2be8c70275a98d00ae0fc78f6",
+      "size": 90178
+    },
+    {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/recipe.md",
+      "sha256": "19aa85ab76326a16901ac71e7a95659df15d43f8e52f0275ea6e81d501a5a886",
+      "size": 11557
+    }
+  ],
+  "pair_sha256": "f101a9c0a769379caaaaf767810cb216c1c2350226dc110c6752dbcbdd795452",
+  "source_ledger_note": "W03 current ledger at c9dd936 validates different China recipe.json and recipe.md bytes; this lock is independently computed against exact pinned commit 451ab0bf8a3ab1867cf004a113d3d8e6896ccf60."
+}

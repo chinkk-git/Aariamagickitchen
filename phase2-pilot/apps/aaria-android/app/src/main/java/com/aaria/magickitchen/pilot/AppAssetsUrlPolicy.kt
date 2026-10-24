@@ -43,8 +43,9 @@ internal object AppAssetsUrlPolicy {
 internal object DebugArtworkReviewRoute {
     private val exactBatchPattern = Regex("B(?:0[1-9]|10)")
 
-    fun resolve(isDebugBuild: Boolean, reviewEnabled: Boolean, batch: String?): String {
+    fun resolve(isDebugBuild: Boolean, reviewEnabled: Boolean, batch: String?, internationalReview: Boolean = false): String {
         if (!isDebugBuild || !reviewEnabled) return "index.html"
+        if (internationalReview) return "artwork-review/international-wave-1/index.html"
         if (batch == null) return "artwork-review/index.html"
         return if (exactBatchPattern.matches(batch)) {
             "artwork-review/exact/$batch/index.html"

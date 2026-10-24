@@ -181,7 +181,7 @@ done
 test -n "$socket"
 echo "Forwarding app-owned WebView DevTools socket: $socket (app PID $app_pid)"
 adb_timeout forward tcp:9222 "localabstract:$socket"
-timeout --kill-after=10s 720s node --input-type=module <<'NODE'
+timeout --kill-after=10s 2400s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
 const {readFileSync, statSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');
@@ -342,12 +342,13 @@ async function clickWebViewSelector(selector, label = selector) {
   return true;
 }
 async function assertRecipe12IngredientGrid(label) {
-  const layout=await evaluate(`(()=>{const grid=document.querySelector('.ref-ingredient-grid'),screen=document.querySelector('#screen'),main=document.querySelector('.reference-main');if(!grid||!screen||!main)return {missing:true};const cards=[...grid.querySelectorAll('.ref-ingredient')],cols=getComputedStyle(grid).gridTemplateColumns.trim().split(/\\s+/).length,boxes=cards.map(card=>{const art=card.querySelector('.ref-ingredient-icon'),name=card.querySelector('.ref-ingredient-icon + span'),input=card.querySelector('input[type=checkbox]'),cr=card.getBoundingClientRect(),ar=art?.getBoundingClientRect(),nr=name?.getBoundingClientRect(),ir=input?.getBoundingClientRect(),range=document.createRange();if(name)range.selectNodeContents(name);const lines=[...range.getClientRects()];return {card:{left:cr.left,right:cr.right,top:cr.top,bottom:cr.bottom},art:ar&&{left:ar.left,right:ar.right,top:ar.top,bottom:ar.bottom},name:nr&&{left:nr.left,right:nr.right,top:nr.top,bottom:nr.bottom,scrollWidth:name.scrollWidth,clientWidth:name.clientWidth,lines:lines.length},input:ir&&{width:ir.width,height:ir.height,labels:input.labels?.length||0,labelText:input.closest('label')?.innerText||''}}});return {width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth,screen:screen.getBoundingClientRect().width,main:main.getBoundingClientRect().width,grid:grid.getBoundingClientRect().width,cols,rows:new Set(boxes.map(x=>Math.round(x.card.top))).size,count:cards.length,boxes}})()`);
+  const layout=await evaluate(`(()=>{const grid=document.querySelector('.ref-ingredient-grid'),screen=document.querySelector('#screen'),main=document.querySelector('.reference-main');if(!grid||!screen||!main)return {missing:true};const cards=[...grid.querySelectorAll('.ref-ingredient')],cols=getComputedStyle(grid).gridTemplateColumns.trim().split(/\\s+/).length,boxes=cards.map(card=>{const art=card.querySelector('.ref-ingredient-icon'),name=card.querySelector('.ref-ingredient-icon + span'),input=card.querySelector('input[type=checkbox]'),cr=card.getBoundingClientRect(),cardStyle=getComputedStyle(card),px=value=>parseFloat(value)||0,ar=art?.getBoundingClientRect(),nr=name?.getBoundingClientRect(),ir=input?.getBoundingClientRect(),range=document.createRange();if(name)range.selectNodeContents(name);const lines=[...range.getClientRects()],textColumnWidth=cr.width-px(cardStyle.paddingLeft)-px(cardStyle.paddingRight)-28-5;return {card:{left:cr.left,right:cr.right,top:cr.top,bottom:cr.bottom},art:ar&&{left:ar.left,right:ar.right,top:ar.top,bottom:ar.bottom},name:nr&&{left:nr.left,right:nr.right,top:nr.top,bottom:nr.bottom,scrollWidth:name.scrollWidth,clientWidth:name.clientWidth,lines:lines.length},textColumnWidth,input:ir&&{width:ir.width,height:ir.height,labels:input.labels?.length||0,labelText:input.closest('label')?.innerText||''}}});return {width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth,screen:screen.getBoundingClientRect().width,main:main.getBoundingClientRect().width,grid:grid.getBoundingClientRect().width,cols,rows:new Set(boxes.map(x=>Math.round(x.card.top))).size,count:cards.length,boxes}})()`);
   if(layout.missing||layout.count!==6||layout.cols<1||layout.cols>6||layout.rows!==Math.ceil(6/layout.cols)||layout.documentWidth>layout.width+1||layout.grid<layout.width*.68||layout.main<layout.width*.82)throw new Error(`${label}: #12 approved ingredient grid does not use the phone viewport or has invalid card geometry: ${JSON.stringify(layout)}`);
   for(const [i,card] of layout.boxes.entries()){
     const overlap=card.art&&card.name&&card.art.right>card.name.left&&card.art.left<card.name.right&&card.art.bottom>card.name.top&&card.art.top<card.name.bottom;
     if(!card.art||!card.name||!card.input||overlap||card.input.width<12||card.input.height<12||card.input.labels<1||!card.input.labelText.trim()||card.name.scrollWidth>card.name.clientWidth+1||card.name.lines>8)throw new Error(`${label}: #12 ingredient ${i+1} overlaps, clips or lacks a labeled checkbox: ${JSON.stringify({layout,card})}`);
   }
+  if(Math.min(...layout.boxes.map(card=>card.textColumnWidth))<50)throw new Error(`${label}: ingredient text column is narrower than 50 CSS pixels: ${JSON.stringify(layout)}`);
   return layout;
 }
 async function assertNarrowPtBrIngredientGrid() {
@@ -355,7 +356,7 @@ async function assertNarrowPtBrIngredientGrid() {
   try {
     await pause(300);
     const layout=await assertRecipe12IngredientGrid('PT-BR 320 CSS-pixel phone viewport');
-    if(Math.min(...layout.boxes.map(card=>card.name.clientWidth))<50)throw new Error('PT-BR ingredient text column is too narrow at 320 CSS pixels: '+JSON.stringify(layout));
+    if(Math.min(...layout.boxes.map(card=>card.textColumnWidth))<50)throw new Error('PT-BR ingredient text column is too narrow at 320 CSS pixels: '+JSON.stringify(layout));
   } finally {
     await command('Emulation.clearDeviceMetricsOverride');
     await pause(300);
@@ -417,7 +418,7 @@ for(const scene of [
 }
 console.log('Canonical Aaria, family and seven friend identities verified in existing routes:',JSON.stringify(groupAvatarAudits));
 
-const isW02Globe=(process.env.ANDROID_TEST_APP_ID||'').includes('.v33map');
+const isW02Globe=['.v33map','.w01review'].some(suffix=>(process.env.ANDROID_TEST_APP_ID||'').includes(suffix));
 let worldDigest;
 if(isW02Globe){
   await evaluate(`document.querySelector('[data-v31-open-world]').click()`);
@@ -425,11 +426,15 @@ if(isW02Globe){
   if(await evaluate(`typeof view==='undefined'?'unknown':view`)!=='world'||worldState.text.trim()!=='World Adventure')throw new Error('W02 World route did not mount the W03 globe: '+JSON.stringify(worldState));
   const globe=await evaluate(`(()=>{const root=document.querySelector('.aria-world-globe'),sphere=root?.querySelector('.aria-world-globe__sphere'),stage=root?.querySelector('.aria-world-globe__stage'),flag=root?.querySelector('.aria-world-globe__flag[aria-label="India"]'),guide=root?.querySelector('.aria-world-globe__guide'),hand=root?.querySelector('.aria-world-globe__guide-hand'),flags=root?.querySelector('.aria-world-globe__flags'),rr=root?.getBoundingClientRect(),sr=sphere?.getBoundingClientRect(),fr=flag?.getBoundingClientRect(),hr=hand?.getBoundingClientRect(),handStyle=hand?getComputedStyle(hand):null,guideStyle=guide?getComputedStyle(guide):null,clip=hr?{left:hr.left+hr.width*.61,right:hr.left+hr.width,top:hr.top+hr.height*.27,bottom:hr.top+hr.height*.46}:null,overlap=!!clip&&!!sr&&Math.max(0,Math.min(clip.right,sr.right)-Math.max(clip.left,sr.left))*Math.max(0,Math.min(clip.bottom,sr.bottom)-Math.max(clip.top,sr.top));return {route:typeof view==='undefined'?'unknown':view,version:window.AariaWorldAdventureGlobe?.version||'',heading:root?.querySelector('.aria-world-globe__eyebrow')?.textContent?.trim()||'',occupancy:rr&&innerWidth?rr.width*rr.height/(innerWidth*innerHeight):0,sphere:{width:sr?.width||0,height:sr?.height||0},flag:{width:fr?.width||0,height:fr?.height||0},guide:!!guide?.complete&&guide.naturalWidth>0&&guide.src===V33_WORLD_ARTWORK.pointingAaria&&guideStyle?.display!=='none'&&!!guide.getBoundingClientRect().width,hand:{visible:!!hand&&hand.complete&&hand.naturalWidth>0&&handStyle?.display!=='none'&&handStyle?.clipPath!=='none',overlapArea:overlap,flagsAbove:!!flags&&Number(getComputedStyle(flags).zIndex)>Number(handStyle?.zIndex||0),flagsInStage:!!stage&&flags?.parentElement===stage},countries:[...root?.querySelectorAll('.aria-world-globe__flag')||[]].map(e=>e.getAttribute('aria-label')),nav:document.querySelectorAll('#nav .tab').length}})()`);
   if(globe.route!=='world'||globe.version!=='0.3.0-natural-earth-orthographic'||globe.heading!=='World Adventure'||globe.occupancy<.65||globe.sphere.width<180||globe.flag.width<48||globe.flag.height<48||!globe.guide||!globe.hand.visible||globe.hand.overlapArea<1||!globe.hand.flagsAbove||!globe.hand.flagsInStage||!globe.countries.includes('India')||globe.nav!==6)throw new Error('Android W03 globe/module/touch geometry audit failed: '+JSON.stringify(globe));
+  const portraitHint=await evaluate(`(()=>{const stage=document.querySelector('.aria-world-globe__stage'),hint=stage?.querySelector('.v33-spin-hint'),arrows=hint?.querySelector('.v33-spin-arrows'),r=hint?.getBoundingClientRect();return {text:hint?.querySelector('span')?.textContent?.trim()||'',visible:!!r&&r.width>0&&r.height>0&&getComputedStyle(hint).visibility!=='hidden'&&getComputedStyle(hint).display!=='none',arrows:!!arrows&&arrows.querySelectorAll('path').length===2&&getComputedStyle(arrows).display!=='none'}})()`);
+  if(!portraitHint.visible||portraitHint.text!=='Swipe to spin the globe!'||!portraitHint.arrows)throw new Error('Android portrait globe spin hint/arrows are missing: '+JSON.stringify(portraitHint));
   worldDigest=await captureScreenshot('v31-world-portrait.png','W03 globe',homeDigest);if(worldDigest===homeDigest)throw new Error('W03 globe screenshot is byte-identical to Home');
+  await evaluate(`(()=>{const e=document.querySelector('.aria-world-globe__stage'),r=e?.getBoundingClientRect();if(!r)throw Error('Globe stage missing for touch gesture');const x=r.left+r.width*.53,y=r.top+r.height*.5;for(const [type,dx] of [['pointerdown',0],['pointermove',45],['pointerup',45]])e.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerId:71,pointerType:'touch',clientX:x+dx,clientY:y}))})()`);
+  await pause(250);const dismissed=await evaluate(`(()=>{const stage=document.querySelector('.aria-world-globe__stage'),hint=stage?.querySelector('.v33-spin-hint');return {spun:stage?.classList.contains('has-user-spun')||false,hidden:!hint||getComputedStyle(hint).visibility==='hidden'||getComputedStyle(hint).opacity==='0'}})()`);if(!dismissed.spun||!dismissed.hidden)throw new Error('Android globe spin did not dismiss portrait hint: '+JSON.stringify(dismissed));
   await rotateTo(1);await waitForWebViewOrientation(true);
   const landscape=await waitForVisible('.aria-world-globe__eyebrow','W03 globe after landscape rotation');
   const landscapeGlobe=await evaluate(`(()=>{const root=document.querySelector('.aria-world-globe'),sphere=root?.querySelector('.aria-world-globe__sphere'),flag=root?.querySelector('.aria-world-globe__flag[aria-label="India"]'),sr=sphere?.getBoundingClientRect(),fr=flag?.getBoundingClientRect(),nav=document.querySelector('#nav'),nr=nav?.getBoundingClientRect();return {route:typeof view==='undefined'?'unknown':view,width:innerWidth,height:innerHeight,sphereWidth:sr?.width||0,flagWidth:fr?.width||0,flagHeight:fr?.height||0,navDisplay:nav?getComputedStyle(nav).display:'missing',navHeight:nr?.height||0}})()`);
-  if(landscapeGlobe.route!=='world'||landscapeGlobe.width<=landscapeGlobe.height||landscapeGlobe.sphereWidth<180||landscapeGlobe.flagWidth<48||landscapeGlobe.flagHeight<48||landscapeGlobe.navDisplay==='none'||landscapeGlobe.navHeight<40)throw new Error('Android W03 globe landscape geometry/navigation failed: '+JSON.stringify({landscape,landscapeGlobe}));
+  if(landscapeGlobe.route!=='world'||landscapeGlobe.width<=landscapeGlobe.height||landscapeGlobe.sphereWidth<180||landscapeGlobe.flagWidth<48||landscapeGlobe.flagHeight<48||landscapeGlobe.navDisplay==='none'||landscapeGlobe.navHeight<40||await evaluate(`(()=>{const e=document.querySelector('.v33-spin-hint');return !!e&&getComputedStyle(e).display!=='none'&&getComputedStyle(e).visibility!=='hidden'})()`))throw new Error('Android W03 globe landscape geometry/navigation or portrait-only hint failed: '+JSON.stringify({landscape,landscapeGlobe}));
   await captureScreenshot('v31-world-landscape.png','W03 globe landscape',worldDigest);const worldPng=readFileSync('artifacts/v32-android-screenshots/v31-world-landscape.png');if(worldPng.readUInt32BE(16)<=worldPng.readUInt32BE(20))throw new Error('W03 globe landscape screenshot has portrait dimensions');
   await rotateTo(0);await waitForWebViewOrientation(false);await waitForVisible('.aria-world-globe__eyebrow','W03 globe after portrait return');
   await evaluate(`document.querySelector('.aria-world-globe__flag[aria-label="India"]')?.click()`);
@@ -529,7 +534,7 @@ console.log('Android World Adventure verified: canonical India recipe completion
 await evaluate(`document.querySelector('#nav .tab[data-nav="home"]')?.click()`);
 await waitForVisible('.v31-hero-welcome h1', 'Home after World Adventure');
 const catalogueCount = await evaluate(`RECIPES.length`);
-if (catalogueCount !== 95) throw new Error(`Android catalogue should contain exactly 95 production recipes; found ${catalogueCount}`);
+if (catalogueCount !== 97) throw new Error(`Android catalogue should contain exactly 97 integrated recipes; found ${catalogueCount}`);
 await evaluate(`document.querySelector('#nav .tab[data-nav="week"]')?.click()`);
 await waitForVisible('.daycard', 'Planner before Spin My Week');
 await evaluate(`document.querySelector('#screen [data-action="open-week-wheel"]')?.click()`);
@@ -585,13 +590,13 @@ console.log('Shopping list and parent-mediated share control are present; no ext
 await evaluate(`document.querySelector('#nav .tab[data-nav="home"]')?.click()`);
 await waitForVisible('.v31-hero-welcome h1', 'Home before recipe/favorites checks');
 await evaluate(`document.querySelector('.v31-action-tiles [data-nav="library"]')?.click()`);
-const libraryReady = await waitForVisible('.recipe-card', '95-recipe library');
+const libraryReady = await waitForVisible('.recipe-card', '97-recipe library');
 const libraryCards = await evaluate(`document.querySelectorAll('#screen .recipe-card').length`);
-if (libraryCards !== 95) throw new Error(`Recipe library should show all 95 recipes; found ${libraryCards}`);
+if (libraryCards !== 97) throw new Error(`Recipe library should show all 97 recipes; found ${libraryCards}`);
 const themeReport = await evaluate(`(() => { const cards=[...document.querySelectorAll('#screen .recipe-card')]; return {count:cards.length, themes:[...new Set(cards.map(x=>x.dataset.v32Theme))].sort(), samples:Object.fromEntries(['12','76','5'].map(id=>[id,[...document.querySelectorAll('#screen [data-open]')].find(card=>card.dataset.open===id)?.dataset.v32Theme||'']))}; })()`);
-if(themeReport.count!==95||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['12']!=='playful-purple'||themeReport.samples['76']!=='fresh-green'||themeReport.samples['5']!=='sunny-orange') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 95 recipes: ${JSON.stringify(themeReport)}`);
+if(themeReport.count!==97||themeReport.themes.join(',')!=='fresh-green,playful-purple,sunny-orange'||themeReport.samples['12']!=='playful-purple'||themeReport.samples['76']!=='fresh-green'||themeReport.samples['5']!=='sunny-orange') throw new Error(`V3.2 theme renderer did not assign stable purple/green/orange themes across all 97 integrated recipes: ${JSON.stringify(themeReport)}`);
 await captureScreenshot('v32-three-theme-library-portrait.png','All three recipe themes',recipeDigest);
-console.log('V3.2 renderer exposes all three stable recipe themes across all 95 original IDs:',JSON.stringify(themeReport));
+console.log('V3.2 renderer exposes all three stable recipe themes across all 97 integrated IDs:',JSON.stringify(themeReport));
 const filterReport=await evaluate(`(()=>{const select=document.querySelector('[data-appliance-filter]');if(!select)throw Error('Cooking-method filter is missing');select.value='Air fryer';select.dispatchEvent(new Event('change',{bubbles:true}));const ids=[...document.querySelectorAll('#screen .recipe-card[data-open]')].map(x=>Number(x.dataset.open));return {ids,allAirFryer:ids.length>0&&ids.every(id=>/air[ -]?fryer/i.test(RECIPES.find(r=>r.id===id)?.method||''))}})()`);
 if(!filterReport.allAirFryer||filterReport.ids.length>=95)throw new Error(`Air fryer filter returned invalid recipes: ${JSON.stringify(filterReport)}`);
 await evaluate(`(()=>{const select=document.querySelector('[data-appliance-filter]');select.value='All';select.dispatchEvent(new Event('change',{bubbles:true}));return true})()`);
@@ -603,16 +608,17 @@ await waitForVisible('.v31-tile-surprise','Home Surprise Me action');
 await evaluate("document.querySelector('#screen .v31-tile-surprise[data-action=open-wheel]').click()");
 await waitForVisible('.spin-page','Surprise Me recipe wheel');
 const wheelOptions=await evaluate('wheelOptions.map(r=>Number(r.id))');
-if(wheelOptions.length!==8||wheelOptions.some(id=>!Number.isInteger(id)||id<1||id>95))throw new Error('Surprise Me wheel exposed invalid recipe IDs: '+JSON.stringify(wheelOptions));
+const isIntegratedRecipeId=id=>Number.isInteger(id)&&((id>=1&&id<=95)||id===96||id===99);
+if(wheelOptions.length!==8||wheelOptions.some(id=>!isIntegratedRecipeId(id)))throw new Error('Surprise Me wheel exposed invalid recipe IDs: '+JSON.stringify(wheelOptions));
 await evaluate("document.querySelector('#screen [data-action=spin-now]').click()");
 await waitForVisible('.ref-title h1','Surprise Me selected recipe');
 const surpriseId=await evaluate('Number(selected?.id)');
-if(!Number.isInteger(surpriseId)||surpriseId<1||surpriseId>95)throw new Error('Surprise Me selected invalid recipe ID: '+surpriseId);
+if(!isIntegratedRecipeId(surpriseId))throw new Error('Surprise Me selected invalid recipe ID: '+surpriseId);
 await evaluate("document.querySelector('#nav .tab[data-nav=library]')?.click()");
-await waitForVisible('.recipe-card[data-open="1"]','95-recipe catalogue restored after filter and Surprise Me checks');
+await waitForVisible('.recipe-card[data-open="1"]','97-recipe catalogue restored after filter and Surprise Me checks');
 console.log('Air fryer/category filters and Surprise Me preserve canonical recipe IDs:',JSON.stringify({airFryer:filterReport.ids.length,breakfast:breakfastCount.count,surpriseId}));
 
-const v32CanonicalPhoneExamples=[[12,'Cheesy Corn Pancakes','playful-purple'],[76,'Rainbow Vegetable Noodle Toss','fresh-green'],[5,'Mini Pizza Bread Cups','sunny-orange']];
+const v32CanonicalPhoneExamples=[[12,'Cheesy Corn Pancakes','playful-purple'],[76,'Rainbow Vegetable Noodle Toss','fresh-green'],[5,'Mini Pizza Bread Cups','sunny-orange'],[96,'Tomato Basil Pasta','sunny-orange'],[99,'Vegetable Fried Rice','fresh-green']];
 const v32PhoneRecipeScreenshots=[];
 let v32PhoneScreenshotDigest=recipeDigest;
 async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
@@ -626,9 +632,9 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   const homeState=await evaluate('(()=>({view,screen:document.querySelector("#screen")?.className||"",title:document.querySelector(".v31-hero-welcome h1")?.textContent?.trim()||""}))()');
   if(homeState.view!=='home'||homeState.screen.includes('v31-world-screen')||!homeState.title)throw new Error('Phone recipe flow did not reset to the visible Home route: '+JSON.stringify({id,homeState}));
   await clickWebViewSelector('.v31-action-tiles [data-nav="library"]','Recipes before phone recipe '+id);
-  await waitForVisible('.recipe-card[data-open="1"]','95-recipe catalogue before phone recipe '+id);
+  await waitForVisible('.recipe-card[data-open="1"]','97-recipe catalogue before phone recipe '+id);
   const catalogueState=await evaluate('(()=>({view,count:document.querySelectorAll("#screen .recipe-card[data-open]").length,screen:document.querySelector("#screen")?.className||""}))()');
-  if(catalogueState.view!=='library'||catalogueState.count!==95||catalogueState.screen.includes('v31-world-screen'))throw new Error('Phone recipe flow did not enter the complete Recipes catalogue: '+JSON.stringify({id,catalogueState}));
+  if(catalogueState.view!=='library'||catalogueState.count!==97||catalogueState.screen.includes('v31-world-screen'))throw new Error('Phone recipe flow did not enter the complete Recipes catalogue: '+JSON.stringify({id,catalogueState}));
   const card=await evaluate(`(()=>{const e=${findByDatasetExpression('#screen [data-open]','open',id)};const text=e?.innerText?.trim()||"";const observedTheme=e?.dataset.v32Theme||"";e?.click();return {text,theme:observedTheme}})()`);
   if(!card||!card.text.includes(title)||card.theme!==theme)throw new Error('Phone exemplar catalogue card mismatch: '+JSON.stringify({id,title,theme,card}));
   const opened=await evaluate('(()=>({view,selectedId:Number(selected?.id||0),screen:document.querySelector("#screen")?.className||""}))()');
@@ -637,7 +643,8 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   await waitForVisible(detailTitleSelector,'Phone '+title+' details');
   const detail=await evaluate(`(()=>({title:document.querySelector(${JSON.stringify(detailTitleSelector)})?.textContent?.trim()||"",theme:document.querySelector(".app")?.dataset.v32RecipeTheme||""}))()`);
   if(detail.title!==title||detail.theme!==theme)throw new Error('Phone exemplar detail mismatch: '+JSON.stringify({id,expected:{title,theme},detail}));
-  const detailName='v32-recipe-'+id+'-detail-'+orientation+'.png';
+  const evidencePrefix=(id===96||id===99)?`production-international-${id}-phone-${orientation}-`:`v32-recipe-${id}-`;
+  const detailName=evidencePrefix+(id===96||id===99?'detail.png':'detail-'+orientation+'.png');
   v32PhoneScreenshotDigest=await captureScreenshot(detailName,title+' detail '+orientation,v32PhoneScreenshotDigest);
   let ingredientName=null;
   if(id===12){
@@ -648,7 +655,7 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
     if(!ingredientTarget.visible)throw new Error('EN-GB #12 ingredient grid is not visible before screenshot capture');
     ingredientName='v32-recipe-12-ingredients-'+orientation+'.png';
     v32PhoneScreenshotDigest=await captureScreenshot(ingredientName,'EN-GB #12 Ingredients '+orientation,v32PhoneScreenshotDigest);
-    const acceptance=await evaluate('(()=>({canonicalId:selected?.id,title:selected?.title,ingredients:document.querySelectorAll(".ref-ingredient-grid .ref-ingredient").length,steps:Number(document.querySelector(".ref-step-grid")?.dataset.stepCount||document.querySelectorAll(".ref-step-grid > .ref-step-card").length||0),allergens:[...document.querySelectorAll(".allergy-card .allergen-badges span")].map(x=>x.textContent.trim()).sort(),nutrition:!!document.querySelector(".nutrition-results"),quiz:!!document.querySelector(".v3-quiz-card"),copy:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedCopy:RECIPES.find(x=>x.id===12)?.steps?.[0]||"",safety:document.querySelector(".ref-safety details p")?.textContent||""}))()');
+    const acceptance=await evaluate('(()=>({canonicalId:selected?.id,title:selected?.title,ingredients:document.querySelectorAll(".ref-ingredient-grid .ref-ingredient").length,steps:Number(document.querySelector(".ref-step-grid")?.dataset.stepCount||document.querySelectorAll(".ref-step-grid > .ref-step-card").length||0),allergens:[...document.querySelectorAll(".allergy-card .allergen-badges span")].map(x=>x.textContent.trim()).sort(),nutrition:!!document.querySelector(".nutrition-results"),quiz:!!document.querySelector(".v3-quiz-card"),copy:document.querySelector(".ref-step-card.active .ref-step-copy p")?.textContent?.trim()||"",expectedCopy:RECIPES.find(x=>x.id===12)?.steps?.[0]||"",safety:document.querySelector(".storybook-safety p,.ref-safety details p")?.textContent||""}))()');
     if(acceptance.canonicalId!==12||acceptance.title!==title||acceptance.ingredients!==6||acceptance.steps!==4||!['Eggs','Milk','Wheat'].every(x=>acceptance.allergens.includes(x))||!acceptance.nutrition||!acceptance.quiz||acceptance.copy!==acceptance.expectedCopy||!acceptance.safety)throw new Error('Recipe 12 internal acceptance data/health/quiz gate failed: '+JSON.stringify(acceptance));
     if(!await clickRecipeIngredient(0))throw new Error('Recipe 12 first ingredient checkbox was not found.');
     if(!await evaluate('state.checks[12]?.includes(0)'))throw new Error('Recipe 12 ingredient checklist did not persist.');
@@ -673,7 +680,7 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
     if(id===12&&(!current.canonicalInstruction||!current.safety||current.progress!==index||current.instruction!==current.expectedInstruction))throw new Error('Recipe 12 rendered step copy, canonical source, per-step safety or progress is missing: '+JSON.stringify(current));
     if(id===12||index===1){
       await evaluate('document.querySelector(".ref-step-card.active")?.scrollIntoView({block:"start"})');
-      const stepName=id===12?'v32-recipe-12-step-'+index+'-'+orientation+'.png':'v32-recipe-'+id+'-active-step-'+orientation+'.png';
+    const stepName=(id===96||id===99)?evidencePrefix+'step-'+index+'.png':id===12?'v32-recipe-12-step-'+index+'-'+orientation+'.png':'v32-recipe-'+id+'-active-step-'+orientation+'.png';
       v32PhoneScreenshotDigest=await captureScreenshot(stepName,title+' step '+index+' '+orientation,v32PhoneScreenshotDigest);
       stepFiles.push(stepName);
     }
@@ -687,7 +694,7 @@ async function captureV32PhoneRecipeFlow(id,title,theme,landscape){
   if(last){await clickWebViewSelector('.ref-next.finish-step','Finish recipe');await pause(250);complete=await evaluate('Array.isArray(state.done)&&state.done.includes('+id+')');}
   if(!complete)throw new Error('Phone exemplar '+id+' did not reach completion');
   if(id===12&&(!await evaluate('state.myCreations.some(x=>Number(typeof x==="object"?x.recipeId:x)===12)&&!!document.querySelector(".ref-next.finish-step")')))throw new Error('Recipe 12 completion did not save to My Creations or render the completion view.');
-  const completionName='v32-recipe-'+id+'-completion-'+orientation+'.png';
+  const completionName=(id===96||id===99)?evidencePrefix+'completion.png':'v32-recipe-'+id+'-completion-'+orientation+'.png';
   if(id===12&&!await evaluate('!!document.querySelector(".ref-next.finish-step")'))throw new Error('Recipe 12 completion view is missing.');
   v32PhoneScreenshotDigest=await captureScreenshot(completionName,title+' completion '+orientation,v32PhoneScreenshotDigest);
   const files=[detailName,...(ingredientName?[ingredientName]:[]),...stepFiles,completionName].map(name=>{
@@ -713,9 +720,10 @@ console.log('Phone recipe detail, active-step and completion screenshots capture
 const routeCoverage=[];
 const recipeImageEvidence=[];
 let recipeImageScreenshotDigest=null;
-for(let recipeId=1;recipeId<=95;recipeId++){
+const integratedRecipeIds=[...Array.from({length:95},(_,index)=>index+1),96,99];
+for(const recipeId of integratedRecipeIds){
   if(recipeId===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
-  const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
+  const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(cards.length!==97||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
   if(!card?.title||!card.theme)throw new Error(`Recipe ${recipeId} is missing its catalogue card or deterministic theme`);
   if(card.catalogueCount!==undefined)throw new Error(`Recipe ${recipeId} route sweep is not on the full recipe catalogue: ${JSON.stringify(card)}`);
   await pause(250);
@@ -773,16 +781,16 @@ for(let recipeId=1;recipeId<=95;recipeId++){
   const imageStatus=finishedDish.loaded&&finishedDish.association&&stepEvidence.every(item=>item.status==='PASS')?'PASS':finishedDish.candidateCount===0||stepEvidence.some(item=>item.status==='FAIL')?'FAIL':'NOT TESTED';
   recipeImageEvidence.push({recipeId,title:detail.title,device:'phone',orientation:'portrait',status:imageStatus,finishedDish,steps:stepEvidence,screenshots:recipeScreenshots});
   routeCoverage.push(recipeId);
-  if(recipeId%10===0)console.log(`Verified recipe detail routes ${recipeId}/95`);
+  if(recipeId%10===0||recipeId===96||recipeId===99)console.log(`Verified integrated recipe detail route ${recipeId}; coverage ${routeCoverage.length}/97`);
   await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
   const returned=await waitForVisible('.recipe-card[data-open="1"]',`Recipe catalogue after ${recipeId}`);
   const returnCount=await evaluate(`document.querySelectorAll('#screen .recipe-card[data-open]').length`);
-  if(returnCount!==95)throw new Error(`Recipe catalogue after ${recipeId} contains ${returnCount} cards, expected 95; screen=${returned.screen}`);
+  if(returnCount!==97)throw new Error(`Recipe catalogue after ${recipeId} contains ${returnCount} cards, expected 97; screen=${returned.screen}`);
 }
-if(routeCoverage.length!==95||new Set(routeCoverage).size!==95)throw new Error(`Expected unique detail route coverage 95/95, got ${routeCoverage.length}`);
+if(routeCoverage.length!==97||new Set(routeCoverage).size!==97||!routeCoverage.includes(96)||!routeCoverage.includes(99)||routeCoverage.some(id=>!isIntegratedRecipeId(id)))throw new Error(`Expected exactly the 95 originals plus #096 and #099, got ${JSON.stringify(routeCoverage)}`);
 await rotateTo(1);await waitForWebViewOrientation(true);
 let phoneLandscapeDigest=null;
-for(let recipeId=1;recipeId<=95;recipeId++){
+for(const recipeId of integratedRecipeIds){
   const card=await evaluate(`(()=>{const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(!e)return null;e.click();return {title:e.querySelector('.home-tile-name')?.textContent?.trim()||e.innerText}})()`);
   if(!card?.title)throw new Error(`Landscape phone image audit cannot open recipe ${recipeId}`);
   await waitForVisible('.ref-hero h1',`Phone landscape recipe ${recipeId} detail`);
@@ -803,7 +811,7 @@ mkdirSync('artifacts/v32-diagnostics',{recursive:true});
 writeFileSync('artifacts/v32-diagnostics/recipe-route-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:routeCoverage,uniqueCount:new Set(routeCoverage).size,status:'PASS'},null,2)+'\n');
 writeFileSync('artifacts/v32-diagnostics/recipe-image-verification-phone.json',JSON.stringify({schemaVersion:1,device:'phone',orientation:'portrait',recipeCount:recipeImageEvidence.length,recipes:recipeImageEvidence},null,2)+'\n');
 writeFileSync('artifacts/v32-diagnostics/recipe-image-verification-matrix.csv','recipe_id,title,device,orientation,status,finished_dish_source,finished_dish_loaded,step_count,verified_steps,screenshot_evidence\n'+recipeImageEvidence.flatMap(row=>[['phone','portrait',row.screenshots],['phone','landscape',row.landscapeScreenshots||[]]].map(([device,orientation,screenshots])=>[row.recipeId,JSON.stringify(row.title),device,orientation,row.status,JSON.stringify(row.finishedDish.source),row.finishedDish.loaded,row.steps.length,row.steps.filter(step=>step.status==='PASS').length,JSON.stringify(screenshots.join(';'))].join(','))).join('\n')+'\n');
-console.log('Android recipe detail route coverage passed 95/95 with theme, ingredient and step content verified');
+console.log('Android recipe detail route coverage passed 97/97 with theme, ingredient and step content verified');
 await evaluate(`(()=>{const select=document.querySelector('#languageSelect');if(!select)throw Error('Language selector missing before PT-BR recipe audit');select.value='pt-BR';select.dispatchEvent(new Event('change',{bubbles:true}));return state.language})()`);
 await waitForVisible('.recipe-card','PT-BR recipe library');
 const ptRouteCoverage=[];
@@ -822,6 +830,7 @@ for(let recipeId=66;recipeId<=95;recipeId++){
 }
 if(ptRouteCoverage.length!==30||ptRouteCoverage[0]!==66||ptRouteCoverage.at(-1)!==95)throw new Error('PT-BR recipe translation route coverage is not IDs 66–95');
 writeFileSync('artifacts/v32-diagnostics/pt-br-recipe-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:ptRouteCoverage,uniqueCount:new Set(ptRouteCoverage).size,status:'DRAFT_COPY_RENDERED_REVIEW_REQUIRED',review:'A08/A09/native PT-BR review pending'},null,2)+'\\n');
+for(const [id,expectedTitle] of [[96,'Massa com tomate e manjericão'],[99,'Arroz frito com legumes']]){if(!await clickCatalogueRecipe(id))throw new Error(`PT-BR integrated recipe ${id} card was not found`);await waitForVisible('.ref-hero h1',`PT-BR integrated recipe ${id}`);const title=await evaluate(`document.querySelector('.ref-hero h1')?.textContent?.trim()||''`);if(!title.includes(expectedTitle))throw new Error(`PT-BR integrated recipe ${id} title mismatch: ${title}`);await captureScreenshot(`pt-br-recipe-${id}-portrait.png`,`Portuguese integrated recipe ${id}`);await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);await waitForVisible('.recipe-card[data-open="66"]',`PT-BR library after integrated recipe ${id}`)}
 await evaluate(`(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);step=0;save();return true})()`);
 if(!await clickCatalogueRecipe(12))throw new Error('PT-BR recipe 12 card was not found.');
 await waitForVisible('.reference-layout','PT-BR recipe 12 pilot');
@@ -879,7 +888,7 @@ await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()
 await waitForVisible('.recipe-card','Portuguese recipe library restored');
 await evaluate(`(()=>{const select=document.querySelector('#languageSelect');select.value='en-GB';select.dispatchEvent(new Event('change',{bubbles:true}));return state.language})()`);
 await waitForVisible('.recipe-card','English recipe library restored');
-console.log('Portuguese recipe titles, ingredients, steps and safety rendered for IDs 66–95; acceptance remains pending independent review');
+console.log('Portuguese recipe titles, ingredients, steps and safety rendered for IDs 66–95 plus #096/#099; acceptance remains pending independent review');
 await evaluate(`document.querySelector('#screen [data-open="1"]')?.click()`);
 await waitForVisible('.ref-hero h1', 'Favourite test recipe');
 await evaluate(`document.querySelector('.ref-favorite')?.click()`);

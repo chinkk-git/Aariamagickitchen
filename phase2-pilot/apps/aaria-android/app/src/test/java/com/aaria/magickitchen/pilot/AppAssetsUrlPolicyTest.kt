@@ -15,6 +15,8 @@ class AppAssetsUrlPolicyTest {
         assertEquals("artwork-review/exact/B10/index.html", DebugArtworkReviewRoute.resolve(true, true, "B10"))
         assertEquals("artwork-review/index.html", DebugArtworkReviewRoute.resolve(true, true, "../index.html"))
         assertEquals("artwork-review/index.html", DebugArtworkReviewRoute.resolve(true, true, "B11"))
+        assertEquals("index.html", DebugArtworkReviewRoute.resolve(false, true, null, true))
+        assertEquals("artwork-review/international-wave-1/index.html", DebugArtworkReviewRoute.resolve(true, true, null, true))
     }
 
     @Test

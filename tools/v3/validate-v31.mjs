@@ -51,8 +51,13 @@ function expectedTheme(id) {
 }
 if (themeSpec.algorithm !== 'FNV-1a(v3.2-theme:<recipe-id>) mod 3 with approved template-reference overrides' || JSON.stringify(themeSpec.themes) !== JSON.stringify(themeKeys)) fail('V3.2 recipe theme algorithm or theme names changed unexpectedly.');
 if (JSON.stringify(themeSpec.referenceOverrides) !== JSON.stringify({'5':'sunny-orange','12':'playful-purple'}) || JSON.stringify(themeSpec.approvedTemplateExemplars) !== JSON.stringify({'5':'sunny-orange','12':'playful-purple','76':'fresh-green'})) fail('Approved recipe-template reference overrides changed unexpectedly.');
-if (Object.keys(themeSpec.mapping).length !== 95 || ids.some(id => themeSpec.mapping[String(id)] !== (themeSpec.referenceOverrides[String(id)] || expectedTheme(id)))) fail('Every original recipe ID 1–95 must map deterministically to its V3.2 theme.');
-if (themeKeys.some(theme => !Object.values(themeSpec.mapping).includes(theme))) fail('All three approved V3.2 themes must be represented in the 95-recipe assignment.');
+const themeMapIds = Object.keys(themeSpec.mapping).map(Number).sort((a, b) => a - b);
+const expectedThemeIds = [...ids, 96, 99].sort((a, b) => a - b);
+if (themeMapIds.length !== 97 || themeMapIds.some((id, index) => id !== expectedThemeIds[index]) ||
+    expectedThemeIds.some(id => themeSpec.mapping[String(id)] !== (themeSpec.referenceOverrides[String(id)] || expectedTheme(id)))) {
+  fail('Every original recipe ID 1–95 and approved review recipe IDs 096 and 099 must map deterministically to its V3.2 theme.');
+}
+if (themeKeys.some(theme => !Object.values(themeSpec.mapping).includes(theme))) fail('All three approved V3.2 themes must be represented in the 97-recipe assignment.');
 
 const destinations = [['IND', 'India'], ['ITA', 'Italy'], ['CHN', 'China'], ['JPN', 'Japan'], ['MEX', 'Mexico'], ['VNM', 'Vietnam'], ['GRC', 'Greece']];
 if (!Array.isArray(geography.features) || geography.features.length < 150) fail('Offline geographic source provenance is incomplete.');
@@ -78,6 +83,8 @@ for (const [token, label] of [
 const explorerPage=runtime.slice(runtime.lastIndexOf('v31WorldPage=function v33FixedWorldMapPage(){'),runtime.indexOf('const v3OriginalCreateWeek'));
 if (!explorerPage.includes('data-v31-open-passport') || !explorerPage.includes('data-v31-country="IND"') || explorerPage.includes('data-v31-zoom') || explorerPage.includes('data-v31-pan-toggle') || explorerPage.includes('v31MapSvg')) fail('Fixed World Map must expose Food Passport and the validated India route without camera controls.');
 if (!visualCss.includes('.w02-map-viewport{') || !visualCss.includes('.w02-map-art .v31-map-art-image{') || !visualCss.includes('object-fit:contain')) fail('Fixed World Map must use a full-content viewport and aspect-preserving approved map art.');
+if (!runtime.includes('function v33MountGlobe(screen)') || !runtime.includes('window.AariaWorldAdventureGlobe.mount') || !runtime.includes('data-v33-passport-close') || !transform.includes('magicalGlobeScript') || !transform.includes('worldAdventureHost')) fail('Offline interactive globe, Food Passport or country-recipe navigation integration is missing.');
+if (!transform.includes('.aria-world-globe__stage') || !transform.includes('@media(orientation:landscape)') || !transform.includes('prefers-reduced-motion:reduce')) fail('Portrait/landscape World presentation or reduced-motion support is missing.');
 if (!runtime.includes('data-v31-approved-recipe') || !runtime.includes('openRecipe(Number(button.dataset.v31ApprovedRecipe))')) fail('Original Indian recipes must open through the existing recipe flow.');
 if (!runtime.includes('aria-live="polite"') || !runtime.includes('focus({preventScroll:true})')) fail('Accessible status or focus restoration is missing.');
 if (!runtime.includes('<h1 tabindex="-1">') || !runtime.includes('v31WorldOpenerIndex')) fail('World entry and return focus targets are missing.');
@@ -124,8 +131,9 @@ for (const recipe of pilot.recipes) {
   if([...usedFdcIds].some(id=>!recipe.nutritionSourceUrls?.some(url=>url===`https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=DEMO_KEY`)))fail(`Pilot recipe ${expected} is missing its direct USDA FoodData Central API record URL.`);
   if (/pizza/i.test(`${recipe.record.title} ${recipe.record.description}`)) fail('Pizza is not an eligible Italy/China pilot recipe.');
 }
-if (runtime.includes('RECIPES.push(r)') || runtime.includes('data-v31-approved-recipe="${p.id}"')) fail('Review-pilot recipes must not be published as live runtime routes.');
+if (!runtime.includes('V32_INTERNATIONAL_RECIPES') || !runtime.includes('RECIPES.push(r)') || runtime.includes('data-v31-approved-recipe="${p.id}"')) fail('Only the two W01-pinned #096/#099 review recipes may extend the 95-recipe runtime catalogue; W31 draft recipes must remain excluded.');
+if (!transform.includes("JSON.stringify(internationalPackage.recipes.map(recipe => recipe.id)) !== JSON.stringify([96,99])")) fail('W01 review catalogue must stay pinned to international recipe IDs #096 and #099.');
 if (!transform.includes('wheel|world')) fail('Android back navigation does not recognize the World screen.');
 if (!dataNotes.includes('public domain') || !dataNotes.includes('not suitable for navigation')) fail('Map source/licensing limitations are not documented.');
 if (/https?:\/\/(?:api\.mapbox\.com|maps\.googleapis\.com|tile\.openstreetmap\.org|api\.maptiler\.com)/i.test(runtime)) fail('Runtime map/recipe data must not depend on remote map services.');
-console.log(`PASS: ${recipes.length} original recipes preserved unchanged; ${geography.features.length} offline countries; India links ${approvedIndiaIds.length} original recipes; five international country concepts remain review-only and outside runtime.`);
+console.log(`PASS: ${recipes.length} original recipes preserved unchanged; ${geography.features.length} offline countries; India links ${approvedIndiaIds.length} original recipes; India’s 18 links are preserved; Italy #096 and China #099 are integrated; the other thirteen international concepts remain review-only.`);

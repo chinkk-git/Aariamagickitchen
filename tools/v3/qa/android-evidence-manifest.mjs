@@ -58,7 +58,7 @@ export async function buildRecipeImageVerificationManifest({
   const phone = JSON.parse(await readJson('artifacts/v32-diagnostics/recipe-image-verification-phone.json'));
   const tabletPortrait = JSON.parse(await readJson('artifacts/v32-diagnostics/recipe-image-verification-tablet-portrait.json'));
   const tabletLandscape = JSON.parse(await readJson('artifacts/v32-diagnostics/recipe-image-verification-tablet-landscape.json'));
-  const expectedIds = Array.from({ length: 95 }, (_, index) => index + 1);
+  const expectedIds = [...Array.from({ length: 95 }, (_, index) => index + 1), 96, 99];
   const sources = [
     { device: 'phone', orientation: 'portrait', source: phone, screenshotPaths: row => row.screenshots.map(name => `artifacts/v32-android-screenshots/${name}`) },
     { device: 'phone', orientation: 'landscape', source: phone, screenshotPaths: row => row.landscapeScreenshots || [] },
@@ -67,8 +67,8 @@ export async function buildRecipeImageVerificationManifest({
   ];
   const deviceRows = [];
   for (const item of sources) {
-    if (item.source.recipeCount !== 95 || item.source.device !== item.device || (item.device === 'tablet' && item.source.orientation !== item.orientation) || item.source.recipes?.length !== 95) {
-      throw new Error(`Incomplete ${item.device} ${item.orientation} recipe image audit; expected exactly 95 runtime records.`);
+    if (item.source.recipeCount !== 97 || item.source.device !== item.device || (item.device === 'tablet' && item.source.orientation !== item.orientation) || item.source.recipes?.length !== 97) {
+      throw new Error(`Incomplete ${item.device} ${item.orientation} recipe image audit; expected exactly the 95 originals plus #096 and #099.`);
     }
     for (const recipeId of expectedIds) {
       const recipe = item.source.recipes.find(row => row.recipeId === recipeId);
@@ -94,7 +94,7 @@ export async function buildRecipeImageVerificationManifest({
     }
   }
   const status = deviceRows.every(row => row.status === 'PASS') ? 'PASS' : deviceRows.some(row => row.status === 'FAIL') ? 'FAIL' : 'NOT TESTED';
-  return { schemaVersion: 1, status, recipeCount: 95, deviceOrientationRows: deviceRows.length, recipes: deviceRows };
+  return { schemaVersion: 1, status, recipeCount: 97, deviceOrientationRows: deviceRows.length, recipes: deviceRows };
 }
 
 export async function main() {
@@ -102,19 +102,19 @@ export async function main() {
   const routePath = path.join(process.cwd(), 'artifacts/v32-diagnostics/recipe-route-coverage.json');
   const { readFile: readText, writeFile } = await import('node:fs/promises');
   const routeCoverage = JSON.parse(await readText(routePath, 'utf8'));
-  const expectedIds = Array.from({ length: 95 }, (_, index) => index + 1);
-  if (routeCoverage.status !== 'PASS' || routeCoverage.uniqueCount !== 95 || JSON.stringify(routeCoverage.recipeIds) !== JSON.stringify(expectedIds)) {
-    throw new Error(`95-route regression manifest incomplete or incorrect: ${routePath}`);
+  const expectedIds = [...Array.from({ length: 95 }, (_, index) => index + 1), 96, 99];
+  if (routeCoverage.status !== 'PASS' || routeCoverage.uniqueCount !== 97 || JSON.stringify(routeCoverage.recipeIds) !== JSON.stringify(expectedIds)) {
+    throw new Error(`97-route regression manifest incomplete or incorrect (expected only IDs 1–95, 96 and 99): ${routePath}`);
   }
-  manifest.routeCoverage = { status: 'PASS', recipeCount: 95, recipeIds: expectedIds };
+  manifest.routeCoverage = { status: 'PASS', recipeCount: 97, recipeIds: expectedIds };
   const imageVerification = await buildRecipeImageVerificationManifest();
   manifest.recipeImageVerification = { status: imageVerification.status, recipeCount: imageVerification.recipeCount, deviceOrientationRows: imageVerification.deviceOrientationRows };
   await writeFile(path.join(process.cwd(), 'artifacts/v32-diagnostics/android-evidence-manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
   await writeFile(path.join(process.cwd(), 'artifacts/v32-diagnostics/recipe-image-verification-manifest.json'), `${JSON.stringify(imageVerification, null, 2)}\n`);
   await writeFile(path.join(process.cwd(), 'artifacts/v32-diagnostics/recipe-image-verification-matrix.csv'), `recipe_id,title,device,orientation,status,step_count,verified_steps,screenshot_paths\n${imageVerification.recipes.map(row => [row.recipeId, JSON.stringify(row.title), row.device, row.orientation, row.status, row.expectedStepCount, row.verifiedStepCount, JSON.stringify(row.screenshots.map(item => item.path).join(';'))].join(',')).join('\n')}\n`);
-  console.log(`Android screenshot evidence manifest PASS: ${manifest.screenshots.length} required recipe #12 screenshots; 95/95 routes.`);
-  if (imageVerification.status !== 'PASS') throw new Error(`95-recipe Android visual verification gate is ${imageVerification.status}; see artifacts/v32-diagnostics/recipe-image-verification-matrix.csv.`);
-  console.log('95-recipe image verification PASS on Android phone and tablet in portrait and landscape.');
+  console.log(`Android screenshot evidence manifest PASS: ${manifest.screenshots.length} required recipe #12 screenshots; 97/97 routes.`);
+  if (imageVerification.status !== 'PASS') throw new Error(`97-recipe Android visual verification gate is ${imageVerification.status}; see artifacts/v32-diagnostics/recipe-image-verification-matrix.csv.`);
+  console.log('97-recipe image verification PASS on Android phone and tablet in portrait and landscape.');
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname)) {

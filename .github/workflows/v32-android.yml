@@ -6,6 +6,7 @@ on:
     branches:
       - feature/v3.2-magical-cookbook
       - feature/v3.3-world-map-explorer
+      - feature/w01-magical-world-review-build
     paths:
       - 'index.html'
       - 'tools/v3/**'
@@ -29,9 +30,9 @@ concurrency:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 110
+    timeout-minutes: 120
     env:
-      ANDROID_TEST_APP_ID: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && format('com.aaria.magickitchen.pilot.v33map{0}', github.run_number) || format('com.aaria.magickitchen.pilot.v32review{0}', github.run_number) }}
+      ANDROID_TEST_APP_ID: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && format('com.aaria.magickitchen.pilot.v33map{0}', github.run_number) || github.ref_name == 'feature/w01-magical-world-review-build' && format('com.aaria.magickitchen.pilot.w01review{0}', github.run_number) || format('com.aaria.magickitchen.pilot.v32review{0}', github.run_number) }}
     steps:
       - name: Check out exact V3.2 source head
         uses: actions/checkout@v4
@@ -75,11 +76,13 @@ jobs:
         run: |
           if [[ "$GITHUB_REF_NAME" == "feature/v3.3-world-map-explorer" ]]; then
             V33_MAP_SAMPLE_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+          elif [[ "$GITHUB_REF_NAME" == "feature/w01-magical-world-review-build" ]]; then
+            W01_OWNER_REVIEW_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
           else
             V32_REVIEW_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
           fi
 
-      - name: Verify test package, 95 recipes and draft-only artwork payload
+      - name: Verify test package, 97 integrated recipes and draft-only artwork payload
         run: |
           set -euo pipefail
           mkdir -p artifacts/v32-diagnostics
@@ -91,6 +94,9 @@ jobs:
           if [[ "$GITHUB_REF_NAME" == "feature/v3.3-world-map-explorer" ]]; then
             grep -Fq "package: name='com.aaria.magickitchen.pilot.v33map${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
             grep -Fq "application-label:'Aaria Magical Kitchen V3.3 World Map Sample ${GITHUB_RUN_NUMBER}'" artifacts/v32-diagnostics/test-apk-badging.txt
+          elif [[ "$GITHUB_REF_NAME" == "feature/w01-magical-world-review-build" ]]; then
+            grep -Fq "package: name='com.aaria.magickitchen.pilot.w01review${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
+            grep -Fq "application-label:'Aaria Magical Kitchen W01 Owner Review ${GITHUB_RUN_NUMBER}'" artifacts/v32-diagnostics/test-apk-badging.txt
           else
             grep -Fq "package: name='com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
           fi
@@ -231,7 +237,7 @@ jobs:
           api-level: 35
           arch: x86_64
           profile: pixel_3a
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-options: -no-window -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
           emulator-boot-timeout: 300
           disable-animations: true
           disable-linux-hw-accel: false
@@ -253,27 +259,27 @@ jobs:
           api-level: 35
           arch: x86_64
           profile: pixel_tablet
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-options: -no-window -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
           emulator-boot-timeout: 300
           disable-animations: true
           disable-linux-hw-accel: false
           script: bash .github/scripts/v32-android-tablet-smoke.sh
 
 
-      - name: G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes
-        timeout-minutes: 20
+      - name: G3 FULL REGRESSION — phone, bilingual evidence and all 97 integrated routes
+        timeout-minutes: 50
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 36
           arch: x86_64
           profile: pixel_3a
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-options: -no-window -gpu swiftshader -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
           emulator-boot-timeout: 300
           disable-animations: true
           disable-linux-hw-accel: false
           script: bash .github/scripts/v32-android-smoke.sh
 
-      - name: Require complete Android screenshot manifest and 95-route regression
+      - name: Require complete Android screenshot manifest and 97-route regression
         run: node tools/v3/qa/android-evidence-manifest.mjs
 
 
@@ -311,7 +317,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && 'aaria-magical-kitchen-v3.3-world-map-sample-apk' || 'aaria-magical-kitchen-v3.2-test-apk' }}
+          name: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && 'aaria-magical-kitchen-v3.3-world-map-sample-apk' || github.ref_name == 'feature/w01-magical-world-review-build' && 'aaria-magical-kitchen-w01-owner-review-apk' || 'aaria-magical-kitchen-v3.2-test-apk' }}
           path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: warn
           retention-days: 30
@@ -320,7 +326,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && 'aaria-magical-kitchen-v3.3-world-map-sample-evidence' || 'aaria-magical-kitchen-v3.2-test-evidence' }}
+          name: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && 'aaria-magical-kitchen-v3.3-world-map-sample-evidence' || github.ref_name == 'feature/w01-magical-world-review-build' && 'aaria-magical-kitchen-w01-owner-review-evidence' || 'aaria-magical-kitchen-v3.2-test-evidence' }}
           path: |
             artifacts/v32-diagnostics/
             artifacts/v32-android-screenshots/
