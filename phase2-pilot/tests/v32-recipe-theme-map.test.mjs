@@ -10,16 +10,16 @@ function themeFor(id) {
   return spec.referenceOverrides?.[String(id)] || names[(hash >>> 0) % names.length];
 }
 
-test('all 95 original recipe IDs have stable V3.2 theme assignments', () => {
-  assert.equal(Object.keys(spec.mapping).length, 95);
-  assert.deepEqual(Object.keys(spec.mapping).sort((a, b) => Number(a) - Number(b)), Array.from({length:95}, (_,i)=>String(i+1)));
+test('all 95 original and two approved international recipe IDs have stable V3.2 theme assignments', () => {
+  assert.equal(Object.keys(spec.mapping).length, 97);
+  assert.deepEqual(Object.keys(spec.mapping).sort((a, b) => Number(a) - Number(b)), [...Array.from({length:95}, (_,i)=>String(i+1)), '96', '99']);
   assert.deepEqual(spec.referenceOverrides, {'5':'sunny-orange','12':'playful-purple'});
   assert.deepEqual(spec.approvedTemplateExemplars, {'5':'sunny-orange','12':'playful-purple','76':'fresh-green'});
   for (let id = 1; id <= 95; id++) {
     assert.ok(names.includes(spec.mapping[String(id)]), `recipe ${id} has a valid theme`);
     assert.equal(spec.mapping[String(id)], themeFor(id), `recipe ${id}`);
   }
-  assert.deepEqual([...new Set(Object.values(spec.mapping))].sort(), [...names].sort());
+  for (const id of [96, 99]) {\n    assert.ok(names.includes(spec.mapping[String(id)]), `recipe ${id} has a valid theme`);\n    assert.equal(spec.mapping[String(id)], themeFor(id), `recipe ${id} uses the stable V3.2 theme algorithm`);\n  }\n  assert.deepEqual([...new Set(Object.values(spec.mapping))].sort(), [...names].sort());
 });
 
 test('theme selection depends on recipe identity, not language or render count', () => {
