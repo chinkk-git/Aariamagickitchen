@@ -98,6 +98,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
     'G2 explicitly navigates from the library back to Home before checking Home New Recipes routes');
   assert.match(tablet,/await pause\(5000\);\s*console\.log\('Allowing Pixel Tablet first-boot activity\/configuration changes to settle before attaching WebView DevTools'\);\s*let target=null,lastTargets=\[\];/,
     'G2 waits for first-boot Activity/WebView recreation to settle before attaching to the DevTools target');
+  assert.match(tablet,/internationalScreens\.push\(\{id,locale,orientation:orientationName,title:initial\.title,detail,ingredients:productionIngredientScreenshot,steps:stepShots\}\)/,
+    'G2 records the captured international ingredient screenshot without referencing an undeclared variable');
   assert.match(phone,/orientation/);
   assert.match(phone,/aria-world-globe/);
   assert.match(phone,/aria-world-globe__recipe/);

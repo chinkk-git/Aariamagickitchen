@@ -262,7 +262,7 @@ await click('#nav .tab[data-nav="home"]','Home');await waitFor('.v31-hero-welcom
       stepShots.push(shot);
       if(index+1<initial.steps){await click('.ref-next','International recipe '+id+' next step');await pause(180)}
     }
-    internationalScreens.push({id,locale,orientation:orientationName,title:initial.title,detail,ingredients,steps:stepShots});
+    internationalScreens.push({id,locale,orientation:orientationName,title:initial.title,detail,ingredients:productionIngredientScreenshot,steps:stepShots});
     await click('#nav .tab[data-nav="library"]','Recipe library after international '+id);await waitFor('.recipe-card[data-open="1"]','Library after international '+id);
   }
   await evaluate('state.language="en-GB";save();render()');
