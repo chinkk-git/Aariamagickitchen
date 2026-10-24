@@ -59,7 +59,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Grãos de milho, escorridos"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -78,7 +85,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -99,7 +113,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mayonnaise (pasteurised)",
+          "pt-BR": "Maionese pasteurizada"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -120,7 +141,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cotija cheese, crumbled",
+          "pt-BR": "Queijo Cotija esfarelado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -139,7 +167,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh coriander leaves",
+          "pt-BR": "Folhas de coentro fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -158,7 +193,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     }
   ],
@@ -177,7 +219,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -194,7 +238,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -211,7 +257,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -228,7 +276,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -245,7 +295,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -262,7 +314,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -279,7 +333,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     }
   ],
@@ -325,7 +381,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+          "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -370,7 +433,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+          "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -416,7 +486,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+          "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -460,7 +537,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spoon the corn mixture into four small serving cups.",
+          "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -506,7 +590,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+          "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     }
   ],
@@ -577,8 +668,8 @@
   "finished_dish": {
     "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
     "description": {
-      "en-GB": "Finished mexican sweetcorn cups ready to serve.",
-      "pt-BR": "Copinhos mexicanos de milho pronto para servir."
+      "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+      "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
     },
     "image": {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
@@ -586,7 +677,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+        "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
   },
@@ -599,7 +697,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+        "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     "ingredient_images": [
       {
@@ -608,7 +713,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Grãos de milho, escorridos"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
@@ -616,7 +728,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
@@ -624,7 +743,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mayonnaise (pasteurised)",
+          "pt-BR": "Maionese pasteurizada"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
@@ -632,7 +758,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cotija cheese, crumbled",
+          "pt-BR": "Queijo Cotija esfarelado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
@@ -640,7 +773,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh coriander leaves",
+          "pt-BR": "Folhas de coentro fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
@@ -648,7 +788,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     ],
     "equipment_images": [
@@ -658,7 +805,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
@@ -666,7 +815,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
@@ -674,7 +825,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
@@ -682,7 +835,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
@@ -690,7 +845,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
@@ -698,7 +855,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
@@ -706,7 +865,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     ],
     "step_images": [
@@ -716,7 +877,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+          "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
@@ -724,7 +892,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+          "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
@@ -732,7 +907,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+          "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
@@ -740,7 +922,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spoon the corn mixture into four small serving cups.",
+          "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
@@ -748,7 +937,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+          "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     ]
   },
@@ -759,7 +955,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+        "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/sweetcorn.png",
@@ -767,7 +970,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Sweetcorn kernels, drained",
+        "pt-BR": "Grãos de milho, escorridos"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
@@ -775,7 +985,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh lime juice",
+        "pt-BR": "Suco de limão-taiti fresco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
@@ -783,7 +1000,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Mayonnaise (pasteurised)",
+        "pt-BR": "Maionese pasteurizada"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
@@ -791,7 +1015,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Cotija cheese, crumbled",
+        "pt-BR": "Queijo Cotija esfarelado"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
@@ -799,7 +1030,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh coriander leaves",
+        "pt-BR": "Folhas de coentro fresco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
@@ -807,7 +1045,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fine salt",
+        "pt-BR": "Sal fino"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/saucepan.png",
@@ -815,7 +1060,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
@@ -823,7 +1070,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
@@ -831,7 +1080,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
@@ -839,7 +1090,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
@@ -847,7 +1100,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
@@ -855,7 +1110,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
@@ -863,7 +1120,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
@@ -871,7 +1130,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+        "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
@@ -879,7 +1145,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+        "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
@@ -887,7 +1160,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+        "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
@@ -895,7 +1175,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Spoon the corn mixture into four small serving cups.",
+        "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
@@ -903,7 +1190,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+        "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     }
   ],
   "reviews": {
@@ -971,7 +1265,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sweetcorn kernels, drained",
+            "pt-BR": "Grãos de milho, escorridos"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -990,7 +1291,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh lime juice",
+            "pt-BR": "Suco de limão-taiti fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1011,7 +1319,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mayonnaise (pasteurised)",
+            "pt-BR": "Maionese pasteurizada"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1032,7 +1347,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cotija cheese, crumbled",
+            "pt-BR": "Queijo Cotija esfarelado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1051,7 +1373,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh coriander leaves",
+            "pt-BR": "Folhas de coentro fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1070,7 +1399,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fine salt",
+            "pt-BR": "Sal fino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       }
     ],
@@ -1098,7 +1434,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -1115,7 +1453,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -1132,7 +1472,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -1149,7 +1491,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -1166,7 +1510,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -1183,7 +1529,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -1200,7 +1548,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       }
     ],
@@ -1246,7 +1596,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+            "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1291,7 +1648,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+            "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1337,7 +1701,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+            "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1381,7 +1752,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Spoon the corn mixture into four small serving cups.",
+            "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1427,7 +1805,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+            "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       }
     ],
@@ -1438,8 +1823,8 @@
     "finishedDish": {
       "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
       "description": {
-        "en-GB": "Finished mexican sweetcorn cups ready to serve.",
-        "pt-BR": "Copinhos mexicanos de milho pronto para servir."
+        "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+        "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
       },
       "image": {
         "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
@@ -1447,7 +1832,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+          "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
     },
@@ -1526,7 +1918,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+          "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "ingredients": [
         {
@@ -1535,7 +1934,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sweetcorn kernels, drained",
+            "pt-BR": "Grãos de milho, escorridos"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
@@ -1543,7 +1949,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh lime juice",
+            "pt-BR": "Suco de limão-taiti fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
@@ -1551,7 +1964,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mayonnaise (pasteurised)",
+            "pt-BR": "Maionese pasteurizada"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
@@ -1559,7 +1979,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cotija cheese, crumbled",
+            "pt-BR": "Queijo Cotija esfarelado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
@@ -1567,7 +1994,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh coriander leaves",
+            "pt-BR": "Folhas de coentro fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
@@ -1575,7 +2009,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fine salt",
+            "pt-BR": "Sal fino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       ],
       "equipment": [
@@ -1585,7 +2026,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
@@ -1593,7 +2036,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
@@ -1601,7 +2046,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
@@ -1609,7 +2056,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
@@ -1617,7 +2066,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
@@ -1625,7 +2076,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
@@ -1633,7 +2086,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       ],
       "steps": [
@@ -1643,7 +2098,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+            "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
@@ -1651,7 +2113,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+            "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
@@ -1659,7 +2128,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+            "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
@@ -1667,7 +2143,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Spoon the corn mixture into four small serving cups.",
+            "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
@@ -1675,7 +2158,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+            "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       ]
     },
