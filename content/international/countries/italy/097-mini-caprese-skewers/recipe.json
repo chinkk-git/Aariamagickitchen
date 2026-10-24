@@ -56,7 +56,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cherry tomatoes",
+          "pt-BR": "Tomates-cereja"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -77,7 +84,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mini mozzarella balls",
+          "pt-BR": "Bol mini de muçarela"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -96,7 +110,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -115,7 +136,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -134,7 +162,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Balsamic vinegar",
+          "pt-BR": "Vinagre balsâmico"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     }
   ],
@@ -153,7 +188,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -170,7 +207,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -187,7 +226,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -204,7 +245,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -221,7 +264,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     }
   ],
@@ -266,7 +311,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+          "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -309,7 +361,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+          "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -353,7 +412,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+          "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -396,7 +462,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+          "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -440,7 +513,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+          "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     }
   ],
@@ -513,7 +593,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+        "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending."
   },
@@ -526,7 +613,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+        "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     "ingredient_images": [
       {
@@ -535,7 +629,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cherry tomatoes",
+          "pt-BR": "Tomates-cereja"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
@@ -543,7 +644,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mini mozzarella balls",
+          "pt-BR": "Bol mini de muçarela"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
@@ -551,7 +659,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
@@ -559,7 +674,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
@@ -567,7 +689,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Balsamic vinegar",
+          "pt-BR": "Vinagre balsâmico"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     ],
     "equipment_images": [
@@ -577,7 +706,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
@@ -585,7 +716,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
@@ -593,7 +726,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
@@ -601,7 +736,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
@@ -609,7 +746,9 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     ],
     "step_images": [
@@ -619,7 +758,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+          "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
@@ -627,7 +773,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+          "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
@@ -635,7 +788,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+          "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
@@ -643,7 +803,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+          "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
@@ -651,7 +818,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+          "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     ]
   },
@@ -662,7 +836,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+        "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/cherry-tomatoes.png",
@@ -670,7 +851,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Cherry tomatoes",
+        "pt-BR": "Tomates-cereja"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
@@ -678,7 +866,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Mini mozzarella balls",
+        "pt-BR": "Bol mini de muçarela"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
@@ -686,7 +881,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh basil leaves",
+        "pt-BR": "Folhas de manjericão fresco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
@@ -694,7 +896,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
@@ -702,7 +911,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Balsamic vinegar",
+        "pt-BR": "Vinagre balsâmico"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/skewers.png",
@@ -710,7 +926,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
@@ -718,7 +936,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
@@ -726,7 +946,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
@@ -734,7 +956,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
@@ -742,7 +966,9 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
@@ -750,7 +976,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+        "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
@@ -758,7 +991,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+        "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
@@ -766,7 +1006,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+        "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
@@ -774,7 +1021,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+        "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
@@ -782,7 +1036,14 @@
       "mime_type": "image/png",
       "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+        "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     }
   ],
   "reviews": {
@@ -849,7 +1110,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cherry tomatoes",
+            "pt-BR": "Tomates-cereja"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -870,7 +1138,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mini mozzarella balls",
+            "pt-BR": "Bol mini de muçarela"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -889,7 +1164,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh basil leaves",
+            "pt-BR": "Folhas de manjericão fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -908,7 +1190,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Olive oil",
+            "pt-BR": "Azeite de oliva"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -927,7 +1216,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Balsamic vinegar",
+            "pt-BR": "Vinagre balsâmico"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       }
     ],
@@ -953,7 +1249,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -970,7 +1268,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -987,7 +1287,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -1004,7 +1306,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -1021,7 +1325,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       }
     ],
@@ -1066,7 +1372,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+            "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1109,7 +1422,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+            "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1153,7 +1473,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+            "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1196,7 +1523,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+            "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -1240,7 +1574,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+            "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       }
     ],
@@ -1255,7 +1596,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+          "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "description": {
         "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
@@ -1330,7 +1678,14 @@
         "mime_type": "image/png",
         "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+          "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "ingredients": [
         {
@@ -1339,7 +1694,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cherry tomatoes",
+            "pt-BR": "Tomates-cereja"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
@@ -1347,7 +1709,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mini mozzarella balls",
+            "pt-BR": "Bol mini de muçarela"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
@@ -1355,7 +1724,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh basil leaves",
+            "pt-BR": "Folhas de manjericão fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
@@ -1363,7 +1739,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Olive oil",
+            "pt-BR": "Azeite de oliva"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
@@ -1371,7 +1754,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Balsamic vinegar",
+            "pt-BR": "Vinagre balsâmico"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       ],
       "equipment": [
@@ -1381,7 +1771,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
@@ -1389,7 +1781,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
@@ -1397,7 +1791,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
@@ -1405,7 +1801,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
@@ -1413,7 +1811,9 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       ],
       "steps": [
@@ -1423,7 +1823,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+            "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
@@ -1431,7 +1838,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+            "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
@@ -1439,7 +1853,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+            "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
@@ -1447,7 +1868,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+            "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
@@ -1455,7 +1883,14 @@
           "mime_type": "image/png",
           "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+            "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       ]
     },
