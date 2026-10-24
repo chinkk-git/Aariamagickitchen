@@ -346,7 +346,7 @@ try {
   await setMotionPreference(session,'reduce');
   const backShot=await stableScreenshot(session,'world-map-back-phone-portrait','portrait',recipeShot.sha256);evidence.screenshots.push(backShot);
 
-  adb(['shell','input','keyevent','4']);await pause(400);session=await setOrientation(session,true);
+  adb(['shell','input','keyevent','4']);await pause(400);const clearedForLandscape=await waitFor(session.evaluate,`(()=>({selected:v33GlobeController?.getState?.().selected||null,route:typeof view==='undefined'?'unknown':view}))()`,'clear country selection before landscape idle-spin check');if(clearedForLandscape.route!=='world'||clearedForLandscape.selected!==null)throw new Error(`A second Android Back should clear the preserved country selection before landscape idle-spin validation: ${JSON.stringify(clearedForLandscape)}`);session=await setOrientation(session,true);
   await setMotionPreference(session,'no-preference');
   const landscapeMotionStart=await motionSnapshot(session,'world-map-phone-landscape-motion-start','landscape');evidence.screenshots.push(landscapeMotionStart.frame);
   await pause(2200);
