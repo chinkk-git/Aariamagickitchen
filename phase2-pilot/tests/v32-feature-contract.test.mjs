@@ -296,6 +296,31 @@ test('international shared renderer uses matching EN-GB and PT-BR ingredient and
     'G2 checks the corrected PT-BR names and quantities for tomato, salt, water and soy sauce');
 });
 
+test('international active step text restores the exact audited locale instruction', async () => {
+  const [runtime, italy, china] = await Promise.all([
+    read('tools/v3/runtime.js'),
+    read('content/international/countries/italy/096-tomato-basil-pasta/recipe.json').then(JSON.parse),
+    read('content/international/countries/china/099-vegetable-fried-rice/recipe.json').then(JSON.parse)
+  ]);
+  const start = runtime.indexOf('function v32RenderInternationalStepCopy(');
+  const end = runtime.indexOf('\\nfunction v32RenderInternationalStepArtwork(', start);
+  assert.ok(start >= 0 && end > start, 'active step restoration helper is present');
+  const restore = new Function('safe', `${runtime.slice(start, end)}; return v32RenderInternationalStepCopy;`)(value =>
+    String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;'));
+  const html = '<div class="ref-step-copy v32-r12-instruction"><p data-original-source="recipe-step">formatted copy</p></div>';
+  for (const recipe of [italy, china]) {
+    for (const locale of ['en-GB', 'pt-BR']) {
+      for (const index of [0, 1]) {
+        const expected = recipe.steps[index].instruction[locale];
+        const steps = recipe.steps.map(step => ({instruction: step.instruction[locale]}));
+        const restored = restore(html, steps, index);
+        assert.ok(restored.includes('>' + expected + '</p>'),
+          `recipe ${recipe.id} ${locale} step ${index + 1} renders the exact source instruction`);
+      }
+    }
+  }
+});
+
 test('international compact ingredient labels preserve salt and cooking water names in both locales', async () => {
   const runtime = await read('tools/v3/runtime.js');
   const start = runtime.indexOf('function v32ShortIngredient(');
