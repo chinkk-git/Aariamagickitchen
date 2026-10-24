@@ -172,18 +172,18 @@ function v33ShowPassport(){
 }
 function v33KeepFlagsInsideSphere(host){
  const sphere=host.querySelector('.aria-world-globe__sphere'),flags=host.querySelector('.aria-world-globe__flags');
- if(!sphere||!flags)return ()=>{};
+ if(!sphere||!flags)return {fit:()=>{},dispose:()=>{}};
  const fit=()=>{const b=sphere.getBoundingClientRect(),cx=b.left+b.width/2,cy=b.top+b.height/2,r=Math.min(b.width,b.height)/2-2,r2=r*r;
   for(const flag of flags.querySelectorAll('.aria-world-globe__flag')){const q=flag.getBoundingClientRect(),corners=[[q.left,q.top],[q.right,q.top],[q.left,q.bottom],[q.right,q.bottom]];if(corners.some(([x,y])=>(x-cx)*(x-cx)+(y-cy)*(y-cy)>r2))flag.remove()}
  };
  const schedule=()=>requestAnimationFrame(fit),observer=new MutationObserver(schedule),resizer=new ResizeObserver(schedule);
  observer.observe(flags,{childList:true});resizer.observe(sphere);fit();
- return ()=>{observer.disconnect();resizer.disconnect()};
+ return {fit,dispose:()=>{observer.disconnect();resizer.disconnect()}};
 }
 function v33MountGlobe(screen){
  if(v33GlobeController){v33GlobeState=v33GlobeController.getState();v33GlobeController.destroy()}v33GlobeController=null;v33WorldHost=v33WorldCatalogue();
  screen.innerHTML='<div id="v33-world-globe-host" class="v33-world-globe-host"></div>';
- const host=screen.querySelector('#v33-world-globe-host'),moduleController=window.AariaWorldAdventureGlobe.mount(host,{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||{rotation:-78}),stopFlagFit=v33KeepFlagsInsideSphere(host);
+ const host=screen.querySelector('#v33-world-globe-host'),moduleController=window.AariaWorldAdventureGlobe.mount(host,{...v33WorldHost,avatarSrc:V31_HOME_WORLD_ART.aaria},v33GlobeState||{rotation:-78}),flagFit=v33KeepFlagsInsideSphere(host);
  const stage=host.querySelector('.aria-world-globe__stage'),magic=document.createElement('div');
  magic.className='v33-globe-magic-decor';magic.setAttribute('aria-hidden','true');
  magic.innerHTML='<span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span><span class="v33-globe-magic-star">✦</span><span class="v33-globe-magic-star">✷</span><span class="v33-globe-magic-star">✧</span>';
@@ -195,14 +195,14 @@ function v33MountGlobe(screen){
   const current=moduleController.serialize();if(current.selected||current.pending)return;
   // Reuse the immutable W03 restore API so the Natural Earth projection and
   // country flags advance together; four updates per second keep CPU modest.
-  moduleController.restore({...current,rotation:current.rotation+elapsed*.002});
+  moduleController.restore({...current,rotation:current.rotation+elapsed*.002});flagFit.fit();
  },250);
  // Keep the W03 module source immutable while preserving W02's existing app
  // lifecycle hooks and ensuring every rendered country control remains a
  // 48px minimum Android touch target at the globe's farthest visible depth.
  v33GlobeController={
   getState:()=>moduleController.serialize(),
-  destroy:()=>{clearInterval(idleMotion);magic.remove();stopFlagFit();moduleController.dispose()},
+  destroy:()=>{clearInterval(idleMotion);magic.remove();flagFit.dispose();moduleController.dispose()},
   handleBack:()=>moduleController.handleBack(),
   refresh:()=>moduleController.refresh(),
   setOrientation:value=>moduleController.setOrientation(value)

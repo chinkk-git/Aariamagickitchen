@@ -37,7 +37,8 @@ test('the draft registry stays separate and Android mounts the W03 globe with dy
   assert.match(runtime,/canonicalRecipes:RECIPES/);
   assert.match(runtime,/host=screen\.querySelector\('#v33-world-globe-host'\),moduleController=window\.AariaWorldAdventureGlobe\.mount\(host,\{\.\.\.v33WorldHost,avatarSrc:V31_HOME_WORLD_ART\.aaria\},v33GlobeState\|\|\{rotation:-78\}\)/,'first entry centres the India flag on the front of the globe');
   assert.match(runtime,/getState:\(\)=>moduleController\.serialize\(\)/);
-  assert.match(runtime,/destroy:\(\)=>\{clearInterval\(idleMotion\);magic\.remove\(\);stopFlagFit\(\);moduleController\.dispose\(\)\}/);
+  assert.match(runtime,/destroy:\(\)=>\{clearInterval\(idleMotion\);magic\.remove\(\);flagFit\.dispose\(\);moduleController\.dispose\(\)\}/);
+  assert.match(runtime,/moduleController\.restore\(\{\.\.\.current,rotation:current\.rotation\+elapsed\*\.002\}\);flagFit\.fit\(\)/,'each Android globe projection synchronously trims flags to the circular touch area');
   assert.match(globe,/0\.3\.0-natural-earth-orthographic/);
   assert.match(runtime,/v33GlobeController\?\.handleBack/);
 });

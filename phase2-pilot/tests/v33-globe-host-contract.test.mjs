@@ -129,7 +129,8 @@ test('module handoff, Android host and production transform are wired and preser
   assert.match(runtime,/getState:\(\)=>moduleController\.serialize\(\)/);
   assert.match(runtime,/function v33KeepFlagsInsideSphere\(host\)/,'W02 keeps the W03 API unchanged while filtering clipped country targets in the host');
   assert.match(runtime,/corners\.some\(\(\[x,y\]\)=>\(x-cx\)\*\(x-cx\)\+\(y-cy\)\*\(y-cy\)>r2\)\)flag\.remove\(\)/,'the host removes any flag whose full hit target exceeds the globe circle');
-  assert.match(runtime,/destroy:\(\)=>\{clearInterval\(idleMotion\);magic\.remove\(\);stopFlagFit\(\);moduleController\.dispose\(\)\}/);
+  assert.match(runtime,/destroy:\(\)=>\{clearInterval\(idleMotion\);magic\.remove\(\);flagFit\.dispose\(\);moduleController\.dispose\(\)\}/);
+  assert.match(runtime,/moduleController\.restore\(\{\.\.\.current,rotation:current\.rotation\+elapsed\*\.002\}\);flagFit\.fit\(\)/,'moving country targets are synchronously refitted to the visible sphere after every W03 projection update');
   assert.match(runtime,/v33-globe-magic-decor/,'the host adds accessible-hidden, decorative sparkle elements around the accepted globe');
   assert.match(runtime,/setInterval\(\(\)=>\{[\s\S]*?prefers-reduced-motion: reduce[\s\S]*?moduleController\.restore/,'idle globe rotation uses the W03 restore API, pauses for reduced motion and preserves country geometry');
   assert.match(runtime,/aria-world-globe__header/);
