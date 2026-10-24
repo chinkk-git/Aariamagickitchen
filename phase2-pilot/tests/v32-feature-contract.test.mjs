@@ -250,8 +250,12 @@ test('international home recipe cards open their shared-renderer recipe routes',
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
   assert.match(runtime, /class="home-tile v31-pinterest-tile v32-new-recipe-card" data-open=/,
     'international Home cards use the same tile classes as working production recipe navigation');
-  assert.match(tablet, /click\('\.v32-new-recipe-card\[data-open="'\+id\+'"\]'/,
-    'tablet G2 activates the intended #096/#099 Home card before verifying its recipe detail');
+  assert.match(tablet, /const clickState=await evaluate\(/,
+    'tablet G2 records live app state around the new recipe click');
+  assert.match(tablet, /button\?\.click\(\)[\s\S]*?recordAvailable:RECIPES\.some[\s\S]*?openRecipeType:typeof openRecipe/,
+    'tablet G2 diagnoses event, selection and record availability without skipping the click');
+  assert.match(tablet, /await waitFor\('\.ref-hero h1','Home New Recipes recipe '\+id\)/,
+    'tablet G2 still requires the canonical #096/#099 recipe detail after the click');
 });
 
 test('international shared renderer uses matching EN-GB and PT-BR ingredient and step records', async () => {
