@@ -265,8 +265,10 @@ test('international shared renderer uses matching EN-GB and PT-BR ingredient and
     read('content/international/countries/italy/096-tomato-basil-pasta/recipe.json').then(JSON.parse),
     read('content/international/countries/china/099-vegetable-fried-rice/recipe.json').then(JSON.parse)
   ]);
-  assert.match(runtime, /selected=\{\.\.\.entry\.record,\.\.\.\(PT_RECIPES\[id\]\|\|\{\}\),title:record\.title,ingredients:list\(record\),steps:toSteps\(record\),yieldText:pt\?/,
-    'the active shared-renderer record overrides spread PT-BR fallbacks with localized ingredients, steps and yield');
+  assert.match(runtime, /const v32InternationalIngredientList=record=>[\s\S]*?const v32InternationalSteps=record=>/,
+    'localized ingredient and step helpers are defined outside the per-recipe initialization loop');
+  assert.match(runtime, /selected=\{\.\.\.entry\.record,\.\.\.\(PT_RECIPES\[id\]\|\|\{\}\),title:record\.title,ingredients:v32InternationalIngredientList\(record\),steps:v32InternationalSteps\(record\),yieldText:pt\?/,
+    'the active shared-renderer record uses the top-level locale helpers rather than block-scoped initializer functions');
   for (const recipe of [italy, china]) {
     assert.ok(recipe.steps.length > 0, `recipe ${recipe.id} has localized guided steps`);
     for (const locale of ['en-GB', 'pt-BR']) {
