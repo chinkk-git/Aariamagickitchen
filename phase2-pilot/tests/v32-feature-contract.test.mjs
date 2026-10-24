@@ -475,6 +475,18 @@ test('owner visual corrections use a compact carousel and no miniature equipment
     'equipment photos are not inserted into recipe equipment cards');
 });
 
+test('Android tablet verifies EN-GB and PT-BR Home carousel layout in both orientations', async () => {
+  const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
+  assert.match(tablet, /Home New Recipes compact horizontal carousel failed/,
+    'English Home carousel must pass live size, badge, image and horizontal-rail checks');
+  assert.match(tablet, /PT-BR Home New Recipes compact carousel failed/,
+    'Portuguese Home carousel must pass the same live layout checks');
+  assert.match(tablet, /new-recipes-pt-br-'\+\(landscape\?'landscape':'portrait'\)/,
+    'Android captures the localized carousel in portrait and landscape');
+  assert.doesNotMatch(tablet, /if\(!landscape\)\{await evaluate\('state\.language="pt-BR"/,
+    'PT-BR Home assertions run in both tablet orientations');
+});
+
 test('international ingredient pictograms cover both recipes and locales without changing original icon routing', async () => {
   const runtime = await read('tools/v3/runtime.js');
   const helper = runtime.match(/function v32InternationalIngredientPicture\(text\)\s*\{[\s\S]*?\n\}/);
