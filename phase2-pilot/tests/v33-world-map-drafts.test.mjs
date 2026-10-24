@@ -151,8 +151,8 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(regression,/W03 India must expose exactly its 18 canonical recipes/,'G3 retains the 18-link India contract');
   assert.match(regression,/Food Passport after canonical recipe completion/,'G3 validates the current Food Passport after recipe completion');
   assert.ok(regression.includes('steps:Number(document.querySelector(".ref-step-grid")?.dataset.stepCount||document.querySelectorAll(".ref-step-grid > .ref-step-card").length||0)'), 'G3 counts the rendered recipe step cards when the optional data-step-count attribute is absent');
-  assert.match(regression,/expectedInstruction:displayStepText\(selected,step\)\|\|"",'phone G3 compares visible recipe text with the renderer helper');
-  assert.match(regression,/canonicalInstruction:selected\?\.steps\?\.\[step\]\|\|"",'phone G3 keeps canonical recipe source present alongside localized display text');
+  assert.match(regression,/expectedInstruction:displayStepText\(selected,step\)\|\|""/,'phone G3 compares visible recipe text with the renderer helper');
+  assert.match(regression,/canonicalInstruction:selected\?\.steps\?\.\[step\]\|\|""/,'phone G3 keeps canonical recipe source present alongside localized display text');
   assert.match(regression,/!current\.canonicalInstruction\|\|!current\.safety\|\|current\.progress!==index\|\|current\.instruction!==current\.expectedInstruction/,'phone G3 still requires canonical source, adult safety, exact progress and renderer-matched copy');
   assert.match(regression,/acceptance\.steps!==4/,'G3 still requires all four canonical recipe 12 steps');
   assert.match(regression,/sphere\.width<180/,'G3 checks the landscape sphere minimum');
