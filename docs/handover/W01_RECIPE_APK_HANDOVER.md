@@ -78,3 +78,12 @@ Updated: 2026-10-24 (UTC)
 - Run #277 (corrected source e3078bd1cf6c48f59d5513de6506c5f8919e26da) remains queued behind run #276. It has not yet produced an APK or evidence artifacts.
 - Status comments posted to #45 comment 6385378100 and #51 comment 6385378273. Next: monitor #276 phone G3, then run #277; inspect exact-head logs, APK and genuine Android evidence; publish only after gates pass.
 - Owner approval: NO. Review ready: NO. Release ready: NO.
+
+
+## Live CI update 2 — 2026-10-24 UTC
+
+- Run #276, intermediate source 477ec186ad8ea633f0ba1f3b9ea6407ac97322f4: G1/G2 passed; tablet G3 passed all 95 recipes; phone route coverage passed 95/95. The phone G3 then failed while checking PT-BR recipe #12 safety: step text matched canonical PT-BR, but the harness queried .ref-safety details p and found no node. The approved #12 renderer actually renders its recipe-wide guidance in details.storybook-safety > p (runtime.js, lines 839–842), so this is a stale test selector, not missing recipe safety. Failure log: https://github.com/chinkk-git/Aariamagickitchen/actions/runs/40098578853.
+- Corrective harness change is prepared on temporary branch w01/recipe-safety-harness-fix: phone/tablet safety queries now support both .storybook-safety p and .ref-safety details p; contract tests assert both variants while still comparing rendered text to canonical translated safety. No recipe records were modified and no assertions were relaxed.
+- Run #277 started on exact pre-fix code e3078bd1cf6c48f59d5513de6506c5f8919e26da and is in G1. Its G3 is expected to expose the same stale selector until the corrected harness commit is fast-forwarded to W01; it is retained as exact evidence.
+- Next: review the staging diff and local/C1 validation when the workspace is available; fast-forward the corrected three-file commit to feature/v3.2-magical-cookbook with an expected-head check against 55fe0be540e453b9de9bbfa1b4b73c2756099e98; wait for exact-head CI; verify APK and screenshots; update Issues #45/#51.
+- Owner approval: NO. Review ready: NO. Release ready: NO.
