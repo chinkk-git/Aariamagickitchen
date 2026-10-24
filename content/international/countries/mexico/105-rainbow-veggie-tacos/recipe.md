@@ -44,7 +44,7 @@
 - PT-BR: Um adulto corta os pimentões e o abacate em pedaços pequenos sobre uma tábua estável. Rasgue a alface em pedaços.
 - Adult help EN-GB: An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.
 - Ajuda de adulto PT-BR: Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas.
-- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
+- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. An adult opens the tins; then drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
 - Segurança PT-BR: Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado.
 - Illustration: `content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png` (SHA-256 `71269e6441eadefd4fd51d19c6376af85dd6fce015d675952b5658741f77c794`)
 
@@ -53,7 +53,7 @@
 - PT-BR: Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor.
 - Adult help EN-GB: An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.
 - Ajuda de adulto PT-BR: Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas.
-- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
+- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. An adult opens the tins; then drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
 - Segurança PT-BR: Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado.
 - Illustration: `content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png` (SHA-256 `3d825d47184cda7673c5fe4b742b86f3a04b439176d52060c1305df41f1790c4`)
 
@@ -62,7 +62,7 @@
 - PT-BR: Amasse delicadamente metade do feijão com um garfo e misture o restante, o milho e o suco de limão.
 - Adult help EN-GB: An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.
 - Ajuda de adulto PT-BR: Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas.
-- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
+- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. An adult opens the tins; then drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
 - Segurança PT-BR: Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado.
 - Illustration: `content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png` (SHA-256 `4ba070e301f90de563c81ece60f9fb8c7104349877f7522ad69b3b1c5a2b8f17`)
 
@@ -71,7 +71,7 @@
 - PT-BR: Coloque o recheio nas tortilhas de milho. Acrescente pimentão, abacate e alface. Um adulto pode aquecer as tortilhas; sirva logo.
 - Adult help EN-GB: An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.
 - Ajuda de adulto PT-BR: Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas.
-- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
+- Safety EN-GB: Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. An adult opens the tins; then drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.
 - Segurança PT-BR: Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado.
 - Illustration: `content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png` (SHA-256 `6d6477d28bd0d08f679a76577aa1b4d7dd33a83e36319b1cca329c42efd88c04`)
 
