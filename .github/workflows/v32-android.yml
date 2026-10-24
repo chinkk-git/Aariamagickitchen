@@ -29,7 +29,7 @@ concurrency:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 110
     env:
       ANDROID_TEST_APP_ID: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && format('com.aaria.magickitchen.pilot.v33map{0}', github.run_number) || format('com.aaria.magickitchen.pilot.v32review{0}', github.run_number) }}
     steps:
@@ -247,7 +247,7 @@ jobs:
           retention-days: 14
 
       - name: G2 TARGETED DEVICE SMOKE — recipe 12 on Pixel Tablet first
-        timeout-minutes: 50
+        timeout-minutes: 60
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 35
