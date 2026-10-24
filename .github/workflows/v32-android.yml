@@ -261,7 +261,7 @@ jobs:
 
 
       - name: G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes
-        timeout-minutes: 20
+        timeout-minutes: 25
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 36

@@ -181,13 +181,13 @@ done
 test -n "$socket"
 echo "Forwarding app-owned WebView DevTools socket: $socket (app PID $app_pid)"
 adb_timeout forward tcp:9222 "localabstract:$socket"
-timeout --kill-after=10s 720s node --input-type=module <<'NODE'
+timeout --kill-after=10s 1140s node --input-type=module <<'NODE'
 const {execFileSync} = await import('node:child_process');
-const {readFileSync, statSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
+const {readFileSync, renameSync, unlinkSync, writeFileSync, mkdirSync} = await import('node:fs');
 const {createHash} = await import('node:crypto');
 const {clickByDatasetExpression, clickSelectorExpression, findByDatasetExpression, navigationSummaryExpression} = await import('./tools/v3/android-webview-smoke-expressions.mjs');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
-const adb = args => execFileSync('timeout', ['--kill-after=10s','60s','adb',...args]);
+const adb = args => execFileSync('timeout', ['--kill-after=10s','60s','adb',...args], { maxBuffer: 32 * 1024 * 1024 });
 async function waitForVisible(selector, label) {
   let last = '';
   for (let attempt=0; attempt<30; attempt++) {
@@ -215,17 +215,16 @@ async function assertNoAndroidAnr(label) {
 async function captureScreenshot(name, label, previousDigest = null) {
   const output = `artifacts/v32-android-screenshots/${name}`;
   const pending = `${output}.pending`;
-  const remote = `/sdcard/${name}`;
   for (let attempt = 0; attempt < 20; attempt++) {
     await assertNoAndroidAnr(label);
     await evaluate(`new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))`);
-    await pause(500);
-    adb(['shell','screencap','-p',remote]);
-    adb(['pull',remote,pending]);
+    const screenshot = adb(['exec-out','screencap','-p']);
     await assertNoAndroidAnr(label);
-    if (statSync(pending).size >= 10000) {
-      const digest = createHash('sha256').update(readFileSync(pending)).digest('hex');
+    const isPng = screenshot.length >= 10000 && screenshot.subarray(0, 8).equals(Buffer.from([0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a]));
+    if (isPng) {
+      const digest = createHash('sha256').update(screenshot).digest('hex');
       if (!previousDigest || digest !== previousDigest) {
+        writeFileSync(pending, screenshot);
         renameSync(pending, output);
         return digest;
       }
@@ -715,14 +714,14 @@ const recipeImageEvidence=[];
 let recipeImageScreenshotDigest=null;
 for(let recipeId=1;recipeId<=95;recipeId++){
   if(recipeId===12)await evaluate('(()=>{state.done=(state.done||[]).filter(x=>Number(x)!==12);state.myCreations=(state.myCreations||[]).filter(x=>Number(typeof x==="object"?x.recipeId:x)!==12);step=0;save();return true})()');
+  const recipeAuditStartedAt=Date.now();
   const card=await evaluate(`(()=>{const cards=document.querySelectorAll('#screen .recipe-card[data-open]');const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(cards.length!==95||!e)return {catalogueCount:cards.length,missingRecipe:${recipeId}};const x={title:e.querySelector('.home-tile-name')?.textContent||e.innerText,theme:e.dataset.v32Theme};e.click();return x})()`);
   if(!card?.title||!card.theme)throw new Error(`Recipe ${recipeId} is missing its catalogue card or deterministic theme`);
   if(card.catalogueCount!==undefined)throw new Error(`Recipe ${recipeId} route sweep is not on the full recipe catalogue: ${JSON.stringify(card)}`);
-  await pause(250);
-  const routeState=await evaluate(`(()=>({view:typeof view==='undefined'?'unavailable':view,selectedId:typeof selected==='undefined'?null:selected?.id??null,hash:location.hash,screen:document.querySelector('#screen')?.className||'',screenText:document.querySelector('#screen')?.innerText?.slice(0,180)||'',record:typeof RECIPES==='undefined'?null:(RECIPES.find(r=>r.id===${recipeId})?{id:RECIPES.find(r=>r.id===${recipeId}).id,title:RECIPES.find(r=>r.id===${recipeId}).title,steps:RECIPES.find(r=>r.id===${recipeId}).steps?.length,ingredients:RECIPES.find(r=>r.id===${recipeId}).ingredients?.length}:null)}))()`);
-  if(routeState.view!=='recipe'||Number(routeState.selectedId)!==recipeId)throw new Error(`Recipe ${recipeId} catalogue click did not enter its route: ${JSON.stringify(routeState)}`);
   const routeTitleSelector=recipeId===12?'.ref-hero h1':'.ref-hero h1';
   await waitForVisible(routeTitleSelector,`Recipe ${recipeId} detail route`);
+  const routeState=await evaluate(`(()=>({view:typeof view==='undefined'?'unavailable':view,selectedId:typeof selected==='undefined'?null:selected?.id??null,hash:location.hash,screen:document.querySelector('#screen')?.className||'',screenText:document.querySelector('#screen')?.innerText?.slice(0,180)||'',record:typeof RECIPES==='undefined'?null:(RECIPES.find(r=>r.id===${recipeId})?{id:RECIPES.find(r=>r.id===${recipeId}).id,title:RECIPES.find(r=>r.id===${recipeId}).title,steps:RECIPES.find(r=>r.id===${recipeId}).steps?.length,ingredients:RECIPES.find(r=>r.id===${recipeId}).ingredients?.length}:null)}))()`);
+  if(routeState.view!=='recipe'||Number(routeState.selectedId)!==recipeId)throw new Error(`Recipe ${recipeId} catalogue click did not enter its route: ${JSON.stringify(routeState)}`);
   const detail=await evaluate(`(()=>({title:document.querySelector(${JSON.stringify(routeTitleSelector)})?.textContent?.trim()||'',theme:document.querySelector('.app')?.dataset.v32RecipeTheme||'',steps:Number(document.querySelector('#screen .ref-step-grid')?.dataset.stepCount)||document.querySelectorAll('#screen .ref-step-card').length,ingredients:document.querySelectorAll('#screen .ref-ingredient').length,nutrition:document.querySelector('#screen .nutrition-results')?.innerText||'',completion:!!document.querySelector('#screen .ref-next.finish-step')}))()`);
   if(!detail.title||detail.theme!==card.theme||detail.steps<1||detail.ingredients<1)throw new Error(`Recipe ${recipeId} detail regression: ${JSON.stringify({card,detail})}`);
   if(!detail.nutrition||([91,94].includes(recipeId)&&!detail.nutrition.includes('Partial draft')))throw new Error(`Recipe ${recipeId} nutrition must render and disclose incomplete source data: ${JSON.stringify(detail)}`);
@@ -778,6 +777,7 @@ for(let recipeId=1;recipeId<=95;recipeId++){
   const returned=await waitForVisible('.recipe-card[data-open="1"]',`Recipe catalogue after ${recipeId}`);
   const returnCount=await evaluate(`document.querySelectorAll('#screen .recipe-card[data-open]').length`);
   if(returnCount!==95)throw new Error(`Recipe catalogue after ${recipeId} contains ${returnCount} cards, expected 95; screen=${returned.screen}`);
+  console.log(`Recipe ${recipeId}/95 full phone portrait audit elapsed_ms=${Date.now()-recipeAuditStartedAt}`);
 }
 if(routeCoverage.length!==95||new Set(routeCoverage).size!==95)throw new Error(`Expected unique detail route coverage 95/95, got ${routeCoverage.length}`);
 await rotateTo(1);await waitForWebViewOrientation(true);
