@@ -248,8 +248,8 @@ test('international recipes reuse the approved renderer and fail closed on layou
 test('international home recipe cards open their shared-renderer recipe routes', async () => {
   const runtime = await read('tools/v3/runtime.js');
   const tablet = await read('.github/scripts/v32-android-tablet-smoke.sh');
-  assert.match(runtime, /button\.classList\.contains\('v32-new-recipe-card'\)&&button\.dataset\.open\)\{openRecipe\(Number\(button\.dataset\.open\)\);return\}/,
-    'the visible international Home cards dispatch to the shared recipe route');
+  assert.match(runtime, /document\.addEventListener\('click',e=>\{[\s\S]*?closest\('\.v32-new-recipe-card\[data-open\]'\)[\s\S]*?e\.stopPropagation\(\)[\s\S]*?openRecipe\(Number\(button\.dataset\.open\)\)[\s\S]*?\},true\)/,
+    'a capture-phase handler routes the visible international Home cards past the legacy click delegate');
   assert.match(tablet, /click\('\.v32-new-recipe-card\[data-open="'\+id\+'"\]'/,
     'tablet G2 activates the intended #096/#099 Home card before verifying its recipe detail');
 });

@@ -497,12 +497,19 @@ document.addEventListener('click',async e=>{
  }
 });
 document.addEventListener('click',e=>{
+ const button=e.target.closest('.v32-new-recipe-card[data-open]');
+ if(!button)return;
+ e.preventDefault();
+ e.stopPropagation();
+ openRecipe(Number(button.dataset.open));
+},true);
+document.addEventListener('click',e=>{
  if(v31MapSuppressClick){v31MapSuppressClick=false;e.preventDefault();return}
  const target=e.target.closest('[data-v31-country]');
  if(target){v31SelectedCountry=target.dataset.v31Country;render();return}
  const button=e.target.closest('button');if(!button)return;
  if(button.dataset.v31ApprovedRecipe){openRecipe(Number(button.dataset.v31ApprovedRecipe));return}
- if(button.classList.contains('v32-new-recipe-card')&&button.dataset.open){openRecipe(Number(button.dataset.open));return}
+ 
  if(button.hasAttribute('data-v31-passport-reset')){state.worldStamps=[];save();render();return}
  if(button.hasAttribute('data-v31-open-world')){window.v31WorldOpenedFromNav=false;window.v31WorldOpenerIndex=[...document.querySelectorAll('[data-v31-open-world]')].indexOf(button);goto('world');return}
  if(button.hasAttribute('data-v31-back')){goto('home');if(window.v31WorldOpenedFromNav)document.querySelector('.bottom .tab[data-nav="world"]')?.focus({preventScroll:true});else{const openers=[...document.querySelectorAll('[data-v31-open-world]')];(openers[window.v31WorldOpenerIndex]||openers[0])?.focus({preventScroll:true})}window.v31WorldOpenedFromNav=false;return}
