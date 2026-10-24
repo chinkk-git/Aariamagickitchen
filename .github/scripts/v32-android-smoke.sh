@@ -601,13 +601,14 @@ await waitForVisible('.v31-tile-surprise','Home Surprise Me action');
 await evaluate("document.querySelector('#screen .v31-tile-surprise[data-action=open-wheel]').click()");
 await waitForVisible('.spin-page','Surprise Me recipe wheel');
 const wheelOptions=await evaluate('wheelOptions.map(r=>Number(r.id))');
-if(wheelOptions.length!==8||wheelOptions.some(id=>!Number.isInteger(id)||id<1||id>95))throw new Error('Surprise Me wheel exposed invalid recipe IDs: '+JSON.stringify(wheelOptions));
+const isIntegratedRecipeId=id=>Number.isInteger(id)&&((id>=1&&id<=95)||id===96||id===99);
+if(wheelOptions.length!==8||wheelOptions.some(id=>!isIntegratedRecipeId(id)))throw new Error('Surprise Me wheel exposed invalid recipe IDs: '+JSON.stringify(wheelOptions));
 await evaluate("document.querySelector('#screen [data-action=spin-now]').click()");
 await waitForVisible('.ref-title h1','Surprise Me selected recipe');
 const surpriseId=await evaluate('Number(selected?.id)');
-if(!Number.isInteger(surpriseId)||surpriseId<1||surpriseId>95)throw new Error('Surprise Me selected invalid recipe ID: '+surpriseId);
+if(!isIntegratedRecipeId(surpriseId))throw new Error('Surprise Me selected invalid recipe ID: '+surpriseId);
 await evaluate("document.querySelector('#nav .tab[data-nav=library]')?.click()");
-await waitForVisible('.recipe-card[data-open="1"]','95-recipe catalogue restored after filter and Surprise Me checks');
+await waitForVisible('.recipe-card[data-open="1"]','97-recipe catalogue restored after filter and Surprise Me checks');
 console.log('Air fryer/category filters and Surprise Me preserve canonical recipe IDs:',JSON.stringify({airFryer:filterReport.ids.length,breakfast:breakfastCount.count,surpriseId}));
 
 const v32CanonicalPhoneExamples=[[12,'Cheesy Corn Pancakes','playful-purple'],[76,'Rainbow Vegetable Noodle Toss','fresh-green'],[5,'Mini Pizza Bread Cups','sunny-orange']];

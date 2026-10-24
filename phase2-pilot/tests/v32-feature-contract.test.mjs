@@ -415,6 +415,12 @@ test('97-recipe review catalogue checks keep all 95 original route regressions',
     'both original phone route sweeps remain complete for IDs 1–95');
   assert.match(phone, /routeCoverage\.length!==95\|\|new Set\(routeCoverage\)\.size!==95/,
     'the original 95 distinct route checks remain mandatory');
+  assert.match(phone, /const isIntegratedRecipeId=id=>Number\.isInteger\(id\)&&\(\(id>=1&&id<=95\)\|\|id===96\|\|id===99\)/,
+    'Surprise Me accepts the 95 originals plus integrated #096 and #099');
+  assert.match(phone, /wheelOptions\.some\(id=>!isIntegratedRecipeId\(id\)\)/,
+    'the wheel rejects review-only IDs #097/#098 and any unknown route');
+  assert.match(phone, /if\(!isIntegratedRecipeId\(surpriseId\)\)/,
+    'the selected recipe uses the same integrated route allowlist');
   assert.match(tablet, /x\.documentWidth>x\.width\+1\|\|x\.gridWidth>x\.width\+1/,
     'tablet G2 compares Android viewport measurements returned by WebView, never Node globals');
   assert.match(tablet, /b\.card\.width>x\.width\+1/,
