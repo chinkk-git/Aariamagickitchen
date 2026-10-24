@@ -29,7 +29,7 @@
 
 ### step-01 — Get the ingredients ready / Separe os ingredientes
 - EN-GB: Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.
-- PT-BR: Ajude a separar os ingredientes. Lave as mãos e enxágue o manjericão. Rasgue as folhas em uma tigela; um adulto pica o alho.
+- PT-BR: Lave as mãos. Enxágue o manjericão e rasgue delicadamente as folhas em uma tigela pequena. Peça a um adulto para picar o alho.
 - Adult/child responsibilities: Adult chops garlic with the knife; child tears washed basil. / Um adulto pica o alho com a faca; a criança rasga o manjericão lavado.
 - Safety: Knife work is adult-only. Wash hands and rinse basil before handling ready-to-eat ingredients. / Somente um adulto usa a faca. Lave as mãos e enxágue o manjericão antes de manipular ingredientes prontos para consumo.
 - Ingredients/equipment: fresh-basil, garlic; mixing-bowl, chopping-board, knife
