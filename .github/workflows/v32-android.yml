@@ -61,6 +61,7 @@ jobs:
       - name: Build offline shared recipe renderer and stage draft review assets
         run: |
           set -euo pipefail
+          node tools/v3/artwork/build-international-review.mjs
           mkdir -p dist artifacts/v32-diagnostics phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes
           V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_2.html
           cp dist/Aaria_Magical_Kitchen_V3_2.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
