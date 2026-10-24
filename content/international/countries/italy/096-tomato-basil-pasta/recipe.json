@@ -77,7 +77,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.",
+          "pt-BR": "Lave as mãos. Enxágue o manjericão e rasgue delicadamente as folhas em uma tigela pequena. Peça a um adulto para picar o alho."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "safety": {
         "en-GB": "Knife work is adult-only. Wash hands and rinse basil before handling ready-to-eat ingredients.",
@@ -116,7 +123,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Put the chopped tomatoes, olive oil and adult-chopped garlic in a mixing bowl. Stir gently with a wooden spoon.",
+          "pt-BR": "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "safety": {
         "en-GB": "Use a clean bowl and spoon.",
@@ -155,7 +169,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult puts the sauce in a small saucepan and cooks it gently, stirring with a spoon, until hot and bubbling.",
+          "pt-BR": "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "safety": {
         "en-GB": "Hot pan and steam: adult only; keep child back.",
@@ -193,7 +214,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult cooks the spaghetti in salted boiling water, following the packet directions until tender.",
+          "pt-BR": "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "safety": {
         "en-GB": "Boiling water and hob are adult-only. Check pasta label for wheat/gluten.",
@@ -236,7 +264,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult drains the pasta safely. Mix it with the sauce in a serving bowl, then add the torn basil. Let it cool to a safe eating temperature.",
+          "pt-BR": "Um adulto escorre a massa com cuidado. Misture-a ao molho em uma tigela de servir e acrescente o manjericão rasgado. Deixe esfriar até uma temperatura segura para comer."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "safety": {
         "en-GB": "Adult handles draining, hot pot and serving; check for hot spots before eating.",
@@ -324,7 +359,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
+        "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     }
   },
   "artwork": {
@@ -336,7 +378,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
+        "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     "ingredient_images": [
       {
@@ -345,7 +394,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Dried spaghetti",
+          "pt-BR": "Espaguete seco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
@@ -353,7 +409,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Chopped tinned tomatoes, no added salt",
+          "pt-BR": "Tomates picados em lata, sem sal adicionado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
@@ -361,7 +424,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
@@ -369,7 +439,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Garlic clove",
+          "pt-BR": "Dente de alho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
@@ -377,7 +454,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
@@ -385,7 +469,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Salt for pasta water",
+          "pt-BR": "Sal para a água do macarrão"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
@@ -393,7 +484,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Water for cooking pasta",
+          "pt-BR": "Água para cozinhar o macarrão"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     ],
     "equipment_images": [
@@ -403,7 +501,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
@@ -411,7 +511,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
@@ -419,7 +521,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
@@ -427,7 +531,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
@@ -435,7 +541,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
@@ -443,7 +551,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
@@ -451,7 +561,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     ],
     "step_images": [
@@ -461,7 +573,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.",
+          "pt-BR": "Lave as mãos. Enxágue o manjericão e rasgue delicadamente as folhas em uma tigela pequena. Peça a um adulto para picar o alho."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
@@ -469,7 +588,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Put the chopped tomatoes, olive oil and adult-chopped garlic in a mixing bowl. Stir gently with a wooden spoon.",
+          "pt-BR": "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
@@ -477,7 +603,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult puts the sauce in a small saucepan and cooks it gently, stirring with a spoon, until hot and bubbling.",
+          "pt-BR": "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
@@ -485,7 +618,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult cooks the spaghetti in salted boiling water, following the packet directions until tender.",
+          "pt-BR": "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
@@ -493,7 +633,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult drains the pasta safely. Mix it with the sauce in a serving bowl, then add the torn basil. Let it cool to a safe eating temperature.",
+          "pt-BR": "Um adulto escorre a massa com cuidado. Misture-a ao molho em uma tigela de servir e acrescente o manjericão rasgado. Deixe esfriar até uma temperatura segura para comer."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     ]
   },
@@ -552,7 +699,7 @@
         "Água para cozinhar o macarrão: 2000 mL"
       ],
       "steps": [
-        "Ajude a separar os ingredientes. Lave as mãos e enxágue o manjericão. Rasgue as folhas em uma tigela; um adulto pica o alho.",
+        "Lave as mãos. Enxágue o manjericão e rasgue delicadamente as folhas em uma tigela pequena. Peça a um adulto para picar o alho.",
         "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau.",
         "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar.",
         "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio.",
@@ -608,7 +755,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Dried spaghetti",
+            "pt-BR": "Espaguete seco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -627,7 +781,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Chopped tinned tomatoes, no added salt",
+            "pt-BR": "Tomates picados em lata, sem sal adicionado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -646,7 +807,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Olive oil",
+            "pt-BR": "Azeite de oliva"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -665,7 +833,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Garlic clove",
+            "pt-BR": "Dente de alho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -684,7 +859,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh basil leaves",
+            "pt-BR": "Folhas de manjericão fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -703,7 +885,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Salt for pasta water",
+            "pt-BR": "Sal para a água do macarrão"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       },
       {
@@ -722,7 +911,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Water for cooking pasta",
+            "pt-BR": "Água para cozinhar o macarrão"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       }
     ],
@@ -741,7 +937,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -758,7 +956,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -775,7 +975,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -792,7 +994,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -809,7 +1013,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -826,7 +1032,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       },
       {
@@ -843,7 +1051,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       }
     ],
@@ -881,7 +1091,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.",
+            "pt-BR": "Lave as mãos. Enxágue o manjericão e rasgue delicadamente as folhas em uma tigela pequena. Peça a um adulto para picar o alho."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         "safety": {
           "en-GB": "Knife work is adult-only. Wash hands and rinse basil before handling ready-to-eat ingredients.",
@@ -920,7 +1137,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Put the chopped tomatoes, olive oil and adult-chopped garlic in a mixing bowl. Stir gently with a wooden spoon.",
+            "pt-BR": "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         "safety": {
           "en-GB": "Use a clean bowl and spoon.",
@@ -959,7 +1183,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult puts the sauce in a small saucepan and cooks it gently, stirring with a spoon, until hot and bubbling.",
+            "pt-BR": "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         "safety": {
           "en-GB": "Hot pan and steam: adult only; keep child back.",
@@ -997,7 +1228,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult cooks the spaghetti in salted boiling water, following the packet directions until tender.",
+            "pt-BR": "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         "safety": {
           "en-GB": "Boiling water and hob are adult-only. Check pasta label for wheat/gluten.",
@@ -1040,7 +1278,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult drains the pasta safely. Mix it with the sauce in a serving bowl, then add the torn basil. Let it cool to a safe eating temperature.",
+            "pt-BR": "Um adulto escorre a massa com cuidado. Misture-a ao molho em uma tigela de servir e acrescente o manjericão rasgado. Deixe esfriar até uma temperatura segura para comer."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         "safety": {
           "en-GB": "Adult handles draining, hot pot and serving; check for hot spots before eating.",
@@ -1061,7 +1306,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
+          "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     "nutrition": {
@@ -1141,7 +1393,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
+          "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       },
       "ingredient_images": [
         {
@@ -1150,7 +1409,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Dried spaghetti",
+            "pt-BR": "Espaguete seco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
@@ -1158,7 +1424,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Chopped tinned tomatoes, no added salt",
+            "pt-BR": "Tomates picados em lata, sem sal adicionado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
@@ -1166,7 +1439,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Olive oil",
+            "pt-BR": "Azeite de oliva"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
@@ -1174,7 +1454,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Garlic clove",
+            "pt-BR": "Dente de alho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
@@ -1182,7 +1469,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh basil leaves",
+            "pt-BR": "Folhas de manjericão fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
@@ -1190,7 +1484,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Salt for pasta water",
+            "pt-BR": "Sal para a água do macarrão"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
@@ -1198,7 +1499,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Water for cooking pasta",
+            "pt-BR": "Água para cozinhar o macarrão"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       ],
       "equipment_images": [
@@ -1208,7 +1516,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
@@ -1216,7 +1526,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
@@ -1224,7 +1536,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
@@ -1232,7 +1546,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
@@ -1240,7 +1556,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
@@ -1248,7 +1566,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
@@ -1256,7 +1576,9 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
         }
       ],
       "step_images": [
@@ -1266,7 +1588,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.",
+            "pt-BR": "Lave as mãos. Enxágue o manjericão e rasgue delicadamente as folhas em uma tigela pequena. Peça a um adulto para picar o alho."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
@@ -1274,7 +1603,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Put the chopped tomatoes, olive oil and adult-chopped garlic in a mixing bowl. Stir gently with a wooden spoon.",
+            "pt-BR": "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
@@ -1282,7 +1618,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult puts the sauce in a small saucepan and cooks it gently, stirring with a spoon, until hot and bubbling.",
+            "pt-BR": "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
@@ -1290,7 +1633,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult cooks the spaghetti in salted boiling water, following the packet directions until tender.",
+            "pt-BR": "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         },
         {
           "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
@@ -1298,7 +1648,14 @@
           "mime_type": "image/png",
           "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
           "license": "AI-generated project asset; independent rights review pending",
-          "rights_status": "PENDING_REVIEW"
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult drains the pasta safely. Mix it with the sauce in a serving bowl, then add the torn basil. Let it cool to a safe eating temperature.",
+            "pt-BR": "Um adulto escorre a massa com cuidado. Misture-a ao molho em uma tigela de servir e acrescente o manjericão rasgado. Deixe esfriar até uma temperatura segura para comer."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
         }
       ]
     },
@@ -1354,7 +1711,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Dried spaghetti",
+          "pt-BR": "Espaguete seco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -1373,7 +1737,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Chopped tinned tomatoes, no added salt",
+          "pt-BR": "Tomates picados em lata, sem sal adicionado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -1392,7 +1763,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -1411,7 +1789,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Garlic clove",
+          "pt-BR": "Dente de alho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -1430,7 +1815,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -1449,7 +1841,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Salt for pasta water",
+          "pt-BR": "Sal para a água do macarrão"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     },
     {
@@ -1468,7 +1867,14 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Water for cooking pasta",
+          "pt-BR": "Água para cozinhar o macarrão"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
       }
     }
   ],
@@ -1487,7 +1893,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -1504,7 +1912,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -1521,7 +1931,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -1538,7 +1950,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -1555,7 +1969,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -1572,7 +1988,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     },
     {
@@ -1589,7 +2007,9 @@
         "mime_type": "image/png",
         "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
         "license": "AI-generated project asset; independent rights review pending",
-        "rights_status": "PENDING_REVIEW"
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
       }
     }
   ],
@@ -1600,7 +2020,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
+        "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/spaghetti-dry.png",
@@ -1608,7 +2035,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Dried spaghetti",
+        "pt-BR": "Espaguete seco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/tomatoes-canned.png",
@@ -1616,7 +2050,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Chopped tinned tomatoes, no added salt",
+        "pt-BR": "Tomates picados em lata, sem sal adicionado"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/olive-oil.png",
@@ -1624,7 +2065,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/garlic.png",
@@ -1632,7 +2080,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Garlic clove",
+        "pt-BR": "Dente de alho"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/fresh-basil.png",
@@ -1640,7 +2095,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh basil leaves",
+        "pt-BR": "Folhas de manjericão fresco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/salt.png",
@@ -1648,7 +2110,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Salt for pasta water",
+        "pt-BR": "Sal para a água do macarrão"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/ingredients/water-pasta.png",
@@ -1656,7 +2125,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Water for cooking pasta",
+        "pt-BR": "Água para cozinhar o macarrão"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/large-pot.png",
@@ -1664,7 +2140,9 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/small-pan.png",
@@ -1672,7 +2150,9 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/colander.png",
@@ -1680,7 +2160,9 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/mixing-bowl.png",
@@ -1688,7 +2170,9 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/wooden-spoon.png",
@@ -1696,7 +2180,9 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/chopping-board.png",
@@ -1704,7 +2190,9 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/equipment/knife.png",
@@ -1712,7 +2200,9 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-01.png",
@@ -1720,7 +2210,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Wash your hands. Rinse the basil and gently tear the leaves into a small bowl. Ask an adult to chop the garlic.",
+        "pt-BR": "Lave as mãos. Enxágue o manjericão e rasgue delicadamente as folhas em uma tigela pequena. Peça a um adulto para picar o alho."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
@@ -1728,7 +2225,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Put the chopped tomatoes, olive oil and adult-chopped garlic in a mixing bowl. Stir gently with a wooden spoon.",
+        "pt-BR": "Coloque os tomates, o azeite e o alho picado pelo adulto em uma tigela. Misture com uma colher de pau."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-03.png",
@@ -1736,7 +2240,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult puts the sauce in a small saucepan and cooks it gently, stirring with a spoon, until hot and bubbling.",
+        "pt-BR": "Um adulto coloca o molho em uma panela pequena e cozinha em fogo baixo, mexendo até ficar quente e borbulhar."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-04.png",
@@ -1744,7 +2255,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult cooks the spaghetti in salted boiling water, following the packet directions until tender.",
+        "pt-BR": "Um adulto cozinha o espaguete na água fervente com sal, seguindo a embalagem até ficar macio."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     },
     {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-05.png",
@@ -1752,7 +2270,14 @@
       "mime_type": "image/png",
       "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "license": "AI-generated project asset; independent rights review pending",
-      "rights_status": "PENDING_REVIEW"
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult drains the pasta safely. Mix it with the sauce in a serving bowl, then add the torn basil. Let it cool to a safe eating temperature.",
+        "pt-BR": "Um adulto escorre a massa com cuidado. Misture-a ao molho em uma tigela de servir e acrescente o manjericão rasgado. Deixe esfriar até uma temperatura segura para comer."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
     }
   ]
 }
