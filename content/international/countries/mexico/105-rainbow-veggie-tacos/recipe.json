@@ -1389,6 +1389,10 @@
         "safety": {
           "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
           "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
         }
       },
       {
@@ -1427,6 +1431,10 @@
         "safety": {
           "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
           "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
         }
       },
       {
@@ -1464,6 +1472,10 @@
         "safety": {
           "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
           "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
         }
       },
       {
@@ -1501,6 +1513,10 @@
         "safety": {
           "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
           "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
         }
       },
       {
@@ -1541,6 +1557,10 @@
         "safety": {
           "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
           "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
         }
       }
     ],
