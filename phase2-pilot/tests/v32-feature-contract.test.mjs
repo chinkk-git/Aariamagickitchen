@@ -181,11 +181,11 @@ test('phone and tablet Android capture the visible PT-BR ingredient grid and res
     'tablet PT-BR navigation retains the exact six-route identity check');
   assert.doesNotMatch(tablet, /nav:\[\.\.\.document\.querySelectorAll\("#nav \.tab"\)\]\.map\(e=>e\.textContent\.trim\(\)\)/,
     'tablet PT-BR route assertion does not mistake decorative icons for visible labels');
-  assert.match(tablet, /safety:document\.querySelector\("\.ref-safety details p"\)[\s\S]*?expectedSafety:translateText\(RECIPES\.find\(recipe=>Number\(recipe\.id\)===12\)\?\.safety\|\|"", "pt-BR"\)/,
+  assert.match(tablet, /safety:document\.querySelector\("\.storybook-safety p,\.ref-safety details p"\)[\s\S]*?expectedSafety:translateText\(RECIPES\.find\(recipe=>Number\(recipe\.id\)===12\)\?\.safety\|\|"", "pt-BR"\)/,
     'tablet PT-BR step flow compares the rendered recipe-wide safety disclosure to the canonical recipe safety translated by the app');
-  assert.doesNotMatch(tablet, /safety:document\.querySelector\("\.ref-safety details p"\)[\s\S]*?expectedSafety:v32PilotRecipePresentation/,
+  assert.doesNotMatch(tablet, /safety:document\.querySelector\("\.storybook-safety p,\.ref-safety details p"\)[\s\S]*?expectedSafety:v32PilotRecipePresentation/,
     'tablet PT-BR safety assertion does not compare a recipe-wide panel with an inactive per-step template contract');
-  assert.match(tablet, /step=0;save\(\);render\(\)/,
+  assert.match(phone, /safety:document\.querySelector\("\.storybook-safety p,\.ref-safety details p"\)/,\n    'phone G3 reads recipe safety from the approved #12 template and standard recipe layout');\n  assert.match(tablet, /step=0;save\(\);render\(\)/,
     'each tablet orientation starts the PT-BR pilot at step one');
 });
 
