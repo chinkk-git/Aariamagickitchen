@@ -99,7 +99,7 @@ Artwork: `content/international/countries/vietnam/109-rice-noodle-salad/artwork/
 
 **Child/adult roles / Papéis da criança e do adulto:** Children toss the cooled salad; an adult checks the noodles are cool and the fish sauce is mixed evenly. / As crianças misturam a salada fria; um adulto confere se o macarrão esfriou e se o molho de peixe foi distribuído.
 
-**Safety / Segurança:** Use cooled noodles and clean utensils; do not leave the finished salad at room temperature for a long time. / Use o macarrão frio e utensílios limpos; não deixe a salada pronta por muito tempo à temperatura ambiente.
+**Safety / Segurança:** Use cooled noodles and clean utensils. Serve promptly; refrigerate leftovers within two hours and eat within 48 hours. / Use o macarrão frio e utensílios limpos. Sirva logo; leve as sobras à geladeira em até duas horas e consuma em até 48 horas.
 
 Artwork: `content/international/countries/vietnam/109-rice-noodle-salad/artwork/steps/step-04.png`
 
