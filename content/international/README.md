@@ -38,7 +38,7 @@ The numbered directory and IDs are **provisional** until checked against the liv
 2. Ingredients: stable ingredient ID, exact metric quantity, unit, substitutions, serving-scaling policy, allergens and ingredient-art path; no pork/ham.
 3. You'll Need: precise localized equipment checklist and child/adult role. The approved Magic Recipe Prep Board displays localized equipment names as text chips; equipment icons are neither required nor generated.
 4. Steps: ordered step ID; EN-GB/PT-BR instruction; single visible action; exact ingredients and equipment used; step image path; adult-assist/heat/knife/cross-contamination cues; no timers.
-5. Finished dish: exact hero asset path, accurate visual description and source/provenance.
+5. Finished dish and artwork accessibility: exact hero path; concise localized descriptions grounded in the finished-dish source; localized alt-text for ingredient and step assets, with its source field and review state. Equipment artwork is not rendered: the approved Prep Board presents localized equipment names as pastel text chips.
 6. Nutrition: values per serving, calculation method, primary source citations and unknown/pending fields (never fabricate).
 7. Allergens: ingredient-specific and cross-contact notes, A08 review status.
 8. QA: A09 age 8–10 usability, cultural review, translation review, rights, art consistency and evidence.
