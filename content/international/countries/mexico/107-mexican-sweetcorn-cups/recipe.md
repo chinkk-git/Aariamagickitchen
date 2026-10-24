@@ -97,7 +97,7 @@ Artwork: `content/international/countries/mexico/107-mexican-sweetcorn-cups/artw
 
 **Child/adult roles / Papéis da criança e do adulto:** Children sprinkle the measured cheese and coriander; adults handle refrigerated dairy and check labels. / As crianças polvilham o queijo e o coentro medidos; adultos manuseiam laticínios refrigerados e conferem os rótulos.
 
-**Safety / Segurança:** Keep cheese refrigerated until needed; discard food left out for more than 2 hours (1 hour in hot conditions). Check for dairy and egg allergens. / Mantenha o queijo refrigerado até usar; descarte alimentos deixados fora da geladeira por mais de 2 horas (1 hora em calor intenso). Verifique alergênicos de leite e ovo.
+**Safety / Segurança:** Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens. / Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo.
 
 Artwork: `content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png`
 
