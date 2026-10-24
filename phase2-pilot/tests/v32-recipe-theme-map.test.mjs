@@ -22,7 +22,8 @@ test('all 95 original and two approved international recipe IDs have stable V3.2
   for (const id of [96, 99]) {
     assert.ok(names.includes(spec.mapping[String(id)], `recipe ${id} has a valid theme`));
     assert.equal(spec.mapping[String(id)], themeFor(id), `recipe ${id} uses the stable V3.2 theme algorithm`);
-  }\n  assert.deepEqual([...new Set(Object.values(spec.mapping))].sort(), [...names].sort());
+  }
+  assert.deepEqual([...new Set(Object.values(spec.mapping))].sort(), [...names].sort());
 });
 
 test('theme selection depends on recipe identity, not language or render count', () => {
