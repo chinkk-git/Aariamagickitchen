@@ -25,6 +25,8 @@ test('approved portrait World design adds localized spin guidance and keeps the 
   const landscapeCheck = phoneSmoke.indexOf('await rotateTo(1)', spinCheck);
   assert.ok(spinCheck >= 0 && cleanReset > spinCheck && cleanReset < landscapeCheck,
     'G3 resets the intentional globe rotation before checking the independent landscape and India-pin baseline');
+  assert.match(phoneSmoke, /waitForVisible\('\.aria-world-globe__eyebrow','World after globe spin-dismissal reload'\)/,
+    'G3 accepts the restored World route after reloading the transient globe rotation');
   assert.match(runtime, /stage\.addEventListener\('pointerup'/);
   assert.match(runtime, /rotated>=8/);
   assert.match(runtime, /stage\.classList\.add\('has-user-spun'\)/);
