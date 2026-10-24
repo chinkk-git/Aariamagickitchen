@@ -87,3 +87,12 @@ Updated: 2026-10-24 (UTC)
 - Run #277 started on exact pre-fix code e3078bd1cf6c48f59d5513de6506c5f8919e26da and is in G1. Its G3 is expected to expose the same stale selector until the corrected harness commit is fast-forwarded to W01; it is retained as exact evidence.
 - Next: review the staging diff and local/C1 validation when the workspace is available; fast-forward the corrected three-file commit to feature/v3.2-magical-cookbook with an expected-head check against 55fe0be540e453b9de9bbfa1b4b73c2756099e98; wait for exact-head CI; verify APK and screenshots; update Issues #45/#51.
 - Owner approval: NO. Review ready: NO. Release ready: NO.
+
+
+## Live CI update 3 — 2026-10-24 UTC
+
+- Run #276 failure is confirmed as a harness selector mismatch, not missing recipe content: full phone route coverage logged 95/95 PASS. It then failed PT-BR recipe #12 because it queried only .ref-safety details p while the original approved #12 template has an open .storybook-safety disclosure with the canonical translated safety paragraph. Tablet G3 passed.
+- G3 artifact from run #276: https://github.com/chinkk-git/Aariamagickitchen/actions/runs/40098578853/artifacts/12563748752 (3,706,913,407-byte ZIP; SHA-256 a0e2f1abda824b0b2c96add87ca824471fd8de0197388fe6c38d754c8bf80417). Intermediate screenshots only; do not deliver the run276 APK.
+- Corrected selectors and a regression contract were fast-forwarded to W01 at commit b16ad540b2a63c1bc0d579a0cc8648b93b3db5ac. The assertions still compare the rendered recipe safety copy to canonical translated safety. No recipe data or original artwork changed.
+- Run #277 (e3078bd, pre-harness correction) is in G2; it may encounter the same G3 selector issue. A new exact-head run for b16 is pending/queued behind #277 and is the required final validation.
+- Latest progress comments: #45 comment 6385662148; #51 comment 6385662319. Readiness: OWNER_APPROVED=NO, REVIEW_READY=NO, RELEASE_READY=NO.
