@@ -419,6 +419,12 @@ test('97-recipe review catalogue checks keep all 95 original route regressions',
     'the selected recipe uses the same integrated route allowlist');
   assert.match(tablet, /layout\.documentWidth>layout\.width\+1/,
     'tablet G2 compares Android viewport measurements returned by WebView, never Node globals');
+  assert.ok(tablet.includes('scrollIntoView({block:"center"})\');await pause(300)'),
+    'tablet G2 scrolls the vertically scrolling recipe section into view before testing fixed-navigation clearance');
+  assert.ok(tablet.indexOf("const image=await screenshot('theme-'+id+'-detail-'+orientationName,landscape);") < tablet.indexOf("await assertRecipe12IngredientGrid('EN-GB #12 tablet '+orientationName);"),
+    'EN-GB detail screenshot is captured before the ingredients section is scrolled into view');
+  assert.ok(tablet.indexOf("const detail=await screenshot('recipe-12-pt-br-detail-'+suffix,landscape);") < tablet.indexOf("await assertRecipe12IngredientGrid('PT-BR #12 tablet '+suffix);"),
+    'PT-BR detail screenshot is captured before the ingredients section is scrolled into view');
   assert.match(tablet, /cols=getComputedStyle\(grid\)\.gridTemplateColumns\.trim\(\)\.split\(\/\\\\s\+\//,
     'tablet G2 computes the live three-column count in WebView');
   assert.match(tablet, /prepareVisibleRecipeCapture\(\'\.ref-ingredient-grid\',\'EN-GB #12 Ingredients \'\+orientationName\)/,
