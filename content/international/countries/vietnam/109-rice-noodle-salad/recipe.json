@@ -585,7 +585,9 @@
       },
       "safety": {
         "en-GB": "Use cooled noodles and clean utensils; do not leave the finished salad at room temperature for a long time.",
-        "pt-BR": "Use o macarrão frio e utensílios limpos; não deixe a salada pronta por muito tempo à temperatura ambiente."
+        "pt-BR": "Use o macarrão frio e utensílios limpos; não deixe a salada pronta por muito tempo à temperatura ambiente.",
+        "en": "Use cooled noodles and clean utensils. Serve promptly; refrigerate leftovers within two hours and eat within 48 hours.",
+        "pt": "Use o macarrão frio e utensílios limpos. Sirva logo; leve as sobras à geladeira em até duas horas e consuma em até 48 horas."
       },
       "heatOrKnifeCue": {
         "en-GB": "Adult confirms the noodles are cool.",
@@ -669,7 +671,7 @@
   "nutrition": {
     "per_serving": {
       "energyKcal": 215,
-      "proteinG": 5.0,
+      "proteinG": 5,
       "carbohydrateG": 42.6,
       "fatG": 2.9,
       "fibreG": 2.7,
@@ -1772,7 +1774,9 @@
         },
         "safety": {
           "en-GB": "Use cooled noodles and clean utensils; do not leave the finished salad at room temperature for a long time.",
-          "pt-BR": "Use o macarrão frio e utensílios limpos; não deixe a salada pronta por muito tempo à temperatura ambiente."
+          "pt-BR": "Use o macarrão frio e utensílios limpos; não deixe a salada pronta por muito tempo à temperatura ambiente.",
+          "en": "Use cooled noodles and clean utensils. Serve promptly; refrigerate leftovers within two hours and eat within 48 hours.",
+          "pt": "Use o macarrão frio e utensílios limpos. Sirva logo; leve as sobras à geladeira em até duas horas e consuma em até 48 horas."
         },
         "heatOrKnifeCue": {
           "en-GB": "Adult confirms the noodles are cool.",
@@ -1858,7 +1862,7 @@
     "nutrition": {
       "per_serving": {
         "energyKcal": 215,
-        "proteinG": 5.0,
+        "proteinG": 5,
         "carbohydrateG": 42.6,
         "fatG": 2.9,
         "fibreG": 2.7,
