@@ -138,6 +138,20 @@ async function stableScreenshot(session,name,orientation='portrait',previousSha2
   throw new Error(`${name} framebuffer did not settle to a new visible screen: ${JSON.stringify({previousSha256,lastFrame,repeats})}`);
 }
 
+async function setMotionPreference(session, value) {
+  await session.command('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value }] });
+  await pause(120);
+}
+
+async function motionSnapshot(session, name, orientation) {
+  const metrics = await session.evaluate(`(()=>{const stage=document.querySelector('.aria-world-globe__stage'),stars=[...document.querySelectorAll('.v33-globe-magic-star')];return {rotation:Number(v33GlobeController?.getState?.().rotation||0),reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,orbit:getComputedStyle(stage,'::before').animationName,sparkles:getComputedStyle(stage,'::after').animationName,stars:stars.map(x=>getComputedStyle(x).animationName)}})()`);
+  return { ...metrics, frame: screenshot(name, orientation) };
+}
+
+function rotationDistance(start, end) {
+  return Math.abs(((end - start + 540) % 360) - 180);
+}
+
 async function tap(session, selector, label) {
   const point = await session.evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)}),r=e?.getBoundingClientRect();return {visible:!!e&&!!r&&r.width>0&&r.height>0&&getComputedStyle(e).visibility!=='hidden',x:r?(r.left+r.right)/2:0,y:r?(r.top+r.bottom)/2:0}})()`);
   if (!point.visible) throw new Error(`${label} is missing or unreachable: ${JSON.stringify(point)}`);
@@ -225,7 +239,7 @@ const evidence = {
   apkBytes: apkBytes.length,
   apkSha256: createHash('sha256').update(apkBytes).digest('hex'),
   device: 'clean Pixel 3a API 35 emulator',
-  flow: [], geometry: [], screenshots: [], logs: []
+  flow: [], geometry: [], motion: [], screenshots: [], logs: []
 };
 const evalWorld = `(()=>{
   const screen=document.querySelector('#screen.v31-world-screen'),globe=document.querySelector('.aria-world-globe'),sphere=document.querySelector('.aria-world-globe__sphere'),stage=document.querySelector('.aria-world-globe__stage'),atlas=document.querySelector('.aria-world-globe__atlas'),flags=document.querySelector('.aria-world-globe__flags'),avatar=document.querySelector('.aria-world-globe__guide'),flag=[...document.querySelectorAll('.aria-world-globe__flag')].find(x=>x.getAttribute('aria-label')==='India');
@@ -247,6 +261,7 @@ function assertMap(map, label) {
 
 try {
   session = await connect();
+  await setMotionPreference(session, 'no-preference');
   const home = await waitFor(session.evaluate, `(()=>{const e=document.querySelector('.v31-hero-welcome h1'),r=e?.getBoundingClientRect();return {visible:!!e&&!!r&&r.width>0&&r.height>0,text:e?.textContent?.trim()||''}})()`, 'Home');
   const profileDialog = await session.evaluate(`(()=>{const d=document.querySelector('#v3ProfileDialog'),r=d?.getBoundingClientRect();return !!d&&!!r&&r.width>0&&r.height>0&&getComputedStyle(d).display!=='none'})()`);
   if (profileDialog) {
@@ -258,9 +273,24 @@ try {
   const homeScreenshot=await stableScreenshot(session,'home-phone-portrait');evidence.screenshots.push(homeScreenshot);
   const openTarget=await tap(session,'[data-v31-open-world]','Explore the World');
   const world=await waitFor(session.evaluate,evalWorld,'Magical Spinning Globe');
-  const mapShot=await stableScreenshot(session,'world-map-phone-portrait','portrait',homeScreenshot.sha256);evidence.screenshots.push(mapShot);
+  await pause(250);
+  const portraitMotionStart=await motionSnapshot(session,'world-map-phone-portrait-motion-start','portrait');evidence.screenshots.push(portraitMotionStart.frame);
+  await pause(2200);
+  const portraitMotionEnd=await motionSnapshot(session,'world-map-phone-portrait-motion-end','portrait');evidence.screenshots.push(portraitMotionEnd.frame);
+  const portraitDegrees=rotationDistance(portraitMotionStart.rotation,portraitMotionEnd.rotation);
+  if(portraitMotionStart.reduced||portraitMotionStart.orbit!=='v33-orbit-turn'||portraitMotionStart.sparkles!=='v33-sparkle-twinkle'||portraitMotionStart.stars.length!==8||portraitMotionStart.stars.some(name=>name!=='v33-star-twinkle')||portraitDegrees<2.5||portraitMotionStart.frame.sha256===portraitMotionEnd.frame.sha256)throw new Error(`Animation-enabled portrait did not show globe/orbit/star motion: ${JSON.stringify({portraitMotionStart,portraitMotionEnd,portraitDegrees})}`);
+  evidence.motion.push({device:'phone',orientation:'portrait',mode:'animation-enabled',startDegrees:portraitMotionStart.rotation,endDegrees:portraitMotionEnd.rotation,rotationDegrees:portraitDegrees,orbit:portraitMotionEnd.orbit,sparkles:portraitMotionEnd.sparkles,stars:portraitMotionEnd.stars,frames:[portraitMotionStart.frame.name,portraitMotionEnd.frame.name],frameHashes:[portraitMotionStart.frame.sha256,portraitMotionEnd.frame.sha256],status:'PASS'});
+  const mapShot=portraitMotionEnd.frame;
   if(mapShot.sha256===homeScreenshot.sha256)throw new Error('Android framebuffer remained on Home after the World Map route rendered');
   assertMap(world,'phone portrait');evidence.geometry.push({device:'phone',orientation:'portrait',...world});
+  await setMotionPreference(session, 'reduce');
+  const reducedPortraitStart=await motionSnapshot(session,'world-map-phone-portrait-reduced-motion','portrait');
+  await pause(900);
+  const reducedPortraitEnd=await motionSnapshot(session,'world-map-phone-portrait-reduced-motion-settled','portrait');
+  const reducedPortraitDegrees=rotationDistance(reducedPortraitStart.rotation,reducedPortraitEnd.rotation);
+  if(!reducedPortraitStart.reduced||reducedPortraitStart.orbit!=='none'||reducedPortraitStart.sparkles!=='none'||reducedPortraitStart.stars.some(name=>name!=='none')||reducedPortraitDegrees>.1)throw new Error(`Reduced-motion portrait did not remain static: ${JSON.stringify({reducedPortraitStart,reducedPortraitEnd,reducedPortraitDegrees})}`);
+  evidence.screenshots.push(reducedPortraitStart.frame,reducedPortraitEnd.frame);
+  evidence.motion.push({device:'phone',orientation:'portrait',mode:'reduced-motion',rotationDegrees:reducedPortraitDegrees,orbit:reducedPortraitEnd.orbit,sparkles:reducedPortraitEnd.sparkles,stars:reducedPortraitEnd.stars,frames:[reducedPortraitStart.frame.name,reducedPortraitEnd.frame.name],status:'PASS'});
   evidence.flow.push({step:'home-touch-to-magical-spinning-globe',target:openTarget,status:'PASS'});
 
   await tap(session,'.aria-world-globe__surprise','Surprise Me');
@@ -292,9 +322,21 @@ try {
   const backShot=await stableScreenshot(session,'world-map-back-phone-portrait','portrait',recipeShot.sha256);evidence.screenshots.push(backShot);
 
   adb(['shell','input','keyevent','4']);await pause(400);session=await setOrientation(session,true);
+  await setMotionPreference(session,'no-preference');
+  const landscapeMotionStart=await motionSnapshot(session,'world-map-phone-landscape-motion-start','landscape');evidence.screenshots.push(landscapeMotionStart.frame);
+  await pause(2200);
+  const landscapeMotionEnd=await motionSnapshot(session,'world-map-phone-landscape-motion-end','landscape');evidence.screenshots.push(landscapeMotionEnd.frame);
+  const landscapeDegrees=rotationDistance(landscapeMotionStart.rotation,landscapeMotionEnd.rotation);
+  if(landscapeMotionStart.reduced||landscapeMotionStart.orbit!=='v33-orbit-turn'||landscapeMotionStart.sparkles!=='v33-sparkle-twinkle'||landscapeMotionStart.stars.length!==8||landscapeMotionStart.stars.some(name=>name!=='v33-star-twinkle')||landscapeDegrees<2.5||landscapeMotionStart.frame.sha256===landscapeMotionEnd.frame.sha256)throw new Error(`Animation-enabled landscape did not show globe/orbit/star motion: ${JSON.stringify({landscapeMotionStart,landscapeMotionEnd,landscapeDegrees})}`);
+  evidence.motion.push({device:'phone',orientation:'landscape',mode:'animation-enabled',startDegrees:landscapeMotionStart.rotation,endDegrees:landscapeMotionEnd.rotation,rotationDegrees:landscapeDegrees,orbit:landscapeMotionEnd.orbit,sparkles:landscapeMotionEnd.sparkles,stars:landscapeMotionEnd.stars,frames:[landscapeMotionStart.frame.name,landscapeMotionEnd.frame.name],frameHashes:[landscapeMotionStart.frame.sha256,landscapeMotionEnd.frame.sha256],status:'PASS'});
   const landscape=await session.evaluate(`(()=>{const m=${evalWorld};m.viewport={width:innerWidth,height:innerHeight};return m})()`);assertMap(landscape,'phone landscape');
   evidence.geometry.push({device:'phone',orientation:'landscape',...landscape});
-  evidence.screenshots.push(await stableScreenshot(session,'world-map-phone-landscape','landscape',backShot.sha256));
+  await setMotionPreference(session,'reduce');
+  const reducedLandscapeStart=await motionSnapshot(session,'world-map-phone-landscape-reduced-motion','landscape');await pause(900);const reducedLandscapeEnd=await motionSnapshot(session,'world-map-phone-landscape-reduced-motion-settled','landscape');
+  const reducedLandscapeDegrees=rotationDistance(reducedLandscapeStart.rotation,reducedLandscapeEnd.rotation);
+  if(!reducedLandscapeStart.reduced||reducedLandscapeStart.orbit!=='none'||reducedLandscapeStart.sparkles!=='none'||reducedLandscapeStart.stars.some(name=>name!=='none')||reducedLandscapeDegrees>.1)throw new Error(`Reduced-motion landscape did not remain static: ${JSON.stringify({reducedLandscapeStart,reducedLandscapeEnd,reducedLandscapeDegrees})}`);
+  evidence.screenshots.push(reducedLandscapeStart.frame,reducedLandscapeEnd.frame,await stableScreenshot(session,'world-map-phone-landscape','landscape',backShot.sha256));
+  evidence.motion.push({device:'phone',orientation:'landscape',mode:'reduced-motion',rotationDegrees:reducedLandscapeDegrees,orbit:reducedLandscapeEnd.orbit,sparkles:reducedLandscapeEnd.sparkles,stars:reducedLandscapeEnd.stars,frames:[reducedLandscapeStart.frame.name,reducedLandscapeEnd.frame.name],status:'PASS'});
   evidence.flow.push({step:'globe-orientation-reflow',orientation:'landscape',viewport:await session.evaluate('({width:innerWidth,height:innerHeight})'),status:'PASS'});
   session=await setOrientation(session,false);
 

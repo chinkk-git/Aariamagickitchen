@@ -139,7 +139,7 @@ jobs:
           profile: pixel_3a
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
           emulator-boot-timeout: 300
-          disable-animations: true
+          disable-animations: false
           disable-linux-hw-accel: false
           script: bash .github/scripts/v33-world-map-sample-smoke.sh
 

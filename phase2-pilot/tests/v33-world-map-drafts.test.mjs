@@ -37,7 +37,7 @@ test('the draft registry stays separate and Android mounts the W03 globe with dy
   assert.match(runtime,/canonicalRecipes:RECIPES/);
   assert.match(runtime,/host=screen\.querySelector\('#v33-world-globe-host'\),moduleController=window\.AariaWorldAdventureGlobe\.mount\(host,\{\.\.\.v33WorldHost,avatarSrc:V31_HOME_WORLD_ART\.aaria\},v33GlobeState\|\|\{rotation:-78\}\)/,'first entry centres the India flag on the front of the globe');
   assert.match(runtime,/getState:\(\)=>moduleController\.serialize\(\)/);
-  assert.match(runtime,/destroy:\(\)=>\{stopFlagFit\(\);moduleController\.dispose\(\)\}/);
+  assert.match(runtime,/destroy:\(\)=>\{clearInterval\(idleMotion\);magic\.remove\(\);stopFlagFit\(\);moduleController\.dispose\(\)\}/);
   assert.match(globe,/0\.3\.0-natural-earth-orthographic/);
   assert.match(runtime,/v33GlobeController\?\.handleBack/);
 });
@@ -88,7 +88,11 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
     assert.doesNotMatch(script,/two-finger-pinch|Natural pinch zoom|Natural one-finger drag/);
   }
   assert.match(phone,/Input\.dispatchTouchEvent/,'sample taps a country flag through Android WebView input');
-  assert.match(phone,/const mapShot=await stableScreenshot\(session,'world-map-phone-portrait'/,'map screenshot requires a settled Android framebuffer');
+  assert.match(phone,/const mapShot=portraitMotionEnd\.frame/,'animation-enabled Android evidence keeps the second captured frame as the map image');
+  assert.match(phone,/world-map-phone-portrait-motion-start/);
+  assert.match(phone,/world-map-phone-portrait-motion-end/);
+  assert.match(phone,/world-map-phone-landscape-motion-start/);
+  assert.match(phone,/world-map-phone-landscape-motion-end/);
   assert.match(phone,/countryShot\.sha256===mapShot\.sha256/,'Android country preview evidence must contain the rendered card overlay, not a stale map frame');
   assert.match(phone,/adb\(\['emu','rotate'\]\)/,'phone orientation smoke must rotate the emulator and verify its actual display rotation');
   assert.match(phone,/connect\(\{refresh:true\}\)/,'phone smoke must reconnect to the app-owned WebView after Android orientation recreates DevTools');
