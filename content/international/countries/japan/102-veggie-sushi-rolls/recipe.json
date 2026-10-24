@@ -1385,6 +1385,10 @@
         "safety": {
           "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
           "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
         }
       },
       {
@@ -1421,6 +1425,10 @@
         "safety": {
           "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
           "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
         }
       },
       {
@@ -1457,6 +1465,10 @@
         "safety": {
           "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
           "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
         }
       },
       {
@@ -1496,6 +1508,10 @@
         "safety": {
           "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
           "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
         }
       },
       {
@@ -1534,6 +1550,10 @@
         "safety": {
           "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
           "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
         }
       }
     ],
