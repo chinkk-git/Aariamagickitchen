@@ -358,7 +358,7 @@ async function capturePtBrRecipe12(landscape){
  if(detailCheck.title!==detailCheck.expected||!detailCheck.ingredient.includes(detailCheck.expectedIngredient)||ptNav.map(x=>x.label).join('|')!=='Início|Receitas|Aventura|Despensa|Planejar|Criações'||ptNav.map(x=>x.id).join('|')!=='home|library|world|groceries|week|creations')throw Error('PT-BR #12 detail/navigation content mismatch: '+JSON.stringify({detailCheck,ptNav}));
  const suffix=landscape?'landscape':'portrait';
  const detail=await screenshot('recipe-12-pt-br-detail-'+suffix,landscape);
- await prepareVisibleRecipeCapture('.v32-r12-equipment-list','PT-BR #12 Magic Recipe Prep Board '+suffix);
+ await prepareVisibleRecipeCapture('.ref-tool-grid,.v32-r12-equipment-list','PT-BR #12 Magic Recipe Prep Board '+suffix);
  const prepBoard=await screenshot('prep-board-12-pt-br-'+suffix,landscape);
  const ingredientsState=await prepareVisibleRecipeCapture('.ref-ingredient-grid','PT-BR #12 Ingredients '+suffix);
  const ingredients=await screenshot('recipe-12-pt-br-ingredients-'+suffix,landscape);

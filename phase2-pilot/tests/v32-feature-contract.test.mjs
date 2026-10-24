@@ -250,6 +250,8 @@ test('international recipes reuse the approved renderer and fail closed on layou
   assert.match(tablet, /previousInternationalStep=readFileSync\(productionIngredientScreenshot\.path\)[\s\S]*?previousPng:previousInternationalStep[\s\S]*?previousInternationalStep=readFileSync\(shot\.path\)/, 'every captured international step is checked against the preceding real Android frame and expected WebView step state');
   assert.match(tablet, /previousPtStep=readFileSync\(ptIngredientShot\.path\)[\s\S]*?previousPng:previousPtStep/, 'PT-BR step screenshots also fail closed on duplicate capture frames');
   assert.match(tablet, /v32-equipment-chip[\s\S]*?v32-tool-role[\s\S]*?x\.icon/, 'equipment evidence checks text chips, role labels, and absence of equipment imagery');
+  assert.match(tablet, /prepareVisibleRecipeCapture\('\.ref-tool-grid,\.v32-r12-equipment-list','PT-BR #12 Magic Recipe Prep Board/,
+    'PT-BR #12 board capture targets the Prep Board class actually rendered by either original template');
   assert.match(phone, /production-international-\$\{id\}-phone-/);
   assert.match(phone, /ref-ingredient-grid/, 'phone G3 captures the canonical international checklist for the original 95-route regression matrix');
 });
