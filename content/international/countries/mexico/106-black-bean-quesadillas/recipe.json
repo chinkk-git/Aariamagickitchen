@@ -366,8 +366,8 @@
         "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
       },
       "heatOrKnifeCue": {
-        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
       },
       "crossContaminationCue": {
         "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -410,8 +410,8 @@
         "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
       },
       "heatOrKnifeCue": {
-        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
       },
       "crossContaminationCue": {
         "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -457,8 +457,8 @@
         "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
       },
       "heatOrKnifeCue": {
-        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
       },
       "crossContaminationCue": {
         "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -502,8 +502,8 @@
         "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
       },
       "heatOrKnifeCue": {
-        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
       },
       "crossContaminationCue": {
         "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -545,8 +545,8 @@
         "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
       },
       "heatOrKnifeCue": {
-        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
       },
       "crossContaminationCue": {
         "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -583,7 +583,7 @@
     "per_serving": {
       "energyKcal": 355,
       "proteinG": 16.2,
-      "carbohydrateG": 49.0,
+      "carbohydrateG": 49,
       "fatG": 10.8,
       "fibreG": 8.5,
       "saturatedFatG": 3.9,
@@ -1393,8 +1393,8 @@
           "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
         },
         "heatOrKnifeCue": {
-          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
         },
         "crossContaminationCue": {
           "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -1437,8 +1437,8 @@
           "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
         },
         "heatOrKnifeCue": {
-          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
         },
         "crossContaminationCue": {
           "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -1484,8 +1484,8 @@
           "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
         },
         "heatOrKnifeCue": {
-          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
         },
         "crossContaminationCue": {
           "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -1529,8 +1529,8 @@
           "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
         },
         "heatOrKnifeCue": {
-          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
         },
         "crossContaminationCue": {
           "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -1572,8 +1572,8 @@
           "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
         },
         "heatOrKnifeCue": {
-          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
-          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
         },
         "crossContaminationCue": {
           "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
@@ -1612,7 +1612,7 @@
       "per_serving": {
         "energyKcal": 355,
         "proteinG": 16.2,
-        "carbohydrateG": 49.0,
+        "carbohydrateG": 49,
         "fatG": 10.8,
         "fibreG": 8.5,
         "saturatedFatG": 3.9,
