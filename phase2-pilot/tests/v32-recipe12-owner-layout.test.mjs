@@ -41,8 +41,9 @@ test('recipe #12 routes to the approved avatar-rich renderer, never the text-hea
   assert.match(html, /"12":\s*\{"titles"/, '#12 is in the batch route catalogue');
   assert.match(html, /function recipe\(\)\{return BATCH_META\[selected\.id\]\?batchReferenceRecipe\(\):legacyRecipe\(\);\}/,
     'the canonical batch route selects the approved renderer');
-  assert.match(runtime, /recipe=function v32Recipe12AndInternational\(\)\{const id=Number\(selected\?\.id\),entry=V32_INTL_BY_ID\.get\(id\);if\(entry\)return v32InternationalDetail\(entry\.record,entry\.item\);return id===12\?batchReferenceRecipe\(\):v32RecipeBeforePilot\(\)\};/,
-    '#12 keeps the approved renderer while only pinned international IDs use their illustrated review renderer');
+  assert.match(runtime, /recipe=function v32Recipe12AndInternational[\s\S]*?v32RenderCompactInternationalIngredients\(batchReferenceRecipe\(\),selected\)[\s\S]*?return html/,
+    '#12 and pinned international IDs use the approved renderer, with international content adapted onto its existing components');
+  assert.doesNotMatch(runtime, /function v32InternationalDetail/, 'the rejected international-only detail renderer is absent');
   assert.doesNotMatch(runtime, /id===12\?v32UniversalRecipeStepTemplate/,
     'recipe #12 cannot silently return to the text-heavy universal template');
 });

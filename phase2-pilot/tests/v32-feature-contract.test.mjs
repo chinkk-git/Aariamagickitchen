@@ -152,7 +152,7 @@ test('recipe 12 ingredient cards use the approved reference renderer with labele
   assert.ok(start >= 0 && end > start);
   const renderer = html.slice(start, end);
   assert.match(renderer, /<label class=\"ref-ingredient[^>]*><input type=\"checkbox\"[^>]*><span class=\"ref-ingredient-icon\">\$\{batchIngredientPicture\(v\)\}<\/span><span>\$\{safe\(v\)\}<\/span>/,
-    'ingredient picture, readable name and native labeled checkbox share one card');
+    'original recipe artwork and full ingredient labels remain in the approved canonical card');
   assert.match(renderer, /<div class=\"ref-ingredient-grid\">/, 'the approved renderer uses the owner reference ingredient grid');
 });
 
@@ -213,52 +213,30 @@ test('international Android screenshot capture is bounded above 1 MiB and proves
     'phone and tablet evidence captures every guided step in both locales and orientations');
 });
 
-test('production international ingredient rows stay compact, contained and measured on Android', async () => {
-  const [runtime, tablet, phone, builder, template, workflow] = await Promise.all([
-    read('tools/v3/runtime.js'),
-    read('.github/scripts/v32-android-tablet-smoke.sh'),
-    read('.github/scripts/v32-android-smoke.sh'),
-    read('tools/v3/artwork/build-international-review.mjs'),
-    read('tools/v3/artwork/wave1-review.template.html'),
-    read('.github/workflows/v32-android.yml')
+test('international recipes reuse the approved renderer and fail closed on layout parity', async () => {
+  const [html, runtime, tablet, phone] = await Promise.all([
+    read('index.html'), read('tools/v3/runtime.js'), read('.github/scripts/v32-android-tablet-smoke.sh'), read('.github/scripts/v32-android-smoke.sh')
   ]);
-  assert.match(runtime, /\.v32-international-recipe \.ref-ingredient-icon img\{[^}]*width:100%;height:100%;max-width:100%;max-height:100%;[^}]*object-fit:contain/,
-    'production checklist thumbnails are clipped to a fixed square and contain the complete approved image');
-  assert.match(runtime, /\.v32-international-recipe \.ref-tools \.tool-illustration\{[^}]*width:52px;height:44px;[^}]*overflow:hidden[^}]*\}\.v32-international-recipe \.ref-tools \.tool-illustration img\{[^}]*width:100%;height:100%;max-width:100%;max-height:100%;[^}]*object-fit:contain/,
-    'production equipment illustrations remain contained in small frames beside readable tool labels');
-  assert.match(runtime, /function v32InternationalUnit\(unit,pt\)[\s\S]*?'clove \(about 3 g\)':'unidade \(cerca de 3 g\)'[\s\S]*?'large eggs \(about 100 g without shells\)':'unidades grandes \(cerca de 100 g sem casca\)'[\s\S]*?'stalks \(about 20 g\)':'talos \(cerca de 20 g\)'[\s\S]*?safe\(v32InternationalUnit\(x\.unit,pt\)\)/,
-    'Portuguese ingredient rows localize the source package unit descriptions without changing the audited amounts');
-  assert.match(runtime, /function v32InternationalRole\(role,pt\)[\s\S]*?'adult':'Somente um adulto'[\s\S]*?'shared under adult supervision':'Uso compartilhado sob supervisão de um adulto'[\s\S]*?'shared when cool':'Uso compartilhado após esfriar'[\s\S]*?safe\(v32InternationalRole\(x\.roleDescription\|\|x\.role\|\|'',pt\)\)/,
-    'Portuguese equipment responsibilities preserve adult-only/shared roles in localized wording');
-  assert.match(runtime, /\.v32-international-recipe \.ref-ingredient\{[^}]*grid-template-columns:40px minmax\(0,1fr\) 44px;[^}]*min-height:60px;[^}]*overflow:hidden/,
-    'production checklist uses compact rows with independent art, text and touch target columns');
-  assert.match(runtime, /\.v32-international-recipe \.ref-ingredient input\[type=checkbox\][^{]*\{[^}]*width:24px;height:24px/,
-    'production checkboxes remain visibly sized and actionable');
-  assert.match(runtime, /\.v32-international-recipe \.v31-step-adult-cue\{[^}]*flex:0 1 auto;[^}]*width:auto/,
-    'international step safety cues keep natural height in the portrait column layout');
-  assert.match(runtime, /\.v32-international-recipe \.ref-step-grid\{grid-template-columns:minmax\(0,1fr\)!important\}/,
-    'international guided steps occupy the full recipe width instead of the shared five-step grid columns');
-  assert.match(runtime, /@media\(min-width:700px\)\{\.v32-international-recipe \.ref-ingredient-grid\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)!important\}\}@media\(min-width:1100px\)\{\.v32-international-recipe \.ref-ingredient-grid\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)!important\}\}/,
-    'two/three-column international rows override the shared auto-fit landscape grid at tablet widths');
-  assert.match(tablet, /async function assertInternationalIngredientLayout[\s\S]*?imageEscapes[\s\S]*?overlap\([\s\S]*?height>96[\s\S]*?labels<1/,
-    'real Android tablet assertions cover image bounds, text overlap, row size, accessible labels and rendered images');
-  assert.match(tablet, /async function assertInternationalEquipmentContainment[\s\S]*?const escapes[\s\S]*?overlap\(b\.wrap,b\.name\)[\s\S]*?overlap\(b\.name,b\.role\)[\s\S]*?assertInternationalEquipmentContainment\('Production #'/,
-    'real Android tablet assertions prove international equipment art stays within its wrapper and does not cover either label');
-  assert.match(tablet, /async function assertInternationalGuidedStepLayout[\s\S]*?cue\.height>180[\s\S]*?x\.overlaps\.length[\s\S]*?Production international #\x27\+id\+\x27 step 1[\s\S]*?Production international #\x27\+id\+\x27 step 2/,
-    'real Android G2 checks illustrated step, instruction and safety geometry for overflow and overlap in both new recipes');
-  assert.match(tablet, /labels:elements\.map\(\(e,i\)=>i===1\?\(image\?\.alt\|\|""\)\.trim\(\)/,
-    'step artwork accessibility checks use image alt text instead of expecting text inside the figure');
-  assert.match(tablet, /x\.card\.width<x\.width\*\.8/,
-    'real-device guided-step assertions reject the narrow 147px portrait layout');
-  assert.match(tablet, /international-\x27\+id\+\x27-ingredients-\x27\+orientationName/,
-    'tablet G2 captures the production ingredient list for each new recipe and orientation');
-  assert.match(phone, /internationalProductionEvidence[\s\S]*?for\(const id of \[96,99\]\)[\s\S]*?row\.card\.height>96[\s\S]*?production-international-\$\{id\}-phone-/,
-    'phone G3 captures and bounds-checks both production international ingredient lists');
-  assert.match(builder, /debugRouteSharesProductionArtwork:true/);
-  assert.match(template, /const image=x=>\x27\/international-wave-1\/\x27/,
-    'debug review images resolve to the identical offline production asset path');
-  assert.match(workflow, /artwork-review\/international-wave-1\/content[\s\S]*?\)\" -eq 0/,
-    'APK package verification rejects duplicated review-only copies of the international artwork');
+  assert.match(runtime, /v32RenderCompactInternationalIngredients\(batchReferenceRecipe\(\),selected\)/, 'both international IDs reuse the canonical renderer and add scoped compact labels after render');
+  assert.doesNotMatch(runtime, /function v32InternationalDetail|\.v32-international-recipe \./, 'the rejected custom international renderer and its layout rules are removed');
+  assert.match(runtime, /v32CompactIngredients[\s\S]*?v32ShortAmount/, 'compact ingredient labels retain concise amounts and source-linked accessible names');
+  assert.match(runtime, /declaredAllergens:[^,]*record\.allergens/, 'W03 allergen declarations are passed into the standard allergen panel');
+  assert.match(runtime, /internationalNutrition:[\s\S]*?nutritionSources/, 'audited nutrition values and provenance flow into the standard nutrition table');
+  assert.match(runtime, /v32-international-active \.ref-ingredient-grid\{grid-template-columns:repeat\(3,minmax\(0,1fr\)\)!important/, 'three-column compact layout uses the canonical ingredient grid');
+  assert.match(runtime, /v32RenderCompactInternationalIngredients[\s\S]*?aria-label=[\s\S]*?v32-ingredient-label/, 'canonical ingredient cards retain native checkboxes with accessible compact name/amount fields');
+  assert.match(runtime, /nutritionResults=function[\s\S]*?nutritionPanel=function[\s\S]*?nutrition-table/, 'international nutrition extends the standard per-serving table with reviewed values and adult-only provenance');
+  assert.match(runtime, /familyTeamMarkup=function[\s\S]*?v32-step-adult-assist[\s\S]*?v32-step-safety/, 'illustrated canonical steps retain localized adult-assist and safety guidance');
+  assert.match(html, /class="ref-ingredient-grid"/, 'the approved original renderer still owns ingredient cards');
+  assert.match(html, /class="ref-tool-grid"/, 'the approved original renderer still owns the equipment grid');
+  assert.match(html, /function nutritionResults\(r\)[\s\S]*?class="nutrition-table"/, 'the approved nutrition table remains the shared canonical component');
+  assert.match(tablet, /cols!==3/, 'tablet G2 requires exactly three ingredient columns');
+  assert.match(tablet, /v32-ingredient-label[\s\S]*?scrollWidth/, 'tablet G2 measures compact label and amount clipping');
+  assert.match(tablet, /sideBySide[\s\S]*?landscape&&!x\.sideBySide/, 'tablet G2 requires artwork beside instructions in landscape');
+  assert.match(tablet, /previousInternationalStep=readFileSync\(productionIngredientScreenshot\.path\)[\s\S]*?previousPng:previousInternationalStep[\s\S]*?previousInternationalStep=readFileSync\(shot\.path\)/, 'every captured international step is checked against the preceding real Android frame and expected WebView step state');
+  assert.match(tablet, /previousPtStep=readFileSync\(ptIngredientShot\.path\)[\s\S]*?previousPng:previousPtStep/, 'PT-BR step screenshots also fail closed on duplicate capture frames');
+  assert.match(tablet, /ref-tool-grid[\s\S]*?v32-tool-role/, 'equipment evidence checks the approved grid and role labels');
+  assert.match(phone, /production-international-\$\{id\}-phone-/);
+  assert.match(phone, /ref-ingredient-grid/, 'phone G3 captures the canonical international checklist for the original 95-route regression matrix');
 });
 
 test('Android visual regression emulators use stable SwiftShader rendering', async () => {
@@ -322,15 +300,15 @@ test('97-recipe review catalogue checks keep all 95 original route regressions',
     'both original phone route sweeps remain complete for IDs 1–95');
   assert.match(phone, /routeCoverage\.length!==95\|\|new Set\(routeCoverage\)\.size!==95/,
     'the original 95 distinct route checks remain mandatory');
-  assert.match(tablet, /x\.documentWidth>x\.width\+1\|\|x\.grid>x\.width\+1/,
+  assert.match(tablet, /x\.documentWidth>x\.width\+1\|\|x\.gridWidth>x\.width\+1/,
     'tablet G2 compares Android viewport measurements returned by WebView, never Node globals');
-  assert.match(tablet, /b\.r\.width>x\.width\+1/,
-    'tablet G2 row width uses the same WebView viewport measurement');
+  assert.match(tablet, /b\.card\.width>x\.width\+1/,
+    'tablet G2 card width uses the same WebView viewport measurement');
   assert.equal((tablet.match(/last-child"\)\?\.scrollIntoView\(\{block:"center",inline:"nearest"\}\)/g) || []).length, 2,
     'English and PT-BR ingredient captures position the last row above persistent navigation');
   assert.doesNotMatch(tablet, /last-child"\)\?\.scrollIntoView\(\{block:"end"/,
     'the visibility assertion does not deliberately scroll the ingredient row under navigation');
-  assert.match(tablet, /rowVisible&&\(!navVisible\|\|c\.bottom<=n\.top\+1\)/,
+  assert.match(tablet, /c\.bottom<=n\.top\+1/,
     'ingredient rows stay within the viewport and clear the nav when approved CSS displays it');
 });
 
