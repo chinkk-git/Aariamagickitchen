@@ -105,3 +105,12 @@ Updated: 2026-10-24 (UTC)
 - Current corrective work is prepared on temporary branch w01/international-image-diagnostics. The live W01 branch has not yet been advanced to this diagnostic commit. After review, fast-forward it with expected-head a74c5f5a6d178a1b17316349956e65ff6a6023fb so exact-head CI runs the diagnostics and safety-selector correction together.
 - Run #277 is terminal and its G2 failure is a genuine Android image load defect (exact asset path remains unknown). Next: exact-head run must expose the two paths; fix the local asset routing/bundling or source path based on evidence, then rerun G2 and full tablet/phone G3. Do not report APK readiness until G1/G2/G3 pass and screenshots are visually checked.
 - Owner approval: NO. Review ready: NO. Release ready: NO.
+
+
+## Live CI update 5 — 2026-10-24 UTC
+
+- The reviewed diagnostic/test commit chain has now been fast-forwarded to feature/v3.2-magical-cookbook; resulting branch head: ba2e7e1939f6670005af72dba3a00ceadb621599. It contains the dual-selector recipe-safety fix, visible-image source diagnostics, the non-weakened image-load assertion, regression coverage, and this handover update.
+- Run #277 is terminal G2 failure on e3078bd1cf6c48f59d5513de6506c5f8919e26da (two visible PT-BR #096 images missing). Run #278 for ba2e7e1 is expected from the branch push; no job/status ID was visible through GitHub commit-status API at the instant of this update. Reconcile GitHub Actions again before any further branch write.
+- Environment note: workspace execution is unavailable in this session. GitHub operations remain available. Therefore local Node/shell validation could not be rerun after the diagnostics change; exact-head CI must validate syntax and contract tests.
+- Next: inspect the new run's G2 logs for both image src paths; identify asset routing or bundling defect, fix source/runtime on the single W01 writer branch, and rerun exact-head G1/G2/G3. Inspect real screenshots and APK only from the verified final head.
+- Owner approval: NO. Review ready: NO. Release ready: NO.
