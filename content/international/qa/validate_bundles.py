@@ -148,6 +148,16 @@ for entry in entries:
         if missing_equipment:
             fail(sw, f"unknown equipment references: {sorted(missing_equipment)}")
 
+    renderer = recipe.get("renderer", {})
+    if renderer.get("steps"):
+        canonical_en = [step.get("instruction", {}).get("en-GB") for step in steps]
+        if renderer.get("steps") != canonical_en:
+            fail(where, "legacy renderer EN-GB steps differ from canonical instructions")
+        renderer_pt = renderer.get("pt-BR", {}).get("steps")
+        canonical_pt = [step.get("instruction", {}).get("pt-BR") for step in steps]
+        if renderer_pt != canonical_pt:
+            fail(where, "legacy renderer PT-BR steps differ from canonical instructions")
+
     nutrition = recipe.get("nutrition", {})
     values = nutrition.get("per_serving", {})
     required = ("energyKcal", "proteinG", "carbohydrateG", "fatG", "fibreG", "saturatedFatG", "sodiumMg")
@@ -183,6 +193,17 @@ for entry in entries:
         if finished.get("provenance") != image.get("provenance"):
             fail(where, "finished-dish provenance does not match the actual image metadata")
 
+    for asset in recipe.get("artwork_assets", []):
+        asset_path = asset.get("path", "")
+        if "/artwork/equipment/" in asset_path:
+            if asset.get("accessibility_role") != "NOT_RENDERED_APPROVED_TEXT_CHIP":
+                fail(where, f"equipment artwork must remain unused by the approved text-chip board: {asset_path}")
+            continue
+        bilingual(asset.get("alt_text"), f"{where} artwork alt text {asset_path}")
+        if not asset.get("alt_text_source") or not asset.get("alt_text_status"):
+            fail(where, f"artwork alt text lacks source/status metadata: {asset_path}")
+    bilingual(finished.get("description"), f"{where} finished-dish accessibility description")
+
 if args.canonical_index:
     mapping_path = ROOT / "india/existing-recipe-mapping.json"
     mapping = json.loads(mapping_path.read_text())
@@ -209,7 +230,7 @@ if args.canonical_index:
             fail("India mapping", f"could not validate canonical data: {exc}")
 
 print(f"Recipes checked: {len(entries)} (IDs 096–110)")
-print("Checks: identity/country, Markdown locale markers, bilingual fields, ingredient quantities/units, allergen coverage, equipment names, adult-assistance, step references/safety, unsafe-content patterns, artwork metadata consistency, nutrition fields and review gate status" + ("; current canonical India mapping" if args.canonical_index else ""))
+print("Checks: identity/country, Markdown locale markers, bilingual fields, ingredient quantities/units, allergen coverage, equipment names, adult-assistance, step references/safety, unsafe-content patterns, artwork metadata/accessibility descriptions, renderer locale parity, nutrition fields and review gate status" + ("; current canonical India mapping" if args.canonical_index else ""))
 print(f"Errors: {len(errors)}")
 for item in errors:
     print(f"ERROR {item}")
