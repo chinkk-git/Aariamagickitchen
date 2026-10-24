@@ -14,7 +14,7 @@ Updated: 2026-10-24 (UTC)
 
 ## Live branch and commits
 
-At handover creation, live branch HEAD was `4fb726e67ff251e80dbc5ef3f4d4023c23634ce0` (verified against GitHub branch API; this handover commit will advance it). No concurrent W01 writer was identified; previous W01 writes had stopped before this session reconciled the branch. The working container has no usable execution environment, so local Git status/build/APK extraction and visual screenshot review are unavailable.
+Live branch HEAD is now `8dd1c72197f649461a0fa4342cfca0e6df7f3f18` (handover document commit; verified against GitHub branch API). This docs-only commit did not start a workflow run. Run #273 remains the last Android run and targets its parent code commit `4fb726e67ff251e80dbc5ef3f4d4023c23634ce0`. No concurrent W01 writer was identified; previous W01 writes had stopped before this session reconciled the branch. The working container has no usable execution environment, so local Git status/build/APK extraction and visual screenshot review are unavailable.
 
 Relevant recent commits on the branch:
 - `3050e7d887d8b75e870b4de2ca73492b56d9f887`: restore canonical international step copy at the end of the shared render pipeline.
@@ -54,7 +54,7 @@ git status --short --branch
 # Download artifacts from that exact-head full run; inspect ZIPs, APK metadata, hashes, and screenshots.
 ```
 
-Workflow: `.github/workflows/v32-android.yml`. A normal push to this branch triggers full G3; commits with `[owner-review-only]` skip full G3. The workflow generates an isolated debug review package with run-number-specific ID and retains versionCode 8/versionName 1.0.4. Never uninstall other versions or clear app data.
+Workflow: `.github/workflows/v32-android.yml`. A normal push to this branch triggers full G3; commits with `[owner-review-only]` skip full G3. This session's GitHub Contents API docs commit did not trigger Actions, so explicitly dispatch full CI for HEAD `8dd1c72197f649461a0fa4342cfca0e6df7f3f18`. The workflow generates an isolated debug review package with run-number-specific ID and retains versionCode 8/versionName 1.0.4. Never uninstall other versions or clear app data.
 
 ## Handover states
 
