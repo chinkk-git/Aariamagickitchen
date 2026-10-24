@@ -56,11 +56,31 @@ for entry in entries:
     if not json_path.is_file() or not md_path.is_file():
         fail(where, "recipe JSON or Markdown file is missing")
         continue
+    markdown = md_path.read_text()
+    markdown_folded = markdown.casefold()
+    if "en-gb" not in markdown_folded or "pt-br" not in markdown_folded:
+        fail(where, "Markdown recipe does not identify both EN-GB and PT-BR content")
     try:
         recipe = json.loads(json_path.read_text())
     except Exception as exc:
         fail(where, f"invalid JSON: {exc}")
         continue
+    raw_texts = []
+    def collect_text(value):
+        if isinstance(value, str):
+            raw_texts.append(value)
+        elif isinstance(value, dict):
+            for child in value.values():
+                collect_text(child)
+        elif isinstance(value, list):
+            for child in value:
+                collect_text(child)
+    collect_text(recipe)
+    collect_text(markdown)
+    unsafe_patterns = (r"javascript\s*:", r"<\s*script\b", r"<\s*iframe\b", r"\bon[a-z]+\s*=")
+    for pattern in unsafe_patterns:
+        if any(re.search(pattern, text, flags=re.IGNORECASE) for text in raw_texts):
+            fail(where, f"content security scan matched {pattern}")
     if recipe.get("id") != rid:
         fail(where, f"JSON ID {recipe.get('id')} does not match manifest")
     if recipe.get("country", "").lower() != entry.get("country", "").lower():
@@ -86,8 +106,8 @@ for entry in entries:
         if not isinstance(item.get("unit"), str) or not item["unit"].strip():
             fail(iw, "unit is missing")
         used_allergens.update(item.get("allergens", []))
-    if not used_allergens.issubset(declared_allergens):
-        fail(where, f"ingredient allergens missing from recipe declaration: {sorted(used_allergens-declared_allergens)}")
+    if used_allergens != declared_allergens:
+        fail(where, f"ingredient allergen set differs from recipe declaration: undeclared={sorted(used_allergens-declared_allergens)}, unsupported={sorted(declared_allergens-used_allergens)}")
     for locale in LOCALES:
         cross_contact = recipe.get("allergen_notes", {}).get("cross_contact", recipe.get("allergen_notes", {}).get("crossContact", {}))
         if not isinstance(cross_contact, dict) or not cross_contact.get(locale):
@@ -155,6 +175,14 @@ for entry in entries:
         if not any(reviews.get(name) for name in names):
             fail(where, f"review gate {gate} lacks explicit status")
 
+    finished = recipe.get("finished_dish", {})
+    image = finished.get("image", {}) if isinstance(finished, dict) else {}
+    if image.get("path"):
+        if finished.get("artworkPath") != image.get("path"):
+            fail(where, "finished-dish artworkPath does not match the actual image reference")
+        if finished.get("provenance") != image.get("provenance"):
+            fail(where, "finished-dish provenance does not match the actual image metadata")
+
 if args.canonical_index:
     mapping_path = ROOT / "india/existing-recipe-mapping.json"
     mapping = json.loads(mapping_path.read_text())
@@ -181,7 +209,7 @@ if args.canonical_index:
             fail("India mapping", f"could not validate canonical data: {exc}")
 
 print(f"Recipes checked: {len(entries)} (IDs 096–110)")
-print("Checks: identity/country, bilingual fields, ingredient quantities/units, allergen coverage, equipment names, adult-assistance, step references/safety, nutrition fields and review gate status" + ("; current canonical India mapping" if args.canonical_index else ""))
+print("Checks: identity/country, Markdown locale markers, bilingual fields, ingredient quantities/units, allergen coverage, equipment names, adult-assistance, step references/safety, unsafe-content patterns, artwork metadata consistency, nutrition fields and review gate status" + ("; current canonical India mapping" if args.canonical_index else ""))
 print(f"Errors: {len(errors)}")
 for item in errors:
     print(f"ERROR {item}")

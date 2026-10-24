@@ -2,16 +2,16 @@
 
 ## Scope and evidence
 
-This audit covers source bundles #096–#110 on `feature/international-recipe-content`, starting from branch HEAD `e5bdf570438ec7ed5f9bbcdee10bc75e641b33a9`. It is a content-source audit. It does not certify an Android build or replace an independent reviewer.
+This audit covers source bundles #096–#110 on `feature/international-recipe-content`, starting from branch HEAD `4a9871fdbb8fa5c3929e118f5492f847c0e049d5`. It is a content-source audit. It does not certify an Android build or replace an independent reviewer.
 
 Executed checks:
 
-- `python3 content/international/qa/validate_bundles.py --canonical-index index.html --canonical-commit 4e8e629c80c68d64c28b7dbc8f07d0f40fc40344` — 15 recipes; current India mapping checked; 0 structural errors; 1 explicit warning for #096 sodium.
+- `python3 content/international/qa/validate_bundles.py --canonical-index index.html --canonical-commit 4e8e629c80c68d64c28b7dbc8f07d0f40fc40344` — 15 recipes; current India mapping checked; 0 structural errors; the security-pattern scan and finished-dish artwork metadata consistency checks passed; 1 explicit warning for #096 sodium.
 - `python3 content/international/qa/build_audit.py` — 15 recipes; 324 referenced asset paths; 0 missing assets; 0 SHA-256 mismatches; 15 duplicate groups overall and among the remaining 13, all from shared equipment artwork; 0 non-equipment duplicate groups among the remaining 13.
 - Checked all 15 English cooking-step sequences against their recorded adult-assistance and safety cues. The local audit covers hazard presence and readable instructions; A08/A09 review remains pending.
-- Reviewed the recipe records for bilingual field presence, ingredient IDs/quantities/units, declared allergen coverage, equipment names, step references, nutrition fields and explicit review statuses.
+- Reviewed the recipe records for bilingual JSON and Markdown locale markers, ingredient IDs/quantities/units, exact allergen declaration parity with ingredient flags, equipment names, step references, nutrition fields, explicit review statuses, unsafe-content patterns and finished-dish artwork path/provenance consistency.
 
-The existing preview manifest records all 15 content previews as visually inspected. These are source-content previews, not Android screenshots. This turn directly displayed the #096 ingredient-page content preview; its values and text chips are readable at phone-prototype scale. Artwork-rights clearance remains pending.
+The preview renderer regenerated all 15 source-content layouts after the text edits. I visually inspected the updated #096, #099, #102 and #103 full previews; the refreshed contact sheets are linked below. These are source-content previews, not Android screenshots. These are source-content previews, not Android screenshots. This turn directly displayed the #096 ingredient-page content preview; its values and text chips are readable at phone-prototype scale. Artwork-rights clearance remains pending.
 
 ## Recipe inventory
 
@@ -37,6 +37,10 @@ The two W01 pilot recipes are #096 Italy and #099 China. The other thirteen rema
 
 ## Findings and changes
 
+- **Cooked-rice handling (#099, #102, #103):** aligned storage instructions with the UK Food Standards Agency Home Food Fact Checker: cool rice quickly, ideally refrigerate within one hour, keep it refrigerated and use within 24 hours; for reheated rice, reheat only once until steaming hot throughout. The updates preserve step-specific raw-egg, hot-pan, knife, and allergen warnings. Source: https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker.
+- **#096/#099 artwork metadata:** corrected finished-dish `artworkPath` and provenance to match the actual referenced file. This records provenance only; rights clearance remains pending.
+- **#102 PT-BR wording:** changed an unclear directional phrase to `borda oposta`; the full translation and cultural-authenticity review remains pending.
+
 - **#096 sodium:** the current recipe adds 2 g salt to 2 L pasta water and drains that water. Ingredient-level sodium from the pasta and other packaged products also varies by product. Salt retention is not measured, so a recipe-specific sodium value cannot be derived from the files without assumptions. `sodiumMg` stays null and remains a nutrition hold. The explanation was corrected in JSON and Markdown so it accurately describes the uncertainty.
 - **#098 raw egg:** the English and Brazilian Portuguese steps now say an adult cracks/beats the egg and coats the courgette. Children can assist with clean utensils without touching raw egg. Existing handwashing, cross-contact, air-fryer and hot-basket warnings remain.
 - **#108 water total:** 2,030 mL reconciles exactly to 1,500 mL noodle-cooking water, 30 mL dip water, and 500 mL wrapper water. The localized ingredient name now covers noodles, dip and wrappers. No quantity was changed.
@@ -49,7 +53,7 @@ The two W01 pilot recipes are #096 Italy and #099 China. The other thirteen rema
 - Numerical nutrition estimates remain estimates and are marked for review. #096 additionally lacks a defensible sodium value.
 - Independent A08 child-safety, A09 age 8–10 usability, nutrition/allergen, translation/cultural, artwork-rights and security gates remain pending. Field presence and a source audit do not equal independent approval.
 - India mapping was revalidated against current `main` at `4e8e629c80c68d64c28b7dbc8f07d0f40fc40344` by fetching and parsing the actual `index.html` RECIPES array: 95 recipes, contiguous IDs 1–95, and 15 India-category entries. IDs 51–65 and their titles match the branch’s 15-row reference mapping exactly. No IDs were duplicated or renumbered; the mapping remains reference-only.
-- The most recent Control Tower evidence still says W01/W02 integration is not merged. No integration or APK build was started. Post-merge baseline reconciliation and Android acceptance remain blocked on explicit merge confirmation.
+- At the start of this audit, the most recent Control Tower evidence still said W01/W02 integration was not merged. Recheck Issue #51 before any post-merge work. No integration or APK build was started. Post-merge baseline reconciliation and Android acceptance remain blocked on explicit merge confirmation.
 
 ## Scope estimate
 

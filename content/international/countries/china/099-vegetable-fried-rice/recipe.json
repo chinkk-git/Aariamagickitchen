@@ -53,8 +53,8 @@
         "pt-BR": "Confira o arroz frio"
       },
       "instruction": {
-        "en-GB": "Ask an adult to check that the cooked rice was cooled promptly and kept in the fridge. Measure it into a bowl.",
-        "pt-BR": "Peça a um adulto para confirmar que o arroz cozido foi resfriado rapidamente e ficou na geladeira. Meça-o em uma tigela."
+        "en-GB": "Ask an adult to check that cooked rice was chilled as quickly as possible, ideally within one hour, kept refrigerated and cooked within the last 24 hours. Measure it into a bowl.",
+        "pt-BR": "Peça a um adulto para confirmar que o arroz cozido foi resfriado rapidamente, levado à geladeira em até uma hora e preparado há no máximo 24 horas. Meça-o em uma tigela."
       },
       "ingredientIds": [
         "rice-cooked-chilled"
@@ -79,8 +79,8 @@
         "rights_status": "PENDING_REVIEW"
       },
       "safety": {
-        "en-GB": "Keep rice refrigerated until cooking.",
-        "pt-BR": "Mantenha o arroz refrigerado até o momento de cozinhar."
+        "en-GB": "Keep rice refrigerated until cooking. Rice should be cooled as quickly as possible, ideally chilled within one hour, and used within 24 hours.",
+        "pt-BR": "Mantenha o arroz refrigerado até o momento de cozinhar. O arroz deve ser resfriado o mais rápido possível, idealmente levado à geladeira em até uma hora, e consumido em até 24 horas."
       }
     },
     {
@@ -197,8 +197,8 @@
         "rights_status": "PENDING_REVIEW"
       },
       "safety": {
-        "en-GB": "Hot wok and steam are adult-only. Reheat rice only once until steaming hot throughout.",
-        "pt-BR": "Wok quente e vapor são tarefas de adulto. Reaqueça o arroz apenas uma vez, até soltar vapor por inteiro."
+        "en-GB": "Hot wok and steam are adult-only. Reheat rice only once until steaming hot throughout. Use only rice cooked within the last 24 hours.",
+        "pt-BR": "Wok quente e vapor são tarefas de adulto. Reaqueça o arroz apenas uma vez, até soltar vapor por inteiro. Use apenas arroz preparado nas últimas 24 horas."
       }
     },
     {
@@ -322,12 +322,12 @@
     ]
   },
   "finished_dish": {
-    "artworkPath": null,
+    "artworkPath": "content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png",
     "description": {
       "en-GB": "Golden fried rice with green peas, orange carrot pieces, soft egg and bright spring onion.",
       "pt-BR": "Arroz frito dourado com ervilhas verdes, cenoura alaranjada, ovo macio e cebolinha fresca."
     },
-    "provenance": "PENDING; no artwork generated before first-artwork approval.",
+    "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
     "image": {
       "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png",
       "sha256": "dc493994e39dd4cec46d85a3dee60d65b8d73c9b130cae2c15d9184a5e148060",
@@ -534,7 +534,7 @@
   },
   "sources_and_safety": {
     "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
-    "riceSafetySource": "https://www.food.gov.uk/safety-hygiene/not-reheating-leftovers-until-steaming-hot-throughout",
+    "riceSafetySource": "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker",
     "nutritionSource": "https://fdc.nal.usda.gov/",
     "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
   },
@@ -916,8 +916,8 @@
           "pt-BR": "Confira o arroz frio"
         },
         "instruction": {
-          "en-GB": "Ask an adult to check that the cooked rice was cooled promptly and kept in the fridge. Measure it into a bowl.",
-          "pt-BR": "Peça a um adulto para confirmar que o arroz cozido foi resfriado rapidamente e ficou na geladeira. Meça-o em uma tigela."
+          "en-GB": "Ask an adult to check that cooked rice was chilled as quickly as possible, ideally within one hour, kept refrigerated and cooked within the last 24 hours. Measure it into a bowl.",
+          "pt-BR": "Peça a um adulto para confirmar que o arroz cozido foi resfriado rapidamente, levado à geladeira em até uma hora e preparado há no máximo 24 horas. Meça-o em uma tigela."
         },
         "ingredientIds": [
           "rice-cooked-chilled"
@@ -942,8 +942,8 @@
           "rights_status": "PENDING_REVIEW"
         },
         "safety": {
-          "en-GB": "Keep rice refrigerated until cooking.",
-          "pt-BR": "Mantenha o arroz refrigerado até o momento de cozinhar."
+          "en-GB": "Keep rice refrigerated until cooking. Rice should be cooled as quickly as possible, ideally chilled within one hour, and used within 24 hours.",
+          "pt-BR": "Mantenha o arroz refrigerado até o momento de cozinhar. O arroz deve ser resfriado o mais rápido possível, idealmente levado à geladeira em até uma hora, e consumido em até 24 horas."
         }
       },
       {
@@ -1060,8 +1060,8 @@
           "rights_status": "PENDING_REVIEW"
         },
         "safety": {
-          "en-GB": "Hot wok and steam are adult-only. Reheat rice only once until steaming hot throughout.",
-          "pt-BR": "Wok quente e vapor são tarefas de adulto. Reaqueça o arroz apenas uma vez, até soltar vapor por inteiro."
+          "en-GB": "Hot wok and steam are adult-only. Reheat rice only once until steaming hot throughout. Use only rice cooked within the last 24 hours.",
+          "pt-BR": "Wok quente e vapor são tarefas de adulto. Reaqueça o arroz apenas uma vez, até soltar vapor por inteiro. Use apenas arroz preparado nas últimas 24 horas."
         }
       },
       {
@@ -1108,12 +1108,12 @@
       }
     ],
     "finishedDish": {
-      "artworkPath": null,
+      "artworkPath": "content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png",
       "description": {
         "en-GB": "Golden fried rice with green peas, orange carrot pieces, soft egg and bright spring onion.",
         "pt-BR": "Arroz frito dourado com ervilhas verdes, cenoura alaranjada, ovo macio e cebolinha fresca."
       },
-      "provenance": "PENDING; no artwork generated before first-artwork approval.",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "image": {
         "path": "content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png",
         "sha256": "dc493994e39dd4cec46d85a3dee60d65b8d73c9b130cae2c15d9184a5e148060",
@@ -1387,7 +1387,7 @@
     },
     "sourcesAndSafety": {
       "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
-      "riceSafetySource": "https://www.food.gov.uk/safety-hygiene/not-reheating-leftovers-until-steaming-hot-throughout",
+      "riceSafetySource": "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker",
       "nutritionSource": "https://fdc.nal.usda.gov/",
       "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
     },
@@ -1404,8 +1404,8 @@
       "pt-BR": "Arroz frito é uma forma saborosa de aproveitar arroz cozido e refrigerado com segurança e legumes."
     },
     "safety": {
-      "en-GB": "An adult handles the knife, raw egg, hot oil, wok and serving. Chill cooked rice promptly, keep it refrigerated and reheat only once until steaming hot throughout.",
-      "pt-BR": "Um adulto cuida da faca, do ovo cru, do óleo quente, do wok e de servir. Resfrie o arroz cozido rapidamente, mantenha-o refrigerado e reaqueça apenas uma vez, até soltar vapor por inteiro."
+      "en-GB": "Use rice cooled quickly (ideally refrigerated within one hour) and kept in the fridge for no more than 24 hours. Reheat it only once until steaming hot throughout. An adult handles the hot wok and steam.",
+      "pt-BR": "Use arroz resfriado rapidamente (idealmente levado à geladeira em até uma hora) e mantido na geladeira por no máximo 24 horas. Reaqueça apenas uma vez, até soltar vapor por inteiro. Um adulto cuida do wok quente e do vapor."
     },
     "artworkApproval": {
       "status": "OWNER_APPROVED_STYLE_REFERENCE",

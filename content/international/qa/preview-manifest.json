@@ -4896,7 +4896,7 @@
       "ingredient_count": 6,
       "step_count": 5,
       "longest_localized_text_chars": {
-        "en-GB": 167,
+        "en-GB": 178,
         "pt-BR": 205
       },
       "independent_gates": {
@@ -4977,8 +4977,8 @@
       "ingredient_count": 8,
       "step_count": 5,
       "longest_localized_text_chars": {
-        "en-GB": 244,
-        "pt-BR": 272
+        "en-GB": 340,
+        "pt-BR": 382
       },
       "independent_gates": {
         "A08": "PENDING",
@@ -5004,8 +5004,8 @@
       "ingredient_count": 5,
       "step_count": 5,
       "longest_localized_text_chars": {
-        "en-GB": 215,
-        "pt-BR": 228
+        "en-GB": 311,
+        "pt-BR": 338
       },
       "independent_gates": {
         "A08": "PENDING",
@@ -5272,8 +5272,8 @@
         "pt-BR": "Petiscos de abobrinha na air fryer"
       },
       "file": "content/international/qa/previews/098-italy.jpg",
-      "sha256": "4017cf12e24d233ff1ab81bd424b4cfafca898176c300fb1374c216039cd37d9",
-      "bytes": 360191,
+      "sha256": "4067d7aba442d939e7311783299fbdd9b7139b41a244439f6ad2730ae282235d",
+      "bytes": 369962,
       "dimensions": [
         1680,
         1440
@@ -5299,8 +5299,8 @@
         "pt-BR": "Arroz frito com legumes"
       },
       "file": "content/international/qa/previews/099-china.jpg",
-      "sha256": "c73bf640c730ade74dffa74dc9bdf3dd91ebf110d628ace25c0fa66a5a5de788",
-      "bytes": 384328,
+      "sha256": "2decd0db6fa4706b26ba555f8fee4e114d13c0bf0c99c5e963e98f3eb77d8a7f",
+      "bytes": 389703,
       "dimensions": [
         1680,
         1440
@@ -5380,8 +5380,8 @@
         "pt-BR": "Rolinhos de sushi com legumes"
       },
       "file": "content/international/qa/previews/102-japan.jpg",
-      "sha256": "cdf7e37dedd81ca4bcab59618bf8891b8fb9cd9f3be9b85bdc86e755dff62eba",
-      "bytes": 375931,
+      "sha256": "7ac510da105c7f32a4fd41c5ec24b9350210163271d1b3ed00649665a91312b9",
+      "bytes": 382615,
       "dimensions": [
         1680,
         1440
@@ -5407,8 +5407,8 @@
         "pt-BR": "Bolinhos de arroz onigiri"
       },
       "file": "content/international/qa/previews/103-japan.jpg",
-      "sha256": "3fb89da03591b6372ce96737aba13cd27ea3eac50d16b1d7b77e2d6b38b5c933",
-      "bytes": 342637,
+      "sha256": "2b186feb629736d078374f2b2401ac528e294ae257b30faf6fe4374ef98281cb",
+      "bytes": 346151,
       "dimensions": [
         1680,
         1440
@@ -5542,8 +5542,8 @@
         "pt-BR": "Rolinhos frescos vietnamitas"
       },
       "file": "content/international/qa/previews/108-vietnam.jpg",
-      "sha256": "a7d78f2c5f49fadc395087353b907c0dfdf7aec0aa337fdbb01a5ddc6ada95c1",
-      "bytes": 392235,
+      "sha256": "847d2989e83ccec84229cdc36eb9c964ace0bd48ad153827766aaacca1b43c8c",
+      "bytes": 392635,
       "dimensions": [
         1680,
         1440

@@ -371,8 +371,8 @@
         "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
       },
       "safety": {
-        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
       },
       "heatOrKnifeCue": {
         "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
@@ -415,8 +415,8 @@
         "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
       },
       "safety": {
-        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
       },
       "heatOrKnifeCue": {
         "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
@@ -434,8 +434,8 @@
         "pt-BR": "Cozinhe e esfrie o arroz"
       },
       "instruction": {
-        "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly.",
-        "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente."
+        "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+        "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
       },
       "ingredientIds": [
         "sushi-rice",
@@ -459,8 +459,8 @@
         "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
       },
       "safety": {
-        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
       },
       "heatOrKnifeCue": {
         "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
@@ -479,7 +479,7 @@
       },
       "instruction": {
         "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
-        "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda distante."
+        "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
       },
       "ingredientIds": [
         "rice-vinegar",
@@ -506,8 +506,8 @@
         "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
       },
       "safety": {
-        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
       },
       "heatOrKnifeCue": {
         "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
@@ -552,8 +552,8 @@
         "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
       },
       "safety": {
-        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
       },
       "heatOrKnifeCue": {
         "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
@@ -1024,7 +1024,8 @@
   "sources_and_safety": {
     "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
     "nutritionSource": "https://fdc.nal.usda.gov/",
-    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/",
+    "riceSafetySource": "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker"
   },
   "renderer": {
     "category": "International",
@@ -1382,8 +1383,8 @@
           "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
         },
         "safety": {
-          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
         }
       },
       {
@@ -1418,8 +1419,8 @@
           "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
         },
         "safety": {
-          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
         }
       },
       {
@@ -1429,8 +1430,8 @@
           "pt-BR": "Cozinhe e esfrie o arroz"
         },
         "instruction": {
-          "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly.",
-          "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente."
+          "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+          "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
         },
         "ingredientIds": [
           "sushi-rice",
@@ -1454,8 +1455,8 @@
           "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
         },
         "safety": {
-          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
         }
       },
       {
@@ -1466,7 +1467,7 @@
         },
         "instruction": {
           "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
-          "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda distante."
+          "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
         },
         "ingredientIds": [
           "rice-vinegar",
@@ -1493,8 +1494,8 @@
           "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
         },
         "safety": {
-          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
         }
       },
       {
@@ -1531,8 +1532,8 @@
           "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
         },
         "safety": {
-          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature.",
-          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente."
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
         }
       }
     ],
@@ -1829,7 +1830,8 @@
     "sourcesAndSafety": {
       "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
       "nutritionSource": "https://fdc.nal.usda.gov/",
-      "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/",
+      "riceSafetySource": "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker"
     },
     "notes": {
       "en-GB": "Cooked rice requires prompt cooling and refrigeration; no raw fish is used.",
@@ -1840,8 +1842,8 @@
       "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
     },
     "safety": {
-      "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
-      "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+      "en-GB": "An adult handles boiling water and hot rice; only an adult uses sharp knives. Cool cooked rice quickly in a clean shallow tray, refrigerate within one hour if not using it immediately, and use within 24 hours. Keep refrigerated; do not leave cooked rice at room temperature.",
+      "pt-BR": "Um adulto cuida da água fervente e do arroz quente; somente um adulto usa facas afiadas. Esfrie o arroz rapidamente em uma travessa limpa e rasa, leve à geladeira em até uma hora se não for usar imediatamente e consuma em até 24 horas. Mantenha refrigerado; não deixe o arroz cozido à temperatura ambiente."
     },
     "artworkApproval": {
       "reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",

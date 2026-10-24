@@ -30,40 +30,43 @@ PT-BR: Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um
 - PT-BR: Lave as mãos e enxágue o arroz em água fria até a água ficar quase transparente. Escorra bem.
 - Adult help EN-GB: Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.
 - Ajuda PT-BR: Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão.
-- Safety EN-GB: An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels.
-- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim.
+- Safety EN-GB: An adult handles boiling water and hot rice. Cool cooked rice quickly in a clean shallow tray, refrigerate within one hour if not serving it immediately, and use within 24 hours. Keep refrigerated; do not leave cooked rice at room temperature. Check nori and sesame labels.
+- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie o arroz rapidamente em uma travessa limpa e rasa, leve à geladeira em até uma hora se não for servir imediatamente e consuma em até 24 horas. Mantenha refrigerado; não deixe o arroz cozido à temperatura ambiente. Confira os rótulos do nori e do gergelim.
 
 ### step-02 — Cook the rice / Cozinhe o arroz
 - EN-GB: An adult cooks rice with measured water in a covered saucepan until tender.
 - PT-BR: Um adulto cozinha o arroz com a água medida em uma panela tampada até ficar macio.
 - Adult help EN-GB: Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.
 - Ajuda PT-BR: Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão.
-- Safety EN-GB: An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels.
-- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim.
+- Safety EN-GB: An adult handles boiling water and hot rice. Cool cooked rice quickly in a clean shallow tray, refrigerate within one hour if not serving it immediately, and use within 24 hours. Keep refrigerated; do not leave cooked rice at room temperature. Check nori and sesame labels.
+- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie o arroz rapidamente em uma travessa limpa e rasa, leve à geladeira em até uma hora se não for servir imediatamente e consuma em até 24 horas. Mantenha refrigerado; não deixe o arroz cozido à temperatura ambiente. Confira os rótulos do nori e do gergelim.
 
 ### step-03 — Cool it quickly / Esfrie rapidamente
-- EN-GB: An adult spreads hot rice in a clean shallow tray to cool quickly. Do not leave it at room temperature.
-- PT-BR: Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Não deixe à temperatura ambiente.
+- EN-GB: An adult spreads hot rice in a clean shallow tray to cool quickly. If it is not being used immediately, refrigerate it within one hour of cooking.
+- PT-BR: Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Se não for usar logo, leve-o à geladeira em até uma hora após o cozimento.
 - Adult help EN-GB: Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.
 - Ajuda PT-BR: Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão.
-- Safety EN-GB: An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels.
-- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim.
+- Safety EN-GB: An adult handles boiling water and hot rice. Cool cooked rice quickly in a clean shallow tray, refrigerate within one hour if not serving it immediately, and use within 24 hours. Keep refrigerated; do not leave cooked rice at room temperature. Check nori and sesame labels.
+- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie o arroz rapidamente em uma travessa limpa e rasa, leve à geladeira em até uma hora se não for servir imediatamente e consuma em até 24 horas. Mantenha refrigerado; não deixe o arroz cozido à temperatura ambiente. Confira os rótulos do nori e do gergelim.
 
 ### step-04 — Shape the rice / Modele o arroz
 - EN-GB: When rice is cool enough to handle, children shape small portions with clean damp hands or a mould. Adults supervise.
 - PT-BR: Quando o arroz estiver frio o bastante para tocar, as crianças modelam porções com mãos limpas e úmidas ou com um molde. Um adulto supervisiona.
 - Adult help EN-GB: Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.
 - Ajuda PT-BR: Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão.
-- Safety EN-GB: An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels.
-- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim.
+- Safety EN-GB: An adult handles boiling water and hot rice. Cool cooked rice quickly in a clean shallow tray, refrigerate within one hour if not serving it immediately, and use within 24 hours. Keep refrigerated; do not leave cooked rice at room temperature. Check nori and sesame labels.
+- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie o arroz rapidamente em uma travessa limpa e rasa, leve à geladeira em até uma hora se não for servir imediatamente e consuma em até 24 horas. Mantenha refrigerado; não deixe o arroz cozido à temperatura ambiente. Confira os rótulos do nori e do gergelim.
 
 ### step-05 — Wrap and serve / Envolva e sirva
 - EN-GB: Add a little salt, wrap each rice ball with nori and sprinkle sesame. Serve promptly; refrigerate leftovers.
 - PT-BR: Acrescente um pouco de sal, envolva cada bolinho com nori e polvilhe gergelim. Sirva logo; refrigere as sobras.
 - Adult help EN-GB: Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.
 - Ajuda PT-BR: Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão.
-- Safety EN-GB: An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels.
-- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim.
+- Safety EN-GB: An adult handles boiling water and hot rice. Cool cooked rice quickly in a clean shallow tray, refrigerate within one hour if not serving it immediately, and use within 24 hours. Keep refrigerated; do not leave cooked rice at room temperature. Check nori and sesame labels.
+- Segurança PT-BR: Um adulto cuida da água fervente e do arroz quente. Esfrie o arroz rapidamente em uma travessa limpa e rasa, leve à geladeira em até uma hora se não for servir imediatamente e consuma em até 24 horas. Mantenha refrigerado; não deixe o arroz cozido à temperatura ambiente. Confira os rótulos do nori e do gergelim.
+
+## Food safety
+- Rice handling reference: https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker
 
 ## Allergens and cross-contact
 Contains: sesame

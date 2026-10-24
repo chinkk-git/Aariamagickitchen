@@ -311,12 +311,12 @@
     ]
   },
   "finished_dish": {
-    "artworkPath": null,
+    "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
     "description": {
       "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
       "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
     },
-    "provenance": "PENDING; no finished-dish asset generated because the first-artwork approval gate is active.",
+    "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
     "image": {
       "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
       "sha256": "3b30fd4f9444a7ae151844702ee7383fb5c0011a54a936ff0f3ef9da4ee61fc7",
@@ -1047,12 +1047,12 @@
       }
     ],
     "finishedDish": {
-      "artworkPath": null,
+      "artworkPath": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
       "description": {
         "en-GB": "Spaghetti coated in a glossy red tomato sauce with fresh green basil.",
         "pt-BR": "Espaguete envolvido em molho vermelho de tomate e folhas verdes de manjericão."
       },
-      "provenance": "PENDING; no finished-dish asset generated because the first-artwork approval gate is active.",
+      "provenance": "Generated for this repository with OpenAI ImageGen using the approved Aaria visual reference; approval recorded in Issue #50 comment 6367104240",
       "image": {
         "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/finished-dish.png",
         "sha256": "3b30fd4f9444a7ae151844702ee7383fb5c0011a54a936ff0f3ef9da4ee61fc7",
@@ -1063,7 +1063,7 @@
       }
     },
     "nutrition": {
-      "basis": "Estimated from ingredient weights and USDA FoodData Central SR Legacy per-100-g values; dry pasta is used as the measured recipe input; no optional toppings included. Values are approximate and need nutrition review. Sodium not calculated because canned tomato labels vary and salt is optional.",
+      "basis": "Sodium remains unreported: 2 g salt is added to 2 L pasta water that is drained, so salt retention in the cooked pasta is unknown. Sodium in pasta products also varies by brand. Do not treat sodium as zero; a defensible value needs label-specific input or measured salt retention. Independent nutrition review remains pending.",
       "sources": [
         {
           "source": "USDA FoodData Central SR Legacy",

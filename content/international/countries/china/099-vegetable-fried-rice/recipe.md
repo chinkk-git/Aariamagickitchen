@@ -30,10 +30,11 @@
 ## Steps
 
 ### step-01 — Check the cold rice / Confira o arroz frio
-- EN-GB: Ask an adult to check that the cooked rice was cooled promptly and kept in the fridge. Measure it into a bowl.
-- PT-BR: Peça a um adulto para confirmar que o arroz cozido foi resfriado rapidamente e ficou na geladeira. Meça-o em uma tigela.
+- EN-GB: Ask an adult to check that cooked rice was chilled as quickly as possible, ideally within one hour, kept refrigerated and cooked within the last 24 hours. Measure it into a bowl.
+- PT-BR: Peça a um adulto para confirmar que o arroz cozido foi resfriado rapidamente, levado à geladeira em até uma hora e preparado há no máximo 24 horas. Meça-o em uma tigela.
 - Adult/child responsibilities: Adult verifies safe storage and prepares leftover rice. / Um adulto confirma o armazenamento seguro e prepara o arroz que sobrou.
-- Safety: Keep rice refrigerated until cooking. / Mantenha o arroz refrigerado até o momento de cozinhar.
+- Safety EN-GB: Keep rice refrigerated until cooking. Rice should be cooled as quickly as possible, ideally chilled within one hour, and used within 24 hours.
+- Safety PT-BR: Mantenha o arroz refrigerado até o momento de cozinhar. O arroz deve ser resfriado o mais rápido possível, idealmente levado à geladeira em até uma hora, e consumido em até 24 horas.
 - Ingredients/equipment: rice-cooked-chilled; rice-container, mixing-bowl
 - Artwork: `content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-01.png` SHA-256 `1f2f2261d8f4637449ad3c4a136123e054ccee405857e94039c542403c20e93a`
 
@@ -41,7 +42,8 @@
 - EN-GB: Crack the eggs into a clean bowl and whisk them with a fork. Wash hands with soap after touching raw egg.
 - PT-BR: Quebre os ovos em uma tigela limpa e bata com um garfo. Lave as mãos com água e sabão depois de tocar no ovo cru.
 - Adult/child responsibilities: Adult helps crack eggs if needed and checks shell fragments. / Um adulto ajuda a quebrar os ovos se necessário e verifica se há cascas.
-- Safety: Raw egg must not be tasted; wash hands and clean surfaces after handling. / Não prove o ovo cru; lave as mãos e limpe as superfícies depois de manuseá-lo.
+- Safety EN-GB: Raw egg must not be tasted; wash hands and clean surfaces after handling.
+- Safety PT-BR: Não prove o ovo cru; lave as mãos e limpe as superfícies depois de manuseá-lo.
 - Ingredients/equipment: egg; mixing-bowl, fork, chopping-board, knife
 - Artwork: `content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-02.png` SHA-256 `d6dd6afbcf8769ab48c6de45217a1234aa94e2573daa9fa205f5631e8e633a55`
 
@@ -49,7 +51,8 @@
 - EN-GB: An adult cooks the egg in a lightly oiled wok, stirring until fully set, then transfers it to a clean plate.
 - PT-BR: Um adulto cozinha o ovo em um wok levemente untado, mexendo até ficar totalmente firme, e o transfere para um prato limpo.
 - Adult/child responsibilities: Adult-only hot wok task. / Tarefa com wok quente exclusiva de adulto.
-- Safety: Hot oil and pan are adult-only. Use a clean plate and spatula after raw egg contact. / Óleo e panela quentes são tarefas de adulto. Use prato e espátula limpos após o contato com ovo cru.
+- Safety EN-GB: Hot oil and pan are adult-only. Use a clean plate and spatula after raw egg contact.
+- Safety PT-BR: Óleo e panela quentes são tarefas de adulto. Use prato e espátula limpos após o contato com ovo cru.
 - Ingredients/equipment: egg, neutral-oil; wok, spatula, plate
 - Artwork: `content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-03.png` SHA-256 `5aedd468a04cd0149b2698995a50a4cfe12d70ed6cb05ff8d0624dfe9739d72d`
 
@@ -57,7 +60,8 @@
 - EN-GB: An adult adds the peas, carrots and chilled rice to the hot wok. Stir until the vegetables are hot and the rice is steaming throughout.
 - PT-BR: Um adulto coloca as ervilhas, a cenoura e o arroz refrigerado no wok quente. Mexa até os legumes ficarem bem quentes e o arroz soltar vapor por inteiro.
 - Adult/child responsibilities: Adult-only hot wok task; child stands back from hob and steam. / Tarefa com wok quente exclusiva de adulto; a criança fica afastada do fogão e do vapor.
-- Safety: Hot wok and steam are adult-only. Reheat rice only once until steaming hot throughout. / Wok quente e vapor são tarefas de adulto. Reaqueça o arroz apenas uma vez, até soltar vapor por inteiro.
+- Safety EN-GB: Hot wok and steam are adult-only. Reheat rice only once until steaming hot throughout. Use only rice cooked within the last 24 hours.
+- Safety PT-BR: Wok quente e vapor são tarefas de adulto. Reaqueça o arroz apenas uma vez, até soltar vapor por inteiro. Use apenas arroz preparado nas últimas 24 horas.
 - Ingredients/equipment: rice-cooked-chilled, peas-carrots, neutral-oil; wok, spatula, rice-container
 - Artwork: `content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-04.png` SHA-256 `951ccbf4e2550d271bec68ef8d06557e5903479d3202d5a2e5c9044b0b148a28`
 
@@ -65,13 +69,14 @@
 - EN-GB: An adult stirs in the cooked egg and soy sauce until steaming hot. Turn off the heat; after the wok is safely away, a child may sprinkle on adult-chopped spring onion.
 - PT-BR: Um adulto mistura o ovo cozido e o molho de soja até ficar bem quente e soltando vapor. Desligue o fogo; quando o wok estiver afastado com segurança, a criança pode salpicar a cebolinha picada pelo adulto.
 - Adult/child responsibilities: Adult cooks, seasons, turns off heat and chops spring onion. / Um adulto cozinha, tempera, desliga o fogo e pica a cebolinha.
-- Safety: Adult handles hot wok, steam and knife. Check soy sauce label for wheat/gluten. / Um adulto manuseia o wok quente, o vapor e a faca. Confira no rótulo do molho de soja se há trigo/glúten.
+- Safety EN-GB: Adult handles hot wok, steam and knife. Check soy sauce label for wheat/gluten.
+- Safety PT-BR: Um adulto manuseia o wok quente, o vapor e a faca. Confira no rótulo do molho de soja se há trigo/glúten.
 - Ingredients/equipment: egg, soy-sauce, spring-onion; wok, spatula, chopping-board, knife, serving-bowl
 - Artwork: `content/international/countries/china/099-vegetable-fried-rice/artwork/steps/step-05.png` SHA-256 `1670ff3ace2442c8f9f217efbdb389e8b66330b3554f041616b4063c5921e8e5`
 
 ## Nutrition per serving (estimate; review pending)
 - 276 kcal; protein 9.2 g; carbohydrate 47.7 g; fat 5.3 g; fibre 1.9 g; saturated fat 1.0 g; sodium 193 mg.
-- Estimate per serving from USDA FoodData Central SR Legacy reference values for rice, egg, peas/carrots and canola oil; spring onion and brand-variable reduced-sodium soy sauce are listed as sources but omitted from numeric totals. Sodium is not calculated because the soy sauce label varies. Values are approximate and require independent review. Ingredient weights scaled against USDA FoodData Central SR Legacy reference foods; values are estimates, not laboratory analyses.
+- Approximate per-serving estimate includes measured rice, egg, peas/carrots, canola oil, spring onion and reduced-sodium soy sauce. The 15 mL soy sauce is approximated as 16 g using FDC 172473; actual brand sodium varies, so check the package label. No extra salt is added. Values are estimates, not laboratory analyses; independent nutrition/allergen review remains pending.
 
 ### Nutrition sources
 - USDA FoodData Central SR Legacy: [Rice, white, long-grain, regular, enriched, cooked (FDC 168878)](https://fdc.nal.usda.gov/food-details/168878/nutrients)
@@ -88,9 +93,9 @@
 - Review: PENDING_A08_AND_ALLERGEN_REVIEW
 
 ## Food safety
-- EN-GB: An adult handles the knife, raw egg, hot oil, wok and serving. Chill cooked rice promptly, keep it refrigerated and reheat only once until steaming hot throughout.
-- PT-BR: Um adulto cuida da faca, do ovo cru, do óleo quente, do wok e de servir. Resfrie o arroz cozido rapidamente, mantenha-o refrigerado e reaqueça apenas uma vez, até soltar vapor por inteiro.
-- Guidance: https://www.food.gov.uk/safety-hygiene/cooking-your-food
+- EN-GB: An adult handles the knife, raw egg, hot oil, wok and serving. Use rice chilled quickly (ideally within one hour), kept refrigerated no more than 24 hours; reheat only once until steaming hot throughout.
+- PT-BR: Um adulto cuida da faca, do ovo cru, do óleo quente, do wok e de servir. Use arroz resfriado rapidamente (idealmente levado à geladeira em até uma hora), mantido refrigerado por no máximo 24 horas; reaqueça apenas uma vez, até soltar vapor por inteiro.
+- Guidance: https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker
 
 ## Artwork and rights
 - Finished dish: `content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png` SHA-256 `dc493994e39dd4cec46d85a3dee60d65b8d73c9b130cae2c15d9184a5e148060`
@@ -103,3 +108,6 @@
 - Translation/cultural review: PENDING
 - Artwork rights: PENDING_REVIEW
 - Security review: PENDING
+
+
+Rice guidance: https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker
