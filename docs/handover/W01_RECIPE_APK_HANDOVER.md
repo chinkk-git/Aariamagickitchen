@@ -96,3 +96,12 @@ Updated: 2026-10-24 (UTC)
 - Corrected selectors and a regression contract were fast-forwarded to W01 at commit b16ad540b2a63c1bc0d579a0cc8648b93b3db5ac. The assertions still compare the rendered recipe safety copy to canonical translated safety. No recipe data or original artwork changed.
 - Run #277 (e3078bd, pre-harness correction) is in G2; it may encounter the same G3 selector issue. A new exact-head run for b16 is pending/queued behind #277 and is the required final validation.
 - Latest progress comments: #45 comment 6385662148; #51 comment 6385662319. Readiness: OWNER_APPROVED=NO, REVIEW_READY=NO, RELEASE_READY=NO.
+
+
+## Live CI update 4 — 2026-10-24 UTC
+
+- Run #277 on e3078bd1cf6c48f59d5513de6506c5f8919e26da failed the G2 tablet smoke at PT-BR recipe #096. Logged checks show title, first instruction, adult help and safety text are present. The actual failure is that two of 68 visible img elements in the international-active app view were not loaded (array positions 63 and 64). The prior smoke log returned only booleans, so the failing src paths are not yet identifiable. Run #277 evidence artifact: https://github.com/chinkk-git/Aariamagickitchen/actions/runs/40099744125/artifacts/12563164835 (61,741,995-byte ZIP; SHA-256 c2550aada9562c6a9f91c08d02413957b1304370a4901b1816e7ddb19302e2b7). No APK artifact was uploaded because G2 failed.
+- Added diagnostics to tablet smoke so each visible image failure reports its source, alt text, completion state and intrinsic dimensions. The assertion still requires every visible image to load. Added a contract test for the detailed failure check. Also corrected literal escaped newlines inadvertently introduced in the previous contract-test update; new file text now has real JS line breaks.
+- Current corrective work is prepared on temporary branch w01/international-image-diagnostics. The live W01 branch has not yet been advanced to this diagnostic commit. After review, fast-forward it with expected-head a74c5f5a6d178a1b17316349956e65ff6a6023fb so exact-head CI runs the diagnostics and safety-selector correction together.
+- Run #277 is terminal and its G2 failure is a genuine Android image load defect (exact asset path remains unknown). Next: exact-head run must expose the two paths; fix the local asset routing/bundling or source path based on evidence, then rerun G2 and full tablet/phone G3. Do not report APK readiness until G1/G2/G3 pass and screenshots are visually checked.
+- Owner approval: NO. Review ready: NO. Release ready: NO.
