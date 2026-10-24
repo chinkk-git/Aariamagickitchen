@@ -51,8 +51,13 @@ function expectedTheme(id) {
 }
 if (themeSpec.algorithm !== 'FNV-1a(v3.2-theme:<recipe-id>) mod 3 with approved template-reference overrides' || JSON.stringify(themeSpec.themes) !== JSON.stringify(themeKeys)) fail('V3.2 recipe theme algorithm or theme names changed unexpectedly.');
 if (JSON.stringify(themeSpec.referenceOverrides) !== JSON.stringify({'5':'sunny-orange','12':'playful-purple'}) || JSON.stringify(themeSpec.approvedTemplateExemplars) !== JSON.stringify({'5':'sunny-orange','12':'playful-purple','76':'fresh-green'})) fail('Approved recipe-template reference overrides changed unexpectedly.');
-if (Object.keys(themeSpec.mapping).length !== 95 || ids.some(id => themeSpec.mapping[String(id)] !== (themeSpec.referenceOverrides[String(id)] || expectedTheme(id)))) fail('Every original recipe ID 1–95 must map deterministically to its V3.2 theme.');
-if (themeKeys.some(theme => !Object.values(themeSpec.mapping).includes(theme))) fail('All three approved V3.2 themes must be represented in the 95-recipe assignment.');
+const themeMapIds = Object.keys(themeSpec.mapping).map(Number).sort((a, b) => a - b);
+const expectedThemeIds = [...ids, 96, 99].sort((a, b) => a - b);
+if (themeMapIds.length !== 97 || themeMapIds.some((id, index) => id !== expectedThemeIds[index]) ||
+    expectedThemeIds.some(id => themeSpec.mapping[String(id)] !== (themeSpec.referenceOverrides[String(id)] || expectedTheme(id)))) {
+  fail('Every original recipe ID 1–95 and approved review recipe IDs 096 and 099 must map deterministically to its V3.2 theme.');
+}
+if (themeKeys.some(theme => !Object.values(themeSpec.mapping).includes(theme))) fail('All three approved V3.2 themes must be represented in the 97-recipe assignment.');
 
 const destinations = [['IND', 'India'], ['ITA', 'Italy'], ['CHN', 'China'], ['JPN', 'Japan'], ['MEX', 'Mexico'], ['VNM', 'Vietnam'], ['GRC', 'Greece']];
 if (!Array.isArray(geography.features) || geography.features.length < 150) fail('Offline country boundaries are incomplete.');
