@@ -144,7 +144,7 @@ jobs:
           script: bash .github/scripts/v33-world-map-sample-smoke.sh
 
       - name: Publish installable owner-review APK after targeted smoke
-        if: success() && inputs.publish_apk == true
+        if: success() && (inputs.publish_apk == true || github.event_name == 'push')
         uses: actions/upload-artifact@v4
         with:
           name: aaria-magical-kitchen-v3.3-owner-review-apk
