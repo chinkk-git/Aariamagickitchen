@@ -140,6 +140,9 @@ test('phone and tablet smoke measure Android geometry and preserve G1/G2/G3 cove
   assert.match(tablet,/world-country-tablet-/,'tablet captures the selected country panel');
   assert.match(tablet,/world-recipe-51-tablet-/,'tablet captures recipe navigation from the globe');
   assert.match(tablet,/keyevent','4/,'tablet verifies Android Back restores the selected country panel');
+  assert.match(tablet,/async function dismissSystemAnr\(\)/,'tablet smoke detects Android system ANR dialogs using their accessible Wait action');
+  assert.match(tablet,/capturePng:async\(\)=>\{await dismissSystemAnr\(\)/,'tablet screenshots dismiss a blocking Android system ANR before capturing the real screen');
+  assert.match(tablet,/if\(await dismissSystemAnr\(\)\)\{adb\(\['shell','input','keyevent','4'\]\)/,'tablet retries the real Android Back key after recovering a system ANR overlay');
   assert.match(tablet,/world-map-geometry-/,'tablet records live globe geometry in portrait and landscape');
   assert.match(regression,/isW02Globe/,'G3 follows the W03 globe when the exact Android package is W02');
   assert.match(regression,/W03 India must expose exactly its 18 canonical recipes/,'G3 retains the 18-link India contract');
