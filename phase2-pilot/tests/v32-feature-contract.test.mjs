@@ -289,6 +289,10 @@ test('international shared renderer uses matching EN-GB and PT-BR ingredient and
   const restoreCall = runtime.indexOf("v32RestoreInternationalStepCopy(document.querySelector('.app.v32-international-active .ref-step-card.active .ref-step-copy p'),steps,step)", renderBase);
   assert.ok(renderStart >= 0 && renderBase >= renderStart && restoreCall > renderBase,
     'copy restoration runs after the shared render pass finishes');
+  assert.match(runtime, /function v32ApplyRecipe12StepSafety\(\)[\s\S]*?config\.safety\?\.\[locale\][\s\S]*?note\.setAttribute\('role','note'\)[\s\S]*?paragraph\.textContent=text/,
+    'recipe #012 renders its existing localized per-step safety guidance as accessible notes');
+  assert.match(runtime, /if\(view==='recipe'&&id===12\)v32ApplyRecipe12StepSafety\(\)/,
+    'recipe #012 safety notes are applied after the canonical recipe render');
   for (const recipe of [italy, china]) {
     assert.ok(recipe.steps.length > 0, `recipe ${recipe.id} has localized guided steps`);
     for (const locale of ['en-GB', 'pt-BR']) {
