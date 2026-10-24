@@ -1,0 +1,29 @@
+{
+  "matrixVersion": "1.0.0",
+  "features": [
+    {"id":"home-navigation","name":"Kitchen home and navigation","pilotStatus":"implemented","scaleCheck":"Confirm all 95 recipes open from browse and category views."},
+    {"id":"search-filter","name":"Recipe search and category filters","pilotStatus":"implemented","scaleCheck":"Verify search, filters and result counts across the full catalog."},
+    {"id":"recipe-details","name":"Recipe details, ingredients and equipment","pilotStatus":"implemented","scaleCheck":"Check quantities, servings, method and equipment for every recipe."},
+    {"id":"allergy-safety","name":"Allergy, cross-contact and adult-help guidance","pilotStatus":"implemented-with-review-gates","scaleCheck":"Review every ingredient label warning and adult-only action."},
+    {"id":"nutrition","name":"Nutrition panel and verification status","pilotStatus":"implemented-with-review-gates","scaleCheck":"Validate source and calculations for each published recipe."},
+    {"id":"ingredient-customization","name":"Ingredient selection and matching dish preview","pilotStatus":"implemented","scaleCheck":"Confirm optional ingredients and preview updates for each recipe type."},
+    {"id":"pantry-matcher","name":"What Can I Make ingredient matcher","pilotStatus":"implemented","scaleCheck":"Test matches and no-match states against all 95 recipes."},
+    {"id":"surprise-me","name":"Surprise Me recipe picker","pilotStatus":"implemented","scaleCheck":"Confirm every eligible recipe can be selected."},
+    {"id":"guided-cooking","name":"Guided step flow with back and next","pilotStatus":"implemented","scaleCheck":"Verify all steps, artwork, progress and orientation layouts."},
+    {"id":"adult-appliance-gate","name":"Adult confirmation before appliance steps","pilotStatus":"implemented-for-pilot-air-fryer","scaleCheck":"Review every heat, knife and appliance step for the right gate."},
+    {"id":"completion-save","name":"Recipe completion and private My Creations","pilotStatus":"implemented","scaleCheck":"Save and reopen creations for every recipe; check image and ingredient state."},
+    {"id":"kitchen-crew","name":"Kitchen Crew and character artwork","pilotStatus":"implemented","scaleCheck":"Confirm character assignment and approved artwork across the 65/15/15 allocation."},
+    {"id":"accessibility","name":"Larger text and reduced motion settings","pilotStatus":"implemented","scaleCheck":"Check long titles, step copy and controls at larger text sizes."},
+    {"id":"offline-privacy","name":"Offline use and local-first privacy","pilotStatus":"implemented","scaleCheck":"Install and use the APK offline; verify no remote recipe or image requests."},
+    {"id":"app-branding","name":"APK name and launcher icon","pilotStatus":"implemented","scaleCheck":"Check launcher label and icon on the target Android device."},
+    {"id":"no-timer","name":"No cooking timer feature","pilotStatus":"implemented-by-design","scaleCheck":"Keep timer controls and automatic countdowns absent."},
+    {"id":"creative-food-design","name":"Creative food customization","pilotStatus":"basic-ingredient-customization","scaleCheck":"Plan richer visual food customization without distracting from cooking."},
+    {"id":"kitchen-mystery","name":"Kitchen mystery or puzzle","pilotStatus":"planned","scaleCheck":"Add a short optional ingredient or cooking mystery."},
+    {"id":"step-video-presentation","name":"Optional video-style step presentation","pilotStatus":"planned","scaleCheck":"Prototype short, optional visual step sequences while retaining clear text and controls."},
+    {"id":"optional-music-celebration","name":"Optional light music and celebrations","pilotStatus":"planned","scaleCheck":"Keep music opt-in and celebrations brief and easy to dismiss."},
+    {"id":"recipe-quizzes","name":"Optional recipe and ingredient quizzes","pilotStatus":"planned","scaleCheck":"Every recipe has three short, age-appropriate questions tied to its ingredients, steps or food facts; include supportive feedback, skip/retry and no timer."},
+    {"id":"finished-dish-photo-post","name":"Take a dish photo and create a share card","pilotStatus":"planned","scaleCheck":"For every recipe, capture/select a dish photo, create a branded post preview on-device, allow local save, and offer parent-confirmed Android sharing to Instagram, Facebook or WhatsApp without app upload."},
+    {"id":"multi-recipe-grocery-list","name":"Combined grocery list for selected recipes","pilotStatus":"planned","scaleCheck":"Select multiple recipes; combine matching ingredients, sum quantities only across compatible units, show optional items clearly, and open a prefilled WhatsApp message so Aaria can choose Mommy or Daddy and confirm sending."},
+    {"id":"weekly-meal-planner","name":"Parent-controlled weekly meal planner","pilotStatus":"planned-blocked-by-nutrition-review","scaleCheck":"Offer random, editable weekly meal ideas only from recipes with verified nutrition and independent review; enforce variety and allergy constraints, show nutrition coverage, and never claim dietary completeness before qualified validation."}
+  ]
+}

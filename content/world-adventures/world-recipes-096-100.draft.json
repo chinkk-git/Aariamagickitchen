@@ -1,0 +1,287 @@
+{
+  "schema": "aaria.world-adventures.recipe-drafts.v1",
+  "status": "blocked-pending-complete-95-recipe-audit",
+  "baseRecipeCount": 95,
+  "preserveExistingRecipeIds": "1-95",
+  "locales": [
+    "en-GB",
+    "pt-BR"
+  ],
+  "notes": "User rejected pizza. No candidate is approved for integration until the original 95 recipe titles/ingredients have been audited for duplicates (including Indian dishes). IDs provisional; do not release, merge, or use in APK. Nutrition/allergen/cultural/A08/A09 reviews also pending.",
+  "recipes": [
+    {
+      "id": 96,
+      "countryCode": "IN",
+      "slug": "mango-lassi-magic",
+      "method": "no-cook",
+      "servings": 2,
+      "prepMinutes": 10,
+      "adultAssist": [
+        "blender"
+      ],
+      "allergens": [
+        "milk"
+      ],
+      "title": {
+        "en-GB": "Mango Lassi Magic",
+        "pt-BR": "Lassi Mágico de Manga"
+      },
+      "country": {
+        "en-GB": "India",
+        "pt-BR": "Índia"
+      },
+      "fact": {
+        "en-GB": "Lassi is a yoghurt-based drink enjoyed in parts of South Asia; mango is a popular variation.",
+        "pt-BR": "Lassi é uma bebida à base de iogurte apreciada em partes do sul da Ásia; manga é uma variação popular."
+      },
+      "ingredients": [
+        {
+          "key": "ripe_mango",
+          "amount": 200,
+          "unit": "g",
+          "en-GB": "ripe mango flesh, peeled and diced",
+          "pt-BR": "polpa de manga madura, descascada e picada"
+        },
+        {
+          "key": "plain_yoghurt",
+          "amount": 200,
+          "unit": "g",
+          "en-GB": "plain pasteurised yoghurt",
+          "pt-BR": "iogurte natural pasteurizado"
+        },
+        {
+          "key": "cold_water",
+          "amount": 100,
+          "unit": "ml",
+          "en-GB": "cold drinking water",
+          "pt-BR": "água potável gelada"
+        }
+      ],
+      "steps": [
+        {
+          "en-GB": "Wash your hands. Ask an adult to peel and dice the mango.",
+          "pt-BR": "Lave as mãos. Peça a um adulto para descascar e picar a manga.",
+          "adultAssist": true
+        },
+        {
+          "en-GB": "Measure the mango, yoghurt and cold water.",
+          "pt-BR": "Meça a manga, o iogurte e a água gelada.",
+          "adultAssist": false
+        },
+        {
+          "en-GB": "Ask an adult to blend everything until smooth.",
+          "pt-BR": "Peça a um adulto para bater tudo até ficar cremoso.",
+          "adultAssist": true
+        },
+        {
+          "en-GB": "Pour into two cups and enjoy straight away.",
+          "pt-BR": "Coloque em dois copos e aproveite imediatamente.",
+          "adultAssist": false
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "countryCode": "MX",
+      "slug": "guacamole-fiesta",
+      "method": "no-cook",
+      "servings": 4,
+      "prepMinutes": 12,
+      "adultAssist": [
+        "knife",
+        "avocado-stone"
+      ],
+      "allergens": [],
+      "title": {
+        "en-GB": "Guacamole Fiesta",
+        "pt-BR": "Festa do Guacamole"
+      },
+      "country": {
+        "en-GB": "Mexico",
+        "pt-BR": "México"
+      },
+      "fact": {
+        "en-GB": "Guacamole is an avocado-based dish with origins in Mexico.",
+        "pt-BR": "Guacamole é um prato à base de abacate com origem no México."
+      },
+      "ingredients": [
+        {
+          "key": "avocado",
+          "amount": 2,
+          "unit": "pieces",
+          "en-GB": "ripe avocados",
+          "pt-BR": "abacates maduros"
+        },
+        {
+          "key": "lime_juice",
+          "amount": 15,
+          "unit": "ml",
+          "en-GB": "fresh lime juice",
+          "pt-BR": "suco de limão"
+        },
+        {
+          "key": "tomato",
+          "amount": 1,
+          "unit": "piece",
+          "en-GB": "small tomato, washed and finely diced by an adult",
+          "pt-BR": "tomate pequeno, lavado e picado por um adulto"
+        },
+        {
+          "key": "salt",
+          "amount": 1,
+          "unit": "pinch",
+          "en-GB": "small pinch of salt (optional)",
+          "pt-BR": "pitada pequena de sal (opcional)"
+        }
+      ],
+      "steps": [
+        {
+          "en-GB": "Wash hands. Ask an adult to halve, de-stone and scoop the avocados.",
+          "pt-BR": "Lave as mãos. Peça a um adulto para cortar, retirar os caroços e tirar a polpa dos abacates.",
+          "adultAssist": true
+        },
+        {
+          "en-GB": "Mash the avocado with a fork in a bowl.",
+          "pt-BR": "Amasse o abacate com um garfo em uma tigela.",
+          "adultAssist": false
+        },
+        {
+          "en-GB": "Ask an adult to dice the washed tomato.",
+          "pt-BR": "Peça a um adulto para picar o tomate lavado.",
+          "adultAssist": true
+        },
+        {
+          "en-GB": "Mix in tomato, lime juice and optional salt. Serve immediately.",
+          "pt-BR": "Misture o tomate, o limão e o sal opcional. Sirva imediatamente.",
+          "adultAssist": false
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "countryCode": "JP",
+      "slug": "onigiri-rice-shapes",
+      "method": "no-cook-assembly",
+      "servings": 4,
+      "prepMinutes": 15,
+      "adultAssist": [
+        "rice-preparation",
+        "food-storage"
+      ],
+      "allergens": [
+        "soy-if-seasoned-filling"
+      ],
+      "title": {
+        "en-GB": "Onigiri Rice Shapes",
+        "pt-BR": "Onigiri: Bolinhos de Arroz"
+      },
+      "country": {
+        "en-GB": "Japan",
+        "pt-BR": "Japão"
+      },
+      "fact": {
+        "en-GB": "Onigiri are Japanese rice balls or shapes, often filled or wrapped in nori.",
+        "pt-BR": "Onigiri são bolinhos de arroz japoneses, às vezes recheados ou envolvidos em nori."
+      },
+      "ingredients": [
+        {
+          "key": "cooked_sushi_rice",
+          "amount": 400,
+          "unit": "g",
+          "en-GB": "freshly cooked short-grain rice prepared by an adult and cooled only until safe to handle",
+          "pt-BR": "arroz japonês recém-cozido por um adulto, resfriado apenas até poder manusear"
+        },
+        {
+          "key": "nori",
+          "amount": 2,
+          "unit": "sheets",
+          "en-GB": "nori sheets, cut into strips by an adult",
+          "pt-BR": "folhas de nori cortadas em tiras por um adulto"
+        },
+        {
+          "key": "sesame",
+          "amount": 0,
+          "unit": "optional",
+          "en-GB": "omit sesame for the pilot to simplify allergen control",
+          "pt-BR": "não usar gergelim no piloto para simplificar o controle de alérgenos"
+        }
+      ],
+      "steps": [
+        {
+          "en-GB": "Ask an adult to cook rice safely. Use freshly cooked rice; do not leave it at room temperature for extended periods.",
+          "pt-BR": "Peça a um adulto para cozinhar o arroz com segurança. Use arroz recém-cozido; não deixe por muito tempo em temperatura ambiente.",
+          "adultAssist": true
+        },
+        {
+          "en-GB": "Wash hands and wait until the rice is safe to touch.",
+          "pt-BR": "Lave as mãos e espere o arroz ficar seguro para tocar.",
+          "adultAssist": false
+        },
+        {
+          "en-GB": "With clean damp hands, shape four rice balls or triangles.",
+          "pt-BR": "Com as mãos limpas e úmidas, modele quatro bolinhos ou triângulos.",
+          "adultAssist": false
+        },
+        {
+          "en-GB": "Wrap each shape with a nori strip. Eat promptly; an adult must handle any leftovers using safe rice storage guidance.",
+          "pt-BR": "Envolva cada bolinho com uma tira de nori. Consuma logo; um adulto deve cuidar das sobras seguindo as orientações de conservação segura do arroz.",
+          "adultAssist": true
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "countryCode": "BR",
+      "slug": "mini-pao-de-queijo",
+      "method": "air-fryer",
+      "servings": 4,
+      "prepMinutes": 2,
+      "cookMinutes": 12,
+      "adultAssist": [
+        "hot-air-fryer"
+      ],
+      "allergens": [
+        "milk",
+        "egg-if-present-in-product"
+      ],
+      "title": {
+        "en-GB": "Mini Pão de Queijo",
+        "pt-BR": "Mini Pão de Queijo"
+      },
+      "country": {
+        "en-GB": "Brazil",
+        "pt-BR": "Brasil"
+      },
+      "fact": {
+        "en-GB": "Pão de queijo is a beloved Brazilian cheese bread especially associated with Minas Gerais.",
+        "pt-BR": "O pão de queijo é um quitute brasileiro especialmente associado a Minas Gerais."
+      },
+      "ingredients": [
+        {
+          "key": "frozen_pao_de_queijo",
+          "amount": 12,
+          "unit": "pieces",
+          "en-GB": "small commercially prepared frozen pão de queijo; check pack allergens",
+          "pt-BR": "12 minipães de queijo congelados industrializados; confira os alérgenos na embalagem"
+        }
+      ],
+      "steps": [
+        {
+          "en-GB": "Wash hands and count twelve frozen mini cheese breads.",
+          "pt-BR": "Lave as mãos e conte doze minipães de queijo congelados.",
+          "adultAssist": false
+        },
+        {
+          "en-GB": "Ask an adult to place them in the air fryer, following the product's package temperature and time instructions.",
+          "pt-BR": "Peça a um adulto para colocá-los na airfryer, seguindo temperatura e tempo indicados na embalagem.",
+          "adultAssist": true
+        },
+        {
+          "en-GB": "An adult checks that they are cooked through, removes them and lets them cool before serving.",
+          "pt-BR": "Um adulto verifica se estão completamente assados, retira e espera esfriar antes de servir.",
+          "adultAssist": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+name: W02 V3.3 owner-review APK (fast lane)
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_apk:
+        description: Publish the installable review APK after exact-head screenshots have been visually inspected
+        type: boolean
+        required: false
+        default: false
+  push:
+    branches:
+      - feature/v3.3-world-map-explorer
+    paths:
+      - 'index.html'
+      - 'tools/v3/**'
+      - 'phase2-pilot/**'
+      - '.github/scripts/v33-world-map-sample-smoke.sh'
+      - '.github/scripts/v33-world-map-sample-smoke.mjs'
+      - '.github/scripts/v33-passport-persistence-smoke.mjs'
+      - '.github/workflows/v33-w02-review.yml'
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: aaria-w02-review-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  owner-review-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v33map${{ github.run_number }}
+    steps:
+      - name: Check out exact source head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: 8.9
+
+      - name: Run fast source contracts
+        run: |
+          set -euo pipefail
+          npm test --prefix phase2-pilot
+          node tools/v3/validate-v31.mjs
+          node tools/v3/validate-v33-world-map-drafts.mjs
+          node tools/v3/validate-pt-br-review-drafts.mjs
+          node --check tools/v3/runtime.js
+          node --check tools/v3/transform-production.mjs
+          node tools/v3/verify-v32-reference-assets.mjs
+
+      - name: Build offline runtime and isolated review assets
+        run: |
+          set -euo pipefail
+          mkdir -p dist artifacts/v33-world-map-sample/logs phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes
+          V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_2.html
+          cp dist/Aaria_Magical_Kitchen_V3_2.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          cp tools/v3/artwork/recipe-dishes-draft/manifest.json phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          cp tools/v3/artwork/recipe-dishes-draft/source/recipe-dishes-13-source-sheet.png phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          cp tools/v3/artwork/recipe-dishes-draft/*.webp phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          echo '${{ github.sha }}' > artifacts/v33-world-map-sample/logs/source-head.txt
+
+      - name: Assemble debug sample APK and unit tests
+        run: V33_MAP_SAMPLE_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+
+      - name: Verify isolated sample package and record APK hash
+        run: |
+          set -euo pipefail
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$apk" | tee artifacts/v33-world-map-sample/logs/apk-badging.txt
+          grep -Fq "package: name='${ANDROID_TEST_APP_ID}'" artifacts/v33-world-map-sample/logs/apk-badging.txt
+          grep -Fq "application-label:'Aaria Magical Kitchen V3.3 World Map Sample ${GITHUB_RUN_NUMBER}'" artifacts/v33-world-map-sample/logs/apk-badging.txt
+          "$apksigner" verify --print-certs "$apk" | tee artifacts/v33-world-map-sample/logs/apk-signer.txt
+          sha256sum "$apk" | tee artifacts/v33-world-map-sample/logs/apk-sha256.txt
+          echo 'A08_review=PENDING' > artifacts/v33-world-map-sample/logs/review-status.txt
+          echo 'A09_review=PENDING' >> artifacts/v33-world-map-sample/logs/review-status.txt
+          echo 'artwork_rights_review=PENDING' >> artifacts/v33-world-map-sample/logs/review-status.txt
+          echo 'OWNER_APPROVED=NO' > artifacts/v33-world-map-sample/logs/review-status.txt
+          echo 'REVIEW_READY=NO' >> artifacts/v33-world-map-sample/logs/review-status.txt
+          echo 'RELEASE_READY=NO' >> artifacts/v33-world-map-sample/logs/review-status.txt
+
+      - name: Enable and verify Linux KVM for Android emulator
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v33-world-map-sample/logs
+          {
+            echo "utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "runner_user=$(id)"
+            uname -a
+            free -h
+            df -h "$GITHUB_WORKSPACE"
+            if [ ! -c /dev/kvm ]; then
+              echo "/dev/kvm is missing on this runner." >&2
+              exit 1
+            fi
+            ls -l /dev/kvm
+            stat -c 'kvm_mode=%a kvm_owner=%U kvm_group=%G' /dev/kvm
+            echo "kvm_read_write_before=$(test -r /dev/kvm && test -w /dev/kvm && echo yes || echo no)"
+          } | tee artifacts/v33-world-map-sample/logs/emulator-runner-preflight.txt
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm
+          test -w /dev/kvm
+          stat -c 'kvm_mode_after=%a kvm_owner=%U kvm_group=%G' /dev/kvm | tee -a artifacts/v33-world-map-sample/logs/emulator-runner-preflight.txt
+          adb devices -l | tee artifacts/v33-world-map-sample/logs/adb-devices-before-emulator.txt
+
+      - name: W02 targeted Android phone install, launch and navigation smoke
+        timeout-minutes: 12
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_3a
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-boot-timeout: 300
+          disable-animations: false
+          disable-linux-hw-accel: false
+          script: bash .github/scripts/v33-world-map-sample-smoke.sh
+
+      - name: Publish installable owner-review APK after targeted smoke
+        if: success() && inputs.publish_apk == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.3-owner-review-apk
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload targeted smoke and readiness evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.3-owner-review-evidence
+          path: artifacts/v33-world-map-sample/
+          if-no-files-found: ignore
+          retention-days: 30

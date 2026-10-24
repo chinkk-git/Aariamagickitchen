@@ -1,0 +1,29 @@
+{
+  "batch": "B01",
+  "status": "CHANGES_REQUESTED",
+  "A08": {
+    "status": "CHANGES_REQUESTED",
+    "reviewer": "independent read-only A08 review task",
+    "evidence": "A08-review.md",
+    "findings": [
+      {"severity": "high", "recipes": [14, 15], "panels": [3, 4, 5, 6], "finding": "Adult-only cues are inconsistent across duplicated actions; recipe 15 panels 5–6 both depict air-fryer cooking but only one is labeled. Recipe 15 panels 3–4 also differ on the raw-egg/crumb step."},
+      {"severity": "high", "recipes": [11, 13, 14], "panels": [1, 2, 3, 4, 5, 6], "finding": "Shared source step wording and visual actions require panel-level reconciliation. Recipe 11 panel 1 appears to show washing while its shared source text also mentions adult cucumber cutting."}
+    ],
+    "formalGateApproval": false
+  },
+  "A09": {
+    "status": "CHANGES_REQUESTED",
+    "reviewer": "independent read-only A09 review task",
+    "evidence": "A09-review.md",
+    "findings": [
+      {"severity": "high", "recipes": [11, 12, 13, 14, 15], "finding": "Repeated or abstract pictograms leave action progression unclear; adjacent duplicate panels do not always show a clear change."},
+      {"severity": "medium", "recipes": [11, 12, 13, 14, 15], "finding": "The batch is primarily geometric utensil/food art and does not show the established original cartoon characters. Source step text and SVG descriptions are English-only; bilingual adult badges do not provide equivalent PT-BR instructions."}
+    ],
+    "formalGateApproval": false
+  },
+  "artworkRights": {
+    "status": "UNRESOLVED",
+    "evidence": null
+  },
+  "note": "Independent read-only review reports are evidence of findings, not A08/A09 formal approvals. No automated check establishes artwork rights."
+}

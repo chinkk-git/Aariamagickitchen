@@ -1,0 +1,331 @@
+name: Aaria V3.2 shared recipe renderer and test APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/v3.2-magical-cookbook
+      - feature/v3.3-world-map-explorer
+    paths:
+      - 'index.html'
+      - 'tools/v3/**'
+      - 'phase2-pilot/**'
+      - 'docs/design/**'
+      - '.github/scripts/v32-android-smoke.sh'
+      - '.github/scripts/v32-android-tablet-smoke.sh'
+      - '.github/scripts/v33-world-map-sample-smoke.sh'
+      - '.github/scripts/v33-world-map-sample-smoke.mjs'
+      - '.github/scripts/v33-passport-persistence-smoke.mjs'
+      - '.github/workflows/v32-android.yml'
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: aaria-android-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      ANDROID_TEST_APP_ID: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && format('com.aaria.magickitchen.pilot.v33map{0}', github.run_number) || format('com.aaria.magickitchen.pilot.v32review{0}', github.run_number) }}
+    steps:
+      - name: Check out exact V3.2 source head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: 8.9
+
+      - name: Build offline shared recipe renderer and stage draft review assets
+        run: |
+          set -euo pipefail
+          mkdir -p dist artifacts/v32-diagnostics phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes
+          V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_2.html
+          cp dist/Aaria_Magical_Kitchen_V3_2.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          cp tools/v3/artwork/recipe-dishes-draft/manifest.json phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          cp tools/v3/artwork/recipe-dishes-draft/source/recipe-dishes-13-source-sheet.png phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          cp tools/v3/artwork/recipe-dishes-draft/*.webp phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
+
+      - name: Build isolated debug-only artwork review routes
+        run: node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+
+      - name: Run Android unit tests and assemble isolated test APK
+        run: |
+          if [[ "$GITHUB_REF_NAME" == "feature/v3.3-world-map-explorer" ]]; then
+            V33_MAP_SAMPLE_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+          else
+            V32_REVIEW_BUILD_SUFFIX="${GITHUB_RUN_NUMBER}" gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+          fi
+
+      - name: Verify test package, 95 recipes and draft-only artwork payload
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v32-diagnostics
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$apk" > artifacts/v32-diagnostics/test-apk-badging.txt
+          "$apksigner" verify --print-certs "$apk" > artifacts/v32-diagnostics/test-apk-signer.txt
+          if [[ "$GITHUB_REF_NAME" == "feature/v3.3-world-map-explorer" ]]; then
+            grep -Fq "package: name='com.aaria.magickitchen.pilot.v33map${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
+            grep -Fq "application-label:'Aaria Magical Kitchen V3.3 World Map Sample ${GITHUB_RUN_NUMBER}'" artifacts/v32-diagnostics/test-apk-badging.txt
+          else
+            grep -Fq "package: name='com.aaria.magickitchen.pilot.v32review${GITHUB_RUN_NUMBER}' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/test-apk-badging.txt
+          fi
+          "$aapt" dump xmltree "$apk" AndroidManifest.xml > artifacts/v32-diagnostics/test-apk-manifest.txt
+          grep -Fq "${ANDROID_TEST_APP_ID}.share" artifacts/v32-diagnostics/test-apk-manifest.txt
+          test "$(unzip -Z1 "$apk" | grep -Fxc 'assets/artwork-review/index.html')" -eq 1
+          unzip -p "$apk" assets/artwork-review/index.html | grep -Fq '<title>Draft artwork review — Batches 01–05</title>'
+          if unzip -p "$apk" assets/index.html | grep -Fq 'Draft artwork review'; then
+            echo 'Debug-only artwork review must not be included in the runtime page.' >&2
+            exit 1
+          fi
+          unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Spin My Week'
+          unzip -p "$apk" assets/index.html | grep -Fq 'data-v32-theme'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Cozinha mágica da Aaria'
+          if unzip -p "$apk" assets/index.html | grep -Fq 'recipe-dishes-draft'; then
+            echo 'Draft dish artwork must not be promoted into the runtime page.' >&2
+            exit 1
+          fi
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review-v32/dishes/recipe-[0-9]+-[a-z0-9-]+\.webp$')" -eq 13
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review-v32/dishes/manifest.json'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review-v32/dishes/recipe-dishes-13-source-sheet.png'
+          echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
+          sha256sum "$apk" | tee artifacts/v32-diagnostics/apk-sha256.txt
+          printf 'A08_review=HOLD\nA09_review=HOLD\nartwork_rights=HOLD\nrelease=NOT_AUTHORIZED\n' > artifacts/v32-diagnostics/gates.txt
+
+      - name: G1 FAST PREFLIGHT — contracts, evidence harness and SDK integrity
+        run: |
+          set -euo pipefail
+          npm test --prefix phase2-pilot
+          node tools/v3/validate-v31.mjs
+          node tools/v3/validate-v33-world-map-drafts.mjs
+          node tools/v3/validate-pt-br-review-drafts.mjs
+          node --check tools/v3/runtime.js
+          node --check tools/v3/transform-production.mjs
+          node tools/v3/verify-v32-reference-assets.mjs
+          node --check tools/v3/qa/android-system-image.mjs
+          node --check tools/v3/qa/android-evidence-manifest.mjs
+          node tools/v3/qa/android-system-image.mjs
+
+
+      - name: Download previous V3.2 preview for install-conflict regression
+        if: github.run_number == 74
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-test-apk
+          path: artifacts/v32-previous-preview-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39662030525
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download prior uniquely identified V3.2 review APK for coexistence
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.2-test-apk
+          path: artifacts/v32-previous-review-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39666012130
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify prior V3.2 review APK identity and integrity
+        run: |
+          set -euo pipefail
+          prior=artifacts/v32-previous-review-apk/app-debug.apk
+          test -s "$prior"
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$prior" > artifacts/v32-diagnostics/prior-review-apk-badging.txt
+          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32review70' versionCode='8' versionName='1.0.4'" artifacts/v32-diagnostics/prior-review-apk-badging.txt
+          "$apksigner" verify --print-certs "$prior" > artifacts/v32-diagnostics/prior-review-apk-signer.txt
+          grep -Fq 'certificate SHA-256 digest: 6635474c461b5ae5e6206624e1be07184258df35e94782aeb236308e9e013c46' artifacts/v32-diagnostics/prior-review-apk-signer.txt
+          echo 'c7cd47fe6b18c7da1053ef355aad7f634ae306a1306ce7718950bcb26f73333b  '"$prior" | sha256sum --check
+          sha256sum "$prior" | tee artifacts/v32-diagnostics/prior-review-apk-sha256.txt
+
+      - name: Verify previous V3.2 preview identity for coexistence test
+        if: github.run_number == 74
+        run: |
+          set -euo pipefail
+          prior=artifacts/v32-previous-preview-apk/app-debug.apk
+          test -s "$prior"
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$prior" > artifacts/v32-diagnostics/previous-v32-apk-badging.txt
+          grep -Fq "package: name='com.aaria.magickitchen.pilot.v32preview' versionCode='7' versionName='1.0.3'" artifacts/v32-diagnostics/previous-v32-apk-badging.txt
+          "$apksigner" verify --print-certs "$prior" > artifacts/v32-diagnostics/previous-v32-apk-signer.txt
+          grep -Fq "certificate SHA-256 digest: 59a4885f3baacb9434f99e0c6cf3373b9ae6b8384d254627c2ab40361dfcde44" artifacts/v32-diagnostics/previous-v32-apk-signer.txt
+          sha256sum "$prior" | tee artifacts/v32-diagnostics/previous-v32-apk-sha256.txt
+
+      - name: Download Classic preview for nondestructive coexistence check
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-w01-unified-preview-apk
+          path: artifacts/v31-baseline-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39528150224
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable and verify Linux KVM for Android emulator
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v32-diagnostics
+          {
+            echo "utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "runner_user=$(id)"
+            uname -a
+            free -h
+            df -h "$GITHUB_WORKSPACE"
+            if [ ! -c /dev/kvm ]; then
+              echo "/dev/kvm is missing on this runner." >&2
+              exit 1
+            fi
+            ls -l /dev/kvm
+            stat -c 'kvm_mode=%a kvm_owner=%U kvm_group=%G' /dev/kvm
+            echo "kvm_read_write_before=$(test -r /dev/kvm && test -w /dev/kvm && echo yes || echo no)"
+          } | tee artifacts/v32-diagnostics/emulator-runner-preflight.txt
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          sudo chmod 0666 /dev/kvm
+          test -r /dev/kvm
+          test -w /dev/kvm
+          stat -c 'kvm_mode_after=%a kvm_owner=%U kvm_group=%G' /dev/kvm | tee -a artifacts/v32-diagnostics/emulator-runner-preflight.txt
+          adb devices -l | tee artifacts/v32-diagnostics/adb-devices-before-emulator.txt
+
+      - name: Set up Python for screenshot comparisons
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned screenshot comparison dependency
+        run: python -m pip install --disable-pip-version-check Pillow==11.3.0
+
+      - name: W02 SAMPLE — clean phone install and Home → World → recipe → Back
+        if: github.ref_name == 'feature/v3.3-world-map-explorer'
+        timeout-minutes: 10
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_3a
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-boot-timeout: 300
+          disable-animations: true
+          disable-linux-hw-accel: false
+          script: bash .github/scripts/v33-world-map-sample-smoke.sh
+
+      - name: Upload W02 phone sample smoke evidence
+        if: always() && github.ref_name == 'feature/v3.3-world-map-explorer'
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.3-world-map-sample-smoke
+          path: artifacts/v33-world-map-sample/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: G2 TARGETED DEVICE SMOKE — recipe 12 on Pixel Tablet first
+        timeout-minutes: 50
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_tablet
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-boot-timeout: 300
+          disable-animations: true
+          disable-linux-hw-accel: false
+          script: bash .github/scripts/v32-android-tablet-smoke.sh
+
+
+      - name: G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes
+        timeout-minutes: 20
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 36
+          arch: x86_64
+          profile: pixel_3a
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          emulator-boot-timeout: 300
+          disable-animations: true
+          disable-linux-hw-accel: false
+          script: bash .github/scripts/v32-android-smoke.sh
+
+      - name: Require complete Android screenshot manifest and 95-route regression
+        run: node tools/v3/qa/android-evidence-manifest.mjs
+
+
+      - name: Compare phone and tablet screens with approved Home and World references
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v31-android-screenshots artifacts/v31-diagnostics artifacts/v32-diagnostics
+          python3 -m py_compile tools/v3/compare-home-world-reference.py
+          if [ -s artifacts/v32-android-screenshots/v31-home-portrait.png ] && [ -s artifacts/v32-android-screenshots/v31-world-portrait.png ]; then
+            cp artifacts/v32-android-screenshots/v31-home-portrait.png artifacts/v31-android-screenshots/v31-home-portrait.png
+            cp artifacts/v32-android-screenshots/v31-world-portrait.png artifacts/v31-android-screenshots/v31-world-portrait.png
+            python3 tools/v3/compare-home-world-reference.py
+            cp artifacts/v31-diagnostics/home-world-reference-comparison.png artifacts/v32-diagnostics/home-world-phone-reference-comparison.png
+            cp artifacts/v31-diagnostics/home-world-reference-comparison.json artifacts/v32-diagnostics/home-world-phone-reference-comparison.json
+          else
+            echo 'phone_reference_comparison=BLOCKED_MISSING_SCREENSHOTS' > artifacts/v32-diagnostics/phone-reference-comparison-status.txt
+          fi
+          if [ -s artifacts/v32-android-screenshots/tablet/home-portrait.png ] && [ -s artifacts/v32-android-screenshots/tablet/world-portrait.png ]; then
+            cp artifacts/v32-android-screenshots/tablet/home-portrait.png artifacts/v31-android-screenshots/v31-home-portrait.png
+            cp artifacts/v32-android-screenshots/tablet/world-portrait.png artifacts/v31-android-screenshots/v31-world-portrait.png
+            python3 tools/v3/compare-home-world-reference.py
+            cp artifacts/v31-diagnostics/home-world-reference-comparison.png artifacts/v32-diagnostics/home-world-tablet-reference-comparison.png
+            cp artifacts/v31-diagnostics/home-world-reference-comparison.json artifacts/v32-diagnostics/home-world-tablet-reference-comparison.json
+          else
+            echo 'tablet_reference_comparison=BLOCKED_MISSING_SCREENSHOTS' > artifacts/v32-diagnostics/tablet-reference-comparison-status.txt
+          fi
+          if [ -s artifacts/v32-android-screenshots/recipe-image-12-phone-portrait-step-1.png ]; then
+            python3 tools/v3/compare-recipe12-step-reference.py
+          else
+            echo 'recipe12_step_reference_comparison=BLOCKED_MISSING_PHONE_SCREENSHOT' > artifacts/v32-diagnostics/recipe12-step-reference-comparison-status.txt
+          fi
+
+      - name: Upload isolated V3.2 test APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && 'aaria-magical-kitchen-v3.3-world-map-sample-apk' || 'aaria-magical-kitchen-v3.2-test-apk' }}
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload screenshots and gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref_name == 'feature/v3.3-world-map-explorer' && 'aaria-magical-kitchen-v3.3-world-map-sample-evidence' || 'aaria-magical-kitchen-v3.2-test-evidence' }}
+          path: |
+            artifacts/v32-diagnostics/
+            artifacts/v32-android-screenshots/
+            artifacts/v31-android-screenshots/
+            artifacts/v31-diagnostics/
+            phase2-pilot/apps/aaria-android/app/src/main/assets/artwork-review-v32/dishes/
+          if-no-files-found: warn
+          retention-days: 30
