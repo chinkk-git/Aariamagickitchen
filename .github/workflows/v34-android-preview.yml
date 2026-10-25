@@ -33,8 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
-      V34_PREVIEW_BUILD_SUFFIX: ${{ github.run_number }}
-      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34preview${{ github.run_number }}
+      V34_PREVIEW_BUILD_SUFFIX: owner
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewowner
     steps:
       - name: Check out exact V3.4 source head
         uses: actions/checkout@v4
@@ -51,6 +51,11 @@ jobs:
           java-version: '17'
       - name: Set up Android SDK and Gradle
         uses: android-actions/setup-android@v4
+      - name: Restore the stable V3.4 preview debug signer
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: aaria-v34-preview-debug-keystore-v1
       - uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: 8.9
@@ -67,7 +72,9 @@ jobs:
           node --check .github/scripts/v34-dual-home-smoke.mjs
           test "$(grep -o 'data-v34-style=' tools/v3/v34-dual-home.js | wc -l)" -ge 2
       - name: Run Android unit tests and build isolated V3.4 preview APK
-        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+        run: |
+          echo "V34_PREVIEW_VERSION_CODE=$((8 + GITHUB_RUN_NUMBER))" >> "$GITHUB_ENV"
+          gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
       - name: Record package, signing certificate and APK SHA-256
         run: |
           set -euo pipefail
@@ -76,13 +83,13 @@ jobs:
           apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           "$aapt" dump badging "$apk" > artifacts/v34-preview/apk-badging.txt
           "$apksigner" verify --print-certs "$apk" > artifacts/v34-preview/apk-signer.txt
-          grep -Fq "package: name='${ANDROID_TEST_APP_ID}' versionCode='8' versionName='1.0.4'" artifacts/v34-preview/apk-badging.txt
-          grep -Fq "application-label:'Aaria Magical Kitchen V3.4 Home Preview ${V34_PREVIEW_BUILD_SUFFIX}'" artifacts/v34-preview/apk-badging.txt
+          grep -Fq "package: name='${ANDROID_TEST_APP_ID}' versionCode='${V34_PREVIEW_VERSION_CODE}' versionName='3.4.$((GITHUB_RUN_NUMBER))'" artifacts/v34-preview/apk-badging.txt
+          grep -Fq "application-label:'Aaria Magical Kitchen V3.4 Home Preview'" artifacts/v34-preview/apk-badging.txt
           echo "$GITHUB_SHA" > artifacts/v34-preview/source-head.txt
           echo "$ANDROID_TEST_APP_ID" > artifacts/v34-preview/package-id.txt
           sha256sum "$apk" | tee artifacts/v34-preview/apk-sha256.txt
           cp "$apk" artifacts/v34-preview/Aaria_V3_4_Dual_Home_Preview.apk
-          printf 'signing=isolated Android debug key\npackage=co-installable V3.4 preview ID\nin_place_upgrade=NOT_CLAIMED\nproduction_release=NOT_AUTHORIZED\n' > artifacts/v34-preview/compatibility.txt
+          printf 'signing=V3.4 branch-scoped cached Android debug key\npackage=stable co-installable V3.4 preview ID\npreview_update=stable package, signer and increasing versionCode\nproduction_package_or_signer_upgrade=NOT_CLAIMED\nproduction_release=NOT_AUTHORIZED\n' > artifacts/v34-preview/compatibility.txt
       - name: Upload installable V3.4 preview APK and build evidence
         uses: actions/upload-artifact@v4
         with:
@@ -100,7 +107,7 @@ jobs:
       matrix:
         device: [phone, tablet]
     env:
-      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34preview${{ github.run_number }}
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewowner
       V34_DEVICE: ${{ matrix.device }}
     steps:
       - name: Check out smoke harness at the exact V3.4 commit

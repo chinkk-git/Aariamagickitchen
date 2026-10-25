@@ -12,6 +12,7 @@ val v33MapSampleBuildSuffix = System.getenv("V33_MAP_SAMPLE_BUILD_SUFFIX")?.trim
 val v32ReviewBuildSuffix = System.getenv("V32_REVIEW_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) } ?: "local"
 val w01OwnerReviewBuildSuffix = System.getenv("W01_OWNER_REVIEW_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) }
 val v34PreviewBuildSuffix = System.getenv("V34_PREVIEW_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) }
+val v34PreviewVersionCode = System.getenv("V34_PREVIEW_VERSION_CODE")?.toIntOrNull()?.takeIf { it > 8 }
 if (releaseSigningValues.any { it != null } && !releaseSigningConfigured) {
     throw GradleException("Release signing is partially configured; provide all protected signing inputs.")
 }
@@ -45,7 +46,7 @@ android {
             }
             resValue("string", "app_name", when {
                 v33MapSampleBuildSuffix != null -> "Aaria Magical Kitchen V3.3 World Map Sample ${v33MapSampleBuildSuffix}"
-                v34PreviewBuildSuffix != null -> "Aaria Magical Kitchen V3.4 Home Preview ${v34PreviewBuildSuffix}"
+                v34PreviewBuildSuffix != null -> "Aaria Magical Kitchen V3.4 Home Preview"
                 w01OwnerReviewBuildSuffix != null -> "Aaria Magical Kitchen W01 Owner Review ${w01OwnerReviewBuildSuffix}"
                 else -> "Aaria Magical Kitchen V3.2 Visual Review ${v32ReviewBuildSuffix}"
             })
@@ -60,8 +61,8 @@ android {
         applicationId = "com.aaria.magickitchen.pilot"
         minSdk = 26
         targetSdk = 34
-        versionCode = 8
-        versionName = "1.0.4"
+        versionCode = v34PreviewVersionCode ?: 8
+        versionName = if (v34PreviewBuildSuffix != null) "3.4.${(v34PreviewVersionCode ?: 9) - 8}" else "1.0.4"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
