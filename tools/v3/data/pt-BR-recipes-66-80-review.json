@@ -1,0 +1,114 @@
+{
+  "status": "W01_DRAFT_PENDING_INDEPENDENT_REVIEW",
+  "source": "canonical index.html records 66-80",
+  "locale": "pt-BR",
+  "independentReviewRequired": ["A08_child_safety", "A09_child_experience", "native_PT_BR_translation"],
+  "familyRoleCopy": "Aaria é a chef principal. Mamãe e Papai participam; um adulto cuida do fogão, do forno e de alimentos quentes conforme indicado em cada etapa.",
+  "recipes": {
+    "66": {
+      "title": "Lasanha Arco-Íris de Legumes",
+      "ingredients": ["250 g de farinha de trigo branca", "2 ovos médios (100 g de peso comestível)", "30 g de água para a massa", "180 g de molho de tomate simples", "150 g de abobrinha crua em fatias finas", "100 g de cenoura crua ralada", "150 g de muçarela integral ralada", "5 g de azeite para a assadeira", "1 g de sal de mesa"],
+      "steps": ["Coloque a farinha em uma tigela. Quebre os ovos e acrescente a água medida. Misture e amasse até formar uma massa lisa. Lave as mãos depois de manusear ovos crus.", "Polvilhe um pouco de farinha na bancada e abra a massa em folhas finas com um rolo de madeira. Corte folhas largas de massa com um cortador de massa sem ponta.", "Espalhe um pouco de molho de tomate na assadeira. Faça camadas de massa, abobrinha, cenoura e muçarela; repita e termine com molho e queijo.", "Um adulto coloca a assadeira no forno preaquecido a 180°C e assa até a massa ficar macia e o centro bem quente, por cerca de 25–30 minutos. Um adulto retira a assadeira; deixe esfriar antes de servir."],
+      "extras": ["Aaria é a chef principal; um adulto cuida do forno e verifica se está pronto. Não se usa timer."],
+      "safety": "Contém trigo/glúten, ovo e leite. Um adulto cuida do forno quente e da assadeira. Lave mãos e superfícies depois de manusear ovo cru; não coma massa crua."
+    },
+    "67": {
+      "title": "Paratha de Paneer com Queijo",
+      "ingredients": ["240 g de farinha de trigo integral", "180 g de paneer esfarelado", "120 g de água potável para a massa", "8 g de folhas de coentro fresco picadas bem finas", "10 g de azeite para cozinhar na frigideira", "1,5 g de sal de mesa", "1 g de cominho em pó"],
+      "steps": ["Misture a farinha integral e o sal em uma tigela. Acrescente a água medida aos poucos e amasse até obter uma massa macia. Cubra e deixe descansar. Enquanto isso, esfarele o paneer e misture com o coentro picado e o cominho.", "Divida a massa em quatro bolas iguais e achate cada uma. Coloque um quarto do recheio de paneer em cada uma e feche a massa ao redor do recheio.", "Polvilhe um pouco de farinha na bancada. Abra cada bola recheada com cuidado, formando um paratha redondo com um rolo de madeira.", "Um adulto cozinha cada paratha em uma frigideira quente levemente untada até os dois lados ficarem cozidos por dentro e dourados com pintinhas. O adulto cuida do fogão; deixe os parathas esfriarem antes de servir."],
+      "extras": ["Aaria é a chef principal; um adulto cuida da frigideira quente."],
+      "safety": "Contém trigo/glúten e leite. Um adulto cuida da frigideira quente. Mantenha a massa crua separada do recheio pronto para comer; lave as mãos depois de manusear farinha."
+    },
+    "68": {
+      "title": "Mini-hambúrgueres de Frango",
+      "ingredients": ["240 g de frango moído cru", "4 pãezinhos simples pequenos (100 g no total)", "40 g de muçarela integral ralada", "20 g de alface verde lavada", "60 g de tomate cru em fatias finas", "30 g de cebola crua picada bem fina", "5 g de azeite para a frigideira", "1 g de sal de mesa"],
+      "steps": ["Lave as mãos. Separe os pãezinhos, a alface lavada e o queijo medido. Um adulto corta o tomate e a cebola com uma faca.", "Um adulto modela o frango moído cru e a cebola em quatro hambúrgueres pequenos e cozinha em uma frigideira levemente untada. Um termômetro culinário deve indicar 74°C no centro. Mantenha os utensílios do frango cru separados.", "Depois que os hambúrgueres estiverem totalmente cozidos, Aaria monta cada um com um hambúrguer, muçarela, alface e tomate dentro de um pãozinho.", "Coloque os mini-hambúrgueres em um prato limpo e sirva quando estiverem em temperatura segura. Lave mãos, tábua e utensílios que tocaram no frango cru."],
+      "extras": [],
+      "safety": "Contém trigo/glúten e leite. Frango cru e fogão são tarefas exclusivas de um adulto. Cozinhe o frango até 74°C/165°F no centro usando um termômetro culinário; lave as mãos e evite contaminação cruzada."
+    },
+    "69": {
+      "title": "Biryani de Legumes",
+      "ingredients": ["200 g de arroz branco de grão longo cru", "80 g de ervilhas verdes cozidas e escorridas", "80 g de cenoura cozida e escorrida", "100 g de couve-flor cozida e escorrida", "60 g de cebola crua picada bem fina", "100 g de tomate cru picado", "10 g de azeite", "2 g de cúrcuma em pó", "1 g de cominho em pó", "0,5 g de pimenta-do-reino em pó", "1,5 g de sal de mesa", "450 g de água potável"],
+      "steps": ["Lave o arroz em uma peneira fina até a água sair quase transparente. Escorra enquanto os legumes e temperos medidos são preparados.", "Meça as ervilhas, a cenoura e a couve-flor cozidas. Um adulto pica a cebola bem fina; Aaria mede o tomate, os temperos e o sal em tigelinhas.", "Um adulto aquece o azeite em uma panela funda, amolece a cebola, acrescenta tomate e temperos e depois mistura o arroz, os legumes e a água medida. Tampe e cozinhe em fogo baixo até o arroz ficar macio e a água ser absorvida.", "Um adulto desliga o fogão e confirma que a panela está segura. Aaria solta o arroz delicadamente com um garfo e o serve em tigelas; deixe esfriar antes de comer."],
+      "extras": [],
+      "safety": "Não contém os principais alérgenos prioritários conforme listados; confira os rótulos dos temperos para avisos de contaminação cruzada. Um adulto cuida do fogão, do azeite quente e da panela. Mantenha o arroz quente até servir e refrigere as sobras rapidamente."
+    },
+    "70": {
+      "title": "Tortinhas de Frango e Legumes",
+      "ingredients": ["280 g de massa folhada pronta para assar", "200 g de peito de frango assado, cozido, sem pele e picado", "80 g de ervilhas verdes cozidas e escorridas", "80 g de cenoura cozida, escorrida e em cubos", "40 g de cebola crua picada bem fina", "120 g de leite integral", "15 g de farinha de trigo branca", "14,2 g de manteiga sem sal", "1 g de sal de mesa"],
+      "steps": ["Aaria abre a massa em uma tábua limpa e separa quatro forminhas pequenas. Um adulto prepara um molho espesso de manteiga, farinha e leite, mistura com o frango cozido e os legumes e deixa o recheio esfriar antes de usar.", "Coloque o recheio frio nas bases de massa, cubra cada uma com uma tampa de massa e feche as bordas com cuidado usando um utensílio sem ponta.", "Um adulto coloca as tortinhas no forno preaquecido a 200°C e assa até a massa crescer e ficar dourada e o recheio bem quente. O adulto cuida do forno e das formas quentes.", "Um adulto verifica se o recheio está soltando vapor e bem quente por inteiro, retira as tortinhas e deixa esfriar. Aaria ajuda a servir as tortinhas frias em um prato limpo."],
+      "extras": [],
+      "safety": "Contém trigo/glúten e leite. Um adulto cuida do forno, das formas quentes e da panela do molho. Se usar frango cozido refrigerado, mantenha-o frio até usar e reaqueça o recheio a 74°C/165°F; não sirva morno."
+    },
+    "71": {
+      "title": "Copinhos de Arroz-Doce com Coco",
+      "ingredients": ["400 g de arroz branco glutinoso cozido", "300 g de leite integral", "80 g de leite condensado", "18 g de coco seco sem açúcar", "0,5 g de sal de mesa"],
+      "steps": ["Aaria mede o arroz cozido, o leite, o leite condensado, o coco e o sal em uma panela. Com o fogão desligado, ela mistura tudo; um adulto fica ao lado.", "Um adulto coloca o fogão em fogo baixo e permanece junto à panela. Aaria observa do lado seguro da bancada e avisa o adulto quando mexer; o adulto aquece a mistura devagar, mexendo com frequência, até ficar cremosa. Não deixe ferver.", "O adulto desliga o fogão e leva a panela para uma área resistente ao calor. Todos esperam até o arroz-doce ficar morno, não quente. Confira se está cremoso e se o arroz está macio; o adulto cuida da panela quente.", "Aaria coloca o arroz-doce frio em quatro copinhos com um adulto por perto. Refrigere rapidamente se não for comer logo."],
+      "extras": [],
+      "safety": "Um adulto opera o fogão e cuida da panela quente. Deixe o arroz-doce esfriar antes de servir. Refrigere as sobras rapidamente; use em até 2 dias como orientação doméstica conservadora."
+    },
+    "72": {
+      "title": "Paneer Manteiga Masala",
+      "ingredients": ["300 g de paneer cortado em cubos de 2 cm", "200 g de tomates vermelhos maduros picados", "80 g de cebola picada bem fina", "10 g de manteiga sem sal", "120 g de leite integral", "13,5 g de azeite", "1 g de cominho em pó", "0,5 g de cúrcuma em pó", "1 g de sal de mesa"],
+      "steps": ["Aaria confere os ingredientes e mede o cominho, a cúrcuma e o sal. Um adulto corta o paneer e a cebola com uma faca afiada; Aaria pode colocar o paneer em uma tigela e medir o leite.", "Um adulto aquece o azeite e a manteiga em uma panela funda em fogo médio-baixo e cozinha a cebola até amolecer. Acrescente os tomates picados e os temperos; o adulto mexe até os tomates amolecerem e virarem molho.", "O adulto acrescenta os cubos de paneer e o leite e cozinha em fogo baixo até o paneer ficar bem quente por inteiro e o molho ficar liso. Aaria permanece no lado seguro da bancada e orienta o adulto; o adulto cuida da panela e da colher quentes.", "O adulto desliga o fogão e leva a panela para um local resistente ao calor. Sirva porções pequenas com arroz ou roti preparados separadamente; deixe o curry esfriar até uma temperatura segura para comer."],
+      "extras": [],
+      "safety": "Um adulto cuida da faca, do fogão e da panela quente. Use temperos suaves; não acrescente pimenta chili. Aqueça bem o paneer e deixe esfriar antes de servir."
+    },
+    "73": {
+      "title": "Quiche de Espinafre e Milho",
+      "ingredients": ["250 g de massa folhada pronta, já aberta", "150 g de ovo inteiro cru, sem casca (cerca de 3 ovos grandes)", "70 g de espinafre cru lavado e picado", "60 g de milho-doce enlatado e escorrido", "50 g de cheddar ralado", "60 g de leite integral", "30 g de cebola picada bem fina"],
+      "steps": ["Aaria abre a massa com um adulto por perto e a pressiona delicadamente em uma forma de torta de 20 cm. Um adulto aparara as bordas da massa e fura a base com um garfo. Mantenha a forma em uma superfície estável.", "Aaria bate os ovos e o leite em uma tigela e mistura o milho escorrido e o cheddar ralado. Um adulto pica a cebola e o espinafre bem finos; acrescente-os à tigela e misture.", "Despeje o recheio na massa. Aaria pode ajudar a espalhar o espinafre por igual. Um adulto coloca a forma em uma assadeira e a leva ao forno preaquecido.", "Um adulto assa a 200°C até a massa dourar e o recheio de ovo ficar totalmente firme no centro, por cerca de 25–30 minutos. O adulto retira a forma quente e deixa a quiche esfriar antes de cortar."],
+      "extras": [],
+      "safety": "Um adulto cuida do forno, da forma quente e da faca afiada. Asse até o centro com ovo ficar totalmente firme. Deixe esfriar antes de cortar; refrigere as sobras rapidamente."
+    },
+    "74": {
+      "title": "Mini-samosas de Legumes",
+      "ingredients": ["180 g de farinha de trigo branca", "75 g de água para a massa", "20 g de azeite para a massa", "220 g de batata cozida, descascada e amassada", "80 g de ervilhas verdes cozidas e escorridas", "60 g de cenoura cozida, escorrida e em cubos", "1 g de cominho em pó", "3 g de folhas de coentro cru picadas bem finas", "2 g de sal de mesa", "8 g de azeite para pincelar"],
+      "steps": ["Aaria mistura a farinha e o azeite medido em uma tigela, depois acrescenta a água aos poucos e amassa até formar uma massa macia. Cubra a tigela enquanto prepara o recheio.", "Amasse a batata já cozida com as ervilhas, a cenoura, o cominho, o coentro e o sal. Aaria pode mexer e amassar com um garfo; um adulto confere se os legumes estão frios o suficiente para manusear.", "Um adulto divide a massa em oito pedaços e abre cada um em um oval pequeno. Aaria coloca uma colherada de recheio no centro; dobre em um triângulo e pressione bem as bordas para fechar. Não coloque recheio demais.", "Aaria pincela as samosas levemente com o azeite medido. Um adulto as arruma em uma assadeira forrada e assa a 200°C até ficarem douradas e crocantes, por cerca de 20–25 minutos. O adulto cuida do forno e da assadeira quentes."],
+      "extras": [],
+      "safety": "Um adulto cuida de água quente, se necessária, do forno e da assadeira quente. Use legumes cozidos e frios no recheio. Deixe as samosas esfriarem antes de comer; evite servir recheio muito quente e duro."
+    },
+    "75": {
+      "title": "Ravióli de Frango e Espinafre",
+      "ingredients": ["250 g de farinha de trigo branca", "100 g de ovo inteiro cru, sem casca (cerca de 2 ovos grandes)", "50 g de água potável para a massa", "120 g de peito de frango assado, cozido, desfiado bem fino e refrigerado", "70 g de espinafre cru lavado e picado bem fino", "60 g de muçarela integral ralada", "13,5 g de azeite", "2 g de sal de mesa"],
+      "steps": ["Aaria mistura a farinha e o sal em uma tigela, depois acrescenta os ovos, a água e o azeite. Misture e amasse até formar uma massa firme. Um adulto ajuda se a massa estiver dura; cubra e deixe descansar enquanto prepara o recheio.", "Use somente frango que já tenha sido totalmente cozido, resfriado e mantido na geladeira. Aaria mistura o frango desfiado com o espinafre e a muçarela. Um adulto verifica se há ossos e pica o espinafre bem fino.", "Um adulto abre a massa fina em uma superfície enfarinhada. Aaria coloca pequenas porções de recheio com cerca de 4 cm de distância, cobre com outra folha de massa, pressiona ao redor de cada porção para retirar o ar e fecha as bordas. Um adulto corta os raviólis com um cortador de massa sem ponta.", "Um adulto coloca os raviólis em uma panela grande com água em fervura suave e cozinha até a massa ficar macia e o recheio soltar vapor e ficar bem quente. Retire com uma escumadeira; o adulto cuida da água fervente. Confira se o centro está quente e deixe esfriar antes de servir."],
+      "extras": [],
+      "safety": "Um adulto confere e prepara o frango cozido, usa o cortador de massa e cuida da água fervente e da panela quente. Refrigere o frango cozido rapidamente e use nesta receita em até 2 dias; não use frango que ficou em temperatura ambiente. Cozinhe os raviólis até ficarem bem quentes por inteiro; deixe esfriar antes de comer."
+    },
+    "76": {
+      "title": "Macarrão Arco-Íris com Legumes",
+      "ingredients": ["250 g de macarrão de arroz cozido e frio", "80 g de cenoura crua cortada em tiras finas", "80 g de pimentão vermelho cru em tiras finas", "100 g de brócolis cozido e frio", "100 g de ervilhas cozidas e frias", "9 g de azeite", "1 g de sal fino"],
+      "steps": ["Lave a cenoura e o pimentão. Um adulto cozinha o macarrão, o brócolis e as ervilhas e depois os resfria com segurança.", "Com as mãos limpas, coloque o macarrão e os legumes frios em uma tigela grande. Aaria pode usar uma pinça infantil segura para acrescentar os legumes coloridos.", "Regue com o azeite medido e polvilhe o sal medido. Misture delicadamente até as cores ficarem distribuídas.", "Divida o macarrão com legumes entre quatro tigelas e confira se cada pedaço está frio antes de comer."],
+      "extras": ["Use tesouras culinárias infantis seguras somente com um adulto ao lado de Aaria; a criança não deve cortar."],
+      "safety": "Um adulto deve cuidar da água fervente e cozinhar/resfriar o macarrão e os legumes. Refrigere rapidamente o macarrão de arroz cozido; mantenha frio até servir. Evite contaminação cruzada com alérgenos."
+    },
+    "77": {
+      "title": "Cupcakes de Morango",
+      "ingredients": ["120 g de farinha de trigo branca", "90 g de açúcar cristal", "100 g de ovo inteiro batido (cerca de 2 ovos grandes)", "60 g de manteiga sem sal amolecida", "60 g de leite integral", "100 g de morangos picados bem finos", "80 g de cream cheese tradicional amolecido (cobertura)", "20 g de açúcar cristal (cobertura)", "1 g de bicarbonato de sódio"],
+      "steps": ["Lave e pique os morangos bem finos. Separe alguns pedaços pequenos para decorar.", "Com um adulto, bata a manteiga amolecida e o açúcar até ficar cremoso. Misture os ovos, depois incorpore a farinha, o bicarbonato e o leite. Misture os morangos picados.", "Distribua a massa igualmente em oito forminhas de papel dentro de uma forma de muffin. Um adulto confere se o forno está preaquecido a 180°C e assa até os centros ficarem firmes.", "Um adulto retira a forma quente e deixa os cupcakes esfriarem por completo. Misture o cream cheese com o açúcar medido para a cobertura, espalhe nos bolinhos frios e acrescente os pedaços de morango."],
+      "extras": ["Não prove a massa crua."],
+      "safety": "Um adulto opera o forno e cuida da forma quente. Não coma massa crua que contenha farinha ou ovo. Refrigere rapidamente os cupcakes com cobertura de cream cheese; mantenha frios até servir. Confira alergias a trigo/glúten, ovo e leite, e avisos de contaminação cruzada nas embalagens."
+    },
+    "78": {
+      "title": "Batatas Recheadas em Barquinhos",
+      "ingredients": ["600 g de polpa e casca de batata russet assada (4 batatas pequenas/médias)", "120 g de brócolis cozido e escorrido", "100 g de milho-doce enlatado e escorrido", "80 g de cheddar ralado", "60 g de iogurte grego natural integral", "1 g de sal fino"],
+      "steps": ["Lave quatro batatas russet. Um adulto assa até ficarem macias e depois deixa esfriar o suficiente para manusear.", "Aaria pode retirar o centro frio com uma colher, deixando uma casca de batata firme. Um adulto cuida de qualquer batata quente ou ferramenta afiada.", "Amasse a batata com o brócolis cozido, o milho escorrido, o iogurte e o cheddar medido. Coloque o recheio de volta nas cascas.", "Um adulto leva os barquinhos de volta ao forno até o recheio ficar bem quente e o queijo derreter. Deixe esfriar até uma temperatura segura antes de servir."],
+      "extras": ["Sirva com mais iogurte natural, se desejar; a cobertura opcional não está incluída na nutrição."],
+      "safety": "Um adulto cuida do forno, da assadeira quente e de qualquer ferramenta afiada. Deixe as batatas esfriarem antes de Aaria retirar o centro. Reaqueça as sobras até soltarem vapor por inteiro; refrigere rapidamente. Contém leite; confira avisos de contaminação cruzada."
+    },
+    "79": {
+      "title": "Arroz Frito com Frango",
+      "ingredients": ["600 g de arroz branco de grão longo cozido e refrigerado", "200 g de peito de frango cozido, sem pele e em cubos", "100 g de ervilhas verdes cozidas e escorridas", "100 g de cenouras cozidas e em cubos", "100 g de ovo inteiro batido (cerca de 2 ovos grandes)", "9 g de azeite", "1 g de sal fino", "0,5 g de pimenta-do-reino em pó"],
+      "steps": ["Um adulto prepara e resfria o arroz com segurança, cozinha bem o frango e o corta em cubos. Meça o arroz frio, o frango, as ervilhas e a cenoura.", "Aaria pode ajudar a medir os ingredientes cozidos em uma tigela. Um adulto quebra e bate os ovos e depois lava as mãos e os utensílios.", "Um adulto aquece o azeite em uma frigideira, mexe os ovos até ficarem totalmente firmes e acrescenta o arroz cozido, o frango, as ervilhas, a cenoura, o sal e a pimenta. Mexa até soltar vapor e ficar bem quente por inteiro.", "Um adulto serve o arroz frito em quatro tigelas e confere se o frango e o ovo estão bem cozidos e quentes. Deixe esfriar com segurança antes de comer."],
+      "extras": ["Use arroz que tenha sido resfriado rapidamente e refrigerado; não deixe arroz cozido em temperatura ambiente."],
+      "safety": "Aaria não usa o fogão nem toca na frigideira quente. Um adulto cozinha e verifica se o ovo está totalmente firme e se o frango foi reaquecido a 74°C/165°F. Resfrie o arroz cozido rapidamente e refrigere; reaqueça somente uma vez até soltar vapor e ficar bem quente. Contém ovo. Confira avisos de contaminação cruzada."
+    },
+    "80": {
+      "title": "Quadradinhos de Polenta com Queijo",
+      "ingredients": ["160 g de fubá amarelo enriquecido", "500 g de água", "250 g de leite integral", "100 g de muçarela ralada", "50 g de ovo inteiro batido (cerca de 1 ovo grande)", "9 g de azeite", "1 g de sal fino", "0,5 g de orégano seco"],
+      "steps": ["Meça o fubá, o leite, a água, o queijo e os temperos. Aaria pode misturar o fubá seco e o orégano em uma tigela.", "Um adulto aquece a água e o leite até uma fervura suave e depois acrescenta o fubá lentamente, mexendo com um batedor até engrossar e cozinhar por completo. Mantenha Aaria longe da panela quente e dos respingos.", "Quando a mistura esfriar até uma temperatura segura para manusear, Aaria pode incorporar o ovo batido e o queijo com um adulto. Espalhe em uma assadeira forrada e untada e leve à geladeira até firmar.", "Um adulto corta a polenta firme em dezesseis quadradinhos e assa até ficarem levemente dourados e quentes. Deixe esfriar antes de servir."],
+      "extras": ["Use uma assadeira forrada para facilitar a retirada."],
+      "safety": "Um adulto cuida do fogão, da panela quente, do forno e da faca. Mantenha Aaria longe do líquido quente e dos respingos. Cozinhe totalmente a mistura com ovo. Contém leite e ovo; confira avisos de contaminação cruzada."
+    }
+  }
+}

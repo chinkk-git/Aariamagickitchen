@@ -1,0 +1,309 @@
+name: Aaria Android unified W01 and legacy V3.1 verification
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/v3.1-home-redesign
+      - codex/w01-unified-v3-v31-20261020
+    paths:
+      - 'index.html'
+      - 'tools/v3/**'
+      - 'phase2-pilot/**'
+      - 'content/**'
+      - 'docs/**'
+      - '.github/scripts/**'
+      - '.github/workflows/v31-android.yml'
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: aaria-android-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  build-v31-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact-head Android integration source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up deterministic SVG preview rendering
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y inkscape python3-pil
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.10.2'
+
+      - name: Record exact source HEAD
+        run: |
+          mkdir -p artifacts/v31-diagnostics
+          echo "${GITHUB_SHA}" | tee artifacts/v31-diagnostics/source-head.txt
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+
+      - name: Run repository regression and V3.1 data gates
+        working-directory: phase2-pilot
+        run: |
+          npm test
+          npm run validate:recipes
+          npm run validate:v31
+
+      - name: Build offline V3.1 HTML and validate all original recipes
+        run: |
+          set -euo pipefail
+          node --check tools/v3/transform-production.mjs
+          node --check tools/v3/runtime.js
+          node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3_1.html
+          node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3_1.html
+          node tools/v3/test-approved-chef-art.mjs dist/Aaria_Magical_Kitchen_V3_1.html
+          node tools/v3/test-csp-policy.mjs
+          node tools/v3/test-profile-isolation.mjs
+          node tools/v3/test-photo-share-approval.mjs
+          node tools/v3/test-secure-content-update-approval.mjs
+          node tools/v3/validate-v31.mjs
+          node --check tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          node --check .github/scripts/w01-exact-batch-smoke.mjs
+          python3 -m py_compile tools/v3/artwork/exact-batches/build_batch.py
+          python3 -m py_compile tools/v3/artwork/exact-batches/b01_remediation.py
+          python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-02/generate-batch.py').read_text())"
+          python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-03/generate-batch.py').read_text())"
+          python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-04/generate-batch.py').read_text())"
+          python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/v3/artwork/batches/batch-05/generate-batch.py').read_text())"
+          node --check .github/scripts/v31-artwork-review-smoke.mjs
+          python3 tools/v3/artwork/batches/batch-01/generate-batch.py
+          python3 tools/v3/artwork/batches/batch-02/generate-batch.py
+          python3 tools/v3/artwork/batches/batch-03/generate-batch.py
+          python3 tools/v3/artwork/batches/batch-04/generate-batch.py
+          python3 tools/v3/artwork/batches/batch-05/generate-batch.py
+          python3 tools/v3/artwork/exact-batches/build_batch.py B01
+          python3 tools/v3/artwork/exact-batches/build_batch.py B01 --verify-only
+          node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          for batch_dir in tools/v3/artwork/exact-batches/B*; do
+            [ -d "$batch_dir" ] || continue
+            batch=$(basename "$batch_dir")
+            python3 tools/v3/artwork/exact-batches/build_batch.py "$batch" --verify-only
+          done
+          git diff --exit-code -- tools/v3/artwork/batches/batch-01
+          git diff --exit-code -- tools/v3/artwork/batches/batch-02
+          git diff --exit-code -- tools/v3/artwork/batches/batch-03
+          git diff --exit-code -- tools/v3/artwork/batches/batch-04
+          git diff --exit-code -- tools/v3/artwork/batches/batch-05
+          node tools/v3/artwork/remediation-pilot/audit-readiness.mjs
+          bash -n tools/v3/android/verify-nondestructive-upgrade.sh
+          if env -u V3_BASELINE_APK -u UPGRADE_CANDIDATE_APK bash tools/v3/android/verify-nondestructive-upgrade.sh >/tmp/w01-upgrade-guard.log 2>&1; then
+            echo 'ERROR: production-upgrade harness unexpectedly allowed missing APK prerequisites'
+            exit 1
+          fi
+          grep -Fq 'V3_BASELINE_APK' /tmp/w01-upgrade-guard.log
+          mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
+          cp dist/Aaria_Magical_Kitchen_V3_1.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          grep -Fq 'AARIA_V3_BUILD_2026_10' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          grep -Fq 'World Food Adventures' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          sha256sum dist/Aaria_Magical_Kitchen_V3_1.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+
+      - name: Run Android unit tests
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
+
+      - name: Assemble installable Android preview APK
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+
+      - name: Verify packaged offline V3.1 experience
+        run: |
+          set -euo pipefail
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          unzip -Z1 "$apk" | grep -Fxq 'assets/index.html'
+          unzip -p "$apk" assets/index.html | grep -Fq 'World Food Adventures'
+          unzip -p "$apk" assets/index.html | grep -Fq 'Spin My Week'
+          unzip -p "$apk" assets/index.html | grep -Fq 'My Creations'
+          unzip -p "$apk" assets/index.html | grep -Fq 'ne_110m_admin_0_countries'
+          if unzip -Z1 "$apk" | grep -Eq '^assets/content-pack-publisher\.(x509|keyid)$'; then
+            echo 'Unexpected content-pack publisher key provisioned in the test APK; review the trust-root change.' >&2
+            exit 1
+          fi
+          printf 'secure_content_updates=fail-closed\nblocker=trusted publisher key and key ID are not provisioned; no update activation is claimed\n' > artifacts/v31-diagnostics/secure-content-update-status.txt
+          unzip -p "$apk" assets/artwork-review/index.html | grep -Fq 'Draft artwork — independent review only'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-01/recipe-11.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-01/recipe-20.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-02/recipe-21.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-02/recipe-31.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-03/recipe-32.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-03/recipe-43.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-04/recipe-44.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-04/recipe-54.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-05/recipe-55.svg'
+          unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review/batch-05/recipe-65.svg'
+          test "$(unzip -Z1 "$apk" | grep -Ec '^assets/artwork-review/batch-0[1-5]/recipe-[0-9]+\.svg$')" -eq 50
+          for batch_dir in tools/v3/artwork/exact-batches/B*; do
+            [ -d "$batch_dir" ] || continue
+            batch=$(basename "$batch_dir")
+            unzip -Z1 "$apk" | grep -Fxq "assets/artwork-review/exact/$batch/index.html"
+            test "$(unzip -Z1 "$apk" | grep -Ec "^assets/artwork-review/exact/$batch/atlases/recipe-[0-9]+\.svg$")" -eq 5
+            test "$(unzip -Z1 "$apk" | grep -Ec "^assets/artwork-review/exact/$batch/previews/recipe-[0-9]+-panel-[0-9]+\.png$")" -eq 30
+            unzip -Z1 "$apk" | grep -Fxq "assets/artwork-review/exact/$batch/contact-sheet.png"
+            if [ "$batch" = B01 ]; then
+              for character in aaria mommy daddy; do
+                unzip -Z1 "$apk" | grep -Fxq "assets/artwork-review/exact/$batch/characters/$character.jpg"
+              done
+            fi
+          done
+
+      - name: Prepare Linux KVM access for x86_64 emulator
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v31-diagnostics
+          if [ ! -e /dev/kvm ]; then
+            printf 'kvm_preflight=failed\nreason=/dev/kvm is not present on this runner\n' > artifacts/v31-diagnostics/kvm-preflight.txt
+            cat artifacts/v31-diagnostics/kvm-preflight.txt
+            exit 1
+          fi
+          sudo chown "$(id -un)" /dev/kvm
+          sudo chmod 600 /dev/kvm
+          if [ ! -r /dev/kvm ] || [ ! -w /dev/kvm ]; then
+            printf 'kvm_preflight=failed\nreason=runner cannot read and write /dev/kvm after permission setup\n' > artifacts/v31-diagnostics/kvm-preflight.txt
+            cat artifacts/v31-diagnostics/kvm-preflight.txt
+            exit 1
+          fi
+          printf 'kvm_preflight=passed\nrunner=%s\n' "$(id -un)" > artifacts/v31-diagnostics/kvm-preflight.txt
+          stat -c 'device=%n owner=%U group=%G mode=%a' /dev/kvm | tee -a artifacts/v31-diagnostics/kvm-preflight.txt
+      - name: Download original V3 APK for co-install verification
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.1-preview-apk
+          path: artifacts/v31-baseline-apk
+          repository: chinkk-git/Aariamagickitchen
+          run-id: 39191099617
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Audit Android package identity and signing continuity
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/v31-diagnostics
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          baseline="artifacts/v31-baseline-apk/app-debug.apk"
+          unified="phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$baseline" && test -s "$unified"
+          "$aapt" dump badging "$baseline" > artifacts/v31-diagnostics/v3-baseline-badging.txt
+          "$aapt" dump badging "$unified" > artifacts/v31-diagnostics/unified-badging.txt
+          "$apksigner" verify --print-certs "$baseline" > artifacts/v31-diagnostics/v3-baseline-signer.txt
+          "$apksigner" verify --print-certs "$unified" > artifacts/v31-diagnostics/unified-signer.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          d=Path('artifacts/v31-diagnostics')
+          def parse(file):
+              s=(d/file).read_text()
+              m=re.search(r"package: name='([^']+)' versionCode='([^']+)'",s)
+              if not m: raise SystemExit('Missing APK package identity: '+file)
+              return m.group(1),int(m.group(2))
+          def signer(file):
+              s=(d/file).read_text()
+              m=re.search(r"(?im)^(?:V[123] Signer|Signer\s*#?\s*1):?\s*certificate SHA-256 digest:\s*([0-9a-fA-F:]+)",s)
+              if not m: raise SystemExit('Missing signer digest: '+file+'; apksigner output='+repr(s[:1500]))
+              return m.group(1).replace(':','').lower()
+          bp,bv=parse('v3-baseline-badging.txt')
+          up,uv=parse('unified-badging.txt')
+          bs=signer('v3-baseline-signer.txt')
+          us=signer('unified-signer.txt')
+          same_package=bp==up
+          same_signer=bs==us
+          safe_upgrade=same_package and same_signer and uv>bv
+          report=f"baseline_package={bp}\nbaseline_version={bv}\nbaseline_signer_sha256={bs}\nunified_package={up}\nunified_version={uv}\nunified_signer_sha256={us}\nsame_package={str(same_package).lower()}\nsame_signer={str(same_signer).lower()}\nverified_upgrade_eligible={str(safe_upgrade).lower()}\n"
+          (d/'package-signing-continuity.txt').write_text(report)
+          print(report)
+          if same_package and not same_signer:
+              raise SystemExit('Unsafe same-package signing mismatch: do not install over existing app')
+          PY
+      - name: Launch Android APK and capture home/map screenshots
+        timeout-minutes: 15
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_3a
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 4096 -cores 4
+          disable-animations: true
+          disable-linux-hw-accel: false
+          script: bash .github/scripts/v31-android-smoke.sh
+      - name: Create approved-reference Android screenshot comparison
+        if: always()
+        run: |
+          python3 -m py_compile tools/v3/compare-home-world-reference.py
+          python3 tools/v3/compare-home-world-reference.py
+      - name: Record APK payload checksum and exact HEAD
+        if: always()
+        run: |
+          mkdir -p artifacts/v31-diagnostics
+          echo "${GITHUB_SHA}" > artifacts/v31-diagnostics/source-head.txt
+          if [ -f phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk ]; then
+            sha256sum phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk | tee artifacts/v31-diagnostics/apk-sha256.txt
+            test -s artifacts/v31-diagnostics/apk-sha256.txt
+            echo "Verified APK payload checksum for exact source HEAD ${GITHUB_SHA}"
+          fi
+
+      - name: Upload installable V3.1 preview APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-preview-apk' || 'aaria-magical-kitchen-v3.1-preview-apk' }}
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload offline V3.1 HTML evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-html' || 'aaria-magical-kitchen-v3.1-html' }}
+          path: dist/Aaria_Magical_Kitchen_V3_1.html
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload Android screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-android-screenshots' || 'aaria-magical-kitchen-v3.1-android-screenshots' }}
+          path: artifacts/v31-android-screenshots/*.png
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload exact B01 atlas and panel review package
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-w01-artwork-B01-deliverables
+          path: tools/v3/artwork/exact-batches/B01/**
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload Android smoke diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.ref_name == 'codex/w01-unified-v3-v31-20261020' && 'aaria-magical-kitchen-w01-unified-android-diagnostics' || 'aaria-magical-kitchen-v3.1-android-diagnostics' }}
+          path: artifacts/v31-diagnostics/**
+          if-no-files-found: warn
+          retention-days: 30

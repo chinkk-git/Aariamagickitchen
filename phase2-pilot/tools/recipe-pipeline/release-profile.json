@@ -1,0 +1,40 @@
+{
+  "profileVersion": "1.0.0",
+  "pilotRecipeCount": 2,
+  "fullRecipeCount": 95,
+  "artworkGroups": {
+    "aaria": 65,
+    "family": 15,
+    "friends": 15
+  },
+  "maxInstructionWords": 22,
+  "quizQuestionCountPerRecipe": 3,
+  "photoPost": {
+    "captureOrChooseDishPhoto": true,
+    "onDeviceComposition": true,
+    "parentConfirmationBeforeExternalShare": true,
+    "localSaveAvailable": true,
+    "automaticUpload": false,
+    "shareTargets": ["Instagram", "Facebook", "WhatsApp"]
+  },
+  "groceryList": {
+    "multiRecipeSelection": true,
+    "aggregateSameIngredient": true,
+    "sumOnlyCompatibleUnits": true,
+    "keepOptionalItemsMarked": true,
+    "shareAsPrefilledWhatsAppMessage": true,
+    "chooseRecipientInsideWhatsApp": true,
+    "userConfirmsSendInWhatsApp": true,
+    "parentPhoneNumbersHardCodedOrUploaded": false
+  },
+  "weeklyPlanner": {
+    "parentEditable": true,
+    "randomIdeas": true,
+    "requiresVerifiedNutrition": true,
+    "requiresIndependentNutritionReview": true,
+    "requiresAllergyReview": true,
+    "requiresVarietyChecks": true,
+    "claimCompleteNutritionalCoverageBeforeReview": false
+  },
+  "allowedArtworkGroups": ["aaria", "family", "friends"]
+}

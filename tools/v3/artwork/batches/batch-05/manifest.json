@@ -1,0 +1,578 @@
+{
+  "schema": "w01-artwork-remediation-batch-v1",
+  "status": "draft-only; excluded from production runtime; independent review required",
+  "batch": "05",
+  "recipeIds": [
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    64,
+    65
+  ],
+  "sourceArchive": "v31-step-atlas-drafts-recipes-11-65.zip",
+  "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+  "panelsPerAtlas": 6,
+  "changes": [
+    "Adds localized, visible adult-only wording to panels the source manifest marks adultOnlyCue.",
+    "Adds per-panel SVG title and description tied to the unchanged source step text.",
+    "Original illustration paths and project cartoon character assets remain unchanged."
+  ],
+  "androidDebugReview": {
+    "route": "/artwork-review/index.html",
+    "sourceSet": "src/debug/assets only",
+    "purpose": "Offline reviewer preview only; not the production cooking route."
+  },
+  "approval": {
+    "A08": "PENDING independent review",
+    "A09": "PENDING independent review",
+    "artworkRights": "UNRESOLVED; source authorship/rights not established by checksums",
+    "runtime": "NOT INTEGRATED"
+  },
+  "recipes": [
+    {
+      "id": 55,
+      "title": "Mini Aloo Tikki",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-55-step-atlas-draft.svg",
+      "sourceSha256": "8e852afe9623b638de46d9de851432f2d8bb4fece61e810cc2ea2fd5eb2941df",
+      "outputPath": "atlases/recipe-55-draft.svg",
+      "outputSha256": "e151939390355d6ee397c96fb9d866bee7a535dfcbb91addad001ff4562a0670",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix potato, peas, crumbs and cumin.",
+          "adultOnlyCue": false,
+          "originalSha256": "8e852afe9623b638de46d9de851432f2d8bb4fece61e810cc2ea2fd5eb2941df"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Shape small patties.",
+          "adultOnlyCue": false,
+          "originalSha256": "8e852afe9623b638de46d9de851432f2d8bb4fece61e810cc2ea2fd5eb2941df"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 3,
+          "sourceStepText": "Adult pan-cooks in a little oil until crisp and hot throughout.",
+          "adultOnlyCue": true,
+          "originalSha256": "8e852afe9623b638de46d9de851432f2d8bb4fece61e810cc2ea2fd5eb2941df"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult pan-cooks in a little oil until crisp and hot throughout.",
+          "adultOnlyCue": true,
+          "originalSha256": "8e852afe9623b638de46d9de851432f2d8bb4fece61e810cc2ea2fd5eb2941df"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult pan-cooks in a little oil until crisp and hot throughout.",
+          "adultOnlyCue": true,
+          "originalSha256": "8e852afe9623b638de46d9de851432f2d8bb4fece61e810cc2ea2fd5eb2941df"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "8e852afe9623b638de46d9de851432f2d8bb4fece61e810cc2ea2fd5eb2941df"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 56,
+      "title": "Crispy Aloo Bread Rolls",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-56-step-atlas-draft.svg",
+      "sourceSha256": "acf1de2704da156f3cad51f7c3724dfd5050791bce9bd0bb0c8bdde56b67ce09",
+      "outputPath": "atlases/recipe-56-draft.svg",
+      "outputSha256": "e0aac2a92d90d8bd8db5f52b12b1fd1f19223a220ad1e2cbbc9e0eab61cb3b42",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix potato, peas and cumin.",
+          "adultOnlyCue": false,
+          "originalSha256": "acf1de2704da156f3cad51f7c3724dfd5050791bce9bd0bb0c8bdde56b67ce09"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Flatten bread lightly, add filling and roll tightly with damp edges.",
+          "adultOnlyCue": false,
+          "originalSha256": "acf1de2704da156f3cad51f7c3724dfd5050791bce9bd0bb0c8bdde56b67ce09"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Flatten bread lightly, add filling and roll tightly with damp edges.",
+          "adultOnlyCue": false,
+          "originalSha256": "acf1de2704da156f3cad51f7c3724dfd5050791bce9bd0bb0c8bdde56b67ce09"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult brushes oil and air-fries until crisp.",
+          "adultOnlyCue": true,
+          "originalSha256": "acf1de2704da156f3cad51f7c3724dfd5050791bce9bd0bb0c8bdde56b67ce09"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult brushes oil and air-fries until crisp.",
+          "adultOnlyCue": true,
+          "originalSha256": "acf1de2704da156f3cad51f7c3724dfd5050791bce9bd0bb0c8bdde56b67ce09"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "acf1de2704da156f3cad51f7c3724dfd5050791bce9bd0bb0c8bdde56b67ce09"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 57,
+      "title": "Rainbow Veggie Cutlets",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-57-step-atlas-draft.svg",
+      "sourceSha256": "e65a09555e6fdfa902e4f6830a11ca49fe70983114c1353e7a17fb6898357c98",
+      "outputPath": "atlases/recipe-57-draft.svg",
+      "outputSha256": "9f2e47603ef1c93ce15f18db25e12fb43113dc8aeea6abfe8bf89c4c93d6fadd",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix cooled cooked vegetables with potato and crumbs.",
+          "adultOnlyCue": false,
+          "originalSha256": "e65a09555e6fdfa902e4f6830a11ca49fe70983114c1353e7a17fb6898357c98"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Shape hearts or stars.",
+          "adultOnlyCue": false,
+          "originalSha256": "e65a09555e6fdfa902e4f6830a11ca49fe70983114c1353e7a17fb6898357c98"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until golden and heated through.",
+          "adultOnlyCue": true,
+          "originalSha256": "e65a09555e6fdfa902e4f6830a11ca49fe70983114c1353e7a17fb6898357c98"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until golden and heated through.",
+          "adultOnlyCue": true,
+          "originalSha256": "e65a09555e6fdfa902e4f6830a11ca49fe70983114c1353e7a17fb6898357c98"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until golden and heated through.",
+          "adultOnlyCue": false,
+          "originalSha256": "e65a09555e6fdfa902e4f6830a11ca49fe70983114c1353e7a17fb6898357c98"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "e65a09555e6fdfa902e4f6830a11ca49fe70983114c1353e7a17fb6898357c98"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 58,
+      "title": "Mini Besan Chilla",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-58-step-atlas-draft.svg",
+      "sourceSha256": "cb3a789a8bc8934db8cd69d9554ff1f5b447c88db31316504ba80dffd2287715",
+      "outputPath": "atlases/recipe-58-draft.svg",
+      "outputSha256": "83918a4f375dad3a5101255bd8a4d54bc5a6e9f04db6f5ecb57f73de171a2ce5",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Whisk besan, water and salt into pourable batter; stir in carrot and coriander.",
+          "adultOnlyCue": false,
+          "originalSha256": "cb3a789a8bc8934db8cd69d9554ff1f5b447c88db31316504ba80dffd2287715"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Whisk besan, water and salt into pourable batter; stir in carrot and coriander.",
+          "adultOnlyCue": false,
+          "originalSha256": "cb3a789a8bc8934db8cd69d9554ff1f5b447c88db31316504ba80dffd2287715"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small thin pancakes on both sides until completely cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "cb3a789a8bc8934db8cd69d9554ff1f5b447c88db31316504ba80dffd2287715"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small thin pancakes on both sides until completely cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "cb3a789a8bc8934db8cd69d9554ff1f5b447c88db31316504ba80dffd2287715"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small thin pancakes on both sides until completely cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "cb3a789a8bc8934db8cd69d9554ff1f5b447c88db31316504ba80dffd2287715"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "cb3a789a8bc8934db8cd69d9554ff1f5b447c88db31316504ba80dffd2287715"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 59,
+      "title": "Mini Suji Uttapam",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-59-step-atlas-draft.svg",
+      "sourceSha256": "c36b5b9656b9522914048c1e3888736ecd59a152de45efcd0186078be5afae23",
+      "outputPath": "atlases/recipe-59-draft.svg",
+      "outputSha256": "1a4cb57ddaed5c8f330c2c3f183927a40b94c8a8f2c216accac25747db11969b",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix suji, yogurt and water; rest 10 minutes.",
+          "adultOnlyCue": false,
+          "originalSha256": "c36b5b9656b9522914048c1e3888736ecd59a152de45efcd0186078be5afae23"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mix suji, yogurt and water; rest 10 minutes.",
+          "adultOnlyCue": false,
+          "originalSha256": "c36b5b9656b9522914048c1e3888736ecd59a152de45efcd0186078be5afae23"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Add carrot, tomato and baking soda.",
+          "adultOnlyCue": false,
+          "originalSha256": "c36b5b9656b9522914048c1e3888736ecd59a152de45efcd0186078be5afae23"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult cooks small thick pancakes covered on low-medium heat, flipping until cooked through.",
+          "adultOnlyCue": true,
+          "originalSha256": "c36b5b9656b9522914048c1e3888736ecd59a152de45efcd0186078be5afae23"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult cooks small thick pancakes covered on low-medium heat, flipping until cooked through.",
+          "adultOnlyCue": true,
+          "originalSha256": "c36b5b9656b9522914048c1e3888736ecd59a152de45efcd0186078be5afae23"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "c36b5b9656b9522914048c1e3888736ecd59a152de45efcd0186078be5afae23"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 60,
+      "title": "Cheesy Egg Bhurji",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-60-step-atlas-draft.svg",
+      "sourceSha256": "6fa5c62ddce60be737f8f436a5ee0ee23287814379c3f0d6ecde52fb18ff865c",
+      "outputPath": "atlases/recipe-60-draft.svg",
+      "outputSha256": "11523c487e088b09b065c77a415f92713af82128def031d764838f445ab5e6bd",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult softens onion and tomato in a pan with oil.",
+          "adultOnlyCue": true,
+          "originalSha256": "6fa5c62ddce60be737f8f436a5ee0ee23287814379c3f0d6ecde52fb18ff865c"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Add beaten eggs and turmeric; stir until eggs are fully cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "6fa5c62ddce60be737f8f436a5ee0ee23287814379c3f0d6ecde52fb18ff865c"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Add beaten eggs and turmeric; stir until eggs are fully cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "6fa5c62ddce60be737f8f436a5ee0ee23287814379c3f0d6ecde52fb18ff865c"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Add cheese and melt.",
+          "adultOnlyCue": true,
+          "originalSha256": "6fa5c62ddce60be737f8f436a5ee0ee23287814379c3f0d6ecde52fb18ff865c"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Add cheese and melt.",
+          "adultOnlyCue": true,
+          "originalSha256": "6fa5c62ddce60be737f8f436a5ee0ee23287814379c3f0d6ecde52fb18ff865c"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "6fa5c62ddce60be737f8f436a5ee0ee23287814379c3f0d6ecde52fb18ff865c"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 61,
+      "title": "Banana Mini Malpua",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-61-step-atlas-draft.svg",
+      "sourceSha256": "84fc39a113477f9111b7cdaa1bf2edc76bbc089a7aa017ca029c8fadd1abed09",
+      "outputPath": "atlases/recipe-61-draft.svg",
+      "outputSha256": "4122fd50e717cb1ad1b7e9fd63f6a0683ac281ea1ef286e3be3fdd9e80958306",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mash banana; whisk with flour, milk and cardamom into thick batter.",
+          "adultOnlyCue": false,
+          "originalSha256": "84fc39a113477f9111b7cdaa1bf2edc76bbc089a7aa017ca029c8fadd1abed09"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mash banana; whisk with flour, milk and cardamom into thick batter.",
+          "adultOnlyCue": false,
+          "originalSha256": "84fc39a113477f9111b7cdaa1bf2edc76bbc089a7aa017ca029c8fadd1abed09"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks little pancakes in a lightly oiled pan until fully cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "84fc39a113477f9111b7cdaa1bf2edc76bbc089a7aa017ca029c8fadd1abed09"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks little pancakes in a lightly oiled pan until fully cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "84fc39a113477f9111b7cdaa1bf2edc76bbc089a7aa017ca029c8fadd1abed09"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks little pancakes in a lightly oiled pan until fully cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "84fc39a113477f9111b7cdaa1bf2edc76bbc089a7aa017ca029c8fadd1abed09"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "84fc39a113477f9111b7cdaa1bf2edc76bbc089a7aa017ca029c8fadd1abed09"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 62,
+      "title": "Rainbow Vegetable Poha",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-62-step-atlas-draft.svg",
+      "sourceSha256": "4d2c20d26f13d9c3297d1c07f1c21c32cddb775ee0bb46cb5862f158d710a130",
+      "outputPath": "atlases/recipe-62-draft.svg",
+      "outputSha256": "3e3f569bdc40606bd91e0cbc87185f7d234645c8056e47adc303d514603cb217",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Rinse poha briefly and drain.",
+          "adultOnlyCue": false,
+          "originalSha256": "4d2c20d26f13d9c3297d1c07f1c21c32cddb775ee0bb46cb5862f158d710a130"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks carrot with oil and a little water until tender; adds peas, turmeric and poha.",
+          "adultOnlyCue": true,
+          "originalSha256": "4d2c20d26f13d9c3297d1c07f1c21c32cddb775ee0bb46cb5862f158d710a130"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks carrot with oil and a little water until tender; adds peas, turmeric and poha.",
+          "adultOnlyCue": true,
+          "originalSha256": "4d2c20d26f13d9c3297d1c07f1c21c32cddb775ee0bb46cb5862f158d710a130"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks carrot with oil and a little water until tender; adds peas, turmeric and poha.",
+          "adultOnlyCue": true,
+          "originalSha256": "4d2c20d26f13d9c3297d1c07f1c21c32cddb775ee0bb46cb5862f158d710a130"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Heat through and finish with lemon.",
+          "adultOnlyCue": true,
+          "originalSha256": "4d2c20d26f13d9c3297d1c07f1c21c32cddb775ee0bb46cb5862f158d710a130"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Heat through and finish with lemon.",
+          "adultOnlyCue": false,
+          "originalSha256": "4d2c20d26f13d9c3297d1c07f1c21c32cddb775ee0bb46cb5862f158d710a130"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 64,
+      "title": "Mango Shrikhand",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-64-step-atlas-draft.svg",
+      "sourceSha256": "9b1cb7dc6aa7466fa2390e4b29240d4d1f3891cfd5d9fed520b69a87ac75a1d9",
+      "outputPath": "atlases/recipe-64-draft.svg",
+      "outputSha256": "7eff56ef9d360c308dea1e1aae8e3c56de8bbd6b0bf44c7bf06be84670f48183",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Stir thick yogurt, mango pulp and cardamom until smooth.",
+          "adultOnlyCue": false,
+          "originalSha256": "9b1cb7dc6aa7466fa2390e4b29240d4d1f3891cfd5d9fed520b69a87ac75a1d9"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Stir thick yogurt, mango pulp and cardamom until smooth.",
+          "adultOnlyCue": false,
+          "originalSha256": "9b1cb7dc6aa7466fa2390e4b29240d4d1f3891cfd5d9fed520b69a87ac75a1d9"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 1,
+          "sourceStepText": "Stir thick yogurt, mango pulp and cardamom until smooth.",
+          "adultOnlyCue": false,
+          "originalSha256": "9b1cb7dc6aa7466fa2390e4b29240d4d1f3891cfd5d9fed520b69a87ac75a1d9"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Chill and serve in small bowls.",
+          "adultOnlyCue": false,
+          "originalSha256": "9b1cb7dc6aa7466fa2390e4b29240d4d1f3891cfd5d9fed520b69a87ac75a1d9"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Chill and serve in small bowls.",
+          "adultOnlyCue": false,
+          "originalSha256": "9b1cb7dc6aa7466fa2390e4b29240d4d1f3891cfd5d9fed520b69a87ac75a1d9"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "9b1cb7dc6aa7466fa2390e4b29240d4d1f3891cfd5d9fed520b69a87ac75a1d9"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 65,
+      "title": "Roti Pizza",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-65-step-atlas-draft.svg",
+      "sourceSha256": "e9d52551418afd78f373a74f3550225e911d8b7fd9e70d497cee149cc1f9399f",
+      "outputPath": "atlases/recipe-65-draft.svg",
+      "outputSha256": "c955fb883ab40af5458c4b4b872183db6d31579031a2f70f9e104bfe43d01b8f",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Spread sauce on rotis; add capsicum, corn and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "e9d52551418afd78f373a74f3550225e911d8b7fd9e70d497cee149cc1f9399f"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Spread sauce on rotis; add capsicum, corn and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "e9d52551418afd78f373a74f3550225e911d8b7fd9e70d497cee149cc1f9399f"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult heats covered in a nonstick pan on low heat until cheese melts and base is crisp.",
+          "adultOnlyCue": true,
+          "originalSha256": "e9d52551418afd78f373a74f3550225e911d8b7fd9e70d497cee149cc1f9399f"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult heats covered in a nonstick pan on low heat until cheese melts and base is crisp.",
+          "adultOnlyCue": true,
+          "originalSha256": "e9d52551418afd78f373a74f3550225e911d8b7fd9e70d497cee149cc1f9399f"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Adult heats covered in a nonstick pan on low heat until cheese melts and base is crisp.",
+          "adultOnlyCue": false,
+          "originalSha256": "e9d52551418afd78f373a74f3550225e911d8b7fd9e70d497cee149cc1f9399f"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "e9d52551418afd78f373a74f3550225e911d8b7fd9e70d497cee149cc1f9399f"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    }
+  ]
+}
