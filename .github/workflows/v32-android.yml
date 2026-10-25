@@ -115,6 +115,9 @@ jobs:
           unzip -Z1 "$apk" | grep -Fxq 'assets/artwork-review-v32/dishes/recipe-dishes-13-source-sheet.png'
           echo "${GITHUB_SHA}" > artifacts/v32-diagnostics/source-head.txt
           sha256sum "$apk" | tee artifacts/v32-diagnostics/apk-sha256.txt
+          echo 'Verified APK package identity and checksum:'
+          grep -E "^package: name=|^application-label:" artifacts/v32-diagnostics/test-apk-badging.txt
+          cat artifacts/v32-diagnostics/apk-sha256.txt
           printf 'A08_review=HOLD\nA09_review=HOLD\nartwork_rights=HOLD\nrelease=NOT_AUTHORIZED\n' > artifacts/v32-diagnostics/gates.txt
 
       - name: G1 FAST PREFLIGHT — contracts, evidence harness and SDK integrity

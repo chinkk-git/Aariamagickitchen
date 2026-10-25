@@ -782,6 +782,7 @@ for(let recipeId=1;recipeId<=95;recipeId++){
 if(routeCoverage.length!==95||new Set(routeCoverage).size!==95)throw new Error(`Expected unique detail route coverage 95/95, got ${routeCoverage.length}`);
 await rotateTo(1);await waitForWebViewOrientation(true);
 let phoneLandscapeDigest=null;
+const landscapeSweepStartedAt=Date.now();
 for(let recipeId=1;recipeId<=95;recipeId++){
   const card=await evaluate(`(()=>{const e=${findByDatasetExpression('#screen .recipe-card[data-open]','open',recipeId)};if(!e)return null;e.click();return {title:e.querySelector('.home-tile-name')?.textContent?.trim()||e.innerText}})()`);
   if(!card?.title)throw new Error(`Landscape phone image audit cannot open recipe ${recipeId}`);
@@ -795,6 +796,7 @@ for(let recipeId=1;recipeId<=95;recipeId++){
   const row=recipeImageEvidence.find(item=>item.recipeId===recipeId);
   if(!row)throw new Error(`Phone landscape image audit has no portrait row for recipe ${recipeId}`);
   row.landscapeScreenshots=[detailShot,stepShot];
+  if(recipeId%10===0||recipeId===95)console.log(`Verified phone landscape screenshots ${recipeId}/95 elapsed_ms=${Date.now()-landscapeSweepStartedAt}`);
   await evaluate('document.querySelector("#nav .tab[data-nav=library]")?.click()');
   await waitForVisible('.recipe-card[data-open="1"]',`Phone landscape catalogue after recipe ${recipeId}`);
 }
@@ -814,6 +816,7 @@ for(let recipeId=66;recipeId<=95;recipeId++){
   const translated=await evaluate(`(()=>{const r=RECIPES.find(x=>x.id===${recipeId}),pt=PT_RECIPES[${recipeId}],title=document.querySelector('.ref-hero h1')?.textContent?.trim()||'',ingredient=document.querySelector('.ref-ingredient')?.innerText||'',step=document.querySelector('.ref-step-card.active .ref-step-copy p')?.innerText||'',safetyPanel=document.querySelector('.storybook-safety,.ref-safety details');if(!safetyPanel)throw Error('Portuguese recipe safety disclosure is missing');safetyPanel.open=true;const safety=safetyPanel.querySelector('p')?.textContent||'',role=document.querySelector('.v32-group-role-copy')?.innerText||'',roleMode=r?.category==='Cooking with Mommy & Daddy'?'family':'friends',expectedRole=V32_PT_GROUP_ROLE_COPY?.[roleMode]||'';return {id:r?.id,title,expectedTitle:pt?.title,ingredient,expectedIngredient:pt?.ingredients?.[0],step,expectedStep:pt?.steps?.[0],safety,expectedSafety:pt?.safety,safetyDisclosureOpened:safetyPanel.open,role,expectedRole}})()`);
   if(!translated.expectedTitle||!translated.title.includes(translated.expectedTitle)||!translated.expectedIngredient||!translated.ingredient.includes(translated.expectedIngredient)||!translated.expectedStep||!translated.step.includes(translated.expectedStep.slice(0,36))||!translated.expectedSafety||!translated.safety.includes(translated.expectedSafety.slice(0,36))||!translated.safetyDisclosureOpened||!translated.expectedRole||translated.role!==translated.expectedRole)throw new Error(`PT-BR recipe ${recipeId} translation did not reach its title, ingredient, first step, safety and group role copy: ${JSON.stringify(translated)}`);
   ptRouteCoverage.push(recipeId);
+  if(recipeId%10===0||recipeId===95)console.log(`Verified PT-BR recipe routes ${recipeId-65}/30 (through ${recipeId})`);
   if([66,81,95].includes(recipeId))await captureScreenshot(`pt-br-recipe-${recipeId}-portrait.png`,`Portuguese recipe ${recipeId}`);
   await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
   const returned=await waitForVisible('.recipe-card[data-open="66"]',`PT-BR catalogue after recipe ${recipeId}`);
