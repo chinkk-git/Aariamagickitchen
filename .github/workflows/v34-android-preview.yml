@@ -1,0 +1,134 @@
+name: Aaria V3.4 Dual Home Preview APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/v3.4-dual-home-experience
+    paths:
+      - 'tools/v3/v34-dual-home.js'
+      - 'tools/v3/attach-v34-dual-home.mjs'
+      - 'tools/v3/transform-production.mjs'
+      - 'tools/v3/runtime.js'
+      - 'tools/v3/world-adventure-globe/**'
+      - 'tools/v3/artwork/**'
+      - 'content/international/**'
+      - 'phase2-pilot/packages/assets/**'
+      - 'docs/design/approved-v31-world-map-crop.webp'
+      - 'index.html'
+      - 'phase2-pilot/apps/aaria-android/**'
+      - '.github/scripts/v34-dual-home-smoke.mjs'
+      - '.github/workflows/v34-android-preview.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: aaria-v34-preview-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      V34_PREVIEW_BUILD_SUFFIX: ${{ github.run_number }}
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34preview${{ github.run_number }}
+    steps:
+      - name: Check out exact V3.4 source head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up Android SDK and Gradle
+        uses: android-actions/setup-android@v4
+      - uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: 8.9
+      - name: Build the approved 97-recipe offline runtime and attach V3.4 APK layer
+        run: |
+          set -euo pipefail
+          node tools/v3/artwork/build-international-review.mjs
+          node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          mkdir -p dist artifacts/v34-preview phase2-pilot/apps/aaria-android/app/src/main/assets
+          V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_V3_4_Base.html
+          node tools/v3/attach-v34-dual-home.mjs dist/Aaria_V3_4_Base.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          node tools/v3/validate-v34-preview.mjs phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          node --check tools/v3/v34-dual-home.js
+          node --check .github/scripts/v34-dual-home-smoke.mjs
+          test "$(grep -o 'data-v34-style=' tools/v3/v34-dual-home.js | wc -l)" -ge 2
+      - name: Run Android unit tests and build isolated V3.4 preview APK
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+      - name: Record package, signing certificate and APK SHA-256
+        run: |
+          set -euo pipefail
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$apk" > artifacts/v34-preview/apk-badging.txt
+          "$apksigner" verify --print-certs "$apk" > artifacts/v34-preview/apk-signer.txt
+          grep -Fq "package: name='${ANDROID_TEST_APP_ID}' versionCode='8' versionName='1.0.4'" artifacts/v34-preview/apk-badging.txt
+          grep -Fq "application-label:'Aaria Magical Kitchen V3.4 Home Preview ${V34_PREVIEW_BUILD_SUFFIX}'" artifacts/v34-preview/apk-badging.txt
+          echo "$GITHUB_SHA" > artifacts/v34-preview/source-head.txt
+          echo "$ANDROID_TEST_APP_ID" > artifacts/v34-preview/package-id.txt
+          sha256sum "$apk" | tee artifacts/v34-preview/apk-sha256.txt
+          cp "$apk" artifacts/v34-preview/Aaria_V3_4_Dual_Home_Preview.apk
+          printf 'signing=isolated Android debug key\npackage=co-installable V3.4 preview ID\nin_place_upgrade=NOT_CLAIMED\nproduction_release=NOT_AUTHORIZED\n' > artifacts/v34-preview/compatibility.txt
+      - name: Upload installable V3.4 preview APK and build evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.4-preview-apk
+          path: artifacts/v34-preview/**
+          if-no-files-found: error
+          retention-days: 30
+
+  device-check:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        device: [phone, tablet]
+    env:
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34preview${{ github.run_number }}
+      V34_DEVICE: ${{ matrix.device }}
+    steps:
+      - name: Check out smoke harness at the exact V3.4 commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Download exact-head V3.4 APK
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.4-preview-apk
+          path: downloaded
+      - name: Run focused Android UI and persistence checks on ${{ matrix.device }}
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: ${{ matrix.device == 'tablet' && 'pixel_tablet' || 'pixel_3a' }}
+          disable-animations: true
+          script: |
+            cp downloaded/Aaria_V3_4_Dual_Home_Preview.apk app-debug.apk
+            node --version
+            node .github/scripts/v34-dual-home-smoke.mjs
+      - name: Upload genuine ${{ matrix.device }} screenshots and focused results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3.4-${{ matrix.device }}-evidence
+          path: artifacts/v34-preview/${{ matrix.device }}/
+          if-no-files-found: warn
+          retention-days: 30
