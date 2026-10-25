@@ -9,6 +9,7 @@ on:
       - .github/scripts/v34-dual-home-smoke.mjs
       - tools/v3/v34-dual-home.js
       - tools/v3/attach-v34-dual-home.mjs
+      - tools/v3/transform-production.mjs
       - tools/v3/runtime.js
       - tools/v3/home-world-visual.css
       - phase2-pilot/apps/aaria-android/app/src/main/java/com/aaria/magickitchen/pilot/ShareImageProvider.kt

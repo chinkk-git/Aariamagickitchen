@@ -240,16 +240,7 @@ family=function v32CanonicalFamily(){
 };
 friends=function v32CanonicalFriends(){
  const pt=state.language==='pt-BR';
- const people=[
-  {key:'rohan',label:'Rohan',src:V31_HOME_WORLD_ART.avatars.rohan},
-  {key:'arjun',label:'Arjun',src:V31_HOME_WORLD_ART.avatars.arjun},
-  {key:'vihaan',label:'Vihaan',src:V31_HOME_WORLD_ART.avatars.vihaan},
-  {key:'isha',label:'Isha',src:V31_HOME_WORLD_ART.avatars.isha},
-  {key:'meera',label:'Meera',src:V31_HOME_WORLD_ART.avatars.meera},
-  {key:'sana',label:'Sana',src:V31_HOME_WORLD_ART.avatars.sana},
-  {key:'diya',label:'Diya',src:V31_HOME_WORLD_ART.avatars.diya}
- ];
- return `${header(pt?'Cozinhe com amigos 🌈':'Cook with Friends 🌈')}<section class="home-subpage v32-group-screen"><h1>${pt?'Convide seus amigos para a cozinha!':'Invite your kitchen friends!'}</h1><p>${pt?'Escolha uma receita fácil para preparar juntos. Peça a um adulto para ajudar com aparelhos quentes e ferramentas afiadas.':'Choose an easy recipe to make together. Ask an adult to help with hot appliances and sharp tools.'}</p>${v32AvatarCastItems(people,pt?'Sete amigos da cozinha':'Seven kitchen friends','friends')}<h2>${pt?'Sugestões de receitas entre amigos':'Friend-friendly recipe ideas'}</h2>${relatedRecipeGrid('friends')}<div class="home-subpage-actions"><button data-nav="library">${pt?'📖 Ver todas as 95 receitas':'📖 See all 95 recipes'}</button><button data-nav="week">${pt?'🗓️ Planejar uma semana de receitas':'🗓️ Plan a cooking week'}</button></div></section>`;
+ return `${header(pt?'Cozinhe com amigos 🌈':'Cook with Friends 🌈')}<section class="home-subpage v32-group-screen"><h1>${pt?'Convide seus amigos para a cozinha!':'Invite your kitchen friends!'}</h1><p>${pt?'Escolha uma receita fácil para preparar juntos. Peça a um adulto para ajudar com aparelhos quentes e ferramentas afiadas.':'Choose an easy recipe to make together. Ask an adult to help with hot appliances and sharp tools.'}</p><h2>${pt?'Sugestões de receitas entre amigos':'Friend-friendly recipe ideas'}</h2>${relatedRecipeGrid('friends')}<div class="home-subpage-actions"><button data-nav="library">${pt?'📖 Ver todas as 95 receitas':'📖 See all 95 recipes'}</button><button data-nav="week">${pt?'🗓️ Planejar uma semana de receitas':'🗓️ Plan a cooking week'}</button></div></section>`;
 };
 const v3OriginalGroceries=groceries;
 groceries=function v31PantryShortcuts(){

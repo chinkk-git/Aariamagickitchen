@@ -116,9 +116,13 @@
     return `<div class="v34-rail" role="region" aria-label="${label}" tabindex="0">${items}</div>`;
   }
   function worldCard(row) {
-    const landmark = V31_HOME_WORLD_ART.destinations[row.code];
+    const artwork = V31_HOME_WORLD_ART.destinations?.[row.code];
+    const artworkAlt = V31_HOME_WORLD_ART.destinationAlt?.[row.code] || (row.en + ' recipe artwork');
     const food = row.code === 'IND' ? '🥪' : row.code === 'ITA' ? '🍝' : '🥡';
-    return '<button class="v34-country-card" type="button" data-v34-country="' + row.code + '" aria-label="' + t('Explore recipes from', 'Explore receitas de') + ' ' + (pt() ? row.br : row.en) + '"><span class="v34-country-art v34-country-art-' + row.code.toLowerCase() + '"><img src="' + (landmark || '') + '" alt="><span class="v34-country-food" aria-hidden="true">' + food + '</span></span><strong>' + row.flag + ' ' + (pt() ? row.br : row.en) + '</strong><small>' + row.recipes.length + ' ' + t('approved recipes', 'receitas aprovadas') + '</small></button>';
+    const image = artwork
+      ? `<img src="${artwork}" alt="${safe(artworkAlt)}" loading="lazy" decoding="async">`
+      : `<span class="v34-country-art-fallback" role="img" aria-label="${safe(artworkAlt)}">${food}</span>`;
+    return `<button class="v34-country-card" type="button" data-v34-country="${row.code}" aria-label="${t('Explore recipes from', 'Explore receitas de')} ${pt() ? row.br : row.en}"><span class="v34-country-art v34-country-art-${row.code.toLowerCase()}">${image}<span class="v34-country-food" aria-hidden="true">${food}</span></span><strong>${row.flag} ${pt() ? row.br : row.en}</strong><small>${row.recipes.length} ${t('approved recipes', 'receitas aprovadas')}</small></button>`;
   }
   function openCountryRecipes(code) {
     const row = countryRows().find(country => country.code === code);
@@ -203,10 +207,29 @@
   async function hydrateRecipePhoto() {
     const id = Number(selected?.id);
     if (!id || view !== 'recipe') return;
-    const record = [...(Array.isArray(state.myCreations) ? state.myCreations : [])].reverse().find(item => item && typeof item === 'object' && Number(item.recipeId) === id && item.photoUrl);
-    if (!record) return;
+    const records = await listCreationPhotos();
+    const stored = records.slice().reverse().find(item => Number(item.recipeId) === id && item.blob instanceof Blob);
+    const fallback = [...(Array.isArray(state.myCreations) ? state.myCreations : [])].reverse().find(item => item && typeof item === 'object' && Number(item.recipeId) === id && item.photoUrl);
+    let source = stored?.blob || null;
+    if (!source && fallback?.photoUrl) {
+      try { const response = await fetch(fallback.photoUrl, { cache: 'no-store' }); if (response.ok) source = await response.blob(); } catch {}
+    }
+    if (!(source instanceof Blob) || !source.type.startsWith('image/')) return;
+    if (!sharePostBlobs[id]) {
+      const post = await makeCookPost(find(id), source);
+      shareSourcePhotos[id] = source;
+      sharePostBlobs[id] = post;
+      sharePostUrls[id] = URL.createObjectURL(post);
+    }
+    if (view !== 'recipe' || Number(selected?.id) !== id) return;
+    const preview = document.querySelector('#screen .cook-post-preview img');
     const wait = document.querySelector('#screen .cook-photo-wait');
-    if (wait) wait.outerHTML = `<div class="cook-post-preview"><img src="${safe(record.photoUrl)}" alt="${safe(find(id)?.title || 'Recipe')} photo saved in My Creations"></div>`;
+    if (preview) preview.src = sharePostUrls[id];
+    else if (wait) wait.outerHTML = `<div class="cook-post-preview"><img src="${sharePostUrls[id]}" alt="${safe(find(id)?.title || 'Recipe')} ready-to-share cooking post with saved photo"></div>`;
+    const shareButton = document.querySelector('#screen .cook-post-share');
+    if (shareButton) shareButton.disabled = !sharePostBlobs[id];
+    const hint = document.querySelector('#screen .cook-share-hint');
+    if (hint) hint.textContent = t('Share your saved cooking photo and post with a parent or guardian.', 'Compartilhe sua foto e publicação salva com um adulto.');
   }
   async function saveCreationPhoto(recipeId, source) {
     const id = Number(recipeId), recipe = find(id);
@@ -395,9 +418,6 @@
 ${v34Style}
 </style>`);
 
-  const WELCOME_ART_DATA_URI = __V34_WELCOME_ART_DATA_URI__;
-  const WELCOME_DISMISSED_KEY = 'aaria.v34.welcome.dismissed';
-  const WELCOME_SCENE_KEY = 'aaria.v34.welcome.scene';
   const WELCOME_SCENES = [
     { text: 'Preparing something magical...', aria: 'Aaria raises her arms in the magical kitchen. Preparing something magical...' },
     { text: 'Mixing fun, flavours and surprises!', aria: 'Aaria stirs her magical mixing bowl. Mixing fun, flavours and surprises!' },
@@ -419,7 +439,6 @@ ${v34Style}
     welcomeOverlay.querySelector('.v34-welcome-back').hidden = welcomeSceneIndex === 0;
     welcomeOverlay.querySelector('.v34-welcome-next').hidden = welcomeSceneIndex === 2;
     welcomeOverlay.querySelector('.v34-welcome-enter-wrap').hidden = welcomeSceneIndex !== 2;
-    try { sessionStorage.setItem(WELCOME_SCENE_KEY, String(welcomeSceneIndex)); } catch {}
     if (focusControl) {
       const selector = welcomeSceneIndex === 2 ? '.v34-welcome-enter' :
         welcomeSceneIndex === 0 ? '.v34-welcome-next' : '.v34-welcome-back';
@@ -431,15 +450,10 @@ ${v34Style}
     if (!welcomeOverlay) return;
     const overlay = welcomeOverlay;
     welcomeOverlay = null;
-    try {
-      sessionStorage.setItem(WELCOME_DISMISSED_KEY, '1');
-      sessionStorage.removeItem(WELCOME_SCENE_KEY);
-    } catch {}
     document.querySelector('.app')?.removeAttribute('inert');
     overlay.remove();
     v34SyncNavigation(homeStyle() === 'magical');
     if (view === 'home') render();
-    v34ShowWelcome();
     document.querySelector('#nav [data-nav="home"]')?.focus({ preventScroll: true });
   }
 
@@ -451,7 +465,6 @@ ${v34Style}
   }
 
   function v34ShowWelcome() {
-    try { if (sessionStorage.getItem(WELCOME_DISMISSED_KEY) === '1') return; } catch {}
     const app = document.querySelector('.app');
     if (!app || document.getElementById('v34-welcome')) return;
     welcomeOverlay = document.createElement('section');
@@ -484,6 +497,7 @@ ${v34Style}
       '<div class="v34-welcome-enter-wrap" hidden><button class="v34-welcome-enter" type="button" aria-label="Enter My Magical Kitchen">➜</button>' +
       '<span>Enter My Magical Kitchen</span></div></footer>';
     document.body.appendChild(welcomeOverlay);
+    document.getElementById('v34-welcome-boot')?.remove();
     app.setAttribute('inert', '');
     welcomeOverlay.querySelector('.v34-welcome-next').addEventListener('click', () => v34WelcomeScene(welcomeSceneIndex + 1, true));
     welcomeOverlay.querySelector('.v34-welcome-back').addEventListener('click', () => v34WelcomeScene(welcomeSceneIndex - 1, true));
@@ -493,11 +507,8 @@ ${v34Style}
       if (event.key === 'ArrowRight' && welcomeSceneIndex < 2) v34WelcomeScene(welcomeSceneIndex + 1, true);
       if (event.key === 'ArrowLeft' && welcomeSceneIndex > 0) v34WelcomeScene(welcomeSceneIndex - 1, true);
     });
-    try {
-      welcomeSceneIndex = Number(sessionStorage.getItem(WELCOME_SCENE_KEY));
-      if (!Number.isInteger(welcomeSceneIndex) || welcomeSceneIndex < 0 || welcomeSceneIndex > 2) welcomeSceneIndex = 0;
-      history.pushState({ v34Welcome: true }, '', location.href);
-    } catch { welcomeSceneIndex = 0; }
+    welcomeSceneIndex = 0;
+    try { history.pushState({ v34Welcome: true }, '', location.href); } catch {}
     v34WelcomeScene(welcomeSceneIndex, false);
     welcomeOverlay.querySelector('.v34-welcome-next')?.focus({ preventScroll: true });
   }
@@ -517,7 +528,7 @@ ${v34Style}
     '.v34-welcome-shell{position:fixed;z-index:2147483000;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:8px;padding:max(8px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));overflow:hidden;background:radial-gradient(ellipse at 50% 43%,#7d45a9,#35114e 78%);color:#fff8ea;font-family:ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;overscroll-behavior:none}',
     '.v34-welcome-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;font-size:clamp(14px,2.6vw,19px);font-weight:900;text-shadow:0 2px 8px #190b2d}',
     '.v34-welcome-stage{position:relative;display:grid;place-items:center;min-height:0;overflow:visible}',
-    '.v34-welcome-frame{height:100%;max-height:100%;max-width:100%;aspect-ratio:0.4921875/1;border-radius:clamp(12px,2vw,22px);background-repeat:no-repeat;background-size:303% 100%;background-position:0% center;box-shadow:0 12px 30px #1d0a2e80}',
+    '.v34-welcome-frame{height:100%;max-height:100%;max-width:100%;aspect-ratio:0.4921875/1;border-radius:clamp(12px,2vw,22px);background-image:var(--v34-welcome-art);background-repeat:no-repeat;background-size:303% 100%;background-position:0% center;box-shadow:0 12px 30px #1d0a2e80}',
     '.v34-welcome-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}',
     '.v34-welcome-particle{position:absolute;left:var(--x);top:var(--y);font-size:var(--s);line-height:1;filter:drop-shadow(0 0 7px #fff1a3);animation:v34-welcome-drift var(--d) ease-in-out var(--delay) infinite alternate,v34-welcome-twinkle calc(var(--d)*.67) ease-in-out var(--delay) infinite alternate}',
     '.v34-welcome-particle:nth-child(3n){animation-name:v34-welcome-drift-left,v34-welcome-twinkle}',
@@ -538,9 +549,7 @@ ${v34Style}
     '@media(max-height:480px){.v34-welcome-top{min-height:38px}.v34-welcome-footer{min-height:60px;padding-bottom:12px}.v34-welcome-enter{width:64px;height:64px;font-size:39px}.v34-welcome-button{min-height:44px}}',
     '@media(prefers-reduced-motion:reduce){.v34-welcome-particle{display:none!important;animation:none!important}.v34-welcome-enter{animation:none!important;transform:none!important;box-shadow:0 0 0 6px #ffd94b50,0 0 22px 9px #ffe44b9c,0 5px 0 #572078}}'
   ].join('');
-  document.head.insertAdjacentHTML('beforeend', '<style id="v34-welcome-style">' + v34WelcomeStyle +
-    '.v34-welcome-frame{background-image:url(' + JSON.stringify(WELCOME_ART_DATA_URI) + ')}' +
-    '</style>');
+  document.head.insertAdjacentHTML('beforeend', '<style id="v34-welcome-style">' + v34WelcomeStyle + '</style>');
 
   document.addEventListener('DOMContentLoaded', () => {
     v34SyncNavigation(homeStyle() === 'magical');
