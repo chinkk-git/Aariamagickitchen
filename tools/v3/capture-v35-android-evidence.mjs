@@ -46,7 +46,7 @@ for(const [id,code] of Object.entries(recipeCountry)){
  const clicked=await evaluate(`(()=>{const b=document.querySelector('.aria-world-globe__recipe[data-recipe-id="${id}"]');if(!b)return false;b.click();return true})()`);
  assert.equal(clicked,true,`#${id} missing from ${code} country recipe list`);
  await waitFor(`typeof view!=='undefined'&&view==='recipe'&&Number(selected?.id)===${id}`,'recipe detail #'+id);
- const detail=await evaluate(`({template:document.querySelector('.app')?.classList.contains('v32-template-active'),steps:(STEP_GUIDES[${id}]||[]).length,title:document.querySelector('#screen .ref-title h1')?.textContent?.trim()})`);
+ const detail=await evaluate(`({template:document.querySelector('.app')?.classList.contains('v32-international-active'),steps:(STEP_GUIDES[${id}]||[]).length,title:document.querySelector('#screen .ref-title h1')?.textContent?.trim()})`);
  assert.equal(detail.template,true,`#${id} must use the approved V3.2 recipe template`);assert.ok(detail.steps>=4,`#${id} step guide missing`);assert.ok(detail.title,`#${id} detail title missing`);
  if(id===111)await screenshot('recipe-111-detail-portrait.png');if(id===116)await screenshot('recipe-116-detail-portrait.png');
  await goHome();
