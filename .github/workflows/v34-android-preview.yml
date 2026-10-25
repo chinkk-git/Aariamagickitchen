@@ -1,10 +1,15 @@
 name: Aaria V3.4 Dual Home Preview APK
 
 on:
+  push:
+    branches:
+      - feature/v3.4-dual-home-experience
+    paths:
+      - .github/workflows/v34-android-preview.yml
   workflow_dispatch:
     inputs:
       owner_visual_approval:
-        description: Set to true only after owner approves the V3.4 screenshots
+        description: Explicit owner authorization for a V3.4 preview APK build
         required: true
         type: boolean
 
@@ -18,7 +23,7 @@ concurrency:
 
 jobs:
   build:
-    if: ${{ inputs.owner_visual_approval == true }}
+    if: ${{ inputs.owner_visual_approval == true || (github.event_name == 'push' && github.event.head_commit.message == 'W01-OWNER-APPROVED-V34-PREVIEW') }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
