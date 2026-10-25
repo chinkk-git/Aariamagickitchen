@@ -67,9 +67,13 @@
       Promise.all(requests).then(groups => resolve(groups.flat().sort((a, b) => Number(a.savedAt || 0) - Number(b.savedAt || 0))));
     });
   }
-  function rememberCreation(recipeId) {
+  function rememberCreation(recipeId, photoUrl = '') {
     state.myCreations = Array.isArray(state.myCreations) ? state.myCreations : [];
-    if (!state.myCreations.some(item => Number(typeof item === 'object' ? item.recipeId : item) === Number(recipeId))) {
+    if (photoUrl) {
+      if (!state.myCreations.some(item => Number(item?.recipeId) === Number(recipeId) && item?.photoUrl === photoUrl)) {
+        state.myCreations.push({ recipeId: Number(recipeId), photoUrl, createdAt: Date.now() });
+      }
+    } else if (!state.myCreations.some(item => Number(typeof item === 'object' ? item.recipeId : item) === Number(recipeId))) {
       state.myCreations.push({ recipeId: Number(recipeId), createdAt: Date.now() });
     }
     save();
@@ -181,20 +185,50 @@
     photoUrls.forEach(url => URL.revokeObjectURL(url)); photoUrls = [];
     const railNode = document.querySelector('[data-v34-photo-rail]');
     if (!railNode) return;
-    const photos = await listCreationPhotos();
+    const statePhotos = (Array.isArray(state.myCreations) ? state.myCreations : []).filter(item => item && typeof item === 'object' && item.photoUrl).map(item => ({ recipeId: Number(item.recipeId), url: item.photoUrl, savedAt: item.createdAt || 0 }));
+    const photos = [...await listCreationPhotos(), ...statePhotos].sort((a, b) => Number(a.savedAt || 0) - Number(b.savedAt || 0));
     if (!photos.length || !railNode.isConnected) return;
     for (const record of photos) {
       const recipe = find(Number(record.recipeId));
-      if (!recipe || !(record.blob instanceof Blob)) continue;
+      if (!recipe || (!record.url && !(record.blob instanceof Blob))) continue;
       const card = railNode.querySelector(`[data-open="${Number(record.recipeId)}"]`);
       if (!card) continue;
-      const url = URL.createObjectURL(record.blob); photoUrls.push(url);
+      const url = record.url || URL.createObjectURL(record.blob); if (!record.url) photoUrls.push(url);
       card.querySelector('.home-thumb')?.remove();
       let image = card.querySelector('.v34-home-photo');
       if (!image) { image = document.createElement('img'); image.className = 'v34-home-photo'; image.alt = t(`Photo of ${recipe.title} made by Aaria`, `Foto de ${recipe.title} preparada pela Aaria`); card.prepend(image); }
       image.src = url;
     }
   }
+  async function hydrateRecipePhoto() {
+    const id = Number(selected?.id);
+    if (!id || view !== 'recipe') return;
+    const record = [...(Array.isArray(state.myCreations) ? state.myCreations : [])].reverse().find(item => item && typeof item === 'object' && Number(item.recipeId) === id && item.photoUrl);
+    if (!record) return;
+    const wait = document.querySelector('#screen .cook-photo-wait');
+    if (wait) wait.outerHTML = `<div class="cook-post-preview"><img src="${safe(record.photoUrl)}" alt="${safe(find(id)?.title || 'Recipe')} photo saved in My Creations"></div>`;
+  }
+  async function saveCreationPhoto(recipeId, source) {
+    const id = Number(recipeId), recipe = find(id);
+    if (!recipe || (!source && !window.AariaNative)) throw new Error('Recipe or photo is unavailable.');
+    let blob = source;
+    let photoUrl = '';
+    if (typeof source === 'string') {
+      photoUrl = source;
+      const response = await fetch(source, { cache: 'no-store' });
+      if (!response.ok) throw new Error('The captured photo could not be read.');
+      blob = await response.blob();
+    }
+    if (!(blob instanceof Blob) || !blob.type.startsWith('image/')) throw new Error('The captured file is not an image.');
+    await storeCreationPhoto(id, blob);
+    rememberCreation(id, photoUrl);
+    const post = await makeCookPost(recipe, blob);
+    if (sharePostUrls[id]) URL.revokeObjectURL(sharePostUrls[id]);
+    shareSourcePhotos[id] = blob; sharePostBlobs[id] = post; sharePostUrls[id] = URL.createObjectURL(post);
+    render(); notice(t('Photo saved to My Creations!', 'Foto salva em Minhas criações!'));
+    if (view === 'home' || view === 'creations') void hydratePhotoRail();
+  }
+  window.v34SaveCreationPhoto = saveCreationPhoto;
   function v34CreationsPage() {
     const ids = creationIds();
     const cards = ids.length ? ids.slice().reverse().map(id => recipeCard(find(id), '💖')).join('') : `<div class="v34-empty-creations"><span aria-hidden="true">📸</span><strong>${t('Your saved creations will appear here', 'Suas criações salvas aparecerão aqui')}</strong><p>${t('Take a photo while cooking to keep the memory.', 'Tire uma foto enquanto cozinha para guardar essa memória.')}</p><button type="button" data-nav="library">${t('Choose a recipe', 'Escolher uma receita')} →</button></div>`;
@@ -212,6 +246,7 @@
     v34SyncNavigation(magical);
     if (magical && view === 'home') updateCarousel(activeActivity);
     if (magical && (view === 'home' || view === 'creations')) void hydratePhotoRail();
+    if (magical && view === 'recipe') void hydrateRecipePhoto();
     return result;
   };
   function v34SyncNavigation(magical) {
@@ -265,15 +300,7 @@
     if (!file.type.startsWith('image/')) { notice(t('Please choose an image.', 'Escolha uma imagem.')); return; }
     const id = Number(input.dataset.sharePhoto);
     try {
-      await storeCreationPhoto(id, file); rememberCreation(id);
-      const recipe = find(id);
-      if (recipe && typeof makeCookPost === 'function') {
-        const post = await makeCookPost(recipe, file);
-        if (sharePostUrls[id]) URL.revokeObjectURL(sharePostUrls[id]);
-        shareSourcePhotos[id] = file; sharePostBlobs[id] = post; sharePostUrls[id] = URL.createObjectURL(post);
-      }
-      render(); notice(t('Photo saved to My Creations!', 'Foto salva em Minhas criações!'));
-      if (view === 'home') void hydratePhotoRail();
+      await saveCreationPhoto(id, file);
     } catch (error) {
       console.error('Could not save the creation photo.', error);
       notice(t('Could not save that photo. Please try again.', 'Não foi possível salvar essa foto. Tente novamente.'));
