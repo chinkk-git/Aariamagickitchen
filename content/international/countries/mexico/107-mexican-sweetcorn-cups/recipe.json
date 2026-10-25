@@ -1,0 +1,2188 @@
+{
+  "schema_version": "1.0",
+  "id": 107,
+  "country": "mexico",
+  "country_code": "MX",
+  "title": {
+    "en-GB": "Mexican Sweetcorn Cups",
+    "pt-BR": "Copinhos mexicanos de milho"
+  },
+  "description": {
+    "en-GB": "Warm sweetcorn cups with lime, creamy mayonnaise, salty Cotija and fresh coriander, inspired by Mexican esquites.",
+    "pt-BR": "Copinhos de milho morno com limão, maionese cremosa, Cotija salgado e coentro fresco, inspirados nos esquites mexicanos."
+  },
+  "cultural_context": {
+    "en-GB": "Esquites are a Mexican street-food style of corn served off the cob, with many regional toppings. This simple version uses lime, mayonnaise, Cotija and coriander.",
+    "pt-BR": "Esquites são um preparo mexicano de milho fora da espiga, com coberturas que variam por região. Esta versão simples usa limão, maionese, Cotija e coentro."
+  },
+  "category": "international",
+  "method": "Adult stovetop sweetcorn; child mixing and portioning",
+  "time": "25 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 20,
+  "total_minutes": 25,
+  "ingredients": [
+    "400 g Sweetcorn kernels, drained",
+    "30 mL Fresh lime juice",
+    "30 g Mayonnaise (pasteurised)",
+    "40 g Cotija cheese, crumbled",
+    "10 g Fresh coriander leaves",
+    "1 g Fine salt"
+  ],
+  "equipment": [
+    "Saucepan",
+    "Colander",
+    "Mixing bowl",
+    "Mixing spoon",
+    "Measuring cup",
+    "Small serving cups",
+    "Serving plate"
+  ],
+  "ingredientItems": [
+    {
+      "id": "sweetcorn",
+      "name": {
+        "en-GB": "Sweetcorn kernels, drained",
+        "pt-BR": "Grãos de milho, escorridos"
+      },
+      "quantity": 400,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/sweetcorn.png",
+        "sha256": "d3899bc9b7b85aa588dd7dccace1817a5c20254fb9634fa49aaa069076ca98c3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Grãos de milho, escorridos"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "lime-juice",
+      "name": {
+        "en-GB": "Fresh lime juice",
+        "pt-BR": "Suco de limão-taiti fresco"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
+        "sha256": "1e1b0049f860de46df45ef7cc86b0f92c19b7194a6d80dce98a46bd8673f5996",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "mayonnaise",
+      "name": {
+        "en-GB": "Mayonnaise (pasteurised)",
+        "pt-BR": "Maionese pasteurizada"
+      },
+      "quantity": 30,
+      "unit": "g",
+      "allergens": [
+        "egg"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
+        "sha256": "dbd737cc7cec755fa98ab286bb2721fdc48be4ad8abf81d66f76d9c8843c8b29",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mayonnaise (pasteurised)",
+          "pt-BR": "Maionese pasteurizada"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "cotija",
+      "name": {
+        "en-GB": "Cotija cheese, crumbled",
+        "pt-BR": "Queijo Cotija esfarelado"
+      },
+      "quantity": 40,
+      "unit": "g",
+      "allergens": [
+        "milk"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
+        "sha256": "d7edeb339f1efccb3d894c221d36071081153af1cb038562c21fa2337a0b08fe",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cotija cheese, crumbled",
+          "pt-BR": "Queijo Cotija esfarelado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "coriander",
+      "name": {
+        "en-GB": "Fresh coriander leaves",
+        "pt-BR": "Folhas de coentro fresco"
+      },
+      "quantity": 10,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
+        "sha256": "a7483d64d84676c916e8740690b7875973e3f83f59370b09ed16cdc2f28357e6",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh coriander leaves",
+          "pt-BR": "Folhas de coentro fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "salt",
+      "name": {
+        "en-GB": "Fine salt",
+        "pt-BR": "Sal fino"
+      },
+      "quantity": 1,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
+        "sha256": "28ed8452f2270543e0583c165f0aac73f9ea1963cba7fa78263177fd67a16008",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "saucepan",
+      "name": {
+        "en-GB": "Saucepan",
+        "pt-BR": "Panela"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/saucepan.png",
+        "sha256": "f82920133863d6a1cd23ec0d14bab013c3b67790ab96944ee81f7446c494895e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
+        "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
+        "sha256": "9a95c36f4f25b0f7e629a6d1409320bf9dbda001014e4b682c24607aaf636949",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "mixing-spoon",
+      "name": {
+        "en-GB": "Mixing spoon",
+        "pt-BR": "Colher para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
+        "sha256": "1482c1292b4f46a17d01b6e88dc00a22abcf3c9ef02a599c0aa91d47b14b19de",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "measuring-cup",
+      "name": {
+        "en-GB": "Measuring cup",
+        "pt-BR": "Copo medidor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
+        "sha256": "e6067636259980b34cc236ce88fc9ae3bfbbd713910d112ac010a67fc47db605",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "serving-cups",
+      "name": {
+        "en-GB": "Small serving cups",
+        "pt-BR": "Copinhos para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
+        "sha256": "32e10fd8fcf3dcbaee7d4826fbe0fbdfa9a571bc155455d055ab86e0b88290ab",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "serving-plate",
+      "name": {
+        "en-GB": "Serving plate",
+        "pt-BR": "Prato para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
+        "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Cook the sweetcorn",
+        "pt-BR": "Cozinhe o milho"
+      },
+      "instruction": {
+        "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+        "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+      },
+      "ingredientIds": [
+        "sweetcorn",
+        "salt"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "colander"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult only: handle the hob, boiling water and hot saucepan. Children wash hands and set out bowls away from the hob.",
+        "pt-BR": "Somente adulto: use o fogão, a água fervente e a panela quente. As crianças lavam as mãos e organizam as tigelas longe do fogão."
+      },
+      "safety": {
+        "en-GB": "Keep children away from the hob. An adult pours and drains boiling water; use the rear hob ring and turn handles inward.",
+        "pt-BR": "Mantenha as crianças longe do fogão. Um adulto despeja e escorre a água fervente; use a boca traseira e vire os cabos para dentro."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for hob, hot pan and boiling water.",
+        "pt-BR": "Somente adulto usa o fogão, a panela quente e a água fervente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
+        "sha256": "b1fce886f1d5efc696ba44f5c1db17e993810e13ce0c9191db9a094d8ad6c9b3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+          "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Measure the lime dressing",
+        "pt-BR": "Meça o molho de limão"
+      },
+      "instruction": {
+        "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+        "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+      },
+      "ingredientIds": [
+        "lime-juice",
+        "mayonnaise"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "measuring-cup",
+        "mixing-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Children measure and stir the dressing with an adult nearby; an adult checks the mayonnaise label.",
+        "pt-BR": "As crianças medem e mexem o molho com um adulto por perto; um adulto confere o rótulo da maionese."
+      },
+      "safety": {
+        "en-GB": "Let the corn cool enough to handle; keep raw and ready-to-eat foods separate. Use pasteurised mayonnaise and refrigerate it.",
+        "pt-BR": "Deixe o milho esfriar o suficiente para manusear; mantenha separados alimentos crus e prontos para consumo. Use maionese pasteurizada e mantenha-a refrigerada."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervision; use no sharp tools.",
+        "pt-BR": "Supervisão adulta; não use ferramentas afiadas."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
+        "sha256": "51273e9e40469f9c4a3cd8bf7e9b931f4b5bef962f7f4f3462b6f0d2a0ef21a9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+          "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Mix corn and dressing",
+        "pt-BR": "Misture o milho ao molho"
+      },
+      "instruction": {
+        "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+        "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+      },
+      "ingredientIds": [
+        "sweetcorn",
+        "lime-juice",
+        "mayonnaise",
+        "salt"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "mixing-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Children can stir the mixture once the corn is warm rather than hot; an adult checks the temperature.",
+        "pt-BR": "As crianças podem misturar quando o milho estiver morno, não quente; um adulto verifica a temperatura."
+      },
+      "safety": {
+        "en-GB": "Avoid steam and hot food. An adult checks that the corn is warm, not hot, before children stir.",
+        "pt-BR": "Evite vapor e alimentos quentes. Um adulto verifica se o milho está morno, e não quente, antes de as crianças mexerem."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult handles hot food; children stir only when warm.",
+        "pt-BR": "Um adulto manuseia a comida quente; crianças mexem somente quando morna."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
+        "sha256": "37e52f5b17d4eed822d1767acded4aeeed2013aa2520bf660e470f3327d5653a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+          "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Spoon into serving cups",
+        "pt-BR": "Coloque nos copinhos"
+      },
+      "instruction": {
+        "en-GB": "Spoon the corn mixture into four small serving cups.",
+        "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+      },
+      "ingredientIds": [
+        "sweetcorn",
+        "mayonnaise"
+      ],
+      "equipmentIds": [
+        "serving-cups",
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "Children portion the cooled mixture with a spoon under adult supervision.",
+        "pt-BR": "As crianças dividem a mistura já fria com uma colher, sob supervisão adulta."
+      },
+      "safety": {
+        "en-GB": "Use stable cups and a clean spoon; do not serve while steaming hot.",
+        "pt-BR": "Use copinhos firmes e uma colher limpa; não sirva enquanto estiver soltando vapor."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult confirms a safe serving temperature.",
+        "pt-BR": "Um adulto confirma que a temperatura está segura para servir."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
+        "sha256": "fe1a5f9f0615e6cceec57c9a8d9b1ced6e2507423f289a2a314962aaff1263fe",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spoon the corn mixture into four small serving cups.",
+          "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Garnish and serve",
+        "pt-BR": "Finalize e sirva"
+      },
+      "instruction": {
+        "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+        "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+      },
+      "ingredientIds": [
+        "cotija",
+        "coriander"
+      ],
+      "equipmentIds": [
+        "serving-cups",
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "Children sprinkle the measured cheese and coriander; adults handle refrigerated dairy and check labels.",
+        "pt-BR": "As crianças polvilham o queijo e o coentro medidos; adultos manuseiam laticínios refrigerados e conferem os rótulos."
+      },
+      "safety": {
+        "en-GB": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens.",
+        "pt-BR": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo.",
+        "en": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens.",
+        "pt": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervises food temperatures and serving.",
+        "pt-BR": "Um adulto supervisiona as temperaturas e o serviço."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
+        "sha256": "a17d84a73de42f19970e4ca0d08567c4ee81e76e2135ce9d5adfc45b12b73b8f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+          "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults handle the hob, boiling water, draining and hot food. Children measure the dressing, stir once the corn is warm, portion and garnish with adult supervision.",
+    "pt-BR": "Adultos usam o fogão, a água fervente, escorrem e manuseiam alimentos quentes. Crianças medem o molho, mexem quando o milho estiver morno, dividem e finalizam sob supervisão."
+  },
+  "allergens": [
+    "egg",
+    "milk"
+  ],
+  "allergen_notes": {
+    "contains": {
+      "en-GB": "Egg in mayonnaise; milk in Cotija cheese. Check labels and cross-contact warnings.",
+      "pt-BR": "Ovo na maionese; leite no queijo Cotija. Confira os rótulos e avisos de contato cruzado."
+    },
+    "cross_contact": {
+      "en-GB": "Check labels for allergens and cross-contact, especially mayonnaise and Cotija cheese. Mayonnaise contains egg and Cotija contains milk; use clean utensils and surfaces for allergy-safe portions.",
+      "pt-BR": "Confira os rótulos para alergênicos e contato cruzado, especialmente da maionese e do queijo Cotija. A maionese contém ovo e o Cotija contém leite; use utensílios e superfícies limpos para porções destinadas a pessoas com alergia."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 188,
+      "proteinG": 6,
+      "carbohydrateG": 22,
+      "fatG": 10.3,
+      "fibreG": 2.5,
+      "saturatedFatG": 3.1,
+      "sodiumMg": 308
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+    "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Corn,%20sweet,%20yellow,%20cooked,%20boiled,%20drained,%20without%20salt"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Salad dressing, mayonnaise",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Salad%20dressing,%20mayonnaise"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cheese, Cotija",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese,%20Cotija"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Coriander (cilantro) leaves, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Coriander%20(cilantro)%20leaves,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Salt, table",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Salt,%20table"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+      "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+    },
+    "image": {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
+      "sha256": "61d65362d1908c16157caa801b4aaa689e485be3a80e341ebc25d6c2245c49dc",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+        "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
+      "sha256": "61d65362d1908c16157caa801b4aaa689e485be3a80e341ebc25d6c2245c49dc",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+        "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/sweetcorn.png",
+        "sha256": "d3899bc9b7b85aa588dd7dccace1817a5c20254fb9634fa49aaa069076ca98c3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Grãos de milho, escorridos"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
+        "sha256": "1e1b0049f860de46df45ef7cc86b0f92c19b7194a6d80dce98a46bd8673f5996",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
+        "sha256": "dbd737cc7cec755fa98ab286bb2721fdc48be4ad8abf81d66f76d9c8843c8b29",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mayonnaise (pasteurised)",
+          "pt-BR": "Maionese pasteurizada"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
+        "sha256": "d7edeb339f1efccb3d894c221d36071081153af1cb038562c21fa2337a0b08fe",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cotija cheese, crumbled",
+          "pt-BR": "Queijo Cotija esfarelado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
+        "sha256": "a7483d64d84676c916e8740690b7875973e3f83f59370b09ed16cdc2f28357e6",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh coriander leaves",
+          "pt-BR": "Folhas de coentro fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
+        "sha256": "28ed8452f2270543e0583c165f0aac73f9ea1963cba7fa78263177fd67a16008",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/saucepan.png",
+        "sha256": "f82920133863d6a1cd23ec0d14bab013c3b67790ab96944ee81f7446c494895e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
+        "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
+        "sha256": "9a95c36f4f25b0f7e629a6d1409320bf9dbda001014e4b682c24607aaf636949",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
+        "sha256": "1482c1292b4f46a17d01b6e88dc00a22abcf3c9ef02a599c0aa91d47b14b19de",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
+        "sha256": "e6067636259980b34cc236ce88fc9ae3bfbbd713910d112ac010a67fc47db605",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
+        "sha256": "32e10fd8fcf3dcbaee7d4826fbe0fbdfa9a571bc155455d055ab86e0b88290ab",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
+        "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
+        "sha256": "b1fce886f1d5efc696ba44f5c1db17e993810e13ce0c9191db9a094d8ad6c9b3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+          "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
+        "sha256": "51273e9e40469f9c4a3cd8bf7e9b931f4b5bef962f7f4f3462b6f0d2a0ef21a9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+          "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
+        "sha256": "37e52f5b17d4eed822d1767acded4aeeed2013aa2520bf660e470f3327d5653a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+          "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
+        "sha256": "fe1a5f9f0615e6cceec57c9a8d9b1ced6e2507423f289a2a314962aaff1263fe",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spoon the corn mixture into four small serving cups.",
+          "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
+        "sha256": "a17d84a73de42f19970e4ca0d08567c4ee81e76e2135ce9d5adfc45b12b73b8f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+          "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
+      "sha256": "61d65362d1908c16157caa801b4aaa689e485be3a80e341ebc25d6c2245c49dc",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+        "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/sweetcorn.png",
+      "sha256": "d3899bc9b7b85aa588dd7dccace1817a5c20254fb9634fa49aaa069076ca98c3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Sweetcorn kernels, drained",
+        "pt-BR": "Grãos de milho, escorridos"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
+      "sha256": "1e1b0049f860de46df45ef7cc86b0f92c19b7194a6d80dce98a46bd8673f5996",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh lime juice",
+        "pt-BR": "Suco de limão-taiti fresco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
+      "sha256": "dbd737cc7cec755fa98ab286bb2721fdc48be4ad8abf81d66f76d9c8843c8b29",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Mayonnaise (pasteurised)",
+        "pt-BR": "Maionese pasteurizada"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
+      "sha256": "d7edeb339f1efccb3d894c221d36071081153af1cb038562c21fa2337a0b08fe",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Cotija cheese, crumbled",
+        "pt-BR": "Queijo Cotija esfarelado"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
+      "sha256": "a7483d64d84676c916e8740690b7875973e3f83f59370b09ed16cdc2f28357e6",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh coriander leaves",
+        "pt-BR": "Folhas de coentro fresco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
+      "sha256": "28ed8452f2270543e0583c165f0aac73f9ea1963cba7fa78263177fd67a16008",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fine salt",
+        "pt-BR": "Sal fino"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/saucepan.png",
+      "sha256": "f82920133863d6a1cd23ec0d14bab013c3b67790ab96944ee81f7446c494895e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
+      "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
+      "sha256": "9a95c36f4f25b0f7e629a6d1409320bf9dbda001014e4b682c24607aaf636949",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
+      "sha256": "1482c1292b4f46a17d01b6e88dc00a22abcf3c9ef02a599c0aa91d47b14b19de",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
+      "sha256": "e6067636259980b34cc236ce88fc9ae3bfbbd713910d112ac010a67fc47db605",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
+      "sha256": "32e10fd8fcf3dcbaee7d4826fbe0fbdfa9a571bc155455d055ab86e0b88290ab",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
+      "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
+      "sha256": "b1fce886f1d5efc696ba44f5c1db17e993810e13ce0c9191db9a094d8ad6c9b3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+        "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
+      "sha256": "51273e9e40469f9c4a3cd8bf7e9b931f4b5bef962f7f4f3462b6f0d2a0ef21a9",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+        "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
+      "sha256": "37e52f5b17d4eed822d1767acded4aeeed2013aa2520bf660e470f3327d5653a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+        "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
+      "sha256": "fe1a5f9f0615e6cceec57c9a8d9b1ced6e2507423f289a2a314962aaff1263fe",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Spoon the corn mixture into four small serving cups.",
+        "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
+      "sha256": "a17d84a73de42f19970e4ca0d08567c4ee81e76e2135ce9d5adfc45b12b73b8f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+        "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "USDA FoodData Central",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+    "artworkApproval": "Owner-approved Aaria style reference in Issue #50 comment 6367104240; source path content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult stovetop sweetcorn; child mixing and portioning",
+    "time": "25 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 107,
+    "country": "mexico",
+    "countryCode": "MX",
+    "title": {
+      "en-GB": "Mexican Sweetcorn Cups",
+      "pt-BR": "Copinhos mexicanos de milho"
+    },
+    "description": {
+      "en-GB": "Warm sweetcorn cups with lime, creamy mayonnaise, salty Cotija and fresh coriander, inspired by Mexican esquites.",
+      "pt-BR": "Copinhos de milho morno com limão, maionese cremosa, Cotija salgado e coentro fresco, inspirados nos esquites mexicanos."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Esquites are a Mexican street-food style of corn served off the cob, with many regional toppings. This simple version uses lime, mayonnaise, Cotija and coriander.",
+      "pt-BR": "Esquites são um preparo mexicano de milho fora da espiga, com coberturas que variam por região. Esta versão simples usa limão, maionese, Cotija e coentro."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 20,
+    "totalMinutes": 25,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; adult safety boundaries remain unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "sweetcorn",
+        "name": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Grãos de milho, escorridos"
+        },
+        "quantity": 400,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/sweetcorn.png",
+          "sha256": "d3899bc9b7b85aa588dd7dccace1817a5c20254fb9634fa49aaa069076ca98c3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sweetcorn kernels, drained",
+            "pt-BR": "Grãos de milho, escorridos"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "lime-juice",
+        "name": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "quantity": 30,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
+          "sha256": "1e1b0049f860de46df45ef7cc86b0f92c19b7194a6d80dce98a46bd8673f5996",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh lime juice",
+            "pt-BR": "Suco de limão-taiti fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "mayonnaise",
+        "name": {
+          "en-GB": "Mayonnaise (pasteurised)",
+          "pt-BR": "Maionese pasteurizada"
+        },
+        "quantity": 30,
+        "unit": "g",
+        "allergens": [
+          "egg"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
+          "sha256": "dbd737cc7cec755fa98ab286bb2721fdc48be4ad8abf81d66f76d9c8843c8b29",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mayonnaise (pasteurised)",
+            "pt-BR": "Maionese pasteurizada"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "cotija",
+        "name": {
+          "en-GB": "Cotija cheese, crumbled",
+          "pt-BR": "Queijo Cotija esfarelado"
+        },
+        "quantity": 40,
+        "unit": "g",
+        "allergens": [
+          "milk"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
+          "sha256": "d7edeb339f1efccb3d894c221d36071081153af1cb038562c21fa2337a0b08fe",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cotija cheese, crumbled",
+            "pt-BR": "Queijo Cotija esfarelado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "coriander",
+        "name": {
+          "en-GB": "Fresh coriander leaves",
+          "pt-BR": "Folhas de coentro fresco"
+        },
+        "quantity": 10,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
+          "sha256": "a7483d64d84676c916e8740690b7875973e3f83f59370b09ed16cdc2f28357e6",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh coriander leaves",
+            "pt-BR": "Folhas de coentro fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "salt",
+        "name": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "quantity": 1,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
+          "sha256": "28ed8452f2270543e0583c165f0aac73f9ea1963cba7fa78263177fd67a16008",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fine salt",
+            "pt-BR": "Sal fino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "equipment": [
+      "Saucepan",
+      "Colander",
+      "Mixing bowl",
+      "Mixing spoon",
+      "Measuring cup",
+      "Small serving cups",
+      "Serving plate"
+    ],
+    "equipmentItems": [
+      {
+        "id": "saucepan",
+        "name": {
+          "en-GB": "Saucepan",
+          "pt-BR": "Panela"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/saucepan.png",
+          "sha256": "f82920133863d6a1cd23ec0d14bab013c3b67790ab96944ee81f7446c494895e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
+          "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Mixing bowl",
+          "pt-BR": "Tigela para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
+          "sha256": "9a95c36f4f25b0f7e629a6d1409320bf9dbda001014e4b682c24607aaf636949",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "mixing-spoon",
+        "name": {
+          "en-GB": "Mixing spoon",
+          "pt-BR": "Colher para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
+          "sha256": "1482c1292b4f46a17d01b6e88dc00a22abcf3c9ef02a599c0aa91d47b14b19de",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "measuring-cup",
+        "name": {
+          "en-GB": "Measuring cup",
+          "pt-BR": "Copo medidor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
+          "sha256": "e6067636259980b34cc236ce88fc9ae3bfbbd713910d112ac010a67fc47db605",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "serving-cups",
+        "name": {
+          "en-GB": "Small serving cups",
+          "pt-BR": "Copinhos para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
+          "sha256": "32e10fd8fcf3dcbaee7d4826fbe0fbdfa9a571bc155455d055ab86e0b88290ab",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "serving-plate",
+        "name": {
+          "en-GB": "Serving plate",
+          "pt-BR": "Prato para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
+          "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Cook the sweetcorn",
+          "pt-BR": "Cozinhe o milho"
+        },
+        "instruction": {
+          "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+          "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+        },
+        "ingredientIds": [
+          "sweetcorn",
+          "salt"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "colander"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult only: handle the hob, boiling water and hot saucepan. Children wash hands and set out bowls away from the hob.",
+          "pt-BR": "Somente adulto: use o fogão, a água fervente e a panela quente. As crianças lavam as mãos e organizam as tigelas longe do fogão."
+        },
+        "safety": {
+          "en-GB": "Keep children away from the hob. An adult pours and drains boiling water; use the rear hob ring and turn handles inward.",
+          "pt-BR": "Mantenha as crianças longe do fogão. Um adulto despeja e escorre a água fervente; use a boca traseira e vire os cabos para dentro."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for hob, hot pan and boiling water.",
+          "pt-BR": "Somente adulto usa o fogão, a panela quente e a água fervente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
+          "sha256": "b1fce886f1d5efc696ba44f5c1db17e993810e13ce0c9191db9a094d8ad6c9b3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+            "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Measure the lime dressing",
+          "pt-BR": "Meça o molho de limão"
+        },
+        "instruction": {
+          "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+          "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+        },
+        "ingredientIds": [
+          "lime-juice",
+          "mayonnaise"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "measuring-cup",
+          "mixing-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Children measure and stir the dressing with an adult nearby; an adult checks the mayonnaise label.",
+          "pt-BR": "As crianças medem e mexem o molho com um adulto por perto; um adulto confere o rótulo da maionese."
+        },
+        "safety": {
+          "en-GB": "Let the corn cool enough to handle; keep raw and ready-to-eat foods separate. Use pasteurised mayonnaise and refrigerate it.",
+          "pt-BR": "Deixe o milho esfriar o suficiente para manusear; mantenha separados alimentos crus e prontos para consumo. Use maionese pasteurizada e mantenha-a refrigerada."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervision; use no sharp tools.",
+          "pt-BR": "Supervisão adulta; não use ferramentas afiadas."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
+          "sha256": "51273e9e40469f9c4a3cd8bf7e9b931f4b5bef962f7f4f3462b6f0d2a0ef21a9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+            "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Mix corn and dressing",
+          "pt-BR": "Misture o milho ao molho"
+        },
+        "instruction": {
+          "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+          "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+        },
+        "ingredientIds": [
+          "sweetcorn",
+          "lime-juice",
+          "mayonnaise",
+          "salt"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "mixing-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Children can stir the mixture once the corn is warm rather than hot; an adult checks the temperature.",
+          "pt-BR": "As crianças podem misturar quando o milho estiver morno, não quente; um adulto verifica a temperatura."
+        },
+        "safety": {
+          "en-GB": "Avoid steam and hot food. An adult checks that the corn is warm, not hot, before children stir.",
+          "pt-BR": "Evite vapor e alimentos quentes. Um adulto verifica se o milho está morno, e não quente, antes de as crianças mexerem."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult handles hot food; children stir only when warm.",
+          "pt-BR": "Um adulto manuseia a comida quente; crianças mexem somente quando morna."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
+          "sha256": "37e52f5b17d4eed822d1767acded4aeeed2013aa2520bf660e470f3327d5653a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+            "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Spoon into serving cups",
+          "pt-BR": "Coloque nos copinhos"
+        },
+        "instruction": {
+          "en-GB": "Spoon the corn mixture into four small serving cups.",
+          "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+        },
+        "ingredientIds": [
+          "sweetcorn",
+          "mayonnaise"
+        ],
+        "equipmentIds": [
+          "serving-cups",
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "Children portion the cooled mixture with a spoon under adult supervision.",
+          "pt-BR": "As crianças dividem a mistura já fria com uma colher, sob supervisão adulta."
+        },
+        "safety": {
+          "en-GB": "Use stable cups and a clean spoon; do not serve while steaming hot.",
+          "pt-BR": "Use copinhos firmes e uma colher limpa; não sirva enquanto estiver soltando vapor."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult confirms a safe serving temperature.",
+          "pt-BR": "Um adulto confirma que a temperatura está segura para servir."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
+          "sha256": "fe1a5f9f0615e6cceec57c9a8d9b1ced6e2507423f289a2a314962aaff1263fe",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Spoon the corn mixture into four small serving cups.",
+            "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Garnish and serve",
+          "pt-BR": "Finalize e sirva"
+        },
+        "instruction": {
+          "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+          "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+        },
+        "ingredientIds": [
+          "cotija",
+          "coriander"
+        ],
+        "equipmentIds": [
+          "serving-cups",
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "Children sprinkle the measured cheese and coriander; adults handle refrigerated dairy and check labels.",
+          "pt-BR": "As crianças polvilham o queijo e o coentro medidos; adultos manuseiam laticínios refrigerados e conferem os rótulos."
+        },
+        "safety": {
+          "en-GB": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens.",
+          "pt-BR": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo.",
+          "en": "Keep cheese refrigerated until needed. Refrigerate leftovers within two hours of cooking; do not leave them at room temperature longer. Check for dairy and egg allergens.",
+          "pt": "Mantenha o queijo refrigerado até usar. Leve as sobras à geladeira em até duas horas após o preparo; não as deixe à temperatura ambiente por mais tempo. Verifique alergênicos de leite e ovo."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervises food temperatures and serving.",
+          "pt-BR": "Um adulto supervisiona as temperaturas e o serviço."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
+          "sha256": "a17d84a73de42f19970e4ca0d08567c4ee81e76e2135ce9d5adfc45b12b73b8f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+            "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults handle the hob, boiling water, draining and hot food. Children measure the dressing, stir once the corn is warm, portion and garnish with adult supervision.",
+      "pt-BR": "Adultos usam o fogão, a água fervente, escorrem e manuseiam alimentos quentes. Crianças medem o molho, mexem quando o milho estiver morno, dividem e finalizam sob supervisão."
+    },
+    "finishedDish": {
+      "artworkPath": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
+      "description": {
+        "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+        "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+      },
+      "image": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
+        "sha256": "61d65362d1908c16157caa801b4aaa689e485be3a80e341ebc25d6c2245c49dc",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+          "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 188,
+        "proteinG": 6,
+        "carbohydrateG": 22,
+        "fatG": 10.3,
+        "fibreG": 2.5,
+        "saturatedFatG": 3.1,
+        "sodiumMg": 308
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+      "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Corn,%20sweet,%20yellow,%20cooked,%20boiled,%20drained,%20without%20salt"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Lime juice, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Salad dressing, mayonnaise",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Salad%20dressing,%20mayonnaise"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cheese, Cotija",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese,%20Cotija"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Coriander (cilantro) leaves, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Coriander%20(cilantro)%20leaves,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Salt, table",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Salt,%20table"
+        }
+      ]
+    },
+    "allergens": [
+      "egg",
+      "milk"
+    ],
+    "allergenNotes": {
+      "contains": {
+        "en-GB": "Egg in mayonnaise; milk in Cotija cheese. Check labels and cross-contact warnings.",
+        "pt-BR": "Ovo na maionese; leite no queijo Cotija. Confira os rótulos e avisos de contato cruzado."
+      },
+      "cross_contact": {
+        "en-GB": "Check every label, including vinegar, seaweed and packaged toppings; use clean separate utensils and surfaces for allergies.",
+        "pt-BR": "Confira todos os rótulos, inclusive os de vinagre, algas e coberturas embaladas; use superfícies e utensílios limpos e separados em caso de alergia."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/finished-dish.png",
+        "sha256": "61d65362d1908c16157caa801b4aaa689e485be3a80e341ebc25d6c2245c49dc",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Warm sweetcorn tossed with lime juice and pasteurised mayonnaise, topped with crumbled Cotija and coriander, served in cups.",
+          "pt-BR": "Milho morno misturado com suco de limão e maionese pasteurizada, coberto com queijo Cotija esfarelado e coentro, servido em copinhos."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/sweetcorn.png",
+          "sha256": "d3899bc9b7b85aa588dd7dccace1817a5c20254fb9634fa49aaa069076ca98c3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sweetcorn kernels, drained",
+            "pt-BR": "Grãos de milho, escorridos"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/lime-juice.png",
+          "sha256": "1e1b0049f860de46df45ef7cc86b0f92c19b7194a6d80dce98a46bd8673f5996",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh lime juice",
+            "pt-BR": "Suco de limão-taiti fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/mayonnaise.png",
+          "sha256": "dbd737cc7cec755fa98ab286bb2721fdc48be4ad8abf81d66f76d9c8843c8b29",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mayonnaise (pasteurised)",
+            "pt-BR": "Maionese pasteurizada"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/cotija.png",
+          "sha256": "d7edeb339f1efccb3d894c221d36071081153af1cb038562c21fa2337a0b08fe",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cotija cheese, crumbled",
+            "pt-BR": "Queijo Cotija esfarelado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/coriander.png",
+          "sha256": "a7483d64d84676c916e8740690b7875973e3f83f59370b09ed16cdc2f28357e6",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh coriander leaves",
+            "pt-BR": "Folhas de coentro fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/ingredients/salt.png",
+          "sha256": "28ed8452f2270543e0583c165f0aac73f9ea1963cba7fa78263177fd67a16008",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fine salt",
+            "pt-BR": "Sal fino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/saucepan.png",
+          "sha256": "f82920133863d6a1cd23ec0d14bab013c3b67790ab96944ee81f7446c494895e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png",
+          "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-bowl.png",
+          "sha256": "9a95c36f4f25b0f7e629a6d1409320bf9dbda001014e4b682c24607aaf636949",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/mixing-spoon.png",
+          "sha256": "1482c1292b4f46a17d01b6e88dc00a22abcf3c9ef02a599c0aa91d47b14b19de",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/measuring-cup.png",
+          "sha256": "e6067636259980b34cc236ce88fc9ae3bfbbd713910d112ac010a67fc47db605",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-cups.png",
+          "sha256": "32e10fd8fcf3dcbaee7d4826fbe0fbdfa9a571bc155455d055ab86e0b88290ab",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png",
+          "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-01.png",
+          "sha256": "b1fce886f1d5efc696ba44f5c1db17e993810e13ce0c9191db9a094d8ad6c9b3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult simmers the corn in boiling water for 4–5 minutes until hot and tender, then drains it.",
+            "pt-BR": "Um adulto cozinha o milho em água fervente por 4–5 minutos, até ficar quente e macio, e depois escorre."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-02.png",
+          "sha256": "51273e9e40469f9c4a3cd8bf7e9b931f4b5bef962f7f4f3462b6f0d2a0ef21a9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "While the corn cools slightly, measure lime juice and mayonnaise into a mixing bowl and stir until smooth.",
+            "pt-BR": "Enquanto o milho esfria um pouco, meça o suco de limão e a maionese em uma tigela e mexa até ficar homogêneo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-03.png",
+          "sha256": "37e52f5b17d4eed822d1767acded4aeeed2013aa2520bf660e470f3327d5653a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Add the warm, drained corn and measured salt to the lime and mayonnaise dressing. Stir gently to coat every kernel.",
+            "pt-BR": "Junte o milho morno, escorrido e o sal medido ao molho de limão e maionese. Mexa delicadamente para envolver os grãos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-04.png",
+          "sha256": "fe1a5f9f0615e6cceec57c9a8d9b1ced6e2507423f289a2a314962aaff1263fe",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Spoon the corn mixture into four small serving cups.",
+            "pt-BR": "Coloque a mistura de milho em quatro copinhos para servir."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/steps/step-05.png",
+          "sha256": "a17d84a73de42f19970e4ca0d08567c4ee81e76e2135ce9d5adfc45b12b73b8f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Crumble Cotija over the cups and finish with chopped coriander. Serve warm or at room temperature.",
+            "pt-BR": "Esfarele o queijo Cotija sobre os copinhos e finalize com coentro picado. Sirva morno ou em temperatura ambiente."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "nutritionSource": "USDA FoodData Central",
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+      "artworkApproval": "Owner-approved Aaria reference: content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+    },
+    "safety": {
+      "en-GB": "Keep children away from the hob. An adult pours and drains boiling water; use the rear hob ring and turn handles inward.",
+      "pt-BR": "Mantenha as crianças longe do fogão. Um adulto despeja e escorre a água fervente; use a boca traseira e vire os cabos para dentro."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}

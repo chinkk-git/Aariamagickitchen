@@ -1,0 +1,2798 @@
+{
+  "schema_version": "1.0",
+  "id": 108,
+  "country": "vietnam",
+  "country_code": "VN",
+  "title": {
+    "en-GB": "Fresh Spring Rolls",
+    "pt-BR": "Rolinhos frescos vietnamitas"
+  },
+  "description": {
+    "en-GB": "Fresh rice-paper rolls with vermicelli, crisp vegetables, mint and a creamy peanut-lime dip, inspired by Vietnamese gỏi cuốn.",
+    "pt-BR": "Rolinhos frescos de papel de arroz com macarrão, vegetais crocantes, hortelã e molho cremoso de amendoim e limão, inspirados no gỏi cuốn vietnamita."
+  },
+  "cultural_context": {
+    "en-GB": "Gỏi cuốn are Vietnamese fresh rolls with many regional fillings and sauces. This meat-free child-friendly version uses vegetables, rice vermicelli and a peanut-lime dip.",
+    "pt-BR": "Gỏi cuốn são rolinhos frescos vietnamitas com recheios e molhos que variam por região. Esta versão sem carne, para crianças, usa vegetais, macarrão de arroz e molho de amendoim e limão."
+  },
+  "category": "international",
+  "method": "Adult-cooked rice vermicelli; child-assembled fresh rolls",
+  "time": "45 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 30,
+  "total_minutes": 45,
+  "ingredients": [
+    "8 sheets Rice-paper wrappers",
+    "120 g Rice vermicelli, dry",
+    "8 leaves Lettuce leaves",
+    "100 g Carrot",
+    "100 g Cucumber",
+    "10 g Fresh mint leaves",
+    "30 g Smooth peanut butter",
+    "15 mL Fresh lime juice",
+    "2030 mL Warm water (for wrappers and dip)"
+  ],
+  "equipment": [
+    "Saucepan",
+    "Colander",
+    "Chopping board",
+    "Sharp knife",
+    "Vegetable peeler",
+    "Wide shallow dish",
+    "Clean tea towel",
+    "Serving platter",
+    "Small dip bowl",
+    "Measuring cup",
+    "Mixing spoon"
+  ],
+  "ingredientItems": [
+    {
+      "id": "rice-paper",
+      "name": {
+        "en-GB": "Rice-paper wrappers",
+        "pt-BR": "Folhas de papel de arroz"
+      },
+      "quantity": 8,
+      "unit": "sheets",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-paper.png",
+        "sha256": "6f225925dd2187a1e66f0e5379960f7ee7a428609c6fb584e13b277ce0709dcb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Rice-paper wrappers",
+          "pt-BR": "Folhas de papel de arroz"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "rice-vermicelli",
+      "name": {
+        "en-GB": "Rice vermicelli, dry",
+        "pt-BR": "Macarrão de arroz seco"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-vermicelli.png",
+        "sha256": "0655e8b52c79394fda9985713f316118314ffeb425ff81df79209aa8cc225d4e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Rice vermicelli, dry",
+          "pt-BR": "Macarrão de arroz seco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "lettuce",
+      "name": {
+        "en-GB": "Lettuce leaves",
+        "pt-BR": "Folhas de alface"
+      },
+      "quantity": 8,
+      "unit": "leaves",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lettuce.png",
+        "sha256": "d01cd68a00391152e9ec141b23f14ecd68b37f1864db2b986ade830671571c22",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Lettuce leaves",
+          "pt-BR": "Folhas de alface"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "carrot",
+      "name": {
+        "en-GB": "Carrot",
+        "pt-BR": "Cenoura"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/carrot.png",
+        "sha256": "02e0304eee822bba568aaa33aefdcaebc0564338b9241389526ab98e63e95106",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "cucumber",
+      "name": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/cucumber.png",
+        "sha256": "c9e1a058f526ee024c3bef914b486dcd0e91bd3892919133c20ffd1acebb61f4",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "mint",
+      "name": {
+        "en-GB": "Fresh mint leaves",
+        "pt-BR": "Folhas de hortelã fresca"
+      },
+      "quantity": 10,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/mint.png",
+        "sha256": "f421102356b1bff37b3f857799ddab7354e98bd6d609787c12f78072c29a6c51",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh mint leaves",
+          "pt-BR": "Folhas de hortelã fresca"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "peanut-butter",
+      "name": {
+        "en-GB": "Smooth peanut butter",
+        "pt-BR": "Pasta de amendoim cremosa"
+      },
+      "quantity": 30,
+      "unit": "g",
+      "allergens": [
+        "peanut"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/peanut-butter.png",
+        "sha256": "bfee36b981fd6dd35b12dbd05a9452341128a034b55c6d7b6889f16fed4b2cac",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Smooth peanut butter",
+          "pt-BR": "Pasta de amendoim cremosa"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "lime-juice",
+      "name": {
+        "en-GB": "Fresh lime juice",
+        "pt-BR": "Suco de limão-taiti fresco"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lime-juice.png",
+        "sha256": "e9f1a68bf81ba15d36fb07cb7a9bb7bc92fd6ea5c6d7cb84a99828af752479ad",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "water",
+      "name": {
+        "en-GB": "Water (for noodles, dip and wrappers)",
+        "pt-BR": "Água (para o macarrão, o molho e o papel)"
+      },
+      "quantity": 2030,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/water.png",
+        "sha256": "00f5498a8ad0a106c93b8a1a352ee82db50954742712a370d8361944f19b4c46",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Water (for noodles, dip and wrappers)",
+          "pt-BR": "Água (para o macarrão, o molho e o papel)"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "saucepan",
+      "name": {
+        "en-GB": "Saucepan",
+        "pt-BR": "Panela"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/saucepan.png",
+        "sha256": "60732cad6353854015faea0e1f35035f44b6fed6acf7ac0ed8ae5a823f2aa038",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/colander.png",
+        "sha256": "b38cc76f81d50dd17018f4a0b144d4ffbb8e3ed65bededce26815261e04b07a3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/chopping-board.png",
+        "sha256": "4fc804fea218fb16db2141fc17071c6a3b64c70c3c8a1c09ed2ef5417f4fb71d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Sharp knife",
+        "pt-BR": "Faca afiada"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/knife.png",
+        "sha256": "4ec4df4168070b3fef2175d9c4219489924940ae2497f7b35b539c8effa0670a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "vegetable-peeler",
+      "name": {
+        "en-GB": "Vegetable peeler",
+        "pt-BR": "Descascador de legumes"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/vegetable-peeler.png",
+        "sha256": "13175f4567ce6029a2152ec8f841ba3c641f944046c07ad193e4319ebf4ae31d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "shallow-water-dish",
+      "name": {
+        "en-GB": "Wide shallow dish",
+        "pt-BR": "Travessa rasa e larga"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/shallow-water-dish.png",
+        "sha256": "68f1fa302bf03ab3667a8a148ea5e425a9a7a8dce22fe30ae1d022622f4fd7db",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "clean-tea-towel",
+      "name": {
+        "en-GB": "Clean tea towel",
+        "pt-BR": "Pano de prato limpo"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/clean-tea-towel.png",
+        "sha256": "a20dd480ddb599c2193f0950e251f98a6d6486e25a045095546c2fd12efb5fb4",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "serving-platter",
+      "name": {
+        "en-GB": "Serving platter",
+        "pt-BR": "Travessa para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/serving-platter.png",
+        "sha256": "8f024f66356673b6bda6690a98a70b10e3afade8f8efb200b7931a532c9546e7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "small-dip-bowl",
+      "name": {
+        "en-GB": "Small dip bowl",
+        "pt-BR": "Tigela pequena para molho"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/small-dip-bowl.png",
+        "sha256": "ea4c34d3bef48a6058621ba5889114c42ad6656c367deba5d0068bd2dc39180e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "measuring-cup",
+      "name": {
+        "en-GB": "Measuring cup",
+        "pt-BR": "Copo medidor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/measuring-cup.png",
+        "sha256": "2e7eab9551222bad643fa64d4089b79528d8685e26f2c07c2ebf9c9917e97fa1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "mixing-spoon",
+      "name": {
+        "en-GB": "Mixing spoon",
+        "pt-BR": "Colher para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/mixing-spoon.png",
+        "sha256": "edd70126d159de0c034eaafa001d9ef4cd050918673f8375e55d9de3d454db4e",
+        "mime_type": "image/png",
+        "provenance": "Reused generic wooden spoon illustration from the approved Aaria Wave 6 utensil asset; copied into this recipe package.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Cook the vermicelli",
+        "pt-BR": "Cozinhe o macarrão de arroz"
+      },
+      "instruction": {
+        "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, then drains and rinses it with cool water.",
+        "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, depois escorre e enxágua com água fria."
+      },
+      "ingredientIds": [
+        "rice-vermicelli",
+        "water"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "colander"
+      ],
+      "adultAssist": {
+        "en-GB": "Adult only: use the hob, boiling water and hot saucepan. Children can rinse vegetables away from the hob.",
+        "pt-BR": "Somente adulto: use o fogão, a água fervente e a panela quente. As crianças podem lavar os vegetais longe do fogão."
+      },
+      "safety": {
+        "en-GB": "Keep children away from the hob. An adult drains boiling water and cools noodles promptly.",
+        "pt-BR": "Mantenha as crianças longe do fogão. Um adulto escorre a água fervente e esfria o macarrão sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for hob and boiling water.",
+        "pt-BR": "Somente adulto usa o fogão e a água fervente."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-01.png",
+        "sha256": "b086a02098961a0cf987802f77620ded7d183d01c7d83e12bd290e93a6d3da7b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, then drains and rinses it with cool water.",
+          "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, depois escorre e enxágua com água fria."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Wash and prepare the vegetables",
+        "pt-BR": "Lave e prepare os vegetais"
+      },
+      "instruction": {
+        "en-GB": "Wash the lettuce, mint, cucumber and carrot. An adult cuts carrot and cucumber into thin sticks; tear the lettuce by hand.",
+        "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+      },
+      "ingredientIds": [
+        "lettuce",
+        "carrot",
+        "cucumber",
+        "mint"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife",
+        "vegetable-peeler"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash leaves and tear lettuce. An adult peels and cuts the carrot and cucumber.",
+        "pt-BR": "As crianças lavam as folhas e rasgam a alface. Um adulto descasca e corta a cenoura e o pepino."
+      },
+      "safety": {
+        "en-GB": "Use a stable board. Only an adult handles the sharp knife and peeler; keep fingertips away from the blade.",
+        "pt-BR": "Use uma tábua firme. Somente um adulto manuseia a faca afiada e o descascador; mantenha os dedos afastados da lâmina."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for peeling and knife work.",
+        "pt-BR": "Somente adulto descasca e usa a faca."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-02.png",
+        "sha256": "6ad74d8280f01eea4f3a924865e60291d0a6459d25dca2883565fdff3e5cbc78",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash the lettuce, mint, cucumber and carrot. An adult cuts carrot and cucumber into thin sticks; tear the lettuce by hand.",
+          "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Make the peanut-lime dip",
+        "pt-BR": "Prepare o molho de amendoim e limão"
+      },
+      "instruction": {
+        "en-GB": "Stir the peanut butter and lime juice with 30 mL of the measured warm water until smooth.",
+        "pt-BR": "Misture a pasta de amendoim e o suco de limão com 30 mL da água morna medida até ficar homogêneo."
+      },
+      "ingredientIds": [
+        "peanut-butter",
+        "lime-juice",
+        "water"
+      ],
+      "equipmentIds": [
+        "small-dip-bowl",
+        "measuring-cup",
+        "mixing-spoon"
+      ],
+      "adultAssist": {
+        "en-GB": "Children measure and stir; an adult checks the peanut label and sets the remaining warm water in the dipping dish.",
+        "pt-BR": "As crianças medem e mexem; um adulto confere o rótulo do amendoim e coloca o restante da água morna na travessa para mergulhar o papel."
+      },
+      "safety": {
+        "en-GB": "Peanut is a major allergen. Prevent cross-contact and wash hands and utensils; use warm, not hot, water.",
+        "pt-BR": "Amendoim é um alergênico importante. Evite contato cruzado e lave as mãos e os utensílios; use água morna, não quente."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervises warm water; no sharp tool.",
+        "pt-BR": "Um adulto supervisiona a água morna; sem ferramentas afiadas."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-03.png",
+        "sha256": "dd2cee1fb9066a42484311382a8e668a958b157c9dca952fb5bd010433d5abf7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Stir the peanut butter and lime juice with 30 mL of the measured warm water until smooth.",
+          "pt-BR": "Misture a pasta de amendoim e o suco de limão com 30 mL da água morna medida até ficar homogêneo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Fill and roll",
+        "pt-BR": "Recheie e enrole"
+      },
+      "instruction": {
+        "en-GB": "Pour the remaining 500 mL warm water into a wide dish. Dip one rice-paper wrapper briefly, lay it flat, add a little cooled vermicelli, lettuce, carrot, cucumber and mint, fold the sides and roll.",
+        "pt-BR": "Coloque os 500 mL restantes de água morna em uma travessa larga. Mergulhe rapidamente uma folha de papel de arroz, deixe-a aberta, adicione um pouco de macarrão frio, alface, cenoura, pepino e hortelã, dobre as laterais e enrole."
+      },
+      "ingredientIds": [
+        "rice-paper",
+        "rice-vermicelli",
+        "lettuce",
+        "carrot",
+        "cucumber",
+        "mint",
+        "water"
+      ],
+      "equipmentIds": [
+        "shallow-water-dish",
+        "clean-tea-towel"
+      ],
+      "adultAssist": {
+        "en-GB": "Children dip wrappers and fill/roll after noodles cool. An adult checks temperature and helps if wrappers tear.",
+        "pt-BR": "As crianças mergulham o papel e recheiam/enrolam depois que o macarrão esfriar. Um adulto confere a temperatura e ajuda se o papel rasgar."
+      },
+      "safety": {
+        "en-GB": "Use clean hands and a clean towel. Ensure noodles are fully cooled before children handle them; do not overfill or let rolls sit unrefrigerated.",
+        "pt-BR": "Use mãos e pano limpos. Deixe o macarrão esfriar completamente antes de as crianças manusearem; não coloque recheio demais nem deixe os rolinhos fora da geladeira."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult checks the noodles are cool; no heat or knife for children.",
+        "pt-BR": "Um adulto verifica se o macarrão esfriou; crianças não usam calor nem faca."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-04.png",
+        "sha256": "b8b49961c911d17359e7c4f7a34ffe6ecc797714b204c0274d7939bf7bb28016",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Pour the remaining 500 mL warm water into a wide dish. Dip one rice-paper wrapper briefly, lay it flat, add a little cooled vermicelli, lettuce, carrot, cucumber and mint, fold the sides and roll.",
+          "pt-BR": "Coloque os 500 mL restantes de água morna em uma travessa larga. Mergulhe rapidamente uma folha de papel de arroz, deixe-a aberta, adicione um pouco de macarrão frio, alface, cenoura, pepino e hortelã, dobre as laterais e enrole."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Serve with the dip",
+        "pt-BR": "Sirva com o molho"
+      },
+      "instruction": {
+        "en-GB": "Arrange eight rolls on a platter and serve with the peanut-lime dip. Refrigerate promptly if not eating straight away.",
+        "pt-BR": "Arrume oito rolinhos em uma travessa e sirva com o molho de amendoim e limão. Leve à geladeira sem demora se não for consumir logo."
+      },
+      "ingredientIds": [
+        "rice-paper",
+        "peanut-butter",
+        "lime-juice"
+      ],
+      "equipmentIds": [
+        "serving-platter",
+        "small-dip-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Children arrange rolls; an adult checks allergen labels and refrigerates leftovers promptly.",
+        "pt-BR": "As crianças arrumam os rolinhos; um adulto confere os rótulos de alergênicos e refrigera as sobras sem demora."
+      },
+      "safety": {
+        "en-GB": "Clearly label the peanut dip. Keep chilled until serving; refrigerate leftovers within 2 hours and discard if left out longer.",
+        "pt-BR": "Identifique claramente o molho de amendoim. Mantenha refrigerado até servir; refrigere as sobras em até 2 horas e descarte se ficarem fora por mais tempo."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult supervises storage and serving.",
+        "pt-BR": "Um adulto supervisiona o armazenamento e o serviço."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+        "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+      },
+      "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-05.png",
+        "sha256": "180861b154d15ab64f18e984cb4299eb265b27f94e465b5a27ddd1556b071d6b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Arrange eight rolls on a platter and serve with the peanut-lime dip. Refrigerate promptly if not eating straight away.",
+          "pt-BR": "Arrume oito rolinhos em uma travessa e sirva com o molho de amendoim e limão. Leve à geladeira sem demora se não for consumir logo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults cook and cool the vermicelli, use the knife and peeler, and supervise warm water. Children wash vegetables, stir dip, and fill and roll the cooled wrappers.",
+    "pt-BR": "Adultos cozinham e esfriam o macarrão, usam a faca e o descascador e supervisionam a água morna. Crianças lavam os vegetais, mexem o molho e recheiam e enrolam o papel já frio."
+  },
+  "allergens": [
+    "peanut"
+  ],
+  "allergen_notes": {
+    "contains": {
+      "en-GB": "Peanut in the dip. Rice wrappers and vermicelli may carry manufacturing cross-contact warnings; check every packet and keep the dip separate.",
+      "pt-BR": "Amendoim no molho. O papel de arroz e o macarrão podem conter avisos de contato cruzado na fabricação; confira cada embalagem e mantenha o molho separado."
+    },
+    "cross_contact": {
+      "en-GB": "Check peanut butter, wrapper and vermicelli labels, including cross-contact warnings. Keep peanut dip, hands and utensils separate from food for peanut-allergic diners; wash hands and equipment.",
+      "pt-BR": "Confira os rótulos da pasta de amendoim, do papel e do macarrão, inclusive avisos de contato cruzado. Mantenha o molho, as mãos e os utensílios separados dos alimentos para pessoas alérgicas a amendoim; lave as mãos e os utensílios."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 233,
+      "proteinG": 5.4,
+      "carbohydrateG": 43.9,
+      "fatG": 4.2,
+      "fibreG": 2.2,
+      "saturatedFatG": 0.6,
+      "sodiumMg": 140
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+    "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Rice paper, dry",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20paper,%20dry"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Rice noodles, dry",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20noodles,%20dry"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Lettuce, green leaf, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lettuce,%20green%20leaf,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Carrots, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Spearmint, fresh",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Spearmint,%20fresh"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Peanut butter, smooth style, without salt",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Peanut%20butter,%20smooth%20style,%20without%20salt"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Water, tap",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Water,%20tap"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Fresh rice-paper rolls filled with vermicelli, lettuce, carrot, cucumber and mint, served with peanut-lime dip.",
+      "pt-BR": "Rolinhos frescos de papel de arroz recheados com macarrão de arroz, alface, cenoura, pepino e hortelã, servidos com molho de amendoim e limão."
+    },
+    "image": {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/finished-dish.png",
+      "sha256": "c387b3ca6848550e1666b3490300b9e041eaac3510e7c3f98f1799e4e9060d0a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh rice-paper rolls filled with vermicelli, lettuce, carrot, cucumber and mint, served with peanut-lime dip.",
+        "pt-BR": "Rolinhos frescos de papel de arroz recheados com macarrão de arroz, alface, cenoura, pepino e hortelã, servidos com molho de amendoim e limão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/finished-dish.png",
+      "sha256": "c387b3ca6848550e1666b3490300b9e041eaac3510e7c3f98f1799e4e9060d0a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh rice-paper rolls filled with vermicelli, lettuce, carrot, cucumber and mint, served with peanut-lime dip.",
+        "pt-BR": "Rolinhos frescos de papel de arroz recheados com macarrão de arroz, alface, cenoura, pepino e hortelã, servidos com molho de amendoim e limão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-paper.png",
+        "sha256": "6f225925dd2187a1e66f0e5379960f7ee7a428609c6fb584e13b277ce0709dcb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Rice-paper wrappers",
+          "pt-BR": "Folhas de papel de arroz"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-vermicelli.png",
+        "sha256": "0655e8b52c79394fda9985713f316118314ffeb425ff81df79209aa8cc225d4e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Rice vermicelli, dry",
+          "pt-BR": "Macarrão de arroz seco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lettuce.png",
+        "sha256": "d01cd68a00391152e9ec141b23f14ecd68b37f1864db2b986ade830671571c22",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Lettuce leaves",
+          "pt-BR": "Folhas de alface"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/carrot.png",
+        "sha256": "02e0304eee822bba568aaa33aefdcaebc0564338b9241389526ab98e63e95106",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/cucumber.png",
+        "sha256": "c9e1a058f526ee024c3bef914b486dcd0e91bd3892919133c20ffd1acebb61f4",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/mint.png",
+        "sha256": "f421102356b1bff37b3f857799ddab7354e98bd6d609787c12f78072c29a6c51",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh mint leaves",
+          "pt-BR": "Folhas de hortelã fresca"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/peanut-butter.png",
+        "sha256": "bfee36b981fd6dd35b12dbd05a9452341128a034b55c6d7b6889f16fed4b2cac",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Smooth peanut butter",
+          "pt-BR": "Pasta de amendoim cremosa"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lime-juice.png",
+        "sha256": "e9f1a68bf81ba15d36fb07cb7a9bb7bc92fd6ea5c6d7cb84a99828af752479ad",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/water.png",
+        "sha256": "00f5498a8ad0a106c93b8a1a352ee82db50954742712a370d8361944f19b4c46",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Water (for noodles, dip and wrappers)",
+          "pt-BR": "Água (para o macarrão, o molho e o papel)"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/saucepan.png",
+        "sha256": "60732cad6353854015faea0e1f35035f44b6fed6acf7ac0ed8ae5a823f2aa038",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/colander.png",
+        "sha256": "b38cc76f81d50dd17018f4a0b144d4ffbb8e3ed65bededce26815261e04b07a3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/chopping-board.png",
+        "sha256": "4fc804fea218fb16db2141fc17071c6a3b64c70c3c8a1c09ed2ef5417f4fb71d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/knife.png",
+        "sha256": "4ec4df4168070b3fef2175d9c4219489924940ae2497f7b35b539c8effa0670a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/vegetable-peeler.png",
+        "sha256": "13175f4567ce6029a2152ec8f841ba3c641f944046c07ad193e4319ebf4ae31d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/shallow-water-dish.png",
+        "sha256": "68f1fa302bf03ab3667a8a148ea5e425a9a7a8dce22fe30ae1d022622f4fd7db",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/clean-tea-towel.png",
+        "sha256": "a20dd480ddb599c2193f0950e251f98a6d6486e25a045095546c2fd12efb5fb4",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/serving-platter.png",
+        "sha256": "8f024f66356673b6bda6690a98a70b10e3afade8f8efb200b7931a532c9546e7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/small-dip-bowl.png",
+        "sha256": "ea4c34d3bef48a6058621ba5889114c42ad6656c367deba5d0068bd2dc39180e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/measuring-cup.png",
+        "sha256": "2e7eab9551222bad643fa64d4089b79528d8685e26f2c07c2ebf9c9917e97fa1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/mixing-spoon.png",
+        "sha256": "edd70126d159de0c034eaafa001d9ef4cd050918673f8375e55d9de3d454db4e",
+        "mime_type": "image/png",
+        "provenance": "Reused generic wooden spoon illustration from the approved Aaria Wave 6 utensil asset; copied into this recipe package.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-01.png",
+        "sha256": "b086a02098961a0cf987802f77620ded7d183d01c7d83e12bd290e93a6d3da7b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, then drains and rinses it with cool water.",
+          "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, depois escorre e enxágua com água fria."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-02.png",
+        "sha256": "6ad74d8280f01eea4f3a924865e60291d0a6459d25dca2883565fdff3e5cbc78",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash the lettuce, mint, cucumber and carrot. An adult cuts carrot and cucumber into thin sticks; tear the lettuce by hand.",
+          "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-03.png",
+        "sha256": "dd2cee1fb9066a42484311382a8e668a958b157c9dca952fb5bd010433d5abf7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Stir the peanut butter and lime juice with 30 mL of the measured warm water until smooth.",
+          "pt-BR": "Misture a pasta de amendoim e o suco de limão com 30 mL da água morna medida até ficar homogêneo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-04.png",
+        "sha256": "b8b49961c911d17359e7c4f7a34ffe6ecc797714b204c0274d7939bf7bb28016",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Pour the remaining 500 mL warm water into a wide dish. Dip one rice-paper wrapper briefly, lay it flat, add a little cooled vermicelli, lettuce, carrot, cucumber and mint, fold the sides and roll.",
+          "pt-BR": "Coloque os 500 mL restantes de água morna em uma travessa larga. Mergulhe rapidamente uma folha de papel de arroz, deixe-a aberta, adicione um pouco de macarrão frio, alface, cenoura, pepino e hortelã, dobre as laterais e enrole."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-05.png",
+        "sha256": "180861b154d15ab64f18e984cb4299eb265b27f94e465b5a27ddd1556b071d6b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Arrange eight rolls on a platter and serve with the peanut-lime dip. Refrigerate promptly if not eating straight away.",
+          "pt-BR": "Arrume oito rolinhos em uma travessa e sirva com o molho de amendoim e limão. Leve à geladeira sem demora se não for consumir logo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/finished-dish.png",
+      "sha256": "c387b3ca6848550e1666b3490300b9e041eaac3510e7c3f98f1799e4e9060d0a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh rice-paper rolls filled with vermicelli, lettuce, carrot, cucumber and mint, served with peanut-lime dip.",
+        "pt-BR": "Rolinhos frescos de papel de arroz recheados com macarrão de arroz, alface, cenoura, pepino e hortelã, servidos com molho de amendoim e limão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-paper.png",
+      "sha256": "6f225925dd2187a1e66f0e5379960f7ee7a428609c6fb584e13b277ce0709dcb",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Rice-paper wrappers",
+        "pt-BR": "Folhas de papel de arroz"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-vermicelli.png",
+      "sha256": "0655e8b52c79394fda9985713f316118314ffeb425ff81df79209aa8cc225d4e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Rice vermicelli, dry",
+        "pt-BR": "Macarrão de arroz seco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lettuce.png",
+      "sha256": "d01cd68a00391152e9ec141b23f14ecd68b37f1864db2b986ade830671571c22",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Lettuce leaves",
+        "pt-BR": "Folhas de alface"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/carrot.png",
+      "sha256": "02e0304eee822bba568aaa33aefdcaebc0564338b9241389526ab98e63e95106",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Carrot",
+        "pt-BR": "Cenoura"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/cucumber.png",
+      "sha256": "c9e1a058f526ee024c3bef914b486dcd0e91bd3892919133c20ffd1acebb61f4",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/mint.png",
+      "sha256": "f421102356b1bff37b3f857799ddab7354e98bd6d609787c12f78072c29a6c51",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh mint leaves",
+        "pt-BR": "Folhas de hortelã fresca"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/peanut-butter.png",
+      "sha256": "bfee36b981fd6dd35b12dbd05a9452341128a034b55c6d7b6889f16fed4b2cac",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Smooth peanut butter",
+        "pt-BR": "Pasta de amendoim cremosa"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lime-juice.png",
+      "sha256": "e9f1a68bf81ba15d36fb07cb7a9bb7bc92fd6ea5c6d7cb84a99828af752479ad",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh lime juice",
+        "pt-BR": "Suco de limão-taiti fresco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/water.png",
+      "sha256": "00f5498a8ad0a106c93b8a1a352ee82db50954742712a370d8361944f19b4c46",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Water (for noodles, dip and wrappers)",
+        "pt-BR": "Água (para o macarrão, o molho e o papel)"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/saucepan.png",
+      "sha256": "60732cad6353854015faea0e1f35035f44b6fed6acf7ac0ed8ae5a823f2aa038",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/colander.png",
+      "sha256": "b38cc76f81d50dd17018f4a0b144d4ffbb8e3ed65bededce26815261e04b07a3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/chopping-board.png",
+      "sha256": "4fc804fea218fb16db2141fc17071c6a3b64c70c3c8a1c09ed2ef5417f4fb71d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/knife.png",
+      "sha256": "4ec4df4168070b3fef2175d9c4219489924940ae2497f7b35b539c8effa0670a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/vegetable-peeler.png",
+      "sha256": "13175f4567ce6029a2152ec8f841ba3c641f944046c07ad193e4319ebf4ae31d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/shallow-water-dish.png",
+      "sha256": "68f1fa302bf03ab3667a8a148ea5e425a9a7a8dce22fe30ae1d022622f4fd7db",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/clean-tea-towel.png",
+      "sha256": "a20dd480ddb599c2193f0950e251f98a6d6486e25a045095546c2fd12efb5fb4",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/serving-platter.png",
+      "sha256": "8f024f66356673b6bda6690a98a70b10e3afade8f8efb200b7931a532c9546e7",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/small-dip-bowl.png",
+      "sha256": "ea4c34d3bef48a6058621ba5889114c42ad6656c367deba5d0068bd2dc39180e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/measuring-cup.png",
+      "sha256": "2e7eab9551222bad643fa64d4089b79528d8685e26f2c07c2ebf9c9917e97fa1",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/mixing-spoon.png",
+      "sha256": "edd70126d159de0c034eaafa001d9ef4cd050918673f8375e55d9de3d454db4e",
+      "mime_type": "image/png",
+      "provenance": "Reused generic wooden spoon illustration from the approved Aaria Wave 6 utensil asset; copied into this recipe package.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-01.png",
+      "sha256": "b086a02098961a0cf987802f77620ded7d183d01c7d83e12bd290e93a6d3da7b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, then drains and rinses it with cool water.",
+        "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, depois escorre e enxágua com água fria."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-02.png",
+      "sha256": "6ad74d8280f01eea4f3a924865e60291d0a6459d25dca2883565fdff3e5cbc78",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Wash the lettuce, mint, cucumber and carrot. An adult cuts carrot and cucumber into thin sticks; tear the lettuce by hand.",
+        "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-03.png",
+      "sha256": "dd2cee1fb9066a42484311382a8e668a958b157c9dca952fb5bd010433d5abf7",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Stir the peanut butter and lime juice with 30 mL of the measured warm water until smooth.",
+        "pt-BR": "Misture a pasta de amendoim e o suco de limão com 30 mL da água morna medida até ficar homogêneo."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-04.png",
+      "sha256": "b8b49961c911d17359e7c4f7a34ffe6ecc797714b204c0274d7939bf7bb28016",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Pour the remaining 500 mL warm water into a wide dish. Dip one rice-paper wrapper briefly, lay it flat, add a little cooled vermicelli, lettuce, carrot, cucumber and mint, fold the sides and roll.",
+        "pt-BR": "Coloque os 500 mL restantes de água morna em uma travessa larga. Mergulhe rapidamente uma folha de papel de arroz, deixe-a aberta, adicione um pouco de macarrão frio, alface, cenoura, pepino e hortelã, dobre as laterais e enrole."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-05.png",
+      "sha256": "180861b154d15ab64f18e984cb4299eb265b27f94e465b5a27ddd1556b071d6b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Arrange eight rolls on a platter and serve with the peanut-lime dip. Refrigerate promptly if not eating straight away.",
+        "pt-BR": "Arrume oito rolinhos em uma travessa e sirva com o molho de amendoim e limão. Leve à geladeira sem demora se não for consumir logo."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "USDA FoodData Central",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+    "artworkApproval": "Owner-approved Aaria style reference in Issue #50 comment 6367104240; source path content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult-cooked rice vermicelli; child-assembled fresh rolls",
+    "time": "45 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 108,
+    "country": "vietnam",
+    "countryCode": "VN",
+    "title": {
+      "en-GB": "Fresh Spring Rolls",
+      "pt-BR": "Rolinhos frescos vietnamitas"
+    },
+    "description": {
+      "en-GB": "Fresh rice-paper rolls with vermicelli, crisp vegetables, mint and a creamy peanut-lime dip, inspired by Vietnamese gỏi cuốn.",
+      "pt-BR": "Rolinhos frescos de papel de arroz com macarrão, vegetais crocantes, hortelã e molho cremoso de amendoim e limão, inspirados no gỏi cuốn vietnamita."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Gỏi cuốn are Vietnamese fresh rolls with many regional fillings and sauces. This meat-free child-friendly version uses vegetables, rice vermicelli and a peanut-lime dip.",
+      "pt-BR": "Gỏi cuốn são rolinhos frescos vietnamitas com recheios e molhos que variam por região. Esta versão sem carne, para crianças, usa vegetais, macarrão de arroz e molho de amendoim e limão."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 30,
+    "totalMinutes": 45,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; adult safety boundaries remain unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "rice-paper",
+        "name": {
+          "en-GB": "Rice-paper wrappers",
+          "pt-BR": "Folhas de papel de arroz"
+        },
+        "quantity": 8,
+        "unit": "sheets",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-paper.png",
+          "sha256": "6f225925dd2187a1e66f0e5379960f7ee7a428609c6fb584e13b277ce0709dcb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Rice-paper wrappers",
+            "pt-BR": "Folhas de papel de arroz"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "rice-vermicelli",
+        "name": {
+          "en-GB": "Rice vermicelli, dry",
+          "pt-BR": "Macarrão de arroz seco"
+        },
+        "quantity": 120,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-vermicelli.png",
+          "sha256": "0655e8b52c79394fda9985713f316118314ffeb425ff81df79209aa8cc225d4e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Rice vermicelli, dry",
+            "pt-BR": "Macarrão de arroz seco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "lettuce",
+        "name": {
+          "en-GB": "Lettuce leaves",
+          "pt-BR": "Folhas de alface"
+        },
+        "quantity": 8,
+        "unit": "leaves",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lettuce.png",
+          "sha256": "d01cd68a00391152e9ec141b23f14ecd68b37f1864db2b986ade830671571c22",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Lettuce leaves",
+            "pt-BR": "Folhas de alface"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "carrot",
+        "name": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/carrot.png",
+          "sha256": "02e0304eee822bba568aaa33aefdcaebc0564338b9241389526ab98e63e95106",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Carrot",
+            "pt-BR": "Cenoura"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "cucumber",
+        "name": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/cucumber.png",
+          "sha256": "c9e1a058f526ee024c3bef914b486dcd0e91bd3892919133c20ffd1acebb61f4",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cucumber",
+            "pt-BR": "Pepino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "mint",
+        "name": {
+          "en-GB": "Fresh mint leaves",
+          "pt-BR": "Folhas de hortelã fresca"
+        },
+        "quantity": 10,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/mint.png",
+          "sha256": "f421102356b1bff37b3f857799ddab7354e98bd6d609787c12f78072c29a6c51",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh mint leaves",
+            "pt-BR": "Folhas de hortelã fresca"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "peanut-butter",
+        "name": {
+          "en-GB": "Smooth peanut butter",
+          "pt-BR": "Pasta de amendoim cremosa"
+        },
+        "quantity": 30,
+        "unit": "g",
+        "allergens": [
+          "peanut"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/peanut-butter.png",
+          "sha256": "bfee36b981fd6dd35b12dbd05a9452341128a034b55c6d7b6889f16fed4b2cac",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Smooth peanut butter",
+            "pt-BR": "Pasta de amendoim cremosa"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "lime-juice",
+        "name": {
+          "en-GB": "Fresh lime juice",
+          "pt-BR": "Suco de limão-taiti fresco"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lime-juice.png",
+          "sha256": "e9f1a68bf81ba15d36fb07cb7a9bb7bc92fd6ea5c6d7cb84a99828af752479ad",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh lime juice",
+            "pt-BR": "Suco de limão-taiti fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "water",
+        "name": {
+          "en-GB": "Water (for noodles, dip and wrappers)",
+          "pt-BR": "Água (para o macarrão, o molho e o papel)"
+        },
+        "quantity": 2030,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/water.png",
+          "sha256": "00f5498a8ad0a106c93b8a1a352ee82db50954742712a370d8361944f19b4c46",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Water (for noodles, dip and wrappers)",
+            "pt-BR": "Água (para o macarrão, o molho e o papel)"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "equipment": [
+      "Saucepan",
+      "Colander",
+      "Chopping board",
+      "Sharp knife",
+      "Vegetable peeler",
+      "Wide shallow dish",
+      "Clean tea towel",
+      "Serving platter",
+      "Small dip bowl",
+      "Measuring cup",
+      "Mixing spoon"
+    ],
+    "equipmentItems": [
+      {
+        "id": "saucepan",
+        "name": {
+          "en-GB": "Saucepan",
+          "pt-BR": "Panela"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/saucepan.png",
+          "sha256": "60732cad6353854015faea0e1f35035f44b6fed6acf7ac0ed8ae5a823f2aa038",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/colander.png",
+          "sha256": "b38cc76f81d50dd17018f4a0b144d4ffbb8e3ed65bededce26815261e04b07a3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/chopping-board.png",
+          "sha256": "4fc804fea218fb16db2141fc17071c6a3b64c70c3c8a1c09ed2ef5417f4fb71d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Sharp knife",
+          "pt-BR": "Faca afiada"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/knife.png",
+          "sha256": "4ec4df4168070b3fef2175d9c4219489924940ae2497f7b35b539c8effa0670a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "vegetable-peeler",
+        "name": {
+          "en-GB": "Vegetable peeler",
+          "pt-BR": "Descascador de legumes"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/vegetable-peeler.png",
+          "sha256": "13175f4567ce6029a2152ec8f841ba3c641f944046c07ad193e4319ebf4ae31d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "shallow-water-dish",
+        "name": {
+          "en-GB": "Wide shallow dish",
+          "pt-BR": "Travessa rasa e larga"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/shallow-water-dish.png",
+          "sha256": "68f1fa302bf03ab3667a8a148ea5e425a9a7a8dce22fe30ae1d022622f4fd7db",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "clean-tea-towel",
+        "name": {
+          "en-GB": "Clean tea towel",
+          "pt-BR": "Pano de prato limpo"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/clean-tea-towel.png",
+          "sha256": "a20dd480ddb599c2193f0950e251f98a6d6486e25a045095546c2fd12efb5fb4",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "serving-platter",
+        "name": {
+          "en-GB": "Serving platter",
+          "pt-BR": "Travessa para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/serving-platter.png",
+          "sha256": "8f024f66356673b6bda6690a98a70b10e3afade8f8efb200b7931a532c9546e7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "small-dip-bowl",
+        "name": {
+          "en-GB": "Small dip bowl",
+          "pt-BR": "Tigela pequena para molho"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/small-dip-bowl.png",
+          "sha256": "ea4c34d3bef48a6058621ba5889114c42ad6656c367deba5d0068bd2dc39180e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "measuring-cup",
+        "name": {
+          "en-GB": "Measuring cup",
+          "pt-BR": "Copo medidor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/measuring-cup.png",
+          "sha256": "2e7eab9551222bad643fa64d4089b79528d8685e26f2c07c2ebf9c9917e97fa1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "mixing-spoon",
+        "name": {
+          "en-GB": "Mixing spoon",
+          "pt-BR": "Colher para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/mixing-spoon.png",
+          "sha256": "edd70126d159de0c034eaafa001d9ef4cd050918673f8375e55d9de3d454db4e",
+          "mime_type": "image/png",
+          "provenance": "Reused generic wooden spoon illustration from the approved Aaria Wave 6 utensil asset; copied into this recipe package.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Cook the vermicelli",
+          "pt-BR": "Cozinhe o macarrão de arroz"
+        },
+        "instruction": {
+          "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, then drains and rinses it with cool water.",
+          "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, depois escorre e enxágua com água fria."
+        },
+        "ingredientIds": [
+          "rice-vermicelli",
+          "water"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "colander"
+        ],
+        "adultAssist": {
+          "en-GB": "Adult only: use the hob, boiling water and hot saucepan. Children can rinse vegetables away from the hob.",
+          "pt-BR": "Somente adulto: use o fogão, a água fervente e a panela quente. As crianças podem lavar os vegetais longe do fogão."
+        },
+        "safety": {
+          "en-GB": "Keep children away from the hob. An adult drains boiling water and cools noodles promptly.",
+          "pt-BR": "Mantenha as crianças longe do fogão. Um adulto escorre a água fervente e esfria o macarrão sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for hob and boiling water.",
+          "pt-BR": "Somente adulto usa o fogão e a água fervente."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-01.png",
+          "sha256": "b086a02098961a0cf987802f77620ded7d183d01c7d83e12bd290e93a6d3da7b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, then drains and rinses it with cool water.",
+            "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, depois escorre e enxágua com água fria."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Wash and prepare the vegetables",
+          "pt-BR": "Lave e prepare os vegetais"
+        },
+        "instruction": {
+          "en-GB": "Wash the lettuce, mint, cucumber and carrot. An adult cuts carrot and cucumber into thin sticks; tear the lettuce by hand.",
+          "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+        },
+        "ingredientIds": [
+          "lettuce",
+          "carrot",
+          "cucumber",
+          "mint"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife",
+          "vegetable-peeler"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash leaves and tear lettuce. An adult peels and cuts the carrot and cucumber.",
+          "pt-BR": "As crianças lavam as folhas e rasgam a alface. Um adulto descasca e corta a cenoura e o pepino."
+        },
+        "safety": {
+          "en-GB": "Use a stable board. Only an adult handles the sharp knife and peeler; keep fingertips away from the blade.",
+          "pt-BR": "Use uma tábua firme. Somente um adulto manuseia a faca afiada e o descascador; mantenha os dedos afastados da lâmina."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for peeling and knife work.",
+          "pt-BR": "Somente adulto descasca e usa a faca."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-02.png",
+          "sha256": "6ad74d8280f01eea4f3a924865e60291d0a6459d25dca2883565fdff3e5cbc78",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash the lettuce, mint, cucumber and carrot. An adult cuts carrot and cucumber into thin sticks; tear the lettuce by hand.",
+            "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Make the peanut-lime dip",
+          "pt-BR": "Prepare o molho de amendoim e limão"
+        },
+        "instruction": {
+          "en-GB": "Stir the peanut butter and lime juice with 30 mL of the measured warm water until smooth.",
+          "pt-BR": "Misture a pasta de amendoim e o suco de limão com 30 mL da água morna medida até ficar homogêneo."
+        },
+        "ingredientIds": [
+          "peanut-butter",
+          "lime-juice",
+          "water"
+        ],
+        "equipmentIds": [
+          "small-dip-bowl",
+          "measuring-cup",
+          "mixing-spoon"
+        ],
+        "adultAssist": {
+          "en-GB": "Children measure and stir; an adult checks the peanut label and sets the remaining warm water in the dipping dish.",
+          "pt-BR": "As crianças medem e mexem; um adulto confere o rótulo do amendoim e coloca o restante da água morna na travessa para mergulhar o papel."
+        },
+        "safety": {
+          "en-GB": "Peanut is a major allergen. Prevent cross-contact and wash hands and utensils; use warm, not hot, water.",
+          "pt-BR": "Amendoim é um alergênico importante. Evite contato cruzado e lave as mãos e os utensílios; use água morna, não quente."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervises warm water; no sharp tool.",
+          "pt-BR": "Um adulto supervisiona a água morna; sem ferramentas afiadas."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-03.png",
+          "sha256": "dd2cee1fb9066a42484311382a8e668a958b157c9dca952fb5bd010433d5abf7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Stir the peanut butter and lime juice with 30 mL of the measured warm water until smooth.",
+            "pt-BR": "Misture a pasta de amendoim e o suco de limão com 30 mL da água morna medida até ficar homogêneo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Fill and roll",
+          "pt-BR": "Recheie e enrole"
+        },
+        "instruction": {
+          "en-GB": "Pour the remaining 500 mL warm water into a wide dish. Dip one rice-paper wrapper briefly, lay it flat, add a little cooled vermicelli, lettuce, carrot, cucumber and mint, fold the sides and roll.",
+          "pt-BR": "Coloque os 500 mL restantes de água morna em uma travessa larga. Mergulhe rapidamente uma folha de papel de arroz, deixe-a aberta, adicione um pouco de macarrão frio, alface, cenoura, pepino e hortelã, dobre as laterais e enrole."
+        },
+        "ingredientIds": [
+          "rice-paper",
+          "rice-vermicelli",
+          "lettuce",
+          "carrot",
+          "cucumber",
+          "mint",
+          "water"
+        ],
+        "equipmentIds": [
+          "shallow-water-dish",
+          "clean-tea-towel"
+        ],
+        "adultAssist": {
+          "en-GB": "Children dip wrappers and fill/roll after noodles cool. An adult checks temperature and helps if wrappers tear.",
+          "pt-BR": "As crianças mergulham o papel e recheiam/enrolam depois que o macarrão esfriar. Um adulto confere a temperatura e ajuda se o papel rasgar."
+        },
+        "safety": {
+          "en-GB": "Use clean hands and a clean towel. Ensure noodles are fully cooled before children handle them; do not overfill or let rolls sit unrefrigerated.",
+          "pt-BR": "Use mãos e pano limpos. Deixe o macarrão esfriar completamente antes de as crianças manusearem; não coloque recheio demais nem deixe os rolinhos fora da geladeira."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult checks the noodles are cool; no heat or knife for children.",
+          "pt-BR": "Um adulto verifica se o macarrão esfriou; crianças não usam calor nem faca."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-04.png",
+          "sha256": "b8b49961c911d17359e7c4f7a34ffe6ecc797714b204c0274d7939bf7bb28016",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Pour the remaining 500 mL warm water into a wide dish. Dip one rice-paper wrapper briefly, lay it flat, add a little cooled vermicelli, lettuce, carrot, cucumber and mint, fold the sides and roll.",
+            "pt-BR": "Coloque os 500 mL restantes de água morna em uma travessa larga. Mergulhe rapidamente uma folha de papel de arroz, deixe-a aberta, adicione um pouco de macarrão frio, alface, cenoura, pepino e hortelã, dobre as laterais e enrole."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Serve with the dip",
+          "pt-BR": "Sirva com o molho"
+        },
+        "instruction": {
+          "en-GB": "Arrange eight rolls on a platter and serve with the peanut-lime dip. Refrigerate promptly if not eating straight away.",
+          "pt-BR": "Arrume oito rolinhos em uma travessa e sirva com o molho de amendoim e limão. Leve à geladeira sem demora se não for consumir logo."
+        },
+        "ingredientIds": [
+          "rice-paper",
+          "peanut-butter",
+          "lime-juice"
+        ],
+        "equipmentIds": [
+          "serving-platter",
+          "small-dip-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Children arrange rolls; an adult checks allergen labels and refrigerates leftovers promptly.",
+          "pt-BR": "As crianças arrumam os rolinhos; um adulto confere os rótulos de alergênicos e refrigera as sobras sem demora."
+        },
+        "safety": {
+          "en-GB": "Clearly label the peanut dip. Keep chilled until serving; refrigerate leftovers within 2 hours and discard if left out longer.",
+          "pt-BR": "Identifique claramente o molho de amendoim. Mantenha refrigerado até servir; refrigere as sobras em até 2 horas e descarte se ficarem fora por mais tempo."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult supervises storage and serving.",
+          "pt-BR": "Um adulto supervisiona o armazenamento e o serviço."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands; use clean utensils and check ingredient labels for allergens.",
+          "pt-BR": "Lave as mãos; use utensílios limpos e confira os rótulos dos ingredientes para identificar alergênicos."
+        },
+        "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-05.png",
+          "sha256": "180861b154d15ab64f18e984cb4299eb265b27f94e465b5a27ddd1556b071d6b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Arrange eight rolls on a platter and serve with the peanut-lime dip. Refrigerate promptly if not eating straight away.",
+            "pt-BR": "Arrume oito rolinhos em uma travessa e sirva com o molho de amendoim e limão. Leve à geladeira sem demora se não for consumir logo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults cook and cool the vermicelli, use the knife and peeler, and supervise warm water. Children wash vegetables, stir dip, and fill and roll the cooled wrappers.",
+      "pt-BR": "Adultos cozinham e esfriam o macarrão, usam a faca e o descascador e supervisionam a água morna. Crianças lavam os vegetais, mexem o molho e recheiam e enrolam o papel já frio."
+    },
+    "finishedDish": {
+      "artworkPath": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/finished-dish.png",
+      "description": {
+        "en-GB": "Fresh rice-paper rolls filled with vermicelli, lettuce, carrot, cucumber and mint, served with peanut-lime dip.",
+        "pt-BR": "Rolinhos frescos de papel de arroz recheados com macarrão de arroz, alface, cenoura, pepino e hortelã, servidos com molho de amendoim e limão."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/finished-dish.png",
+        "sha256": "c387b3ca6848550e1666b3490300b9e041eaac3510e7c3f98f1799e4e9060d0a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh rice-paper rolls filled with vermicelli, lettuce, carrot, cucumber and mint, served with peanut-lime dip.",
+          "pt-BR": "Rolinhos frescos de papel de arroz recheados com macarrão de arroz, alface, cenoura, pepino e hortelã, servidos com molho de amendoim e limão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet."
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 233,
+        "proteinG": 5.4,
+        "carbohydrateG": 43.9,
+        "fatG": 4.2,
+        "fibreG": 2.2,
+        "saturatedFatG": 0.6,
+        "sodiumMg": 140
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate from generic USDA FoodData Central reference foods, scaled to the measured recipe quantities; product brands and preparation vary. Not a laboratory analysis.",
+      "method": "Sum generic FoodData Central values for listed ingredient amounts and divide by 4; rounded.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Rice paper, dry",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20paper,%20dry"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Rice noodles, dry",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%20noodles,%20dry"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Lettuce, green leaf, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lettuce,%20green%20leaf,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Carrots, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cucumber, with peel, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber,%20with%20peel,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Spearmint, fresh",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Spearmint,%20fresh"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Peanut butter, smooth style, without salt",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peanut%20butter,%20smooth%20style,%20without%20salt"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Lime juice, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice,%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Water, tap",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Water,%20tap"
+        }
+      ]
+    },
+    "allergens": [
+      "peanut"
+    ],
+    "allergenNotes": {
+      "contains": {
+        "en-GB": "Peanut in the dip. Rice wrappers and vermicelli may carry manufacturing cross-contact warnings; check every packet and keep the dip separate.",
+        "pt-BR": "Amendoim no molho. O papel de arroz e o macarrão podem conter avisos de contato cruzado na fabricação; confira cada embalagem e mantenha o molho separado."
+      },
+      "cross_contact": {
+        "en-GB": "Check peanut butter, wrapper and vermicelli labels, including cross-contact warnings. Keep peanut dip, hands and utensils separate from food for peanut-allergic diners; wash hands and equipment.",
+        "pt-BR": "Confira os rótulos da pasta de amendoim, do papel e do macarrão, inclusive avisos de contato cruzado. Mantenha o molho, as mãos e os utensílios separados dos alimentos para pessoas alérgicas a amendoim; lave as mãos e os utensílios."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/finished-dish.png",
+        "sha256": "c387b3ca6848550e1666b3490300b9e041eaac3510e7c3f98f1799e4e9060d0a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh rice-paper rolls filled with vermicelli, lettuce, carrot, cucumber and mint, served with peanut-lime dip.",
+          "pt-BR": "Rolinhos frescos de papel de arroz recheados com macarrão de arroz, alface, cenoura, pepino e hortelã, servidos com molho de amendoim e limão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-paper.png",
+          "sha256": "6f225925dd2187a1e66f0e5379960f7ee7a428609c6fb584e13b277ce0709dcb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Rice-paper wrappers",
+            "pt-BR": "Folhas de papel de arroz"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/rice-vermicelli.png",
+          "sha256": "0655e8b52c79394fda9985713f316118314ffeb425ff81df79209aa8cc225d4e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Rice vermicelli, dry",
+            "pt-BR": "Macarrão de arroz seco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lettuce.png",
+          "sha256": "d01cd68a00391152e9ec141b23f14ecd68b37f1864db2b986ade830671571c22",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Lettuce leaves",
+            "pt-BR": "Folhas de alface"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/carrot.png",
+          "sha256": "02e0304eee822bba568aaa33aefdcaebc0564338b9241389526ab98e63e95106",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Carrot",
+            "pt-BR": "Cenoura"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/cucumber.png",
+          "sha256": "c9e1a058f526ee024c3bef914b486dcd0e91bd3892919133c20ffd1acebb61f4",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cucumber",
+            "pt-BR": "Pepino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/mint.png",
+          "sha256": "f421102356b1bff37b3f857799ddab7354e98bd6d609787c12f78072c29a6c51",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh mint leaves",
+            "pt-BR": "Folhas de hortelã fresca"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/peanut-butter.png",
+          "sha256": "bfee36b981fd6dd35b12dbd05a9452341128a034b55c6d7b6889f16fed4b2cac",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Smooth peanut butter",
+            "pt-BR": "Pasta de amendoim cremosa"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/lime-juice.png",
+          "sha256": "e9f1a68bf81ba15d36fb07cb7a9bb7bc92fd6ea5c6d7cb84a99828af752479ad",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh lime juice",
+            "pt-BR": "Suco de limão-taiti fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/ingredients/water.png",
+          "sha256": "00f5498a8ad0a106c93b8a1a352ee82db50954742712a370d8361944f19b4c46",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Water (for noodles, dip and wrappers)",
+            "pt-BR": "Água (para o macarrão, o molho e o papel)"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/saucepan.png",
+          "sha256": "60732cad6353854015faea0e1f35035f44b6fed6acf7ac0ed8ae5a823f2aa038",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/colander.png",
+          "sha256": "b38cc76f81d50dd17018f4a0b144d4ffbb8e3ed65bededce26815261e04b07a3",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/chopping-board.png",
+          "sha256": "4fc804fea218fb16db2141fc17071c6a3b64c70c3c8a1c09ed2ef5417f4fb71d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/knife.png",
+          "sha256": "4ec4df4168070b3fef2175d9c4219489924940ae2497f7b35b539c8effa0670a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/vegetable-peeler.png",
+          "sha256": "13175f4567ce6029a2152ec8f841ba3c641f944046c07ad193e4319ebf4ae31d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/shallow-water-dish.png",
+          "sha256": "68f1fa302bf03ab3667a8a148ea5e425a9a7a8dce22fe30ae1d022622f4fd7db",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/clean-tea-towel.png",
+          "sha256": "a20dd480ddb599c2193f0950e251f98a6d6486e25a045095546c2fd12efb5fb4",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/serving-platter.png",
+          "sha256": "8f024f66356673b6bda6690a98a70b10e3afade8f8efb200b7931a532c9546e7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/small-dip-bowl.png",
+          "sha256": "ea4c34d3bef48a6058621ba5889114c42ad6656c367deba5d0068bd2dc39180e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/measuring-cup.png",
+          "sha256": "2e7eab9551222bad643fa64d4089b79528d8685e26f2c07c2ebf9c9917e97fa1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/equipment/mixing-spoon.png",
+          "sha256": "edd70126d159de0c034eaafa001d9ef4cd050918673f8375e55d9de3d454db4e",
+          "mime_type": "image/png",
+          "provenance": "Reused generic wooden spoon illustration from the approved Aaria Wave 6 utensil asset; copied into this recipe package.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-01.png",
+          "sha256": "b086a02098961a0cf987802f77620ded7d183d01c7d83e12bd290e93a6d3da7b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult cooks the rice vermicelli in 1.5 L boiling water according to the packet, then drains and rinses it with cool water.",
+            "pt-BR": "Um adulto cozinha o macarrão de arroz em 1,5 L de água fervente conforme a embalagem, depois escorre e enxágua com água fria."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-02.png",
+          "sha256": "6ad74d8280f01eea4f3a924865e60291d0a6459d25dca2883565fdff3e5cbc78",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash the lettuce, mint, cucumber and carrot. An adult cuts carrot and cucumber into thin sticks; tear the lettuce by hand.",
+            "pt-BR": "Lave a alface, a hortelã, o pepino e a cenoura. Um adulto corta a cenoura e o pepino em tiras finas; rasgue a alface com as mãos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-03.png",
+          "sha256": "dd2cee1fb9066a42484311382a8e668a958b157c9dca952fb5bd010433d5abf7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Stir the peanut butter and lime juice with 30 mL of the measured warm water until smooth.",
+            "pt-BR": "Misture a pasta de amendoim e o suco de limão com 30 mL da água morna medida até ficar homogêneo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-04.png",
+          "sha256": "b8b49961c911d17359e7c4f7a34ffe6ecc797714b204c0274d7939bf7bb28016",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Pour the remaining 500 mL warm water into a wide dish. Dip one rice-paper wrapper briefly, lay it flat, add a little cooled vermicelli, lettuce, carrot, cucumber and mint, fold the sides and roll.",
+            "pt-BR": "Coloque os 500 mL restantes de água morna em uma travessa larga. Mergulhe rapidamente uma folha de papel de arroz, deixe-a aberta, adicione um pouco de macarrão frio, alface, cenoura, pepino e hortelã, dobre as laterais e enrole."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/vietnam/108-fresh-spring-rolls/artwork/steps/step-05.png",
+          "sha256": "180861b154d15ab64f18e984cb4299eb265b27f94e465b5a27ddd1556b071d6b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria visual reference (Issue #50 comment 6367104240). Ingredient and equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Arrange eight rolls on a platter and serve with the peanut-lime dip. Refrigerate promptly if not eating straight away.",
+            "pt-BR": "Arrume oito rolinhos em uma travessa e sirva com o molho de amendoim e limão. Leve à geladeira sem demora se não for consumir logo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "nutritionSource": "USDA FoodData Central",
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/food-search/",
+      "artworkApproval": "Owner-approved Aaria reference: content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png."
+    },
+    "safety": {
+      "en-GB": "Keep children away from the hob. An adult drains boiling water and cools noodles promptly.",
+      "pt-BR": "Mantenha as crianças longe do fogão. Um adulto escorre a água fervente e esfria o macarrão sem demora."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}

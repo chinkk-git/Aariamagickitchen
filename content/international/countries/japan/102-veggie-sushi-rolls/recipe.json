@@ -1,0 +1,2444 @@
+{
+  "schema_version": "1.0",
+  "id": 102,
+  "country": "japan",
+  "country_code": "JP",
+  "title": {
+    "en-GB": "Veggie Sushi Rolls",
+    "pt-BR": "Rolinhos de sushi com legumes"
+  },
+  "description": {
+    "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+    "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+  },
+  "cultural_context": {
+    "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+    "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+  },
+  "category": "international",
+  "method": "Adult stovetop; child assembly",
+  "time": "55 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 30,
+  "total_minutes": 55,
+  "ingredients": [
+    "200 g Short-grain sushi rice",
+    "300 mL Water",
+    "30 mL Rice vinegar",
+    "8 g Caster sugar",
+    "4 sheets Nori sheets",
+    "100 g Cucumber",
+    "100 g Carrot",
+    "150 g Ripe avocado"
+  ],
+  "equipment": [
+    "Lidded saucepan",
+    "Rice paddle or wooden spoon",
+    "Small bowl",
+    "Sushi rolling mat",
+    "Chopping board",
+    "Sharp kitchen knife",
+    "Measuring cup",
+    "Colander"
+  ],
+  "ingredientItems": [
+    {
+      "id": "sushi-rice",
+      "name": {
+        "en-GB": "Short-grain sushi rice",
+        "pt-BR": "Arroz para sushi de grão curto"
+      },
+      "quantity": 200,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sushi-rice.png",
+        "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Short-grain sushi rice",
+          "pt-BR": "Arroz para sushi de grão curto"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "water",
+      "name": {
+        "en-GB": "Water",
+        "pt-BR": "Água"
+      },
+      "quantity": 300,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/water.png",
+        "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Water",
+          "pt-BR": "Água"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "rice-vinegar",
+      "name": {
+        "en-GB": "Rice vinegar",
+        "pt-BR": "Vinagre de arroz"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/rice-vinegar.png",
+        "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Rice vinegar",
+          "pt-BR": "Vinagre de arroz"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "sugar",
+      "name": {
+        "en-GB": "Caster sugar",
+        "pt-BR": "Açúcar refinado"
+      },
+      "quantity": 8,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sugar.png",
+        "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Caster sugar",
+          "pt-BR": "Açúcar refinado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "nori",
+      "name": {
+        "en-GB": "Nori sheets",
+        "pt-BR": "Folhas de nori"
+      },
+      "quantity": 4,
+      "unit": "sheets",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/nori.png",
+        "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Nori sheets",
+          "pt-BR": "Folhas de nori"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "cucumber",
+      "name": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/cucumber.png",
+        "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "carrot",
+      "name": {
+        "en-GB": "Carrot",
+        "pt-BR": "Cenoura"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/carrot.png",
+        "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "avocado",
+      "name": {
+        "en-GB": "Ripe avocado",
+        "pt-BR": "Abacate maduro"
+      },
+      "quantity": 150,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/avocado.png",
+        "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Ripe avocado",
+          "pt-BR": "Abacate maduro"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "saucepan",
+      "name": {
+        "en-GB": "Lidded saucepan",
+        "pt-BR": "Panela com tampa"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
+        "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "rice-paddle",
+      "name": {
+        "en-GB": "Rice paddle or wooden spoon",
+        "pt-BR": "Espátula de arroz ou colher de pau"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
+        "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "small-bowl",
+      "name": {
+        "en-GB": "Small bowl",
+        "pt-BR": "Tigela pequena"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "sushi-mat",
+      "name": {
+        "en-GB": "Sushi rolling mat",
+        "pt-BR": "Esteira para enrolar sushi"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
+        "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
+        "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Sharp kitchen knife",
+        "pt-BR": "Faca afiada de cozinha"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
+        "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "measuring-cup",
+      "name": {
+        "en-GB": "Measuring cup",
+        "pt-BR": "Copo medidor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
+        "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
+        "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Prepare the vegetables",
+        "pt-BR": "Prepare os legumes"
+      },
+      "instruction": {
+        "en-GB": "Wash the cucumber, carrot and avocado. An adult cuts them into thin sticks on a stable board.",
+        "pt-BR": "Lave o pepino, a cenoura e o abacate. Um adulto corta tudo em tiras finas sobre uma tábua estável."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "carrot",
+        "avocado"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png",
+        "sha256": "2058c2a7c21b63b7de8c27159b4fee9ed24528b0dd532b876c13415c2d1b22ed",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash the cucumber, carrot and avocado. An adult cuts them into thin sticks on a stable board.",
+          "pt-BR": "Lave o pepino, a cenoura e o abacate. Um adulto corta tudo em tiras finas sobre uma tábua estável."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+        "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+      },
+      "safety": {
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+        "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Rinse the rice",
+        "pt-BR": "Lave o arroz"
+      },
+      "instruction": {
+        "en-GB": "Rinse the rice in cool water until the water is mostly clear, then drain well.",
+        "pt-BR": "Lave o arroz em água fria até que a água fique quase transparente e escorra bem."
+      },
+      "ingredientIds": [
+        "sushi-rice",
+        "water"
+      ],
+      "equipmentIds": [
+        "small-bowl",
+        "colander"
+      ],
+      "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
+        "sha256": "c7a1028f603b46e95fab159457de73b5f46ecd947576e27898c5baf89556db86",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Rinse the rice in cool water until the water is mostly clear, then drain well.",
+          "pt-BR": "Lave o arroz em água fria até que a água fique quase transparente e escorra bem."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+        "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+      },
+      "safety": {
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+        "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Cook and cool the rice",
+        "pt-BR": "Cozinhe e esfrie o arroz"
+      },
+      "instruction": {
+        "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+        "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+      },
+      "ingredientIds": [
+        "sushi-rice",
+        "water"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "measuring-cup"
+      ],
+      "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png",
+        "sha256": "99cc819ef79e08dec01500bfde0ea20984873485621fef4f0dcb38d85db1529c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+          "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+        "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+      },
+      "safety": {
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+        "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Season and spread",
+        "pt-BR": "Tempere e espalhe"
+      },
+      "instruction": {
+        "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
+        "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
+      },
+      "ingredientIds": [
+        "rice-vinegar",
+        "sugar",
+        "nori",
+        "sushi-rice"
+      ],
+      "equipmentIds": [
+        "small-bowl",
+        "rice-paddle",
+        "sushi-mat"
+      ],
+      "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png",
+        "sha256": "a23036bba9ac96653fac969f1228865d6fd675cc90a2650f9c6cfafad4a61139",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
+          "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+        "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+      },
+      "safety": {
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+        "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Fill, roll and slice",
+        "pt-BR": "Recheie, enrole e corte"
+      },
+      "instruction": {
+        "en-GB": "Add cucumber, carrot and avocado sticks. Roll firmly with the mat. An adult slices the roll; serve promptly.",
+        "pt-BR": "Coloque tiras de pepino, cenoura e abacate. Enrole com firmeza usando a esteira. Um adulto corta o rolo; sirva logo."
+      },
+      "ingredientIds": [
+        "cucumber",
+        "carrot",
+        "avocado"
+      ],
+      "equipmentIds": [
+        "sushi-mat",
+        "chopping-board",
+        "knife"
+      ],
+      "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png",
+        "sha256": "897b6f2a0175fb9f69a0eef4b22b3387d950d3b8ee5614dbccbc9b84613ac445",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Add cucumber, carrot and avocado sticks. Roll firmly with the mat. An adult slices the roll; serve promptly.",
+          "pt-BR": "Coloque tiras de pepino, cenoura e abacate. Enrole com firmeza usando a esteira. Um adulto corta o rolo; sirva logo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+        "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+      },
+      "safety": {
+        "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+        "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+    "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+  },
+  "allergens": [],
+  "allergen_notes": {
+    "contains": [],
+    "cross_contact": {
+      "en-GB": "Check the nori, rice vinegar and packaged rice labels for declared allergens and cross-contact; nori can be processed on shared lines. Use clean hands and equipment.",
+      "pt-BR": "Confira nos rótulos do nori, do vinagre de arroz e do arroz embalado os alergênicos e avisos de contato cruzado; o nori pode ser processado em linhas compartilhadas. Use mãos e utensílios limpos."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 270,
+      "proteinG": 5.3,
+      "carbohydrateG": 46.4,
+      "fatG": 6.1,
+      "fibreG": 4.8,
+      "saturatedFatG": 1,
+      "sodiumMg": 85
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate calculation from weighed recipe quantities and generic USDA FDC ingredient references; rice dry weight is used before cooking; nori sheet mass and product nutrient values vary. Rounded per portion; not a laboratory analysis.",
+    "method": "Scale FoodData Central per-100-g reference nutrient values by ingredient weights, sum recipe totals, divide by 4 portions; 1 mL vinegar treated approximately as 1 g.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Rice, white, short-grain, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%2C%20white%2C%20short-grain%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Water, tap",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Water%2C%20tap"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Vinegar, rice",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar%2C%20rice"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Sugar, granulated",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Sugar%2C%20granulated"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Seaweed, laver, dried",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Seaweed%2C%20laver%2C%20dried"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber%2C%20with%20peel%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Carrots, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Avocados, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Avocados%2C%20raw"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+      "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+    },
+    "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+    "image": {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/finished-dish.png",
+      "sha256": "a6f6c0c3f87ab8119d75b45511ed0e5a2a29575105722e0fababda9f8de0d4fc",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+        "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/finished-dish.png",
+      "sha256": "a6f6c0c3f87ab8119d75b45511ed0e5a2a29575105722e0fababda9f8de0d4fc",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+        "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sushi-rice.png",
+        "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Short-grain sushi rice",
+          "pt-BR": "Arroz para sushi de grão curto"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/water.png",
+        "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Water",
+          "pt-BR": "Água"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/rice-vinegar.png",
+        "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Rice vinegar",
+          "pt-BR": "Vinagre de arroz"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sugar.png",
+        "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Caster sugar",
+          "pt-BR": "Açúcar refinado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/nori.png",
+        "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Nori sheets",
+          "pt-BR": "Folhas de nori"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/cucumber.png",
+        "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/carrot.png",
+        "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/avocado.png",
+        "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Ripe avocado",
+          "pt-BR": "Abacate maduro"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
+        "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
+        "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
+        "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
+        "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
+        "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
+        "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
+        "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png",
+        "sha256": "2058c2a7c21b63b7de8c27159b4fee9ed24528b0dd532b876c13415c2d1b22ed",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash the cucumber, carrot and avocado. An adult cuts them into thin sticks on a stable board.",
+          "pt-BR": "Lave o pepino, a cenoura e o abacate. Um adulto corta tudo em tiras finas sobre uma tábua estável."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
+        "sha256": "c7a1028f603b46e95fab159457de73b5f46ecd947576e27898c5baf89556db86",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Rinse the rice in cool water until the water is mostly clear, then drain well.",
+          "pt-BR": "Lave o arroz em água fria até que a água fique quase transparente e escorra bem."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png",
+        "sha256": "99cc819ef79e08dec01500bfde0ea20984873485621fef4f0dcb38d85db1529c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+          "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png",
+        "sha256": "a23036bba9ac96653fac969f1228865d6fd675cc90a2650f9c6cfafad4a61139",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
+          "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png",
+        "sha256": "897b6f2a0175fb9f69a0eef4b22b3387d950d3b8ee5614dbccbc9b84613ac445",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Add cucumber, carrot and avocado sticks. Roll firmly with the mat. An adult slices the roll; serve promptly.",
+          "pt-BR": "Coloque tiras de pepino, cenoura e abacate. Enrole com firmeza usando a esteira. Um adulto corta o rolo; sirva logo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/finished-dish.png",
+      "sha256": "a6f6c0c3f87ab8119d75b45511ed0e5a2a29575105722e0fababda9f8de0d4fc",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+        "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sushi-rice.png",
+      "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Short-grain sushi rice",
+        "pt-BR": "Arroz para sushi de grão curto"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/water.png",
+      "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Water",
+        "pt-BR": "Água"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/rice-vinegar.png",
+      "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Rice vinegar",
+        "pt-BR": "Vinagre de arroz"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sugar.png",
+      "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Caster sugar",
+        "pt-BR": "Açúcar refinado"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/nori.png",
+      "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Nori sheets",
+        "pt-BR": "Folhas de nori"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/cucumber.png",
+      "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Cucumber",
+        "pt-BR": "Pepino"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/carrot.png",
+      "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Carrot",
+        "pt-BR": "Cenoura"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/avocado.png",
+      "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Ripe avocado",
+        "pt-BR": "Abacate maduro"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
+      "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
+      "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
+      "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
+      "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
+      "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
+      "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
+      "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
+      "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png",
+      "sha256": "2058c2a7c21b63b7de8c27159b4fee9ed24528b0dd532b876c13415c2d1b22ed",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Wash the cucumber, carrot and avocado. An adult cuts them into thin sticks on a stable board.",
+        "pt-BR": "Lave o pepino, a cenoura e o abacate. Um adulto corta tudo em tiras finas sobre uma tábua estável."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
+      "sha256": "c7a1028f603b46e95fab159457de73b5f46ecd947576e27898c5baf89556db86",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Rinse the rice in cool water until the water is mostly clear, then drain well.",
+        "pt-BR": "Lave o arroz em água fria até que a água fique quase transparente e escorra bem."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png",
+      "sha256": "99cc819ef79e08dec01500bfde0ea20984873485621fef4f0dcb38d85db1529c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+        "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png",
+      "sha256": "a23036bba9ac96653fac969f1228865d6fd675cc90a2650f9c6cfafad4a61139",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
+        "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png",
+      "sha256": "897b6f2a0175fb9f69a0eef4b22b3387d950d3b8ee5614dbccbc9b84613ac445",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Add cucumber, carrot and avocado sticks. Roll firmly with the mat. An adult slices the roll; serve promptly.",
+        "pt-BR": "Coloque tiras de pepino, cenoura e abacate. Enrole com firmeza usando a esteira. Um adulto corta o rolo; sirva logo."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/",
+    "riceSafetySource": "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult stovetop; child assembly",
+    "time": "55 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "id": 102,
+    "country": "japan",
+    "countryCode": "JP",
+    "status": "READY_FOR_INTEGRATION",
+    "title": {
+      "en-GB": "Veggie Sushi Rolls",
+      "pt-BR": "Rolinhos de sushi com legumes"
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+      "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 30,
+    "totalMinutes": 55,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; keep safety guidance and equipment roles unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "sushi-rice",
+        "name": {
+          "en-GB": "Short-grain sushi rice",
+          "pt-BR": "Arroz para sushi de grão curto"
+        },
+        "quantity": 200,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sushi-rice.png",
+          "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Short-grain sushi rice",
+            "pt-BR": "Arroz para sushi de grão curto"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "water",
+        "name": {
+          "en-GB": "Water",
+          "pt-BR": "Água"
+        },
+        "quantity": 300,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/water.png",
+          "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Water",
+            "pt-BR": "Água"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "rice-vinegar",
+        "name": {
+          "en-GB": "Rice vinegar",
+          "pt-BR": "Vinagre de arroz"
+        },
+        "quantity": 30,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/rice-vinegar.png",
+          "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Rice vinegar",
+            "pt-BR": "Vinagre de arroz"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "sugar",
+        "name": {
+          "en-GB": "Caster sugar",
+          "pt-BR": "Açúcar refinado"
+        },
+        "quantity": 8,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sugar.png",
+          "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Caster sugar",
+            "pt-BR": "Açúcar refinado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "nori",
+        "name": {
+          "en-GB": "Nori sheets",
+          "pt-BR": "Folhas de nori"
+        },
+        "quantity": 4,
+        "unit": "sheets",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/nori.png",
+          "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Nori sheets",
+            "pt-BR": "Folhas de nori"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "cucumber",
+        "name": {
+          "en-GB": "Cucumber",
+          "pt-BR": "Pepino"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/cucumber.png",
+          "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cucumber",
+            "pt-BR": "Pepino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "carrot",
+        "name": {
+          "en-GB": "Carrot",
+          "pt-BR": "Cenoura"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/carrot.png",
+          "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Carrot",
+            "pt-BR": "Cenoura"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "avocado",
+        "name": {
+          "en-GB": "Ripe avocado",
+          "pt-BR": "Abacate maduro"
+        },
+        "quantity": 150,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/avocado.png",
+          "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Ripe avocado",
+            "pt-BR": "Abacate maduro"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "equipmentItems": [
+      {
+        "id": "saucepan",
+        "name": {
+          "en-GB": "Lidded saucepan",
+          "pt-BR": "Panela com tampa"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
+          "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "rice-paddle",
+        "name": {
+          "en-GB": "Rice paddle or wooden spoon",
+          "pt-BR": "Espátula de arroz ou colher de pau"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
+          "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "small-bowl",
+        "name": {
+          "en-GB": "Small bowl",
+          "pt-BR": "Tigela pequena"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "sushi-mat",
+        "name": {
+          "en-GB": "Sushi rolling mat",
+          "pt-BR": "Esteira para enrolar sushi"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
+          "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
+          "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Sharp kitchen knife",
+          "pt-BR": "Faca afiada de cozinha"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
+          "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "measuring-cup",
+        "name": {
+          "en-GB": "Measuring cup",
+          "pt-BR": "Copo medidor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
+          "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
+          "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Prepare the vegetables",
+          "pt-BR": "Prepare os legumes"
+        },
+        "instruction": {
+          "en-GB": "Wash the cucumber, carrot and avocado. An adult cuts them into thin sticks on a stable board.",
+          "pt-BR": "Lave o pepino, a cenoura e o abacate. Um adulto corta tudo em tiras finas sobre uma tábua estável."
+        },
+        "ingredientIds": [
+          "cucumber",
+          "carrot",
+          "avocado"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife"
+        ],
+        "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png",
+          "sha256": "2058c2a7c21b63b7de8c27159b4fee9ed24528b0dd532b876c13415c2d1b22ed",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash the cucumber, carrot and avocado. An adult cuts them into thin sticks on a stable board.",
+            "pt-BR": "Lave o pepino, a cenoura e o abacate. Um adulto corta tudo em tiras finas sobre uma tábua estável."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+          "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+        },
+        "safety": {
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Rinse the rice",
+          "pt-BR": "Lave o arroz"
+        },
+        "instruction": {
+          "en-GB": "Rinse the rice in cool water until the water is mostly clear, then drain well.",
+          "pt-BR": "Lave o arroz em água fria até que a água fique quase transparente e escorra bem."
+        },
+        "ingredientIds": [
+          "sushi-rice",
+          "water"
+        ],
+        "equipmentIds": [
+          "colander",
+          "mixing-bowl"
+        ],
+        "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
+          "sha256": "c7a1028f603b46e95fab159457de73b5f46ecd947576e27898c5baf89556db86",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Rinse the rice in cool water until the water is mostly clear, then drain well.",
+            "pt-BR": "Lave o arroz em água fria até que a água fique quase transparente e escorra bem."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+          "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+        },
+        "safety": {
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Cook and cool the rice",
+          "pt-BR": "Cozinhe e esfrie o arroz"
+        },
+        "instruction": {
+          "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+          "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+        },
+        "ingredientIds": [
+          "sushi-rice",
+          "water"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "measuring-cup"
+        ],
+        "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png",
+          "sha256": "99cc819ef79e08dec01500bfde0ea20984873485621fef4f0dcb38d85db1529c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+            "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+          "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+        },
+        "safety": {
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Season and spread",
+          "pt-BR": "Tempere e espalhe"
+        },
+        "instruction": {
+          "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
+          "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
+        },
+        "ingredientIds": [
+          "rice-vinegar",
+          "sugar",
+          "nori",
+          "sushi-rice"
+        ],
+        "equipmentIds": [
+          "small-bowl",
+          "rice-paddle",
+          "sushi-mat"
+        ],
+        "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png",
+          "sha256": "a23036bba9ac96653fac969f1228865d6fd675cc90a2650f9c6cfafad4a61139",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
+            "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+          "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+        },
+        "safety": {
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Fill, roll and slice",
+          "pt-BR": "Recheie, enrole e corte"
+        },
+        "instruction": {
+          "en-GB": "Add cucumber, carrot and avocado sticks. Roll firmly with the mat. An adult slices the roll; serve promptly.",
+          "pt-BR": "Coloque tiras de pepino, cenoura e abacate. Enrole com firmeza usando a esteira. Um adulto corta o rolo; sirva logo."
+        },
+        "ingredientIds": [
+          "cucumber",
+          "carrot",
+          "avocado"
+        ],
+        "equipmentIds": [
+          "sushi-mat",
+          "chopping-board",
+          "knife"
+        ],
+        "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png",
+          "sha256": "897b6f2a0175fb9f69a0eef4b22b3387d950d3b8ee5614dbccbc9b84613ac445",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Add cucumber, carrot and avocado sticks. Roll firmly with the mat. An adult slices the roll; serve promptly.",
+            "pt-BR": "Coloque tiras de pepino, cenoura e abacate. Enrole com firmeza usando a esteira. Um adulto corta o rolo; sirva logo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+          "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+        },
+        "safety": {
+          "en-GB": "Adults handle boiling water, hot rice and knives. Cool rice quickly in a clean shallow tray; keep refrigerated if not using at once, assemble just before serving, and refrigerate leftovers promptly. Do not leave cooked rice at room temperature. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Adultos cuidam da água fervente, do arroz quente e das facas. Esfrie o arroz rapidamente em uma travessa limpa e rasa; mantenha refrigerado se não for usar logo, monte pouco antes de servir e refrigere as sobras sem demora. Não deixe o arroz cozido à temperatura ambiente. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: hot hob, hot rice or sharp knife as stated in this step.",
+          "pt-BR": "Somente adulto: fogão quente, arroz quente ou faca afiada conforme indicado nesta etapa."
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "An adult handles the hob, hot saucepan and sharp knife, and supervises cooling and assembly. Children rinse rice, mix cooled ingredients and roll with supervision.",
+      "pt-BR": "Um adulto cuida do fogão, da panela quente e da faca afiada, além de supervisionar o resfriamento e a montagem. As crianças lavam o arroz, misturam ingredientes frios e enrolam com supervisão."
+    },
+    "allergens": [],
+    "allergenNotes": {
+      "contains": [],
+      "cross_contact": {
+        "en-GB": "Check the nori, rice vinegar and packaged rice labels for declared allergens and cross-contact; nori can be processed on shared lines. Use clean hands and equipment.",
+        "pt-BR": "Confira nos rótulos do nori, do vinagre de arroz e do arroz embalado os alergênicos e avisos de contato cruzado; o nori pode ser processado em linhas compartilhadas. Use mãos e utensílios limpos."
+      }
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 270,
+        "proteinG": 5.3,
+        "carbohydrateG": 46.4,
+        "fatG": 6.1,
+        "fibreG": 4.8,
+        "saturatedFatG": 1,
+        "sodiumMg": 85
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate calculation from weighed recipe quantities and generic USDA FDC ingredient references; rice dry weight is used before cooking; nori sheet mass and product nutrient values vary. Rounded per portion; not a laboratory analysis.",
+      "method": "Scale FoodData Central per-100-g reference nutrient values by ingredient weights, sum recipe totals, divide by 4 portions; 1 mL vinegar treated approximately as 1 g.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Rice, white, short-grain, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%2C%20white%2C%20short-grain%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Water, tap",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Water%2C%20tap"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Vinegar, rice",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar%2C%20rice"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Sugar, granulated",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Sugar%2C%20granulated"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Seaweed, laver, dried",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Seaweed%2C%20laver%2C%20dried"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Cucumber, with peel, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cucumber%2C%20with%20peel%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Carrots, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Carrots%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Avocados, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Avocados%2C%20raw"
+        }
+      ]
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/finished-dish.png",
+        "sha256": "a6f6c0c3f87ab8119d75b45511ed0e5a2a29575105722e0fababda9f8de0d4fc",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+          "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sushi-rice.png",
+          "sha256": "3cfe8fd5e5fbf20bc5b5db1a6907d71e252bb183d5cf93cbf659a0a298b42e92",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Short-grain sushi rice",
+            "pt-BR": "Arroz para sushi de grão curto"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/water.png",
+          "sha256": "cb08c38ee46889a4870c828e5782f7b82988678d5f902fc598b30017f78d5c4d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Water",
+            "pt-BR": "Água"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/rice-vinegar.png",
+          "sha256": "9a0286fc26aba5ade6f0e2b0743c8103ba87703f5aaf68cd3cb67158a277ac60",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Rice vinegar",
+            "pt-BR": "Vinagre de arroz"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/sugar.png",
+          "sha256": "a646795df7c0d1a5ef3ff7c6e5a3e62bda80f345138643156fc33303f5a84c8c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Caster sugar",
+            "pt-BR": "Açúcar refinado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/nori.png",
+          "sha256": "866249c19be05b1daeff90e934d7f7fa132e4a72dbc2c5f5e16a13823bd9d82a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Nori sheets",
+            "pt-BR": "Folhas de nori"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/cucumber.png",
+          "sha256": "0c52b3015f7171409c971d867a4a23eff8f80d67347417c2386f22196a54068e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cucumber",
+            "pt-BR": "Pepino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/carrot.png",
+          "sha256": "2829f1f28cb5e55016900a425fdc5fccbd7cde00deeaac2e0b44aa0f237fc676",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Carrot",
+            "pt-BR": "Cenoura"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/ingredients/avocado.png",
+          "sha256": "07ad78ff0e9f1c791fcd260651b2900bd18fda8e74d3cb53135c5a0598b30ff6",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Ripe avocado",
+            "pt-BR": "Abacate maduro"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/saucepan.png",
+          "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/rice-paddle.png",
+          "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/small-bowl.png",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/sushi-mat.png",
+          "sha256": "7d5fcfcf24042b743406e1d7716c34bcebd2045572215c23714eb7c0a319f37a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/chopping-board.png",
+          "sha256": "ed92c463a47fb2d348665df99bee9c1ac124cf8ffe594211d795ca42958af24f",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/knife.png",
+          "sha256": "133886c19177cec89d9810f788e0163b3bbaf5cb6b6c9f0bcf72cd0b173953b0",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/104-japanese-cucumber-salad/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/measuring-cup.png",
+          "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/equipment/colander.png",
+          "sha256": "4946b9bb3bb5985b7e46056cd975b32e51476b127ea396c6eb7e37e18c52b89b",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-01.png",
+          "sha256": "2058c2a7c21b63b7de8c27159b4fee9ed24528b0dd532b876c13415c2d1b22ed",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash the cucumber, carrot and avocado. An adult cuts them into thin sticks on a stable board.",
+            "pt-BR": "Lave o pepino, a cenoura e o abacate. Um adulto corta tudo em tiras finas sobre uma tábua estável."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-02.png",
+          "sha256": "c7a1028f603b46e95fab159457de73b5f46ecd947576e27898c5baf89556db86",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Rinse the rice in cool water until the water is mostly clear, then drain well.",
+            "pt-BR": "Lave o arroz em água fria até que a água fique quase transparente e escorra bem."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-03.png",
+          "sha256": "99cc819ef79e08dec01500bfde0ea20984873485621fef4f0dcb38d85db1529c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult simmers the rice with measured water in a covered saucepan. Spread the cooked rice in a clean shallow tray to cool quickly; if it is not being used immediately, refrigerate it within one hour of cooking.",
+            "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada. Espalhe o arroz cozido em uma travessa limpa e rasa para esfriar rapidamente; se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-04.png",
+          "sha256": "a23036bba9ac96653fac969f1228865d6fd675cc90a2650f9c6cfafad4a61139",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult stirs rice vinegar and sugar into the cooled rice. Place nori on the mat and spread rice in a thin layer, leaving a clear strip at the far edge.",
+            "pt-BR": "Um adulto mistura o vinagre de arroz e o açúcar ao arroz frio. Coloque o nori na esteira e espalhe uma camada fina de arroz, deixando uma faixa livre na borda oposta."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/steps/step-05.png",
+          "sha256": "897b6f2a0175fb9f69a0eef4b22b3387d950d3b8ee5614dbccbc9b84613ac445",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Add cucumber, carrot and avocado sticks. Roll firmly with the mat. An adult slices the roll; serve promptly.",
+            "pt-BR": "Coloque tiras de pepino, cenoura e abacate. Enrole com firmeza usando a esteira. Um adulto corta o rolo; sirva logo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ]
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "description": {
+      "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+      "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+    },
+    "equipment": [
+      "Lidded saucepan",
+      "Rice paddle or wooden spoon",
+      "Small bowl",
+      "Sushi rolling mat",
+      "Chopping board",
+      "Sharp kitchen knife",
+      "Measuring cup",
+      "Colander"
+    ],
+    "finishedDish": {
+      "artworkPath": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/finished-dish.png",
+      "description": {
+        "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+        "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+      },
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "image": {
+        "path": "content/international/countries/japan/102-veggie-sushi-rolls/artwork/finished-dish.png",
+        "sha256": "a6f6c0c3f87ab8119d75b45511ed0e5a2a29575105722e0fababda9f8de0d4fc",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+          "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "nutritionSource": "https://fdc.nal.usda.gov/",
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/",
+      "riceSafetySource": "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker"
+    },
+    "notes": {
+      "en-GB": "Cooked rice requires prompt cooling and refrigeration; no raw fish is used.",
+      "pt-BR": "O arroz cozido deve ser resfriado e refrigerado sem demora; não se usa peixe cru."
+    },
+    "fact": {
+      "en-GB": "Vegetable maki rolls use seasoned short-grain rice, nori and fresh vegetables. This family-friendly filling contains no raw fish; sushi styles and fillings vary across Japan.",
+      "pt-BR": "Rolinhos maki de legumes usam arroz de grão curto temperado, nori e vegetais frescos. Este recheio familiar não leva peixe cru; os estilos e recheios de sushi variam pelo Japão."
+    },
+    "safety": {
+      "en-GB": "An adult handles boiling water and hot rice; only an adult uses sharp knives. Cool cooked rice quickly in a clean shallow tray, refrigerate within one hour if not using it immediately, and use within 24 hours. Keep refrigerated; do not leave cooked rice at room temperature.",
+      "pt-BR": "Um adulto cuida da água fervente e do arroz quente; somente um adulto usa facas afiadas. Esfrie o arroz rapidamente em uma travessa limpa e rasa, leve à geladeira em até uma hora se não for usar imediatamente e consuma em até 24 horas. Mantenha refrigerado; não deixe o arroz cozido à temperatura ambiente."
+    },
+    "artworkApproval": {
+      "reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "ownerApprovalIssueComment": 6367104240,
+      "status": "REFERENCE_STYLE_APPROVED; rights_review_pending"
+    }
+  }
+}

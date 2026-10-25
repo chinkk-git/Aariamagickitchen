@@ -1,0 +1,2454 @@
+{
+  "schema_version": "1.0",
+  "id": 106,
+  "country": "mexico",
+  "country_code": "MX",
+  "title": {
+    "en-GB": "Black Bean Quesadillas",
+    "pt-BR": "Quesadillas de feijão-preto"
+  },
+  "description": {
+    "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+    "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+  },
+  "cultural_context": {
+    "en-GB": "Quesadillas are a Mexican dish with many regional fillings and tortilla styles. This family version uses black beans and vegetables.",
+    "pt-BR": "Quesadillas são um prato mexicano com muitos recheios regionais e estilos de tortilha. Esta versão familiar usa feijão-preto e legumes."
+  },
+  "category": "international",
+  "method": "Adult skillet",
+  "time": "30 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 25,
+  "total_minutes": 30,
+  "ingredients": [
+    "8 tortillas Small corn tortillas",
+    "240 g Black beans, drained and rinsed",
+    "120 g Grated cheddar cheese",
+    "80 g Sweetcorn kernels, drained",
+    "100 g Red bell pepper",
+    "100 g Tomato",
+    "5 mL Olive oil",
+    "15 mL Lime juice"
+  ],
+  "equipment": [
+    "Non-stick skillet",
+    "Wide spatula",
+    "Mixing bowl",
+    "Fork",
+    "Chopping board",
+    "Kitchen knife",
+    "Serving plate",
+    "Measuring spoon"
+  ],
+  "ingredientItems": [
+    {
+      "id": "corn-tortillas",
+      "name": {
+        "en-GB": "Small corn tortillas",
+        "pt-BR": "Tortilhas pequenas de milho"
+      },
+      "quantity": 8,
+      "unit": "tortillas",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/corn-tortillas.png",
+        "sha256": "29a6a81dad57b1d27d2ea06121c4e2700d28597b961689e80bb50b01061d1f7f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Small corn tortillas",
+          "pt-BR": "Tortilhas pequenas de milho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "black-beans",
+      "name": {
+        "en-GB": "Black beans, drained and rinsed",
+        "pt-BR": "Feijão-preto escorrido e enxaguado"
+      },
+      "quantity": 240,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/black-beans.png",
+        "sha256": "7e6b532510df81fd93cf076369ef30f9a0939cd8859f888cdba65ab113625c7b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Black beans, drained and rinsed",
+          "pt-BR": "Feijão-preto escorrido e enxaguado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "cheddar",
+      "name": {
+        "en-GB": "Grated cheddar cheese",
+        "pt-BR": "Queijo cheddar ralado"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [
+        "milk"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/cheddar.png",
+        "sha256": "3ab6a92cddc7a2dbdab16d982f6c10aa7ca6c60ffe03078b2cee8da4392c6f1d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Grated cheddar cheese",
+          "pt-BR": "Queijo cheddar ralado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "sweetcorn",
+      "name": {
+        "en-GB": "Sweetcorn kernels, drained",
+        "pt-BR": "Milho-doce em grãos, escorrido"
+      },
+      "quantity": 80,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/sweetcorn.png",
+        "sha256": "bd0d51d49feb39ee23e3896d22bba40a4a4cdbff87bf4035595c0d2a7320d69c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Milho-doce em grãos, escorrido"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "red-pepper",
+      "name": {
+        "en-GB": "Red bell pepper",
+        "pt-BR": "Pimentão vermelho"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/red-pepper.png",
+        "sha256": "b8da4ec5df7aaa78127193939aa1eba0f83b69f384c65e3bd00755aee0cd7dd7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Red bell pepper",
+          "pt-BR": "Pimentão vermelho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "tomato",
+      "name": {
+        "en-GB": "Tomato",
+        "pt-BR": "Tomate"
+      },
+      "quantity": 100,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/tomato.png",
+        "sha256": "26b43b3444f8213fe284f2cf5343cf2ebd61aeb46e87ac566aff19d1f666b7fb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Tomato",
+          "pt-BR": "Tomate"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "olive-oil",
+      "name": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "quantity": 5,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/olive-oil.png",
+        "sha256": "4e354da06ca5e9a98afb2aa52722851abdcaf35cd68cc40334a3756d26f9e75b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "lime",
+      "name": {
+        "en-GB": "Lime juice",
+        "pt-BR": "Suco de limão-taiti"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/lime.png",
+        "sha256": "701e9ba7d5d432a53ea6d98bf25fd18b2c48e02af8040afdbd5e9e72b586d44c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Lime juice",
+          "pt-BR": "Suco de limão-taiti"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "skillet",
+      "name": {
+        "en-GB": "Non-stick skillet",
+        "pt-BR": "Frigideira antiaderente"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/skillet.png",
+        "sha256": "3a92d74000a0d861650adcc6f68e8a852f2e5db4a544b75577a38f15f44517c5",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "spatula",
+      "name": {
+        "en-GB": "Wide spatula",
+        "pt-BR": "Espátula larga"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/spatula.png",
+        "sha256": "c334fa1e841cbd72e51f9d0988b9488acd71616b0e2604f973ae34fa5da5a82c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png",
+        "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "fork",
+      "name": {
+        "en-GB": "Fork",
+        "pt-BR": "Garfo"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png",
+        "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png",
+        "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png",
+        "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "serving-plate",
+      "name": {
+        "en-GB": "Serving plate",
+        "pt-BR": "Prato para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/serving-plate.png",
+        "sha256": "2238dfae9a4974827b468736df13868ea5300b78243edf7bb5439ff307f736aa",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "measuring-spoon",
+      "name": {
+        "en-GB": "Measuring spoon",
+        "pt-BR": "Colher medidora"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/measuring-spoon.png",
+        "sha256": "33a85136fa8346b15d0c55355cb8d639ad3c480656f71dd0fa6c9132188e0162",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Mash the beans",
+        "pt-BR": "Amasse o feijão"
+      },
+      "instruction": {
+        "en-GB": "Drain and rinse beans, then mash them lightly with a fork in a bowl.",
+        "pt-BR": "Escorra e enxágue o feijão; depois amasse levemente com um garfo em uma tigela."
+      },
+      "ingredientIds": [
+        "black-beans"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "fork"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+        "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+        "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-01.png",
+        "sha256": "9d66e6ba4de8f8bee44de7888bdb49064588ade4a9705298419ff6839c030b1a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Drain and rinse beans, then mash them lightly with a fork in a bowl.",
+          "pt-BR": "Escorra e enxágue o feijão; depois amasse levemente com um garfo em uma tigela."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Prepare the vegetables",
+        "pt-BR": "Prepare os legumes"
+      },
+      "instruction": {
+        "en-GB": "Wash pepper and tomato. An adult cuts them into small pieces on a stable board.",
+        "pt-BR": "Lave o pimentão e o tomate. Um adulto corta em pedaços pequenos sobre uma tábua estável."
+      },
+      "ingredientIds": [
+        "red-pepper",
+        "tomato"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+        "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+        "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-02.png",
+        "sha256": "45283b2a7f4f014c5c0a7162a6136473366f35a522263496bda74b6099acc566",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash pepper and tomato. An adult cuts them into small pieces on a stable board.",
+          "pt-BR": "Lave o pimentão e o tomate. Um adulto corta em pedaços pequenos sobre uma tábua estável."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Fill the tortillas",
+        "pt-BR": "Recheie as tortilhas"
+      },
+      "instruction": {
+        "en-GB": "Spread beans on four tortillas. Add corn, pepper, tomato and cheese; cover with the other tortillas.",
+        "pt-BR": "Espalhe o feijão em quatro tortilhas. Acrescente milho, pimentão, tomate e queijo; cubra com as outras tortilhas."
+      },
+      "ingredientIds": [
+        "corn-tortillas",
+        "black-beans",
+        "sweetcorn",
+        "red-pepper",
+        "tomato",
+        "cheddar"
+      ],
+      "equipmentIds": [
+        "mixing-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+        "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+        "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-03.png",
+        "sha256": "ea806f2495785d152df5b830398e95fba4a72ed3254eef00f41907a874ee622b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spread beans on four tortillas. Add corn, pepper, tomato and cheese; cover with the other tortillas.",
+          "pt-BR": "Espalhe o feijão em quatro tortilhas. Acrescente milho, pimentão, tomate e queijo; cubra com as outras tortilhas."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Cook the quesadillas",
+        "pt-BR": "Cozinhe as quesadillas"
+      },
+      "instruction": {
+        "en-GB": "An adult warms a little oil in a skillet and cooks each quesadilla until golden and the cheese melts, turning carefully.",
+        "pt-BR": "Um adulto aquece um pouco de óleo na frigideira e cozinha cada quesadilla até dourar e derreter o queijo, virando com cuidado."
+      },
+      "ingredientIds": [
+        "corn-tortillas",
+        "olive-oil",
+        "cheddar"
+      ],
+      "equipmentIds": [
+        "skillet",
+        "spatula"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+        "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+        "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-04.png",
+        "sha256": "e41f5ace5e2d309d3ca989480cd7fbaa3a32f60fbb720777cfdeb563a322a743",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult warms a little oil in a skillet and cooks each quesadilla until golden and the cheese melts, turning carefully.",
+          "pt-BR": "Um adulto aquece um pouco de óleo na frigideira e cozinha cada quesadilla até dourar e derreter o queijo, virando com cuidado."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Cool and serve",
+        "pt-BR": "Esfrie e sirva"
+      },
+      "instruction": {
+        "en-GB": "An adult transfers quesadillas to a plate and cuts them into wedges. Add lime juice and let cool before eating.",
+        "pt-BR": "Um adulto transfere as quesadillas para um prato e corta em triângulos. Acrescente suco de limão e deixe esfriar antes de comer."
+      },
+      "ingredientIds": [
+        "lime"
+      ],
+      "equipmentIds": [
+        "serving-plate",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+        "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+        "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+        "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-05.png",
+        "sha256": "98ce9f559808e0aa626e14750bade2d164ec517a917bf6857b49a78cfc9175b0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult transfers quesadillas to a plate and cuts them into wedges. Add lime juice and let cool before eating.",
+          "pt-BR": "Um adulto transfere as quesadillas para um prato e corta em triângulos. Acrescente suco de limão e deixe esfriar antes de comer."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+    "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+  },
+  "allergens": [
+    "milk"
+  ],
+  "allergen_notes": {
+    "contains": [
+      "milk"
+    ],
+    "cross_contact": {
+      "en-GB": "Check labels for allergens and cross-contact; use clean equipment.",
+      "pt-BR": "Confira rótulos para alergênicos e contato cruzado; use utensílios limpos."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 355,
+      "proteinG": 16.2,
+      "carbohydrateG": 49,
+      "fatG": 10.8,
+      "fibreG": 8.5,
+      "saturatedFatG": 3.9,
+      "sodiumMg": 580
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate using measured ingredient weights and generic USDA FoodData Central references; brands and preparation vary. Not a laboratory analysis.",
+    "method": "Scale generic FDC per-100-g values by recipe quantities, sum and divide by 4; rounded.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Tortillas, ready-to-bake or -fry, corn",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Tortillas%2C%20ready-to-bake%20or%20-fry%2C%20corn"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Beans, black, canned, drained and rinsed",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Beans%2C%20black%2C%20canned%2C%20drained%20and%20rinsed"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cheese, cheddar",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese%2C%20cheddar"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Corn, sweet, yellow, canned, drained",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Corn%2C%20sweet%2C%20yellow%2C%20canned%2C%20drained"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Peppers, sweet, red, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Peppers%2C%20sweet%2C%20red%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Tomatoes, red, ripe, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Tomatoes%2C%20red%2C%20ripe%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Oil, olive, salad or cooking",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20olive%2C%20salad%20or%20cooking"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice%2C%20raw"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+      "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+    },
+    "image": {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/finished-dish.png",
+      "sha256": "60395c6ee260a7e7f26cf6276090781ba79cb060411bdd276cfa9172a1ab9cd3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+        "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/finished-dish.png",
+      "sha256": "60395c6ee260a7e7f26cf6276090781ba79cb060411bdd276cfa9172a1ab9cd3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+        "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/corn-tortillas.png",
+        "sha256": "29a6a81dad57b1d27d2ea06121c4e2700d28597b961689e80bb50b01061d1f7f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Small corn tortillas",
+          "pt-BR": "Tortilhas pequenas de milho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/black-beans.png",
+        "sha256": "7e6b532510df81fd93cf076369ef30f9a0939cd8859f888cdba65ab113625c7b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Black beans, drained and rinsed",
+          "pt-BR": "Feijão-preto escorrido e enxaguado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/cheddar.png",
+        "sha256": "3ab6a92cddc7a2dbdab16d982f6c10aa7ca6c60ffe03078b2cee8da4392c6f1d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Grated cheddar cheese",
+          "pt-BR": "Queijo cheddar ralado"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/sweetcorn.png",
+        "sha256": "bd0d51d49feb39ee23e3896d22bba40a4a4cdbff87bf4035595c0d2a7320d69c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Milho-doce em grãos, escorrido"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/red-pepper.png",
+        "sha256": "b8da4ec5df7aaa78127193939aa1eba0f83b69f384c65e3bd00755aee0cd7dd7",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Red bell pepper",
+          "pt-BR": "Pimentão vermelho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/tomato.png",
+        "sha256": "26b43b3444f8213fe284f2cf5343cf2ebd61aeb46e87ac566aff19d1f666b7fb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Tomato",
+          "pt-BR": "Tomate"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/olive-oil.png",
+        "sha256": "4e354da06ca5e9a98afb2aa52722851abdcaf35cd68cc40334a3756d26f9e75b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/lime.png",
+        "sha256": "701e9ba7d5d432a53ea6d98bf25fd18b2c48e02af8040afdbd5e9e72b586d44c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Lime juice",
+          "pt-BR": "Suco de limão-taiti"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/skillet.png",
+        "sha256": "3a92d74000a0d861650adcc6f68e8a852f2e5db4a544b75577a38f15f44517c5",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/spatula.png",
+        "sha256": "c334fa1e841cbd72e51f9d0988b9488acd71616b0e2604f973ae34fa5da5a82c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png",
+        "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png",
+        "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png",
+        "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png",
+        "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/serving-plate.png",
+        "sha256": "2238dfae9a4974827b468736df13868ea5300b78243edf7bb5439ff307f736aa",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/measuring-spoon.png",
+        "sha256": "33a85136fa8346b15d0c55355cb8d639ad3c480656f71dd0fa6c9132188e0162",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-01.png",
+        "sha256": "9d66e6ba4de8f8bee44de7888bdb49064588ade4a9705298419ff6839c030b1a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Drain and rinse beans, then mash them lightly with a fork in a bowl.",
+          "pt-BR": "Escorra e enxágue o feijão; depois amasse levemente com um garfo em uma tigela."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-02.png",
+        "sha256": "45283b2a7f4f014c5c0a7162a6136473366f35a522263496bda74b6099acc566",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash pepper and tomato. An adult cuts them into small pieces on a stable board.",
+          "pt-BR": "Lave o pimentão e o tomate. Um adulto corta em pedaços pequenos sobre uma tábua estável."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-03.png",
+        "sha256": "ea806f2495785d152df5b830398e95fba4a72ed3254eef00f41907a874ee622b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spread beans on four tortillas. Add corn, pepper, tomato and cheese; cover with the other tortillas.",
+          "pt-BR": "Espalhe o feijão em quatro tortilhas. Acrescente milho, pimentão, tomate e queijo; cubra com as outras tortilhas."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-04.png",
+        "sha256": "e41f5ace5e2d309d3ca989480cd7fbaa3a32f60fbb720777cfdeb563a322a743",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult warms a little oil in a skillet and cooks each quesadilla until golden and the cheese melts, turning carefully.",
+          "pt-BR": "Um adulto aquece um pouco de óleo na frigideira e cozinha cada quesadilla até dourar e derreter o queijo, virando com cuidado."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-05.png",
+        "sha256": "98ce9f559808e0aa626e14750bade2d164ec517a917bf6857b49a78cfc9175b0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult transfers quesadillas to a plate and cuts them into wedges. Add lime juice and let cool before eating.",
+          "pt-BR": "Um adulto transfere as quesadillas para um prato e corta em triângulos. Acrescente suco de limão e deixe esfriar antes de comer."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/finished-dish.png",
+      "sha256": "60395c6ee260a7e7f26cf6276090781ba79cb060411bdd276cfa9172a1ab9cd3",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+        "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/corn-tortillas.png",
+      "sha256": "29a6a81dad57b1d27d2ea06121c4e2700d28597b961689e80bb50b01061d1f7f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Small corn tortillas",
+        "pt-BR": "Tortilhas pequenas de milho"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/black-beans.png",
+      "sha256": "7e6b532510df81fd93cf076369ef30f9a0939cd8859f888cdba65ab113625c7b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Black beans, drained and rinsed",
+        "pt-BR": "Feijão-preto escorrido e enxaguado"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/cheddar.png",
+      "sha256": "3ab6a92cddc7a2dbdab16d982f6c10aa7ca6c60ffe03078b2cee8da4392c6f1d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Grated cheddar cheese",
+        "pt-BR": "Queijo cheddar ralado"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/sweetcorn.png",
+      "sha256": "bd0d51d49feb39ee23e3896d22bba40a4a4cdbff87bf4035595c0d2a7320d69c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Sweetcorn kernels, drained",
+        "pt-BR": "Milho-doce em grãos, escorrido"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/red-pepper.png",
+      "sha256": "b8da4ec5df7aaa78127193939aa1eba0f83b69f384c65e3bd00755aee0cd7dd7",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Red bell pepper",
+        "pt-BR": "Pimentão vermelho"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/tomato.png",
+      "sha256": "26b43b3444f8213fe284f2cf5343cf2ebd61aeb46e87ac566aff19d1f666b7fb",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Tomato",
+        "pt-BR": "Tomate"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/olive-oil.png",
+      "sha256": "4e354da06ca5e9a98afb2aa52722851abdcaf35cd68cc40334a3756d26f9e75b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/lime.png",
+      "sha256": "701e9ba7d5d432a53ea6d98bf25fd18b2c48e02af8040afdbd5e9e72b586d44c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Lime juice",
+        "pt-BR": "Suco de limão-taiti"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/skillet.png",
+      "sha256": "3a92d74000a0d861650adcc6f68e8a852f2e5db4a544b75577a38f15f44517c5",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/spatula.png",
+      "sha256": "c334fa1e841cbd72e51f9d0988b9488acd71616b0e2604f973ae34fa5da5a82c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png",
+      "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png",
+      "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png",
+      "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png",
+      "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/serving-plate.png",
+      "sha256": "2238dfae9a4974827b468736df13868ea5300b78243edf7bb5439ff307f736aa",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/measuring-spoon.png",
+      "sha256": "33a85136fa8346b15d0c55355cb8d639ad3c480656f71dd0fa6c9132188e0162",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-01.png",
+      "sha256": "9d66e6ba4de8f8bee44de7888bdb49064588ade4a9705298419ff6839c030b1a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Drain and rinse beans, then mash them lightly with a fork in a bowl.",
+        "pt-BR": "Escorra e enxágue o feijão; depois amasse levemente com um garfo em uma tigela."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-02.png",
+      "sha256": "45283b2a7f4f014c5c0a7162a6136473366f35a522263496bda74b6099acc566",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Wash pepper and tomato. An adult cuts them into small pieces on a stable board.",
+        "pt-BR": "Lave o pimentão e o tomate. Um adulto corta em pedaços pequenos sobre uma tábua estável."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-03.png",
+      "sha256": "ea806f2495785d152df5b830398e95fba4a72ed3254eef00f41907a874ee622b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Spread beans on four tortillas. Add corn, pepper, tomato and cheese; cover with the other tortillas.",
+        "pt-BR": "Espalhe o feijão em quatro tortilhas. Acrescente milho, pimentão, tomate e queijo; cubra com as outras tortilhas."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-04.png",
+      "sha256": "e41f5ace5e2d309d3ca989480cd7fbaa3a32f60fbb720777cfdeb563a322a743",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult warms a little oil in a skillet and cooks each quesadilla until golden and the cheese melts, turning carefully.",
+        "pt-BR": "Um adulto aquece um pouco de óleo na frigideira e cozinha cada quesadilla até dourar e derreter o queijo, virando com cuidado."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-05.png",
+      "sha256": "98ce9f559808e0aa626e14750bade2d164ec517a917bf6857b49a78cfc9175b0",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult transfers quesadillas to a plate and cuts them into wedges. Add lime juice and let cool before eating.",
+        "pt-BR": "Um adulto transfere as quesadillas para um prato e corta em triângulos. Acrescente suco de limão e deixe esfriar antes de comer."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult skillet",
+    "time": "30 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 106,
+    "country": "mexico",
+    "countryCode": "MX",
+    "title": {
+      "en-GB": "Black Bean Quesadillas",
+      "pt-BR": "Quesadillas de feijão-preto"
+    },
+    "description": {
+      "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+      "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Quesadillas are a Mexican dish with many regional fillings and tortilla styles. This family version uses black beans and vegetables.",
+      "pt-BR": "Quesadillas são um prato mexicano com muitos recheios regionais e estilos de tortilha. Esta versão familiar usa feijão-preto e legumes."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 25,
+    "totalMinutes": 30,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; keep safety guidance and equipment roles unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "corn-tortillas",
+        "name": {
+          "en-GB": "Small corn tortillas",
+          "pt-BR": "Tortilhas pequenas de milho"
+        },
+        "quantity": 8,
+        "unit": "tortillas",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/corn-tortillas.png",
+          "sha256": "29a6a81dad57b1d27d2ea06121c4e2700d28597b961689e80bb50b01061d1f7f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Small corn tortillas",
+            "pt-BR": "Tortilhas pequenas de milho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "black-beans",
+        "name": {
+          "en-GB": "Black beans, drained and rinsed",
+          "pt-BR": "Feijão-preto escorrido e enxaguado"
+        },
+        "quantity": 240,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/black-beans.png",
+          "sha256": "7e6b532510df81fd93cf076369ef30f9a0939cd8859f888cdba65ab113625c7b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Black beans, drained and rinsed",
+            "pt-BR": "Feijão-preto escorrido e enxaguado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "cheddar",
+        "name": {
+          "en-GB": "Grated cheddar cheese",
+          "pt-BR": "Queijo cheddar ralado"
+        },
+        "quantity": 120,
+        "unit": "g",
+        "allergens": [
+          "milk"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/cheddar.png",
+          "sha256": "3ab6a92cddc7a2dbdab16d982f6c10aa7ca6c60ffe03078b2cee8da4392c6f1d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Grated cheddar cheese",
+            "pt-BR": "Queijo cheddar ralado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "sweetcorn",
+        "name": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Milho-doce em grãos, escorrido"
+        },
+        "quantity": 80,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/sweetcorn.png",
+          "sha256": "bd0d51d49feb39ee23e3896d22bba40a4a4cdbff87bf4035595c0d2a7320d69c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sweetcorn kernels, drained",
+            "pt-BR": "Milho-doce em grãos, escorrido"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "red-pepper",
+        "name": {
+          "en-GB": "Red bell pepper",
+          "pt-BR": "Pimentão vermelho"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/red-pepper.png",
+          "sha256": "b8da4ec5df7aaa78127193939aa1eba0f83b69f384c65e3bd00755aee0cd7dd7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Red bell pepper",
+            "pt-BR": "Pimentão vermelho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "tomato",
+        "name": {
+          "en-GB": "Tomato",
+          "pt-BR": "Tomate"
+        },
+        "quantity": 100,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/tomato.png",
+          "sha256": "26b43b3444f8213fe284f2cf5343cf2ebd61aeb46e87ac566aff19d1f666b7fb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Tomato",
+            "pt-BR": "Tomate"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "olive-oil",
+        "name": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "quantity": 5,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/olive-oil.png",
+          "sha256": "4e354da06ca5e9a98afb2aa52722851abdcaf35cd68cc40334a3756d26f9e75b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Olive oil",
+            "pt-BR": "Azeite de oliva"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "lime",
+        "name": {
+          "en-GB": "Lime juice",
+          "pt-BR": "Suco de limão-taiti"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/lime.png",
+          "sha256": "701e9ba7d5d432a53ea6d98bf25fd18b2c48e02af8040afdbd5e9e72b586d44c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Lime juice",
+            "pt-BR": "Suco de limão-taiti"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "equipment": [
+      "Non-stick skillet",
+      "Wide spatula",
+      "Mixing bowl",
+      "Fork",
+      "Chopping board",
+      "Kitchen knife",
+      "Serving plate",
+      "Measuring spoon"
+    ],
+    "equipmentItems": [
+      {
+        "id": "skillet",
+        "name": {
+          "en-GB": "Non-stick skillet",
+          "pt-BR": "Frigideira antiaderente"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/skillet.png",
+          "sha256": "3a92d74000a0d861650adcc6f68e8a852f2e5db4a544b75577a38f15f44517c5",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "spatula",
+        "name": {
+          "en-GB": "Wide spatula",
+          "pt-BR": "Espátula larga"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/spatula.png",
+          "sha256": "c334fa1e841cbd72e51f9d0988b9488acd71616b0e2604f973ae34fa5da5a82c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Mixing bowl",
+          "pt-BR": "Tigela para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png",
+          "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "fork",
+        "name": {
+          "en-GB": "Fork",
+          "pt-BR": "Garfo"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png",
+          "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png",
+          "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Kitchen knife",
+          "pt-BR": "Faca de cozinha"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png",
+          "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "serving-plate",
+        "name": {
+          "en-GB": "Serving plate",
+          "pt-BR": "Prato para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/serving-plate.png",
+          "sha256": "2238dfae9a4974827b468736df13868ea5300b78243edf7bb5439ff307f736aa",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "measuring-spoon",
+        "name": {
+          "en-GB": "Measuring spoon",
+          "pt-BR": "Colher medidora"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/measuring-spoon.png",
+          "sha256": "33a85136fa8346b15d0c55355cb8d639ad3c480656f71dd0fa6c9132188e0162",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Mash the beans",
+          "pt-BR": "Amasse o feijão"
+        },
+        "instruction": {
+          "en-GB": "Drain and rinse beans, then mash them lightly with a fork in a bowl.",
+          "pt-BR": "Escorra e enxágue o feijão; depois amasse levemente com um garfo em uma tigela."
+        },
+        "ingredientIds": [
+          "black-beans"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "fork"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+          "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+          "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-01.png",
+          "sha256": "9d66e6ba4de8f8bee44de7888bdb49064588ade4a9705298419ff6839c030b1a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Drain and rinse beans, then mash them lightly with a fork in a bowl.",
+            "pt-BR": "Escorra e enxágue o feijão; depois amasse levemente com um garfo em uma tigela."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Prepare the vegetables",
+          "pt-BR": "Prepare os legumes"
+        },
+        "instruction": {
+          "en-GB": "Wash pepper and tomato. An adult cuts them into small pieces on a stable board.",
+          "pt-BR": "Lave o pimentão e o tomate. Um adulto corta em pedaços pequenos sobre uma tábua estável."
+        },
+        "ingredientIds": [
+          "red-pepper",
+          "tomato"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+          "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+          "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-02.png",
+          "sha256": "45283b2a7f4f014c5c0a7162a6136473366f35a522263496bda74b6099acc566",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash pepper and tomato. An adult cuts them into small pieces on a stable board.",
+            "pt-BR": "Lave o pimentão e o tomate. Um adulto corta em pedaços pequenos sobre uma tábua estável."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Fill the tortillas",
+          "pt-BR": "Recheie as tortilhas"
+        },
+        "instruction": {
+          "en-GB": "Spread beans on four tortillas. Add corn, pepper, tomato and cheese; cover with the other tortillas.",
+          "pt-BR": "Espalhe o feijão em quatro tortilhas. Acrescente milho, pimentão, tomate e queijo; cubra com as outras tortilhas."
+        },
+        "ingredientIds": [
+          "corn-tortillas",
+          "black-beans",
+          "sweetcorn",
+          "red-pepper",
+          "tomato",
+          "cheddar"
+        ],
+        "equipmentIds": [
+          "mixing-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+          "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+          "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-03.png",
+          "sha256": "ea806f2495785d152df5b830398e95fba4a72ed3254eef00f41907a874ee622b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Spread beans on four tortillas. Add corn, pepper, tomato and cheese; cover with the other tortillas.",
+            "pt-BR": "Espalhe o feijão em quatro tortilhas. Acrescente milho, pimentão, tomate e queijo; cubra com as outras tortilhas."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Cook the quesadillas",
+          "pt-BR": "Cozinhe as quesadillas"
+        },
+        "instruction": {
+          "en-GB": "An adult warms a little oil in a skillet and cooks each quesadilla until golden and the cheese melts, turning carefully.",
+          "pt-BR": "Um adulto aquece um pouco de óleo na frigideira e cozinha cada quesadilla até dourar e derreter o queijo, virando com cuidado."
+        },
+        "ingredientIds": [
+          "corn-tortillas",
+          "olive-oil",
+          "cheddar"
+        ],
+        "equipmentIds": [
+          "skillet",
+          "spatula"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+          "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+          "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-04.png",
+          "sha256": "e41f5ace5e2d309d3ca989480cd7fbaa3a32f60fbb720777cfdeb563a322a743",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult warms a little oil in a skillet and cooks each quesadilla until golden and the cheese melts, turning carefully.",
+            "pt-BR": "Um adulto aquece um pouco de óleo na frigideira e cozinha cada quesadilla até dourar e derreter o queijo, virando com cuidado."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Cool and serve",
+          "pt-BR": "Esfrie e sirva"
+        },
+        "instruction": {
+          "en-GB": "An adult transfers quesadillas to a plate and cuts them into wedges. Add lime juice and let cool before eating.",
+          "pt-BR": "Um adulto transfere as quesadillas para um prato e corta em triângulos. Acrescente suco de limão e deixe esfriar antes de comer."
+        },
+        "ingredientIds": [
+          "lime"
+        ],
+        "equipmentIds": [
+          "serving-plate",
+          "knife"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+          "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+          "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult handles the hot skillet, hot quesadillas and sharp knife; children stay clear until food has cooled.",
+          "pt-BR": "Um adulto manuseia a frigideira quente, as quesadillas quentes e a faca afiada; as crianças ficam afastadas até a comida esfriar."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-05.png",
+          "sha256": "98ce9f559808e0aa626e14750bade2d164ec517a917bf6857b49a78cfc9175b0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult transfers quesadillas to a plate and cuts them into wedges. Add lime juice and let cool before eating.",
+            "pt-BR": "Um adulto transfere as quesadillas para um prato e corta em triângulos. Acrescente suco de limão e deixe esfriar antes de comer."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults chop vegetables, handle the skillet and hot quesadillas, and cut wedges. Children mash beans, fill tortillas and add toppings with supervision.",
+      "pt-BR": "Adultos cortam legumes, cuidam da frigideira e das quesadillas quentes, e cortam os triângulos. Crianças amassam o feijão, recheiam e acrescentam coberturas sob supervisão."
+    },
+    "finishedDish": {
+      "image": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/finished-dish.png",
+        "sha256": "60395c6ee260a7e7f26cf6276090781ba79cb060411bdd276cfa9172a1ab9cd3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+          "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "description": {
+        "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+        "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+      }
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 355,
+        "proteinG": 16.2,
+        "carbohydrateG": 49,
+        "fatG": 10.8,
+        "fibreG": 8.5,
+        "saturatedFatG": 3.9,
+        "sodiumMg": 580
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate using measured ingredient weights and generic USDA FoodData Central references; brands and preparation vary. Not a laboratory analysis.",
+      "method": "Scale generic FDC per-100-g values by recipe quantities, sum and divide by 4; rounded.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Tortillas, ready-to-bake or -fry, corn",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Tortillas%2C%20ready-to-bake%20or%20-fry%2C%20corn"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Beans, black, canned, drained and rinsed",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Beans%2C%20black%2C%20canned%2C%20drained%20and%20rinsed"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cheese, cheddar",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese%2C%20cheddar"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Corn, sweet, yellow, canned, drained",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Corn%2C%20sweet%2C%20yellow%2C%20canned%2C%20drained"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Peppers, sweet, red, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peppers%2C%20sweet%2C%20red%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Tomatoes, red, ripe, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Tomatoes%2C%20red%2C%20ripe%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Oil, olive, salad or cooking",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20olive%2C%20salad%20or%20cooking"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Lime juice, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice%2C%20raw"
+        }
+      ]
+    },
+    "allergens": [
+      "milk"
+    ],
+    "allergenNotes": {
+      "contains": [
+        "milk"
+      ],
+      "cross_contact": {
+        "en-GB": "Check labels for allergens and cross-contact; use clean equipment.",
+        "pt-BR": "Confira rótulos para alergênicos e contato cruzado; use utensílios limpos."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/finished-dish.png",
+        "sha256": "60395c6ee260a7e7f26cf6276090781ba79cb060411bdd276cfa9172a1ab9cd3",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Corn tortillas filled with mashed black beans, sweetcorn, pepper and melted cheese.",
+          "pt-BR": "Tortilhas de milho recheadas com feijão-preto amassado, milho, pimentão e queijo derretido."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/corn-tortillas.png",
+          "sha256": "29a6a81dad57b1d27d2ea06121c4e2700d28597b961689e80bb50b01061d1f7f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Small corn tortillas",
+            "pt-BR": "Tortilhas pequenas de milho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/black-beans.png",
+          "sha256": "7e6b532510df81fd93cf076369ef30f9a0939cd8859f888cdba65ab113625c7b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Black beans, drained and rinsed",
+            "pt-BR": "Feijão-preto escorrido e enxaguado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/cheddar.png",
+          "sha256": "3ab6a92cddc7a2dbdab16d982f6c10aa7ca6c60ffe03078b2cee8da4392c6f1d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Grated cheddar cheese",
+            "pt-BR": "Queijo cheddar ralado"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/sweetcorn.png",
+          "sha256": "bd0d51d49feb39ee23e3896d22bba40a4a4cdbff87bf4035595c0d2a7320d69c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sweetcorn kernels, drained",
+            "pt-BR": "Milho-doce em grãos, escorrido"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/red-pepper.png",
+          "sha256": "b8da4ec5df7aaa78127193939aa1eba0f83b69f384c65e3bd00755aee0cd7dd7",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Red bell pepper",
+            "pt-BR": "Pimentão vermelho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/tomato.png",
+          "sha256": "26b43b3444f8213fe284f2cf5343cf2ebd61aeb46e87ac566aff19d1f666b7fb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Tomato",
+            "pt-BR": "Tomate"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/olive-oil.png",
+          "sha256": "4e354da06ca5e9a98afb2aa52722851abdcaf35cd68cc40334a3756d26f9e75b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Olive oil",
+            "pt-BR": "Azeite de oliva"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/ingredients/lime.png",
+          "sha256": "701e9ba7d5d432a53ea6d98bf25fd18b2c48e02af8040afdbd5e9e72b586d44c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Lime juice",
+            "pt-BR": "Suco de limão-taiti"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/skillet.png",
+          "sha256": "3a92d74000a0d861650adcc6f68e8a852f2e5db4a544b75577a38f15f44517c5",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/spatula.png",
+          "sha256": "c334fa1e841cbd72e51f9d0988b9488acd71616b0e2604f973ae34fa5da5a82c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png",
+          "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png",
+          "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png",
+          "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png",
+          "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/serving-plate.png",
+          "sha256": "2238dfae9a4974827b468736df13868ea5300b78243edf7bb5439ff307f736aa",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/measuring-spoon.png",
+          "sha256": "33a85136fa8346b15d0c55355cb8d639ad3c480656f71dd0fa6c9132188e0162",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-01.png",
+          "sha256": "9d66e6ba4de8f8bee44de7888bdb49064588ade4a9705298419ff6839c030b1a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Drain and rinse beans, then mash them lightly with a fork in a bowl.",
+            "pt-BR": "Escorra e enxágue o feijão; depois amasse levemente com um garfo em uma tigela."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-02.png",
+          "sha256": "45283b2a7f4f014c5c0a7162a6136473366f35a522263496bda74b6099acc566",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash pepper and tomato. An adult cuts them into small pieces on a stable board.",
+            "pt-BR": "Lave o pimentão e o tomate. Um adulto corta em pedaços pequenos sobre uma tábua estável."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-03.png",
+          "sha256": "ea806f2495785d152df5b830398e95fba4a72ed3254eef00f41907a874ee622b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Spread beans on four tortillas. Add corn, pepper, tomato and cheese; cover with the other tortillas.",
+            "pt-BR": "Espalhe o feijão em quatro tortilhas. Acrescente milho, pimentão, tomate e queijo; cubra com as outras tortilhas."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-04.png",
+          "sha256": "e41f5ace5e2d309d3ca989480cd7fbaa3a32f60fbb720777cfdeb563a322a743",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult warms a little oil in a skillet and cooks each quesadilla until golden and the cheese melts, turning carefully.",
+            "pt-BR": "Um adulto aquece um pouco de óleo na frigideira e cozinha cada quesadilla até dourar e derreter o queijo, virando com cuidado."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/106-black-bean-quesadillas/artwork/steps/step-05.png",
+          "sha256": "98ce9f559808e0aa626e14750bade2d164ec517a917bf6857b49a78cfc9175b0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult transfers quesadillas to a plate and cuts them into wedges. Add lime juice and let cool before eating.",
+            "pt-BR": "Um adulto transfere as quesadillas para um prato e corta em triângulos. Acrescente suco de limão e deixe esfriar antes de comer."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food"
+    },
+    "safety": {
+      "en-GB": "An adult uses the knife and hot skillet; keep children away from the hob. Cook until the cheese is melted and filling is hot; cool before serving. Refrigerate dairy and leftovers promptly. Check tortilla and cheese labels for allergens/cross-contact.",
+      "pt-BR": "Um adulto usa a faca e a frigideira quente; mantenha as crianças longe do fogão. Cozinhe até o queijo derreter e o recheio ficar quente; esfrie antes de servir. Refrigere o queijo e as sobras sem demora. Confira rótulos das tortilhas e do queijo para alergênicos e contato cruzado."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}

@@ -1,0 +1,2124 @@
+{
+  "schema_version": "1.0",
+  "id": 103,
+  "country": "japan",
+  "country_code": "JP",
+  "title": {
+    "en-GB": "Onigiri Rice Balls",
+    "pt-BR": "Bolinhos de arroz onigiri"
+  },
+  "description": {
+    "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+    "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+  },
+  "cultural_context": {
+    "en-GB": "Onigiri are Japanese rice balls with many shapes, fillings and regional variations. This simple version uses plain rice, nori and sesame.",
+    "pt-BR": "Onigiri são bolinhos de arroz japoneses com diversos formatos, recheios e variações regionais. Esta versão simples usa arroz, nori e gergelim."
+  },
+  "category": "international",
+  "method": "Adult stovetop rice; child shaping",
+  "time": "45 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 25,
+  "total_minutes": 45,
+  "ingredients": [
+    "240 g Short-grain rice",
+    "360 mL Water",
+    "2 g Fine salt",
+    "2 sheets Nori sheets",
+    "10 g Sesame seeds"
+  ],
+  "equipment": [
+    "Lidded saucepan",
+    "Colander",
+    "Mixing bowl",
+    "Rice paddle",
+    "Measuring cup",
+    "Onigiri mould",
+    "Shallow cooling tray",
+    "Serving plate"
+  ],
+  "ingredientItems": [
+    {
+      "id": "sushi-rice",
+      "name": {
+        "en-GB": "Short-grain rice",
+        "pt-BR": "Arroz de grão curto"
+      },
+      "quantity": 240,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sushi-rice.png",
+        "sha256": "cb6e5fd75ecff7783b7cf9ddc75c7493d0cec4f80867f0219e0ee3e148a26d4a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Short-grain rice",
+          "pt-BR": "Arroz de grão curto"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "water",
+      "name": {
+        "en-GB": "Water",
+        "pt-BR": "Água"
+      },
+      "quantity": 360,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/water.png",
+        "sha256": "9170fdff5341e64ce7d83518fe8e0679152db5a86245dd804d99d7ea18212de9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Water",
+          "pt-BR": "Água"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "salt",
+      "name": {
+        "en-GB": "Fine salt",
+        "pt-BR": "Sal fino"
+      },
+      "quantity": 2,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/salt.png",
+        "sha256": "80e741549783080e5357ed9bd5ccf33c2130356e1e7ca7840efe490a6ef198de",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "nori",
+      "name": {
+        "en-GB": "Nori sheets",
+        "pt-BR": "Folhas de nori"
+      },
+      "quantity": 2,
+      "unit": "sheets",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/nori.png",
+        "sha256": "56304a75f815ff26b17fa2a898c365288116fb4352c5b09606c1118f389643dd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Nori sheets",
+          "pt-BR": "Folhas de nori"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "sesame-seeds",
+      "name": {
+        "en-GB": "Sesame seeds",
+        "pt-BR": "Sementes de gergelim"
+      },
+      "quantity": 10,
+      "unit": "g",
+      "allergens": [
+        "sesame"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sesame-seeds.png",
+        "sha256": "162b042301ef146f378a6f37d80f09963f0f9116eaaa3ce02cc1e8bdd590f741",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sesame seeds",
+          "pt-BR": "Sementes de gergelim"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "saucepan",
+      "name": {
+        "en-GB": "Lidded saucepan",
+        "pt-BR": "Panela com tampa"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png",
+        "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/colander.png",
+        "sha256": "162e570f96c66a12e73ccaa8df1c013769196aaaee9e593c7cd08df52b124518",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/mixing-bowl.png",
+        "sha256": "c960cbf3f5faf19b25283cd9188d0651e390aed131c4c70352f04def0d2bb9a2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "rice-paddle",
+      "name": {
+        "en-GB": "Rice paddle",
+        "pt-BR": "Espátula de arroz"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png",
+        "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "measuring-cup",
+      "name": {
+        "en-GB": "Measuring cup",
+        "pt-BR": "Copo medidor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png",
+        "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "rice-mold",
+      "name": {
+        "en-GB": "Onigiri mould",
+        "pt-BR": "Molde para onigiri"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-mold.png",
+        "sha256": "ef9a51c37897fbd89c4994670bdcae0b216aa8e8d7d717e044112dc73de69f6f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "cooling-tray",
+      "name": {
+        "en-GB": "Shallow cooling tray",
+        "pt-BR": "Travessa rasa para esfriar"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/cooling-tray.png",
+        "sha256": "f8c8fe9d4cee6143423474748b526907e128bd58890ea62043a8edca85313341",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "serving-plate",
+      "name": {
+        "en-GB": "Serving plate",
+        "pt-BR": "Prato para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/serving-plate.png",
+        "sha256": "fb6d84444839a97b20c49bb529a9cdf031f9a4e0cdcc5bf9e949ca91c4b675fb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Rinse the rice",
+        "pt-BR": "Lave o arroz"
+      },
+      "instruction": {
+        "en-GB": "Wash hands and rinse rice in cool water until mostly clear. Drain well.",
+        "pt-BR": "Lave as mãos e enxágue o arroz em água fria até a água ficar quase transparente. Escorra bem."
+      },
+      "ingredientIds": [
+        "sushi-rice",
+        "water"
+      ],
+      "equipmentIds": [
+        "colander",
+        "mixing-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+        "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-01.png",
+        "sha256": "d4c8914f37b1cd590fee438eb6fe6715c332c60f90c3f9dde600a5743a54cdfe",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash hands and rinse rice in cool water until mostly clear. Drain well.",
+          "pt-BR": "Lave as mãos e enxágue o arroz em água fria até a água ficar quase transparente. Escorra bem."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Cook the rice",
+        "pt-BR": "Cozinhe o arroz"
+      },
+      "instruction": {
+        "en-GB": "An adult cooks rice with measured water in a covered saucepan until tender.",
+        "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada até ficar macio."
+      },
+      "ingredientIds": [
+        "sushi-rice",
+        "water"
+      ],
+      "equipmentIds": [
+        "saucepan",
+        "measuring-cup"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+        "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-02.png",
+        "sha256": "74fd3e2952814023afb5137bd2edb1d38b4fe1269d674d1bdedaf558c887f0c2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult cooks rice with measured water in a covered saucepan until tender.",
+          "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada até ficar macio."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Cool it quickly",
+        "pt-BR": "Esfrie rapidamente"
+      },
+      "instruction": {
+        "en-GB": "An adult spreads hot rice in a clean shallow tray to cool quickly. If it is not being used immediately, refrigerate it within one hour of cooking.",
+        "pt-BR": "Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+      },
+      "ingredientIds": [
+        "sushi-rice"
+      ],
+      "equipmentIds": [
+        "cooling-tray"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+        "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-03.png",
+        "sha256": "915d13d60f3564b351a41b8dafcba3e139fa21b18a31bf98d26533d10a4cf7d1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult spreads hot rice in a clean shallow tray to cool quickly. If it is not being used immediately, refrigerate it within one hour of cooking.",
+          "pt-BR": "Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Shape the rice",
+        "pt-BR": "Modele o arroz"
+      },
+      "instruction": {
+        "en-GB": "When rice is cool enough to handle, children shape small portions with clean damp hands or a mould. Adults supervise.",
+        "pt-BR": "Quando o arroz estiver frio o bastante para tocar, as crianças modelam porções com mãos limpas e úmidas ou com um molde. Um adulto supervisiona."
+      },
+      "ingredientIds": [
+        "sushi-rice",
+        "salt"
+      ],
+      "equipmentIds": [
+        "rice-mold",
+        "rice-paddle"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+        "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-04.png",
+        "sha256": "f90b3c0459494ba700c422db3c1f6aad7796885b5d5aaaf1a636300afbbbf240",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "When rice is cool enough to handle, children shape small portions with clean damp hands or a mould. Adults supervise.",
+          "pt-BR": "Quando o arroz estiver frio o bastante para tocar, as crianças modelam porções com mãos limpas e úmidas ou com um molde. Um adulto supervisiona."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Wrap and serve",
+        "pt-BR": "Envolva e sirva"
+      },
+      "instruction": {
+        "en-GB": "Add a little salt, wrap each rice ball with nori and sprinkle sesame. Serve promptly; refrigerate leftovers.",
+        "pt-BR": "Acrescente um pouco de sal, envolva cada bolinho com nori e polvilhe gergelim. Sirva logo; refrigere as sobras."
+      },
+      "ingredientIds": [
+        "salt",
+        "nori",
+        "sesame-seeds"
+      ],
+      "equipmentIds": [
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+        "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+      },
+      "safety": {
+        "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+        "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+        "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+        "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+      },
+      "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-05.png",
+        "sha256": "1e6ff0fde1130e7ffddd8c40959a3ccae55826701ff1e119f6699bdf3dda02f5",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Add a little salt, wrap each rice ball with nori and sprinkle sesame. Serve promptly; refrigerate leftovers.",
+          "pt-BR": "Acrescente um pouco de sal, envolva cada bolinho com nori e polvilhe gergelim. Sirva logo; refrigere as sobras."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+    "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+  },
+  "allergens": [
+    "sesame"
+  ],
+  "allergen_notes": {
+    "contains": [
+      "sesame"
+    ],
+    "cross_contact": {
+      "en-GB": "Check labels for allergens and cross-contact; use clean equipment.",
+      "pt-BR": "Confira rótulos para alergênicos e contato cruzado; use utensílios limpos."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 230,
+      "proteinG": 4.9,
+      "carbohydrateG": 47.5,
+      "fatG": 2,
+      "fibreG": 1.5,
+      "saturatedFatG": 0.3,
+      "sodiumMg": 160
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate using measured ingredient weights and generic USDA FoodData Central references; brands and preparation vary. Not a laboratory analysis.",
+    "method": "Scale generic FDC per-100-g values by recipe quantities, sum and divide by 4; rounded.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Rice, white, short-grain, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%2C%20white%2C%20short-grain%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Water, tap",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Water%2C%20tap"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Salt, table",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Salt%2C%20table"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Seaweed, laver, dried",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Seaweed%2C%20laver%2C%20dried"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Seeds, sesame seeds, whole, dried",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Seeds%2C%20sesame%20seeds%2C%20whole%2C%20dried"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+      "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+    },
+    "image": {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/finished-dish.png",
+      "sha256": "7f4e15121566deeda84f1baca16e007d19d8151f3fe18943a5e159ee5d9ddd26",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+        "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/finished-dish.png",
+      "sha256": "7f4e15121566deeda84f1baca16e007d19d8151f3fe18943a5e159ee5d9ddd26",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+        "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sushi-rice.png",
+        "sha256": "cb6e5fd75ecff7783b7cf9ddc75c7493d0cec4f80867f0219e0ee3e148a26d4a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Short-grain rice",
+          "pt-BR": "Arroz de grão curto"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/water.png",
+        "sha256": "9170fdff5341e64ce7d83518fe8e0679152db5a86245dd804d99d7ea18212de9",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Water",
+          "pt-BR": "Água"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/salt.png",
+        "sha256": "80e741549783080e5357ed9bd5ccf33c2130356e1e7ca7840efe490a6ef198de",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/nori.png",
+        "sha256": "56304a75f815ff26b17fa2a898c365288116fb4352c5b09606c1118f389643dd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Nori sheets",
+          "pt-BR": "Folhas de nori"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sesame-seeds.png",
+        "sha256": "162b042301ef146f378a6f37d80f09963f0f9116eaaa3ce02cc1e8bdd590f741",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sesame seeds",
+          "pt-BR": "Sementes de gergelim"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png",
+        "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/colander.png",
+        "sha256": "162e570f96c66a12e73ccaa8df1c013769196aaaee9e593c7cd08df52b124518",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/mixing-bowl.png",
+        "sha256": "c960cbf3f5faf19b25283cd9188d0651e390aed131c4c70352f04def0d2bb9a2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png",
+        "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png",
+        "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-mold.png",
+        "sha256": "ef9a51c37897fbd89c4994670bdcae0b216aa8e8d7d717e044112dc73de69f6f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/cooling-tray.png",
+        "sha256": "f8c8fe9d4cee6143423474748b526907e128bd58890ea62043a8edca85313341",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/serving-plate.png",
+        "sha256": "fb6d84444839a97b20c49bb529a9cdf031f9a4e0cdcc5bf9e949ca91c4b675fb",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-01.png",
+        "sha256": "d4c8914f37b1cd590fee438eb6fe6715c332c60f90c3f9dde600a5743a54cdfe",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash hands and rinse rice in cool water until mostly clear. Drain well.",
+          "pt-BR": "Lave as mãos e enxágue o arroz em água fria até a água ficar quase transparente. Escorra bem."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-02.png",
+        "sha256": "74fd3e2952814023afb5137bd2edb1d38b4fe1269d674d1bdedaf558c887f0c2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult cooks rice with measured water in a covered saucepan until tender.",
+          "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada até ficar macio."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-03.png",
+        "sha256": "915d13d60f3564b351a41b8dafcba3e139fa21b18a31bf98d26533d10a4cf7d1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult spreads hot rice in a clean shallow tray to cool quickly. If it is not being used immediately, refrigerate it within one hour of cooking.",
+          "pt-BR": "Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-04.png",
+        "sha256": "f90b3c0459494ba700c422db3c1f6aad7796885b5d5aaaf1a636300afbbbf240",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "When rice is cool enough to handle, children shape small portions with clean damp hands or a mould. Adults supervise.",
+          "pt-BR": "Quando o arroz estiver frio o bastante para tocar, as crianças modelam porções com mãos limpas e úmidas ou com um molde. Um adulto supervisiona."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-05.png",
+        "sha256": "1e6ff0fde1130e7ffddd8c40959a3ccae55826701ff1e119f6699bdf3dda02f5",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Add a little salt, wrap each rice ball with nori and sprinkle sesame. Serve promptly; refrigerate leftovers.",
+          "pt-BR": "Acrescente um pouco de sal, envolva cada bolinho com nori e polvilhe gergelim. Sirva logo; refrigere as sobras."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/finished-dish.png",
+      "sha256": "7f4e15121566deeda84f1baca16e007d19d8151f3fe18943a5e159ee5d9ddd26",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+        "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sushi-rice.png",
+      "sha256": "cb6e5fd75ecff7783b7cf9ddc75c7493d0cec4f80867f0219e0ee3e148a26d4a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Short-grain rice",
+        "pt-BR": "Arroz de grão curto"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/water.png",
+      "sha256": "9170fdff5341e64ce7d83518fe8e0679152db5a86245dd804d99d7ea18212de9",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Water",
+        "pt-BR": "Água"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/salt.png",
+      "sha256": "80e741549783080e5357ed9bd5ccf33c2130356e1e7ca7840efe490a6ef198de",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fine salt",
+        "pt-BR": "Sal fino"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/nori.png",
+      "sha256": "56304a75f815ff26b17fa2a898c365288116fb4352c5b09606c1118f389643dd",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Nori sheets",
+        "pt-BR": "Folhas de nori"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sesame-seeds.png",
+      "sha256": "162b042301ef146f378a6f37d80f09963f0f9116eaaa3ce02cc1e8bdd590f741",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Sesame seeds",
+        "pt-BR": "Sementes de gergelim"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png",
+      "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/colander.png",
+      "sha256": "162e570f96c66a12e73ccaa8df1c013769196aaaee9e593c7cd08df52b124518",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/mixing-bowl.png",
+      "sha256": "c960cbf3f5faf19b25283cd9188d0651e390aed131c4c70352f04def0d2bb9a2",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png",
+      "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png",
+      "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-mold.png",
+      "sha256": "ef9a51c37897fbd89c4994670bdcae0b216aa8e8d7d717e044112dc73de69f6f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/cooling-tray.png",
+      "sha256": "f8c8fe9d4cee6143423474748b526907e128bd58890ea62043a8edca85313341",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/serving-plate.png",
+      "sha256": "fb6d84444839a97b20c49bb529a9cdf031f9a4e0cdcc5bf9e949ca91c4b675fb",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-01.png",
+      "sha256": "d4c8914f37b1cd590fee438eb6fe6715c332c60f90c3f9dde600a5743a54cdfe",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Wash hands and rinse rice in cool water until mostly clear. Drain well.",
+        "pt-BR": "Lave as mãos e enxágue o arroz em água fria até a água ficar quase transparente. Escorra bem."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-02.png",
+      "sha256": "74fd3e2952814023afb5137bd2edb1d38b4fe1269d674d1bdedaf558c887f0c2",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult cooks rice with measured water in a covered saucepan until tender.",
+        "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada até ficar macio."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-03.png",
+      "sha256": "915d13d60f3564b351a41b8dafcba3e139fa21b18a31bf98d26533d10a4cf7d1",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult spreads hot rice in a clean shallow tray to cool quickly. If it is not being used immediately, refrigerate it within one hour of cooking.",
+        "pt-BR": "Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-04.png",
+      "sha256": "f90b3c0459494ba700c422db3c1f6aad7796885b5d5aaaf1a636300afbbbf240",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "When rice is cool enough to handle, children shape small portions with clean damp hands or a mould. Adults supervise.",
+        "pt-BR": "Quando o arroz estiver frio o bastante para tocar, as crianças modelam porções com mãos limpas e úmidas ou com um molde. Um adulto supervisiona."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-05.png",
+      "sha256": "1e6ff0fde1130e7ffddd8c40959a3ccae55826701ff1e119f6699bdf3dda02f5",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Add a little salt, wrap each rice ball with nori and sprinkle sesame. Serve promptly; refrigerate leftovers.",
+        "pt-BR": "Acrescente um pouco de sal, envolva cada bolinho com nori e polvilhe gergelim. Sirva logo; refrigere as sobras."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/",
+    "riceSafetySource": "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult stovetop rice; child shaping",
+    "time": "45 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 103,
+    "country": "japan",
+    "countryCode": "JP",
+    "title": {
+      "en-GB": "Onigiri Rice Balls",
+      "pt-BR": "Bolinhos de arroz onigiri"
+    },
+    "description": {
+      "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+      "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Onigiri are Japanese rice balls with many shapes, fillings and regional variations. This simple version uses plain rice, nori and sesame.",
+      "pt-BR": "Onigiri são bolinhos de arroz japoneses com diversos formatos, recheios e variações regionais. Esta versão simples usa arroz, nori e gergelim."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 25,
+    "totalMinutes": 45,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; keep safety guidance and equipment roles unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "sushi-rice",
+        "name": {
+          "en-GB": "Short-grain rice",
+          "pt-BR": "Arroz de grão curto"
+        },
+        "quantity": 240,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sushi-rice.png",
+          "sha256": "cb6e5fd75ecff7783b7cf9ddc75c7493d0cec4f80867f0219e0ee3e148a26d4a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Short-grain rice",
+            "pt-BR": "Arroz de grão curto"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "water",
+        "name": {
+          "en-GB": "Water",
+          "pt-BR": "Água"
+        },
+        "quantity": 360,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/water.png",
+          "sha256": "9170fdff5341e64ce7d83518fe8e0679152db5a86245dd804d99d7ea18212de9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Water",
+            "pt-BR": "Água"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "salt",
+        "name": {
+          "en-GB": "Fine salt",
+          "pt-BR": "Sal fino"
+        },
+        "quantity": 2,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/salt.png",
+          "sha256": "80e741549783080e5357ed9bd5ccf33c2130356e1e7ca7840efe490a6ef198de",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fine salt",
+            "pt-BR": "Sal fino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "nori",
+        "name": {
+          "en-GB": "Nori sheets",
+          "pt-BR": "Folhas de nori"
+        },
+        "quantity": 2,
+        "unit": "sheets",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/nori.png",
+          "sha256": "56304a75f815ff26b17fa2a898c365288116fb4352c5b09606c1118f389643dd",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Nori sheets",
+            "pt-BR": "Folhas de nori"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "sesame-seeds",
+        "name": {
+          "en-GB": "Sesame seeds",
+          "pt-BR": "Sementes de gergelim"
+        },
+        "quantity": 10,
+        "unit": "g",
+        "allergens": [
+          "sesame"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sesame-seeds.png",
+          "sha256": "162b042301ef146f378a6f37d80f09963f0f9116eaaa3ce02cc1e8bdd590f741",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sesame seeds",
+            "pt-BR": "Sementes de gergelim"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "equipment": [
+      "Lidded saucepan",
+      "Colander",
+      "Mixing bowl",
+      "Rice paddle",
+      "Measuring cup",
+      "Onigiri mould",
+      "Shallow cooling tray",
+      "Serving plate"
+    ],
+    "equipmentItems": [
+      {
+        "id": "saucepan",
+        "name": {
+          "en-GB": "Lidded saucepan",
+          "pt-BR": "Panela com tampa"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png",
+          "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/colander.png",
+          "sha256": "162e570f96c66a12e73ccaa8df1c013769196aaaee9e593c7cd08df52b124518",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Mixing bowl",
+          "pt-BR": "Tigela para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/mixing-bowl.png",
+          "sha256": "c960cbf3f5faf19b25283cd9188d0651e390aed131c4c70352f04def0d2bb9a2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "rice-paddle",
+        "name": {
+          "en-GB": "Rice paddle",
+          "pt-BR": "Espátula de arroz"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png",
+          "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "measuring-cup",
+        "name": {
+          "en-GB": "Measuring cup",
+          "pt-BR": "Copo medidor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png",
+          "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "rice-mold",
+        "name": {
+          "en-GB": "Onigiri mould",
+          "pt-BR": "Molde para onigiri"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-mold.png",
+          "sha256": "ef9a51c37897fbd89c4994670bdcae0b216aa8e8d7d717e044112dc73de69f6f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "cooling-tray",
+        "name": {
+          "en-GB": "Shallow cooling tray",
+          "pt-BR": "Travessa rasa para esfriar"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/cooling-tray.png",
+          "sha256": "f8c8fe9d4cee6143423474748b526907e128bd58890ea62043a8edca85313341",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "serving-plate",
+        "name": {
+          "en-GB": "Serving plate",
+          "pt-BR": "Prato para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/serving-plate.png",
+          "sha256": "fb6d84444839a97b20c49bb529a9cdf031f9a4e0cdcc5bf9e949ca91c4b675fb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Rinse the rice",
+          "pt-BR": "Lave o arroz"
+        },
+        "instruction": {
+          "en-GB": "Wash hands and rinse rice in cool water until mostly clear. Drain well.",
+          "pt-BR": "Lave as mãos e enxágue o arroz em água fria até a água ficar quase transparente. Escorra bem."
+        },
+        "ingredientIds": [
+          "sushi-rice",
+          "water"
+        ],
+        "equipmentIds": [
+          "colander",
+          "mixing-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+          "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-01.png",
+          "sha256": "d4c8914f37b1cd590fee438eb6fe6715c332c60f90c3f9dde600a5743a54cdfe",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash hands and rinse rice in cool water until mostly clear. Drain well.",
+            "pt-BR": "Lave as mãos e enxágue o arroz em água fria até a água ficar quase transparente. Escorra bem."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Cook the rice",
+          "pt-BR": "Cozinhe o arroz"
+        },
+        "instruction": {
+          "en-GB": "An adult cooks rice with measured water in a covered saucepan until tender.",
+          "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada até ficar macio."
+        },
+        "ingredientIds": [
+          "sushi-rice",
+          "water"
+        ],
+        "equipmentIds": [
+          "saucepan",
+          "measuring-cup"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+          "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-02.png",
+          "sha256": "74fd3e2952814023afb5137bd2edb1d38b4fe1269d674d1bdedaf558c887f0c2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult cooks rice with measured water in a covered saucepan until tender.",
+            "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada até ficar macio."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Cool it quickly",
+          "pt-BR": "Esfrie rapidamente"
+        },
+        "instruction": {
+          "en-GB": "An adult spreads hot rice in a clean shallow tray to cool quickly. If it is not being used immediately, refrigerate it within one hour of cooking.",
+          "pt-BR": "Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+        },
+        "ingredientIds": [
+          "sushi-rice"
+        ],
+        "equipmentIds": [
+          "cooling-tray"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+          "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-03.png",
+          "sha256": "915d13d60f3564b351a41b8dafcba3e139fa21b18a31bf98d26533d10a4cf7d1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult spreads hot rice in a clean shallow tray to cool quickly. If it is not being used immediately, refrigerate it within one hour of cooking.",
+            "pt-BR": "Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Shape the rice",
+          "pt-BR": "Modele o arroz"
+        },
+        "instruction": {
+          "en-GB": "When rice is cool enough to handle, children shape small portions with clean damp hands or a mould. Adults supervise.",
+          "pt-BR": "Quando o arroz estiver frio o bastante para tocar, as crianças modelam porções com mãos limpas e úmidas ou com um molde. Um adulto supervisiona."
+        },
+        "ingredientIds": [
+          "sushi-rice",
+          "salt"
+        ],
+        "equipmentIds": [
+          "rice-mold",
+          "rice-paddle"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+          "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-04.png",
+          "sha256": "f90b3c0459494ba700c422db3c1f6aad7796885b5d5aaaf1a636300afbbbf240",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "When rice is cool enough to handle, children shape small portions with clean damp hands or a mould. Adults supervise.",
+            "pt-BR": "Quando o arroz estiver frio o bastante para tocar, as crianças modelam porções com mãos limpas e úmidas ou com um molde. Um adulto supervisiona."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Wrap and serve",
+          "pt-BR": "Envolva e sirva"
+        },
+        "instruction": {
+          "en-GB": "Add a little salt, wrap each rice ball with nori and sprinkle sesame. Serve promptly; refrigerate leftovers.",
+          "pt-BR": "Acrescente um pouco de sal, envolva cada bolinho com nori e polvilhe gergelim. Sirva logo; refrigere as sobras."
+        },
+        "ingredientIds": [
+          "salt",
+          "nori",
+          "sesame-seeds"
+        ],
+        "equipmentIds": [
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+          "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+        },
+        "safety": {
+          "en-GB": "An adult handles boiling water and hot rice. Cool rice quickly in a shallow clean tray and serve promptly; refrigerate leftovers without delay. Do not leave cooked rice at room temperature. Check nori/sesame labels. Cool rice as quickly as possible, ideally refrigerate within one hour, and use within 24 hours.",
+          "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie rapidamente em uma travessa limpa e rasa e sirva logo; refrigere as sobras sem demora. Não deixe arroz cozido à temperatura ambiente. Confira rótulos do nori e gergelim. Esfrie o arroz o mais rápido possível, idealmente leve à geladeira em até uma hora e consuma em até 24 horas."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only for hot pan, hot rice or sharp knife steps.",
+          "pt-BR": "Somente adulto nas etapas com panela quente, arroz quente ou faca afiada."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Use clean equipment; check packaging and prevent allergen contact.",
+          "pt-BR": "Use utensílios limpos; confira embalagens e evite contato com alergênicos."
+        },
+        "artworkPath": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-05.png",
+          "sha256": "1e6ff0fde1130e7ffddd8c40959a3ccae55826701ff1e119f6699bdf3dda02f5",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Add a little salt, wrap each rice ball with nori and sprinkle sesame. Serve promptly; refrigerate leftovers.",
+            "pt-BR": "Acrescente um pouco de sal, envolva cada bolinho com nori e polvilhe gergelim. Sirva logo; refrigere as sobras."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Adults cook rice and handle hot trays. Children rinse, shape cooled rice and wrap nori with supervision.",
+      "pt-BR": "Adultos cozinham o arroz e manuseiam travessas quentes. Crianças lavam, modelam o arroz frio e envolvem com nori sob supervisão."
+    },
+    "finishedDish": {
+      "image": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/finished-dish.png",
+        "sha256": "7f4e15121566deeda84f1baca16e007d19d8151f3fe18943a5e159ee5d9ddd26",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+          "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "description": {
+        "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+        "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+      }
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 230,
+        "proteinG": 4.9,
+        "carbohydrateG": 47.5,
+        "fatG": 2,
+        "fibreG": 1.5,
+        "saturatedFatG": 0.3,
+        "sodiumMg": 160
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate using measured ingredient weights and generic USDA FoodData Central references; brands and preparation vary. Not a laboratory analysis.",
+      "method": "Scale generic FDC per-100-g values by recipe quantities, sum and divide by 4; rounded.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Rice, white, short-grain, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Rice%2C%20white%2C%20short-grain%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Water, tap",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Water%2C%20tap"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Salt, table",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Salt%2C%20table"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Seaweed, laver, dried",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Seaweed%2C%20laver%2C%20dried"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Seeds, sesame seeds, whole, dried",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Seeds%2C%20sesame%20seeds%2C%20whole%2C%20dried"
+        }
+      ]
+    },
+    "allergens": [
+      "sesame"
+    ],
+    "allergenNotes": {
+      "contains": [
+        "sesame"
+      ],
+      "cross_contact": {
+        "en-GB": "Check labels for allergens and cross-contact; use clean equipment.",
+        "pt-BR": "Confira rótulos para alergênicos e contato cruzado; use utensílios limpos."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/finished-dish.png",
+        "sha256": "7f4e15121566deeda84f1baca16e007d19d8151f3fe18943a5e159ee5d9ddd26",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Simple salted rice balls wrapped with nori and sesame, inspired by a familiar Japanese snack.",
+          "pt-BR": "Bolinhos simples de arroz temperado com nori e gergelim, inspirados em um lanche japonês conhecido."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sushi-rice.png",
+          "sha256": "cb6e5fd75ecff7783b7cf9ddc75c7493d0cec4f80867f0219e0ee3e148a26d4a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Short-grain rice",
+            "pt-BR": "Arroz de grão curto"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/water.png",
+          "sha256": "9170fdff5341e64ce7d83518fe8e0679152db5a86245dd804d99d7ea18212de9",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Water",
+            "pt-BR": "Água"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/salt.png",
+          "sha256": "80e741549783080e5357ed9bd5ccf33c2130356e1e7ca7840efe490a6ef198de",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fine salt",
+            "pt-BR": "Sal fino"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/nori.png",
+          "sha256": "56304a75f815ff26b17fa2a898c365288116fb4352c5b09606c1118f389643dd",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Nori sheets",
+            "pt-BR": "Folhas de nori"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/ingredients/sesame-seeds.png",
+          "sha256": "162b042301ef146f378a6f37d80f09963f0f9116eaaa3ce02cc1e8bdd590f741",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sesame seeds",
+            "pt-BR": "Sementes de gergelim"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/saucepan.png",
+          "sha256": "2192c4e28d207470cca058b455beed6442a45aac5a782171e7d354d87c855e16",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/colander.png",
+          "sha256": "162e570f96c66a12e73ccaa8df1c013769196aaaee9e593c7cd08df52b124518",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/mixing-bowl.png",
+          "sha256": "c960cbf3f5faf19b25283cd9188d0651e390aed131c4c70352f04def0d2bb9a2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-paddle.png",
+          "sha256": "fb96d65d4302b9bff3e2f254ffc10c9ce5c9f04dba47922787ba96e38df0c82a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/measuring-cup.png",
+          "sha256": "686ecc1c0a0600baf4d8e167cb0c8bbe7adb1f43f779912c2b2851705ba2fd04",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/rice-mold.png",
+          "sha256": "ef9a51c37897fbd89c4994670bdcae0b216aa8e8d7d717e044112dc73de69f6f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/cooling-tray.png",
+          "sha256": "f8c8fe9d4cee6143423474748b526907e128bd58890ea62043a8edca85313341",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/equipment/serving-plate.png",
+          "sha256": "fb6d84444839a97b20c49bb529a9cdf031f9a4e0cdcc5bf9e949ca91c4b675fb",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-01.png",
+          "sha256": "d4c8914f37b1cd590fee438eb6fe6715c332c60f90c3f9dde600a5743a54cdfe",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash hands and rinse rice in cool water until mostly clear. Drain well.",
+            "pt-BR": "Lave as mãos e enxágue o arroz em água fria até a água ficar quase transparente. Escorra bem."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-02.png",
+          "sha256": "74fd3e2952814023afb5137bd2edb1d38b4fe1269d674d1bdedaf558c887f0c2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult cooks rice with measured water in a covered saucepan until tender.",
+            "pt-BR": "Um adulto cozinha o arroz com a água medida em uma panela tampada até ficar macio."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-03.png",
+          "sha256": "915d13d60f3564b351a41b8dafcba3e139fa21b18a31bf98d26533d10a4cf7d1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult spreads hot rice in a clean shallow tray to cool quickly. If it is not being used immediately, refrigerate it within one hour of cooking.",
+            "pt-BR": "Um adulto espalha o arroz quente em uma travessa limpa e rasa para esfriar rapidamente. Se não for usar logo, leve-o à geladeira em até uma hora após o cozimento."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-04.png",
+          "sha256": "f90b3c0459494ba700c422db3c1f6aad7796885b5d5aaaf1a636300afbbbf240",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "When rice is cool enough to handle, children shape small portions with clean damp hands or a mould. Adults supervise.",
+            "pt-BR": "Quando o arroz estiver frio o bastante para tocar, as crianças modelam porções com mãos limpas e úmidas ou com um molde. Um adulto supervisiona."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/japan/103-onigiri-rice-balls/artwork/steps/step-05.png",
+          "sha256": "1e6ff0fde1130e7ffddd8c40959a3ccae55826701ff1e119f6699bdf3dda02f5",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the approved Aaria visual reference (Issue #50 comment 6367104240); ingredient/equipment tiles cropped from a recipe-specific contact sheet.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Add a little salt, wrap each rice ball with nori and sprinkle sesame. Serve promptly; refrigerate leftovers.",
+            "pt-BR": "Acrescente um pouco de sal, envolva cada bolinho com nori e polvilhe gergelim. Sirva logo; refrigere as sobras."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "riceSafetySource": "https://www.gov.uk/government/publications/home-food-fact-checker/home-food-fact-checker"
+    },
+    "safety": {
+      "en-GB": "An adult handles boiling water and hot rice. Cool cooked rice quickly in a clean shallow tray, refrigerate within one hour if not serving it immediately, and use within 24 hours. Keep refrigerated; do not leave cooked rice at room temperature. Check nori and sesame labels.",
+      "pt-BR": "Um adulto cuida da água fervente e do arroz quente. Esfrie o arroz rapidamente em uma travessa limpa e rasa, leve à geladeira em até uma hora se não for servir imediatamente e consuma em até 24 horas. Mantenha refrigerado; não deixe o arroz cozido à temperatura ambiente. Confira os rótulos do nori e do gergelim."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}

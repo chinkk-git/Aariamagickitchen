@@ -1,0 +1,2450 @@
+{
+  "schema_version": "1.0",
+  "id": 105,
+  "country": "mexico",
+  "country_code": "MX",
+  "title": {
+    "en-GB": "Rainbow Veggie Tacos",
+    "pt-BR": "Tacos arco-íris de legumes"
+  },
+  "description": {
+    "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+    "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+  },
+  "cultural_context": {
+    "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+    "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+  },
+  "category": "international",
+  "method": "No-cook; optional adult-warmed tortillas",
+  "time": "25 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 25,
+  "total_minutes": 25,
+  "ingredients": [
+    "8 tortillas Small corn tortillas",
+    "240 g No-added-salt black beans, drained",
+    "120 g Sweetcorn kernels, drained",
+    "120 g Red bell pepper",
+    "120 g Yellow bell pepper",
+    "150 g Ripe avocado",
+    "30 mL Lime juice",
+    "60 g Romaine lettuce"
+  ],
+  "equipment": [
+    "Colander",
+    "Mixing bowl",
+    "Fork",
+    "Chopping board",
+    "Kitchen knife",
+    "Measuring spoon",
+    "Serving plate",
+    "Small bowl"
+  ],
+  "ingredientItems": [
+    {
+      "id": "corn-tortillas",
+      "name": {
+        "en-GB": "Small corn tortillas",
+        "pt-BR": "Tortilhas pequenas de milho"
+      },
+      "quantity": 8,
+      "unit": "tortillas",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/corn-tortillas.png",
+        "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Small corn tortillas",
+          "pt-BR": "Tortilhas pequenas de milho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "black-beans",
+      "name": {
+        "en-GB": "No-added-salt black beans, drained",
+        "pt-BR": "Feijão-preto sem sal adicionado, escorrido"
+      },
+      "quantity": 240,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/black-beans.png",
+        "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "No-added-salt black beans, drained",
+          "pt-BR": "Feijão-preto sem sal adicionado, escorrido"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "sweetcorn",
+      "name": {
+        "en-GB": "Sweetcorn kernels, drained",
+        "pt-BR": "Milho-doce em grãos, escorrido"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/sweetcorn.png",
+        "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Milho-doce em grãos, escorrido"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "red-pepper",
+      "name": {
+        "en-GB": "Red bell pepper",
+        "pt-BR": "Pimentão vermelho"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/red-pepper.png",
+        "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Red bell pepper",
+          "pt-BR": "Pimentão vermelho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "yellow-pepper",
+      "name": {
+        "en-GB": "Yellow bell pepper",
+        "pt-BR": "Pimentão amarelo"
+      },
+      "quantity": 120,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
+        "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Yellow bell pepper",
+          "pt-BR": "Pimentão amarelo"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "avocado",
+      "name": {
+        "en-GB": "Ripe avocado",
+        "pt-BR": "Abacate maduro"
+      },
+      "quantity": 150,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/avocado.png",
+        "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Ripe avocado",
+          "pt-BR": "Abacate maduro"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "lime",
+      "name": {
+        "en-GB": "Lime juice",
+        "pt-BR": "Suco de limão-taiti"
+      },
+      "quantity": 30,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lime.png",
+        "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Lime juice",
+          "pt-BR": "Suco de limão-taiti"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "lettuce",
+      "name": {
+        "en-GB": "Romaine lettuce",
+        "pt-BR": "Alface-romana"
+      },
+      "quantity": 60,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lettuce.png",
+        "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Romaine lettuce",
+          "pt-BR": "Alface-romana"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "colander",
+      "name": {
+        "en-GB": "Colander",
+        "pt-BR": "Escorredor"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
+        "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "mixing-bowl",
+      "name": {
+        "en-GB": "Mixing bowl",
+        "pt-BR": "Tigela para misturar"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
+        "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "fork",
+      "name": {
+        "en-GB": "Fork",
+        "pt-BR": "Garfo"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
+        "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
+        "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
+        "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "measuring-spoon",
+      "name": {
+        "en-GB": "Measuring spoon",
+        "pt-BR": "Colher medidora"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
+        "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "serving-plate",
+      "name": {
+        "en-GB": "Serving plate",
+        "pt-BR": "Prato para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
+        "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "small-bowl",
+      "name": {
+        "en-GB": "Small bowl",
+        "pt-BR": "Tigela pequena"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash the vegetables",
+        "pt-BR": "Lave os vegetais"
+      },
+      "instruction": {
+        "en-GB": "Wash the lettuce, peppers, lime and avocado under clean running water. Drain and pat dry.",
+        "pt-BR": "Lave a alface, os pimentões, o limão e o abacate em água corrente limpa. Escorra e seque."
+      },
+      "ingredientIds": [
+        "lettuce",
+        "red-pepper",
+        "yellow-pepper",
+        "lime",
+        "avocado"
+      ],
+      "equipmentIds": [
+        "colander"
+      ],
+      "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png",
+        "sha256": "a62ee1a72a82f6de7093ad385e0fc777a2de3b3b52f8bc94ef3df9c132a21e5b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash the lettuce, peppers, lime and avocado under clean running water. Drain and pat dry.",
+          "pt-BR": "Lave a alface, os pimentões, o limão e o abacate em água corrente limpa. Escorra e seque."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+        "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+        "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Prepare the colourful toppings",
+        "pt-BR": "Prepare os acompanhamentos coloridos"
+      },
+      "instruction": {
+        "en-GB": "An adult cuts the peppers and avocado into small pieces on a stable board. Tear the lettuce into bite-size pieces.",
+        "pt-BR": "Um adulto corta os pimentões e o abacate em pedaços pequenos sobre uma tábua estável. Rasgue a alface em pedaços."
+      },
+      "ingredientIds": [
+        "red-pepper",
+        "yellow-pepper",
+        "avocado",
+        "lettuce"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png",
+        "sha256": "71269e6441eadefd4fd51d19c6376af85dd6fce015d675952b5658741f77c794",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult cuts the peppers and avocado into small pieces on a stable board. Tear the lettuce into bite-size pieces.",
+          "pt-BR": "Um adulto corta os pimentões e o abacate em pedaços pequenos sobre uma tábua estável. Rasgue a alface em pedaços."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+        "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+        "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Drain the beans and corn",
+        "pt-BR": "Escorra o feijão e o milho"
+      },
+      "instruction": {
+        "en-GB": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+        "pt-BR": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor.",
+        "en": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+        "pt": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+      },
+      "ingredientIds": [
+        "black-beans",
+        "sweetcorn"
+      ],
+      "equipmentIds": [
+        "colander"
+      ],
+      "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png",
+        "sha256": "3d825d47184cda7673c5fe4b742b86f3a04b439176d52060c1305df41f1790c4",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+          "pt-BR": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+        "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+        "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Make the bean filling",
+        "pt-BR": "Prepare o recheio de feijão"
+      },
+      "instruction": {
+        "en-GB": "Mash half the beans gently with a fork, then stir in the remaining beans, sweetcorn and lime juice.",
+        "pt-BR": "Amasse delicadamente metade do feijão com um garfo e misture o restante, o milho e o suco de limão."
+      },
+      "ingredientIds": [
+        "black-beans",
+        "sweetcorn",
+        "lime"
+      ],
+      "equipmentIds": [
+        "mixing-bowl",
+        "fork"
+      ],
+      "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png",
+        "sha256": "4ba070e301f90de563c81ece60f9fb8c7104349877f7522ad69b3b1c5a2b8f17",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mash half the beans gently with a fork, then stir in the remaining beans, sweetcorn and lime juice.",
+          "pt-BR": "Amasse delicadamente metade do feijão com um garfo e misture o restante, o milho e o suco de limão."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+        "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+        "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Assemble the tacos",
+        "pt-BR": "Monte os tacos"
+      },
+      "instruction": {
+        "en-GB": "Spoon the filling into corn tortillas. Add pepper, avocado and lettuce. An adult may warm tortillas; serve promptly.",
+        "pt-BR": "Coloque o recheio nas tortilhas de milho. Acrescente pimentão, abacate e alface. Um adulto pode aquecer as tortilhas; sirva logo."
+      },
+      "ingredientIds": [
+        "corn-tortillas",
+        "black-beans",
+        "sweetcorn",
+        "red-pepper",
+        "yellow-pepper",
+        "avocado",
+        "lettuce"
+      ],
+      "equipmentIds": [
+        "serving-plate"
+      ],
+      "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png",
+        "sha256": "6d6477d28bd0d08f679a76577aa1b4d7dd33a83e36319b1cca329c42efd88c04",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spoon the filling into corn tortillas. Add pepper, avocado and lettuce. An adult may warm tortillas; serve promptly.",
+          "pt-BR": "Coloque o recheio nas tortilhas de milho. Acrescente pimentão, abacate e alface. Um adulto pode aquecer as tortilhas; sirva logo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+        "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+        "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+        "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and use clean equipment; check ingredient labels and avoid cross-contact.",
+        "pt-BR": "Lave as mãos e use utensílios limpos; confira os rótulos e evite contato cruzado."
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+    "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+  },
+  "allergens": [],
+  "allergen_notes": {
+    "contains": [],
+    "cross_contact": {
+      "en-GB": "Check tortilla, canned bean and sweetcorn labels for allergens and cross-contact, including shared equipment. Choose certified gluten-free corn tortillas if avoiding gluten.",
+      "pt-BR": "Confira os rótulos das tortilhas, do feijão e do milho para alergênicos e contato cruzado, inclusive em equipamentos compartilhados. Escolha tortilhas de milho certificadas sem glúten quando necessário."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 278,
+      "proteinG": 9.5,
+      "carbohydrateG": 46.8,
+      "fatG": 7.5,
+      "fibreG": 13.8,
+      "saturatedFatG": 1.2,
+      "sodiumMg": 270
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate calculation from drained recipe weights and generic USDA FDC ingredient references; tortilla size and product labels (especially sodium) vary. Rounded per portion; not a laboratory analysis.",
+    "method": "Scale FoodData Central per-100-g reference nutrient values by measured edible ingredient weights, sum recipe totals, divide by 4 portions; lime juice treated approximately as 1 g/mL.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Tortillas, ready-to-bake or -fry, corn",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Tortillas%2C%20ready-to-bake%20or%20-fry%2C%20corn"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Beans, black, canned, drained and rinsed",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Beans%2C%20black%2C%20canned%2C%20drained%20and%20rinsed"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Corn, sweet, yellow, canned, drained",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Corn%2C%20sweet%2C%20yellow%2C%20canned%2C%20drained"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Peppers, sweet, red, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Peppers%2C%20sweet%2C%20red%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Peppers, sweet, yellow, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Peppers%2C%20sweet%2C%20yellow%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Avocados, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Avocados%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+        "food": "Lettuce, cos or romaine, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Lettuce%2C%20cos%20or%20romaine%2C%20raw"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+      "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+    },
+    "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+    "image": {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png",
+      "sha256": "e16b6c81d989d32c9b7dc5b79c1f495403ffb5164e3a8df09beca1c3270f17ad",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+        "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png",
+      "sha256": "e16b6c81d989d32c9b7dc5b79c1f495403ffb5164e3a8df09beca1c3270f17ad",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+        "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/corn-tortillas.png",
+        "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Small corn tortillas",
+          "pt-BR": "Tortilhas pequenas de milho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/black-beans.png",
+        "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "No-added-salt black beans, drained",
+          "pt-BR": "Feijão-preto sem sal adicionado, escorrido"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/sweetcorn.png",
+        "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Milho-doce em grãos, escorrido"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/red-pepper.png",
+        "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Red bell pepper",
+          "pt-BR": "Pimentão vermelho"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
+        "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Yellow bell pepper",
+          "pt-BR": "Pimentão amarelo"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/avocado.png",
+        "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Ripe avocado",
+          "pt-BR": "Abacate maduro"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lime.png",
+        "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Lime juice",
+          "pt-BR": "Suco de limão-taiti"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lettuce.png",
+        "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Romaine lettuce",
+          "pt-BR": "Alface-romana"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
+        "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
+        "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
+        "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
+        "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
+        "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
+        "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
+        "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
+        "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+        "mime_type": "image/png",
+        "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png",
+        "sha256": "a62ee1a72a82f6de7093ad385e0fc777a2de3b3b52f8bc94ef3df9c132a21e5b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash the lettuce, peppers, lime and avocado under clean running water. Drain and pat dry.",
+          "pt-BR": "Lave a alface, os pimentões, o limão e o abacate em água corrente limpa. Escorra e seque."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png",
+        "sha256": "71269e6441eadefd4fd51d19c6376af85dd6fce015d675952b5658741f77c794",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult cuts the peppers and avocado into small pieces on a stable board. Tear the lettuce into bite-size pieces.",
+          "pt-BR": "Um adulto corta os pimentões e o abacate em pedaços pequenos sobre uma tábua estável. Rasgue a alface em pedaços."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png",
+        "sha256": "3d825d47184cda7673c5fe4b742b86f3a04b439176d52060c1305df41f1790c4",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+          "pt-BR": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png",
+        "sha256": "4ba070e301f90de563c81ece60f9fb8c7104349877f7522ad69b3b1c5a2b8f17",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mash half the beans gently with a fork, then stir in the remaining beans, sweetcorn and lime juice.",
+          "pt-BR": "Amasse delicadamente metade do feijão com um garfo e misture o restante, o milho e o suco de limão."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png",
+        "sha256": "6d6477d28bd0d08f679a76577aa1b4d7dd33a83e36319b1cca329c42efd88c04",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Spoon the filling into corn tortillas. Add pepper, avocado and lettuce. An adult may warm tortillas; serve promptly.",
+          "pt-BR": "Coloque o recheio nas tortilhas de milho. Acrescente pimentão, abacate e alface. Um adulto pode aquecer as tortilhas; sirva logo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png",
+      "sha256": "e16b6c81d989d32c9b7dc5b79c1f495403ffb5164e3a8df09beca1c3270f17ad",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+        "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/corn-tortillas.png",
+      "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Small corn tortillas",
+        "pt-BR": "Tortilhas pequenas de milho"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/black-beans.png",
+      "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "No-added-salt black beans, drained",
+        "pt-BR": "Feijão-preto sem sal adicionado, escorrido"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/sweetcorn.png",
+      "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Sweetcorn kernels, drained",
+        "pt-BR": "Milho-doce em grãos, escorrido"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/red-pepper.png",
+      "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Red bell pepper",
+        "pt-BR": "Pimentão vermelho"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
+      "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Yellow bell pepper",
+        "pt-BR": "Pimentão amarelo"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/avocado.png",
+      "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Ripe avocado",
+        "pt-BR": "Abacate maduro"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lime.png",
+      "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Lime juice",
+        "pt-BR": "Suco de limão-taiti"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lettuce.png",
+      "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Romaine lettuce",
+        "pt-BR": "Alface-romana"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
+      "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
+      "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
+      "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
+      "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
+      "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
+      "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
+      "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
+      "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+      "mime_type": "image/png",
+      "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png",
+      "sha256": "a62ee1a72a82f6de7093ad385e0fc777a2de3b3b52f8bc94ef3df9c132a21e5b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Wash the lettuce, peppers, lime and avocado under clean running water. Drain and pat dry.",
+        "pt-BR": "Lave a alface, os pimentões, o limão e o abacate em água corrente limpa. Escorra e seque."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png",
+      "sha256": "71269e6441eadefd4fd51d19c6376af85dd6fce015d675952b5658741f77c794",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult cuts the peppers and avocado into small pieces on a stable board. Tear the lettuce into bite-size pieces.",
+        "pt-BR": "Um adulto corta os pimentões e o abacate em pedaços pequenos sobre uma tábua estável. Rasgue a alface em pedaços."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png",
+      "sha256": "3d825d47184cda7673c5fe4b742b86f3a04b439176d52060c1305df41f1790c4",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+        "pt-BR": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png",
+      "sha256": "4ba070e301f90de563c81ece60f9fb8c7104349877f7522ad69b3b1c5a2b8f17",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Mash half the beans gently with a fork, then stir in the remaining beans, sweetcorn and lime juice.",
+        "pt-BR": "Amasse delicadamente metade do feijão com um garfo e misture o restante, o milho e o suco de limão."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png",
+      "sha256": "6d6477d28bd0d08f679a76577aa1b4d7dd33a83e36319b1cca329c42efd88c04",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Spoon the filling into corn tortillas. Add pepper, avocado and lettuce. An adult may warm tortillas; serve promptly.",
+        "pt-BR": "Coloque o recheio nas tortilhas de milho. Acrescente pimentão, abacate e alface. Um adulto pode aquecer as tortilhas; sirva logo."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "No-cook; optional adult-warmed tortillas",
+    "time": "25 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "id": 105,
+    "country": "mexico",
+    "countryCode": "MX",
+    "status": "READY_FOR_INTEGRATION",
+    "title": {
+      "en-GB": "Rainbow Veggie Tacos",
+      "pt-BR": "Tacos arco-íris de legumes"
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+      "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 25,
+    "totalMinutes": 25,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; keep safety guidance and equipment roles unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "corn-tortillas",
+        "name": {
+          "en-GB": "Small corn tortillas",
+          "pt-BR": "Tortilhas pequenas de milho"
+        },
+        "quantity": 8,
+        "unit": "tortillas",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/corn-tortillas.png",
+          "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Small corn tortillas",
+            "pt-BR": "Tortilhas pequenas de milho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "black-beans",
+        "name": {
+          "en-GB": "No-added-salt black beans, drained",
+          "pt-BR": "Feijão-preto sem sal adicionado, escorrido"
+        },
+        "quantity": 240,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/black-beans.png",
+          "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "No-added-salt black beans, drained",
+            "pt-BR": "Feijão-preto sem sal adicionado, escorrido"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "sweetcorn",
+        "name": {
+          "en-GB": "Sweetcorn kernels, drained",
+          "pt-BR": "Milho-doce em grãos, escorrido"
+        },
+        "quantity": 120,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/sweetcorn.png",
+          "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sweetcorn kernels, drained",
+            "pt-BR": "Milho-doce em grãos, escorrido"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "red-pepper",
+        "name": {
+          "en-GB": "Red bell pepper",
+          "pt-BR": "Pimentão vermelho"
+        },
+        "quantity": 120,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/red-pepper.png",
+          "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Red bell pepper",
+            "pt-BR": "Pimentão vermelho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "yellow-pepper",
+        "name": {
+          "en-GB": "Yellow bell pepper",
+          "pt-BR": "Pimentão amarelo"
+        },
+        "quantity": 120,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
+          "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Yellow bell pepper",
+            "pt-BR": "Pimentão amarelo"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "avocado",
+        "name": {
+          "en-GB": "Ripe avocado",
+          "pt-BR": "Abacate maduro"
+        },
+        "quantity": 150,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/avocado.png",
+          "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Ripe avocado",
+            "pt-BR": "Abacate maduro"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "lime",
+        "name": {
+          "en-GB": "Lime juice",
+          "pt-BR": "Suco de limão-taiti"
+        },
+        "quantity": 30,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lime.png",
+          "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Lime juice",
+            "pt-BR": "Suco de limão-taiti"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "lettuce",
+        "name": {
+          "en-GB": "Romaine lettuce",
+          "pt-BR": "Alface-romana"
+        },
+        "quantity": 60,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lettuce.png",
+          "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Romaine lettuce",
+            "pt-BR": "Alface-romana"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "equipmentItems": [
+      {
+        "id": "colander",
+        "name": {
+          "en-GB": "Colander",
+          "pt-BR": "Escorredor"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
+          "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "mixing-bowl",
+        "name": {
+          "en-GB": "Mixing bowl",
+          "pt-BR": "Tigela para misturar"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
+          "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "fork",
+        "name": {
+          "en-GB": "Fork",
+          "pt-BR": "Garfo"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
+          "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
+          "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Kitchen knife",
+          "pt-BR": "Faca de cozinha"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
+          "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "measuring-spoon",
+        "name": {
+          "en-GB": "Measuring spoon",
+          "pt-BR": "Colher medidora"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
+          "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "serving-plate",
+        "name": {
+          "en-GB": "Serving plate",
+          "pt-BR": "Prato para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
+          "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "small-bowl",
+        "name": {
+          "en-GB": "Small bowl",
+          "pt-BR": "Tigela pequena"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Wash the vegetables",
+          "pt-BR": "Lave os vegetais"
+        },
+        "instruction": {
+          "en-GB": "Wash the lettuce, peppers, lime and avocado under clean running water. Drain and pat dry.",
+          "pt-BR": "Lave a alface, os pimentões, o limão e o abacate em água corrente limpa. Escorra e seque."
+        },
+        "ingredientIds": [
+          "lettuce",
+          "red-pepper",
+          "yellow-pepper",
+          "lime",
+          "avocado"
+        ],
+        "equipmentIds": [
+          "colander"
+        ],
+        "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png",
+          "sha256": "a62ee1a72a82f6de7093ad385e0fc777a2de3b3b52f8bc94ef3df9c132a21e5b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash the lettuce, peppers, lime and avocado under clean running water. Drain and pat dry.",
+            "pt-BR": "Lave a alface, os pimentões, o limão e o abacate em água corrente limpa. Escorra e seque."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+          "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Prepare the colourful toppings",
+          "pt-BR": "Prepare os acompanhamentos coloridos"
+        },
+        "instruction": {
+          "en-GB": "An adult cuts the peppers and avocado into small pieces on a stable board. Tear the lettuce into bite-size pieces.",
+          "pt-BR": "Um adulto corta os pimentões e o abacate em pedaços pequenos sobre uma tábua estável. Rasgue a alface em pedaços."
+        },
+        "ingredientIds": [
+          "red-pepper",
+          "yellow-pepper",
+          "avocado",
+          "lettuce"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife"
+        ],
+        "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png",
+          "sha256": "71269e6441eadefd4fd51d19c6376af85dd6fce015d675952b5658741f77c794",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult cuts the peppers and avocado into small pieces on a stable board. Tear the lettuce into bite-size pieces.",
+            "pt-BR": "Um adulto corta os pimentões e o abacate em pedaços pequenos sobre uma tábua estável. Rasgue a alface em pedaços."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+          "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Drain the beans and corn",
+          "pt-BR": "Escorra o feijão e o milho"
+        },
+        "instruction": {
+          "en-GB": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+          "pt-BR": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor.",
+          "en": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+          "pt": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+        },
+        "ingredientIds": [
+          "black-beans",
+          "sweetcorn"
+        ],
+        "equipmentIds": [
+          "colander"
+        ],
+        "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png",
+          "sha256": "3d825d47184cda7673c5fe4b742b86f3a04b439176d52060c1305df41f1790c4",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+            "pt-BR": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+          "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Make the bean filling",
+          "pt-BR": "Prepare o recheio de feijão"
+        },
+        "instruction": {
+          "en-GB": "Mash half the beans gently with a fork, then stir in the remaining beans, sweetcorn and lime juice.",
+          "pt-BR": "Amasse delicadamente metade do feijão com um garfo e misture o restante, o milho e o suco de limão."
+        },
+        "ingredientIds": [
+          "black-beans",
+          "sweetcorn",
+          "lime"
+        ],
+        "equipmentIds": [
+          "mixing-bowl",
+          "fork"
+        ],
+        "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png",
+          "sha256": "4ba070e301f90de563c81ece60f9fb8c7104349877f7522ad69b3b1c5a2b8f17",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mash half the beans gently with a fork, then stir in the remaining beans, sweetcorn and lime juice.",
+            "pt-BR": "Amasse delicadamente metade do feijão com um garfo e misture o restante, o milho e o suco de limão."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+          "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Assemble the tacos",
+          "pt-BR": "Monte os tacos"
+        },
+        "instruction": {
+          "en-GB": "Spoon the filling into corn tortillas. Add pepper, avocado and lettuce. An adult may warm tortillas; serve promptly.",
+          "pt-BR": "Coloque o recheio nas tortilhas de milho. Acrescente pimentão, abacate e alface. Um adulto pode aquecer as tortilhas; sirva logo."
+        },
+        "ingredientIds": [
+          "corn-tortillas",
+          "black-beans",
+          "sweetcorn",
+          "red-pepper",
+          "yellow-pepper",
+          "avocado",
+          "lettuce"
+        ],
+        "equipmentIds": [
+          "serving-plate"
+        ],
+        "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png",
+          "sha256": "6d6477d28bd0d08f679a76577aa1b4d7dd33a83e36319b1cca329c42efd88c04",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Spoon the filling into corn tortillas. Add pepper, avocado and lettuce. An adult may warm tortillas; serve promptly.",
+            "pt-BR": "Coloque o recheio nas tortilhas de milho. Acrescente pimentão, abacate e alface. Um adulto pode aquecer as tortilhas; sirva logo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        "adultAssist": {
+          "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+          "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+        },
+        "safety": {
+          "en-GB": "Wash hands and produce. An adult uses the knife on a stable board and handles any hot pan. Open cans with adult help; drain and rinse beans and sweetcorn. Refrigerate cut produce and leftovers promptly; check labels for allergens and cross-contact.",
+          "pt-BR": "Lave as mãos e os vegetais. Um adulto usa a faca em uma tábua estável e cuida de qualquer panela quente. Abra as latas com ajuda de um adulto; escorra e enxágue o feijão e o milho. Refrigere logo os vegetais cortados e as sobras; confira os rótulos para alergênicos e contato cruzado."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "Adult only: sharp knife and any hot pan as stated in this step.",
+          "pt-BR": "Somente adulto: faca afiada e qualquer panela quente conforme indicado nesta etapa."
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+      "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+    },
+    "allergens": [],
+    "allergenNotes": {
+      "contains": [],
+      "cross_contact": {
+        "en-GB": "Check tortilla, canned bean and sweetcorn labels for allergens and cross-contact, including shared equipment. Choose certified gluten-free corn tortillas if avoiding gluten.",
+        "pt-BR": "Confira os rótulos das tortilhas, do feijão e do milho para alergênicos e contato cruzado, inclusive em equipamentos compartilhados. Escolha tortilhas de milho certificadas sem glúten quando necessário."
+      }
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 278,
+        "proteinG": 9.5,
+        "carbohydrateG": 46.8,
+        "fatG": 7.5,
+        "fibreG": 13.8,
+        "saturatedFatG": 1.2,
+        "sodiumMg": 270
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate calculation from drained recipe weights and generic USDA FDC ingredient references; tortilla size and product labels (especially sodium) vary. Rounded per portion; not a laboratory analysis.",
+      "method": "Scale FoodData Central per-100-g reference nutrient values by measured edible ingredient weights, sum recipe totals, divide by 4 portions; lime juice treated approximately as 1 g/mL.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Tortillas, ready-to-bake or -fry, corn",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Tortillas%2C%20ready-to-bake%20or%20-fry%2C%20corn"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Beans, black, canned, drained and rinsed",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Beans%2C%20black%2C%20canned%2C%20drained%20and%20rinsed"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Corn, sweet, yellow, canned, drained",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Corn%2C%20sweet%2C%20yellow%2C%20canned%2C%20drained"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Peppers, sweet, red, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peppers%2C%20sweet%2C%20red%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Peppers, sweet, yellow, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Peppers%2C%20sweet%2C%20yellow%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Avocados, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Avocados%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Lime juice, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lime%20juice%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central (SR Legacy/FNDDS search; ingredient-level estimates)",
+          "food": "Lettuce, cos or romaine, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Lettuce%2C%20cos%20or%20romaine%2C%20raw"
+        }
+      ]
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png",
+        "sha256": "e16b6c81d989d32c9b7dc5b79c1f495403ffb5164e3a8df09beca1c3270f17ad",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+          "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/corn-tortillas.png",
+          "sha256": "41bc8557da62d234b0665bb8354f3b808b4eae592d8aef8fd7b757c33da84981",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Small corn tortillas",
+            "pt-BR": "Tortilhas pequenas de milho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/black-beans.png",
+          "sha256": "39d7e8ec94f8217000249f9280c92c8aee53dd45f8621101f04d70165745efd2",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "No-added-salt black beans, drained",
+            "pt-BR": "Feijão-preto sem sal adicionado, escorrido"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/sweetcorn.png",
+          "sha256": "3292398540b20b7768e60194f7797aa4991865c4f3e52b1ad9d0e65a2e3d6993",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Sweetcorn kernels, drained",
+            "pt-BR": "Milho-doce em grãos, escorrido"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/red-pepper.png",
+          "sha256": "65eca008b97046cde786175c3bebe408b108287964c88282904d20fb273734dd",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Red bell pepper",
+            "pt-BR": "Pimentão vermelho"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/yellow-pepper.png",
+          "sha256": "a231510783df3606cbb2dd48052dee5bcc02c52e0b6a5fe681b7fe45fe2ec997",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen on 2026-10-23 as a replacement illustration after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Yellow bell pepper",
+            "pt-BR": "Pimentão amarelo"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/avocado.png",
+          "sha256": "f8834318354798524f6809ab28eb29df9ba550dc0c326788c7c34ea2a81abc3d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Ripe avocado",
+            "pt-BR": "Abacate maduro"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lime.png",
+          "sha256": "6539a6c15f2dc2bc837baaec2d32c249e144f7e86bf04f2da89443ac3f3ea93d",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Lime juice",
+            "pt-BR": "Suco de limão-taiti"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/ingredients/lettuce.png",
+          "sha256": "04ba9628f3e17bb09bab522f5db690dd852768888543e69f1af3c60aac491037",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Romaine lettuce",
+            "pt-BR": "Alface-romana"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/colander.png",
+          "sha256": "5ae978586177cb2b9ce48018daf3519fbc9bd0cecbc088bf4bd8734ad8e282e8",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/colander.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/mixing-bowl.png",
+          "sha256": "8773ce179849ff95e04b6e17f5739713507664eb4c3243b37ccaded268d3df8e",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/mixing-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/fork.png",
+          "sha256": "06eb86c863602a96e68f4de2b09089638e3851d3c7536533137d53c28f2e0c59",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/fork.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/chopping-board.png",
+          "sha256": "07b407586625536804993e24b4963b999c538a8960dc68a9fe10748ff4e0936d",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/chopping-board.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/knife.png",
+          "sha256": "3221b994dc45a48eae0eccdf79e33b22cc2224330ba79399cb52d437d939472c",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/106-black-bean-quesadillas/artwork/equipment/knife.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/measuring-spoon.png",
+          "sha256": "bf973b265fdb16d4cc52ae290e5259fae5c2d5f171b5bfaa53d4a0f66f7953c3",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/china/099-vegetable-fried-rice/artwork/equipment/measuring-spoon.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/serving-plate.png",
+          "sha256": "bd406606aa1a603f81a922bc893b6b04aa983af41c01934c64469e664a1320e1",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/mexico/107-mexican-sweetcorn-cups/artwork/equipment/serving-plate.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/equipment/small-bowl.png",
+          "sha256": "3f26eb22353eecef1cb40cf0e069ef495be4a242a5ae6bdf537784de3b88b4ff",
+          "mime_type": "image/png",
+          "provenance": "Reused matching project illustration from content/international/countries/china/100-rainbow-vegetable-noodles/artwork/equipment/small-bowl.png; mapping corrected 2026-10-23 after duplicate-hash audit.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-01.png",
+          "sha256": "a62ee1a72a82f6de7093ad385e0fc777a2de3b3b52f8bc94ef3df9c132a21e5b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash the lettuce, peppers, lime and avocado under clean running water. Drain and pat dry.",
+            "pt-BR": "Lave a alface, os pimentões, o limão e o abacate em água corrente limpa. Escorra e seque."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-02.png",
+          "sha256": "71269e6441eadefd4fd51d19c6376af85dd6fce015d675952b5658741f77c794",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult cuts the peppers and avocado into small pieces on a stable board. Tear the lettuce into bite-size pieces.",
+            "pt-BR": "Um adulto corta os pimentões e o abacate em pedaços pequenos sobre uma tábua estável. Rasgue a alface em pedaços."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-03.png",
+          "sha256": "3d825d47184cda7673c5fe4b742b86f3a04b439176d52060c1305df41f1790c4",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult opens the tins. Drain and rinse the black beans and sweetcorn in a colander.",
+            "pt-BR": "Um adulto abre as latas. Escorra e enxágue o feijão-preto e o milho em um escorredor."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-04.png",
+          "sha256": "4ba070e301f90de563c81ece60f9fb8c7104349877f7522ad69b3b1c5a2b8f17",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mash half the beans gently with a fork, then stir in the remaining beans, sweetcorn and lime juice.",
+            "pt-BR": "Amasse delicadamente metade do feijão com um garfo e misture o restante, o milho e o suco de limão."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/steps/step-05.png",
+          "sha256": "6d6477d28bd0d08f679a76577aa1b4d7dd33a83e36319b1cca329c42efd88c04",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Spoon the filling into corn tortillas. Add pepper, avocado and lettuce. An adult may warm tortillas; serve promptly.",
+            "pt-BR": "Coloque o recheio nas tortilhas de milho. Acrescente pimentão, abacate e alface. Um adulto pode aquecer as tortilhas; sirva logo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ]
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "description": {
+      "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+      "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+    },
+    "equipment": [
+      "Colander",
+      "Mixing bowl",
+      "Fork",
+      "Chopping board",
+      "Kitchen knife",
+      "Measuring spoon",
+      "Serving plate",
+      "Small bowl"
+    ],
+    "finishedDish": {
+      "artworkPath": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png",
+      "description": {
+        "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+        "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+      },
+      "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+      "image": {
+        "path": "content/international/countries/mexico/105-rainbow-veggie-tacos/artwork/finished-dish.png",
+        "sha256": "e16b6c81d989d32c9b7dc5b79c1f495403ffb5164e3a8df09beca1c3270f17ad",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen for this repository using the owner-approved Aaria visual reference (Issue #50 comment 6367104240); icon assets are individually cropped from recipe-specific 4x4 sheets.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+          "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+      "nutritionSource": "https://fdc.nal.usda.gov/",
+      "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+    },
+    "notes": {
+      "en-GB": "Check labels and refrigerate cut produce and leftovers promptly.",
+      "pt-BR": "Confira os rótulos e refrigere logo os vegetais cortados e as sobras."
+    },
+    "fact": {
+      "en-GB": "These are family-style tacos inspired by Mexican ingredients and colours, filled with beans, sweetcorn and fresh vegetables. Corn tortillas and taco fillings vary by region and household.",
+      "pt-BR": "Estes tacos familiares são inspirados em ingredientes e cores mexicanos, com feijão, milho e vegetais frescos. Tortilhas de milho e recheios variam conforme a região e cada família."
+    },
+    "safety": {
+      "en-GB": "An adult handles the sharp knife and any heating of tortillas; supervise washing and assembly. Children can rinse, drain, mash and assemble with clean hands.",
+      "pt-BR": "Um adulto usa a faca afiada e aquece as tortilhas, se desejar; supervisione a lavagem e a montagem. As crianças podem lavar, escorrer, amassar e montar com as mãos limpas."
+    },
+    "artworkApproval": {
+      "reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "ownerApprovalIssueComment": 6367104240,
+      "status": "REFERENCE_STYLE_APPROVED; rights_review_pending"
+    }
+  }
+}

@@ -1,0 +1,1910 @@
+{
+  "schema_version": "1.0",
+  "id": 97,
+  "country": "italy",
+  "country_code": "IT",
+  "title": {
+    "en-GB": "Mini Caprese Skewers",
+    "pt-BR": "Mini espetinhos caprese"
+  },
+  "description": {
+    "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+    "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+  },
+  "cultural_context": {
+    "en-GB": "Caprese-style flavours pair tomato, mozzarella and basil. This child-friendly snack is inspired by, but not a claim to represent every regional Italian version.",
+    "pt-BR": "Sabores ao estilo caprese combinam tomate, muçarela e manjericão. Este lanche infantil é inspirado nessa combinação, sem representar todas as versões regionais italianas."
+  },
+  "category": "international",
+  "method": "Adult stovetop",
+  "time": "35 min",
+  "servings": 4,
+  "age_range_years": [
+    8,
+    10
+  ],
+  "active_minutes": 25,
+  "total_minutes": 35,
+  "ingredients": [
+    "240 g Cherry tomatoes",
+    "200 g Mini mozzarella balls",
+    "16 leaves Fresh basil leaves",
+    "15 mL Olive oil",
+    "10 mL Balsamic vinegar"
+  ],
+  "equipment": [
+    "Short blunt skewers",
+    "Chopping board",
+    "Kitchen knife",
+    "Small bowl",
+    "Serving plate"
+  ],
+  "ingredientItems": [
+    {
+      "id": "cherry-tomatoes",
+      "name": {
+        "en-GB": "Cherry tomatoes",
+        "pt-BR": "Tomates-cereja"
+      },
+      "quantity": 240,
+      "unit": "g",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/cherry-tomatoes.png",
+        "sha256": "a70bffbda30cd986f296d33d07904acebba1a607c92caada5e789c7d0d7373ba",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cherry tomatoes",
+          "pt-BR": "Tomates-cereja"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "mini-mozzarella",
+      "name": {
+        "en-GB": "Mini mozzarella balls",
+        "pt-BR": "Bol mini de muçarela"
+      },
+      "quantity": 200,
+      "unit": "g",
+      "allergens": [
+        "milk"
+      ],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
+        "sha256": "f892ecd1a7c67f98500fbd367d241cac88d57fa98794b478512a850c562674e0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mini mozzarella balls",
+          "pt-BR": "Bol mini de muçarela"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "basil",
+      "name": {
+        "en-GB": "Fresh basil leaves",
+        "pt-BR": "Folhas de manjericão fresco"
+      },
+      "quantity": 16,
+      "unit": "leaves",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
+        "sha256": "231bbc9857c45a3f4ac0a355ae42fceb48d15fb88df3fa7ae0978624070a9c77",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "olive-oil",
+      "name": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "quantity": 15,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
+        "sha256": "bad8a7e706078807a9661c7b2677d779a9964346b2341fb69cf27119f3f2a45b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "balsamic-vinegar",
+      "name": {
+        "en-GB": "Balsamic vinegar",
+        "pt-BR": "Vinagre balsâmico"
+      },
+      "quantity": 10,
+      "unit": "mL",
+      "allergens": [],
+      "optional": false,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
+        "sha256": "7fcd09833738ce0567980d9afe66d1427610949341ea436a33c36bd8a3e11cfc",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Balsamic vinegar",
+          "pt-BR": "Vinagre balsâmico"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "equipmentItems": [
+    {
+      "id": "skewers",
+      "name": {
+        "en-GB": "Short blunt skewers",
+        "pt-BR": "Espetos curtos sem ponta"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/skewers.png",
+        "sha256": "ae105b7064b12ba7dcd1d71a269f6b6204bdb2faf5a35515d36b3b0482a2055a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "chopping-board",
+      "name": {
+        "en-GB": "Chopping board",
+        "pt-BR": "Tábua de corte"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
+        "sha256": "8a01ea7b5fc1f50f2c5e216f441eff4a4208e5dbeb1c18b28ccf28cc3cf13d5f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "knife",
+      "name": {
+        "en-GB": "Kitchen knife",
+        "pt-BR": "Faca de cozinha"
+      },
+      "role": "adult",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
+        "sha256": "406c15fa58aa2156e8d7b4922816d8f95b59897004f6a51b3126d43bfa40d43b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "small-bowl",
+      "name": {
+        "en-GB": "Small bowl",
+        "pt-BR": "Tigela pequena"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
+        "sha256": "e25af75d11751b4c56ae1b85298329c95df43ab4cbc1e4191d66373141303677",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    },
+    {
+      "id": "serving-plate",
+      "name": {
+        "en-GB": "Serving plate",
+        "pt-BR": "Prato para servir"
+      },
+      "role": "shared",
+      "iconPath": null,
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
+        "sha256": "1ed95bda24bfa70e4338d1151c1192c158a4749d8edc5809d23fd3b667c663d1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-01",
+      "title": {
+        "en-GB": "Wash and dry",
+        "pt-BR": "Lave e seque"
+      },
+      "instruction": {
+        "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+        "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+      },
+      "ingredientIds": [
+        "cherry-tomatoes",
+        "basil"
+      ],
+      "equipmentIds": [
+        "small-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+        "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+      },
+      "safety": {
+        "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+        "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
+        "sha256": "3bcde86acd0fe63009246d687008bda7c2cb0a6d75118ac87b25d40c3c544562",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+          "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-02",
+      "title": {
+        "en-GB": "Prepare the tomatoes",
+        "pt-BR": "Prepare os tomates"
+      },
+      "instruction": {
+        "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+        "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+      },
+      "ingredientIds": [
+        "cherry-tomatoes"
+      ],
+      "equipmentIds": [
+        "chopping-board",
+        "knife"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+        "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+      },
+      "safety": {
+        "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+        "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
+        "sha256": "3b23172dfabb05bb0826b1d2d8c07721dbcb0e7a8ad3ec663ff3dcc5fa391900",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+          "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-03",
+      "title": {
+        "en-GB": "Build the skewers",
+        "pt-BR": "Monte os espetinhos"
+      },
+      "instruction": {
+        "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+        "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+      },
+      "ingredientIds": [
+        "cherry-tomatoes",
+        "basil",
+        "mini-mozzarella"
+      ],
+      "equipmentIds": [
+        "skewers"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+        "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+      },
+      "safety": {
+        "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+        "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
+        "sha256": "06c839fa2fd18b45fe0f3a1c1e30063b14887cbb9753645cd106cde7d30faa96",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+          "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-04",
+      "title": {
+        "en-GB": "Dress the skewers",
+        "pt-BR": "Tempere os espetinhos"
+      },
+      "instruction": {
+        "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+        "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+      },
+      "ingredientIds": [
+        "olive-oil",
+        "balsamic-vinegar"
+      ],
+      "equipmentIds": [
+        "small-bowl"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+        "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+      },
+      "safety": {
+        "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+        "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
+        "sha256": "d2696331972d254af2802f2e15b6b5e189f626aaaaeb7fae472faba125e45065",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+          "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    },
+    {
+      "id": "step-05",
+      "title": {
+        "en-GB": "Serve chilled",
+        "pt-BR": "Sirva gelado"
+      },
+      "instruction": {
+        "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+        "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+      },
+      "ingredientIds": [
+        "cherry-tomatoes",
+        "mini-mozzarella",
+        "basil"
+      ],
+      "equipmentIds": [
+        "serving-plate"
+      ],
+      "adultAssist": {
+        "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+        "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+      },
+      "safety": {
+        "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+        "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+      },
+      "heatOrKnifeCue": {
+        "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+        "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+      },
+      "crossContaminationCue": {
+        "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+        "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+      },
+      "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
+      "artwork": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
+        "sha256": "26581f80af29aad3169af956618c12fe919d0a9647e1e5f16931b02d27539eb8",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+          "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    }
+  ],
+  "adult_assistance": {
+    "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+    "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+  },
+  "allergens": [
+    "milk"
+  ],
+  "allergen_notes": {
+    "contains": [
+      "milk"
+    ],
+    "cross_contact": {
+      "en-GB": "Check ingredient packaging for declared allergens and cross-contact. Mozzarella contains milk; balsamic vinegar may contain sulphites. Use clean utensils and surfaces for allergy-safe portions.",
+      "pt-BR": "Confira as embalagens para alergênicos declarados e contato cruzado. A muçarela contém leite; o vinagre balsâmico pode conter sulfitos. Use utensílios e superfícies limpos para porções destinadas a pessoas com alergia."
+    }
+  },
+  "nutrition": {
+    "per_serving": {
+      "energyKcal": 169,
+      "proteinG": 10.8,
+      "carbohydrateG": 5.1,
+      "fatG": 11.8,
+      "fibreG": 1,
+      "saturatedFatG": 5.4,
+      "sodiumMg": 210
+    },
+    "status": "ESTIMATE_REVIEW_PENDING",
+    "basis": "Approximate per-serving estimate based on weighed recipe amounts and generic USDA FoodData Central ingredient data. Product composition and drained weights vary; not laboratory analysis.",
+    "method": "Scale generic FoodData Central nutrient data per 100 g by measured ingredient weights, sum and divide by 4; rounded values. Brand-specific sodium and fats vary.",
+    "sources": [
+      {
+        "source": "USDA FoodData Central",
+        "food": "Tomatoes, red, ripe, raw",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Tomatoes%2C%20red%2C%20ripe%2C%20raw"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Cheese, mozzarella, fresh, whole milk",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese%2C%20mozzarella%2C%20fresh%2C%20whole%20milk"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Basil, fresh",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Basil%2C%20fresh"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Oil, olive, salad or cooking",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20olive%2C%20salad%20or%20cooking"
+      },
+      {
+        "source": "USDA FoodData Central",
+        "food": "Vinegar, balsamic",
+        "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar%2C%20balsamic"
+      }
+    ]
+  },
+  "finished_dish": {
+    "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/finished-dish.png",
+    "description": {
+      "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+      "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+    },
+    "image": {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/finished-dish.png",
+      "sha256": "f6cedf79d4d1e867d4b5dcdd6b81220a7cf4ff860feac3a93fe3f3f20c3fa33f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+        "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending."
+  },
+  "artwork": {
+    "status": "COMPLETE_PENDING_INDEPENDENT_RIGHTS_REVIEW",
+    "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "finished_dish": {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/finished-dish.png",
+      "sha256": "f6cedf79d4d1e867d4b5dcdd6b81220a7cf4ff860feac3a93fe3f3f20c3fa33f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+        "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    "ingredient_images": [
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/cherry-tomatoes.png",
+        "sha256": "a70bffbda30cd986f296d33d07904acebba1a607c92caada5e789c7d0d7373ba",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Cherry tomatoes",
+          "pt-BR": "Tomates-cereja"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
+        "sha256": "f892ecd1a7c67f98500fbd367d241cac88d57fa98794b478512a850c562674e0",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Mini mozzarella balls",
+          "pt-BR": "Bol mini de muçarela"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
+        "sha256": "231bbc9857c45a3f4ac0a355ae42fceb48d15fb88df3fa7ae0978624070a9c77",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
+        "sha256": "bad8a7e706078807a9661c7b2677d779a9964346b2341fb69cf27119f3f2a45b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
+        "sha256": "7fcd09833738ce0567980d9afe66d1427610949341ea436a33c36bd8a3e11cfc",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Balsamic vinegar",
+          "pt-BR": "Vinagre balsâmico"
+        },
+        "alt_text_source": "ingredientItems[].name",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ],
+    "equipment_images": [
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/skewers.png",
+        "sha256": "ae105b7064b12ba7dcd1d71a269f6b6204bdb2faf5a35515d36b3b0482a2055a",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
+        "sha256": "8a01ea7b5fc1f50f2c5e216f441eff4a4208e5dbeb1c18b28ccf28cc3cf13d5f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
+        "sha256": "406c15fa58aa2156e8d7b4922816d8f95b59897004f6a51b3126d43bfa40d43b",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
+        "sha256": "e25af75d11751b4c56ae1b85298329c95df43ab4cbc1e4191d66373141303677",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
+        "sha256": "1ed95bda24bfa70e4338d1151c1192c158a4749d8edc5809d23fd3b667c663d1",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+        "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+      }
+    ],
+    "step_images": [
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
+        "sha256": "3bcde86acd0fe63009246d687008bda7c2cb0a6d75118ac87b25d40c3c544562",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+          "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
+        "sha256": "3b23172dfabb05bb0826b1d2d8c07721dbcb0e7a8ad3ec663ff3dcc5fa391900",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+          "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
+        "sha256": "06c839fa2fd18b45fe0f3a1c1e30063b14887cbb9753645cd106cde7d30faa96",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+          "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
+        "sha256": "d2696331972d254af2802f2e15b6b5e189f626aaaaeb7fae472faba125e45065",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+          "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
+        "sha256": "26581f80af29aad3169af956618c12fe919d0a9647e1e5f16931b02d27539eb8",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+          "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+        },
+        "alt_text_source": "steps[].instruction",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      }
+    ]
+  },
+  "artwork_assets": [
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/finished-dish.png",
+      "sha256": "f6cedf79d4d1e867d4b5dcdd6b81220a7cf4ff860feac3a93fe3f3f20c3fa33f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+        "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+      },
+      "alt_text_source": "finished_dish.description",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/cherry-tomatoes.png",
+      "sha256": "a70bffbda30cd986f296d33d07904acebba1a607c92caada5e789c7d0d7373ba",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Cherry tomatoes",
+        "pt-BR": "Tomates-cereja"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
+      "sha256": "f892ecd1a7c67f98500fbd367d241cac88d57fa98794b478512a850c562674e0",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Mini mozzarella balls",
+        "pt-BR": "Bol mini de muçarela"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
+      "sha256": "231bbc9857c45a3f4ac0a355ae42fceb48d15fb88df3fa7ae0978624070a9c77",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Fresh basil leaves",
+        "pt-BR": "Folhas de manjericão fresco"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
+      "sha256": "bad8a7e706078807a9661c7b2677d779a9964346b2341fb69cf27119f3f2a45b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Olive oil",
+        "pt-BR": "Azeite de oliva"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
+      "sha256": "7fcd09833738ce0567980d9afe66d1427610949341ea436a33c36bd8a3e11cfc",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Balsamic vinegar",
+        "pt-BR": "Vinagre balsâmico"
+      },
+      "alt_text_source": "ingredientItems[].name",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/skewers.png",
+      "sha256": "ae105b7064b12ba7dcd1d71a269f6b6204bdb2faf5a35515d36b3b0482a2055a",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
+      "sha256": "8a01ea7b5fc1f50f2c5e216f441eff4a4208e5dbeb1c18b28ccf28cc3cf13d5f",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
+      "sha256": "406c15fa58aa2156e8d7b4922816d8f95b59897004f6a51b3126d43bfa40d43b",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
+      "sha256": "e25af75d11751b4c56ae1b85298329c95df43ab4cbc1e4191d66373141303677",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
+      "sha256": "1ed95bda24bfa70e4338d1151c1192c158a4749d8edc5809d23fd3b667c663d1",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+      "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
+      "sha256": "3bcde86acd0fe63009246d687008bda7c2cb0a6d75118ac87b25d40c3c544562",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+        "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
+      "sha256": "3b23172dfabb05bb0826b1d2d8c07721dbcb0e7a8ad3ec663ff3dcc5fa391900",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+        "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
+      "sha256": "06c839fa2fd18b45fe0f3a1c1e30063b14887cbb9753645cd106cde7d30faa96",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+        "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
+      "sha256": "d2696331972d254af2802f2e15b6b5e189f626aaaaeb7fae472faba125e45065",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+        "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    },
+    {
+      "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
+      "sha256": "26581f80af29aad3169af956618c12fe919d0a9647e1e5f16931b02d27539eb8",
+      "mime_type": "image/png",
+      "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+      "license": "AI-generated project asset; independent rights review pending",
+      "rights_status": "PENDING_REVIEW",
+      "alt_text": {
+        "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+        "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+      },
+      "alt_text_source": "steps[].instruction",
+      "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+      "accessibility_role": "IMAGE_DESCRIPTION"
+    }
+  ],
+  "reviews": {
+    "A08": "PENDING",
+    "A09": "PENDING",
+    "nutrition_allergen": "PENDING",
+    "translation_cultural": "PENDING",
+    "artwork_rights": "PENDING_REVIEW",
+    "security": "PENDING"
+  },
+  "sources_and_safety": {
+    "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food",
+    "nutritionSource": "https://fdc.nal.usda.gov/",
+    "nutritionMethodSource": "https://fdc.nal.usda.gov/Foundation_Foods_Documentation/"
+  },
+  "renderer": {
+    "category": "International",
+    "method": "Adult stovetop",
+    "time": "35 min"
+  },
+  "content": {
+    "contentSchemaVersion": "1.0",
+    "status": "READY_FOR_INTEGRATION",
+    "id": 97,
+    "country": "italy",
+    "countryCode": "IT",
+    "title": {
+      "en-GB": "Mini Caprese Skewers",
+      "pt-BR": "Mini espetinhos caprese"
+    },
+    "description": {
+      "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+      "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+    },
+    "category": "international",
+    "culturalContext": {
+      "en-GB": "Caprese-style flavours pair tomato, mozzarella and basil. This child-friendly snack is inspired by, but not a claim to represent every regional Italian version.",
+      "pt-BR": "Sabores ao estilo caprese combinam tomate, muçarela e manjericão. Este lanche infantil é inspirado nessa combinação, sem representar todas as versões regionais italianas."
+    },
+    "servings": 4,
+    "ageRangeYears": [
+      8,
+      10
+    ],
+    "activeMinutes": 25,
+    "totalMinutes": 35,
+    "scaling": {
+      "policy": "Scale ingredient quantities linearly by servings; keep safety guidance and roles unchanged."
+    },
+    "ingredients": [
+      {
+        "id": "cherry-tomatoes",
+        "name": {
+          "en-GB": "Cherry tomatoes",
+          "pt-BR": "Tomates-cereja"
+        },
+        "quantity": 240,
+        "unit": "g",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/cherry-tomatoes.png",
+          "sha256": "a70bffbda30cd986f296d33d07904acebba1a607c92caada5e789c7d0d7373ba",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cherry tomatoes",
+            "pt-BR": "Tomates-cereja"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "mini-mozzarella",
+        "name": {
+          "en-GB": "Mini mozzarella balls",
+          "pt-BR": "Bol mini de muçarela"
+        },
+        "quantity": 200,
+        "unit": "g",
+        "allergens": [
+          "milk"
+        ],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
+          "sha256": "f892ecd1a7c67f98500fbd367d241cac88d57fa98794b478512a850c562674e0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mini mozzarella balls",
+            "pt-BR": "Bol mini de muçarela"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "basil",
+        "name": {
+          "en-GB": "Fresh basil leaves",
+          "pt-BR": "Folhas de manjericão fresco"
+        },
+        "quantity": 16,
+        "unit": "leaves",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
+          "sha256": "231bbc9857c45a3f4ac0a355ae42fceb48d15fb88df3fa7ae0978624070a9c77",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh basil leaves",
+            "pt-BR": "Folhas de manjericão fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "olive-oil",
+        "name": {
+          "en-GB": "Olive oil",
+          "pt-BR": "Azeite de oliva"
+        },
+        "quantity": 15,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
+          "sha256": "bad8a7e706078807a9661c7b2677d779a9964346b2341fb69cf27119f3f2a45b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Olive oil",
+            "pt-BR": "Azeite de oliva"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "balsamic-vinegar",
+        "name": {
+          "en-GB": "Balsamic vinegar",
+          "pt-BR": "Vinagre balsâmico"
+        },
+        "quantity": 10,
+        "unit": "mL",
+        "allergens": [],
+        "optional": false,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
+          "sha256": "7fcd09833738ce0567980d9afe66d1427610949341ea436a33c36bd8a3e11cfc",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Balsamic vinegar",
+            "pt-BR": "Vinagre balsâmico"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "equipment": [
+      "Short blunt skewers",
+      "Chopping board",
+      "Kitchen knife",
+      "Small bowl",
+      "Serving plate"
+    ],
+    "equipmentItems": [
+      {
+        "id": "skewers",
+        "name": {
+          "en-GB": "Short blunt skewers",
+          "pt-BR": "Espetos curtos sem ponta"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/skewers.png",
+          "sha256": "ae105b7064b12ba7dcd1d71a269f6b6204bdb2faf5a35515d36b3b0482a2055a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "chopping-board",
+        "name": {
+          "en-GB": "Chopping board",
+          "pt-BR": "Tábua de corte"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
+          "sha256": "8a01ea7b5fc1f50f2c5e216f441eff4a4208e5dbeb1c18b28ccf28cc3cf13d5f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "knife",
+        "name": {
+          "en-GB": "Kitchen knife",
+          "pt-BR": "Faca de cozinha"
+        },
+        "role": "adult",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
+          "sha256": "406c15fa58aa2156e8d7b4922816d8f95b59897004f6a51b3126d43bfa40d43b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "small-bowl",
+        "name": {
+          "en-GB": "Small bowl",
+          "pt-BR": "Tigela pequena"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
+          "sha256": "e25af75d11751b4c56ae1b85298329c95df43ab4cbc1e4191d66373141303677",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      },
+      {
+        "id": "serving-plate",
+        "name": {
+          "en-GB": "Serving plate",
+          "pt-BR": "Prato para servir"
+        },
+        "role": "shared",
+        "iconPath": null,
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
+          "sha256": "1ed95bda24bfa70e4338d1151c1192c158a4749d8edc5809d23fd3b667c663d1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "id": "step-01",
+        "title": {
+          "en-GB": "Wash and dry",
+          "pt-BR": "Lave e seque"
+        },
+        "instruction": {
+          "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+          "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+        },
+        "ingredientIds": [
+          "cherry-tomatoes",
+          "basil"
+        ],
+        "equipmentIds": [
+          "small-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+          "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+        },
+        "safety": {
+          "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+          "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+          "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
+          "sha256": "3bcde86acd0fe63009246d687008bda7c2cb0a6d75118ac87b25d40c3c544562",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+            "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-02",
+        "title": {
+          "en-GB": "Prepare the tomatoes",
+          "pt-BR": "Prepare os tomates"
+        },
+        "instruction": {
+          "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+          "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+        },
+        "ingredientIds": [
+          "cherry-tomatoes"
+        ],
+        "equipmentIds": [
+          "chopping-board",
+          "knife"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+          "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+        },
+        "safety": {
+          "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+          "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+          "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
+          "sha256": "3b23172dfabb05bb0826b1d2d8c07721dbcb0e7a8ad3ec663ff3dcc5fa391900",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+            "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-03",
+        "title": {
+          "en-GB": "Build the skewers",
+          "pt-BR": "Monte os espetinhos"
+        },
+        "instruction": {
+          "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+          "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+        },
+        "ingredientIds": [
+          "cherry-tomatoes",
+          "basil",
+          "mini-mozzarella"
+        ],
+        "equipmentIds": [
+          "skewers"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+          "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+        },
+        "safety": {
+          "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+          "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+          "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
+          "sha256": "06c839fa2fd18b45fe0f3a1c1e30063b14887cbb9753645cd106cde7d30faa96",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+            "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-04",
+        "title": {
+          "en-GB": "Dress the skewers",
+          "pt-BR": "Tempere os espetinhos"
+        },
+        "instruction": {
+          "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+          "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+        },
+        "ingredientIds": [
+          "olive-oil",
+          "balsamic-vinegar"
+        ],
+        "equipmentIds": [
+          "small-bowl"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+          "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+        },
+        "safety": {
+          "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+          "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+          "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
+          "sha256": "d2696331972d254af2802f2e15b6b5e189f626aaaaeb7fae472faba125e45065",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+            "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      },
+      {
+        "id": "step-05",
+        "title": {
+          "en-GB": "Serve chilled",
+          "pt-BR": "Sirva gelado"
+        },
+        "instruction": {
+          "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+          "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+        },
+        "ingredientIds": [
+          "cherry-tomatoes",
+          "mini-mozzarella",
+          "basil"
+        ],
+        "equipmentIds": [
+          "serving-plate"
+        ],
+        "adultAssist": {
+          "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+          "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+        },
+        "safety": {
+          "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+          "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+        },
+        "heatOrKnifeCue": {
+          "en-GB": "An adult cuts the tomatoes. Children use only short blunt skewers with an adult beside them; do not run or wave skewers.",
+          "pt-BR": "Um adulto corta os tomates. As crianças usam apenas espetos curtos e sem ponta com um adulto ao lado. Não corram nem balancem os espetos."
+        },
+        "crossContaminationCue": {
+          "en-GB": "Wash hands and tools; check labels and prevent allergen cross-contact.",
+          "pt-BR": "Lave as mãos e os utensílios; confira rótulos e evite contato cruzado com alergênicos."
+        },
+        "artworkPath": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
+        "artwork": {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
+          "sha256": "26581f80af29aad3169af956618c12fe919d0a9647e1e5f16931b02d27539eb8",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+            "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      }
+    ],
+    "adultAssistance": {
+      "en-GB": "Children wash, thread and arrange ingredients with an adult beside them; an adult cuts tomatoes and handles sharp tools.",
+      "pt-BR": "As crianças lavam, montam e organizam os ingredientes com um adulto ao lado; um adulto corta os tomates e cuida das ferramentas afiadas."
+    },
+    "finishedDish": {
+      "image": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/finished-dish.png",
+        "sha256": "f6cedf79d4d1e867d4b5dcdd6b81220a7cf4ff860feac3a93fe3f3f20c3fa33f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+          "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "description": {
+        "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+        "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+      }
+    },
+    "nutrition": {
+      "per_serving": {
+        "energyKcal": 169,
+        "proteinG": 10.8,
+        "carbohydrateG": 5.1,
+        "fatG": 11.8,
+        "fibreG": 1,
+        "saturatedFatG": 5.4,
+        "sodiumMg": 210
+      },
+      "status": "ESTIMATE_REVIEW_PENDING",
+      "basis": "Approximate per-serving estimate based on weighed recipe amounts and generic USDA FoodData Central ingredient data. Product composition and drained weights vary; not laboratory analysis.",
+      "method": "Scale generic FoodData Central nutrient data per 100 g by measured ingredient weights, sum and divide by 4; rounded values. Brand-specific sodium and fats vary.",
+      "sources": [
+        {
+          "source": "USDA FoodData Central",
+          "food": "Tomatoes, red, ripe, raw",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Tomatoes%2C%20red%2C%20ripe%2C%20raw"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Cheese, mozzarella, fresh, whole milk",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Cheese%2C%20mozzarella%2C%20fresh%2C%20whole%20milk"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Basil, fresh",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Basil%2C%20fresh"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Oil, olive, salad or cooking",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Oil%2C%20olive%2C%20salad%20or%20cooking"
+        },
+        {
+          "source": "USDA FoodData Central",
+          "food": "Vinegar, balsamic",
+          "url": "https://fdc.nal.usda.gov/food-search/?query=Vinegar%2C%20balsamic"
+        }
+      ]
+    },
+    "allergens": [
+      "milk"
+    ],
+    "allergenNotes": {
+      "contains": [
+        "milk"
+      ],
+      "cross_contact": {
+        "en-GB": "Check ingredient packaging for allergens and cross-contact. The mozzarella contains milk; balsamic vinegar may contain sulphites. Noodles contain wheat/gluten, soy sauce contains soy and wheat, and sesame oil contains sesame.",
+        "pt-BR": "Confira as embalagens para alergênicos e contato cruzado. A muçarela contém leite; o vinagre balsâmico pode conter sulfitos. O macarrão contém trigo/glúten, o molho de soja contém soja e trigo, e o óleo de gergelim contém gergelim."
+      }
+    },
+    "reviews": {
+      "A08": "PENDING",
+      "A09": "PENDING",
+      "nutrition_allergen": "PENDING",
+      "translation_cultural": "PENDING",
+      "artwork_rights": "PENDING_REVIEW",
+      "security": "PENDING"
+    },
+    "artwork": {
+      "finishedDish": {
+        "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/finished-dish.png",
+        "sha256": "f6cedf79d4d1e867d4b5dcdd6b81220a7cf4ff860feac3a93fe3f3f20c3fa33f",
+        "mime_type": "image/png",
+        "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+        "license": "AI-generated project asset; independent rights review pending",
+        "rights_status": "PENDING_REVIEW",
+        "alt_text": {
+          "en-GB": "A no-cook snack inspired by the Italian combination of tomato, mozzarella and basil.",
+          "pt-BR": "Um lanche sem cozimento inspirado na combinação italiana de tomate, muçarela e manjericão."
+        },
+        "alt_text_source": "finished_dish.description",
+        "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+        "accessibility_role": "IMAGE_DESCRIPTION"
+      },
+      "ingredients": [
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/cherry-tomatoes.png",
+          "sha256": "a70bffbda30cd986f296d33d07904acebba1a607c92caada5e789c7d0d7373ba",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Cherry tomatoes",
+            "pt-BR": "Tomates-cereja"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/mini-mozzarella.png",
+          "sha256": "f892ecd1a7c67f98500fbd367d241cac88d57fa98794b478512a850c562674e0",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Mini mozzarella balls",
+            "pt-BR": "Bol mini de muçarela"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/basil.png",
+          "sha256": "231bbc9857c45a3f4ac0a355ae42fceb48d15fb88df3fa7ae0978624070a9c77",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Fresh basil leaves",
+            "pt-BR": "Folhas de manjericão fresco"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/olive-oil.png",
+          "sha256": "bad8a7e706078807a9661c7b2677d779a9964346b2341fb69cf27119f3f2a45b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Olive oil",
+            "pt-BR": "Azeite de oliva"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/ingredients/balsamic-vinegar.png",
+          "sha256": "7fcd09833738ce0567980d9afe66d1427610949341ea436a33c36bd8a3e11cfc",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Balsamic vinegar",
+            "pt-BR": "Vinagre balsâmico"
+          },
+          "alt_text_source": "ingredientItems[].name",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ],
+      "equipment": [
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/skewers.png",
+          "sha256": "ae105b7064b12ba7dcd1d71a269f6b6204bdb2faf5a35515d36b3b0482a2055a",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/chopping-board.png",
+          "sha256": "8a01ea7b5fc1f50f2c5e216f441eff4a4208e5dbeb1c18b28ccf28cc3cf13d5f",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/knife.png",
+          "sha256": "406c15fa58aa2156e8d7b4922816d8f95b59897004f6a51b3126d43bfa40d43b",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/small-bowl.png",
+          "sha256": "e25af75d11751b4c56ae1b85298329c95df43ab4cbc1e4191d66373141303677",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/equipment/serving-plate.png",
+          "sha256": "1ed95bda24bfa70e4338d1151c1192c158a4749d8edc5809d23fd3b667c663d1",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "accessibility_role": "NOT_RENDERED_APPROVED_TEXT_CHIP",
+          "alt_text_status": "NOT_RENDERED_BY_APPROVED_TEXT_CHIP_PREP_BOARD"
+        }
+      ],
+      "steps": [
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-01.png",
+          "sha256": "3bcde86acd0fe63009246d687008bda7c2cb0a6d75118ac87b25d40c3c544562",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Wash hands, tomatoes and basil. Dry them with a clean towel.",
+            "pt-BR": "Lave as mãos, os tomates e o manjericão. Seque com um pano limpo."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-02.png",
+          "sha256": "3b23172dfabb05bb0826b1d2d8c07721dbcb0e7a8ad3ec663ff3dcc5fa391900",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "An adult halves the tomatoes on a stable board; children keep hands away from the knife.",
+            "pt-BR": "Um adulto corta os tomates ao meio em uma tábua estável; crianças mantêm as mãos longe da faca."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-03.png",
+          "sha256": "06c839fa2fd18b45fe0f3a1c1e30063b14887cbb9753645cd106cde7d30faa96",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Thread tomato halves, basil leaves and mozzarella onto short blunt skewers. Adults supervise; do not run or wave skewers.",
+            "pt-BR": "Coloque tomates, manjericão e muçarela em espetos curtos sem ponta. Um adulto supervisiona; não corra nem balance os espetos."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-04.png",
+          "sha256": "d2696331972d254af2802f2e15b6b5e189f626aaaaeb7fae472faba125e45065",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Drizzle with olive oil and balsamic vinegar. Keep chilled until serving.",
+            "pt-BR": "Regue com azeite e vinagre balsâmico. Mantenha refrigerado até servir."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        },
+        {
+          "path": "content/international/countries/italy/097-mini-caprese-skewers/artwork/steps/step-05.png",
+          "sha256": "26581f80af29aad3169af956618c12fe919d0a9647e1e5f16931b02d27539eb8",
+          "mime_type": "image/png",
+          "provenance": "Generated with OpenAI ImageGen using the owner-approved Aaria style reference; asset tiles cropped from recipe-specific object sheet; rights review pending.",
+          "license": "AI-generated project asset; independent rights review pending",
+          "rights_status": "PENDING_REVIEW",
+          "alt_text": {
+            "en-GB": "Arrange the skewers on a plate and serve promptly. Refrigerate leftovers.",
+            "pt-BR": "Arrume os espetinhos em um prato e sirva logo. Refrigere as sobras."
+          },
+          "alt_text_source": "steps[].instruction",
+          "alt_text_status": "SOURCE_DERIVED_PENDING_ACCESSIBILITY_REVIEW",
+          "accessibility_role": "IMAGE_DESCRIPTION"
+        }
+      ]
+    },
+    "sourcesAndSafety": {
+      "foodSafetySource": "https://www.food.gov.uk/safety-hygiene/cooking-your-food"
+    },
+    "safety": {
+      "en-GB": "Adult handles the sharp knife. Use short blunt skewers, supervise children, keep them pointed down and do not run. Keep mozzarella chilled; refrigerate leftovers promptly.",
+      "pt-BR": "Um adulto usa a faca afiada. Use espetos curtos sem ponta, supervisione as crianças, mantenha as pontas para baixo e não corra. Mantenha a muçarela refrigerada e refrigere as sobras sem demora."
+    },
+    "artworkApproval": {
+      "style_reference": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "approved_in_issue_comment": 6367104240,
+      "rights_review": "PENDING"
+    }
+  }
+}
