@@ -116,7 +116,7 @@ test('host delegates recipe, Back and Passport navigation and localizes country 
 
 test('module handoff, Android host and production transform are wired and preserve screen ownership', async () => {
   const [doc,runtime,transform,moduleJs,moduleCss,smoke,artwork,decor,tabletSmoke] = await Promise.all([
-    readFile(new URL('../../docs/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md', import.meta.url),'utf8'),
+    readFile(new URL('../../.github/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/runtime.js', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/transform-production.mjs', import.meta.url),'utf8'),
     readFile(new URL('../../tools/v3/world-adventure-globe/world-adventure-globe.js', import.meta.url),'utf8'),
