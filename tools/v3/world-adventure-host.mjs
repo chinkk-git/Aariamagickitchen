@@ -7,6 +7,17 @@ export const WORLD_ADVENTURE_INDIA_RECIPE_IDS = Object.freeze([
   51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 69, 72, 74
 ]);
 
+// Shared V3.5 country catalogue. This is also consumed by the Home cards and
+// the review globe, so both routes resolve the same canonical recipe IDs.
+export const V35_COUNTRY_RECIPE_IDS = Object.freeze({
+  IND: WORLD_ADVENTURE_INDIA_RECIPE_IDS,
+  ITA: Object.freeze([96, 97, 98]),
+  CHN: Object.freeze([99, 100, 101]),
+  JPN: Object.freeze([102, 103, 104]),
+  MEX: Object.freeze([105, 106, 107]),
+  VNM: Object.freeze([108, 109, 110, 111, 112, 113, 114, 115, 116])
+});
+
 const COUNTRY_LABELS = Object.freeze({
   IND: Object.freeze({ 'en-GB': 'India', 'pt-BR': 'Índia', flag: '🇮🇳' }),
   ITA: Object.freeze({ 'en-GB': 'Italy', 'pt-BR': 'Itália', flag: '🇮🇹' }),
@@ -60,6 +71,7 @@ function immutableRecipeDescriptor(recipe, locale, country, getLocalizedRecipe) 
  */
 export function createWorldAdventureHost({
   canonicalRecipes,
+  countryRecipeIds = V35_COUNTRY_RECIPE_IDS,
   locale = 'en-GB',
   passportSnapshot = {},
   getLocalizedRecipe,
@@ -85,35 +97,35 @@ export function createWorldAdventureHost({
   for (let id = 1; id <= 95; id++) if (!byId.has(id)) {
     throw new TypeError('canonicalRecipes must preserve every original ID 1–95');
   }
-  const indiaRecipes = WORLD_ADVENTURE_INDIA_RECIPE_IDS
-    .map(id => byId.get(id))
-    .filter(Boolean)
-    .map(recipe => immutableRecipeDescriptor(recipe, locale, 'IND', getLocalizedRecipe));
-  const indiaHasFullMapping = indiaRecipes.length === WORLD_ADVENTURE_INDIA_RECIPE_IDS.length;
-  const internationalByCountry = new Map();
-  for (const recipe of canonicalRecipes) {
-    if (Number(recipe.id) <= 95 || !validInternationalRecord(recipe)) continue;
-    const approval = recipe.worldAdventure;
-    const code = WORLD_COUNTRY_ALIASES[String(approval.countryCode || '').toUpperCase()];
-    if (!code || code === 'IND') continue;
-    if (!internationalByCountry.has(code)) internationalByCountry.set(code, []);
-    internationalByCountry.get(code).push(immutableRecipeDescriptor(recipe, locale, code, getLocalizedRecipe));
+  const countryEntries = new Map();
+  const mappedIds = new Set();
+  for (const [rawCode, ids] of Object.entries(countryRecipeIds || {})) {
+    const code = WORLD_COUNTRY_ALIASES[String(rawCode).toUpperCase()];
+    if (!code || !Array.isArray(ids)) throw new TypeError('V3.5 country mapping contains an invalid country or ID list');
+    const descriptors = ids.map(rawId => {
+      const id = Number(rawId), recipe = byId.get(id);
+      if (!Number.isSafeInteger(id) || !recipe || mappedIds.has(id)) throw new TypeError('V3.5 country mapping must use existing, unique recipe IDs');
+      mappedIds.add(id);
+      if (code !== 'IND' && id <= 95) throw new TypeError('International V3.5 mappings may not replace the original 95-recipe base');
+      return immutableRecipeDescriptor(recipe, locale, code, getLocalizedRecipe);
+    });
+    countryEntries.set(code, descriptors);
   }
-  for (const recipes of internationalByCountry.values()) recipes.sort((a, b) => a.id - b.id);
+  const indiaHasFullMapping = (countryEntries.get('IND') || []).length === WORLD_ADVENTURE_INDIA_RECIPE_IDS.length;
   const savedStamps = Array.isArray(passportSnapshot.worldStamps)
-    ? [...new Set(passportSnapshot.worldStamps.filter(code => code === 'IND' || (COUNTRY_LABELS[code] && internationalByCountry.has(code))))]
+    ? [...new Set(passportSnapshot.worldStamps.filter(code => code === 'IND' && indiaHasFullMapping))]
     : [];
 
   function country(code) {
     const key = String(code || '').toUpperCase();
     const labels = COUNTRY_LABELS[key];
     if (!labels) return Object.freeze({ code: key, available: false, label: '', recipes: Object.freeze([]) });
-    const recipes = key === 'IND' ? (indiaHasFullMapping ? indiaRecipes : []) : (internationalByCountry.get(key) || []);
+    const recipes = countryEntries.get(key) || [];
     const available = recipes.length > 0;
     return Object.freeze({
       code: key,
       available,
-      reviewOnly: !available,
+      reviewOnly: available && key !== 'IND',
       label: labels[locale],
       flag: labels.flag,
       recipes: Object.freeze([...recipes])
@@ -132,7 +144,8 @@ export function createWorldAdventureHost({
       const countryCode = WORLD_COUNTRY_ALIASES[String(recipe?.worldAdventure?.countryCode || '').toUpperCase()];
       const internationalApproved = Number.isSafeInteger(id) && id > 95 && validInternationalRecord(recipe) &&
         Boolean(countryCode && countryCode !== 'IND' && COUNTRY_LABELS[countryCode]);
-      if (!indiaApproved && !internationalApproved) return false;
+      const mappedForReview = [...countryEntries.values()].some(recipes => recipes.some(item => item.id === id));
+      if (!indiaApproved && !internationalApproved && !mappedForReview) return false;
       return onOpenRecipe(id) !== false;
     },
     back(scope = 'screen') {

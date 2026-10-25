@@ -50,6 +50,7 @@ body.v3-screen-home #languageBar,body.v31-screen-world #languageBar{display:none
 .v31-destination-art:has(>img):before{display:none}
 .v31-destination-art:before{position:absolute;inset:0;background:radial-gradient(circle at 25% 28%,#fff8 0 2%,transparent 3%),radial-gradient(circle at 76% 68%,#fff8 0 2%,transparent 3%);content:""}
 .v31-destination-art>span{position:absolute;right:17%;bottom:10%;font-size:22px}.v31-destination-art>i{position:absolute;top:9px;right:12px;color:#e6b445;font-size:18px;font-style:normal}
+.v31-destination-art>.v35-country-flag{position:absolute;z-index:2;right:7px;bottom:6px;display:grid;place-items:center;min-width:28px;height:25px;padding:0 4px;border:1px solid #fff;border-radius:999px;background:#fffef5e8;box-shadow:0 2px 6px #33224435;font-size:18px;line-height:1}
 .v31-country-ita{background:linear-gradient(145deg,#e0f1dc,#ffe8dc)}.v31-country-chn{background:linear-gradient(145deg,#ffe4d9,#fff0c9)}.v31-country-jpn{background:linear-gradient(145deg,#e5effd,#f8e7ee)}.v31-country-mex{background:linear-gradient(145deg,#e4f2db,#fee3d5)}
 .v31-destination-tile>strong,.v31-world-recipe-tile>strong{margin:6px 8px 1px;font-size:12px;line-height:1.15}.v31-destination-tile>small{margin:0 8px;color:#75667e;font-size:10px;line-height:1.2}
 .v31-home-quick-links{display:flex;justify-content:center;gap:9px}.v31-home-quick-links button{min-height:38px;padding:6px 12px;border:1px solid #eadbea;border-radius:13px;background:#fff;color:#60417e;font-size:11px;font-weight:800}

@@ -131,9 +131,9 @@ for (const recipe of pilot.recipes) {
   if([...usedFdcIds].some(id=>!recipe.nutritionSourceUrls?.some(url=>url===`https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=DEMO_KEY`)))fail(`Pilot recipe ${expected} is missing its direct USDA FoodData Central API record URL.`);
   if (/pizza/i.test(`${recipe.record.title} ${recipe.record.description}`)) fail('Pizza is not an eligible Italy/China pilot recipe.');
 }
-if (!runtime.includes('V32_INTERNATIONAL_RECIPES') || !runtime.includes('RECIPES.push(r)') || runtime.includes('data-v31-approved-recipe="${p.id}"')) fail('Only the two W01-pinned #096/#099 review recipes may extend the 95-recipe runtime catalogue; W31 draft recipes must remain excluded.');
-if (!transform.includes("JSON.stringify(internationalPackage.recipes.map(recipe => recipe.id)) !== JSON.stringify([96,99])")) fail('W01 review catalogue must stay pinned to international recipe IDs #096 and #099.');
+if (!runtime.includes('V32_INTERNATIONAL_RECIPES') || !runtime.includes('RECIPES.push(r)') || runtime.includes('data-v31-approved-recipe="${p.id}"')) fail('International review recipes must extend the immutable 95-recipe runtime catalogue without being presented as approved W31 recipes.');
+if (!transform.includes('internationalPackage.packageVersion !== \'3.5-review\'') || !transform.includes('expectedInternationalReviewIds')) fail('The V3.5 review catalogue must include international recipe IDs #096–116.');
 if (!transform.includes('wheel|world')) fail('Android back navigation does not recognize the World screen.');
 if (!dataNotes.includes('public domain') || !dataNotes.includes('not suitable for navigation')) fail('Map source/licensing limitations are not documented.');
 if (/https?:\/\/(?:api\.mapbox\.com|maps\.googleapis\.com|tile\.openstreetmap\.org|api\.maptiler\.com)/i.test(runtime)) fail('Runtime map/recipe data must not depend on remote map services.');
-console.log(`PASS: ${recipes.length} original recipes preserved unchanged; ${geography.features.length} offline countries; India links ${approvedIndiaIds.length} original recipes; India’s 18 links are preserved; Italy #096 and China #099 are integrated; the other thirteen international concepts remain review-only.`);
+console.log(`PASS: ${recipes.length} original recipes preserved unchanged; ${geography.features.length} offline countries; India links ${approvedIndiaIds.length} original recipes; India’s 18 links are preserved; international IDs #096–116 remain review-only.`);

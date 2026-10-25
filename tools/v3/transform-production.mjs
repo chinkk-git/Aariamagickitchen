@@ -35,7 +35,7 @@ const homeWorldArt = {
   friends: readReferenceImage('tools/v3/artwork/characters/reference-derived/home-approved-dog-crop.png'),
   kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
   worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),
-  destinations: Object.fromEntries(['IND'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
+  destinations: Object.fromEntries(['IND','ITA','CHN','JPN','MEX','VNM'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
   avatars: Object.fromEntries(['mommy','daddy','rohan','arjun','vihaan','isha','meera','sana','diya'].map(key => [key, readReferenceImage(`tools/v3/artwork/characters/reference-derived/${key}.webp`)]))
 };
 const worldAdventureArtwork = {
@@ -373,7 +373,8 @@ const v32CanonicalIds = new Set(Object.keys(v32RecipeThemeMap.mapping).map(Numbe
 if (new Set(v32ReviewFeaturedIds).size !== v32ReviewFeaturedIds.length || v32ReviewFeaturedIds.some(id => !Number.isInteger(id) || !v32CanonicalIds.has(id))) throw new Error('V32_REVIEW_FEATURED_IDS must contain unique canonical recipe IDs.');
 const internationalPackagePath = path.join(root, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
 const internationalPackage = JSON.parse(fs.readFileSync(internationalPackagePath, 'utf8'));
-if (internationalPackage.sourceCommit !== '451ab0bf8a3ab1867cf004a113d3d8e6896ccf60' || JSON.stringify(internationalPackage.recipes.map(recipe => recipe.id)) !== JSON.stringify([96,99])) throw new Error('Production catalogue must consume the pinned W03 #096/#099 package.');
+const expectedInternationalReviewIds = [96,97,98,99,...Array.from({length:17},(_,i)=>100+i)];
+if (internationalPackage.packageVersion !== '3.5-review' || internationalPackage.reviewOnly !== true || internationalPackage.gatesRemainPending !== true || JSON.stringify(internationalPackage.recipes.map(recipe => Number(recipe.id))) !== JSON.stringify(expectedInternationalReviewIds)) throw new Error('Production catalogue must consume the complete V3.5 review-only international package #096–116.');
 const v32InternationalRecipes = internationalPackage.recipes;
 const v32PtRecipeDrafts = {};
 const v32PtGroupRoleCopy = {};

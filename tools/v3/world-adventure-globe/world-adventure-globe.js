@@ -386,6 +386,7 @@
         return false;
       },
       getState: function () { return { rotation: state.rotation, selected: state.selected, pending: state.pending }; },
+      selectCountry: function (id) { selectCountry(id); },
       setLocale: function (next) { locale = chooseLocale(next); words = WORDS[locale]; shell.lang = locale; panelKey = null; renderPanel(true); },
       setDestinations: function (next) { destinations = normalizeData(next, locale); destinationsVersion++; if (!getCountry(state.selected)) state.selected = null; if (!getCountry(state.pending)) state.pending = null; render(); },
       restoreState: function (next) { next = next || {}; state.rotation = Number(next.rotation) || 0; state.selected = getCountry(next.selected) ? next.selected : null; state.pending = getCountry(next.pending) ? next.pending : null; state.portraitOverlayOpen = !!state.selected && isPortrait(); wasPortrait = isPortrait(); render(); },
@@ -440,6 +441,7 @@
       if (restoredState) renderer.restoreState(restoredState);
       return {
         serialize: function () { return renderer.getState(); },
+        selectCountry: function (id) { renderer.selectCountry(id); },
         restore: function (savedState) { renderer.restoreState(savedState); },
         setOrientation: function (orientation) {
           if (orientation !== "portrait" && orientation !== "landscape") return;

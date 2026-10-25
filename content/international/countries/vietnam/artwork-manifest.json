@@ -1,0 +1,492 @@
+{
+  "schema_version": "1.0",
+  "release_state": "DRAFT",
+  "style_guide": "content/international/ARTWORK_STYLE_GUIDE.json",
+  "approved_style_reference": {
+    "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+  },
+  "reference_conditioning": "Assets were generated from recipe-specific prompts using the locked guide text; reference image binary was not provided as a conditioning input in this generation run.",
+  "policy": {
+    "review_status": "PENDING",
+    "rights_status": "PENDING",
+    "nutrition": "PENDING_SOURCE_AND_CALCULATION",
+    "equipment_illustrations": "NOT_REQUIRED_TEXT_CHIPS_ONLY",
+    "all_recipes_draft": true
+  },
+  "recipes": [
+    {
+      "id": 111,
+      "title": "Quick Chicken Phở",
+      "title_pt": "Phở rápido de frango",
+      "status": "DRAFT",
+      "bundle_path": "content/international/countries/vietnam/111-quick-chicken-pho",
+      "step_count": 4,
+      "step_images": [
+        {
+          "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-01.png",
+          "sha256": "61f324dabbb76b051623d078d0c6a8621bfa22be2b914e26a86750804c09daa9",
+          "alt_text": {
+            "en-GB": "Aaria rinses fresh herbs and bean sprouts in a colander.",
+            "pt-BR": "Aaria lava ervas frescas e brotos de feijão no escorredor."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-02.png",
+          "sha256": "f51a543e54d595d10cedf10966f0138cc72d136fa13e9606a0062670e426702e",
+          "alt_text": {
+            "en-GB": "Mommy prepares chicken phở broth while Aaria sorts herbs at a separate counter.",
+            "pt-BR": "Mamãe prepara o caldo de phở de frango enquanto Aaria organiza ervas em outra bancada."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-03.png",
+          "sha256": "7a068fa1bcc1648e51af7769b9b53e3b9c70a47620da18cc4ad979b99afcab72",
+          "alt_text": {
+            "en-GB": "Aaria stirs rice noodles in a saucepan with Mommy beside her, steadying the handle.",
+            "pt-BR": "Aaria mexe macarrão de arroz na panela com Mamãe ao lado, segurando o cabo."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-04.png",
+          "sha256": "8a2917c37d96102eb0f01ffc14a13617be427f5763276c1d22c58c8a4853d6af",
+          "alt_text": {
+            "en-GB": "Aaria assembles cooked chicken, noodles and herbs at the counter.",
+            "pt-BR": "Aaria monta frango cozido, macarrão e ervas na bancada."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        }
+      ],
+      "finished_dish": {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/finished/finished-dish.png",
+        "sha256": "900c9a3d0f7a6b9cdc64bbb19cb9cbbece2bf18f3d9b1e4580a99fc6e07c6d3a",
+        "alt_text": {
+          "en-GB": "Finished chicken phở with rice noodles, cooked chicken, herbs, sprouts and lime.",
+          "pt-BR": "Phở de frango pronto com macarrão de arroz, frango cozido, ervas, brotos e limão."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "ingredient_images": [],
+      "note": "Ingredient art is not separate; ingredients appear in the step and finished-dish scenes and are listed bilingually in recipe-draft.json."
+    },
+    {
+      "id": 112,
+      "title": "Tofu & Vegetable Phở",
+      "title_pt": "Phở de tofu e legumes",
+      "status": "DRAFT",
+      "bundle_path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho",
+      "step_count": 4,
+      "step_images": [
+        {
+          "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-01.png",
+          "sha256": "cc6580f7eae20cecb406654d42a9f425c31b930c029d17ce5b8a15f0cfb2e939",
+          "alt_text": {
+            "en-GB": "Aaria rinses tofu and vegetables with Mommy supervising.",
+            "pt-BR": "Aaria lava tofu e legumes com Mamãe supervisionando."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-02.png",
+          "sha256": "694593c956f5994dd644e6e52825660404673ab4282403d4c52f8a93b917dac3",
+          "alt_text": {
+            "en-GB": "Daddy prepares vegetable phở broth while Aaria sorts herbs well away.",
+            "pt-BR": "Papai prepara caldo de phở de legumes enquanto Aaria organiza ervas a uma distância segura."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-03.png",
+          "sha256": "f04423d1bb70cd330f19f90c2dcbf8deedc57bd19f59b2c8875d05dba46a6e2d",
+          "alt_text": {
+            "en-GB": "Aaria stirs rice noodles in a saucepan while Mommy steadies the handle.",
+            "pt-BR": "Aaria mexe macarrão de arroz na panela enquanto Mamãe segura o cabo."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-04.png",
+          "sha256": "2c153d2b4f7f039a1d885dfd63195151e95e188b69f288a976986e9a07d6c97b",
+          "alt_text": {
+            "en-GB": "Aaria assembles noodles, cooked tofu and vegetables in a bowl.",
+            "pt-BR": "Aaria monta macarrão, tofu cozido e legumes em uma tigela."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        }
+      ],
+      "finished_dish": {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/finished/finished-dish.png",
+        "sha256": "cd56f21df6051148e398c971b5f81654f75a49001f70b6fa21e69535331387b6",
+        "alt_text": {
+          "en-GB": "Finished tofu and vegetable phở with noodles, tofu, bok choy, mushrooms and herbs.",
+          "pt-BR": "Phở de tofu e legumes pronto com macarrão, tofu, acelga chinesa, cogumelos e ervas."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "ingredient_images": [],
+      "note": "Ingredient art is not separate; ingredients appear in the step and finished-dish scenes and are listed bilingually in recipe-draft.json."
+    },
+    {
+      "id": 113,
+      "title": "Simple Beef Phở",
+      "title_pt": "Phở simples de carne bovina",
+      "status": "DRAFT",
+      "bundle_path": "content/international/countries/vietnam/113-simple-beef-pho",
+      "step_count": 4,
+      "step_images": [
+        {
+          "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-01.png",
+          "sha256": "556207dd7667758e4ebe05d9716d8819f41debe73bbfd64ac19e85d396ec7186",
+          "alt_text": {
+            "en-GB": "Daddy slices raw beef on a dedicated board; Aaria works at a separate counter.",
+            "pt-BR": "Papai fatia carne crua em tábua exclusiva; Aaria trabalha em outra bancada."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-02.png",
+          "sha256": "7445a2a4425a7d99e2da20a1a86c1d0e6ac4eb1393d57d79ce7fdb589c61a02a",
+          "alt_text": {
+            "en-GB": "Mommy tends the beef broth while Aaria prepares herbs far away.",
+            "pt-BR": "Mamãe cuida do caldo de carne enquanto Aaria prepara ervas longe dali."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-03.png",
+          "sha256": "c9a8217bd8ba8668fed70a3e58ad2f18e312641b94cb6196e78e4a929731efd7",
+          "alt_text": {
+            "en-GB": "Aaria stirs noodles in a saucepan as Daddy steadies the handle.",
+            "pt-BR": "Aaria mexe macarrão na panela enquanto Papai segura o cabo."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-04.png",
+          "sha256": "3d85e393762412f0782033c730c39d10267d1c0d00e152e10257ca0bd1ea6dac",
+          "alt_text": {
+            "en-GB": "Mommy pours hot broth into bowls with cooked beef and noodles.",
+            "pt-BR": "Mamãe serve caldo quente em tigelas com carne cozida e macarrão."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        }
+      ],
+      "finished_dish": {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/finished/finished-dish.png",
+        "sha256": "1a092370310c69502184eed9e686dab57ca2f979314beef70f2258238169aa1c",
+        "alt_text": {
+          "en-GB": "Finished beef phở with noodles, cooked beef, herbs, sprouts and lime.",
+          "pt-BR": "Phở de carne pronto com macarrão, carne cozida, ervas, brotos e limão."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "ingredient_images": [],
+      "note": "Ingredient art is not separate; ingredients appear in the step and finished-dish scenes and are listed bilingually in recipe-draft.json."
+    },
+    {
+      "id": 114,
+      "title": "Air-Fryer Crispy Tofu Rice Bowl",
+      "title_pt": "Tigela de arroz com tofu crocante na air fryer",
+      "status": "DRAFT",
+      "bundle_path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl",
+      "step_count": 4,
+      "step_images": [
+        {
+          "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-01.png",
+          "sha256": "6de8af0f9924dca3a9883e8e0362910373d3f841f178e1152ea156a93f0023f4",
+          "alt_text": {
+            "en-GB": "Aaria presses tofu dry with a clean towel.",
+            "pt-BR": "Aaria seca tofu com um pano limpo."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-02.png",
+          "sha256": "0e829e1bb1855984370b91b240cf881dc21d3a8f9dcc56c4541dfbe68df5eb74",
+          "alt_text": {
+            "en-GB": "Aaria coats tofu cubes with oil and mild seasoning.",
+            "pt-BR": "Aaria mistura cubos de tofu com óleo e tempero suave."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-03.png",
+          "sha256": "cd4fdabd2fdd2dbdf421e1e3dbf0f49e07a4d04e092eb3cfe4e131a6d5aaf9f8",
+          "alt_text": {
+            "en-GB": "Daddy operates the air fryer while Aaria watches from a safe distance.",
+            "pt-BR": "Papai opera a air fryer enquanto Aaria observa a uma distância segura."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-04.png",
+          "sha256": "51fbc3368709370a37ede5b8705fe58b89c5ea9b37a220f5f86fadc46ea9f76f",
+          "alt_text": {
+            "en-GB": "Aaria assembles rice, crispy tofu and vegetables in a bowl.",
+            "pt-BR": "Aaria monta arroz, tofu crocante e legumes em uma tigela."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        }
+      ],
+      "finished_dish": {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/finished/finished-dish.png",
+        "sha256": "9f76259426fccc531f7fe306d05bdc74e89884bacac6338f016668948d7ace1a",
+        "alt_text": {
+          "en-GB": "Finished crispy tofu rice bowl with cucumber, carrot and spring onion.",
+          "pt-BR": "Tigela pronta de arroz com tofu crocante, pepino, cenoura e cebolinha."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "ingredient_images": [],
+      "note": "Ingredient art is not separate; ingredients appear in the step and finished-dish scenes and are listed bilingually in recipe-draft.json."
+    },
+    {
+      "id": 115,
+      "title": "Lemongrass Chicken Rice Bowl",
+      "title_pt": "Tigela de arroz com frango à erva-cidreira",
+      "status": "DRAFT",
+      "bundle_path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl",
+      "step_count": 4,
+      "step_images": [
+        {
+          "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-01.png",
+          "sha256": "f28304412da2151c288ddda28fac225b7c44e663df13908289f5b74250da136d",
+          "alt_text": {
+            "en-GB": "Mommy chops lemongrass while Aaria measures rice at a separate counter.",
+            "pt-BR": "Mamãe pica erva-cidreira enquanto Aaria mede arroz em outra bancada."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-02.png",
+          "sha256": "f44d5428f6a389e6b9fcd68716234817b5494980289478deedba086fb9dde7d7",
+          "alt_text": {
+            "en-GB": "Daddy handles raw chicken while Aaria rinses rice separately.",
+            "pt-BR": "Papai cuida do frango cru enquanto Aaria lava arroz separadamente."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-03.png",
+          "sha256": "a9fccb7b214d62a88d369a17e4078bf10212b5cedbd6031349c2b58574e84843",
+          "alt_text": {
+            "en-GB": "Daddy cooks lemongrass chicken in a pan while Aaria prepares rice bowls away from the stove.",
+            "pt-BR": "Papai cozinha frango com erva-cidreira na frigideira enquanto Aaria prepara arroz longe do fogão."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-04.png",
+          "sha256": "f2d736bf8655805e90e5f0c88a87ff561ec32aee559844a62f1bb81643b123a3",
+          "alt_text": {
+            "en-GB": "Aaria adds cooked lemongrass chicken to a rice bowl with Mommy helping.",
+            "pt-BR": "Aaria coloca frango cozido com erva-cidreira na tigela com a ajuda da Mamãe."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        }
+      ],
+      "finished_dish": {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/finished/finished-dish.png",
+        "sha256": "19afeb3adc51df07c5f5730841ee144746dc32dec1c5fd51152ba4f9823924c2",
+        "alt_text": {
+          "en-GB": "Finished lemongrass chicken rice bowl with rice, cucumber, carrot and herbs.",
+          "pt-BR": "Tigela pronta de arroz com frango à erva-cidreira, pepino, cenoura e ervas."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "ingredient_images": [],
+      "note": "Ingredient art is not separate; ingredients appear in the step and finished-dish scenes and are listed bilingually in recipe-draft.json."
+    },
+    {
+      "id": 116,
+      "title": "Air-Fryer Banana Coconut Bites",
+      "title_pt": "Bolinhos de banana e coco na air fryer",
+      "status": "DRAFT",
+      "bundle_path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites",
+      "step_count": 4,
+      "step_images": [
+        {
+          "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-01.png",
+          "sha256": "dba238f4727d8e3633b5cf9d590c9f4b9a1aa8f173d08392d85196ee1ae1f397",
+          "alt_text": {
+            "en-GB": "Aaria peels ripe bananas into a bowl while Daddy supervises.",
+            "pt-BR": "Aaria descasca bananas maduras em uma tigela com Papai supervisionando."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-02.png",
+          "sha256": "04b18f6daab011e24fa650b1f906b60063c90f439a6f0a64d08bf1f5a5f5db2e",
+          "alt_text": {
+            "en-GB": "Aaria mashes banana and stirs coconut into the mixture.",
+            "pt-BR": "Aaria amassa banana e mistura coco."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-03.png",
+          "sha256": "ee9bdd20058e6b2f30910c417d5d9b955a8ea18f85fb3beb81fbd5de3ab953d5",
+          "alt_text": {
+            "en-GB": "Daddy uses oven mitts to handle the air-fryer basket while Aaria watches from a distance.",
+            "pt-BR": "Papai usa luvas térmicas para cuidar do cesto da air fryer enquanto Aaria observa de longe."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        },
+        {
+          "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-04.png",
+          "sha256": "e7a66b12ab380a84728d996c917bf7309061b9e08724bc977cccbf181ee4d77a",
+          "alt_text": {
+            "en-GB": "Aaria sprinkles coconut over cooled banana bites.",
+            "pt-BR": "Aaria polvilha coco sobre bolinhos de banana já frios."
+          },
+          "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+          "rights_status": "PENDING_REVIEW",
+          "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+          "square_composition": true,
+          "contains_text": false
+        }
+      ],
+      "finished_dish": {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/finished/finished-dish.png",
+        "sha256": "7f92da4fb24ccc82c5949bf07697d0773af1232914b0b03c50851dde53838655",
+        "alt_text": {
+          "en-GB": "Finished golden banana coconut bites on a plate.",
+          "pt-BR": "Bolinhos dourados de banana e coco prontos em um prato."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "ingredient_images": [],
+      "note": "Ingredient art is not separate; ingredients appear in the step and finished-dish scenes and are listed bilingually in recipe-draft.json."
+    }
+  ],
+  "asset_count": 30,
+  "recipe_count": 6,
+  "prior_generated_hero_drafts": {
+    "111": "babdee6934bd4706cff603b3d46538ff0ccd667c",
+    "112": "027c8222120ab3b210c092c5d1f79588c20f0fb8",
+    "113": "19f49760928b49275793db6242a67ed7de41f08d",
+    "114": "f11c6919adfd810586b4b0e18364e534385d13a6",
+    "115": "6c41323bb93db6543e3fb37d1bf6f2e1492d4513",
+    "116": "303ec275c8521defb11f60f019ab3b399f13ca44"
+  },
+  "prior_generated_hero_status": "RETAINED_AS_UNREVIEWED_DRAFT_CANDIDATES; selected finished-dish art in this package is a new draft candidate."
+}

@@ -1,0 +1,296 @@
+{
+  "id": 116,
+  "title": {
+    "en-GB": "Air-Fryer Banana Coconut Bites",
+    "pt-BR": "Bolinhos de banana e coco na air fryer"
+  },
+  "status": "DRAFT",
+  "servings": 2,
+  "ingredients": {
+    "en-GB": [
+      "2 ripe bananas, about 220 g peeled",
+      "80 g unsweetened desiccated coconut",
+      "20 g oat flour",
+      "1 g ground cinnamon, optional"
+    ],
+    "pt-BR": [
+      "2 bananas maduras, cerca de 220 g sem casca",
+      "80 g de coco ralado sem açúcar",
+      "20 g de farinha de aveia",
+      "1 g de canela em pó, opcional"
+    ]
+  },
+  "equipment": [
+    {
+      "en-GB": "Mixing bowl",
+      "pt-BR": "Tigela",
+      "role": {
+        "en-GB": "Aaria mashes and mixes at cool counter.",
+        "pt-BR": "Aaria amassa e mistura na bancada fria."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Fork and spoon",
+      "pt-BR": "Garfo e colher",
+      "role": {
+        "en-GB": "Aaria uses them with adult nearby.",
+        "pt-BR": "Aaria usa com adulto por perto."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Air fryer",
+      "pt-BR": "Air fryer",
+      "role": {
+        "en-GB": "Adult only operates and handles hot basket.",
+        "pt-BR": "Somente adulto opera e cuida do cesto quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Air-fryer-safe liner",
+      "pt-BR": "Forro próprio para air fryer",
+      "role": {
+        "en-GB": "Adult fits securely; never use loose paper.",
+        "pt-BR": "Adulto prende com segurança; nunca use papel solto."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": {
+        "en-GB": "Peel bananas.",
+        "pt-BR": "Descasque as bananas."
+      },
+      "instruction": {
+        "en-GB": "Aaria peels ripe bananas into a bowl while Daddy supervises.",
+        "pt-BR": "Aaria descasca bananas maduras em uma tigela com Papai supervisionando."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-01.png",
+        "sha256": "dba238f4727d8e3633b5cf9d590c9f4b9a1aa8f173d08392d85196ee1ae1f397",
+        "alt_text": {
+          "en-GB": "Aaria peels ripe bananas into a bowl while Daddy supervises.",
+          "pt-BR": "Aaria descasca bananas maduras em uma tigela com Papai supervisionando."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Aaria peels the bananas with Daddy nearby to help if needed.",
+        "pt-BR": "Aaria descasca as bananas com Papai por perto para ajudar se necessário."
+      },
+      "safety": {
+        "en-GB": "Aaria peels only ripe bananas by hand; an adult handles any sharp tools.",
+        "pt-BR": "Aaria descasca apenas bananas maduras com as mãos; um adulto cuida de qualquer ferramenta afiada."
+      }
+    },
+    {
+      "step_number": 2,
+      "title": {
+        "en-GB": "Mash and mix.",
+        "pt-BR": "Amasse e misture."
+      },
+      "instruction": {
+        "en-GB": "Aaria mashes bananas with a fork, then stirs in coconut, oat flour and optional cinnamon until combined.",
+        "pt-BR": "Aaria amassa bananas com um garfo e mistura coco, farinha de aveia e canela opcional até unir."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-02.png",
+        "sha256": "04b18f6daab011e24fa650b1f906b60063c90f439a6f0a64d08bf1f5a5f5db2e",
+        "alt_text": {
+          "en-GB": "Aaria mashes banana and stirs coconut into the mixture.",
+          "pt-BR": "Aaria amassa banana e mistura coco."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Aaria mashes and stirs the ingredients; an adult checks labels for oats and coconut cross-contact.",
+        "pt-BR": "Aaria amassa e mistura os ingredientes; um adulto confere os rótulos para verificar contato cruzado de aveia e coco."
+      },
+      "safety": {
+        "en-GB": "Check oat and coconut package labels and use clean utensils to avoid cross-contact.",
+        "pt-BR": "Confira os rótulos da aveia e do coco e use utensílios limpos para evitar contato cruzado."
+      }
+    },
+    {
+      "step_number": 3,
+      "title": {
+        "en-GB": "Shape and air-fry.",
+        "pt-BR": "Modele e prepare na air fryer."
+      },
+      "instruction": {
+        "en-GB": "Aaria shapes small bites on a plate. Adult places them in the air fryer, operates it and removes the hot basket with oven mitts. Keep Aaria away from the appliance.",
+        "pt-BR": "Aaria modela bolinhos pequenos. Adulto coloca na air fryer, opera e retira o cesto quente com luvas térmicas. Mantenha Aaria longe do aparelho."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-03.png",
+        "sha256": "ee9bdd20058e6b2f30910c417d5d9b955a8ea18f85fb3beb81fbd5de3ab953d5",
+        "alt_text": {
+          "en-GB": "Daddy uses oven mitts to handle the air-fryer basket while Aaria watches from a distance.",
+          "pt-BR": "Papai usa luvas térmicas para cuidar do cesto da air fryer enquanto Aaria observa de longe."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult places the bites in the air fryer, operates it and removes the hot basket using oven mitts.",
+        "pt-BR": "Um adulto coloca os bolinhos na air fryer, opera o aparelho e retira o cesto quente usando luvas térmicas."
+      },
+      "safety": {
+        "en-GB": "Adult alone operates the hot air fryer and handles the hot basket with oven mitts. Keep Aaria back.",
+        "pt-BR": "Somente um adulto opera a air fryer quente e cuida do cesto quente com luvas térmicas. Mantenha Aaria afastada."
+      }
+    },
+    {
+      "step_number": 4,
+      "title": {
+        "en-GB": "Cool and serve.",
+        "pt-BR": "Esfrie e sirva."
+      },
+      "instruction": {
+        "en-GB": "Adult transfers bites to a plate and checks they have cooled; Aaria may sprinkle coconut on top.",
+        "pt-BR": "Adulto transfere os bolinhos para um prato e confere se esfriaram; Aaria pode polvilhar coco."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-04.png",
+        "sha256": "e7a66b12ab380a84728d996c917bf7309061b9e08724bc977cccbf181ee4d77a",
+        "alt_text": {
+          "en-GB": "Aaria sprinkles coconut over cooled banana bites.",
+          "pt-BR": "Aaria polvilha coco sobre bolinhos de banana já frios."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult transfers the hot bites to a plate and checks they are cool before Aaria serves them.",
+        "pt-BR": "Um adulto transfere os bolinhos quentes para um prato e verifica se esfriaram antes de Aaria servi-los."
+      },
+      "safety": {
+        "en-GB": "The bites and basket stay hot after cooking. Adult transfers them and checks they have cooled before eating.",
+        "pt-BR": "Os bolinhos e o cesto continuam quentes após o preparo. Um adulto os transfere e verifica se esfriaram antes de comer."
+      }
+    }
+  ],
+  "allergens_and_cross_contact": {
+    "en-GB": "Coconut; oats may have gluten cross-contact. Check labels and prevent cross-contact.",
+    "pt-BR": "Coco; aveia pode ter contato cruzado com glúten. Confira rótulos e evite contato cruzado."
+  },
+  "safety": {
+    "en-GB": "Adult handles all knives, raw meat, boiling liquids and hot appliances. Aaria handles cool preparation and stirs noodles only with an adult immediately beside her. Keep raw foods separate, clean hands and surfaces, and let hot dishes cool before eating. No cooking timers.",
+    "pt-BR": "Adulto cuida de todas as facas, carnes cruas, líquidos ferventes e aparelhos quentes. Aaria faz o preparo frio e mexe o macarrão somente com um adulto ao lado. Separe alimentos crus, limpe mãos e superfícies e deixe pratos quentes esfriarem antes de comer. Sem temporizadores."
+  },
+  "nutrition": {
+    "status": "PENDING_SOURCE_AND_CALCULATION",
+    "per_serving": null
+  },
+  "artwork": {
+    "status": "DRAFT",
+    "style_reference": {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+    },
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/finished/finished-dish.png",
+      "sha256": "7f92da4fb24ccc82c5949bf07697d0773af1232914b0b03c50851dde53838655",
+      "alt_text": {
+        "en-GB": "Finished golden banana coconut bites on a plate.",
+        "pt-BR": "Bolinhos dourados de banana e coco prontos em um prato."
+      },
+      "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+      "rights_status": "PENDING_REVIEW",
+      "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+      "square_composition": true,
+      "contains_text": false
+    },
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-01.png",
+        "sha256": "dba238f4727d8e3633b5cf9d590c9f4b9a1aa8f173d08392d85196ee1ae1f397",
+        "alt_text": {
+          "en-GB": "Aaria peels ripe bananas into a bowl while Daddy supervises.",
+          "pt-BR": "Aaria descasca bananas maduras em uma tigela com Papai supervisionando."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-02.png",
+        "sha256": "04b18f6daab011e24fa650b1f906b60063c90f439a6f0a64d08bf1f5a5f5db2e",
+        "alt_text": {
+          "en-GB": "Aaria mashes banana and stirs coconut into the mixture.",
+          "pt-BR": "Aaria amassa banana e mistura coco."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-03.png",
+        "sha256": "ee9bdd20058e6b2f30910c417d5d9b955a8ea18f85fb3beb81fbd5de3ab953d5",
+        "alt_text": {
+          "en-GB": "Daddy uses oven mitts to handle the air-fryer basket while Aaria watches from a distance.",
+          "pt-BR": "Papai usa luvas térmicas para cuidar do cesto da air fryer enquanto Aaria observa de longe."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/steps/step-04.png",
+        "sha256": "e7a66b12ab380a84728d996c917bf7309061b9e08724bc977cccbf181ee4d77a",
+        "alt_text": {
+          "en-GB": "Aaria sprinkles coconut over cooled banana bites.",
+          "pt-BR": "Aaria polvilha coco sobre bolinhos de banana já frios."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      }
+    ],
+    "ingredient_images": [],
+    "equipment_images": []
+  },
+  "review_gates": {
+    "content": "PENDING",
+    "food_safety": "PENDING",
+    "artwork_accuracy": "PENDING",
+    "artwork_rights": "PENDING",
+    "accessibility": "PENDING",
+    "nutrition": "PENDING",
+    "independent_review": "PENDING"
+  },
+  "description": {
+    "en-GB": "Soft banana and coconut bites shaped by Aaria and cooked by an adult in the air fryer.",
+    "pt-BR": "Bolinhos macios de banana e coco moldados por Aaria e preparados por um adulto na air fryer."
+  },
+  "method": {
+    "en-GB": "Aaria mixes and shapes the bites; an adult operates the air fryer and handles the hot basket.",
+    "pt-BR": "Aaria mistura e molda os bolinhos; um adulto opera a air fryer e cuida do cesto quente."
+  }
+}

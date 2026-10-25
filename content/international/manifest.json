@@ -5,7 +5,7 @@
   "production_artwork_approved": true,
   "canonical_existing_recipe_count": 95,
   "india_mapping_status": "VALIDATED_REFERENCE_ONLY",
-  "id_assignment": "96–110 verified collision-free against canonical 1–95; draft IDs remain hidden until app integration and review",
+  "id_assignment": "96–116 verified collision-free against canonical 1–95; international recipe records are review-only and remain hidden from release until separate gates pass",
   "recipes": [
     {
       "proposed_id": 96,
@@ -29,7 +29,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 98,
@@ -41,7 +42,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 99,
@@ -53,7 +55,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 100,
@@ -65,7 +68,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 101,
@@ -77,7 +81,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 102,
@@ -89,7 +94,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 103,
@@ -101,7 +107,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 104,
@@ -113,7 +120,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 105,
@@ -125,7 +133,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 106,
@@ -137,7 +146,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 107,
@@ -149,7 +159,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 108,
@@ -161,7 +172,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 109,
@@ -173,7 +185,8 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     },
     {
       "proposed_id": 110,
@@ -185,7 +198,86 @@
       "artwork_ready": true,
       "independent_reviews": "PENDING_SEPARATE_GATES",
       "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
-      "canonical_id_verified": true
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
+    },
+    {
+      "proposed_id": 111,
+      "country": "vietnam",
+      "title": "Quick Chicken Phở",
+      "status": "DRAFT_REVIEW_ONLY",
+      "recipe_draft_json": "countries/vietnam/111-quick-chicken-pho/recipe-draft.json",
+      "artwork_ready": true,
+      "independent_reviews": "PENDING_SEPARATE_GATES",
+      "artwork_status": "DRAFT_STYLE_ACCURACY_ACCESSIBILITY_AND_RIGHTS_REVIEW_PENDING",
+      "nutrition_status": "PENDING_SOURCE_AND_CALCULATION",
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
+    },
+    {
+      "proposed_id": 112,
+      "country": "vietnam",
+      "title": "Tofu & Vegetable Phở",
+      "status": "DRAFT_REVIEW_ONLY",
+      "recipe_draft_json": "countries/vietnam/112-tofu-and-vegetable-pho/recipe-draft.json",
+      "artwork_ready": true,
+      "independent_reviews": "PENDING_SEPARATE_GATES",
+      "artwork_status": "DRAFT_STYLE_ACCURACY_ACCESSIBILITY_AND_RIGHTS_REVIEW_PENDING",
+      "nutrition_status": "PENDING_SOURCE_AND_CALCULATION",
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
+    },
+    {
+      "proposed_id": 113,
+      "country": "vietnam",
+      "title": "Simple Beef Phở",
+      "status": "DRAFT_REVIEW_ONLY",
+      "recipe_draft_json": "countries/vietnam/113-simple-beef-pho/recipe-draft.json",
+      "artwork_ready": true,
+      "independent_reviews": "PENDING_SEPARATE_GATES",
+      "artwork_status": "DRAFT_STYLE_ACCURACY_ACCESSIBILITY_AND_RIGHTS_REVIEW_PENDING",
+      "nutrition_status": "PENDING_SOURCE_AND_CALCULATION",
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
+    },
+    {
+      "proposed_id": 114,
+      "country": "vietnam",
+      "title": "Air-Fryer Crispy Tofu Rice Bowl",
+      "status": "DRAFT_REVIEW_ONLY",
+      "recipe_draft_json": "countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/recipe-draft.json",
+      "artwork_ready": true,
+      "independent_reviews": "PENDING_SEPARATE_GATES",
+      "artwork_status": "DRAFT_STYLE_ACCURACY_ACCESSIBILITY_AND_RIGHTS_REVIEW_PENDING",
+      "nutrition_status": "PENDING_SOURCE_AND_CALCULATION",
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
+    },
+    {
+      "proposed_id": 115,
+      "country": "vietnam",
+      "title": "Lemongrass Chicken Rice Bowl",
+      "status": "DRAFT_REVIEW_ONLY",
+      "recipe_draft_json": "countries/vietnam/115-lemongrass-chicken-rice-bowl/recipe-draft.json",
+      "artwork_ready": true,
+      "independent_reviews": "PENDING_SEPARATE_GATES",
+      "artwork_status": "DRAFT_STYLE_ACCURACY_ACCESSIBILITY_AND_RIGHTS_REVIEW_PENDING",
+      "nutrition_status": "PENDING_SOURCE_AND_CALCULATION",
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
+    },
+    {
+      "proposed_id": 116,
+      "country": "vietnam",
+      "title": "Air-Fryer Banana Coconut Bites",
+      "status": "DRAFT_REVIEW_ONLY",
+      "recipe_draft_json": "countries/vietnam/116-air-fryer-banana-coconut-bites/recipe-draft.json",
+      "artwork_ready": true,
+      "independent_reviews": "PENDING_SEPARATE_GATES",
+      "artwork_status": "DRAFT_STYLE_ACCURACY_ACCESSIBILITY_AND_RIGHTS_REVIEW_PENDING",
+      "nutrition_status": "PENDING_SOURCE_AND_CALCULATION",
+      "canonical_id_verified": true,
+      "app_status": "INTEGRATED_IN_V3_5_REVIEW_BUILD"
     }
   ],
   "canonical_catalogue": {
@@ -196,15 +288,35 @@
     "ids": "unique contiguous integers 1–95",
     "collision_checks": {
       "96": false,
-      "99": false
+      "99": false,
+      "97": false,
+      "98": false,
+      "100": false,
+      "101": false,
+      "102": false,
+      "103": false,
+      "104": false,
+      "105": false,
+      "106": false,
+      "107": false,
+      "108": false,
+      "109": false,
+      "110": false,
+      "111": false,
+      "112": false,
+      "113": false,
+      "114": false,
+      "115": false,
+      "116": false
     },
-    "evidence": "Parsed the canonical JSON RECIPES array from index.html; 95 records, 95 unique IDs, min 1, max 95, no missing IDs."
+    "evidence": "Parsed the canonical JSON RECIPES array from index.html; 95 records, 95 unique IDs, min 1, max 95, no missing IDs.",
+    "collision_checks_note": "All IDs #096–116 were checked against the unchanged canonical 1–95 recipe array and are free for the international review catalogue."
   },
   "renderer_schema": {
     "source": "index.html RECIPES records; fields id,title,emoji,category,method,time,yieldText,ingredients,steps,extras,fact,safety",
     "translations_source": "PT_RECIPES id-keyed map; recipe bundles carry pt-BR object for the adapter",
     "schema_file": "schema/recipe.schema.json",
-    "status": "MAPPED_DRAFT; W01/W02 adapter consumption not yet tested"
+    "status": "V3_5_REVIEW_BUILD_IMPLEMENTED; PUBLICATION_AND_INDEPENDENT_REVIEW_GATES_REMAIN_PENDING"
   },
   "production_artwork_gate": {
     "status": "APPROVED_STYLE_REFERENCE",
@@ -213,5 +325,66 @@
     "asset": "countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
     "asset_sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec",
     "further_artwork": "AUTHORIZED_UNDER_LOCKED_STYLE_REFERENCE"
+  },
+  "v35_app_review_build": {
+    "status": "REVIEW_ONLY",
+    "branch": "feature/v3.5-recipe-expansion",
+    "recipe_ids": [
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116
+    ],
+    "expansion_recipe_ids": [
+      97,
+      98,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116
+    ],
+    "draft_ids": [
+      111,
+      112,
+      113,
+      114,
+      115,
+      116
+    ],
+    "independent_reviews": "PENDING_SEPARATE_GATES",
+    "artwork_rights": "PENDING_REVIEW",
+    "nutrition_for_111_116": "PENDING_SOURCE_AND_CALCULATION",
+    "artifact_route": "offline Android review APK; no merge or release",
+    "recipe_concept_note": "#116 Air-Fryer Banana Coconut Bites replaces the proposed Fresh Rainbow Rolls because #108 already covers fresh spring rolls."
   }
 }

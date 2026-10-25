@@ -1,0 +1,318 @@
+{
+  "id": 112,
+  "title": {
+    "en-GB": "Tofu & Vegetable Phở",
+    "pt-BR": "Phở de tofu e legumes"
+  },
+  "status": "DRAFT",
+  "servings": 2,
+  "ingredients": {
+    "en-GB": [
+      "160 g flat rice noodles",
+      "200 g firm tofu",
+      "100 g mushrooms",
+      "150 g bok choy",
+      "80 g carrot",
+      "80 g onion",
+      "20 g ginger",
+      "1 L low-salt vegetable stock",
+      "1 star anise",
+      "15 ml soy sauce",
+      "80 g bean sprouts",
+      "15 g spring onions",
+      "10 g coriander",
+      "10 g mint",
+      "1 lime"
+    ],
+    "pt-BR": [
+      "160 g de macarrão de arroz achatado",
+      "200 g de tofu firme",
+      "100 g de cogumelos",
+      "150 g de acelga chinesa",
+      "80 g de cenoura",
+      "80 g de cebola",
+      "20 g de gengibre",
+      "1 L de caldo de legumes com pouco sal",
+      "1 anis-estrelado",
+      "15 ml de molho de soja",
+      "80 g de brotos de feijão",
+      "15 g de cebolinha",
+      "10 g de coentro",
+      "10 g de hortelã",
+      "1 limão"
+    ]
+  },
+  "equipment": [
+    {
+      "en-GB": "Stockpot",
+      "pt-BR": "Panela funda",
+      "role": {
+        "en-GB": "Adult handles broth and stove.",
+        "pt-BR": "Adulto cuida do caldo e fogão."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Saucepan",
+      "pt-BR": "Panela média",
+      "role": {
+        "en-GB": "Aaria stirs noodles with close adult supervision.",
+        "pt-BR": "Aaria mexe o macarrão com supervisão próxima."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Frying pan",
+      "pt-BR": "Frigideira",
+      "role": {
+        "en-GB": "Adult cooks tofu and vegetables.",
+        "pt-BR": "Adulto cozinha tofu e legumes."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Colander",
+      "pt-BR": "Escorredor",
+      "role": {
+        "en-GB": "Adult handles hot noodles.",
+        "pt-BR": "Adulto cuida do macarrão quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": {
+        "en-GB": "Wash and sort.",
+        "pt-BR": "Lave e organize."
+      },
+      "instruction": {
+        "en-GB": "Aaria rinses tofu, bok choy, mushrooms and sprouts. Adult slices carrot, onion and ginger.",
+        "pt-BR": "Aaria lava tofu, acelga, cogumelos e brotos. Adulto corta cenoura, cebola e gengibre."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-01.png",
+        "sha256": "cc6580f7eae20cecb406654d42a9f425c31b930c029d17ce5b8a15f0cfb2e939",
+        "alt_text": {
+          "en-GB": "Aaria rinses tofu and vegetables with Mommy supervising.",
+          "pt-BR": "Aaria lava tofu e legumes com Mamãe supervisionando."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult uses the knife to cut the carrot, onion and ginger and checks the washed ingredients.",
+        "pt-BR": "Um adulto usa a faca para cortar a cenoura, a cebola e o gengibre e confere os ingredientes lavados."
+      },
+      "safety": {
+        "en-GB": "An adult handles sharp knives. Keep washed ingredients away from raw-food surfaces and wash hands.",
+        "pt-BR": "Um adulto cuida das facas afiadas. Mantenha os ingredientes lavados longe de superfícies de alimentos crus e lave as mãos."
+      }
+    },
+    {
+      "step_number": 2,
+      "title": {
+        "en-GB": "Make vegetable broth.",
+        "pt-BR": "Prepare o caldo de legumes."
+      },
+      "instruction": {
+        "en-GB": "Mommy or Daddy simmers stock with onion, ginger and star anise, keeping Aaria at the cool counter.",
+        "pt-BR": "Mamãe ou Papai aquece o caldo com cebola, gengibre e anis, mantendo Aaria na bancada fria."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-02.png",
+        "sha256": "694593c956f5994dd644e6e52825660404673ab4282403d4c52f8a93b917dac3",
+        "alt_text": {
+          "en-GB": "Daddy prepares vegetable phở broth while Aaria sorts herbs well away.",
+          "pt-BR": "Papai prepara caldo de phở de legumes enquanto Aaria organiza ervas a uma distância segura."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Mommy or Daddy handles the stove and hot pot while Aaria waits at the cool counter.",
+        "pt-BR": "Mamãe ou Papai cuida do fogão e da panela quente enquanto Aaria espera na bancada fria."
+      },
+      "safety": {
+        "en-GB": "Adult handles boiling liquid and hot appliances. Keep Aaria at the cool counter.",
+        "pt-BR": "Um adulto cuida dos líquidos ferventes e dos aparelhos quentes. Mantenha Aaria na bancada fria."
+      }
+    },
+    {
+      "step_number": 3,
+      "title": {
+        "en-GB": "Cook noodles and tofu.",
+        "pt-BR": "Cozinhe o macarrão e o tofu."
+      },
+      "instruction": {
+        "en-GB": "Aaria stirs noodles with an adult beside her; adult drains. Adult cooks tofu and vegetables in a hot pan.",
+        "pt-BR": "Aaria mexe o macarrão com um adulto ao lado; adulto escorre. Adulto cozinha tofu e legumes na frigideira quente."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-03.png",
+        "sha256": "f04423d1bb70cd330f19f90c2dcbf8deedc57bd19f59b2c8875d05dba46a6e2d",
+        "alt_text": {
+          "en-GB": "Aaria stirs rice noodles in a saucepan while Mommy steadies the handle.",
+          "pt-BR": "Aaria mexe macarrão de arroz na panela enquanto Mamãe segura o cabo."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Aaria stirs noodles with an adult beside her; an adult drains them and cooks tofu and vegetables in the hot pan.",
+        "pt-BR": "Aaria mexe o macarrão com um adulto ao lado; um adulto escorre e cozinha o tofu e os vegetais na frigideira quente."
+      },
+      "safety": {
+        "en-GB": "Steam, boiling water and hot oil can burn. Adult drains noodles and handles the pan and its contents.",
+        "pt-BR": "Vapor, água fervente e óleo quente podem queimar. Um adulto escorre o macarrão e cuida da frigideira e do conteúdo."
+      }
+    },
+    {
+      "step_number": 4,
+      "title": {
+        "en-GB": "Assemble the bowls.",
+        "pt-BR": "Monte as tigelas."
+      },
+      "instruction": {
+        "en-GB": "Aaria adds noodles, cooked tofu and vegetables. Adult pours hot broth; add herbs when bowls are safely placed and cool before eating.",
+        "pt-BR": "Aaria coloca macarrão, tofu cozido e legumes. Adulto acrescenta caldo quente; junte ervas com as tigelas em local seguro e espere esfriar."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-04.png",
+        "sha256": "2c153d2b4f7f039a1d885dfd63195151e95e188b69f288a976986e9a07d6c97b",
+        "alt_text": {
+          "en-GB": "Aaria assembles noodles, cooked tofu and vegetables in a bowl.",
+          "pt-BR": "Aaria monta macarrão, tofu cozido e legumes em uma tigela."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult pours the hot broth; Aaria adds toppings after the bowls are on the table.",
+        "pt-BR": "Um adulto serve o caldo quente; Aaria acrescenta os acompanhamentos depois que as tigelas estiverem sobre a mesa."
+      },
+      "safety": {
+        "en-GB": "Hot broth can scald. Adult serves it and lets bowls cool before eating.",
+        "pt-BR": "O caldo quente pode causar queimaduras. Um adulto serve e deixa as tigelas esfriarem antes de comer."
+      }
+    }
+  ],
+  "allergens_and_cross_contact": {
+    "en-GB": "Soy; soy sauce may contain wheat. Check all package labels and prevent cross-contact.",
+    "pt-BR": "Soja; molho de soja pode conter trigo. Confira os rótulos e evite contato cruzado."
+  },
+  "safety": {
+    "en-GB": "Adult handles all knives, raw meat, boiling liquids and hot appliances. Aaria handles cool preparation and stirs noodles only with an adult immediately beside her. Keep raw foods separate, clean hands and surfaces, and let hot dishes cool before eating. No cooking timers.",
+    "pt-BR": "Adulto cuida de todas as facas, carnes cruas, líquidos ferventes e aparelhos quentes. Aaria faz o preparo frio e mexe o macarrão somente com um adulto ao lado. Separe alimentos crus, limpe mãos e superfícies e deixe pratos quentes esfriarem antes de comer. Sem temporizadores."
+  },
+  "nutrition": {
+    "status": "PENDING_SOURCE_AND_CALCULATION",
+    "per_serving": null
+  },
+  "artwork": {
+    "status": "DRAFT",
+    "style_reference": {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+    },
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/finished/finished-dish.png",
+      "sha256": "cd56f21df6051148e398c971b5f81654f75a49001f70b6fa21e69535331387b6",
+      "alt_text": {
+        "en-GB": "Finished tofu and vegetable phở with noodles, tofu, bok choy, mushrooms and herbs.",
+        "pt-BR": "Phở de tofu e legumes pronto com macarrão, tofu, acelga chinesa, cogumelos e ervas."
+      },
+      "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+      "rights_status": "PENDING_REVIEW",
+      "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+      "square_composition": true,
+      "contains_text": false
+    },
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-01.png",
+        "sha256": "cc6580f7eae20cecb406654d42a9f425c31b930c029d17ce5b8a15f0cfb2e939",
+        "alt_text": {
+          "en-GB": "Aaria rinses tofu and vegetables with Mommy supervising.",
+          "pt-BR": "Aaria lava tofu e legumes com Mamãe supervisionando."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-02.png",
+        "sha256": "694593c956f5994dd644e6e52825660404673ab4282403d4c52f8a93b917dac3",
+        "alt_text": {
+          "en-GB": "Daddy prepares vegetable phở broth while Aaria sorts herbs well away.",
+          "pt-BR": "Papai prepara caldo de phở de legumes enquanto Aaria organiza ervas a uma distância segura."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-03.png",
+        "sha256": "f04423d1bb70cd330f19f90c2dcbf8deedc57bd19f59b2c8875d05dba46a6e2d",
+        "alt_text": {
+          "en-GB": "Aaria stirs rice noodles in a saucepan while Mommy steadies the handle.",
+          "pt-BR": "Aaria mexe macarrão de arroz na panela enquanto Mamãe segura o cabo."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/112-tofu-and-vegetable-pho/artwork/steps/step-04.png",
+        "sha256": "2c153d2b4f7f039a1d885dfd63195151e95e188b69f288a976986e9a07d6c97b",
+        "alt_text": {
+          "en-GB": "Aaria assembles noodles, cooked tofu and vegetables in a bowl.",
+          "pt-BR": "Aaria monta macarrão, tofu cozido e legumes em uma tigela."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      }
+    ],
+    "ingredient_images": [],
+    "equipment_images": []
+  },
+  "review_gates": {
+    "content": "PENDING",
+    "food_safety": "PENDING",
+    "artwork_accuracy": "PENDING",
+    "artwork_rights": "PENDING",
+    "accessibility": "PENDING",
+    "nutrition": "PENDING",
+    "independent_review": "PENDING"
+  },
+  "description": {
+    "en-GB": "A meat-free phở with tofu, vegetables, rice noodles and a fragrant vegetable broth.",
+    "pt-BR": "Um phở sem carne com tofu, vegetais, macarrão de arroz e caldo aromático de legumes."
+  },
+  "method": {
+    "en-GB": "Adult-prepared vegetable broth and pan-cooked tofu; Aaria stirs noodles and assembles the bowls.",
+    "pt-BR": "Caldo de legumes preparado por um adulto e tofu feito na frigideira; Aaria mexe o macarrão e monta as tigelas."
+  }
+}

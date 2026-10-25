@@ -10,6 +10,7 @@ val releaseSigningValues = listOf(releaseStorePath, releaseStorePassword, releas
 val releaseSigningConfigured = releaseSigningValues.all { it != null }
 val v33MapSampleBuildSuffix = System.getenv("V33_MAP_SAMPLE_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) }
 val v32ReviewBuildSuffix = System.getenv("V32_REVIEW_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) } ?: "local"
+val v35RecipeReviewBuildSuffix = System.getenv("V35_RECIPE_REVIEW_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) }
 val w01OwnerReviewBuildSuffix = System.getenv("W01_OWNER_REVIEW_BUILD_SUFFIX")?.trim()?.takeIf { it.matches(Regex("[a-zA-Z0-9]+")) }
 if (releaseSigningValues.any { it != null } && !releaseSigningConfigured) {
     throw GradleException("Release signing is partially configured; provide all protected signing inputs.")
@@ -39,11 +40,13 @@ android {
             applicationIdSuffix = when {
                 v33MapSampleBuildSuffix != null -> ".v33map${v33MapSampleBuildSuffix}"
                 w01OwnerReviewBuildSuffix != null -> ".w01review${w01OwnerReviewBuildSuffix}"
+                v35RecipeReviewBuildSuffix != null -> ".v35review${v35RecipeReviewBuildSuffix}"
                 else -> ".v32review${v32ReviewBuildSuffix}"
             }
             resValue("string", "app_name", when {
                 v33MapSampleBuildSuffix != null -> "Aaria Magical Kitchen V3.3 World Map Sample ${v33MapSampleBuildSuffix}"
                 w01OwnerReviewBuildSuffix != null -> "Aaria Magical Kitchen W01 Owner Review ${w01OwnerReviewBuildSuffix}"
+                v35RecipeReviewBuildSuffix != null -> "Aaria Magical Kitchen V3.5 Recipe Review ${v35RecipeReviewBuildSuffix}"
                 else -> "Aaria Magical Kitchen V3.2 Visual Review ${v32ReviewBuildSuffix}"
             })
         }

@@ -1,0 +1,316 @@
+{
+  "id": 111,
+  "title": {
+    "en-GB": "Quick Chicken Phở",
+    "pt-BR": "Phở rápido de frango"
+  },
+  "status": "DRAFT",
+  "servings": 2,
+  "ingredients": {
+    "en-GB": [
+      "160 g flat rice noodles",
+      "250 g boneless chicken breast",
+      "1 L low-salt chicken stock",
+      "500 ml water",
+      "80 g onion",
+      "20 g fresh ginger",
+      "1 star anise",
+      "1 small cinnamon stick",
+      "10 ml fish sauce, optional",
+      "80 g bean sprouts",
+      "15 g spring onions",
+      "10 g coriander",
+      "10 g mint",
+      "1 lime"
+    ],
+    "pt-BR": [
+      "160 g de macarrão de arroz achatado",
+      "250 g de peito de frango sem osso",
+      "1 L de caldo de frango com pouco sal",
+      "500 ml de água",
+      "80 g de cebola",
+      "20 g de gengibre fresco",
+      "1 anis-estrelado",
+      "1 pedaço pequeno de canela em pau",
+      "10 ml de molho de peixe, opcional",
+      "80 g de brotos de feijão",
+      "15 g de cebolinha",
+      "10 g de coentro",
+      "10 g de hortelã",
+      "1 limão"
+    ]
+  },
+  "equipment": [
+    {
+      "en-GB": "Stockpot",
+      "pt-BR": "Panela funda",
+      "role": {
+        "en-GB": "Adult only: broth, raw chicken and hot pot.",
+        "pt-BR": "Somente adulto: caldo, frango cru e panela quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Saucepan",
+      "pt-BR": "Panela média",
+      "role": {
+        "en-GB": "Aaria stirs noodles with close supervision; adult drains.",
+        "pt-BR": "Aaria mexe o macarrão com supervisão próxima; adulto escorre."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Colander",
+      "pt-BR": "Escorredor",
+      "role": {
+        "en-GB": "Adult drains hot noodles.",
+        "pt-BR": "Adulto escorre o macarrão quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Ladle",
+      "pt-BR": "Concha",
+      "role": {
+        "en-GB": "Adult portions hot broth.",
+        "pt-BR": "Adulto serve o caldo quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": {
+        "en-GB": "Wash herbs and sprouts.",
+        "pt-BR": "Lave as ervas e os brotos."
+      },
+      "instruction": {
+        "en-GB": "Aaria rinses the herbs and sprouts in cool water; an adult checks and drains them.",
+        "pt-BR": "Aaria lava as ervas e os brotos em água fria; um adulto confere e escorre."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-01.png",
+        "sha256": "61f324dabbb76b051623d078d0c6a8621bfa22be2b914e26a86750804c09daa9",
+        "alt_text": {
+          "en-GB": "Aaria rinses fresh herbs and bean sprouts in a colander.",
+          "pt-BR": "Aaria lava ervas frescas e brotos de feijão no escorredor."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult checks the washed herbs and sprouts and keeps them separate from raw chicken.",
+        "pt-BR": "Um adulto confere as ervas e os brotos lavados e os mantém separados do frango cru."
+      },
+      "safety": {
+        "en-GB": "Wash hands and produce; keep ready-to-eat herbs away from raw chicken and its utensils.",
+        "pt-BR": "Lave as mãos e os vegetais; mantenha ervas prontas para consumo longe do frango cru e dos utensílios usados nele."
+      }
+    },
+    {
+      "step_number": 2,
+      "title": {
+        "en-GB": "Make the broth.",
+        "pt-BR": "Prepare o caldo."
+      },
+      "instruction": {
+        "en-GB": "Mommy or Daddy handles raw chicken, knife, stockpot and stove. Simmer chicken, stock, water, onion, ginger and spices until chicken is fully cooked.",
+        "pt-BR": "Mamãe ou Papai cuida do frango cru, faca, panela e fogão. Cozinhe frango, caldo, água, cebola, gengibre e especiarias até o frango ficar totalmente cozido."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-02.png",
+        "sha256": "f51a543e54d595d10cedf10966f0138cc72d136fa13e9606a0062670e426702e",
+        "alt_text": {
+          "en-GB": "Mommy prepares chicken phở broth while Aaria sorts herbs at a separate counter.",
+          "pt-BR": "Mamãe prepara o caldo de phở de frango enquanto Aaria organiza ervas em outra bancada."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Mommy or Daddy handles the raw chicken, knife, stockpot and hob, and checks that the chicken is fully cooked.",
+        "pt-BR": "Mamãe ou Papai cuida do frango cru, da faca, da panela funda e do fogão, e verifica se o frango está completamente cozido."
+      },
+      "safety": {
+        "en-GB": "Adult handles raw chicken and hot broth. Use separate utensils and surfaces, cook chicken fully, and wash hands after handling it.",
+        "pt-BR": "Adulto cuida do frango cru e do caldo quente. Use utensílios e superfícies separados, cozinhe bem o frango e lave as mãos após manuseá-lo."
+      }
+    },
+    {
+      "step_number": 3,
+      "title": {
+        "en-GB": "Cook the noodles.",
+        "pt-BR": "Cozinhe o macarrão."
+      },
+      "instruction": {
+        "en-GB": "With an adult right beside her, Aaria stirs noodles in a saucepan. Adult handles boiling water, hot pan and draining; keep the handle turned inward and Aaria away from steam.",
+        "pt-BR": "Com um adulto ao lado, Aaria mexe o macarrão na panela. Adulto cuida da água fervente, panela quente e de escorrer; deixe o cabo virado para dentro e Aaria longe do vapor."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-03.png",
+        "sha256": "7a068fa1bcc1648e51af7769b9b53e3b9c70a47620da18cc4ad979b99afcab72",
+        "alt_text": {
+          "en-GB": "Aaria stirs rice noodles in a saucepan with Mommy beside her, steadying the handle.",
+          "pt-BR": "Aaria mexe macarrão de arroz na panela com Mamãe ao lado, segurando o cabo."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult manages the boiling water, hot saucepan and draining while Aaria stirs with the adult beside her.",
+        "pt-BR": "Um adulto cuida da água fervente, da panela quente e de escorrer enquanto Aaria mexe com o adulto ao lado."
+      },
+      "safety": {
+        "en-GB": "Steam and boiling water can burn. Aaria stays back from the hob; an adult drains the noodles.",
+        "pt-BR": "O vapor e a água fervente podem queimar. Aaria fica afastada do fogão; um adulto escorre o macarrão."
+      }
+    },
+    {
+      "step_number": 4,
+      "title": {
+        "en-GB": "Build the bowls.",
+        "pt-BR": "Monte as tigelas."
+      },
+      "instruction": {
+        "en-GB": "Adult shreds chicken and portions hot broth. Once bowls are safely on the table, Aaria adds noodles, chicken, sprouts, herbs and lime. Cool before eating.",
+        "pt-BR": "Adulto desfia o frango e serve o caldo quente. Com as tigelas em segurança na mesa, Aaria acrescenta macarrão, frango, brotos, ervas e limão. Espere esfriar antes de comer."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-04.png",
+        "sha256": "8a2917c37d96102eb0f01ffc14a13617be427f5763276c1d22c58c8a4853d6af",
+        "alt_text": {
+          "en-GB": "Aaria assembles cooked chicken, noodles and herbs at the counter.",
+          "pt-BR": "Aaria monta frango cozido, macarrão e ervas na bancada."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult shreds the cooked chicken and portions the hot broth; Aaria adds toppings only after bowls are placed safely on the table.",
+        "pt-BR": "Um adulto desfia o frango cozido e serve o caldo quente; Aaria acrescenta os acompanhamentos somente quando as tigelas estiverem seguras sobre a mesa."
+      },
+      "safety": {
+        "en-GB": "Hot broth can scald. Adult serves it and lets the bowls cool before eating.",
+        "pt-BR": "O caldo quente pode causar queimaduras. Um adulto serve e deixa as tigelas esfriarem antes de comer."
+      }
+    }
+  ],
+  "allergens_and_cross_contact": {
+    "en-GB": "Fish if fish sauce is used; check stock labels for other allergens and prevent cross-contact.",
+    "pt-BR": "Peixe se usar molho de peixe; confira o rótulo do caldo para outros alergênicos e evite contato cruzado."
+  },
+  "safety": {
+    "en-GB": "Adult handles all knives, raw meat, boiling liquids and hot appliances. Aaria handles cool preparation and stirs noodles only with an adult immediately beside her. Keep raw foods separate, clean hands and surfaces, and let hot dishes cool before eating. No cooking timers.",
+    "pt-BR": "Adulto cuida de todas as facas, carnes cruas, líquidos ferventes e aparelhos quentes. Aaria faz o preparo frio e mexe o macarrão somente com um adulto ao lado. Separe alimentos crus, limpe mãos e superfícies e deixe pratos quentes esfriarem antes de comer. Sem temporizadores."
+  },
+  "nutrition": {
+    "status": "PENDING_SOURCE_AND_CALCULATION",
+    "per_serving": null
+  },
+  "artwork": {
+    "status": "DRAFT",
+    "style_reference": {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+    },
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/finished/finished-dish.png",
+      "sha256": "900c9a3d0f7a6b9cdc64bbb19cb9cbbece2bf18f3d9b1e4580a99fc6e07c6d3a",
+      "alt_text": {
+        "en-GB": "Finished chicken phở with rice noodles, cooked chicken, herbs, sprouts and lime.",
+        "pt-BR": "Phở de frango pronto com macarrão de arroz, frango cozido, ervas, brotos e limão."
+      },
+      "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+      "rights_status": "PENDING_REVIEW",
+      "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+      "square_composition": true,
+      "contains_text": false
+    },
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-01.png",
+        "sha256": "61f324dabbb76b051623d078d0c6a8621bfa22be2b914e26a86750804c09daa9",
+        "alt_text": {
+          "en-GB": "Aaria rinses fresh herbs and bean sprouts in a colander.",
+          "pt-BR": "Aaria lava ervas frescas e brotos de feijão no escorredor."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-02.png",
+        "sha256": "f51a543e54d595d10cedf10966f0138cc72d136fa13e9606a0062670e426702e",
+        "alt_text": {
+          "en-GB": "Mommy prepares chicken phở broth while Aaria sorts herbs at a separate counter.",
+          "pt-BR": "Mamãe prepara o caldo de phở de frango enquanto Aaria organiza ervas em outra bancada."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-03.png",
+        "sha256": "7a068fa1bcc1648e51af7769b9b53e3b9c70a47620da18cc4ad979b99afcab72",
+        "alt_text": {
+          "en-GB": "Aaria stirs rice noodles in a saucepan with Mommy beside her, steadying the handle.",
+          "pt-BR": "Aaria mexe macarrão de arroz na panela com Mamãe ao lado, segurando o cabo."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/111-quick-chicken-pho/artwork/steps/step-04.png",
+        "sha256": "8a2917c37d96102eb0f01ffc14a13617be427f5763276c1d22c58c8a4853d6af",
+        "alt_text": {
+          "en-GB": "Aaria assembles cooked chicken, noodles and herbs at the counter.",
+          "pt-BR": "Aaria monta frango cozido, macarrão e ervas na bancada."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      }
+    ],
+    "ingredient_images": [],
+    "equipment_images": []
+  },
+  "review_gates": {
+    "content": "PENDING",
+    "food_safety": "PENDING",
+    "artwork_accuracy": "PENDING",
+    "artwork_rights": "PENDING",
+    "accessibility": "PENDING",
+    "nutrition": "PENDING",
+    "independent_review": "PENDING"
+  },
+  "description": {
+    "en-GB": "A quick chicken phở with rice noodles, gentle broth, fresh herbs and lime.",
+    "pt-BR": "Um phở rápido de frango com macarrão de arroz, caldo suave, ervas frescas e limão."
+  },
+  "method": {
+    "en-GB": "Adult-prepared chicken broth; Aaria stirs noodles with close supervision and assembles the bowls.",
+    "pt-BR": "Caldo de frango preparado por um adulto; Aaria mexe o macarrão com supervisão próxima e monta as tigelas."
+  }
+}

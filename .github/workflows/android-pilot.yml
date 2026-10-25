@@ -8,11 +8,13 @@ on:
       - codex/v3-webview-hardening-20261017
       - codex/v3-completion-core-20261017
       - feature/w01-97-recipe-mainline
+      - feature/v3.5-recipe-expansion
     paths:
       - 'index.html'
       - '.github/workflows/android-pilot.yml'
       - 'phase2-pilot/apps/aaria-android/**'
       - 'tools/v3/**'
+      - 'content/international/**'
 
 permissions:
   contents: read
@@ -44,10 +46,22 @@ jobs:
         with:
           gradle-version: '8.10.2'
 
+      - name: Stage V3.5 international review recipes
+        if: github.ref == 'refs/heads/feature/v3.5-recipe-expansion'
+        run: |
+          set -euo pipefail
+          echo "V35_RECIPE_REVIEW_BUILD_SUFFIX=${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+          node --check tools/v3/artwork/build-v35-international-review.mjs
+          node tools/v3/artwork/build-v35-international-review.mjs
+
       - name: Build V3 HTML from production and validate all recipes
         run: |
           node --check tools/v3/transform-production.mjs
           node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3.html
+          if [[ "$GITHUB_REF_NAME" == 'feature/v3.5-recipe-expansion' ]]; then
+            node tools/v3/validate-v35-international-review.mjs
+            node tools/v3/validate-v35-country-navigation.mjs
+          fi
           node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3.html
           node tools/v3/test-approved-chef-art.mjs dist/Aaria_Magical_Kitchen_V3.html
 
@@ -73,6 +87,46 @@ jobs:
 
       - name: Assemble installable APK
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+
+      - name: Capture representative V3.5 Android screenshots
+        if: github.ref == 'refs/heads/feature/v3.5-recipe-expansion'
+        uses: ReactiveCircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          disable-animations: true
+          script: |
+            set -euo pipefail
+            apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+            pkg="com.aaria.magickitchen.pilot.v35review${GITHUB_RUN_NUMBER}"
+            mkdir -p artifacts/v35-android-screenshots
+            adb install -r "$apk"
+            adb shell am start -n "$pkg/com.aaria.magickitchen.pilot.MainActivity"
+            sleep 8
+            socket="$(adb shell cat /proc/net/unix | awk '$NF ~ /webview_devtools_remote_/ {sub(/^.*webview_devtools_remote_/, "webview_devtools_remote_", $NF); print $NF; exit}')"
+            test -n "$socket"
+            adb forward tcp:9222 "localabstract:$socket"
+            V35_SCREENSHOT_DIR=artifacts/v35-android-screenshots node tools/v3/capture-v35-android-evidence.mjs
+
+      - name: Verify APK and record source/artifact hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          test -s "$apk"
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          "$aapt" dump badging "$apk" > apk-badging.txt
+          "$apksigner" verify --print-certs "$apk" > apk-signer.txt
+          sha256sum "$apk" > apk-sha256.txt
+          {
+            printf 'source_sha=%s\n' "$GITHUB_SHA"
+            sed -n "s/^package: name='\([^']*\)'.*/package_id=\1/p" apk-badging.txt | head -n 1
+            cat apk-sha256.txt
+            sed -n 's/.*certificate SHA-256 digest: /debug_signer_certificate_sha256=/p' apk-signer.txt | head -n 1
+          } | tee v35-review-build-metadata.txt
       - name: Verify unsigned release builds are refused
         shell: bash
         run: |
@@ -94,8 +148,11 @@ jobs:
       - name: Upload installable V3 APK
         uses: actions/upload-artifact@v4
         with:
-          name: aaria-magical-kitchen-v3-apk
-          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          name: ${{ github.ref_name == 'feature/v3.5-recipe-expansion' && format('aaria-magical-kitchen-v35-review-apk-{0}', github.run_number) || 'aaria-magical-kitchen-v3-apk' }}
+          path: |
+            phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+            v35-review-build-metadata.txt
+            artifacts/v35-android-screenshots/
           if-no-files-found: error
           retention-days: 30
 

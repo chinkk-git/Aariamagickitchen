@@ -1,0 +1,160 @@
+{
+  "status": "V3.5_REVIEW_BUILD_ONLY",
+  "mappingSource": "tools/v3/world-adventure-host.mjs::V35_COUNTRY_RECIPE_IDS",
+  "countryCount": 6,
+  "countries": [
+    {
+      "countryCode": "IND",
+      "name": {
+        "en-GB": "India",
+        "pt-BR": "Índia"
+      },
+      "flag": "🇮🇳",
+      "recipeIds": [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        69,
+        72,
+        74
+      ],
+      "artwork": {
+        "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-ind.webp",
+        "sha256": "a920cc3af89a65ab7fdc981c61b1ec1cae86724cff387be7be57bf13cd6f8de2",
+        "provenance": "existing Home card crop from approved V3.1 Home reference",
+        "rightsStatus": "PENDING_INDEPENDENT_RIGHTS_REVIEW",
+        "reviewStatus": "PENDING_VISUAL_AND_COUNTRY_ACCURACY_REVIEW"
+      }
+    },
+    {
+      "countryCode": "ITA",
+      "name": {
+        "en-GB": "Italy",
+        "pt-BR": "Itália"
+      },
+      "flag": "🇮🇹",
+      "recipeIds": [
+        96,
+        97,
+        98
+      ],
+      "artwork": {
+        "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-ita.webp",
+        "sha256": "3a37a5e0aa9614ccbc996bf4b1c6ca4b40b27ff29b0a4b7d6f5be962bab6b83c",
+        "provenance": "Home landmark card crop from approved V3.1 Home reference",
+        "rightsStatus": "PENDING_INDEPENDENT_RIGHTS_REVIEW",
+        "reviewStatus": "PENDING_VISUAL_AND_COUNTRY_ACCURACY_REVIEW"
+      }
+    },
+    {
+      "countryCode": "CHN",
+      "name": {
+        "en-GB": "China",
+        "pt-BR": "China"
+      },
+      "flag": "🇨🇳",
+      "recipeIds": [
+        99,
+        100,
+        101
+      ],
+      "artwork": {
+        "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-chn.webp",
+        "sha256": "4396576a88883eef5217257976f70b329c2f7135dcadd88cf64356ca00172a05",
+        "provenance": "Illustrated Asian landmark crop from approved V3.1 World map reference; visual identification review pending",
+        "rightsStatus": "PENDING_INDEPENDENT_RIGHTS_REVIEW",
+        "reviewStatus": "PENDING_VISUAL_AND_COUNTRY_ACCURACY_REVIEW"
+      }
+    },
+    {
+      "countryCode": "JPN",
+      "name": {
+        "en-GB": "Japan",
+        "pt-BR": "Japão"
+      },
+      "flag": "🇯🇵",
+      "recipeIds": [
+        102,
+        103,
+        104
+      ],
+      "artwork": {
+        "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-jpn.webp",
+        "sha256": "07149f8a4e8a14375c249ff3956f73082dec58dccfa4c639c9428b5a83513970",
+        "provenance": "Home landmark card crop from approved V3.1 Home reference",
+        "rightsStatus": "PENDING_INDEPENDENT_RIGHTS_REVIEW",
+        "reviewStatus": "PENDING_VISUAL_AND_COUNTRY_ACCURACY_REVIEW"
+      }
+    },
+    {
+      "countryCode": "MEX",
+      "name": {
+        "en-GB": "Mexico",
+        "pt-BR": "México"
+      },
+      "flag": "🇲🇽",
+      "recipeIds": [
+        105,
+        106,
+        107
+      ],
+      "artwork": {
+        "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-mex.webp",
+        "sha256": "07eba947086541c44838c06a7b937c7493832b584fdfa5b83d4471ca31fe9b85",
+        "provenance": "Home landmark card crop from approved V3.1 Home reference",
+        "rightsStatus": "PENDING_INDEPENDENT_RIGHTS_REVIEW",
+        "reviewStatus": "PENDING_VISUAL_AND_COUNTRY_ACCURACY_REVIEW"
+      }
+    },
+    {
+      "countryCode": "VNM",
+      "name": {
+        "en-GB": "Vietnam",
+        "pt-BR": "Vietnã"
+      },
+      "flag": "🇻🇳",
+      "recipeIds": [
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116
+      ],
+      "artwork": {
+        "path": "tools/v3/artwork/world-adventures/reference-derived/home-destination-vnm.webp",
+        "sha256": "21b12814b36c765f07d2f8acec753203c45fe9c380c6142a7e493bb20e548a37",
+        "provenance": "Illustrated Southeast Asian map crop from approved V3.1 World map reference; Vietnam-specific landmark review pending",
+        "rightsStatus": "PENDING_INDEPENDENT_RIGHTS_REVIEW",
+        "reviewStatus": "PENDING_VISUAL_AND_COUNTRY_ACCURACY_REVIEW"
+      }
+    }
+  ],
+  "requirements": {
+    "preserveOriginalRecipeIds": "1-95",
+    "reviewOnlyRecipes": "96-116",
+    "counts": {
+      "IND": 18,
+      "ITA": 3,
+      "CHN": 3,
+      "JPN": 3,
+      "MEX": 3,
+      "VNM": 9
+    }
+  }
+}

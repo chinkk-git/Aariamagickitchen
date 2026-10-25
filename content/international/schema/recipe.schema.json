@@ -31,7 +31,7 @@
     "id": {
       "type": "integer",
       "minimum": 96,
-      "maximum": 110
+      "maximum": 116
     },
     "country": {
       "enum": [

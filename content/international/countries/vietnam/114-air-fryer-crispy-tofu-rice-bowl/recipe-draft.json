@@ -1,0 +1,306 @@
+{
+  "id": 114,
+  "title": {
+    "en-GB": "Air-Fryer Crispy Tofu Rice Bowl",
+    "pt-BR": "Tigela de arroz com tofu crocante na air fryer"
+  },
+  "status": "DRAFT",
+  "servings": 2,
+  "ingredients": {
+    "en-GB": [
+      "300 g firm tofu",
+      "150 g uncooked rice",
+      "10 ml neutral oil",
+      "10 ml soy sauce or tamari",
+      "1 g garlic powder",
+      "100 g cucumber",
+      "80 g carrot",
+      "15 g spring onions",
+      "5 g sesame seeds, optional"
+    ],
+    "pt-BR": [
+      "300 g de tofu firme",
+      "150 g de arroz cru",
+      "10 ml de óleo neutro",
+      "10 ml de molho de soja ou tamari",
+      "1 g de alho em pó",
+      "100 g de pepino",
+      "80 g de cenoura",
+      "15 g de cebolinha",
+      "5 g de gergelim, opcional"
+    ]
+  },
+  "equipment": [
+    {
+      "en-GB": "Air fryer",
+      "pt-BR": "Air fryer",
+      "role": {
+        "en-GB": "Adult operates and handles hot basket.",
+        "pt-BR": "Adulto opera e cuida do cesto quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Mixing bowl",
+      "pt-BR": "Tigela",
+      "role": {
+        "en-GB": "Aaria mixes at cool counter.",
+        "pt-BR": "Aaria mistura na bancada fria."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Rice cooker or saucepan",
+      "pt-BR": "Panela elétrica de arroz ou panela",
+      "role": {
+        "en-GB": "Adult handles hot appliance and rice.",
+        "pt-BR": "Adulto cuida do aparelho e do arroz quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Knife and board",
+      "pt-BR": "Faca e tábua",
+      "role": {
+        "en-GB": "Adult cuts vegetables.",
+        "pt-BR": "Adulto corta legumes."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": {
+        "en-GB": "Dry the tofu.",
+        "pt-BR": "Seque o tofu."
+      },
+      "instruction": {
+        "en-GB": "Aaria pats tofu dry with a clean towel. Adult cuts it into cubes and prepares vegetables with a knife.",
+        "pt-BR": "Aaria seca tofu com um pano limpo. Adulto corta em cubos e prepara legumes com uma faca."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-01.png",
+        "sha256": "6de8af0f9924dca3a9883e8e0362910373d3f841f178e1152ea156a93f0023f4",
+        "alt_text": {
+          "en-GB": "Aaria presses tofu dry with a clean towel.",
+          "pt-BR": "Aaria seca tofu com um pano limpo."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult cuts the tofu and vegetables with a knife; Aaria pats the tofu dry with a clean towel.",
+        "pt-BR": "Um adulto corta o tofu e os vegetais com a faca; Aaria seca o tofu com um pano limpo."
+      },
+      "safety": {
+        "en-GB": "Adult handles knives and keeps cut vegetables separate from any raw foods.",
+        "pt-BR": "Um adulto cuida das facas e mantém os vegetais cortados separados de alimentos crus."
+      }
+    },
+    {
+      "step_number": 2,
+      "title": {
+        "en-GB": "Season.",
+        "pt-BR": "Tempere."
+      },
+      "instruction": {
+        "en-GB": "Aaria tosses tofu with oil, soy sauce or tamari and garlic powder. Check labels first.",
+        "pt-BR": "Aaria mistura tofu com óleo, molho de soja ou tamari e alho em pó. Confira os rótulos."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-02.png",
+        "sha256": "0e829e1bb1855984370b91b240cf881dc21d3a8f9dcc56c4541dfbe68df5eb74",
+        "alt_text": {
+          "en-GB": "Aaria coats tofu cubes with oil and mild seasoning.",
+          "pt-BR": "Aaria mistura cubos de tofu com óleo e tempero suave."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Aaria tosses the tofu with the measured seasonings while an adult checks all package labels.",
+        "pt-BR": "Aaria mistura o tofu com os temperos medidos enquanto um adulto confere os rótulos."
+      },
+      "safety": {
+        "en-GB": "Check soy, wheat and sesame labels before cooking; use clean utensils to avoid cross-contact.",
+        "pt-BR": "Confira os rótulos de soja, trigo e gergelim antes de cozinhar; use utensílios limpos para evitar contato cruzado."
+      }
+    },
+    {
+      "step_number": 3,
+      "title": {
+        "en-GB": "Cook tofu and rice.",
+        "pt-BR": "Cozinhe tofu e arroz."
+      },
+      "instruction": {
+        "en-GB": "Daddy operates the air fryer and handles the hot basket. An adult cooks rice. Aaria stays clear of hot appliances.",
+        "pt-BR": "Papai opera a air fryer e cuida do cesto quente. Um adulto cozinha o arroz. Aaria fica longe dos aparelhos quentes."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-03.png",
+        "sha256": "cd4fdabd2fdd2dbdf421e1e3dbf0f49e07a4d04e092eb3cfe4e131a6d5aaf9f8",
+        "alt_text": {
+          "en-GB": "Daddy operates the air fryer while Aaria watches from a safe distance.",
+          "pt-BR": "Papai opera a air fryer enquanto Aaria observa a uma distância segura."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Daddy operates the air fryer and cooks the rice; Aaria stays away from the hot appliance and basket.",
+        "pt-BR": "Papai opera a air fryer e cozinha o arroz; Aaria fica longe do aparelho e do cesto quentes."
+      },
+      "safety": {
+        "en-GB": "Adult alone operates the hot air fryer and handles the hot basket. Keep Aaria at a safe distance.",
+        "pt-BR": "Somente um adulto opera a air fryer quente e cuida do cesto quente. Mantenha Aaria a uma distância segura."
+      }
+    },
+    {
+      "step_number": 4,
+      "title": {
+        "en-GB": "Build bowls.",
+        "pt-BR": "Monte as tigelas."
+      },
+      "instruction": {
+        "en-GB": "Once tofu is safely transferred and slightly cooled, Aaria adds it to rice with cucumber, carrot and spring onion.",
+        "pt-BR": "Depois de transferido com segurança e um pouco frio, Aaria coloca tofu no arroz com pepino, cenoura e cebolinha."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-04.png",
+        "sha256": "51fbc3368709370a37ede5b8705fe58b89c5ea9b37a220f5f86fadc46ea9f76f",
+        "alt_text": {
+          "en-GB": "Aaria assembles rice, crispy tofu and vegetables in a bowl.",
+          "pt-BR": "Aaria monta arroz, tofu crocante e legumes em uma tigela."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult transfers the hot tofu to a safe surface; Aaria builds bowls after it cools slightly.",
+        "pt-BR": "Um adulto transfere o tofu quente para uma superfície segura; Aaria monta as tigelas depois que ele esfriar um pouco."
+      },
+      "safety": {
+        "en-GB": "Hot tofu and rice can burn. Adult transfers and checks temperature before serving.",
+        "pt-BR": "Tofu e arroz quentes podem queimar. Um adulto transfere e confere a temperatura antes de servir."
+      }
+    }
+  ],
+  "allergens_and_cross_contact": {
+    "en-GB": "Soy; soy sauce may contain wheat; sesame if used. Check labels and prevent cross-contact.",
+    "pt-BR": "Soja; molho de soja pode conter trigo; gergelim se usado. Confira rótulos e evite contato cruzado."
+  },
+  "safety": {
+    "en-GB": "Adult handles all knives, raw meat, boiling liquids and hot appliances. Aaria handles cool preparation and stirs noodles only with an adult immediately beside her. Keep raw foods separate, clean hands and surfaces, and let hot dishes cool before eating. No cooking timers.",
+    "pt-BR": "Adulto cuida de todas as facas, carnes cruas, líquidos ferventes e aparelhos quentes. Aaria faz o preparo frio e mexe o macarrão somente com um adulto ao lado. Separe alimentos crus, limpe mãos e superfícies e deixe pratos quentes esfriarem antes de comer. Sem temporizadores."
+  },
+  "nutrition": {
+    "status": "PENDING_SOURCE_AND_CALCULATION",
+    "per_serving": null
+  },
+  "artwork": {
+    "status": "DRAFT",
+    "style_reference": {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+    },
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/finished/finished-dish.png",
+      "sha256": "9f76259426fccc531f7fe306d05bdc74e89884bacac6338f016668948d7ace1a",
+      "alt_text": {
+        "en-GB": "Finished crispy tofu rice bowl with cucumber, carrot and spring onion.",
+        "pt-BR": "Tigela pronta de arroz com tofu crocante, pepino, cenoura e cebolinha."
+      },
+      "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+      "rights_status": "PENDING_REVIEW",
+      "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+      "square_composition": true,
+      "contains_text": false
+    },
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-01.png",
+        "sha256": "6de8af0f9924dca3a9883e8e0362910373d3f841f178e1152ea156a93f0023f4",
+        "alt_text": {
+          "en-GB": "Aaria presses tofu dry with a clean towel.",
+          "pt-BR": "Aaria seca tofu com um pano limpo."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-02.png",
+        "sha256": "0e829e1bb1855984370b91b240cf881dc21d3a8f9dcc56c4541dfbe68df5eb74",
+        "alt_text": {
+          "en-GB": "Aaria coats tofu cubes with oil and mild seasoning.",
+          "pt-BR": "Aaria mistura cubos de tofu com óleo e tempero suave."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-03.png",
+        "sha256": "cd4fdabd2fdd2dbdf421e1e3dbf0f49e07a4d04e092eb3cfe4e131a6d5aaf9f8",
+        "alt_text": {
+          "en-GB": "Daddy operates the air fryer while Aaria watches from a safe distance.",
+          "pt-BR": "Papai opera a air fryer enquanto Aaria observa a uma distância segura."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/114-air-fryer-crispy-tofu-rice-bowl/artwork/steps/step-04.png",
+        "sha256": "51fbc3368709370a37ede5b8705fe58b89c5ea9b37a220f5f86fadc46ea9f76f",
+        "alt_text": {
+          "en-GB": "Aaria assembles rice, crispy tofu and vegetables in a bowl.",
+          "pt-BR": "Aaria monta arroz, tofu crocante e legumes em uma tigela."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      }
+    ],
+    "ingredient_images": [],
+    "equipment_images": []
+  },
+  "review_gates": {
+    "content": "PENDING",
+    "food_safety": "PENDING",
+    "artwork_accuracy": "PENDING",
+    "artwork_rights": "PENDING",
+    "accessibility": "PENDING",
+    "nutrition": "PENDING",
+    "independent_review": "PENDING"
+  },
+  "description": {
+    "en-GB": "Crispy air-fryer tofu served with rice and colourful crunchy vegetables.",
+    "pt-BR": "Tofu crocante na air fryer servido com arroz e vegetais coloridos e frescos."
+  },
+  "method": {
+    "en-GB": "Adult-operated air fryer; Aaria seasons cool tofu and assembles the rice bowls.",
+    "pt-BR": "Air fryer operada por um adulto; Aaria tempera o tofu frio e monta as tigelas de arroz."
+  }
+}

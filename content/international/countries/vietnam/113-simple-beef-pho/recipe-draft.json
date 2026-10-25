@@ -1,0 +1,316 @@
+{
+  "id": 113,
+  "title": {
+    "en-GB": "Simple Beef Phở",
+    "pt-BR": "Phở simples de carne bovina"
+  },
+  "status": "DRAFT",
+  "servings": 2,
+  "ingredients": {
+    "en-GB": [
+      "160 g flat rice noodles",
+      "250 g lean beef, sliced by adult",
+      "1 L low-salt beef stock",
+      "500 ml water",
+      "80 g onion",
+      "20 g ginger",
+      "1 star anise",
+      "1 small cinnamon stick",
+      "10 ml fish sauce, optional",
+      "80 g bean sprouts",
+      "15 g spring onions",
+      "10 g coriander",
+      "10 g mint",
+      "1 lime"
+    ],
+    "pt-BR": [
+      "160 g de macarrão de arroz achatado",
+      "250 g de carne bovina magra, fatiada por adulto",
+      "1 L de caldo de carne com pouco sal",
+      "500 ml de água",
+      "80 g de cebola",
+      "20 g de gengibre",
+      "1 anis-estrelado",
+      "1 pedaço pequeno de canela em pau",
+      "10 ml de molho de peixe, opcional",
+      "80 g de brotos de feijão",
+      "15 g de cebolinha",
+      "10 g de coentro",
+      "10 g de hortelã",
+      "1 limão"
+    ]
+  },
+  "equipment": [
+    {
+      "en-GB": "Stockpot",
+      "pt-BR": "Panela funda",
+      "role": {
+        "en-GB": "Adult handles broth and hot ladling.",
+        "pt-BR": "Adulto cuida do caldo e de servir quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Saucepan",
+      "pt-BR": "Panela média",
+      "role": {
+        "en-GB": "Aaria stirs noodles with adult beside her.",
+        "pt-BR": "Aaria mexe o macarrão com adulto ao lado."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Knife and board",
+      "pt-BR": "Faca e tábua",
+      "role": {
+        "en-GB": "Adult only, dedicated for raw beef.",
+        "pt-BR": "Somente adulto, exclusiva para carne crua."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Colander",
+      "pt-BR": "Escorredor",
+      "role": {
+        "en-GB": "Adult drains hot noodles.",
+        "pt-BR": "Adulto escorre o macarrão quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": {
+        "en-GB": "Prepare the beef safely.",
+        "pt-BR": "Prepare a carne com segurança."
+      },
+      "instruction": {
+        "en-GB": "Adult slices raw beef on a dedicated board, away from Aaria and ready-to-eat herbs. Wash hands and clean the board.",
+        "pt-BR": "Adulto fatia carne crua em tábua exclusiva, longe de Aaria e das ervas prontas. Lave as mãos e limpe a tábua."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-01.png",
+        "sha256": "556207dd7667758e4ebe05d9716d8819f41debe73bbfd64ac19e85d396ec7186",
+        "alt_text": {
+          "en-GB": "Daddy slices raw beef on a dedicated board; Aaria works at a separate counter.",
+          "pt-BR": "Papai fatia carne crua em tábua exclusiva; Aaria trabalha em outra bancada."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles and slices raw beef on a dedicated board, away from Aaria and ready-to-eat herbs.",
+        "pt-BR": "Um adulto manuseia e corta a carne crua em uma tábua exclusiva, longe de Aaria e das ervas prontas para consumo."
+      },
+      "safety": {
+        "en-GB": "Raw beef and its juices must stay away from herbs and other ready-to-eat food. Adult uses a dedicated board and washes hands and tools.",
+        "pt-BR": "A carne crua e seus líquidos devem ficar longe das ervas e de outros alimentos prontos. Um adulto usa tábua exclusiva e lava as mãos e os utensílios."
+      }
+    },
+    {
+      "step_number": 2,
+      "title": {
+        "en-GB": "Make the broth.",
+        "pt-BR": "Prepare o caldo."
+      },
+      "instruction": {
+        "en-GB": "Adult simmers stock, water, onion, ginger and spices, handling the hot pot and cooking beef fully.",
+        "pt-BR": "Adulto aquece caldo, água, cebola, gengibre e especiarias, cuida da panela quente e cozinha totalmente a carne."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-02.png",
+        "sha256": "7445a2a4425a7d99e2da20a1a86c1d0e6ac4eb1393d57d79ce7fdb589c61a02a",
+        "alt_text": {
+          "en-GB": "Mommy tends the beef broth while Aaria prepares herbs far away.",
+          "pt-BR": "Mamãe cuida do caldo de carne enquanto Aaria prepara ervas longe dali."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the hot pot and stove and makes sure the beef is cooked safely.",
+        "pt-BR": "Um adulto cuida da panela quente e do fogão e garante que a carne seja cozida com segurança."
+      },
+      "safety": {
+        "en-GB": "Adult handles boiling broth and raw beef; keep the hot pot away from Aaria and cook the beef fully.",
+        "pt-BR": "Um adulto cuida do caldo fervente e da carne crua; mantenha a panela quente longe de Aaria e cozinhe bem a carne."
+      }
+    },
+    {
+      "step_number": 3,
+      "title": {
+        "en-GB": "Cook noodles.",
+        "pt-BR": "Cozinhe o macarrão."
+      },
+      "instruction": {
+        "en-GB": "Aaria stirs noodles with Mommy or Daddy beside her, steadying the handle. Adult handles boiling water and draining.",
+        "pt-BR": "Aaria mexe o macarrão com Mamãe ou Papai ao lado, segurando o cabo. Adulto cuida da água fervente e de escorrer."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-03.png",
+        "sha256": "c9a8217bd8ba8668fed70a3e58ad2f18e312641b94cb6196e78e4a929731efd7",
+        "alt_text": {
+          "en-GB": "Aaria stirs noodles in a saucepan as Daddy steadies the handle.",
+          "pt-BR": "Aaria mexe macarrão na panela enquanto Papai segura o cabo."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Aaria stirs noodles with Mommy or Daddy right beside her; an adult handles boiling water and draining.",
+        "pt-BR": "Aaria mexe o macarrão com Mamãe ou Papai bem ao lado; um adulto cuida da água fervente e de escorrer."
+      },
+      "safety": {
+        "en-GB": "Steam and boiling water can burn. Adult manages the hob, pan and draining.",
+        "pt-BR": "Vapor e água fervente podem queimar. Um adulto cuida do fogão, da panela e de escorrer."
+      }
+    },
+    {
+      "step_number": 4,
+      "title": {
+        "en-GB": "Serve phở.",
+        "pt-BR": "Sirva o phở."
+      },
+      "instruction": {
+        "en-GB": "Adult portions cooked beef and hot broth. Aaria adds noodles, sprouts, spring onion, herbs and lime once bowls are safely on the table. Cool before eating.",
+        "pt-BR": "Adulto serve carne cozida e caldo quente. Aaria acrescenta macarrão, brotos, cebolinha, ervas e limão com as tigelas já seguras na mesa. Espere esfriar."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-04.png",
+        "sha256": "3d85e393762412f0782033c730c39d10267d1c0d00e152e10257ca0bd1ea6dac",
+        "alt_text": {
+          "en-GB": "Mommy pours hot broth into bowls with cooked beef and noodles.",
+          "pt-BR": "Mamãe serve caldo quente em tigelas com carne cozida e macarrão."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult portions the cooked beef and hot broth; Aaria adds herbs after the bowls are safely on the table.",
+        "pt-BR": "Um adulto serve a carne cozida e o caldo quente; Aaria acrescenta as ervas depois que as tigelas estiverem seguras sobre a mesa."
+      },
+      "safety": {
+        "en-GB": "Hot broth can scald. Adult serves and checks the food has cooled before eating.",
+        "pt-BR": "O caldo quente pode causar queimaduras. Um adulto serve e verifica se a comida esfriou antes de comer."
+      }
+    }
+  ],
+  "allergens_and_cross_contact": {
+    "en-GB": "Fish if fish sauce is used; check stock label for other allergens and prevent cross-contact around raw beef.",
+    "pt-BR": "Peixe se usar molho de peixe; confira o caldo para outros alergênicos e evite contato cruzado perto da carne crua."
+  },
+  "safety": {
+    "en-GB": "Adult handles all knives, raw meat, boiling liquids and hot appliances. Aaria handles cool preparation and stirs noodles only with an adult immediately beside her. Keep raw foods separate, clean hands and surfaces, and let hot dishes cool before eating. No cooking timers.",
+    "pt-BR": "Adulto cuida de todas as facas, carnes cruas, líquidos ferventes e aparelhos quentes. Aaria faz o preparo frio e mexe o macarrão somente com um adulto ao lado. Separe alimentos crus, limpe mãos e superfícies e deixe pratos quentes esfriarem antes de comer. Sem temporizadores."
+  },
+  "nutrition": {
+    "status": "PENDING_SOURCE_AND_CALCULATION",
+    "per_serving": null
+  },
+  "artwork": {
+    "status": "DRAFT",
+    "style_reference": {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+    },
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/finished/finished-dish.png",
+      "sha256": "1a092370310c69502184eed9e686dab57ca2f979314beef70f2258238169aa1c",
+      "alt_text": {
+        "en-GB": "Finished beef phở with noodles, cooked beef, herbs, sprouts and lime.",
+        "pt-BR": "Phở de carne pronto com macarrão, carne cozida, ervas, brotos e limão."
+      },
+      "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+      "rights_status": "PENDING_REVIEW",
+      "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+      "square_composition": true,
+      "contains_text": false
+    },
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-01.png",
+        "sha256": "556207dd7667758e4ebe05d9716d8819f41debe73bbfd64ac19e85d396ec7186",
+        "alt_text": {
+          "en-GB": "Daddy slices raw beef on a dedicated board; Aaria works at a separate counter.",
+          "pt-BR": "Papai fatia carne crua em tábua exclusiva; Aaria trabalha em outra bancada."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-02.png",
+        "sha256": "7445a2a4425a7d99e2da20a1a86c1d0e6ac4eb1393d57d79ce7fdb589c61a02a",
+        "alt_text": {
+          "en-GB": "Mommy tends the beef broth while Aaria prepares herbs far away.",
+          "pt-BR": "Mamãe cuida do caldo de carne enquanto Aaria prepara ervas longe dali."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-03.png",
+        "sha256": "c9a8217bd8ba8668fed70a3e58ad2f18e312641b94cb6196e78e4a929731efd7",
+        "alt_text": {
+          "en-GB": "Aaria stirs noodles in a saucepan as Daddy steadies the handle.",
+          "pt-BR": "Aaria mexe macarrão na panela enquanto Papai segura o cabo."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/113-simple-beef-pho/artwork/steps/step-04.png",
+        "sha256": "3d85e393762412f0782033c730c39d10267d1c0d00e152e10257ca0bd1ea6dac",
+        "alt_text": {
+          "en-GB": "Mommy pours hot broth into bowls with cooked beef and noodles.",
+          "pt-BR": "Mamãe serve caldo quente em tigelas com carne cozida e macarrão."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      }
+    ],
+    "ingredient_images": [],
+    "equipment_images": []
+  },
+  "review_gates": {
+    "content": "PENDING",
+    "food_safety": "PENDING",
+    "artwork_accuracy": "PENDING",
+    "artwork_rights": "PENDING",
+    "accessibility": "PENDING",
+    "nutrition": "PENDING",
+    "independent_review": "PENDING"
+  },
+  "description": {
+    "en-GB": "A simple beef phở with rice noodles, herbs and mild broth prepared safely by an adult.",
+    "pt-BR": "Um phở simples de carne bovina com macarrão de arroz, ervas e caldo suave preparado com segurança por um adulto."
+  },
+  "method": {
+    "en-GB": "Adult-prepared beef and broth; Aaria stirs noodles with close supervision and assembles the bowls.",
+    "pt-BR": "Carne e caldo preparados por um adulto; Aaria mexe o macarrão com supervisão próxima e monta as tigelas."
+  }
+}

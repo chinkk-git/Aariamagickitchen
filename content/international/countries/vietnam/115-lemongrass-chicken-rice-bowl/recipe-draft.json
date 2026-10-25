@@ -1,0 +1,308 @@
+{
+  "id": 115,
+  "title": {
+    "en-GB": "Lemongrass Chicken Rice Bowl",
+    "pt-BR": "Tigela de arroz com frango à erva-cidreira"
+  },
+  "status": "DRAFT",
+  "servings": 2,
+  "ingredients": {
+    "en-GB": [
+      "300 g boneless chicken breast",
+      "150 g uncooked rice",
+      "15 g lemongrass, chopped by adult",
+      "1 garlic clove",
+      "15 ml lime juice",
+      "10 ml neutral oil",
+      "10 ml low-sodium soy sauce, optional",
+      "100 g cucumber",
+      "80 g carrot",
+      "10 g coriander"
+    ],
+    "pt-BR": [
+      "300 g de peito de frango sem osso",
+      "150 g de arroz cru",
+      "15 g de erva-cidreira, picada por adulto",
+      "1 dente de alho",
+      "15 ml de suco de limão",
+      "10 ml de óleo neutro",
+      "10 ml de molho de soja com pouco sal, opcional",
+      "100 g de pepino",
+      "80 g de cenoura",
+      "10 g de coentro"
+    ]
+  },
+  "equipment": [
+    {
+      "en-GB": "Frying pan",
+      "pt-BR": "Frigideira",
+      "role": {
+        "en-GB": "Adult handles raw chicken and hot pan.",
+        "pt-BR": "Adulto cuida do frango cru e da frigideira quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Rice cooker or saucepan",
+      "pt-BR": "Panela elétrica de arroz ou panela",
+      "role": {
+        "en-GB": "Adult handles hot rice.",
+        "pt-BR": "Adulto cuida do arroz quente."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Knife and board",
+      "pt-BR": "Faca e tábua",
+      "role": {
+        "en-GB": "Adult chops aromatics and vegetables.",
+        "pt-BR": "Adulto pica temperos e legumes."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    },
+    {
+      "en-GB": "Mixing bowl",
+      "pt-BR": "Tigela",
+      "role": {
+        "en-GB": "Aaria mixes non-raw ingredients.",
+        "pt-BR": "Aaria mistura ingredientes que não sejam crus."
+      },
+      "presentation": "TEXT_CHIP_ONLY"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "title": {
+        "en-GB": "Prepare lemongrass and rice.",
+        "pt-BR": "Prepare erva-cidreira e arroz."
+      },
+      "instruction": {
+        "en-GB": "Adult chops lemongrass and garlic. Aaria measures and rinses rice in a separate clean area.",
+        "pt-BR": "Adulto pica erva-cidreira e alho. Aaria mede e lava o arroz em uma área limpa separada."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-01.png",
+        "sha256": "f28304412da2151c288ddda28fac225b7c44e663df13908289f5b74250da136d",
+        "alt_text": {
+          "en-GB": "Mommy chops lemongrass while Aaria measures rice at a separate counter.",
+          "pt-BR": "Mamãe pica erva-cidreira enquanto Aaria mede arroz em outra bancada."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult chops lemongrass and garlic with a sharp knife; Aaria measures and rinses the rice at a clean counter.",
+        "pt-BR": "Um adulto pica o capim-limão e o alho com uma faca afiada; Aaria mede e lava o arroz em uma bancada limpa."
+      },
+      "safety": {
+        "en-GB": "Adult handles the knife. Wash hands and keep washed rice and produce away from raw chicken.",
+        "pt-BR": "Um adulto cuida da faca. Lave as mãos e mantenha o arroz e os vegetais lavados longe do frango cru."
+      }
+    },
+    {
+      "step_number": 2,
+      "title": {
+        "en-GB": "Handle chicken safely.",
+        "pt-BR": "Cuide do frango com segurança."
+      },
+      "instruction": {
+        "en-GB": "Adult handles raw chicken and mixes it with lemongrass, garlic, lime and oil. Keep it away from ready-to-eat food; wash hands and surfaces.",
+        "pt-BR": "Adulto cuida do frango cru e mistura com erva-cidreira, alho, limão e óleo. Mantenha longe dos alimentos prontos; lave mãos e superfícies."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-02.png",
+        "sha256": "f44d5428f6a389e6b9fcd68716234817b5494980289478deedba086fb9dde7d7",
+        "alt_text": {
+          "en-GB": "Daddy handles raw chicken while Aaria rinses rice separately.",
+          "pt-BR": "Papai cuida do frango cru enquanto Aaria lava arroz separadamente."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult handles the raw chicken and marinade, away from ready-to-eat vegetables.",
+        "pt-BR": "Um adulto cuida do frango cru e da marinada, longe dos vegetais prontos para consumo."
+      },
+      "safety": {
+        "en-GB": "Raw chicken can spread germs. Adult uses separate tools and surfaces and washes hands after handling it.",
+        "pt-BR": "O frango cru pode espalhar microrganismos. Um adulto usa utensílios e superfícies separados e lava as mãos após manuseá-lo."
+      }
+    },
+    {
+      "step_number": 3,
+      "title": {
+        "en-GB": "Cook chicken and rice.",
+        "pt-BR": "Cozinhe frango e arroz."
+      },
+      "instruction": {
+        "en-GB": "Mommy or Daddy cooks chicken fully in a hot pan and cooks rice. Adult alone handles pan, stove and hot rice; Aaria stays at a cool counter.",
+        "pt-BR": "Mamãe ou Papai cozinha totalmente o frango na frigideira e prepara o arroz. Adulto cuida da frigideira, fogão e arroz quente; Aaria fica na bancada fria."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-03.png",
+        "sha256": "a9fccb7b214d62a88d369a17e4078bf10212b5cedbd6031349c2b58574e84843",
+        "alt_text": {
+          "en-GB": "Daddy cooks lemongrass chicken in a pan while Aaria prepares rice bowls away from the stove.",
+          "pt-BR": "Papai cozinha frango com erva-cidreira na frigideira enquanto Aaria prepara arroz longe do fogão."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "Mommy or Daddy cooks the chicken fully and handles the hot pan, stove and rice. Aaria stays at a cool counter.",
+        "pt-BR": "Mamãe ou Papai cozinha bem o frango e cuida da frigideira quente, do fogão e do arroz. Aaria fica na bancada fria."
+      },
+      "safety": {
+        "en-GB": "Adult handles the hot pan and boiling rice and checks chicken is fully cooked. Keep Aaria away from hot appliances.",
+        "pt-BR": "Um adulto cuida da frigideira quente e do arroz fervente e verifica se o frango está completamente cozido. Mantenha Aaria longe dos aparelhos quentes."
+      }
+    },
+    {
+      "step_number": 4,
+      "title": {
+        "en-GB": "Serve bowls.",
+        "pt-BR": "Sirva as tigelas."
+      },
+      "instruction": {
+        "en-GB": "Aaria adds cooked chicken to rice with cucumber, carrot and coriander after an adult transfers it safely. Adult checks chicken is fully cooked and food has cooled enough.",
+        "pt-BR": "Aaria coloca frango cozido no arroz com pepino, cenoura e coentro após a transferência segura por um adulto. Adulto confere se o frango está totalmente cozido e se a comida esfriou."
+      },
+      "image": {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-04.png",
+        "sha256": "f2d736bf8655805e90e5f0c88a87ff561ec32aee559844a62f1bb81643b123a3",
+        "alt_text": {
+          "en-GB": "Aaria adds cooked lemongrass chicken to a rice bowl with Mommy helping.",
+          "pt-BR": "Aaria coloca frango cozido com erva-cidreira na tigela com a ajuda da Mamãe."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      "adultAssist": {
+        "en-GB": "An adult transfers the cooked chicken; Aaria assembles bowls once the food is safely on the table and cooled.",
+        "pt-BR": "Um adulto transfere o frango cozido; Aaria monta as tigelas quando a comida estiver segura sobre a mesa e fria o suficiente."
+      },
+      "safety": {
+        "en-GB": "Hot food can burn. Adult portions it safely and checks that it has cooled before eating.",
+        "pt-BR": "A comida quente pode queimar. Um adulto serve com segurança e verifica se esfriou antes de comer."
+      }
+    }
+  ],
+  "allergens_and_cross_contact": {
+    "en-GB": "Soy if soy sauce is used; check package labels and prevent cross-contact.",
+    "pt-BR": "Soja se usar molho de soja; confira os rótulos e evite contato cruzado."
+  },
+  "safety": {
+    "en-GB": "Adult handles all knives, raw meat, boiling liquids and hot appliances. Aaria handles cool preparation and stirs noodles only with an adult immediately beside her. Keep raw foods separate, clean hands and surfaces, and let hot dishes cool before eating. No cooking timers.",
+    "pt-BR": "Adulto cuida de todas as facas, carnes cruas, líquidos ferventes e aparelhos quentes. Aaria faz o preparo frio e mexe o macarrão somente com um adulto ao lado. Separe alimentos crus, limpe mãos e superfícies e deixe pratos quentes esfriarem antes de comer. Sem temporizadores."
+  },
+  "nutrition": {
+    "status": "PENDING_SOURCE_AND_CALCULATION",
+    "per_serving": null
+  },
+  "artwork": {
+    "status": "DRAFT",
+    "style_reference": {
+      "path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+      "sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+    },
+    "finished_dish": {
+      "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/finished/finished-dish.png",
+      "sha256": "19afeb3adc51df07c5f5730841ee144746dc32dec1c5fd51152ba4f9823924c2",
+      "alt_text": {
+        "en-GB": "Finished lemongrass chicken rice bowl with rice, cucumber, carrot and herbs.",
+        "pt-BR": "Tigela pronta de arroz com frango à erva-cidreira, pepino, cenoura e ervas."
+      },
+      "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+      "rights_status": "PENDING_REVIEW",
+      "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+      "square_composition": true,
+      "contains_text": false
+    },
+    "step_images": [
+      {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-01.png",
+        "sha256": "f28304412da2151c288ddda28fac225b7c44e663df13908289f5b74250da136d",
+        "alt_text": {
+          "en-GB": "Mommy chops lemongrass while Aaria measures rice at a separate counter.",
+          "pt-BR": "Mamãe pica erva-cidreira enquanto Aaria mede arroz em outra bancada."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-02.png",
+        "sha256": "f44d5428f6a389e6b9fcd68716234817b5494980289478deedba086fb9dde7d7",
+        "alt_text": {
+          "en-GB": "Daddy handles raw chicken while Aaria rinses rice separately.",
+          "pt-BR": "Papai cuida do frango cru enquanto Aaria lava arroz separadamente."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-03.png",
+        "sha256": "a9fccb7b214d62a88d369a17e4078bf10212b5cedbd6031349c2b58574e84843",
+        "alt_text": {
+          "en-GB": "Daddy cooks lemongrass chicken in a pan while Aaria prepares rice bowls away from the stove.",
+          "pt-BR": "Papai cozinha frango com erva-cidreira na frigideira enquanto Aaria prepara arroz longe do fogão."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      },
+      {
+        "path": "content/international/countries/vietnam/115-lemongrass-chicken-rice-bowl/artwork/steps/step-04.png",
+        "sha256": "f2d736bf8655805e90e5f0c88a87ff561ec32aee559844a62f1bb81643b123a3",
+        "alt_text": {
+          "en-GB": "Aaria adds cooked lemongrass chicken to a rice bowl with Mommy helping.",
+          "pt-BR": "Aaria coloca frango cozido com erva-cidreira na tigela com a ajuda da Mamãe."
+        },
+        "provenance": "OpenAI ImageGen; recipe-specific prompt guided by the locked textual artwork guide.",
+        "rights_status": "PENDING_REVIEW",
+        "review_status": "DRAFT_PENDING_SAFETY_STYLE_ACCURACY_AND_ACCESSIBILITY_REVIEW",
+        "square_composition": true,
+        "contains_text": false
+      }
+    ],
+    "ingredient_images": [],
+    "equipment_images": []
+  },
+  "review_gates": {
+    "content": "PENDING",
+    "food_safety": "PENDING",
+    "artwork_accuracy": "PENDING",
+    "artwork_rights": "PENDING",
+    "accessibility": "PENDING",
+    "nutrition": "PENDING",
+    "independent_review": "PENDING"
+  },
+  "description": {
+    "en-GB": "Lemongrass chicken with rice and fresh vegetables, cooked and handled safely by an adult.",
+    "pt-BR": "Frango com capim-limão, arroz e vegetais frescos, preparado e manuseado com segurança por um adulto."
+  },
+  "method": {
+    "en-GB": "Adult-prepared and fully cooked chicken; Aaria helps measure rice and assemble the bowls.",
+    "pt-BR": "Frango preparado e completamente cozido por um adulto; Aaria ajuda a medir o arroz e montar as tigelas."
+  }
+}

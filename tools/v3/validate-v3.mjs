@@ -97,7 +97,7 @@ if (!homeArtRule?.includes('background-image:url("data:image/')) {
 if (layer.includes('batchIngredientPicture=function') &&
     (!layer.includes('function v32ScopedInternationalIngredientPicture(text)') ||
      !layer.includes('V32_INTL_BY_ID?.has(Number(selected?.id))?v32InternationalIngredientPicture(text):v32BaseBatchIngredientPictureForOriginalRecipes(text)'))) {
-  throw new Error('V3 must preserve original ingredient-specific art and scope international pictograms to #096/#099.');
+  throw new Error('V3 must preserve original ingredient-specific art and scope international pictograms to the international review recipes.');
 }
 for (const id of [1, 2, 3, 4, 78, 89, 93, 94]) {
   if (!html.includes(`NEW_RECIPE_ART[${id}]`) && !layer.includes(`"${id}"`)) {
