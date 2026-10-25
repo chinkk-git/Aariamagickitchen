@@ -379,7 +379,7 @@ test('owner-review Android workflow runs exact-head G1/G2/G3 and uploads a named
   assert.match(workflow, /W01_OWNER_REVIEW_BUILD_SUFFIX/, 'the owner-review package ID is unique to the build');
 });
 
-test('phone G3 keeps both complete 95-recipe sweeps enabled within bounded execution limits', async () => {
+test('phone G3 keeps both 97-route sweeps enabled within bounded execution limits', async () => {
   const phone = await read('.github/scripts/v32-android-smoke.sh');
   const workflow = await read('.github/workflows/v32-android.yml');
   assert.equal((phone.match(/for\(const recipeId of integratedRecipeIds\)\{/g) || []).length, 2,
@@ -411,6 +411,12 @@ test('97-recipe review catalogue checks keep all 95 original route regressions',
     'both phone route sweeps include all 95 originals and pilots #096/#099');
   assert.match(phone, /routeCoverage\.length!==97\|\|new Set\(routeCoverage\)\.size!==97/,
     'exactly 97 distinct integrated route checks remain mandatory');
+  assert.match(phone, /if\(count!==97\)throw new Error\(`PT-BR catalogue after recipe \$\{recipeId\} contains \$\{count\}, expected 97:/,
+    'PT-BR navigation restores the full 97-entry catalogue after every original translation route');
+  assert.match(phone, /if\(ptRouteCoverage\.length!==30\|\|ptRouteCoverage\[0\]!==66\|\|ptRouteCoverage\.at\(-1\)!==95\)/,
+    'PT-BR translation coverage remains exactly the 30 original recipe IDs 66–95');
+  assert.match(phone, /for\(const \[id,expectedTitle\] of \[\[96,'Massa com tomate e manjericão'\],\[99,'Arroz frito com legumes'\]\]\)/,
+    'PT-BR still validates only approved international additions #096 and #099');
   assert.match(phone, /const isIntegratedRecipeId=id=>Number\.isInteger\(id\)&&\(\(id>=1&&id<=95\)\|\|id===96\|\|id===99\)/,
     'Surprise Me accepts the 95 originals plus integrated #096 and #099');
   assert.match(phone, /wheelOptions\.some\(id=>!isIntegratedRecipeId\(id\)\)/,

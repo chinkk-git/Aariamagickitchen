@@ -828,7 +828,7 @@ for(let recipeId=66;recipeId<=95;recipeId++){
   await evaluate(`document.querySelector('#nav .tab[data-nav="library"]')?.click()`);
   const returned=await waitForVisible('.recipe-card[data-open="66"]',`PT-BR catalogue after recipe ${recipeId}`);
   const count=await evaluate(`document.querySelectorAll('#screen .recipe-card[data-open]').length`);
-  if(count!==95)throw new Error(`PT-BR catalogue after recipe ${recipeId} contains ${count}, expected 95: ${returned.screen}`);
+  if(count!==97)throw new Error(`PT-BR catalogue after recipe ${recipeId} contains ${count}, expected 97: ${returned.screen}`);
 }
 if(ptRouteCoverage.length!==30||ptRouteCoverage[0]!==66||ptRouteCoverage.at(-1)!==95)throw new Error('PT-BR recipe translation route coverage is not IDs 66–95');
 writeFileSync('artifacts/v32-diagnostics/pt-br-recipe-coverage.json',JSON.stringify({checkedAt:new Date().toISOString(),recipeIds:ptRouteCoverage,uniqueCount:new Set(ptRouteCoverage).size,status:'DRAFT_COPY_RENDERED_REVIEW_REQUIRED',review:'A08/A09/native PT-BR review pending'},null,2)+'\\n');
