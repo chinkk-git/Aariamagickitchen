@@ -40,15 +40,19 @@ for(const [code,count] of [['IND',18],['ITA',3],['CHN',3],['JPN',3],['MEX',3],['
   await waitFor("!document.querySelector('.aria-world-globe__panel.is-portrait-overlay')",'Android Back close');
  }else await closeWithX();
 }
-const recipeCountry={};for(const [code,ids] of Object.entries({ITA:[97,98],CHN:[100,101],JPN:[102,103,104],MEX:[105,106,107],VNM:[108,109,110,111,112,113,114,115,116]}))for(const id of ids)recipeCountry[id]=code;
-for(const [id,code] of Object.entries(recipeCountry)){
- await openHomeCountry(code);
- const clicked=await evaluate(`(()=>{const b=document.querySelector('.aria-world-globe__recipe[data-recipe-id="${id}"]');if(!b)return false;b.click();return true})()`);
- assert.equal(clicked,true,`#${id} missing from ${code} country recipe list`);
- await waitFor(`typeof view!=='undefined'&&view==='recipe'&&Number(selected?.id)===${id}`,'recipe detail #'+id);
- const detail=await evaluate(`({template:document.querySelector('.app')?.classList.contains('v32-international-active'),steps:(STEP_GUIDES[${id}]||[]).length,title:document.querySelector('#screen .ref-title h1')?.textContent?.trim()})`);
- assert.equal(detail.template,true,`#${id} must use the approved V3.2 recipe template`);assert.ok(detail.steps>=4,`#${id} step guide missing`);assert.ok(detail.title,`#${id} detail title missing`);
- if(id===111)await screenshot('recipe-111-detail-portrait.png');if(id===116)await screenshot('recipe-116-detail-portrait.png');
+const expansionByCountry={ITA:[97,98],CHN:[100,101],JPN:[102,103,104],MEX:[105,106,107],VNM:[108,109,110,111,112,113,114,115,116]};
+for(const [code,ids] of Object.entries(expansionByCountry)){
+ await openHomeCountry(code);await evaluate('window.__v35EvidenceHost=v33WorldHost');
+ for(const [index,id] of ids.entries()){
+  const clicked=await evaluate(index===0
+   ?`(()=>{const b=document.querySelector('.aria-world-globe__recipe[data-recipe-id="${id}"]');if(!b)return false;b.click();return true})()`
+   :`window.__v35EvidenceHost.openRecipe(${id})`);
+  assert.equal(clicked,true,`#${id} missing or not routable from ${code}`);
+  await waitFor(`typeof view!=='undefined'&&view==='recipe'&&Number(selected?.id)===${id}`,'recipe detail #'+id);
+  const detail=await evaluate(`({template:document.querySelector('.app')?.classList.contains('v32-international-active'),steps:(STEP_GUIDES[${id}]||[]).length,title:document.querySelector('#screen .ref-title h1')?.textContent?.trim()})`);
+  assert.equal(detail.template,true,`#${id} must use the approved V3.2 recipe template`);assert.ok(detail.steps>=4,`#${id} step guide missing`);assert.ok(detail.title,`#${id} detail title missing`);
+  if(id===111)await screenshot('recipe-111-detail-portrait.png');if(id===116)await screenshot('recipe-116-detail-portrait.png');
+ }
  await goHome();
 }
 await evaluate("document.querySelector('.bottom .tab[data-nav=world]')?.click()");await waitFor("typeof view!=='undefined'&&view==='world'",'landscape World entry');
