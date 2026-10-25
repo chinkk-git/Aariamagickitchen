@@ -17,7 +17,7 @@ on:
       - 'phase2-pilot/packages/assets/**'
       - 'phase2-pilot/tools/recipe-pipeline/**'
       - 'phase2-pilot/tests/**'
-      - 'docs/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md'
+      - '.github/control-tower/W02_W03_MAGICAL_GLOBE_ANDROID_HANDOFF.md'
       - 'phase2-pilot/package.json'
       - '.github/workflows/recipe-rollout.yml'
 permissions:
