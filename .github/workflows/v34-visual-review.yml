@@ -14,6 +14,10 @@ on:
       - 'content/international/**'
       - 'phase2-pilot/packages/assets/**'
       - 'docs/design/v3.4/magical-adventure-home-approved.png'
+      - 'docs/design/v3.4/V34_Magical_Home_Background_Portrait.png'
+      - 'docs/design/v3.4/V34_Magical_Home_Background_Landscape.png'
+      - 'docs/design/v3.4/V34_Color_Palette_and_Typography.png'
+      - 'docs/design/v3.4/V34_Visual_Assets_Reference.png'
       - 'index.html'
       - '.github/scripts/v34-prepare-visual-page.mjs'
       - '.github/scripts/v34-android-visual-capture.mjs'
@@ -73,6 +77,17 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel_3a
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: node .github/scripts/v34-android-visual-capture.mjs
+      - name: Capture genuine Android tablet landscape screenshots (no APK build)
+        uses: reactivecircus/android-emulator-runner@v2
+        env:
+          V34_CAPTURE_DEVICE: tablet-landscape
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_tablet
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: node .github/scripts/v34-android-visual-capture.mjs
       - name: Assemble side-by-side reference and screenshot review
