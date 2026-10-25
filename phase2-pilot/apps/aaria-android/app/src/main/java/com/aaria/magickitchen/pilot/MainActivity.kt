@@ -56,6 +56,10 @@ internal fun resolveChooserResult(
     }
 }
 
+internal fun isCompletedDishPhotoCapture(resultCode: Int, resultOkCode: Int, file: File?): Boolean =
+    resultCode == resultOkCode && file?.isFile == true && file.length() > 0L &&
+        file.name.matches(Regex("[a-f0-9-]{36}\\.jpg"))
+
 class MainActivity : Activity() {
     private lateinit var webView: WebView
     private val approvalLifecycleLock = Any()
@@ -66,9 +70,12 @@ class MainActivity : Activity() {
     private var fileChooserCallback: ValueCallback<Array<Uri>>? = null
     private var pendingCaptureUri: Uri? = null
     private var pendingCaptureFile: File? = null
+    private data class PendingDishPhoto(val recipeId: Int, val file: File, val uri: Uri)
+    private var pendingDishPhoto: PendingDishPhoto? = null
     private val fileChooserRequest = 4312
     private val parentShareRequest = 4313
     private val parentUpdateRequest = 4314
+    private val dishPhotoRequest = 4315
     private data class PendingShare(val bytes: ByteArray, val mimeType: String, val title: String)
     private data class PendingUpdateApproval(
         val completed: CountDownLatch = CountDownLatch(1),
@@ -78,6 +85,51 @@ class MainActivity : Activity() {
     private val pendingParentShare = AtomicReference<PendingShare?>(null)
     private val pendingParentUpdate = AtomicReference<PendingUpdateApproval?>(null)
     private var backInvokedCallback: OnBackInvokedCallback? = null
+
+    internal fun launchDishPhotoCapture(recipeId: Int): Boolean {
+        if (recipeId <= 0 || isFinishing || isDestroyed) return false
+        runOnUiThread {
+            if (isFinishing || isDestroyed || pendingDishPhoto != null) {
+                notifyDishPhotoError(recipeId)
+                return@runOnUiThread
+            }
+            val directory = File(filesDir, "dish-creations").apply { mkdirs() }
+            val file = File(directory, UUID.randomUUID().toString() + ".jpg")
+            val uri = Uri.parse("content://$packageName.share/creations/${file.name}")
+            val camera = Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
+                putExtra(MediaStore.EXTRA_OUTPUT, uri)
+                clipData = ClipData.newRawUri("Aaria dish photo", uri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+            }
+            if (camera.resolveActivity(packageManager) == null) {
+                file.delete()
+                notifyDishPhotoError(recipeId)
+                return@runOnUiThread
+            }
+            pendingDishPhoto = PendingDishPhoto(recipeId, file, uri)
+            packageManager.queryIntentActivities(camera, 0).forEach {
+                grantUriPermission(
+                    it.activityInfo.packageName,
+                    uri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+            }
+            try {
+                startActivityForResult(camera, dishPhotoRequest)
+            } catch (_: Exception) {
+                pendingDishPhoto = null
+                file.delete()
+                notifyDishPhotoError(recipeId)
+            }
+        }
+        return true
+    }
+
+    private fun notifyDishPhotoError(recipeId: Int) {
+        if (::webView.isInitialized && !isFinishing && !isDestroyed) {
+            webView.evaluateJavascript("window.aariaHandleNativeDishPhotoError?.($recipeId)", null)
+        }
+    }
 
     internal fun requestParentApprovedShare(bytes: ByteArray, mimeType: String, title: String): Boolean {
         if (Looper.myLooper() == Looper.getMainLooper() || bytes.isEmpty() ||
@@ -357,6 +409,22 @@ class MainActivity : Activity() {
                         return localErrorResponse(403, "Forbidden")
                     }
 
+                    if (uri.pathSegments.firstOrNull() == "dish-photo") {
+                        val name = uri.pathSegments.getOrNull(1)?.takeIf { it.matches(Regex("[a-f0-9-]{36}\\.jpg")) }
+                            ?: return localErrorResponse(404, "Not Found")
+                        if (uri.pathSegments.size != 2) return localErrorResponse(404, "Not Found")
+                        val directory = File(filesDir, "dish-creations").canonicalFile
+                        val photo = File(directory, name).canonicalFile
+                        if (!photo.path.startsWith(directory.path + File.separator) || !photo.isFile) {
+                            return localErrorResponse(404, "Not Found")
+                        }
+                        return try {
+                            WebResourceResponse("image/jpeg", null, 200, "OK", mapOf("Cache-Control" to "no-store", "X-Content-Type-Options" to "nosniff"), photo.inputStream())
+                        } catch (_: Exception) {
+                            localErrorResponse(404, "Not Found")
+                        }
+                    }
+
                     val assetPath = when (val result = AppAssetsUrlPolicy.classifyAssetPath(uri.path)) {
                         is AssetPathResult.Valid -> result.path
                         AssetPathResult.NotFound -> return localErrorResponse(404, "Not Found")
@@ -482,6 +550,17 @@ class MainActivity : Activity() {
             parentCredentialPromptPending.set(false)
             return
         }
+        if (requestCode == dishPhotoRequest) {
+            val pending = pendingDishPhoto
+            pendingDishPhoto = null
+            pending?.uri?.let { revokeUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION) }
+            if (pending != null && isCompletedDishPhotoCapture(resultCode, RESULT_OK, pending.file)) {
+                webView.evaluateJavascript("window.aariaHandleNativeDishPhoto?.(${pending.recipeId},${org.json.JSONObject.quote(pending.file.name)})", null)
+            } else {
+                pending?.file?.delete()
+            }
+            return
+        }
         if (requestCode == fileChooserRequest) {
             val captureUri = pendingCaptureUri
             val captureFile = pendingCaptureFile
@@ -500,6 +579,9 @@ class MainActivity : Activity() {
     override fun onDestroy() {
         fileChooserCallback?.onReceiveValue(null)
         pendingCaptureFile?.delete()
+        pendingDishPhoto?.file?.delete()
+        pendingDishPhoto?.uri?.let { revokeUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION) }
+        pendingDishPhoto = null
         fileChooserCallback = null
         pendingCaptureFile = null
         pendingCaptureUri = null
@@ -535,6 +617,12 @@ class ShareBridge(private val activity: Activity) {
 
     private fun confirmParentContentUpdate(version: Int, fileCount: Int): Boolean =
         (activity as? MainActivity)?.confirmParentContentUpdate(version, fileCount) ?: false
+
+    @JavascriptInterface
+    fun takeDishPhoto(recipeId: String): Boolean {
+        val id = recipeId.toIntOrNull()?.takeIf { it > 0 } ?: return false
+        return (activity as? MainActivity)?.launchDishPhotoCapture(id) ?: false
+    }
 
     @JavascriptInterface
     fun installVerifiedContentPack(base64Zip: String): String = bridgeResult {
