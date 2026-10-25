@@ -34,8 +34,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
-      V34_PREVIEW_BUILD_SUFFIX: ownerfix
-      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewownerfix
+      V34_PREVIEW_BUILD_SUFFIX: ownerfix2
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewownerfix2
     steps:
       - name: Check out exact V3.4 source head
         uses: actions/checkout@v4
