@@ -253,12 +253,16 @@ const V31_APPROVED_INDIA_RECIPE_IDS=[51,52,53,54,55,56,57,58,59,60,61,62,63,64,6
 const V31_WORLD_DESTINATIONS=[{code:'IND',iso:'IND',en:'India',pt:'Índia',flag:'🇮🇳',factEn:'Explore the original Indian recipes in Aaria’s kitchen.',factPt:'Explore as receitas indianas originais da cozinha da Aaria.',reviewStatus:'approved-reference'}];
 const V31_DESTINATION_BY_ISO=Object.fromEntries(V31_WORLD_DESTINATIONS.map(x=>[x.code,x]));
 let v31SelectedCountry='IND',v31MapPanel='';
+window.v34ResetGlobeState=function(){
+ // A return to the World route must not revive a prior country or globe snapshot.
+ v31SelectedCountry=null;v31MapPanel='';window.v34SuppressCountryRestore=true;
+ if(v33GlobeController){v33GlobeController.destroy();v33GlobeController=null}
+ v33GlobeState=null;v33WorldHost=null;
+};
 window.v34EnterGlobeFirst=function(fromNav){
  // Every World action is a fresh entry: clear the country sheet, country selection,
  // and the controller snapshot before rendering, including taps while already on World.
- v31SelectedCountry=null;v31MapPanel='';window.v31WorldOpenedFromNav=Boolean(fromNav);window.v31WorldOpenerIndex=0;window.v34SuppressCountryRestore=true;
- if(v33GlobeController){v33GlobeController.destroy();v33GlobeController=null}
- v33GlobeState=null;v33WorldHost=null;
+ window.v34ResetGlobeState();window.v31WorldOpenedFromNav=Boolean(fromNav);window.v31WorldOpenerIndex=0;
  history.replaceState({},'',location.hash||'#aria/world');goto('world')
 };
 let v33GlobeController=null,v33GlobeState=null,v33WorldHost=null,v33SpinHintDismissed=false;
@@ -539,13 +543,8 @@ document.addEventListener('click',e=>{const button=e.target.closest('button[data
 document.addEventListener('backbutton',e=>{if(view!=='world')return;if(document.querySelector('.v33-passport-overlay')){document.querySelector('.v33-passport-overlay').remove();e.preventDefault();e.stopImmediatePropagation();return}if(v33GlobeController?.handleBack?.()){e.preventDefault();e.stopImmediatePropagation()}},true);
 document.addEventListener('keydown',e=>{if(view!=='world'||!['Escape','Backspace','BrowserBack'].includes(e.key))return;if(document.querySelector('.v33-passport-overlay')){document.querySelector('.v33-passport-overlay').remove();e.preventDefault();e.stopImmediatePropagation();return}if(v33GlobeController?.handleBack?.()){e.preventDefault();e.stopImmediatePropagation()}},true);
 window.addEventListener('popstate',e=>{
-  // Recipe navigation changes the hash, but the prior history entry is the
-  // country-card panel state at #aria/world. Restore that panel explicitly;
-  // the base hash router intentionally does not know about the World route.
-  if(e.state?.v31Panel==='country'&&location.hash==='#aria/world'&&!window.v34SuppressCountryRestore){
-   view='world';v31MapPanel='country';e.preventDefault();e.stopImmediatePropagation();render();return;
-  }
-  // A subsequent Back from the country panel returns to the fixed map.
+  // The shared route restorer handles #aria/world and calls the shared reset.
+  // Never revive a stale country sheet after backing out of a recipe.
   if(view==='world'&&v31MapPanel){v31MapPanel='';e.preventDefault();e.stopImmediatePropagation();render()}
 },true);
 

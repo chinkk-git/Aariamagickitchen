@@ -509,10 +509,12 @@ class MainActivity : Activity() {
         // Android WebView does not report local hash routes as native page history.
         // Ask the offline kitchen which route is active, then let its backbutton
         // handler restore the previous in-app route instead of finishing the Activity.
-        webView.evaluateJavascript("typeof view === 'string' ? view : ''") { result ->
+        webView.evaluateJavascript("Boolean(document.querySelector('#v34-welcome')) + '|' + (typeof view === 'string' ? view : '')") { result ->
             if (isFinishing || isDestroyed) return@evaluateJavascript
-            val route = result?.trim()?.removeSurrounding("\"")?.takeIf { it.isNotBlank() }
-            if (shouldNavigateWebBack(route)) {
+            val parts = result?.trim()?.removeSurrounding("\"")?.split('|', limit = 2).orEmpty()
+            val welcomeOpen = parts.firstOrNull()?.toBoolean() == true
+            val route = parts.getOrNull(1)?.takeIf { it.isNotBlank() }
+            if (shouldDispatchWebBack(route, welcomeOpen)) {
                 webView.evaluateJavascript("document.dispatchEvent(new Event('backbutton'))", null)
             } else if (webView.canGoBack()) {
                 webView.goBack()
@@ -605,6 +607,8 @@ class MainActivity : Activity() {
 }
 
 internal fun shouldNavigateWebBack(route: String?): Boolean = !route.isNullOrBlank() && route != "home"
+
+internal fun shouldDispatchWebBack(route: String?, welcomeOpen: Boolean): Boolean = welcomeOpen || shouldNavigateWebBack(route)
 
 class ShareBridge(private val activity: Activity) {
     private val profileStore by lazy { ProfileStore(activity) }

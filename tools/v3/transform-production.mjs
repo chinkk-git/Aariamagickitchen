@@ -423,8 +423,13 @@ const legacyFriendPortraits = '<div class="parent-pair" aria-hidden="true"><span
 if (!outputHtml.includes(legacyFriendPortraits) || outputHtml.indexOf(legacyFriendPortraits) !== outputHtml.lastIndexOf(legacyFriendPortraits)) throw new Error('Could not uniquely remove the legacy friends portrait row.');
 outputHtml = outputHtml.replace(legacyFriendPortraits, '');
 if (outputHtml.includes('v32-friend-portrait')) throw new Error('Friends avatar portrait markup remains in the transformed page.');
-outputHtml = outputHtml.replace('home|week|library|recipe|stories|groceries|family|friends|rewards|settings|wheel', 'home|week|library|recipe|stories|groceries|family|friends|rewards|settings|wheel|world');
-if (!outputHtml.includes('wheel|world')) throw new Error('Could not add the V3.1 world route to Android back navigation.');
+const legacyRoutePattern = 'home|week|library|recipe|stories|groceries|family|friends|rewards|settings|wheel';
+const worldRoutePattern = 'home|week|library|world|recipe|stories|groceries|family|friends|rewards|settings|wheel';
+if (outputHtml.includes(legacyRoutePattern)) outputHtml = outputHtml.replace(legacyRoutePattern, worldRoutePattern);
+if (!outputHtml.includes(worldRoutePattern)) throw new Error('Could not add the V3.1 world route to Android back navigation.');
+const restoreRoutePrefix = `function restoreAppRoute(){const route=location.hash.match(/^#aria\\/(${worldRoutePattern})(?:\\/(\\d+)(?:\\/(\\d+))?)?$/);if(!route)return;`;
+if (!outputHtml.includes(restoreRoutePrefix)) throw new Error('Could not locate the generated Android route restorer.');
+outputHtml = outputHtml.replace(restoreRoutePrefix, restoreRoutePrefix + "if(route[1]==='world')window.v34ResetGlobeState?.();");
 const sourceNav = outputHtml.match(/<nav class="bottom" id="nav"[^>]*>[\s\S]*?<\/nav>/)?.[0];
 if (!sourceNav) throw new Error('Could not find the persistent bottom navigation.');
 const sixTabNav = '<nav class="bottom" id="nav" aria-label="Main navigation"><button class="tab" data-nav="home"><b>⌂</b>Home</button><button class="tab" data-nav="library"><b>♧</b>Recipes</button><button class="tab" data-nav="world"><b>🌍</b>World Adventure</button><button class="tab" data-nav="groceries"><b>🧺</b>Magic Pantry</button><button class="tab" data-nav="week"><b>▦</b>Planner</button><button class="tab" data-nav="creations"><b>☆</b>My Creations</button></nav>';

@@ -98,8 +98,17 @@
     return `<span class="v34-activity-art" aria-hidden="true" style="background-position:-${(x/1024*100).toFixed(3)}vw -${(y/1024*100).toFixed(3)}vw"></span>`;
   }
   function recipeTitle(recipe) { return safe(translateText(recipe.title)); }
-  function recipeCard(recipe, badge = '') {
-    return `<button class="v34-recipe-card" type="button" data-open="${recipe.id}" aria-label="${t('Open', 'Abrir')} ${recipeTitle(recipe)}">${homeDishThumb(recipe)}<span class="v34-card-badge">${badge || recipe.emoji}</span><strong>${recipeTitle(recipe)}</strong></button>`;
+  function creationPhotoUrl(recipeId) {
+    const entries = Array.isArray(state.myCreations) ? state.myCreations : [];
+    const saved = entries.slice().reverse().find(item => item && typeof item === 'object' && Number(item.recipeId) === Number(recipeId) && typeof item.photoUrl === 'string' && item.photoUrl.startsWith('https://appassets.androidplatform.net/dish-photo/'));
+    return saved?.photoUrl || '';
+  }
+  function recipeCard(recipe, badge = '', showCreationPhoto = false) {
+    const photoUrl = showCreationPhoto ? creationPhotoUrl(recipe.id) : '';
+    const thumb = photoUrl
+      ? `<img class="v34-home-photo" src="${safe(photoUrl)}" alt="${t(`Photo of ${recipe.title} made by Aaria`, `Foto de ${recipe.title} preparada pela Aaria`)}" loading="lazy" decoding="async">`
+      : homeDishThumb(recipe);
+    return `<button class="v34-recipe-card" type="button" data-open="${recipe.id}" aria-label="${t('Open', 'Abrir')} ${recipeTitle(recipe)}">${thumb}<span class="v34-card-badge">${badge || recipe.emoji}</span><strong>${recipeTitle(recipe)}</strong></button>`;
   }
   function countryRows() {
     const rows = [
@@ -139,7 +148,7 @@
     const items = activities();
     const active = Math.min(activeActivity, items.length - 1);
     const createdCards = made.length
-      ? made.slice().reverse().map(id => recipeCard(find(id), '💖')).join('')
+      ? made.slice().reverse().map(id => recipeCard(find(id), '💖', true)).join('')
       : `<div class="v34-empty-creations"><span aria-hidden="true">📸</span><strong>${t('Your kitchen memories will appear here', 'Suas memórias da cozinha aparecerão aqui')}</strong><p>${t('Finish a recipe and save a photo to start your gallery.', 'Conclua uma receita e salve uma foto para começar sua galeria.')}</p><button type="button" data-nav="library">${t('Choose a recipe', 'Escolher uma receita')} →</button></div>`;
     const countries = countryRows();
     return `<div class="v34-home" data-v34-home>
@@ -254,7 +263,7 @@
   window.v34SaveCreationPhoto = saveCreationPhoto;
   function v34CreationsPage() {
     const ids = creationIds();
-    const cards = ids.length ? ids.slice().reverse().map(id => recipeCard(find(id), '💖')).join('') : `<div class="v34-empty-creations"><span aria-hidden="true">📸</span><strong>${t('Your saved creations will appear here', 'Suas criações salvas aparecerão aqui')}</strong><p>${t('Take a photo while cooking to keep the memory.', 'Tire uma foto enquanto cozinha para guardar essa memória.')}</p><button type="button" data-nav="library">${t('Choose a recipe', 'Escolher uma receita')} →</button></div>`;
+    const cards = ids.length ? ids.slice().reverse().map(id => recipeCard(find(id), '💖', true)).join('') : `<div class="v34-empty-creations"><span aria-hidden="true">📸</span><strong>${t('Your saved creations will appear here', 'Suas criações salvas aparecerão aqui')}</strong><p>${t('Take a photo while cooking to keep the memory.', 'Tire uma foto enquanto cozinha para guardar essa memória.')}</p><button type="button" data-nav="library">${t('Choose a recipe', 'Escolher uma receita')} →</button></div>`;
     return `<div class="v34-home v34-creations-page"><h1>${t('My Creations', 'Minhas criações')}</h1><p>${t('Your saved cooking photos on this device', 'Suas fotos de cozinha salvas neste dispositivo')}</p><div class="v34-rail" role="region" aria-label="${t('My creations, horizontal list', 'Minhas criações, lista horizontal')}" tabindex="0" data-v34-photo-rail>${cards}</div></div>`;
   }
   const v34BaseRender = render;

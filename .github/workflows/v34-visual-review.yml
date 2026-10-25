@@ -2,28 +2,6 @@ name: V3.4 Android visual review (no APK)
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feature/v3.4-dual-home-experience
-    paths:
-      - 'tools/v3/v34-dual-home.js'
-      - 'tools/v3/transform-production.mjs'
-      - 'tools/v3/attach-v34-dual-home.mjs'
-      - 'tools/v3/runtime.js'
-      - 'tools/v3/world-adventure-globe/**'
-      - 'tools/v3/artwork/**'
-      - 'content/international/**'
-      - 'phase2-pilot/packages/assets/**'
-      - 'docs/design/v3.4/magical-adventure-home-approved.png'
-      - 'docs/design/v3.4/V34_Magical_Home_Background_Portrait.png'
-      - 'docs/design/v3.4/V34_Magical_Home_Background_Landscape.png'
-      - 'docs/design/v3.4/V34_Color_Palette_and_Typography.png'
-      - 'docs/design/v3.4/V34_Visual_Assets_Reference.png'
-      - 'index.html'
-      - '.github/scripts/v34-prepare-visual-page.mjs'
-      - '.github/scripts/v34-android-visual-capture.mjs'
-      - '.github/scripts/v34-visual-comparison.mjs'
-      - '.github/workflows/v34-visual-review.yml'
 
 permissions:
   contents: read
