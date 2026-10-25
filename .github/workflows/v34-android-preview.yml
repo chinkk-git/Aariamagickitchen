@@ -161,6 +161,9 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: ${{ matrix.device == 'tablet' && 'pixel_tablet' || 'pixel_3a' }}
+          cores: 4
+          ram-size: 4096M
+          heap-size: 512M
           script: |
             cp downloaded/Aaria_V3_4_Dual_Home_Preview.apk app-debug.apk
             node --version

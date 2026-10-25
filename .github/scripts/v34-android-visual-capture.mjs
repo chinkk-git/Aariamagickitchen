@@ -50,6 +50,28 @@ async function dismissChromeWelcome() {
     throw new Error('Chrome first-run welcome is still visible; refusing to upload onboarding screenshots as app evidence.');
   }
 }
+function isAariaWelcome(xml) {
+  return /Preparing something magical|Aaria’s Magical Kitchen welcome|Welcome to my Magical Kitchen/i.test(xml);
+}
+async function skipAariaWelcome(xml) {
+  if (!isAariaWelcome(xml)) return xml;
+  const skip = findNode(xml, 'Skip welcome and enter the selected Home style') || findNode(xml, 'Skip');
+  if (!skip) throw new Error('Aaria welcome is visible, but its accessible Skip control was not found.');
+  const [left, top, right, bottom] = skip;
+  adb('shell', 'input', 'tap', String(Math.round((left + right) / 2)), String(Math.round((top + bottom) / 2)));
+  await pause(2200);
+  return accessibilityTree();
+}
+async function waitForAariaWelcome() {
+  for (let attempt = 0; attempt < 30; attempt++) {
+    let xml = '';
+    try { xml = accessibilityTree(); } catch { await pause(1000); continue; }
+    if (isAariaWelcome(xml)) return xml;
+    if (/Welcome to Chrome|Use without an account|Accept &amp; continue/i.test(xml)) await dismissChromeWelcome();
+    await pause(1000);
+  }
+  throw new Error('Cold launch did not expose the accessible Aaria welcome screen within 30 seconds.');
+}
 async function openPreview(query, expectedName) {
   const url = `${host}${query}`;
   const isClassicCapture = /visual=classic/.test(query);
@@ -74,6 +96,10 @@ async function openPreview(query, expectedName) {
         await pause(4500);
         continue;
       }
+      if (isAariaWelcome(xml)) {
+        xml = await skipAariaWelcome(xml);
+        if (expectedState(xml)) return;
+      }
       if (expectedState(xml)) return;
       await pause(900);
     }
@@ -94,6 +120,8 @@ if (isTablet) {
 adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', `${host}?visual=${isTablet ? 'classic' : 'classic'}`);
 await pause(4000);
 await dismissChromeWelcome();
+const launchTree = await waitForAariaWelcome();
+capture(`${isTablet ? '00-tablet-landscape' : '00-phone-portrait'}-welcome-before-home.png`);
 
 const captures = isTablet ? [
   ['14-tablet-landscape-classic-home.png', '?visual=classic', 6500],

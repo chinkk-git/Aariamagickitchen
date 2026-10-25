@@ -78,6 +78,9 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel_3a
+          cores: 4
+          ram-size: 4096M
+          heap-size: 512M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: node .github/scripts/v34-android-visual-capture.mjs
       - name: Capture genuine Android tablet landscape screenshots (no APK build)
@@ -89,6 +92,9 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel_tablet
+          cores: 4
+          ram-size: 4096M
+          heap-size: 512M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: node .github/scripts/v34-android-visual-capture.mjs
       - name: Assemble side-by-side reference and screenshot review

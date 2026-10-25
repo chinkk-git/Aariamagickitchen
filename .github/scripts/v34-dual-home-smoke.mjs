@@ -49,7 +49,22 @@ async function connect() {
     await pause(1000);
   }
   if (!target) throw new Error('Could not find the running Android WebView DevTools page.');
-  return new Cdp(target.webSocketDebuggerUrl);
+  const debugUrl = new URL(target.webSocketDebuggerUrl);
+  // adb forward is bound on the runner loopback; WebView may advertise the
+  // Android-side socket as localhost, which can resolve to IPv6 in Node.
+  if (debugUrl.hostname === 'localhost' || debugUrl.hostname === '::1') debugUrl.hostname = '127.0.0.1';
+  console.log(`Connecting to WebView DevTools target ${target.url} via ${debugUrl.hostname}:${debugUrl.port}${debugUrl.pathname}`);
+  return new Cdp(debugUrl.toString());
+}
+
+function withTimeout(promise, timeoutMs, description) {
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      timer = setTimeout(() => reject(new Error(`${description} timed out after ${timeoutMs} ms`)), timeoutMs);
+    })
+  ]).finally(() => clearTimeout(timer));
 }
 
 class Cdp {
@@ -59,8 +74,10 @@ class Cdp {
     this.nextId = 1;
     this.ready = new Promise((resolve, reject) => {
       this.ws.addEventListener('open', resolve, { once: true });
-      this.ws.addEventListener('error', reject, { once: true });
+      this.ws.addEventListener('error', () => reject(new Error(`WebView DevTools WebSocket error (readyState=${this.ws.readyState})`)), { once: true });
+      this.ws.addEventListener('close', event => reject(new Error(`WebView DevTools WebSocket closed before opening (code=${event.code})`)), { once: true });
     });
+    this.ready = withTimeout(this.ready, 12_000, 'WebView DevTools WebSocket handshake');
     this.ws.addEventListener('message', event => {
       const message = JSON.parse(event.data);
       const waiting = this.pending.get(message.id);
@@ -74,7 +91,7 @@ class Cdp {
     const id = this.nextId++;
     const response = new Promise((resolve, reject) => this.pending.set(id, { resolve, reject }));
     this.ws.send(JSON.stringify({ id, method, params }));
-    return response;
+    return withTimeout(response, 12_000, `WebView DevTools ${method} response`);
   }
   async eval(expression) {
     const result = await this.call('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true, userGesture: true });
@@ -109,6 +126,53 @@ async function click(client, selector, wait = 450) {
   await pause(wait);
 }
 function check(value, message) { assert.ok(value, message); }
+
+if (process.env.V34_RELEASE_FOCUSED === '1') {
+  let focused = await connectReady();
+  try {
+    check(await focused.eval("!!document.querySelector('#v34-welcome') && !!document.querySelector('.app')?.hasAttribute('inert')"), 'Cold launch did not hold Home behind the welcome screen.');
+    await snap(focused, 'welcome-cold-launch.png');
+    await click(focused, '.v34-welcome-next');
+    await click(focused, '.v34-welcome-next');
+    await click(focused, '.v34-welcome-enter');
+    check(await focused.eval("!document.querySelector('#v34-welcome') && !!document.querySelector('.v34-home')"), 'Welcome Enter did not open the selected Magical Home.');
+
+    await click(focused, '.v34-activity-card[data-v34-activity="2"]');
+    check(await focused.eval("!document.querySelector('.v32-avatar-cast,.v32-friend-portraits,.v32-friend-portrait') && document.querySelectorAll('.v32-group-screen [data-open]').length>0"), 'Friends page must remove portraits while retaining its recipe navigation.');
+    await snap(focused, 'friends-no-avatar-grid.png');
+    await focused.eval('goto(\'home\')'); await pause(400);
+
+    for (const [country, recipeId, title] of [['ITA',96,'Italy'],['CHN',99,'China']]) {
+      await focused.eval(`document.querySelector('[data-v34-country="${country}"]')?.scrollIntoView({block:'center',inline:'center'})`); await pause(500);
+      check(await focused.eval(`(()=>{const card=document.querySelector('[data-v34-country="${country}"]');const image=card?.querySelector('.v34-country-art img');return !!card&&!!image&&image.complete&&image.naturalWidth>0&&!card.textContent.includes('<img')})()`), `${title} card image is missing or raw HTML leaked into the card.`);
+      await snap(focused, `${country.toLowerCase()}-country-card.png`, false);
+      await click(focused, `[data-v34-country="${country}"]`);
+      check(await focused.eval(`document.querySelector('#v34-country-title')?.innerText.includes('${title}') && Number(document.querySelector('#v34-country-dialog [data-open]')?.dataset.open)===${recipeId}`), `${title} card opened the wrong recipe list.`);
+      await click(focused, `#v34-country-dialog [data-open="${recipeId}"]`);
+      check(await focused.eval(`location.hash.includes('/recipe/${recipeId}/') && !document.querySelector('#v34-country-dialog')`), `${title} selection did not close its country popup and open recipe ${recipeId}.`);
+      await focused.eval('goto(\'home\')'); await pause(400);
+    }
+
+    const photoName = `00000000-0000-4000-8000-${device === 'tablet' ? '000000000002' : '000000000001'}.jpg`;
+    const photoFixture = path.join(root, 'photo-fixture.jpg');
+    fs.writeFileSync(photoFixture, Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO7+vAAAAABJRU5ErkJggg==', 'base64'));
+    adb('push', photoFixture, '/data/local/tmp/aaria-v34-camera-fixture.jpg');
+    adb('shell', 'run-as', appId, 'sh', '-c', `mkdir -p files/dish-creations && cp /data/local/tmp/aaria-v34-camera-fixture.jpg files/dish-creations/${photoName}`);
+    await focused.eval(`(async()=>{openRecipe(1);await new Promise(resolve=>setTimeout(resolve,250));await window.aariaHandleNativeDishPhoto(1,${JSON.stringify(photoName)});await new Promise(resolve=>setTimeout(resolve,900))})()`);
+    check(await focused.eval(`state.myCreations.some(x=>Number(x.recipeId)===1&&x.photoUrl?.includes('/dish-photo/')) && !!document.querySelector('.cook-post-preview img')`), 'Saved photo did not update the recipe preview.');
+    check(await focused.eval(`sharePostBlobs[1] instanceof Blob && sharePostBlobs[1].type==='image/png' && document.querySelector('.cook-post-preview img')?.src===sharePostUrls[1] && shareCook.toString().includes('sharePostBlobs') && !shareCook.toString().includes('ingredients')`), 'Share photo is not connected to the saved photo post payload.');
+    await snap(focused, 'saved-photo-share-preview.png');
+    await focused.eval("goto('home')"); await pause(400);
+    check(await focused.eval("!!document.querySelector('.v34-home-photo') && document.querySelector('.v34-home-photo').src.includes('/dish-photo/')"), 'Saved photo did not appear in What I Made.');
+    await focused.eval("document.querySelector('#nav [data-nav=\\\"creations\\\"]')?.click()"); await pause(400);
+    check(await focused.eval("!!document.querySelector('[data-v34-photo-rail] .v34-home-photo')"), 'Saved photo did not appear in My Creations.');
+    await fs.promises.writeFile(path.join(root, 'logs', 'focused-validation.txt'), `device=${device}\nwelcome_cold_launch_enter_before_home=PASS\nfriends_avatar_grid_removed_recipes_present=PASS\nitaly_art_and_recipe_96_navigation=PASS\nchina_art_and_recipe_99_navigation=PASS\nsaved_photo_recipe_preview_and_both_galleries=PASS\nshare_photo_uses_saved_post_image_blob_not_ingredients=PASS (native parent-confirmed Android share sheet not automated)\n`);
+  } finally {
+    focused?.close();
+    try { adb('shell', 'run-as', appId, 'rm', '-f', `files/dish-creations/00000000-0000-4000-8000-${device === 'tablet' ? '000000000002' : '000000000001'}.jpg`); } catch {}
+  }
+  process.exit(0);
+}
 
 let cdp = await connectReady();
 try {
