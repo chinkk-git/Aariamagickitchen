@@ -1,6 +1,7 @@
 name: V3.4 Android visual review (no APK)
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - feature/v3.4-dual-home-experience
@@ -105,3 +106,4 @@ jobs:
           path: artifacts/v34-visual-review/**
           if-no-files-found: warn
           retention-days: 30
+
