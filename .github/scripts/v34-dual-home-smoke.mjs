@@ -153,6 +153,7 @@ async function androidBack(client) {
 if (process.env.V34_RELEASE_FOCUSED === '1') {
   let focused = await connectReady();
   try {
+    await waitFor(focused, "!!document.querySelector('#v34-welcome') && !!document.querySelector('.app')?.hasAttribute('inert')", 'Cold launch did not hold Home behind the welcome screen.');
     check(await focused.eval("!!document.querySelector('#v34-welcome') && !!document.querySelector('.app')?.hasAttribute('inert')"), 'Cold launch did not hold Home behind the welcome screen.');
     await snap(focused, 'welcome-cold-launch.png');
     await click(focused, '.v34-welcome-next');
@@ -190,10 +191,10 @@ if (process.env.V34_RELEASE_FOCUSED === '1') {
     check(await focused.eval(defaultGlobe), 'Bottom World entry did not open an unselected default globe.');
     await click(focused, '#nav [data-nav="world"]');
     check(await focused.eval(defaultGlobe), 'Repeated bottom World tap did not reset the globe.');
-    const indiaFlag = '.aria-world-globe__flag[data-country-id="IND"]';
+    const indiaFlag = '.aria-world-globe__flag[data-country-id="india"]';
     check(await focused.eval(`!!document.querySelector(${JSON.stringify(indiaFlag)})`), 'India flag was not available on the globe.');
     await click(focused, indiaFlag);
-    check(await focused.eval("v33GlobeController?.getState()?.selected==='IND'"), 'India could not be selected on the spinning globe.');
+    check(await focused.eval("v33GlobeController?.getState()?.selected==='india'"), 'India could not be selected on the spinning globe.');
     await click(focused, '.aria-world-globe__recipe[data-recipe-id="51"]');
     check(await focused.eval("view==='recipe' && Number(selected?.id)===51"), 'India globe recipe did not open recipe 51.');
     await androidBack(focused);

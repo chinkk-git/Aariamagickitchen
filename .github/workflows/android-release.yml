@@ -210,7 +210,7 @@ jobs:
           actual="$(keytool -exportcert -keystore "$ANDROID_KEYSTORE_PATH" -storetype PKCS12 -storepass "$ANDROID_KEYSTORE_PASSWORD" -alias "$ANDROID_KEY_ALIAS" | sha256sum | awk '{print tolower($1)}')"
           expected="${TRUSTED_PRODUCTION_SIGNER_SHA256,,}"
           if [[ "$actual" != "$expected" ]]; then
-            echo '::error::Protected signing certificate does not match the owner-specified production signer.'
+            echo "::error::Protected signing certificate SHA-256 is $actual; it does not match the owner-specified production signer. No APK was built."
             exit 1
           fi
           echo "Protected production certificate verified: $actual"
