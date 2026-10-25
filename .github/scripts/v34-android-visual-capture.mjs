@@ -63,8 +63,10 @@ async function openPreview(query, expectedName) {
       continue;
     }
     const isClassicCapture = /visual=classic/.test(query);
+    const isRecipeDestination = /visual=country-recipe|visual=country-back/.test(query);
     const hasV34Activities = /Cook with Family/i.test(xml) && /Cook with Friends/i.test(xml) && /World Recipes/i.test(xml);
-    if (/Aaria|Kitchen|Cozinha|Spin My Week|New Recipes|Receitas|Italy|India|China/i.test(xml) && (isClassicCapture || hasV34Activities)) return;
+    const hasRecipeDestination = /Recipe|Instructions|Ingredients|Receita|Ingredientes/i.test(xml);
+    if (/Aaria|Kitchen|Cozinha|Spin My Week|New Recipes|Receitas|Italy|India|China/i.test(xml) && (isClassicCapture || (isRecipeDestination ? hasRecipeDestination : hasV34Activities))) return;
     await pause(900);
   }
   const tail = xml.slice(0, 1400);
@@ -107,7 +109,12 @@ for (const [name, query, wait, after] of captures) {
   console.log(`Opening Android ${device} screenshot page: ${name}`);
   await openPreview(query, name);
   await pause(wait);
-  if (after === 'back') { adb('shell', 'input', 'keyevent', '4'); await pause(1800); }
+  if (after === 'back') {
+    adb('shell', 'input', 'keyevent', '4');
+    await pause(1800);
+    const returned = accessibilityTree();
+    if (!/Cook with Family/i.test(returned) || !/Cook with Friends/i.test(returned)) throw new Error('Android Back did not return from the country recipe to the V3.4 Home.');
+  }
   capture(name);
   console.log(`Verified and captured Android screenshot: ${name}`);
 }
