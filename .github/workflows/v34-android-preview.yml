@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   build:
-    if: ${{ inputs.owner_visual_approval == true || (github.event_name == 'push' && github.event.head_commit.message == 'W01-OWNER-APPROVED-V34-PREVIEW') }}
+    if: ${{ inputs.owner_visual_approval == true || (github.event_name == 'push' && startsWith(github.event.head_commit.message, 'W01-OWNER-APPROVED-V34-')) }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
