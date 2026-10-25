@@ -791,6 +791,10 @@ function v32ApplyRecipe12StepSafety(){
   const copy=card.querySelector('.ref-step-copy'),number=Number(card.querySelector('.ref-step-number')?.textContent),index=Number.isInteger(number)?number-1:-1,text=safety[index];if(!copy||index<0||!String(text||'').trim())continue;
   let note=card.querySelector('.v32-r12-step-safety');if(!note){note=document.createElement('aside');note.className='v32-r12-safety v32-r12-step-safety';note.setAttribute('role','note');copy.insertAdjacentElement('afterend',note);}
   const label=titles[index]||adultHelp;note.setAttribute('aria-label',label);note.replaceChildren();const icon=document.createElement('span');icon.className='v32-r12-safety-icon';icon.setAttribute('aria-hidden','true');icon.textContent='!';const content=document.createElement('div'),heading=document.createElement('strong'),paragraph=document.createElement('p');heading.textContent=label;paragraph.setAttribute('data-original-source','recipe-safety');paragraph.textContent=text;content.append(heading,paragraph);note.append(icon,content);
+  if(card.classList.contains('active')){
+   const canonicalSafety=card.querySelector('.ref-safety details p');
+   if(canonicalSafety)canonicalSafety.textContent=text;
+  }
  }
 }
 if(typeof document!=='undefined'&&!document.getElementById('v32-r12-step-safety-style'))document.head.insertAdjacentHTML('beforeend','<style id="v32-r12-step-safety-style">.app .v32-r12-step-safety{box-sizing:border-box;display:flex;align-items:flex-start;gap:9px;min-width:0;max-width:100%;margin:0;padding:10px 12px;border:1px solid #efd9ac;border-radius:14px;background:#fff8e8;color:#543b59;overflow-wrap:anywhere}.app .v32-r12-step-safety .v32-r12-safety-icon{display:grid;flex:0 0 24px;place-items:center;width:24px;height:24px;border-radius:50%;background:#ffe9a8;color:#62431a;font-weight:1000}.app .v32-r12-step-safety>div{min-width:0}.app .v32-r12-step-safety strong{display:block;margin-bottom:3px;font-size:12px}.app .v32-r12-step-safety p{margin:0;font-size:12px;line-height:1.4}</style>');
