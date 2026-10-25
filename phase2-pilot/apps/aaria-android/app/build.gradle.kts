@@ -38,6 +38,7 @@ android {
     }
     buildTypes {
         getByName("debug") {
+            if (releaseSigningConfigured) signingConfig = signingConfigs.getByName("release")
             applicationIdSuffix = when {
                 v33MapSampleBuildSuffix != null -> ".v33map${v33MapSampleBuildSuffix}"
                 v34PreviewBuildSuffix != null -> ".v34preview${v34PreviewBuildSuffix}"
