@@ -114,15 +114,20 @@ let cdp = await connectReady();
 try {
   const initial = await cdp.eval(`JSON.stringify({style:localStorage.getItem('aaria.v34.homeStyle'),classic:!!document.querySelector('.home-top'),magical:!!document.querySelector('.v34-home'),recipeIds:RECIPES.map(r=>Number(r.id))})`);
   const initialState = JSON.parse(initial);
-  check(initialState.style === null || initialState.style === 'classic', 'A fresh preview must default to Classic Kitchen.');
-  check(initialState.classic && !initialState.magical, 'Classic home should be the initial rendered home.');
+  check(initialState.style === null || initialState.style === 'magical', 'A fresh preview must default to Magical Adventure.');
+  check(initialState.magical && !initialState.classic, 'Magical Adventure should be the initial rendered home.');
   check(initialState.recipeIds.length === 97 && initialState.recipeIds.includes(96) && initialState.recipeIds.includes(99), 'APK catalogue should contain exactly the 97 approved recipes including #096 and #099.');
   check(![97,98,100,101,102,103,104,105,106,107,108,109,110].some(id => initialState.recipeIds.includes(id)), 'Unapproved international recipes entered the APK catalogue.');
-  await snap(cdp, 'classic-home.png');
+  await snap(cdp, 'magical-home-default.png');
 
-  await click(cdp, '.home-settings');
+  await click(cdp, '.v34-settings');
   check(await cdp.eval(`document.body.innerText.includes('My Home Style') && document.querySelectorAll('[data-v34-style]').length===2`), 'Home style controls are missing from Settings.');
   await snap(cdp, 'home-style-settings.png');
+  await click(cdp, '[data-v34-style="classic"]');
+  check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='classic' && !!document.querySelector('.home-top') && !document.querySelector('.v34-home')`), 'Classic Kitchen did not switch on immediately.');
+  check(await cdp.eval(`!document.querySelector('.v31-header-greeting img,.v31-hero-character,.v31-hero-dog,.v31-reference-characters img')`), 'Classic Home banner must contain no Aaria or dog artwork.');
+  await snap(cdp, 'classic-home.png');
+  await cdp.eval(`document.querySelector('[data-nav="settings"]')?.click()`); await pause(300);
   await click(cdp, '[data-v34-style="magical"]');
   check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='magical' && !!document.querySelector('.v34-home')`), 'Magical Adventure did not switch on immediately.');
   check(await cdp.eval(`document.querySelectorAll('#nav .tab').length===5`), 'Magical Home navigation must contain its five required destinations.');
@@ -152,6 +157,10 @@ try {
   await click(cdp, '.v34-surprise');
   check(await cdp.eval(`view==='wheel' && wheelMode==='recipe' && location.hash.includes('/wheel')`), 'The treasure chest did not open the original Surprise Me screen and workflow.');
   await cdp.eval(`goto('home')`); await pause(400);
+  await click(cdp, '#nav [data-nav="world"]');
+  check(await cdp.eval(`!!document.querySelector('#v33-world-globe-host .aria-world-globe__sphere') && !document.querySelector('.w02-country-sheet')`), 'Bottom World navigation must enter the spinning globe without a stale country sheet.');
+  check(await cdp.eval(`(()=>{const nav=document.querySelector('#nav').getBoundingClientRect();return [...document.querySelectorAll('#nav .tab')].length===5&&[...document.querySelectorAll('#nav .tab')].every(x=>{const r=x.getBoundingClientRect();return r.left>=nav.left&&r.right<=nav.right})})()`), 'All five World navigation items must fit the phone/tablet viewport.');
+  await cdp.eval(`goto('home')`); await pause(350);
   const newRecipe = Number(await cdp.eval(`document.querySelector('.v34-rail-section [data-open]')?.dataset.open`));
   await click(cdp, `.v34-rail-section [data-open="${newRecipe}"]`);
   check(await cdp.eval(`location.hash.includes('/recipe/${newRecipe}/')`), 'Recipe rail card did not open its recipe.');
@@ -183,10 +192,10 @@ try {
   await pause(1200);
   cdp = await connectReady();
   check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='magical' && !!document.querySelector('.v34-home')`), 'Home style did not persist across an in-place APK update.');
-  check(await cdp.eval(`(async()=>{const db=await new Promise(resolve=>{const request=indexedDB.open('aaria-v34-local-creation-photos');request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve(null)});if(!db)return false;const photo=await new Promise(resolve=>{const request=db.transaction('photos','readonly').objectStore('photos').get(1);request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve(null)});return !!photo?.blob&&!!document.querySelector('.v34-home-photo')})()`), 'Saved photo and creation did not persist across app restart.');
+  check(await cdp.eval(`(async()=>{const db=await new Promise(resolve=>{const request=indexedDB.open('aaria-v34-local-creation-photos');request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve(null)});if(!db)return false;const photos=await new Promise(resolve=>{const request=db.transaction('photoRecords','readonly').objectStore('photoRecords').getAll();request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve([])});return photos.some(photo=>Number(photo.recipeId)===1&&!!photo.blob)&&!!document.querySelector('.v34-home-photo')})()`), 'Saved photo and creation did not persist across app restart.');
   await snap(cdp, 'magical-home-after-restart.png');
-  await cdp.eval(`(async()=>{const db=await new Promise(resolve=>{const request=indexedDB.open('aaria-v34-local-creation-photos');request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve(null)});if(db)await new Promise(resolve=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').delete(1);tx.oncomplete=tx.onerror=tx.onabort=resolve});state.myCreations=[];save();render()})()`);
-  await fs.promises.writeFile(path.join(root, 'logs', 'focused-validation.txt'), `device=${device}\noffline=airplane-mode\nfresh_default_classic=PASS\nsettings_switch_both_ways=PASS\nin_place_apk_update_persistence=PASS\nrecipe_catalogue_97_ids_96_99=PASS\ncarousel_week_family_friends_world=PASS\nspinning_world_globe=PASS\nsurprise_real_recipe_retry_and_open=PASS\nthree_independent_rails_and_country_filter=PASS\nrecipe_and_country_navigation=PASS\nandroid_back=PASS\npt_br_labels=PASS\nphoto_render_and_apk_update_persistence=PASS (1x1 PNG fixture; not a camera capture test)\n`);
+  await cdp.eval(`(async()=>{const db=await new Promise(resolve=>{const request=indexedDB.open('aaria-v34-local-creation-photos');request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve(null)});if(db)await new Promise(resolve=>{const tx=db.transaction('photoRecords','readwrite');const store=tx.objectStore('photoRecords');const request=store.getAll();request.onsuccess=()=>request.result.filter(x=>Number(x.recipeId)===1).forEach(x=>store.delete(x.photoId));tx.oncomplete=tx.onerror=tx.onabort=resolve});state.myCreations=[];save();render()})()`);
+  await fs.promises.writeFile(path.join(root, 'logs', 'focused-validation.txt'), `device=${device}\noffline=airplane-mode\nfresh_default_magical=PASS\nsettings_switch_both_ways=PASS\nin_place_apk_update_persistence=PASS\nrecipe_catalogue_97_ids_96_99=PASS\ncarousel_week_family_friends_world=PASS\nspinning_world_globe=PASS\nsurprise_real_recipe_retry_and_open=PASS\nthree_independent_rails_and_country_filter=PASS\nrecipe_and_country_navigation=PASS\nandroid_back=PASS\npt_br_labels=PASS\nphoto_render_and_apk_update_persistence=PASS (1x1 PNG fixture; not a camera capture test)\n`);
 } finally {
   cdp?.close();
 }
