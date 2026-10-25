@@ -7,6 +7,7 @@ const appId = process.env.ANDROID_TEST_APP_ID;
 const device = process.env.V34_DEVICE || 'phone';
 if (!appId) throw new Error('ANDROID_TEST_APP_ID is required');
 const root = path.resolve('artifacts/v34-preview', device);
+const baselineApk = path.resolve('downloaded/Aaria_V3_4_Upgrade_Baseline.apk');
 fs.mkdirSync(path.join(root, 'screenshots'), { recursive: true });
 fs.mkdirSync(path.join(root, 'logs'), { recursive: true });
 const adb = (...args) => execFileSync('adb', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
@@ -17,7 +18,8 @@ if (device === 'tablet') {
   adb('shell', 'settings', 'put', 'system', 'user_rotation', '1');
 }
 adb('shell', 'cmd', 'connectivity', 'airplane-mode', 'enable');
-adb('install', '-r', 'app-debug.apk');
+if (!fs.existsSync(baselineApk)) throw new Error('The lower-version V3.4 APK is required for the in-place update check.');
+adb('install', '-r', baselineApk);
 adb('shell', 'pm', 'clear', appId);
 adb('shell', 'am', 'start', '-W', '-n', `${appId}/com.aaria.magickitchen.pilot.MainActivity`);
 
@@ -178,14 +180,15 @@ try {
   cdp.close();
   adb('shell', 'am', 'force-stop', appId);
   await pause(700);
-  adb('shell', 'monkey', '-p', appId, '1');
+  adb('install', '-r', 'app-debug.apk');
+  adb('shell', 'am', 'start', '-W', '-n', `${appId}/com.aaria.magickitchen.pilot.MainActivity`);
   await pause(1200);
   cdp = await connectReady();
-  check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='magical' && !!document.querySelector('.v34-home')`), 'Home style did not persist across app restart.');
+  check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='magical' && !!document.querySelector('.v34-home')`), 'Home style did not persist across an in-place APK update.');
   check(await cdp.eval(`(async()=>{const db=await new Promise(resolve=>{const request=indexedDB.open('aaria-v34-local-creation-photos');request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve(null)});if(!db)return false;const photo=await new Promise(resolve=>{const request=db.transaction('photos','readonly').objectStore('photos').get(1);request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve(null)});return !!photo?.blob&&!!document.querySelector('.v34-home-photo')})()`), 'Saved photo and creation did not persist across app restart.');
   await snap(cdp, 'magical-home-after-restart.png');
   await cdp.eval(`(async()=>{const db=await new Promise(resolve=>{const request=indexedDB.open('aaria-v34-local-creation-photos');request.onsuccess=()=>resolve(request.result);request.onerror=()=>resolve(null)});if(db)await new Promise(resolve=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').delete(1);tx.oncomplete=tx.onerror=tx.onabort=resolve});state.myCreations=[];save();render()})()`);
-  await fs.promises.writeFile(path.join(root, 'logs', 'focused-validation.txt'), `device=${device}\noffline=airplane-mode\nfresh_default_classic=PASS\nsettings_switch_both_ways=PASS\nrestart_persistence=PASS\nrecipe_catalogue_97_ids_96_99=PASS\ncarousel_week_family_friends_world=PASS\nspinning_world_globe=PASS\nsurprise_real_recipe_retry_and_open=PASS\nthree_independent_rails_and_country_filter=PASS\nrecipe_and_country_navigation=PASS\nandroid_back=PASS\npt_br_labels=PASS\nphoto_render_and_restart_persistence=PASS (1x1 PNG fixture; not a camera capture test)\n`);
+  await fs.promises.writeFile(path.join(root, 'logs', 'focused-validation.txt'), `device=${device}\noffline=airplane-mode\nfresh_default_classic=PASS\nsettings_switch_both_ways=PASS\nin_place_apk_update_persistence=PASS\nrecipe_catalogue_97_ids_96_99=PASS\ncarousel_week_family_friends_world=PASS\nspinning_world_globe=PASS\nsurprise_real_recipe_retry_and_open=PASS\nthree_independent_rails_and_country_filter=PASS\nrecipe_and_country_navigation=PASS\nandroid_back=PASS\npt_br_labels=PASS\nphoto_render_and_apk_update_persistence=PASS (1x1 PNG fixture; not a camera capture test)\n`);
 } finally {
   cdp?.close();
 }

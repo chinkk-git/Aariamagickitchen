@@ -73,8 +73,12 @@ jobs:
           test "$(grep -o 'data-v34-style=' tools/v3/v34-dual-home.js | wc -l)" -ge 2
       - name: Run Android unit tests and build isolated V3.4 preview APK
         run: |
-          export V34_PREVIEW_VERSION_CODE=$((8 + GITHUB_RUN_NUMBER))
-          echo "V34_PREVIEW_VERSION_CODE=$V34_PREVIEW_VERSION_CODE" >> "$GITHUB_ENV"
+          current_version_code=$((8 + GITHUB_RUN_NUMBER))
+          export V34_PREVIEW_VERSION_CODE=$((current_version_code - 1))
+          gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+          cp phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk artifacts/v34-preview/Aaria_V3_4_Upgrade_Baseline.apk
+          export V34_PREVIEW_VERSION_CODE="$current_version_code"
+          echo "V34_PREVIEW_VERSION_CODE=$current_version_code" >> "$GITHUB_ENV"
           gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
       - name: Record package, signing certificate and APK SHA-256
         run: |
@@ -82,10 +86,17 @@ jobs:
           apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
           aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
           apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          baseline=artifacts/v34-preview/Aaria_V3_4_Upgrade_Baseline.apk
           "$aapt" dump badging "$apk" > artifacts/v34-preview/apk-badging.txt
           "$apksigner" verify --print-certs "$apk" > artifacts/v34-preview/apk-signer.txt
+          "$aapt" dump badging "$baseline" > artifacts/v34-preview/upgrade-baseline-badging.txt
+          "$apksigner" verify --print-certs "$baseline" > artifacts/v34-preview/upgrade-baseline-signer.txt
           grep -Fq "package: name='${ANDROID_TEST_APP_ID}' versionCode='${V34_PREVIEW_VERSION_CODE}' versionName='3.4.$((GITHUB_RUN_NUMBER))'" artifacts/v34-preview/apk-badging.txt
           grep -Fq "application-label:'Aaria Magical Kitchen V3.4 Home Preview'" artifacts/v34-preview/apk-badging.txt
+          grep -Fq "package: name='${ANDROID_TEST_APP_ID}' versionCode='$((V34_PREVIEW_VERSION_CODE - 1))' versionName='3.4.$((GITHUB_RUN_NUMBER - 1))'" artifacts/v34-preview/upgrade-baseline-badging.txt
+          current_cert="$(grep 'certificate SHA-256 digest:' artifacts/v34-preview/apk-signer.txt)"
+          baseline_cert="$(grep 'certificate SHA-256 digest:' artifacts/v34-preview/upgrade-baseline-signer.txt)"
+          test -n "$current_cert" && test "$current_cert" = "$baseline_cert"
           echo "$GITHUB_SHA" > artifacts/v34-preview/source-head.txt
           echo "$ANDROID_TEST_APP_ID" > artifacts/v34-preview/package-id.txt
           sha256sum "$apk" | tee artifacts/v34-preview/apk-sha256.txt
