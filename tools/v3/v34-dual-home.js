@@ -3,13 +3,14 @@
   'use strict';
   const STYLE_KEY = 'aaria.v34.homeStyle';
   const PHOTO_DB = 'aaria-v34-local-creation-photos';
-  const PHOTO_STORE = 'photos';
+  const PHOTO_STORE = 'photoRecords';
+  const LEGACY_PHOTO_STORE = 'photos';
   const reduced = () => Boolean(state.reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const pt = () => state.language === 'pt-BR';
   const t = (en, br) => pt() ? br : en;
   const homeStyle = () => {
-    try { return localStorage.getItem(STYLE_KEY) === 'magical' ? 'magical' : 'classic'; }
-    catch { return 'classic'; }
+    try { return localStorage.getItem(STYLE_KEY) === 'classic' ? 'classic' : 'magical'; }
+    catch { return 'magical'; }
   };
   const writeHomeStyle = value => {
     try { localStorage.setItem(STYLE_KEY, value === 'magical' ? 'magical' : 'classic'); }
@@ -27,10 +28,10 @@
   function openPhotoDb() {
     if (!window.indexedDB) return Promise.resolve(null);
     if (!photoDbPromise) photoDbPromise = new Promise(resolve => {
-      const request = indexedDB.open(PHOTO_DB, 1);
+      const request = indexedDB.open(PHOTO_DB, 2);
       request.onupgradeneeded = () => {
         const db = request.result;
-        if (!db.objectStoreNames.contains(PHOTO_STORE)) db.createObjectStore(PHOTO_STORE, { keyPath: 'recipeId' });
+        if (!db.objectStoreNames.contains(PHOTO_STORE)) db.createObjectStore(PHOTO_STORE, { keyPath: 'photoId' });
       };
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => resolve(null);
@@ -39,27 +40,46 @@
   }
   async function storeCreationPhoto(recipeId, blob) {
     const db = await openPhotoDb();
-    if (!db || !blob) return;
-    await new Promise(resolve => {
+    if (!db || !blob) throw new Error('Persistent photo storage is unavailable.');
+    const record = { photoId: 'photo-' + Date.now() + '-' + Math.random().toString(36).slice(2), recipeId: Number(recipeId), blob, savedAt: Date.now() };
+    await new Promise((resolve, reject) => {
       const transaction = db.transaction(PHOTO_STORE, 'readwrite');
-      transaction.objectStore(PHOTO_STORE).put({ recipeId: Number(recipeId), blob, savedAt: Date.now() });
-      transaction.oncomplete = transaction.onerror = transaction.onabort = resolve;
+      transaction.objectStore(PHOTO_STORE).add(record);
+      transaction.oncomplete = () => resolve();
+      transaction.onerror = transaction.onabort = () => reject(transaction.error || new Error('Photo storage failed.'));
     });
+    return record;
   }
   async function listCreationPhotos() {
     const db = await openPhotoDb();
     if (!db) return [];
     return new Promise(resolve => {
-      const request = db.transaction(PHOTO_STORE, 'readonly').objectStore(PHOTO_STORE).getAll();
-      request.onsuccess = () => resolve(Array.isArray(request.result) ? request.result : []);
-      request.onerror = () => resolve([]);
+      const stores = [PHOTO_STORE];
+      if (db.objectStoreNames.contains(LEGACY_PHOTO_STORE)) stores.push(LEGACY_PHOTO_STORE);
+      const transaction = db.transaction(stores, 'readonly');
+      const requests = stores.map(name => {
+        const request = transaction.objectStore(name).getAll();
+        return new Promise(done => {
+          request.onsuccess = () => done(Array.isArray(request.result) ? request.result : []);
+          request.onerror = () => done([]);
+        });
+      });
+      Promise.all(requests).then(groups => resolve(groups.flat().sort((a, b) => Number(a.savedAt || 0) - Number(b.savedAt || 0))));
     });
+  }
+  function rememberCreation(recipeId) {
+    state.myCreations = Array.isArray(state.myCreations) ? state.myCreations : [];
+    if (!state.myCreations.some(item => Number(typeof item === 'object' ? item.recipeId : item) === Number(recipeId))) {
+      state.myCreations.push({ recipeId: Number(recipeId), createdAt: Date.now() });
+    }
+    save();
   }
   function activityAction(index) {
     if (index === 0) openWheel('week');
     else if (index === 1) goto('family');
     else if (index === 2) goto('friends');
-    else { v31SelectedCountry = 'IND'; goto('world'); }
+    else if (window.v34EnterGlobeFirst) window.v34EnterGlobeFirst(false);
+    else { window.v31WorldOpenedFromNav = false; goto('world'); }
   }
   const activities = () => [
     { title: t('Spin My Week', 'Monte minha semana'), sub: t('Pick seven tasty adventures', 'Escolha sete aventuras saborosas'), art: '📅', kind: 'calendar' },
@@ -92,9 +112,9 @@
     return `<div class="v34-rail" role="region" aria-label="${label}" tabindex="0">${items}</div>`;
   }
   function worldCard(row) {
-    const lead = row.recipes[0];
-    const src = lead ? homeDishThumb(lead) : '';
-    return `<button class="v34-country-card" type="button" data-v34-country="${row.code}" aria-label="${t('Explore recipes from', 'Explore receitas de')} ${pt() ? row.br : row.en}"><span class="v34-country-art">${src || '<span>🌎</span>'}</span><strong>${row.flag} ${pt() ? row.br : row.en}</strong><small>${row.recipes.length} ${t('approved recipes', 'receitas aprovadas')}</small></button>`;
+    const landmark = V31_HOME_WORLD_ART.destinations[row.code];
+    const food = row.code === 'IND' ? '🥪' : row.code === 'ITA' ? '🍝' : '🥡';
+    return '<button class="v34-country-card" type="button" data-v34-country="' + row.code + '" aria-label="' + t('Explore recipes from', 'Explore receitas de') + ' ' + (pt() ? row.br : row.en) + '"><span class="v34-country-art v34-country-art-' + row.code.toLowerCase() + '"><img src="' + (landmark || '') + '" alt="><span class="v34-country-food" aria-hidden="true">' + food + '</span></span><strong>' + row.flag + ' ' + (pt() ? row.br : row.en) + '</strong><small>' + row.recipes.length + ' ' + t('approved recipes', 'receitas aprovadas') + '</small></button>';
   }
   function openCountryRecipes(code) {
     const row = countryRows().find(country => country.code === code);
@@ -129,7 +149,7 @@
         <div class="v34-carousel-controls"><button type="button" data-v34-prev aria-label="${t('Previous activity', 'Atividade anterior')}">‹</button><button type="button" data-v34-next aria-label="${t('Next activity', 'Próxima atividade')}">›</button></div>
         <div class="v34-carousel-dots" aria-label="${t('Activity selection', 'Seleção de atividade')}">${items.map((item,index)=>`<button type="button" class="${index===active?'is-active':''}" data-v34-activity="${index}" aria-label="${t('Show', 'Mostrar')} ${item.title}"></button>`).join('')}</div>
       </section>
-      <button class="v34-surprise" type="button" data-action="open-wheel" aria-label="${t('Surprise Me! Open the original recipe surprise screen', 'Surpreenda-me! Abra a tela original de surpresa de receitas')}"><span class="v34-visually-hidden">${t('Surprise Me!', 'Surpreenda-me!')}</span></button>
+      <button class="v34-surprise" type="button" data-action="open-wheel" aria-label="${t('Surprise Me! Open the original recipe surprise screen', 'Surpreenda-me! Abra a tela original de surpresa de receitas')}"><span class="v34-surprise-label" aria-hidden="true">✨ ${t('Surprise Me!', 'Surpreenda-me!')} ✨</span><span class="v34-visually-hidden">${t('Surprise Me!', 'Surpreenda-me!')}</span></button>
       ${section('⭐ '+t('New Recipes', 'Receitas novas'),t('Fresh ideas from Aaria’s recipe book', 'Novas ideias do livro de receitas da Aaria'),rail(recipeList.map(r=>recipeCard(r, r.id>95?'NEW':'✨')).join(''),t('New recipes, horizontal list', 'Receitas novas, lista horizontal')),'v34-new-title')}
       ${section('💖 '+t('What I Made!', 'O que eu fiz!'),t('Kitchen memories saved on this device', 'Memórias da cozinha salvas neste dispositivo'),`<div class="v34-rail" role="region" aria-label="${t('My creations, horizontal list', 'Minhas criações, lista horizontal')}" tabindex="0" data-v34-photo-rail>${createdCards}</div>`,'v34-made-title')}
       ${section('🌎 '+t('Recipes Around the World', 'Receitas pelo mundo'),t('Visit countries with recipes in this kitchen', 'Visite países com receitas nesta cozinha'),rail(countries.map(worldCard).join(''),t('Countries with approved recipes', 'Países com receitas aprovadas')),'v34-world-title')}
@@ -146,7 +166,7 @@
   const classicNavigationHTML = document.getElementById('nav')?.innerHTML || '';
   home = function v34HomeSelector() {
     if (homeStyle() === 'magical') return magicalHome();
-    return v34OriginalHome().replace(/<img src="data:image\/(?:webp|png);base64,[^"]+" alt="">/, '');
+    return v34OriginalHome();
   };
   settingsPage = v34SettingsPage;
 
@@ -175,18 +195,23 @@
       image.src = url;
     }
   }
+  function v34CreationsPage() {
+    const ids = creationIds();
+    const cards = ids.length ? ids.slice().reverse().map(id => recipeCard(find(id), '💖')).join('') : `<div class="v34-empty-creations"><span aria-hidden="true">📸</span><strong>${t('Your saved creations will appear here', 'Suas criações salvas aparecerão aqui')}</strong><p>${t('Take a photo while cooking to keep the memory.', 'Tire uma foto enquanto cozinha para guardar essa memória.')}</p><button type="button" data-nav="library">${t('Choose a recipe', 'Escolher uma receita')} →</button></div>`;
+    return `<div class="v34-home v34-creations-page"><h1>${t('My Creations', 'Minhas criações')}</h1><p>${t('Your saved cooking photos on this device', 'Suas fotos de cozinha salvas neste dispositivo')}</p><div class="v34-rail" role="region" aria-label="${t('My creations, horizontal list', 'Minhas criações, lista horizontal')}" tabindex="0" data-v34-photo-rail>${cards}</div></div>`;
+  }
   const v34BaseRender = render;
   render = function v34RenderHome() {
     const result = v34BaseRender.apply(this, arguments);
+    const screen = document.getElementById('screen');
+    if (homeStyle() === 'magical' && view === 'creations' && screen) screen.innerHTML = v34CreationsPage();
     const app = document.querySelector('.app');
     const magical = homeStyle() === 'magical';
     app?.classList.toggle('v34-magical', magical);
     app?.classList.toggle('v34-home-active', magical && view === 'home');
     v34SyncNavigation(magical);
-    if (magical && view === 'home') {
-      updateCarousel(activeActivity);
-      void hydratePhotoRail();
-    }
+    if (magical && view === 'home') updateCarousel(activeActivity);
+    if (magical && (view === 'home' || view === 'creations')) void hydratePhotoRail();
     return result;
   };
   function v34SyncNavigation(magical) {
@@ -212,6 +237,8 @@
     }
   }
   document.addEventListener('click', event => {
+    const worldTab = event.target.closest('#nav [data-nav="world"]');
+    if (worldTab && window.v34EnterGlobeFirst) { event.preventDefault(); event.stopImmediatePropagation(); window.v34EnterGlobeFirst(true); return; }
     const styleButton = event.target.closest('[data-v34-style]');
     if (styleButton) { event.preventDefault(); writeHomeStyle(styleButton.dataset.v34Style); goto('home'); return; }
     const activity = event.target.closest('[data-v34-activity]');
@@ -230,10 +257,27 @@
     const country = event.target.closest('[data-v34-country]');
     if (country) { event.preventDefault(); openCountryRecipes(country.dataset.v34Country); return; }
   }, true);
-  document.addEventListener('change', event => {
+  document.addEventListener('change', async event => {
     const input = event.target.closest('[data-share-photo]');
     const file = input?.files?.[0];
-    if (file && file.type.startsWith('image/')) void storeCreationPhoto(Number(input.dataset.sharePhoto), file).then(() => { if (view === 'home' && homeStyle() === 'magical') void hydratePhotoRail(); });
+    if (!input || !file) return;
+    event.preventDefault(); event.stopImmediatePropagation();
+    if (!file.type.startsWith('image/')) { notice(t('Please choose an image.', 'Escolha uma imagem.')); return; }
+    const id = Number(input.dataset.sharePhoto);
+    try {
+      await storeCreationPhoto(id, file); rememberCreation(id);
+      const recipe = find(id);
+      if (recipe && typeof makeCookPost === 'function') {
+        const post = await makeCookPost(recipe, file);
+        if (sharePostUrls[id]) URL.revokeObjectURL(sharePostUrls[id]);
+        shareSourcePhotos[id] = file; sharePostBlobs[id] = post; sharePostUrls[id] = URL.createObjectURL(post);
+      }
+      render(); notice(t('Photo saved to My Creations!', 'Foto salva em Minhas criações!'));
+      if (view === 'home') void hydratePhotoRail();
+    } catch (error) {
+      console.error('Could not save the creation photo.', error);
+      notice(t('Could not save that photo. Please try again.', 'Não foi possível salvar essa foto. Tente novamente.'));
+    } finally { input.value = ''; }
   }, true);
   document.addEventListener('keydown', event => {
     const viewport = event.target.closest('[data-v34-activity-viewport]');
@@ -256,6 +300,8 @@
   const v34Style = `
   .app.v34-home-active #screen{width:100%;max-width:1200px;margin:0 auto;padding:0 0 calc(92px + env(safe-area-inset-bottom));overflow-x:hidden}
   .app.v34-magical #nav{position:fixed!important;left:50%!important;right:auto!important;bottom:calc(6px + env(safe-area-inset-bottom))!important;transform:translateX(-50%)!important;width:min(96vw,900px)!important;max-width:none!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;padding:6px 9px!important;border:2px solid #fff!important;border-radius:27px!important;background:linear-gradient(115deg,#fff9ffed,#fff8e6ed)!important;box-shadow:0 6px 22px #49356c44!important;backdrop-filter:blur(9px);z-index:200!important;opacity:1!important;pointer-events:auto!important}
+  .app.v34-magical.v31-world-active #nav{left:0!important;right:0!important;transform:none!important;width:100vw!important;box-sizing:border-box!important;padding-left:calc(5px + env(safe-area-inset-left))!important;padding-right:calc(5px + env(safe-area-inset-right))!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;border-radius:19px 19px 0 0!important}
+  .app.v34-magical #screen{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
   .app.v34-magical #nav .tab{display:grid;justify-items:center;align-content:center;gap:3px;min-width:0;min-height:56px;padding:3px 2px;border:0;border-radius:18px;background:transparent;color:#71538e;font-size:clamp(9px,2.5vw,14px);font-weight:900;line-height:1.1;text-align:center}
   .app.v34-magical #nav .tab b{font-size:22px;line-height:1}.app.v34-magical #nav .tab.active{background:linear-gradient(145deg,#f3c7ff,#ffe1f6);color:#6729a0;box-shadow:0 3px 9px #ac5cbd45}
   .app.v34-magical #nav .tab:focus-visible,.v34-home button:focus-visible,.v34-home-style button:focus-visible{outline:3px solid #6729a0;outline-offset:2px}
@@ -290,6 +336,9 @@
   .v34-carousel-dots{position:absolute;z-index:4;left:0;right:0;bottom:9px;display:flex;justify-content:center;gap:7px}.v34-carousel-dots button{width:9px;height:9px;padding:0;border:1px solid #fff;border-radius:50%;background:#ffd2f4;box-shadow:0 1px 4px #702c9d77}.v34-carousel-dots button.is-active{width:21px;border-radius:99px;background:#f354b6}
   .v34-surprise{position:relative;display:block;width:100%;height:clamp(86px,22vw,190px);min-height:86px;padding:0;border:0;border-radius:0;background-color:transparent;background-image:url("${V31_HOME_WORLD_ART.v34ApprovedHome}");background-repeat:no-repeat;background-size:100% auto;background-position:center -66.4vw;filter:drop-shadow(0 5px 7px #8c327426);cursor:pointer;animation:v34-chest-glow 3s ease-in-out infinite}
   .v34-surprise:active{transform:scale(.985);filter:drop-shadow(0 0 14px #ffde67)}
+  .v34-surprise-label{position:absolute;inset:auto 0 9%;display:block;width:max-content;max-width:90%;margin:auto;padding:5px 16px;border:2px solid #fff8d6;border-radius:999px;background:linear-gradient(120deg,#d72cc4ed,#853bc9ed);color:#fff;font-size:clamp(14px,4vw,24px);font-weight:1000;text-shadow:0 2px 3px #542166;box-shadow:0 3px 0 #672c9b,0 0 15px #ffe06c;pointer-events:none}
+  .v34-surprise:focus-visible{outline:4px solid #ffdb58;outline-offset:3px}.v34-surprise:focus-visible .v34-surprise-label{background:#631491}
+  .v34-creations-page{min-height:70vh;padding:22px 16px}.v34-creations-page h1{margin:0;color:#7929ad}.v34-creations-page>p{margin:4px 0 12px;color:#76548d}
   .v34-section-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.v34-section-heading h2{margin:0;color:#8B5CF6;font-family:var(--v34-ui-font);font-size:clamp(18px,4.6vw,31px);font-weight:1000;line-height:1.05;text-shadow:0 1px #fff}
   .v34-section-heading p{margin:3px 0 0;color:#865da5;font-size:clamp(10px,2.5vw,15px);font-weight:800}.v34-section-heading>span{flex:none;color:#8963a6;font-size:clamp(9px,2vw,13px);font-weight:900}
   .v34-rail-section{position:relative;min-width:0;margin:8px clamp(8px,2.6vw,28px) 0;padding:12px 12px 9px;border:2px solid #fff;border-radius:25px;background:linear-gradient(115deg,#fff1fbf5,#fff8fff5 55%,#fff0f7f5);box-shadow:0 5px 0 #f5bfdc,0 9px 18px #87368124;overflow:hidden}
@@ -298,7 +347,7 @@
   .v34-recipe-card .home-thumb,.v34-country-art{display:block;width:100%;height:clamp(92px,23vw,150px);overflow:hidden;border-radius:15px;background:linear-gradient(135deg,#ffdfef,#fff0bb)}.v34-recipe-card .home-thumb img,.v34-country-art img{width:100%;height:100%;object-fit:cover}
   .v34-recipe-card strong,.v34-country-card strong{font-family:Georgia,serif;font-size:clamp(12px,3vw,16px);font-weight:950;line-height:1.15}
   .v34-card-badge{position:absolute;top:10px;right:9px;padding:4px 8px;border:1px solid #fff;border-radius:999px;background:#f33f9f;color:#fff;font-size:10px;font-weight:950;box-shadow:0 2px 6px #4c164d55}
-  .v34-home-photo{display:block;width:100%;height:clamp(92px,23vw,150px);object-fit:cover;border-radius:15px}.v34-country-art{display:grid;place-items:center}.v34-country-card small{color:#76548d;font-size:11px;font-weight:850}
+  .v34-home-photo{display:block;width:100%;height:clamp(92px,23vw,150px);object-fit:cover;border-radius:15px}.v34-country-art{position:relative;display:grid;place-items:center}.v34-country-art>img{position:absolute;inset:0}.v34-country-food{position:absolute;right:8px;bottom:7px;display:grid;place-items:center;width:45px;height:45px;border:2px solid #fff;border-radius:50%;background:#fff7d9;font-size:27px;box-shadow:0 2px 9px #391e4b66}.v34-country-card small{color:#76548d;font-size:11px;font-weight:850}
   .v34-empty-creations{display:grid;justify-items:start;align-content:center;gap:6px;flex:0 0 min(88%,390px);min-height:118px;padding:14px;border:2px dashed #db9dd7;border-radius:20px;background:#fffafde8;color:#552277}.v34-empty-creations>span{font-size:27px}.v34-empty-creations strong{font-family:Georgia,serif;font-size:15px}.v34-empty-creations p{margin:0;color:#806492;font-size:12px}.v34-empty-creations button{min-height:40px;padding:7px 14px;border:0;border-radius:14px;background:#853dae;color:white;font-weight:900}
   .v34-modal-backdrop{position:fixed;z-index:10000;inset:0;display:grid;place-items:center;padding:18px;background:#281239aa}
   .v34-surprise-dialog{position:relative;width:min(100%,410px);max-height:88dvh;overflow:auto;padding:22px;border:3px solid #fff;border-radius:28px;background:linear-gradient(145deg,#fff2fc,#fff8df);box-shadow:0 16px 50px #20122d66;text-align:center}
