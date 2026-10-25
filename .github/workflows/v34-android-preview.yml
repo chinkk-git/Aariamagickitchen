@@ -6,6 +6,10 @@ on:
       - feature/v3.4-dual-home-experience
     paths:
       - .github/workflows/v34-android-preview.yml
+      - tools/v3/v34-dual-home.js
+      - tools/v3/runtime.js
+      - tools/v3/home-world-visual.css
+      - phase2-pilot/apps/aaria-android/app/src/main/java/com/aaria/magickitchen/pilot/ShareImageProvider.kt
   workflow_dispatch:
     inputs:
       owner_visual_approval:
@@ -73,6 +77,7 @@ jobs:
           node tools/v3/attach-v34-dual-home.mjs dist/Aaria_V3_4_Base.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           node tools/v3/validate-v34-preview.mjs phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           node --check tools/v3/v34-dual-home.js
+          node --check tools/v3/runtime.js
           node --check .github/scripts/v34-dual-home-smoke.mjs
           test "$(grep -o 'data-v34-style=' tools/v3/v34-dual-home.js | wc -l)" -ge 2
       - name: Run Android unit tests and build isolated V3.4 preview APK
