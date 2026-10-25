@@ -279,8 +279,8 @@ test('Android G3 timeout and screenshot capture preserve exhaustive evidence wit
   const workflow = await readFile(new URL('../../.github/workflows/v32-android.yml', import.meta.url), 'utf8');
   const smoke = await readFile(new URL('../../.github/scripts/v32-android-smoke.sh', import.meta.url), 'utf8');
   const capture = smoke.slice(smoke.indexOf('async function captureScreenshot'), smoke.indexOf('async function currentRotation'));
-  assert.ok(workflow.includes('G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes' + String.fromCharCode(10) + '        timeout-minutes: 25'));
-  assert.ok(smoke.includes('timeout --kill-after=10s 1140s node --input-type=module'));
+  assert.ok(workflow.includes('G3 FULL REGRESSION — phone, bilingual evidence and all 95 routes' + String.fromCharCode(10) + '        timeout-minutes: 40'));
+  assert.ok(smoke.includes('timeout --kill-after=10s 1800s node --input-type=module'));
   assert.ok(smoke.includes("adb(['exec-out','screencap','-p'])"));
   assert.ok(smoke.includes('maxBuffer: 32 * 1024 * 1024'));
   assert.ok(!capture.includes("adb(['pull',remote,pending])"));
@@ -289,4 +289,7 @@ test('Android G3 timeout and screenshot capture preserve exhaustive evidence wit
   assert.ok(smoke.includes('for(let recipeId=66;recipeId<=95;recipeId++)'));
   assert.ok(smoke.includes('recipeAuditStartedAt=Date.now()'));
   assert.ok(smoke.includes('full phone portrait audit elapsed_ms='));
+  assert.ok(smoke.includes('Verified phone landscape screenshots ${recipeId}/95'));
+  assert.ok(smoke.includes('Verified PT-BR recipe routes ${recipeId-65}/30'));
+  assert.ok(workflow.includes('cat artifacts/v32-diagnostics/apk-sha256.txt'));
 });
