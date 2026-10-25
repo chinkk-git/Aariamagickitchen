@@ -132,9 +132,11 @@ async function openPreview(query, expectedName) {
       if (isAariaWelcome(xml)) {
         xml = await skipAariaWelcome(xml);
         xml = await finishFirstRunProfile(xml);
+        if (isAariaWelcome(xml)) throw new Error(`Welcome overlay remained visible after Skip on ${expectedName}.`);
         if (expectedState(xml)) return;
       }
       xml = await finishFirstRunProfile(xml);
+      if (isAariaWelcome(xml)) throw new Error(`Welcome overlay obscures ${expectedName}; refusing to save the screenshot.`);
       if (expectedState(xml)) return;
       await pause(900);
     }
@@ -152,7 +154,7 @@ if (isTablet) {
   adb('shell', 'settings', 'put', 'system', 'accelerometer_rotation', '0');
   adb('shell', 'settings', 'put', 'system', 'user_rotation', '0');
 }
-adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', `${host}?visual=${isTablet ? 'classic' : 'classic'}`);
+adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', `${host}?visual=welcome`);
 await pause(4000);
 await dismissChromeWelcome();
 const launchTree = await waitForAariaWelcome();

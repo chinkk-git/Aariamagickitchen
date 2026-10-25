@@ -54,6 +54,7 @@ jobs:
           V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_V3_4_Visual.html
           node tools/v3/attach-v34-dual-home.mjs dist/Aaria_V3_4_Visual.html dist/Aaria_V3_4_Visual.html
           node .github/scripts/v34-prepare-visual-page.mjs dist/Aaria_V3_4_Visual.html
+          cp -R phase2-pilot/apps/aaria-android/app/src/main/assets/international-wave-1 dist/international-wave-1
           node --check tools/v3/v34-dual-home.js
           python3 -m http.server 8765 --directory dist > /tmp/aaria-v34-visual-http.log 2>&1 &
           echo $! > /tmp/aaria-v34-visual-http.pid
