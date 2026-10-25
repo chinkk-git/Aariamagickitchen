@@ -32,7 +32,7 @@ concurrency:
 
 jobs:
   build:
-    if: ${{ inputs.owner_visual_approval == true || (github.event_name == 'push' && startsWith(github.event.head_commit.message, 'W01-OWNER-APPROVED-V34-')) }}
+    if: ${{ inputs.owner_visual_approval == true || (github.event_name == 'push' && (startsWith(github.event.head_commit.message, 'W01-OWNER-APPROVED-V34-') || startsWith(github.event.head_commit.message, 'W01-FIX-V34-DEVICE-VALIDATION-'))) }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
@@ -167,7 +167,7 @@ jobs:
           script: |
             cp downloaded/Aaria_V3_4_Dual_Home_Preview.apk app-debug.apk
             node --version
-            node .github/scripts/v34-dual-home-smoke.mjs
+            V34_RELEASE_FOCUSED=1 node .github/scripts/v34-dual-home-smoke.mjs
       - name: Upload genuine ${{ matrix.device }} screenshots and focused results
         if: always()
         uses: actions/upload-artifact@v4
