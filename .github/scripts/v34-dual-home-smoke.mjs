@@ -112,7 +112,7 @@ function check(value, message) { assert.ok(value, message); }
 
 let cdp = await connectReady();
 try {
-  const initial = await cdp.eval(`JSON.stringify({style:localStorage.getItem('aaria.v34.homeStyle'),classic:!!document.querySelector('.home-top'),magical:!!document.querySelector('.v34-home'),recipeIds:RECIPES.map(r=>Number(r.id))})`);
+  const initial = await cdp.eval(`JSON.stringify({style:localStorage.getItem('aaria.v34.homeStyle'),classic:!!document.querySelector('.v31-approved-home'),magical:!!document.querySelector('.v34-home'),recipeIds:RECIPES.map(r=>Number(r.id))})`);
   const initialState = JSON.parse(initial);
   check(initialState.style === null || initialState.style === 'magical', 'A fresh preview must default to Magical Adventure.');
   check(initialState.magical && !initialState.classic, 'Magical Adventure should be the initial rendered home.');
@@ -124,7 +124,7 @@ try {
   check(await cdp.eval(`document.body.innerText.includes('My Home Style') && document.querySelectorAll('[data-v34-style]').length===2`), 'Home style controls are missing from Settings.');
   await snap(cdp, 'home-style-settings.png');
   await click(cdp, '[data-v34-style="classic"]');
-  check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='classic' && !!document.querySelector('.home-top') && !document.querySelector('.v34-home')`), 'Classic Kitchen did not switch on immediately.');
+  check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='classic' && !!document.querySelector('.v31-approved-home') && !document.querySelector('.v34-home')`), 'Classic Kitchen did not switch on immediately.');
   check(await cdp.eval(`!document.querySelector('.v31-header-greeting img,.v31-hero-character,.v31-hero-dog,.v31-reference-characters img')`), 'Classic Home banner must contain no Aaria or dog artwork.');
   await snap(cdp, 'classic-home.png');
   await cdp.eval(`document.querySelector('[data-nav="settings"]')?.click()`); await pause(300);
@@ -179,7 +179,7 @@ try {
   await cdp.eval(`document.querySelector('[data-nav="settings"]')?.click()`); await pause(350);
   check(await cdp.eval(`!!document.querySelector('[data-v34-style="classic"]')`), 'Settings cannot be opened from Magical Home.');
   await click(cdp, '[data-v34-style="classic"]');
-  check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='classic' && !!document.querySelector('.home-top') && !document.querySelector('.v34-home')`), 'Classic Home could not be restored.');
+  check(await cdp.eval(`localStorage.getItem('aaria.v34.homeStyle')==='classic' && !!document.querySelector('.v31-approved-home') && !document.querySelector('.v34-home')`), 'Classic Home could not be restored.');
   await snap(cdp, 'classic-home-restored.png');
   await cdp.eval(`document.querySelector('[data-nav="settings"]')?.click()`); await pause(300);
   await click(cdp, '[data-v34-style="magical"]');
