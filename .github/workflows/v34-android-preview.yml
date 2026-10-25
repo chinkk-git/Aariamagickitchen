@@ -6,6 +6,7 @@ on:
       - feature/v3.4-dual-home-experience
     paths:
       - .github/workflows/v34-android-preview.yml
+      - .github/scripts/v34-dual-home-smoke.mjs
       - tools/v3/v34-dual-home.js
       - tools/v3/runtime.js
       - tools/v3/home-world-visual.css
