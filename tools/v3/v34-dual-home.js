@@ -545,5 +545,6 @@ ${v34Style}
   document.addEventListener('DOMContentLoaded', () => {
     v34SyncNavigation(homeStyle() === 'magical');
     if (view === 'home') render();
+    v34ShowWelcome();
   }, { once: true });
 })();
