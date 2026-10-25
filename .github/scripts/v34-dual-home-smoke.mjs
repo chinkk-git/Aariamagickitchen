@@ -157,7 +157,8 @@ if (process.env.V34_RELEASE_FOCUSED === '1') {
     const photoFixture = path.join(root, 'photo-fixture.jpg');
     fs.writeFileSync(photoFixture, Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO7+vAAAAABJRU5ErkJggg==', 'base64'));
     adb('push', photoFixture, '/data/local/tmp/aaria-v34-camera-fixture.jpg');
-    adb('shell', 'run-as', appId, 'sh', '-c', `mkdir -p files/dish-creations && cp /data/local/tmp/aaria-v34-camera-fixture.jpg files/dish-creations/${photoName}`);
+    adb('shell', 'run-as', appId, 'mkdir', '-p', 'files/dish-creations');
+    adb('shell', 'run-as', appId, 'cp', '/data/local/tmp/aaria-v34-camera-fixture.jpg', `files/dish-creations/${photoName}`);
     await focused.eval(`(async()=>{openRecipe(1);await new Promise(resolve=>setTimeout(resolve,250));await window.aariaHandleNativeDishPhoto(1,${JSON.stringify(photoName)});await new Promise(resolve=>setTimeout(resolve,900))})()`);
     check(await focused.eval(`state.myCreations.some(x=>Number(x.recipeId)===1&&x.photoUrl?.includes('/dish-photo/')) && !!document.querySelector('.cook-post-preview img')`), 'Saved photo did not update the recipe preview.');
     check(await focused.eval(`sharePostBlobs[1] instanceof Blob && sharePostBlobs[1].type==='image/png' && document.querySelector('.cook-post-preview img')?.src===sharePostUrls[1] && shareCook.toString().includes('sharePostBlobs') && !shareCook.toString().includes('ingredients')`), 'Share photo is not connected to the saved photo post payload.');
