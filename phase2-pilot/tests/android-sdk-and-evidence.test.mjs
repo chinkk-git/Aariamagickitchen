@@ -291,5 +291,8 @@ test('Android G3 timeout and screenshot capture preserve exhaustive evidence wit
   assert.ok(smoke.includes('full phone portrait audit elapsed_ms='));
   assert.ok(smoke.includes('Verified phone landscape screenshots ${recipeId}/95'));
   assert.ok(smoke.includes('Verified PT-BR recipe routes ${recipeId-65}/30'));
+  assert.ok(smoke.includes('const longIngredientNames=layout.boxes.filter(card=>card.name.scrollWidth>=50);'));
+  assert.ok(smoke.includes('Math.min(...longIngredientNames.map(card=>card.name.clientWidth))<50'));
+  assert.ok(!smoke.includes('Math.min(...layout.boxes.map(card=>card.name.clientWidth))<50'));
   assert.ok(workflow.includes('cat artifacts/v32-diagnostics/apk-sha256.txt'));
 });

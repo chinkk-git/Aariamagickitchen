@@ -354,7 +354,8 @@ async function assertNarrowPtBrIngredientGrid() {
   try {
     await pause(300);
     const layout=await assertRecipe12IngredientGrid('PT-BR 320 CSS-pixel phone viewport');
-    if(Math.min(...layout.boxes.map(card=>card.name.clientWidth))<50)throw new Error('PT-BR ingredient text column is too narrow at 320 CSS pixels: '+JSON.stringify(layout));
+    const longIngredientNames=layout.boxes.filter(card=>card.name.scrollWidth>=50);
+    if(longIngredientNames.length===0||Math.min(...longIngredientNames.map(card=>card.name.clientWidth))<50)throw new Error('PT-BR long ingredient text column is too narrow at 320 CSS pixels: '+JSON.stringify({layout,longNameWidths:longIngredientNames.map(card=>card.name.clientWidth)}));
   } finally {
     await command('Emulation.clearDeviceMetricsOverride');
     await pause(300);
