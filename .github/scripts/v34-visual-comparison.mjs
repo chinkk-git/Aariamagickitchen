@@ -19,7 +19,8 @@ const files = [
   ['14-tablet-landscape-classic-home.png', 'Classic Kitchen · tablet landscape'],
   ['15-tablet-landscape-magical-home.png', 'Magical Adventure · tablet landscape'],
   ['16-tablet-landscape-world-carousel.png', 'World Recipes carousel · tablet landscape'],
-  ['17-tablet-landscape-country-list.png', 'Country recipe list · tablet landscape']
+  ['17-tablet-landscape-country-list.png', 'Country recipe list · tablet landscape'],
+  ['18-home-style-settings.png', 'My Home Style · functional Settings']
 ];
 for (const [file] of files) assert.ok(fs.existsSync(path.join(root, file)), `Required Android screenshot is missing: ${file}`);
 assert.ok(fs.existsSync(path.join(root, '02-magical-home-portrait.png')), 'Required Magical Adventure portrait screenshot is missing.');

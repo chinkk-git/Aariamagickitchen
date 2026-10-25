@@ -51,26 +51,37 @@ async function dismissChromeWelcome() {
   }
 }
 async function openPreview(query, expectedName) {
-  adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', `${host}${query}`);
-  await pause(5500);
-  let xml = '';
-  for (let attempt = 0; attempt < 8; attempt++) {
-    xml = accessibilityTree();
-    if (/Welcome to Chrome|Use without an account|Accept &amp; continue/i.test(xml)) {
-      await dismissChromeWelcome();
-      adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', `${host}${query}`);
-      await pause(4500);
-      continue;
-    }
-    const isClassicCapture = /visual=classic/.test(query);
-    const isRecipeDestination = /visual=country-recipe|visual=country-back/.test(query);
+  const url = `${host}${query}`;
+  const isClassicCapture = /visual=classic/.test(query);
+  const isSettingsCapture = /visual=settings/.test(query);
+  const isRecipeDestination = /visual=country-recipe|visual=country-back/.test(query);
+  const expectedState = xml => {
     const hasV34Activities = /Cook with Family/i.test(xml) && /Cook with Friends/i.test(xml) && /World Recipes/i.test(xml);
     const hasRecipeDestination = /Recipe|Instructions|Ingredients|Receita|Ingredientes/i.test(xml);
-    if (/Aaria|Kitchen|Cozinha|Spin My Week|New Recipes|Receitas|Italy|India|China/i.test(xml) && (isClassicCapture || (isRecipeDestination ? hasRecipeDestination : hasV34Activities))) return;
-    await pause(900);
+    const hasSettings = /My Home Style/i.test(xml) && /Classic Kitchen/i.test(xml) && /Magical Adventure/i.test(xml);
+    const appVisible = /Aaria|Kitchen|Cozinha|Spin My Week|New Recipes|Receitas|Italy|India|China/i.test(xml);
+    return isSettingsCapture ? hasSettings : appVisible && (isClassicCapture || (isRecipeDestination ? hasRecipeDestination : hasV34Activities));
+  };
+  let xml = '';
+  for (let launch = 0; launch < 2; launch++) {
+    adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', url);
+    await pause(5500);
+    for (let attempt = 0; attempt < 8; attempt++) {
+      xml = accessibilityTree();
+      if (/Welcome to Chrome|Use without an account|Accept &amp; continue/i.test(xml)) {
+        await dismissChromeWelcome();
+        adb('shell', 'am', 'start', '-a', 'android.intent.action.VIEW', '-d', url);
+        await pause(4500);
+        continue;
+      }
+      if (expectedState(xml)) return;
+      await pause(900);
+    }
+    if (launch === 0) await pause(1200);
   }
   const tail = xml.slice(0, 1400);
-  throw new Error(`Android Chrome did not render the expected ${/visual=classic/.test(query) ? 'Classic' : 'V3.4 Magical'} page for ${expectedName}; refusing to save a stale or blank screenshot. UI tree: ${tail}`);
+  const expected = isClassicCapture ? 'Classic' : isSettingsCapture ? 'Home Style Settings' : isRecipeDestination ? 'recipe destination' : 'V3.4 Magical';
+  throw new Error(`Android Chrome did not render the expected ${expected} page for ${expectedName}; refusing to save a stale or blank screenshot. UI tree: ${tail}`);
 }
 
 if (isTablet) {
@@ -102,7 +113,8 @@ const captures = isTablet ? [
   ['10-recipes-around-world.png', '?visual=world', 4800],
   ['11-country-recipe-list.png', '?visual=country', 5000],
   ['12-country-recipe-open.png', '?visual=country-recipe', 6200],
-  ['13-country-android-back-return.png', '?visual=country-back', 6200, 'back']
+  ['13-country-android-back-return.png', '?visual=country-back', 6200, 'back'],
+  ['18-home-style-settings.png', '?visual=settings', 5200]
 ];
 
 for (const [name, query, wait, after] of captures) {
