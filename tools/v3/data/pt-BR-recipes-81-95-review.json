@@ -1,0 +1,307 @@
+{
+  "status": "W01_DRAFT_PENDING_INDEPENDENT_REVIEW",
+  "source": "canonical index.html records 81-95",
+  "locale": "pt-BR",
+  "independentReviewRequired": [
+    "A08_child_safety",
+    "A09_child_experience",
+    "native_PT_BR_translation"
+  ],
+  "friendsRoleCopy": "Aaria e os amigos cozinham juntos. Um adulto acompanha as tarefas com calor, facas, aparelhos e alimentos quentes conforme indicado em cada etapa.",
+  "recipes": {
+    "81": {
+      "title": "Sopa Cremosa Arco-Íris de Milho",
+      "ingredients": [
+        "180 g de milho-doce escorrido",
+        "300 g de batata cozida, descascada e em cubos",
+        "100 g de cenoura cozida em cubos",
+        "400 g de leite integral",
+        "60 g de cebola picada",
+        "8 g de azeite",
+        "1 g de sal de mesa"
+      ],
+      "steps": [
+        "Lave as mãos. Coloque a batata cozida, a cenoura cozida, o milho escorrido, o leite, a cebola, o azeite e o sal na bancada. Um adulto deve escorrer e pesar os ingredientes quentes.",
+        "Com um adulto, coloque o azeite e a cebola em uma panela. Cozinhe devagar até amolecer; o adulto cuida do fogão e da panela quente.",
+        "Acrescente a batata, a cenoura, o milho, o leite e o sal. Um adulto aquece até uma fervura suave e mexe até ficar bem quente; não deixe transbordar.",
+        "O adulto desliga o fogão e divide a sopa entre quatro tigelas. Deixe esfriar até uma temperatura segura antes de servir."
+      ],
+      "safety": "Contém leite. Um adulto cuida do fogão, da panela quente e da sopa quente. Use legumes totalmente cozidos; sirva somente depois de esfriar até uma temperatura segura. Confira avisos de contaminação cruzada nos ingredientes embalados.",
+      "description": "Uma sopa suave e cremosa de milho-doce, batata e cenoura, preparada juntos para a família."
+    },
+    "82": {
+      "title": "Rolinhos Arco-Íris de Papel de Arroz",
+      "ingredients": [
+        "8 folhas de papel de arroz (64 g no total, peso seco)",
+        "80 g de cenoura crua cortada em palitos finos",
+        "80 g de pepino cortado em palitos finos",
+        "80 g de pimentão vermelho cru em tiras finas",
+        "20 g de folhas de alface verde"
+      ],
+      "steps": [
+        "Lave as mãos e enxágue os legumes. Um adulto corta a cenoura, o pepino e o pimentão em palitos finos; deixe as folhas de alface por perto.",
+        "Um adulto amolece uma folha de papel de arroz conforme as instruções da embalagem e a coloca aberta em uma tábua limpa e úmida.",
+        "Aaria e os amigos colocam um pouco de alface e alguns palitos de legumes coloridos perto da borda inferior, deixando espaço nas laterais.",
+        "Dobre as laterais para dentro e enrole firmemente para longe de você. Repita para fazer oito rolinhos; se necessário, um adulto os corta antes de servir."
+      ],
+      "safety": "Os legumes não têm alérgeno principal listado; a composição e a contaminação cruzada do papel de arroz variam conforme a marca, então um adulto deve conferir a embalagem. Mantenha os rolinhos preparados refrigerados se não forem servidos imediatamente.",
+      "description": "Cenoura crocante, pepino, pimentão e alface envolvidos em papel de arroz macio para uma mordida fresca e colorida."
+    },
+    "83": {
+      "title": "Barquinhos de Pepino com Sushi",
+      "ingredients": [
+        "320 g de pepino lavado com casca",
+        "180 g de arroz branco glutinoso cozido e frio",
+        "60 g de cream cheese tradicional",
+        "40 g de cenoura crua ralada bem fina",
+        "3 g de sementes de gergelim",
+        "1 g de sal de mesa"
+      ],
+      "steps": [
+        "Lave as mãos e os legumes. Um adulto cozinha o arroz antes, refrigera-o rapidamente e o mantém na geladeira até a montagem.",
+        "Um adulto corta os pepinos ao meio no sentido do comprimento e retira um canal raso de cada metade com uma colher. Pique bem o pepino retirado e reserve para o recheio.",
+        "Aaria mistura o arroz frio com o cream cheese, o sal e o pepino picado em uma tigela. Coloque a mistura nos canais do pepino.",
+        "Cubra com cenoura ralada e sementes de gergelim. Um adulto corta cada metade recheada em dois barquinhos pequenos; sirva frio logo em seguida."
+      ],
+      "safety": "Contém leite e gergelim. O arroz deve ser refrigerado rapidamente e mantido na geladeira; descarte se ficar em temperatura ambiente por mais de 2 horas (1 hora acima de 32°C/90°F). Um adulto usa a faca. Não se usa peixe cru.",
+      "description": "Metades frescas de pepino recheadas com arroz cremoso e uma cobertura viva de cenoura."
+    },
+    "84": {
+      "title": "Picolés de Banana com Chocolate",
+      "ingredients": [
+        "354 g de banana madura descascada (cerca de 3 bananas médias)",
+        "90 g de gotas de chocolate meio amargo",
+        "18 g de coco seco sem açúcar"
+      ],
+      "steps": [
+        "Lave as mãos. Descasque as bananas e corte cada uma em duas partes iguais. Um adulto pode ajudar com a faca.",
+        "Espete um palito próprio para alimentos na ponta cortada de cada pedaço de banana. Coloque os seis pedaços em uma assadeira forrada.",
+        "Um adulto derrete o chocolate devagar e o deixa esfriar um pouco. Aaria coloca ou pincela o chocolate sobre cada banana enquanto um amigo acrescenta o coco.",
+        "Leve a assadeira ao congelador até firmar e sirva. Um adulto cuida do chocolate morno; supervisione os palitos durante a refeição e retire-os para crianças menores."
+      ],
+      "safety": "Os ingredientes incluem banana e coco. Algumas marcas de chocolate podem conter leite ou soja; confira o rótulo. Um adulto derrete o chocolate. Mantenha congelado até servir e supervisione o uso dos palitos para reduzir risco de engasgo ou ferimento.",
+      "description": "Metades de banana cobertas com chocolate e finalizadas com uma leve camada de coco."
+    },
+    "85": {
+      "title": "Mini-pitas com Falafel Assado",
+      "ingredients": [
+        "240 g de grão-de-bico cozido, escorrido e seco com papel-toalha",
+        "50 g de cebola crua picada bem fina",
+        "25 g de farinha de trigo integral",
+        "8 g de azeite",
+        "1 g de cominho em pó",
+        "8 g de folhas de coentro fresco picadas",
+        "1 g de sal de mesa",
+        "120 g de pão pita mini integral (a nutrição varia conforme a marca)",
+        "25 g de alface verde",
+        "68 g de tomate cru em cubos",
+        "60 g de molho de iogurte natural integral"
+      ],
+      "steps": [
+        "Lave as mãos. Coloque o grão-de-bico escorrido, a cebola, a farinha, o azeite, o cominho, o coentro e o sal em uma tigela. Amasse até a mistura se unir, mas ainda ter pedacinhos.",
+        "Com as mãos limpas, modele a mistura em oito bolinhos pequenos de falafel. Coloque-os em uma assadeira forrada e lave as mãos novamente.",
+        "Um adulto aquece o forno a 200°C e assa os falafels até ficarem bem quentes por dentro e levemente dourados, virando-os uma vez com um utensílio próprio para forno. O adulto cuida da assadeira quente.",
+        "Quando estiverem frios o suficiente para manusear, coloque dois falafels em cada mini-pita com alface, tomate e molho de iogurte. Um adulto abre as pitas e confere se o recheio quente está seguro antes de servir."
+      ],
+      "safety": "Contém trigo/glúten e leite (molho de iogurte). Confira os rótulos da pita e do grão-de-bico embalado para verificar gergelim, soja ou avisos de contaminação cruzada. Um adulto cuida do forno e da assadeira quente. Asse até ficar bem quente por dentro; lave as mãos depois de manusear os ingredientes.",
+      "description": "Falafel dourado de grão-de-bico assado em mini-pitas integrais com alface e tomate."
+    },
+    "86": {
+      "title": "Petiscos Arco-Íris de Pretzel com Molhos",
+      "ingredients": [
+        "80 g de mini pretzels salgados",
+        "80 g de cream cheese amolecido",
+        "80 g de iogurte natural integral",
+        "60 g de pepino em palitos",
+        "60 g de tiras de pimentão vermelho",
+        "60 g de cenoura em palitos"
+      ],
+      "steps": [
+        "Lave o pepino, o pimentão e a cenoura e depois seque-os.",
+        "Misture o cream cheese e o iogurte em uma tigelinha até ficar liso. Coloque o molho em duas tigelinhas.",
+        "Arrume os pretzels e os palitos coloridos de legumes em volta dos molhos em uma travessa.",
+        "Escolha um pretzel ou palito de legume, mergulhe no molho e aproveite o lanche crocante arco-íris."
+      ],
+      "extras": [],
+      "safety": "Confira os rótulos dos pretzels e do cream cheese para identificar alérgenos e avisos de contaminação cruzada. Mini pretzels podem ser duros e salgados; sirva com a criança sentada e supervisione enquanto come."
+    },
+    "87": {
+      "title": "Mistura Arco-Íris de Pipoca",
+      "ingredients": [
+        "32 g de pipoca simples preparada com ar quente, já estourada",
+        "60 g de morangos sem folhas e em cubos",
+        "40 g de mirtilos",
+        "40 g de kiwi verde descascado e em cubos",
+        "40 g de uvas sem sementes cortadas ao comprido por um adulto",
+        "16 g de gotas pequenas de chocolate meio amargo"
+      ],
+      "steps": [
+        "Peça a um adulto para preparar pipoca simples com ar quente e deixá-la esfriar por completo.",
+        "Lave os morangos, os mirtilos, o kiwi e as uvas. Um adulto deve descascar o kiwi e cortar as uvas ao comprido; use uma faca segura para crianças para cortar as frutas macias em cubos.",
+        "Coloque a pipoca fria e as frutas preparadas em uma tigela grande. Acrescente as gotas de chocolate.",
+        "Misture delicadamente e divida em quatro tigelinhas. Coma logo para que a fruta não amoleça a pipoca."
+      ],
+      "safety": "Um adulto prepara e manuseia o aparelho de pipoca quente. Retire os grãos que não estouraram antes de servir. Para crianças menores, um adulto deve cortar as uvas em quatro partes no sentido do comprimento para reduzir o risco de engasgo. Confira na embalagem do chocolate avisos sobre leite, soja e contaminação cruzada. Sirva a fruta imediatamente; refrigere rapidamente as sobras."
+    },
+    "88": {
+      "title": "Copinhos de Mousse de Chocolate e Abacate",
+      "ingredients": [
+        "150 g de polpa de abacate maduro, sem caroço e sem casca",
+        "120 g de iogurte grego natural integral",
+        "12 g de cacau em pó sem açúcar",
+        "20 g de açúcar cristal",
+        "40 g de morangos lavados e fatiados finos"
+      ],
+      "steps": [
+        "Lave os morangos. Peça a um adulto para retirar o caroço e a casca do abacate; coloque a polpa no copo do liquidificador.",
+        "Acrescente o iogurte, o cacau em pó e o açúcar. Um adulto fecha e opera o liquidificador até a mousse ficar lisa.",
+        "Distribua a mousse igualmente entre quatro copinhos e leve à geladeira até a hora de servir.",
+        "Cubra cada copinho com fatias finas de morango e sirva gelado."
+      ],
+      "safety": "Um adulto retira o caroço do abacate e opera o liquidificador; mantenha mãos e utensílios longe das lâminas em movimento. Confira os rótulos do cacau e do iogurte para avisos de contaminação cruzada. Mantenha refrigerado até servir."
+    },
+    "89": {
+      "title": "Salada Arco-Íris de Feijão em Potes",
+      "ingredients": [
+        "200 g de grão-de-bico cozido, escorrido e lavado",
+        "80 g de milho-doce escorrido",
+        "80 g de pepino em cubos",
+        "80 g de pimentão vermelho em cubos",
+        "80 g de tomate em cubos",
+        "10 g de azeite",
+        "1 g de orégano seco"
+      ],
+      "steps": [
+        "Coloque o grão-de-bico e o milho escorridos em uma tigela limpa.",
+        "Acrescente o pepino, o pimentão vermelho e o tomate em cubos e misture delicadamente.",
+        "Misture o azeite e o orégano seco até os legumes ficarem levemente cobertos.",
+        "Divida a salada igualmente entre quatro potes reutilizáveis limpos e próprios para alimentos e sirva fria."
+      ],
+      "extras": [],
+      "safety": "Use grão-de-bico cozido e frio; um adulto abre e escorre a lata antes de cozinhar juntos. Confira os rótulos dos ingredientes e os avisos de contaminação cruzada. Mantenha a salada refrigerada se não for servir logo. O grão-de-bico pode causar reações em pessoas com alergia a leguminosas.",
+      "allergyAlert": "Alerta de alergia: contém grão-de-bico (uma leguminosa). Confira todos os rótulos e avisos de contaminação cruzada; não é adequado para quem tem alergia a grão-de-bico ou leguminosas, a menos que o cuidador autorize.",
+      "description": "Uma salada colorida e sem cozimento de grão-de-bico, milho-doce e legumes crocantes, dividida em quatro potes."
+    },
+    "90": {
+      "title": "Mini-tortinhas de Frutas",
+      "ingredients": [
+        "180 g de massa folhada pronta para assar, descongelada conforme indicado",
+        "120 g de iogurte grego natural integral",
+        "50 g de morangos lavados e fatiados finos",
+        "40 g de kiwi descascado e fatiado fino",
+        "40 g de mirtilos lavados"
+      ],
+      "steps": [
+        "Lave as frutas. Peça a um adulto para preaquecer o forno e cortar círculos de massa; pressione-os delicadamente em uma forma para mini-muffins.",
+        "Um adulto assa as bases de massa até crescerem e ficarem douradas, depois coloca a forma em uma superfície segura para esfriar por completo.",
+        "Coloque o iogurte grego nas bases de massa frias.",
+        "Decore cada tortinha com morango, kiwi e mirtilos. Sirva logo em seguida."
+      ],
+      "safety": "Um adulto cuida do forno, da forma quente e de qualquer cortador afiado. Esfrie completamente as bases de massa antes de rechear. Confira os rótulos da massa e do iogurte para leite, soja, trigo, glúten e avisos de contaminação cruzada. Mantenha as tortinhas recheadas refrigeradas se não forem servidas imediatamente."
+    },
+    "91": {
+      "title": "Copinhos de Salada de Cuscuz com Limão e Ervas",
+      "ingredients": [
+        "150 g de cuscuz cozido e frio",
+        "1 pepino médio (cerca de 300 g inteiro; use todo o pepino em copinhos e palitos)",
+        "60 g de tomates-cereja picados bem finos",
+        "10 g de suco de limão fresco",
+        "5 g de azeite",
+        "1 g de orégano seco"
+      ],
+      "steps": [
+        "Lave o pepino, os tomates e o limão em água corrente fria. Um adulto prepara o cuscuz e depois o resfria rapidamente na geladeira.",
+        "Com um adulto por perto, use um cortador ondulado seguro para crianças para fazer oito copinhos grossos de pepino; retire um pouco do centro de cada um. Reserve o pepino extra para palitos.",
+        "Misture o cuscuz frio, os tomates picados, o suco de limão, o azeite e o orégano em uma tigela.",
+        "Coloque a salada nos copinhos de pepino. Sirva logo e mantenha as sobras refrigeradas."
+      ],
+      "extras": [
+        "A receita não inclui ingredientes opcionais no cálculo nutricional."
+      ],
+      "safety": "Contém trigo/glúten. Um adulto prepara e resfria o cuscuz e supervisiona o cortador seguro para crianças. Mantenha o cuscuz cozido refrigerado até servir; não o deixe em temperatura ambiente.",
+      "description": "O cuscuz é feito de pequenos grãos de sêmola de trigo duro."
+    },
+    "92": {
+      "title": "Bolinha de Aveia e Chocolate sem Forno",
+      "ingredients": [
+        "90 g de aveia em flocos",
+        "60 g de pasta de amendoim cremosa com sal",
+        "40 g de creme de avelã com sabor de chocolate"
+      ],
+      "steps": [
+        "Lave e seque as mãos. Meça a aveia, a pasta de amendoim e o creme de avelã com chocolate em uma tigela.",
+        "Misture devagar até toda a aveia ficar coberta e a mistura grudar quando pressionada.",
+        "Com as mãos limpas, modele a mistura em 12 bolinhas pequenas e iguais. Se estiver grudenta, leve a tigela à geladeira por um breve período antes de modelar.",
+        "Coloque as bolinhas em um recipiente tampado e leve à geladeira até firmarem. Mantenha refrigeradas; sirva três bolinhas por porção."
+      ],
+      "extras": [
+        "A receita não inclui ingredientes opcionais no cálculo nutricional."
+      ],
+      "safety": "Contém amendoim, avelãs e aveia. Confira no rótulo do creme outros alérgenos (como leite ou soja) e avisos de contaminação cruzada. Lave mãos e superfícies; mantenha refrigerado. Use pasta processada comercialmente, não castanhas inteiras.",
+      "description": "A aveia é um cereal integral; misturá-la cria um lanche fácil."
+    },
+    "93": {
+      "title": "Cogumelos Recheados com Espinafre e Queijo",
+      "ingredients": [
+        "8 cogumelos brancos pequenos (160 g de parte comestível), sem os talos",
+        "40 g de espinafre cru picado bem fino",
+        "35 g de muçarela ralada",
+        "20 g de farinha de rosca simples e seca",
+        "5 g de azeite"
+      ],
+      "steps": [
+        "Peça a um adulto para preaquec­er o forno a 190°C, limpar os cogumelos e retirar os talos. Coloque os chapéus em uma assadeira forrada.",
+        "Misture o espinafre picado, a muçarela ralada e a farinha de rosca em uma tigela.",
+        "Coloque o recheio em cada chapéu de cogumelo e pincele as bordas levemente com azeite.",
+        "Um adulto assa os cogumelos até ficarem macios e o recheio bem quente por inteiro, por cerca de 15–18 minutos. Deixe esfriar antes de comer."
+      ],
+      "extras": [
+        "A receita não inclui ingredientes opcionais no cálculo nutricional."
+      ],
+      "safety": "Contém leite e trigo/glúten. Um adulto cuida do forno e da assadeira quente. Limpe os cogumelos com segurança, use uma tábua separada para os vegetais e asse até o recheio soltar vapor e ficar bem quente.",
+      "description": "Cogumelos são fungos, não plantas."
+    },
+    "94": {
+      "title": "Copinhos de Pudim de Chia, Manga e Coco",
+      "ingredients": [
+        "30 g de sementes de chia secas",
+        "250 g de leite integral",
+        "120 g de polpa de manga madura em cubos bem pequenos",
+        "15 g de coco seco sem açúcar"
+      ],
+      "steps": [
+        "Lave e seque as mãos. Misture as sementes de chia ao leite em uma tigela até ficarem bem distribuídas.",
+        "Espere 10 minutos e misture novamente para evitar grumos. Tampe e leve à geladeira até engrossar, de preferência durante a noite.",
+        "Lave a casca da manga e peça a um adulto para descascar e cortar a fruta em cubos. Mantenha a fruta refrigerada até servir.",
+        "Confira se a chia está totalmente inchada e hidratada no leite; nunca sirva chia seca. Coloque o pudim em quatro copinhos, cubra com manga e coco seco e sirva gelado."
+      ],
+      "extras": [
+        "A receita não inclui ingredientes opcionais no cálculo nutricional."
+      ],
+      "safety": "Contém leite e coco. Confira os rótulos para avisos de alergia e contaminação cruzada e confirme se cada criança pode comer sementes de chia com segurança. Nunca sirva chia seca; confira se hidratou totalmente no leite. Um adulto descasca e corta a manga. Mantenha refrigerado.",
+      "description": "As sementes de chia absorvem líquido e formam um gel macio enquanto descansam."
+    },
+    "95": {
+      "title": "Nachos Arco-Íris para Compartilhar",
+      "ingredients": [
+        "2 tortilhas pequenas de trigo integral (82 g no total)",
+        "5 g de azeite",
+        "80 g de milho-doce enlatado escorrido",
+        "60 g de tomate maduro em cubos bem pequenos",
+        "40 g de pimentão vermelho em cubos bem pequenos",
+        "50 g de cheddar ralado"
+      ],
+      "steps": [
+        "Peça a um adulto para preaquec­er o forno a 180°C. Pincele os dois lados das tortilhas com uma camada bem fina de azeite.",
+        "Um adulto corta cada tortilha em triângulos pequenos. Arrume-os em uma única camada em uma assadeira forrada.",
+        "Espalhe o milho escorrido, o tomate em cubos, o pimentão em cubos e o cheddar ralado por igual sobre os triângulos de tortilha.",
+        "Um adulto assa até as bordas ficarem crocantes e o queijo derreter, por cerca de 8–10 minutos. Deixe esfriar um pouco antes de compartilhar."
+      ],
+      "extras": [
+        "A receita não inclui ingredientes opcionais no cálculo nutricional."
+      ],
+      "safety": "Contém trigo/glúten e leite. Um adulto cuida da faca, do forno e da assadeira quente. Escorra o milho enlatado e use tábuas limpas para os vegetais crus.",
+      "description": "Nachos costumam ser servidos para compartilhar, para que cada pessoa escolha uma mordida colorida."
+    }
+  }
+}
