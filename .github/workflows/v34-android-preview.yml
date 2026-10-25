@@ -27,8 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
-      V34_PREVIEW_BUILD_SUFFIX: owner
-      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewowner
+      V34_PREVIEW_BUILD_SUFFIX: ownerfix
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewownerfix
     steps:
       - name: Check out exact V3.4 source head
         uses: actions/checkout@v4
@@ -49,7 +49,17 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.android/debug.keystore
-          key: aaria-v34-preview-debug-keystore-v1
+          key: aaria-v34-preview-debug-keystore-ownerfix-v1
+      - name: Ensure stable V3.4 preview debug signer exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          keystore="$HOME/.android/debug.keystore"
+          mkdir -p "$(dirname "$keystore")"
+          if [[ ! -s "$keystore" ]]; then
+            keytool -genkeypair -noprompt -v -keystore "$keystore" -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          fi
+          keytool -list -keystore "$keystore" -storepass android -alias androiddebugkey
       - uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: 8.9
