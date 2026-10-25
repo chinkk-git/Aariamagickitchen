@@ -81,6 +81,9 @@ jobs:
           node --check tools/v3/runtime.js
           node --check .github/scripts/v34-dual-home-smoke.mjs
           test "$(grep -o 'data-v34-style=' tools/v3/v34-dual-home.js | wc -l)" -ge 2
+          grep -Fq "getItem(STYLE_KEY) === 'classic' ? 'classic' : 'magical'" tools/v3/v34-dual-home.js
+          ! grep -Fq 'class="v31-hero-character"' tools/v3/runtime.js
+          ! grep -Fq 'class="v31-hero-dog"' tools/v3/runtime.js
       - name: Run Android unit tests and build isolated V3.4 preview APK
         run: |
           current_version_code=$((8 + GITHUB_RUN_NUMBER))
