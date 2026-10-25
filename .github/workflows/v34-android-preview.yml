@@ -25,7 +25,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: aaria-v34-preview-${{ github.ref_name }}
+  group: aaria-v34-preview-${{ github.run_id }}
   cancel-in-progress: false
 
 jobs:
