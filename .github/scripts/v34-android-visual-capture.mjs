@@ -11,7 +11,7 @@ const adb = (...args) => execFileSync('adb', args, { encoding: 'utf8', stdio: ['
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 function capture(name) {
   const png = execFileSync('adb', ['exec-out', 'screencap', '-p'], { maxBuffer: 20 * 1024 * 1024 });
-  if (png.length < 40_000) throw new Error(`Android capture ${name} was unexpectedly small (${png.length} bytes).`);
+  if (png.length < 8 || !png.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) throw new Error(`Android capture ${name} is not a valid PNG (${png.length} bytes).`);
   fs.writeFileSync(path.join(output, name), png);
 }
 function accessibilityTree() {
@@ -62,11 +62,13 @@ async function openPreview(query, expectedName) {
       await pause(4500);
       continue;
     }
-    if (/Aaria|Kitchen|Cozinha|Spin My Week|New Recipes|Receitas|Italy|India|China/i.test(xml)) return;
+    const isClassicCapture = /visual=classic/.test(query);
+    const hasV34Activities = /Cook with Family/i.test(xml) && /Cook with Friends/i.test(xml) && /World Recipes/i.test(xml);
+    if (/Aaria|Kitchen|Cozinha|Spin My Week|New Recipes|Receitas|Italy|India|China/i.test(xml) && (isClassicCapture || hasV34Activities)) return;
     await pause(900);
   }
   const tail = xml.slice(0, 1400);
-  throw new Error(`Android Chrome did not render the V3.4 page for ${expectedName}; refusing to save a welcome/blank screenshot. UI tree: ${tail}`);
+  throw new Error(`Android Chrome did not render the expected ${/visual=classic/.test(query) ? 'Classic' : 'V3.4 Magical'} page for ${expectedName}; refusing to save a stale or blank screenshot. UI tree: ${tail}`);
 }
 
 if (isTablet) {
