@@ -394,6 +394,154 @@
   document.head.insertAdjacentHTML('beforeend', `<style id="v34-dual-home-style">
 ${v34Style}
 </style>`);
+
+  const WELCOME_ART_DATA_URI = __V34_WELCOME_ART_DATA_URI__;
+  const WELCOME_DISMISSED_KEY = 'aaria.v34.welcome.dismissed';
+  const WELCOME_SCENE_KEY = 'aaria.v34.welcome.scene';
+  const WELCOME_SCENES = [
+    { text: 'Preparing something magical...', aria: 'Aaria raises her arms in the magical kitchen. Preparing something magical...' },
+    { text: 'Mixing fun, flavours and surprises!', aria: 'Aaria stirs her magical mixing bowl. Mixing fun, flavours and surprises!' },
+    { text: 'Welcome to my Magical Kitchen!', aria: 'Aaria celebrates in the magical kitchen. Welcome to my Magical Kitchen!' }
+  ];
+  let welcomeOverlay = null;
+  let welcomeSceneIndex = 0;
+  let welcomeClosing = false;
+
+  function v34WelcomeScene(index, focusControl) {
+    if (!welcomeOverlay) return;
+    welcomeSceneIndex = Math.max(0, Math.min(2, index));
+    const scene = WELCOME_SCENES[welcomeSceneIndex];
+    const frame = welcomeOverlay.querySelector('.v34-welcome-frame');
+    frame.style.backgroundPosition = ['0% center', '50% center', '100% center'][welcomeSceneIndex];
+    frame.setAttribute('aria-label', scene.aria);
+    welcomeOverlay.querySelector('.v34-welcome-live').textContent = scene.text;
+    welcomeOverlay.querySelector('.v34-welcome-status').textContent = 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';
+    welcomeOverlay.querySelector('.v34-welcome-back').hidden = welcomeSceneIndex === 0;
+    welcomeOverlay.querySelector('.v34-welcome-next').hidden = welcomeSceneIndex === 2;
+    welcomeOverlay.querySelector('.v34-welcome-enter-wrap').hidden = welcomeSceneIndex !== 2;
+    try { sessionStorage.setItem(WELCOME_SCENE_KEY, String(welcomeSceneIndex)); } catch {}
+    if (focusControl) {
+      const selector = welcomeSceneIndex === 2 ? '.v34-welcome-enter' :
+        welcomeSceneIndex === 0 ? '.v34-welcome-next' : '.v34-welcome-back';
+      welcomeOverlay.querySelector(selector)?.focus({ preventScroll: true });
+    }
+  }
+
+  function v34FinishWelcome() {
+    if (!welcomeOverlay) return;
+    const overlay = welcomeOverlay;
+    welcomeOverlay = null;
+    try {
+      sessionStorage.setItem(WELCOME_DISMISSED_KEY, '1');
+      sessionStorage.removeItem(WELCOME_SCENE_KEY);
+    } catch {}
+    document.querySelector('.app')?.removeAttribute('inert');
+    overlay.remove();
+    v34SyncNavigation(homeStyle() === 'magical');
+    if (view === 'home') render();
+    v34ShowWelcome();
+    document.querySelector('#nav [data-nav="home"]')?.focus({ preventScroll: true });
+  }
+
+  function v34CloseWelcome() {
+    if (!welcomeOverlay) return;
+    welcomeClosing = true;
+    try { history.back(); }
+    catch { welcomeClosing = false; v34FinishWelcome(); }
+  }
+
+  function v34ShowWelcome() {
+    try { if (sessionStorage.getItem(WELCOME_DISMISSED_KEY) === '1') return; } catch {}
+    const app = document.querySelector('.app');
+    if (!app || document.getElementById('v34-welcome')) return;
+    welcomeOverlay = document.createElement('section');
+    welcomeOverlay.id = 'v34-welcome';
+    welcomeOverlay.className = 'v34-welcome-shell';
+    welcomeOverlay.setAttribute('role', 'dialog');
+    welcomeOverlay.setAttribute('aria-modal', 'true');
+    welcomeOverlay.setAttribute('aria-labelledby', 'v34-welcome-title');
+    welcomeOverlay.innerHTML =
+      '<h1 id="v34-welcome-title" class="v34-welcome-sr">Aaria’s Magical Kitchen welcome</h1>' +
+      '<header class="v34-welcome-top"><span aria-hidden="true">Aaria’s Magical Kitchen</span>' +
+      '<button class="v34-welcome-button v34-welcome-skip" type="button" aria-label="Skip welcome and enter the selected Home style">Skip</button></header>' +
+      '<div class="v34-welcome-stage"><div class="v34-welcome-frame" role="img"></div>' +
+      '<div class="v34-welcome-particles" aria-hidden="true">' +
+        '<span class="v34-welcome-particle" style="--x:4%;--y:17%;--s:21px;--d:4.4s;--delay:-.7s">♥</span>' +
+        '<span class="v34-welcome-particle" style="--x:88%;--y:13%;--s:23px;--d:3.7s;--delay:-1.1s">✦</span>' +
+        '<span class="v34-welcome-particle" style="--x:1%;--y:49%;--s:19px;--d:5.1s;--delay:-2.1s">✧</span>' +
+        '<span class="v34-welcome-particle" style="--x:94%;--y:42%;--s:19px;--d:4.8s;--delay:-.4s">🥕</span>' +
+        '<span class="v34-welcome-particle" style="--x:83%;--y:67%;--s:19px;--d:4.5s;--delay:-1.5s">★</span>' +
+        '<span class="v34-welcome-particle" style="--x:5%;--y:73%;--s:19px;--d:5.3s;--delay:-2.3s">🍓</span>' +
+        '<span class="v34-welcome-particle" style="--x:97%;--y:64%;--s:18px;--d:3.9s;--delay:-.8s">💛</span>' +
+        '<span class="v34-welcome-particle" style="--x:38%;--y:4%;--s:18px;--d:4.7s;--delay:-2s">✨</span>' +
+        '<span class="v34-welcome-particle" style="--x:66%;--y:29%;--s:18px;--d:5.5s;--delay:-1s">🥦</span>' +
+        '<span class="v34-welcome-particle" style="--x:23%;--y:84%;--s:17px;--d:4.9s;--delay:-.2s">🎉</span>' +
+      '</div></div>' +
+      '<div class="v34-welcome-live v34-welcome-sr" aria-live="polite" aria-atomic="true"></div>' +
+      '<footer class="v34-welcome-footer"><button class="v34-welcome-button v34-welcome-back" type="button">Back</button>' +
+      '<span class="v34-welcome-status" aria-live="polite"></span>' +
+      '<button class="v34-welcome-button v34-welcome-next" type="button">Next</button>' +
+      '<div class="v34-welcome-enter-wrap" hidden><button class="v34-welcome-enter" type="button" aria-label="Enter My Magical Kitchen">➜</button>' +
+      '<span>Enter My Magical Kitchen</span></div></footer>';
+    document.body.appendChild(welcomeOverlay);
+    app.setAttribute('inert', '');
+    welcomeOverlay.querySelector('.v34-welcome-next').addEventListener('click', () => v34WelcomeScene(welcomeSceneIndex + 1, true));
+    welcomeOverlay.querySelector('.v34-welcome-back').addEventListener('click', () => v34WelcomeScene(welcomeSceneIndex - 1, true));
+    welcomeOverlay.querySelector('.v34-welcome-skip').addEventListener('click', v34CloseWelcome);
+    welcomeOverlay.querySelector('.v34-welcome-enter').addEventListener('click', v34CloseWelcome);
+    welcomeOverlay.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight' && welcomeSceneIndex < 2) v34WelcomeScene(welcomeSceneIndex + 1, true);
+      if (event.key === 'ArrowLeft' && welcomeSceneIndex > 0) v34WelcomeScene(welcomeSceneIndex - 1, true);
+    });
+    try {
+      welcomeSceneIndex = Number(sessionStorage.getItem(WELCOME_SCENE_KEY));
+      if (!Number.isInteger(welcomeSceneIndex) || welcomeSceneIndex < 0 || welcomeSceneIndex > 2) welcomeSceneIndex = 0;
+      history.pushState({ v34Welcome: true }, '', location.href);
+    } catch { welcomeSceneIndex = 0; }
+    v34WelcomeScene(welcomeSceneIndex, false);
+    welcomeOverlay.querySelector('.v34-welcome-next')?.focus({ preventScroll: true });
+  }
+
+  window.addEventListener('popstate', () => {
+    if (!welcomeOverlay) return;
+    if (welcomeClosing) {
+      welcomeClosing = false;
+      v34FinishWelcome();
+      return;
+    }
+    if (welcomeSceneIndex > 0) v34WelcomeScene(welcomeSceneIndex - 1, true);
+    try { history.pushState({ v34Welcome: true }, '', location.href); } catch {}
+  });
+
+  const v34WelcomeStyle = [
+    '.v34-welcome-shell{position:fixed;z-index:2147483000;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:8px;padding:max(8px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));overflow:hidden;background:radial-gradient(ellipse at 50% 43%,#7d45a9,#35114e 78%);color:#fff8ea;font-family:ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;overscroll-behavior:none}',
+    '.v34-welcome-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;font-size:clamp(14px,2.6vw,19px);font-weight:900;text-shadow:0 2px 8px #190b2d}',
+    '.v34-welcome-stage{position:relative;display:grid;place-items:center;min-height:0;overflow:visible}',
+    '.v34-welcome-frame{height:100%;max-height:100%;max-width:100%;aspect-ratio:0.4921875/1;border-radius:clamp(12px,2vw,22px);background-repeat:no-repeat;background-size:303% 100%;background-position:0% center;box-shadow:0 12px 30px #1d0a2e80}',
+    '.v34-welcome-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}',
+    '.v34-welcome-particle{position:absolute;left:var(--x);top:var(--y);font-size:var(--s);line-height:1;filter:drop-shadow(0 0 7px #fff1a3);animation:v34-welcome-drift var(--d) ease-in-out var(--delay) infinite alternate,v34-welcome-twinkle calc(var(--d)*.67) ease-in-out var(--delay) infinite alternate}',
+    '.v34-welcome-particle:nth-child(3n){animation-name:v34-welcome-drift-left,v34-welcome-twinkle}',
+    '.v34-welcome-button{min-width:74px;min-height:48px;padding:10px 17px;border:2px solid #fff2dc;border-radius:999px;background:linear-gradient(135deg,#8735bd,#d343a8);color:#fff;font:850 16px ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;box-shadow:0 4px 0 #32104e,0 0 16px #ffd86650}',
+    '.v34-welcome-button:active{transform:translateY(2px);box-shadow:0 2px 0 #32104e,0 0 20px #ffd866a0}',
+    '.v34-welcome-button:focus-visible,.v34-welcome-enter:focus-visible{outline:4px solid #ffe47a;outline-offset:4px}',
+    '.v34-welcome-footer{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:74px;padding:8px 2px 16px}',
+    '.v34-welcome-status{position:absolute;left:50%;bottom:0;transform:translateX(-50%);font-size:11px;color:#fff9;white-space:nowrap}',
+    '.v34-welcome-enter-wrap{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:12px;font-weight:900}',
+    '.v34-welcome-enter-wrap[hidden]{display:none}',
+    '.v34-welcome-enter{display:grid;place-items:center;width:72px;height:72px;min-width:64px;min-height:64px;padding:0;border:4px solid #fff3bc;border-radius:50%;background:radial-gradient(circle at 30% 23%,#fff28c,#ff9a3f 57%,#d539ad);color:#fff;font-size:44px;font-weight:1000;line-height:1;text-shadow:0 3px 5px #51205f;box-shadow:0 0 0 6px #ffd94b50,0 0 24px 12px #ffe44b9c,0 5px 0 #572078;animation:v34-welcome-pulse 1.8s ease-in-out infinite alternate}',
+    '.v34-welcome-sr{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}',
+    '@keyframes v34-welcome-drift{from{transform:translate3d(0,10px,0) rotate(-8deg)}to{transform:translate3d(0,-23px,0) rotate(11deg)}}',
+    '@keyframes v34-welcome-drift-left{from{transform:translate3d(8px,11px,0) rotate(9deg)}to{transform:translate3d(-14px,-20px,0) rotate(-13deg)}}',
+    '@keyframes v34-welcome-twinkle{from{opacity:.42;filter:drop-shadow(0 0 3px #fff4a5)}to{opacity:1;filter:drop-shadow(0 0 11px #fff4a5)}}',
+    '@keyframes v34-welcome-pulse{from{transform:scale(.97);box-shadow:0 0 0 5px #ffd94b42,0 0 18px 8px #ffe44b75,0 5px 0 #572078}to{transform:scale(1.04);box-shadow:0 0 0 9px #ffd94b60,0 0 30px 15px #ffe44bcb,0 5px 0 #572078}}',
+    '@media(orientation:landscape){.v34-welcome-frame{height:100%;width:auto}.v34-welcome-enter-wrap{position:absolute;right:4px;bottom:18px}.v34-welcome-status{bottom:4px}}',
+    '@media(max-height:480px){.v34-welcome-top{min-height:38px}.v34-welcome-footer{min-height:60px;padding-bottom:12px}.v34-welcome-enter{width:64px;height:64px;font-size:39px}.v34-welcome-button{min-height:44px}}',
+    '@media(prefers-reduced-motion:reduce){.v34-welcome-particle{display:none!important;animation:none!important}.v34-welcome-enter{animation:none!important;transform:none!important;box-shadow:0 0 0 6px #ffd94b50,0 0 22px 9px #ffe44b9c,0 5px 0 #572078}}'
+  ].join('');
+  document.head.insertAdjacentHTML('beforeend', '<style id="v34-welcome-style">' + v34WelcomeStyle +
+    '.v34-welcome-frame{background-image:url(' + JSON.stringify(WELCOME_ART_DATA_URI) + ')}' +
+    '</style>');
+
   document.addEventListener('DOMContentLoaded', () => {
     v34SyncNavigation(homeStyle() === 'magical');
     if (view === 'home') render();

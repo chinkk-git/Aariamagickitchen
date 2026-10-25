@@ -8,6 +8,7 @@ on:
       - .github/workflows/v34-android-preview.yml
       - .github/scripts/v34-dual-home-smoke.mjs
       - tools/v3/v34-dual-home.js
+      - tools/v3/attach-v34-dual-home.mjs
       - tools/v3/runtime.js
       - tools/v3/home-world-visual.css
       - phase2-pilot/apps/aaria-android/app/src/main/java/com/aaria/magickitchen/pilot/ShareImageProvider.kt
@@ -140,7 +141,7 @@ jobs:
       matrix:
         device: [phone, tablet]
     env:
-      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewownerfix
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewownerfix2
       V34_DEVICE: ${{ matrix.device }}
     steps:
       - name: Check out smoke harness at the exact V3.4 commit

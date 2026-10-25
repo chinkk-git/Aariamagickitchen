@@ -112,6 +112,31 @@ function check(value, message) { assert.ok(value, message); }
 
 let cdp = await connectReady();
 try {
+  check(await cdp.eval("!!document.querySelector('#v34-welcome') && document.querySelector('#v34-welcome-status')?.innerText.includes('Scene 1')"), 'The approved welcome screen did not open first.');
+  check(await cdp.eval("document.querySelector('#v34-welcome-frame')?.getAttribute('aria-label').includes('Preparing something magical')"), 'Welcome scene 1 text/art is missing.');
+  await cdp.call('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  check(await cdp.eval("getComputedStyle(document.querySelector('.v34-welcome-particle')).display==='none' && getComputedStyle(document.querySelector('.v34-welcome-enter')).animationName==='none'"), 'Welcome animations did not respect reduced motion.');
+  await cdp.call('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'no-preference' }] });
+  await click(cdp, '#v34-welcome-next');
+  check(await cdp.eval("document.querySelector('#v34-welcome-frame')?.getAttribute('aria-label').includes('Mixing fun, flavours and surprises')"), 'Next did not show welcome scene 2.');
+  await click(cdp, '#v34-welcome-back');
+  check(await cdp.eval("document.querySelector('#v34-welcome-status')?.innerText.includes('Scene 1')"), 'Back did not return to welcome scene 1.');
+  await click(cdp, '#v34-welcome-next');
+  await click(cdp, '#v34-welcome-next');
+  check(await cdp.eval("document.querySelector('#v34-welcome-status')?.innerText.includes('Scene 3') && !document.querySelector('#v34-welcome-enter-wrap').hidden"), 'Final welcome scene or glowing Enter arrow is missing.');
+  await pause(1100);
+  check(await cdp.eval("!!document.querySelector('#v34-welcome')"), 'The final welcome scene dismissed itself.');
+  await click(cdp, '#v34-welcome-enter');
+  check(await cdp.eval("!document.querySelector('#v34-welcome') && !!document.querySelector('.v34-home') && localStorage.getItem('aaria.v34.homeStyle')===null"), 'Enter did not open default Magical Home without overwriting Home Style.');
+  await cdp.eval("localStorage.setItem('aaria.v34.homeStyle','classic');sessionStorage.removeItem('aaria.v34.welcome.dismissed');location.reload()");
+  cdp.close();
+  await pause(700);
+  cdp = await connectReady();
+  check(await cdp.eval("!!document.querySelector('#v34-welcome') && localStorage.getItem('aaria.v34.homeStyle')==='classic'"), 'Saved Classic preference was not preserved at welcome entry.');
+  await click(cdp, '#v34-welcome-skip');
+  check(await cdp.eval("!document.querySelector('#v34-welcome') && !!document.querySelector('.home-top') && localStorage.getItem('aaria.v34.homeStyle')==='classic'"), 'Skip did not open the saved Classic Home.');
+  await cdp.eval("localStorage.setItem('aaria.v34.homeStyle','magical');goto('home')");
+  await pause(450);
   const initial = await cdp.eval(`JSON.stringify({style:localStorage.getItem('aaria.v34.homeStyle'),classic:!!document.querySelector('.home-top'),magical:!!document.querySelector('.v34-home'),recipeIds:RECIPES.map(r=>Number(r.id))})`);
   const initialState = JSON.parse(initial);
   check(initialState.style === null || initialState.style === 'magical', 'A fresh preview must default to Magical Adventure.');
