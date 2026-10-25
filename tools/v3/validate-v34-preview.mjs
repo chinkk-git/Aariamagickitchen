@@ -37,5 +37,5 @@ for (let id = 97; id <= 110; id++) if (![96,99].includes(id)) assert.ok(!ids.has
 assert.ok(html.includes('id="v34-dual-home-style"'), 'V3.4 styling was not attached to the APK page.');
 assert.ok(html.includes("const STYLE_KEY = 'aaria.v34.homeStyle'"), 'Local home-style persistence was not attached.');
 assert.ok(html.includes("aria-world-globe__sphere"), 'Existing approved spinning globe implementation is missing.');
-assert.ok(html.includes('data-v34-surprise'), 'Surprise Me is missing from the preview.');
+assert.ok(html.includes('data-action="open-wheel"'), 'The Surprise Me chest must route through the original recipe surprise workflow.');
 console.log(JSON.stringify({ status: 'PASS', originalRecipes: original.length, internationalRecipes: international.map(item=>Number(item.id)), totalRecipes: ids.size }));

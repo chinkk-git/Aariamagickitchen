@@ -20,7 +20,6 @@
     ...(Array.isArray(state.done) ? state.done.map(Number) : [])
   ])].filter(id => find(id));
   let activeActivity = 0;
-  let lastSurprise = null;
   let suppressActivityClick = false;
   let photoUrls = [];
   let photoDbPromise;
@@ -69,6 +68,7 @@
     { title: t('World Recipes', 'Receitas do mundo'), sub: t('Explore recipes by country', 'Explore receitas por país'), art: 'globe', kind: 'world' }
   ];
   function activityArtwork(item) {
+    if (item.kind === 'world') return '<span class="v34-activity-art v34-world-activity-art" aria-hidden="true"></span>';
     const crops = { calendar:[104,448], family:[306,448], friends:[520,448], world:[754,424] };
     const [x,y] = crops[item.kind];
     return `<span class="v34-activity-art" aria-hidden="true" style="background-position:-${(x/1024*100).toFixed(3)}vw -${(y/1024*100).toFixed(3)}vw"></span>`;
@@ -90,16 +90,6 @@
   }
   function rail(items, label) {
     return `<div class="v34-rail" role="region" aria-label="${label}" tabindex="0">${items}</div>`;
-  }
-  function surpriseDialog() {
-    const pool = RECIPES.filter(recipe => recipe.active !== false && Array.isArray(recipe.steps) && recipe.steps.length > 0);
-    if (!pool.length) return;
-    let recipe = pool[Math.floor(Math.random() * pool.length)];
-    if (pool.length > 1 && recipe.id === lastSurprise) recipe = pool[(pool.findIndex(item => item.id === recipe.id) + 1) % pool.length];
-    lastSurprise = recipe.id;
-    document.querySelector('#v34-surprise-dialog')?.remove();
-    document.body.insertAdjacentHTML('beforeend', `<div class="v34-modal-backdrop" id="v34-surprise-dialog"><section class="v34-surprise-dialog" role="dialog" aria-modal="true" aria-labelledby="v34-surprise-title"><button class="v34-modal-close" data-v34-close aria-label="${t('Close', 'Fechar')}">×</button><div class="v34-chest-open" aria-hidden="true">✨🎁✨</div><p class="v34-eyebrow">${t('A little kitchen magic', 'Um pouquinho de magia na cozinha')}</p><h2 id="v34-surprise-title">${recipeTitle(recipe)}</h2><div class="v34-surprise-art">${homeDishThumb(recipe)}</div><div class="v34-surprise-actions"><button class="v34-primary" data-v34-cook="${recipe.id}">${t('Let’s cook!', 'Vamos cozinhar!')} ✨</button><button class="v34-secondary" data-v34-again>${t('Try another surprise', 'Tentar outra surpresa')} 🎲</button></div></section></div>`);
-    document.querySelector('#v34-surprise-dialog [data-v34-cook]')?.focus({ preventScroll: true });
   }
   function worldCard(row) {
     const lead = row.recipes[0];
@@ -128,9 +118,9 @@
       <header class="v34-hero" aria-labelledby="v34-brand-title">
         <div class="v34-approved-scene" aria-hidden="true"></div>
         <h1 class="v34-visually-hidden" id="v34-brand-title">Aaria’s Magical Kitchen</h1>
-        <button class="v34-settings" data-nav="settings" aria-label="${t('Settings', 'Configurações')}">⚙️</button>
-        <button class="v34-globe-hit" data-v34-world aria-label="${t('Open the spinning World Map', 'Abrir o mapa-múndi giratório')}"><span class="v34-globe-orbit" aria-hidden="true"></span></button>
+        <span class="v34-globe-orbit" aria-hidden="true"></span>
       </header>
+      <div class="v34-home-utility"><button class="v34-settings" data-nav="settings">⚙️ ${t('Settings', 'Configurações')}</button></div>
       <section class="v34-activity-section" aria-label="${t('Choose a kitchen adventure', 'Escolha uma aventura na cozinha')}">
         <h2 class="v34-visually-hidden">${t('Kitchen adventures', 'Aventuras na cozinha')}</h2>
         <div class="v34-platform" aria-hidden="true"></div>
@@ -138,7 +128,7 @@
         <div class="v34-carousel-controls"><button type="button" data-v34-prev aria-label="${t('Previous activity', 'Atividade anterior')}">‹</button><button type="button" data-v34-next aria-label="${t('Next activity', 'Próxima atividade')}">›</button></div>
         <div class="v34-carousel-dots" aria-label="${t('Activity selection', 'Seleção de atividade')}">${items.map((item,index)=>`<button type="button" class="${index===active?'is-active':''}" data-v34-activity="${index}" aria-label="${t('Show', 'Mostrar')} ${item.title}"></button>`).join('')}</div>
       </section>
-      <button class="v34-surprise" type="button" data-v34-surprise aria-label="${t('Surprise Me! Open a magical recipe just for you', 'Surpreenda-me! Abra uma receita mágica para você')}"><span class="v34-visually-hidden">${t('Surprise Me! Open a magical recipe just for you', 'Surpreenda-me! Abra uma receita mágica para você')}</span></button>
+      <button class="v34-surprise" type="button" data-action="open-wheel" aria-label="${t('Surprise Me! Open the original recipe surprise screen', 'Surpreenda-me! Abra a tela original de surpresa de receitas')}"><span class="v34-visually-hidden">${t('Surprise Me!', 'Surpreenda-me!')}</span></button>
       ${section('⭐ '+t('New Recipes', 'Receitas novas'),t('Fresh ideas from Aaria’s recipe book', 'Novas ideias do livro de receitas da Aaria'),rail(recipeList.map(r=>recipeCard(r, r.id>95?'NEW':'✨')).join(''),t('New recipes, horizontal list', 'Receitas novas, lista horizontal')),'v34-new-title')}
       ${section('💖 '+t('What I Made!', 'O que eu fiz!'),t('Kitchen memories saved on this device', 'Memórias da cozinha salvas neste dispositivo'),`<div class="v34-rail" role="region" aria-label="${t('My creations, horizontal list', 'Minhas criações, lista horizontal')}" tabindex="0" data-v34-photo-rail>${createdCards}</div>`,'v34-made-title')}
       ${section('🌎 '+t('Recipes Around the World', 'Receitas pelo mundo'),t('Visit countries with recipes in this kitchen', 'Visite países com receitas nesta cozinha'),rail(countries.map(worldCard).join(''),t('Countries with approved recipes', 'Países com receitas aprovadas')),'v34-world-title')}
@@ -153,7 +143,10 @@
   const v34OriginalHome = home;
   const v34OriginalSettingsPage = settingsPage;
   const classicNavigationHTML = document.getElementById('nav')?.innerHTML || '';
-  home = function v34HomeSelector() { return homeStyle() === 'magical' ? magicalHome() : v34OriginalHome(); };
+  home = function v34HomeSelector() {
+    if (homeStyle() === 'magical') return magicalHome();
+    return v34OriginalHome().replace(/<img src="data:image\/(?:webp|png);base64,[^"]+" alt="">/, '');
+  };
   settingsPage = v34SettingsPage;
 
   function updateCarousel(index) {
@@ -230,13 +223,9 @@
     }
     if (event.target.closest('[data-v34-prev]')) { event.preventDefault(); updateCarousel(activeActivity - 1); return; }
     if (event.target.closest('[data-v34-next]')) { event.preventDefault(); updateCarousel(activeActivity + 1); return; }
-    if (event.target.closest('[data-v34-world]')) { event.preventDefault(); v31SelectedCountry='IND'; goto('world'); return; }
-    if (event.target.closest('[data-v34-surprise]')) { event.preventDefault(); surpriseDialog(); return; }
-    if (event.target.closest('[data-v34-again]')) { event.preventDefault(); surpriseDialog(); return; }
-    if (event.target.closest('[data-v34-close]')) { event.preventDefault(); document.querySelector('#v34-surprise-dialog')?.remove(); return; }
+    const countryRecipe = event.target.closest('#v34-country-dialog [data-open]');
+    if (countryRecipe) { event.preventDefault(); const recipeId = Number(countryRecipe.dataset.open); document.querySelector('#v34-country-dialog')?.remove(); openRecipe(recipeId); return; }
     if (event.target.closest('[data-v34-country-close]')) { event.preventDefault(); document.querySelector('#v34-country-dialog')?.remove(); return; }
-    const cook = event.target.closest('[data-v34-cook]');
-    if (cook) { event.preventDefault(); document.querySelector('#v34-surprise-dialog')?.remove(); openRecipe(Number(cook.dataset.v34Cook)); return; }
     const country = event.target.closest('[data-v34-country]');
     if (country) { event.preventDefault(); openCountryRecipes(country.dataset.v34Country); return; }
   }, true);
@@ -273,19 +262,20 @@
   .v34-home{--v34-purple:#7625b5;--v34-pink:#f33f9f;position:relative;display:grid;gap:0;max-width:1024px;margin:0 auto;padding:0 0 24px;overflow:hidden;background:linear-gradient(180deg,#ffe8fa,#fff4ff 68%,#ffe7f2);color:#4d176f}
   .v34-hero{position:relative;isolation:isolate;width:100%;height:clamp(185px,46vw,500px);overflow:hidden;background:#592bb0}
   .v34-approved-scene{position:absolute;inset:0;background-image:url("${V31_HOME_WORLD_ART.v34ApprovedHome}");background-position:center top;background-size:100% auto;background-repeat:no-repeat}
-  .v34-settings{position:absolute;z-index:6;top:max(10px,env(safe-area-inset-top));right:12px;width:44px;height:44px;border:2px solid #fff;border-radius:50%;background:#fffdf1ed;color:#702c9d;font-size:22px;box-shadow:0 3px 12px #45256d66}
-  .v34-globe-hit{position:absolute;z-index:5;left:68%;top:14%;width:30%;height:64%;padding:0;border:0;border-radius:50%;background:transparent}
-  .v34-globe-orbit{position:absolute;inset:4%;border:2px solid #ffe08a99;border-radius:50%;box-shadow:0 0 16px #fff5a6aa;animation:v34-orbit 14s linear infinite}
+  .v34-home-utility{display:flex;justify-content:flex-end;padding:4px 14px 0}
+  .v34-settings{min-height:42px;padding:5px 15px;border:2px solid #fff;border-radius:999px;background:#fffdf1ed;color:#702c9d;font:inherit;font-size:14px;font-weight:900;box-shadow:0 3px 12px #45256d33}
+  .v34-globe-orbit{position:absolute;left:68%;top:14%;width:30%;height:64%;border:2px solid #ffe08a99;border-radius:50%;box-shadow:0 0 16px #fff5a6aa;animation:v34-orbit 14s linear infinite;pointer-events:none}
   .v34-globe-orbit:after{content:"✦";position:absolute;top:0;left:50%;transform:translate(-50%,-50%);color:#fff4b5;font-size:clamp(14px,3vw,28px);text-shadow:0 0 9px #fff}
   .v34-activity-section{position:relative;isolation:isolate;min-width:0;height:clamp(155px,39vw,268px);padding:0 clamp(31px,4vw,46px) 20px;overflow:hidden;background:radial-gradient(ellipse at 50% 24%,#fff5c255,transparent 64%)}
   .v34-platform{position:absolute;z-index:-1;left:4%;right:4%;bottom:23px;height:47%;border:3px solid #ffe67d;border-radius:50%;background:radial-gradient(ellipse at 50% 2%,#fff5dd9c 0 20%,#f45ac145 45%,#8d27d555 100%);box-shadow:0 0 0 5px #ffb6e688,0 0 23px 10px #f4a4ff9c,inset 0 -13px 18px #f8d15b70;transform:perspective(260px) rotateX(22deg)}
   .v34-platform:before,.v34-platform:after{content:"";position:absolute;inset:5px 1%;border:2px solid #fff5b9;border-radius:50%;box-shadow:0 0 12px #fff9}.v34-platform:after{inset:14px 5%;border-color:#ff99de;opacity:.72}
   .v34-activity-viewport{position:relative;z-index:2;width:100%;height:100%;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
   .v34-activity-track{display:flex;align-items:flex-end;justify-content:center;gap:clamp(1px,1vw,12px);width:100%;height:100%;padding:0 2px 6px}
-  .v34-activity-card{position:relative;display:grid;flex:1 1 0;grid-template-rows:1fr auto;justify-items:center;align-content:end;gap:0;min-width:0;max-width:176px;height:92%;min-height:116px;padding:0 1px 5px;border:0;border-radius:0;background:transparent;color:#511575;opacity:.94;transform:translateY(7px) scale(.91);transform-origin:center bottom;transition:transform .22s ease,filter .22s ease;filter:drop-shadow(0 2px 1px #57286a33);cursor:pointer}
+  .v34-activity-card{position:relative;display:grid;flex:1 1 0;grid-template-rows:1fr auto;justify-items:center;align-content:end;gap:0;min-width:0;max-width:150px;height:84%;min-height:110px;padding:0 1px 5px;border:0;border-radius:0;background:transparent;color:#511575;opacity:.94;transform:translateY(7px) scale(.91);transform-origin:center bottom;transition:transform .22s ease,filter .22s ease;filter:drop-shadow(0 2px 1px #57286a33);cursor:pointer}
   .v34-activity-card.is-active{z-index:3;opacity:1;transform:translateY(-3px) scale(1.055);filter:drop-shadow(0 0 8px #fff4a3) drop-shadow(0 4px 2px #57286a55)}
-  .v34-activity-art{display:block;align-self:end;width:100%;height:clamp(54px,16vw,140px);min-height:0;background-image:url("${V31_HOME_WORLD_ART.v34ApprovedHome}");background-size:100vw auto;background-repeat:no-repeat}
-  .v34-activity-card strong{position:relative;z-index:2;display:grid;place-items:center;width:100%;min-height:29px;margin-top:-2px;padding:4px 2px;border:2px solid #fff8da;border-radius:999px;background:linear-gradient(180deg,#fff9dc,#ffe4a5);box-shadow:0 3px 0 #e58a22,0 5px 10px #64265b48;color:#4d176f;font-family:Georgia,serif;font-size:clamp(8px,2.45vw,19px);font-weight:950;line-height:1.05;text-align:center}
+  .v34-activity-art{display:block;align-self:end;width:100%;height:clamp(48px,14vw,124px);min-height:0;background-image:url("${V31_HOME_WORLD_ART.v34ApprovedHome}");background-size:100vw auto;background-repeat:no-repeat}
+  .v34-activity-art.v34-world-activity-art{background-size:38vw auto;background-position:-26vw -3.5vw}
+  .v34-activity-card strong{position:relative;z-index:2;display:grid;place-items:center;width:100%;min-height:38px;margin-top:0;padding:4px 2px;border:2px solid #fff8da;border-radius:999px;background:linear-gradient(180deg,#fff9dc,#ffe4a5);box-shadow:0 3px 0 #e58a22,0 5px 10px #64265b48;color:#4d176f;font-family:Georgia,serif;font-size:clamp(9px,2.55vw,19px);font-weight:950;line-height:1.05;text-align:center}
   .v34-activity-card.is-active strong{border-color:#fff;background:linear-gradient(180deg,#fffbe9,#fff0bc);box-shadow:0 3px 0 #de861a,0 0 12px #fff6a9}
   .v34-carousel-controls{position:absolute;z-index:5;inset:39% 3% auto;display:flex;justify-content:space-between;pointer-events:none}
   .v34-carousel-controls button{display:grid;place-items:center;width:clamp(31px,8vw,48px);height:clamp(31px,8vw,48px);padding:0;border:2px solid #fff;border-radius:50%;background:linear-gradient(145deg,#d83bdf,#7918c3);color:white;font-size:clamp(25px,6vw,39px);font-weight:900;line-height:1;box-shadow:0 3px 0 #62168f,0 0 12px #fc8bff;pointer-events:auto}
@@ -305,13 +295,11 @@
   .v34-modal-backdrop{position:fixed;z-index:10000;inset:0;display:grid;place-items:center;padding:18px;background:#281239aa}
   .v34-surprise-dialog{position:relative;width:min(100%,410px);max-height:88dvh;overflow:auto;padding:22px;border:3px solid #fff;border-radius:28px;background:linear-gradient(145deg,#fff2fc,#fff8df);box-shadow:0 16px 50px #20122d66;text-align:center}
   .v34-modal-close{position:absolute;top:10px;right:10px;width:42px;height:42px;border:0;border-radius:50%;background:#f3dcff;color:#602580;font-size:27px}
-  .v34-chest-open{font-size:45px;animation:v34-chest-pop .45s ease-out}.v34-surprise-dialog h2{margin:5px 0 12px;color:#702894}.v34-surprise-art .home-thumb{height:180px;overflow:hidden;border-radius:18px}.v34-surprise-art .home-thumb img{width:100%;height:100%;object-fit:cover}.v34-surprise-art .home-thumb:not(:has(img)){display:grid;place-items:center;background:#fae8f7;font-size:80px}
-  .v34-surprise-actions{display:grid;gap:8px;margin-top:14px}.v34-primary,.v34-secondary{min-height:48px;border:0;border-radius:15px;font:inherit;font-weight:950}.v34-primary{background:linear-gradient(100deg,#ea4caa,#9145c2);color:white}.v34-secondary{background:#f0e2f7;color:#653884}
   .v34-country-dialog{position:relative;width:min(100%,650px);max-height:88dvh;overflow:auto;padding:22px;border:3px solid #fff;border-radius:26px;background:linear-gradient(145deg,#fff6ff,#fff9e6);box-shadow:0 16px 50px #20122d66}.v34-country-dialog h2{margin:4px 0 14px;color:#702894}.v34-country-recipes{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;max-height:65dvh;overflow:auto}.v34-country-recipes .v34-recipe-card{width:100%;flex:none}
   .v34-home-style{margin:16px 8px;padding:16px;border:2px solid #fff;border-radius:22px;background:linear-gradient(115deg,#fff8fe,#fff7e7);box-shadow:0 4px 0 #e2c9e8}.v34-home-style h2{margin:0;color:#702894;font-size:20px}.v34-home-style>p{color:#70587f}.v34-style-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.v34-style-option{display:grid;justify-items:start;gap:6px;min-height:134px;padding:10px;border:2px solid #e7d6ed;border-radius:17px;background:#fff;color:#513563;text-align:left}.v34-style-option.is-selected{border-color:#9c4ec1;background:#fcf2ff;box-shadow:0 0 0 2px #e6c5f2}.v34-style-preview{display:grid;place-items:center;width:100%;height:53px;border-radius:12px;font-size:24px}.classic-preview{background:linear-gradient(110deg,#fff3dc,#e5f4e7)}.magical-preview{background:linear-gradient(110deg,#f5dcff,#ffe9b8)}.v34-style-option strong{font-size:14px}.v34-style-option small{color:#786588;font-size:11px}.v34-style-status{font-size:12px}.v34-country-card .home-thumb{width:100%;height:100%;margin:0}
   @keyframes v34-orbit{to{transform:rotate(360deg)}}@keyframes v34-chest-glow{0%,100%{filter:drop-shadow(0 4px 5px #8c327426)}50%{filter:drop-shadow(0 0 12px #ffde7799)}}@keyframes v34-chest-pop{0%{transform:scale(.6) rotate(-10deg);opacity:.3}65%{transform:scale(1.15) rotate(5deg)}100%{transform:scale(1)}}
-  @media(min-width:700px){.v34-activity-section{height:clamp(230px,23vw,300px);padding-inline:62px}.v34-activity-card{max-width:206px}.v34-activity-card strong{font-size:clamp(14px,1.65vw,20px)}.v34-rail-section{margin-inline:auto;width:calc(100% - 40px)}.v34-recipe-card,.v34-country-card{flex-basis:clamp(190px,21vw,230px)}}
-  @media(max-width:420px){.app.v34-home-active #screen{padding-bottom:calc(82px + env(safe-area-inset-bottom))}.v34-hero{height:clamp(185px,47vw,230px)}.v34-activity-section{height:158px;padding-inline:30px;padding-bottom:21px}.v34-activity-track{gap:1px}.v34-activity-card{min-height:119px}.v34-activity-art{height:clamp(54px,16vw,65px)}.v34-activity-card strong{min-height:28px;font-size:clamp(8px,2.7vw,11px)}.v34-carousel-controls{inset:38% 1% auto}.v34-carousel-controls button{width:30px;height:30px;font-size:24px}.v34-carousel-dots{bottom:7px}.v34-surprise{height:22vw;min-height:82px}.v34-rail-section{margin-inline:7px;padding:10px 9px 8px;border-radius:20px}.v34-section-heading p{font-size:10px}.v34-recipe-card,.v34-country-card{flex-basis:clamp(128px,37vw,154px)}.v34-recipe-card .home-thumb,.v34-country-art,.v34-home-photo{height:clamp(87px,25vw,106px)}.v34-style-options{grid-template-columns:1fr}.v34-style-option{min-height:108px}.v34-style-preview{height:42px}.app.v34-magical #nav{width:calc(100vw - 10px)!important;padding:4px 3px!important;border-radius:20px!important}.app.v34-magical #nav .tab{min-height:49px;font-size:9px}.app.v34-magical #nav .tab b{font-size:19px}}
+  @media(min-width:700px){.v34-activity-section{height:clamp(230px,23vw,300px);padding-inline:62px}.v34-activity-card{max-width:176px}.v34-activity-card strong{font-size:clamp(13px,1.55vw,19px)}.v34-activity-art.v34-world-activity-art{background-size:32vw auto;background-position:-22vw -3vw}.v34-rail-section{margin-inline:auto;width:calc(100% - 40px)}.v34-recipe-card,.v34-country-card{flex-basis:clamp(190px,21vw,230px)}}
+  @media(max-width:420px){.app.v34-home-active #screen{padding-bottom:calc(82px + env(safe-area-inset-bottom))}.v34-hero{height:clamp(185px,47vw,230px)}.v34-activity-section{height:158px;padding-inline:30px;padding-bottom:21px}.v34-activity-track{gap:1px}.v34-activity-card{height:82%;min-height:106px}.v34-activity-art{height:clamp(48px,14vw,57px)}.v34-activity-art.v34-world-activity-art{background-size:38vw auto;background-position:-26vw -3.5vw}.v34-activity-card strong{min-height:36px;font-size:clamp(8px,2.45vw,10px)}.v34-carousel-controls{inset:38% 1% auto}.v34-carousel-controls button{width:30px;height:30px;font-size:24px}.v34-carousel-dots{bottom:7px}.v34-surprise{height:22vw;min-height:82px}.v34-rail-section{margin-inline:7px;padding:10px 9px 8px;border-radius:20px}.v34-section-heading p{font-size:10px}.v34-recipe-card,.v34-country-card{flex-basis:clamp(128px,37vw,154px)}.v34-recipe-card .home-thumb,.v34-country-art,.v34-home-photo{height:clamp(87px,25vw,106px)}.v34-style-options{grid-template-columns:1fr}.v34-style-option{min-height:108px}.v34-style-preview{height:42px}.app.v34-magical #nav{width:calc(100vw - 10px)!important;padding:4px 3px!important;border-radius:20px!important}.app.v34-magical #nav .tab{min-height:49px;font-size:9px}.app.v34-magical #nav .tab b{font-size:19px}}
   @media(max-height:520px) and (orientation:landscape){.v34-hero{height:min(43vh,360px)}.v34-activity-section{height:190px;padding-inline:54px}.v34-activity-art{min-height:100px}.v34-activity-card{min-height:145px}.v34-surprise{height:clamp(90px,13vw,155px)}.v34-rail-section{margin-top:4px;padding:8px 10px}.v34-recipe-card .home-thumb,.v34-country-art,.v34-home-photo{height:88px}.app.v34-home-active #screen{padding-bottom:78px}}
   @media(prefers-reduced-motion:reduce){.v34-home *,.v34-home *:before,.v34-home *:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.v34-activity-viewport{scroll-behavior:auto}}
   `;
