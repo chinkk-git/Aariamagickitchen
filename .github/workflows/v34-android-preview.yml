@@ -73,7 +73,8 @@ jobs:
           test "$(grep -o 'data-v34-style=' tools/v3/v34-dual-home.js | wc -l)" -ge 2
       - name: Run Android unit tests and build isolated V3.4 preview APK
         run: |
-          echo "V34_PREVIEW_VERSION_CODE=$((8 + GITHUB_RUN_NUMBER))" >> "$GITHUB_ENV"
+          export V34_PREVIEW_VERSION_CODE=$((8 + GITHUB_RUN_NUMBER))
+          echo "V34_PREVIEW_VERSION_CODE=$V34_PREVIEW_VERSION_CODE" >> "$GITHUB_ENV"
           gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
       - name: Record package, signing certificate and APK SHA-256
         run: |
