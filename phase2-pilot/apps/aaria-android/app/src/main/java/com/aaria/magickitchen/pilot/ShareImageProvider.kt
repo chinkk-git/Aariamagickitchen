@@ -31,11 +31,16 @@ class ShareImageProvider : ContentProvider() {
 
     override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor {
         val capture = uri.pathSegments.firstOrNull() == "capture"
-        if (capture && mode == "w") {
+        if (capture && mode in setOf("w", "wt", "rw", "rwt")) {
             val file = sharedFile(uri, allowMissingCapture = true)
+            val writeMode = when (mode) {
+                "rw", "rwt" -> ParcelFileDescriptor.MODE_READ_WRITE or ParcelFileDescriptor.MODE_CREATE
+                else -> ParcelFileDescriptor.MODE_WRITE_ONLY or ParcelFileDescriptor.MODE_CREATE
+            }
+            val truncate = mode in setOf("w", "wt", "rwt")
             return ParcelFileDescriptor.open(
                 file,
-                ParcelFileDescriptor.MODE_WRITE_ONLY or ParcelFileDescriptor.MODE_CREATE or ParcelFileDescriptor.MODE_TRUNCATE
+                writeMode or if (truncate) ParcelFileDescriptor.MODE_TRUNCATE else 0
             )
         }
         if (mode != "r" || capture) throw SecurityException("Invalid shared image access")
