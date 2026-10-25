@@ -20,9 +20,18 @@ function accessibilityTree() {
 }
 function findNode(xml, text) {
   for (const tag of xml.match(/<node\b[^>]*>/g) || []) {
-    const value = tag.match(/\btext="([^"]*)"/)?.[1]?.replaceAll('&amp;', '&') || '';
+    const value = [tag.match(/\btext="([^"]*)"/)?.[1], tag.match(/\bcontent-desc="([^"]*)"/)?.[1]]
+      .filter(Boolean).map(item => item.replaceAll('&amp;', '&').replaceAll('&apos;', "'")).join(' ');
     const bounds = tag.match(/\bbounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/);
     if (value.includes(text) && bounds) return bounds.slice(1).map(Number);
+  }
+  return null;
+}
+function findClassNode(xml, className) {
+  for (const tag of xml.match(/<node\b[^>]*>/g) || []) {
+    if (!tag.includes(`class="${className}"`)) continue;
+    const bounds = tag.match(/\bbounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"/);
+    if (bounds) return bounds.slice(1).map(Number);
   }
   return null;
 }
@@ -62,6 +71,30 @@ async function skipAariaWelcome(xml) {
   await pause(2200);
   return accessibilityTree();
 }
+async function finishFirstRunProfile(xml) {
+  if (!/Choose your chef|Welcome to My Magical Kitchen|Escolha seu chef|Bem-vinda à sua cozinha/i.test(xml)) return xml;
+  const name = findClassNode(xml, 'android.widget.EditText');
+  if (!name) throw new Error('First-run profile setup is visible, but its name field is missing.');
+  adb('shell', 'input', 'tap', String(Math.round((name[0] + name[2]) / 2)), String(Math.round((name[1] + name[3]) / 2)));
+  adb('shell', 'input', 'text', 'Visual%20Preview');
+  adb('shell', 'input', 'keyevent', '4');
+  await pause(300);
+  xml = accessibilityTree();
+  const chef = findNode(xml, 'Chef A') || findNode(xml, 'CHEF_A');
+  if (!chef) throw new Error('First-run profile setup is visible, but the approved Chef A choice is missing.');
+  adb('shell', 'input', 'tap', String(Math.round((chef[0] + chef[2]) / 2)), String(Math.round((chef[1] + chef[3]) / 2)));
+  await pause(400);
+  xml = accessibilityTree();
+  const next = findNode(xml, 'Continue to kitchen') || findNode(xml, 'Entrar na cozinha');
+  if (!next) throw new Error('First-run profile setup is visible, but its continue control is missing.');
+  adb('shell', 'input', 'tap', String(Math.round((next[0] + next[2]) / 2)), String(Math.round((next[1] + next[3]) / 2)));
+  await pause(1400);
+  xml = accessibilityTree();
+  if (/Choose your chef|Welcome to My Magical Kitchen|Escolha seu chef|Bem-vinda à sua cozinha/i.test(xml)) {
+    throw new Error('First-run profile setup did not close after selecting the test profile.');
+  }
+  return xml;
+}
 async function waitForAariaWelcome() {
   for (let attempt = 0; attempt < 30; attempt++) {
     let xml = '';
@@ -98,8 +131,10 @@ async function openPreview(query, expectedName) {
       }
       if (isAariaWelcome(xml)) {
         xml = await skipAariaWelcome(xml);
+        xml = await finishFirstRunProfile(xml);
         if (expectedState(xml)) return;
       }
+      xml = await finishFirstRunProfile(xml);
       if (expectedState(xml)) return;
       await pause(900);
     }
