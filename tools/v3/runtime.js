@@ -262,7 +262,14 @@ const V31_APPROVED_INDIA_RECIPE_IDS=[51,52,53,54,55,56,57,58,59,60,61,62,63,64,6
 const V31_WORLD_DESTINATIONS=[{code:'IND',iso:'IND',en:'India',pt:'Índia',flag:'🇮🇳',factEn:'Explore the original Indian recipes in Aaria’s kitchen.',factPt:'Explore as receitas indianas originais da cozinha da Aaria.',reviewStatus:'approved-reference'}];
 const V31_DESTINATION_BY_ISO=Object.fromEntries(V31_WORLD_DESTINATIONS.map(x=>[x.code,x]));
 let v31SelectedCountry='IND',v31MapPanel='';
-window.v34EnterGlobeFirst=function(fromNav){v31SelectedCountry='IND';v31MapPanel='';window.v31WorldOpenedFromNav=Boolean(fromNav);window.v31WorldOpenerIndex=0;window.v34SuppressCountryRestore=true;history.replaceState({},'',location.hash||'#aria/world');goto('world')};
+window.v34EnterGlobeFirst=function(fromNav){
+ // Every World action is a fresh entry: clear the country sheet, country selection,
+ // and the controller snapshot before rendering, including taps while already on World.
+ v31SelectedCountry=null;v31MapPanel='';window.v31WorldOpenedFromNav=Boolean(fromNav);window.v31WorldOpenerIndex=0;window.v34SuppressCountryRestore=true;
+ if(v33GlobeController){v33GlobeController.destroy();v33GlobeController=null}
+ v33GlobeState=null;v33WorldHost=null;
+ history.replaceState({},'',location.hash||'#aria/world');goto('world')
+};
 let v33GlobeController=null,v33GlobeState=null,v33WorldHost=null,v33SpinHintDismissed=false;
 function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\b[^>]*\bsrc=["']([^"']+)["']/i)?.[1]||'';return src.startsWith('data:image/')?src:''}catch{return ''}}
 function v33WorldCatalogue(){
@@ -516,7 +523,7 @@ document.addEventListener('click',async e=>{
  }
  if(button?.dataset.action==='take-dish-photo'){
   const id=Number(button.dataset.recipe);
-  if(window.AariaNative?.takeDishPhoto){window.AariaNative.takeDishPhoto(String(id));return}
+  if(window.AariaNative?.takeDishPhoto){if(!window.AariaNative.takeDishPhoto(String(id)))notice('Could not open the camera. Please try again.');return}
   document.querySelector(`[data-share-photo="${id}"][capture]`)?.click();return;
  }
 });
@@ -555,10 +562,16 @@ window.addEventListener('popstate',e=>{
 document.addEventListener('change',e=>{
  const input=e.target;if(input.matches('[data-v3-parent]')){state.parentContacts??={mommy:'',daddy:''};state.parentContacts[input.dataset.v3Parent]=input.value.trim();save();notice('Family contact saved on this device.');}
 });
-window.aariaHandleNativeDishPhoto=async(id,dataUrl)=>{
- try{const blob=await(await fetch(dataUrl)).blob();if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=blob;const post=await makeCookPost(find(id),blob);sharePostBlobs[id]=post;sharePostUrls[id]=URL.createObjectURL(post);render();notice('Your cooking post is ready! 💖');}
+window.aariaHandleNativeDishPhoto=async(id,fileName)=>{
+ try{
+  if(!/^[a-f0-9-]{36}\.jpg$/i.test(String(fileName||'')))throw new Error('Invalid saved photo reference.');
+  const photoUrl='https://appassets.androidplatform.net/dish-photo/'+encodeURIComponent(fileName);
+  if(typeof window.v34SaveCreationPhoto==='function'){await window.v34SaveCreationPhoto(Number(id),photoUrl);return}
+  const blob=await(await fetch(photoUrl)).blob();if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=blob;const post=await makeCookPost(find(id),blob);sharePostBlobs[id]=post;sharePostUrls[id]=URL.createObjectURL(post);render();notice('Your cooking post is ready! 💖');
+ }
  catch(e){console.error('Could not prepare the camera photo.',e);notice('Could not prepare that photo. Please try again.');}
 };
+window.aariaHandleNativeDishPhotoError=()=>notice('Could not open the camera. Please try again.');
 document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
 render();
 
