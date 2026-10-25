@@ -56,6 +56,16 @@ jobs:
             if python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/Aaria_V3_4_Visual.html', timeout=2).read(16)"; then break; fi
             sleep 1
           done
+      - name: Enable Android emulator KVM access
+        run: |
+          if test -e /dev/kvm; then
+            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+            sudo udevadm control --reload-rules
+            sudo udevadm trigger --name-match=kvm
+            ls -l /dev/kvm
+          else
+            echo 'This runner does not expose /dev/kvm; Android emulator boot will use the configured fallback.'
+          fi
       - name: Capture genuine Android portrait screenshots (no APK build)
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -70,7 +80,7 @@ jobs:
         run: |
           mkdir -p artifacts/v34-visual-review/design/v3.4
           cp docs/design/v3.4/magical-adventure-home-approved.png artifacts/v34-visual-review/design/v3.4/
-          if test -f artifacts/v34-visual-review/01-home-portrait.png; then node .github/scripts/v34-visual-comparison.mjs; fi
+          if test -f artifacts/v34-visual-review/02-magical-home-portrait.png; then node .github/scripts/v34-visual-comparison.mjs; fi
           echo "$GITHUB_SHA" > artifacts/v34-visual-review/source-head.txt
       - name: Upload screenshots and visual comparison only
         if: always()
