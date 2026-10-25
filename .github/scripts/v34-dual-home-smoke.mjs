@@ -132,7 +132,8 @@ try {
   const railState = JSON.parse(rails);
   check(railState.sections === 3 && railState.rails === 3, 'All three independent horizontal rails must render.');
   check(JSON.stringify(railState.countries) === JSON.stringify(['IND','ITA','CHN']), 'World rail should include only the available approved recipe countries.');
-  check(await cdp.eval(`!!document.querySelector('.v34-hero-avatar') && !!document.querySelector('.v34-globe-card')`), 'Approved avatar or globe artwork is missing from the hero.');
+  check(await cdp.eval(`!!document.querySelector('.v34-approved-scene') && !!document.querySelector('.v34-globe-hit')`), 'Approved full-bleed Aaria and globe scene is missing from the hero.');
+  check(await cdp.eval(`(()=>{const viewport=document.querySelector('[data-v34-activity-viewport]');const bounds=viewport.getBoundingClientRect();return [...viewport.querySelectorAll('.v34-activity-card')].every(card=>{const r=card.getBoundingClientRect();return r.left>=bounds.left-1&&r.right<=bounds.right+1})})()`), 'Activity platform is clipped horizontally.');
   check(await cdp.eval(`indexedDB.open('aaria-v34-local-creation-photos') instanceof IDBOpenDBRequest`), 'Local persistent photo storage is unavailable.');
   await cdp.eval(`(async()=>{openRecipe(1);await new Promise(resolve=>setTimeout(resolve,250));const bytes=Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO7+vAAAAABJRU5ErkJggg=='),c=>c.charCodeAt(0));const file=new File([bytes],'v34-photo-test.png',{type:'image/png'}),transfer=new DataTransfer();transfer.items.add(file);const input=document.querySelector('[data-share-photo="1"]');if(!input)throw Error('Recipe camera/photo input is missing');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));await new Promise(resolve=>setTimeout(resolve,700));state.myCreations=[{recipeId:1,savedAt:new Date().toISOString()}];save();goto('home')})()`);
   await pause(550);

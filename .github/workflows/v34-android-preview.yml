@@ -2,23 +2,11 @@ name: Aaria V3.4 Dual Home Preview APK
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feature/v3.4-dual-home-experience
-    paths:
-      - 'tools/v3/v34-dual-home.js'
-      - 'tools/v3/attach-v34-dual-home.mjs'
-      - 'tools/v3/transform-production.mjs'
-      - 'tools/v3/runtime.js'
-      - 'tools/v3/world-adventure-globe/**'
-      - 'tools/v3/artwork/**'
-      - 'content/international/**'
-      - 'phase2-pilot/packages/assets/**'
-      - 'docs/design/approved-v31-world-map-crop.webp'
-      - 'index.html'
-      - 'phase2-pilot/apps/aaria-android/**'
-      - '.github/scripts/v34-dual-home-smoke.mjs'
-      - '.github/workflows/v34-android-preview.yml'
+    inputs:
+      owner_visual_approval:
+        description: Set to true only after owner approves the V3.4 screenshots
+        required: true
+        type: boolean
 
 permissions:
   contents: read
@@ -30,6 +18,7 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ inputs.owner_visual_approval == true }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:

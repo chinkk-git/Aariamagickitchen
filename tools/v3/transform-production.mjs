@@ -35,6 +35,7 @@ const homeWorldArt = {
   friends: readReferenceImage('tools/v3/artwork/characters/reference-derived/home-approved-dog-crop.png'),
   kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
   worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),
+  v34ApprovedHome: readReferenceImage('docs/design/v3.4/magical-adventure-home-approved.png'),
   destinations: Object.fromEntries(['IND'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
   avatars: Object.fromEntries(['mommy','daddy','rohan','arjun','vihaan','isha','meera','sana','diya'].map(key => [key, readReferenceImage(`tools/v3/artwork/characters/reference-derived/${key}.webp`)]))
 };
