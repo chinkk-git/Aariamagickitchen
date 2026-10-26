@@ -33,4 +33,9 @@ adb -s "$ANDROID_SERIAL" install "$V3_BASELINE_APK"
 adb -s "$ANDROID_SERIAL" install -r "$UPGRADE_CANDIDATE_APK"
 "$SEED_VERIFY_COMMAND" verify "$ANDROID_SERIAL" "$PACKAGE"
 adb -s "$ANDROID_SERIAL" shell pm path "$PACKAGE"
-echo 'PASS: same-package, same-signer, higher-version non-destructive emulator upgrade; seeded marker verified'
+report="${V34_UPGRADE_EVIDENCE_DIR:-artifacts/v34-upgrade-evidence}/data-after-restart.json"
+if [[ -s "$report" ]] && grep -Fq '"full_upgrade_acceptance": "PASS"' "$report"; then
+  echo 'PASS: same-package, same-signer, higher-version emulator upgrade and all required seeded-data checks passed'
+else
+  echo 'PARTIAL: package/signing/version continuity and completed UI assertions are recorded; full upgrade acceptance remains NOT VERIFIED in the data report'
+fi
