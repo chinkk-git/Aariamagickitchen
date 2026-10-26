@@ -84,20 +84,43 @@ PY
   then tap_text "$regex"; fi
 }
 screenshot() { adb_s exec-out screencap -p > "$evidence/screenshots/$1.png"; }
+has_text() {
+  python3 - "$ui_file" "$1" <<'PY'
+import re, sys, xml.etree.ElementTree as ET
+root=ET.parse(sys.argv[1]).getroot()
+p=re.compile(sys.argv[2],re.I)
+sys.exit(0 if any(p.search(' '.join((n.attrib.get('text',''),n.attrib.get('content-desc','')))) for n in root.iter('node')) else 1)
+PY
+}
+wait_absent() {
+  local regex="$1"
+  for _ in $(seq 1 30); do
+    dump_ui
+    if ! has_text "$regex"; then return 0; fi
+    sleep 1
+  done
+  echo "Timed out waiting for UI text to disappear: $regex" >&2
+  cp "$ui_file" "$evidence/ui/timeout-absent-$(date +%s).xml"
+  adb_s exec-out screencap -p > "$evidence/screenshots/$mode-wait-absent-timeout.png"
+  return 1
+}
 launch() {
   adb_s shell monkey -p "$package" 1 >/dev/null
-  wait_text 'Recipes|My Recipes|Skip|Enter|Chef A|Settings'
-  tap_if_present 'Chef A'
-  tap_if_present 'Continue'
+  wait_text 'Choose your chef|Recipes|My Recipes|Skip|Enter|Settings'
+  if has_text 'Choose your chef'; then
+    tap_text 'Chef A'
+    tap_text 'Continue to kitchen'
+    wait_absent 'Choose your chef'
+  fi
   tap_if_present 'Skip'
   tap_if_present 'Enter'
-  wait_text 'Recipes|My Recipes|Settings'
+  wait_text 'Recipes$|My Recipes|Settings'
 }
 open_recipe() {
-  tap_text '^(Recipes|My Recipes)$'
+  tap_text 'Recipes$|My Recipes'
   wait_text 'Cheesy Corn Pancakes'
   tap_text 'Cheesy Corn Pancakes'
-  wait_text 'Add to favorites|Remove from favorites'
+  wait_text 'Add to favou?rites|Remove from favou?rites'
 }
 check_favorite() {
   dump_ui
