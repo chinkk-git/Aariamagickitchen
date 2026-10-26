@@ -8,9 +8,16 @@ import {resolve} from 'node:path';
 
 const out=resolve(process.env.V35_SCREENSHOT_DIR||'artifacts/v35-android-screenshots');
 mkdirSync(out,{recursive:true});
-const targets=await (await fetch('http://127.0.0.1:9222/json')).json();
-const target=targets.find(x=>x.type==='page'&&/appassets\.androidplatform\.net/.test(x.url||''))||targets.find(x=>x.type==='page');
-assert.ok(target?.webSocketDebuggerUrl,'Android WebView DevTools page not found');
+let target;
+const targetDeadline=Date.now()+120000;
+while(Date.now()<targetDeadline){
+ const targets=await (await fetch('http://127.0.0.1:9222/json')).json();
+ target=targets.find(x=>x.type==='page'&&/appassets\.androidplatform\.net/.test(x.url||''));
+ if(target)break;
+ await new Promise(r=>setTimeout(r,500));
+}
+assert.ok(target?.webSocketDebuggerUrl,'Android app WebView DevTools page not found');
+console.log(`Attaching to app WebView page: ${target.url}`);
 const ws=new WebSocket(target.webSocketDebuggerUrl),pending=new Map();let nextId=0;
 await new Promise((resolveOpen,reject)=>{ws.addEventListener('open',resolveOpen,{once:true});ws.addEventListener('error',reject,{once:true})});
 ws.addEventListener('message',event=>{let message;try{message=JSON.parse(String(event.data))}catch{return}if(!message.id)return;const task=pending.get(message.id);if(!task)return;pending.delete(message.id);message.error?task.reject(new Error(message.error.message)):task.resolve(message.result)});
