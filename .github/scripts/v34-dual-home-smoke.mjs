@@ -105,7 +105,7 @@ class Cdp {
     return withTimeout(response, timeoutMs, `WebView DevTools ${method} response`);
   }
   async eval(expression) {
-    const result = await this.call('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true, userGesture: true });
+    const result = await this.call('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true, userGesture: true }, 45_000);
     if (result.exceptionDetails) throw new Error(result.exceptionDetails.text || result.exceptionDetails.exception?.description || 'WebView evaluation failed');
     return result.result?.value;
   }
