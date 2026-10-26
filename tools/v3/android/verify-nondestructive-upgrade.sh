@@ -7,18 +7,23 @@ set -euo pipefail
 AAPT="${ANDROID_HOME}/build-tools/35.0.0/aapt"
 SIGNER="${ANDROID_HOME}/build-tools/35.0.0/apksigner"
 PACKAGE=com.aaria.magickitchen.pilot
+EXPECTED_SIGNER_SHA256=3aeda9b71ab29c4c21d9fca5155418b5684a2111cec6fc17222b64db03697588
+EVIDENCE_DIR="${V34_UPGRADE_EVIDENCE_DIR:-artifacts/v34-upgrade-evidence}"
+mkdir -p "$EVIDENCE_DIR"
 identity() {
   "$AAPT" dump badging "$1" | sed -n "s/^package: name='\\([^']*\\)' versionCode='\\([^']*\\)'.*/\\1 \\2/p" | head -1
 }
 fingerprint() {
-  "$SIGNER" verify --print-certs "$1" | sed -n 's/^V[123] Signer: certificate SHA-256 digest: //p' | head -1
+  "$SIGNER" verify --print-certs "$1" | sed -nE 's/^(Signer #[0-9]+ certificate SHA-256 digest: |V[123] Signer: certificate SHA-256 digest: )//p' | head -1 | tr '[:upper:]' '[:lower:]'
 }
 read -r base_pkg base_version <<< "$(identity "$V3_BASELINE_APK")"
 read -r next_pkg next_version <<< "$(identity "$UPGRADE_CANDIDATE_APK")"
 [[ "$base_pkg" == "$PACKAGE" && "$next_pkg" == "$PACKAGE" ]] || { echo 'BLOCKED: package identity mismatch'; exit 1; }
 [[ "$next_version" =~ ^[0-9]+$ && "$base_version" =~ ^[0-9]+$ && "$next_version" -gt "$base_version" ]] || { echo 'BLOCKED: versionCode must increase'; exit 1; }
 base_cert="$(fingerprint "$V3_BASELINE_APK")"; next_cert="$(fingerprint "$UPGRADE_CANDIDATE_APK")"
-[[ -n "$base_cert" && "$base_cert" == "$next_cert" ]] || { echo 'BLOCKED: signing identity mismatch'; exit 1; }
+printf '{"baseline_package":"%s","baseline_versionCode":%s,"baseline_signer_sha256":"%s","candidate_package":"%s","candidate_versionCode":%s,"candidate_signer_sha256":"%s","expected_signer_sha256":"%s"}\n' \
+  "$base_pkg" "$base_version" "$base_cert" "$next_pkg" "$next_version" "$next_cert" "$EXPECTED_SIGNER_SHA256" > "$EVIDENCE_DIR/apk-identity.json"
+[[ -n "$base_cert" && "$base_cert" == "$next_cert" && "$next_cert" == "$EXPECTED_SIGNER_SHA256" ]] || { echo 'BLOCKED: signing identity mismatch'; exit 1; }
 [[ "${ALLOW_ISOLATED_EMULATOR_INSTALL:-}" == "YES" ]] || { echo 'BLOCKED: isolated-emulator opt-in required'; exit 1; }
 [[ -n "${SEED_VERIFY_COMMAND:-}" ]] || { echo 'BLOCKED: seeded-data assertion command required'; exit 1; }
 [[ -f "${SEED_VERIFY_COMMAND}" && -x "${SEED_VERIFY_COMMAND}" ]] || { echo 'BLOCKED: SEED_VERIFY_COMMAND must be an executable test script'; exit 1; }
