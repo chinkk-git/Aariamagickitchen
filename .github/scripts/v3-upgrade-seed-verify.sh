@@ -124,7 +124,7 @@ launch() {
   wait_text 'Recipes|Settings|Home'
 }
 open_favorite_recipe() {
-  tap_text '📖 Recipes|My Recipes'
+  tap_text '📖 Recipes|All Recipes|My Recipes'
   wait_text 'Cheesy Egg Bread Cups'
   tap_text 'Cheesy Egg Bread Cups'
   wait_text 'Add to favou?rites|Remove from favou?rites'
