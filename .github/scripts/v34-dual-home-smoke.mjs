@@ -97,12 +97,12 @@ class Cdp {
       message.error ? waiting.reject(new Error(message.error.message)) : waiting.resolve(message.result);
     });
   }
-  async call(method, params = {}) {
+  async call(method, params = {}, timeoutMs = 12_000) {
     await this.ready;
     const id = this.nextId++;
     const response = new Promise((resolve, reject) => this.pending.set(id, { resolve, reject }));
     this.ws.send(JSON.stringify({ id, method, params }));
-    return withTimeout(response, 12_000, `WebView DevTools ${method} response`);
+    return withTimeout(response, timeoutMs, `WebView DevTools ${method} response`);
   }
   async eval(expression) {
     const result = await this.call('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true, userGesture: true });
@@ -114,8 +114,8 @@ class Cdp {
 
 async function connectReady() {
   let client = await connect();
-  await client.call('Runtime.enable');
-  await client.call('Page.enable');
+  await client.call('Runtime.enable', {}, 45_000);
+  await client.call('Page.enable', {}, 45_000);
   for (let i = 0; i < 30; i++) {
     try { if (await client.eval('Boolean(document.querySelector("#screen")?.textContent)')) return client; }
     catch {}
