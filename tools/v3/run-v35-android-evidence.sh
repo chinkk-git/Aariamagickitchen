@@ -5,8 +5,8 @@ apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
 pkg="com.aaria.magickitchen.pilot.v35review${GITHUB_RUN_NUMBER}"
 mkdir -p artifacts/v35-android-screenshots
 timeout 300 adb wait-for-device
-timeout 180 adb install -r "$apk"
-timeout 60 adb shell am start -n "$pkg/com.aaria.magickitchen.pilot.MainActivity"
+timeout 600 adb install -r "$apk"
+timeout 180 adb shell am start -n "$pkg/com.aaria.magickitchen.pilot.MainActivity"
 sleep 3
 adb exec-out screencap -p > artifacts/v35-android-screenshots/home-app-launch.png
 socket=""
