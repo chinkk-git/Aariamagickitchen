@@ -34,14 +34,14 @@ jobs:
         with:
           name: my-magical-kitchen-v3-signed-apk
           run-id: 39084575097
-          github-token: \${{ github.token }}
+          github-token: ${{ github.token }}
           path: production-baseline
       - name: Download exact V3.4 production candidate
         uses: actions/download-artifact@v4
         with:
           name: aaria-v3.4-production-signed-candidate
           run-id: 40249952865
-          github-token: \${{ github.token }}
+          github-token: ${{ github.token }}
           path: production-candidate
       - name: Verify artifact provenance and stage APKs
         shell: bash
