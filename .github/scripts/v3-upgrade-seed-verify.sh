@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-mode="\${1:?seed|verify required}"
-serial="\${2:?emulator serial required}"
-package="\${3:?package required}"
-evidence="\${V34_UPGRADE_EVIDENCE_DIR:-artifacts/v34-upgrade-evidence}"
+mode="${1:?seed|verify required}"
+serial="${2:?emulator serial required}"
+package="${3:?package required}"
+evidence="${V34_UPGRADE_EVIDENCE_DIR:-artifacts/v34-upgrade-evidence}"
 mkdir -p "$evidence/screenshots" "$evidence/ui"
 ui_file="$evidence/ui/current.xml"
 
