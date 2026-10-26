@@ -91,14 +91,14 @@ jobs:
 
       - name: Capture representative V3.5 Android screenshots
         if: github.ref == 'refs/heads/feature/v3.5-recipe-expansion'
-        timeout-minutes: 30
+        timeout-minutes: 45
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
           api-level: 34
           target: google_apis
           arch: x86_64
           profile: pixel_2
-          emulator-boot-timeout: 1200
+          emulator-boot-timeout: 1800
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -memory 4096
           disable-animations: true
           script: |
