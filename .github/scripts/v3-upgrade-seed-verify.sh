@@ -81,6 +81,30 @@ PY
   adb_s shell input tap $point
   sleep 1
 }
+tap_label_text() {
+  local regex="$1" point
+  dump_ui
+  point="$(python3 - "$ui_file" "$regex" <<'PY'
+import re, sys, xml.etree.ElementTree as ET
+root=ET.parse(sys.argv[1]).getroot(); p=re.compile(sys.argv[2], re.I)
+for n in root.iter('node'):
+    label=' '.join((n.attrib.get('text',''), n.attrib.get('content-desc',''))).strip()
+    if p.search(label) and n.attrib.get('visible-to-user','true') != 'false':
+        parts=[int(x) for x in n.attrib.get('bounds','').replace('][',',').strip('[]').split(',')]
+        if len(parts)==4 and parts[2] > parts[0] and parts[3] > parts[1]:
+            print(f'{(parts[0]+parts[2])//2} {(parts[1]+parts[3])//2}')
+            raise SystemExit(0)
+raise SystemExit(1)
+PY
+  )" || {
+    echo "Visible label not found: $regex" >&2
+    cp "$ui_file" "$evidence/ui/failed-label-$(date +%s).xml"
+    adb_s exec-out screencap -p > "$evidence/screenshots/$mode-label-not-found.png"
+    return 1
+  }
+  adb_s shell input tap $point
+  sleep 1
+}
 tap_if_present() {
   local regex="$1"
   dump_ui
@@ -112,6 +136,7 @@ favorite_is_saved() {
 set_and_verify_reduced_motion() {
   tap_text 'Settings'
   wait_text 'Reduce motion|Reduce animation'
+  screenshot v7-reduced-motion-control
   dump_ui
   local checked
   checked="$(python3 - "$ui_file" <<'PY'
@@ -124,7 +149,7 @@ for n in root.iter('node'):
 raise SystemExit(1)
 PY
   )" || true
-  if [[ "$checked" != true ]]; then tap_text 'Reduce motion|Reduce animation'; fi
+  if [[ "$checked" != true ]]; then tap_label_text 'Reduce animation'; fi
   dump_ui
   checked="$(python3 - "$ui_file" <<'PY'
 import sys, xml.etree.ElementTree as ET
@@ -136,7 +161,21 @@ for n in root.iter('node'):
 raise SystemExit(1)
 PY
   )" || true
-  [[ "$checked" == true ]] || { echo 'Reduced-motion preference did not persist in UI.' >&2; return 1; }
+  if [[ "$checked" != true ]]; then
+    tap_text 'Reduce motion'
+    dump_ui
+    checked="$(python3 - "$ui_file" <<'PY'
+import sys, xml.etree.ElementTree as ET
+root=ET.parse(sys.argv[1]).getroot()
+for n in root.iter('node'):
+    if 'reduce motion' in n.attrib.get('text','').lower() and n.attrib.get('class','').endswith(('CheckBox','Switch')):
+        print(n.attrib.get('checked','false')); raise SystemExit(0)
+raise SystemExit(1)
+PY
+    )" || true
+  fi
+  [[ "$checked" == true ]] || { screenshot v7-reduced-motion-toggle-failed; echo 'Reduced-motion preference did not persist in UI after tapping both the label and checkbox.' >&2; cp "$ui_file" "$evidence/ui/reduced-motion-toggle-failed.xml"; return 1; }
+  screenshot v7-reduced-motion-enabled
 }
 verify_reduced_motion_only() {
   tap_if_present 'Home'
