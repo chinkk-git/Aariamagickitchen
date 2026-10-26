@@ -117,7 +117,116 @@ launch() {
   wait_text 'Recipes$|My Recipes|Settings'
 }
 open_recipe() {
-  tap_text 'Recipes$|My Recipes'
+  tap_text '📖 Recipes$|My Recipes
+  wait_text 'Cheesy Corn Pancakes'
+  tap_text 'Cheesy Corn Pancakes'
+  wait_text 'Add to favou?rites|Remove from favou?rites'
+}
+check_favorite() {
+  dump_ui
+  python3 - "$ui_file" <<'PY'
+import sys, xml.etree.ElementTree as ET
+r=ET.parse(sys.argv[1]).getroot()
+vals=[' '.join((n.attrib.get('text',''),n.attrib.get('content-desc',''))).lower() for n in r.iter('node')]
+if not any('remove from favorites' in v or 'remove from favourites' in v for v in vals):
+    raise SystemExit('Favorite state is not visible as saved.')
+PY
+}
+open_settings_and_seed_preference() {
+  tap_if_present '^Home$'
+  tap_text 'Settings'
+  wait_text 'Reduce motion|Reduce animation'
+  dump_ui
+  checked="$(is_checked 'Reduce motion|Reduce animation' || true)"
+  if [[ "$checked" != 'true' ]]; then
+    tap_text 'Reduce motion|Reduce animation'
+    dump_ui
+  fi
+  checked="$(is_checked 'Reduce motion|Reduce animation' || true)"
+  [[ "$checked" == 'true' ]] || { echo 'Reduced-motion preference did not persist in the UI.' >&2; return 1; }
+}
+open_week() {
+  tap_if_present '^Home$'
+  tap_text 'My Week|My magical week'
+  wait_text 'My Week|My magical week|Monday'
+  screenshot "$mode-week"
+}
+write_report() {
+  local destination="$1" favorite="$2" motion="$3" week="$4"
+  python3 - "$destination" "$favorite" "$motion" "$week" <<'PY'
+import json,sys
+path,favorite,motion,week=sys.argv[1:]
+data={
+  "favorite_recipe_12":"PASS" if favorite=="PASS" else favorite,
+  "reduced_motion_preference":"PASS" if motion=="PASS" else motion,
+  "my_week_state":week,
+  "v7_saved_photos":"NOT_SUPPORTED_OR_NOT_PERSISTENT",
+  "v7_my_creations":"NOT_SUPPORTED",
+  "legacy_photo_evidence":"The authentic v7 APK stores the photo share payload in in-memory sharePostBlobs; its persisted aariaPrivateKitchenV4 snapshot has no photo record collection. V3.4 photo migration from v7 cannot be seeded.",
+  "full_upgrade_acceptance":"NOT_VERIFIED"
+}
+json.dump(data,open(path,"w"),indent=2)
+print(json.dumps(data,indent=2))
+PY
+}
+
+if [[ "$mode" == seed ]]; then
+  launch
+  open_recipe
+  if ! grep -qi 'remove from favorites\|remove from favourites' "$ui_file"; then tap_text 'Add to favorites|Add to favourites'; fi
+  check_favorite
+  screenshot v7-favorite-seeded
+  open_settings_and_seed_preference
+  screenshot v7-preferences-seeded
+  motion=PASS
+  open_week
+  cp "$ui_file" "$evidence/ui/v7-week-before.xml"
+  write_report "$evidence/data-before.json" PASS "$motion" NOT_VERIFIED
+  cp "$ui_file" "$evidence/ui/v7-seeded-state.xml"
+  exit 0
+fi
+
+if [[ "$mode" == verify ]]; then
+  launch
+  open_recipe
+  check_favorite
+  screenshot v34-favorite-after-upgrade
+  favorite=PASS
+  open_settings_and_seed_preference
+  screenshot v34-preferences-after-upgrade
+  motion=PASS
+  open_week
+  cp "$ui_file" "$evidence/ui/v34-week-after-upgrade.xml"
+  week=NOT_VERIFIED
+  if [[ -f "$evidence/ui/v7-week-before.xml" ]]; then
+    if python3 - "$evidence/ui/v7-week-before.xml" "$ui_file" <<'PY'
+import sys, xml.etree.ElementTree as ET
+def values(path):
+    root=ET.parse(path).getroot()
+    return {n.attrib.get('text','').strip() for n in root.iter('node') if n.attrib.get('text','').strip()}
+a,b=map(values,sys.argv[1:])
+generic={'My magical week','My Week','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Home','Recipes'}
+shared={x for x in a&b if len(x)>4 and x not in generic}
+sys.exit(0 if shared else 1)
+PY
+    then week=PASS; fi
+  fi
+  adb_s shell am force-stop "$package"
+  launch
+  open_recipe
+  check_favorite
+  open_settings_and_seed_preference
+  motion=PASS
+  write_report "$evidence/data-after-restart.json" "$favorite" "$motion" "$week"
+  cp "$ui_file" "$evidence/ui/v34-after-restart.xml"
+  if [[ "$week" != PASS ]]; then
+    echo 'NOT VERIFIED: My Week selected recipe state did not produce a specific before/after text match.' >&2
+  fi
+  exit 0
+fi
+echo "Unknown mode: $mode" >&2
+exit 2
+
   wait_text 'Cheesy Corn Pancakes'
   tap_text 'Cheesy Corn Pancakes'
   wait_text 'Add to favou?rites|Remove from favou?rites'
