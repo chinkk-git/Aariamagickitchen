@@ -148,7 +148,7 @@ jobs:
     timeout-minutes: 45
     environment: android-production-signing
     env:
-      TRUSTED_PRODUCTION_SIGNER_SHA256: 9d0e87112841198295a0b33da7c6770cf7785c4d8634417468c18f642ac2db8b
+      TRUSTED_PRODUCTION_SIGNER_SHA256: 3aeda9b71ab29c4c21d9fca5155418b5684a2111cec6fc17222b64db03697588
       AARIA_RELEASE_VERSION_CODE: '8'
       AARIA_RELEASE_VERSION_NAME: 3.4.0
     steps:
