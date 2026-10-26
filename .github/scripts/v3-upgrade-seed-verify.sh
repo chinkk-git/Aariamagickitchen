@@ -10,8 +10,19 @@ ui_file="$evidence/ui/current.xml"
 
 adb_s() { adb -s "$serial" "$@"; }
 dump_ui() {
-  adb_s shell uiautomator dump --compressed /sdcard/v34-window.xml >/dev/null 2>&1
-  adb_s exec-out cat /sdcard/v34-window.xml > "$ui_file"
+  for _ in $(seq 1 5); do
+    adb_s shell uiautomator dump --compressed /sdcard/v34-window.xml >/dev/null 2>&1 || true
+    adb_s exec-out cat /sdcard/v34-window.xml > "$ui_file" 2>/dev/null || true
+    if python3 - "$ui_file" <<'PY'
+import sys, xml.etree.ElementTree as ET
+try: ET.parse(sys.argv[1])
+except Exception: raise SystemExit(1)
+PY
+    then return 0; fi
+    sleep 1
+  done
+  echo 'Android accessibility tree was not valid XML after bounded retries.' >&2
+  return 1
 }
 text_present() {
   python3 - "$ui_file" "$1" <<'PY'
@@ -90,8 +101,8 @@ launch() {
 }
 open_favorite_recipe() {
   tap_text '📖 Recipes|My Recipes'
-  wait_text 'Cheesy Corn Pancakes'
-  tap_text 'Cheesy Corn Pancakes'
+  wait_text 'Cheesy Egg Bread Cups'
+  tap_text 'Cheesy Egg Bread Cups'
   wait_text 'Add to favou?rites|Remove from favou?rites'
 }
 favorite_is_saved() {
@@ -151,7 +162,7 @@ import json,sys
 path,phase,favorite=sys.argv[1:]
 data={
   'phase': phase,
-  'favorite_recipe_name':'Cheesy Corn Pancakes',
+  'favorite_recipe_name':'Cheesy Egg Bread Cups',
   'favorite_persisted':'PASS' if favorite=='PASS' else favorite,
   'reduced_motion_preference':'PASS' if phase in ('seed','after-upgrade','after-restart') else 'NOT_VERIFIED',
   'planner_selections':'NOT_SEEDED',
