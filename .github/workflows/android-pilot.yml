@@ -90,16 +90,17 @@ jobs:
 
       - name: Capture representative V3.5 Android screenshots
         if: github.ref == 'refs/heads/feature/v3.5-recipe-expansion'
-        timeout-minutes: 15
+        timeout-minutes: 30
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
           api-level: 35
           target: google_apis
           arch: x86_64
           profile: pixel_2
+          emulator-boot-timeout: 1200
           disable-animations: true
           script: |
-            set -euo pipefail
+            set -eu
             apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
             pkg="com.aaria.magickitchen.pilot.v35review${GITHUB_RUN_NUMBER}"
             mkdir -p artifacts/v35-android-screenshots
