@@ -99,6 +99,7 @@ jobs:
           arch: x86_64
           profile: pixel_2
           emulator-boot-timeout: 1800
+          # Software rendering avoids SwiftShader color-buffer and package-service crashes on no-KVM hosted runners.
           emulator-options: -no-window -gpu off -noaudio -no-boot-anim -no-snapshot -camera-back none -memory 4096
           disable-animations: true
           script: |
