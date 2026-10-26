@@ -7,6 +7,8 @@ mkdir -p artifacts/v35-android-screenshots
 adb install -r "$apk"
 adb shell am start -n "$pkg/com.aaria.magickitchen.pilot.MainActivity"
 timeout 300 adb wait-for-device
+sleep 3
+adb exec-out screencap -p > artifacts/v35-android-screenshots/home-app-launch.png
 socket=""
 for attempt in $(seq 1 90); do
   socket="$(adb shell cat /proc/net/unix 2>/dev/null | awk '$NF ~ /webview_devtools_remote_/ {sub(/^.*webview_devtools_remote_/, "webview_devtools_remote_", $NF); print $NF; exit}' || true)"

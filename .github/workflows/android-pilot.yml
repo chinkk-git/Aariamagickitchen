@@ -94,11 +94,12 @@ jobs:
         timeout-minutes: 30
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 35
+          api-level: 34
           target: google_apis
           arch: x86_64
           profile: pixel_2
           emulator-boot-timeout: 1200
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -memory 4096
           disable-animations: true
           script: |
             bash tools/v3/run-v35-android-evidence.sh
