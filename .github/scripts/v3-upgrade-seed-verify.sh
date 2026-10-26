@@ -133,68 +133,6 @@ favorite_is_saved() {
   dump_ui
   text_present 'Remove from favou?rites'
 }
-set_and_verify_reduced_motion() {
-  tap_text 'Settings'
-  wait_text 'Reduce motion|Reduce animation'
-  screenshot v7-reduced-motion-control
-  dump_ui
-  local checked
-  checked="$(python3 - "$ui_file" <<'PY'
-import sys, xml.etree.ElementTree as ET
-root=ET.parse(sys.argv[1]).getroot()
-for n in root.iter('node'):
-    if 'reduce motion' in n.attrib.get('text','').lower() or 'reduce animation' in n.attrib.get('text','').lower():
-        if n.attrib.get('class','').endswith(('CheckBox','Switch')):
-            print(n.attrib.get('checked','false')); raise SystemExit(0)
-raise SystemExit(1)
-PY
-  )" || true
-  if [[ "$checked" != true ]]; then tap_label_text 'Reduce animation'; fi
-  dump_ui
-  checked="$(python3 - "$ui_file" <<'PY'
-import sys, xml.etree.ElementTree as ET
-root=ET.parse(sys.argv[1]).getroot()
-for n in root.iter('node'):
-    if 'reduce motion' in n.attrib.get('text','').lower() or 'reduce animation' in n.attrib.get('text','').lower():
-        if n.attrib.get('class','').endswith(('CheckBox','Switch')):
-            print(n.attrib.get('checked','false')); raise SystemExit(0)
-raise SystemExit(1)
-PY
-  )" || true
-  if [[ "$checked" != true ]]; then
-    tap_text 'Reduce motion'
-    dump_ui
-    checked="$(python3 - "$ui_file" <<'PY'
-import sys, xml.etree.ElementTree as ET
-root=ET.parse(sys.argv[1]).getroot()
-for n in root.iter('node'):
-    if 'reduce motion' in n.attrib.get('text','').lower() and n.attrib.get('class','').endswith(('CheckBox','Switch')):
-        print(n.attrib.get('checked','false')); raise SystemExit(0)
-raise SystemExit(1)
-PY
-    )" || true
-  fi
-  [[ "$checked" == true ]] || { screenshot v7-reduced-motion-toggle-failed; echo 'Reduced-motion preference did not persist in UI after tapping both the label and checkbox.' >&2; cp "$ui_file" "$evidence/ui/reduced-motion-toggle-failed.xml"; return 1; }
-  screenshot v7-reduced-motion-enabled
-}
-verify_reduced_motion_only() {
-  tap_if_present 'Home'
-  tap_text 'Settings'
-  wait_text 'Reduce motion|Reduce animation'
-  dump_ui
-  local checked
-  checked="$(python3 - "$ui_file" <<'PY'
-import sys, xml.etree.ElementTree as ET
-root=ET.parse(sys.argv[1]).getroot()
-for n in root.iter('node'):
-    if 'reduce motion' in n.attrib.get('text','').lower() or 'reduce animation' in n.attrib.get('text','').lower():
-        if n.attrib.get('class','').endswith(('CheckBox','Switch')):
-            print(n.attrib.get('checked','false')); raise SystemExit(0)
-raise SystemExit(1)
-PY
-  )" || true
-  [[ "$checked" == true ]] || { echo 'Reduced-motion preference was lost across the update or restart.' >&2; return 1; }
-}
 write_report() {
   python3 - "$1" "$2" "$3" <<'PY'
 import json,sys
@@ -203,12 +141,12 @@ data={
   'phase': phase,
   'favorite_recipe_name':'Cheesy Egg Bread Cups',
   'favorite_persisted':'PASS' if favorite=='PASS' else favorite,
-  'reduced_motion_preference':'PASS' if phase in ('seed','after-upgrade','after-restart') else 'NOT_VERIFIED',
+  'reduced_motion_preference':'NOT_VERIFIED_V7_UI_CONTROL_DID_NOT_CHANGE_STATE',
   'planner_selections':'NOT_SEEDED',
   'saved_photos':'NOT_SUPPORTED_OR_NOT_PERSISTENT_IN_V7',
   'my_creations':'NOT_SUPPORTED_IN_V7',
   'full_upgrade_acceptance':'NOT_VERIFIED',
-  'limitation':'Authentic v7 persists no photo-record collection; V3.4 photo migration cannot be seeded from v7.'
+  'limitation':'The authentic v7 settings screen exposes a reduced-motion control, but it remained visibly unchecked after UI taps; this preference is not verified. The v7 baseline has no persistent photo-record collection or My Creations records, so those data types cannot be seeded for upgrade verification.'
 }
 json.dump(data,open(path,'w'),indent=2); print(json.dumps(data,indent=2))
 PY
@@ -220,8 +158,9 @@ if [[ "$mode" == seed ]]; then
   favorite_is_saved || { echo 'Favorite did not persist in v7 UI.' >&2; exit 1; }
   screenshot v7-favorite-seeded
   tap_if_present 'Home'
-  set_and_verify_reduced_motion
-  screenshot v7-preferences-seeded
+  tap_text 'Settings'
+  wait_text 'Reduce motion|Reduce animation'
+  screenshot v7-preferences-control-observed
   write_report "$evidence/data-before.json" seed PASS
   cp "$ui_file" "$evidence/ui/v7-seeded-state.xml"
   exit 0
@@ -232,15 +171,17 @@ if [[ "$mode" == verify ]]; then
   favorite_is_saved || { echo 'Seeded favorite is missing after v7-to-V3.4 update.' >&2; exit 1; }
   screenshot v34-favorite-after-upgrade
   tap_if_present 'Home'
-  verify_reduced_motion_only
-  screenshot v34-preferences-after-upgrade
+  tap_text 'Settings'
+  wait_text 'Reduce motion|Reduce animation'
+  screenshot v34-preferences-control-observed
   write_report "$evidence/data-after-upgrade.json" after-upgrade PASS
   adb_s shell am force-stop "$package"
   launch
   open_favorite_recipe
   favorite_is_saved || { echo 'Seeded favorite is missing after V3.4 restart.' >&2; exit 1; }
   tap_if_present 'Home'
-  verify_reduced_motion_only
+  tap_text 'Settings'
+  wait_text 'Reduce motion|Reduce animation'
   write_report "$evidence/data-after-restart.json" after-restart PASS
   cp "$ui_file" "$evidence/ui/v34-after-restart.xml"
   exit 0
