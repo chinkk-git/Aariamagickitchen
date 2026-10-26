@@ -31,8 +31,8 @@ async function checkCountry(code,count){await openHomeCountry(code);const state=
 async function closeWithX(){await evaluate("document.querySelector('.aria-world-globe__close')?.click()");await waitFor("!document.querySelector('.aria-world-globe__panel.is-portrait-overlay')",'X close')}
 
 await screenshot('home-app-launch.png');console.log('Captured Android launch screen');
-await cdp('Page.enable',{},180000);console.log('Page domain enabled');await cdp('Runtime.enable',{},300000);console.log('Attached to Android WebView DevTools');
-await waitFor("document.querySelector('.v31-approved-home')&&document.querySelectorAll('[data-v31-card-country]').length===6",'six Home country cards');
+console.log('Using direct WebView Runtime.evaluate commands');
+await waitFor("document.querySelector('.v31-approved-home')&&document.querySelectorAll('[data-v31-card-country]').length===6",'six Home country cards',300000);
 const initial=await evaluate("({count:RECIPES.length,ids:RECIPES.map(x=>Number(x.id)),cards:[...document.querySelectorAll('[data-v31-card-country]')].map(x=>x.dataset.v31CardCountry)})");
 assert.equal(initial.count,116,'final catalogue count');assert.equal(new Set(initial.ids).size,116,'final catalogue unique IDs');assert.deepEqual(initial.cards,['IND','ITA','CHN','JPN','MEX','VNM'],'Home card order');
 await screenshot('home-portrait.png');
