@@ -3,8 +3,10 @@ package com.aaria.magickitchen.pilot
 import android.net.Uri
 import java.io.File
 import org.junit.Assert.assertArrayEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertSame
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -51,5 +53,17 @@ class CameraCaptureResultTest {
         )
 
         assertSame(pickerResult, result)
+    }
+
+    @Test fun durableDishPhotoCaptureRequiresConfirmedNonEmptyUuidFile() {
+        val directory = kotlin.io.path.createTempDirectory("aaria-photo-test").toFile()
+        val output = File(directory, "00000000-0000-4000-8000-000000000001.jpg")
+        output.createNewFile()
+        assertFalse(isCompletedDishPhotoCapture(resultCode = 0, resultOkCode = 1, file = output))
+        assertFalse(isCompletedDishPhotoCapture(resultCode = 1, resultOkCode = 1, file = output))
+        output.writeBytes(byteArrayOf(1, 2, 3))
+        assertTrue(isCompletedDishPhotoCapture(resultCode = 1, resultOkCode = 1, file = output))
+        output.delete()
+        directory.delete()
     }
 }

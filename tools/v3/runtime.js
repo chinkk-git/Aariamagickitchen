@@ -214,8 +214,8 @@ home=function v31ApprovedHome(){
  const countries=['IND'].map(code=>V31_DESTINATION_BY_ISO[code]).filter(Boolean);
  const headline=pt?'O que vamos cozinhar hoje?':'What shall we cook today?';
  return `<section class="v31-approved-home" aria-label="${pt?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen'}">
-  <header class="v31-approved-header"><img class="v31-brand-lockup" src="${V31_HOME_WORLD_ART.brand}" alt="Aaria’s Magical Kitchen"><button type="button" class="v31-header-greeting" data-v3-profile-open aria-label="${pt?'Trocar perfil da cozinha':'Switch kitchen profile'}"><img src="${V31_HOME_WORLD_ART.aaria}" alt=""><span><strong>${pt?'Oi, Aaria!':'Hi Aaria!'}</strong><small>${pt?'Pronta para uma aventura saborosa?':'Ready for a tasty adventure?'}</small></span></button><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
-  <section class="v31-reference-hero" style="--v31-kitchen:url('${V31_HOME_WORLD_ART.kitchen}')"><div class="v31-hero-welcome"><h1>${headline}</h1><span aria-hidden="true">♥</span></div><div class="v31-reference-characters"><img class="v31-hero-character" src="${V31_HOME_WORLD_ART.aariaCooking}" alt="Aaria, the kitchen’s young chef"><img class="v31-hero-dog" src="${V31_HOME_WORLD_ART.friends}" alt="Aaria’s friendly dog"></div></section>
+  <header class="v31-approved-header"><img class="v31-brand-lockup" src="${V31_HOME_WORLD_ART.brand}" alt="Aaria’s Magical Kitchen"><button type="button" class="v31-header-greeting" data-v3-profile-open aria-label="${pt?'Trocar perfil da cozinha':'Switch kitchen profile'}"><span><strong>${pt?'Oi, Aaria!':'Hi Aaria!'}</strong><small>${pt?'Pronta para uma aventura saborosa?':'Ready for a tasty adventure?'}</small></span></button><button class="v3-settings" data-nav="settings" aria-label="${pt?'Configurações':'Settings'}">⚙️</button></header>
+  <section class="v31-reference-hero" style="--v31-kitchen:url('${V31_HOME_WORLD_ART.kitchen}')"><div class="v31-hero-welcome"><h1>${headline}</h1><span aria-hidden="true">♥</span></div></section>
   <nav class="v31-action-tiles" aria-label="${pt?'Aventuras da cozinha':'Kitchen adventures'}"><button class="v31-action-tile v31-tile-cook" data-nav="library"><span>♨️</span><strong>${pt?'Vamos cozinhar!':'Let’s Cook!'}</strong><small>${pt?'Explore todas as receitas':'Explore all recipes'}</small></button><button class="v31-action-tile v31-tile-world" data-v31-open-world><span>🌍</span><strong>${pt?'Aventura pelo mundo':'World Adventure'}</strong><small>${pt?'Cozinhe ao redor do mundo':'Cook around the world'}</small></button><button class="v31-action-tile v31-tile-surprise" data-action="open-wheel"><span>🎲</span><strong>${pt?'Surpresa!':'Surprise Me!'}</strong><small>${pt?'Encontre uma receita':'Find a random recipe'}</small></button><button class="v31-action-tile v31-tile-planner" data-nav="week"><span>▦</span><strong>${pt?'Meu planejador':'My Planner'}</strong><small>${pt?'Planeje sua semana saborosa':'Plan your tasty week'}</small></button></nav>
   ${V32_INTERNATIONAL_RECIPES.length?'<section class="v32-new-recipes"><div class="v31-section-title"><div><h2>✨ '+(pt?'Novas receitas':'New Recipes')+'</h2><p>'+(pt?'Receitas internacionais ilustradas.':'Illustrated international recipes.')+'</p></div><button class="text-link" data-nav="library">'+(pt?'Ver todas':'See all')+' →</button></div><div class="v32-new-recipes-grid" role="group" tabindex="0" aria-label="'+(pt?'Novas receitas internacionais':'New international recipes')+'">'+V32_INTERNATIONAL_RECIPES.map(item=>{const id=Number(item.id),r=RECIPES.find(x=>Number(x.id)===id),title=pt?(PT_RECIPES[id]?.title||r.title):r.title;return '<button class="home-tile v31-pinterest-tile v32-new-recipe-card" data-open="'+id+'" aria-label="'+safe(title)+' — '+(pt?'Nova receita':'New recipe')+'"><img src="'+(NEW_RECIPE_ART[id]?.dish||'')+'" alt=""><span class="v32-new-recipe-badge">'+(pt?'NOVA':'NEW')+'</span><strong>'+safe(title)+'</strong><small>'+safe(r.country)+'</small></button>'}).join('')+'</div></section>':''}
   ${featuredMarkup||`<section class="v31-featured-section"><div class="v31-section-title"><h2>⭐ ${pt?'Receita em destaque':'Featured Recipe'}</h2><button class="text-link" data-nav="library">${pt?'Ver todas':'See all'} →</button></div><button class="v31-featured-card" data-open="${featured.id}"><span class="v31-featured-art">${homeDishThumb(featured)}</span><span class="v31-featured-copy"><span class="v31-featured-kicker">${pt?'FÁCIL E DIVERTIDA':'EASY & FUN'}</span><strong>${safe(pt?(PT_RECIPES[featured.id]?.title||featured.title):featured.title)}</strong><small>${safe((pt?(PT_RECIPES[featured.id]?.description||featured.description):featured.description)||(pt?'Uma receita gostosa para preparar juntos.':'A tasty recipe to make together.'))}</small><span class="v31-featured-meta">◷ ${safe(featured.time||'15 min')}　 ♧ ${pt?'Fácil':'Easy'}　 ♧ ${pt?'Porções':'Serves'} ${safe(featured.servings||'2')}</span></span><span class="v31-featured-heart" aria-hidden="true">♡</span></button></section>`}
@@ -240,16 +240,7 @@ family=function v32CanonicalFamily(){
 };
 friends=function v32CanonicalFriends(){
  const pt=state.language==='pt-BR';
- const people=[
-  {key:'rohan',label:'Rohan',src:V31_HOME_WORLD_ART.avatars.rohan},
-  {key:'arjun',label:'Arjun',src:V31_HOME_WORLD_ART.avatars.arjun},
-  {key:'vihaan',label:'Vihaan',src:V31_HOME_WORLD_ART.avatars.vihaan},
-  {key:'isha',label:'Isha',src:V31_HOME_WORLD_ART.avatars.isha},
-  {key:'meera',label:'Meera',src:V31_HOME_WORLD_ART.avatars.meera},
-  {key:'sana',label:'Sana',src:V31_HOME_WORLD_ART.avatars.sana},
-  {key:'diya',label:'Diya',src:V31_HOME_WORLD_ART.avatars.diya}
- ];
- return `${header(pt?'Cozinhe com amigos 🌈':'Cook with Friends 🌈')}<section class="home-subpage v32-group-screen"><h1>${pt?'Convide seus amigos para a cozinha!':'Invite your kitchen friends!'}</h1><p>${pt?'Escolha uma receita fácil para preparar juntos. Peça a um adulto para ajudar com aparelhos quentes e ferramentas afiadas.':'Choose an easy recipe to make together. Ask an adult to help with hot appliances and sharp tools.'}</p>${v32AvatarCastItems(people,pt?'Sete amigos da cozinha':'Seven kitchen friends','friends')}<h2>${pt?'Sugestões de receitas entre amigos':'Friend-friendly recipe ideas'}</h2>${relatedRecipeGrid('friends')}<div class="home-subpage-actions"><button data-nav="library">${pt?'📖 Ver todas as 95 receitas':'📖 See all 95 recipes'}</button><button data-nav="week">${pt?'🗓️ Planejar uma semana de receitas':'🗓️ Plan a cooking week'}</button></div></section>`;
+ return `${header(pt?'Cozinhe com amigos 🌈':'Cook with Friends 🌈')}<section class="home-subpage v32-group-screen"><h1>${pt?'Convide seus amigos para a cozinha!':'Invite your kitchen friends!'}</h1><p>${pt?'Escolha uma receita fácil para preparar juntos. Peça a um adulto para ajudar com aparelhos quentes e ferramentas afiadas.':'Choose an easy recipe to make together. Ask an adult to help with hot appliances and sharp tools.'}</p><h2>${pt?'Sugestões de receitas entre amigos':'Friend-friendly recipe ideas'}</h2>${relatedRecipeGrid('friends')}<div class="home-subpage-actions"><button data-nav="library">${pt?'📖 Ver todas as 95 receitas':'📖 See all 95 recipes'}</button><button data-nav="week">${pt?'🗓️ Planejar uma semana de receitas':'🗓️ Plan a cooking week'}</button></div></section>`;
 };
 const v3OriginalGroceries=groceries;
 groceries=function v31PantryShortcuts(){
@@ -262,6 +253,18 @@ const V31_APPROVED_INDIA_RECIPE_IDS=[51,52,53,54,55,56,57,58,59,60,61,62,63,64,6
 const V31_WORLD_DESTINATIONS=[{code:'IND',iso:'IND',en:'India',pt:'Índia',flag:'🇮🇳',factEn:'Explore the original Indian recipes in Aaria’s kitchen.',factPt:'Explore as receitas indianas originais da cozinha da Aaria.',reviewStatus:'approved-reference'}];
 const V31_DESTINATION_BY_ISO=Object.fromEntries(V31_WORLD_DESTINATIONS.map(x=>[x.code,x]));
 let v31SelectedCountry='IND',v31MapPanel='';
+window.v34ResetGlobeState=function(){
+ // A return to the World route must not revive a prior country or globe snapshot.
+ v31SelectedCountry=null;v31MapPanel='';window.v34SuppressCountryRestore=true;
+ if(v33GlobeController){v33GlobeController.destroy();v33GlobeController=null}
+ v33GlobeState=null;v33WorldHost=null;
+};
+window.v34EnterGlobeFirst=function(fromNav){
+ // Every World action is a fresh entry: clear the country sheet, country selection,
+ // and the controller snapshot before rendering, including taps while already on World.
+ window.v34ResetGlobeState();window.v31WorldOpenedFromNav=Boolean(fromNav);window.v31WorldOpenerIndex=0;
+ history.replaceState({},'',location.hash||'#aria/world');goto('world')
+};
 let v33GlobeController=null,v33GlobeState=null,v33WorldHost=null,v33SpinHintDismissed=false;
 function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\b[^>]*\bsrc=["']([^"']+)["']/i)?.[1]||'';return src.startsWith('data:image/')?src:''}catch{return ''}}
 function v33WorldCatalogue(){
@@ -515,16 +518,16 @@ document.addEventListener('click',async e=>{
  }
  if(button?.dataset.action==='take-dish-photo'){
   const id=Number(button.dataset.recipe);
-  if(window.AariaNative?.takeDishPhoto){window.AariaNative.takeDishPhoto(String(id));return}
+  if(window.AariaNative?.takeDishPhoto){if(!window.AariaNative.takeDishPhoto(String(id)))notice('Could not open the camera. Please try again.');return}
   document.querySelector(`[data-share-photo="${id}"][capture]`)?.click();return;
  }
 });
 document.addEventListener('click',e=>{
  if(e.target.closest?.('[data-v33-passport-close]')){document.querySelector('.v33-passport-overlay')?.remove();document.querySelector('.aria-world-globe__passport')?.focus({preventScroll:true});return}
   const target=e.target.closest('[data-v31-country]');
-  if(target){v31SelectedCountry=target.dataset.v31Country;v31MapPanel='country';history.pushState({v31Panel:'country'},'',location.hash);render();document.querySelector('#v33-country-title')?.focus({preventScroll:true});return}
+  if(target){v31SelectedCountry=target.dataset.v31Country;v31MapPanel='country';window.v34SuppressCountryRestore=false;history.pushState({v31Panel:'country'},'',location.hash);render();document.querySelector('#v33-country-title')?.focus({preventScroll:true});return}
  const button=e.target.closest('button');if(!button)return;
- if(button.dataset.v31ApprovedRecipe){openRecipe(Number(button.dataset.v31ApprovedRecipe));return}
+ if(button.dataset.v31ApprovedRecipe){v31MapPanel='';window.v34SuppressCountryRestore=true;history.replaceState({},'',location.hash);openRecipe(Number(button.dataset.v31ApprovedRecipe));return}
  if(button.hasAttribute('data-v31-passport-reset')){state.worldStamps=[];save();render();return}
   if(button.hasAttribute('data-v31-open-passport')){v31MapPanel='passport';history.pushState({v31Panel:'passport'},'',location.hash);render();document.querySelector('#v33-passport-title')?.focus({preventScroll:true});return}
   if(button.hasAttribute('data-v31-panel-close')){history.back();return}
@@ -540,13 +543,8 @@ document.addEventListener('click',e=>{const button=e.target.closest('button[data
 document.addEventListener('backbutton',e=>{if(view!=='world')return;if(document.querySelector('.v33-passport-overlay')){document.querySelector('.v33-passport-overlay').remove();e.preventDefault();e.stopImmediatePropagation();return}if(v33GlobeController?.handleBack?.()){e.preventDefault();e.stopImmediatePropagation()}},true);
 document.addEventListener('keydown',e=>{if(view!=='world'||!['Escape','Backspace','BrowserBack'].includes(e.key))return;if(document.querySelector('.v33-passport-overlay')){document.querySelector('.v33-passport-overlay').remove();e.preventDefault();e.stopImmediatePropagation();return}if(v33GlobeController?.handleBack?.()){e.preventDefault();e.stopImmediatePropagation()}},true);
 window.addEventListener('popstate',e=>{
-  // Recipe navigation changes the hash, but the prior history entry is the
-  // country-card panel state at #aria/world. Restore that panel explicitly;
-  // the base hash router intentionally does not know about the World route.
-  if(e.state?.v31Panel==='country'&&location.hash==='#aria/world'){
-   view='world';v31MapPanel='country';e.preventDefault();e.stopImmediatePropagation();render();return;
-  }
-  // A subsequent Back from the country panel returns to the fixed map.
+  // The shared route restorer handles #aria/world and calls the shared reset.
+  // Never revive a stale country sheet after backing out of a recipe.
   if(view==='world'&&v31MapPanel){v31MapPanel='';e.preventDefault();e.stopImmediatePropagation();render()}
 },true);
 
@@ -554,10 +552,16 @@ window.addEventListener('popstate',e=>{
 document.addEventListener('change',e=>{
  const input=e.target;if(input.matches('[data-v3-parent]')){state.parentContacts??={mommy:'',daddy:''};state.parentContacts[input.dataset.v3Parent]=input.value.trim();save();notice('Family contact saved on this device.');}
 });
-window.aariaHandleNativeDishPhoto=async(id,dataUrl)=>{
- try{const blob=await(await fetch(dataUrl)).blob();if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=blob;const post=await makeCookPost(find(id),blob);sharePostBlobs[id]=post;sharePostUrls[id]=URL.createObjectURL(post);render();notice('Your cooking post is ready! 💖');}
+window.aariaHandleNativeDishPhoto=async(id,fileName)=>{
+ try{
+  if(!/^[a-f0-9-]{36}\.jpg$/i.test(String(fileName||'')))throw new Error('Invalid saved photo reference.');
+  const photoUrl='https://appassets.androidplatform.net/dish-photo/'+encodeURIComponent(fileName);
+  if(typeof window.v34SaveCreationPhoto==='function'){await window.v34SaveCreationPhoto(Number(id),photoUrl);return}
+  const blob=await(await fetch(photoUrl)).blob();if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=blob;const post=await makeCookPost(find(id),blob);sharePostBlobs[id]=post;sharePostUrls[id]=URL.createObjectURL(post);render();notice('Your cooking post is ready! 💖');
+ }
  catch(e){console.error('Could not prepare the camera photo.',e);notice('Could not prepare that photo. Please try again.');}
 };
+window.aariaHandleNativeDishPhotoError=()=>notice('Could not open the camera. Please try again.');
 document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
 render();
 

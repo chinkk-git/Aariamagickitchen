@@ -1,64 +1,186 @@
-name: My Magical Kitchen V3 signed Android release
+name: V3.4 production-signed release candidate (unreleased)
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - feature/v3.4-dual-home-experience
+    paths:
+      - .github/workflows/android-release.yml
+      - .github/scripts/v34-*.mjs
+      - .github/scripts/v34-*.sh
+      - tools/v3/**
+      - index.html
+      - docs/design/v3.4/**
+      - phase2-pilot/apps/aaria-android/**
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
-  group: aaria-v3-signed-release
+  group: aaria-v34-production-candidate
   cancel-in-progress: false
 
 jobs:
-  signed-release:
+  source-validation:
     runs-on: ubuntu-latest
-    environment: android-production-signing
-    env:
-      EXPECTED_SIGNER_SHA256: ${{ vars.ANDROID_SIGNER_SHA256 }}
+    timeout-minutes: 45
     steps:
-      - name: Check out reviewed V3 source
+      - name: Check out exact V3.4 branch head
         uses: actions/checkout@v4
         with:
-          # Immutable V3 build snapshot; do not replace with a mutable branch.
-          ref: 56e08ba321535645953bcc216bfd485125cb922b
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+          ref: ${{ github.sha }}
+      - name: Verify source ref
+        run: |
+          test "$GITHUB_REF" = "refs/heads/feature/v3.4-dual-home-experience"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
         with:
           packages: platform-tools
-
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v6
+      - uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: '8.10.2'
-
-      - name: Build and validate V3 HTML from the approved V2 baseline
+      - name: Build and validate exact-head V3.4 offline application
+        shell: bash
         run: |
           set -euo pipefail
           node --check tools/v3/transform-production.mjs
-          node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3.html
-          node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3.html
+          node --check tools/v3/runtime.js
+          node --check tools/v3/v34-dual-home.js
+          node --check .github/scripts/v34-dual-home-smoke.mjs
+          bash -n .github/scripts/v34-production-ui-smoke.sh
+          node tools/v3/artwork/build-international-review.mjs
+          node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          mkdir -p dist artifacts/v34-source/assets artifacts/v34-qa-smoke phase2-pilot/apps/aaria-android/app/src/main/assets
+          V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_V3_4_Base.html
+          node tools/v3/attach-v34-dual-home.mjs dist/Aaria_V3_4_Base.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          node tools/v3/validate-v34-preview.mjs phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
           node tools/v3/test-profile-isolation.mjs
-          mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
-          cp dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
-          grep -Fq 'AARIA_V3_BUILD_2026_10' phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
-
-      - name: Run Android unit tests
+          grep -Fq 'v34ResetGlobeState' tools/v3/runtime.js
+          cp phase2-pilot/apps/aaria-android/app/src/main/assets/index.html artifacts/v34-source/assets/index.html
+          printf '%s\n' "$GITHUB_SHA" > artifacts/v34-source/source-head.txt
+      - name: Run focused Android unit tests
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
+      - name: Build internal exact-source functional-test input
+        run: |
+          V34_PREVIEW_BUILD_SUFFIX=releaseqa V34_PREVIEW_VERSION_CODE=9 \
+            gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+          cp phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk artifacts/v34-qa-smoke/Aaria_V3_4_Internal_QA.apk
+          printf '%s\n' "$GITHUB_SHA" > artifacts/v34-qa-smoke/source-head.txt
+          printf '%s\n' 'One-day internal test input. Not a preview delivery or production artifact.' > artifacts/v34-qa-smoke/NOTICE.txt
+      - name: Upload exact-source validation inputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-v34-exact-source-validation-inputs
+          path: |
+            artifacts/v34-source/**
+            artifacts/v34-qa-smoke/**
+          if-no-files-found: error
+          retention-days: 1
 
-      - name: Validate signing inputs and stage keystore
+  source-device-smoke:
+    needs: source-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        device: [phone, tablet]
+    env:
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot.v34previewreleaseqa
+      V34_DEVICE: ${{ matrix.device }}
+      V34_TEST_APK_PREINSTALLED: '1'
+      V34_RELEASE_FOCUSED: '1'
+      V34_ARTIFACT_DIR: artifacts/v34-production-smoke
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Download exact-source test input
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-v34-exact-source-validation-inputs
+          path: downloaded
+      - name: Enable Android emulator KVM access
+        run: |
+          if test -e /dev/kvm; then
+            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+            sudo udevadm control --reload-rules
+            sudo udevadm trigger --name-match=kvm
+          fi
+      - name: Run focused Android World, Back and saved-photo gallery checks
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: ${{ matrix.device == 'tablet' && 'pixel_tablet' || 'pixel_3a' }}
+          cores: 4
+          ram-size: 4096M
+          heap-size: 512M
+          script: |
+            adb install downloaded/v34-qa-smoke/Aaria_V3_4_Internal_QA.apk
+            adb shell am start -W -n "$ANDROID_TEST_APP_ID/com.aaria.magickitchen.pilot.MainActivity"
+            node .github/scripts/v34-dual-home-smoke.mjs
+      - name: Upload genuine phone/tablet focused screenshots and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-v34-source-device-smoke-${{ matrix.device }}
+          path: artifacts/v34-production-smoke/${{ matrix.device }}/**
+          if-no-files-found: warn
+          retention-days: 30
+
+  signed-candidate:
+    needs: source-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: android-production-signing
+    env:
+      TRUSTED_PRODUCTION_SIGNER_SHA256: 3aeda9b71ab29c4c21d9fca5155418b5684a2111cec6fc17222b64db03697588
+      AARIA_RELEASE_VERSION_CODE: '8'
+      AARIA_RELEASE_VERSION_NAME: 3.4.0
+    steps:
+      - name: Check out exact V3.4 branch head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up Android SDK and Gradle
+        uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+      - uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.10.2'
+      - name: Download exact-head generated Android page
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-v34-exact-source-validation-inputs
+          path: downloaded
+      - name: Verify exact-head page and package identity
+        run: |
+          set -euo pipefail
+          test "$(cat downloaded/v34-source/source-head.txt)" = "$GITHUB_SHA"
+          test "$AARIA_RELEASE_VERSION_CODE" -gt 7
+          mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets artifacts/v34-production-candidate
+          cp downloaded/v34-source/assets/index.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          node tools/v3/validate-v34-preview.mjs phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+      - name: Validate and stage protected production signing key
         shell: bash
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
@@ -67,102 +189,149 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
           set -euo pipefail
-          for name in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD EXPECTED_SIGNER_SHA256; do
+          for name in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
             if [[ -z "${!name:-}" ]]; then
-              echo "::error::Required protected signing input is missing: $name"
+              echo "::error::Required protected signing input is unavailable: $name"
               exit 1
             fi
           done
-          expected="${EXPECTED_SIGNER_SHA256//:/}"
-          expected="${expected,,}"
-          if [[ ! "$expected" =~ ^[0-9a-f]{64}$ ]]; then
-            echo "::error::ANDROID_SIGNER_SHA256 must be a SHA-256 certificate fingerprint."
-            exit 1
-          fi
-          key_file="$RUNNER_TEMP/aaria-production-signing-key.jks"
+          key_file="$RUNNER_TEMP/aaria-v34-production-signing-key.p12"
           printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$key_file"
-          if [[ ! -s "$key_file" ]]; then
-            echo "::error::Decoded keystore is empty."
-            exit 1
-          fi
+          test -s "$key_file"
           chmod 600 "$key_file"
           echo "ANDROID_KEYSTORE_PATH=$key_file" >> "$GITHUB_ENV"
-
-      - name: Validate staged signing certificate fingerprint
+      - name: Verify protected production keystore fingerprint
         shell: bash
         env:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
         run: |
           set -euo pipefail
-          actual="$(keytool -exportcert -keystore "$ANDROID_KEYSTORE_PATH" -storetype PKCS12 -storepass "$ANDROID_KEYSTORE_PASSWORD" -alias "$ANDROID_KEY_ALIAS" | sha256sum | awk '{print toupper($1)}')"
-          expected="${EXPECTED_SIGNER_SHA256//:/}"
-          expected="${expected^^}"
+          actual="$(keytool -exportcert -keystore "$ANDROID_KEYSTORE_PATH" -storetype PKCS12 -storepass "$ANDROID_KEYSTORE_PASSWORD" -alias "$ANDROID_KEY_ALIAS" | sha256sum | awk '{print tolower($1)}')"
+          expected="${TRUSTED_PRODUCTION_SIGNER_SHA256,,}"
           if [[ "$actual" != "$expected" ]]; then
-            echo "::error::Staged keystore certificate fingerprint mismatch. Expected $expected; found $actual."
+            echo "::error::Protected signing certificate SHA-256 is $actual; it does not match the owner-specified production signer. No APK was built."
             exit 1
           fi
-          echo "Staged keystore certificate fingerprint validated: $actual"
-
-      - name: Assemble signed release APK
+          echo "Protected production certificate verified: $actual"
+      - name: Build exact-head production-signed V3.4 APK
         env:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleRelease
-
-      - name: Verify generated V3 page is packaged
+      - name: Verify package, version, 97 recipes, signature and SHA-256
         shell: bash
         run: |
           set -euo pipefail
-          apk="phase2-pilot/apps/aaria-android/app/build/outputs/apk/release/app-release.apk"
-          entry="assets/index.html"
-          if ! unzip -Z1 "$apk" | grep -Fxq "$entry"; then
-            echo "::error::Generated V3 index.html is missing from the APK."
-            exit 1
-          fi
-          packaged_bytes="$(unzip -p "$apk" "$entry" | wc -c)"
-          if [[ "$packaged_bytes" -lt 1000000 ]]; then
-            echo "::error::Packaged index.html is unexpectedly small: $packaged_bytes bytes."
-            exit 1
-          fi
-          if ! unzip -p "$apk" "$entry" | grep -Fq "AARIA_V3_BUILD_2026_10"; then
-            echo "::error::APK contains the baseline page without the generated V3 layer."
-            exit 1
-          fi
-
-      - name: Verify APK signature and trusted certificate
-        shell: bash
-        run: |
-          set -euo pipefail
-          apk="phase2-pilot/apps/aaria-android/app/build/outputs/apk/release/app-release.apk"
-          test -s "$apk"
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/release/app-release.apk
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
           apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
-          test -x "$apksigner"
+          test -s "$apk"
+          "$aapt" dump badging "$apk" > artifacts/v34-production-candidate/apk-badging.txt
+          grep -Fq "package: name='com.aaria.magickitchen.pilot' versionCode='8' versionName='3.4.0'" artifacts/v34-production-candidate/apk-badging.txt
+          unzip -Z1 "$apk" | grep -Fxq assets/index.html
+          unzip -p "$apk" assets/index.html > artifacts/v34-production-candidate/packaged-index.html
+          node tools/v3/validate-v34-preview.mjs artifacts/v34-production-candidate/packaged-index.html
           "$apksigner" verify --verbose "$apk"
-          cert_output="$("$apksigner" verify --print-certs "$apk" 2>&1)"
-          actual="$(printf '%s\n' "$cert_output" | sed -nE 's/^[[:space:]]*(Signer #1 certificate SHA-256 digest:|V[0-9]+ Signer: certificate SHA-256 digest:) *//p' | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
-          expected="${EXPECTED_SIGNER_SHA256//:/}"
-          expected="${expected,,}"
-          if [[ -z "$actual" ]]; then
-            details="$(printf '%s\n' "$cert_output" | grep -E 'Signer #1|SHA-256 digest' | tr '\n' ';' || true)"
-            echo "::error::Could not extract APK signer certificate fingerprint from apksigner output. $details"
-            exit 1
-          fi
-          if [[ "$actual" != "$expected" ]]; then
-            echo "::error::APK signer does not match the trusted certificate fingerprint. Expected $expected; found $actual."
-            exit 1
-          fi
-
-      - name: Upload verified signed APK
-        uses: actions/upload-artifact@v4
+          "$apksigner" verify --print-certs "$apk" > artifacts/v34-production-candidate/apk-signer.txt
+          signer="$(sed -nE 's/^[[:space:]]*(Signer #1 certificate SHA-256 digest:|V[0-9]+ Signer: certificate SHA-256 digest:) *//p' artifacts/v34-production-candidate/apk-signer.txt | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
+          test "$signer" = "$TRUSTED_PRODUCTION_SIGNER_SHA256"
+          printf '%s\n' "$GITHUB_SHA" > artifacts/v34-production-candidate/source-head.txt
+          printf '%s\n' 'com.aaria.magickitchen.pilot' > artifacts/v34-production-candidate/package-id.txt
+          printf '%s\n' '3.4.0' > artifacts/v34-production-candidate/version-name.txt
+          printf '%s\n' '8' > artifacts/v34-production-candidate/version-code.txt
+          printf '%s\n' "$signer" > artifacts/v34-production-candidate/certificate-sha256.txt
+          sha256sum "$apk" | tee artifacts/v34-production-candidate/apk-sha256.txt
+          cp "$apk" artifacts/v34-production-candidate/Aaria_V3_4_Production_Candidate.apk
+          rm artifacts/v34-production-candidate/packaged-index.html
+      - name: Retrieve authentic production version-7 APK
+        continue-on-error: true
+        uses: actions/download-artifact@v4
         with:
           name: my-magical-kitchen-v3-signed-apk
-          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/release/app-release.apk
+          run-id: 39084575097
+          github-token: ${{ github.token }}
+          path: production-baseline
+      - name: Record in-place upgrade identity evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk=production-baseline/app-release.apk
+          evidence=artifacts/v34-production-candidate/in-place-upgrade-evidence.txt
+          if [[ ! -s "$apk" ]]; then
+            echo 'BLOCKED: authentic production version-7 APK artifact could not be retrieved.' > "$evidence"
+          else
+            aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+            apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+            "$aapt" dump badging "$apk" > artifacts/v34-production-candidate/baseline-badging.txt
+            "$apksigner" verify --print-certs "$apk" > artifacts/v34-production-candidate/baseline-signer.txt
+            base_package="$(sed -nE "s/^package: name='([^']+)'.*/\\1/p" artifacts/v34-production-candidate/baseline-badging.txt | head -n 1)"
+            base_version="$(sed -nE "s/^package: .*versionCode='([^']+)'.*/\\1/p" artifacts/v34-production-candidate/baseline-badging.txt | head -n 1)"
+            base_signer="$(sed -nE 's/^[[:space:]]*(Signer #1 certificate SHA-256 digest:|V[0-9]+ Signer: certificate SHA-256 digest:) *//p' artifacts/v34-production-candidate/baseline-signer.txt | head -n 1 | tr -d ':[:space:]' | tr '[:upper:]' '[:lower:]')"
+            printf 'artifact_run=https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39084575097\npackage=%s\nversionCode=%s\nsigner_sha256=%s\nexpected_signer_sha256=%s\n' "$base_package" "$base_version" "$base_signer" "$TRUSTED_PRODUCTION_SIGNER_SHA256" > "$evidence"
+            if [[ "$base_package" != 'com.aaria.magickitchen.pilot' || "$base_version" != '7' || "$base_signer" != "$TRUSTED_PRODUCTION_SIGNER_SHA256" ]]; then
+              printf 'compatibility=BLOCKED (baseline package/version/signer mismatch)\n' >> "$evidence"
+            else
+              printf 'compatibility=IDENTITY_MATCH; seeded user-data preservation=NOT_VERIFIED (no approved app-side seed/verify test)\n' >> "$evidence"
+            fi
+          fi
+      - name: Upload verified, unreleased production-signed candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-v3.4-production-signed-candidate
+          path: artifacts/v34-production-candidate/**
           if-no-files-found: error
           retention-days: 30
-
       - name: Remove temporary signing material
         if: always()
-        shell: bash
-        run: rm -f "$RUNNER_TEMP/aaria-production-signing-key.jks"
+        run: rm -f "$RUNNER_TEMP/aaria-v34-production-signing-key.p12"
+
+  production-apk-device-smoke:
+    needs: signed-candidate
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        device: [phone, tablet]
+    env:
+      ANDROID_TEST_APP_ID: com.aaria.magickitchen.pilot
+      V34_DEVICE: ${{ matrix.device }}
+      V34_ARTIFACT_DIR: artifacts/v34-production-apk-smoke
+      V34_PRODUCTION_APK: downloaded/Aaria_V3_4_Production_Candidate.apk
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Download exact-head production APK candidate
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-v3.4-production-signed-candidate
+          path: downloaded
+      - name: Enable Android emulator KVM access
+        run: |
+          if test -e /dev/kvm; then
+            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+            sudo udevadm control --reload-rules
+            sudo udevadm trigger --name-match=kvm
+          fi
+      - name: Install and smoke-test production APK on Android 16
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: ${{ matrix.device == 'tablet' && 'pixel_tablet' || 'pixel_3a' }}
+          cores: 4
+          ram-size: 4096M
+          heap-size: 512M
+          script: bash .github/scripts/v34-production-ui-smoke.sh
+      - name: Upload genuine Android 16 screenshots and package evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-v3.4-production-apk-smoke-${{ matrix.device }}
+          path: artifacts/v34-production-apk-smoke/${{ matrix.device }}/**
+          if-no-files-found: warn
+          retention-days: 30

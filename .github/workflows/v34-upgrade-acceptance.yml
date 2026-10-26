@@ -1,0 +1,95 @@
+name: V3.4 isolated production upgrade acceptance
+
+on:
+  push:
+    branches:
+      - feature/v3.4-dual-home-experience
+    paths:
+      - .github/workflows/v34-upgrade-acceptance.yml
+      - .github/scripts/v3-upgrade-seed-verify.sh
+      - tools/v3/android/verify-nondestructive-upgrade.sh
+      - tools/v3/android/PRODUCTION-UPGRADE-ACCEPTANCE.md
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: aaria-v34-isolated-upgrade-acceptance
+  cancel-in-progress: false
+
+jobs:
+  upgrade-phone:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      ANDROID_SERIAL: emulator-5554
+      ALLOW_ISOLATED_EMULATOR_INSTALL: YES
+      V34_UPGRADE_EVIDENCE_DIR: artifacts/v34-upgrade-evidence
+      V34_BASELINE_SOURCE_HEAD: 4cbd0d3414556973e5790ee02a8232aa917bdd8a
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download authentic production v7 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-magical-kitchen-v3-signed-apk
+          run-id: 39084575097
+          github-token: ${{ github.token }}
+          path: production-baseline
+      - name: Download exact V3.4 production candidate
+        uses: actions/download-artifact@v4
+        with:
+          name: aaria-v3.4-production-signed-candidate
+          run-id: 40249952865
+          github-token: ${{ github.token }}
+          path: production-candidate
+      - name: Verify artifact provenance and stage APKs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat production-candidate/source-head.txt)" = "$V34_BASELINE_SOURCE_HEAD"
+          test -s production-baseline/app-release.apk
+          test -s production-candidate/Aaria_V3_4_Production_Candidate.apk
+          mkdir -p artifacts/v34-upgrade-evidence
+          sha256sum production-baseline/app-release.apk production-candidate/Aaria_V3_4_Production_Candidate.apk | tee artifacts/v34-upgrade-evidence/apk-sha256.txt
+          printf 'v34_app_source_head=%s\nworkflow_test_head=%s\n' "$V34_BASELINE_SOURCE_HEAD" "$GITHUB_SHA" > artifacts/v34-upgrade-evidence/source-traceability.txt
+          chmod +x tools/v3/android/verify-nondestructive-upgrade.sh .github/scripts/v3-upgrade-seed-verify.sh
+      - name: Enable Android emulator KVM access
+        run: |
+          if test -e /dev/kvm; then
+            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+            sudo udevadm control --reload-rules
+            sudo udevadm trigger --name-match=kvm
+          fi
+      - name: Seed v7 and verify in-place v7-to-V3.4 upgrade
+        uses: reactivecircus/android-emulator-runner@v2
+        env:
+          V3_BASELINE_APK: production-baseline/app-release.apk
+          UPGRADE_CANDIDATE_APK: production-candidate/Aaria_V3_4_Production_Candidate.apk
+          SEED_VERIFY_COMMAND: .github/scripts/v3-upgrade-seed-verify.sh
+        with:
+          api-level: 36
+          target: google_apis
+          arch: x86_64
+          profile: pixel_3a
+          cores: 4
+          ram-size: 4096M
+          heap-size: 512M
+          script: bash tools/v3/android/verify-nondestructive-upgrade.sh
+      - name: Upload upgrade transcript and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-v3.4-v7-in-place-upgrade-evidence
+          path: artifacts/v34-upgrade-evidence/**
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Publish coverage summary
+        if: always()
+        shell: bash
+        run: |
+          if test -f artifacts/v34-upgrade-evidence/data-after-restart.json; then
+            cat artifacts/v34-upgrade-evidence/data-after-restart.json >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Upgrade data preservation did not complete; inspect the uploaded UI/log evidence.' >> "$GITHUB_STEP_SUMMARY"
+          fi

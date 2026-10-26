@@ -1,25 +1,25 @@
-# W01 production-upgrade test — prerequisites and evidence contract
+# V3.4 production-upgrade acceptance
 
-Status: **BLOCKED, NOT EXECUTED**. Preview CI proves co-installation, not an in-place upgrade. No real installation or user-data mutation is authorized.
+Status: **PARTIAL / FULL DATA ACCEPTANCE NOT VERIFIED**. A disposable-emulator test is authorized. The original v7 package, version and signer are authenticated. The production candidate is package com.aaria.magickitchen.pilot, versionCode 8, signed by the owner-authorized production certificate.
 
-## Immutable inputs
+## Authenticated inputs
 
-- `V3_BASELINE_APK`: authentic existing V3 APK (`com.aaria.magickitchen.pilot`, observed versionCode 7). Baseline certificate fingerprint from CI: `9d0e87112841198295a0b33da7c6770cf7785c4d8634417468c18f642ac2db8b`.
-- `UPGRADE_CANDIDATE_APK`: newly built unified APK with **same package**, **same certificate**, **versionCode > 7**. Never use `com.aaria.magickitchen.pilot.v31preview` as candidate.
-- Signing must be performed by a separately authorized secure release-signing workflow. Never copy keys, keystore files or passwords into the repository, logs, test artifacts or this harness.
-- `ANDROID_SERIAL`: dedicated disposable emulator, not a phone; `ALLOW_ISOLATED_EMULATOR_INSTALL=YES`. Harness refuses a preinstalled target package.
-- `SEED_VERIFY_COMMAND`: executable, independently validated test script taking `seed|verify SERIAL PACKAGE`. It must use the app's authorized test instrumentation/UI to create a uniquely identified user profile, favorites, recent recipe, planner selection, shopping list and other persisted data **inside the app**, and then compare exact values after upgrade. Merely checking that the APK launches or using an external file marker is **not** sufficient.
+- V7 baseline: workflow run [39084575097](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/39084575097), package com.aaria.magickitchen.pilot, versionName 1.0.3, versionCode 7, signer SHA-256 3aeda9b71ab29c4c21d9fca5155418b5684a2111cec6fc17222b64db03697588.
+- V3.4 candidate: workflow run [40249952865](https://github.com/chinkk-git/Aariamagickitchen/actions/runs/40249952865), package com.aaria.magickitchen.pilot, versionName 3.4.0, versionCode 8, same authorized signer. Candidate source app commit: 4cbd0d3414556973e5790ee02a8232aa917bdd8a.
+- Owner authorized the existing protected production certificate. No key was replaced, rotated or regenerated.
 
-## Required test transcript
+## Isolated test procedure
 
-1. Record exact APK SHA-256, package, versionCode and signer certificate digests; never print secrets.
-2. Boot isolated emulator; assert original target package absent.
-3. Install authentic V3 baseline; use app instrumentation to seed real user state, persist a reference digest and verify the pre-upgrade state.
-4. Execute `adb install -r` with the authorized candidate, **without** `adb uninstall`, `pm clear`, or wiping emulator data between installs.
-5. Re-open app and independently compare persisted profile, favorites, shopping list, planner and other supported app state. Check offline launch and user-visible update tour.
-6. Capture redacted logs and before/after screenshots; record emulator identity, pass/fail and artifact hashes.
-7. Fail on any missing test hook, signing mismatch, version regression, data discrepancy, or installation error. Never claim production upgrade eligibility from the preview co-install smoke.
+The workflow .github/workflows/v34-upgrade-acceptance.yml downloads the authentic v7 artifact and the exact-source V3.4 candidate, then uses a disposable Android 16 phone emulator. It verifies package, version and certificate before any install; refuses a preinstalled target package; installs v7; seeds and checks supported state through the real app UI; runs adb install -r for V3.4 without uninstalling or clearing app data; and verifies state again after upgrade and restart. UI automation runs outside the production APK. Machine-readable reports, UI trees and screenshots are uploaded as the workflow artifact.
 
-## Artwork acceptance
+The supported-state UI test covers the v7 favorite for recipe #12 and the reduced-motion setting. It opens the v7 planner and records its UI tree; planner selection continuity is PASS only when the same non-generic recipe text is observed before and after the update. Fields that the test cannot prove remain NOT VERIFIED.
 
-Independent A08/A09 decisions for recipes 27, 39, 40, 51 and 63 remain **HOLD** (30 panels). See `../artwork/remediation-pilot/A08-A09-REVIEW-PACKET.md`. Panel-level reviewer identity/date, hazard and mitigation, bilingual usability/accessibility screenshots, provenance/rights clearance and explicit asset-hash promotion approval are still required. No draft artwork integration before approvals.
+## V7 photo and My Creations limitation
+
+Inspection of the authentic v7 APK's bundled assets/index.html shows the legacy persisted state is stored under aariaPrivateKitchenV4. Recipe-photo sharing uses the JavaScript sharePostBlobs object and object URLs; the legacy snapshot does not contain V3.4's photoRecords store, and the v7 UI has no My Creations gallery. Therefore v7 cannot seed two persistent saved-photo records or My Creations records for this upgrade. This coverage is NOT SUPPORTED / NOT VERIFIED; it must not be counted as a successful preservation assertion. V3.4's own persistent-photo path is tested separately with a fixture, not with two photos migrated from v7.
+
+## Acceptance interpretation
+
+Package/signing/version continuity and UI-verified legacy state may pass independently. Full safe-upgrade acceptance remains NOT VERIFIED until every required supported record has an exact before/after match and the photo/My Creations gap is resolved through an authorized migration decision or confirmed legacy capability. Do not claim all-user-data preservation or recommend updating the owner's installed app based on identity checks alone.
+
+No adb uninstall, package-data clear, owner-device installation, PR merge or production publication is authorized by this test.
