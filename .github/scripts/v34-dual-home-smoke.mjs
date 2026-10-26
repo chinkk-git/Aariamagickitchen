@@ -150,9 +150,19 @@ async function androidBack(client) {
   return client;
 }
 
+async function resolveFirstRunProfile(client) {
+  const present = await client.eval("!!document.querySelector('#v3ProfileDialog [data-v3-profile-continue]')");
+  if (!present) return;
+  check(await client.eval("!!document.querySelector('#v3ProfileDialog [data-v3-chef=\\\"CHEF_A\\\"]')"), 'First-run profile setup must offer Chef A.');
+  await client.eval("document.querySelector('#v3ProfileDialog [data-v3-chef=\\\"CHEF_A\\\"]').click()");
+  await client.eval("document.querySelector('#v3ProfileDialog [data-v3-profile-continue]').click()");
+  await waitFor(client, "!document.querySelector('#v3ProfileDialog')", 'First-run profile chooser did not close after choosing Chef A.');
+}
+
 if (process.env.V34_RELEASE_FOCUSED === '1') {
   let focused = await connectReady();
   try {
+    await resolveFirstRunProfile(focused);
     await waitFor(focused, "!!document.querySelector('#v34-welcome') && !!document.querySelector('.app')?.hasAttribute('inert')", 'Cold launch did not hold Home behind the welcome screen.');
     check(await focused.eval("!!document.querySelector('#v34-welcome') && !!document.querySelector('.app')?.hasAttribute('inert')"), 'Cold launch did not hold Home behind the welcome screen.');
     await snap(focused, 'welcome-cold-launch.png');
