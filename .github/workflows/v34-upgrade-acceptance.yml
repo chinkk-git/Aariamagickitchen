@@ -29,8 +29,6 @@ jobs:
       V34_BASELINE_SOURCE_HEAD: 4cbd0d3414556973e5790ee02a8232aa917bdd8a
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: \${{ github.sha }}
       - name: Download authentic production v7 artifact
         uses: actions/download-artifact@v4
         with:
