@@ -11,9 +11,10 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const webRoot = path.join(root, 'web-v3.5');
 const dist = path.join(root, 'dist/web-v3.5');
-const sourceCommit = '6addb187f4563a4d00d69a9cf89bd4adf4f41de8';
+const sourceCommit = 'c54704fc4b181727ca18e9f3463c0d76c777b5fe';
+const indiaThumbnailCommit = '6addb187f4563a4d00d69a9cf89bd4adf4f41de8';
 const v34Commit = '7ab11cc917b144a643fb30b6cc1dfed132ab45fb';
-const androidArtifactHtmlSha256 = '92ef9a4cc0742060c6e57db31e8583a484cb8ae7055426343a8a4fe08cd67657';
+const androidArtifactHtmlSha256 = '934138e96dbc264a8314967d643232a015119eb39faeb235d9c238da687a4cc2';
 const sha = data => crypto.createHash('sha256').update(data).digest('hex');
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'aaria-v35-web-'));
 const sourceRoot = path.join(tmp, 'android-source');
@@ -44,11 +45,18 @@ function writeJson(file, value) { fs.writeFileSync(file, JSON.stringify(value, n
 
 try {
   ensureCommit(sourceCommit);
+  ensureCommit(indiaThumbnailCommit);
   ensureCommit(v34Commit);
   extractArchive(sourceCommit, [
     'index.html', 'tools/v3', 'content/international',
     'phase2-pilot/packages/assets', 'docs/design/approved-v31-world-map-crop.webp'
   ], sourceRoot);
+  const indiaDishThumbnailPaths = [
+    'tools/v3/artwork/india-dish-thumbnails/051-masala-cheese-toast.webp',
+    'tools/v3/artwork/india-dish-thumbnails/057-rainbow-veggie-cutlets.webp'
+  ];
+  extractArchive(indiaThumbnailCommit, indiaDishThumbnailPaths, sourceRoot);
+  const indiaDishThumbnailHashes = Object.fromEntries(indiaDishThumbnailPaths.map(file => [file, sha(fs.readFileSync(path.join(sourceRoot, file)))]));
   extractArchive(v34Commit, [
     'tools/v3/v34-dual-home.js', 'tools/v3/attach-v34-dual-home.mjs',
     'docs/design/v3.4'
@@ -99,16 +107,27 @@ try {
   const runtimePath = path.join(sourceRoot, 'tools/v3/runtime.js');
   let runtimeText = fs.readFileSync(runtimePath, 'utf8');
   const androidWelcomeCall = "if(view==='home')v35OpenWelcome();";
-  if ((runtimeText.match(/if\(view==='home'\)v35OpenWelcome\(\);/g) || []).length !== 1) throw new Error('Android Welcome fallback anchor changed; refusing duplicate Web Welcome screens.');
-  runtimeText = runtimeText.replace(androidWelcomeCall, "if(false&&view==='home')v35OpenWelcome();");
+  const androidWelcomeCount = (runtimeText.match(/if\(view==='home'\)v35OpenWelcome\(\);/g) || []).length;
+  if (androidWelcomeCount > 1) throw new Error('Android Welcome fallback appears multiple times; refusing duplicate Web Welcome screens.');
+  if (androidWelcomeCount === 1) runtimeText = runtimeText.replace(androidWelcomeCall, "if(false&&view==='home')v35OpenWelcome();");
   fs.writeFileSync(runtimePath, runtimeText);
   // Carry the approved V3.4 artwork fields into the exact V3.5 transformer
   // only after the Android artifact source hash has been confirmed.
   let transformerText = fs.readFileSync(transformer, 'utf8');
   const worldMapLine = "  worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),";
   if (!transformerText.includes(worldMapLine)) throw new Error('V3.5 transformer anchor for approved V3.4 artwork was not found.');
-  transformerText = transformerText.replace(worldMapLine, `${worldMapLine}\n  v34ApprovedHome: readReferenceImage('docs/design/v3.4/magical-adventure-home-approved.png'),\n  v34BackgroundPortrait: readReferenceImage('docs/design/v3.4/V34_Magical_Home_Background_Portrait.png'),\n  v34BackgroundLandscape: readReferenceImage('docs/design/v3.4/V34_Magical_Home_Background_Landscape.png'),`);
+  transformerText = transformerText.replace(worldMapLine, `${worldMapLine}\n  indiaDishThumbnails: {\n    51: readReferenceImage('tools/v3/artwork/india-dish-thumbnails/051-masala-cheese-toast.webp'),\n    57: readReferenceImage('tools/v3/artwork/india-dish-thumbnails/057-rainbow-veggie-cutlets.webp')\n  },\n  v34ApprovedHome: readReferenceImage('docs/design/v3.4/magical-adventure-home-approved.png'),\n  v34BackgroundPortrait: readReferenceImage('docs/design/v3.4/V34_Magical_Home_Background_Portrait.png'),\n  v34BackgroundLandscape: readReferenceImage('docs/design/v3.4/V34_Magical_Home_Background_Landscape.png'),`);
   fs.writeFileSync(transformer, transformerText);
+  const indiaRuntimeAnchor = `  BATCH_META[id]={...(BATCH_META[id]||{}),stepCells};\n}\nfunction v32ReviewFeaturedDescription(recipe,pt){`;
+  if (!runtimeText.includes(indiaRuntimeAnchor)) throw new Error('Shared runtime India artwork insertion point changed; refusing an imprecise thumbnail patch.');
+  const indiaThumbnailRuntime = `for(const [rawId,dish] of Object.entries(V31_HOME_WORLD_ART.indiaDishThumbnails||{})){
+  const id=Number(rawId),recipe=RECIPES.find(item=>Number(item.id)===id);
+  if(!recipe||!dish)throw new Error('India thumbnail references a missing canonical recipe: '+rawId);
+  NEW_RECIPE_ART[id]={...(NEW_RECIPE_ART[id]||{}),dish,dishAlt:'Finished '+recipe.title,status:'approved-existing-sprite-crop'};
+}
+`;
+  runtimeText = runtimeText.replace(indiaRuntimeAnchor, `  BATCH_META[id]={...(BATCH_META[id]||{}),stepCells};\n}\n${indiaThumbnailRuntime}function v32ReviewFeaturedDescription(recipe,pt){`);
+  fs.writeFileSync(runtimePath, runtimeText);
   execFileSync(process.execPath, [transformer, 'index.html', tempHtml], { cwd: sourceRoot, stdio: 'inherit' });
   const attached = path.join(tmp, 'v35-with-v34-home.html');
   execFileSync(process.execPath, [
@@ -123,7 +142,9 @@ try {
     "const homeStyle = () => 'magical';",
     'settingsPage = v34OriginalSettingsPage;',
     'const v34OriginalHome = home;',
-    'const recipeList = [...new Set(Object.values(V35_COUNTRY_RECIPE_IDS).flat().map(Number))].filter(id => id >= 97 && id !== 99)'
+    'const recipeList = [...new Set(Object.values(V35_COUNTRY_RECIPE_IDS).flat().map(Number))].filter(id => id >= 97 && id !== 99)',
+    'indiaDishThumbnails',
+    'approved-existing-sprite-crop'
   ]) if (!finalHtml.includes(sentinel)) throw new Error(`Single-Home source assertion failed: ${sentinel}`);
   const ingredientMapAnchor = ' const match=icons.find(([pattern])=>pattern.test(t));';
   if (!finalHtml.includes(ingredientMapAnchor)) throw new Error('Shared ingredient illustration map anchor was not found.');
@@ -183,7 +204,8 @@ try {
   const manifest = {
     package: 'Aaria V3.5 Web Edition', version: '3.5.0-review-single-home',
     sharedAndroidSourceCommit: sourceCommit, approvedV34DualHomeCommit: v34Commit,
-    androidWorkflowRun: 40776773336, androidApkArtifact: 'pending CI-LITE upload',
+    androidWorkflowRun: 40776773336, androidApkArtifact: 12855138667,
+    indiaDishThumbnailSourceCommit: indiaThumbnailCommit, indiaDishThumbnailIds: [51,57], indiaDishThumbnailSha256: indiaDishThumbnailHashes,
     androidTransformedHtmlSha256: androidArtifactHtmlSha256,
     webAppSha256: sha(structuredHtml), recipeCount: 116, recipeIds: Array.from({ length: 116 }, (_, i) => i + 1),
     internationalReviewIds: recipeIds, countryRegistry: JSON.parse(fs.readFileSync(path.join(sourceRoot, 'content/international/country-navigation-manifest.json'), 'utf8')).countries.map(country => country.countryCode),
@@ -206,8 +228,9 @@ try {
     countryMappings: 'validated against content/international/country-navigation-manifest.json',
     browserVisualEvidence: 'PENDING: focused live browser verification after this single-Home update. Android Chrome browser-control service is unavailable; static validators do not count as visual acceptance.',
     visualScreenshots: [],
-    browserChecks: { allRecipesCount: 116, newRecipesRail: '19 canonical expansion recipes sourced from country mapping', canonicalInternationalDishAssets: '21/21 source and packaged SHA-256 verified', magicalAdventureOnly: 'SOURCE ASSERTED; BROWSER CHECK PENDING', classicHomeAccess: 'ACTIVE SELECTOR DISABLED; SOURCE AND ASSETS PRESERVED', settingsReachable: 'SETTINGS PAGE PRESERVED; BROWSER CHECK PENDING', worldCountryArtwork: '21/21 canonical paths and package hashes verified', welcomeArrowNavigation: 'MAGICAL-ONLY SOURCE ASSERTED; BROWSER CHECK PENDING', publicHttpsAndroidChrome: 'PENDING live browser verification' },
-    androidFunctionalGate: 'CI-LITE run 40776773336 active; screenshots are not an acceptance gate',
+    browserChecks: { allRecipesCount: 116, newRecipesRail: '19 canonical expansion recipes sourced from country mapping', canonicalInternationalDishAssets: '21/21 source and packaged SHA-256 verified', indiaExistingRecipeThumbnails: '2/2 Android-canonical images mapped for #051 and #057; source SHA-256 recorded', magicalAdventureOnly: 'SOURCE ASSERTED; BROWSER CHECK PENDING', classicHomeAccess: 'ACTIVE SELECTOR DISABLED; SOURCE AND ASSETS PRESERVED', settingsReachable: 'SETTINGS PAGE PRESERVED; BROWSER CHECK PENDING', worldCountryArtwork: '21/21 canonical paths and package hashes verified', welcomeArrowNavigation: 'MAGICAL-ONLY SOURCE ASSERTED; BROWSER CHECK PENDING', publicHttpsAndroidChrome: 'PENDING live browser verification' },
+    androidFunctionalGate: 'CI-LITE run 40776773336 failed activity launch timeout; process started, WebView readiness not confirmed',
+    androidScreenshotGate: 'HOLD: Android screenshot/UI validation failed due system responsiveness',
     independentGates: { A08: 'NOT VERIFIED', A09: 'NOT VERIFIED', accessibility: 'NOT VERIFIED', security: 'NOT VERIFIED', nutritionAndAllergens: 'NOT VERIFIED', artworkRights: 'NOT VERIFIED' },
     productionIndexSha256: '74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe',
     productionModified: false
@@ -241,6 +264,9 @@ try {
     embeddedAssetPaths.set(relative, digest);
     return `./${relative}`;
   });
+  for (const [file, digest] of Object.entries(indiaDishThumbnailHashes)) {
+    if (!modularHtml.includes(`./assets/embedded/${digest}.webp`)) throw new Error(`India dish thumbnail was not externalized into the browser package: ${file}`);
+  }
   fs.writeFileSync(path.join(dist, 'index.html'), modularHtml);
   const servedHtmlSha256 = sha(Buffer.from(modularHtml));
   fs.writeFileSync(path.join(dist, 'sw.js'), `const CACHE='aaria-web-v3.5-${servedHtmlSha256.slice(0,12)}';\nself.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./','./index.html','./manifest.webmanifest'])).then(()=>self.skipWaiting())));\nself.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('aaria-web-v3.5-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));\nself.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET'||new URL(r.url).origin!==self.location.origin)return;e.respondWith(caches.match(r).then(c=>c||fetch(r).then(resp=>{if(resp.ok&&new URL(r.url).pathname.startsWith(new URL('./',self.registration.scope).pathname))caches.open(CACHE).then(cache=>cache.put(r,resp.clone()));return resp;})));});\n`);
