@@ -29,7 +29,7 @@
     {
       "target": "Android",
       "source": "V3.5 shared application source",
-      "technicalHandoff": "CI-LITE content/asset checks and APK assembly passed; Android install/launch/WebView/navigation smoke in progress"
+      "technicalHandoff": "CI-LITE content/asset checks and APK assembly passed; run 40776773336 failed Activity/WebView readiness because emulator launch timed out"
     },
     {
       "target": "Web",
@@ -42,8 +42,8 @@
     }
   ],
   "parityLimitations": [
-    "Single-Home source behavior is aligned; focused live browser validation and preview update are pending.",
-    "Android focused launch/navigation smoke is still running; no screenshot acceptance is required.",
+    "Single-Home source behavior is aligned; artwork resolver and package audits pass; owner visual review of the updated preview is pending because interactive browser control timed out.",
+    "Android focused launch/navigation smoke failed to establish Activity/WebView readiness; no screenshot acceptance is required.",
     "Independent A08/A09, accessibility, security, nutrition/allergen, artwork-rights and data-preservation gates remain NOT VERIFIED."
   ],
   "safety": {
