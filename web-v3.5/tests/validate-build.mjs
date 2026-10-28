@@ -65,6 +65,12 @@ if (!html.includes('./js/browser-adapters.js') || !read(path.join(web, 'js/brows
 if (sha(path.join(root, 'index.html')) !== '74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe') fail('Protected production index changed');
 const head = execFileSync('git', ['rev-parse', 'main'], { cwd: root, encoding: 'utf8' }).trim();
 if (head !== 'd38cefee4ab129eabc53f2a755a0eaf4487addcd') fail('Protected main branch reference changed');
+const standalonePath = path.join(root, 'dist/web-v3.5/aaria-v3.5-standalone.html');
+if (fs.existsSync(standalonePath)) {
+  const standalone = read(standalonePath);
+  if (standalone.includes("const V32_INTL_ROOT='international-wave-1/'")) fail('Standalone build retains a relative wave-one asset root');
+  if (/^\s*<script\b[^>]*\bsrc=/im.test(standalone) || /^\s*<link\b[^>]*\bhref=\"\.\//im.test(standalone)) fail('Standalone HTML contains an external package script or stylesheet');
+}
 const report = {
   result: 'PASS (focused static validation)',
   checkedAt: '2026-10-28',
