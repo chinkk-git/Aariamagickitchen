@@ -35,6 +35,12 @@ const homeWorldArt = {
   friends: readReferenceImage('tools/v3/artwork/characters/reference-derived/home-approved-dog-crop.png'),
   kitchen: readReferenceImage('phase2-pilot/packages/assets/backgrounds/kitchen-day.jpg'),
   worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),
+  // Exact crops from the already-approved five-panel India recipe thumbnail
+  // sprite. These expose its existing #051/#057 artwork to the shared World list.
+  indiaDishThumbnails: {
+    51: readReferenceImage('tools/v3/artwork/india-dish-thumbnails/051-masala-cheese-toast.webp'),
+    57: readReferenceImage('tools/v3/artwork/india-dish-thumbnails/057-rainbow-veggie-cutlets.webp')
+  },
   destinations: Object.fromEntries(['IND','ITA','CHN','JPN','MEX','VNM'].map(code => [code, readReferenceImage(`tools/v3/artwork/world-adventures/reference-derived/home-destination-${code.toLowerCase()}.webp`)])),
   avatars: Object.fromEntries(['mommy','daddy','rohan','arjun','vihaan','isha','meera','sana','diya'].map(key => [key, readReferenceImage(`tools/v3/artwork/characters/reference-derived/${key}.webp`)]))
 };

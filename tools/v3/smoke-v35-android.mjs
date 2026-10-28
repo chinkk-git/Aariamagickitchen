@@ -64,6 +64,10 @@ async function openHomeCountry(code,slug,expectedIds){
   const state=await evaluate(`(()=>({ids:[...document.querySelectorAll('.aria-world-globe__recipe[data-recipe-id]')].map(item=>Number(item.dataset.recipeId)),images:[...document.querySelectorAll('.aria-world-globe__recipe img')].map(item=>item.getAttribute('src'))}))()`);
   assert.deepEqual(state.ids,expectedIds,`${code} country recipe IDs`);
   assert.equal(state.images.length,expectedIds.length,`${code} country recipe thumbnails`);
+  if(code==='IND'){
+    assert.ok(state.images[0]&&!/plate|placeholder/i.test(state.images[0]),'India #051 must use its recipe artwork');
+    assert.ok(state.images[6]&&!/plate|placeholder/i.test(state.images[6]),'India #057 must use its recipe artwork');
+  }
   const loaded=await evaluate(`(async()=>{const images=[...document.querySelectorAll('.aria-world-globe__recipe img')];images.forEach(image=>image.loading='eager');return await Promise.all(images.map(async image=>{try{await image.decode();return image.naturalWidth>0}catch{return false}}))})()`);
   assert.ok(loaded.every(Boolean),`${code} country recipe artwork failed to load`);
   await click('.aria-world-globe__close');
@@ -72,6 +76,24 @@ async function openHomeCountry(code,slug,expectedIds){
 
 try{
   await waitFor(`document.readyState==='complete'&&view==='home'&&document.querySelector('.v31-approved-home')`,'Magical Adventure Home');
+  // First install presents the existing profile chooser before the application
+  // Welcome. Complete it on the disposable review package, then verify the
+  // Welcome arrow before exercising any navigation.
+  if(await evaluate(`!!document.querySelector('#v3ProfileDialog')`)){
+    await evaluate(`(()=>{const input=document.querySelector('#v3ProfileName');if(input)input.value='Android review';document.querySelector('[data-v3-chef="CHEF_A"]')?.click();document.querySelector('[data-v3-profile-continue]')?.click();return true})()`);
+  }
+  await waitFor(`!!document.querySelector('#v35-welcome')`,'Welcome screen');
+  const welcome=await evaluate(`(()=>({title:document.querySelector('#v35-welcome h1')?.textContent.trim(),arrow:!!document.querySelector('#v35-welcome [data-v35-enter]'),homeInert:document.querySelector('#screen')?.hasAttribute('inert')}))()`);
+  assert.ok(welcome.title,'Welcome title must render');
+  assert.equal(welcome.arrow,true,'Welcome arrow must be present');
+  assert.equal(welcome.homeInert,true,'Home must not be interactive before Welcome is dismissed');
+  await click('#v35-welcome [data-v35-enter]');
+  await waitFor(`!document.querySelector('#v35-welcome')&&view==='home'&&document.querySelector('.v31-approved-home')`,'Magical Adventure after Welcome');
+
+  // Simulate a legacy route/state selecting Classic Home. V3.5 must resolve it
+  // to the sole approved Home and must expose no Classic Home selector.
+  const legacyHome=await evaluate(`(()=>{view='classic-home';render();return view==='home'&&!!document.querySelector('.v31-approved-home')})()`);
+  assert.equal(legacyHome,true,'legacy Classic Home route must be ignored');
   const initial=await evaluate(`(()=>({url:location.href,count:RECIPES.length,unique:new Set(RECIPES.map(recipe=>Number(recipe.id))).size,settings:!!document.querySelector('.v3-settings')}))()`);
   assert.equal(initial.count,116,'runtime recipe count');
   assert.equal(initial.unique,116,'runtime recipe IDs must be unique');
@@ -79,6 +101,8 @@ try{
 
   await click('.v3-settings');
   await waitFor(`view==='settings'&&document.querySelector('#screen')`,'Settings route');
+  const noClassicToggle=await evaluate(`!Array.from(document.querySelectorAll('button,[role="switch"],input')).some(node=>/classic home|home style|home experience/i.test((node.textContent||'')+' '+(node.getAttribute('aria-label')||'')+' '+(node.getAttribute('name')||'')))`);
+  assert.equal(noClassicToggle,true,'Classic Home must not appear in Settings');
   await click('#nav .tab[data-nav="home"]');
   await waitFor(`view==='home'&&document.querySelector('.v31-approved-home')`,'return from Settings to Home');
 
@@ -93,6 +117,9 @@ try{
 
   await click('#nav .tab[data-nav="home"]');
   await waitFor(`view==='home'`,'Home from World');
+  await openHomeCountry('IND','india',[51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74]);
+  await click('#nav .tab[data-nav="home"]');
+  await waitFor(`view==='home'`,'Home before China route');
   await openHomeCountry('CHN','china',[99,100,101]);
   await click('#nav .tab[data-nav="home"]');
   await waitFor(`view==='home'`,'Home before Vietnam route');
@@ -112,7 +139,8 @@ try{
     status:'PASS',
     webviewUrl:target.url,
     packageId:process.env.V35_SMOKE_PACKAGE||'',
-    home:'PASS',settings:'PASS',worldGlobeAndFlag:'PASS',
+    welcomeAndSingleHome:'PASS',home:'PASS',settings:'PASS',worldGlobeAndFlag:'PASS',
+    indiaRecipeIds:[51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74],
     chinaRecipeIds:[99,100,101],vietnamRecipeIds:[108,109,110,111,112,113,114,115,116],
     chinaAndVietnamThumbnails:'PASS',allRecipesCount:116,
     recipe116Detail:'PASS',screenshots:'NOT CAPTURED'

@@ -97,6 +97,11 @@ for(const [id,a] of Object.entries(V3_ART)){
   const stepCells=Number(id)===3?[0,1,2,3,4]:[1,2,3,4].includes(Number(id))?[0,1,2,3]:[1,2,3,4];
   BATCH_META[id]={...(BATCH_META[id]||{}),stepCells};
 }
+for(const [rawId,dish] of Object.entries(V31_HOME_WORLD_ART.indiaDishThumbnails||{})){
+  const id=Number(rawId),recipe=RECIPES.find(item=>Number(item.id)===id);
+  if(!recipe||!dish)throw new Error('India thumbnail references a missing canonical recipe: '+rawId);
+  NEW_RECIPE_ART[id]={...(NEW_RECIPE_ART[id]||{}),dish,dishAlt:'Finished '+recipe.title,status:'approved-existing-sprite-crop'};
+}
 function v32ReviewFeaturedDescription(recipe,pt){
  const description=pt?(PT_RECIPES[recipe.id]?.description||recipe.description):recipe.description;
  return description||'';
@@ -875,6 +880,44 @@ recipe=function v32Recipe12AndInternational(){const id=Number(selected?.id),entr
 const v32RenderBeforeInternationalParity=render;
 render=function v32RenderInternationalParity(){v32RenderBeforeInternationalParity();const id=Number(selected?.id),active=view==='recipe'&&V32_INTL_BY_ID.has(id);document.querySelector('.app')?.classList.toggle('v32-international-active',active);if(view==='recipe')v32ApplyMagicPrepBoard();if(view==='recipe'&&id===12)v32ApplyRecipe12StepSafety();if(active){const steps=state.language==='pt-BR'?(PT_RECIPES[id]?.steps||[]):(RECIPES.find(r=>Number(r.id)===id)?.steps||[]);v32RestoreInternationalStepCopy(document.querySelector('.app.v32-international-active .ref-step-card.active .ref-step-copy p'),steps,step);}};
 
+// The approved V3.4 welcome concept remains a short first screen on each app
+// launch. It reuses approved Aaria/kitchen art and never alters saved recipe data.
+let v35WelcomeDismissed=false;
+function v35HideWelcome(){
+ const overlay=document.getElementById('v35-welcome');if(!overlay)return;
+ overlay.remove();
+ for(const selector of ['#screen','#nav','#languageBar']){const item=document.querySelector(selector);item?.removeAttribute('aria-hidden');item?.removeAttribute('inert')}
+ const heading=document.querySelector('.v31-approved-home h1');if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true})}
+}
+function v35OpenWelcome(){
+ if(v35WelcomeDismissed||document.getElementById('v35-welcome')||!v3ProfileState.profile)return;
+ const pt=state.language==='pt-BR',screen=document.querySelector('#screen');
+ if(!screen)return;
+ for(const selector of ['#screen','#nav','#languageBar']){const item=document.querySelector(selector);item?.setAttribute('aria-hidden','true');item?.setAttribute('inert','')}
+ const overlay=document.createElement('section');overlay.id='v35-welcome';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','v35-welcome-title');
+ overlay.innerHTML='<img class="v35-welcome-backdrop" src="'+V31_HOME_WORLD_ART.kitchen+'" alt="" aria-hidden="true"><div class="v35-welcome-shade" aria-hidden="true"></div><div class="v35-welcome-sparkles" aria-hidden="true"><span>✨</span><span>💖</span><span>⭐</span><span>🎉</span><span>🪄</span><span>✨</span></div><div class="v35-welcome-layout"><img class="v35-welcome-aaria" src="'+V31_HOME_WORLD_ART.aariaCooking+'" alt="'+(pt?'Aaria pronta para cozinhar':'Aaria ready to cook')+'"><div class="v35-welcome-copy"><p class="v35-welcome-kicker">'+(pt?'COZINHE · CRIE · EXPLORE · BRILHE':'COOK · CREATE · EXPLORE · SHINE')+'</p><h1 id="v35-welcome-title">'+(pt?'Bem-vinda à cozinha mágica da Aaria!':'Welcome to Aaria’s Magical Kitchen!')+'</h1><p>'+(pt?'Vamos preparar algo delicioso?':'Ready to make something delicious?')+'</p><button type="button" class="v35-welcome-enter" data-v35-enter aria-label="'+(pt?'Entrar na Aventura Mágica':'Enter Magical Adventure')+'"><span aria-hidden="true">➜</span><small>'+(pt?'Entrar':'Enter')+'</small></button></div></div>';
+ document.body.append(overlay);overlay.querySelector('[data-v35-enter]')?.focus({preventScroll:true});
+ overlay.addEventListener('click',event=>{if(!event.target.closest('[data-v35-enter]'))return;v35WelcomeDismissed=true;v35HideWelcome()});
+}
+if(!document.getElementById('v35-welcome-style'))document.head.insertAdjacentHTML('beforeend',`<style id="v35-welcome-style">
+#v35-welcome{position:fixed;inset:0;z-index:20000;display:grid;place-items:center;overflow:hidden;padding:clamp(14px,4vw,36px);background:#f7ebf8;color:#36254d}
+.v35-welcome-backdrop,.v35-welcome-shade{position:absolute;inset:0;width:100%;height:100%}.v35-welcome-backdrop{object-fit:cover;opacity:.34}.v35-welcome-shade{background:linear-gradient(135deg,#fff8efc9,#f4e6f8b8 52%,#def3edc7)}
+.v35-welcome-layout{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(14px,4vw,42px);width:min(920px,94vw);max-height:88dvh;padding:clamp(16px,4vw,34px);border:2px solid #ffffffd9;border-radius:30px;background:#fffaf1ef;box-shadow:0 18px 55px #51376735;text-align:center}
+.v35-welcome-aaria{display:block;width:100%;height:min(68dvh,560px);object-fit:contain;object-position:center bottom;filter:drop-shadow(0 10px 16px #4e345b30)}
+.v35-welcome-copy{display:grid;justify-items:center;gap:clamp(7px,1.7vh,15px)}.v35-welcome-kicker{margin:0;color:#71539a;font-size:clamp(11px,1.4vw,15px);font-weight:1000;letter-spacing:.12em}.v35-welcome-copy h1{max-width:13ch;margin:0;color:#702c91;font-size:clamp(29px,5vw,54px);line-height:1.03}.v35-welcome-copy>p:not(.v35-welcome-kicker){margin:0;color:#5c4b6b;font-size:clamp(15px,2vw,21px)}
+.v35-welcome-enter{display:grid;place-items:center;align-content:center;gap:0;width:82px;height:82px;margin-top:4px;border:3px solid #fff;border-radius:50%;background:linear-gradient(145deg,#ffd36c,#f49acf 58%,#a78beb);box-shadow:0 0 0 5px #ffffff83,0 0 26px #dc76d9cc,0 7px 0 #9356ab;color:#482458;cursor:pointer;animation:v35-welcome-glow 1.6s ease-in-out infinite}.v35-welcome-enter span{font-size:42px;line-height:.92}.v35-welcome-enter small{font-size:11px;font-weight:1000}.v35-welcome-enter:focus-visible{outline:4px solid #49306d;outline-offset:8px}
+.v35-welcome-sparkles{position:absolute;inset:0;overflow:hidden;pointer-events:none}.v35-welcome-sparkles span{position:absolute;bottom:-40px;font-size:clamp(17px,2.5vw,27px);animation:v35-welcome-float 7s linear infinite}.v35-welcome-sparkles span:nth-child(1){left:8%;animation-delay:-1s}.v35-welcome-sparkles span:nth-child(2){left:24%;animation-delay:-4s}.v35-welcome-sparkles span:nth-child(3){left:48%;animation-delay:-2s}.v35-welcome-sparkles span:nth-child(4){left:68%;animation-delay:-6s}.v35-welcome-sparkles span:nth-child(5){left:84%;animation-delay:-3s}.v35-welcome-sparkles span:nth-child(6){left:94%;animation-delay:-5s}
+@keyframes v35-welcome-float{0%{transform:translateY(0) rotate(0);opacity:0}12%{opacity:1}88%{opacity:1}100%{transform:translateY(-110vh) rotate(26deg);opacity:0}}@keyframes v35-welcome-glow{0%,100%{box-shadow:0 0 0 5px #ffffff83,0 0 20px #dc76d988,0 7px 0 #9356ab}50%{box-shadow:0 0 0 7px #ffffffa8,0 0 34px #dc76d9f2,0 7px 0 #9356ab}}
+@media(max-width:620px){.v35-welcome-layout{grid-template-columns:minmax(0,1fr);gap:4px;width:min(430px,94vw);max-height:92dvh;padding:14px 18px 18px;border-radius:24px}.v35-welcome-aaria{height:min(46dvh,340px);max-width:85%;margin:auto}.v35-welcome-copy h1{max-width:15ch;font-size:clamp(29px,9vw,42px)}.v35-welcome-enter{width:72px;height:72px}.v35-welcome-enter span{font-size:37px}}
+@media(max-height:500px) and (orientation:landscape){.v35-welcome-layout{grid-template-columns:35% 1fr;gap:14px;max-height:92dvh;padding:9px 18px}.v35-welcome-aaria{height:80dvh}.v35-welcome-copy h1{font-size:clamp(24px,5vh,38px)}.v35-welcome-copy>p:not(.v35-welcome-kicker){font-size:14px}.v35-welcome-enter{width:58px;height:58px}.v35-welcome-enter span{font-size:29px}}
+@media(prefers-reduced-motion:reduce){.v35-welcome-sparkles span{animation:none;opacity:.75;bottom:auto;top:10%}.v35-welcome-enter{animation:none}}
+</style>`);
+const v35RenderBeforeSingleHome=render;
+render=function v35SingleHomeAndWelcome(){
+ if(['classic','classic-home','classicHome'].includes(String(view)))view='home';
+ v35RenderBeforeSingleHome();
+ if(view==='home')v35OpenWelcome();
+};
 v3InitProfiles();
 render();
 
