@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Build the Web target from the pinned Android V3.5 source tree plus the
-// approved V3.4 dual-home adapter. The shared transformed page remains the app.
+// Build the Web target from Android V3.5 plus the approved V3.4 Magical
+// Adventure and Welcome UI. Classic Home remains dormant.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -11,9 +11,9 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const webRoot = path.join(root, 'web-v3.5');
 const dist = path.join(root, 'dist/web-v3.5');
-const sourceCommit = 'c54704fc4b181727ca18e9f3463c0d76c777b5fe';
+const sourceCommit = '6addb187f4563a4d00d69a9cf89bd4adf4f41de8';
 const v34Commit = '7ab11cc917b144a643fb30b6cc1dfed132ab45fb';
-const androidArtifactHtmlSha256 = '934138e96dbc264a8314967d643232a015119eb39faeb235d9c238da687a4cc2';
+const androidArtifactHtmlSha256 = '92ef9a4cc0742060c6e57db31e8583a484cb8ae7055426343a8a4fe08cd67657';
 const sha = data => crypto.createHash('sha256').update(data).digest('hex');
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'aaria-v35-web-'));
 const sourceRoot = path.join(tmp, 'android-source');
@@ -94,6 +94,14 @@ try {
   if (sha(fs.readFileSync(tempHtml)) !== androidArtifactHtmlSha256) {
     throw new Error('V3.5 shared transformer output differs from the recorded Android handoff artifact.');
   }
+  // Web uses the approved V3.4 Welcome scene attached below. Suppress only
+  // the Android fallback overlay so Web never shows two Welcome screens.
+  const runtimePath = path.join(sourceRoot, 'tools/v3/runtime.js');
+  let runtimeText = fs.readFileSync(runtimePath, 'utf8');
+  const androidWelcomeCall = "if(view==='home')v35OpenWelcome();";
+  if ((runtimeText.match(/if\(view==='home'\)v35OpenWelcome\(\);/g) || []).length !== 1) throw new Error('Android Welcome fallback anchor changed; refusing duplicate Web Welcome screens.');
+  runtimeText = runtimeText.replace(androidWelcomeCall, "if(false&&view==='home')v35OpenWelcome();");
+  fs.writeFileSync(runtimePath, runtimeText);
   // Carry the approved V3.4 artwork fields into the exact V3.5 transformer
   // only after the Android artifact source hash has been confirmed.
   let transformerText = fs.readFileSync(transformer, 'utf8');
@@ -125,8 +133,8 @@ try {
   finalHtml = finalHtml.replace(unmappedIconThrow, `if(rendered.includes('<circle cx="32" cy="28" r="23" fill="#fff0dc"/>'))return iconSvg('Ingredient','<path d="M12 30c3-12 37-12 40 0v4c-3 18-37 18-40 0Z" fill="#e9ddeb" stroke="#a793b2" stroke-width="2"/><ellipse cx="32" cy="29" rx="20" ry="8" fill="#fff4df"/><path d="M26 20 40 6" stroke="#9b744e" stroke-width="3" stroke-linecap="round"/>');`);
   const oldWorldDishResolver = `function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\\b[^>]*\\bsrc=["']([^"']+)["']/i)?.[1]||'';return src.startsWith('data:image/')?src:''}catch{return ''}}`;
   const newWorldDishResolver = `function normalizeWorldDishSource(source){const value=String(source||'').trim();if(/^data:image\\/(?:png|webp|jpeg|jpg|gif);base64,[A-Za-z0-9+/=]+$/i.test(value))return value;if(/^android-inline-art\\/[a-f0-9]{64}\\.(?:png|webp|jpeg|jpg|gif)$/i.test(value))return value;if(/^international-wave-1\\/content\\/international\\/countries\\/[a-z0-9-]+\\/[0-9]{3}-[a-z0-9-]+\\/artwork\\/(?:finished\\/)?finished-dish\\.(?:png|webp)$/i.test(value))return value;return ''}function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\\b[^>]*\\bsrc=["']([^"']+)["']/i)?.[1]||'';return normalizeWorldDishSource(src)}catch{return ''}}`;
-  if (!finalHtml.includes(oldWorldDishResolver)) throw new Error('World country thumbnail resolver anchor was not found.');
-  finalHtml = finalHtml.replace(oldWorldDishResolver, newWorldDishResolver);
+  if (finalHtml.includes(oldWorldDishResolver)) finalHtml = finalHtml.replace(oldWorldDishResolver, newWorldDishResolver);
+  else if (!finalHtml.includes('function normalizeWorldDishSource(source)') || !finalHtml.includes('return normalizeWorldDishSource(src)')) throw new Error('World country thumbnail resolver anchor was not found.');
   const countryRegistryAnchor = 'const WORLD_COUNTRY_ALIASES = Object.freeze(';
   if (!finalHtml.includes(countryRegistryAnchor)) throw new Error('Canonical country registry anchor was not found.');
   finalHtml = finalHtml.replace(countryRegistryAnchor, `const V35_NEW_RECIPE_IDS=Object.freeze([...new Set(Object.values(V35_COUNTRY_RECIPE_IDS).flat().map(Number))].filter(id=>id>=96).sort((a,b)=>a-b));\n${countryRegistryAnchor}`);
@@ -173,19 +181,19 @@ try {
   }
   const recipeIds = [...new Set(review.recipes.map(item => Number(item.id)))];
   const manifest = {
-    package: 'Aaria V3.5 Web Edition', version: '3.5.0-review',
+    package: 'Aaria V3.5 Web Edition', version: '3.5.0-review-single-home',
     sharedAndroidSourceCommit: sourceCommit, approvedV34DualHomeCommit: v34Commit,
-    androidWorkflowRun: 40756297987, androidApkArtifact: 12847588953,
+    androidWorkflowRun: 40776773336, androidApkArtifact: 'pending CI-LITE upload',
     androidTransformedHtmlSha256: androidArtifactHtmlSha256,
     webAppSha256: sha(structuredHtml), recipeCount: 116, recipeIds: Array.from({ length: 116 }, (_, i) => i + 1),
     internationalReviewIds: recipeIds, countryRegistry: JSON.parse(fs.readFileSync(path.join(sourceRoot, 'content/international/country-navigation-manifest.json'), 'utf8')).countries.map(country => country.countryCode),
     recipeArtworkFileCount: assetPaths.length,
     homeExperience: { default: 'magical', active: 'magical-only', classicHome: 'disabled-preserved-in-source', legacyClassicPreference: 'ignored-without-deletion', preferenceKey: 'aaria.v34.homeStyle' },
-    acceptanceGates: { androidScreenshots: 'HOLD: Android CI screenshot/UI step failed from system responsiveness', independentA08A09: 'HOLD', accessibility: 'HOLD', security: 'HOLD', nutritionAllergen: 'HOLD', artworkRights: 'HOLD' },
+    acceptanceGates: { androidFunctionalSmoke: 'CI-LITE run 40776773336 in progress; screenshot capture not required', independentA08A09: 'NOT VERIFIED', accessibility: 'NOT VERIFIED', security: 'NOT VERIFIED', nutritionAllergen: 'NOT VERIFIED', artworkRights: 'NOT VERIFIED' },
     productionModified: false
   };
   writeJson(path.join(dist, 'manifest.json'), manifest);
-  const readme = `# Aaria V3.5 Web Edition\n\nThis structured Web target is assembled from the exact Android V3.5 shared source (${sourceCommit}) and the approved V3.4 interface component (${v34Commit}). The application UI, recipes, translations and runtime are generated from the shared Android source; the Web target serves its linked recipe artwork beside the HTML.\n\n## Open\n\nServe this directory over HTTPS for Android Chrome. Open \`index.html\`; do not open the directory payload through a \`content://\` file picker. \`aaria-v3.5-standalone.html\` is the portable single-file version.\n\n## Build\n\nFrom the repository root run \`node web-v3.5/scripts/build.mjs\`. Output: \`dist/web-v3.5/\`, \`Aaria_V3_5_Web_Edition.zip\`. The builder fetches pinned source commits if absent, regenerates the Android V3.5 review package, runs focused data/navigation validators, verifies the shared HTML hash, applies the approved V3.4 interface, and packages the Web artwork.\n\n## Home experience\n\nMagical Adventure is the only active Home. Welcome opens Magical Adventure; Home navigation ignores the legacy Classic preference without deleting it. The Home-style selector is omitted from Settings while all other settings remain available. Classic Home code and assets remain in shared source for possible future restoration. The Welcome scene preserves its approved fixed artwork, moving particles and glowing entry arrow.\n\n## Status\n\nThe package contains all 116 recipes and canonical country mappings. Android screenshot/UI validation remains HOLD because the workflow screenshot step failed during Android system responsiveness issues. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights reviews remain HOLD. This package does not modify production or deploy to production.\n`;
+  const readme = `# Aaria V3.5 Web Edition\n\nThis structured Web target is assembled from Android V3.5 source (${sourceCommit}) and the approved V3.4 Welcome/Magical Adventure component (${v34Commit}). The UI, recipes, translations, country registry and runtime come from shared Android source; the Web target serves recipe artwork beside the HTML.\n\n## Open\n\nServe this directory over HTTPS for Android Chrome. Open \`index.html\`; do not open the directory payload through a \`content://\` file picker. \`aaria-v3.5-standalone.html\` is the portable single-file version.\n\n## Home experience\n\nMagical Adventure is the only active Home. The approved Welcome appears before Home, and its glowing arrow opens the adventure. Classic Home code/assets remain preserved but inaccessible. Legacy Classic preferences are ignored without deleting them. Settings remains available with no Home selector. All 116 recipes and canonical country mappings are included.\n\n## Status\n\nSource/catalog checks pass. Android CI-LITE run #228 is checking installation, launch, WebView readiness and critical routes; screenshots are not an acceptance gate. The isolated HTTPS preview still needs this updated package and focused live-browser checks. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights gates remain NOT VERIFIED. Production GitHub Pages is unchanged.\n`;
   fs.writeFileSync(path.join(dist, 'README.md'), readme);
   fs.mkdirSync(path.join(dist, 'reports'), { recursive: true });
   fs.copyFileSync(path.join(webRoot, 'reports/shared-source-contract.json'), path.join(dist, 'reports/shared-source-contract.json'));
@@ -199,8 +207,8 @@ try {
     browserVisualEvidence: 'PENDING: focused live browser verification after this single-Home update. Android Chrome browser-control service is unavailable; static validators do not count as visual acceptance.',
     visualScreenshots: [],
     browserChecks: { allRecipesCount: 116, newRecipesRail: '19 canonical expansion recipes sourced from country mapping', canonicalInternationalDishAssets: '21/21 source and packaged SHA-256 verified', magicalAdventureOnly: 'SOURCE ASSERTED; BROWSER CHECK PENDING', classicHomeAccess: 'ACTIVE SELECTOR DISABLED; SOURCE AND ASSETS PRESERVED', settingsReachable: 'SETTINGS PAGE PRESERVED; BROWSER CHECK PENDING', worldCountryArtwork: '21/21 canonical paths and package hashes verified', welcomeArrowNavigation: 'MAGICAL-ONLY SOURCE ASSERTED; BROWSER CHECK PENDING', publicHttpsAndroidChrome: 'PENDING live browser verification' },
-    androidScreenshotGate: 'HOLD: Android screenshot/UI validation failed due system responsiveness',
-    independentGates: { A08: 'HOLD', A09: 'HOLD', accessibility: 'HOLD', security: 'HOLD', nutritionAndAllergens: 'HOLD', artworkRights: 'HOLD' },
+    androidFunctionalGate: 'CI-LITE run 40776773336 active; screenshots are not an acceptance gate',
+    independentGates: { A08: 'NOT VERIFIED', A09: 'NOT VERIFIED', accessibility: 'NOT VERIFIED', security: 'NOT VERIFIED', nutritionAndAllergens: 'NOT VERIFIED', artworkRights: 'NOT VERIFIED' },
     productionIndexSha256: '74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe',
     productionModified: false
   };

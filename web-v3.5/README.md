@@ -1,6 +1,6 @@
 # Aaria V3.5 Web Edition
 
-The Web target is built from pinned application sources. V3.5 recipes, country navigation, translations and the underlying application runtime come from the Android V3.5 source commit `c54704fc4b181727ca18e9f3463c0d76c777b5fe`. The approved V3.4 Welcome and dual-Home UI adapter/artwork come from `7ab11cc917b144a643fb30b6cc1dfed132ab45fb`. The builder verifies the unmodified Android transformer output against the HTML SHA-256 recorded in its handoff before applying the Web adapter. See `reports/shared-source-contract.json` for the input/output contract and limitations.
+The Web target uses the Android V3.5 source at `6addb187f4563a4d00d69a9cf89bd4adf4f41de8` plus the approved V3.4 Welcome and Magical Adventure UI source at `7ab11cc917b144a643fb30b6cc1dfed132ab45fb`. The builder checks the unmodified Android transformer output against its recorded SHA-256 before applying the Web adapter.
 
 ## Build
 
@@ -10,14 +10,14 @@ From the repository root, run:
 node web-v3.5/scripts/build.mjs
 ```
 
-Outputs are `dist/web-v3.5/`, `dist/web-v3.5/aaria-v3.5-standalone.html`, and `Aaria_V3_5_Web_Edition.zip`. The structured target serves artwork from sibling paths. The standalone file inlines the recipe artwork. `SHA256SUMS.json` covers the files in the structured Web package.
+Outputs are `dist/web-v3.5/`, `dist/web-v3.5/aaria-v3.5-standalone.html`, and `Aaria_V3_5_Web_Edition.zip`. The structured target serves artwork from sibling paths. The standalone file inlines recipe artwork. `SHA256SUMS.json` covers the structured package.
 
-## Home experiences
+## Home experience
 
-Magical Adventure is the default on first launch. Settings offers Classic Kitchen and saves the selected style in `aaria.v34.homeStyle`. The approved Welcome screen retains fixed artwork, moving magical particles and its glowing entry arrow. Both Home modes use the 116-recipe catalogue; World links country-mapped recipes through the canonical V3.5 registry. Recipe details retain the avatar-classic layout.
+Magical Adventure is the only active Home. The approved animated Welcome appears first, and its glowing arrow opens the adventure. Classic Home source and artwork remain preserved but inaccessible. Legacy Classic Home preferences are ignored without deleting them. Settings remains available without a Home selector. The World and Home country cards use the canonical registry and recipe IDs; All Recipes contains all 116 records. Recipe details retain the avatar-classic template.
 
 ## Acceptance state
 
-Real Chrome rendering verified Welcome, both Home modes, World, All Recipes (116), and recipe #116; screenshots are included under `screenshots/`. The structured HTML externalizes embedded art into hash-addressed files to reduce startup load; missing image references were not observed in browser. The actual Android handoff source reports 116 unique recipes, validated country mappings/artwork, and successful APK assembly. Android screenshot/UI validation failed under Android system responsiveness issues; Android visual acceptance therefore remains HOLD. The Android handoff commit does not contain the approved V3.4 dual-Home component, so Android/Web visual parity remains HOLD and no Android branch changes are made here. Browser camera/photo/share fallbacks and state persistence outside Home selection remain unverified. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights release gates remain HOLD. The preview site is separate from production `main/index.html` and GitHub Pages; it is a review build.
+Source build and country/catalog validators pass. Android CI-LITE run #228 is checking install, launch, WebView readiness and critical routes; screenshots are not an acceptance gate. The focused browser checks and update of the isolated HTTPS preview remain pending. No production GitHub Pages files were changed.
 
-For an Android Chrome preview, open the separate HTTPS review URL posted in Issue #56. No merge, production cutover, or GitHub Pages deployment is included.
+A08, A09, accessibility, security, nutrition/allergens, artwork rights, and upgrade/data preservation remain NOT VERIFIED pending evidence and independent review. No production merge or release is included.

@@ -3,39 +3,37 @@
   "applicationSources": {
     "v35": {
       "repository": "chinkk-git/Aariamagickitchen",
-      "commit": "c54704fc4b181727ca18e9f3463c0d76c777b5fe",
+      "commit": "6addb187f4563a4d00d69a9cf89bd4adf4f41de8",
       "responsibilities": [
-        "recipe catalogue and content",
-        "country navigation registry",
-        "recipe artwork references and validation",
-        "translations and application runtime",
-        "base application HTML and CSS"
+        "116-recipe catalogue and content",
+        "canonical country navigation registry",
+        "recipe and country artwork mapping",
+        "EN-GB and PT-BR translations",
+        "shared application runtime and recipe detail template"
       ],
-      "workflowRun": 40756297987,
-      "apkArtifact": 12847588953,
-      "androidTransformerHtmlSha256": "934138e96dbc264a8314967d643232a015119eb39faeb235d9c238da687a4cc2"
+      "androidWorkflowRun": 40776773336,
+      "androidTransformedHtmlSha256": "92ef9a4cc0742060c6e57db31e8583a484cb8ae7055426343a8a4fe08cd67657"
     },
     "approvedV34Ui": {
       "repository": "chinkk-git/Aariamagickitchen",
       "commit": "7ab11cc917b144a643fb30b6cc1dfed132ab45fb",
       "responsibilities": [
-        "Welcome scene and magical particles/entry arrow",
+        "approved animated Welcome scene and glowing entry arrow",
         "Magical Adventure Home carousel and compact recipe cards",
-        "Classic Home option in Settings and persisted selection",
-        "approved V3.4 UI artwork"
+        "approved V3.4 Home and Welcome artwork"
       ],
-      "integration": "Web-target adapter applied after validating byte-exact Android transform output; dynamic V3.5 country cards resolve against canonical V3.5 registry"
+      "integration": "Classic source and assets retained; adapter hard-wires Magical Adventure and excludes the Home-style panel from Settings"
     }
   },
   "buildTargets": [
     {
       "target": "Android",
       "source": "V3.5 shared application source",
-      "technicalHandoff": "APK assembly and recipe/content validation passed; screenshot/UI workflow failed because Android system responsiveness prevented capture"
+      "technicalHandoff": "CI-LITE content/asset checks and APK assembly passed; Android install/launch/WebView/navigation smoke in progress"
     },
     {
       "target": "Web",
-      "source": "same pinned V3.5 application transform plus approved V3.4 Web adapter and isolated browser packaging",
+      "source": "same pinned V3.5 application transform plus approved V3.4 Welcome/Magical Home adapter and isolated browser package",
       "outputs": [
         "structured web-v3.5 directory",
         "standalone HTML",
@@ -44,15 +42,16 @@
     }
   ],
   "parityLimitations": [
-    "The Android handoff source commit does not contain the approved V3.4 dual-Home UI component; the Android branch has not been modified. Therefore Android/Web UI parity remains unverified and is an acceptance HOLD.",
-    "Android screenshot/UI validation remains an acceptance HOLD from the supplied workflow result.",
-    "Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights release gates remain HOLD.",
-    "No isolated HTTPS deployment is included; production deployment, merge and publishing are outside this review package."
+    "Single-Home source behavior is aligned; focused live browser validation and preview update are pending.",
+    "Android focused launch/navigation smoke is still running; no screenshot acceptance is required.",
+    "Independent A08/A09, accessibility, security, nutrition/allergen, artwork-rights and data-preservation gates remain NOT VERIFIED."
   ],
   "safety": {
     "productionMainIndexModified": false,
     "githubPagesModified": false,
-    "androidWorkerBranchModified": false,
-    "mergeOrDeploymentPerformed": false
+    "androidWorkerBranchModified": true,
+    "htmlSourceBranchModified": true,
+    "previewDeployed": false,
+    "productionMergeOrDeploymentPerformed": false
   }
 }

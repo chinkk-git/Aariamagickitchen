@@ -1,29 +1,22 @@
 {
-  "result": "PASS (focused static validation)",
+  "result": "PASS (focused source and package validation)",
   "checkedAt": "2026-10-28",
-  "mainHead": "d38cefee4ab129eabc53f2a755a0eaf4487addcd",
+  "androidSourceHead": "6addb187f4563a4d00d69a9cf89bd4adf4f41de8",
+  "productionHead": "d38cefee4ab129eabc53f2a755a0eaf4487addcd",
   "productionIndexSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
   "originalRecordsUnchanged": 95,
-  "webCatalogRecords": 97,
-  "addedBaselineRecords": [
-    {
-      "id": 96,
-      "country": "italy"
-    },
-    {
-      "id": 99,
-      "country": "china"
-    }
-  ],
-  "sourceMarkers": [
-    "localStorage v4 key",
-    "camera capture/file input",
-    "photo share API",
-    "hashchange/popstate handlers"
-  ],
-  "packageLocalServiceWorkerScope": "./",
+  "webCatalogRecords": 116,
+  "newInternationalRecords": [96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116],
+  "countryNavigation": "PASS: 13 approved country entries; populated routes use the shared registry",
+  "singleHome": "PASS (source assertion): Magical Adventure only; Classic preference ignored",
+  "welcome": "PASS (source assertion): approved V3.4 Welcome and entry arrow retained",
+  "webBuild": "PASS: structured and standalone output generated",
   "notVerified": [
-    "visual browser interaction/screenshots; no browser executable available and cloud browser cannot reach local preview",
-    "independent accessibility/security/A08/A09/nutrition/artwork-rights approvals"
-  ]
+    "focused live preview/browser interaction and visual rendering",
+    "real Android Chrome operation",
+    "independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights reviews",
+    "production APK signing and data-preserving V3.4 upgrade"
+  ],
+  "productionModified": false,
+  "githubPagesModified": false
 }

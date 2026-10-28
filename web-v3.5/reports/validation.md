@@ -1,16 +1,18 @@
 # V3.5 Web validation record
 
-## Completed checks
+## Source and package checks
 
-- Build generated the modular directory and standalone HTML from the protected production input plus the exact V3.4 source reference `4cbd0d3414556973e5790ee02a8232aa917bdd8a` and pinned wave-one handoff `451ab0bf8a3ab1867cf004a113d3d8e6896ccf60`.
-- Focused static validator confirmed 97 unique catalog records: the unchanged original 95 plus #096 Italy and #099 China. It also confirmed the two recipes' EN-GB/PT-BR data and required artwork files.
-- Focused static validator compared the extracted original 95 rows byte-for-byte with production source data.
-- `node --check` passed for the recipe data module, app module, V3.4 runtime, browser adapter, and service worker.
-- Confirmed the source app retains its v4 localStorage key, hash/popstate route restoration, camera capture and file-picker inputs, and photo-share path. The package registers a service worker with a relative `./` scope.
-- Confirmed the protected main HEAD and root HTML SHA-256 still match the C0 record.
+- Android source HEAD: `6addb187f4563a4d00d69a9cf89bd4adf4f41de8`.
+- Web build completed and generated the structured package and standalone HTML.
+- `validate-v35-international-review.mjs` passed: 21 international records #096–116 retain bilingual data and artwork integrity; six Vietnam entries remain review drafts.
+- `validate-v35-country-navigation.mjs` passed: 13-country registry and 116 unique recipe IDs matched; mapped recipe routes, artwork paths/hashes, and empty-country handling checked.
+- Build-source assertions force `homeStyle()` to Magical Adventure, omit the Settings Home-style panel, and ignore legacy Classic selection without clearing storage. Classic source/assets remain in the preserved V3.4 component.
+- The Web adapter uses the approved V3.4 Welcome scene and only one Welcome presentation.
+- Protected production `main/index.html` and GitHub Pages were not changed.
 
-## Not verified
+## Pending verification
 
-- Visual browser interaction, responsive screenshots, real camera/share flows, service-worker installation, and offline reload could not be run. The local environment has no Playwright browser executable; the available cloud browser cannot connect to this isolated local preview.
-- Independent A08/A09, security, accessibility, nutrition/allergen, and artwork-rights reviews remain separate gates. This report does not mark them passed.
-- C4 final parity remains blocked: Android run 223 for exact source HEAD `22dc0ef9ca0467feceb1d42de7f6d3c8d7cdab32` failed in representative screenshot capture with `Timed out waiting for WebView DevTools Runtime.evaluate`. The app source was not established as failed or accepted; a focused evidence retry is required.
+- The isolated HTTPS preview still needs the new source version and focused live checks for Welcome, single Home, Settings, New Recipes, World, country thumbnails, representative recipes and All Recipes.
+- No local Chrome/Playwright browser is available in this workspace; no live visual acceptance is claimed.
+- Android CI-LITE run #228 has completed all content, packaging, unit-test and APK assembly steps; its install/launch/WebView/route smoke is in progress.
+- Independent A08/A09, accessibility, security, nutrition/allergen, artwork-rights and user-data upgrade gates remain NOT VERIFIED until evidence and independent review.

@@ -1,12 +1,26 @@
 {
   "name": "Aaria V3.5 Web Edition",
-  "status": "97-recipe foundation preview; final 116-recipe parity pending Android V3.5 acceptance",
+  "status": "116-recipe single-Home preview built; owner/browser acceptance pending",
   "productionHead": "d38cefee4ab129eabc53f2a755a0eaf4487addcd",
   "productionIndexSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
-  "approvedV34Source": "4cbd0d3414556973e5790ee02a8232aa917bdd8a",
-  "wave1HandoffSource": "451ab0bf8a3ab1867cf004a113d3d8e6896ccf60",
-  "recipeCount": 97,
+  "approvedV34Source": "7ab11cc917b144a643fb30b6cc1dfed132ab45fb",
+  "androidV35Source": "6addb187f4563a4d00d69a9cf89bd4adf4f41de8",
+  "recipeCount": 116,
+  "homeExperience": "Magical Adventure only; Classic source retained and inaccessible",
+  "legacyClassicPreference": "ignored without deletion",
   "productionDeployment": false,
-  "androidV35Source": "22dc0ef9ca0467feceb1d42de7f6d3c8d7cdab32",
-  "androidAcceptance": "not accepted; run 223 failed during Android WebView screenshot capture with Runtime.evaluate timeout; app failure not established"
+  "androidWorkflowRun": 40776773336,
+  "androidAcceptance": "CI-LITE functional smoke in progress; screenshot capture is not required",
+  "webPreview": "https://aaria-v35-review-20261028.quirkyflea256.chatgpt.site",
+  "webPreviewUpdated": false,
+  "browserAcceptance": "not verified",
+  "independentGates": {
+    "A08": "NOT VERIFIED",
+    "A09": "NOT VERIFIED",
+    "accessibility": "NOT VERIFIED",
+    "security": "NOT VERIFIED",
+    "nutritionAndAllergens": "NOT VERIFIED",
+    "artworkRights": "NOT VERIFIED",
+    "upgradeAndDataPreservation": "NOT VERIFIED"
+  }
 }
