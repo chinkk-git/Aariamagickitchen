@@ -149,13 +149,25 @@ try {
   const ingredientMapAnchor = ' const match=icons.find(([pattern])=>pattern.test(t));';
   if (!finalHtml.includes(ingredientMapAnchor)) throw new Error('Shared ingredient illustration map anchor was not found.');
   finalHtml = finalHtml.replace(ingredientMapAnchor, ` icons.unshift([/coconut|coco/,'Coconut','<path d="M9 32c0-13 10-23 23-23s23 10 23 23-10 22-23 22S9 45 9 32Z" fill="#77533a" stroke="#583c29" stroke-width="3"/><circle cx="32" cy="32" r="15" fill="#fff9ec"/><path d="M20 25c5-5 10-7 15-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>']);\n${ingredientMapAnchor}`);
+  const courgetteAnchor = 'else if(/zucchini/i.test(t))';
+  const bunAnchor = 'else if(/slider|buns/.test(t))';
+  if (!finalHtml.includes(courgetteAnchor) || !finalHtml.includes(bunAnchor)) throw new Error('Ingredient alias anchors changed; refusing to replace approved source art.');
+  finalHtml = finalHtml.replace(courgetteAnchor, 'else if(/zucchini|courgette/i.test(t))')
+    .replace(bunAnchor, 'else if(/slider|buns|dinner rolls?/.test(t))');
   const unmappedIconThrow = `if(rendered.includes('<circle cx="32" cy="28" r="23" fill="#fff0dc"/>'))throw Error('International ingredient icon is not mapped: '+text);`;
   if (!finalHtml.includes(unmappedIconThrow)) throw new Error('Ingredient icon fallback anchor was not found.');
   finalHtml = finalHtml.replace(unmappedIconThrow, `if(rendered.includes('<circle cx="32" cy="28" r="23" fill="#fff0dc"/>'))return iconSvg('Ingredient','<path d="M12 30c3-12 37-12 40 0v4c-3 18-37 18-40 0Z" fill="#e9ddeb" stroke="#a793b2" stroke-width="2"/><ellipse cx="32" cy="29" rx="20" ry="8" fill="#fff4df"/><path d="M26 20 40 6" stroke="#9b744e" stroke-width="3" stroke-linecap="round"/>');`);
   const oldWorldDishResolver = `function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\\b[^>]*\\bsrc=["']([^"']+)["']/i)?.[1]||'';return src.startsWith('data:image/')?src:''}catch{return ''}}`;
-  const newWorldDishResolver = `function normalizeWorldDishSource(source){const value=String(source||'').trim();if(/^data:image\\/(?:png|webp|jpeg|jpg|gif);base64,[A-Za-z0-9+/=]+$/i.test(value))return value;if(/^android-inline-art\\/[a-f0-9]{64}\\.(?:png|webp|jpeg|jpg|gif)$/i.test(value))return value;if(/^international-wave-1\\/content\\/international\\/countries\\/[a-z0-9-]+\\/[0-9]{3}-[a-z0-9-]+\\/artwork\\/(?:finished\\/)?finished-dish\\.(?:png|webp)$/i.test(value))return value;return ''}function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\\b[^>]*\\bsrc=["']([^"']+)["']/i)?.[1]||'';return normalizeWorldDishSource(src)}catch{return ''}}`;
+  const newWorldDishResolver = `function resolveWebArtworkSource(source){const value=String(source||'').trim();if(/^data:image\\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=]+$/i.test(value))return value;try{const decodedValue=decodeURIComponent(value);if(/(?:^|\\/)\\.\\.(?:\\/|$)/.test(decodedValue.split(/[?#]/,1)[0]))return '';const base=new URL('./',document.baseURI),candidate=new URL(value,document.baseURI);if(candidate.origin!==location.origin||candidate.protocol!==location.protocol)return '';let pathname=decodeURIComponent(candidate.pathname),basePath=decodeURIComponent(base.pathname);if(!pathname.startsWith(basePath))return '';let relative=pathname.slice(basePath.length).replace(/^\\/+/, '');if(/^content\\/international\\/countries\\//i.test(relative))relative='international-wave-1/'+relative;const embedded=/^assets\\/embedded\\/[a-f0-9]{64}\\.(?:svg|png|webp|jpe?g|gif)$/i.test(relative),international=/^international-wave-1\\/content\\/international\\/countries\\/[a-z0-9-]+\\/[0-9]{3}-[a-z0-9-]+\\/artwork\\/(?:(?:finished\\/)?finished-dish\\.(?:png|webp)|ingredients\\/[a-z0-9-]+\\.(?:png|webp)|steps\\/step-[0-9]{2}\\.(?:png|webp))$/i.test(relative);return embedded||international?new URL(relative,base).href:''}catch{return ''}}function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\\b[^>]*\\bsrc=["']([^"']+)["']/i)?.[1]||'';return resolveWebArtworkSource(src)}catch{return ''}}`;
   if (finalHtml.includes(oldWorldDishResolver)) finalHtml = finalHtml.replace(oldWorldDishResolver, newWorldDishResolver);
   else if (!finalHtml.includes('function normalizeWorldDishSource(source)') || !finalHtml.includes('return normalizeWorldDishSource(src)')) throw new Error('World country thumbnail resolver anchor was not found.');
+  if (finalHtml.includes('function normalizeWorldDishSource(source)')) finalHtml = finalHtml.replaceAll('normalizeWorldDishSource', 'resolveWebArtworkSource');
+  const oldIngredientArtSource = 'safe(V32_INTL_ROOT+x.imagePath)';
+  const oldIngredientStepSource = 'safe(V32_INTL_ROOT+asset)';
+  if (!finalHtml.includes(oldIngredientArtSource)) throw new Error('International ingredient image URL anchor was not found.');
+  if (!finalHtml.includes(oldIngredientStepSource)) throw new Error('International step image URL anchor was not found.');
+  finalHtml = finalHtml.replaceAll(oldIngredientArtSource, "safe(resolveWebArtworkSource(V32_INTL_ROOT+x.imagePath)||'')")
+    .replaceAll(oldIngredientStepSource, "safe(resolveWebArtworkSource(V32_INTL_ROOT+asset)||'')");
   const countryRegistryAnchor = 'const WORLD_COUNTRY_ALIASES = Object.freeze(';
   if (!finalHtml.includes(countryRegistryAnchor)) throw new Error('Canonical country registry anchor was not found.');
   finalHtml = finalHtml.replace(countryRegistryAnchor, `const V35_NEW_RECIPE_IDS=Object.freeze([...new Set(Object.values(V35_COUNTRY_RECIPE_IDS).flat().map(Number))].filter(id=>id>=96).sort((a,b)=>a-b));\n${countryRegistryAnchor}`);
@@ -185,6 +197,8 @@ try {
 .app .v32-new-recipe-card>small{display:block!important;min-height:1.1em!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
 .app .v34-recipe-card .home-thumb.new-dish-thumb img,.app .v34-country-card .home-thumb.new-dish-thumb img{object-fit:contain!important;object-position:center!important;background:#fff8f1}
 .aria-world-globe__dish{object-fit:contain!important;object-position:center!important;background:#fff8f1}
+.app .ref-ingredient-icon>img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important}
+.app.v32-international-active .ref-ingredient-icon>img{min-width:0!important;min-height:0!important}
 </style>`;
   finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n</body>`);
   fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
@@ -218,6 +232,30 @@ try {
   const readme = `# Aaria V3.5 Web Edition\n\nThis structured Web target is assembled from Android V3.5 source (${sourceCommit}) and the approved V3.4 Welcome/Magical Adventure component (${v34Commit}). The UI, recipes, translations, country registry and runtime come from shared Android source; the Web target serves recipe artwork beside the HTML.\n\n## Open\n\nServe this directory over HTTPS for Android Chrome. Open \`index.html\`; do not open the directory payload through a \`content://\` file picker. \`aaria-v3.5-standalone.html\` is the portable single-file version.\n\n## Home experience\n\nMagical Adventure is the only active Home. The approved Welcome appears before Home, and its glowing arrow opens the adventure. Classic Home code/assets remain preserved but inaccessible. Legacy Classic preferences are ignored without deleting them. Settings remains available with no Home selector. All 116 recipes and canonical country mappings are included.\n\n## Status\n\nSource/catalog checks pass. Android CI-LITE run #228 is checking installation, launch, WebView readiness and critical routes; screenshots are not an acceptance gate. The isolated HTTPS preview still needs this updated package and focused live-browser checks. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights gates remain NOT VERIFIED. Production GitHub Pages is unchanged.\n`;
   fs.writeFileSync(path.join(dist, 'README.md'), readme);
   fs.mkdirSync(path.join(dist, 'reports'), { recursive: true });
+  const countryNavigationManifest = JSON.parse(fs.readFileSync(path.join(sourceRoot, 'content/international/country-navigation-manifest.json'), 'utf8'));
+  const indiaRecipeIds = countryNavigationManifest.countries.find(country => country.countryCode === 'IND')?.recipeIds || [];
+  if (indiaRecipeIds.length !== 18) throw new Error(`Expected all 18 canonical India recipes, received ${indiaRecipeIds.length}.`);
+  const internationalArtworkMap = review.recipes.map(recipe => {
+    const checksums = Object.fromEntries((recipe.artworkAssets || []).map(asset => [asset.path, asset.sha256]));
+    const finishedDish = (recipe.artworkAssetPaths || []).find(file => /\/artwork\/(?:finished\/)?finished-dish\.(?:png|webp)$/i.test(file));
+    return {
+      id: Number(recipe.id), country: recipe.country, publicationStatus: recipe.publicationStatus,
+      finishedDish: finishedDish ? { path: finishedDish, sha256: checksums[finishedDish] || null } : null,
+      ingredients: Object.fromEntries(Object.entries(recipe.locales || {}).map(([locale, record]) => [locale,
+        (record.ingredients || []).map(ingredient => ({
+          name: ingredient.name, path: ingredient.imagePath || null,
+          sha256: ingredient.imageSha256 || checksums[ingredient.imagePath] || null
+        }))
+      ]))
+    };
+  });
+  writeJson(path.join(dist, 'reports/artwork-source-map.json'), {
+    androidArtworkSourceCommit: sourceCommit,
+    indiaThumbnailOverrideSourceCommit: indiaThumbnailCommit,
+    indiaRecipeIds,
+    indiaOverrides: Object.fromEntries(Object.entries(indiaDishThumbnailHashes).map(([sourcePath, hash]) => [sourcePath, hash])),
+    internationalRecipes: internationalArtworkMap
+  });
   fs.copyFileSync(path.join(webRoot, 'reports/shared-source-contract.json'), path.join(dist, 'reports/shared-source-contract.json'));
   const release = {
     result: 'WEB_BUILD_CREATED; OWNER_ACCEPTANCE_PENDING',
@@ -292,6 +330,26 @@ try {
     .replaceAll('V32_INTL_ROOT+x.imagePath', 'v35WebAsset(x.imagePath)');
   standalone = standalone.replace(/<link rel="manifest" href="\.\/manifest\.webmanifest">/g, '').replace(/\s*<script defer src="\.\/browser-adapters\.js"><\/script>/g, '');
   fs.writeFileSync(path.join(dist, 'aaria-v3.5-standalone.html'), standalone);
+
+  execFileSync(process.execPath, [path.join(webRoot, 'scripts/verify-artwork.mjs')], { cwd: root, stdio: 'inherit' });
+  const artworkValidation = JSON.parse(fs.readFileSync(path.join(dist, 'reports/artwork-validation.json'), 'utf8'));
+  release.browserChecks = {
+    ...release.browserChecks,
+    indiaRecipeThumbnails: `${artworkValidation.india.recipeCount}/18 source-mapped and packaged with checksum verification; live browser rendering pending`,
+    internationalFinishedDishArtwork: `${artworkValidation.international.finishedDishCount}/21 mapped, packaged, checksum verified and URL resolver checked`,
+    internationalIngredientArtwork: `${artworkValidation.international.ingredientArtworkReferences}/${artworkValidation.international.ingredientArtworkReferences} locale references mapped to ${artworkValidation.international.uniqueIngredientArtworkFiles} packaged source images`,
+    originalIngredientIconCoverage: `${artworkValidation.originalRecipeIngredientIcons.mappedToSpecificExistingArtwork}/${artworkValidation.originalRecipeIngredientIcons.uniqueIngredientNames} existing ingredient names have specific mapped art; ${artworkValidation.originalRecipeIngredientIcons.sourceArtGaps.length} source-art gaps recorded`,
+    browserDecodeAndRender: 'PENDING: interactive Android Chrome unavailable in this executor'
+  };
+  release.artworkSourceGaps = {
+    originalIngredients: artworkValidation.originalRecipeIngredientIcons.sourceArtGaps,
+    internationalDraftIngredientSlotsWithoutSourceArtwork: artworkValidation.international.draftIngredientSlotsWithoutSourceArtwork
+  };
+  manifest.indiaRecipeThumbnailCount = artworkValidation.india.recipeCount;
+  manifest.internationalFinishedDishCount = artworkValidation.international.finishedDishCount;
+  manifest.internationalIngredientArtworkReferenceCount = artworkValidation.international.ingredientArtworkReferences;
+  writeJson(path.join(dist, 'manifest.json'), manifest);
+  writeJson(path.join(dist, 'acceptance-report.json'), release);
 
   const checksumMap = {};
   for (const file of walkFiles(dist).filter(file => !file.endsWith('SHA256SUMS.json'))) {
