@@ -80,7 +80,11 @@ jobs:
       - name: Package V3 HTML into offline Android assets
         run: |
           mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
-          cp dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          node --check tools/v3/android-externalize-data-uris.mjs
+          node tools/v3/android-externalize-data-uris.mjs dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html phase2-pilot/apps/aaria-android/app/src/main/assets/android-inline-art
+          test -s phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          mkdir -p artifacts
+          cp phase2-pilot/apps/aaria-android/app/src/main/assets/android-inline-art/asset-manifest.json artifacts/v35-artwork-manifest.json
           sha256sum dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
 
       - name: Test WebView asset origin policy
@@ -120,7 +124,7 @@ jobs:
           sha256sum "$apk" > apk-sha256.txt
           {
             printf 'source_sha=%s\n' "$GITHUB_SHA"
-            sed -n "s/^package: name='\([^']*\)'.*/package_id=\1/p" apk-badging.txt | head -n 1
+            sed -n "s/^package: name='\([^']*\)' versionCode='\([^']*\)' versionName='\([^']*\)'.*/package_id=\1\nversion_code=\2\nversion_name=\3/p" apk-badging.txt | head -n 3
             cat apk-sha256.txt
             sed -n 's/.*certificate SHA-256 digest: /debug_signer_certificate_sha256=/p' apk-signer.txt | head -n 1
           } | tee v35-review-build-metadata.txt
@@ -153,6 +157,7 @@ jobs:
             v35-review-build-metadata.txt
             artifacts/v35-android-screenshots/
             artifacts/v35-acceptance-report.json
+            artifacts/v35-artwork-manifest.json
           if-no-files-found: warn
           retention-days: 30
 
