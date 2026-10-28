@@ -105,6 +105,41 @@ try {
   const unmappedIconThrow = `if(rendered.includes('<circle cx="32" cy="28" r="23" fill="#fff0dc"/>'))throw Error('International ingredient icon is not mapped: '+text);`;
   if (!finalHtml.includes(unmappedIconThrow)) throw new Error('Ingredient icon fallback anchor was not found.');
   finalHtml = finalHtml.replace(unmappedIconThrow, `if(rendered.includes('<circle cx="32" cy="28" r="23" fill="#fff0dc"/>'))return iconSvg('Ingredient','<path d="M12 30c3-12 37-12 40 0v4c-3 18-37 18-40 0Z" fill="#e9ddeb" stroke="#a793b2" stroke-width="2"/><ellipse cx="32" cy="29" rx="20" ry="8" fill="#fff4df"/><path d="M26 20 40 6" stroke="#9b744e" stroke-width="3" stroke-linecap="round"/>');`);
+  const oldWorldDishResolver = `function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\\b[^>]*\\bsrc=["']([^"']+)["']/i)?.[1]||'';return src.startsWith('data:image/')?src:''}catch{return ''}}`;
+  const newWorldDishResolver = `function normalizeWorldDishSource(source){const value=String(source||'').trim();if(/^data:image\\/(?:png|webp|jpeg|jpg|gif);base64,[A-Za-z0-9+/=]+$/i.test(value))return value;if(/^android-inline-art\\/[a-f0-9]{64}\\.(?:png|webp|jpeg|jpg|gif)$/i.test(value))return value;if(/^international-wave-1\\/content\\/international\\/countries\\/[a-z0-9-]+\\/[0-9]{3}-[a-z0-9-]+\\/artwork\\/(?:finished\\/)?finished-dish\\.(?:png|webp)$/i.test(value))return value;return ''}function v33FinishedDishSource(recipe){try{const html=homeDishThumb(recipe),src=html.match(/<img\\b[^>]*\\bsrc=["']([^"']+)["']/i)?.[1]||'';return normalizeWorldDishSource(src)}catch{return ''}}`;
+  if (!finalHtml.includes(oldWorldDishResolver)) throw new Error('World country thumbnail resolver anchor was not found.');
+  finalHtml = finalHtml.replace(oldWorldDishResolver, newWorldDishResolver);
+  const countryRegistryAnchor = 'const WORLD_COUNTRY_ALIASES = Object.freeze(';
+  if (!finalHtml.includes(countryRegistryAnchor)) throw new Error('Canonical country registry anchor was not found.');
+  finalHtml = finalHtml.replace(countryRegistryAnchor, `const V35_NEW_RECIPE_IDS=Object.freeze([...new Set(Object.values(V35_COUNTRY_RECIPE_IDS).flat().map(Number))].filter(id=>id>=96).sort((a,b)=>a-b));\n${countryRegistryAnchor}`);
+  const oldRecipeListStart = "V32_INTERNATIONAL_RECIPES.length?'<section class=\"v32-new-recipes\"";
+  const newRecipeListStart = "V35_NEW_RECIPE_IDS.length?'<section class=\"v32-new-recipes\"";
+  if (!finalHtml.includes(oldRecipeListStart)) throw new Error('New Recipes section anchor was not found.');
+  finalHtml = finalHtml.replace(oldRecipeListStart, newRecipeListStart);
+  const oldRecipeListMap = "V32_INTERNATIONAL_RECIPES.map(item=>{const id=Number(item.id),r=RECIPES.find(x=>Number(x.id)===id),title=pt?(PT_RECIPES[id]?.title||r.title):r.title,draft=item.publicationStatus==='DRAFT_REVIEW_ONLY';return '<button class=\"home-tile v31-pinterest-tile v32-new-recipe-card\" data-open=\"'+id+'\" aria-label=\"'+safe(title)+' — '+(pt?'Em revisão':'Review only')+'\"><img src=\"'+(NEW_RECIPE_ART[id]?.dish||'')+'\" alt=\"\"><span class=\"v32-new-recipe-badge\">";
+  const newRecipeListMap = "V35_NEW_RECIPE_IDS.map(id=>{const r=RECIPES.find(x=>Number(x.id)===id),title=pt?(PT_RECIPES[id]?.title||r.title):r.title,draft=id>=111;return '<button class=\"home-tile v31-pinterest-tile v32-new-recipe-card\" data-open=\"'+id+'\" aria-label=\"'+safe(title)+' — '+(pt?'Em revisão':'Review only')+'\">'+homeDishThumb(r)+'<span class=\"v32-new-recipe-badge\">";
+  if (!finalHtml.includes(oldRecipeListMap)) throw new Error('New Recipes canonical artwork renderer anchor was not found.');
+  finalHtml = finalHtml.replace(oldRecipeListMap, newRecipeListMap);
+  const ownerMobileVisualFixes = `<style id="aaria-owner-mobile-visual-fixes">
+/* Keep the approved Classic Home artwork at its source proportions and keep its utility control reachable on phones. */
+@media(max-width:720px){
+  .app.home-dashboard .home-top{height:auto!important;min-height:0!important;aspect-ratio:1.5/1;background-size:cover!important;background-position:center!important;overflow:visible!important}
+  .app.home-dashboard .home-settings{position:fixed!important;top:calc(8px + env(safe-area-inset-top))!important;right:10px!important;z-index:10040!important;display:grid!important;place-items:center!important;width:44px!important;height:44px!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+  .app.home-dashboard .home-top.menu-open .home-settings{visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+  .app.home-dashboard .home-book-primary{width:100%!important;height:auto!important;min-height:60px!important;margin:8px 0 0!important;padding:8px 12px!important;gap:8px!important;box-shadow:0 3px 0 #8e54ad!important}
+  .app.home-dashboard .home-book-primary .book-primary-arrow{display:grid!important;place-items:center!important;width:30px!important;height:30px!important;flex:0 0 30px!important}
+  .app.home-dashboard .home-lower .home-thumb.new-dish-thumb{height:auto!important;min-height:0!important;aspect-ratio:3/2!important}
+  .app.home-dashboard .home-lower .home-thumb.new-dish-thumb img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:#fff8f1}
+}
+.app .v32-new-recipe-card{grid-template-rows:auto auto auto!important;height:auto!important;max-height:none!important;min-height:0!important;align-content:start!important}
+.app .v32-new-recipe-card>.home-thumb{display:block!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:3/2!important;margin:0!important;overflow:hidden!important;border-radius:12px!important;background:#fff8f1}
+.app .v32-new-recipe-card>.home-thumb img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:#fff8f1}
+.app .v32-new-recipe-card>strong{display:-webkit-box!important;min-height:2.3em!important;overflow:hidden!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:2!important;white-space:normal!important;line-height:1.15!important}
+.app .v32-new-recipe-card>small{display:block!important;min-height:1.1em!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.app .v34-recipe-card .home-thumb.new-dish-thumb img,.app .v34-country-card .home-thumb.new-dish-thumb img{object-fit:contain!important;object-position:center!important;background:#fff8f1}
+.aria-world-globe__dish{object-fit:contain!important;object-position:center!important;background:#fff8f1}
+</style>`;
+  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n</body>`);
   fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
   const reviewJson = path.join(sourceRoot, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
   const review = JSON.parse(fs.readFileSync(reviewJson, 'utf8'));
@@ -146,9 +181,9 @@ try {
     webAppSha256: sha(structuredHtml),
     recipeCount: 116,
     countryMappings: 'validated against content/international/country-navigation-manifest.json',
-    browserVisualEvidence: 'PASS: real Chrome rendering covered Welcome, Magical Adventure Home, Classic Home, World, All Recipes (116) and recipe #116; screenshots are packaged under screenshots/. Internal HTTP preview only; public HTTPS deployment pending.',
+    browserVisualEvidence: 'PENDING: re-capture and verify the corrected mobile viewport in a real browser after isolated HTTPS deployment. Existing screenshots predate these owner visual fixes and are not acceptance evidence.',
     visualScreenshots: ['screenshots/aaria-v35-welcome.jpg', 'screenshots/aaria-v35-magical-home.jpg', 'screenshots/aaria-v35-classic-home.jpg', 'screenshots/aaria-v35-world.jpg'],
-    browserChecks: { allRecipesCount: 116, recipe116Detail: 'PASS after localized ingredient icon fallback', mappedWorldCountryNavigation: 'PASS', homeStyleSwitch: 'PASS', homePreferencePersistence: 'PASS', missingReferencedImages: 0, publicHttpsAndroidChrome: 'PENDING deployment and live verification' },
+    browserChecks: { allRecipesCount: 116, recipe116Detail: 'SOURCE VALIDATED; MOBILE BROWSER RECHECK PENDING', mappedWorldCountryNavigation: 'SOURCE VALIDATED; MOBILE BROWSER RECHECK PENDING', homeStyleSwitch: 'SOURCE VALIDATED; MOBILE BROWSER RECHECK PENDING', homePreferencePersistence: 'SOURCE VALIDATED; MOBILE BROWSER RECHECK PENDING', missingReferencedImages: 'PENDING LIVE BROWSER AUDIT', publicHttpsAndroidChrome: 'PENDING deployment and live verification' },
     androidScreenshotGate: 'HOLD: Android screenshot/UI validation failed due system responsiveness',
     independentGates: { A08: 'HOLD', A09: 'HOLD', accessibility: 'HOLD', security: 'HOLD', nutritionAndAllergens: 'HOLD', artworkRights: 'HOLD' },
     productionIndexSha256: '74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe',
