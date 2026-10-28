@@ -74,7 +74,7 @@ export function normalizeWorldDishSource(source) {
   const value = String(source || '').trim();
   if (/^data:image\/(?:png|webp|jpeg|jpg|gif);base64,[A-Za-z0-9+/=]+$/i.test(value)) return value;
   if (/^android-inline-art\/[a-f0-9]{64}\.(?:png|webp|jpeg|jpg|gif)$/i.test(value)) return value;
-  if (/^international-wave-1\/content\/international\/countries\/[a-z0-9-]+\/[0-9]{3}-[a-z0-9-]+\/artwork\/finished-dish\.(?:png|webp)$/i.test(value)) return value;
+  if (/^international-wave-1\/content\/international\/countries\/[a-z0-9-]+\/[0-9]{3}-[a-z0-9-]+\/artwork\/(?:finished\/)?finished-dish\.(?:png|webp)$/i.test(value)) return value;
   return '';
 }
 

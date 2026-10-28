@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {readFileSync} from 'node:fs';
+import {existsSync,readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createWorldAdventureHost,normalizeWorldDishSource,V35_COUNTRY_RECIPE_IDS} from './world-adventure-host.mjs';
@@ -17,7 +17,7 @@ const allMapped=Object.values(idsByCountry).flat();
 assert.equal(new Set(allMapped).size,allMapped.length,'country map cannot duplicate recipe IDs');
 assert.deepEqual(allMapped.filter(id=>id>=96).sort((a,b)=>a-b),Array.from({length:21},(_,i)=>96+i),'existing + expansion recipes #096–116 must all map once');
 assert.equal(normalizeWorldDishSource('international-wave-1/content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png'),'international-wave-1/content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png','China country thumbnail must retain its packaged image path');
-assert.equal(normalizeWorldDishSource('international-wave-1/content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/finished-dish.png'),'international-wave-1/content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/finished-dish.png','Vietnam country thumbnail must retain its packaged image path');
+assert.equal(normalizeWorldDishSource('international-wave-1/content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/finished/finished-dish.png'),'international-wave-1/content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/finished/finished-dish.png','Vietnam country thumbnail must retain its packaged image path');
 assert.equal(normalizeWorldDishSource(`android-inline-art/${'a'.repeat(64)}.webp`),`android-inline-art/${'a'.repeat(64)}.webp`,'externalized Android recipe thumbnail must remain visible');
 assert.equal(normalizeWorldDishSource('data:image/webp;base64,AAAA'),'data:image/webp;base64,AAAA','inline Web recipe thumbnail must remain supported');
 assert.equal(normalizeWorldDishSource('https://example.invalid/dish.png'),'','remote artwork must not be loaded into country lists');
@@ -32,7 +32,12 @@ assert.equal(new Set([...base.map(r=>Number(r.id)),...pkg.recipes.map(r=>Number(
 assert.deepEqual([...base.map(r=>Number(r.id)),...pkg.recipes.map(r=>Number(r.id))].sort((a,b)=>a-b),Array.from({length:116},(_,i)=>i+1),'the production recipe set must contain exactly IDs #001–116');
 const slugByCode={IND:'india',ITA:'italy',CHN:'china',JPN:'japan',MEX:'mexico',VNM:'vietnam'};
 const countryById=Object.fromEntries(Object.entries(idsByCountry).flatMap(([code,ids])=>ids.map(id=>[id,slugByCode[code]])));
-for(const recipe of pkg.recipes)assert.equal(recipe.country,countryById[Number(recipe.id)],`#${recipe.id} primary country must match the approved registry`);
+for(const recipe of pkg.recipes){
+  const id=Number(recipe.id),asset=recipe.locales['en-GB'].finishedDish,thumbnail=`international-wave-1/${asset}`;
+  assert.equal(recipe.country,countryById[id],`#${id} primary country must match the approved registry`);
+  assert.equal(normalizeWorldDishSource(thumbnail),thumbnail,`#${id} World thumbnail path must pass the shared local-asset resolver`);
+  assert.ok(existsSync(resolve(root,'phase2-pilot/apps/aaria-android/app/src/main/assets/international-wave-1',asset)),`#${id} thumbnail must be materialized in Android app assets`);
+}
 const manifest=JSON.parse(read('content/international/country-navigation-manifest.json'));
 assert.equal(manifest.status,'V3.5_REVIEW_BUILD_ONLY');
 for(const [code,expectedIds] of Object.entries(idsByCountry)){

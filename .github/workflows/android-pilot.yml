@@ -94,21 +94,21 @@ jobs:
         id: assemble_apk
         run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
 
-      - name: Capture representative V3.5 Android screenshots
+      - name: Verify Android launch, WebView and essential routes
         if: github.ref == 'refs/heads/feature/v3.5-recipe-expansion'
-        timeout-minutes: 45
+        timeout-minutes: 15
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
           api-level: 34
           target: default
           arch: x86_64
           profile: pixel_2
-          emulator-boot-timeout: 1800
+          emulator-boot-timeout: 600
           # Software rendering avoids SwiftShader color-buffer and package-service crashes on no-KVM hosted runners.
           emulator-options: -no-window -gpu off -noaudio -no-boot-anim -no-snapshot -camera-back none -memory 4096
           disable-animations: true
           script: |
-            bash tools/v3/run-v35-android-evidence.sh
+            bash tools/v3/run-v35-android-smoke.sh
 
       - name: Verify APK and record source/artifact hashes
         if: always() && steps.assemble_apk.outcome == 'success'
@@ -155,8 +155,7 @@ jobs:
           path: |
             phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
             v35-review-build-metadata.txt
-            artifacts/v35-android-screenshots/
-            artifacts/v35-android-diagnostics/
+            artifacts/v35-android-smoke/
             artifacts/v35-acceptance-report.json
             artifacts/v35-artwork-manifest.json
           if-no-files-found: warn
