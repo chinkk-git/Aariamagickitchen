@@ -68,6 +68,7 @@ try {
         const uri = `data:${mime};base64,${fs.readFileSync(asset).toString('base64')}`;
         js = js.replaceAll(rel, uri);
       }
+      js = js.replace("const V32_INTL_ROOT='international-wave-1/';", "const V32_INTL_ROOT='';");
     }
     const tag = `<script defer src="${jsPath}"></script>`;
     standalone = standalone.replace(tag, `<script>\n${js}\n</script>`);
