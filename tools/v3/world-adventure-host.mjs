@@ -15,7 +15,14 @@ export const V35_COUNTRY_RECIPE_IDS = Object.freeze({
   CHN: Object.freeze([99, 100, 101]),
   JPN: Object.freeze([102, 103, 104]),
   MEX: Object.freeze([105, 106, 107]),
-  VNM: Object.freeze([108, 109, 110, 111, 112, 113, 114, 115, 116])
+  VNM: Object.freeze([108, 109, 110, 111, 112, 113, 114, 115, 116]),
+  BRA: Object.freeze([]),
+  USA: Object.freeze([]),
+  FRA: Object.freeze([]),
+  ESP: Object.freeze([]),
+  THA: Object.freeze([]),
+  GBR: Object.freeze([]),
+  MAR: Object.freeze([])
 });
 
 const COUNTRY_LABELS = Object.freeze({
@@ -24,12 +31,22 @@ const COUNTRY_LABELS = Object.freeze({
   CHN: Object.freeze({ 'en-GB': 'China', 'pt-BR': 'China', flag: '🇨🇳' }),
   JPN: Object.freeze({ 'en-GB': 'Japan', 'pt-BR': 'Japão', flag: '🇯🇵' }),
   MEX: Object.freeze({ 'en-GB': 'Mexico', 'pt-BR': 'México', flag: '🇲🇽' }),
-  VNM: Object.freeze({ 'en-GB': 'Vietnam', 'pt-BR': 'Vietnã', flag: '🇻🇳' })
+  VNM: Object.freeze({ 'en-GB': 'Vietnam', 'pt-BR': 'Vietnã', flag: '🇻🇳' }),
+  BRA: Object.freeze({ 'en-GB': 'Brazil', 'pt-BR': 'Brasil', flag: '🇧🇷' }),
+  USA: Object.freeze({ 'en-GB': 'United States', 'pt-BR': 'Estados Unidos', flag: '🇺🇸' }),
+  FRA: Object.freeze({ 'en-GB': 'France', 'pt-BR': 'França', flag: '🇫🇷' }),
+  ESP: Object.freeze({ 'en-GB': 'Spain', 'pt-BR': 'Espanha', flag: '🇪🇸' }),
+  THA: Object.freeze({ 'en-GB': 'Thailand', 'pt-BR': 'Tailândia', flag: '🇹🇭' }),
+  GBR: Object.freeze({ 'en-GB': 'United Kingdom', 'pt-BR': 'Reino Unido', flag: '🇬🇧' }),
+  MAR: Object.freeze({ 'en-GB': 'Morocco', 'pt-BR': 'Marrocos', flag: '🇲🇦' })
 });
 
 const WORLD_COUNTRY_ALIASES = Object.freeze({
   IND: 'IND', INDIA: 'IND', ITA: 'ITA', ITALY: 'ITA', CHN: 'CHN', CHINA: 'CHN',
-  JPN: 'JPN', JAPAN: 'JPN', MEX: 'MEX', MEXICO: 'MEX', VNM: 'VNM', VIETNAM: 'VNM'
+  JPN: 'JPN', JAPAN: 'JPN', MEX: 'MEX', MEXICO: 'MEX', VNM: 'VNM', VIETNAM: 'VNM',
+  BRA: 'BRA', BRAZIL: 'BRA', USA: 'USA', 'UNITED STATES': 'USA', FRA: 'FRA', FRANCE: 'FRA',
+  ESP: 'ESP', SPAIN: 'ESP', THA: 'THA', THAILAND: 'THA', GBR: 'GBR', 'UNITED KINGDOM': 'GBR',
+  MAR: 'MAR', MOROCCO: 'MAR'
 });
 
 function validInternationalRecord(recipe) {

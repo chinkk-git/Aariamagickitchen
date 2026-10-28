@@ -61,6 +61,7 @@ jobs:
           if [[ "$GITHUB_REF_NAME" == 'feature/v3.5-recipe-expansion' ]]; then
             node tools/v3/validate-v35-international-review.mjs
             node tools/v3/validate-v35-country-navigation.mjs
+            node tools/v3/create-v35-acceptance-report.mjs artifacts/v35-acceptance-report.json
           fi
           node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3.html
           node tools/v3/test-approved-chef-art.mjs dist/Aaria_Magical_Kitchen_V3.html
@@ -151,6 +152,7 @@ jobs:
             phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
             v35-review-build-metadata.txt
             artifacts/v35-android-screenshots/
+            artifacts/v35-acceptance-report.json
           if-no-files-found: warn
           retention-days: 30
 

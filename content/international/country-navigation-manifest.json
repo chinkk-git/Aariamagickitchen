@@ -1,7 +1,7 @@
 {
   "status": "V3.5_REVIEW_BUILD_ONLY",
   "mappingSource": "tools/v3/world-adventure-host.mjs::V35_COUNTRY_RECIPE_IDS",
-  "countryCount": 6,
+  "countryCount": 13,
   "countries": [
     {
       "countryCode": "IND",
@@ -143,6 +143,83 @@
         "rightsStatus": "PENDING_INDEPENDENT_RIGHTS_REVIEW",
         "reviewStatus": "PENDING_VISUAL_AND_COUNTRY_ACCURACY_REVIEW"
       }
+    },
+    {
+      "countryCode": "BRA",
+      "name": {
+        "en-GB": "Brazil",
+        "pt-BR": "Brasil"
+      },
+      "flag": "🇧🇷",
+      "recipeIds": [],
+      "destinationTreatment": "NO_APPROVED_RECIPES",
+      "artwork": null
+    },
+    {
+      "countryCode": "USA",
+      "name": {
+        "en-GB": "United States",
+        "pt-BR": "Estados Unidos"
+      },
+      "flag": "🇺🇸",
+      "recipeIds": [],
+      "destinationTreatment": "NO_APPROVED_RECIPES",
+      "artwork": null
+    },
+    {
+      "countryCode": "FRA",
+      "name": {
+        "en-GB": "France",
+        "pt-BR": "França"
+      },
+      "flag": "🇫🇷",
+      "recipeIds": [],
+      "destinationTreatment": "NO_APPROVED_RECIPES",
+      "artwork": null
+    },
+    {
+      "countryCode": "ESP",
+      "name": {
+        "en-GB": "Spain",
+        "pt-BR": "Espanha"
+      },
+      "flag": "🇪🇸",
+      "recipeIds": [],
+      "destinationTreatment": "NO_APPROVED_RECIPES",
+      "artwork": null
+    },
+    {
+      "countryCode": "THA",
+      "name": {
+        "en-GB": "Thailand",
+        "pt-BR": "Tailândia"
+      },
+      "flag": "🇹🇭",
+      "recipeIds": [],
+      "destinationTreatment": "NO_APPROVED_RECIPES",
+      "artwork": null
+    },
+    {
+      "countryCode": "GBR",
+      "name": {
+        "en-GB": "United Kingdom",
+        "pt-BR": "Reino Unido"
+      },
+      "flag": "🇬🇧",
+      "recipeIds": [],
+      "destinationTreatment": "NO_APPROVED_RECIPES",
+      "artwork": null
+    },
+    {
+      "countryCode": "MAR",
+      "name": {
+        "en-GB": "Morocco",
+        "pt-BR": "Marrocos"
+      },
+      "flag": "🇲🇦",
+      "recipeIds": [],
+      "destinationTreatment": "NO_APPROVED_RECIPES",
+      "artwork": null
     }
   ],
   "requirements": {
@@ -154,7 +231,14 @@
       "CHN": 3,
       "JPN": 3,
       "MEX": 3,
-      "VNM": 9
+      "VNM": 9,
+      "BRA": 0,
+      "USA": 0,
+      "FRA": 0,
+      "ESP": 0,
+      "THA": 0,
+      "GBR": 0,
+      "MAR": 0
     }
   }
 }

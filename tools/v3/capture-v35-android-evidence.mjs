@@ -37,6 +37,25 @@ const initial=await evaluate("({count:RECIPES.length,ids:RECIPES.map(x=>Number(x
 assert.equal(initial.count,116,'final catalogue count');assert.equal(new Set(initial.ids).size,116,'final catalogue unique IDs');assert.deepEqual(initial.cards,['IND','ITA','CHN','JPN','MEX','VNM'],'Home card order');
 await screenshot('home-portrait.png');
 console.log('Captured Home portrait');
+await evaluate("document.querySelector('.bottom .tab[data-nav=library]')?.click()");await waitFor("typeof view!=='undefined'&&view==='library'",'All Recipes');
+const allCards=await evaluate("[...document.querySelectorAll('.recipe-card')].map(x=>Number(x.dataset.open))");
+assert.equal(allCards.length,116,'All Recipes must show 116 cards');assert.deepEqual([...allCards].sort((a,b)=>a-b),Array.from({length:116},(_,i)=>i+1),'All Recipes IDs must be complete and unique');
+await evaluate("(()=>{const x=document.querySelector('#search');x.value='Quick Chicken Phở';x.dispatchEvent(new Event('input',{bubbles:true}))})()");
+await waitFor("document.querySelectorAll('.recipe-card').length===1&&Number(document.querySelector('.recipe-card')?.dataset.open)===111",'All Recipes search for #111');
+await evaluate("(()=>{const x=document.querySelector('#search');x.value='';x.dispatchEvent(new Event('input',{bubbles:true}))})()");await waitFor("document.querySelectorAll('.recipe-card').length===116",'All Recipes search reset');
+for(const id of allCards){
+ const clicked=await evaluate(`(()=>{const b=document.querySelector('.recipe-card[data-open="${id}"]');if(!b)return false;b.click();return true})()`);
+ assert.equal(clicked,true,`All Recipes card #${id} missing`);await waitFor(`typeof view!=='undefined'&&view==='recipe'&&Number(selected?.id)===${id}`,'All Recipes detail #'+id);
+ if(id>=96)assert.equal(await evaluate("document.querySelector('.app')?.classList.contains('v32-international-active')"),true,`#${id} must use the international recipe template`);
+ await evaluate("document.querySelector('.bottom .tab[data-nav=library]')?.click()");await waitFor("typeof view!=='undefined'&&view==='library'",'return to All Recipes');
+}
+await evaluate("(()=>{const s=document.querySelector('#languageSelect');s.value='pt-BR';s.dispatchEvent(new Event('change',{bubbles:true}))})()");
+await waitFor("state.language==='pt-BR'&&document.querySelector('.recipe-card[data-open=\"111\"] strong')?.textContent==='Phở rápido de frango'",'PT-BR All Recipes title');
+await evaluate("(()=>{const b=document.querySelector('.recipe-card[data-open=\"111\"]');b.click()})()");await waitFor("view==='recipe'&&Number(selected?.id)===111&&state.language==='pt-BR'",'PT-BR recipe #111');
+assert.equal(await evaluate("document.querySelector('#screen .ref-title h1')?.textContent?.trim()"),'Phở rápido de frango','PT-BR recipe title');
+await evaluate("document.querySelector('.bottom .tab[data-nav=library]')?.click()");await waitFor("view==='library'&&state.language==='pt-BR'",'return to PT-BR All Recipes');
+await evaluate("(()=>{const s=document.querySelector('#languageSelect');s.value='en-GB';s.dispatchEvent(new Event('change',{bubbles:true}))})()");await waitFor("state.language==='en-GB'",'return to EN-GB');
+console.log('Checked All Recipes list, search and all 116 detail routes');
 await evaluate("document.querySelector('.bottom .tab[data-nav=world]')?.click()");await waitFor("typeof view!=='undefined'&&view==='world'&&document.querySelector('.aria-world-globe')",'unselected globe');
 assert.equal(await evaluate("v33GlobeController.getState().selected"),null,'new World entry must start unselected');await screenshot('world-globe-portrait.png');console.log('Captured World globe portrait');
 await goHome();await evaluate("document.querySelector('[data-v31-open-world]')?.click()");await waitFor("typeof view!=='undefined'&&view==='world'",'Home World navigation');
@@ -73,5 +92,5 @@ assert.equal(await evaluate("v33GlobeController.getState().selected"),null,'land
 await evaluate("v33GlobeController.selectCountry('vietnam')");await waitFor("document.querySelector('.aria-world-globe__panel.is-selected h2')?.textContent==='Vietnam'",'Vietnam landscape list');
 assert.equal(await evaluate("document.querySelectorAll('.aria-world-globe__recipe[data-recipe-id]').length"),9,'Vietnam landscape list count');await screenshot('world-country-list-landscape.png');
 execFileSync('adb',['shell','settings','put','system','user_rotation','0']);execFileSync('adb',['shell','settings','put','system','accelerometer_rotation','1']);
-writeFileSync(resolve(out,'evidence-summary.txt'),`Android WebView evidence for V3.5 review build\n116 unique recipes; six Home cards; country list IDs/counts/flags checked; 19 expansion recipe routes opened in approved template; Android Back and X close checked; portrait and landscape globe/list captured.\nScreenshots: home-portrait.png, home-country-carousel.png, world-globe-portrait.png, world-country-list-portrait.png, recipe-111-detail-portrait.png, recipe-116-detail-portrait.png, world-globe-landscape.png, world-country-list-landscape.png\n`);
+writeFileSync(resolve(out,'evidence-summary.txt'),`Android WebView evidence for V3.5 review build\n116 unique recipes; All Recipes list and search checked; all 116 recipe-card routes opened; EN-GB/PT-BR recipe title and navigation checked; six populated Home cards; country list IDs/counts/flags checked; 19 expansion recipe routes opened in the approved template; Android Back and X close checked; portrait and landscape globe/list captured.\nScreenshots: home-portrait.png, home-country-carousel.png, world-globe-portrait.png, world-country-list-portrait.png, recipe-111-detail-portrait.png, recipe-116-detail-portrait.png, world-globe-landscape.png, world-country-list-landscape.png\n`);
 ws.close();console.log('PASS: Android Home/World navigation, all country lists, 19 expansion routes, template use, Back/X close, 116 unique recipes and portrait/landscape screenshots.');
