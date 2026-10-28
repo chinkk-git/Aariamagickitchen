@@ -156,6 +156,7 @@ jobs:
             phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
             v35-review-build-metadata.txt
             artifacts/v35-android-screenshots/
+            artifacts/v35-android-diagnostics/
             artifacts/v35-acceptance-report.json
             artifacts/v35-artwork-manifest.json
           if-no-files-found: warn
