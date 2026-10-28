@@ -1,0 +1,58 @@
+{
+  "contract": "Aaria V3.5 shared application, Web build target",
+  "applicationSources": {
+    "v35": {
+      "repository": "chinkk-git/Aariamagickitchen",
+      "commit": "c54704fc4b181727ca18e9f3463c0d76c777b5fe",
+      "responsibilities": [
+        "recipe catalogue and content",
+        "country navigation registry",
+        "recipe artwork references and validation",
+        "translations and application runtime",
+        "base application HTML and CSS"
+      ],
+      "workflowRun": 40756297987,
+      "apkArtifact": 12847588953,
+      "androidTransformerHtmlSha256": "934138e96dbc264a8314967d643232a015119eb39faeb235d9c238da687a4cc2"
+    },
+    "approvedV34Ui": {
+      "repository": "chinkk-git/Aariamagickitchen",
+      "commit": "7ab11cc917b144a643fb30b6cc1dfed132ab45fb",
+      "responsibilities": [
+        "Welcome scene and magical particles/entry arrow",
+        "Magical Adventure Home carousel and compact recipe cards",
+        "Classic Home option in Settings and persisted selection",
+        "approved V3.4 UI artwork"
+      ],
+      "integration": "Web-target adapter applied after validating byte-exact Android transform output; dynamic V3.5 country cards resolve against canonical V3.5 registry"
+    }
+  },
+  "buildTargets": [
+    {
+      "target": "Android",
+      "source": "V3.5 shared application source",
+      "technicalHandoff": "APK assembly and recipe/content validation passed; screenshot/UI workflow failed because Android system responsiveness prevented capture"
+    },
+    {
+      "target": "Web",
+      "source": "same pinned V3.5 application transform plus approved V3.4 Web adapter and isolated browser packaging",
+      "outputs": [
+        "structured web-v3.5 directory",
+        "standalone HTML",
+        "review ZIP"
+      ]
+    }
+  ],
+  "parityLimitations": [
+    "The Android handoff source commit does not contain the approved V3.4 dual-Home UI component; the Android branch has not been modified. Therefore Android/Web UI parity remains unverified and is an acceptance HOLD.",
+    "Android screenshot/UI validation remains an acceptance HOLD from the supplied workflow result.",
+    "Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights release gates remain HOLD.",
+    "No isolated HTTPS deployment is included; production deployment, merge and publishing are outside this review package."
+  ],
+  "safety": {
+    "productionMainIndexModified": false,
+    "githubPagesModified": false,
+    "androidWorkerBranchModified": false,
+    "mergeOrDeploymentPerformed": false
+  }
+}

@@ -1,8 +1,6 @@
 # Aaria V3.5 Web Edition
 
-This package is isolated under `web-v3.5/`. It is generated from the protected production `index.html`, the exact approved V3.4 source reference, and the pinned existing wave-one packages for #096 Italy and #099 China. The protected root source is an input only.
-
-The current package is the **97-recipe foundation preview**. Android V3.5 acceptance is not established: run 223 failed during representative WebView screenshot capture (`Runtime.evaluate` timeout). The 19 new records have not been merged into this web edition yet. The 116-recipe release ZIP must be rebuilt after the accepted Android source commit is available.
+The Web target is built from pinned application sources. V3.5 recipes, country navigation, translations and the underlying application runtime come from the Android V3.5 source commit `c54704fc4b181727ca18e9f3463c0d76c777b5fe`. The approved V3.4 Welcome and dual-Home UI adapter/artwork come from `7ab11cc917b144a643fb30b6cc1dfed132ab45fb`. The builder verifies the unmodified Android transformer output against the HTML SHA-256 recorded in its handoff before applying the Web adapter. See `reports/shared-source-contract.json` for the input/output contract and limitations.
 
 ## Build
 
@@ -12,10 +10,14 @@ From the repository root, run:
 node web-v3.5/scripts/build.mjs
 ```
 
-The build generates `dist/web-v3.5/`, a portable standalone HTML file, and SHA-256 checksums. It does not modify root `index.html` or publish to GitHub Pages.
+Outputs are `dist/web-v3.5/`, `dist/web-v3.5/aaria-v3.5-standalone.html`, and `Aaria_V3_5_Web_Edition.zip`. The structured target serves artwork from sibling paths. The standalone file inlines the recipe artwork. `SHA256SUMS.json` covers the files in the structured Web package.
 
-## Local preview
+## Home experiences
 
-Serve the repository root with a static HTTP server, then open `/web-v3.5/` (or use the isolated HTTPS preview). The structured `index.html` depends on sibling CSS, JavaScript, and artwork files; opening that one file through Android's `content://` provider or `file://` does not load the package. The standalone HTML is the one-file option and inlines CSS, JavaScript, and wave-one recipe art. The service worker registers only from the package directory. Browser features that require a secure origin, including PWA installation, may be unavailable under `file://` or `content://`.
+Magical Adventure is the default on first launch. Settings offers Classic Kitchen and saves the selected style in `aaria.v34.homeStyle`. The approved Welcome screen retains fixed artwork, moving magical particles and its glowing entry arrow. Both Home modes use the 116-recipe catalogue; World links country-mapped recipes through the canonical V3.5 registry. Recipe details retain the avatar-classic layout.
 
-The app retains the existing `aariaPrivateKitchenV4` storage key and existing data model; this packaging layer performs no user-data migration.
+## Acceptance state
+
+Real Chrome rendering verified Welcome, both Home modes, World, All Recipes (116), and recipe #116; screenshots are included under `screenshots/`. The structured HTML externalizes embedded art into hash-addressed files to reduce startup load; missing image references were not observed in browser. The actual Android handoff source reports 116 unique recipes, validated country mappings/artwork, and successful APK assembly. Android screenshot/UI validation failed under Android system responsiveness issues; Android visual acceptance therefore remains HOLD. The Android handoff commit does not contain the approved V3.4 dual-Home component, so Android/Web visual parity remains HOLD and no Android branch changes are made here. Browser camera/photo/share fallbacks and state persistence outside Home selection remain unverified. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights release gates remain HOLD. The preview site is separate from production `main/index.html` and GitHub Pages; it is a review build.
+
+For an Android Chrome preview, open the separate HTTPS review URL posted in Issue #56. No merge, production cutover, or GitHub Pages deployment is included.

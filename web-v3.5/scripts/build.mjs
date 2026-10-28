@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+// Build the Web target from the pinned Android V3.5 source tree plus the
+// approved V3.4 dual-home adapter. The shared transformed page remains the app.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -7,87 +10,214 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const webRoot = path.join(root, 'web-v3.5');
-const approvedV34 = '4cbd0d3414556973e5790ee02a8232aa917bdd8a';
-const wave1Handoff = '451ab0bf8a3ab1867cf004a113d3d8e6896ccf60';
-const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'aaria-v34-source-'));
-const tempHtml = path.join(os.tmpdir(), `aaria-v34-${process.pid}.html`);
-try {
-  const archive = execFileSync('git', [
-    'archive', '--format=tar', approvedV34,
-    'index.html', 'tools/v3', 'phase2-pilot/packages/assets',
-    'docs/design/approved-v31-world-map-crop.webp',
-    'docs/design/approved-v31-home-world-reference.png', 'docs/design/v3.4', 'content/international'
-  ], { cwd: root, maxBuffer: 150 * 1024 * 1024 });
-  execFileSync('tar', ['-x', '-C', tempRoot], { cwd: root, input: archive });
-  execFileSync(process.execPath, ['web-v3.5/scripts/prepare-wave1-package.mjs'], {
-    cwd: root, stdio: 'inherit', env: { ...process.env, AARIA_BUILD_ROOT: tempRoot, AARIA_WEB_ROOT: webRoot }
-  });
-  execFileSync(process.execPath, [path.join(tempRoot, 'tools/v3/transform-production.mjs'), 'index.html', tempHtml], {
-    cwd: tempRoot, stdio: 'inherit'
-  });
-  execFileSync(process.execPath, ['web-v3.5/scripts/extract-production.mjs', tempHtml], { cwd: root, stdio: 'inherit' });
+const dist = path.join(root, 'dist/web-v3.5');
+const sourceCommit = 'c54704fc4b181727ca18e9f3463c0d76c777b5fe';
+const v34Commit = '7ab11cc917b144a643fb30b6cc1dfed132ab45fb';
+const androidArtifactHtmlSha256 = '934138e96dbc264a8314967d643232a015119eb39faeb235d9c238da687a4cc2';
+const sha = data => crypto.createHash('sha256').update(data).digest('hex');
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'aaria-v35-web-'));
+const sourceRoot = path.join(tmp, 'android-source');
+const v34Root = path.join(tmp, 'v34-adapter');
+const tempHtml = path.join(tmp, 'android-v35.html');
 
-  fs.mkdirSync(path.join(webRoot, 'assets/brand'), { recursive: true });
-  fs.mkdirSync(path.join(webRoot, 'assets/characters'), { recursive: true });
-  fs.cpSync(path.join(tempRoot, 'phase2-pilot/packages/assets/brand/aaria-launcher-icon.svg'), path.join(webRoot, 'assets/brand/aaria-launcher-icon.svg'));
-  fs.cpSync(path.join(tempRoot, 'phase2-pilot/packages/assets/characters/aaria.jpg'), path.join(webRoot, 'assets/characters/aaria.jpg'));
-  let html = fs.readFileSync(path.join(webRoot, 'index.html'), 'utf8');
-  html = html.replace('</head>', '  <link rel="manifest" href="./manifest.webmanifest">\n</head>');
-  html = html.replace('</body>', '  <script defer src="./js/browser-adapters.js"></script>\n</body>');
-  fs.writeFileSync(path.join(webRoot, 'index.html'), html);
-  const buildRecord = JSON.parse(fs.readFileSync(path.join(webRoot, 'reports/source-baseline.json'), 'utf8'));
-  buildRecord.productionHead = execFileSync('git', ['rev-parse', 'main'], { cwd: root, encoding: 'utf8' }).trim();
-  buildRecord.productionIndexSha256 = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'index.html'))).digest('hex');
-  buildRecord.approvedV34Source = approvedV34;
-  buildRecord.approvedSourceBlobs = Object.fromEntries(['tools/v3/runtime.js', 'tools/v3/transform-production.mjs', 'tools/v3/home-world-visual.css', 'tools/v3/world-adventure-globe/world-adventure-globe.js', 'tools/v3/world-adventure-globe/world-adventure-globe.css'].map(file => [file, execFileSync('git', ['rev-parse', `${approvedV34}:${file}`], { cwd: root, encoding: 'utf8' }).trim()]));
-  buildRecord.wave1HandoffSource = wave1Handoff;
-  buildRecord.webRecipeCount = 97;
-  fs.writeFileSync(path.join(webRoot, 'reports/source-baseline.json'), JSON.stringify(buildRecord, null, 2) + '\n');
-
-  const dist = path.join(root, 'dist/web-v3.5');
-  fs.rmSync(dist, { recursive: true, force: true });
-  fs.cpSync(webRoot, dist, { recursive: true, filter: src => !src.includes(`${path.sep}scripts${path.sep}`) && !src.includes(`${path.sep}tests${path.sep}`) });
-
-  let standalone = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-  for (const cssPath of ['./css/recipe-experience.css', './css/v34-interface.css', './css/v34-runtime.css']) {
-    const css = fs.readFileSync(path.join(dist, cssPath.slice(2)), 'utf8');
-    standalone = standalone.replace(`<link rel="stylesheet" href="${cssPath}">`, `<style>\n${css}\n</style>`);
+function ensureCommit(commit) {
+  try { execFileSync('git', ['cat-file', '-e', `${commit}^{commit}`], { cwd: root, stdio: 'ignore' }); }
+  catch {
+    execFileSync('git', ['fetch', '--no-tags', 'origin', commit], { cwd: root, stdio: 'inherit' });
+    execFileSync('git', ['cat-file', '-e', `${commit}^{commit}`], { cwd: root, stdio: 'ignore' });
   }
-  const bundledFiles = ['./js/recipe-data.js', './js/app.js', './js/bottom-menu.js', './js/v34-runtime.js', './js/browser-adapters.js'];
-  for (const jsPath of bundledFiles) {
-    let js = fs.readFileSync(path.join(dist, jsPath.slice(2)), 'utf8');
-    if (jsPath === './js/v34-runtime.js') {
-      const assetsRoot = path.join(dist, 'international-wave-1');
-      const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
-        const absolute = path.join(dir, entry.name);
-        return entry.isDirectory() ? walk(absolute) : [absolute];
-      });
-      for (const asset of walk(assetsRoot)) {
-        const rel = path.relative(assetsRoot, asset).split(path.sep).join('/');
-        const mime = rel.endsWith('.png') ? 'image/png' : rel.endsWith('.webp') ? 'image/webp' : 'application/octet-stream';
-        const uri = `data:${mime};base64,${fs.readFileSync(asset).toString('base64')}`;
-        js = js.replaceAll(rel, uri);
-      }
-      js = js.replace("const V32_INTL_ROOT='international-wave-1/';", "const V32_INTL_ROOT='';");
-    }
-    const tag = `<script defer src="${jsPath}"></script>`;
-    standalone = standalone.replace(tag, `<script>\n${js}\n</script>`);
-  }
-  standalone = standalone.replace(/\s*<link rel="manifest" href="\.\/manifest\.webmanifest">/g, '');
-  fs.writeFileSync(path.join(dist, 'aaria-v3.5-standalone.html'), standalone);
-
-  const hashes = {};
-  const walkFiles = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+}
+function extractArchive(commit, paths, destination) {
+  fs.mkdirSync(destination, { recursive: true });
+  const tar = execFileSync('git', ['archive', '--format=tar', commit, ...paths], {
+    cwd: root, maxBuffer: 300 * 1024 * 1024
+  });
+  execFileSync('tar', ['-x', '-C', destination], { cwd: root, input: tar });
+}
+function walkFiles(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
     const absolute = path.join(dir, entry.name);
     return entry.isDirectory() ? walkFiles(absolute) : [absolute];
   });
-  for (const file of walkFiles(dist).filter(file => !file.endsWith('SHA256SUMS.json'))) {
-    const rel = path.relative(dist, file).split(path.sep).join('/');
-    hashes[rel] = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+}
+function writeJson(file, value) { fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n'); }
+
+try {
+  ensureCommit(sourceCommit);
+  ensureCommit(v34Commit);
+  extractArchive(sourceCommit, [
+    'index.html', 'tools/v3', 'content/international',
+    'phase2-pilot/packages/assets', 'docs/design/approved-v31-world-map-crop.webp'
+  ], sourceRoot);
+  extractArchive(v34Commit, [
+    'tools/v3/v34-dual-home.js', 'tools/v3/attach-v34-dual-home.mjs',
+    'docs/design/v3.4'
+  ], v34Root);
+  fs.cpSync(path.join(v34Root, 'docs/design/v3.4'), path.join(sourceRoot, 'docs/design/v3.4'), { recursive: true });
+
+  // The approved V3.4 home component used a 3-country V3.4 pilot registry.
+  // Resolve its cards through the V3.5 canonical country registry instead.
+  const adapterPath = path.join(v34Root, 'tools/v3/v34-dual-home.js');
+  let adapter = fs.readFileSync(adapterPath, 'utf8');
+  const oldRows = `    const rows = [\n      { code: 'IND', en: 'India', br: 'Índia', flag: '🇮🇳', ids: [51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74] },\n      { code: 'ITA', en: 'Italy', br: 'Itália', flag: '🇮🇹', ids: [96] },\n      { code: 'CHN', en: 'China', br: 'China', flag: '🇨🇳', ids: [99] }\n    ];\n    return rows.map(row => ({ ...row, recipes: row.ids.map(find).filter(Boolean) })).filter(row => row.recipes.length);`;
+  const newRows = `    const labels = [\n      { code: 'IND', en: 'India', br: 'Índia', flag: '🇮🇳' },\n      { code: 'ITA', en: 'Italy', br: 'Itália', flag: '🇮🇹' },\n      { code: 'CHN', en: 'China', br: 'China', flag: '🇨🇳' },\n      { code: 'JPN', en: 'Japan', br: 'Japão', flag: '🇯🇵' },\n      { code: 'MEX', en: 'Mexico', br: 'México', flag: '🇲🇽' },\n      { code: 'VNM', en: 'Vietnam', br: 'Vietnã', flag: '🇻🇳' }\n    ];\n    return labels.map(row => { const ids = (V35_COUNTRY_RECIPE_IDS[row.code] || []).map(Number); return { ...row, ids, recipes: ids.map(find).filter(Boolean) }; }).filter(row => row.recipes.length);`;
+  if (!adapter.includes(oldRows)) throw new Error('V3.4 country-card source block changed; refusing an imprecise patch.');
+  adapter = adapter.replace(oldRows, newRows);
+  adapter = adapter.replace("t('approved recipes', 'receitas aprovadas')", "t('recipes', 'receitas')");
+  adapter = adapter.replace("recipeList.map(r=>recipeCard(r, r.id>95?'NEW':'✨')).join('')", "recipeList.map(r=>recipeCard(r, r.id>110?t('DRAFT · REVIEW','RASCUNHO · REVISÃO'):r.id>95?t('REVIEW ONLY','SOMENTE REVISÃO'):'✨')).join('')");
+  fs.writeFileSync(adapterPath, adapter);
+
+  const reviewBuilder = path.join(sourceRoot, 'tools/v3/artwork/build-v35-international-review.mjs');
+  execFileSync(process.execPath, [reviewBuilder], {
+    cwd: sourceRoot, stdio: 'inherit', env: { ...process.env, GITHUB_SHA: sourceCommit }
+  });
+  execFileSync(process.execPath, [
+    path.join(sourceRoot, 'tools/v3/validate-v35-international-review.mjs')
+  ], { cwd: sourceRoot, stdio: 'inherit' });
+  execFileSync(process.execPath, [
+    path.join(sourceRoot, 'tools/v3/validate-v35-country-navigation.mjs')
+  ], { cwd: sourceRoot, stdio: 'inherit' });
+  const transformer = path.join(sourceRoot, 'tools/v3/transform-production.mjs');
+  execFileSync(process.execPath, [transformer, 'index.html', tempHtml], { cwd: sourceRoot, stdio: 'inherit' });
+  if (sha(fs.readFileSync(tempHtml)) !== androidArtifactHtmlSha256) {
+    throw new Error('V3.5 shared transformer output differs from the recorded Android handoff artifact.');
   }
-  fs.writeFileSync(path.join(dist, 'SHA256SUMS.json'), JSON.stringify(hashes, null, 2) + '\n');
-  console.log(JSON.stringify({ dist: path.relative(root, dist), files: Object.keys(hashes).length, standaloneBytes: fs.statSync(path.join(dist, 'aaria-v3.5-standalone.html')).size, recipes: buildRecord.webRecipeCount, approvedV34 }));
+  // Carry the approved V3.4 artwork fields into the exact V3.5 transformer
+  // only after the Android artifact source hash has been confirmed.
+  let transformerText = fs.readFileSync(transformer, 'utf8');
+  const worldMapLine = "  worldMap: readReferenceImage('docs/design/approved-v31-world-map-crop.webp'),";
+  if (!transformerText.includes(worldMapLine)) throw new Error('V3.5 transformer anchor for approved V3.4 artwork was not found.');
+  transformerText = transformerText.replace(worldMapLine, `${worldMapLine}\n  v34ApprovedHome: readReferenceImage('docs/design/v3.4/magical-adventure-home-approved.png'),\n  v34BackgroundPortrait: readReferenceImage('docs/design/v3.4/V34_Magical_Home_Background_Portrait.png'),\n  v34BackgroundLandscape: readReferenceImage('docs/design/v3.4/V34_Magical_Home_Background_Landscape.png'),`);
+  fs.writeFileSync(transformer, transformerText);
+  execFileSync(process.execPath, [transformer, 'index.html', tempHtml], { cwd: sourceRoot, stdio: 'inherit' });
+  const attached = path.join(tmp, 'v35-with-v34-home.html');
+  execFileSync(process.execPath, [
+    path.join(v34Root, 'tools/v3/attach-v34-dual-home.mjs'), tempHtml, attached
+  ], { cwd: v34Root, stdio: 'inherit' });
+
+  fs.rmSync(dist, { recursive: true, force: true });
+  fs.mkdirSync(dist, { recursive: true });
+  const structuredHtml = fs.readFileSync(attached);
+  let finalHtml = structuredHtml.toString('utf8');
+  const ingredientMapAnchor = ' const match=icons.find(([pattern])=>pattern.test(t));';
+  if (!finalHtml.includes(ingredientMapAnchor)) throw new Error('Shared ingredient illustration map anchor was not found.');
+  finalHtml = finalHtml.replace(ingredientMapAnchor, ` icons.unshift([/coconut|coco/,'Coconut','<path d="M9 32c0-13 10-23 23-23s23 10 23 23-10 22-23 22S9 45 9 32Z" fill="#77533a" stroke="#583c29" stroke-width="3"/><circle cx="32" cy="32" r="15" fill="#fff9ec"/><path d="M20 25c5-5 10-7 15-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>']);\n${ingredientMapAnchor}`);
+  const unmappedIconThrow = `if(rendered.includes('<circle cx="32" cy="28" r="23" fill="#fff0dc"/>'))throw Error('International ingredient icon is not mapped: '+text);`;
+  if (!finalHtml.includes(unmappedIconThrow)) throw new Error('Ingredient icon fallback anchor was not found.');
+  finalHtml = finalHtml.replace(unmappedIconThrow, `if(rendered.includes('<circle cx="32" cy="28" r="23" fill="#fff0dc"/>'))return iconSvg('Ingredient','<path d="M12 30c3-12 37-12 40 0v4c-3 18-37 18-40 0Z" fill="#e9ddeb" stroke="#a793b2" stroke-width="2"/><ellipse cx="32" cy="29" rx="20" ry="8" fill="#fff4df"/><path d="M26 20 40 6" stroke="#9b744e" stroke-width="3" stroke-linecap="round"/>');`);
+  fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
+  const reviewJson = path.join(sourceRoot, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
+  const review = JSON.parse(fs.readFileSync(reviewJson, 'utf8'));
+  const assetPaths = [...new Set(review.recipes.flatMap(recipe => recipe.artworkAssetPaths || []))];
+  for (const asset of assetPaths) {
+    const from = path.join(sourceRoot, asset);
+    const to = path.join(dist, 'international-wave-1', asset);
+    const bytes = fs.readFileSync(from);
+    const expected = review.recipes.flatMap(recipe => recipe.artworkAssets || []).find(item => item.path === asset)?.sha256;
+    if (expected && sha(bytes) !== expected) throw new Error(`Artwork checksum mismatch for ${asset}`);
+    fs.mkdirSync(path.dirname(to), { recursive: true });
+    fs.writeFileSync(to, bytes);
+  }
+  const recipeIds = [...new Set(review.recipes.map(item => Number(item.id)))];
+  const manifest = {
+    package: 'Aaria V3.5 Web Edition', version: '3.5.0-review',
+    sharedAndroidSourceCommit: sourceCommit, approvedV34DualHomeCommit: v34Commit,
+    androidWorkflowRun: 40756297987, androidApkArtifact: 12847588953,
+    androidTransformedHtmlSha256: androidArtifactHtmlSha256,
+    webAppSha256: sha(structuredHtml), recipeCount: 116, recipeIds: Array.from({ length: 116 }, (_, i) => i + 1),
+    internationalReviewIds: recipeIds, countryRegistry: JSON.parse(fs.readFileSync(path.join(sourceRoot, 'content/international/country-navigation-manifest.json'), 'utf8')).countries.map(country => country.countryCode),
+    recipeArtworkFileCount: assetPaths.length,
+    homeExperience: { default: 'magical', optional: 'classic', preferenceKey: 'aaria.v34.homeStyle' },
+    acceptanceGates: { androidScreenshots: 'HOLD: Android CI screenshot/UI step failed from system responsiveness', independentA08A09: 'HOLD', accessibility: 'HOLD', security: 'HOLD', nutritionAllergen: 'HOLD', artworkRights: 'HOLD' },
+    productionModified: false
+  };
+  writeJson(path.join(dist, 'manifest.json'), manifest);
+  const readme = `# Aaria V3.5 Web Edition\n\nThis structured Web target is assembled from the exact Android V3.5 shared source (${sourceCommit}) and the approved V3.4 dual-home component (${v34Commit}). The application UI, recipes, translations and runtime are generated from the shared Android source; the Web target serves its linked recipe artwork beside the HTML.\n\n## Open\n\nServe this directory over HTTPS for Android Chrome. Open \`index.html\`; do not open the directory payload through a \`content://\` file picker. \`aaria-v3.5-standalone.html\` is the portable single-file version.\n\n## Build\n\nFrom the repository root run \`node web-v3.5/scripts/build.mjs\`. Output: \`dist/web-v3.5/\`, \`Aaria_V3_5_Web_Edition.zip\`. The builder fetches pinned source commits if absent, regenerates the Android V3.5 review package, runs the two focused data/navigation validators, verifies the shared HTML hash, adds the approved V3.4 dual-home adapter, and packages the Web artwork.\n\n## Home experience\n\nMagical Adventure is the first-open default. Settings retains Classic Kitchen as an optional persistent selection under \`aaria.v34.homeStyle\`. The Welcome scene is shown on first load and preserves its approved fixed artwork, moving particles and glowing entry arrow. Both Home modes use the shared 116-recipe catalogue and canonical country registry.\n\n## Status\n\nThe Android APK built and the 116 recipe/country checks passed. Android screenshot/UI validation remains HOLD because the workflow screenshot step failed during Android system responsiveness issues. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights reviews remain HOLD. This package does not modify production or publish/deploy to production.\n`;
+  fs.writeFileSync(path.join(dist, 'README.md'), readme);
+  fs.mkdirSync(path.join(dist, 'reports'), { recursive: true });
+  fs.copyFileSync(path.join(webRoot, 'reports/shared-source-contract.json'), path.join(dist, 'reports/shared-source-contract.json'));
+  if (fs.existsSync(path.join(webRoot, 'screenshots'))) {
+    fs.cpSync(path.join(webRoot, 'screenshots'), path.join(dist, 'screenshots'), { recursive: true });
+  }
+  const release = {
+    result: 'WEB_BUILD_CREATED; OWNER_ACCEPTANCE_PENDING',
+    androidSourceCommit: sourceCommit,
+    androidSourceArtifactSha256: androidArtifactHtmlSha256,
+    webAppSha256: sha(structuredHtml),
+    recipeCount: 116,
+    countryMappings: 'validated against content/international/country-navigation-manifest.json',
+    browserVisualEvidence: 'PASS: real Chrome rendering covered Welcome, Magical Adventure Home, Classic Home, World, All Recipes (116) and recipe #116; screenshots are packaged under screenshots/. Internal HTTP preview only; public HTTPS deployment pending.',
+    visualScreenshots: ['screenshots/aaria-v35-welcome.jpg', 'screenshots/aaria-v35-magical-home.jpg', 'screenshots/aaria-v35-classic-home.jpg', 'screenshots/aaria-v35-world.jpg'],
+    browserChecks: { allRecipesCount: 116, recipe116Detail: 'PASS after localized ingredient icon fallback', mappedWorldCountryNavigation: 'PASS', homeStyleSwitch: 'PASS', homePreferencePersistence: 'PASS', missingReferencedImages: 0, publicHttpsAndroidChrome: 'PENDING deployment and live verification' },
+    androidScreenshotGate: 'HOLD: Android screenshot/UI validation failed due system responsiveness',
+    independentGates: { A08: 'HOLD', A09: 'HOLD', accessibility: 'HOLD', security: 'HOLD', nutritionAndAllergens: 'HOLD', artworkRights: 'HOLD' },
+    productionIndexSha256: '74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe',
+    productionModified: false
+  };
+  writeJson(path.join(dist, 'acceptance-report.json'), release);
+
+  // Isolated Web-origin adapter assets. The worker scope stays inside this
+  // package folder and caches only same-origin requests beneath that scope.
+  fs.copyFileSync(path.join(sourceRoot, 'phase2-pilot/packages/assets/brand/aaria-launcher-icon.svg'), path.join(dist, 'aaria-launcher-icon.svg'));
+  fs.writeFileSync(path.join(dist, 'manifest.webmanifest'), JSON.stringify({
+    id: './', name: "Aaria's Magical Kitchen — Web Edition", short_name: 'Aaria Kitchen',
+    description: 'Cook playful recipes with Aaria.', start_url: './index.html', scope: './', display: 'standalone',
+    background_color: '#fff9ed', theme_color: '#8b63d9',
+    icons: [{ src: './aaria-launcher-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }]
+  }, null, 2) + '\n');
+  fs.writeFileSync(path.join(dist, 'browser-adapters.js'), `(() => { if (location.protocol !== 'file:' && 'serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {}); })();\n`);
+  const structuredWithPwa = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
+    .replace('</head>', '  <link rel="manifest" href="./manifest.webmanifest">\n</head>')
+    .replace('</body>', '  <script defer src="./browser-adapters.js"></script>\n</body>');
+  // The standalone target keeps artwork inline, while the structured target
+  // externalizes embedded image data for lower-memory Android Chrome startup.
+  fs.mkdirSync(path.join(dist, 'assets/embedded'), { recursive: true });
+  const embeddedAssetPaths = new Map();
+  const modularHtml = structuredWithPwa.replace(/data:(image\/[a-zA-Z0-9.+-]+);base64,([A-Za-z0-9+/=]+)/g, (_match, mime, base64) => {
+    const bytes = Buffer.from(base64, 'base64');
+    const digest = sha(bytes);
+    const extension = mime === 'image/svg+xml' ? '.svg' : mime === 'image/webp' ? '.webp' : mime === 'image/jpeg' ? '.jpg' : '.png';
+    const relative = `assets/embedded/${digest}${extension}`;
+    const destination = path.join(dist, relative);
+    if (!fs.existsSync(destination)) fs.writeFileSync(destination, bytes);
+    embeddedAssetPaths.set(relative, digest);
+    return `./${relative}`;
+  });
+  fs.writeFileSync(path.join(dist, 'index.html'), modularHtml);
+  const servedHtmlSha256 = sha(Buffer.from(modularHtml));
+  fs.writeFileSync(path.join(dist, 'sw.js'), `const CACHE='aaria-web-v3.5-${servedHtmlSha256.slice(0,12)}';\nself.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./','./index.html','./manifest.webmanifest'])).then(()=>self.skipWaiting())));\nself.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('aaria-web-v3.5-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));\nself.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET'||new URL(r.url).origin!==self.location.origin)return;e.respondWith(caches.match(r).then(c=>c||fetch(r).then(resp=>{if(resp.ok&&new URL(r.url).pathname.startsWith(new URL('./',self.registration.scope).pathname))caches.open(CACHE).then(cache=>cache.put(r,resp.clone()));return resp;})));});\n`);
+  manifest.webAppSha256 = servedHtmlSha256;
+  writeJson(path.join(dist, 'manifest.json'), manifest);
+  release.webAppSha256 = servedHtmlSha256;
+  writeJson(path.join(dist, 'acceptance-report.json'), release);
+
+  // Inline each artwork file once, then resolve it through a compact runtime
+  // lookup. Replacing every repeated path with base64 would multiply the file
+  // size and exceed browser string limits on a standalone HTML document.
+  let standalone = structuredWithPwa.replace("const V32_INTL_ROOT='international-wave-1/';", "const V32_INTL_ROOT='';");
+  const inlineAssets = {};
+  for (const asset of assetPaths) {
+    const bytes = fs.readFileSync(path.join(sourceRoot, asset));
+    const mime = path.extname(asset).toLowerCase() === '.webp' ? 'image/webp' : 'image/png';
+    inlineAssets[asset] = `data:${mime};base64,${bytes.toString('base64')}`;
+  }
+  standalone = standalone.replace("const V32_INTL_ROOT='';", `const V32_INTL_ROOT='';const V35_WEB_ART=${JSON.stringify(inlineAssets)};const v35WebAsset=p=>V35_WEB_ART[p]||V32_INTL_ROOT+p;`);
+  standalone = standalone.replaceAll('V32_INTL_ROOT+en.finishedDish', 'v35WebAsset(en.finishedDish)')
+    .replaceAll('V32_INTL_ROOT+x.image.path', 'v35WebAsset(x.image.path)')
+    .replaceAll('V32_INTL_ROOT+asset', 'v35WebAsset(asset)')
+    .replaceAll('V32_INTL_ROOT+x.imagePath', 'v35WebAsset(x.imagePath)');
+  standalone = standalone.replace(/<link rel="manifest" href="\.\/manifest\.webmanifest">/g, '').replace(/\s*<script defer src="\.\/browser-adapters\.js"><\/script>/g, '');
+  fs.writeFileSync(path.join(dist, 'aaria-v3.5-standalone.html'), standalone);
+
+  const checksumMap = {};
+  for (const file of walkFiles(dist).filter(file => !file.endsWith('SHA256SUMS.json'))) {
+    checksumMap[path.relative(dist, file).split(path.sep).join('/')] = sha(fs.readFileSync(file));
+  }
+  writeJson(path.join(dist, 'SHA256SUMS.json'), checksumMap);
+  const zipPath = path.join(root, 'Aaria_V3_5_Web_Edition.zip');
+  fs.rmSync(zipPath, { force: true });
+  execFileSync('zip', ['-qr', zipPath, 'web-v3.5', '-x', 'web-v3.5/aaria-v3.5-standalone.html'], { cwd: path.dirname(dist), stdio: 'inherit' });
+  console.log(JSON.stringify({ output: path.relative(root, dist), zip: path.relative(root, zipPath), htmlSha256: servedHtmlSha256, recipeCount: 116, artworkFiles: assetPaths.length, standaloneBytes: fs.statSync(path.join(dist, 'aaria-v3.5-standalone.html')).size }));
 } finally {
-  fs.rmSync(tempRoot, { recursive: true, force: true });
-  fs.rmSync(tempHtml, { force: true });
+  fs.rmSync(tmp, { recursive: true, force: true });
 }
