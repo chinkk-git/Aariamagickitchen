@@ -16,6 +16,6 @@ The build generates `dist/web-v3.5/`, a portable standalone HTML file, and SHA-2
 
 ## Local preview
 
-Serve the repository root with a static HTTP server, then open `/web-v3.5/`. The service worker registers from this package directory and is scoped only to this package. The standalone HTML inlines CSS, JavaScript, and wave-one recipe art. Browser features that require a secure origin, including PWA installation, may be unavailable under `file://`.
+Serve the repository root with a static HTTP server, then open `/web-v3.5/` (or use the isolated HTTPS preview). The structured `index.html` depends on sibling CSS, JavaScript, and artwork files; opening that one file through Android's `content://` provider or `file://` does not load the package. The standalone HTML is the one-file option and inlines CSS, JavaScript, and wave-one recipe art. The service worker registers only from the package directory. Browser features that require a secure origin, including PWA installation, may be unavailable under `file://` or `content://`.
 
 The app retains the existing `aariaPrivateKitchenV4` storage key and existing data model; this packaging layer performs no user-data migration.

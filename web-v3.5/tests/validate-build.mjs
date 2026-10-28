@@ -51,6 +51,12 @@ for (const [id, country] of [[96, 'italy'], [99, 'china']]) {
   if (recipe.country !== country || !recipe.localeTranslations?.['pt-BR']?.steps?.length) fail(`Recipe #${id} is missing its canonical country or Portuguese steps`);
   const recipeFile = id === 96 ? '096-tomato-basil-pasta' : '099-vegetable-fried-rice';
   const base = path.join(web, 'international-wave-1', country, recipeFile, 'artwork');
+  const runtimeStart = runtime.indexOf('const V32_INTERNATIONAL_RECIPES=');
+  const runtimeItemStart = runtime.indexOf(`"id":${id},`, runtimeStart);
+  const runtimeItemEnd = runtime.indexOf('},{"id":', runtimeItemStart + 1);
+  const runtimeItem = runtime.slice(runtimeItemStart, runtimeItemEnd < 0 ? undefined : runtimeItemEnd);
+  const finishedPath = runtimeItem.match(/"finishedDish":"([^"]+)"/);
+  if (runtimeStart < 0 || runtimeItemStart < 0 || !finishedPath || !fs.existsSync(path.join(web, 'international-wave-1', finishedPath[1]))) fail(`Recipe #${id} runtime artwork path does not resolve inside the package`);
   for (const relative of ['finished-dish.png', ...Array.from({ length: 5 }, (_, i) => `steps/step-${String(i + 1).padStart(2, '0')}.png`)]) {
     if (!fs.existsSync(path.join(base, relative))) fail(`Missing #${id} artwork ${relative}`);
   }
@@ -61,6 +67,7 @@ for (const token of ['localStorage', 'aariaPrivateKitchenV4', 'capture="environm
 for (const token of ['home', 'world', 'settings', 'welcome']) {
   if (!runtime.toLowerCase().includes(token)) fail(`V3.4 runtime marker missing: ${token}`);
 }
+if (!runtime.includes('previewCountryIds={ITA:[96],CHN:[99]}') || !runtime.includes('See all 97 recipes') || !appScript.includes('Browse all 97 magical recipes')) fail('Web baseline country links or 97-recipe home count missing');
 if (!html.includes('./js/browser-adapters.js') || !read(path.join(web, 'js/browser-adapters.js')).includes("register('./sw.js', { scope: './' })")) fail('Package-local service worker registration missing');
 if (sha(path.join(root, 'index.html')) !== '74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe') fail('Protected production index changed');
 const head = execFileSync('git', ['rev-parse', 'main'], { cwd: root, encoding: 'utf8' }).trim();
@@ -70,6 +77,12 @@ if (fs.existsSync(standalonePath)) {
   const standalone = read(standalonePath);
   if (standalone.includes("const V32_INTL_ROOT='international-wave-1/'")) fail('Standalone build retains a relative wave-one asset root');
   if (/^\s*<script\b[^>]*\bsrc=/im.test(standalone) || /^\s*<link\b[^>]*\bhref=\"\.\//im.test(standalone)) fail('Standalone HTML contains an external package script or stylesheet');
+  for (const [id, country, slug] of [[96, 'italy', '096-tomato-basil-pasta'], [99, 'china', '099-vegetable-fried-rice']]) {
+    for (const relative of ['artwork/finished-dish.png', ...Array.from({ length: 5 }, (_, i) => `artwork/steps/step-${String(i + 1).padStart(2, '0')}.png`)]) {
+      const base64 = fs.readFileSync(path.join(web, 'international-wave-1', country, slug, relative)).toString('base64');
+      if (!standalone.includes(`data:image/png;base64,${base64}`)) fail(`Standalone HTML does not inline recipe #${id} artwork ${relative}`);
+    }
+  }
 }
 const report = {
   result: 'PASS (focused static validation)',
@@ -81,7 +94,9 @@ const report = {
   addedBaselineRecords: [{ id: 96, country: 'italy' }, { id: 99, country: 'china' }],
   sourceMarkers: ['localStorage v4 key', 'camera capture/file input', 'photo share API', 'hashchange/popstate handlers'],
   packageLocalServiceWorkerScope: './',
-  notVerified: ['visual browser interaction/screenshots; no browser executable available and cloud browser cannot reach local preview', 'independent accessibility/security/A08/A09/nutrition/artwork-rights approvals']
+  notVerified: ['physical Android Chrome verification (browser smoke evidence is captured in desktop Cloud Chrome)', 'independent accessibility/security/A08/A09/nutrition/allergen/artwork-rights approvals']
 };
+const smokePath = path.join(web, 'reports/browser-smoke.json');
+if (fs.existsSync(smokePath)) report.browserSmoke = JSON.parse(read(smokePath));
 fs.writeFileSync(path.join(web, 'reports/validation.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify(report, null, 2));

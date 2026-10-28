@@ -55,7 +55,37 @@ const menuScript = scriptBlocks.find(match => /id\s*=\s*["']scrolling-bottom-men
 const runtimeScript = scriptBlocks.find(match => /id\s*=\s*["']aaria-v3-layer["']/i.test(match[1]));
 if (!appScript || !menuScript || !runtimeScript) throw new Error('Expected app, bottom-menu, and V3.4 runtime scripts');
 const appOffset = appScript[2].indexOf('const RECIPES=');
-const afterRecipes = appScript[2].slice(appOffset + (recipeEnd - recipeStart));
+const recipeCount = fullCatalog.length;
+const updateRecipeCount = text => text
+  .replaceAll('Browse all 95 magical recipes', `Browse all ${recipeCount} magical recipes`)
+  .replaceAll('See all 95 recipes', `See all ${recipeCount} recipes`)
+  .replaceAll('See all 95 receitas', `See all ${recipeCount} receitas`)
+  .replaceAll('Ver todas as 95 receitas', `Ver todas as ${recipeCount} receitas`);
+const afterRecipes = updateRecipeCount(appScript[2].slice(appOffset + (recipeEnd - recipeStart)));
+const appCode = afterRecipes.replace(
+  "el.innerHTML=({home,week,library,recipe,stories,groceries,family,friends,rewards,settings:settingsPage,wheel})[view]();",
+  "const renderView=({home,week,library,recipe,stories,groceries,family,friends,rewards,settings:settingsPage,wheel})[view];if(typeof renderView!=='function')return;el.innerHTML=renderView();"
+);
+if (appCode === afterRecipes) throw new Error('Could not add safe deferred rendering for V3.4-only routes');
+const webWorldCatalogue = `function v33WorldCatalogue(){
+ const getLocalizedRecipe=(recipe,locale)=>{const pt=PT_RECIPES[recipe.id]||{};return {title:locale==='pt-BR'?(pt.title||''):recipe.title,description:locale==='pt-BR'?(pt.description||''):recipe.description,finishedDish:v33FinishedDishSource(recipe)}};
+ const routeRecipe=id=>{v33GlobeState=v33GlobeController?.getState?.()||v33GlobeState;openRecipe(id);return true};
+ const host=createWorldAdventureHost({canonicalRecipes:RECIPES,locale:state.language==='pt-BR'?'pt-BR':'en-GB',passportSnapshot:{worldStamps:state.worldStamps},getLocalizedRecipe,onOpenRecipe:routeRecipe,
+  onBack:scope=>{if(scope==='screen'){goto('home');return true}return false},onOpenPassport:()=>{v33ShowPassport();return true}});
+ // #096 Italy and #099 China belong to this 97-recipe Web foundation. Their
+ // manifest marks them READY_FOR_INTEGRATION, with independent reviews pending.
+ // Keep them navigable in this preview, visibly review-pending, and unstamped.
+ const previewCountryIds={ITA:[96],CHN:[99]},labels={ITA:{'en-GB':'Italy','pt-BR':'Itália'},CHN:{'en-GB':'China','pt-BR':'China'}};
+ return Object.freeze({...host,
+  getCountry(code){const key=String(code||'').toUpperCase(),base=host.getCountry(key),ids=previewCountryIds[key]||[];const extra=ids.map(id=>RECIPES.find(recipe=>Number(recipe.id)===id)).filter(Boolean).map(recipe=>{const localized=getLocalizedRecipe(recipe,host.locale);return {id:Number(recipe.id),country:key,title:localized.title,description:localized.description,canonical:true,finishedDish:localized.finishedDish}});if(!extra.length)return base;return Object.freeze({...base,available:true,reviewOnly:true,label:base.label||labels[key]?.[host.locale]||'',recipes:Object.freeze([...base.recipes,...extra])})},
+  openRecipe(id){const n=Number(id);if([96,99].includes(n))return routeRecipe(n)!==false;return host.openRecipe(id)}
+ });
+}`;
+let runtimeCode = runtimeScript[2].trimEnd();
+runtimeCode = runtimeCode.replace(/function v33WorldCatalogue\(\)\{[\s\S]*?\n\}\nfunction v33ShowPassport/, `${webWorldCatalogue}\nfunction v33ShowPassport`);
+if (!runtimeCode.includes('previewCountryIds={ITA:[96],CHN:[99]}')) throw new Error('Could not attach pinned Web country mappings to the approved V3.4 host');
+runtimeCode = runtimeCode.replace('v3InitProfiles();\nrender();', "v3InitProfiles();\nif(location.hash.startsWith('#aria/'))restoreAppRoute();else render();");
+if (!runtimeCode.includes("if(location.hash.startsWith('#aria/'))restoreAppRoute();else render();")) throw new Error('Could not defer deep-link rendering until the Web catalog is ready');
 
 fs.mkdirSync(path.join(outputDir, 'css'), { recursive: true });
 fs.mkdirSync(path.join(outputDir, 'js'), { recursive: true });
@@ -65,9 +95,9 @@ fs.writeFileSync(path.join(outputDir, 'css/v34-interface.css'), styleBlocks.slic
 fs.writeFileSync(path.join(outputDir, 'css/v34-runtime.css'), styleBlocks.slice(35).join('\n').replace(/^[\t ]+$/gm, '').trimEnd() + '\n');
 fs.writeFileSync(path.join(outputDir, 'data/recipes.json'), JSON.stringify(fullCatalog, null, 2) + '\n');
 fs.writeFileSync(path.join(outputDir, 'js/recipe-data.js'), `window.AARIA_RECIPES = ${JSON.stringify(recipes)};\n`);
-fs.writeFileSync(path.join(outputDir, 'js/app.js'), `const RECIPES = window.AARIA_RECIPES;\n${afterRecipes.trimEnd()}\n`);
+fs.writeFileSync(path.join(outputDir, 'js/app.js'), `const RECIPES = window.AARIA_RECIPES;\n${appCode.trimEnd()}\n`);
 fs.writeFileSync(path.join(outputDir, 'js/bottom-menu.js'), menuScript[2].trimEnd() + '\n');
-fs.writeFileSync(path.join(outputDir, 'js/v34-runtime.js'), runtimeScript[2].trimEnd() + '\n');
+fs.writeFileSync(path.join(outputDir, 'js/v34-runtime.js'), updateRecipeCount(runtimeCode) + '\n');
 
 let html = source;
 html = html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
@@ -79,6 +109,7 @@ html = html.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (full, attrs, bod
   return full;
 });
 html = html.replace('</head>', '  <link rel="stylesheet" href="./css/recipe-experience.css">\n  <link rel="stylesheet" href="./css/v34-interface.css">\n  <link rel="stylesheet" href="./css/v34-runtime.css">\n</head>');
+html = html.replace('all 95 recipes and the Monday–Sunday planner', `all ${recipeCount} recipes and the Monday–Sunday planner`);
 fs.writeFileSync(path.join(outputDir, 'index.html'), html);
 const sourceSha256 = crypto.createHash('sha256').update(source).digest('hex');
 fs.writeFileSync(path.join(outputDir, 'reports/source-baseline.json'), JSON.stringify({

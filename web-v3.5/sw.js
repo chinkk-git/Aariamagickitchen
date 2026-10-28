@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aaria-web-v3.5-2026-10-28';
+const CACHE_NAME = 'aaria-web-v3.5-2026-10-28-recovery1';
 const CORE_FILES = [
   './', './index.html', './manifest.webmanifest',
   './css/recipe-experience.css', './css/v34-interface.css', './css/v34-runtime.css',

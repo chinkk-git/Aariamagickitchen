@@ -63,7 +63,7 @@ try {
         return entry.isDirectory() ? walk(absolute) : [absolute];
       });
       for (const asset of walk(assetsRoot)) {
-        const rel = path.relative(dist, asset).split(path.sep).join('/');
+        const rel = path.relative(assetsRoot, asset).split(path.sep).join('/');
         const mime = rel.endsWith('.png') ? 'image/png' : rel.endsWith('.webp') ? 'image/webp' : 'application/octet-stream';
         const uri = `data:${mime};base64,${fs.readFileSync(asset).toString('base64')}`;
         js = js.replaceAll(rel, uri);

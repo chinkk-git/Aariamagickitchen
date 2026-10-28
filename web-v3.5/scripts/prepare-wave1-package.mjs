@@ -12,7 +12,10 @@ const recipes = ids.map(id => {
   const source = JSON.parse(fs.readFileSync(path.join(root, sourcePath, 'recipe.json'), 'utf8'));
   const en = source.renderer;
   const pt = en['pt-BR'];
-  const art = relative => path.posix.join(sourcePath, relative);
+  // Runtime paths are prefixed with `international-wave-1/`. Keep artwork
+  // relative to that package root; retaining the source repository's
+  // `content/international/countries/` prefix caused browser 404s.
+  const art = relative => path.posix.join(country, slug, relative);
   const locales = {};
   for (const [locale, content] of [['en-GB', en], ['pt-BR', pt]]) {
     locales[locale] = {
@@ -29,6 +32,11 @@ const recipes = ids.map(id => {
         name: item.name[locale], quantity: String(item.quantity), unit: item.unit
       })),
       equipment: source.equipmentItems.map(item => item.name[locale]),
+      equipmentItems: source.equipmentItems.map(item => ({
+        name: item.name[locale],
+        role: item.role,
+        roleDescription: item.roleDescription?.[locale] || item.roleDescription || item.role
+      })),
       steps: source.steps.map((step, index) => ({
         title: step.title[locale],
         instruction: step.instruction[locale],
