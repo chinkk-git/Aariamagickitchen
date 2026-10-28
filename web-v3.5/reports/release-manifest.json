@@ -1,0 +1,12 @@
+{
+  "name": "Aaria V3.5 Web Edition",
+  "status": "97-recipe foundation preview; final 116-recipe parity pending Android V3.5 acceptance",
+  "productionHead": "d38cefee4ab129eabc53f2a755a0eaf4487addcd",
+  "productionIndexSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+  "approvedV34Source": "4cbd0d3414556973e5790ee02a8232aa917bdd8a",
+  "wave1HandoffSource": "451ab0bf8a3ab1867cf004a113d3d8e6896ccf60",
+  "recipeCount": 97,
+  "productionDeployment": false,
+  "androidV35Source": "22dc0ef9ca0467feceb1d42de7f6d3c8d7cdab32",
+  "androidAcceptance": "not accepted; run 223 failed during Android WebView screenshot capture with Runtime.evaluate timeout; app failure not established"
+}

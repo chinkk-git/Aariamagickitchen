@@ -1,0 +1,29 @@
+{
+  "result": "PASS (focused static validation)",
+  "checkedAt": "2026-10-28",
+  "mainHead": "d38cefee4ab129eabc53f2a755a0eaf4487addcd",
+  "productionIndexSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+  "originalRecordsUnchanged": 95,
+  "webCatalogRecords": 97,
+  "addedBaselineRecords": [
+    {
+      "id": 96,
+      "country": "italy"
+    },
+    {
+      "id": 99,
+      "country": "china"
+    }
+  ],
+  "sourceMarkers": [
+    "localStorage v4 key",
+    "camera capture/file input",
+    "photo share API",
+    "hashchange/popstate handlers"
+  ],
+  "packageLocalServiceWorkerScope": "./",
+  "notVerified": [
+    "visual browser interaction/screenshots; no browser executable available and cloud browser cannot reach local preview",
+    "independent accessibility/security/A08/A09/nutrition/artwork-rights approvals"
+  ]
+}

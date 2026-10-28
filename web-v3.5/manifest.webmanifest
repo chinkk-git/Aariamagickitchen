@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "Aaria's Magical Kitchen — Web Edition",
+  "short_name": "Aaria Kitchen",
+  "description": "Cook playful recipes with Aaria.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff9ed",
+  "theme_color": "#8b63d9",
+  "icons": [
+    {
+      "src": "./assets/brand/aaria-launcher-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "source": "../../../../tmp/aaria-v34-5.html",
+  "productionSource": "repository-root/index.html",
+  "sourceSha256": "41fdf451bedb4d2be1a697486e7081254a6639e1cf2daf941bab1f439862808a",
+  "sourceRecipes": 95,
+  "addedPinnedRecipes": [
+    {
+      "id": 96,
+      "country": "italy"
+    },
+    {
+      "id": 99,
+      "country": "china"
+    }
+  ],
+  "totalRecipes": 97,
+  "uniqueIds": 97,
+  "ids": [
+    1,
+    99
+  ],
+  "stylesExtracted": 36,
+  "appScriptBytes": 24032248,
+  "generatedAt": "deterministic-build",
+  "productionHead": "d38cefee4ab129eabc53f2a755a0eaf4487addcd",
+  "productionIndexSha256": "74d9c0f8b0f8c8ec9115e58ff77f6cdc1607f73df45bfbb3d2d50039d86431fe",
+  "approvedV34Source": "4cbd0d3414556973e5790ee02a8232aa917bdd8a",
+  "approvedSourceBlobs": {
+    "tools/v3/runtime.js": "d43c929330bf9149d1579a7d8be75a7bdfceec1a",
+    "tools/v3/transform-production.mjs": "10e386e8bdb328b1b17105bfdfeac9dfc668db45",
+    "tools/v3/home-world-visual.css": "b2f4fd35775443859e39d9b3b4823dd4c6560077",
+    "tools/v3/world-adventure-globe/world-adventure-globe.js": "32691fa80fc734926a3c734f6ccca1274149401b",
+    "tools/v3/world-adventure-globe/world-adventure-globe.css": "52bcd13bab0ac9e3d6143f90d35d2827ba050798"
+  },
+  "wave1HandoffSource": "451ab0bf8a3ab1867cf004a113d3d8e6896ccf60",
+  "webRecipeCount": 97
+}
