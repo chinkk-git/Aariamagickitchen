@@ -68,6 +68,16 @@ function localized(value, locale) {
   return '';
 }
 
+// Country-list thumbnails may come from inline Web artwork or from packaged
+// Android/Web content assets. Keep the accepted URL forms local and explicit.
+export function normalizeWorldDishSource(source) {
+  const value = String(source || '').trim();
+  if (/^data:image\/(?:png|webp|jpeg|jpg|gif);base64,[A-Za-z0-9+/=]+$/i.test(value)) return value;
+  if (/^android-inline-art\/[a-f0-9]{64}\.(?:png|webp|jpeg|jpg|gif)$/i.test(value)) return value;
+  if (/^international-wave-1\/content\/international\/countries\/[a-z0-9-]+\/[0-9]{3}-[a-z0-9-]+\/artwork\/finished-dish\.(?:png|webp)$/i.test(value)) return value;
+  return '';
+}
+
 function immutableRecipeDescriptor(recipe, locale, country, getLocalizedRecipe) {
   const copy = typeof getLocalizedRecipe === 'function' ? getLocalizedRecipe(recipe, locale) : null;
   return Object.freeze({

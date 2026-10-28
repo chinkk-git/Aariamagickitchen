@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {createWorldAdventureHost,V35_COUNTRY_RECIPE_IDS} from './world-adventure-host.mjs';
+import {createWorldAdventureHost,normalizeWorldDishSource,V35_COUNTRY_RECIPE_IDS} from './world-adventure-host.mjs';
 
 const root=resolve(new URL('../..',import.meta.url).pathname);
 const read=p=>readFileSync(resolve(root,p),'utf8');
@@ -16,6 +16,12 @@ assert.deepEqual(V35_COUNTRY_RECIPE_IDS,idsByCountry,'runtime map must match the
 const allMapped=Object.values(idsByCountry).flat();
 assert.equal(new Set(allMapped).size,allMapped.length,'country map cannot duplicate recipe IDs');
 assert.deepEqual(allMapped.filter(id=>id>=96).sort((a,b)=>a-b),Array.from({length:21},(_,i)=>96+i),'existing + expansion recipes #096–116 must all map once');
+assert.equal(normalizeWorldDishSource('international-wave-1/content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png'),'international-wave-1/content/international/countries/china/099-vegetable-fried-rice/artwork/finished-dish.png','China country thumbnail must retain its packaged image path');
+assert.equal(normalizeWorldDishSource('international-wave-1/content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/finished-dish.png'),'international-wave-1/content/international/countries/vietnam/116-air-fryer-banana-coconut-bites/artwork/finished-dish.png','Vietnam country thumbnail must retain its packaged image path');
+assert.equal(normalizeWorldDishSource(`android-inline-art/${'a'.repeat(64)}.webp`),`android-inline-art/${'a'.repeat(64)}.webp`,'externalized Android recipe thumbnail must remain visible');
+assert.equal(normalizeWorldDishSource('data:image/webp;base64,AAAA'),'data:image/webp;base64,AAAA','inline Web recipe thumbnail must remain supported');
+assert.equal(normalizeWorldDishSource('https://example.invalid/dish.png'),'','remote artwork must not be loaded into country lists');
+assert.equal(normalizeWorldDishSource('international-wave-1/../../secret.png'),'','path traversal must not be accepted as artwork');
 const source=read('index.html'),base=JSON.parse(source.match(/const RECIPES=(\[.*?\]);/s)?.[1]||'null');
 assert.equal(base.length,95,'the original app catalogue baseline must remain 95 recipes');
 assert.equal(new Set(base.map(r=>Number(r.id))).size,95,'the original recipe IDs must remain unique');
