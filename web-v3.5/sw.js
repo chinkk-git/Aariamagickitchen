@@ -1,24 +1,5 @@
-const CACHE_NAME = 'aaria-web-v3.5-2026-10-28-recovery1';
-const CORE_FILES = [
-  './', './index.html', './manifest.webmanifest',
-  './css/recipe-experience.css', './css/v34-interface.css', './css/v34-runtime.css',
-  './js/recipe-data.js', './js/app.js', './js/bottom-menu.js', './js/v34-runtime.js',
-  './data/recipes.json', './assets/brand/aaria-launcher-icon.svg', './assets/characters/aaria.jpg'
-];
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_FILES)).then(() => self.skipWaiting()));
-});
-self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('aaria-web-v3.5-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim()));
-});
-self.addEventListener('fetch', event => {
-  const request = event.request;
-  if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
-  event.respondWith(caches.match(request).then(cached => cached || fetch(request).then(response => {
-    if (response.ok && new URL(request.url).pathname.startsWith(new URL('./', self.registration.scope).pathname)) {
-      const copy = response.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
-    }
-    return response;
-  })));
-});
+const CACHE_NAME = 'aaria-web-v3.5-shell-v2';
+const CORE_FILES = ['./','./index.html','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];
+self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_FILES)).then(() => self.skipWaiting())));
+self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('aaria-web-v3.5-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())));
+self.addEventListener('fetch', event => { const request = event.request, url = new URL(request.url); if (request.method !== 'GET' || url.origin !== self.location.origin) return; event.respondWith(fetch(new Request(request, {cache:'no-store'})).catch(async () => (await caches.match(request)) || (request.mode === 'navigate' ? await caches.match('./index.html') : Response.error()))); });

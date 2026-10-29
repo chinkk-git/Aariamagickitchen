@@ -229,7 +229,7 @@ try {
     productionModified: false
   };
   writeJson(path.join(dist, 'manifest.json'), manifest);
-  const readme = `# Aaria V3.5 Web Edition\n\nThis structured Web target is assembled from Android V3.5 source (${sourceCommit}) and the approved V3.4 Welcome/Magical Adventure component (${v34Commit}). The UI, recipes, translations, country registry and runtime come from shared Android source; the Web target serves recipe artwork beside the HTML.\n\n## Open\n\nServe this directory over HTTPS for Android Chrome. Open \`index.html\`; do not open the directory payload through a \`content://\` file picker. \`aaria-v3.5-standalone.html\` is the portable single-file version.\n\n## Home experience\n\nMagical Adventure is the only active Home. The approved Welcome appears before Home, and its glowing arrow opens the adventure. Classic Home code/assets remain preserved but inaccessible. Legacy Classic preferences are ignored without deleting them. Settings remains available with no Home selector. All 116 recipes and canonical country mappings are included.\n\n## Status\n\nBuild and focused artwork package checks pass: 18 India recipe thumbnails, 21 international finished-dish images, and 224 locale ingredient-image references (112 unique files) resolve and are packaged. Android CI-LITE run 40776773336 failed Activity/WebView readiness; screenshot capture is not an acceptance gate. Interactive Android Chrome visual acceptance remains pending. Seven original ingredient names and 132 ingredient entries in draft recipes #111–116 have no dedicated source artwork; existing approved fallback behavior is preserved, and no new art was invented. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights gates remain NOT VERIFIED. Production GitHub Pages is unchanged.\n`;
+  const readme = `# Aaria V3.5 Web Edition\n\nThis structured Web target is assembled from Android V3.5 source (${sourceCommit}) and the approved V3.4 Welcome/Magical Adventure component (${v34Commit}). The UI, recipes, translations, country registry and runtime come from shared Android source; the Web target serves recipe artwork beside the HTML.\n\n## Open\n\nInstall on Android with Chrome's Install app/Add to Home screen action. On iPhone or iPad, open the HTTPS URL in Safari and choose Share → Add to Home Screen; the icon launches the same Welcome-first Web Edition. Open \`index.html\`; do not open the directory payload through a \`content://\` file picker. \`aaria-v3.5-standalone.html\` is the portable single-file version.\n\n## Home experience\n\nMagical Adventure is the only active Home. The approved Welcome appears before Home, and its glowing arrow opens the adventure. Classic Home code/assets remain preserved but inaccessible. Legacy Classic preferences are ignored without deleting them. Settings remains available with no Home selector. All 116 recipes and canonical country mappings are included.\n\n## Status\n\nBuild and focused artwork package checks pass: 18 India recipe thumbnails, 21 international finished-dish images, and 224 locale ingredient-image references (112 unique files) resolve and are packaged. Android CI-LITE run 40776773336 failed Activity/WebView readiness; screenshot capture is not an acceptance gate. Interactive Android Chrome visual acceptance remains pending. Seven original ingredient names and 132 ingredient entries in draft recipes #111–116 have no dedicated source artwork; existing approved fallback behavior is preserved, and no new art was invented. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights gates remain NOT VERIFIED. Production GitHub Pages is unchanged.\n`;
   fs.writeFileSync(path.join(dist, 'README.md'), readme);
   fs.mkdirSync(path.join(dist, 'reports'), { recursive: true });
   const countryNavigationManifest = JSON.parse(fs.readFileSync(path.join(sourceRoot, 'content/international/country-navigation-manifest.json'), 'utf8'));
@@ -278,15 +278,34 @@ try {
   // Isolated Web-origin adapter assets. The worker scope stays inside this
   // package folder and caches only same-origin requests beneath that scope.
   fs.copyFileSync(path.join(sourceRoot, 'phase2-pilot/packages/assets/brand/aaria-launcher-icon.svg'), path.join(dist, 'aaria-launcher-icon.svg'));
+  const pwaIconFiles = ['aaria-pwa-icon-192.png','aaria-pwa-icon-512.png','aaria-pwa-icon-maskable-512.png','aaria-apple-touch-icon-180.png','aaria-apple-touch-icon-167.png','aaria-apple-touch-icon-152.png','aaria-apple-touch-icon-120.png','aaria-favicon-32.png'];
+  for (const icon of pwaIconFiles) fs.copyFileSync(path.join(sourceRoot, 'phase2-pilot/packages/assets/brand', icon), path.join(dist, icon));
   fs.writeFileSync(path.join(dist, 'manifest.webmanifest'), JSON.stringify({
-    id: './', name: "Aaria's Magical Kitchen — Web Edition", short_name: 'Aaria Kitchen',
+    id: './', name: "Aaria's Magical Kitchen", short_name: 'Aaria',
     description: 'Cook playful recipes with Aaria.', start_url: './index.html', scope: './', display: 'standalone',
     background_color: '#fff9ed', theme_color: '#8b63d9',
-    icons: [{ src: './aaria-launcher-icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }]
+    icons: [
+      { src: './aaria-pwa-icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: './aaria-pwa-icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: './aaria-pwa-icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+    ]
   }, null, 2) + '\n');
   fs.writeFileSync(path.join(dist, 'browser-adapters.js'), `(() => { if (location.protocol !== 'file:' && 'serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {}); })();\n`);
+  const pwaHeadTags = [
+    '  <link rel="manifest" href="./manifest.webmanifest">',
+    '  <link rel="icon" type="image/png" sizes="32x32" href="./aaria-favicon-32.png">',
+    '  <link rel="apple-touch-icon" sizes="180x180" href="./aaria-apple-touch-icon-180.png">',
+    '  <link rel="apple-touch-icon" sizes="167x167" href="./aaria-apple-touch-icon-167.png">',
+    '  <link rel="apple-touch-icon" sizes="152x152" href="./aaria-apple-touch-icon-152.png">',
+    '  <link rel="apple-touch-icon" sizes="120x120" href="./aaria-apple-touch-icon-120.png">',
+    '  <meta name="theme-color" content="#8b63d9">',
+    '  <meta name="mobile-web-app-capable" content="yes">',
+    '  <meta name="apple-mobile-web-app-capable" content="yes">',
+    '  <meta name="apple-mobile-web-app-status-bar-style" content="default">',
+    '  <meta name="apple-mobile-web-app-title" content="Aaria">'
+  ].join('\n');
   const structuredWithPwa = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
-    .replace('</head>', '  <link rel="manifest" href="./manifest.webmanifest">\n</head>')
+    .replace('</head>', pwaHeadTags + '\n</head>')
     .replace('</body>', '  <script defer src="./browser-adapters.js"></script>\n</body>');
   // The standalone target keeps artwork inline, while the structured target
   // externalizes embedded image data for lower-memory Android Chrome startup.
@@ -307,7 +326,24 @@ try {
   }
   fs.writeFileSync(path.join(dist, 'index.html'), modularHtml);
   const servedHtmlSha256 = sha(Buffer.from(modularHtml));
-  fs.writeFileSync(path.join(dist, 'sw.js'), `const CACHE='aaria-web-v3.5-${servedHtmlSha256.slice(0,12)}';\nself.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./','./index.html','./manifest.webmanifest'])).then(()=>self.skipWaiting())));\nself.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('aaria-web-v3.5-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));\nself.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET'||new URL(r.url).origin!==self.location.origin)return;e.respondWith(caches.match(r).then(c=>c||fetch(r).then(resp=>{if(resp.ok&&new URL(r.url).pathname.startsWith(new URL('./',self.registration.scope).pathname))caches.open(CACHE).then(cache=>cache.put(r,resp.clone()));return resp;})));});\n`);
+  const pwaCacheRevision = sha(Buffer.concat([Buffer.from(servedHtmlSha256), ...pwaIconFiles.map(icon => fs.readFileSync(path.join(dist, icon)))] )).slice(0, 12);
+  const serviceWorkerSource = [
+    "const CACHE_NAME = 'aaria-web-v3.5-" + pwaCacheRevision + "';",
+    "const CORE_FILES = ['./','./index.html','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
+    "self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_FILES)).then(() => self.skipWaiting())));",
+    "self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('aaria-web-v3.5-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())));",
+    "self.addEventListener('fetch', event => { const request = event.request, url = new URL(request.url); if (request.method !== 'GET' || url.origin !== self.location.origin) return; event.respondWith(fetch(new Request(request, {cache:'no-store'})).catch(async () => (await caches.match(request)) || (request.mode === 'navigate' ? await caches.match('./index.html') : Response.error())); });"
+  ].join('\n') + '\n';
+  fs.writeFileSync(path.join(dist, 'sw.js'), serviceWorkerSource);
+  const generatedPwaManifest = JSON.parse(fs.readFileSync(path.join(dist, 'manifest.webmanifest'), 'utf8'));
+  if (generatedPwaManifest.name !== "Aaria's Magical Kitchen" || generatedPwaManifest.short_name !== 'Aaria' || generatedPwaManifest.display !== 'standalone' || generatedPwaManifest.start_url !== './index.html' || generatedPwaManifest.scope !== './') throw new Error('PWA manifest identity, launch or scope is invalid.');
+  const iconSizes = [['aaria-pwa-icon-192.png',192],['aaria-pwa-icon-512.png',512],['aaria-pwa-icon-maskable-512.png',512],['aaria-apple-touch-icon-180.png',180],['aaria-apple-touch-icon-167.png',167],['aaria-apple-touch-icon-152.png',152],['aaria-apple-touch-icon-120.png',120],['aaria-favicon-32.png',32]];
+  for (const [name,size] of iconSizes) { const png=fs.readFileSync(path.join(dist,name)); if (png.toString('hex',0,8)!=='89504e470d0a1a0a' || png.readUInt32BE(16)!==size || png.readUInt32BE(20)!==size) throw new Error('PWA icon missing or has incorrect PNG dimensions: '+name); }
+  for (const icon of generatedPwaManifest.icons) if (!fs.existsSync(path.join(dist,icon.src.slice(2)))) throw new Error('Manifest icon is not packaged: '+icon.src);
+  for (const tag of ['apple-mobile-web-app-capable','apple-mobile-web-app-status-bar-style','apple-mobile-web-app-title','aaria-apple-touch-icon-180.png','aaria-pwa-icon-192.png']) if (!structuredWithPwa.includes(tag)) throw new Error('PWA HTML metadata missing: '+tag);
+  if (!modularHtml.toLowerCase().includes('welcome')) throw new Error('Web app entry must retain its Welcome screen.');
+  if (serviceWorkerSource.includes('cache.put(')) throw new Error('Service worker must not persist dynamic requests or photos.');
+
   manifest.webAppSha256 = servedHtmlSha256;
   writeJson(path.join(dist, 'manifest.json'), manifest);
   release.webAppSha256 = servedHtmlSha256;
@@ -323,7 +359,7 @@ try {
     const mime = path.extname(asset).toLowerCase() === '.webp' ? 'image/webp' : 'image/png';
     inlineAssets[asset] = `data:${mime};base64,${bytes.toString('base64')}`;
   }
-  standalone = standalone.replace("const V32_INTL_ROOT='';", `const V32_INTL_ROOT='';const V35_WEB_ART=${JSON.stringify(inlineAssets)};const v35WebAsset=p=>V35_WEB_ART[p]||V32_INTL_ROOT+p;`);
+  standalone = standalone.replace(/<link rel="manifest" href="\.\/manifest\.webmanifest">/g, '').replace(/<link rel="(?:icon|apple-touch-icon)"[^>]*>/g, '').replace(/\s*<script defer src="\.\/browser-adapters\.js"><\/script>/g, '');
   standalone = standalone.replaceAll('V32_INTL_ROOT+en.finishedDish', 'v35WebAsset(en.finishedDish)')
     .replaceAll('V32_INTL_ROOT+x.image.path', 'v35WebAsset(x.image.path)')
     .replaceAll('V32_INTL_ROOT+asset', 'v35WebAsset(asset)')
