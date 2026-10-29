@@ -126,7 +126,7 @@
 .fw-world::before{content:"";position:absolute;z-index:0;inset:-16px;background-image:url("./food-wonderland-portrait.webp");background-size:cover;background-position:center;filter:blur(14px) brightness(.72);transform:scale(1.04)}
 .fw-scene-art{position:absolute;z-index:1;left:50%;top:50%;width:min(100vw,calc(100dvh * .7244));height:min(100dvh,calc(100vw * 1.3809));margin:0;transform:translate(-50%,-50%)}
 .fw-scene-art img{display:block;width:100%;height:100%;margin:0;object-fit:contain;user-select:none;-webkit-user-drag:none}
-.fw-atmosphere,.fw-hotspots{position:absolute;z-index:4;left:50%;top:50%;width:min(100vw,calc(100dvh * .7244));height:min(100dvh,calc(100vw * 1.3809));inset:auto;transform:translate(-50%,-50%);pointer-events:none}
+.fw-atmosphere,.fw-hotspots{position:absolute;z-index:4;width:min(100vw,calc(100dvh * .7244));height:min(100dvh,calc(100vw * 1.3809));inset:auto;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
 .fw-atmosphere{z-index:5;overflow:hidden}
 .fw-hotspots{z-index:20}
 .fw-globe-frame.v34-hero-globe{left:39%;top:8%;width:22%;height:auto;aspect-ratio:1;border-radius:50%;pointer-events:none}
