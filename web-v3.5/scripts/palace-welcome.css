@@ -3,13 +3,8 @@
 .v35-welcome-root{position:fixed;z-index:2147483000;inset:0;width:100%;height:var(--v35-viewport-height,100dvh);min-height:100svh;overflow:hidden;background:#27113b;color:#fff7dc;overscroll-behavior:none;isolation:isolate;touch-action:manipulation}
 .v35-welcome-stage{position:absolute;inset:0;overflow:hidden;perspective:1500px;transform-style:preserve-3d;transform:scale(1);transform-origin:50% 53%;transition:transform .92s cubic-bezier(.2,.68,.2,1);will-change:transform}
 .v35-welcome-picture,.v35-welcome-picture img{position:absolute;inset:0;display:block;width:100%;height:100%}
-.v35-welcome-picture img,.v35-door-panel img{object-fit:cover;object-position:40% center;user-select:none;-webkit-user-drag:none}
-.v35-doorway,.v35-door-panel{position:absolute;inset:0;opacity:0;pointer-events:none}
-.v35-doorway{z-index:1;background:radial-gradient(ellipse at 50% 54%,#fff9c8 0%,#ffd76e 22%,#f2a53f 45%,#7b2e7d 76%,#1e0d32 100%);filter:drop-shadow(0 0 18px #ffe58e);transition:opacity .24s ease}
-.v35-door-panel{z-index:2;clip-path:polygon(50% 35%,28% 73%,50% 73%);transform-style:preserve-3d;backface-visibility:hidden;transition:transform .92s cubic-bezier(.2,.72,.18,1),opacity .18s linear;will-change:transform}
-.v35-door-panel picture,.v35-door-panel img{position:absolute;inset:0;display:block;width:100%;height:100%}
-.v35-door-left{transform-origin:28% 55%;transform:rotateY(0deg)}
-.v35-door-right{transform-origin:72% 55%;transform:rotateY(0deg)}
+.v35-welcome-picture img{object-fit:cover;object-position:40% center;user-select:none;-webkit-user-drag:none}
+.v35-doorway{position:absolute;z-index:1;left:50%;top:54%;width:min(10vw,90px);height:min(66vh,700px);opacity:0;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%) scaleX(.02);transform-origin:center;will-change:transform,opacity;background:radial-gradient(ellipse,#fff 0%,#fff9c8 20%,#ffd76e 42%,#f2a53f 62%,#7b2e7d 78%,transparent 100%);filter:drop-shadow(0 0 20px #ffe58e)}
 .v35-handle-glow,.v35-seam-glow{position:absolute;z-index:3;opacity:0;pointer-events:none;transition:opacity .2s ease;mix-blend-mode:screen}
 .v35-handle-glow{top:58%;width:min(7vw,7vh,62px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff 0 9%,#fff6ae 18%,#ffb92e66 40%,transparent 72%);filter:drop-shadow(0 0 15px #ffe69a)}
 .v35-handle-left{left:calc(50% - min(4vw,4vh,32px))}
@@ -35,9 +30,7 @@
 .v35-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .v35-legacy-bridge[hidden]{display:none!important}
 .v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow{opacity:1;animation:v35-unlock-glow .72s ease-in-out infinite alternate}
-.v35-welcome-root.v35-door-active .v35-doorway,.v35-welcome-root.v35-door-active .v35-door-panel{opacity:1}
-.v35-welcome-root.v35-doors-opening .v35-door-left{transform:rotateY(-76deg)}
-.v35-welcome-root.v35-doors-opening .v35-door-right{transform:rotateY(76deg)}
+.v35-welcome-root.v35-door-active .v35-doorway{opacity:1}
 .v35-welcome-root.v35-is-zooming .v35-welcome-stage{transform:scale(1.48);transform-origin:50% 54%}
 .v35-welcome-root.v35-is-zooming .v35-doorway{filter:brightness(1.4) drop-shadow(0 0 28px #fff1a0)}
 .v35-welcome-root.v35-is-blasting .v35-blast{animation:v35-golden-burst .98s cubic-bezier(.12,.68,.16,1) forwards}
@@ -47,5 +40,6 @@
 @keyframes v35-rays-bloom{0%{opacity:0;transform:scale(.04) rotate(-15deg)}40%{opacity:.95}100%{opacity:.56;transform:scale(1.2) rotate(15deg)}}
 @keyframes v35-spark-flight{0%{opacity:0;transform:translate(0,0) scale(.22)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.04)}}
 @keyframes v35-spark-drift{to{transform:translate(14px,-26px) scale(.45);opacity:.22}}
-@media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img,.v35-door-panel img{object-position:38% center}.v35-entrance{left:57%;top:82%;width:24%;height:12%}.v35-handle-glow{top:55%}.v35-seam-glow{top:28%;height:34%}}
-@media(prefers-reduced-motion:reduce){.v35-welcome-stage,.v35-door-panel,.v35-doorway,.v35-transition-cover{transition-duration:.12s!important}.v35-spark,.v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow,.v35-welcome-root.v35-is-blasting .v35-blast,.v35-welcome-root.v35-is-blasting .v35-blast-rays,.v35-blast-spark{animation-duration:.12s!important}}
+@media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-entrance{left:57%;top:82%;width:24%;height:12%}.v35-handle-glow{top:55%}.v35-seam-glow{top:28%;height:34%}}
+@media(orientation:portrait){.v35-doorway{width:min(14vw,82px);height:min(50vh,600px);top:55%}}
+@media(prefers-reduced-motion:reduce){.v35-welcome-stage,.v35-doorway,.v35-transition-cover{transition-duration:.12s!important}.v35-spark,.v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow,.v35-welcome-root.v35-is-blasting .v35-blast,.v35-welcome-root.v35-is-blasting .v35-blast-rays,.v35-blast-spark{animation-duration:.12s!important}}
