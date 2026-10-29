@@ -1,14 +1,14 @@
 #v34-welcome-boot{padding:0!important;background:#27113b!important}
 #v34-welcome-boot-frame{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;aspect-ratio:auto!important;border-radius:0!important;background-image:url("./palace-welcome-portrait.webp")!important;background-size:cover!important;background-position:40% center!important;box-shadow:none!important}
 .v35-welcome-root{position:fixed;z-index:2147483000;inset:0;width:100%;height:var(--v35-viewport-height,100dvh);min-height:100svh;overflow:hidden;background:#27113b;color:#fff7dc;overscroll-behavior:none;isolation:isolate;touch-action:manipulation}
-.v35-welcome-stage{position:absolute;inset:0;overflow:hidden;transform:scale(1);transform-origin:50% 53%;transition:transform .7s cubic-bezier(.2,.68,.2,1);will-change:transform}
+.v35-welcome-stage{position:absolute;inset:0;overflow:hidden;transform:scale(1);transform-origin:50% 53%;transition:transform .68s cubic-bezier(.22,.72,.2,1);will-change:transform}
 .v35-welcome-picture,.v35-welcome-picture img{position:absolute;inset:0;display:block;width:100%;height:100%}
 .v35-welcome-picture img{object-fit:cover;object-position:40% center;user-select:none;-webkit-user-drag:none}
-.v35-handle-glow,.v35-seam-glow{position:absolute;z-index:3;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .65s cubic-bezier(.2,.68,.2,1),filter .28s ease;mix-blend-mode:screen}
+.v35-handle-glow,.v35-seam-glow{position:absolute;z-index:3;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .58s cubic-bezier(.2,.68,.2,1),filter .28s ease;mix-blend-mode:screen}
 .v35-handle-glow{top:58%;width:min(7vw,7vh,62px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff 0 9%,#fff6ae 18%,#ffb92e66 40%,transparent 72%);filter:drop-shadow(0 0 15px #ffe69a)}
 .v35-handle-left{left:calc(50% - min(4vw,4vh,32px))}
 .v35-handle-right{left:calc(50% + min(1vw,1vh,9px))}
-.v35-seam-glow{left:50%;top:37%;width:min(3vw,3vh,28px);height:30%;transform:translateX(-50%);background:linear-gradient(180deg,transparent,#fffdf0 18%,#fff3bd 44%,#ffd66e 58%,#fff7d5 82%,transparent);filter:blur(6px) drop-shadow(0 0 18px #ffe8a0)}
+.v35-seam-glow{left:50%;top:37%;width:min(3vw,3vh,28px);height:30%;transform:translateX(-50%) scaleX(.12);background:linear-gradient(180deg,transparent 0%,#fffdf0 18%,#fff5d1 45%,#ffe59c 58%,#fff9e7 82%,transparent 100%);filter:blur(6px) drop-shadow(0 0 18px #ffe8a0)}
 .v35-welcome-controls{position:absolute;z-index:8;top:max(10px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));display:flex;align-items:center;gap:8px}
 .v35-welcome-controls button{min-height:44px;border:1.5px solid #ffe9b0;border-radius:999px;background:#51236dcc;color:#fff7e3;font:800 16px/1 system-ui,sans-serif;padding:0 15px;box-shadow:0 3px 12px #26103977,0 0 14px #ffe39444;backdrop-filter:blur(8px);cursor:pointer}
 .v35-welcome-controls .v35-sound-toggle{width:46px;padding:0;font-size:21px}
@@ -18,27 +18,28 @@
 .v35-welcome-root:not(.v35-keyboard-nav) .v35-entrance:focus-visible{outline:none!important;box-shadow:none!important}
 .v35-entrance:active{background:transparent;box-shadow:none}
 .v35-sparkles{position:absolute;z-index:5;inset:0;pointer-events:none;overflow:hidden}
-.v35-spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff8c9;box-shadow:0 0 11px 4px #ffdb70;opacity:.72;animation:v35-spark-drift var(--spark-duration) ease-in-out var(--spark-delay) infinite alternate}
-.v35-blast{position:absolute;z-index:10;inset:-55%;opacity:0;transform:scale(.015);transform-origin:50% 52%;pointer-events:none;background:radial-gradient(circle at 50% 52%,#fff 0%,#fffef4 20%,#fff2c0 40%,#ffda7c 61%,#f4bd5d 80%,#d99c40 100%)}
-.v35-blast-rays{position:absolute;inset:-25%;opacity:0;transform:scale(.04);background:repeating-conic-gradient(from 0deg at 50% 52%,#fff8e0a0 0deg 2deg,#ffd36b55 3deg 4deg,transparent 5deg 14deg);mask-image:radial-gradient(ellipse at 50% 52%,#000 0 14%,#0000 69%);animation:v35-rays-bloom .56s cubic-bezier(.14,.74,.2,1) forwards}
+.v35-spark{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff9dc;box-shadow:0 0 8px 3px #ffdfa066;opacity:.52;animation:v35-spark-drift var(--spark-duration) ease-in-out var(--spark-delay) infinite alternate}
+.v35-blast{position:absolute;z-index:10;inset:-55%;opacity:0;transform:scale(.015);transform-origin:50% 52%;pointer-events:none;background:radial-gradient(ellipse at 50% 52%,#fff 0%,#fffef8 8%,#fff7df 20%,#ffe7b2 39%,#f5cc82 57%,#dda956 76%,#986027 100%)}
+.v35-blast::before{content:"";position:absolute;inset:0;opacity:.42;background:radial-gradient(circle at 50% 52%,transparent 0 22%,#fff9e266 22.3% 22.7%,transparent 23% 40%,#fff2ce44 40.3% 40.6%,transparent 41%),radial-gradient(ellipse at 50% 52%,#fff7df22,transparent 58%);mix-blend-mode:screen}
+.v35-blast::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 52%,transparent 18%,#fff5d21c 45%,#61330d38 100%);mix-blend-mode:multiply}
+.v35-blast-rays{position:absolute;inset:-25%;opacity:0;transform:scale(.04);background:repeating-conic-gradient(from 8deg at 50% 52%,#fff7dc12 0deg 3deg,transparent 3deg 24deg);filter:blur(7px);mask-image:radial-gradient(ellipse at 50% 52%,#000 0 13%,#0000 70%);animation:v35-rays-bloom .52s cubic-bezier(.14,.74,.2,1) forwards}
 .v35-blast-sparks{position:absolute;inset:0}
-.v35-blast-spark{position:absolute;left:50%;top:52%;width:var(--size);height:var(--size);border-radius:50%;opacity:0;background:#fffde3;box-shadow:0 0 8px 3px #fff0a8,0 0 20px 8px #ffb83e;animation:v35-spark-flight .82s cubic-bezier(.12,.62,.18,1) var(--delay) forwards}
-.v35-blast-spark::after{content:"";position:absolute;top:50%;left:50%;width:24px;height:2px;transform:translate(-50%,-50%) rotate(38deg);background:linear-gradient(90deg,#fff,transparent);filter:drop-shadow(0 0 4px #fff1a8)}
-.v35-transition-cover{position:fixed;z-index:2147483646;inset:0;opacity:1;background:radial-gradient(circle at 50% 52%,#fff 0%,#fff9d0 20%,#ffe17a 46%,#ef9c3e 72%,#f7d987 100%);transition:opacity .72s ease-out;pointer-events:none}
+.v35-blast-spark{position:absolute;left:50%;top:52%;width:var(--size);height:var(--size);border-radius:50%;opacity:0;background:#fffdf2;box-shadow:0 0 10px 4px #fff1b766,0 0 24px 9px #f4c76a55;animation:v35-spark-flight .68s cubic-bezier(.16,.68,.25,1) var(--delay) forwards}
+.v35-transition-cover{position:fixed;z-index:2147483646;inset:0;opacity:1;background:radial-gradient(ellipse at 50% 52%,#fff 0%,#fffef8 11%,#fff6df 28%,#ffe5b0 48%,#e8bd75 74%,#805326 100%);transition:opacity .58s ease-out;pointer-events:none}
 .v35-transition-cover.v35-fade-away{opacity:0}
 .v35-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .v35-legacy-bridge[hidden]{display:none!important}
-.v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow{opacity:1;animation:v35-unlock-glow .72s ease-in-out infinite alternate}
+.v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow{opacity:1;animation:v35-unlock-glow .38s ease-out 1 both}
 .v35-welcome-root.v35-is-zooming .v35-welcome-stage{transform:scale(1.42);transform-origin:50% 54%}
-.v35-welcome-root.v35-is-blasting .v35-blast{animation:v35-golden-burst .52s cubic-bezier(.12,.68,.16,1) forwards}
-.v35-welcome-root.v35-is-blasting .v35-blast-rays{animation:v35-rays-bloom .64s cubic-bezier(.14,.74,.2,1) forwards}
-@keyframes v35-unlock-glow{from{filter:brightness(.96) drop-shadow(0 0 10px #ffd76e);transform:scale(.96)}to{filter:brightness(1.22) drop-shadow(0 0 20px #fff2a4);transform:scale(1.08)}}
-@keyframes v35-golden-burst{0%{opacity:0;transform:scale(.015)}18%{opacity:1}65%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
-@keyframes v35-rays-bloom{0%{opacity:0;transform:scale(.04) rotate(-8deg)}42%{opacity:.72}100%{opacity:.44;transform:scale(1.12) rotate(8deg)}}
-@keyframes v35-spark-flight{0%{opacity:0;transform:translate(0,0) scale(.22)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.04)}}
+ .v35-welcome-root.v35-is-blasting .v35-blast{animation:v35-golden-burst .48s cubic-bezier(.16,.68,.2,1) forwards}
+.v35-welcome-root.v35-is-blasting .v35-blast-rays{animation:v35-rays-bloom .5s cubic-bezier(.14,.74,.2,1) forwards}
+@keyframes v35-unlock-glow{from{filter:brightness(1) drop-shadow(0 0 4px #ffe3a0)}to{filter:brightness(1.16) drop-shadow(0 0 22px #fff0be)}}
+@keyframes v35-golden-burst{0%{opacity:0;transform:scale(.015)}12%{opacity:1}60%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
+@keyframes v35-rays-bloom{0%{opacity:0;transform:scale(.04) rotate(-4deg)}48%{opacity:.36}100%{opacity:.22;transform:scale(1.12) rotate(4deg)}}
+@keyframes v35-spark-flight{0%{opacity:0;transform:translate(0,0) scale(.3)}20%{opacity:.85}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.12)}}
 @keyframes v35-spark-drift{to{transform:translate(14px,-26px) scale(.45);opacity:.22}}
 @media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-entrance{left:57%;top:82%;width:24%;height:12%}.v35-handle-glow{top:55%}.v35-seam-glow{top:28%;height:34%}}
 @media(prefers-reduced-motion:reduce){.v35-welcome-stage,.v35-transition-cover{transition-duration:.12s!important}.v35-spark,.v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow,.v35-welcome-root.v35-is-blasting .v35-blast,.v35-welcome-root.v35-is-blasting .v35-blast-rays,.v35-blast-spark{animation-duration:.12s!important}}
 
 .v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow{opacity:1}
-.v35-welcome-root.v35-door-active .v35-seam-glow{opacity:1;filter:blur(9px) drop-shadow(0 0 30px #fff1a0);transform:translateX(-50%) scaleX(7) scaleY(1.18)}
+.v35-welcome-root.v35-door-active .v35-seam-glow{opacity:1;filter:blur(11px) drop-shadow(0 0 42px #fff0bb);transform:translateX(-50%) scaleX(14) scaleY(1.24)}
