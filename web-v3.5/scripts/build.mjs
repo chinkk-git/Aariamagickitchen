@@ -85,6 +85,21 @@ try {
   adapter = adapter.replace("recipeList.map(r=>recipeCard(r, r.id>95?'NEW':'✨')).join('')", "recipeList.map(r=>recipeCard(r, r.id>110?t('DRAFT · REVIEW','RASCUNHO · REVISÃO'):r.id>95?t('REVIEW ONLY','SOMENTE REVISÃO'):'✨')).join('')");
   if (!adapter.includes('  settingsPage = v34SettingsPage;')) throw new Error('V3.4 Settings selector hook changed; refusing to retain a visible Home toggle.');
   adapter = adapter.replace('  settingsPage = v34SettingsPage;', '  // Keep the approved Settings page and all other settings; omit the deferred Home-style selector.\n  settingsPage = v34OriginalSettingsPage;');
+  const photoPersistence = '    await storeCreationPhoto(id, blob);\n    rememberCreation(id, photoUrl);';
+  if (!adapter.includes(photoPersistence)) throw new Error('V3.4 photo persistence block changed; refusing to add child photos to My Creations.');
+  adapter = adapter.replace(photoPersistence, '    // Keep captured images transient for the approved sharing flow only.');
+  adapter = adapter.replace("    let photoUrl = '';\n", '');
+  adapter = adapter.replace('      photoUrl = source;\n', '');
+  const oldPhotoNotice = "    render(); notice(t('Photo saved to My Creations!', 'Foto salva em Minhas criações!'));\n    if (view === 'home' || view === 'creations') void hydratePhotoRail();";
+  if (!adapter.includes(oldPhotoNotice)) throw new Error('V3.4 photo completion notice changed; refusing to claim a photo was saved.');
+  adapter = adapter.replace(oldPhotoNotice, "    render(); notice(t('Photo ready to share; it was not added to My Creations.', 'Foto pronta para compartilhar; ela não foi adicionada a Minhas criações.'));");
+  const creationsStart = adapter.indexOf('  function v34CreationsPage() {');
+  const creationsEnd = adapter.indexOf('\n  const v34BaseRender = render;', creationsStart);
+  if (creationsStart < 0 || creationsEnd < 0) throw new Error('V3.4 My Creations gallery renderer anchors changed.');
+  adapter = adapter.slice(0, creationsStart) + '  function v34CreationsPage() { return window.v3RenderCompletedCreations(); }' + adapter.slice(creationsEnd);
+  const photoRailHydration = "    if (magical && (view === 'home' || view === 'creations')) void hydratePhotoRail();\n";
+  if (!adapter.includes(photoRailHydration)) throw new Error('V3.4 photo rail hydration anchor changed.');
+  adapter = adapter.replace(photoRailHydration, '');
   fs.writeFileSync(adapterPath, adapter);
 
   const reviewBuilder = path.join(sourceRoot, 'tools/v3/artwork/build-v35-international-review.mjs');
@@ -110,6 +125,9 @@ try {
   const androidWelcomeCount = (runtimeText.match(/if\(view==='home'\)v35OpenWelcome\(\);/g) || []).length;
   if (androidWelcomeCount > 1) throw new Error('Android Welcome fallback appears multiple times; refusing duplicate Web Welcome screens.');
   if (androidWelcomeCount === 1) runtimeText = runtimeText.replace(androidWelcomeCall, "if(false&&view==='home')v35OpenWelcome();");
+  const creationRendererAnchor = 'const v3RenderBeforeProfileControls=render;';
+  if (!runtimeText.includes(creationRendererAnchor) || !runtimeText.includes('function v3CreationsPage()')) throw new Error('Shared completed-dish renderer is missing.');
+  runtimeText = runtimeText.replace(creationRendererAnchor, 'window.v3RenderCompletedCreations=()=>v3CreationsPage();\n' + creationRendererAnchor);
   fs.writeFileSync(runtimePath, runtimeText);
   // Carry the approved V3.4 artwork fields into the exact V3.5 transformer
   // only after the Android artifact source hash has been confirmed.

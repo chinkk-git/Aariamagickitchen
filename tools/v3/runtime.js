@@ -377,19 +377,52 @@ settingsPage=function v3Settings(){
 
 const v3OriginalCookSection=cookShareSection;
 cookShareSection=function v3CookShareSection(r){
- const html=v3OriginalCookSection(r);
- return html.replace(/<label class="cook-photo-pick">📸 Take a dish photo[\s\S]*?<\/label>/,`<button type="button" class="cook-photo-pick v3-photo-camera" data-action="take-dish-photo" data-recipe="${r.id}">📸 Take a dish photo</button><input class="v3-hidden-camera-input" type="file" accept="image/*" capture="environment" data-share-photo="${r.id}" aria-label="Take a dish photo">`).replace(/<label class="cook-photo-pick">🖼️ Choose a dish photo[\s\S]*?<\/label>/,'');
+ const pt=state.language==='pt-BR',html=v3OriginalCookSection(r);
+ const cameraLabel='<label class="cook-photo-pick">📸 Take a dish photo<input type="file" accept="image/*" capture="environment" data-share-photo="'+r.id+'"></label>';
+ const replacement='<button type="button" class="cook-photo-pick v3-photo-camera" data-action="take-dish-photo" data-recipe="'+r.id+'">'+(pt?'📸 Tirar foto do prato':'📸 Take a dish photo')+'</button><input class="v3-hidden-camera-input" type="file" accept="image/*" capture="environment" data-share-photo="'+r.id+'" aria-label="'+(pt?'Tirar foto do prato':'Take a dish photo')+'">';
+ let localized=html.replace(cameraLabel,replacement);
+ const chooseLabel='<label class="cook-photo-pick">🖼️ Choose a dish photo<input type="file" accept="image/*" data-share-photo="'+r.id+'"></label>';
+ localized=localized.replace(chooseLabel,'');
+ const hintStart=localized.indexOf('<small class="cook-share-hint">'),hintEnd=hintStart<0?-1:localized.indexOf('</small>',hintStart);
+ if(hintStart>=0&&hintEnd>=0)localized=localized.slice(0,hintStart)+'<small class="cook-share-hint">'+(pt?'Compartilhar abre os aplicativos disponíveis. Se isso não estiver disponível, use Salvar foto e peça ajuda a um adulto.':'Share opens available apps. If that is unavailable, use Save Photo and ask an adult to help.')+'</small>'+localized.slice(hintEnd+7);
+ const marker='data-action="share-cook" data-recipe="'+r.id+'"',at=localized.indexOf(marker);
+ if(at<0)return localized;
+ const buttonEnd=localized.indexOf('</button>',at);
+ if(buttonEnd<0)return localized;
+ const saveButton='<button type="button" class="cook-post-share cook-post-save" data-action="save-cook-photo" data-recipe="'+r.id+'">💾 '+(pt?'Salvar foto para compartilhar':'Save Photo to Share')+'</button>';
+ return localized.slice(0,buttonEnd+9)+saveButton+localized.slice(buttonEnd+9);
 };
 
+function v3CookPostFile(id){
+ const blob=sharePostBlobs[Number(id)],recipe=find(Number(id));
+ if(!blob||!recipe)return null;
+ const mime=blob.type&&blob.type.startsWith('image/')?blob.type:'image/png';
+ const extension=mime==='image/jpeg'?'jpg':mime==='image/webp'?'webp':mime==='image/gif'?'gif':'png';
+ try{return new File([blob],'aaria-recipe-'+Number(id)+'.'+extension,{type:mime})}catch{return null}
+}
+function v3SaveCookPhoto(id){
+ const file=v3CookPostFile(id);
+ if(!file){notice(state.language==='pt-BR'?'Tire uma foto do prato primeiro.':'Take a photo of the dish first.');return false}
+ let url=sharePostUrls[Number(id)],temporary=false;
+ try{if(!url){url=URL.createObjectURL(file);temporary=true}const link=document.createElement('a');link.href=url;link.download=file.name;link.rel='noopener';document.body.append(link);link.click();link.remove();if(temporary)setTimeout(()=>URL.revokeObjectURL(url),1500);notice(state.language==='pt-BR'?'Foto baixada. Peça a um adulto para abrir em Downloads/Arquivos e compartilhá-la.':'Photo downloaded. Ask an adult to open it from Downloads/Files and share it.');return true}
+ catch(error){console.error('Photo download fallback failed.',error);notice(state.language==='pt-BR'?'Não foi possível salvar a foto. Tente novamente ou peça ajuda a um adulto.':'Could not save the photo. Try again or ask an adult for help.');return false}
+}
 const v3OriginalShareCook=shareCook;
 shareCook=async function v3ShareCook(id){
- const blob=sharePostBlobs[id],r=find(id);
- if(window.AariaNative&&blob){
-  try{const reader=new FileReader(),data=await new Promise((resolve,reject)=>{reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)});const caption=translateText(`I made ${r.title}! 🍽️\nMade with love by Chef Aaria in Aaria’s Magical Kitchen.\n#AariasMagicalKitchen #LittleChef`);const started=window.AariaNative.sharePost(String(data),caption);notice(started?'A parent or guardian must confirm with the device screen lock before sharing.':'Sharing needs a parent or guardian and a device screen lock. No photo was shared.');return}catch(e){console.warn('Native share unavailable; sharing was not started.',e);notice('Sharing could not be started. Ask a parent or guardian for help.');return}
+ const recipe=find(Number(id)),blob=sharePostBlobs[Number(id)];
+ if(!recipe||!blob){notice(state.language==='pt-BR'?'Tire uma foto do prato primeiro.':'Take a photo of the dish first.');return}
+ const caption=translateText('I made '+recipe.title+'! 🍽️ Made with love by Chef Aaria in Aaria’s Magical Kitchen. #AariasMagicalKitchen #LittleChef');
+ if(window.AariaNative&&window.AariaNative.sharePost){
+  try{const reader=new FileReader(),data=await new Promise((resolve,reject)=>{reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)});const started=window.AariaNative.sharePost(String(data),caption);notice(started?'A parent or guardian must confirm with the device screen lock before sharing.':'Sharing needs a parent or guardian and a device screen lock. No photo was shared.');return}
+  catch(error){console.error('Native photo share failed.',error);notice('Photo sharing failed. Ask a parent or guardian for help.');return}
  }
- const url=sharePostUrls[id];
- if(url){const slug=r.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');const a=document.createElement('a');a.href=url;a.download=`aaria-${slug}.png`;document.body.append(a);a.click();a.remove();await copyText(translateText(`I made ${r.title}! 🍽️\\nMade with love by Chef Aaria in Aaria’s Magical Kitchen.\\n#AariasMagicalKitchen #LittleChef`));notice('Photo saved on this device. Ask a parent or guardian to share it.');return}
- notice('Ask a parent or guardian to help save and share this photo.');
+ const file=v3CookPostFile(id);
+ let supported=false;
+ try{supported=!!(file&&typeof navigator!=='undefined'&&typeof navigator.share==='function'&&typeof navigator.canShare==='function'&&navigator.canShare({files:[file]}))}
+ catch(error){console.warn('File share capability check failed.',error)}
+ if(!supported){notice(state.language==='pt-BR'?'Este navegador não pode abrir o compartilhamento de fotos. Toque em “Salvar foto para compartilhar” e peça a um adulto para enviar pelos Arquivos/Downloads.':'This browser cannot open photo sharing. Tap “Save Photo to Share”, then ask an adult to share it from Files/Downloads.');return}
+ try{const result=navigator.share({files:[file],title:translateText('I made '+recipe.title+'!'),text:caption});await result;notice(state.language==='pt-BR'?'Foto compartilhada pelo aplicativo escolhido.':'Photo shared with the selected app.')}
+ catch(error){if(error&&error.name==='AbortError'){notice(state.language==='pt-BR'?'Compartilhamento cancelado. Nenhuma foto foi enviada.':'Sharing cancelled. No photo was sent.');return}console.error('Web Share failed.',error);notice(state.language==='pt-BR'?'O compartilhamento falhou. Nenhuma foto foi enviada. Use “Salvar foto para compartilhar” ou tente novamente.':'Photo sharing failed. No photo was sent. Use “Save Photo to Share” or try again.')}
 };
 
 async function v3ShowGroceryRecipients(){
@@ -513,6 +546,7 @@ document.addEventListener('click',async e=>{
   if(!digits){document.querySelector('#v3GroceryRecipient')?.remove();notice('Add the WhatsApp number in Settings first.');goto('settings');return}
   const url=`https://wa.me/${digits}?text=${encodeURIComponent(groceryMessage())}`;document.querySelector('#v3GroceryRecipient')?.remove();window.location.href=url;return;
  }
+ if(button?.dataset.action==='save-cook-photo'){e.preventDefault();v3SaveCookPhoto(Number(button.dataset.recipe));return}
  if(button?.dataset.action==='take-dish-photo'){
   const id=Number(button.dataset.recipe);
   if(window.AariaNative?.takeDishPhoto){window.AariaNative.takeDishPhoto(String(id));return}
@@ -726,6 +760,7 @@ function v3CreationsPage(){const pt=state.language==='pt-BR',records=v3EnsureCre
 if(typeof document!=='undefined'&&!document.getElementById('v3-creations-style'))document.head.insertAdjacentHTML('beforeend',`<style id="v3-creations-style">.v3-creations-page{max-width:1100px;margin:0 auto;padding:clamp(18px,4vw,42px);min-height:70vh;color:#35264f}.v3-creations-heading{background:#fff9f3;border:1px solid #eadcf0;border-radius:24px;padding:20px;margin-bottom:20px}.v3-creations-heading h1{margin:10px 0 6px}.v3-creations-heading p,.v3-creation-card p{color:#645775}.v3-creations-heading button,.v3-creations-empty button,.v3-creation-remove{min-height:44px;border:0;border-radius:12px;padding:10px 16px;background:#694a9a;color:white;font-weight:800}.v3-creations-heading .v3-creation-clear{margin-top:8px;background:#fff;border:1px solid #694a9a;color:#573784}.v3-creations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.v3-creation-card{display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:12px;background:#fff;border:1px solid #eadcf0;border-radius:20px;box-shadow:0 8px 22px #54345b12}.v3-creation-card .v3-creation-art,.v3-creation-card .home-tile{width:100%}.v3-creation-card p{font-size:13px;font-weight:700;margin:2px 4px 0}.v3-creation-date{margin:0 4px 3px;color:#645775;font-size:13px}.v3-creation-remove{background:#fff4f3;color:#8b3154;border:1px solid #edc4cb}.v3-creations-empty{text-align:center;padding:32px;border:2px dashed #ddc8e5;border-radius:22px;background:#fffaf4}.v3-creations-empty>span{font-size:38px}.v3-creation-dialog{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:20px;background:#21152dcc}.v3-creation-dialog[hidden]{display:none!important}.v3-creation-dialog-panel{width:min(100%,440px);padding:24px;border-radius:22px;background:#fffaf4;color:#35264f;box-shadow:0 18px 60px #170c2880}.v3-creation-dialog-panel h2{margin:0 0 10px}.v3-creation-dialog-panel p{line-height:1.5}.v3-creation-dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}.v3-creation-dialog-actions button{min-height:46px;padding:10px 18px;border:0;border-radius:12px;font-weight:800}.v3-creation-dialog-actions [data-v3-creation-cancel]{background:#eee7f1;color:#35264f}.v3-creation-dialog-actions [data-v3-creation-confirm]{background:#694a9a;color:white}</style>`);
 document.addEventListener('click',event=>{const button=event.target.closest('button[data-v3-creation-action]');if(!button)return;const action=button.dataset.v3CreationAction;if(!['remove','clear','cancel','confirm'].includes(action))return;event.preventDefault();event.stopPropagation();const dialog=button.closest('[data-v3-creation-dialog]')||document.querySelector('[data-v3-creation-dialog]');if(action==='cancel'){if(dialog)dialog.hidden=true;return}if(action==='remove'){v3OpenCreationConfirm('remove',button.dataset.recipeId);return}if(action==='clear'){v3OpenCreationConfirm('clear',0);return}if(!dialog)return;const kind=dialog.dataset.creationAction,id=Number(dialog.dataset.recipeId);if(kind==='remove')state.myCreations=v3RemoveCreationRecords(state.myCreations,id,v3HasCreationRecipe);else if(kind==='clear')state.myCreations=v3ClearCreationRecords(state.myCreations,v3HasCreationRecipe);else return;state.myCreationsV35MigrationComplete=true;dialog.hidden=true;save();render()});
 document.addEventListener('keydown',event=>{const dialog=document.querySelector('[data-v3-creation-dialog]:not([hidden])');if(event.key==='Escape'&&dialog){dialog.hidden=true;document.querySelector('.v3-creation-clear,.v3-creation-remove')?.focus()}});
+window.v3RenderCompletedCreations=()=>v3CreationsPage();
 const v3RenderBeforeProfileControls=render;
 function v3UpdateNavLabels(){const pt=state.language==='pt-BR',labels=pt?['Início','Receitas','Aventura','Despensa','Planejar','Criações']:['Home','Recipes','World Adventure','Magic Pantry','Planner','My Creations'];document.querySelectorAll('#nav .tab').forEach((tab,i)=>{if(tab.lastChild?.nodeType===Node.TEXT_NODE)tab.lastChild.textContent=labels[i]||tab.lastChild.textContent})}
 render=function(){const creationsView=view==='creations';if(creationsView)view='home';v3SyncRecipeArt();v3RenderBeforeProfileControls();if(creationsView){view='creations';const screen=document.querySelector('#screen');if(screen){screen.innerHTML=v3CreationsPage();screen.classList.remove('home-page');document.querySelector('.app')?.classList.remove('home-dashboard','reference-active');document.querySelectorAll('#nav .tab').forEach(tab=>tab.classList.remove('active'));window.scrollTo(0,0)}v3UpdateNavLabels();return}v3UpdateNavLabels();if(!v3ProfileInitComplete||view!=='home')return;const header=document.querySelector('#screen .v31-approved-header');if(!header)return;if(!header.querySelector('[data-v3-profile-open]')){const button=document.createElement('button');button.className='v3-profile-trigger';button.type='button';button.setAttribute('data-v3-profile-open','');button.setAttribute('aria-label',state.language==='pt-BR'?'Trocar perfil da cozinha':'Switch kitchen profile');button.textContent=`👩‍🍳 ${v3ProfileState.profile?.name|| (state.language==='pt-BR'?'Escolher perfil':'Choose profile')} ▾`;header.insertBefore(button,header.querySelector('.v3-settings'))}};
