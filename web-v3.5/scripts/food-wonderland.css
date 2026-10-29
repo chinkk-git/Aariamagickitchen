@@ -233,7 +233,7 @@
 /* One accessible hit area spans each artwork object and its baked-in sign. */
 @media(orientation:portrait){
   .fw-hotspots .fw-dest-recipes{left:3.5%;top:21%;width:32%;height:17%}
-  .fw-world .fw-hotspots .fw-dest-world{left:37%;top:8%;width:26%;height:32%!important;aspect-ratio:auto!important}
+  .fw-world .fw-hotspots .fw-dest-world{left:37%!important;top:17%!important;width:26%!important;height:34%!important;aspect-ratio:auto!important}
   .fw-hotspots .fw-dest-week{left:68%;top:26%;width:30%;height:16%}
   .fw-hotspots .fw-dest-surprise{left:68%;top:42%;width:31%;height:12%}
   .fw-hotspots .fw-dest-creations{left:66%;top:53%;width:33%;height:22%}
@@ -243,7 +243,7 @@
 }
 @media(orientation:landscape){
   .fw-hotspots .fw-dest-recipes{left:22%;top:28%;width:18%;height:22%}
-  .fw-world .fw-hotspots .fw-dest-world{left:42.5%;top:14%;width:17.5%;height:30%!important;aspect-ratio:auto!important}
+  .fw-world .fw-hotspots .fw-dest-world{left:43.5%!important;top:5%!important;width:15%!important;height:40%!important;aspect-ratio:auto!important}
   .fw-hotspots .fw-dest-week{left:58%;top:17%;width:22%;height:32%}
   .fw-hotspots .fw-dest-family{left:5%;top:52%;width:23%;height:31%}
   .fw-hotspots .fw-dest-friends{left:28%;top:57%;width:20%;height:31%}
