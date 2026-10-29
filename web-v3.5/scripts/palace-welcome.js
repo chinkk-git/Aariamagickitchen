@@ -242,6 +242,8 @@ function v35ShowPalaceWelcome() {
     overlay.classList.add('v35-doors-opening');
     await Promise.all(panels.map(panel => motionEnd(panel, 'transitionend', 'transform', 1120)));
     if (phase !== 'opening' || sequence !== run) return;
+    await delay(420);
+    if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-zooming');
     await motionEnd(stage, 'transitionend', 'transform', 1150);
     if (phase !== 'opening' || sequence !== run) return;
