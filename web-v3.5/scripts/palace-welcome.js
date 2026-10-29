@@ -14,7 +14,6 @@ function v35ShowPalaceWelcome() {
         <source media="(orientation: landscape)" srcset="./palace-welcome-landscape.webp">
         <img class="v35-welcome-art" src="./palace-welcome-portrait.webp" alt="">
       </picture>
-      <div class="v35-doorway" aria-hidden="true"></div>
       <i class="v35-handle-glow v35-handle-left"></i>
       <i class="v35-handle-glow v35-handle-right"></i>
       <i class="v35-seam-glow"></i>
@@ -47,7 +46,6 @@ function v35ShowPalaceWelcome() {
   const sparks = overlay.querySelector('.v35-sparkles');
   const blast = overlay.querySelector('.v35-blast');
   const rays = overlay.querySelector('.v35-blast-rays');
-  const doorway = overlay.querySelector('.v35-doorway');
   const waiters = new Set();
   const activeAnimations = new Set();
   let phase = 'ready';
@@ -182,16 +180,15 @@ function v35ShowPalaceWelcome() {
       return;
     }
     overlay.classList.add('v35-unlocking');
-    await delay(340);
+    await delay(420);
     if (phase !== 'opening' || sequence !== run) return;
+    overlay.classList.remove('v35-unlocking');
     overlay.classList.add('v35-door-active');
-    await animateNode(doorway,
-      [{ transform: 'translate(-50%,-50%) scaleX(.02)', opacity: 0 }, { transform: 'translate(-50%,-50%) scaleX(4.5)', opacity: .96 }],
-      780, 'cubic-bezier(.18,.72,.2,1)', { transform: 'translate(-50%,-50%) scaleX(4.5)', opacity: '.96' });
+    await delay(260);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-zooming');
     stage.style.transformOrigin = '50% 54%';
-    await animateNode(stage, [{ transform: 'scale(1)' }, { transform: 'scale(1.48)' }], 920, 'cubic-bezier(.2,.68,.2,1)', { transform: 'scale(1.48)' });
+    await animateNode(stage, [{ transform: 'scale(1)' }, { transform: 'scale(1.3)' }], 850, 'ease-in-out', { transform: 'scale(1.3)' });
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-blasting');
     burstSound();
