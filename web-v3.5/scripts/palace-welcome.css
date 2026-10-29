@@ -48,3 +48,6 @@
 /* Cover the original embedded lettering inside the sign face before reprinting it lower. */
 @media(orientation:landscape) and (max-aspect-ratio:7/4){.fw-world-label{top:37.2%;height:5.1%}}
 @media(orientation:landscape) and (min-aspect-ratio:7/4){.fw-world-label{top:37.2%;height:5.1%}}
+
+/* The entrance remains visually quiet for pointer users; keyboard focus is high-contrast. */
+.v35-entrance:focus-visible{outline:4px solid #452067!important;outline-offset:3px;box-shadow:0 0 0 7px #fff7df!important}
