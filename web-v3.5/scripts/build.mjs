@@ -126,8 +126,15 @@ try {
   if (androidWelcomeCount > 1) throw new Error('Android Welcome fallback appears multiple times; refusing duplicate Web Welcome screens.');
   if (androidWelcomeCount === 1) runtimeText = runtimeText.replace(androidWelcomeCall, "if(false&&view==='home')v35OpenWelcome();");
   const creationRendererAnchor = 'const v3RenderBeforeProfileControls=render;';
-  if (!runtimeText.includes(creationRendererAnchor) || !runtimeText.includes('function v3CreationsPage()')) throw new Error('Shared completed-dish renderer is missing.');
-  runtimeText = runtimeText.replace(creationRendererAnchor, 'window.v3RenderCompletedCreations=()=>v3CreationsPage();\n' + creationRendererAnchor);
+  const sharedRuntimeText = fs.readFileSync(path.join(root, 'tools/v3/runtime.js'), 'utf8');
+  const creationBlockStart = sharedRuntimeText.indexOf('/* __V3_CREATIONS_MODEL_START__ */');
+  const creationRendererEndMarker = 'window.v3RenderCompletedCreations=()=>v3CreationsPage();';
+  const creationBlockEnd = sharedRuntimeText.indexOf(creationRendererEndMarker, creationBlockStart) + creationRendererEndMarker.length;
+  const legacyRendererStart = runtimeText.indexOf('function v3CreationsPage(){');
+  const legacyRendererEnd = runtimeText.indexOf(creationRendererEndMarker, legacyRendererStart) + creationRendererEndMarker.length;
+  if (creationBlockStart < 0 || creationBlockEnd < creationBlockStart || legacyRendererStart < 0 || legacyRendererEnd < legacyRendererStart || !runtimeText.includes(creationRendererAnchor)) throw new Error('Shared completed-dish renderer anchors changed; refusing a partial Web build.');
+  const completedDishClickBridge = `document.addEventListener('click',event=>{const button=event.target.closest('button[data-action="nextstep"]');if(!button||!button.classList.contains('finish-step')||!selected)return;v3AddCompletedDish(selected.id)});`;
+  runtimeText = runtimeText.slice(0, legacyRendererStart) + sharedRuntimeText.slice(creationBlockStart, creationBlockEnd) + '\\n' + completedDishClickBridge + runtimeText.slice(legacyRendererEnd);
   fs.writeFileSync(runtimePath, runtimeText);
   // Carry the approved V3.4 artwork fields into the exact V3.5 transformer
   // only after the Android artifact source hash has been confirmed.
