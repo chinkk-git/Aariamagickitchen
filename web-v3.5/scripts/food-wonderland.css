@@ -20,6 +20,7 @@
 .fw-dest-planner{--p-left:73%;--p-top:83.58%;--p-width:26%;--p-height:9%;--l-left:84%;--l-top:36%;--l-width:15%;--l-height:11%}
 .fw-dest-settings{--p-left:91%;--p-top:0%;--p-width:9%;--p-height:7%;--l-left:93%;--l-top:1%;--l-width:7%;--l-height:8%}
 .fw-hotspot-copy{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;opacity:0;font-size:clamp(10px,2.4vw,15px);font-weight:900;line-height:1.05;text-align:center}
+.fw-dest-world .fw-hotspot-copy,.fw-dest-week .fw-hotspot-copy{inset:18% 7%;padding:3px 8px;color:#4b2a16;text-shadow:0 1px 2px #fff9;font-size:clamp(11px,1.5vw,15px);opacity:0}
 .fw-world[data-language="pt"] .fw-hotspot-copy{inset:18% 7%;padding:3px 8px;border:2px solid #ad6d35;border-radius:16px;background:linear-gradient(#fff4da,#f3cf91);color:#4b2a16;box-shadow:0 2px 0 #a96739,0 2px 8px #40270c55;opacity:1}
 .fw-mute{position:absolute;z-index:25;right:3%;top:7.5%;width:44px;height:44px;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;background:#7040a8;color:#fff;box-shadow:0 3px 0 #422268,0 0 15px #fff5;cursor:pointer;pointer-events:auto;font-size:22px;line-height:1}
 .fw-mute:focus-visible{outline:3px solid #fff0a5;outline-offset:3px}
@@ -35,13 +36,13 @@
 .fw-orbit-two{inset:-16% -5%;border-color:#c7f5ffc7;transform:rotate(42deg);animation:fw-orbit-turn 13s linear infinite}
 .fw-wheel{position:absolute;z-index:5;left:73.4%;top:20.2%;width:25%;height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 0 6px #ffd78a);transform-origin:50% 50%;pointer-events:none}
 .fw-chest-light{position:absolute;z-index:6;left:78%;top:44%;width:17%;height:6%;border-radius:50%;background:radial-gradient(ellipse,#fffbd9eb,#ffc54a99 45%,transparent 75%);opacity:0;pointer-events:none}
-.fw-chest-lid{position:absolute;z-index:7;left:76.2%;top:42.4%;width:19%;height:6.8%;object-fit:fill;transform-origin:12% 95%;filter:drop-shadow(0 2px 2px #6e3b20);pointer-events:none}
+.fw-chest-lid{position:absolute;z-index:7;left:76.2%;top:42.4%;width:19%;height:6.8%;object-fit:fill;transform-origin:12% 95%;filter:drop-shadow(0 2px 2px #6e3b20);opacity:0;pointer-events:none}
 .fw-camera-flash{position:absolute;z-index:9;left:75%;top:62%;width:22%;height:14%;border-radius:30%;background:#fff;opacity:0;pointer-events:none}
 .fw-polaroid{position:absolute;z-index:10;left:78%;top:64%;width:16%;aspect-ratio:4/5;border:5px solid #fff;border-bottom-width:13px;background:#fff;box-shadow:0 5px 12px #1e0a3c8c;opacity:0;transform:translateY(0) rotate(-8deg) scale(.2);pointer-events:none}
 .fw-polaroid img{width:100%;height:100%;object-fit:cover}
 .fw-book-page{position:absolute;z-index:6;left:13%;top:27%;width:21%;height:5.5%;border-radius:46% 10% 10% 46%;background:linear-gradient(90deg,#fff8e6 0 48%,#d6a875 49% 51%,#fffdf3 52% 100%);box-shadow:0 1px 4px #462c3155;transform-origin:50% 50%;opacity:0;pointer-events:none}
-.fw-cottage-door{position:absolute;z-index:6;width:5%;height:5.6%;border-radius:42% 42% 7% 7%;background:linear-gradient(90deg,#7b3c78,#ffdc76 55%,#a34b7d);box-shadow:0 0 9px #ffd47d;transform-origin:left center;pointer-events:none}
-.fw-door-family{left:15%;top:58.3%}.fw-door-friends{left:14%;top:77.4%}
+.fw-cottage-door{position:absolute;z-index:6;width:3.5%;height:4.8%;border-radius:42% 42% 7% 7%;background:linear-gradient(90deg,#7b3c78,#ffdc76 55%,#a34b7d);box-shadow:0 0 9px #ffd47d;transform-origin:left center;opacity:0;pointer-events:none}
+.fw-door-family{left:25%;top:48%}.fw-door-friends{left:24%;top:68%}
 .fw-calendar-flip{position:absolute;z-index:6;left:79%;top:81.5%;width:13%;height:6%;border:2px solid #fff2c7;border-radius:5px;background:linear-gradient(90deg,#fffaf1 0 48%,#e79ac6 49% 51%,#fffaf1 52%);box-shadow:0 0 8px #fff1c4;opacity:0;transform-origin:left center;pointer-events:none}
 .fw-sparkles{position:absolute;inset:0;pointer-events:none}
 .fw-twinkle{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff5bb;box-shadow:0 0 8px 2px #fff6a9;opacity:0;animation:fw-twinkle var(--twinkle-duration,4s) ease-in-out var(--twinkle-delay,0s) infinite}
@@ -51,8 +52,8 @@
 .fw-cloud{position:absolute;z-index:2;width:12%;height:2.2%;border-radius:50%;background:linear-gradient(90deg,transparent,#fff9,#fff8,transparent);filter:blur(5px);opacity:.42;animation:fw-cloud-drift 16s ease-in-out infinite alternate}
 .fw-cloud-a{left:25%;top:5%}.fw-cloud-b{left:70%;top:12%;width:9%;animation-duration:21s;animation-delay:-8s}
 .fw-water-glint{position:absolute;z-index:3;left:49%;top:38%;width:5.5%;height:34%;border-radius:50%;background:linear-gradient(90deg,transparent,#dbffff44 36%,#fff7 53%,#b7efff40 70%,transparent);filter:blur(3px);opacity:.25;animation:fw-water-flow 2.8s ease-in-out infinite alternate;pointer-events:none}
-.fw-window-glow{position:absolute;z-index:3;width:12%;height:5%;border-radius:50%;background:radial-gradient(ellipse,#fff8bbaa,#ffc44c66 42%,transparent 75%);opacity:.25;animation:fw-window-glow 4s ease-in-out infinite alternate;pointer-events:none}
-.fw-window-family{left:8%;top:56%}.fw-window-friends{left:7%;top:76%;animation-delay:-1.8s}
+.fw-window-glow{position:absolute;z-index:3;width:8%;height:3.5%;border-radius:50%;background:radial-gradient(ellipse,#fff8bbaa,#ffc44c66 42%,transparent 75%);opacity:.25;animation:fw-window-glow 4s ease-in-out infinite alternate;pointer-events:none}
+.fw-window-family{left:8%;top:45%}.fw-window-friends{left:7%;top:66%;animation-delay:-1.8s}
 .fw-butterfly{position:absolute;z-index:5;width:24px;height:20px;filter:drop-shadow(0 0 4px #fff8);animation:fw-butterfly-drift 6s ease-in-out infinite alternate;pointer-events:none}
 .fw-butterfly svg{display:block;width:100%;height:100%;overflow:visible}.fw-wings{transform-origin:center;animation:fw-butterfly-flap .22s ease-in-out infinite alternate}
 .fw-butterfly-a{left:37%;top:42%}.fw-butterfly-b{left:66%;top:58%;animation-delay:-2.7s}
@@ -76,12 +77,12 @@
 @keyframes fw-globe-float{50%{transform:translateY(-5px)}}
 @keyframes fw-orbit-turn{to{transform:rotate(336deg)}}
 @keyframes fw-wheel-spin{0%{transform:rotate(0)}72%{transform:rotate(1440deg)}100%{transform:rotate(1650deg)}}
-@keyframes fw-lid-open{0%,100%{transform:rotate(0)}24%,75%{transform:rotate(-48deg) translateY(-3px)}}
+@keyframes fw-lid-open{0%{opacity:0;transform:rotate(0)}10%,82%{opacity:1}24%,75%{transform:rotate(-48deg) translateY(-3px)}100%{opacity:0;transform:rotate(0)}}
 @keyframes fw-chest-light{15%,70%{opacity:1;transform:scale(1.25)}100%{opacity:0}}
 @keyframes fw-camera-flash{0%,25%{opacity:.86}100%{opacity:0}}
 @keyframes fw-photo-pop{0%{opacity:0;transform:translateY(10px) rotate(-8deg) scale(.2)}25%,75%{opacity:1;transform:translateY(-44px) rotate(9deg) scale(1)}100%{opacity:0;transform:translateY(-62px) rotate(14deg) scale(.82)}}
 @keyframes fw-page-turn{0%{opacity:0;transform:rotateY(0)}30%,70%{opacity:.95;transform:rotateY(-150deg)}100%{opacity:0;transform:rotateY(-180deg)}}
-@keyframes fw-door-open{0%,100%{transform:perspective(80px) rotateY(0)}45%,72%{transform:perspective(80px) rotateY(-58deg)}}
+@keyframes fw-door-open{0%{opacity:0;transform:perspective(80px) rotateY(0)}10%,72%{opacity:1}45%,72%{transform:perspective(80px) rotateY(-58deg)}100%{opacity:0;transform:perspective(80px) rotateY(0)}}
 @keyframes fw-portal{45%{transform:translateY(-3px) scale(1.14);filter:drop-shadow(0 0 22px #fff5bd)}100%{transform:translateY(0) scale(1)}}
 @keyframes fw-arrival{0%{opacity:0;transform:translate(-50%,-50%) scale(.75)}35%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}100%{opacity:0;transform:translate(-50%,-50%) scale(1)}}
 @keyframes fw-burst{to{transform:translate(var(--dx),var(--dy)) scale(.1);opacity:0}}
@@ -97,11 +98,21 @@
   .fw-world{width:min(100vw,calc(100dvh * 1.678));max-width:1800px;max-height:calc(100dvh - 4px)}
   .fw-hotspot{left:var(--l-left);top:var(--l-top);width:var(--l-width);height:var(--l-height)}
   .fw-more{margin-top:6px}
+  .fw-globe-frame{left:42%;top:8%;width:16%}
+  .fw-wheel{left:61%;top:17.5%;width:18.5%}
+  .fw-chest-light{left:65%;top:51%;width:11%;height:6%}.fw-chest-lid{left:65.5%;top:51%;width:10%;height:6%}
+  .fw-camera-flash{left:82%;top:64%;width:15%;height:12%}.fw-polaroid{left:86%;top:68%;width:10%}
+  .fw-calendar-flip{left:87%;top:9%;width:9%;height:15%}
+  .fw-door-family{left:21%;top:61%;width:3%;height:5.5%}.fw-door-friends{left:32%;top:61%;width:3%;height:5.5%}
+  .fw-window-family{left:7%;top:60%;width:8%;height:3%}.fw-window-friends{left:28%;top:60%;width:8%;height:3%}
+  .fw-dest-world .fw-hotspot-copy{top:67%;left:33%;right:2%;bottom:auto;height:60%;padding:3px 1px}
+  .fw-dest-week .fw-hotspot-copy{top:98%;left:18%;right:5%;bottom:auto;height:68%;padding:3px 1px}
 }
 @media(max-width:420px){.fw-mute{right:3%;top:7%;width:42px;height:42px}.fw-more{gap:5px;padding:8px}.fw-more button{font-size:12px;padding-inline:10px}}
 @media(prefers-reduced-motion:reduce){
   .fw-shell *,.fw-shell *::before,.fw-shell *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
   .fw-hotspot:hover,.fw-hotspot:focus-visible,.fw-hotspot:active{transform:none}
-  .fw-action-chest .fw-chest-lid{transform:rotate(-38deg)}.fw-action-chest .fw-chest-light{opacity:.75}
+  .fw-action-chest .fw-chest-lid{opacity:1;transform:rotate(-38deg)}.fw-action-chest .fw-chest-light{opacity:.75}
   .fw-action-camera .fw-polaroid{opacity:1;transform:rotate(4deg)}
+  .fw-action-welcome .fw-door-family,.fw-action-friends .fw-door-friends{opacity:1;transform:perspective(80px) rotateY(-38deg)}
 }
