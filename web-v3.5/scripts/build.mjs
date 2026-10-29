@@ -176,6 +176,10 @@ try {
   fs.mkdirSync(dist, { recursive: true });
   const structuredHtml = fs.readFileSync(attached);
   let finalHtml = structuredHtml.toString('utf8');
+  const failedPhotoPost = "catch{notice('Could not prepare that photo. Please choose another one.')}}});document.addEventListener('change',e=>{if(e.target.matches('[data-appliance-filter]')";
+  const originalPhotoFallback = "catch(error){console.error('Photo post rendering failed; retaining the original image for sharing.',error);if(file instanceof Blob&&file.type.startsWith('image/')){try{if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=file;sharePostBlobs[id]=file;sharePostUrls[id]=URL.createObjectURL(file);render();notice(state.language==='pt-BR'?'Foto pronta para compartilhar. A imagem original será usada.':'Photo ready to share. The original image will be used.')}catch(fallbackError){console.error('Original photo fallback failed.',fallbackError);notice('Could not prepare that photo. Please choose another one.')}}else notice('Could not prepare that photo. Please choose another one.')}}});document.addEventListener('change',e=>{if(e.target.matches('[data-appliance-filter]')";
+  if (!finalHtml.includes(failedPhotoPost)) throw new Error('Photo-post failure handler anchor changed.');
+  finalHtml = finalHtml.replace(failedPhotoPost, originalPhotoFallback);
   for (const sentinel of [
     "const homeStyle = () => 'magical';",
     'settingsPage = v34OriginalSettingsPage;',
