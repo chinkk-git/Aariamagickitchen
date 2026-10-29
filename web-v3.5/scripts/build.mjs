@@ -206,7 +206,7 @@ try {
   fs.rmSync(dist, { recursive: true, force: true });
   fs.mkdirSync(dist, { recursive: true });
   const wonderlandAssetNames = [
-    'food-wonderland-portrait.webp','food-wonderland-landscape.webp','food-wonderland-globe.webp',
+    'food-wonderland-portrait.webp','food-wonderland-landscape.webp','food-wonderland-landscape-standard.webp','food-wonderland-globe.webp',
     'food-wonderland-wheel.webp','food-wonderland-chest-lid.png','food-wonderland-dish-photo.png'
   ];
   for (const asset of wonderlandAssetNames) fs.copyFileSync(path.join(webRoot,'assets',asset),path.join(dist,asset));
@@ -561,7 +561,7 @@ try {
   const pwaCacheRevision = sha(Buffer.concat([Buffer.from(servedHtmlSha256), ...pwaIconFiles.map(icon => fs.readFileSync(path.join(dist, icon)))] )).slice(0, 12);
   const serviceWorkerSource = [
     "const CACHE_NAME = 'aaria-web-v3.5-" + pwaCacheRevision + "';",
-    "const CORE_FILES = ['./','./index.html','./welcome-scene-1-landscape.webp','./welcome-scene-2-landscape.webp','./welcome-scene-3-landscape.webp','./food-wonderland-portrait.webp','./food-wonderland-landscape.webp','./food-wonderland-globe.webp','./food-wonderland-wheel.webp','./food-wonderland-chest-lid.png','./food-wonderland-dish-photo.png','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
+    "const CORE_FILES = ['./','./index.html','./welcome-scene-1-landscape.webp','./welcome-scene-2-landscape.webp','./welcome-scene-3-landscape.webp','./food-wonderland-portrait.webp','./food-wonderland-landscape.webp','./food-wonderland-landscape-standard.webp','./food-wonderland-globe.webp','./food-wonderland-wheel.webp','./food-wonderland-chest-lid.png','./food-wonderland-dish-photo.png','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
     "self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_FILES)).then(() => self.skipWaiting())));",
     "self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('aaria-web-v3.5-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())));",
     "self.addEventListener('fetch', event => { const request = event.request, url = new URL(request.url); if (request.method !== 'GET' || url.origin !== self.location.origin) return; event.respondWith(fetch(new Request(request, {cache:'no-store'})).catch(async () => (await caches.match(request)) || (request.mode === 'navigate' ? await caches.match('./index.html') : Response.error())); });"
