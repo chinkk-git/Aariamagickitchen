@@ -200,6 +200,9 @@ try {
   const welcomeStyleAnchor = '  const v34WelcomeStyle = [';
   if (!finalHtml.includes(welcomeStyleAnchor)) throw new Error('Welcome localization refresh anchor changed.');
   finalHtml = finalHtml.replace(welcomeStyleAnchor, `  document.getElementById('languageSelect')?.addEventListener('change', () => setTimeout(() => { if (welcomeOverlay) v34WelcomeScene(welcomeSceneIndex, false); }, 0));\n\n${welcomeStyleAnchor}`);
+  const welcomeFooterCss = "    '.v34-welcome-footer{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:74px;padding:8px 2px 16px}',";
+  if (finalHtml.split(welcomeFooterCss).length - 1 !== 1) throw new Error('Welcome footer style anchor changed.');
+  finalHtml = finalHtml.replace(welcomeFooterCss, `${welcomeFooterCss}\n    '.v34-welcome-next{margin-left:auto}',`);
   const profileAutoOpen = "if(!v3ProfileState.profiles.length)v3OpenProfileEditor('first-run');else if(v3ProfileState.profile?.chefId==='LEGACY_AARIA')v3OpenProfileEditor('legacy');";
   const profileAutoOpenCount = finalHtml.split(profileAutoOpen).length - 1;
   if (profileAutoOpenCount !== 2) throw new Error(`Expected two automatic profile onboarding branches; found ${profileAutoOpenCount}.`);
@@ -287,7 +290,7 @@ try {
 .app.v32-international-active .ref-ingredient-icon>img{min-width:0!important;min-height:0!important}
 </style>`;
   const ownerLandscapeWelcomeHead = `<style id="aaria-landscape-welcome-boot">
-@media (orientation:landscape){#v34-welcome-boot-frame{width:min(calc(100% - 24px),calc((100dvh - 16px)*16/9));height:auto;max-height:100%;aspect-ratio:16/9;background-image:url("./welcome-scene-1-landscape.webp");background-size:100% 100%}}
+@media (orientation:landscape){#v34-welcome-boot-frame{width:min(calc(100% - 24px),calc((100dvh - 16px)*1672/941));height:auto;max-height:100%;aspect-ratio:1672/941;background-image:url("./welcome-scene-1-landscape.webp");background-size:100% 100%}}
 </style>`;
   finalHtml = finalHtml.replace('</head>', `${ownerLandscapeWelcomeHead}\n</head>`);
   const ownerLandscapeVisualCorrections = `<style id="aaria-landscape-only-visual-corrections">
@@ -312,11 +315,11 @@ try {
   .v34-welcome-shell{display:block!important;padding:0!important;gap:0!important;overflow:hidden!important}
   .v34-welcome-stage{position:absolute!important;inset:0!important;display:grid!important;place-items:center!important;min-height:0!important;overflow:hidden!important}
   .v34-welcome-shell{isolation:isolate}
-  .v34-welcome-frame{position:relative!important;width:min(100dvw,calc(100dvh*16/9))!important;height:auto!important;aspect-ratio:16/9!important;max-width:100dvw!important;max-height:100dvh!important;border-radius:clamp(12px,2vw,24px)!important;background-size:100% 100%!important;background-position:center!important;background-repeat:no-repeat!important;box-shadow:0 12px 30px #1d0a2e80!important}
+  .v34-welcome-frame{position:relative!important;width:min(100dvw,calc(100dvh*1672/941))!important;height:auto!important;aspect-ratio:1672/941!important;max-width:100dvw!important;max-height:100dvh!important;border-radius:clamp(12px,2vw,24px)!important;background-size:100% 100%!important;background-position:center!important;background-repeat:no-repeat!important;box-shadow:0 12px 30px #1d0a2e80!important}
   .v34-welcome-frame[data-scene="1"]{background-image:url("./welcome-scene-1-landscape.webp")!important}
   .v34-welcome-frame[data-scene="2"]{background-image:url("./welcome-scene-2-landscape.webp")!important}
   .v34-welcome-frame[data-scene="3"]{background-image:url("./welcome-scene-3-landscape.webp")!important}
-  .v34-welcome-top,.v34-welcome-footer{position:absolute!important;z-index:3!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(100dvw,calc(100dvh*16/9))!important;height:min(100dvh,calc(100dvw*9/16))!important;min-height:0!important;box-sizing:border-box!important}
+  .v34-welcome-top,.v34-welcome-footer{position:absolute!important;z-index:3!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(100dvw,calc(100dvh*1672/941))!important;height:min(100dvh,calc(100dvw*941/1672))!important;min-height:0!important;box-sizing:border-box!important}
   .v34-welcome-top{display:block!important;padding:2%!important;pointer-events:none!important}
   .v34-welcome-top>span{position:absolute!important;top:2%!important;left:2%!important;display:block!important;color:#fff!important;font-size:clamp(13px,2vw,28px)!important;font-weight:900!important;text-shadow:0 2px 8px #190b2d!important;pointer-events:none!important}
   .v34-welcome-skip{position:absolute!important;z-index:4!important;top:2%!important;right:2%!important;width:auto!important;min-width:44px!important;min-height:44px!important;height:clamp(44px,7.5%,66px)!important;padding:0 18px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(13px,1.8vw,24px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
@@ -398,10 +401,11 @@ try {
     webAppSha256: sha(structuredHtml),
     recipeCount: 116,
     countryMappings: 'validated against content/international/country-navigation-manifest.json',
-    browserVisualEvidence: 'PENDING: focused live browser verification after this single-Home update. Android Chrome browser-control service is unavailable; static validators do not count as visual acceptance.',
-    landscapeWelcomeArtwork: '3 owner-supplied scenes packaged; landscape-only rendering and EN-GB/PT-BR accessible controls integrated; owner visual/device acceptance pending.',
+    browserVisualEvidence: 'Local desktop Chrome focused checks passed for Welcome scene flow and controls, Settings, onboarding suppression, Home/World navigation and random country selection; physical-device portrait review and owner visual acceptance pending.',
+    landscapeWelcomeArtwork: '3 landscape scenes recomposed from the supplied owner references as matched 1672x941 full-bleed artwork; no baked controls; local frame/transition review passed; owner visual/device acceptance pending.',
+    portraitWelcome: 'Original portrait artwork and aspect-ratio rules retained; Next/Enter alignment is right-side; owner physical-device comparison pending.',
     visualScreenshots: [],
-    browserChecks: { allRecipesCount: 116, newRecipesRail: '19 canonical expansion recipes sourced from country mapping', canonicalInternationalDishAssets: '21/21 source and packaged SHA-256 verified', indiaExistingRecipeThumbnails: '2/2 Android-canonical images mapped for #051 and #057; source SHA-256 recorded', magicalAdventureOnly: 'SOURCE ASSERTED; BROWSER CHECK PENDING', classicHomeAccess: 'ACTIVE SELECTOR DISABLED; SOURCE AND ASSETS PRESERVED', settingsReachable: 'SETTINGS PAGE PRESERVED; BROWSER CHECK PENDING', worldCountryArtwork: '21/21 canonical paths and package hashes verified', welcomeArrowNavigation: 'MAGICAL-ONLY SOURCE ASSERTED; BROWSER CHECK PENDING', publicHttpsAndroidChrome: 'PENDING live browser verification' },
+    browserChecks: { allRecipesCount: 116, newRecipesRail: '19 canonical expansion recipes sourced from country mapping', canonicalInternationalDishAssets: '21/21 source and packaged SHA-256 verified', indiaExistingRecipeThumbnails: '2/2 Android-canonical images mapped for #051 and #057; source SHA-256 recorded', magicalAdventureOnly: 'PASS: Welcome Skip and final Enter both returned to Magical Adventure Home', classicHomeAccess: 'ACTIVE SELECTOR DISABLED; SOURCE AND ASSETS PRESERVED', settingsReachable: 'PASS: one 48x48px gear-only control with aria-label Settings opens Settings and returns Home', worldCountryArtwork: '21/21 canonical paths and package hashes verified', worldSurpriseMe: 'PASS: varied countries observed across repeated selections (Japan and Italy)', welcomeArrowNavigation: 'PASS: three landscape scenes, right-side Next/Enter, upper-right Skip, visible scene progress; EN-GB/PT-BR labels rendered', profileOnboarding: 'PASS on reload: Welcome showed with no name/gender form; profile and child data were not cleared', publicHttpsAndroidChrome: 'PENDING physical-device browser verification' },
     androidFunctionalGate: 'CI-LITE run 40776773336 failed activity launch timeout; process started, WebView readiness not confirmed',
     androidScreenshotGate: 'HOLD: Android screenshot/UI validation failed due system responsiveness',
     independentGates: { A08: 'NOT VERIFIED', A09: 'NOT VERIFIED', accessibility: 'NOT VERIFIED', security: 'NOT VERIFIED', nutritionAndAllergens: 'NOT VERIFIED', artworkRights: 'NOT VERIFIED' },
