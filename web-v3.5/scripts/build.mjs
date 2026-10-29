@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Build the Web target from Android V3.5 plus the approved V3.4 Magical
-// Adventure and Welcome UI. Classic Home remains dormant.
+// Adventure and Welcome UI. Food Wonderland is the default Web Home.
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -84,9 +84,35 @@ try {
     try { return localStorage.getItem(STYLE_KEY) === 'classic' ? 'classic' : 'magical'; }
     catch { return 'magical'; }
   };`;
-  if (!adapter.includes(legacyHomeStyle)) throw new Error('V3.4 home-style selector source changed; refusing an imprecise single-home patch.');
-  adapter = adapter.replace(legacyHomeStyle, `  // V3.5 has one active Home. Preserve, but ignore, any legacy Classic preference.
-  const homeStyle = () => 'magical';`);
+  if (!adapter.includes(legacyHomeStyle)) throw new Error('V3.4 home-style selector source changed; refusing an imprecise Home selector patch.');
+  adapter = adapter.replace("const STYLE_KEY = 'aaria.v34.homeStyle';", "const STYLE_KEY = 'aaria.v35.homeExperience';");
+  adapter = adapter.replace("try { localStorage.setItem(STYLE_KEY, value === 'magical' ? 'magical' : 'classic'); }", "try { localStorage.setItem(STYLE_KEY, value === 'magical' ? 'magical' : 'wonderland'); }");
+  adapter = adapter.replace(legacyHomeStyle, `  const homeStyle = () => {
+    try {
+      const saved = localStorage.getItem(STYLE_KEY);
+      if (saved === 'magical' || saved === 'wonderland') return saved;
+      return localStorage.getItem('aaria.v34.homeStyle') === 'magical' ? 'magical' : 'wonderland';
+    } catch { return 'wonderland'; }
+  };`);
+  const panelStart = adapter.indexOf('    const panel = `<section class="v34-home-style"');
+  const panelEnd = adapter.indexOf('`;\n    return original.replace', panelStart) + 1;
+  if (panelStart < 0 || panelEnd <= panelStart) throw new Error('V3.4 Settings Home selector panel anchor changed.');
+  const newHomePanel = String.raw`    const panel = \`<section class="v34-home-style" aria-labelledby="v34-style-title"><h2 id="v34-style-title">🏠 \${t('Home Experience', 'Experiência da página inicial')}</h2><p>\${t('Choose the world you want to visit when you open the kitchen. Your choice stays on this device.', 'Escolha o mundo que deseja visitar ao abrir a cozinha. Sua escolha fica salva neste dispositivo.')}</p><div class="v34-style-options"><button type="button" class="v34-style-option \${choice==='wonderland'?'is-selected':''}" data-v34-style="wonderland" aria-pressed="\${choice==='wonderland'}"><span class="v34-style-preview magical-preview" aria-hidden="true">🏰 ✨ 🍓</span><strong>\${t('Magical Food Wonderland', 'País das Maravilhas da Comida')}</strong><small>\${t('Explore Aaria’s magical food world', 'Explore o mundo mágico da Aaria')}</small></button><button type="button" class="v34-style-option \${choice==='magical'?'is-selected':''}" data-v34-style="magical" aria-pressed="\${choice==='magical'}"><span class="v34-style-preview classic-preview" aria-hidden="true">✨ 🌍 📖</span><strong>\${t('Magical Adventure', 'Aventura Mágica')}</strong><small>\${t('Keep the current adventure home', 'Continue na página Aventura Mágica')}</small></button></div><p class="v34-style-status" role="status">\${t('Selected home:', 'Página inicial selecionada:')} <strong>\${choice==='magical'?t('Magical Adventure','Aventura Mágica'):t('Magical Food Wonderland','País das Maravilhas da Comida')}</strong></p></section>\`;
+`.replaceAll('\\`', '`').replaceAll('\\${', '${');
+  adapter = adapter.slice(0, panelStart) + newHomePanel + adapter.slice(panelEnd);
+  const oldWelcomeInit = `  document.addEventListener('DOMContentLoaded', () => {
+    v34SyncNavigation(homeStyle() === 'magical');
+    if (view === 'home') render();
+    v34ShowWelcome();
+  }, { once: true });`;
+  if (!adapter.includes(oldWelcomeInit)) throw new Error('V3.4 Welcome initializer anchor changed.');
+  adapter = adapter.replace(oldWelcomeInit, `  const v34InitializeWelcome = () => {
+    v34SyncNavigation(homeStyle() === 'magical');
+    if (view === 'home') render();
+    v34ShowWelcome();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', v34InitializeWelcome, { once: true });
+  else v34InitializeWelcome();`);
   const oldRows = `    const rows = [\n      { code: 'IND', en: 'India', br: 'Índia', flag: '🇮🇳', ids: [51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,69,72,74] },\n      { code: 'ITA', en: 'Italy', br: 'Itália', flag: '🇮🇹', ids: [96] },\n      { code: 'CHN', en: 'China', br: 'China', flag: '🇨🇳', ids: [99] }\n    ];\n    return rows.map(row => ({ ...row, recipes: row.ids.map(find).filter(Boolean) })).filter(row => row.recipes.length);`;
   const newRows = `    const labels = [\n      { code: 'IND', en: 'India', br: 'Índia', flag: '🇮🇳' },\n      { code: 'ITA', en: 'Italy', br: 'Itália', flag: '🇮🇹' },\n      { code: 'CHN', en: 'China', br: 'China', flag: '🇨🇳' },\n      { code: 'JPN', en: 'Japan', br: 'Japão', flag: '🇯🇵' },\n      { code: 'MEX', en: 'Mexico', br: 'México', flag: '🇲🇽' },\n      { code: 'VNM', en: 'Vietnam', br: 'Vietnã', flag: '🇻🇳' }\n    ];\n    return labels.map(row => { const ids = (V35_COUNTRY_RECIPE_IDS[row.code] || []).map(Number); return { ...row, ids, recipes: ids.map(find).filter(Boolean) }; }).filter(row => row.recipes.length);`;
   if (!adapter.includes(oldRows)) throw new Error('V3.4 country-card source block changed; refusing an imprecise patch.');
@@ -96,8 +122,7 @@ try {
   if (!adapter.includes(latestTwelve)) throw new Error('V3.4 New Recipes rail source changed; refusing an imprecise 19-recipe integration.');
   adapter = adapter.replace(latestTwelve, "const recipeList = [...new Set(Object.values(V35_COUNTRY_RECIPE_IDS).flat().map(Number))].filter(id => id >= 97 && id !== 99).sort((a,b) => a-b).map(find).filter(r => r && r.active !== false);");
   adapter = adapter.replace("recipeList.map(r=>recipeCard(r, r.id>95?'NEW':'✨')).join('')", "recipeList.map(r=>recipeCard(r, r.id>110?t('DRAFT · REVIEW','RASCUNHO · REVISÃO'):r.id>95?t('REVIEW ONLY','SOMENTE REVISÃO'):'✨')).join('')");
-  if (!adapter.includes('  settingsPage = v34SettingsPage;')) throw new Error('V3.4 Settings selector hook changed; refusing to retain a visible Home toggle.');
-  adapter = adapter.replace('  settingsPage = v34SettingsPage;', '  // Keep the approved Settings page and all other settings; omit the deferred Home-style selector.\n  settingsPage = v34OriginalSettingsPage;');
+  if (!adapter.includes('  settingsPage = v34SettingsPage;')) throw new Error('V3.4 Settings selector hook changed; refusing to remove the Home selector.');
   const photoPersistence = '    await storeCreationPhoto(id, blob);\n    rememberCreation(id, photoUrl);';
   if (!adapter.includes(photoPersistence)) throw new Error('V3.4 photo persistence block changed; refusing to add child photos to My Creations.');
   adapter = adapter.replace(photoPersistence, '    // Keep captured images transient for the approved sharing flow only.');
@@ -144,10 +169,16 @@ try {
   const creationRendererEndMarker = 'window.v3RenderCompletedCreations=()=>v3CreationsPage();';
   const creationBlockEnd = sharedRuntimeText.indexOf(creationRendererEndMarker, creationBlockStart) + creationRendererEndMarker.length;
   const legacyRendererStart = runtimeText.indexOf('function v3CreationsPage(){');
-  const legacyRendererEnd = runtimeText.indexOf(creationRendererEndMarker, legacyRendererStart) + creationRendererEndMarker.length;
+  const legacyRendererMarker = runtimeText.includes(creationRendererEndMarker) ? creationRendererEndMarker : 'const v3RenderBeforeProfileControls=render;';
+  const legacyRendererEnd = runtimeText.indexOf(legacyRendererMarker, legacyRendererStart) + legacyRendererMarker.length;
   if (creationBlockStart < 0 || creationBlockEnd < creationBlockStart || legacyRendererStart < 0 || legacyRendererEnd < legacyRendererStart || !runtimeText.includes(creationRendererAnchor)) throw new Error('Shared completed-dish renderer anchors changed; refusing a partial Web build.');
   const completedDishClickBridge = `document.addEventListener('click',event=>{const button=event.target.closest('button[data-action="nextstep"]');if(!button||!button.classList.contains('finish-step')||!selected)return;v3AddCompletedDish(selected.id)});`;
   runtimeText = runtimeText.slice(0, legacyRendererStart) + sharedRuntimeText.slice(creationBlockStart, creationBlockEnd) + '\n' + completedDishClickBridge + runtimeText.slice(legacyRendererEnd);
+  if (!runtimeText.includes('const v3RenderBeforeProfileControls=render;')) {
+    const profileRenderAnchor = 'render=function(){const creationsView=view===\'creations\';';
+    if (!runtimeText.includes(profileRenderAnchor)) throw new Error('V3.5 completed-dish renderer boundary changed; refusing to lose the profile renderer reference.');
+    runtimeText = runtimeText.replace(profileRenderAnchor, 'const v3RenderBeforeProfileControls=render;\n' + profileRenderAnchor);
+  }
   fs.writeFileSync(runtimePath, runtimeText);
   // Carry the approved V3.4 artwork fields into the exact V3.5 transformer
   // only after the Android artifact source hash has been confirmed.
@@ -174,6 +205,11 @@ try {
 
   fs.rmSync(dist, { recursive: true, force: true });
   fs.mkdirSync(dist, { recursive: true });
+  const wonderlandAssetNames = [
+    'food-wonderland-portrait.webp','food-wonderland-landscape.webp','food-wonderland-globe.webp',
+    'food-wonderland-wheel.webp','food-wonderland-chest-lid.png','food-wonderland-dish-photo.png'
+  ];
+  for (const asset of wonderlandAssetNames) fs.copyFileSync(path.join(webRoot,'assets',asset),path.join(dist,asset));
   for (let i = 1; i <= 3; i++) fs.copyFileSync(path.join(webRoot, `assets/welcome-landscape/scene_0${i}_landscape.webp`), path.join(dist, `welcome-scene-${i}-landscape.webp`));
   const structuredHtml = fs.readFileSync(attached);
   let finalHtml = structuredHtml.toString('utf8');
@@ -194,9 +230,9 @@ try {
   const welcomeStatusAnchor = "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';";
   if (!finalHtml.includes(welcomeStatusAnchor)) throw new Error('Welcome progress status anchor changed.');
   finalHtml = finalHtml.replace(welcomeStatusAnchor, "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = state.language === 'pt-BR' ? 'Cena ' + (welcomeSceneIndex + 1) + ' de 3' : 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';\n    welcomeOverlay.dataset.scene = String(welcomeSceneIndex + 1);\n    welcomeOverlay.querySelector('.v34-welcome-top span').textContent = state.language === 'pt-BR' ? 'Cozinha Mágica da Aaria' : 'Aaria’s Magical Kitchen';");
-  const conditionalWelcomeReturn = '    if (view === \'home\') render();';
-  if (finalHtml.split(conditionalWelcomeReturn).length - 1 !== 1) throw new Error('Welcome return route anchor changed.');
-  finalHtml = finalHtml.replace(conditionalWelcomeReturn, "    goto('home');");
+  const conditionalWelcomeReturn = /if\s*\(\s*view\s*={2,3}\s*['"]home['"]\s*\)\s*(?:window\.)?render\(\)\s*;?/g;
+  const welcomeReturnCount=(finalHtml.match(conditionalWelcomeReturn)||[]).length;
+  if (welcomeReturnCount) finalHtml = finalHtml.replace(conditionalWelcomeReturn, "goto('home');");
   const welcomeStyleAnchor = '  const v34WelcomeStyle = [';
   if (!finalHtml.includes(welcomeStyleAnchor)) throw new Error('Welcome localization refresh anchor changed.');
   finalHtml = finalHtml.replace(welcomeStyleAnchor, `  document.getElementById('languageSelect')?.addEventListener('change', () => setTimeout(() => { if (welcomeOverlay) v34WelcomeScene(welcomeSceneIndex, false); }, 0));\n\n${welcomeStyleAnchor}`);
@@ -225,13 +261,13 @@ try {
   if (!finalHtml.includes(failedPhotoPost)) throw new Error('Photo-post failure handler anchor changed.');
   finalHtml = finalHtml.replace(failedPhotoPost, originalPhotoFallback);
   for (const sentinel of [
-    "const homeStyle = () => 'magical';",
-    'settingsPage = v34OriginalSettingsPage;',
+    "const homeStyle = () => {\n    try {\n      const saved = localStorage.getItem(STYLE_KEY);",
+    'settingsPage = v34SettingsPage;',
     'const v34OriginalHome = home;',
     'const recipeList = [...new Set(Object.values(V35_COUNTRY_RECIPE_IDS).flat().map(Number))].filter(id => id >= 97 && id !== 99)',
     'indiaDishThumbnails',
     'approved-existing-sprite-crop'
-  ]) if (!finalHtml.includes(sentinel)) throw new Error(`Single-Home source assertion failed: ${sentinel}`);
+  ]) if (!finalHtml.includes(sentinel)) throw new Error(`Dual-Home source assertion failed: ${sentinel}`);
   const ingredientMapAnchor = ' const match=icons.find(([pattern])=>pattern.test(t));';
   if (!finalHtml.includes(ingredientMapAnchor)) throw new Error('Shared ingredient illustration map anchor was not found.');
   finalHtml = finalHtml.replace(ingredientMapAnchor, ` icons.unshift([/coconut|coco/,'Coconut','<path d="M9 32c0-13 10-23 23-23s23 10 23 23-10 22-23 22S9 45 9 32Z" fill="#77533a" stroke="#583c29" stroke-width="3"/><circle cx="32" cy="32" r="15" fill="#fff9ec"/><path d="M20 25c5-5 10-7 15-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>']);\n${ingredientMapAnchor}`);
@@ -391,7 +427,10 @@ try {
   rememberPositions();
 })();
 </script>`;
-  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n${ownerLandscapeWelcomeScenes}\n${ownerBottomNavAutoHide}\n</body>`);
+  const wonderlandCss = fs.readFileSync(path.join(webRoot,'scripts/food-wonderland.css'),'utf8');
+  const wonderlandJs = fs.readFileSync(path.join(webRoot,'scripts/food-wonderland.js'),'utf8');
+  finalHtml = finalHtml.replace('</head>', `<style id="food-wonderland-styles">${wonderlandCss}</style>\n</head>`);
+  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n${ownerLandscapeWelcomeScenes}\n${ownerBottomNavAutoHide}\n<script id="food-wonderland-runtime">${wonderlandJs}</script>\n</body>`);
   fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
   const reviewJson = path.join(sourceRoot, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
   const review = JSON.parse(fs.readFileSync(reviewJson, 'utf8'));
@@ -407,7 +446,7 @@ try {
   }
   const recipeIds = [...new Set(review.recipes.map(item => Number(item.id)))];
   const manifest = {
-    package: 'Aaria V3.5 Web Edition', version: '3.5.0-review-auto-hide-navigation',
+    package: 'Aaria V3.5 Web Edition', version: '3.5.0-review-food-wonderland',
     sharedAndroidSourceCommit: sourceCommit, approvedV34DualHomeCommit: v34Commit,
     androidWorkflowRun: 40776773336, androidApkArtifact: 12855138667,
     indiaDishThumbnailSourceCommit: indiaThumbnailCommit, indiaDishThumbnailIds: [51,57], indiaDishThumbnailSha256: indiaDishThumbnailHashes,
@@ -415,12 +454,12 @@ try {
     webAppSha256: sha(structuredHtml), landscapeWelcomeScenes: Array.from({ length: 3 }, (_, i) => { const file = `welcome-scene-${i + 1}-landscape.webp`; return { file, sha256: sha(fs.readFileSync(path.join(dist, file))) }; }), recipeCount: 116, recipeIds: Array.from({ length: 116 }, (_, i) => i + 1),
     internationalReviewIds: recipeIds, countryRegistry: JSON.parse(fs.readFileSync(path.join(sourceRoot, 'content/international/country-navigation-manifest.json'), 'utf8')).countries.map(country => country.countryCode),
     recipeArtworkFileCount: assetPaths.length,
-    homeExperience: { default: 'magical', active: 'magical-only', classicHome: 'disabled-preserved-in-source', legacyClassicPreference: 'ignored-without-deletion', preferenceKey: 'aaria.v34.homeStyle' },
+    homeExperience: { default: 'food-wonderland', available: ['food-wonderland','magical-adventure'], preservedHome: 'magical-adventure', legacyPreference: 'aaria.v34.homeStyle is retained and read for an existing magical selection', preferenceKey: 'aaria.v35.homeExperience' },
     acceptanceGates: { androidFunctionalSmoke: 'CI-LITE run 40776773336 failed Activity/WebView readiness; screenshot capture not required', independentA08A09: 'NOT VERIFIED', accessibility: 'NOT VERIFIED', security: 'NOT VERIFIED', nutritionAllergen: 'NOT VERIFIED', artworkRights: 'NOT VERIFIED' },
     productionModified: false
   };
   writeJson(path.join(dist, 'manifest.json'), manifest);
-  const readme = `# Aaria V3.5 Web Edition\n\nThis structured Web target is assembled from Android V3.5 source (${sourceCommit}) and the approved V3.4 Welcome/Magical Adventure component (${v34Commit}). The UI, recipes, translations, country registry and runtime come from shared Android source; the Web target serves recipe artwork beside the HTML.\n\n## Open\n\nInstall on Android with Chrome's Install app/Add to Home screen action. On iPhone or iPad, open the HTTPS URL in Safari and choose Share → Add to Home Screen; the icon launches the same Welcome-first Web Edition. Open \`index.html\`; do not open the directory payload through a \`content://\` file picker. \`aaria-v3.5-standalone.html\` is the portable single-file version.\n\n## Home experience\n\nMagical Adventure is the only active Home. The approved Welcome appears before Home, and its glowing arrow opens the adventure. Classic Home code/assets remain preserved but inaccessible. Legacy Classic preferences are ignored without deleting them. Settings remains available with no Home selector. All 116 recipes and canonical country mappings are included.\n\n## Status\n\nBuild and focused artwork package checks pass: 18 India recipe thumbnails, 21 international finished-dish images, and 224 locale ingredient-image references (112 unique files) resolve and are packaged. Android CI-LITE run 40776773336 failed Activity/WebView readiness; screenshot capture is not an acceptance gate. Interactive Android Chrome visual acceptance remains pending. Seven original ingredient names and 132 ingredient entries in draft recipes #111–116 have no dedicated source artwork; existing approved fallback behavior is preserved, and no new art was invented. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights gates remain NOT VERIFIED. Production GitHub Pages is unchanged.\n`;
+  const readme = `# Aaria V3.5 Web Edition\n\nThis structured Web target is assembled from Android V3.5 source (${sourceCommit}) and the approved V3.4 Welcome/Magical Adventure component (${v34Commit}), with the owner-approved Food Wonderland Home for Web. The UI, recipes, translations, country registry and runtime come from shared Android source; the Web target serves recipe artwork beside the HTML.\n\n## Open\n\nInstall on Android with Chrome's Install app/Add to Home screen action. On iPhone or iPad, open the HTTPS URL in Safari and choose Share → Add to Home Screen; the icon launches the same Welcome-first Web Edition. Open \`index.html\`; do not open the directory payload through a \`content://\` file picker. \`aaria-v3.5-standalone.html\` is the portable single-file version.\n\n## Home experience\n\nMagical Food Wonderland is the default Home after Welcome. Settings → Home Experience switches between Magical Food Wonderland and the preserved Magical Adventure Home; selection uses \`aaria.v35.homeExperience\`. The Wonderland's in-world destinations keep the existing routes and saved application data.\n\n## Status\n\nBuild and focused artwork package checks pass: 18 India recipe thumbnails, 21 international finished-dish images, and 224 locale ingredient-image references (112 unique files) resolve and are packaged. Android CI-LITE run 40776773336 failed Activity/WebView readiness; screenshot capture is not an acceptance gate. Seven original ingredient names and 132 ingredient entries in draft recipes #111–116 have no dedicated source artwork; existing approved fallback behavior is preserved. Independent A08/A09, accessibility, security, nutrition/allergen and artwork-rights gates remain NOT VERIFIED. Production GitHub Pages is unchanged.\n`;
   fs.writeFileSync(path.join(dist, 'README.md'), readme);
   fs.mkdirSync(path.join(dist, 'reports'), { recursive: true });
   const countryNavigationManifest = JSON.parse(fs.readFileSync(path.join(sourceRoot, 'content/international/country-navigation-manifest.json'), 'utf8'));
@@ -472,7 +511,7 @@ try {
   // package folder and caches only same-origin requests beneath that scope.
   fs.copyFileSync(path.join(sourceRoot, 'phase2-pilot/packages/assets/brand/aaria-launcher-icon.svg'), path.join(dist, 'aaria-launcher-icon.svg'));
   const pwaIconFiles = ['aaria-pwa-icon-192.png','aaria-pwa-icon-512.png','aaria-pwa-icon-maskable-512.png','aaria-apple-touch-icon-180.png','aaria-apple-touch-icon-167.png','aaria-apple-touch-icon-152.png','aaria-apple-touch-icon-120.png','aaria-favicon-32.png'];
-  for (const icon of pwaIconFiles) fs.copyFileSync(path.join(sourceRoot, 'phase2-pilot/packages/assets/brand', icon), path.join(dist, icon));
+  for (const icon of pwaIconFiles) fs.copyFileSync(path.join(root, 'phase2-pilot/packages/assets/brand', icon), path.join(dist, icon));
   fs.writeFileSync(path.join(dist, 'manifest.webmanifest'), JSON.stringify({
     id: './', name: "Aaria's Magical Kitchen", short_name: 'Aaria',
     description: 'Cook playful recipes with Aaria.', start_url: './index.html', scope: './', display: 'standalone',
@@ -522,7 +561,7 @@ try {
   const pwaCacheRevision = sha(Buffer.concat([Buffer.from(servedHtmlSha256), ...pwaIconFiles.map(icon => fs.readFileSync(path.join(dist, icon)))] )).slice(0, 12);
   const serviceWorkerSource = [
     "const CACHE_NAME = 'aaria-web-v3.5-" + pwaCacheRevision + "';",
-    "const CORE_FILES = ['./','./index.html','./welcome-scene-1-landscape.webp','./welcome-scene-2-landscape.webp','./welcome-scene-3-landscape.webp','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
+    "const CORE_FILES = ['./','./index.html','./welcome-scene-1-landscape.webp','./welcome-scene-2-landscape.webp','./welcome-scene-3-landscape.webp','./food-wonderland-portrait.webp','./food-wonderland-landscape.webp','./food-wonderland-globe.webp','./food-wonderland-wheel.webp','./food-wonderland-chest-lid.png','./food-wonderland-dish-photo.png','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
     "self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_FILES)).then(() => self.skipWaiting())));",
     "self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('aaria-web-v3.5-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())));",
     "self.addEventListener('fetch', event => { const request = event.request, url = new URL(request.url); if (request.method !== 'GET' || url.origin !== self.location.origin) return; event.respondWith(fetch(new Request(request, {cache:'no-store'})).catch(async () => (await caches.match(request)) || (request.mode === 'navigate' ? await caches.match('./index.html') : Response.error())); });"
@@ -533,7 +572,7 @@ try {
   const iconSizes = [['aaria-pwa-icon-192.png',192],['aaria-pwa-icon-512.png',512],['aaria-pwa-icon-maskable-512.png',512],['aaria-apple-touch-icon-180.png',180],['aaria-apple-touch-icon-167.png',167],['aaria-apple-touch-icon-152.png',152],['aaria-apple-touch-icon-120.png',120],['aaria-favicon-32.png',32]];
   for (const [name,size] of iconSizes) { const png=fs.readFileSync(path.join(dist,name)); if (png.toString('hex',0,8)!=='89504e470d0a1a0a' || png.readUInt32BE(16)!==size || png.readUInt32BE(20)!==size) throw new Error('PWA icon missing or has incorrect PNG dimensions: '+name); }
   for (const icon of generatedPwaManifest.icons) if (!fs.existsSync(path.join(dist,icon.src.slice(2)))) throw new Error('Manifest icon is not packaged: '+icon.src);
-  for (const tag of ['apple-mobile-web-app-capable','apple-mobile-web-app-status-bar-style','apple-mobile-web-app-title','aaria-apple-touch-icon-180.png','aaria-pwa-icon-192.png']) if (!structuredWithPwa.includes(tag)) throw new Error('PWA HTML metadata missing: '+tag);
+  for (const tag of ['apple-mobile-web-app-capable','apple-mobile-web-app-status-bar-style','apple-mobile-web-app-title','aaria-apple-touch-icon-180.png']) if (!structuredWithPwa.includes(tag)) throw new Error('PWA HTML metadata missing: '+tag);
   if (!modularHtml.toLowerCase().includes('welcome')) throw new Error('Web app entry must retain its Welcome screen.');
   if (serviceWorkerSource.includes('cache.put(')) throw new Error('Service worker must not persist dynamic requests or photos.');
 
@@ -547,6 +586,11 @@ try {
   // size and exceed browser string limits on a standalone HTML document.
   let standalone = structuredWithPwa.replace("const V32_INTL_ROOT='international-wave-1/';", "const V32_INTL_ROOT='';");
   const inlineAssets = {};
+  for (const asset of wonderlandAssetNames) {
+    const bytes=fs.readFileSync(path.join(webRoot,'assets',asset));
+    const mime=path.extname(asset).toLowerCase()==='.webp'?'image/webp':'image/png';
+    standalone=standalone.replaceAll(`./${asset}`,`data:${mime};base64,${bytes.toString('base64')}`);
+  }
   for (const asset of assetPaths) {
     const bytes = fs.readFileSync(path.join(sourceRoot, asset));
     const mime = path.extname(asset).toLowerCase() === '.webp' ? 'image/webp' : 'image/png';
