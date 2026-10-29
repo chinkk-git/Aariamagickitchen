@@ -8,7 +8,7 @@
 .v35-handle-glow{top:58%;width:min(7vw,7vh,62px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff 0 9%,#fff6ae 18%,#ffb92e66 40%,transparent 72%);filter:drop-shadow(0 0 15px #ffe69a)}
 .v35-handle-left{left:calc(50% - min(4vw,4vh,32px))}
 .v35-handle-right{left:calc(50% + min(1vw,1vh,9px))}
-.v35-seam-glow{left:50%;top:37%;width:min(3vw,3vh,28px);height:30%;transform:translateX(-50%) scaleX(.12);background:linear-gradient(180deg,transparent 0%,#fffdf0 18%,#fff5d1 45%,#ffe59c 58%,#fff9e7 82%,transparent 100%);filter:blur(6px) drop-shadow(0 0 18px #ffe8a0)}
+.v35-seam-glow{left:50%;top:37%;width:min(13vw,42vh,180px);height:30%;transform:translateX(-50%) scaleX(.08);background:linear-gradient(180deg,transparent 0%,#fffdf0 18%,#fff5d1 45%,#ffe59c 58%,#fff9e7 82%,transparent 100%);filter:blur(6px) drop-shadow(0 0 18px #ffe8a0)}
 .v35-welcome-controls{position:absolute;z-index:8;top:max(10px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));display:flex;align-items:center;gap:8px}
 .v35-welcome-controls button{min-height:44px;border:1.5px solid #ffe9b0;border-radius:999px;background:#51236dcc;color:#fff7e3;font:800 16px/1 system-ui,sans-serif;padding:0 15px;box-shadow:0 3px 12px #26103977,0 0 14px #ffe39444;backdrop-filter:blur(8px);cursor:pointer}
 .v35-welcome-controls .v35-sound-toggle{width:46px;padding:0;font-size:21px}
@@ -42,4 +42,4 @@
 @media(prefers-reduced-motion:reduce){.v35-welcome-stage,.v35-transition-cover{transition-duration:.12s!important}.v35-spark,.v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow,.v35-welcome-root.v35-is-blasting .v35-blast,.v35-welcome-root.v35-is-blasting .v35-blast-rays,.v35-blast-spark{animation-duration:.12s!important}}
 
 .v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow{opacity:1}
-.v35-welcome-root.v35-door-active .v35-seam-glow{opacity:1;filter:blur(11px) drop-shadow(0 0 42px #fff0bb);transform:translateX(-50%) scaleX(14) scaleY(1.24)}
+.v35-welcome-root.v35-door-active .v35-seam-glow{opacity:1;filter:blur(11px) drop-shadow(0 0 52px #fff0bb);transform:translateX(-50%) scaleX(7) scaleY(1.24)}
