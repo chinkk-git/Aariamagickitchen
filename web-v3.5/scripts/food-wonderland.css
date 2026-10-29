@@ -264,3 +264,12 @@
   .fw-globe-frame.v34-hero-globe,.fw-world .fw-hotspots .fw-dest-world{left:42.75%!important;top:4%!important;width:14.5%!important}
   .fw-wheel{left:61%!important;top:10.5%!important;width:15.5%!important}
 }
+
+/* Keep the single label baked into the approved artwork clear of the floating globe. */
+.fw-globe-frame.v34-hero-globe{left:calc(50% - min(24vw,22dvh,112px)/2)!important;top:calc(16% - min(24vw,22dvh,112px)/2)!important;width:min(24vw,22dvh,112px)!important}
+.fw-world .fw-hotspots .fw-dest-world{left:38%!important;top:8%!important;width:24%!important;height:28%!important;aspect-ratio:auto!important}
+@media(orientation:landscape){
+  .fw-globe-frame.v34-hero-globe{left:calc(50% - min(16vw,18dvh,142px)/2)!important;top:calc(14.5% - min(16vw,18dvh,142px)/2)!important;width:min(16vw,18dvh,142px)!important}
+  .fw-world .fw-hotspots .fw-dest-world{left:38%!important;top:5%!important;width:24%!important;height:29%!important;aspect-ratio:auto!important}
+}
+
