@@ -210,9 +210,24 @@ try {
     'food-wonderland-wheel.webp','food-wonderland-chest-lid.png','food-wonderland-dish-photo.png'
   ];
   for (const asset of wonderlandAssetNames) fs.copyFileSync(path.join(webRoot,'assets',asset),path.join(dist,asset));
+  for (const [encodedName, outputName] of [
+    ['palace-welcome-portrait.webp.b64','palace-welcome-portrait.webp'],
+    ['palace-welcome-landscape.webp.b64','palace-welcome-landscape.webp']
+  ]) {
+    const encoded = fs.readFileSync(path.join(webRoot,'assets',encodedName),'utf8').trim();
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded)) throw new Error('Invalid base64 palace artwork: '+encodedName);
+    fs.writeFileSync(path.join(dist,outputName),Buffer.from(encoded,'base64'));
+  }
   for (let i = 1; i <= 3; i++) fs.copyFileSync(path.join(webRoot, `assets/welcome-landscape/scene_0${i}_landscape.webp`), path.join(dist, `welcome-scene-${i}-landscape.webp`));
   const structuredHtml = fs.readFileSync(attached);
   let finalHtml = structuredHtml.toString('utf8');
+  const palaceWelcomeJs = fs.readFileSync(path.join(webRoot,'scripts/palace-welcome.js'),'utf8');
+  const palaceWelcomeFunctionAnchor = '  function v34ShowWelcome() {';
+  if (!finalHtml.includes(palaceWelcomeFunctionAnchor)) throw new Error('V3.4 Welcome function anchor changed.');
+  finalHtml = finalHtml.replace(palaceWelcomeFunctionAnchor, palaceWelcomeJs + '\n' + palaceWelcomeFunctionAnchor);
+  const palaceWelcomeCall = '    v34ShowWelcome();';
+  if (finalHtml.split(palaceWelcomeCall).length - 1 !== 1) throw new Error('Expected exactly one V3.4 startup Welcome call.');
+  finalHtml = finalHtml.replace(palaceWelcomeCall,'    v35ShowPalaceWelcome();');
   const welcomeSceneAnchor = "    frame.style.backgroundPosition = ['0% center', '50% center', '100% center'][welcomeSceneIndex];";
   if (!finalHtml.includes(welcomeSceneAnchor)) throw new Error('Welcome scene selector anchor changed.');
   finalHtml = finalHtml.replace(welcomeSceneAnchor, `${welcomeSceneAnchor}\n    frame.dataset.scene = String(welcomeSceneIndex + 1);`);
@@ -429,7 +444,8 @@ try {
 </script>`;
   const wonderlandCss = fs.readFileSync(path.join(webRoot,'scripts/food-wonderland.css'),'utf8');
   const wonderlandJs = fs.readFileSync(path.join(webRoot,'scripts/food-wonderland.js'),'utf8');
-  finalHtml = finalHtml.replace('</head>', `<style id="food-wonderland-styles">${wonderlandCss}</style>\n</head>`);
+  const palaceWelcomeCss = fs.readFileSync(path.join(webRoot,'scripts/palace-welcome.css'),'utf8');
+  finalHtml = finalHtml.replace('</head>', `<style id="food-wonderland-styles">${wonderlandCss}</style><style id="palace-welcome-styles">${palaceWelcomeCss}</style>\\n</head>`);
   finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n${ownerLandscapeWelcomeScenes}\n${ownerBottomNavAutoHide}\n<script id="food-wonderland-runtime">${wonderlandJs}</script>\n</body>`);
   fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
   const reviewJson = path.join(sourceRoot, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
@@ -561,7 +577,7 @@ try {
   const pwaCacheRevision = sha(Buffer.concat([Buffer.from(servedHtmlSha256), ...pwaIconFiles.map(icon => fs.readFileSync(path.join(dist, icon)))] )).slice(0, 12);
   const serviceWorkerSource = [
     "const CACHE_NAME = 'aaria-web-v3.5-" + pwaCacheRevision + "';",
-    "const CORE_FILES = ['./','./index.html','./welcome-scene-1-landscape.webp','./welcome-scene-2-landscape.webp','./welcome-scene-3-landscape.webp','./food-wonderland-portrait.webp','./food-wonderland-landscape.webp','./food-wonderland-landscape-standard.webp','./food-wonderland-portrait-clean.webp','./food-wonderland-landscape-clean.webp','./food-wonderland-landscape-standard-clean.webp','./food-wonderland-globe.webp','./food-wonderland-wheel.webp','./food-wonderland-chest-lid.png','./food-wonderland-dish-photo.png','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
+    "const CORE_FILES = ['./','./index.html','./welcome-scene-1-landscape.webp','./welcome-scene-2-landscape.webp','./welcome-scene-3-landscape.webp','./palace-welcome-portrait.webp','./palace-welcome-landscape.webp','./food-wonderland-portrait.webp','./food-wonderland-landscape.webp','./food-wonderland-landscape-standard.webp','./food-wonderland-portrait-clean.webp','./food-wonderland-landscape-clean.webp','./food-wonderland-landscape-standard-clean.webp','./food-wonderland-globe.webp','./food-wonderland-wheel.webp','./food-wonderland-chest-lid.png','./food-wonderland-dish-photo.png','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
     "self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_FILES)).then(() => self.skipWaiting())));",
     "self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('aaria-web-v3.5-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())));",
     "self.addEventListener('fetch', event => { const request = event.request, url = new URL(request.url); if (request.method !== 'GET' || url.origin !== self.location.origin) return; event.respondWith(fetch(new Request(request, {cache:'no-store'})).catch(async () => (await caches.match(request)) || (request.mode === 'navigate' ? await caches.match('./index.html') : Response.error()))); });"
