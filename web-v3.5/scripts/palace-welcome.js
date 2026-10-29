@@ -190,8 +190,8 @@ function v35ShowPalaceWelcome() {
     overlay.classList.add('v35-is-blasting');
     burstSound();
     await Promise.all([
-      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .65 }, { transform: 'scale(1.42)', opacity: 1 }], 520, 'cubic-bezier(.12,.68,.16,1)', { transform: 'scale(1.42)', opacity: '1' }),
-      animateNode(rays, [{ transform: 'scale(.04) rotate(-15deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.2) rotate(15deg)', opacity: .56 }], 560, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.2) rotate(15deg)', opacity: '.56' })
+      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .65 }, { transform: 'scale(1.42)', opacity: 1 }], 620, 'cubic-bezier(.12,.68,.16,1)', { transform: 'scale(1.42)', opacity: '1' }),
+      animateNode(rays, [{ transform: 'scale(.04) rotate(-15deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.2) rotate(15deg)', opacity: .56 }], 640, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.12) rotate(8deg)', opacity: '.44' })
     ]);
     if (phase === 'opening' && sequence === run) finish(true);
   };
@@ -230,15 +230,15 @@ function v35ShowPalaceWelcome() {
     sparks.appendChild(spark);
   }
   const blastSparks = overlay.querySelector('.v35-blast-sparks');
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 20; i++) {
     const spark = document.createElement('i');
     const angle = Math.random() * Math.PI * 2;
-    const distance = 45 + Math.random() * 65;
+    const distance = 35 + Math.random() * 55;
     spark.className = 'v35-blast-spark';
     spark.style.setProperty('--dx', `${Math.cos(angle) * distance}vw`);
     spark.style.setProperty('--dy', `${Math.sin(angle) * distance}vh`);
     spark.style.setProperty('--delay', `${Math.random() * .22}s`);
-    spark.style.setProperty('--size', `${3 + Math.random() * 5}px`);
+    spark.style.setProperty('--size', `${2 + Math.random() * 3}px`);
     blastSparks.appendChild(spark);
   }
   localize();
