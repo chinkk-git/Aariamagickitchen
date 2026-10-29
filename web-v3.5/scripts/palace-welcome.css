@@ -39,3 +39,8 @@
 .fw-world-label{position:absolute;z-index:7;left:47.2%;top:40.7%;width:17.8%;height:5.2%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 1% 1.2%;overflow:hidden;border:0;border-radius:3px;background:linear-gradient(180deg,#fff1d0 0%,#f7dfab 100%);color:#321d1c;font:950 clamp(7px,1.85vw,13px)/.98 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.04em;text-align:center;text-shadow:0 1px 0 #fff9;pointer-events:none;user-select:none}
 @media(orientation:landscape) and (max-aspect-ratio:7/4){.fw-world-label{left:49%;top:38.3%;width:8.6%;height:4.6%;padding-bottom:2px;font-size:clamp(9px,1.05vw,15px)}}
 @media(orientation:landscape) and (min-aspect-ratio:7/4){.fw-world-label{left:48.4%;top:37.4%;width:8.3%;height:4.6%;padding-bottom:2px;font-size:clamp(9px,1vw,14px)}}
+
+/* Keep the relocated sign copy to two clean, legible lines in every composition. */
+.fw-world-label{white-space:nowrap;border-radius:5px;background:linear-gradient(180deg,#fff0cd 0%,#f5d99f 100%);font-size:clamp(7px,1.6vw,11px);line-height:1.02}
+@media(orientation:landscape) and (max-aspect-ratio:7/4){.fw-world-label{left:48.6%;width:9.6%;font-size:clamp(9px,.9vw,12px)}}
+@media(orientation:landscape) and (min-aspect-ratio:7/4){.fw-world-label{left:48.2%;width:9.2%;font-size:clamp(9px,.9vw,12px)}}
