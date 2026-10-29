@@ -180,21 +180,18 @@ function v35ShowPalaceWelcome() {
       return;
     }
     overlay.classList.add('v35-unlocking');
-    await delay(420);
+    await delay(280);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.remove('v35-unlocking');
-    overlay.classList.add('v35-door-active');
-    await delay(260);
-    if (phase !== 'opening' || sequence !== run) return;
-    overlay.classList.add('v35-is-zooming');
+    overlay.classList.add('v35-door-active', 'v35-is-zooming');
     stage.style.transformOrigin = '50% 54%';
-    await animateNode(stage, [{ transform: 'scale(1)' }, { transform: 'scale(1.3)' }], 850, 'ease-in-out', { transform: 'scale(1.3)' });
+    await animateNode(stage, [{ transform: 'scale(1)' }, { transform: 'scale(1.42)' }], 700, 'cubic-bezier(.2,.68,.2,1)', { transform: 'scale(1.42)' });
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-blasting');
     burstSound();
     await Promise.all([
-      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .65 }, { transform: 'scale(1.42)', opacity: 1 }], 980, 'cubic-bezier(.12,.68,.16,1)', { transform: 'scale(1.42)', opacity: '1' }),
-      animateNode(rays, [{ transform: 'scale(.04) rotate(-15deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.2) rotate(15deg)', opacity: .56 }], 1050, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.2) rotate(15deg)', opacity: '.56' })
+      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .65 }, { transform: 'scale(1.42)', opacity: 1 }], 520, 'cubic-bezier(.12,.68,.16,1)', { transform: 'scale(1.42)', opacity: '1' }),
+      animateNode(rays, [{ transform: 'scale(.04) rotate(-15deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.2) rotate(15deg)', opacity: .56 }], 560, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.2) rotate(15deg)', opacity: '.56' })
     ]);
     if (phase === 'opening' && sequence === run) finish(true);
   };
