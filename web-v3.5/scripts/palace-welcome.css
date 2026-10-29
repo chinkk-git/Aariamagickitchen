@@ -8,7 +8,7 @@
 .v35-handle-glow{top:58%;width:min(7vw,7vh,62px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff 0 9%,#fff6ae 18%,#ffb92e66 40%,transparent 72%);filter:drop-shadow(0 0 15px #ffe69a)}
 .v35-handle-left{left:calc(50% - min(4vw,4vh,32px))}
 .v35-handle-right{left:calc(50% + min(1vw,1vh,9px))}
-.v35-seam-glow{left:50%;top:37%;width:min(3vw,3vh,28px);height:30%;transform:translateX(-50%);background:linear-gradient(180deg,transparent,#fff8b7 22%,#ffca4e 55%,#fff7ba 84%,transparent);filter:blur(5px) drop-shadow(0 0 14px #ffdc70)}
+.v35-seam-glow{left:50%;top:37%;width:min(3vw,3vh,28px);height:30%;transform:translateX(-50%);background:linear-gradient(180deg,transparent,#fffdf0 18%,#fff3bd 44%,#ffd66e 58%,#fff7d5 82%,transparent);filter:blur(6px) drop-shadow(0 0 18px #ffe8a0)}
 .v35-welcome-controls{position:absolute;z-index:8;top:max(10px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));display:flex;align-items:center;gap:8px}
 .v35-welcome-controls button{min-height:44px;border:1.5px solid #ffe9b0;border-radius:999px;background:#51236dcc;color:#fff7e3;font:800 16px/1 system-ui,sans-serif;padding:0 15px;box-shadow:0 3px 12px #26103977,0 0 14px #ffe39444;backdrop-filter:blur(8px);cursor:pointer}
 .v35-welcome-controls .v35-sound-toggle{width:46px;padding:0;font-size:21px}
@@ -19,10 +19,10 @@
 .v35-entrance:active{background:transparent;box-shadow:none}
 .v35-sparkles{position:absolute;z-index:5;inset:0;pointer-events:none;overflow:hidden}
 .v35-spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff8c9;box-shadow:0 0 11px 4px #ffdb70;opacity:.72;animation:v35-spark-drift var(--spark-duration) ease-in-out var(--spark-delay) infinite alternate}
-.v35-blast{position:absolute;z-index:10;inset:-55%;opacity:0;transform:scale(.015);transform-origin:50% 52%;pointer-events:none;background:radial-gradient(circle at 50% 52%,#fff 0%,#fffde0 16%,#ffe47f 37%,#ffba48 59%,#f47c36 76%,#6c267b 100%)}
-.v35-blast-rays{position:absolute;inset:-25%;opacity:0;transform:scale(.04);background:repeating-conic-gradient(from 0deg at 50% 52%,#fff9d9e8 0deg 3deg,#ffbd4a99 4deg 5deg,transparent 6deg 13deg);mask-image:radial-gradient(ellipse at 50% 52%,#000 0 14%,#0000 69%);animation:v35-rays-bloom .56s cubic-bezier(.14,.74,.2,1) forwards}
+.v35-blast{position:absolute;z-index:10;inset:-55%;opacity:0;transform:scale(.015);transform-origin:50% 52%;pointer-events:none;background:radial-gradient(circle at 50% 52%,#fff 0%,#fffef4 20%,#fff2c0 40%,#ffda7c 61%,#f4bd5d 80%,#d99c40 100%)}
+.v35-blast-rays{position:absolute;inset:-25%;opacity:0;transform:scale(.04);background:repeating-conic-gradient(from 0deg at 50% 52%,#fff8e0a0 0deg 2deg,#ffd36b55 3deg 4deg,transparent 5deg 14deg);mask-image:radial-gradient(ellipse at 50% 52%,#000 0 14%,#0000 69%);animation:v35-rays-bloom .56s cubic-bezier(.14,.74,.2,1) forwards}
 .v35-blast-sparks{position:absolute;inset:0}
-.v35-blast-spark{position:absolute;left:50%;top:52%;width:var(--size);height:var(--size);border-radius:50%;opacity:0;background:#fffde3;box-shadow:0 0 8px 3px #fff0a8,0 0 20px 8px #ffb83e;animation:v35-spark-flight .9s cubic-bezier(.12,.62,.18,1) var(--delay) forwards}
+.v35-blast-spark{position:absolute;left:50%;top:52%;width:var(--size);height:var(--size);border-radius:50%;opacity:0;background:#fffde3;box-shadow:0 0 8px 3px #fff0a8,0 0 20px 8px #ffb83e;animation:v35-spark-flight .82s cubic-bezier(.12,.62,.18,1) var(--delay) forwards}
 .v35-blast-spark::after{content:"";position:absolute;top:50%;left:50%;width:24px;height:2px;transform:translate(-50%,-50%) rotate(38deg);background:linear-gradient(90deg,#fff,transparent);filter:drop-shadow(0 0 4px #fff1a8)}
 .v35-transition-cover{position:fixed;z-index:2147483646;inset:0;opacity:1;background:radial-gradient(circle at 50% 52%,#fff 0%,#fff9d0 20%,#ffe17a 46%,#ef9c3e 72%,#f7d987 100%);transition:opacity .72s ease-out;pointer-events:none}
 .v35-transition-cover.v35-fade-away{opacity:0}
@@ -31,14 +31,14 @@
 .v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow{opacity:1;animation:v35-unlock-glow .72s ease-in-out infinite alternate}
 .v35-welcome-root.v35-is-zooming .v35-welcome-stage{transform:scale(1.42);transform-origin:50% 54%}
 .v35-welcome-root.v35-is-blasting .v35-blast{animation:v35-golden-burst .52s cubic-bezier(.12,.68,.16,1) forwards}
-.v35-welcome-root.v35-is-blasting .v35-blast-rays{animation:v35-rays-bloom 1.05s cubic-bezier(.14,.74,.2,1) forwards}
-@keyframes v35-unlock-glow{from{filter:brightness(.86) drop-shadow(0 0 8px #ffd76e);transform:translateX(-2px) scale(.86)}to{filter:brightness(1.35) drop-shadow(0 0 22px #fff2a4);transform:translateX(2px) scale(1.14)}}
+.v35-welcome-root.v35-is-blasting .v35-blast-rays{animation:v35-rays-bloom .64s cubic-bezier(.14,.74,.2,1) forwards}
+@keyframes v35-unlock-glow{from{filter:brightness(.96) drop-shadow(0 0 10px #ffd76e);transform:scale(.96)}to{filter:brightness(1.22) drop-shadow(0 0 20px #fff2a4);transform:scale(1.08)}}
 @keyframes v35-golden-burst{0%{opacity:0;transform:scale(.015)}18%{opacity:1}65%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
-@keyframes v35-rays-bloom{0%{opacity:0;transform:scale(.04) rotate(-15deg)}40%{opacity:.95}100%{opacity:.56;transform:scale(1.2) rotate(15deg)}}
+@keyframes v35-rays-bloom{0%{opacity:0;transform:scale(.04) rotate(-8deg)}42%{opacity:.72}100%{opacity:.44;transform:scale(1.12) rotate(8deg)}}
 @keyframes v35-spark-flight{0%{opacity:0;transform:translate(0,0) scale(.22)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.04)}}
 @keyframes v35-spark-drift{to{transform:translate(14px,-26px) scale(.45);opacity:.22}}
 @media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-entrance{left:57%;top:82%;width:24%;height:12%}.v35-handle-glow{top:55%}.v35-seam-glow{top:28%;height:34%}}
 @media(prefers-reduced-motion:reduce){.v35-welcome-stage,.v35-transition-cover{transition-duration:.12s!important}.v35-spark,.v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow,.v35-welcome-root.v35-is-blasting .v35-blast,.v35-welcome-root.v35-is-blasting .v35-blast-rays,.v35-blast-spark{animation-duration:.12s!important}}
 
 .v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow{opacity:1}
-.v35-welcome-root.v35-door-active .v35-seam-glow{opacity:1;filter:blur(9px) drop-shadow(0 0 30px #fff1a0);transform:translateX(-50%) scaleX(8) scaleY(1.22)}
+.v35-welcome-root.v35-door-active .v35-seam-glow{opacity:1;filter:blur(9px) drop-shadow(0 0 30px #fff1a0);transform:translateX(-50%) scaleX(7) scaleY(1.18)}
