@@ -59,6 +59,7 @@ function v35ShowPalaceWelcome() {
   const rays = overlay.querySelector('.v35-blast-rays');
   const doorway = overlay.querySelector('.v35-doorway');
   const waiters = new Set();
+  const activeAnimations = new Set();
   let phase = 'ready';
   let soundEnabled = false;
   let audioContext = null;
@@ -111,6 +112,20 @@ function v35ShowPalaceWelcome() {
     timers.add(id);
     waiters.add(cancel);
   });
+  const animateNode = (node, frames, duration, easing, finalStyles) => {
+    if (typeof node?.animate !== 'function') {
+      Object.assign(node.style, finalStyles);
+      return delay(duration);
+    }
+    const animation = node.animate(frames, { duration, easing, fill: 'forwards' });
+    activeAnimations.add(animation);
+    return animation.finished.then(() => {
+      if (phase !== 'done') {
+        Object.assign(node.style, finalStyles);
+        animation.cancel();
+      }
+    }, () => {}).finally(() => activeAnimations.delete(animation));
+  };
   const motionEnd = (node, eventName, property, timeout) => new Promise(resolve => {
     let id;
     const done = event => {
@@ -134,6 +149,8 @@ function v35ShowPalaceWelcome() {
     timers.clear();
     [...waiters].forEach(cancel => cancel());
     waiters.clear();
+    activeAnimations.forEach(animation => animation.cancel());
+    activeAnimations.clear();
   };
 
   const finish = withCover => {
@@ -230,10 +247,11 @@ function v35ShowPalaceWelcome() {
     chime();
     if (reducedMotion.matches) {
       overlay.classList.add('v35-is-blasting');
-      blast.style.animation = 'v35-golden-burst .98s cubic-bezier(.12,.68,.16,1) forwards';
-      rays.style.animation = 'v35-rays-bloom 1.05s cubic-bezier(.14,.74,.2,1) forwards';
       burstSound();
-      await delay(120);
+      await Promise.all([
+        animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(1.42)', opacity: 1 }], 120, 'ease-out', { transform: 'scale(1.42)', opacity: '1' }),
+        animateNode(rays, [{ transform: 'scale(.04) rotate(-15deg)', opacity: 0 }, { transform: 'scale(1.2) rotate(15deg)', opacity: .56 }], 120, 'ease-out', { transform: 'scale(1.2) rotate(15deg)', opacity: '.56' })
+      ]);
       if (phase === 'opening' && sequence === run) finish(true);
       return;
     }
@@ -246,22 +264,23 @@ function v35ShowPalaceWelcome() {
     await delay(180);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-doors-opening');
-    panels[0].style.transform = 'rotateY(-76deg)';
-    panels[1].style.transform = 'rotateY(76deg)';
-    await Promise.all(panels.map(panel => motionEnd(panel, 'transitionend', 'transform', 1120)));
+    await Promise.all([
+      animateNode(panels[0], [{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(-76deg)' }], 920, 'cubic-bezier(.2,.72,.18,1)', { transform: 'rotateY(-76deg)' }),
+      animateNode(panels[1], [{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(76deg)' }], 920, 'cubic-bezier(.2,.72,.18,1)', { transform: 'rotateY(76deg)' })
+    ]);
     if (phase !== 'opening' || sequence !== run) return;
     await delay(420);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-zooming');
     stage.style.transformOrigin = '50% 54%';
-    stage.style.transform = 'scale(1.48)';
-    await motionEnd(stage, 'transitionend', 'transform', 1150);
+    await animateNode(stage, [{ transform: 'scale(1)' }, { transform: 'scale(1.48)' }], 920, 'cubic-bezier(.2,.68,.2,1)', { transform: 'scale(1.48)' });
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-blasting');
-    blast.style.animation = 'v35-golden-burst .98s cubic-bezier(.12,.68,.16,1) forwards';
-    rays.style.animation = 'v35-rays-bloom 1.05s cubic-bezier(.14,.74,.2,1) forwards';
     burstSound();
-    await motionEnd(blast, 'animationend', null, 1300);
+    await Promise.all([
+      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .65 }, { transform: 'scale(1.42)', opacity: 1 }], 980, 'cubic-bezier(.12,.68,.16,1)', { transform: 'scale(1.42)', opacity: '1' }),
+      animateNode(rays, [{ transform: 'scale(.04) rotate(-15deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.2) rotate(15deg)', opacity: .56 }], 1050, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.2) rotate(15deg)', opacity: '.56' })
+    ]);
     if (phase === 'opening' && sequence === run) finish(true);
   };
 
