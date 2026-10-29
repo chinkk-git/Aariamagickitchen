@@ -259,7 +259,7 @@ try {
   .v34-hero{height:clamp(390px,72vw,460px)!important}
 }
 </style>`;
-  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\\n${ownerLandscapeVisualCorrections}\\n</body>`);
+  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n</body>`);
   fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
   const reviewJson = path.join(sourceRoot, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
   const review = JSON.parse(fs.readFileSync(reviewJson, 'utf8'));
