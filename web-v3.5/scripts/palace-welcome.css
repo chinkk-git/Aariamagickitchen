@@ -9,8 +9,9 @@
 .v35-welcome-controls{position:absolute;z-index:8;top:max(10px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));display:flex;align-items:center;gap:8px}
 .v35-welcome-controls button{min-height:44px;border:1.5px solid #ffe9b0;border-radius:999px;background:#51236dcc;color:#fff7e3;font:800 16px/1 system-ui,sans-serif;padding:0 15px;box-shadow:0 3px 12px #26103977,0 0 14px #ffe39444;backdrop-filter:blur(8px);cursor:pointer}
 .v35-welcome-controls .v35-sound-toggle{width:46px;padding:0;font-size:21px}
-.v35-welcome-controls button:focus-visible,.v35-entrance:focus-visible{outline:3px solid #fff9cf;outline-offset:3px}
-.v35-entrance{position:absolute;z-index:7;left:50%;top:84%;width:58%;height:11%;transform:translate(-50%,-50%);border:0;border-radius:30%;background:transparent;cursor:pointer;touch-action:manipulation}
+.v35-welcome-controls button:focus-visible{outline:3px solid #fff9cf;outline-offset:3px}
+.v35-entrance{position:absolute;z-index:7;left:50%;top:88%;width:58%;height:9%;transform:translate(-50%,-50%);border:0;border-radius:14px;background:transparent;cursor:pointer;touch-action:manipulation}
+.v35-entrance:focus-visible{outline:3px solid #fff9cf;outline-offset:1px;box-shadow:0 0 18px 5px #ffe78d55}
 .v35-entrance:active{background:#fff5b318;box-shadow:0 0 28px #fff0a488}
 .v35-sparkles{position:absolute;z-index:5;inset:0;pointer-events:none;overflow:hidden}
 .v35-spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff8c9;box-shadow:0 0 11px 4px #ffdb70;opacity:.72;animation:v35-spark-drift var(--spark-duration) ease-in-out var(--spark-delay) infinite alternate}
@@ -25,5 +26,5 @@
 @keyframes v35-door-open{0%{opacity:.45;transform:translate(-50%,-50%) scaleX(.08)}35%{opacity:1;transform:translate(-50%,-50%) scaleX(1.15)}100%{opacity:1;transform:translate(-50%,-50%) scaleX(3.8)}}
 @keyframes v35-magic-blast{0%{opacity:0;transform:scale(.06)}42%{opacity:1;transform:scale(2.1)}100%{opacity:1;transform:scale(3.5)}}
 @keyframes v35-spark-drift{to{transform:translate(14px,-26px) scale(.45);opacity:.22}}
-@media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-welcome-stage{transform-origin:50% 55%}.v35-door-halo{top:54%;width:min(36vh,36vw)}.v35-door-light{top:54%;height:30%}.v35-welcome-root.v35-is-zooming .v35-welcome-stage{transform:scale(1.4);transform-origin:50% 54%}.v35-entrance{top:79%;width:36%;height:16%}}
+@media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-welcome-stage{transform-origin:50% 55%}.v35-door-halo{top:54%;width:min(36vh,36vw)}.v35-door-light{top:54%;height:30%}.v35-welcome-root.v35-is-zooming .v35-welcome-stage{transform:scale(1.4);transform-origin:50% 54%}.v35-entrance{left:57%;top:82%;width:24%;height:12%}}
 @media(prefers-reduced-motion:reduce){.v35-welcome-stage,.v35-door-halo,.v35-transition-cover{transition-duration:.12s!important}.v35-spark,.v35-welcome-root.v35-is-zooming .v35-door-light{animation-duration:.12s!important}.v35-welcome-root.v35-is-blasting::after{animation-duration:.12s!important}}
