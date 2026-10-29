@@ -28,3 +28,14 @@
 @keyframes v35-spark-drift{to{transform:translate(14px,-26px) scale(.45);opacity:.22}}
 @media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-welcome-stage{transform-origin:50% 55%}.v35-door-halo{top:54%;width:min(36vh,36vw)}.v35-door-light{top:54%;height:30%}.v35-welcome-root.v35-is-zooming .v35-welcome-stage{transform:scale(1.4);transform-origin:50% 54%}.v35-entrance{left:57%;top:82%;width:24%;height:12%}}
 @media(prefers-reduced-motion:reduce){.v35-welcome-stage,.v35-door-halo,.v35-transition-cover{transition-duration:.12s!important}.v35-spark,.v35-welcome-root.v35-is-zooming .v35-door-light{animation-duration:.12s!important}.v35-welcome-root.v35-is-blasting::after{animation-duration:.12s!important}}
+
+/* Transparent entrance target: visual focus feedback is reserved for keyboard navigation. */
+.v35-entrance{appearance:none;-webkit-appearance:none;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:none!important;color:transparent}
+.v35-entrance:focus:not(:focus-visible){outline:none!important;box-shadow:none!important}
+.v35-entrance:focus-visible{outline:3px solid #fff9cf!important;outline-offset:1px;box-shadow:0 0 0 2px #55366e!important}
+.v35-entrance:active{background:transparent!important;box-shadow:none!important}
+
+/* Reprint the baked world sign text slightly lower inside its existing face. */
+.fw-world-label{position:absolute;z-index:7;left:47.2%;top:40.7%;width:17.8%;height:5.2%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 1% 1.2%;overflow:hidden;border:0;border-radius:3px;background:linear-gradient(180deg,#fff1d0 0%,#f7dfab 100%);color:#321d1c;font:950 clamp(7px,1.85vw,13px)/.98 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.04em;text-align:center;text-shadow:0 1px 0 #fff9;pointer-events:none;user-select:none}
+@media(orientation:landscape) and (max-aspect-ratio:7/4){.fw-world-label{left:49%;top:38.3%;width:8.6%;height:4.6%;padding-bottom:2px;font-size:clamp(9px,1.05vw,15px)}}
+@media(orientation:landscape) and (min-aspect-ratio:7/4){.fw-world-label{left:48.4%;top:37.4%;width:8.3%;height:4.6%;padding-bottom:2px;font-size:clamp(9px,1vw,14px)}}
