@@ -53,7 +53,7 @@ if (!layer.includes("v3ProfileState.profile?.chefId==='CHEF_B'?'CHEF_B':'CHEF_A'
   throw new Error('Profile-selected chef artwork or four-step scene mapping is missing.');
 }
 const syncStart = layer.indexOf('function v3SyncRecipeArt(){');
-const syncEnd = layer.indexOf('\nconst v3RenderBeforeProfileControls', syncStart);
+const syncEnd = layer.indexOf('/* __V3_CREATIONS_MODEL_START__ */', syncStart);
 if (syncStart < 0 || syncEnd <= syncStart) throw new Error('Profile artwork sync helper is missing.');
 const syncContext = vm.createContext({
   v3ProfileState: { profile: { chefId: 'CHEF_B' } },
