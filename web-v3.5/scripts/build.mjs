@@ -134,7 +134,7 @@ try {
   const legacyRendererEnd = runtimeText.indexOf(creationRendererEndMarker, legacyRendererStart) + creationRendererEndMarker.length;
   if (creationBlockStart < 0 || creationBlockEnd < creationBlockStart || legacyRendererStart < 0 || legacyRendererEnd < legacyRendererStart || !runtimeText.includes(creationRendererAnchor)) throw new Error('Shared completed-dish renderer anchors changed; refusing a partial Web build.');
   const completedDishClickBridge = `document.addEventListener('click',event=>{const button=event.target.closest('button[data-action="nextstep"]');if(!button||!button.classList.contains('finish-step')||!selected)return;v3AddCompletedDish(selected.id)});`;
-  runtimeText = runtimeText.slice(0, legacyRendererStart) + sharedRuntimeText.slice(creationBlockStart, creationBlockEnd) + '\\n' + completedDishClickBridge + runtimeText.slice(legacyRendererEnd);
+  runtimeText = runtimeText.slice(0, legacyRendererStart) + sharedRuntimeText.slice(creationBlockStart, creationBlockEnd) + '\n' + completedDishClickBridge + runtimeText.slice(legacyRendererEnd);
   fs.writeFileSync(runtimePath, runtimeText);
   // Carry the approved V3.4 artwork fields into the exact V3.5 transformer
   // only after the Android artifact source hash has been confirmed.
