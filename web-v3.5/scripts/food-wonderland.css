@@ -295,3 +295,7 @@
   .fw-world .fw-hotspots .fw-dest-world{left:38%!important;top:5%!important;width:24%!important;height:29%!important;aspect-ratio:auto!important}
 }
 
+
+/* Keep the World object and baked-in sign in one target, clear of the weekly wheel. */
+@media(orientation:portrait){.fw-world .fw-hotspots .fw-dest-world{left:37%!important;top:17%!important;width:26%!important;height:34%!important;aspect-ratio:auto!important}}
+@media(orientation:landscape){.fw-world .fw-hotspots .fw-dest-world{left:43.5%!important;top:5%!important;width:15%!important;height:40%!important;aspect-ratio:auto!important}}
