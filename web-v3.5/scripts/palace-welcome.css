@@ -20,7 +20,7 @@
 .v35-sparkles{position:absolute;z-index:5;inset:0;pointer-events:none;overflow:hidden}
 .v35-spark{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff9dc;box-shadow:0 0 8px 3px #ffdfa066;opacity:.52;animation:v35-spark-drift var(--spark-duration) ease-in-out var(--spark-delay) infinite alternate}
 .v35-blast{position:absolute;z-index:10;inset:-55%;opacity:0;transform:scale(.015);transform-origin:50% 52%;pointer-events:none;background:radial-gradient(ellipse at 50% 52%,#fff 0%,#fffef8 8%,#fff7df 20%,#ffe7b2 39%,#f5cc82 57%,#e2ae55 76%,#c68932 100%)}
-.v35-blast::before{content:"";position:absolute;inset:-8%;opacity:0;background:radial-gradient(ellipse 24% 32% at 29% 50%,#d58a2bc9 0 18%,#f6bd64c9 30%,transparent 75%),radial-gradient(ellipse 23% 36% at 70% 48%,#e3a640d9 0 18%,#ffdf9fc9 32%,transparent 75%),radial-gradient(ellipse 18% 29% at 43% 29%,#ffedc0d1 0 18%,#f3bc62a8 32%,transparent 75%),radial-gradient(ellipse 21% 32% at 57% 72%,#ce8528c2 0 17%,#f0b750bb 32%,transparent 76%),radial-gradient(ellipse 16% 24% at 77% 65%,#ffedbfbd 0 17%,#e3a33e9c 34%,transparent 76%),radial-gradient(ellipse 20% 28% at 22% 69%,#db922fd1 0 17%,#f6c56eb5 33%,transparent 76%);filter:blur(18px) saturate(1.22);mix-blend-mode:screen}
+.v35-blast::before{content:"";position:absolute;inset:-8%;opacity:0;background:radial-gradient(ellipse 24% 32% at 29% 50%,#d58a2bc9 0 18%,#f6bd64c9 30%,transparent 75%),radial-gradient(ellipse 23% 36% at 70% 48%,#e3a640d9 0 18%,#ffdf9fc9 32%,transparent 75%),radial-gradient(ellipse 18% 29% at 43% 29%,#ffedc0d1 0 18%,#f3bc62a8 32%,transparent 75%),radial-gradient(ellipse 21% 32% at 57% 72%,#ce8528c2 0 17%,#f0b750bb 32%,transparent 76%),radial-gradient(ellipse 16% 24% at 77% 65%,#ffedbfbd 0 17%,#e3a33e9c 34%,transparent 76%),radial-gradient(ellipse 20% 28% at 22% 69%,#db922fd1 0 17%,#f6c56eb5 33%,transparent 76%);filter:blur(18px) saturate(1.22);mix-blend-mode:normal}
 .v35-blast::after{content:"";position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 50% 52%,#fffdf0 0%,#fff5d899 13%,#ffdb8044 36%,transparent 62%);filter:blur(13px);mix-blend-mode:screen}
 .v35-blast-rays{position:absolute;inset:-25%;opacity:0;transform:scale(.04);background:repeating-conic-gradient(from 8deg at 50% 52%,#fff7dc12 0deg 3deg,transparent 3deg 24deg);filter:blur(7px);mask-image:radial-gradient(ellipse at 50% 52%,#000 0 13%,#0000 70%);animation:v35-rays-bloom .52s cubic-bezier(.14,.74,.2,1) forwards}
 .v35-blast-sparks{position:absolute;inset:0}
@@ -36,10 +36,10 @@
 .v35-welcome-root.v35-is-blasting .v35-blast::before{animation:v35-smoke-swell .72s cubic-bezier(.18,.68,.22,1) forwards}
 .v35-welcome-root.v35-is-blasting .v35-blast::after{animation:v35-core-flash .52s ease-out forwards}
 @keyframes v35-unlock-glow{from{filter:brightness(1) drop-shadow(0 0 4px #ffe3a0)}to{filter:brightness(1.16) drop-shadow(0 0 22px #fff0be)}}
-@keyframes v35-golden-burst{0%{opacity:0;transform:scale(.015)}12%{opacity:1}60%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
+@keyframes v35-golden-burst{0%{opacity:.2;transform:scale(.06)}12%{opacity:1}60%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
 @keyframes v35-rays-bloom{0%{opacity:0;transform:scale(.04) rotate(-4deg)}48%{opacity:.36}100%{opacity:.22;transform:scale(1.12) rotate(4deg)}}
-@keyframes v35-smoke-swell{0%{opacity:0;transform:scale(.34) rotate(-9deg)}20%{opacity:.88}100%{opacity:1;transform:scale(1.28) rotate(8deg)}}
-@keyframes v35-core-flash{0%{opacity:0;transform:scale(.12)}20%{opacity:1}100%{opacity:.78;transform:scale(1.18)}}
+@keyframes v35-smoke-swell{0%{opacity:.44;transform:scale(.28) rotate(-9deg)}20%{opacity:.9}100%{opacity:1;transform:scale(1.28) rotate(8deg)}}
+@keyframes v35-core-flash{0%{opacity:.22;transform:scale(.14)}20%{opacity:1}100%{opacity:.78;transform:scale(1.18)}}
 @keyframes v35-spark-flight{0%{opacity:0;transform:translate(0,0) scale(.3)}20%{opacity:.85}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.12)}}
 @keyframes v35-spark-drift{to{transform:translate(14px,-26px) scale(.45);opacity:.22}}
 @media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-entrance{left:57%;top:82%;width:24%;height:12%}.v35-handle-glow{top:55%}.v35-seam-glow{top:28%;height:34%}}
