@@ -8,7 +8,7 @@
 .v35-handle-glow{top:58%;width:min(7vw,7vh,62px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff 0 9%,#fff6ae 18%,#ffb92e66 40%,transparent 72%);filter:drop-shadow(0 0 15px #ffe69a)}
 .v35-handle-left{left:calc(50% - min(4vw,4vh,32px))}
 .v35-handle-right{left:calc(50% + min(1vw,1vh,9px))}
-.v35-seam-glow{left:50%;top:37%;width:min(13vw,42vh,180px);height:30%;transform:translateX(-50%) scaleX(.08);background:linear-gradient(180deg,transparent 0%,#fffdf0 18%,#fff5d1 45%,#ffe59c 58%,#fff9e7 82%,transparent 100%);filter:blur(6px) drop-shadow(0 0 18px #ffe8a0)}
+.v35-seam-glow{left:50%;top:37%;width:min(13vw,42vh,180px);height:30%;transform:translateX(-50%) scaleX(.55);background:linear-gradient(180deg,transparent 0%,#fffdf0 18%,#fff5d1 45%,#ffe59c 58%,#fff9e7 82%,transparent 100%);filter:blur(6px) drop-shadow(0 0 18px #ffe8a0)}
 .v35-welcome-controls{position:absolute;z-index:8;top:max(10px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));display:flex;align-items:center;gap:8px}
 .v35-welcome-controls button{min-height:44px;border:1.5px solid #ffe9b0;border-radius:999px;background:#51236dcc;color:#fff7e3;font:800 16px/1 system-ui,sans-serif;padding:0 15px;box-shadow:0 3px 12px #26103977,0 0 14px #ffe39444;backdrop-filter:blur(8px);cursor:pointer}
 .v35-welcome-controls .v35-sound-toggle{width:46px;padding:0;font-size:21px}
@@ -36,10 +36,10 @@
 .v35-welcome-root.v35-is-blasting .v35-blast::before{animation:v35-smoke-swell .72s cubic-bezier(.18,.68,.22,1) forwards}
 .v35-welcome-root.v35-is-blasting .v35-blast::after{animation:v35-core-flash .52s ease-out forwards}
 @keyframes v35-unlock-glow{from{filter:brightness(1) drop-shadow(0 0 4px #ffe3a0)}to{filter:brightness(1.16) drop-shadow(0 0 22px #fff0be)}}
-@keyframes v35-golden-burst{0%{opacity:.2;transform:scale(.06)}12%{opacity:1}60%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
+@keyframes v35-golden-burst{0%{opacity:.72;transform:scale(.18)}12%{opacity:1}60%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
 @keyframes v35-rays-bloom{0%{opacity:0;transform:scale(.04) rotate(-4deg)}48%{opacity:.36}100%{opacity:.22;transform:scale(1.12) rotate(4deg)}}
-@keyframes v35-smoke-swell{0%{opacity:.44;transform:scale(.28) rotate(-9deg)}20%{opacity:.9}100%{opacity:1;transform:scale(1.28) rotate(8deg)}}
-@keyframes v35-core-flash{0%{opacity:.22;transform:scale(.14)}20%{opacity:1}100%{opacity:.78;transform:scale(1.18)}}
+@keyframes v35-smoke-swell{0%{opacity:.78;transform:scale(.7) rotate(-9deg)}20%{opacity:.9}100%{opacity:1;transform:scale(1.28) rotate(8deg)}}
+@keyframes v35-core-flash{0%{opacity:.58;transform:scale(.24)}20%{opacity:1}100%{opacity:.78;transform:scale(1.18)}}
 @keyframes v35-spark-flight{0%{opacity:0;transform:translate(0,0) scale(.3)}20%{opacity:.85}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.12)}}
 @keyframes v35-spark-drift{to{transform:translate(14px,-26px) scale(.45);opacity:.22}}
 @media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-entrance{left:57%;top:82%;width:24%;height:12%}.v35-handle-glow{top:55%}.v35-seam-glow{top:28%;height:34%}}
