@@ -30,16 +30,17 @@
 .v35-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .v35-legacy-bridge[hidden]{display:none!important}
 .v35-welcome-root.v35-unlocking .v35-handle-glow,.v35-welcome-root.v35-unlocking .v35-seam-glow{opacity:1;animation:v35-unlock-glow .38s ease-out 1 both}
+.v35-welcome-root.v35-unlocking .v35-seam-glow{transform:translateX(-50%) scaleX(2.8) scaleY(1.1)}
 .v35-welcome-root.v35-is-zooming .v35-welcome-stage{transform:scale(1.42);transform-origin:50% 54%}
 .v35-welcome-root.v35-is-blasting .v35-blast{animation:v35-golden-burst .64s cubic-bezier(.16,.68,.2,1) forwards}
 .v35-welcome-root.v35-is-blasting .v35-blast-rays{animation:v35-rays-bloom .62s cubic-bezier(.14,.74,.2,1) forwards}
 .v35-welcome-root.v35-is-blasting .v35-blast::before{animation:v35-smoke-swell .72s cubic-bezier(.18,.68,.22,1) forwards}
 .v35-welcome-root.v35-is-blasting .v35-blast::after{animation:v35-core-flash .52s ease-out forwards}
 @keyframes v35-unlock-glow{from{filter:brightness(1) drop-shadow(0 0 4px #ffe3a0)}to{filter:brightness(1.16) drop-shadow(0 0 22px #fff0be)}}
-@keyframes v35-golden-burst{0%{opacity:.72;transform:scale(.18)}12%{opacity:1}60%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
+@keyframes v35-golden-burst{0%{opacity:1;transform:scale(.45)}12%{opacity:1}60%{opacity:1;transform:scale(.92)}100%{opacity:1;transform:scale(1.42)}}
 @keyframes v35-rays-bloom{0%{opacity:0;transform:scale(.04) rotate(-4deg)}48%{opacity:.36}100%{opacity:.22;transform:scale(1.12) rotate(4deg)}}
-@keyframes v35-smoke-swell{0%{opacity:.78;transform:scale(.7) rotate(-9deg)}20%{opacity:.9}100%{opacity:1;transform:scale(1.28) rotate(8deg)}}
-@keyframes v35-core-flash{0%{opacity:.58;transform:scale(.24)}20%{opacity:1}100%{opacity:.78;transform:scale(1.18)}}
+@keyframes v35-smoke-swell{0%{opacity:.88;transform:scale(.78) rotate(-9deg)}20%{opacity:.96}100%{opacity:1;transform:scale(1.28) rotate(8deg)}}
+@keyframes v35-core-flash{0%{opacity:.72;transform:scale(.4)}20%{opacity:1}100%{opacity:.78;transform:scale(1.18)}}
 @keyframes v35-spark-flight{0%{opacity:0;transform:translate(0,0) scale(.3)}20%{opacity:.85}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.12)}}
 @keyframes v35-spark-drift{to{transform:translate(14px,-26px) scale(.45);opacity:.22}}
 @media(orientation:landscape){#v34-welcome-boot-frame{background-image:url("./palace-welcome-landscape.webp")!important;background-position:38% center!important}.v35-welcome-picture img{object-position:38% center}.v35-entrance{left:57%;top:82%;width:24%;height:12%}.v35-handle-glow{top:55%}.v35-seam-glow{top:28%;height:34%}}
