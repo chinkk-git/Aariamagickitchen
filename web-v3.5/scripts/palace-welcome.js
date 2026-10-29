@@ -173,7 +173,7 @@ function v35ShowPalaceWelcome() {
       overlay.classList.add('v35-is-blasting');
       burstSound();
       await Promise.all([
-        animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(1.42)', opacity: 1 }], 120, 'ease-out', { transform: 'scale(1.42)', opacity: '1' }),
+        animateNode(blast, [{ transform: 'scale(.06)', opacity: .2 }, { transform: 'scale(1.42)', opacity: 1 }], 120, 'ease-out', { transform: 'scale(1.42)', opacity: '1' }),
         animateNode(rays, [{ transform: 'scale(.04) rotate(-15deg)', opacity: 0 }, { transform: 'scale(1.2) rotate(15deg)', opacity: .56 }], 120, 'ease-out', { transform: 'scale(1.2) rotate(15deg)', opacity: '.56' })
       ]);
       if (phase === 'opening' && sequence === run) finish(true);
@@ -191,7 +191,7 @@ function v35ShowPalaceWelcome() {
     overlay.classList.add('v35-is-blasting');
     burstSound();
     const bloom = Promise.all([
-      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .55 }, { transform: 'scale(1.42)', opacity: 1 }], 640, 'cubic-bezier(.16,.68,.2,1)', { transform: 'scale(1.42)', opacity: '1' }),
+      animateNode(blast, [{ transform: 'scale(.06)', opacity: .2 }, { transform: 'scale(.92)', opacity: 1, offset: .55 }, { transform: 'scale(1.42)', opacity: 1 }], 640, 'cubic-bezier(.16,.68,.2,1)', { transform: 'scale(1.42)', opacity: '1' }),
       animateNode(rays, [{ transform: 'scale(.04) rotate(-4deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.12) rotate(4deg)', opacity: .22 }], 620, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.12) rotate(4deg)', opacity: '.22' })
     ]);
     await Promise.all([zoom, bloom]);
