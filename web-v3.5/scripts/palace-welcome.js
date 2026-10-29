@@ -180,19 +180,21 @@ function v35ShowPalaceWelcome() {
       return;
     }
     overlay.classList.add('v35-unlocking');
-    await delay(280);
+    await delay(140);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.remove('v35-unlocking');
     overlay.classList.add('v35-door-active', 'v35-is-zooming');
     stage.style.transformOrigin = '50% 54%';
-    await animateNode(stage, [{ transform: 'scale(1)' }, { transform: 'scale(1.42)' }], 700, 'cubic-bezier(.2,.68,.2,1)', { transform: 'scale(1.42)' });
+    const zoom = animateNode(stage, [{ transform: 'scale(1)' }, { transform: 'scale(1.42)' }], 680, 'cubic-bezier(.22,.72,.2,1)', { transform: 'scale(1.42)' });
+    await delay(390);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-blasting');
     burstSound();
-    await Promise.all([
-      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .65 }, { transform: 'scale(1.42)', opacity: 1 }], 620, 'cubic-bezier(.12,.68,.16,1)', { transform: 'scale(1.42)', opacity: '1' }),
-      animateNode(rays, [{ transform: 'scale(.04) rotate(-15deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.2) rotate(15deg)', opacity: .56 }], 640, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.12) rotate(8deg)', opacity: '.44' })
+    const bloom = Promise.all([
+      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .55 }, { transform: 'scale(1.42)', opacity: 1 }], 480, 'cubic-bezier(.16,.68,.2,1)', { transform: 'scale(1.42)', opacity: '1' }),
+      animateNode(rays, [{ transform: 'scale(.04) rotate(-4deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.12) rotate(4deg)', opacity: .22 }], 500, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.12) rotate(4deg)', opacity: '.22' })
     ]);
+    await Promise.all([zoom, bloom]);
     if (phase === 'opening' && sequence === run) finish(true);
   };
 
@@ -220,7 +222,7 @@ function v35ShowPalaceWelcome() {
   fitViewport();
   window.visualViewport?.addEventListener('resize', fitViewport, { passive: true });
   window.addEventListener('resize', fitViewport, { passive: true });
-  for (let i = 0; i < 28; i++) {
+  for (let i = 0; i < 18; i++) {
     const spark = document.createElement('i');
     spark.className = 'v35-spark';
     spark.style.left = `${4 + Math.random() * 92}%`;
@@ -230,14 +232,14 @@ function v35ShowPalaceWelcome() {
     sparks.appendChild(spark);
   }
   const blastSparks = overlay.querySelector('.v35-blast-sparks');
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 12; i++) {
     const spark = document.createElement('i');
     const angle = Math.random() * Math.PI * 2;
-    const distance = 35 + Math.random() * 55;
+    const distance = 24 + Math.random() * 34;
     spark.className = 'v35-blast-spark';
     spark.style.setProperty('--dx', `${Math.cos(angle) * distance}vw`);
     spark.style.setProperty('--dy', `${Math.sin(angle) * distance}vh`);
-    spark.style.setProperty('--delay', `${Math.random() * .22}s`);
+    spark.style.setProperty('--delay', `${Math.random() * .1}s`);
     spark.style.setProperty('--size', `${2 + Math.random() * 3}px`);
     blastSparks.appendChild(spark);
   }
