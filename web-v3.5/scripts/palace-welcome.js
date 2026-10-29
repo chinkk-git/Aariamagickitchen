@@ -145,5 +145,4 @@
     }
     localize();
     try { history.pushState({ v35PalaceWelcome: true }, '', location.href); } catch {}
-    entrance.focus({ preventScroll: true });
   }
