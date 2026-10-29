@@ -151,13 +151,14 @@
     const menu=toolsNav?.querySelector('.fw-utility-links');
     if(toggle&&menu){event.preventDefault();const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));menu.hidden=!open;toggle.setAttribute('aria-label',translate(open?'Close home tools':'Open home tools',open?'Fechar ferramentas da página inicial':'Abrir ferramentas da página inicial'));return;}
     const moreMenu=document.querySelector('.fw-utility-links');
-    if(moreMenu&&!event.target.closest('.fw-more')&&!moreMenu.hidden){moreMenu.hidden=true;const moreToggle=document.querySelector('.fw-utility-toggle');moreToggle?.setAttribute('aria-expanded','false');}
+    if(moreMenu&&!event.target.closest('.fw-more')&&!moreMenu.hidden)closeUtilityMenu();
     const mute=event.target.closest('.fw-mute');
     if(mute){event.preventDefault();storage.set(MUTE_KEY,String(!muted()));updateMuteButton();if(!muted())sound('sparkle');return;}
     const hotspot=event.target.closest('[data-fw]');
-    if(hotspot){event.preventDefault();if(hotspot.closest('.fw-utility-links')){const menu=document.querySelector('.fw-utility-links'),moreToggle=document.querySelector('.fw-utility-toggle');if(menu)menu.hidden=true;moreToggle?.setAttribute('aria-expanded','false');}animateHotspot(hotspot);}
+    if(hotspot){event.preventDefault();if(hotspot.closest('.fw-utility-links'))closeUtilityMenu();animateHotspot(hotspot);}
   },true);
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'){const menu=document.querySelector('.fw-utility-links'),toggle=document.querySelector('.fw-utility-toggle');if(menu&&!menu.hidden){menu.hidden=true;toggle?.setAttribute('aria-expanded','false');toggle?.focus({preventScroll:true});}}});
+  function closeUtilityMenu(){const menu=document.querySelector('.fw-utility-links'),toggle=document.querySelector('.fw-utility-toggle');if(!menu||menu.hidden)return;menu.hidden=true;toggle?.setAttribute('aria-expanded','false');toggle?.setAttribute('aria-label',translate('Open home tools','Abrir ferramentas da página inicial'));}
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){const toggle=document.querySelector('.fw-utility-toggle');closeUtilityMenu();toggle?.focus({preventScroll:true});}});
 
   function syncHome() {
     const app=document.querySelector('.app'),active=typeof view!=='undefined'&&view==='home'&&homeChoice()==='wonderland';
