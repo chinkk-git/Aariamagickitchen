@@ -43,6 +43,10 @@
     const soundToggle = overlay.querySelector('.v35-sound-toggle');
     const live = overlay.querySelector('.v35-live');
     const sparks = overlay.querySelector('.v35-sparkles');
+    const onKeyboardMode = event => { if (event.key === 'Tab') overlay.classList.add('v35-keyboard-nav'); };
+    const onPointerMode = () => overlay.classList.remove('v35-keyboard-nav');
+    document.addEventListener('keydown', onKeyboardMode, true);
+    overlay.addEventListener('pointerdown', onPointerMode, { passive: true });
     let phase = 'ready';
     let soundEnabled = false;
     let audioContext = null;
@@ -85,6 +89,8 @@
       phase = 'done';
       timers.forEach(clearTimeout);
       timers = [];
+      document.removeEventListener('keydown', onKeyboardMode, true);
+      overlay.removeEventListener('pointerdown', onPointerMode);
       let cover = null;
       if (withCover) {
         cover = document.createElement('div');
