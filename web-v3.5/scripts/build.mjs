@@ -174,8 +174,26 @@ try {
 
   fs.rmSync(dist, { recursive: true, force: true });
   fs.mkdirSync(dist, { recursive: true });
+  for (let i = 1; i <= 3; i++) fs.copyFileSync(path.join(webRoot, `assets/welcome-landscape/scene_0${i}_landscape.webp`), path.join(dist, `welcome-scene-${i}-landscape.webp`));
   const structuredHtml = fs.readFileSync(attached);
   let finalHtml = structuredHtml.toString('utf8');
+  const welcomeSceneAnchor = "    frame.style.backgroundPosition = ['0% center', '50% center', '100% center'][welcomeSceneIndex];";
+  if (!finalHtml.includes(welcomeSceneAnchor)) throw new Error('Welcome scene selector anchor changed.');
+  finalHtml = finalHtml.replace(welcomeSceneAnchor, `${welcomeSceneAnchor}\n    frame.dataset.scene = String(welcomeSceneIndex + 1);`);
+  const welcomeSceneDefinitions = `    { text: 'Preparing something magical...', aria: 'Aaria raises her arms in the magical kitchen. Preparing something magical...' },
+    { text: 'Mixing fun, flavours and surprises!', aria: 'Aaria stirs her magical mixing bowl. Mixing fun, flavours and surprises!' },
+    { text: 'Welcome to my Magical Kitchen!', aria: 'Aaria celebrates in the magical kitchen. Welcome to my Magical Kitchen!' }`;
+  const localizedWelcomeSceneDefinitions = `    { text: 'Preparing something magical...', pt: 'Preparando algo mágico...', aria: 'Aaria introduces her Magical Kitchen.', ariaPt: 'Aaria apresenta sua cozinha mágica.' },
+    { text: 'Exploring recipes and mixing ingredients!', pt: 'Explorando receitas e misturando ingredientes!', aria: 'Aaria explores recipes and mixes ingredients.', ariaPt: 'Aaria explora receitas e mistura ingredientes.' },
+    { text: 'Let’s start cooking together!', pt: 'Vamos começar a cozinhar!', aria: 'Aaria celebrates and invites the child to start cooking.', ariaPt: 'Aaria comemora e convida a criança para começar a cozinhar.' }`;
+  if (!finalHtml.includes(welcomeSceneDefinitions)) throw new Error('Welcome localization source changed.');
+  finalHtml = finalHtml.replace(welcomeSceneDefinitions, localizedWelcomeSceneDefinitions);
+  const welcomeAriaAnchor = "    frame.setAttribute('aria-label', scene.aria);";
+  if (!finalHtml.includes(welcomeAriaAnchor)) throw new Error('Welcome accessible label anchor changed.');
+  finalHtml = finalHtml.replace(welcomeAriaAnchor, `    frame.setAttribute('aria-label', state.language === 'pt-BR' ? scene.ariaPt : scene.aria);\n    welcomeOverlay.querySelector('.v34-welcome-live').textContent = state.language === 'pt-BR' ? scene.pt : scene.text;\n    welcomeOverlay.querySelector('.v34-welcome-skip').textContent = state.language === 'pt-BR' ? 'Pular' : 'Skip';\n    welcomeOverlay.querySelector('.v34-welcome-next').textContent = state.language === 'pt-BR' ? 'Avançar' : 'Next';\n    welcomeOverlay.querySelector('.v34-welcome-back').textContent = state.language === 'pt-BR' ? 'Voltar' : 'Back';\n    welcomeOverlay.querySelector('.v34-welcome-enter').setAttribute('aria-label', state.language === 'pt-BR' ? 'Entrar na cozinha mágica da Aaria' : 'Enter Aaria’s Magical Kitchen');`);
+  const welcomeStatusAnchor = "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';";
+  if (!finalHtml.includes(welcomeStatusAnchor)) throw new Error('Welcome progress status anchor changed.');
+  finalHtml = finalHtml.replace(welcomeStatusAnchor, "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = state.language === 'pt-BR' ? 'Cena ' + (welcomeSceneIndex + 1) + ' de 3' : 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';");
   const failedPhotoPost = "catch{notice('Could not prepare that photo. Please choose another one.')}}});document.addEventListener('change',e=>{if(e.target.matches('[data-appliance-filter]')";
   const originalPhotoFallback = "catch(error){console.error('Photo post rendering failed; retaining the original image for sharing.',error);if(file instanceof Blob&&file.type.startsWith('image/')){try{if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=file;sharePostBlobs[id]=file;sharePostUrls[id]=URL.createObjectURL(file);render();notice(state.language==='pt-BR'?'Foto pronta para compartilhar. A imagem original será usada.':'Photo ready to share. The original image will be used.')}catch(fallbackError){console.error('Original photo fallback failed.',fallbackError);notice('Could not prepare that photo. Please choose another one.')}}else notice('Could not prepare that photo. Please choose another one.')}}});document.addEventListener('change',e=>{if(e.target.matches('[data-appliance-filter]')";
   if (!finalHtml.includes(failedPhotoPost)) throw new Error('Photo-post failure handler anchor changed.');
@@ -242,6 +260,10 @@ try {
 .app .ref-ingredient-icon>img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important}
 .app.v32-international-active .ref-ingredient-icon>img{min-width:0!important;min-height:0!important}
 </style>`;
+  const ownerLandscapeWelcomeHead = `<style id="aaria-landscape-welcome-boot">
+@media (orientation:landscape){#v34-welcome-boot-frame{width:min(calc(100dvw - 24px),calc((100dvh - 16px)*16/9));height:auto;max-height:100%;aspect-ratio:16/9;background-image:url("./welcome-scene-1-landscape.webp");background-size:100% 100%}}
+</style>`;
+  finalHtml = finalHtml.replace('</head>', `${ownerLandscapeWelcomeHead}\n</head>`);
   const ownerLandscapeVisualCorrections = `<style id="aaria-landscape-only-visual-corrections">
 /* All overrides in this block are landscape-only; portrait layout rules remain untouched. */
 @media (orientation:landscape) {
@@ -259,7 +281,28 @@ try {
   .v34-hero{height:clamp(390px,72vw,460px)!important}
 }
 </style>`;
-  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n</body>`);
+  const ownerLandscapeWelcomeScenes = `<style id="aaria-landscape-welcome-scenes">
+@media (orientation:landscape) {
+  .v34-welcome-shell{display:block!important;padding:0!important;gap:0!important;overflow:hidden!important}
+  .v34-welcome-top{display:none!important}
+  .v34-welcome-stage{position:absolute!important;inset:0!important;display:grid!important;place-items:center!important;min-height:0!important;overflow:hidden!important}
+  .v34-welcome-frame{width:min(100dvw,calc(100dvh*16/9))!important;height:auto!important;aspect-ratio:16/9!important;max-width:100dvw!important;max-height:100dvh!important;border-radius:0!important;background-image:url("./welcome-scene-1-landscape.webp")!important;background-size:100% 100%!important;background-position:center!important;box-shadow:none!important}
+  .v34-welcome-frame[data-scene="2"]{width:min(100dvw,1672px)!important;aspect-ratio:1672/313!important;background-image:url("./welcome-scene-2-landscape.webp")!important}
+  .v34-welcome-frame[data-scene="3"]{width:min(100dvw,1672px)!important;aspect-ratio:1672/314!important;background-image:url("./welcome-scene-3-landscape.webp")!important}
+  .v34-welcome-footer{position:absolute!important;z-index:2!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(100dvw,calc(100dvh*16/9))!important;height:min(100dvh,calc(100dvw*9/16))!important;min-height:0!important;display:block!important;padding:0!important;pointer-events:none!important}
+  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="2"]) .v34-welcome-footer{width:min(100dvw,1672px)!important;height:auto!important;aspect-ratio:1672/313!important}
+  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="3"]) .v34-welcome-footer{width:min(100dvw,1672px)!important;height:auto!important;aspect-ratio:1672/314!important}
+  .v34-welcome-skip{position:absolute!important;right:1%!important;top:3%!important;width:10%!important;height:14%!important;min-width:0!important;min-height:0!important;padding:0 8px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(11px,2vw,24px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
+  .v34-welcome-next{position:absolute!important;left:1%!important;bottom:1%!important;width:13%!important;height:24%!important;min-width:0!important;min-height:0!important;padding:0 8px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(13px,2.4vw,26px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
+  .v34-welcome-back{position:absolute!important;left:15%!important;bottom:0!important;width:13%!important;height:25%!important;min-width:0!important;min-height:0!important;padding:0!important;opacity:0!important;pointer-events:auto!important}
+  .v34-welcome-status{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+  .v34-welcome-enter-wrap{position:absolute!important;left:0!important;right:auto!important;bottom:0!important;width:15%!important;height:31%!important;margin:0!important;display:grid!important;place-items:center!important;gap:0!important;border-radius:28px!important;background:linear-gradient(135deg,#6428d5,#ef31be)!important;border:3px solid #ffe891!important;box-shadow:0 0 18px 7px #ffe44bba,0 4px 0 #572078!important;pointer-events:auto!important}
+  .v34-welcome-enter-wrap[hidden]{display:none!important}
+  .v34-welcome-enter-wrap>span{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important}
+  .v34-welcome-enter{width:min(74px,74%)!important;height:min(74px,74%)!important;min-width:44px!important;min-height:44px!important;font-size:clamp(26px,7vw,48px)!important}
+}
+</style>`;
+  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n${ownerLandscapeWelcomeScenes}\n</body>`);
   fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
   const reviewJson = path.join(sourceRoot, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
   const review = JSON.parse(fs.readFileSync(reviewJson, 'utf8'));
@@ -388,7 +431,7 @@ try {
   const pwaCacheRevision = sha(Buffer.concat([Buffer.from(servedHtmlSha256), ...pwaIconFiles.map(icon => fs.readFileSync(path.join(dist, icon)))] )).slice(0, 12);
   const serviceWorkerSource = [
     "const CACHE_NAME = 'aaria-web-v3.5-" + pwaCacheRevision + "';",
-    "const CORE_FILES = ['./','./index.html','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
+    "const CORE_FILES = ['./','./index.html','./welcome-scene-1-landscape.webp','./welcome-scene-2-landscape.webp','./welcome-scene-3-landscape.webp','./manifest.webmanifest','./aaria-pwa-icon-192.png','./aaria-pwa-icon-512.png','./aaria-pwa-icon-maskable-512.png','./aaria-apple-touch-icon-180.png','./aaria-apple-touch-icon-167.png','./aaria-apple-touch-icon-152.png','./aaria-apple-touch-icon-120.png','./aaria-favicon-32.png'];",
     "self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_FILES)).then(() => self.skipWaiting())));",
     "self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('aaria-web-v3.5-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())));",
     "self.addEventListener('fetch', event => { const request = event.request, url = new URL(request.url); if (request.method !== 'GET' || url.origin !== self.location.origin) return; event.respondWith(fetch(new Request(request, {cache:'no-store'})).catch(async () => (await caches.match(request)) || (request.mode === 'navigate' ? await caches.match('./index.html') : Response.error())); });"
@@ -458,3 +501,4 @@ try {
 } finally {
   fs.rmSync(tmp, { recursive: true, force: true });
 }
+
