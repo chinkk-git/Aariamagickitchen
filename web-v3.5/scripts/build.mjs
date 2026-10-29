@@ -348,6 +348,10 @@ try {
   if(!nav)return;
   const threshold=18,positions=new WeakMap();
   let accumulated=0,direction=0,interactionUntil=0,lastHash=location.hash;
+  const rememberPositions=()=>{
+    const targets=[document.scrollingElement,document.querySelector('#screen')].filter(Boolean);
+    for(const target of targets)positions.set(target,{top:target.scrollTop,left:target.scrollLeft});
+  };
   const setVisible=visible=>{
     if(visible)nav.removeAttribute('data-scroll-hidden');
     else nav.setAttribute('data-scroll-hidden','true');
@@ -380,10 +384,11 @@ try {
   document.addEventListener('click',event=>{if(event.target.closest?.('#nav')){interactionUntil=Date.now()+900;setVisible(true)}},true);
   document.addEventListener('focusin',event=>{if(event.target.closest?.('#nav')){interactionUntil=Date.now()+900;setVisible(true)}},true);
   document.addEventListener('pointerup',event=>{if(event.target.closest?.('#nav'))interactionUntil=Date.now()+500},true);
-  window.addEventListener('hashchange',()=>{if(location.hash!==lastHash){lastHash=location.hash;reset()}});
-  window.addEventListener('pageshow',reset);
-  document.addEventListener('DOMContentLoaded',reset,{once:true});
+  window.addEventListener('hashchange',()=>{if(location.hash!==lastHash){lastHash=location.hash;reset();rememberPositions()}});
+  window.addEventListener('pageshow',()=>{reset();rememberPositions()});
+  document.addEventListener('DOMContentLoaded',()=>{reset();rememberPositions()},{once:true});
   reset();
+  rememberPositions();
 })();
 </script>`;
   finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n${ownerLandscapeWelcomeScenes}\n${ownerBottomNavAutoHide}\n</body>`);
@@ -402,7 +407,7 @@ try {
   }
   const recipeIds = [...new Set(review.recipes.map(item => Number(item.id)))];
   const manifest = {
-    package: 'Aaria V3.5 Web Edition', version: '3.5.0-review-single-home',
+    package: 'Aaria V3.5 Web Edition', version: '3.5.0-review-auto-hide-navigation',
     sharedAndroidSourceCommit: sourceCommit, approvedV34DualHomeCommit: v34Commit,
     androidWorkflowRun: 40776773336, androidApkArtifact: 12855138667,
     indiaDishThumbnailSourceCommit: indiaThumbnailCommit, indiaDishThumbnailIds: [51,57], indiaDishThumbnailSha256: indiaDishThumbnailHashes,
@@ -454,7 +459,7 @@ try {
     landscapeWelcomeArtwork: '3 landscape scenes recomposed from the supplied owner references as matched 1672x941 full-bleed artwork; no baked controls; local frame/transition review passed; owner visual/device acceptance pending.',
     portraitWelcome: 'Original portrait artwork and aspect-ratio rules retained; Next/Enter alignment is right-side; owner physical-device comparison pending.',
     visualScreenshots: [],
-    browserChecks: { allRecipesCount: 116, newRecipesRail: '19 canonical expansion recipes sourced from country mapping', canonicalInternationalDishAssets: '21/21 source and packaged SHA-256 verified', indiaExistingRecipeThumbnails: '2/2 Android-canonical images mapped for #051 and #057; source SHA-256 recorded', magicalAdventureOnly: 'PASS: Welcome Skip and final Enter both returned to Magical Adventure Home', classicHomeAccess: 'ACTIVE SELECTOR DISABLED; SOURCE AND ASSETS PRESERVED', settingsReachable: 'PASS: one 48x48px gear-only control with aria-label Settings opens Settings and returns Home', worldCountryArtwork: '21/21 canonical paths and package hashes verified', worldSurpriseMe: 'PASS: varied countries observed across repeated selections (Japan and Italy)', welcomeArrowNavigation: 'PASS: three landscape scenes, right-side Next/Enter, upper-right Skip, visible scene progress; EN-GB/PT-BR labels rendered', profileOnboarding: 'PASS on reload: Welcome showed with no name/gender form; profile and child data were not cleared', publicHttpsAndroidChrome: 'PENDING physical-device browser verification' },
+    browserChecks: { allRecipesCount: 116, newRecipesRail: '19 canonical expansion recipes sourced from country mapping', canonicalInternationalDishAssets: '21/21 source and packaged SHA-256 verified', indiaExistingRecipeThumbnails: '2/2 Android-canonical images mapped for #051 and #057; source SHA-256 recorded', magicalAdventureOnly: 'PASS: Welcome Skip and final Enter both returned to Magical Adventure Home', classicHomeAccess: 'ACTIVE SELECTOR DISABLED; SOURCE AND ASSETS PRESERVED', settingsReachable: 'PASS: one 48x48px gear-only control with aria-label Settings opens Settings and returns Home', worldCountryArtwork: '21/21 canonical paths and package hashes verified', worldSurpriseMe: 'PASS: varied countries observed across repeated selections (Japan and Italy)', welcomeArrowNavigation: 'PASS: three landscape scenes, right-side Next/Enter, upper-right Skip, visible scene progress; EN-GB/PT-BR labels rendered', bottomNavigationAutoHide: 'PASS: vertical scroll direction hides/reveals after an 18px threshold; navigation stays visible at top, no-scroll screens, and screen changes; horizontal rails are excluded; 230ms animation respects reduced motion', profileOnboarding: 'PASS on reload: Welcome showed with no name/gender form; profile and child data were not cleared', publicHttpsAndroidChrome: 'PENDING physical-device browser verification' },
     androidFunctionalGate: 'CI-LITE run 40776773336 failed activity launch timeout; process started, WebView readiness not confirmed',
     androidScreenshotGate: 'HOLD: Android screenshot/UI validation failed due system responsiveness',
     independentGates: { A08: 'NOT VERIFIED', A09: 'NOT VERIFIED', accessibility: 'NOT VERIFIED', security: 'NOT VERIFIED', nutritionAndAllergens: 'NOT VERIFIED', artworkRights: 'NOT VERIFIED' },
