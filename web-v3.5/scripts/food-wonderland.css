@@ -296,6 +296,12 @@
 }
 
 
-/* Keep the World object and baked-in sign in one target, clear of the weekly wheel. */
-@media(orientation:portrait){.fw-world .fw-hotspots .fw-dest-world{left:37%!important;top:17%!important;width:26%!important;height:34%!important;aspect-ratio:auto!important}}
-@media(orientation:landscape){.fw-world .fw-hotspots .fw-dest-world{left:43.5%!important;top:5%!important;width:15%!important;height:40%!important;aspect-ratio:auto!important}}
+/* Keep each artwork-plus-sign target clear of its neighbours. */
+@media(orientation:portrait){
+  .fw-hotspots .fw-dest-surprise{height:11%!important}
+  .fw-world .fw-hotspots .fw-dest-world{left:37%!important;top:17%!important;width:26%!important;height:34%!important;aspect-ratio:auto!important}
+}
+@media(orientation:landscape){
+  .fw-world .fw-hotspots .fw-dest-world{left:43.5%!important;top:5%!important;width:14.4%!important;height:40%!important;aspect-ratio:auto!important}
+  .fw-hotspots .fw-dest-planner{left:80%!important;width:18%!important}
+}
