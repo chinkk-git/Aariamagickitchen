@@ -37,15 +37,23 @@
       <h1 class="fw-visually-hidden">${translate('Magical Food Wonderland','País das Maravilhas da Comida')}</h1>
       <div class="fw-world" id="foodWonderland" data-language="${pt?'pt':'en'}">
         <picture class="fw-scene-art"><source media="(orientation: landscape)" srcset="./food-wonderland-landscape.webp"><img src="./food-wonderland-portrait.webp" alt="${imageAlt}" draggable="false"></picture>
-        <div class="fw-atmosphere" aria-hidden="true"><i class="fw-cloud fw-cloud-a"></i><i class="fw-cloud fw-cloud-b"></i><i class="fw-water-glint"></i><i class="fw-window-glow fw-window-family"></i><i class="fw-window-glow fw-window-friends"></i><span class="fw-globe-frame"><img class="fw-globe" src="./food-wonderland-globe.webp" alt="" draggable="false"><i class="fw-orbit"></i><i class="fw-orbit fw-orbit-two"></i></span><img class="fw-wheel" src="./food-wonderland-wheel.webp" alt="" draggable="false"><i class="fw-chest-light"></i><img class="fw-chest-lid" src="./food-wonderland-chest-lid.png" alt="" draggable="false"><i class="fw-camera-flash"></i><span class="fw-polaroid"><img src="./food-wonderland-dish-photo.png" alt="" draggable="false"></span><i class="fw-book-page"></i><i class="fw-cottage-door fw-door-family"></i><i class="fw-cottage-door fw-door-friends"></i><i class="fw-calendar-flip"></i><span class="fw-sparkles"></span><span class="fw-coins"></span><span class="fw-butterfly fw-butterfly-a"><svg viewBox="0 0 30 24"><g class="fw-wings"><ellipse cx="9" cy="8" rx="8" ry="7" fill="#bea4ff"/><ellipse cx="22" cy="8" rx="8" ry="7" fill="#a8e8ff"/><ellipse cx="10" cy="17" rx="6" ry="5" fill="#efb2f8"/><ellipse cx="21" cy="17" rx="6" ry="5" fill="#ffe0a1"/></g><path d="M15 4v17" stroke="#573e69" stroke-width="2"/></svg></span><span class="fw-butterfly fw-butterfly-b"><svg viewBox="0 0 30 24"><g class="fw-wings"><ellipse cx="9" cy="8" rx="8" ry="7" fill="#ffb8d5"/><ellipse cx="22" cy="8" rx="8" ry="7" fill="#b8f0d7"/><ellipse cx="10" cy="17" rx="6" ry="5" fill="#ffd6a1"/><ellipse cx="21" cy="17" rx="6" ry="5" fill="#d9c4ff"/></g><path d="M15 4v17" stroke="#573e69" stroke-width="2"/></svg></span><span class="fw-arrival" role="status" aria-live="polite"></span></div>
+        <div class="fw-atmosphere" aria-hidden="true"><i class="fw-cloud fw-cloud-a"></i><i class="fw-cloud fw-cloud-b"></i><i class="fw-water-glint"></i><i class="fw-window-glow fw-window-family"></i><i class="fw-window-glow fw-window-friends"></i><div class="fw-globe-frame v34-hero-globe" role="img" aria-label="The spinning World Map globe"><span class="v34-globe-orbit" aria-hidden="true"></span></div><img class="fw-wheel" src="./food-wonderland-wheel.webp" alt="" draggable="false"><i class="fw-chest-light"></i><img class="fw-chest-lid" src="./food-wonderland-chest-lid.png" alt="" draggable="false"><i class="fw-camera-flash"></i><span class="fw-polaroid"><img src="./food-wonderland-dish-photo.png" alt="" draggable="false"></span><i class="fw-book-page"></i><i class="fw-cottage-door fw-door-family"></i><i class="fw-cottage-door fw-door-friends"></i><i class="fw-calendar-flip"></i><span class="fw-sparkles"></span><span class="fw-coins"></span><span class="fw-butterfly fw-butterfly-a"><svg viewBox="0 0 30 24"><g class="fw-wings"><ellipse cx="9" cy="8" rx="8" ry="7" fill="#bea4ff"/><ellipse cx="22" cy="8" rx="8" ry="7" fill="#a8e8ff"/><ellipse cx="10" cy="17" rx="6" ry="5" fill="#efb2f8"/><ellipse cx="21" cy="17" rx="6" ry="5" fill="#ffe0a1"/></g><path d="M15 4v17" stroke="#573e69" stroke-width="2"/></svg></span><span class="fw-butterfly fw-butterfly-b"><svg viewBox="0 0 30 24"><g class="fw-wings"><ellipse cx="9" cy="8" rx="8" ry="7" fill="#ffb8d5"/><ellipse cx="22" cy="8" rx="8" ry="7" fill="#b8f0d7"/><ellipse cx="10" cy="17" rx="6" ry="5" fill="#ffd6a1"/><ellipse cx="21" cy="17" rx="6" ry="5" fill="#d9c4ff"/></g><path d="M15 4v17" stroke="#573e69" stroke-width="2"/></svg></span><span class="fw-arrival" role="status" aria-live="polite"></span></div>
         <div class="fw-hotspots" aria-label="${translate('Choose a destination','Escolha um destino')}">${buttons}</div>
         <button class="fw-mute" type="button" aria-label="${translate('Mute sound effects','Silenciar efeitos sonoros')}" aria-pressed="false"><span aria-hidden="true">♪</span></button>
         <div class="fw-proxies" aria-hidden="true">
           <button type="button" data-nav="library"></button><button type="button" data-nav="settings"></button><button type="button" data-nav="week"></button><button type="button" data-nav="family"></button><button type="button" data-nav="friends"></button><button type="button" data-nav="creations"></button><button type="button" data-nav="groceries"></button><button type="button" data-nav="stories"></button><button type="button" data-nav="rewards"></button><button type="button" data-action="open-week-wheel"></button><button type="button" data-action="open-wheel"></button><button type="button" data-action="favorites"></button>
         </div>
       </div>
-      <nav class="fw-more" aria-label="${translate('More kitchen destinations','Mais destinos da cozinha')}">
-        <button type="button" data-fw="favorites">${translate('★ Favourites','★ Favoritos')}</button><button type="button" data-fw="pantry">${translate('Kitchen basket','Cesta da cozinha')}</button><button type="button" data-fw="stories">${translate('Stories & Music','Histórias e Música')}</button><button type="button" data-fw="awards">${translate('Awards','Prêmios')}</button>
+      <nav class="fw-more" aria-label="${translate('Home tools','Ferramentas da página inicial')}">
+        <button class="fw-favorites-button" type="button" data-fw="favorites" aria-label="${translate('Favourites','Favoritos')}" title="${translate('Favourites','Favoritos')}"><span aria-hidden="true">☆</span></button>
+        <button class="fw-utility-toggle" type="button" aria-expanded="false" aria-controls="fw-utility-links" aria-label="${translate('Open home tools','Abrir ferramentas da página inicial')}" title="${translate('More home tools','Mais ferramentas da página inicial')}"><span aria-hidden="true">✦</span></button>
+        <div class="fw-utility-links" id="fw-utility-links" role="group" aria-label="${translate('More home tools','Mais ferramentas da página inicial')}" hidden>
+          <button type="button" data-fw="settings">${translate('Settings','Configurações')}</button>
+          <button type="button" data-fw="planner">${translate('Planner','Planejador')}</button>
+          <button type="button" data-fw="pantry">${translate('Kitchen basket','Cesta da cozinha')}</button>
+          <button type="button" data-fw="stories">${translate('Stories & Music','Histórias e Música')}</button>
+          <button type="button" data-fw="awards">${translate('Awards','Prêmios')}</button>
+        </div>
       </nav>
     </main>`;
   }
@@ -138,11 +146,18 @@
     },timing[route]||500);
   }
   document.addEventListener('click',event=>{
+    const toggle=event.target.closest('.fw-utility-toggle');
+    const toolsNav=toggle?.closest('.fw-more');
+    const menu=toolsNav?.querySelector('.fw-utility-links');
+    if(toggle&&menu){event.preventDefault();const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));menu.hidden=!open;toggle.setAttribute('aria-label',translate(open?'Close home tools':'Open home tools',open?'Fechar ferramentas da página inicial':'Abrir ferramentas da página inicial'));return;}
+    const moreMenu=document.querySelector('.fw-utility-links');
+    if(moreMenu&&!event.target.closest('.fw-more')&&!moreMenu.hidden){moreMenu.hidden=true;const moreToggle=document.querySelector('.fw-utility-toggle');moreToggle?.setAttribute('aria-expanded','false');}
     const mute=event.target.closest('.fw-mute');
     if(mute){event.preventDefault();storage.set(MUTE_KEY,String(!muted()));updateMuteButton();if(!muted())sound('sparkle');return;}
     const hotspot=event.target.closest('[data-fw]');
-    if(hotspot){event.preventDefault();animateHotspot(hotspot);}
+    if(hotspot){event.preventDefault();if(hotspot.closest('.fw-utility-links')){const menu=document.querySelector('.fw-utility-links'),moreToggle=document.querySelector('.fw-utility-toggle');if(menu)menu.hidden=true;moreToggle?.setAttribute('aria-expanded','false');}animateHotspot(hotspot);}
   },true);
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){const menu=document.querySelector('.fw-utility-links'),toggle=document.querySelector('.fw-utility-toggle');if(menu&&!menu.hidden){menu.hidden=true;toggle?.setAttribute('aria-expanded','false');toggle?.focus({preventScroll:true});}}});
 
   function syncHome() {
     const app=document.querySelector('.app'),active=typeof view!=='undefined'&&view==='home'&&homeChoice()==='wonderland';

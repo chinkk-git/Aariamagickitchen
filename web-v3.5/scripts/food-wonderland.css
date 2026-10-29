@@ -116,3 +116,35 @@
   .fw-action-camera .fw-polaroid{opacity:1;transform:rotate(4deg)}
   .fw-action-welcome .fw-door-family,.fw-action-friends .fw-door-friends{opacity:1;transform:perspective(80px) rotateY(-38deg)}
 }
+
+
+/* Full-screen Food Wonderland stage; the focused illustration stays proportional. */
+.app.food-wonderland-active #screen{position:relative;height:100dvh;min-height:100dvh;max-height:100dvh;overflow:hidden!important;padding:0!important}
+.app.food-wonderland-active #nav.bottom{display:none!important}
+.fw-shell{position:relative;display:grid;place-items:center;isolation:isolate;width:100%;height:100dvh;min-height:100svh;overflow:hidden;padding:0;background:#55366e;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#35203f}
+.fw-world{position:absolute;inset:0;width:100%;height:100%;margin:0;overflow:hidden;isolation:isolate;line-height:0;background:#55366e;touch-action:pan-y}
+.fw-world::before{content:"";position:absolute;z-index:0;inset:-16px;background-image:url("./food-wonderland-portrait.webp");background-size:cover;background-position:center;filter:blur(14px) brightness(.72);transform:scale(1.04)}
+.fw-scene-art{position:absolute;z-index:1;left:50%;top:50%;width:min(100vw,calc(100dvh * .7244));height:min(100dvh,calc(100vw * 1.3809));margin:0;transform:translate(-50%,-50%)}
+.fw-scene-art img{display:block;width:100%;height:100%;margin:0;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.fw-atmosphere,.fw-hotspots{position:absolute;z-index:4;left:50%;top:50%;width:min(100vw,calc(100dvh * .7244));height:min(100dvh,calc(100vw * 1.3809));inset:auto;transform:translate(-50%,-50%);pointer-events:none}
+.fw-atmosphere{z-index:5;overflow:hidden}
+.fw-hotspots{z-index:20}
+.fw-globe-frame.v34-hero-globe{left:39%;top:8%;width:22%;height:auto;aspect-ratio:1;border-radius:50%;pointer-events:none}
+.fw-world .fw-dest-world{left:39%;top:8%;width:22%;height:auto;aspect-ratio:1;border-radius:50%}
+.fw-paused .fw-globe-frame.v34-hero-globe,.fw-paused .fw-globe-frame .v34-globe-orbit{animation-play-state:paused}
+.fw-more{position:absolute;z-index:35;right:max(10px,env(safe-area-inset-right));top:50%;display:flex;flex-direction:column;align-items:flex-end;gap:8px;width:auto;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;line-height:1.2;transform:translateY(-50%)}
+.fw-more button{display:flex;align-items:center;justify-content:center;gap:7px;min-width:48px;min-height:48px;padding:8px 12px;border:2px solid #fff5d7;border-radius:999px;background:linear-gradient(145deg,#fff8e9f2,#f5dbfff2);color:#57325c;font-size:13px;font-weight:900;box-shadow:0 3px 0 #7a4a91,0 5px 14px #24153f55;cursor:pointer;touch-action:manipulation}
+.fw-more button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.fw-more .fw-favorites-button,.fw-more .fw-utility-toggle{width:48px;height:48px;padding:0;font-size:22px}
+.fw-utility-links{position:absolute;right:0;bottom:calc(100% + 8px);display:grid;gap:6px;width:max-content;max-width:min(76vw,240px);padding:8px;border:2px solid #fff5d7;border-radius:20px;background:linear-gradient(145deg,#fff9edfa,#f2e3fff5);box-shadow:0 5px 18px #24153f66}
+.fw-utility-links[hidden]{display:none}
+.fw-utility-links button{justify-content:flex-start;min-height:42px;padding:7px 12px;border-radius:14px}
+@media(orientation:landscape){
+  .fw-scene-art,.fw-atmosphere,.fw-hotspots{width:min(100vw,calc(100dvh * 1.6787));height:min(100dvh,calc(100vw * .5957))}
+  .fw-world::before{background-image:url("./food-wonderland-landscape.webp")}
+  .fw-globe-frame.v34-hero-globe{left:42%;top:8%;width:17%}
+  .fw-world .fw-dest-world{left:42%;top:8%;width:17%}
+  .fw-more{right:max(12px,env(safe-area-inset-right))}
+}
+@media(max-width:420px){.fw-more{right:max(7px,env(safe-area-inset-right));gap:6px}.fw-utility-links{max-width:78vw}.fw-utility-links button{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.fw-world::before{filter:brightness(.82)}}
