@@ -337,7 +337,56 @@ try {
   .v34-welcome-enter{width:min(74px,74%)!important;height:min(74px,74%)!important;min-width:44px!important;min-height:44px!important;font-size:clamp(26px,7vw,48px)!important;pointer-events:auto!important}
 }
 </style>`;
-  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n${ownerLandscapeWelcomeScenes}\n</body>`);
+  const ownerBottomNavAutoHide = `<style id="aaria-bottom-nav-auto-hide">
+#nav.bottom{transition:translate 230ms cubic-bezier(.2,.75,.25,1),opacity 230ms ease!important;will-change:translate,opacity}
+#nav.bottom[data-scroll-hidden="true"]{translate:0 100%!important;opacity:0!important;pointer-events:none!important}
+@media(prefers-reduced-motion:reduce){#nav.bottom{transition:none!important}}
+</style>
+<script id="aaria-bottom-nav-scroll-controller">
+(()=>{
+  const nav=document.querySelector('#nav.bottom');
+  if(!nav)return;
+  const threshold=18,positions=new WeakMap();
+  let accumulated=0,direction=0,interactionUntil=0,lastHash=location.hash;
+  const setVisible=visible=>{
+    if(visible)nav.removeAttribute('data-scroll-hidden');
+    else nav.setAttribute('data-scroll-hidden','true');
+  };
+  const reset=()=>{accumulated=0;direction=0;setVisible(true)};
+  const isWelcome=()=>!!document.getElementById('v34-welcome');
+  const hasOverlay=()=>!!document.querySelector('[aria-modal="true"]:not(#v34-welcome),dialog[open]');
+  document.addEventListener('scroll',event=>{
+    if(isWelcome()){reset();return}
+    if(hasOverlay()||Date.now()<interactionUntil||/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName||'')||document.activeElement?.isContentEditable)return;
+    const target=event.target;
+    const scroller=target===document?document.scrollingElement:target;
+    if(!(scroller instanceof Element))return;
+    const style=getComputedStyle(scroller);
+    const topScrollable=style.overflowY==='auto'||style.overflowY==='scroll'||scroller===document.scrollingElement;
+    if(!topScrollable||scroller.scrollHeight<=scroller.clientHeight+2)return;
+    const current={top:scroller.scrollTop,left:scroller.scrollLeft};
+    const previous=positions.get(scroller);
+    positions.set(scroller,current);
+    if(!previous)return;
+    const dy=current.top-previous.top,dx=current.left-previous.left;
+    if(current.top<=1){accumulated=0;direction=0;setVisible(true);return}
+    if(Math.abs(dx)>Math.abs(dy)||Math.abs(dy)<1)return;
+    const nextDirection=Math.sign(dy);
+    accumulated=nextDirection===direction?accumulated+Math.abs(dy):Math.abs(dy);
+    direction=nextDirection;
+    if(accumulated>=threshold){setVisible(nextDirection<0);accumulated=0}
+  },{capture:true,passive:true});
+  document.addEventListener('pointerdown',event=>{if(event.target.closest?.('#nav')){interactionUntil=Date.now()+900;setVisible(true)}},true);
+  document.addEventListener('click',event=>{if(event.target.closest?.('#nav')){interactionUntil=Date.now()+900;setVisible(true)}},true);
+  document.addEventListener('focusin',event=>{if(event.target.closest?.('#nav')){interactionUntil=Date.now()+900;setVisible(true)}},true);
+  document.addEventListener('pointerup',event=>{if(event.target.closest?.('#nav'))interactionUntil=Date.now()+500},true);
+  window.addEventListener('hashchange',()=>{if(location.hash!==lastHash){lastHash=location.hash;reset()}});
+  window.addEventListener('pageshow',reset);
+  document.addEventListener('DOMContentLoaded',reset,{once:true});
+  reset();
+})();
+</script>`;
+  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n${ownerLandscapeWelcomeScenes}\n${ownerBottomNavAutoHide}\n</body>`);
   fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
   const reviewJson = path.join(sourceRoot, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
   const review = JSON.parse(fs.readFileSync(reviewJson, 'utf8'));
