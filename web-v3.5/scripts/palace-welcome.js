@@ -56,6 +56,8 @@ function v35ShowPalaceWelcome() {
   const sparks = overlay.querySelector('.v35-sparkles');
   const panels = [...overlay.querySelectorAll('.v35-door-panel')];
   const blast = overlay.querySelector('.v35-blast');
+  const rays = overlay.querySelector('.v35-blast-rays');
+  const doorway = overlay.querySelector('.v35-doorway');
   const waiters = new Set();
   let phase = 'ready';
   let soundEnabled = false;
@@ -228,6 +230,8 @@ function v35ShowPalaceWelcome() {
     chime();
     if (reducedMotion.matches) {
       overlay.classList.add('v35-is-blasting');
+      blast.style.animation = 'v35-golden-burst .98s cubic-bezier(.12,.68,.16,1) forwards';
+      rays.style.animation = 'v35-rays-bloom 1.05s cubic-bezier(.14,.74,.2,1) forwards';
       burstSound();
       await delay(120);
       if (phase === 'opening' && sequence === run) finish(true);
@@ -237,17 +241,25 @@ function v35ShowPalaceWelcome() {
     await delay(340);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-door-active');
+    doorway.style.opacity = '1';
+    panels.forEach(panel => { panel.style.opacity = '1'; });
     await delay(180);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-doors-opening');
+    panels[0].style.transform = 'rotateY(-76deg)';
+    panels[1].style.transform = 'rotateY(76deg)';
     await Promise.all(panels.map(panel => motionEnd(panel, 'transitionend', 'transform', 1120)));
     if (phase !== 'opening' || sequence !== run) return;
     await delay(420);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-zooming');
+    stage.style.transformOrigin = '50% 54%';
+    stage.style.transform = 'scale(1.48)';
     await motionEnd(stage, 'transitionend', 'transform', 1150);
     if (phase !== 'opening' || sequence !== run) return;
     overlay.classList.add('v35-is-blasting');
+    blast.style.animation = 'v35-golden-burst .98s cubic-bezier(.12,.68,.16,1) forwards';
+    rays.style.animation = 'v35-rays-bloom 1.05s cubic-bezier(.14,.74,.2,1) forwards';
     burstSound();
     await motionEnd(blast, 'animationend', null, 1300);
     if (phase === 'opening' && sequence === run) finish(true);
