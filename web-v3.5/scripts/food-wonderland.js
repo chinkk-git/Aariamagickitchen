@@ -163,6 +163,7 @@
   function syncHome() {
     const app=document.querySelector('.app'),active=typeof view!=='undefined'&&view==='home'&&homeChoice()==='wonderland';
     app?.classList.toggle('food-wonderland-active',active);
+    if(active) { const screen=document.getElementById('screen'); if(screen?.scrollTop) screen.scrollTop=0; }
     document.querySelector('#nav.bottom')?.removeAttribute('data-scroll-hidden');
     const world=document.getElementById('foodWonderland');
     if(world&&!world.dataset.ambientReady){
