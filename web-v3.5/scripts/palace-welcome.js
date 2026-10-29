@@ -191,10 +191,11 @@ function v35ShowPalaceWelcome() {
     overlay.classList.add('v35-is-blasting');
     burstSound();
     const bloom = Promise.all([
-      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .55 }, { transform: 'scale(1.42)', opacity: 1 }], 480, 'cubic-bezier(.16,.68,.2,1)', { transform: 'scale(1.42)', opacity: '1' }),
-      animateNode(rays, [{ transform: 'scale(.04) rotate(-4deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.12) rotate(4deg)', opacity: .22 }], 500, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.12) rotate(4deg)', opacity: '.22' })
+      animateNode(blast, [{ transform: 'scale(.015)', opacity: 0 }, { transform: 'scale(.92)', opacity: 1, offset: .55 }, { transform: 'scale(1.42)', opacity: 1 }], 640, 'cubic-bezier(.16,.68,.2,1)', { transform: 'scale(1.42)', opacity: '1' }),
+      animateNode(rays, [{ transform: 'scale(.04) rotate(-4deg)', opacity: 0, offset: 0 }, { transform: 'scale(1.12) rotate(4deg)', opacity: .22 }], 620, 'cubic-bezier(.14,.74,.2,1)', { transform: 'scale(1.12) rotate(4deg)', opacity: '.22' })
     ]);
     await Promise.all([zoom, bloom]);
+    await delay(220);
     if (phase === 'opening' && sequence === run) finish(true);
   };
 
