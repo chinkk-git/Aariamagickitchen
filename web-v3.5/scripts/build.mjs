@@ -210,6 +210,8 @@ try {
     'food-wonderland-wheel.webp','food-wonderland-chest-lid.png','food-wonderland-dish-photo.png'
   ];
   for (const asset of wonderlandAssetNames) fs.copyFileSync(path.join(webRoot,'assets',asset),path.join(dist,asset));
+  fs.cpSync(path.join(webRoot,'assets/food-wonderland-layered'),path.join(dist,'food-wonderland-layered'),{recursive:true});
+  fs.cpSync(path.join(webRoot,'assets/food-wonderland-layered'),path.join(dist,'food-wonderland-layered'),{recursive:true});
   for (const [encodedName, outputName] of [
     ['palace-welcome-portrait.webp.b64','palace-welcome-portrait.webp'],
     ['palace-welcome-landscape.webp.b64','palace-welcome-landscape.webp']

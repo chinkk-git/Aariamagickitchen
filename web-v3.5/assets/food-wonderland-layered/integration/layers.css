@@ -1,0 +1,13 @@
+/* Independent layers. Positions supplied in manifest.json. */
+.fw-layer-scene{position:relative;width:100%;height:100dvh;overflow:hidden;background:#573d75}
+.fw-layer-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fw-layer{position:absolute;display:block;height:auto;max-width:none;object-fit:contain;filter:drop-shadow(0 5px 9px #3d1b5740);pointer-events:none}
+.fw-layer-hit{position:absolute;border:0;background:transparent;padding:0;cursor:pointer;touch-action:manipulation;display:block;min-width:44px;min-height:44px}
+.fw-layer-hit:focus-visible{outline:4px solid #fff3a3;outline-offset:4px;border-radius:15px}
+.fw-layer-hit .fw-layer{left:0!important;top:0!important;width:100%!important;height:100%;pointer-events:none}
+.fw-layer-hit:hover .fw-layer{filter:brightness(1.08) drop-shadow(0 0 14px #fff3a3)}
+.fw-layer-globe{animation:fw-float 4s ease-in-out infinite}
+.fw-layer-wheel.fw-spin{animation:fw-wheel-spin 1.4s cubic-bezier(.1,.7,.2,1)}
+@keyframes fw-float{50%{transform:translateY(-7px)}}
+@keyframes fw-wheel-spin{to{transform:rotate(1440deg)}}
+@media(prefers-reduced-motion:reduce){.fw-layer-globe,.fw-layer-wheel.fw-spin{animation:none!important}}
