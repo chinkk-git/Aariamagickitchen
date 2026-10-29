@@ -193,10 +193,30 @@ try {
   finalHtml = finalHtml.replace(welcomeAriaAnchor, `    frame.setAttribute('aria-label', state.language === 'pt-BR' ? scene.ariaPt : scene.aria);\n    welcomeOverlay.querySelector('.v34-welcome-live').textContent = state.language === 'pt-BR' ? scene.pt : scene.text;\n    welcomeOverlay.querySelector('.v34-welcome-skip').textContent = state.language === 'pt-BR' ? 'Pular' : 'Skip';\n    welcomeOverlay.querySelector('.v34-welcome-next').textContent = state.language === 'pt-BR' ? 'Avançar' : 'Next';\n    welcomeOverlay.querySelector('.v34-welcome-back').textContent = state.language === 'pt-BR' ? 'Voltar' : 'Back';\n    welcomeOverlay.querySelector('.v34-welcome-enter').setAttribute('aria-label', state.language === 'pt-BR' ? 'Entrar na cozinha mágica da Aaria' : 'Enter Aaria’s Magical Kitchen');`);
   const welcomeStatusAnchor = "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';";
   if (!finalHtml.includes(welcomeStatusAnchor)) throw new Error('Welcome progress status anchor changed.');
-  finalHtml = finalHtml.replace(welcomeStatusAnchor, "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = state.language === 'pt-BR' ? 'Cena ' + (welcomeSceneIndex + 1) + ' de 3' : 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';");
+  finalHtml = finalHtml.replace(welcomeStatusAnchor, "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = state.language === 'pt-BR' ? 'Cena ' + (welcomeSceneIndex + 1) + ' de 3' : 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';\n    welcomeOverlay.dataset.scene = String(welcomeSceneIndex + 1);\n    welcomeOverlay.querySelector('.v34-welcome-top span').textContent = state.language === 'pt-BR' ? 'Cozinha Mágica da Aaria' : 'Aaria’s Magical Kitchen';");
+  const conditionalWelcomeReturn = '    if (view === \'home\') render();';
+  if (finalHtml.split(conditionalWelcomeReturn).length - 1 !== 1) throw new Error('Welcome return route anchor changed.');
+  finalHtml = finalHtml.replace(conditionalWelcomeReturn, "    goto('home');");
   const welcomeStyleAnchor = '  const v34WelcomeStyle = [';
   if (!finalHtml.includes(welcomeStyleAnchor)) throw new Error('Welcome localization refresh anchor changed.');
   finalHtml = finalHtml.replace(welcomeStyleAnchor, `  document.getElementById('languageSelect')?.addEventListener('change', () => setTimeout(() => { if (welcomeOverlay) v34WelcomeScene(welcomeSceneIndex, false); }, 0));\n\n${welcomeStyleAnchor}`);
+  const profileAutoOpen = "if(!v3ProfileState.profiles.length)v3OpenProfileEditor('first-run');else if(v3ProfileState.profile?.chefId==='LEGACY_AARIA')v3OpenProfileEditor('legacy');";
+  const profileAutoOpenCount = finalHtml.split(profileAutoOpen).length - 1;
+  if (profileAutoOpenCount !== 2) throw new Error(`Expected two automatic profile onboarding branches; found ${profileAutoOpenCount}.`);
+  finalHtml = finalHtml.replaceAll(profileAutoOpen, '/* Web startup keeps saved profile data but never opens mandatory name/chef onboarding. */');
+  const settingsWithText = `<button class="v34-settings" data-nav="settings">⚙️ \${t('Settings', 'Configurações')}</button>`;
+  const settingsGearOnly = '<button class="v34-settings" data-nav="settings" aria-label="Settings">⚙️</button>';
+  if (finalHtml.split(settingsWithText).length - 1 !== 1) throw new Error('Expected one Magical Adventure Settings control with text.');
+  finalHtml = finalHtml.replace(settingsWithText, settingsGearOnly);
+  const translatedSettingsAria = "for(const k of ['aria-label','placeholder','alt','title'])if(el.hasAttribute(k)){saved[k]??=el.getAttribute(k);const t=translateText(saved[k]);if(el.getAttribute(k)!==t)el.setAttribute(k,t)}";
+  const fixedSettingsAria = "for(const k of ['aria-label','placeholder','alt','title'])if(el.hasAttribute(k)){saved[k]??=el.getAttribute(k);if(k==='aria-label'&&el.classList.contains('v34-settings'))continue;const t=translateText(saved[k]);if(el.getAttribute(k)!==t)el.setAttribute(k,t)}";
+  if (finalHtml.split(translatedSettingsAria).length - 1 !== 1) throw new Error('Expected one shared accessible-label localization loop.');
+  finalHtml = finalHtml.replace(translatedSettingsAria, fixedSettingsAria);
+  const indiaOnlySurprisePool = 'var pool = destinations.filter(function (d) { return d.available && !d.reviewOnly; });';
+  const randomCountrySurprisePool = 'var pool = destinations.filter(function (d) { return d.selectable && (d.available || d.reviewOnly) && Array.isArray(d.recipes) && d.recipes.length > 0; });';
+  const indiaOnlySurprisePoolCount = finalHtml.split(indiaOnlySurprisePool).length - 1;
+  if (indiaOnlySurprisePoolCount !== 1) throw new Error(`Expected one World Surprise Me country pool; found ${indiaOnlySurprisePoolCount}.`);
+  finalHtml = finalHtml.replace(indiaOnlySurprisePool, randomCountrySurprisePool);
   const failedPhotoPost = "catch{notice('Could not prepare that photo. Please choose another one.')}}});document.addEventListener('change',e=>{if(e.target.matches('[data-appliance-filter]')";
   const originalPhotoFallback = "catch(error){console.error('Photo post rendering failed; retaining the original image for sharing.',error);if(file instanceof Blob&&file.type.startsWith('image/')){try{if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=file;sharePostBlobs[id]=file;sharePostUrls[id]=URL.createObjectURL(file);render();notice(state.language==='pt-BR'?'Foto pronta para compartilhar. A imagem original será usada.':'Photo ready to share. The original image will be used.')}catch(fallbackError){console.error('Original photo fallback failed.',fallbackError);notice('Could not prepare that photo. Please choose another one.')}}else notice('Could not prepare that photo. Please choose another one.')}}});document.addEventListener('change',e=>{if(e.target.matches('[data-appliance-filter]')";
   if (!finalHtml.includes(failedPhotoPost)) throw new Error('Photo-post failure handler anchor changed.');
@@ -243,11 +263,14 @@ try {
   if (!finalHtml.includes(oldRecipeListMap)) throw new Error('New Recipes canonical artwork renderer anchor was not found.');
   finalHtml = finalHtml.replace(oldRecipeListMap, newRecipeListMap);
   const ownerMobileVisualFixes = `<style id="aaria-owner-mobile-visual-fixes">
-/* Keep the approved Classic Home artwork at its source proportions and keep its utility control reachable on phones. */
+/* Keep the one Settings control in the upper-right corner of the Home banner. */
+.app.home-dashboard .home-top{position:relative!important}
+.app.home-dashboard .home-settings{position:absolute!important;top:8px!important;right:8px!important;z-index:20!important;display:grid!important;place-items:center!important;width:48px!important;height:48px!important;min-width:44px!important;min-height:44px!important;padding:0!important;line-height:1!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+.v34-home-utility{position:absolute!important;z-index:20!important;top:8px!important;right:8px!important;padding:0!important;display:block!important}
+.v34-settings{display:grid!important;place-items:center!important;width:48px!important;height:48px!important;min-width:44px!important;min-height:44px!important;padding:0!important;border-radius:50%!important;font-size:26px!important;line-height:1!important}
 @media(max-width:720px){
   .app.home-dashboard .home-top{height:auto!important;min-height:0!important;aspect-ratio:1.5/1;background-size:cover!important;background-position:center!important;overflow:visible!important}
-  .app.home-dashboard .home-settings{position:fixed!important;top:calc(8px + env(safe-area-inset-top))!important;right:10px!important;z-index:10040!important;display:grid!important;place-items:center!important;width:44px!important;height:44px!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}
-  .app.home-dashboard .home-top.menu-open .home-settings{visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+  .app.home-dashboard .home-settings{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
   .app.home-dashboard .home-book-primary{width:100%!important;height:auto!important;min-height:60px!important;margin:8px 0 0!important;padding:8px 12px!important;gap:8px!important;box-shadow:0 3px 0 #8e54ad!important}
   .app.home-dashboard .home-book-primary .book-primary-arrow{display:grid!important;place-items:center!important;width:30px!important;height:30px!important;flex:0 0 30px!important}
   .app.home-dashboard .home-lower .home-thumb.new-dish-thumb{height:auto!important;min-height:0!important;aspect-ratio:3/2!important}
@@ -287,23 +310,28 @@ try {
   const ownerLandscapeWelcomeScenes = `<style id="aaria-landscape-welcome-scenes">
 @media (orientation:landscape) {
   .v34-welcome-shell{display:block!important;padding:0!important;gap:0!important;overflow:hidden!important}
-  .v34-welcome-top{display:none!important}
   .v34-welcome-stage{position:absolute!important;inset:0!important;display:grid!important;place-items:center!important;min-height:0!important;overflow:hidden!important}
-  .v34-welcome-frame{width:min(100%,calc(100dvh*16/9))!important;height:auto!important;aspect-ratio:16/9!important;max-width:100dvw!important;max-height:100dvh!important;border-radius:0!important;background-image:url("./welcome-scene-1-landscape.webp")!important;background-size:100% 100%!important;background-position:center!important;box-shadow:none!important}
-  .v34-welcome-frame[data-scene="2"]{width:min(100%,1672px)!important;aspect-ratio:1672/313!important;background-image:url("./welcome-scene-2-landscape.webp")!important}
-  .v34-welcome-frame[data-scene="3"]{width:min(100%,1672px)!important;aspect-ratio:1672/297!important;background-image:url("./welcome-scene-3-landscape.webp")!important;background-size:100% auto!important;background-position:center bottom!important}
-  .v34-welcome-footer{position:absolute!important;z-index:2!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(100%,calc(100dvh*16/9))!important;height:min(100dvh,calc(100dvw*9/16))!important;min-height:0!important;display:block!important;padding:0!important;pointer-events:none!important}
-  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="2"]) .v34-welcome-next,.v34-welcome-shell:has(.v34-welcome-frame[data-scene="3"]) .v34-welcome-next{left:1.5%!important;bottom:3%!important;width:11.5%!important;height:23%!important}
-  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="2"]) .v34-welcome-footer{width:min(100%,1672px)!important;height:auto!important;aspect-ratio:1672/313!important}
-  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="3"]) .v34-welcome-footer{width:min(100%,1672px)!important;height:auto!important;aspect-ratio:1672/297!important}
-  .v34-welcome-skip{position:absolute!important;right:1%!important;top:3%!important;width:10%!important;height:14%!important;min-width:0!important;min-height:0!important;padding:0 8px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(11px,2vw,24px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
-  .v34-welcome-next{position:absolute!important;left:2%!important;bottom:8%!important;width:16%!important;height:17%!important;min-width:0!important;min-height:0!important;padding:0 8px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(13px,2.4vw,26px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
-  .v34-welcome-back{position:absolute!important;left:15%!important;bottom:0!important;width:13%!important;height:25%!important;min-width:0!important;min-height:0!important;padding:0!important;opacity:0!important;pointer-events:auto!important}
-  .v34-welcome-status{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-  .v34-welcome-enter-wrap{position:absolute!important;left:0!important;right:auto!important;bottom:0!important;width:15%!important;height:31%!important;margin:0!important;display:grid!important;place-items:center!important;gap:0!important;border-radius:28px!important;background:linear-gradient(135deg,#6428d5,#ef31be)!important;border:3px solid #ffe891!important;box-shadow:0 0 18px 7px #ffe44bba,0 4px 0 #572078!important;pointer-events:auto!important}
+  .v34-welcome-shell{isolation:isolate}
+  .v34-welcome-frame{position:relative!important;width:min(100dvw,calc(100dvh*16/9))!important;height:auto!important;aspect-ratio:16/9!important;max-width:100dvw!important;max-height:100dvh!important;border-radius:clamp(12px,2vw,24px)!important;background-size:100% 100%!important;background-position:center!important;background-repeat:no-repeat!important;box-shadow:0 12px 30px #1d0a2e80!important}
+  .v34-welcome-frame[data-scene="1"]{background-image:url("./welcome-scene-1-landscape.webp")!important}
+  .v34-welcome-frame[data-scene="2"]{background-image:url("./welcome-scene-2-landscape.webp")!important}
+  .v34-welcome-frame[data-scene="3"]{background-image:url("./welcome-scene-3-landscape.webp")!important}
+  .v34-welcome-top,.v34-welcome-footer{position:absolute!important;z-index:3!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(100dvw,calc(100dvh*16/9))!important;height:min(100dvh,calc(100dvw*9/16))!important;min-height:0!important;box-sizing:border-box!important}
+  .v34-welcome-top{display:block!important;padding:2%!important;pointer-events:none!important}
+  .v34-welcome-top>span{position:absolute!important;top:2%!important;left:2%!important;display:block!important;color:#fff!important;font-size:clamp(13px,2vw,28px)!important;font-weight:900!important;text-shadow:0 2px 8px #190b2d!important;pointer-events:none!important}
+  .v34-welcome-skip{position:absolute!important;z-index:4!important;top:2%!important;right:2%!important;width:auto!important;min-width:44px!important;min-height:44px!important;height:clamp(44px,7.5%,66px)!important;padding:0 18px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(13px,1.8vw,24px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
+  .v34-welcome-footer{display:block!important;padding:0!important;pointer-events:none!important}
+  .v34-welcome-next{position:absolute!important;left:auto!important;right:2%!important;bottom:3%!important;width:clamp(112px,14%,210px)!important;height:clamp(48px,10%,92px)!important;min-width:44px!important;min-height:44px!important;padding:0 10px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(14px,2vw,26px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
+  .v34-welcome-back{display:none!important}
+  .v34-welcome-status{position:absolute!important;left:50%!important;bottom:2%!important;transform:translateX(-50%)!important;display:block!important;width:auto!important;height:auto!important;margin:0!important;padding:5px 12px!important;overflow:visible!important;clip:auto!important;border:0!important;border-radius:999px!important;background:#54206cb8!important;color:#fff!important;font-size:clamp(10px,1.2vw,16px)!important;font-weight:800!important;line-height:1.1!important;white-space:nowrap!important;text-align:center!important;pointer-events:none!important}
+  .v34-welcome-status::before{display:block!important;margin-bottom:2px!important;color:#ffe891!important;font-size:clamp(12px,1.4vw,20px)!important;letter-spacing:clamp(5px,.8vw,12px)!important;line-height:1!important}
+  .v34-welcome-shell[data-scene="1"] .v34-welcome-status::before{content:"● ○ ○"}
+  .v34-welcome-shell[data-scene="2"] .v34-welcome-status::before{content:"○ ● ○"}
+  .v34-welcome-shell[data-scene="3"] .v34-welcome-status::before{content:"○ ○ ●"}
+  .v34-welcome-enter-wrap{position:absolute!important;left:auto!important;right:2%!important;bottom:3%!important;width:clamp(112px,14%,210px)!important;height:clamp(48px,10%,92px)!important;min-width:44px!important;min-height:44px!important;margin:0!important;display:grid!important;place-items:center!important;gap:0!important;border-radius:28px!important;background:linear-gradient(135deg,#6428d5,#ef31be)!important;border:3px solid #ffe891!important;box-shadow:0 0 18px 7px #ffe44bba,0 4px 0 #572078!important;pointer-events:auto!important}
   .v34-welcome-enter-wrap[hidden]{display:none!important}
   .v34-welcome-enter-wrap>span{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important}
-  .v34-welcome-enter{width:min(74px,74%)!important;height:min(74px,74%)!important;min-width:44px!important;min-height:44px!important;font-size:clamp(26px,7vw,48px)!important}
+  .v34-welcome-enter{width:min(74px,74%)!important;height:min(74px,74%)!important;min-width:44px!important;min-height:44px!important;font-size:clamp(26px,7vw,48px)!important;pointer-events:auto!important}
 }
 </style>`;
   finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n${ownerLandscapeVisualCorrections}\n${ownerLandscapeWelcomeScenes}\n</body>`);
