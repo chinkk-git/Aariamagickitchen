@@ -148,3 +148,8 @@
 }
 @media(max-width:420px){.fw-more{right:max(7px,env(safe-area-inset-right));gap:6px}.fw-utility-links{max-width:78vw}.fw-utility-links button{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.fw-world::before{filter:brightness(.82)}}
+
+/* Keep floating controls clear of device cutouts. */
+.fw-mute{top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right))}
+.fw-dest-family,.fw-dest-friends{left:max(var(--p-left),env(safe-area-inset-left))}
+@media(orientation:landscape){.fw-dest-family,.fw-dest-friends{left:max(var(--l-left),env(safe-area-inset-left))}}
