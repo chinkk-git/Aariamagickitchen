@@ -194,6 +194,9 @@ try {
   const welcomeStatusAnchor = "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';";
   if (!finalHtml.includes(welcomeStatusAnchor)) throw new Error('Welcome progress status anchor changed.');
   finalHtml = finalHtml.replace(welcomeStatusAnchor, "    welcomeOverlay.querySelector('.v34-welcome-status').textContent = state.language === 'pt-BR' ? 'Cena ' + (welcomeSceneIndex + 1) + ' de 3' : 'Scene ' + (welcomeSceneIndex + 1) + ' of 3';");
+  const welcomeStyleAnchor = '  const v34WelcomeStyle = [';
+  if (!finalHtml.includes(welcomeStyleAnchor)) throw new Error('Welcome localization refresh anchor changed.');
+  finalHtml = finalHtml.replace(welcomeStyleAnchor, `  document.getElementById('languageSelect')?.addEventListener('change', () => setTimeout(() => { if (welcomeOverlay) v34WelcomeScene(welcomeSceneIndex, false); }, 0));\n\n${welcomeStyleAnchor}`);
   const failedPhotoPost = "catch{notice('Could not prepare that photo. Please choose another one.')}}});document.addEventListener('change',e=>{if(e.target.matches('[data-appliance-filter]')";
   const originalPhotoFallback = "catch(error){console.error('Photo post rendering failed; retaining the original image for sharing.',error);if(file instanceof Blob&&file.type.startsWith('image/')){try{if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=file;sharePostBlobs[id]=file;sharePostUrls[id]=URL.createObjectURL(file);render();notice(state.language==='pt-BR'?'Foto pronta para compartilhar. A imagem original será usada.':'Photo ready to share. The original image will be used.')}catch(fallbackError){console.error('Original photo fallback failed.',fallbackError);notice('Could not prepare that photo. Please choose another one.')}}else notice('Could not prepare that photo. Please choose another one.')}}});document.addEventListener('change',e=>{if(e.target.matches('[data-appliance-filter]')";
   if (!finalHtml.includes(failedPhotoPost)) throw new Error('Photo-post failure handler anchor changed.');
@@ -261,7 +264,7 @@ try {
 .app.v32-international-active .ref-ingredient-icon>img{min-width:0!important;min-height:0!important}
 </style>`;
   const ownerLandscapeWelcomeHead = `<style id="aaria-landscape-welcome-boot">
-@media (orientation:landscape){#v34-welcome-boot-frame{width:min(calc(100dvw - 24px),calc((100dvh - 16px)*16/9));height:auto;max-height:100%;aspect-ratio:16/9;background-image:url("./welcome-scene-1-landscape.webp");background-size:100% 100%}}
+@media (orientation:landscape){#v34-welcome-boot-frame{width:min(calc(100% - 24px),calc((100dvh - 16px)*16/9));height:auto;max-height:100%;aspect-ratio:16/9;background-image:url("./welcome-scene-1-landscape.webp");background-size:100% 100%}}
 </style>`;
   finalHtml = finalHtml.replace('</head>', `${ownerLandscapeWelcomeHead}\n</head>`);
   const ownerLandscapeVisualCorrections = `<style id="aaria-landscape-only-visual-corrections">
@@ -286,14 +289,15 @@ try {
   .v34-welcome-shell{display:block!important;padding:0!important;gap:0!important;overflow:hidden!important}
   .v34-welcome-top{display:none!important}
   .v34-welcome-stage{position:absolute!important;inset:0!important;display:grid!important;place-items:center!important;min-height:0!important;overflow:hidden!important}
-  .v34-welcome-frame{width:min(100dvw,calc(100dvh*16/9))!important;height:auto!important;aspect-ratio:16/9!important;max-width:100dvw!important;max-height:100dvh!important;border-radius:0!important;background-image:url("./welcome-scene-1-landscape.webp")!important;background-size:100% 100%!important;background-position:center!important;box-shadow:none!important}
-  .v34-welcome-frame[data-scene="2"]{width:min(100dvw,1672px)!important;aspect-ratio:1672/313!important;background-image:url("./welcome-scene-2-landscape.webp")!important}
-  .v34-welcome-frame[data-scene="3"]{width:min(100dvw,1672px)!important;aspect-ratio:1672/314!important;background-image:url("./welcome-scene-3-landscape.webp")!important}
-  .v34-welcome-footer{position:absolute!important;z-index:2!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(100dvw,calc(100dvh*16/9))!important;height:min(100dvh,calc(100dvw*9/16))!important;min-height:0!important;display:block!important;padding:0!important;pointer-events:none!important}
-  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="2"]) .v34-welcome-footer{width:min(100dvw,1672px)!important;height:auto!important;aspect-ratio:1672/313!important}
-  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="3"]) .v34-welcome-footer{width:min(100dvw,1672px)!important;height:auto!important;aspect-ratio:1672/314!important}
+  .v34-welcome-frame{width:min(100%,calc(100dvh*16/9))!important;height:auto!important;aspect-ratio:16/9!important;max-width:100dvw!important;max-height:100dvh!important;border-radius:0!important;background-image:url("./welcome-scene-1-landscape.webp")!important;background-size:100% 100%!important;background-position:center!important;box-shadow:none!important}
+  .v34-welcome-frame[data-scene="2"]{width:min(100%,1672px)!important;aspect-ratio:1672/313!important;background-image:url("./welcome-scene-2-landscape.webp")!important}
+  .v34-welcome-frame[data-scene="3"]{width:min(100%,1672px)!important;aspect-ratio:1672/297!important;background-image:url("./welcome-scene-3-landscape.webp")!important;background-size:100% auto!important;background-position:center bottom!important}
+  .v34-welcome-footer{position:absolute!important;z-index:2!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(100%,calc(100dvh*16/9))!important;height:min(100dvh,calc(100dvw*9/16))!important;min-height:0!important;display:block!important;padding:0!important;pointer-events:none!important}
+  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="2"]) .v34-welcome-next,.v34-welcome-shell:has(.v34-welcome-frame[data-scene="3"]) .v34-welcome-next{left:1.5%!important;bottom:3%!important;width:11.5%!important;height:23%!important}
+  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="2"]) .v34-welcome-footer{width:min(100%,1672px)!important;height:auto!important;aspect-ratio:1672/313!important}
+  .v34-welcome-shell:has(.v34-welcome-frame[data-scene="3"]) .v34-welcome-footer{width:min(100%,1672px)!important;height:auto!important;aspect-ratio:1672/297!important}
   .v34-welcome-skip{position:absolute!important;right:1%!important;top:3%!important;width:10%!important;height:14%!important;min-width:0!important;min-height:0!important;padding:0 8px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(11px,2vw,24px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
-  .v34-welcome-next{position:absolute!important;left:1%!important;bottom:1%!important;width:13%!important;height:24%!important;min-width:0!important;min-height:0!important;padding:0 8px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(13px,2.4vw,26px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
+  .v34-welcome-next{position:absolute!important;left:2%!important;bottom:8%!important;width:16%!important;height:17%!important;min-width:0!important;min-height:0!important;padding:0 8px!important;border:3px solid #fff2dc!important;border-radius:999px!important;background:linear-gradient(135deg,#8735bd,#d343a8)!important;color:#fff!important;font-size:clamp(13px,2.4vw,26px)!important;font-weight:900!important;opacity:1!important;pointer-events:auto!important}
   .v34-welcome-back{position:absolute!important;left:15%!important;bottom:0!important;width:13%!important;height:25%!important;min-width:0!important;min-height:0!important;padding:0!important;opacity:0!important;pointer-events:auto!important}
   .v34-welcome-status{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
   .v34-welcome-enter-wrap{position:absolute!important;left:0!important;right:auto!important;bottom:0!important;width:15%!important;height:31%!important;margin:0!important;display:grid!important;place-items:center!important;gap:0!important;border-radius:28px!important;background:linear-gradient(135deg,#6428d5,#ef31be)!important;border:3px solid #ffe891!important;box-shadow:0 0 18px 7px #ffe44bba,0 4px 0 #572078!important;pointer-events:auto!important}
@@ -323,7 +327,7 @@ try {
     androidWorkflowRun: 40776773336, androidApkArtifact: 12855138667,
     indiaDishThumbnailSourceCommit: indiaThumbnailCommit, indiaDishThumbnailIds: [51,57], indiaDishThumbnailSha256: indiaDishThumbnailHashes,
     androidTransformedHtmlSha256: androidArtifactHtmlSha256,
-    webAppSha256: sha(structuredHtml), recipeCount: 116, recipeIds: Array.from({ length: 116 }, (_, i) => i + 1),
+    webAppSha256: sha(structuredHtml), landscapeWelcomeScenes: Array.from({ length: 3 }, (_, i) => { const file = `welcome-scene-${i + 1}-landscape.webp`; return { file, sha256: sha(fs.readFileSync(path.join(dist, file))) }; }), recipeCount: 116, recipeIds: Array.from({ length: 116 }, (_, i) => i + 1),
     internationalReviewIds: recipeIds, countryRegistry: JSON.parse(fs.readFileSync(path.join(sourceRoot, 'content/international/country-navigation-manifest.json'), 'utf8')).countries.map(country => country.countryCode),
     recipeArtworkFileCount: assetPaths.length,
     homeExperience: { default: 'magical', active: 'magical-only', classicHome: 'disabled-preserved-in-source', legacyClassicPreference: 'ignored-without-deletion', preferenceKey: 'aaria.v34.homeStyle' },
@@ -367,6 +371,7 @@ try {
     recipeCount: 116,
     countryMappings: 'validated against content/international/country-navigation-manifest.json',
     browserVisualEvidence: 'PENDING: focused live browser verification after this single-Home update. Android Chrome browser-control service is unavailable; static validators do not count as visual acceptance.',
+    landscapeWelcomeArtwork: '3 owner-supplied scenes packaged; landscape-only rendering and EN-GB/PT-BR accessible controls integrated; owner visual/device acceptance pending.',
     visualScreenshots: [],
     browserChecks: { allRecipesCount: 116, newRecipesRail: '19 canonical expansion recipes sourced from country mapping', canonicalInternationalDishAssets: '21/21 source and packaged SHA-256 verified', indiaExistingRecipeThumbnails: '2/2 Android-canonical images mapped for #051 and #057; source SHA-256 recorded', magicalAdventureOnly: 'SOURCE ASSERTED; BROWSER CHECK PENDING', classicHomeAccess: 'ACTIVE SELECTOR DISABLED; SOURCE AND ASSETS PRESERVED', settingsReachable: 'SETTINGS PAGE PRESERVED; BROWSER CHECK PENDING', worldCountryArtwork: '21/21 canonical paths and package hashes verified', welcomeArrowNavigation: 'MAGICAL-ONLY SOURCE ASSERTED; BROWSER CHECK PENDING', publicHttpsAndroidChrome: 'PENDING live browser verification' },
     androidFunctionalGate: 'CI-LITE run 40776773336 failed activity launch timeout; process started, WebView readiness not confirmed',
