@@ -242,7 +242,24 @@ try {
 .app .ref-ingredient-icon>img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important}
 .app.v32-international-active .ref-ingredient-icon>img{min-width:0!important;min-height:0!important}
 </style>`;
-  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\n</body>`);
+  const ownerLandscapeVisualCorrections = `<style id="aaria-landscape-only-visual-corrections">
+/* All overrides in this block are landscape-only; portrait layout rules remain untouched. */
+@media (orientation:landscape) {
+  .v34-welcome-shell{gap:4px!important;padding:max(4px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))!important}
+  .v34-welcome-top{min-height:34px!important}
+  .v34-welcome-stage{min-width:0!important}
+  .v34-welcome-frame{height:100%!important;max-height:100%!important;max-width:100%!important;aspect-ratio:.4921875/1!important}
+  .v34-welcome-footer{min-height:52px!important;padding:2px 4px 14px!important}
+  .v34-welcome-enter-wrap{right:clamp(8px,2vw,24px)!important;bottom:6px!important}
+  .v34-welcome-enter{width:clamp(58px,11vh,78px)!important;height:clamp(58px,11vh,78px)!important}
+  .v34-hero{height:clamp(410px,68vh,600px)!important}
+  .v34-hero-globe{width:clamp(112px,18vw,210px)!important;height:auto!important;aspect-ratio:1/1!important;border-radius:50%!important;box-sizing:border-box!important}
+}
+@media (orientation:landscape) and (max-width:720px) {
+  .v34-hero{height:clamp(390px,72vw,460px)!important}
+}
+</style>`;
+  finalHtml = finalHtml.replace('</body>', `${ownerMobileVisualFixes}\\n${ownerLandscapeVisualCorrections}\\n</body>`);
   fs.writeFileSync(path.join(dist, 'index.html'), finalHtml);
   const reviewJson = path.join(sourceRoot, 'phase2-pilot/apps/aaria-android/app/src/debug/assets/artwork-review/international-wave-1/recipes.json');
   const review = JSON.parse(fs.readFileSync(reviewJson, 'utf8'));
