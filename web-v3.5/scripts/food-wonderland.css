@@ -252,15 +252,15 @@
 /* Portrait source landmarks, measured in the 828×1900 artwork coordinate system. */
 @media(orientation:portrait){
   .fw-globe-frame.v34-hero-globe,.fw-world .fw-hotspots .fw-dest-world{left:38.75%!important;top:17.6%!important;width:22.5%!important}
-  .fw-wheel{left:68%!important;top:27.4%!important;width:28%!important}
+  .fw-wheel{left:70.5%!important;top:27.8%!important;width:23%!important}
 }
 /* Standard landscape landmarks use the 1536×1024 composition. */
 @media(orientation:landscape) and (max-aspect-ratio:7/4){
   .fw-globe-frame.v34-hero-globe,.fw-world .fw-hotspots .fw-dest-world{left:42%!important;top:14.7%!important;width:18%!important}
-  .fw-wheel{left:60%!important;top:20.3%!important;width:21%!important}
+  .fw-wheel{left:61.1%!important;top:22.3%!important;width:18%!important}
 }
 /* Wide landscape landmarks use the 1860×845 composition. */
 @media(orientation:landscape) and (min-aspect-ratio:7/4){
   .fw-globe-frame.v34-hero-globe,.fw-world .fw-hotspots .fw-dest-world{left:42.75%!important;top:4%!important;width:14.5%!important}
-  .fw-wheel{left:60.2%!important;top:11.7%!important;width:17%!important}
+  .fw-wheel{left:61%!important;top:10.5%!important;width:15.5%!important}
 }
