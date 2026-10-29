@@ -72,14 +72,14 @@ try {
     "    ...(Array.isArray(state.myCreations) ? state.myCreations.map(item => Number(typeof item === 'object' ? item.recipeId : item)) : []),",
     '    ...(Array.isArray(state.done) ? state.done.map(Number) : [])',
     '  ])].filter(id => find(id));'
-  ].join('\\n');
+  ].join('\n');
   if (!adapter.includes(legacyCreationIds)) throw new Error('V3.4 completed-dish Home rail source changed; refusing stale deleted dishes to reappear.');
   adapter = adapter.replace(legacyCreationIds, [
     '  const creationIds = () => [...new Set([',
     "    ...(Array.isArray(state.myCreations) ? state.myCreations.map(item => Number(typeof item === 'object' ? item.recipeId : item)) : []),",
     '    ...(state.myCreationsV35MigrationComplete === true ? [] : (Array.isArray(state.done) ? state.done.map(Number) : []))',
     '  ])].filter(id => find(id));'
-  ].join('\\n'));
+  ].join('\n'));
   const legacyHomeStyle = `  const homeStyle = () => {
     try { return localStorage.getItem(STYLE_KEY) === 'classic' ? 'classic' : 'magical'; }
     catch { return 'magical'; }
