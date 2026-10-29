@@ -236,3 +236,31 @@
 /* Crop the legacy wheel overlay to its rotating face so the new artwork keeps one sign. */
 .fw-wheel{clip-path:circle(42% at 50% 42%);transform-origin:50% 42%}
 @media(orientation:landscape){.fw-wheel{clip-path:circle(42% at 50% 42%);transform-origin:50% 42%}}
+
+/* Artwork-relative fit plane: picture and every scene overlay share the exact cover transform. */
+.fw-world{overflow:hidden!important}
+.fw-artwork-plane{position:absolute;left:50%;top:50%;z-index:1;transform:translate(-50%,-50%);width:100%;height:100%;isolation:isolate;line-height:0}
+.fw-scene-art,.fw-atmosphere,.fw-hotspots{position:absolute!important;inset:0!important;left:0!important;top:0!important;width:100%!important;height:100%!important;margin:0!important;transform:none!important}
+.fw-scene-art{z-index:1;overflow:visible}
+.fw-scene-art img{display:block;width:100%;height:100%;object-fit:fill;object-position:center;user-select:none;-webkit-user-drag:none}
+.fw-atmosphere{z-index:5;overflow:visible;pointer-events:none}
+.fw-hotspots{z-index:20;pointer-events:none}
+.fw-hotspot{pointer-events:auto}
+.fw-globe-frame.v34-hero-globe{z-index:6;aspect-ratio:1!important;height:auto!important;pointer-events:none}
+.fw-wheel{height:auto;aspect-ratio:1;object-fit:contain;clip-path:circle(42% at 50% 42%);transform-origin:50% 42%}
+.fw-world .fw-hotspots .fw-dest-world{height:auto!important;aspect-ratio:1}
+/* Portrait source landmarks, measured in the 828×1900 artwork coordinate system. */
+@media(orientation:portrait){
+  .fw-globe-frame.v34-hero-globe,.fw-world .fw-hotspots .fw-dest-world{left:38.75%!important;top:17.6%!important;width:22.5%!important}
+  .fw-wheel{left:68%!important;top:27.4%!important;width:28%!important}
+}
+/* Standard landscape landmarks use the 1536×1024 composition. */
+@media(orientation:landscape) and (max-aspect-ratio:7/4){
+  .fw-globe-frame.v34-hero-globe,.fw-world .fw-hotspots .fw-dest-world{left:42%!important;top:14.7%!important;width:18%!important}
+  .fw-wheel{left:60%!important;top:20.3%!important;width:21%!important}
+}
+/* Wide landscape landmarks use the 1860×845 composition. */
+@media(orientation:landscape) and (min-aspect-ratio:7/4){
+  .fw-globe-frame.v34-hero-globe,.fw-world .fw-hotspots .fw-dest-world{left:42.75%!important;top:4%!important;width:14.5%!important}
+  .fw-wheel{left:60.2%!important;top:11.7%!important;width:17%!important}
+}
