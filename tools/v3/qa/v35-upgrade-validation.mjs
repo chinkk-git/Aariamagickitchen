@@ -36,6 +36,8 @@ async function main() {
   assert(oldHtml.length > 100_000, `Unexpectedly small production HTML (${oldHtml.length} bytes); refusing to run an invalid upgrade test.`);
   const oldHtmlText = oldHtml.toString('utf8');
   assert(/95\s+recipes|95 recipes|All 95 recipes/i.test(oldHtmlText), 'Fetched production HTML does not contain the expected old 95-recipe marker. Confirm the production URL before testing.');
+  const require = createRequire(import.meta.url);
+  const { chromium, webkit } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 
   let stage = 'production';
   const serverErrors = [];
@@ -72,8 +74,6 @@ async function main() {
   });
   await new Promise((resolve, reject) => { server.once('error', reject); server.listen(PORT, HOST, resolve); });
   const origin = `http://${HOST}:${PORT}`;
-  const require = createRequire(import.meta.url);
-  const { chromium, webkit } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
   const report = { approvedBaseHead:APPROVED_BASE_HEAD, actualHead:head, branch, productionUrl:prodResponse.url, productionHtmlBytes:oldHtml.length,
     origin, generatedAt:new Date().toISOString(), results:[], limitations:['WebKit is a desktop browser simulation; it is not physical iOS Safari. Chromium is not Android Chrome/WebView hardware evidence.'] };
 
@@ -196,4 +196,11 @@ async function main() {
   if(report.overall!=='PASS')process.exitCode=1;
 }
 
-main().catch(error=>{console.error(error?.stack||error);process.exitCode=1;});
+main().catch(async error=>{
+  const report={overall:'FAIL',fatalError:String(error?.stack||error),generatedAt:new Date().toISOString()};
+  const output=path.resolve(process.env.AARIA_QA_REPORT||'aaria-v35-upgrade-report.json');
+  try { await fs.writeFile(output,JSON.stringify(report,null,2)+'\n'); report.evidenceReport=output; }
+  catch(writeError) { report.evidenceWriteError=String(writeError?.message||writeError); }
+  console.error(JSON.stringify(report,null,2));
+  process.exitCode=1;
+});
