@@ -1,0 +1,165 @@
+{
+  "suite": "Aaria V3.5 static source QA",
+  "basis": "Authenticated GitHub Contents API reads at release branch",
+  "commitInspected": "43292982925f0c38e22d36b5fdc614644ffeafed",
+  "generatedAt": "2026-10-30T15:23:29.320Z",
+  "overall": "PASS",
+  "checks": [
+    {
+      "name": "Original catalogue: 95 unique IDs 1–95",
+      "result": "PASS",
+      "evidence": {
+        "count": 95
+      }
+    },
+    {
+      "name": "International catalogue: 21 unique IDs 96–116",
+      "result": "PASS",
+      "evidence": {
+        "count": 21
+      }
+    },
+    {
+      "name": "Total catalogue: 116 unique contiguous IDs",
+      "result": "PASS",
+      "evidence": {
+        "total": 116,
+        "unique": 116
+      }
+    },
+    {
+      "name": "International EN-GB/PT-BR titles",
+      "result": "PASS",
+      "evidence": {
+        "missing": []
+      }
+    },
+    {
+      "name": "Vietnam #111–116 bilingual ingredient/step/adult-assist fields",
+      "result": "PASS",
+      "evidence": [
+        {
+          "id": 111,
+          "country": "vietnam",
+          "enIngredients": 14,
+          "ptIngredients": 14,
+          "enSteps": 4,
+          "ptSteps": 4
+        },
+        {
+          "id": 112,
+          "country": "vietnam",
+          "enIngredients": 15,
+          "ptIngredients": 15,
+          "enSteps": 4,
+          "ptSteps": 4
+        },
+        {
+          "id": 113,
+          "country": "vietnam",
+          "enIngredients": 14,
+          "ptIngredients": 14,
+          "enSteps": 4,
+          "ptSteps": 4
+        },
+        {
+          "id": 114,
+          "country": "vietnam",
+          "enIngredients": 9,
+          "ptIngredients": 9,
+          "enSteps": 4,
+          "ptSteps": 4
+        },
+        {
+          "id": 115,
+          "country": "vietnam",
+          "enIngredients": 10,
+          "ptIngredients": 10,
+          "enSteps": 4,
+          "ptSteps": 4
+        },
+        {
+          "id": 116,
+          "country": "vietnam",
+          "enIngredients": 4,
+          "ptIngredients": 4,
+          "enSteps": 4,
+          "ptSteps": 4
+        }
+      ]
+    },
+    {
+      "name": "Recipe #116 includes EN oat/coconut and PT aveia/coco ingredients",
+      "result": "PASS",
+      "evidence": {
+        "en": [
+          "ripe bananas, about 220 g peeled",
+          "unsweetened desiccated coconut",
+          "oat flour",
+          "ground cinnamon, optional"
+        ],
+        "pt": [
+          "bananas maduras, cerca de 220 g sem casca",
+          "de coco ralado sem açúcar",
+          "de farinha de aveia",
+          "de canela em pó, opcional"
+        ]
+      }
+    },
+    {
+      "name": "Recipe #116 localized oat/coconut display correction exists",
+      "result": "PASS",
+      "evidence": {
+        "sourceAllergens": {
+          "en": [
+            "wheat/gluten",
+            "coconut",
+            "oats; possible gluten cross-contact"
+          ],
+          "pt": [
+            "coconut",
+            "oats; possible gluten cross-contact"
+          ]
+        },
+        "independentNutritionReview": "NOT VERIFIED"
+      }
+    },
+    {
+      "name": "Vietnam ingredient corrections assert exact source fields before editing",
+      "result": "PASS",
+      "evidence": true
+    },
+    {
+      "name": "Modular root references scripts and bilingual selector",
+      "result": "PASS",
+      "evidence": {
+        "rootBytes": 3697
+      }
+    },
+    {
+      "name": "V3.5 service-worker version and deletion logic present",
+      "result": "PASS",
+      "evidence": {
+        "cache": "aaria-web-v3.5-85f537591449-r1"
+      }
+    },
+    {
+      "name": "Upgrade harness exists at current remote blob",
+      "result": "PASS",
+      "evidence": {
+        "sha": "64950a5ebf27f6e67196d56426814acc8bfffa3e"
+      }
+    }
+  ],
+  "notCovered": [
+    "Actual same-origin browser upgrade and saved-photo readability",
+    "Runtime cache activation/retirement",
+    "Visual parity and Welcome/Home/globe/wheel navigation flows",
+    "Keyboard/screen-reader/touch accessibility runtime checks",
+    "Physical Android/iOS device checks",
+    "Independent A08/A09, accessibility, security/privacy, nutrition/allergen, artwork-rights or source-content approval"
+  ],
+  "limitations": [
+    "No checked-out repository or Codespaces terminal is available in this session; static checks do not substitute for browser/device or independent review."
+  ]
+}
