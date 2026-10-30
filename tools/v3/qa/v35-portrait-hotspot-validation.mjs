@@ -10,7 +10,7 @@ const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset
 const server = createServer(async (req,res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url,'http://localhost').pathname);
-    const rel = normalize(pathname.replace(/^\\/+/, ''));
+    const rel = normalize(pathname.startsWith('/') ? pathname.slice(1) : pathname);
     let file = resolve(root, rel || 'index.html');
     if (!file.startsWith(root + sep) && file !== root) throw new Error('path escaped root');
     try { if ((await stat(file)).isDirectory()) file = join(file,'index.html'); }
