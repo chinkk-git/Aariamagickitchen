@@ -6,7 +6,7 @@
   // search filter dereferenced those rows and threw while listing recipes.
   if (typeof recipeMatchesSearch === 'function') {
     recipeMatchesSearch = function v35SafeRecipeMatchesSearch(recipe, query) {
-      const fold = value => String(value ?? '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();
+      const fold = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
       const translated = PT_RECIPES?.[recipe.id] || {};
       const text = [
         recipe.title,
