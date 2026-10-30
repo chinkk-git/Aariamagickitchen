@@ -5,7 +5,8 @@ import { extname, join, normalize, resolve, sep } from 'node:path';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const root = resolve(process.env.GITHUB_WORKSPACE || process.cwd());\nconst testOrigin = process.env.AARIA_LIVE_URL || 'https://chinkk-git.github.io/Aariamagickitchen/';
+const root = resolve(process.env.GITHUB_WORKSPACE || process.cwd());
+const testOrigin = process.env.AARIA_LIVE_URL || 'https://chinkk-git.github.io/Aariamagickitchen/';
 const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml'};
 const server = createServer(async (req,res) => {
   try {
