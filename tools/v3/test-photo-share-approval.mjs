@@ -32,7 +32,7 @@ for (const source of [share, productionShare]) {
 }
 assert.match(runtime, /function v3SaveCookPhoto\(id\)/);
 assert.match(runtime, /a\.download=\`aaria-\$\{slug\}\.\$\{extension\}\`/);
-assert.match(runtime, /data-action==='save-cook-photo'\)\{v3SaveCookPhoto/);
+assert.ok(runtime.includes("if(button?.dataset.action==='save-cook-photo'){v3SaveCookPhoto"), 'Save Photo must be routed only through its separate action');
 
 // Exercise the supported browser path with a mock native share API.
 class FakeFile {
