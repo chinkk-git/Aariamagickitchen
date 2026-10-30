@@ -40,7 +40,7 @@ try {
     const img=page.locator('.fw-scene-art img');
     await img.waitFor({state:'visible',timeout:10000});
     const point=await img.evaluate((el,{fx,fy})=>{const r=el.getBoundingClientRect();return{x:r.x+r.width*fx,y:r.y+r.height*fy}},{fx:check.fx,fy:check.fy});
-    const hit=await page.evaluate(({x,y})=>{const el=document.elementFromPoint(x,y);const b=el?.closest('.fw-hotspot');return{route:b?.dataset.fw||null,label:b?.getAttribute('aria-label')||null}},point);
+    const hit=await page.evaluate(({x,y})=>{const el=document.elementFromPoint(x,y);const b=el?.closest('.fw-hotspot');return{route:b?.dataset.fw||null,label:b?.getAttribute('aria-label')||null}},point);\n    const boxes=await page.locator('.fw-hotspot').evaluateAll(es=>es.map(e=>{const a=document.querySelector('.fw-scene-art img').getBoundingClientRect(),r=e.getBoundingClientRect();return{route:e.dataset.fw,left:(r.left-a.left)/a.width,top:(r.top-a.top)/a.height,width:r.width/a.width,height:r.height/a.height}}));
     await page.mouse.click(point.x,point.y);
     await page.waitForFunction(()=>location.hash && location.hash!=='#aria/home',{timeout:10000}).catch(()=>{});
     const actualHash=await page.evaluate(()=>location.hash);
@@ -48,7 +48,7 @@ try {
     const heading=routeHeadings[actualRoute]||null;
     if(heading) await page.getByRole('heading',{name:heading,exact:false}).waitFor({state:'visible',timeout:10000}).catch(()=>{});
     const observedHeadings=await page.locator('h1,h2').allTextContents().catch(()=>[]);
-    results.push({check:check.name,expected:check.expected,hitRoute:actualRoute,destinationHash:actualHash,observedHeadings,point:{x:Math.round(point.x),y:Math.round(point.y)},viewport:'390x844 portrait',result:actualRoute===check.expected?'PASS':'FAIL'});
+    results.push({check:check.name,expected:check.expected,hitRoute:actualRoute,destinationHash:actualHash,observedHeadings,boxes,point:{x:Math.round(point.x),y:Math.round(point.y)},viewport:'390x844 portrait',result:actualRoute===check.expected?'PASS':'FAIL'});
     if(actualRoute!==check.expected) await page.screenshot({path:'/tmp/portrait-hotspot-'+check.expected+'-'+check.name.replaceAll(' ','-')+'.png'});
     await page.close();
   }
