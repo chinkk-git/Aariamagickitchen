@@ -257,6 +257,45 @@ async function main() {
       assert(recipeCheck.uniqueIds===116 && recipeCheck.minId===1 && recipeCheck.maxId===116, `${name}: expected 116 distinct recipe cards, observed ${JSON.stringify(recipeCheck)}`);
       assert(!/All 95 recipes|Browse all 95 recipes/i.test(recipeCheck.bodyStart), `${name}: old 95-recipe label remains in the recipe screen.`);
       result.recipes={status:'PASS',...recipeCheck};
+
+      // Exercise the selected Food Wonderland → World → country → recipe route
+      // on the exact candidate. The change is confined to this disposable browser
+      // context; the seeded user preference has already been asserted above.
+      const navigation={status:'FAIL'};
+      await page.evaluate(() => localStorage.setItem('aaria.v35.homeExperience','wonderland'));
+      await page.goto(origin+'/#aria/home',{waitUntil:'domcontentloaded',timeout:90000});
+      await page.locator('#foodWonderland').waitFor({state:'visible',timeout:30000});
+      const wonderlandWorld=page.locator('#foodWonderland [data-fw="world"]');
+      await wonderlandWorld.waitFor({state:'visible',timeout:15000});
+      await wonderlandWorld.click({timeout:15000});
+      await page.waitForFunction(()=>location.hash==='#aria/world',{timeout:30000});
+      const indiaFlag=page.locator('#v33-world-globe-host .aria-world-globe__flag[data-country-id="india"]');
+      await indiaFlag.waitFor({state:'visible',timeout:20000});
+      const flagStart=await indiaFlag.evaluate(el=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y};});
+      await page.waitForTimeout(500);
+      const flagAfterWait=page.locator('#v33-world-globe-host .aria-world-globe__flag[data-country-id="india"]');
+      await flagAfterWait.waitFor({state:'visible',timeout:10000});
+      const flagEnd=await flagAfterWait.evaluate(el=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y};});
+      const flagMotionPx=Math.round(Math.hypot(flagEnd.x-flagStart.x,flagEnd.y-flagStart.y)*10)/10;
+      await flagAfterWait.click({timeout:15000});
+      await page.waitForFunction(()=>{
+        const panel=document.querySelector('#v33-world-globe-host .aria-world-globe__panel');
+        return panel?.getAttribute('aria-label')==='India'&&panel.querySelectorAll('.aria-world-globe__recipe[data-recipe-id]').length>0;
+      },{timeout:20000});
+      const countryRecipes=await page.locator('#v33-world-globe-host .aria-world-globe__recipe[data-recipe-id]').count();
+      assert(countryRecipes===18, `${name}: India selection should show 18 recipe routes, observed ${countryRecipes}.`);
+      const firstCountryRecipe=page.locator('#v33-world-globe-host .aria-world-globe__recipe[data-recipe-id="51"]');
+      await firstCountryRecipe.waitFor({state:'visible',timeout:10000});
+      await firstCountryRecipe.click({timeout:15000});
+      await page.waitForFunction(()=>location.hash==='#aria/recipe/51/0',{timeout:30000});
+      navigation.status='PASS';
+      navigation.homeRoute='#aria/home → #aria/world';
+      navigation.country='india';
+      navigation.countryRecipeCount=countryRecipes;
+      navigation.recipeRoute=location.hash;
+      navigation.flagMotionDuringIdlePx=flagMotionPx;
+      result.navigation=navigation;
+
       const swState=await page.evaluate(async expectedCache=>{
         if(!('serviceWorker'in navigator)||!('caches'in window))return {supported:false};
         let registration=null;try{registration=await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await registration.update();}catch(e){return {supported:true,error:String(e)};}
