@@ -1839,6 +1839,8 @@ render();
     else if (wait) wait.outerHTML = `<div class="cook-post-preview"><img src="${sharePostUrls[id]}" alt="${safe(find(id)?.title || 'Recipe')} ready-to-share cooking post with saved photo"></div>`;
     const shareButton = document.querySelector('#screen .cook-post-share');
     if (shareButton) shareButton.disabled = !sharePostBlobs[id];
+    const saveButton = document.querySelector('#screen .cook-post-save');
+    if (saveButton) saveButton.disabled = !sharePostBlobs[id];
     const hint = document.querySelector('#screen .cook-share-hint');
     if (hint) hint.textContent = t('Share your saved cooking photo and post with a parent or guardian.', 'Compartilhe sua foto e publicação salva com um adulto.');
   }
