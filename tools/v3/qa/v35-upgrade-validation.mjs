@@ -265,14 +265,15 @@ async function main() {
           keys=await caches.keys();
           const stale=keys.filter(k=>k.startsWith('aaria-web-v3.5-')&&k!==expectedCache);
           if(registration.active?.state==='activated'&&keys.includes(expectedCache)&&stale.length===0)
-            return {supported:true,active:true,keys,activeScript:registration.active.scriptURL};
+            return {supported:true,active:true,keys,activeScript:registration.active.scriptURL,scope:registration.scope,controllerScript:navigator.serviceWorker.controller?.scriptURL||null};
           await new Promise(resolve=>setTimeout(resolve,250));
         } while(Date.now()<deadline);
-        return {supported:true,active:!!registration.active,keys,activeScript:registration.active?.scriptURL,activeState:registration.active?.state,installingState:registration.installing?.state||null,waitingState:registration.waiting?.state||null};
+        return {supported:true,active:!!registration.active,keys,activeScript:registration.active?.scriptURL,activeState:registration.active?.state,installingState:registration.installing?.state||null,waitingState:registration.waiting?.state||null,scope:registration.scope,controllerScript:navigator.serviceWorker.controller?.scriptURL||null};
       },'aaria-web-v3.5-85f537591449-r1');
+      result.serviceWorker=swState;
       if(swState.supported){
         assert(swState.active && swState.keys.includes('aaria-web-v3.5-85f537591449-r1'), `${name}: V3.5 service worker/cache did not activate: ${JSON.stringify(swState)}`);
-        assert(!swState.keys.some(k=>k.startsWith('aaria-web-v3.5-')&&k!=='aaria-web-v3.5-85f537591449-r1'), `${name}: stale V3.5 cache remains: ${JSON.stringify(swState.keys)}`);
+        assert(!swState.keys.some(k=>k.startsWith('aaria-web-v3.5-')&&k!=='aaria-web-v3.5-85f537591449-r1'), `${name}: stale V3.5 cache remains: ${JSON.stringify(swState)}`);
         if(oldServiceWorkerCacheName)assert(!swState.keys.includes(oldServiceWorkerCacheName), `${name}: the current production cache '${oldServiceWorkerCacheName}' was not retired: ${JSON.stringify(swState.keys)}`);
         result.cacheTransition='PASS';
       } else result.cacheTransition='UNSUPPORTED_IN_ENGINE';
