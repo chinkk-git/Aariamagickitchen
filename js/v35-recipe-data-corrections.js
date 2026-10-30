@@ -55,14 +55,19 @@
       const coconut = ingredients.find(item => /coconut|coco/i.test(item.name));
       result.confirmed = (result.confirmed || []).filter(item => item.name !== 'Wheat');
 
-      const add = (name, ingredient) => {
+      const add = (name, ingredient, aliases = []) => {
         if (!ingredient) return;
-        const existing = result.confirmed.find(item => item.name === name);
-        if (existing) existing.ingredients = [ingredient.name];
+        const existing = result.confirmed.find(item => [name, ...aliases].includes(item.name));
+        if (existing) {
+          existing.name = name;
+          existing.ingredients = [ingredient.name];
+        }
         else result.confirmed.push({ name, ingredients: [ingredient.name] });
       };
-      add(pt ? 'Aveia (possível contato cruzado com glúten)' : 'Oats (possible gluten cross-contact)', oat);
-      add(pt ? 'Coco' : 'Coconut', coconut);
+      const oatsLabel = pt ? 'Aveia (possível contato cruzado com glúten)' : 'Oats (possible gluten cross-contact)';
+      const coconutLabel = pt ? 'Coco' : 'Coconut';
+      add(oatsLabel, oat, [pt ? 'Oats (possible gluten cross-contact)' : 'Aveia (possível contato cruzado com glúten)', 'Oats', 'Aveia']);
+      add(coconutLabel, coconut, [pt ? 'Coconut' : 'Coco']);
       return result;
     };
   }
