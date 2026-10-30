@@ -268,7 +268,10 @@ async function main() {
             return {supported:true,active:true,keys,activeScript:registration.active.scriptURL,scope:registration.scope,controllerScript:navigator.serviceWorker.controller?.scriptURL||null};
           await new Promise(resolve=>setTimeout(resolve,250));
         } while(Date.now()<deadline);
-        return {supported:true,active:!!registration.active,keys,activeScript:registration.active?.scriptURL,activeState:registration.active?.state,installingState:registration.installing?.state||null,waitingState:registration.waiting?.state||null,scope:registration.scope,controllerScript:navigator.serviceWorker.controller?.scriptURL||null};
+        const stale=keys.filter(k=>k.startsWith('aaria-web-v3.5-')&&k!==expectedCache);
+        const directDeleteResults=await Promise.all(stale.map(async name=>({name,deleted:await caches.delete(name)})));
+        const keysAfterDirectDelete=await caches.keys();
+        return {supported:true,active:!!registration.active,keys,stale,directDeleteResults,keysAfterDirectDelete,activeScript:registration.active?.scriptURL,activeState:registration.active?.state,installingState:registration.installing?.state||null,waitingState:registration.waiting?.state||null,scope:registration.scope,controllerScript:navigator.serviceWorker.controller?.scriptURL||null};
       },'aaria-web-v3.5-85f537591449-r1');
       result.serviceWorker=swState;
       if(swState.supported){
