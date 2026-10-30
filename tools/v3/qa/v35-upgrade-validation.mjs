@@ -292,7 +292,7 @@ async function main() {
       navigation.homeRoute='#aria/home → #aria/world';
       navigation.country='india';
       navigation.countryRecipeCount=countryRecipes;
-      navigation.recipeRoute=location.hash;
+      navigation.recipeRoute=new URL(page.url()).hash;
       navigation.flagMotionDuringIdlePx=flagMotionPx;
       result.navigation=navigation;
 
