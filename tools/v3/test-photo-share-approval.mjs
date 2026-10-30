@@ -62,10 +62,11 @@ function contextFor(overrides = {}) {
   };
   return context;
 }
-const functionSource = share.match(/shareCook=(async function v3ShareCook\(id\)\{[\s\S]*?\n\};/);
+const functionSource = share.match(/shareCook=async function v3ShareCook\(id\)\{[\s\S]*?\n\};/);
 assert.ok(functionSource, 'Share Photo handler must be extractable for focused behavior checks');
+const shareFunctionExpression = functionSource[0].slice('shareCook='.length, -1);
 const supported = contextFor();
-const sharePhoto = runInNewContext(`(${functionSource[1]})`, supported);
+const sharePhoto = runInNewContext(`(${shareFunctionExpression})`, supported);
 await sharePhoto(7);
 assert.equal(supported.shared.length, 1, 'Supported share must invoke the OS share API');
 assert.equal(supported.shared[0].files.length, 1, 'The share payload must contain the image file');
@@ -76,13 +77,13 @@ assert.equal(supported.downloads.length, 0, 'Share must not trigger a download')
 
 // Dismissing the native share sheet is a safe cancellation.
 const cancelled = contextFor({ navigator: { share: async () => { const error = new Error('cancelled'); error.name = 'AbortError'; throw error; } } });
-await runInNewContext(`(${functionSource[1]})`, cancelled)(7);
+await runInNewContext(`(${shareFunctionExpression})`, cancelled)(7);
 assert.equal(cancelled.notices.length, 0, 'Cancellation must return quietly');
 assert.equal(cancelled.downloads.length, 0);
 
 // Unsupported file sharing explains the limitation and offers the separate Save Photo control.
 const unsupported = contextFor({ navigator: { canShare: () => false } });
-await runInNewContext(`(${functionSource[1]})`, unsupported)(7);
+await runInNewContext(`(${shareFunctionExpression})`, unsupported)(7);
 assert.equal(unsupported.shared.length, 0);
 assert.match(unsupported.notices[0], /not supported/i);
 assert.equal(unsupported.downloads.length, 0, 'Unsupported sharing must not silently download');
