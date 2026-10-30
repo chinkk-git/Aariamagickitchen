@@ -14,6 +14,12 @@ const REPORT = path.resolve(process.env.AARIA_QA_REPORT || 'aaria-v35-upgrade-re
 const NOOP_SW = `self.addEventListener('install',e=>e.waitUntil(self.skipWaiting()));self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));`;
 
 function assert(condition, message) { if (!condition) throw new Error(message); }
+function formatError(error) {
+  if (error instanceof Error) return error.stack || `${error.name||'Error'}: ${error.message||'No error message'}`;
+  if (error === null) return 'Non-Error rejection: null';
+  if (error === undefined) return 'Non-Error rejection: undefined';
+  try { return JSON.stringify(error) ?? String(error); } catch { return String(error); }
+}
 function runGit(...args) { return execFileSync('git', args, { cwd: CANDIDATE_ROOT, encoding: 'utf8' }).trim(); }
 function mime(file) {
   return ({ '.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8',
@@ -113,12 +119,30 @@ async function main() {
       await page.waitForSelector('#screen', {timeout:30000});
       await page.waitForTimeout(1500);
       const before = await page.evaluate(async oldCacheName => {
-        let qaStep='fixture setup';
+        let qaStep='fixture database open';
         try {
-        const request = (db, action) => new Promise((resolve,reject) => { const tx=db.transaction(['profiles','creations','photos','preferences'],'readwrite'); action(tx); tx.oncomplete=()=>resolve(); tx.onerror=()=>reject(tx.error); });
-        const opened = await new Promise((resolve,reject) => { const r=indexedDB.open('AariaV35UpgradeFixture',1); r.onupgradeneeded=()=>{ for(const name of ['profiles','creations','photos','preferences']) if(!r.result.objectStoreNames.contains(name)) r.result.createObjectStore(name,{keyPath:'id'}); }; r.onsuccess=()=>resolve(r.result); r.onerror=()=>reject(r.error); });
+        const idbFailure=(operation,error)=>new Error(operation+': '+(error&&typeof error==='object'?((error.name||'IndexedDB error')+': '+(error.message||'no message')):('IndexedDB event supplied '+String(error))));
+        const request = (db, action, label) => new Promise((resolve,reject) => {
+          let tx;
+          try { tx=db.transaction(['profiles','creations','photos','preferences'],'readwrite'); action(tx); }
+          catch(error) { reject(idbFailure(label+' setup',error)); return; }
+          tx.oncomplete=()=>resolve();
+          tx.onerror=()=>reject(idbFailure(label+' transaction error',tx.error));
+          tx.onabort=()=>reject(idbFailure(label+' transaction aborted',tx.error));
+        });
+        const opened = await new Promise((resolve,reject) => {
+          const r=indexedDB.open('AariaV35UpgradeFixture',1);
+          r.onupgradeneeded=()=>{ for(const name of ['profiles','creations','photos','preferences']) if(!r.result.objectStoreNames.contains(name)) r.result.createObjectStore(name,{keyPath:'id'}); };
+          r.onsuccess=()=>resolve(r.result);
+          r.onerror=()=>reject(idbFailure('open synthetic fixture database',r.error));
+          r.onblocked=()=>reject(new Error('open synthetic fixture database was blocked'));
+        });
+        qaStep='synthetic photo decode';
         const photoBytes=Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/pXcAAAAASUVORK5CYII='),c=>c.charCodeAt(0));
-        await request(opened,tx=>{ tx.objectStore('profiles').put({id:'qa-profile-1',name:'Synthetic QA Profile'}); tx.objectStore('creations').put({id:'qa-creation-1',recipeId:3,createdAt:'2026-10-01T12:00:00.000Z'}); tx.objectStore('photos').put({id:'qa-photo-1',creationId:'qa-creation-1',blob:new Blob([photoBytes],{type:'image/png'})}); tx.objectStore('preferences').put({id:'home',value:'magical'}); }); opened.close();
+        qaStep='write synthetic fixture records';
+        await request(opened,tx=>{ tx.objectStore('profiles').put({id:'qa-profile-1',name:'Synthetic QA Profile'}); tx.objectStore('creations').put({id:'qa-creation-1',recipeId:3,createdAt:'2026-10-01T12:00:00.000Z'}); tx.objectStore('photos').put({id:'qa-photo-1',creationId:'qa-creation-1',blob:new Blob([photoBytes],{type:'image/png'})}); tx.objectStore('preferences').put({id:'home',value:'magical'}); },'write synthetic fixture records');
+        qaStep='close synthetic fixture database';
+        opened.close();
         qaStep='cache snapshot';
         if ('caches' in window) {
           const names=[...new Set([oldCacheName,'aaria-web-v3.5-old-95-recipes'].filter(Boolean))];
@@ -133,7 +157,13 @@ async function main() {
         qaStep='old-stage text capture';
         return {ls,dbs,oldRenderedText:document.body.innerText.slice(0,2000)};
         } catch(error) {
-          return {__qaEvaluationError:{step:qaStep,name:String(error?.name||'Error'),message:String(error?.message||error),stack:String(error?.stack||'')}};
+          const isObject=error!==null&&(typeof error==='object'||typeof error==='function');
+          return {__qaEvaluationError:{
+            step:qaStep,
+            name:isObject?String(error.name||'Error'):'NonErrorRejection',
+            message:isObject?String(error.message||error.name||'Unknown browser error'):`Non-Error rejection value: ${String(error)}`,
+            stack:isObject&&typeof error.stack==='string'?error.stack:''
+          }};
         }
       }, oldServiceWorkerCacheName);
       assert(!before?.__qaEvaluationError, `${name}: pre-upgrade snapshot failed at ${before.__qaEvaluationError?.step||'unknown'}: ${before.__qaEvaluationError?.name||''}: ${before.__qaEvaluationError?.message||''}`);
@@ -213,7 +243,7 @@ async function main() {
       assert(result.failedAssets.length===0, `${name}: failed app assets: ${JSON.stringify(result.failedAssets.slice(0,10))}`);
       result.status='PASS';
     } catch(error) {
-      result.error=String(error?.stack||error);
+      result.error=formatError(error);
       if(page) { try { const imagePath=REPORT.replace(/\.json$/i,`-${name.toLowerCase()}-failure.png`); await page.screenshot({path:imagePath,fullPage:true,timeout:10000}); result.failureScreenshot=imagePath; } catch {} }
     }
     finally { if(context)await context.close(); if(browser)await browser.close(); }
@@ -235,7 +265,7 @@ async function main() {
 }
 
 main().catch(async error=>{
-  const report={overall:'FAIL',fatalError:String(error?.stack||error),generatedAt:new Date().toISOString()};
+  const report={overall:'FAIL',fatalError:formatError(error),generatedAt:new Date().toISOString()};
   const output=path.resolve(process.env.AARIA_QA_REPORT||'aaria-v35-upgrade-report.json');
   try { await fs.writeFile(output,JSON.stringify(report,null,2)+'\n'); report.evidenceReport=output; }
   catch(writeError) { report.evidenceWriteError=String(writeError?.message||writeError); }
