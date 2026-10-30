@@ -127,8 +127,9 @@ async function main() {
           try { tx=db.transaction(['profiles','creations','photos','preferences'],'readwrite'); action(tx); }
           catch(error) { reject(idbFailure(label+' setup',error)); return; }
           tx.oncomplete=()=>resolve();
-          tx.onerror=()=>reject(idbFailure(label+' transaction error',tx.error));
-          tx.onabort=()=>reject(idbFailure(label+' transaction aborted',tx.error));
+          const eventFailure=(event,kind)=>{const target=event?.target;const targetError=target&&target!==tx?target.error:null;const storeName=target?.source?.name||'unknown store';const error=targetError||tx.error||event?.error;return idbFailure(label+kind+' from '+storeName,error);};
+          tx.onerror=event=>reject(eventFailure(event,' transaction error'));
+          tx.onabort=event=>reject(eventFailure(event,' transaction aborted'));
         });
         const opened = await new Promise((resolve,reject) => {
           const r=indexedDB.open('AariaV35UpgradeFixture',1);
