@@ -12,7 +12,7 @@ const cameraFlow = runtime.slice(runtime.indexOf('cookShareSection=function v3Co
 assert.ok(cameraFlow.includes('capture="environment"'), 'Android photo input must request the device camera');
 assert.ok(cameraFlow.includes('v3-hidden-camera-input'), 'Android camera input must remain hidden behind the camera action');
 assert.ok(cameraFlow.includes('data-action="save-cook-photo"'), 'Save Photo must be an explicit separate action');
-assert.match(production, /const saveButton = document\.querySelector\('#screen \.cook-post-save'\);[\\s\\S]{0,80}saveButton\.disabled = !sharePostBlobs\[id\]/, 'hydrated saved photos must enable the separate Save Photo action');
+assert.ok(production.includes("const saveButton = document.querySelector('#screen .cook-post-save');\n    if (saveButton) saveButton.disabled = !sharePostBlobs[id];"), 'hydrated saved photos must enable the separate Save Photo action');
 
 function shareBlock(source) {
   const start = source.indexOf('shareCook=async function v3ShareCook(id){');
