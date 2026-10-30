@@ -121,7 +121,7 @@
     const action=key=>world?.querySelector(`[data-action="${key}"]`)?.click();
     if(route==='settings') return proxy('settings');
     if(route==='world') { if(typeof window.v34EnterGlobeFirst==='function') window.v34EnterGlobeFirst(true); else goto('world'); return; }
-    if(route==='recipes') return proxy('library');
+    if(route==='recipes') return goto('library');
     if(route==='week') return action('open-week-wheel');
     if(route==='family'||route==='friends'||route==='creations') return proxy(route);
     if(route==='surprise') return action('open-wheel');
