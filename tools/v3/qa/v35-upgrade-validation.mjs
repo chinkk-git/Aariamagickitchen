@@ -50,6 +50,7 @@ async function main() {
   const server = http.createServer(async (req, res) => {
     try {
       const pathname = new URL(req.url, `http://${HOST}:${PORT}`).pathname;
+      if (pathname === '/favicon.ico') { res.writeHead(204, {'cache-control':'no-store'}); res.end(); return; }
       if (pathname === '/__qa/upgrade' && req.method === 'POST') { stage = 'candidate'; res.writeHead(204, { 'Cache-Control':'no-store' }); res.end(); return; }
       if (pathname === '/__qa/stage') { res.writeHead(200, {'content-type':'application/json','cache-control':'no-store'}); res.end(JSON.stringify({stage,head})); return; }
       if (pathname === '/sw.js' || pathname.endsWith('/sw.js')) {
@@ -112,20 +113,30 @@ async function main() {
       await page.waitForSelector('#screen', {timeout:30000});
       await page.waitForTimeout(1500);
       const before = await page.evaluate(async oldCacheName => {
+        let qaStep='fixture setup';
+        try {
         const request = (db, action) => new Promise((resolve,reject) => { const tx=db.transaction(['profiles','creations','photos','preferences'],'readwrite'); action(tx); tx.oncomplete=()=>resolve(); tx.onerror=()=>reject(tx.error); });
         const opened = await new Promise((resolve,reject) => { const r=indexedDB.open('AariaV35UpgradeFixture',1); r.onupgradeneeded=()=>{ for(const name of ['profiles','creations','photos','preferences']) if(!r.result.objectStoreNames.contains(name)) r.result.createObjectStore(name,{keyPath:'id'}); }; r.onsuccess=()=>resolve(r.result); r.onerror=()=>reject(r.error); });
         const photoBytes=Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/pXcAAAAASUVORK5CYII='),c=>c.charCodeAt(0));
         await request(opened,tx=>{ tx.objectStore('profiles').put({id:'qa-profile-1',name:'Synthetic QA Profile'}); tx.objectStore('creations').put({id:'qa-creation-1',recipeId:3,createdAt:'2026-10-01T12:00:00.000Z'}); tx.objectStore('photos').put({id:'qa-photo-1',creationId:'qa-creation-1',blob:new Blob([photoBytes],{type:'image/png'})}); tx.objectStore('preferences').put({id:'home',value:'magical'}); }); opened.close();
+        qaStep='cache snapshot';
         if ('caches' in window) {
           const names=[...new Set([oldCacheName,'aaria-web-v3.5-old-95-recipes'].filter(Boolean))];
           for(const name of names){const c=await caches.open(name);await c.put('/__qa/old-catalog-marker',new Response('95'));}
         }
+        qaStep='localStorage snapshot';
         const ls={}; for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);ls[k]=localStorage.getItem(k)}
+        qaStep='IndexedDB enumeration';
         const dbList=await indexedDB.databases(); const dbs={};
         for(const info of dbList){if(!info.name)continue;const db=await new Promise((resolve,reject)=>{const r=indexedDB.open(info.name);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});const stores={};
           for(const storeName of db.objectStoreNames){const rows=await new Promise((resolve,reject)=>{const tx=db.transaction(storeName,'readonly'),r=tx.objectStore(storeName).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});stores[storeName]=await Promise.all(rows.map(async row=>{if(row?.blob instanceof Blob){const b64=btoa(String.fromCharCode(...new Uint8Array(await row.blob.arrayBuffer())));return {...row,blob:{type:row.blob.type,size:row.blob.size,base64:b64}}}return row}));} dbs[info.name]=stores;db.close();}
+        qaStep='old-stage text capture';
         return {ls,dbs,oldRenderedText:document.body.innerText.slice(0,2000)};
+        } catch(error) {
+          return {__qaEvaluationError:{step:qaStep,name:String(error?.name||'Error'),message:String(error?.message||error),stack:String(error?.stack||'')}};
+        }
       }, oldServiceWorkerCacheName);
+      assert(!before?.__qaEvaluationError, `${name}: pre-upgrade snapshot failed at ${before.__qaEvaluationError?.step||'unknown'}: ${before.__qaEvaluationError?.name||''}: ${before.__qaEvaluationError?.message||''}`);
       assert(/95\s+recipes|All 95 recipes/i.test(before.oldRenderedText) || /95\s+recipes|All 95 recipes/i.test(oldHtmlText), `${name}: old-stage 95-recipe content was not observed.`);
       await page.evaluate(async () => { const r=await fetch('/__qa/upgrade',{method:'POST',cache:'no-store'}); if(!r.ok)throw new Error('stage switch failed '+r.status); });
       await page.reload({waitUntil:'domcontentloaded',timeout:90000});
@@ -168,7 +179,13 @@ async function main() {
       await page.setViewportSize({width:844,height:390});
       const landscapeLayout=await page.evaluate(()=>({width:innerWidth,documentWidth:document.documentElement.scrollWidth,nav:!!document.querySelector('#nav')}));
       assert(landscapeLayout.documentWidth<=landscapeLayout.width+2 && landscapeLayout.nav, `${name}: landscape layout overflow or navigation missing: ${JSON.stringify(landscapeLayout)}`);
+      result.dataPreservation={status:'PASS',localStorageKeys:Object.keys(before.ls).length,removedLocalStorageKeys:removedLS,applicationKeysNormalized:modifiedLS,indexedDBs:Object.keys(before.dbs).length,syntheticProfile:true,creationAndPhoto:true,favourites:true,preferences:true,homeSelection:fixture.home,portraitLayout,landscapeLayout};
       await page.setViewportSize({width:390,height:844});
+      const welcome=page.locator('#v35-palace-welcome');
+      if(await welcome.count()){
+        await page.locator('#v35-palace-welcome .v35-skip').click({timeout:15000});
+        await welcome.waitFor({state:'detached',timeout:15000});
+      }
       await page.locator('#nav [data-nav="library"]').first().click({timeout:15000});
       await page.waitForTimeout(1000);
       const recipeCheck=await page.evaluate(()=>{
@@ -179,7 +196,6 @@ async function main() {
       });
       assert(recipeCheck.uniqueIds===116 && recipeCheck.minId===1 && recipeCheck.maxId===116, `${name}: expected 116 distinct recipe cards, observed ${JSON.stringify(recipeCheck)}`);
       assert(!/All 95 recipes|Browse all 95 recipes/i.test(recipeCheck.bodyStart), `${name}: old 95-recipe label remains in the recipe screen.`);
-      result.dataPreservation={status:'PASS',localStorageKeys:Object.keys(before.ls).length,removedLocalStorageKeys:removedLS,applicationKeysNormalized:modifiedLS,indexedDBs:Object.keys(before.dbs).length,syntheticProfile:true,creationAndPhoto:true,favourites:true,preferences:true,homeSelection:fixture.home,portraitLayout,landscapeLayout};
       result.recipes={status:'PASS',...recipeCheck};
       const swState=await page.evaluate(async()=>{
         if(!('serviceWorker'in navigator)||!('caches'in window))return {supported:false};
