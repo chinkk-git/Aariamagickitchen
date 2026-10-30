@@ -3,8 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {runInNewContext} from 'node:vm';
 
 const runtime = await readFile(new URL('./runtime.js', import.meta.url), 'utf8');
-const production = await readFile(new URL('../../js/03-aaria-v3-layer.7e7cb86154e0.js', import.meta.url), 'utf8').catch(async () =>
-  readFile(new URL('../../js/03-aaria-v3-layer.c2c6fc71d8ad.js', import.meta.url), 'utf8'));
+const production = await readFile(new URL('../../js/03-aaria-v3-layer.c2c6fc71d8ad.js', import.meta.url), 'utf8');
 const activity = await readFile(new URL('../../phase2-pilot/apps/aaria-android/app/src/main/java/com/aaria/magickitchen/pilot/MainActivity.kt', import.meta.url), 'utf8');
 const profile = JSON.parse(await readFile(new URL('../../phase2-pilot/tools/recipe-pipeline/release-profile.json', import.meta.url), 'utf8'));
 
@@ -63,7 +62,7 @@ function contextFor(overrides = {}) {
   };
   return context;
 }
-const functionSource = share.match(/shareCook=(async function v3ShareCook\(id\)\{[\s\S]*?\n\});/);
+const functionSource = share.match(/shareCook=(async function v3ShareCook\(id\)\{[\s\S]*?\n\};/);
 assert.ok(functionSource, 'Share Photo handler must be extractable for focused behavior checks');
 const supported = contextFor();
 const sharePhoto = runInNewContext(`(${functionSource[1]})`, supported);
