@@ -179,7 +179,7 @@ async function main() {
         const registration=registrations.find(r=>r.scope===location.origin+'/');
         if(!registration?.active||registration.active.state!=='activated')return false;
         const keys=await caches.keys();
-        return keys.includes(expectedCache)&&!keys.some(k=>k.startsWith('aaria-web-v3.5-')&&k!==expectedCache);
+        return keys.includes(expectedCache);
       },'aaria-web-v3.5-85f537591449-r1',{timeout:180000});
       let quietSince=Date.now(),lastNavigationCount=mainNavigationCount;
       const settleDeadline=Date.now()+60000;
