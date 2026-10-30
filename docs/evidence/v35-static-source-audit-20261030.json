@@ -1,8 +1,8 @@
 {
   "suite": "Aaria V3.5 static source QA",
   "basis": "Authenticated GitHub Contents API reads at release branch",
-  "commitInspected": "146350c67f1402436b97a4b2ec1f662b1ac9990f",
-  "generatedAt": "2026-10-30T15:25:55.801Z",
+  "commitInspected": "a984653773ce07507e473c574c19f33751684bd9",
+  "generatedAt": "2026-10-30T15:26:59.619Z",
   "overall": "PASS",
   "checks": [
     {
@@ -154,9 +154,20 @@
       "name": "Search is safe for recipes without a per-recipe PT_RECIPES entry",
       "result": "PASS",
       "evidence": {
-        "guardPresent": true,
-        "syntheticId66Search": true,
-        "patchBlobSha": "1fce3c445fe15a14da073aa28536029825862a6c"
+        "patchBlobSha": "b1ff763c363a85a91fd2967c319e5df9a70e1b7a",
+        "actualPatchedFunctionExecuted": true,
+        "syntheticRecipeId": 66,
+        "queryAssertions": "pasta/rainbow match; absent does not"
+      }
+    },
+    {
+      "name": "Portuguese title fallback renders a non-English result for all 95 baseline recipe titles",
+      "result": "PASS",
+      "evidence": {
+        "perRecipeRows": 65,
+        "fallbackRows": 30,
+        "unchangedFallbackTitles": 0,
+        "method": "Replicated the app’s PT_TRANSLATIONS merge and whole-word regex fallback from source; static only."
       }
     }
   ],
@@ -171,5 +182,5 @@
   "limitations": [
     "No checked-out repository or Codespaces terminal is available in this session; static checks do not substitute for browser/device or independent review."
   ],
-  "executionNote": "Static data/source checks only. Runtime browser upgrade tests remain for Codespaces."
+  "executionNote": "Static source checks and isolated function-level check only; no browser or device suite executed."
 }
