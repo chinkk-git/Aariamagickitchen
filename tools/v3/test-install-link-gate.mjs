@@ -68,7 +68,7 @@ assert.equal(promptCalled, true, 'Install tap must invoke the captured prompt');
 const ios = run({ua:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) Version/18.0 Mobile Safari', platform:'iPhone'});
 ios.listeners['document:DOMContentLoaded']();
 await ios.buttons['install-link-install'].events.click();
-assert.match(ios.instructions.textContent, /Safari, then tap Share → Add to Home Screen/);
+assert.match(ios.instructions.textContent, /In Safari, tap Share → Add to Home Screen/);
 
 const inApp = run({ua:'Mozilla/5.0 (Linux; Android 15) AppleWebKit WhatsApp'});
 inApp.listeners['document:DOMContentLoaded']();
