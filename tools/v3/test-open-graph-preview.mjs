@@ -5,13 +5,18 @@ const html = await readFile(new URL('../../index.html', import.meta.url), 'utf8'
 const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1];
 assert.ok(head, 'Metadata must be present in the initial HTML head');
 
-const tags = [...head.matchAll(/<meta\b[^>]*>/gi)].map(match => match[0]);
+const tags = [...head.matchAll(/<meta\b[^>]*>/gi)].map(match => {
+  const attrs = {};
+  for (const [, key, doubleQuoted, singleQuoted] of match[0].matchAll(/([:\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)) {
+    attrs[key] = doubleQuoted ?? singleQuoted;
+  }
+  return attrs;
+});
 function content(attribute, name) {
-  const tag = tags.find(item => new RegExp('(?:^|\\s)' + attribute + '=["\\']' + name.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&') + '["\\']', 'i').test(item));
+  const tag = tags.find(attrs => attrs[attribute] === name);
   assert.ok(tag, `Missing ${attribute}=${name} in server-delivered head`);
-  const match = tag.match(/(?:^|\s)content=["']([^"']*)["']/i);
-  assert.ok(match, `Missing content for ${name}`);
-  return match[1];
+  assert.ok('content' in tag, `Missing content for ${name}`);
+  return tag.content;
 }
 
 const expected = {
