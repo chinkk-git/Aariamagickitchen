@@ -138,8 +138,19 @@ async function main() {
       const fixture = await page.evaluate(() => ({profile:JSON.parse(localStorage.getItem('myMagicalKitchenProfilesV1')||'{}'),state:JSON.parse(localStorage.getItem('aariaPrivateKitchenV4')||'{}'),home:localStorage.getItem('aaria.v35.homeExperience'),photo:localStorage.getItem('aariaPrivateKitchenV4')||''}));
       assert(removedLS.length===0, `${name}: localStorage records removed: ${removedLS.join(', ')}`);
       assert(missingDB.length===0, `${name}: IndexedDB records changed or missing: ${missingDB.join(', ')}`);
+      const unexpectedModifiedLS=modifiedLS.filter(k=>!['aariaPrivateKitchenV4','myMagicalKitchenProfilesV1'].includes(k));
+      assert(unexpectedModifiedLS.length===0, `${name}: unrelated localStorage records changed: ${unexpectedModifiedLS.join(', ')}`);
       assert(fixture.profile.profiles?.length===2 && fixture.profile.activeId==='qa-profile-1', `${name}: profile fixture missing after upgrade.`);
       assert(fixture.state.myCreations?.some(x=>x.qaFixture==='synthetic-photo' && x.photoDataUrl?.startsWith('data:image/png;base64,')) && fixture.state.favorites?.includes(3) && fixture.state.done?.includes(3), `${name}: creation/photo/favourite/completion fixture missing after upgrade.`);
+      const originalState=JSON.parse(before.ls.aariaPrivateKitchenV4);
+      for(const key of ['weeks','done','checks','stories','favorites','grocerySelected','language','myCreations','qaProfilePreference'])
+        assert(JSON.stringify(fixture.state[key])===JSON.stringify(originalState[key]), `${name}: saved app-state field '${key}' changed during upgrade.`);
+      const originalProfiles=JSON.parse(before.ls.myMagicalKitchenProfilesV1);
+      for(const original of originalProfiles.profiles){
+        const current=fixture.profile.profiles.find(profile=>profile.id===original.id);
+        assert(current?.name===original.name, `${name}: saved profile '${original.id}' was lost or renamed.`);
+        for(const key of ['language','favorites']) assert(JSON.stringify(current.snapshot?.[key])===JSON.stringify(original.snapshot?.[key]), `${name}: profile '${original.id}' field '${key}' changed.`);
+      }
       assert(fixture.home==='magical', `${name}: selected Magical home preference changed.`);
       assert(after.ls['aaria.v35.wonderlandMuted']==='true' && after.ls['aaria.qa.fixture.preferences']===before.ls['aaria.qa.fixture.preferences'], `${name}: mute or preference setting changed.`);
       const portraitLayout=await page.evaluate(()=>({width:innerWidth,documentWidth:document.documentElement.scrollWidth,nav:!!document.querySelector('#nav')}));
@@ -158,7 +169,7 @@ async function main() {
       });
       assert(recipeCheck.uniqueIds===116 && recipeCheck.minId===1 && recipeCheck.maxId===116, `${name}: expected 116 distinct recipe cards, observed ${JSON.stringify(recipeCheck)}`);
       assert(!/All 95 recipes|Browse all 95 recipes/i.test(recipeCheck.bodyStart), `${name}: old 95-recipe label remains in the recipe screen.`);
-      result.dataPreservation={status:'PASS',localStorageKeys:Object.keys(before.ls).length,removedLocalStorageKeys:removedLS,applicationKeysNormalized:modifiedLS,indexedDBs:Object.keys(before.dbs).length,syntheticProfile:true,creationAndPhoto:true,favourites:true,homeSelection:fixture.home,portraitLayout,landscapeLayout};
+      result.dataPreservation={status:'PASS',localStorageKeys:Object.keys(before.ls).length,removedLocalStorageKeys:removedLS,applicationKeysNormalized:modifiedLS,indexedDBs:Object.keys(before.dbs).length,syntheticProfile:true,creationAndPhoto:true,favourites:true,preferences:true,homeSelection:fixture.home,portraitLayout,landscapeLayout};
       result.recipes={status:'PASS',...recipeCheck};
       const swState=await page.evaluate(async()=>{
         if(!('serviceWorker'in navigator)||!('caches'in window))return {supported:false};
