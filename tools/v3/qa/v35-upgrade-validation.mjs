@@ -93,11 +93,12 @@ async function main() {
 
   async function runEngine(name, engine) {
     const result = { engine:name, status:'FAIL', dataPreservation:null, recipes:null, cacheTransition:'NOT_APPLICABLE', pageErrors:[], failedAssets:[] };
-    let browser, context, page;
+    let browser, context, page, mainNavigationCount=0;
     try {
     browser = await engine.launch({ headless:true });
     context = await browser.newContext({ serviceWorkers:'allow', viewport:{width:390,height:844}, isMobile:true, hasTouch:true });
     page = await context.newPage();
+    page.on('framenavigated', frame => { if(frame===page.mainFrame())mainNavigationCount++; });
     page.on('pageerror', e => result.pageErrors.push(e.message));
     page.on('requestfailed', r => { if (r.url().startsWith(origin)) result.failedAssets.push({url:r.url(),error:r.failure()?.errorText}); });
     page.on('response', r => { if (r.url().startsWith(origin) && r.status() >= 400 && !r.url().includes('/__qa/')) result.failedAssets.push({url:r.url(),status:r.status()}); });
@@ -141,7 +142,7 @@ async function main() {
         qaStep='synthetic photo decode';
         const photoBytes=Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/pXcAAAAASUVORK5CYII='),c=>c.charCodeAt(0));
         qaStep='write synthetic fixture records';
-        await request(opened,tx=>{ tx.objectStore('profiles').put({id:'qa-profile-1',name:'Synthetic QA Profile'}); tx.objectStore('creations').put({id:'qa-creation-1',recipeId:3,createdAt:'2026-10-01T12:00:00.000Z'}); tx.objectStore('photos').put({id:'qa-photo-1',creationId:'qa-creation-1',blob:new Blob([photoBytes],{type:'image/png'})}); tx.objectStore('preferences').put({id:'home',value:'magical'}); },'write synthetic fixture records');
+        await request(opened,tx=>{ tx.objectStore('profiles').put({id:'qa-profile-1',name:'Synthetic QA Profile'}); tx.objectStore('creations').put({id:'qa-creation-1',recipeId:3,createdAt:'2026-10-01T12:00:00.000Z'}); tx.objectStore('photos').put({id:'qa-photo-1',creationId:'qa-creation-1',photoBytes,mimeType:'image/png'}); tx.objectStore('preferences').put({id:'home',value:'magical'}); },'write synthetic fixture records');
         qaStep='close synthetic fixture database';
         opened.close();
         qaStep='cache snapshot';
@@ -154,7 +155,7 @@ async function main() {
         qaStep='IndexedDB enumeration';
         const dbList=await indexedDB.databases(); const dbs={};
         for(const info of dbList){if(!info.name)continue;const db=await new Promise((resolve,reject)=>{const r=indexedDB.open(info.name);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});const stores={};
-          for(const storeName of db.objectStoreNames){const rows=await new Promise((resolve,reject)=>{const tx=db.transaction(storeName,'readonly'),r=tx.objectStore(storeName).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});stores[storeName]=await Promise.all(rows.map(async row=>{if(row?.blob instanceof Blob){const b64=btoa(String.fromCharCode(...new Uint8Array(await row.blob.arrayBuffer())));return {...row,blob:{type:row.blob.type,size:row.blob.size,base64:b64}}}return row}));} dbs[info.name]=stores;db.close();}
+          for(const storeName of db.objectStoreNames){const rows=await new Promise((resolve,reject)=>{const tx=db.transaction(storeName,'readonly'),r=tx.objectStore(storeName).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});stores[storeName]=rows.map(row=>row?.photoBytes instanceof Uint8Array?{...row,photoBytes:{type:'Uint8Array',base64:btoa(String.fromCharCode(...row.photoBytes))}}:row);} dbs[info.name]=stores;db.close();}
         qaStep='old-stage text capture';
         return {ls,dbs,oldRenderedText:document.body.innerText.slice(0,2000)};
         } catch(error) {
@@ -172,12 +173,27 @@ async function main() {
       await page.evaluate(async () => { const r=await fetch('/__qa/upgrade',{method:'POST',cache:'no-store'}); if(!r.ok)throw new Error('stage switch failed '+r.status); });
       await page.reload({waitUntil:'domcontentloaded',timeout:90000});
       await page.waitForSelector('#screen', {timeout:30000});
-      await page.waitForTimeout(5000);
+      await page.waitForFunction(async expectedCache => {
+        if(!('serviceWorker' in navigator)||!('caches' in window))return true;
+        const registrations=await navigator.serviceWorker.getRegistrations();
+        const registration=registrations.find(r=>r.scope===location.origin+'/');
+        if(!registration?.active||registration.active.state!=='activated')return false;
+        const keys=await caches.keys();
+        return keys.includes(expectedCache)&&!keys.some(k=>k.startsWith('aaria-web-v3.5-')&&k!==expectedCache);
+      },'aaria-web-v3.5-85f537591449-r1',{timeout:180000});
+      let quietSince=Date.now(),lastNavigationCount=mainNavigationCount;
+      const settleDeadline=Date.now()+60000;
+      while(Date.now()-quietSince<1500){
+        assert(Date.now()<settleDeadline, `${name}: page did not settle after service-worker cache migration.`);
+        await page.waitForTimeout(250);
+        if(mainNavigationCount!==lastNavigationCount){lastNavigationCount=mainNavigationCount;quietSince=Date.now();}
+      }
+      await page.waitForLoadState('domcontentloaded',{timeout:30000}).catch(()=>{});
       const after = await page.evaluate(async () => {
         const ls={}; for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);ls[k]=localStorage.getItem(k)}
         const dbList=await indexedDB.databases(); const dbs={};
         for(const info of dbList){if(!info.name)continue;const db=await new Promise((resolve,reject)=>{const r=indexedDB.open(info.name);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});const stores={};
-          for(const storeName of db.objectStoreNames){const rows=await new Promise((resolve,reject)=>{const tx=db.transaction(storeName,'readonly'),r=tx.objectStore(storeName).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});stores[storeName]=await Promise.all(rows.map(async row=>{if(row?.blob instanceof Blob){const b64=btoa(String.fromCharCode(...new Uint8Array(await row.blob.arrayBuffer())));return {...row,blob:{type:row.blob.type,size:row.blob.size,base64:b64}}}return row}));} dbs[info.name]=stores;db.close();}
+          for(const storeName of db.objectStoreNames){const rows=await new Promise((resolve,reject)=>{const tx=db.transaction(storeName,'readonly'),r=tx.objectStore(storeName).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});stores[storeName]=rows.map(row=>row?.photoBytes instanceof Uint8Array?{...row,photoBytes:{type:'Uint8Array',base64:btoa(String.fromCharCode(...row.photoBytes))}}:row);} dbs[info.name]=stores;db.close();}
         return {ls,dbs};
       });
       const removedLS=Object.keys(before.ls).filter(k=>!(k in after.ls));
@@ -190,6 +206,8 @@ async function main() {
       const fixture = await page.evaluate(() => ({profile:JSON.parse(localStorage.getItem('myMagicalKitchenProfilesV1')||'{}'),state:JSON.parse(localStorage.getItem('aariaPrivateKitchenV4')||'{}'),home:localStorage.getItem('aaria.v35.homeExperience'),photo:localStorage.getItem('aariaPrivateKitchenV4')||''}));
       assert(removedLS.length===0, `${name}: localStorage records removed: ${removedLS.join(', ')}`);
       assert(missingDB.length===0, `${name}: IndexedDB records changed or missing: ${missingDB.join(', ')}`);
+      const idbPhoto=after.dbs.AariaV35UpgradeFixture?.photos?.find(row=>row.id==='qa-photo-1');
+      assert(idbPhoto?.mimeType==='image/png'&&idbPhoto.photoBytes?.type==='Uint8Array'&&idbPhoto.photoBytes.base64==='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/pXcAAAAASUVORK5CYII=', `${name}: synthetic IndexedDB photo bytes were not readable after upgrade.`);
       const unexpectedModifiedLS=modifiedLS.filter(k=>!['aariaPrivateKitchenV4','myMagicalKitchenProfilesV1'].includes(k));
       assert(unexpectedModifiedLS.length===0, `${name}: unrelated localStorage records changed: ${unexpectedModifiedLS.join(', ')}`);
       assert(fixture.profile.profiles?.length===2 && fixture.profile.activeId==='qa-profile-1', `${name}: profile fixture missing after upgrade.`);
