@@ -376,20 +376,55 @@ settingsPage=function v3Settings(){
 };
 
 const v3OriginalCookSection=cookShareSection;
-cookShareSection=function v3CookShareSection(r){
- const html=v3OriginalCookSection(r);
- return html.replace(/<label class="cook-photo-pick">📸 Take a dish photo[\s\S]*?<\/label>/,`<button type="button" class="cook-photo-pick v3-photo-camera" data-action="take-dish-photo" data-recipe="${r.id}">📸 Take a dish photo</button><input class="v3-hidden-camera-input" type="file" accept="image/*" capture="environment" data-share-photo="${r.id}" aria-label="Take a dish photo">`).replace(/<label class="cook-photo-pick">🖼️ Choose a dish photo[\s\S]*?<\/label>/,'');
-};
+
+
+function v3SaveCookPhoto(id){
+ const blob=shareSourcePhotos[id]||sharePostBlobs[id],r=find(id);
+ if(!blob||!r){notice('Take a photo of your finished dish first 📸');return}
+ const mimeType=blob.type;
+ if(!mimeType||!mimeType.startsWith('image/')){notice('This photo could not be saved because its image format is unavailable.');return}
+ const extension=mimeType==='image/jpeg'?'jpg':mimeType==='image/png'?'png':(mimeType.split('/')[1]||'img').replace(/[^a-z0-9]/gi,'')||'img';
+ const slug=r.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download=`aaria-${slug}.${extension}`;document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),0);
+ notice(t('Photo saved to this device.','Foto salva neste dispositivo.'));
+}
 
 const v3OriginalShareCook=shareCook;
 shareCook=async function v3ShareCook(id){
  const blob=sharePostBlobs[id],r=find(id);
- if(window.AariaNative&&blob){
-  try{const reader=new FileReader(),data=await new Promise((resolve,reject)=>{reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)});const caption=translateText(`I made ${r.title}! 🍽️\nMade with love by Chef Aaria in Aaria’s Magical Kitchen.\n#AariasMagicalKitchen #LittleChef`);const started=window.AariaNative.sharePost(String(data),caption);notice(started?'A parent or guardian must confirm with the device screen lock before sharing.':'Sharing needs a parent or guardian and a device screen lock. No photo was shared.');return}catch(e){console.warn('Native share unavailable; sharing was not started.',e);notice('Sharing could not be started. Ask a parent or guardian for help.');return}
+ if(!blob||!r){notice('Take a photo of your finished dish first 📸');return}
+ const mimeType=blob.type;
+ if(!mimeType||!mimeType.startsWith('image/')){notice('This photo could not be shared because its image format is unavailable.');return}
+ const extension=mimeType==='image/jpeg'?'jpg':mimeType==='image/png'?'png':(mimeType.split('/')[1]||'img').replace(/[^a-z0-9]/gi,'')||'img';
+ const slug=r.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ const filename=`aaria-${slug}.${extension}`;
+ const caption=translateText(`I made ${r.title}! 🍽️\\nMade with love by Chef Aaria in Aaria’s Magical Kitchen.\\n#AariasMagicalKitchen #LittleChef`);
+ if(window.AariaNative){
+  try{
+   const reader=new FileReader();
+   const data=await new Promise((resolve,reject)=>{reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)});
+   const started=window.AariaNative.sharePost(String(data),caption);
+   notice(started?'A parent or guardian must confirm with the device screen lock before sharing.':'Sharing needs a parent or guardian and a device screen lock. No photo was shared.');
+  }catch(e){console.warn('Native share unavailable; sharing was not started.',e);notice('Sharing could not be started. Ask a parent or guardian for help.')}
+  return;
  }
- const url=sharePostUrls[id];
- if(url){const slug=r.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');const a=document.createElement('a');a.href=url;a.download=`aaria-${slug}.png`;document.body.append(a);a.click();a.remove();await copyText(translateText(`I made ${r.title}! 🍽️\\nMade with love by Chef Aaria in Aaria’s Magical Kitchen.\\n#AariasMagicalKitchen #LittleChef`));notice('Photo saved on this device. Ask a parent or guardian to share it.');return}
- notice('Ask a parent or guardian to help save and share this photo.');
+ const file=new File([blob],filename,{type:mimeType});
+ const shareData={files:[file],title:translateText(`I made ${r.title}!`),text:caption};
+ try{
+  if(typeof navigator!=='undefined'&&typeof navigator.share==='function'&&typeof navigator.canShare==='function'&&navigator.canShare({files:[file]})){
+   await navigator.share(shareData);
+   notice('Your photo is ready to share 💖');
+   return;
+  }
+ }catch(e){
+  if(e?.name==='AbortError')return;
+  console.warn('Photo sharing could not be started.',e);
+  notice('Sharing could not be started. The photo was not saved.');
+  return;
+ }
+ notice(t('Photo sharing is not supported in this browser. Use Save Photo to save it, then share it from your device.','O compartilhamento de fotos não é compatível com este navegador. Use Salvar foto para salvá-la e depois compartilhe pelo dispositivo.'));
 };
 
 async function v3ShowGroceryRecipients(){
@@ -513,6 +548,7 @@ document.addEventListener('click',async e=>{
   if(!digits){document.querySelector('#v3GroceryRecipient')?.remove();notice('Add the WhatsApp number in Settings first.');goto('settings');return}
   const url=`https://wa.me/${digits}?text=${encodeURIComponent(groceryMessage())}`;document.querySelector('#v3GroceryRecipient')?.remove();window.location.href=url;return;
  }
+ if(button?.dataset.action==='save-cook-photo'){v3SaveCookPhoto(Number(button.dataset.recipe));return}
  if(button?.dataset.action==='take-dish-photo'){
   const id=Number(button.dataset.recipe);
   if(window.AariaNative?.takeDishPhoto){window.AariaNative.takeDishPhoto(String(id));return}
