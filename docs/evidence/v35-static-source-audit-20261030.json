@@ -1,8 +1,8 @@
 {
   "suite": "Aaria V3.5 static source QA",
   "basis": "Authenticated GitHub Contents API reads at release branch",
-  "commitInspected": "43292982925f0c38e22d36b5fdc614644ffeafed",
-  "generatedAt": "2026-10-30T15:23:29.320Z",
+  "commitInspected": "146350c67f1402436b97a4b2ec1f662b1ac9990f",
+  "generatedAt": "2026-10-30T15:25:55.801Z",
   "overall": "PASS",
   "checks": [
     {
@@ -149,6 +149,15 @@
       "evidence": {
         "sha": "64950a5ebf27f6e67196d56426814acc8bfffa3e"
       }
+    },
+    {
+      "name": "Search is safe for recipes without a per-recipe PT_RECIPES entry",
+      "result": "PASS",
+      "evidence": {
+        "guardPresent": true,
+        "syntheticId66Search": true,
+        "patchBlobSha": "1fce3c445fe15a14da073aa28536029825862a6c"
+      }
     }
   ],
   "notCovered": [
@@ -161,5 +170,6 @@
   ],
   "limitations": [
     "No checked-out repository or Codespaces terminal is available in this session; static checks do not substitute for browser/device or independent review."
-  ]
+  ],
+  "executionNote": "Static data/source checks only. Runtime browser upgrade tests remain for Codespaces."
 }
