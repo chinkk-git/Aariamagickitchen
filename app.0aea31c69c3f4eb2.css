@@ -2029,3 +2029,10 @@ button.aria-world-globe__recipe{cursor:pointer;touch-action:manipulation;}
 #nav.bottom{transition:translate 230ms cubic-bezier(.2,.75,.25,1),opacity 230ms ease!important;will-change:translate,opacity}
 #nav.bottom[data-scroll-hidden="true"]{translate:0 100%!important;opacity:0!important;pointer-events:none!important}
 @media(prefers-reduced-motion:reduce){#nav.bottom{transition:none!important}}
+/* Portrait touch zones follow each distinct illustration and sign. */
+@media (orientation: portrait) {
+  .fw-hotspots .fw-dest-family{height:15%!important}
+  .fw-hotspots .fw-dest-friends{top:55%!important;height:18%!important}
+  .fw-hotspots .fw-dest-creations{height:11%!important}
+  .fw-hotspots .fw-dest-planner{top:64%!important;height:20%!important}
+}

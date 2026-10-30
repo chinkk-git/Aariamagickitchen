@@ -1,0 +1,40 @@
+name: V3.5 portrait hotspot clicks
+
+on:
+  push:
+    branches:
+      - recovery/v35-portrait-hotspot-20261030
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  portrait-hotspots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install isolated Playwright dependency
+        run: npm install --prefix /tmp/aaria-portrait-qa playwright
+      - name: Install Chromium
+        run: node /tmp/aaria-portrait-qa/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Click the Planner and Friends artwork and signs in portrait
+        env:
+          PLAYWRIGHT_MODULE: /tmp/aaria-portrait-qa/node_modules/playwright
+        run: node tools/v3/qa/v35-portrait-hotspot-validation.mjs
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v35-portrait-hotspot-failures
+          path: /tmp/portrait-hotspot-*.png
+          if-no-files-found: ignore
+          retention-days: 7
