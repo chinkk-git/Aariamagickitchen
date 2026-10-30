@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - recovery/v35-portrait-hotspot-20261030
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
