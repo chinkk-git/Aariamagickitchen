@@ -1,0 +1,105 @@
+html.install-gate-active,
+html.install-gate-active body {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+html.install-gate-active body > :not(#install-link-gate) {
+  display: none !important;
+}
+
+#install-link-gate[hidden] {
+  display: none !important;
+}
+
+#install-link-gate {
+  position: fixed;
+  z-index: 2147483000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+  color: #39245f;
+  background: radial-gradient(ellipse at 50% 15%, #fff8dc 0%, #f1e8ff 48%, #d8c7ff 100%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.install-link-card {
+  width: min(100%, 420px);
+  box-sizing: border-box;
+  padding: 28px 24px;
+  border: 1px solid rgba(139, 99, 217, .22);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, .91);
+  box-shadow: 0 16px 48px rgba(57, 36, 95, .18);
+  text-align: center;
+}
+
+.install-link-icon {
+  display: block;
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  border-radius: 26px;
+}
+
+.install-link-card h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.55rem, 6vw, 2rem);
+  line-height: 1.15;
+}
+
+.install-link-card p {
+  margin: 12px 0 18px;
+  line-height: 1.5;
+}
+
+.install-link-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.install-link-actions button {
+  min-height: 52px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 16px;
+  color: #fff;
+  background: #7045be;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.install-link-actions button.secondary {
+  color: #513b76;
+  background: #eee8f8;
+}
+
+.install-link-actions button:focus-visible {
+  outline: 3px solid #edb83f;
+  outline-offset: 3px;
+}
+
+#install-link-instructions {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f6f1ff;
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .install-link-card {
+    animation: install-link-appear 220ms ease-out both;
+  }
+
+  @keyframes install-link-appear {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
