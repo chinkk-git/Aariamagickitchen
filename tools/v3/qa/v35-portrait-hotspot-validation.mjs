@@ -40,7 +40,8 @@ try {
     const img=page.locator('.fw-scene-art img');
     await img.waitFor({state:'visible',timeout:10000});
     const point=await img.evaluate((el,{fx,fy})=>{const r=el.getBoundingClientRect();return{x:r.x+r.width*fx,y:r.y+r.height*fy}},{fx:check.fx,fy:check.fy});
-    const hit=await page.evaluate(({x,y})=>{const el=document.elementFromPoint(x,y);const b=el?.closest('.fw-hotspot');return{route:b?.dataset.fw||null,label:b?.getAttribute('aria-label')||null}},point);\n    const boxes=await page.locator('.fw-hotspot').evaluateAll(es=>es.map(e=>{const a=document.querySelector('.fw-scene-art img').getBoundingClientRect(),r=e.getBoundingClientRect();return{route:e.dataset.fw,left:(r.left-a.left)/a.width,top:(r.top-a.top)/a.height,width:r.width/a.width,height:r.height/a.height}}));
+    const hit=await page.evaluate(({x,y})=>{const el=document.elementFromPoint(x,y);const b=el?.closest('.fw-hotspot');return{route:b?.dataset.fw||null,label:b?.getAttribute('aria-label')||null}},point);
+    const boxes=await page.locator('.fw-hotspot').evaluateAll(es=>es.map(e=>{const a=document.querySelector('.fw-scene-art img').getBoundingClientRect(),r=e.getBoundingClientRect();return{route:e.dataset.fw,left:(r.left-a.left)/a.width,top:(r.top-a.top)/a.height,width:r.width/a.width,height:r.height/a.height}}));
     await page.mouse.click(point.x,point.y);
     await page.waitForFunction(()=>location.hash && location.hash!=='#aria/home',{timeout:10000}).catch(()=>{});
     const actualHash=await page.evaluate(()=>location.hash);
