@@ -5,7 +5,7 @@ import { extname, join, normalize, resolve, sep } from 'node:path';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const root = resolve(process.env.GITHUB_WORKSPACE || process.cwd());
+const root = resolve(process.env.GITHUB_WORKSPACE || process.cwd());\nconst testOrigin = process.env.AARIA_LIVE_URL || 'https://chinkk-git.github.io/Aariamagickitchen/';
 const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml'};
 const server = createServer(async (req,res) => {
   try {
@@ -33,7 +33,7 @@ try {
   const routeHeadings={friends:'Cook with Friends',family:'Cook with Family',planner:'My magical week',week:'My magical week'};
   for(const check of checks) {
     const page=await context.newPage();
-    await page.goto('http://127.0.0.1:4173/?recovery=portrait-test#aria/home',{waitUntil:'domcontentloaded'});
+    await page.goto(new URL('?recovery=portrait-test#aria/home',testOrigin).toString(),{waitUntil:'domcontentloaded'});
     await page.locator('.fw-world').waitFor({state:'visible',timeout:20000});
     const skip=page.getByRole('button',{name:'Skip the opening and enter the selected Home'});
     if(await skip.count()) await skip.click({timeout:10000});
@@ -49,7 +49,7 @@ try {
     const heading=routeHeadings[actualRoute]||null;
     if(heading) await page.getByRole('heading',{name:heading,exact:false}).waitFor({state:'visible',timeout:10000}).catch(()=>{});
     const observedHeadings=await page.locator('h1,h2').allTextContents().catch(()=>[]);
-    results.push({check:check.name,expected:check.expected,hitRoute:actualRoute,destinationHash:actualHash,observedHeadings,boxes,point:{x:Math.round(point.x),y:Math.round(point.y)},viewport:'390x844 portrait',result:actualRoute===check.expected?'PASS':'FAIL'});
+    results.push({check:check.name,expected:check.expected,hitRoute:actualRoute,destinationHash:actualHash,observedHeadings,boxes,point:{x:Math.round(point.x),y:Math.round(point.y)},viewport:'390x844 portrait',target:testOrigin,result:actualRoute===check.expected?'PASS':'FAIL'});
     if(actualRoute!==check.expected) await page.screenshot({path:'/tmp/portrait-hotspot-'+check.expected+'-'+check.name.replaceAll(' ','-')+'.png'});
     await page.close();
   }
