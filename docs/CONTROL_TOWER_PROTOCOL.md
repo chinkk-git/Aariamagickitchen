@@ -49,3 +49,16 @@ All Control Tower, V3 and V3.1 sessions follow [Balanced Adaptive Session Lifecy
 
 ## Control Tower self-recovery
 The Control Tower chat is also replaceable. Use [CT_BOOTSTRAP.md](control-tower/CT_BOOTSTRAP.md) and [CT_HANDOVER.md](control-tower/CT_HANDOVER.md) to recover a new coordination chat. These files are durable snapshots, not an automated health-monitoring service.
+
+
+## Permanent worker-command and dual-track status policy (owner directive, 2026-10-22)
+
+**GitHub-first instruction delivery:** Store full worker specifications, execution contracts, acceptance criteria and changes in governing GitHub issues or version-controlled documentation. Work-session prompts should be short, copy-ready commands pointing to those sources. Update GitHub before issuing revised commands. Updating an issue does not start a Work session.
+
+**Current ownership:** W01 exclusively writes `feature/v3.2-magical-cookbook` (Issues #45, #44, #43; recipe and Android QA closure). W02 exclusively writes `feature/v3.3-world-map-explorer` (Issue #39, historical #6; World Map P0, Family/Friends homepage P1). Control Tower coordinates without changing worker implementation branches. Never cross-push.
+
+**Whenever the owner asks for `status`:** Check available live GitHub evidence for **both** W01 and W02 (branch/commits, CI, APK/artifacts, issues). For each report: (1) verified status, (2) blockers, (3) Control Tower decision, (4) **next short copy-ready worker command**. Clearly distinguish verified facts, reported progress and pending tests. Include exact links and SHAs where useful. Do not imply unattended monitoring; live checks happen on request unless a separate automation is configured.
+
+**Integration:** W02 works in parallel, but no automatic merge or release after V3.2. Require approved V3.2 baseline, conflict resolution, combined regression, A08/A09, security and artwork-rights gates, and owner approval. Preserve canonical 95 recipes and V3.1 Classic.
+
+**Precedence:** This owner directive supersedes historical role/branch descriptions above for current W01/W02 coordination; historical records remain intact.
