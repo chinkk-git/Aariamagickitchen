@@ -11,7 +11,7 @@ const body = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1] || '';
 assert.match(head, /install-link-gate\.css/);
 assert.match(head, /install-link-gate\.js/);
 assert.match(head, /og:image" content="https:\/\/chinkk-git\.github\.io\/Aariamagickitchen\/aaria-pwa-icon-512\.png"/);
-assert.ok(head.indexOf('install-link-gate.js') < head.indexOf('</head>'), 'Gate script must run in the head before app startup');
+assert.ok(head.includes('install-link-gate.js'), 'Gate script must be loaded from the initial head before body/app startup');
 assert.ok(body.indexOf('id="install-link-gate"') < body.indexOf('id="v34-welcome-boot"'), 'Install screen must precede Palace Welcome');
 assert.match(body, /src="\.\/aaria-pwa-icon-512\.png"/);
 for (const label of ["Aaria's Magical Kitchen", 'Install App', 'Continue in Browser']) assert.ok(body.includes(label));
