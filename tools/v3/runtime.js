@@ -376,7 +376,11 @@ settingsPage=function v3Settings(){
 };
 
 const v3OriginalCookSection=cookShareSection;
-
+cookShareSection=function v3CookShareSection(r){
+ const html=v3OriginalCookSection(r);
+ const saveButton=`<button type="button" class="cook-post-share cook-post-save" data-action="save-cook-photo" data-recipe="${r.id}" ${sharePostBlobs[r.id]?'':'disabled'}>${t('💾 Save Photo','💾 Salvar foto')}</button>`;
+ return html.replace(/<label class="cook-photo-pick">📸 Take a dish photo[\s\S]*?<\/label>/,`<button type="button" class="cook-photo-pick v3-photo-camera" data-action="take-dish-photo" data-recipe="${r.id}">📸 Take a dish photo</button><input class="v3-hidden-camera-input" type="file" accept="image/*" capture="environment" data-share-photo="${r.id}" aria-label="Take a dish photo">`).replace(/<label class="cook-photo-pick">🖼️ Choose a dish photo[\s\S]*?<\/label>/,'').replace('</section>',saveButton+'</section>');
+};
 
 function v3SaveCookPhoto(id){
  const blob=shareSourcePhotos[id]||sharePostBlobs[id],r=find(id);
