@@ -36,6 +36,12 @@ async function main() {
   assert(oldHtml.length > 100_000, `Unexpectedly small production HTML (${oldHtml.length} bytes); refusing to run an invalid upgrade test.`);
   const oldHtmlText = oldHtml.toString('utf8');
   assert(/95\s+recipes|95 recipes|All 95 recipes/i.test(oldHtmlText), 'Fetched production HTML does not contain the expected old 95-recipe marker. Confirm the production URL before testing.');
+  let oldServiceWorkerUrl=null, oldServiceWorkerCacheName=null;
+  try {
+    const oldSwUrl=new URL('sw.js',PRODUCTION_URL); const oldSw=await fetch(oldSwUrl,{redirect:'follow',cache:'no-store'});
+    oldServiceWorkerUrl=oldSw.url;
+    if(oldSw.ok){const source=await oldSw.text();oldServiceWorkerCacheName=source.match(/(?:CACHE_NAME|CACHE_VERSION)\s*=\s*['"`]([^'"`]+)['"`]/)?.[1]||null;}
+  } catch {}
   const require = createRequire(import.meta.url);
   const { chromium, webkit } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 
@@ -75,6 +81,7 @@ async function main() {
   await new Promise((resolve, reject) => { server.once('error', reject); server.listen(PORT, HOST, resolve); });
   const origin = `http://${HOST}:${PORT}`;
   const report = { approvedBaseHead:APPROVED_BASE_HEAD, actualHead:head, branch, productionUrl:prodResponse.url, productionHtmlBytes:oldHtml.length,
+    oldServiceWorkerUrl, oldServiceWorkerCacheName,
     origin, generatedAt:new Date().toISOString(), results:[], limitations:['WebKit is a desktop browser simulation; it is not physical iOS Safari. Chromium is not Android Chrome/WebView hardware evidence.'] };
 
   async function runEngine(name, engine) {
@@ -104,18 +111,21 @@ async function main() {
       await page.goto(origin + '/', {waitUntil:'domcontentloaded',timeout:90000});
       await page.waitForSelector('#screen', {timeout:30000});
       await page.waitForTimeout(1500);
-      const before = await page.evaluate(async () => {
+      const before = await page.evaluate(async oldCacheName => {
         const request = (db, action) => new Promise((resolve,reject) => { const tx=db.transaction(['profiles','creations','photos','preferences'],'readwrite'); action(tx); tx.oncomplete=()=>resolve(); tx.onerror=()=>reject(tx.error); });
         const opened = await new Promise((resolve,reject) => { const r=indexedDB.open('AariaV35UpgradeFixture',1); r.onupgradeneeded=()=>{ for(const name of ['profiles','creations','photos','preferences']) if(!r.result.objectStoreNames.contains(name)) r.result.createObjectStore(name,{keyPath:'id'}); }; r.onsuccess=()=>resolve(r.result); r.onerror=()=>reject(r.error); });
         const photoBytes=Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/pXcAAAAASUVORK5CYII='),c=>c.charCodeAt(0));
         await request(opened,tx=>{ tx.objectStore('profiles').put({id:'qa-profile-1',name:'Synthetic QA Profile'}); tx.objectStore('creations').put({id:'qa-creation-1',recipeId:3,createdAt:'2026-10-01T12:00:00.000Z'}); tx.objectStore('photos').put({id:'qa-photo-1',creationId:'qa-creation-1',blob:new Blob([photoBytes],{type:'image/png'})}); tx.objectStore('preferences').put({id:'home',value:'magical'}); }); opened.close();
-        if ('caches' in window) { const c=await caches.open('aaria-web-v3.5-old-95-recipes'); await c.put('/__qa/old-catalog-marker',new Response('95')); }
+        if ('caches' in window) {
+          const names=[...new Set([oldCacheName,'aaria-web-v3.5-old-95-recipes'].filter(Boolean))];
+          for(const name of names){const c=await caches.open(name);await c.put('/__qa/old-catalog-marker',new Response('95'));}
+        }
         const ls={}; for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);ls[k]=localStorage.getItem(k)}
         const dbList=await indexedDB.databases(); const dbs={};
         for(const info of dbList){if(!info.name)continue;const db=await new Promise((resolve,reject)=>{const r=indexedDB.open(info.name);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});const stores={};
           for(const storeName of db.objectStoreNames){const rows=await new Promise((resolve,reject)=>{const tx=db.transaction(storeName,'readonly'),r=tx.objectStore(storeName).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});stores[storeName]=await Promise.all(rows.map(async row=>{if(row?.blob instanceof Blob){const b64=btoa(String.fromCharCode(...new Uint8Array(await row.blob.arrayBuffer())));return {...row,blob:{type:row.blob.type,size:row.blob.size,base64:b64}}}return row}));} dbs[info.name]=stores;db.close();}
         return {ls,dbs,oldRenderedText:document.body.innerText.slice(0,2000)};
-      });
+      }, oldServiceWorkerCacheName);
       assert(/95\s+recipes|All 95 recipes/i.test(before.oldRenderedText) || /95\s+recipes|All 95 recipes/i.test(oldHtmlText), `${name}: old-stage 95-recipe content was not observed.`);
       await page.evaluate(async () => { const r=await fetch('/__qa/upgrade',{method:'POST',cache:'no-store'}); if(!r.ok)throw new Error('stage switch failed '+r.status); });
       await page.reload({waitUntil:'domcontentloaded',timeout:90000});
@@ -180,6 +190,7 @@ async function main() {
       if(swState.supported){
         assert(swState.active && swState.keys.includes('aaria-web-v3.5-85f537591449-r1'), `${name}: V3.5 service worker/cache did not activate: ${JSON.stringify(swState)}`);
         assert(!swState.keys.some(k=>k.startsWith('aaria-web-v3.5-')&&k!=='aaria-web-v3.5-85f537591449-r1'), `${name}: stale V3.5 cache remains: ${JSON.stringify(swState.keys)}`);
+        if(oldServiceWorkerCacheName)assert(!swState.keys.includes(oldServiceWorkerCacheName), `${name}: the current production cache '${oldServiceWorkerCacheName}' was not retired: ${JSON.stringify(swState.keys)}`);
         result.cacheTransition='PASS';
       } else result.cacheTransition='UNSUPPORTED_IN_ENGINE';
       assert(result.pageErrors.length===0, `${name}: browser page errors: ${result.pageErrors.join(' | ')}`);
