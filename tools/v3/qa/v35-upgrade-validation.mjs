@@ -189,13 +189,24 @@ async function main() {
         if(mainNavigationCount!==lastNavigationCount){lastNavigationCount=mainNavigationCount;quietSince=Date.now();}
       }
       await page.waitForLoadState('domcontentloaded',{timeout:30000}).catch(()=>{});
-      const after = await page.evaluate(async () => {
+      const readAfterUpgrade = () => page.evaluate(async () => {
         const ls={}; for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);ls[k]=localStorage.getItem(k)}
         const dbList=await indexedDB.databases(); const dbs={};
         for(const info of dbList){if(!info.name)continue;const db=await new Promise((resolve,reject)=>{const r=indexedDB.open(info.name);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});const stores={};
           for(const storeName of db.objectStoreNames){const rows=await new Promise((resolve,reject)=>{const tx=db.transaction(storeName,'readonly'),r=tx.objectStore(storeName).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});stores[storeName]=rows.map(row=>row?.photoBytes instanceof Uint8Array?{...row,photoBytes:{type:'Uint8Array',base64:btoa(String.fromCharCode(...row.photoBytes))}}:row);} dbs[info.name]=stores;db.close();}
         return {ls,dbs};
       });
+      let after, lastSnapshotError;
+      for(let attempt=1;attempt<=5;attempt++){
+        try { after=await readAfterUpgrade(); break; }
+        catch(error){
+          lastSnapshotError=error;
+          if(!/Execution context was destroyed/.test(String(error?.message||error))||attempt===5)throw error;
+          await page.waitForLoadState('domcontentloaded',{timeout:30000}).catch(()=>{});
+          await page.waitForTimeout(1000);
+        }
+      }
+      assert(after, `${name}: post-upgrade snapshot did not settle: ${String(lastSnapshotError||'unknown error')}`);
       const removedLS=Object.keys(before.ls).filter(k=>!(k in after.ls));
       const modifiedLS=Object.entries(before.ls).filter(([k,v])=>after.ls[k]!==v).map(([k])=>k);
       const missingDB=[];
@@ -246,12 +257,19 @@ async function main() {
       assert(recipeCheck.uniqueIds===116 && recipeCheck.minId===1 && recipeCheck.maxId===116, `${name}: expected 116 distinct recipe cards, observed ${JSON.stringify(recipeCheck)}`);
       assert(!/All 95 recipes|Browse all 95 recipes/i.test(recipeCheck.bodyStart), `${name}: old 95-recipe label remains in the recipe screen.`);
       result.recipes={status:'PASS',...recipeCheck};
-      const swState=await page.evaluate(async()=>{
+      const swState=await page.evaluate(async expectedCache=>{
         if(!('serviceWorker'in navigator)||!('caches'in window))return {supported:false};
         let registration=null;try{registration=await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await registration.update();}catch(e){return {supported:true,error:String(e)};}
-        await new Promise(resolve=>{if(registration.active?.state==='activated')return resolve();const w=registration.installing||registration.waiting||registration.active;if(!w)return resolve();const t=setTimeout(resolve,15000);w.addEventListener('statechange',()=>{if(w.state==='activated'){clearTimeout(t);resolve()}})});
-        const keys=await caches.keys();return {supported:true,active:!!registration.active,keys};
-      });
+        const deadline=Date.now()+30000;let keys=[];
+        do {
+          keys=await caches.keys();
+          const stale=keys.filter(k=>k.startsWith('aaria-web-v3.5-')&&k!==expectedCache);
+          if(registration.active?.state==='activated'&&keys.includes(expectedCache)&&stale.length===0)
+            return {supported:true,active:true,keys,activeScript:registration.active.scriptURL};
+          await new Promise(resolve=>setTimeout(resolve,250));
+        } while(Date.now()<deadline);
+        return {supported:true,active:!!registration.active,keys,activeScript:registration.active?.scriptURL,activeState:registration.active?.state,installingState:registration.installing?.state||null,waitingState:registration.waiting?.state||null};
+      },'aaria-web-v3.5-85f537591449-r1');
       if(swState.supported){
         assert(swState.active && swState.keys.includes('aaria-web-v3.5-85f537591449-r1'), `${name}: V3.5 service worker/cache did not activate: ${JSON.stringify(swState)}`);
         assert(!swState.keys.some(k=>k.startsWith('aaria-web-v3.5-')&&k!=='aaria-web-v3.5-85f537591449-r1'), `${name}: stale V3.5 cache remains: ${JSON.stringify(swState.keys)}`);
