@@ -26,7 +26,7 @@ function run({search='?install=1', ua='Android Chrome', standalone=false, platfo
   for (const id of ['install-link-install', 'install-link-continue']) {
     buttons[id] = {textContent: id === 'install-link-install' ? 'Install App' : 'Continue in Browser', events: {}, addEventListener(name, fn) { this.events[name] = fn; }};
   }
-  const location = {href: 'https://chinkk-git.github.io/Aariamagickitchen/' + search + '#aria/home'};
+  const location = {href: 'https://chinkk-git.github.io/Aariamagickitchen/' + search + '#aria/home', search};
   const document = {
     readyState: 'loading',
     documentElement: {classList: {add: value => classes.add(value), remove: value => classes.delete(value)}},
