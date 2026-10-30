@@ -56,9 +56,10 @@
       result.confirmed = (result.confirmed || []).filter(item => item.name !== 'Wheat');
 
       const add = (name, ingredient) => {
-        if (ingredient && !result.confirmed.some(item => item.name === name)) {
-          result.confirmed.push({ name, ingredients: [ingredient.name] });
-        }
+        if (!ingredient) return;
+        const existing = result.confirmed.find(item => item.name === name);
+        if (existing) existing.ingredients = [ingredient.name];
+        else result.confirmed.push({ name, ingredients: [ingredient.name] });
       };
       add(pt ? 'Aveia (possível contato cruzado com glúten)' : 'Oats (possible gluten cross-contact)', oat);
       add(pt ? 'Coco' : 'Coconut', coconut);
