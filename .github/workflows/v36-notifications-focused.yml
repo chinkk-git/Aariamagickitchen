@@ -15,6 +15,9 @@ on:
       - "tools/v3/qa/notifications-release-diff.mjs"
       - ".github/workflows/v36-notifications-focused.yml"
       - "tools/v3/qa/v36-notification-text-size-integration.mjs"
+      - "tools/v3/qa/notifications-worker-consent-lifecycle.mjs"
+      - "tools/v3/qa/web-push-test-loader.mjs"
+      - "tools/v3/qa/register-web-push-loader.mjs"
 permissions:
   contents: read
 jobs:
@@ -37,11 +40,15 @@ jobs:
           node --check notifications/generate-announcements.mjs
           node --check js/accessibility-text-size.js
           node --check tools/v3/qa/v36-notification-text-size-integration.mjs
+          node --check tools/v3/qa/notifications-worker-consent-lifecycle.mjs
+          node --check tools/v3/qa/web-push-test-loader.mjs
+          node --check tools/v3/qa/register-web-push-loader.mjs
       - name: Validate safety and route contracts
         run: |
           node tools/v3/qa/notifications-v36-contract.mjs
           node tools/v3/qa/notifications-worker-validation.mjs
           node tools/v3/qa/notifications-release-diff.mjs
+          node --import=./tools/v3/qa/register-web-push-loader.mjs tools/v3/qa/notifications-worker-consent-lifecycle.mjs
       - name: Install isolated Playwright dependency
         run: npm install --prefix /tmp/aaria-notification-qa playwright
       - name: Install Chromium
