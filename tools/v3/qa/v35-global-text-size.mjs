@@ -13,7 +13,7 @@ page.setDefaultTimeout(5000);page.setDefaultNavigationTimeout(10000);page.on('pa
 const base='http://127.0.0.1:4173/';
 async function skipWelcome(){await page.waitForTimeout(120);const b=page.getByRole('button',{name:'Skip the opening and enter the selected Home'}).first();if(await b.count()&&await b.isVisible())await b.click()}
 async function openSettings(){await page.locator('button[data-nav="settings"]').first().evaluate(el=>el.click());await page.locator('[data-aaria-text-size-panel]').waitFor({state:'visible'})}
-async function setSize(value){await page.locator('[data-aaria-text-size-option="'+value+'"]').evaluate(el=>el.click());await page.waitForFunction(v=>Number(document.documentElement.style.getPropertyValue('--aaria-text-scale'))===v/100,value)}
+async function setSize(value){await page.locator('[data-aaria-text-size-option="'+value+'"]').evaluate(el=>el.click());await page.waitForFunction(v=>Number(document.documentElement.style.getPropertyValue('--aaria-text-scale'))===v/100,value,{timeout:4000})}
 async function nav(id){await page.locator('.bottom .tab[data-nav="'+id+'"]').evaluate(el=>el.click())}
 async function fontSize(selector){return page.locator(selector).first().evaluate(el=>parseFloat(getComputedStyle(el).fontSize))}
 async function assertLayout(label){
@@ -52,7 +52,7 @@ try{
  await nav('creations');await page.locator('#screen h1').first().waitFor({state:'visible'});assertLayout('My Creations');
  await nav('home');await openSettings();assertLayout('Settings');
  await page.goto(base+'?install=1',{waitUntil:'domcontentloaded'});await page.locator('#install-link-gate:not([hidden])').waitFor({state:'visible'});assertLayout('Installation');
- await page.locator('#install-link-continue').evaluate(el=>el.click());await page.waitForFunction(()=>!new URLSearchParams(location.search).has('install'));await skipWelcome();
+ await page.locator('#install-link-continue').evaluate(el=>el.click());await page.waitForFunction(()=>!new URLSearchParams(location.search).has('install'),null,{timeout:4000});await skipWelcome();
  await openSettings();await page.locator('[data-aaria-text-size-reset]').evaluate(el=>el.click());
  assert.equal(await page.evaluate(()=>localStorage.getItem('aaria.accessibility.textSize.v1')),'100');
  assert.deepEqual(errors,[],'browser exceptions: '+errors.join(' | '));
