@@ -189,3 +189,9 @@ html[data-aaria-text-size-active="true"] .app.reference-active .ref-chef-tip p {
 html[data-aaria-text-size-active="true"] .app:has(.filters) .filters > .chip {
   line-height: 1.1 !important;
 }
+
+/* Keep moving decoration clear of recipe text and controls while the catalogue is open. */
+.app:has(.filters) .ambient,
+.app:has(.filters) .enchanted-sky {
+  visibility: hidden;
+}
