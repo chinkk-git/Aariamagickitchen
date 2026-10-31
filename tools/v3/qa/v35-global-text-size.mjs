@@ -9,7 +9,7 @@ const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=u
 const server=createServer(async(req,res)=>{try{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname),rel=normalize(pathname.startsWith('/')?pathname.slice(1):pathname),file=resolve(root,rel||'index.html');if(!file.startsWith(root+sep)&&file!==root)throw Error('path escaped');const body=await readFile((await stat(file)).isDirectory()?join(file,'index.html'):file);res.writeHead(200,{'content-type':mime[extname(file)]||'application/octet-stream','cache-control':'no-store'});res.end(body)}catch{res.writeHead(404);res.end('not found')}});
 await new Promise(done=>server.listen(4173,'127.0.0.1',done));
 const browser=await chromium.launch({headless:true}),context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true}),page=await context.newPage(),errors=[];
-page.on('pageerror',e=>errors.push(e.message));
+page.on('pageerror',e=>errors.push(e.message));page.on('download',d=>console.error('Unexpected download',d.url(),d.suggestedFilename()));
 const base='http://127.0.0.1:4173/';
 async function skipWelcome(){await page.waitForTimeout(150);const b=page.getByRole('button',{name:'Skip the opening and enter the selected Home'}).first();if(await b.count()&&await b.isVisible())await b.click()}
 async function openSettings(){await page.locator('button[data-nav="settings"]').first().click();await page.locator('[data-aaria-text-size-panel]').waitFor({state:'visible',timeout:10000})}
@@ -33,7 +33,7 @@ async function checkScreen(selector,label){
  return px;
 }
 try{
- await page.goto(base,{waitUntil:'load'});await skipWelcome();await openSettings();
+ await page.goto(base,{waitUntil:'domcontentloaded'});await skipWelcome();await openSettings();
  const widths=[{name:'phone portrait',width:390,height:844},{name:'phone landscape',width:844,height:390},{name:'tablet portrait',width:768,height:1024},{name:'tablet landscape',width:1024,height:768}];
  for(const viewport of widths){
   await page.setViewportSize({width:viewport.width,height:viewport.height});
