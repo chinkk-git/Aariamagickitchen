@@ -10,7 +10,7 @@ export function generateAnnouncements(previous={},current={},releaseSha=''){
  const oldCountries=new Set(Array.isArray(previous.countryRegistry)?previous.countryRegistry:[]);
  for(const code of (Array.isArray(current.countryRegistry)?current.countryRegistry:[]).filter(x=>!oldCountries.has(x))){
   const name=COUNTRY_NAMES[code];if(!name)continue;const route='/world/'+code;
-  announcements.push({id:releaseSha+':country:'+code,releaseSha,category:'countries',route,messages:{'en-GB':{title:'🌍 A new cooking adventure!',body:`Explore delicious recipes from ${name.en}!`},'pt-BR':{title:'🌍 Uma nova aventura culinária!',body:`Explore receitas deliciosas de ${name.pt}!`}}});
+  announcements.push({id:releaseSha+':country:'+code,releaseSha,category:'countries',route,messages:{'en-GB':{title:'🌍 A new cooking adventure!',body:`${code==='USA'?'Explore delicious recipes from the United States!':`Explore delicious recipes from ${name.en}!`}`},'pt-BR':{title:'🌍 Uma nova aventura culinária!',body:`${code==='USA'?'Explore receitas deliciosas dos Estados Unidos!':`Explore receitas deliciosas de ${name.pt}!`}`}}});
  }
  const oldFeatures=new Set((previous.notificationFeatures||[]).map(x=>x.id));
  for(const f of (current.notificationFeatures||[]).filter(x=>x&&x.status==='approved'&&x.announcementReady===true&&!oldFeatures.has(x.id))){
