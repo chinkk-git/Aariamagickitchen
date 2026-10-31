@@ -30,11 +30,11 @@ try{
  await page.locator('#languageSelect').selectOption('en-GB');await page.getByText('Accessibility',{exact:true}).waitFor({state:'visible',timeout:4000});
  await check('critical screens and recipe detail at 200%; clipping at 175/200');
  await size(100);await nav('home');await page.locator('#foodWonderland').waitFor({state:'visible',timeout:4000});const artworkAt100=await page.locator('#foodWonderland .fw-scene-art img').evaluate(img=>{const r=img.getBoundingClientRect();return{width:r.width,height:r.height}});await settings();await size(200);await nav('home');await page.locator('#foodWonderland').waitFor({state:'visible',timeout:4000});const artworkAt200=await page.locator('#foodWonderland .fw-scene-art img').evaluate(img=>{const r=img.getBoundingClientRect();return{width:r.width,height:r.height}});assert.ok(Math.abs(artworkAt200.width-artworkAt100.width)<1&&Math.abs(artworkAt200.height-artworkAt100.height)<1,'Text scaling changed Food Wonderland artwork dimensions');await check('Home visible and scene artwork unchanged at 100%/200%');
- await nav('library');await text('#screen h1','Recipe library',true);
+ await nav('library');await text('#screen .topbar h2','Recipe library',true);
  await bounded('recipe route startup',()=>page.goto(base+'#aria/recipe/12/0',{waitUntil:'domcontentloaded',timeout:8000}),10000);await skipWelcome();
  await text('#screen .ref-title h1','Recipe title 200%',true);await text('#screen .ref-ingredients','Recipe ingredients 200%',true);await text('#screen .ref-tools','Recipe equipment 200%',true);await text('#screen .ref-step-grid','Recipe steps 200%',true);
  await size(175);await text('#screen .ref-title h1','Recipe title 175%',true);await size(200);
- await nav('world');await text('#screen h1','World Adventure',true);await nav('week');await text('#screen h1','Planner',true);await nav('creations');await text('#screen h1','My Creations',true);
+ await nav('world');await text('#screen h1','World Adventure',true);await nav('week');await text('#screen .topbar h2','Planner',true);await nav('creations');await text('#screen h1','My Creations',true);
  await nav('home');await settings();await text('#screen .home-subpage h1','Settings 200%',true);
  await check('phone portrait and landscape');
  await page.setViewportSize({width:844,height:390});await page.waitForTimeout(150);await size(175);await text('#screen .home-subpage h1','Phone landscape 175%',true);await size(200);await text('#screen .home-subpage h1','Phone landscape 200%',true);
