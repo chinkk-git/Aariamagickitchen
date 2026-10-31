@@ -69,3 +69,99 @@
   .aaria-text-size-options { gap: 6px; }
   .aaria-text-size-option { min-width: 56px; padding: 8px; }
 }
+
+
+/* Keep recipe step controls stable when global text size is raised. The default
+   100% appearance continues to use the approved recipe stylesheet unchanged. */
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-back,
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-next {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-back {
+  grid-column: 1;
+  grid-row: 1;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-dots {
+  grid-column: 2;
+  grid-row: 1;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  min-width: 0;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-next {
+  grid-column: 3;
+  grid-row: 1;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  box-sizing: border-box;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-dot::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #dbbee8;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-dot.selected::before {
+  width: 15px;
+  height: 15px;
+  background: #f0399d;
+  box-shadow: 0 0 0 3px #ffd7eb;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-chef-tip {
+  min-width: 0;
+  align-items: flex-start;
+}
+html[data-aaria-text-size-active="true"] .app.reference-active .ref-chef-tip p {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    row-gap: 4px;
+  }
+  html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-back {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-next {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  html[data-aaria-text-size-active="true"] .app.reference-active .ref-step-actions .ref-dots {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}

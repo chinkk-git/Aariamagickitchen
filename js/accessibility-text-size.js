@@ -77,11 +77,14 @@
 
   function hasReadableText(element) {
     if (excluded(element)) return false;
-    if (/^(INPUT|TEXTAREA|SELECT|BUTTON|A|LABEL|OPTION|SUMMARY)$/.test(element.tagName)) {
+    if (/^(INPUT|TEXTAREA|SELECT|LABEL|OPTION|SUMMARY)$/.test(element.tagName)) {
       const type = (element.getAttribute('type') || '').toLowerCase();
       if (element.tagName === 'INPUT' && /^(checkbox|radio|range|color|file|image|hidden|submit|reset|button)$/.test(type)) return false;
       return true;
     }
+    // Scale only controls with visible text. Icon-only buttons and the empty
+    // recipe progress dots keep their artwork and geometry unchanged.
+    if (/^(BUTTON|A)$/.test(element.tagName)) return Boolean((element.textContent || '').trim());
     return Array.from(element.childNodes).some(node =>
       node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0
     );
