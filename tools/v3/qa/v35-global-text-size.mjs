@@ -11,14 +11,14 @@ await new Promise(done=>server.listen(4173,'127.0.0.1',done));
 const browser=await chromium.launch({headless:true}),context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage(),errors=[];
 page.setDefaultTimeout(4000);page.setDefaultNavigationTimeout(8000);page.on('pageerror',e=>errors.push(e.message));const base='http://127.0.0.1:4173/';
 async function check(label){console.log('CHECK: '+label)}
-async function skipWelcome(){const b=page.getByRole('button',{name:'Skip the opening and enter the selected Home'}).first();if(await b.count()&&await b.isVisible())await b.click({force:true,timeout:3000})}
-async function settings(){await page.locator('button[data-nav="settings"]').first().evaluate(el=>el.click());await page.locator('[data-aaria-text-size-panel]').waitFor({state:'visible',timeout:4000})}
+async function skipWelcome(){await check('inspect welcome skip');const b=page.getByRole('button',{name:'Skip the opening and enter the selected Home'}).first();if(await b.count()&&await b.isVisible())await b.click({force:true,timeout:3000});await check('welcome skip completed')}
+async function settings(){await check('find visible Settings control');const button=page.locator('button[data-nav="settings"]:visible').last();await button.click({force:true,timeout:3000});await check('Settings click dispatched');await page.locator('[data-aaria-text-size-panel]').waitFor({state:'visible',timeout:3000});await check('Text Size panel visible')}
 async function size(value){await page.locator('[data-aaria-text-size-option="'+value+'"]').click({timeout:3000});await page.waitForFunction(v=>Number(document.documentElement.style.getPropertyValue('--aaria-text-scale'))===v/100,value,{timeout:2000})}
 async function nav(id){await page.locator('.bottom .tab[data-nav="'+id+'"]').evaluate(el=>el.click())}
 async function text(selector,label,clip=false){const el=page.locator(selector).first();await el.waitFor({state:'visible',timeout:4000});const d=await el.evaluate(n=>{const s=getComputedStyle(n);return{font:parseFloat(s.fontSize),sh:n.scrollHeight,ch:n.clientHeight,sw:n.scrollWidth,cw:n.clientWidth,ox:s.overflowX,oy:s.overflowY}});assert.ok(d.font>0,label+' has no font size');if(clip)assert.ok(!(((d.ox==='hidden'||d.ox==='clip')&&d.sw>d.cw+3)||((d.oy==='hidden'||d.oy==='clip')&&d.sh>d.ch+3)),label+' clipped '+JSON.stringify(d));return d.font}
 try{
  await check('load Settings and exercise five choices');
- await page.goto(base,{waitUntil:'domcontentloaded'});await skipWelcome();await settings();
+ await page.goto(base,{waitUntil:'domcontentloaded',timeout:8000});await check('app DOM loaded');await skipWelcome();await settings();
  const original=await text('#screen .home-subpage h1','Settings heading');
  for(const n of [100,125,150,175,200]){await size(n);const f=await text('#screen .home-subpage h1','Settings '+n+'%',n>=175);assert.ok(f>=original*n/100-.75,n+'% failed to scale: '+f);assert.equal(await page.locator('[data-aaria-text-size-option="'+n+'"]').getAttribute('aria-pressed'),'true')}
  assert.equal(await page.evaluate(()=>localStorage.getItem('aaria.accessibility.textSize.v1')),'200');
