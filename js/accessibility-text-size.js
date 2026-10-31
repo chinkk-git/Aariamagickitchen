@@ -137,7 +137,11 @@
     applyScale(Math.round(scale * 100), false);
   }
 
-  document.addEventListener('change', event => {\n    if (event.target?.id === 'languageSelect') installSettingsPanel();\n  });\n\n  document.addEventListener('click', event => {
+  document.addEventListener('change', event => {
+    if (event.target?.id === 'languageSelect') installSettingsPanel();
+  });
+
+  document.addEventListener('click', event => {
     const option = event.target.closest?.('[data-aaria-text-size-option]');
     if (option) {
       applyScale(Number(option.dataset.aariaTextSizeOption), true);
