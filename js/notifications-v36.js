@@ -80,6 +80,8 @@
   async function markRead(id) { const item=(await list()).find(x=>x.id===id); if(item){item.readAt=Date.now();await write(item);} }
   async function go(route) {
     const safe=safeRoute(route); if(!safe){showPage('<p role="status">'+t('noRoute')+'</p>');return;}
+    const currentUrl=new URL(location.href);
+    if(currentUrl.searchParams.has('notice')){currentUrl.searchParams.delete('notice');history.replaceState(null,'',currentUrl.pathname+currentUrl.search+currentUrl.hash);}
     if(safe==='/notifications'||safe==='/notifications/new'||safe==='/whats-new'){await renderInbox();return;}
     if(safe==='/settings/notifications'){renderSettings();return;}
     if(safe==='/settings/accessibility/text-size'){
