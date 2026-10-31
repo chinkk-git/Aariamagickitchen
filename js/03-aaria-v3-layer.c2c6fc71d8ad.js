@@ -1145,7 +1145,7 @@ nutritionValue=function v32SafeNutritionValue(r){
  return {totals,per,servings,missing,unavailable:[...unavailable]};
 };
 render=function v3Render(){
- document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
+ document.title="Aaria's Magical Kitchen";
  if(view==='world'){
   const previousView=window.v31PreviousView||'home';
   const entryIntent=v35WorldEntryIntent;v35WorldEntryIntent=null;
@@ -1166,7 +1166,7 @@ render=function v3Render(){
  if(view==='recipe')v32AddGroupRoleCopy();
  document.querySelector('.app')?.classList.remove('v31-world-active');document.body.classList.remove('v31-screen-world');
   if(view==='recipe'&&Number(selected?.id)!==12)v31AddAdultCookingCues();
- document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
+ document.title="Aaria's Magical Kitchen";
  document.body.classList.toggle('v3-screen-home',view==='home');
  if(view==='recipe'&&selected){const screen=document.querySelector('#screen');if(screen&&!screen.querySelector('.v3-quiz-card'))screen.insertAdjacentHTML('beforeend',v3QuizCard(selected));}
   v32ApplyRecipeThemes();
@@ -1271,7 +1271,7 @@ window.aariaHandleNativeDishPhoto=async(id,dataUrl)=>{
  try{const blob=await(await fetch(dataUrl)).blob();if(sharePostUrls[id])URL.revokeObjectURL(sharePostUrls[id]);shareSourcePhotos[id]=blob;const post=await makeCookPost(find(id),blob);sharePostBlobs[id]=post;sharePostUrls[id]=URL.createObjectURL(post);render();notice('Your cooking post is ready! 💖');}
  catch(e){console.error('Could not prepare the camera photo.',e);notice('Could not prepare that photo. Please try again.');}
 };
-document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
+document.title="Aaria's Magical Kitchen";
 render();
 
 // V3 local child profiles. APK builds persist the profile roster and snapshots in app-private SQLite;
