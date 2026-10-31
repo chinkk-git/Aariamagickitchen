@@ -54,11 +54,11 @@ async function publishAnnouncement(request,env,a){
   return {status:202,id:a.id,status:'queued',duplicate:row.status!=='pending'};
 }
 async function finalizeAnnouncement(env,id){
-  const announcement=await env.DB.prepare('SELECT fanout_complete FROM announcements WHERE id=?').bind(id).first();
+  const announcement=await env.DB.prepare('SELECT fanout_complete,fanout_errors FROM announcements WHERE id=?').bind(id).first();
   if(!announcement?.fanout_complete)return;
   const counts=await env.DB.prepare("SELECT SUM(status='sent') AS sent,SUM(status='failed') AS failed,SUM(status='removed') AS removed,SUM(status='skipped') AS skipped,SUM(status IN ('pending','queued','sending')) AS active FROM announcement_deliveries WHERE announcement_id=?").bind(id).first();
   if(Number(counts?.active||0)>0)return;
-  const failed=Number(counts?.failed||0);
+  const failed=Number(counts?.failed||0)+Number(announcement.fanout_errors||0);
   await env.DB.prepare('UPDATE announcements SET status=?,sent=?,failed=?,removed=?,skipped=?,completed_at=? WHERE id=? AND fanout_complete=1').bind(failed?'partial':'sent',Number(counts?.sent||0),failed,Number(counts?.removed||0),Number(counts?.skipped||0),Date.now(),id).run();
 }
 async function processFanout(message,env){
@@ -149,6 +149,19 @@ async function handleQueueMessage(message,env){
   if(value?.kind==='consent-cleanup')return processConsentCleanup(value,env);
   message.ack();
 }
+async function handleDeadLetter(value,env){
+  if(value?.kind==='deliver'&&typeof value.deliveryId==='string'){
+    const row=await env.DB.prepare('SELECT announcement_id FROM announcement_deliveries WHERE id=?').bind(value.deliveryId).first();
+    if(!row)return;
+    await env.DB.prepare("UPDATE announcement_deliveries SET status='failed',error_code=500,updated_at=? WHERE id=? AND status IN ('pending','queued','sending')").bind(Date.now(),value.deliveryId).run();
+    await finalizeAnnouncement(env,row.announcement_id);
+    return;
+  }
+  if(value?.kind==='fanout'&&typeof value.announcementId==='string'){
+    await env.DB.prepare("UPDATE announcements SET fanout_errors=1,fanout_complete=1 WHERE id=?").bind(value.announcementId).run();
+    await finalizeAnnouncement(env,value.announcementId);
+  }
+}
 export default {async fetch(request,env){
   const origin=request.headers.get('Origin')||'',url=new URL(request.url);
   if(request.method==='OPTIONS')return new Response(null,{headers:cors(origin)});
@@ -197,7 +210,7 @@ export default {async fetch(request,env){
   if(statusMatch&&request.method==='GET'){
     if(!await auth(request,env))return json({error:'unauthorized'},401,origin);
     if(!env.DB)return json({error:'storage_unavailable'},503,origin);
-    const row=await env.DB.prepare('SELECT id,release_sha,status,sent,failed,removed,skipped,created_at,completed_at FROM announcements WHERE id=?').bind(statusMatch[1]).first();
+    const row=await env.DB.prepare('SELECT id,release_sha,status,sent,failed,removed,skipped,fanout_errors,created_at,completed_at FROM announcements WHERE id=?').bind(statusMatch[1]).first();
     if(!row)return json({error:'not_found'},404,origin);
     return json(row,200,origin);
   }
@@ -209,7 +222,10 @@ export default {async fetch(request,env){
   }));
 },async queue(batch,env){
   for(const message of batch.messages){
-    try{await handleQueueMessage(message,env);}
+    try{
+      if(batch.queue==='aaria-notification-dead-letter')await handleDeadLetter(message.body,env);
+      else await handleQueueMessage(message,env);
+    }
     catch(error){console.error('notification queue processing failed',{kind:message.body?.kind,errorCode:Number(error?.statusCode)||0});message.retry({delaySeconds:60});}
   }
 }};

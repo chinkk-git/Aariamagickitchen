@@ -24,5 +24,11 @@ max_retries = 5
 dead_letter_queue = "aaria-notification-dead-letter"
 max_concurrency = 1
 
+[[queues.consumers]]
+queue = "aaria-notification-dead-letter"
+max_batch_size = 20
+max_batch_timeout = 5
+max_retries = 100
+
 [triggers]
 crons = ["15 * * * *"]

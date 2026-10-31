@@ -6,6 +6,7 @@ ALTER TABLE announcements ADD COLUMN payload TEXT;
 ALTER TABLE announcements ADD COLUMN fanout_cursor TEXT NOT NULL DEFAULT '';
 ALTER TABLE announcements ADD COLUMN fanout_complete INTEGER NOT NULL DEFAULT 0 CHECK(fanout_complete IN (0,1));
 ALTER TABLE announcements ADD COLUMN skipped INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE announcements ADD COLUMN fanout_errors INTEGER NOT NULL DEFAULT 0;
 CREATE TABLE IF NOT EXISTS announcement_deliveries (
  id TEXT PRIMARY KEY,
  announcement_id TEXT NOT NULL REFERENCES announcements(id) ON DELETE CASCADE,
