@@ -11,6 +11,7 @@ jobs:
   announce:
     if: >-
       github.event.deployment_status.state == 'success' &&
+      github.event.deployment_status.target_url != null &&
       github.event.deployment.environment == 'github-pages' &&
       startsWith(github.event.deployment_status.target_url, 'https://chinkk-git.github.io/Aariamagickitchen')
     runs-on: ubuntu-latest
