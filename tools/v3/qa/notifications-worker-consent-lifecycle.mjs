@@ -41,6 +41,9 @@ assert.equal(disabled.status,503,'consent verification must fail closed before o
 const configDisabled=await request('/v1/config',undefined,{PARENT_CONSENT_MODEL_APPROVED:'false'});
 assert.equal(configDisabled.body.vapidPublicKey,null,'public VAPID key stays hidden while disabled');
 assert.ok(!JSON.stringify(configDisabled.body).includes('PRIVATE_KEY')&&!JSON.stringify(configDisabled.body).includes('ADMIN_TOKEN'));
+const configEnabled=await request('/v1/config');
+assert.equal(configEnabled.body.vapidPublicKey,env.VAPID_PUBLIC_KEY,'only the public VAPID key is exposed for browser subscription');
+for(const secretValue of [env.VAPID_PRIVATE_KEY,env.ADMIN_TOKEN,env.CONSENT_SIGNING_SECRET]) assert.ok(!JSON.stringify(configEnabled.body).includes(secretValue),'Worker secrets must never be exposed in public configuration');
 
 const verified=await request('/v1/consent/verify',{locale:'en-GB',consentReceipt:validReceipt});
 assert.equal(verified.status,200);
@@ -54,6 +57,8 @@ const wrongLocale=await request('/v1/consent/verify',{locale:'pt-BR',consentRece
 assert.equal(wrongLocale.status,403,'receipt locale must match the selected locale');
 const wrongIssuer=await request('/v1/consent/verify',{locale:'en-GB',consentReceipt:await receipt({iss:'untrusted-issuer'})});
 assert.equal(wrongIssuer.status,403,'receipt issuer must match the trusted issuer contract');
+const unapproved=await request('/v1/consent/verify',{locale:'en-GB',consentReceipt:await receipt({approved:false})});
+assert.equal(unapproved.status,403,'an unapproved guardian receipt must be rejected');
 
 const blockedSubscribe=await request('/v1/subscribe',{subscription:validSubscription,locale:'en-GB',categories:['recipes'],consentReceipt:validReceipt},{PARENT_CONSENT_MODEL_APPROVED:'false'});
 assert.equal(blockedSubscribe.status,503,'subscription creation must remain fail-closed');
