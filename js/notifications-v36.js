@@ -38,7 +38,7 @@
     if(typeof route!=='string'||route.length>180)return null;
     if(/^\/notifications(?:\/new)?$/.test(route))return route;
     if(/^\/recipes\/new\/(?:[1-9]\d{0,2})(?:,(?:[1-9]\d{0,2})){0,49}$/.test(route))return route;
-    if(/^\/recipes\/new\/(?:[1-9]\d{0,2})(?:,(?:[1-9]\d{0,2})){0,49}$/.test(route))return route;
+
     if(/^\/recipe\/(?:[1-9]\d{0,2})$/.test(route))return route;
     if(/^\/world\/(?:IND|ITA|CHN|JPN|MEX|VNM|BRA|USA|FRA|ESP|THA|GBR|MAR)$/.test(route))return route;
     if(route==='/settings/notifications'||route==='/settings/accessibility/text-size'||route==='/whats-new')return route;
