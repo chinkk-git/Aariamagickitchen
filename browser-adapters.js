@@ -1,6 +1,6 @@
 (() => {
   if (location.protocol === 'file:' || !('serviceWorker' in navigator)) return;
-  const currentCache = 'aaria-web-v3.5-85f537591449-r1';
+  const currentCache = 'aaria-web-v3.5-85f537591449-r2';
   const retireOldCaches = async () => {
     if (!('caches' in window)) return;
     const keys = await caches.keys();
