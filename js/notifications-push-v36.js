@@ -143,7 +143,8 @@
     else if(inApp())status.textContent=t('statusInApp');
     else if(iosNeedsInstall())status.textContent=t('statusUnsupported');
     else if(!configured)status.textContent=t('statusOff');
-    else status.textContent=t(settings().push?'active':'statusNeedConsent');
+    else if(settings().renewRequired||settings().push)status.textContent=t('refresh');
+    else status.textContent=t('statusNeedConsent');
     consent.disabled=!configured||!supported()||inApp()||iosNeedsInstall()||busy;
     enable.disabled=!configured||!verifiedReceipt||Date.now()-verifiedAt>5*60*1000||busy||Notification.permission==='denied';
     disable.disabled=busy;
@@ -152,7 +153,8 @@
     try {
       const sub=await currentSubscription();
       disable.disabled=busy||!sub;
-      if(sub&&configured&&settings().push)status.textContent=t('active');
+      if(sub&&configured)status.textContent=t('active');
+      else if(configured&&(settings().renewRequired||settings().push))status.textContent=t('refresh');
     } catch {}
   }
   async function verifyConsent(section) {

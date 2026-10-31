@@ -9,7 +9,7 @@ assert.ok(client.includes('PushManager')&&client.includes('safeRoute')&&client.i
 assert.ok(client.includes('aaria:open-text-size')&&client.includes("window.goto('settings')"),'Text Size notification route must open Settings after Font Size integration');
 assert.ok(!client.includes('Notification.requestPermission'),'Inbox must not request permission');
 assert.ok(pushClient.includes('/v1/consent/verify')&&pushClient.indexOf('/v1/consent/verify')<pushClient.indexOf('Notification.requestPermission'),'Verify guardian consent before requesting OS permission');
-assert.ok(pushClient.includes('/v1/subscribe')&&pushClient.includes('/v1/unsubscribe')&&pushClient.includes('AARIA_PUSH_SUBSCRIPTION_REFRESH_REQUIRED'));
+assert.ok(pushClient.includes('/v1/subscribe')&&pushClient.includes('/v1/unsubscribe')&&pushClient.includes('AARIA_PUSH_SUBSCRIPTION_REFRESH_REQUIRED')&&pushClient.includes('settings().renewRequired'),'Subscription renewal state must be visible after reload');
 assert.ok(pushClient.includes('requestConsentReceipt')&&!pushClient.includes('ADMIN_TOKEN')&&!pushClient.includes('/v1/publish'));
 assert.ok(!client.includes('/v1/publish'),'publisher endpoint must not be in public client code');
 assert.ok(client.includes('Instagram')&&client.includes('WhatsApp')&&client.includes('TikTok'));
