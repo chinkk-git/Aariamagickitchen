@@ -12,7 +12,17 @@ page.on('pageerror',e=>errors.push(e.message));const base='http://127.0.0.1:4173
 async function skipWelcome(){await page.waitForTimeout(150);const b=page.getByRole('button',{name:'Skip the opening and enter the selected Home'}).first();if(await b.count()&&await b.isVisible())await b.click()}
 async function detail(id){await page.locator('#screen .ref-title h1').waitFor({state:'visible',timeout:12000});assert.ok((await page.locator('#screen .ref-title h1').innerText()).trim());assert.ok(await page.locator('#screen .ref-ingredients').count(),`ingredients #${id}`);assert.ok(await page.locator('#screen .ref-tools').count(),`equipment #${id}`);assert.ok(await page.locator('#screen .ref-step-grid').count(),`steps #${id}`);assert.equal(await page.locator('#screen .ref-step-grid .ref-step-card.active').count(),1);return page.evaluate(()=>location.hash)}
 try{
- for(const id of [1,12,66,96,99,111,116]){await page.goto(`${base}#aria/recipe/${id}/0`,{waitUntil:'load'});await skipWelcome();assert.equal(await detail(id),`#aria/recipe/${id}/0`);if(id===12){await page.locator('#screen [data-action="nextstep"]').click();await page.waitForFunction(()=>document.querySelector('#screen .ref-step-grid .ref-step-card.active .ref-step-title')?.dataset.step==='1');await page.locator('#screen [data-action="prevstep"]').click();await page.waitForFunction(()=>document.querySelector('#screen .ref-step-grid .ref-step-card.active .ref-step-title')?.dataset.step==='0')}}
+ for(const id of [1,12,66,96,99,111,116]){
+  console.log('Checking direct recipe',id);
+  await page.goto(`${base}#aria/recipe/${id}/0`,{waitUntil:'load'});
+  await skipWelcome();
+  try { assert.equal(await detail(id),`#aria/recipe/${id}/0`); }
+  catch(error) {
+    const snapshot=await page.evaluate(()=>({url:location.href,hash:location.hash,screen:document.querySelector('#screen')?.innerText.slice(0,900),welcome:!!document.getElementById('v35-palace-welcome')}));
+    console.error('Recipe detail diagnostic',JSON.stringify({id,snapshot,errors}));
+    throw error;
+  }
+  if(id===12){await page.locator('#screen [data-action="nextstep"]').click();await page.waitForFunction(()=>document.querySelector('#screen .ref-step-grid .ref-step-card.active .ref-step-title')?.dataset.step==='1');await page.locator('#screen [data-action="prevstep"]').click();await page.waitForFunction(()=>document.querySelector('#screen .ref-step-grid .ref-step-card.active .ref-step-title')?.dataset.step==='0')}}
  await page.goto(base,{waitUntil:'load'});await skipWelcome();await page.getByRole('button',{name:'Explore All Recipes'}).click();await page.getByText('116 magical recipes to explore',{exact:true}).waitFor({state:'visible',timeout:10000});await page.locator('#screen button[data-open="66"]').click();await detail(66);await page.locator('#screen [data-action="favorite"]').click();await page.locator('.bottom .tab[data-nav="library"]').click();await page.locator('#screen button[data-filter="Favorites"]').click();await page.locator('#screen button[data-open="66"]').waitFor({state:'visible'});await page.locator('#screen button[data-open="66"]').click();await detail(66);
  await page.locator('.bottom .tab[data-nav="world"]').click();await page.getByRole('button',{name:'India',exact:true}).click();await page.getByRole('button',{name:/Open recipe: Masala Cheese Toast/}).click();await detail(51);
  await page.goto(base+'?install=1',{waitUntil:'load'});await page.getByRole('button',{name:'Continue in Browser'}).click();await page.waitForFunction(()=>!new URLSearchParams(location.search).has('install'));await skipWelcome();await page.getByRole('button',{name:'Explore All Recipes'}).click();await page.getByText('116 magical recipes to explore',{exact:true}).waitFor({state:'visible',timeout:10000});
