@@ -1,0 +1,31 @@
+name: V3.5 global accessible text size focused validation
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "aaria-accessibility-text-size.css"
+      - "js/accessibility-text-size.js"
+      - "tools/v3/qa/v35-global-text-size.mjs"
+      - ".github/workflows/v35-global-text-size.yml"
+permissions:
+  contents: read
+jobs:
+  global-text-size:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install isolated Playwright dependency
+        run: npm install --prefix /tmp/aaria-text-size-qa playwright
+      - name: Install Chromium
+        run: node /tmp/aaria-text-size-qa/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Validate global text sizing and responsive behavior
+        env:
+          PLAYWRIGHT_MODULE: /tmp/aaria-text-size-qa/node_modules/playwright
+        run: node tools/v3/qa/v35-global-text-size.mjs
