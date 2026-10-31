@@ -165,3 +165,33 @@ html[data-aaria-text-size-active="true"] .app.reference-active .ref-chef-tip p {
     grid-row: 2;
   }
 }
+
+
+/* Keep All Recipes category chips in a horizontal, non-wrapping rail while
+   readable labels continue to follow the user's global text-size setting. */
+.app:has(.filters) .enchanted-sky {
+  z-index: 0;
+}
+.app:has(.filters) .filters {
+  align-items: center;
+  overflow-y: hidden;
+}
+.app:has(.filters) .filters > .chip {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: none;
+  min-height: 44px;
+  height: auto;
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+}
+html[data-aaria-text-size-active="true"] .app:has(.filters) .filters > .chip {
+  line-height: 1.1 !important;
+}
+
+/* Keep moving decoration clear of recipe text and controls while the catalogue is open. */
+.app:has(.filters) .ambient,
+.app:has(.filters) .enchanted-sky {
+  visibility: hidden;
+}
