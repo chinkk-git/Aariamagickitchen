@@ -172,11 +172,11 @@ html[data-aaria-text-size-active="true"] .app.reference-active .ref-chef-tip p {
 .app:has(.filters) .enchanted-sky {
   z-index: 0;
 }
-html[data-aaria-text-size-active="true"] .app:has(.filters) .filters {
+.app:has(.filters) .filters {
   align-items: center;
   overflow-y: hidden;
 }
-html[data-aaria-text-size-active="true"] .app:has(.filters) .filters > .chip {
+.app:has(.filters) .filters > .chip {
   box-sizing: border-box;
   flex: 0 0 auto;
   width: max-content;
@@ -185,5 +185,7 @@ html[data-aaria-text-size-active="true"] .app:has(.filters) .filters > .chip {
   height: auto;
   white-space: nowrap !important;
   overflow-wrap: normal !important;
+}
+html[data-aaria-text-size-active="true"] .app:has(.filters) .filters > .chip {
   line-height: 1.1 !important;
 }
