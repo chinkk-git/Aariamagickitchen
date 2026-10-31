@@ -13,7 +13,7 @@ permissions:
 jobs:
   global-text-size:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,7 +25,8 @@ jobs:
         run: npm install --prefix /tmp/aaria-text-size-qa playwright
       - name: Install Chromium
         run: node /tmp/aaria-text-size-qa/node_modules/playwright/cli.js install --with-deps chromium
-      - name: Validate global text sizing and responsive behavior
+      - name: Validate essential text-size behavior
+        timeout-minutes: 3
         env:
           PLAYWRIGHT_MODULE: /tmp/aaria-text-size-qa/node_modules/playwright
-        run: node tools/v3/qa/v35-global-text-size.mjs
+        run: timeout --signal=TERM --kill-after=10s 150s node tools/v3/qa/v35-global-text-size.mjs
