@@ -6,6 +6,7 @@ const sw=await readFile(new URL('../../../sw.js',import.meta.url),'utf8');
 const worker=await readFile(new URL('../../../notifications-worker/src/index.js',import.meta.url),'utf8');
 const html=await readFile(new URL('../../../index.html',import.meta.url),'utf8');
 const deliveryMigration=await readFile(new URL('../../../notifications-worker/migrations/0002_resumable_delivery.sql',import.meta.url),'utf8');
+const testMigration=await readFile(new URL('../../../notifications-worker/migrations/0003_guarded_test_notifications.sql',import.meta.url),'utf8');
 const wrangler=await readFile(new URL('../../../notifications-worker/wrangler.toml',import.meta.url),'utf8');
 assert.ok(client.includes('PushManager')&&client.includes('safeRoute')&&client.includes('consentNeeded'));
 assert.ok(client.includes('aaria:open-text-size')&&client.includes("window.goto('settings')"),'Text Size notification route must open Settings after Font Size integration');
@@ -13,6 +14,9 @@ assert.ok(!client.includes('Notification.requestPermission'),'Inbox must not req
 assert.ok(pushClient.includes('/v1/consent/verify')&&pushClient.indexOf('/v1/consent/verify')<pushClient.indexOf('Notification.requestPermission'),'Verify guardian consent before requesting OS permission');
 assert.ok(pushClient.includes('/v1/subscribe')&&pushClient.includes('/v1/unsubscribe')&&pushClient.includes('AARIA_PUSH_SUBSCRIPTION_REFRESH_REQUIRED')&&pushClient.includes('settings().renewRequired'),'Subscription renewal state must be visible after reload');
 assert.ok(pushClient.includes('requestConsentReceipt')&&!pushClient.includes('ADMIN_TOKEN')&&!pushClient.includes('/v1/publish'));
+const testFlow=pushClient.slice(pushClient.indexOf('async function sendTest'),pushClient.indexOf('async function unsubscribe'));
+assert.ok(testFlow.includes('await verifyConsent(section)')&&testFlow.includes("api('/v1/test'")&&!testFlow.includes('Notification.requestPermission'),'A test send must reverify guardian consent and must not trigger an OS permission prompt');
+for(const target of ['/notifications','/recipes/new/111,112,113,114,115,116','/settings/accessibility/text-size','/whats-new'])assert.ok(testFlow.includes(target),'The device acceptance UI must offer the approved in-app route '+target);
 assert.ok(!client.includes('/v1/publish'),'publisher endpoint must not be in public client code');
 assert.ok(client.includes('Instagram')&&client.includes('WhatsApp')&&client.includes('TikTok'));
 assert.ok(sw.includes("addEventListener('push'")&&sw.includes('notificationclick')&&sw.includes('AARIA_NOTIFICATION_OPEN'));
@@ -28,6 +32,8 @@ assert.ok(worker.includes('DELIVERY_QUEUE')&&worker.includes('fanoutPageSize = 5
 assert.ok(worker.includes('announcement_deliveries')&&worker.includes('endpointHash')&&worker.includes('maxDeliveryAttempts'),'Queue delivery must be resumable, per-recipient deduplicated and retry bounded');
 assert.ok(worker.includes("batch.queue==='aaria-notification-dead-letter'")&&worker.includes('handleDeadLetter')&&worker.includes('fanout_errors'),'Dead-letter delivery and fanout failures must reach terminal delivery reporting');
 assert.ok(worker.includes('statusMatch=url.pathname.match')&&worker.includes('fanout_complete'),'Authenticated delivery status must expose final queue results');
+assert.ok(worker.includes("url.pathname==='/v1/test'")&&worker.includes('testCooldownMs')&&worker.includes('consent_receipt_hash')&&worker.includes('last_test_at')&&worker.includes('validConsentReceipt(b.consentReceipt,env,b.locale)'),'Test delivery must require a current signed guardian receipt and enforce a per-subscription cooldown');
+assert.ok(testMigration.includes('ALTER TABLE subscriptions ADD COLUMN last_test_at INTEGER'));
 assert.ok(deliveryMigration.includes('UNIQUE(announcement_id,endpoint_hash)')&&deliveryMigration.includes('error_code')&&deliveryMigration.includes('consent_expires_at')&&deliveryMigration.includes('subscriptions_active_expiry_endpoint_idx'));
 assert.ok(wrangler.includes('binding = "DELIVERY_QUEUE"')&&wrangler.includes('max_batch_size = 20')&&wrangler.includes('dead_letter_queue')&&wrangler.includes('queue = "aaria-notification-dead-letter"')&&wrangler.includes('crons = ["15 * * * *"]')&&wrangler.includes('PARENT_CONSENT_MODEL_APPROVED = "false"'));
 assert.ok(html.includes('notification-bell')&&html.includes('notifications-v36.js')&&html.includes('accessibility-text-size.js'));

@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 5223)
+Total output lines: 237
+
 import webpush from 'web-push';
 import { isPublicHttpsEndpoint, isValidSubscriptionInput } from './validation.js';
 
@@ -9,6 +12,7 @@ const validRoute = route => typeof route==='string' && (/^\/notifications(?:\/ne
 const categories = new Set(['recipes','features','countries','updates']);
 const fanoutPageSize = 50;
 const maxDeliveryAttempts = 5;
+const testCooldownMs = 60_000;
 async function body(request){const raw=await request.text();if(raw.length>maxBody)throw new Error('payload too large');return JSON.parse(raw);}
 async function auth(request,env){return Boolean(env.ADMIN_TOKEN&&request.headers.get('Authorization')==='Bearer '+env.ADMIN_TOKEN);}
 const decode64=value=>Uint8Array.from(atob(value.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
@@ -110,15 +114,7 @@ async function processDelivery(message,env,queueMessage){
     return;
   }
   const row=await env.DB.prepare('SELECT d.announcement_id,d.endpoint_hash,d.category,d.attempts,a.payload,s.endpoint,s.p256dh,s.auth,s.locale,s.categories,s.consent_valid,s.consent_expires_at FROM announcement_deliveries d JOIN announcements a ON a.id=d.announcement_id LEFT JOIN subscriptions s ON s.endpoint_hash=d.endpoint_hash WHERE d.id=?').bind(message.deliveryId).first();
-  if(!row){await env.DB.prepare("UPDATE announcement_deliveries SET status='failed',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();return;}
-  if(!row.endpoint){await env.DB.prepare("UPDATE announcement_deliveries SET status='removed',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();await finalizeAnnouncement(env,row.announcement_id);return;}
-  if(Number(row.consent_valid)!==1||Number(row.consent_expires_at)<=Date.now()){
-    await env.DB.prepare('UPDATE subscriptions SET consent_valid=0,updated_at=? WHERE endpoint_hash=? AND consent_expires_at<=?').bind(Date.now(),row.endpoint_hash,Date.now()).run();
-    await env.DB.prepare("UPDATE announcement_deliveries SET status='skipped',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();
-    await finalizeAnnouncement(env,row.announcement_id);return;
-  }
-  let prefs=[];try{prefs=JSON.parse(row.categories)}catch{}
-  if(!Array.isArray(prefs)||!prefs.includes(row.category)){
+  if(!row){await env.DB.prepare("UPDATE announcement_deliveries SET statu…223 tokens truncated…des(row.category)){
     await env.DB.prepare("UPDATE announcement_deliveries SET status='skipped',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();
     await finalizeAnnouncement(env,row.announcement_id);return;
   }
@@ -192,13 +188,18 @@ export default {async fetch(request,env){
     await env.DB.prepare('DELETE FROM subscriptions WHERE endpoint=?').bind(b.endpoint).run();return json({ok:true},200,origin);
   }
   if(url.pathname==='/v1/test'&&request.method==='POST'){
-    if(!await auth(request,env))return json({error:'unauthorized'},401,origin);
     if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return json({error:'guardian_consent_model_not_approved'},503,origin);
     let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
-    if(!isPublicHttpsEndpoint(b?.endpoint))return json({error:'invalid_endpoint'},400,origin);
+    if(!isPublicHttpsEndpoint(b?.endpoint)||!['en-GB','pt-BR'].includes(b?.locale)||!validRoute(b?.route))return json({error:'invalid_test_request'},400,origin);
     if(!env.DB||!env.VAPID_PUBLIC_KEY||!env.VAPID_PRIVATE_KEY||!env.VAPID_SUBJECT)return json({error:'push_service_unavailable'},503,origin);
-    const s=await env.DB.prepare('SELECT endpoint,p256dh,auth FROM subscriptions WHERE endpoint=? AND consent_valid=1 AND consent_expires_at>?').bind(b.endpoint,Date.now()).first();if(!s)return json({error:'not_found'},404,origin);
-    try{await webpush.sendNotification({endpoint:s.endpoint,keys:{p256dh:s.p256dh,auth:s.auth}},JSON.stringify({title:'Aaria test',body:'Push delivery is connected.',data:{route:'/notifications'}}),{vapidDetails:{subject:env.VAPID_SUBJECT,publicKey:env.VAPID_PUBLIC_KEY,privateKey:env.VAPID_PRIVATE_KEY},TTL:60});}
+    const now=Date.now(),consent=await validConsentReceipt(b.consentReceipt,env,b.locale);
+    if(!consent)return json({error:'valid_parent_consent_required'},403,origin);
+    const s=await env.DB.prepare('SELECT endpoint,p256dh,auth,locale,consent_receipt_hash,last_test_at FROM subscriptions WHERE endpoint=? AND consent_valid=1 AND consent_expires_at>?').bind(b.endpoint,now).first();
+    if(!s||s.locale!==b.locale||s.consent_receipt_hash!==consent.hash)return json({error:'active_consented_subscription_required'},403,origin);
+    const claimed=await env.DB.prepare('UPDATE subscriptions SET last_test_at=? WHERE endpoint=? AND consent_valid=1 AND consent_expires_at>? AND locale=? AND consent_receipt_hash=? AND (last_test_at IS NULL OR last_test_at<=?)').bind(now,b.endpoint,now,b.locale,consent.hash,now-testCooldownMs).run();
+    if(Number(claimed?.meta?.changes)!==1)return json({error:'test_rate_limited',retryAfterSeconds:60},429,origin);
+    const copy=b.locale==='pt-BR'?{title:'Notificação de teste Aaria',body:'Este teste confirma o recebimento neste dispositivo.'}:{title:'Aaria test notification',body:'This test checks delivery to this device.'};
+    try{await webpush.sendNotification({endpoint:s.endpoint,keys:{p256dh:s.p256dh,auth:s.auth}},JSON.stringify({...copy,data:{route:b.route}}),{vapidDetails:{subject:env.VAPID_SUBJECT,publicKey:env.VAPID_PUBLIC_KEY,privateKey:env.VAPID_PRIVATE_KEY},TTL:60});}
     catch(error){if(error.statusCode===404||error.statusCode===410)await env.DB.prepare('DELETE FROM subscriptions WHERE endpoint=?').bind(s.endpoint).run();return json({error:'test_delivery_failed',expired:error.statusCode===404||error.statusCode===410},Number(error.statusCode)||502,origin);}
     return json({ok:true},200,origin);
   }

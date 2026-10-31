@@ -22,7 +22,8 @@
       refresh:'This subscription needs renewal. A parent or guardian must verify consent again.',
       failed:'Notifications could not be updated. Check your connection and try again.',
       retry:'Retry server removal',
-      preferencesChanged:'Notification preferences changed. Push is paused until a parent or guardian reviews the updated choices.'
+      preferencesChanged:'Notification preferences changed. Push is paused until a parent or guardian reviews the updated choices.',
+      test:'Send test notification',testDestination:'Test destination',testInbox:'Notifications',testRecipes:'New recipes 111–116',testTextSize:'Accessibility · Text Size',testWhatsNew:'What’s New',testSent:'A test notification was sent to this device.',testCooldown:'Please wait before sending another test notification.'
     },
     'pt-BR': {
       statusOff:'O push remoto fica desativado até que o serviço aprovado de consentimento dos responsáveis e o Worker sejam configurados.',
@@ -42,7 +43,8 @@
       refresh:'Esta assinatura precisa ser renovada. Um responsável precisa verificar o consentimento novamente.',
       failed:'Não foi possível atualizar as notificações. Verifique a conexão e tente novamente.',
       retry:'Tentar remover do servidor novamente',
-      preferencesChanged:'As preferências mudaram. O push foi pausado até que um responsável revise as escolhas atualizadas.'
+      preferencesChanged:'As preferências mudaram. O push foi pausado até que um responsável revise as escolhas atualizadas.',
+      test:'Enviar notificação de teste',testDestination:'Destino do teste',testInbox:'Notificações',testRecipes:'Novas receitas 111–116',testTextSize:'Acessibilidade · Tamanho do texto',testWhatsNew:'Novidades',testSent:'Uma notificação de teste foi enviada para este dispositivo.',testCooldown:'Aguarde antes de enviar outra notificação de teste.'
     }
   };
   const t = key => copy[locale()][key] || copy['en-GB'][key];
@@ -127,7 +129,17 @@
     disable.type='button';disable.dataset.pushLifecycle='disable';disable.textContent=t('disable');disable.disabled=true;
     const retry=document.createElement('button');
     retry.type='button';retry.dataset.pushLifecycle='retry';retry.textContent=t('retry');retry.hidden=true;
-    actions.append(consent,enable,disable,retry);
+    const testDestination=document.createElement('label');
+    testDestination.textContent=t('testDestination');
+    const select=document.createElement('select');
+    select.dataset.pushTestRoute='true';
+    for(const [route,label] of [['/notifications','testInbox'],['/recipes/new/111,112,113,114,115,116','testRecipes'],['/settings/accessibility/text-size','testTextSize'],['/whats-new','testWhatsNew']]){
+      const option=document.createElement('option');option.value=route;option.textContent=t(label);select.append(option);
+    }
+    testDestination.append(select);
+    const test=document.createElement('button');
+    test.type='button';test.dataset.pushLifecycle='test';test.textContent=t('test');test.hidden=true;test.disabled=true;
+    actions.append(consent,enable,disable,retry,testDestination,test);
     section.append(status,actions);
     await refresh(section);
   }
@@ -138,6 +150,8 @@
     const enable=section.querySelector('[data-push-lifecycle="enable"]');
     const disable=section.querySelector('[data-push-lifecycle="disable"]');
     const retry=section.querySelector('[data-push-lifecycle="retry"]');
+    const test=section.querySelector('[data-push-lifecycle="test"]');
+    const testDestination=section.querySelector('[data-push-test-route]');
     const configured=runtime();
     if(!supported())status.textContent=t('statusUnsupported');
     else if(inApp())status.textContent=t('statusInApp');
@@ -150,9 +164,15 @@
     disable.disabled=busy;
     retry.hidden=!pendingRemovalEndpoint;
     retry.disabled=busy||!configured;
+    testDestination.hidden=!configured;
+    test.hidden=!configured;
+    test.disabled=true;
     try {
       const sub=await currentSubscription();
       disable.disabled=busy||!sub;
+      testDestination.hidden=!sub||!configured;
+      test.hidden=!sub||!configured;
+      test.disabled=busy||!sub||!configured||Notification.permission!=='granted'||!settings().push;
       if(sub&&configured)status.textContent=t('active');
       else if(configured&&(settings().renewRequired||settings().push))status.textContent=t('refresh');
     } catch {}
@@ -197,6 +217,21 @@
     const status=section.querySelector('#aaria-push-status');if(status)status.textContent=t('saved');
     await refresh(section);
   }
+  async function sendTest(section) {
+    if(Notification.permission!=='granted')throw new Error('permission_not_granted');
+    const route=section.querySelector('[data-push-test-route]')?.value;
+    if(!['/notifications','/recipes/new/111,112,113,114,115,116','/settings/accessibility/text-size','/whats-new'].includes(route))throw new Error('invalid_test_route');
+    const sub=await currentSubscription();
+    if(!sub)throw new Error('subscription_required');
+    if(!categories().length)throw new Error('no_categories');
+    await verifyConsent(section);
+    if(!verifiedReceipt||Date.now()-verifiedAt>5*60*1000)throw new Error('consent_expired');
+    await api('/v1/subscribe',{subscription:sub.toJSON(),locale:locale(),categories:categories(),consentReceipt:verifiedReceipt});
+    await api('/v1/test',{endpoint:sub.endpoint,locale:locale(),consentReceipt:verifiedReceipt,route});
+    verifiedReceipt=null;verifiedAt=0;cachedVapidKey=null;
+    const status=section.querySelector('#aaria-push-status');if(status)status.textContent=t('testSent');
+    await refresh(section);
+  }
   async function unsubscribe(section) {
     let sub=null;
     try { sub=await currentSubscription(); } catch {}
@@ -227,7 +262,7 @@
     await refresh(section);
   }
   function showError(section,error) {
-    const key=error?.message==='permission_denied'?'denied':error?.message==='no_categories'?'noCategories':'failed';
+    const key=error?.message==='permission_denied'?'denied':error?.message==='no_categories'?'noCategories':error?.message==='test_rate_limited'?'testCooldown':'failed';
     const status=section.querySelector('#aaria-push-status');if(status)status.textContent=t(key);
     refresh(section).catch(()=>{});
   }
@@ -244,6 +279,7 @@
       else if(button.dataset.pushLifecycle==='enable')await enablePush(section);
       else if(button.dataset.pushLifecycle==='disable')await unsubscribe(section);
       else if(button.dataset.pushLifecycle==='retry')await retryRemoval(section);
+      else if(button.dataset.pushLifecycle==='test')await sendTest(section);
     } catch(error) { showError(section,error); }
     finally { busy=false;await refresh(section); }
   });

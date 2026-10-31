@@ -11,7 +11,7 @@ If a parent or legal guardian approves push for a child and the child’s device
 - the browser’s push endpoint and encryption keys, so the browser can receive a message;
 - the language and selected announcement categories;
 - a hash of a signed guardian-consent receipt, to confirm that an approved consent service authorized the subscription;
-- the subscription creation/update time and aggregate delivery status.
+- the subscription creation/update time, most recent test-send time for rate limiting, and aggregate delivery status.
 
 The service does not ask for the child’s name, age, email address or location. The browser and its push service (for example, the platform’s browser notification service) process the endpoint and deliver the message. The hosting/provider infrastructure may process connection and security metadata under its own terms; the controller must identify those providers and update this notice before launch.
 
@@ -28,7 +28,7 @@ Se um pai, uma mãe ou responsável legal autorizar as notificações para uma c
 - o endereço de push do navegador e as chaves de criptografia necessárias para entregar mensagens;
 - o idioma e as categorias de avisos selecionadas;
 - um hash de um comprovante assinado de consentimento do responsável, para confirmar que um serviço de consentimento aprovado autorizou a assinatura;
-- as datas de criação/atualização da assinatura e o status agregado de entrega.
+- as datas de criação/atualização da assinatura, a data do teste mais recente para limitar a frequência e o status agregado de entrega.
 
 O serviço não solicita nome, idade, e-mail ou localização da criança. O navegador e o serviço de push da plataforma processam o endereço e entregam a mensagem. A infraestrutura de hospedagem e dos provedores pode processar metadados de conexão e segurança segundo seus próprios termos; o controlador deve identificar esses provedores e atualizar este aviso antes do lançamento.
 
