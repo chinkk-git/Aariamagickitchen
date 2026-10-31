@@ -5,6 +5,7 @@ import {runInNewContext} from 'node:vm';
 const html = await readFile(new URL('../../index.html', import.meta.url), 'utf8');
 const source = await readFile(new URL('../../js/install-link-gate.js', import.meta.url), 'utf8');
 const appSource = await readFile(new URL('../../js/01-inline-script-1.9718845f1331.js', import.meta.url), 'utf8');
+const layerSource = await readFile(new URL('../../js/03-aaria-v3-layer.c2c6fc71d8ad.js', import.meta.url), 'utf8');
 const css = await readFile(new URL('../../install-link-gate.css', import.meta.url), 'utf8');
 const manifest = JSON.parse(await readFile(new URL('../../manifest.webmanifest', import.meta.url), 'utf8'));
 const officialName = "Aaria's Magical Kitchen";
@@ -23,6 +24,9 @@ assert.match(head, /og:image" content="https:\/\/chinkk-git\.github\.io\/Aariama
 assert.ok(head.includes('install-link-gate.js'), 'Gate script must be loaded from the initial head before body/app startup');
 assert.ok(body.indexOf('id="install-link-gate"') < body.indexOf('id="v34-welcome-boot"'), 'Install screen must precede Palace Welcome');
 assert.ok(body.includes('js/01-inline-script-1.9718845f1331.js?rev=official-app-name-20261030'), 'Official-name runtime update must invalidate the cached app script');
+assert.ok(body.includes('js/03-aaria-v3-layer.c2c6fc71d8ad.js?rev=official-app-name-20261030'), 'Official-name layer update must invalidate the cached layer script');
+assert.ok(layerSource.includes(`document.title="Aaria's Magical Kitchen";`), 'World layer renderer must retain the official app name');
+assert.ok(!layerSource.includes("document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';"), 'World layer must not localize the official document title');
 assert.ok(body.includes('<h1 id="install-link-title" data-original-source>Aaria\'s Magical Kitchen</h1>'), 'Install gate brand must be protected from locale text replacement');
 assert.match(body, /src="\.\/aaria-pwa-icon-512\.png"/);
 for (const label of ["Aaria's Magical Kitchen", 'Install App', 'Continue in Browser']) assert.ok(body.includes(label));
