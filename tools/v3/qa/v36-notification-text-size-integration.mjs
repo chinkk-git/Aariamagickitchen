@@ -58,6 +58,7 @@ try{
   await openRoute('/settings/notifications');
   await page.locator('#screen .an-push [data-push-lifecycle="test"]').waitFor({state:'attached',timeout:5000});
   assert.ok(await page.locator('#screen .an-push [data-push-lifecycle="test"]').isHidden(),'Test-send control stays hidden until the Worker and consent adapter are configured');
+  assert.ok(await page.locator('#screen .an-push [data-device-name]').isHidden(),'device labels are not collected before remote push is configured');
   for(const viewport of [{width:844,height:390},{width:1024,height:768}]){
     await page.setViewportSize(viewport);
     const metrics=await page.locator('#screen').evaluate(el=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,right:el.getBoundingClientRect().right}));

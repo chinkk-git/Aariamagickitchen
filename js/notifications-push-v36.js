@@ -176,6 +176,8 @@
     const test=section.querySelector('[data-push-lifecycle="test"]');
     const testDestination=section.querySelector('[data-push-test-route]');
     const manage=section.querySelector('[data-push-lifecycle="manage"]');
+    const deviceName=section.querySelector('[data-device-name]')?.closest('label');
+    const platform=section.querySelector('[data-device-platform]')?.closest('label');
     const configured=runtime();
     if(!supported())status.textContent=t('statusUnsupported');
     else if(inApp())status.textContent=t('statusInApp');
@@ -191,6 +193,8 @@
     testDestination.hidden=!configured;
     test.hidden=!configured;
     manage.hidden=!configured||typeof runtime()?.bridge.requestGuardianManagementReceipt!=='function';
+    if(deviceName)deviceName.hidden=!configured;
+    if(platform)platform.hidden=!configured;
     test.disabled=true;
     try {
       const sub=await currentSubscription();
