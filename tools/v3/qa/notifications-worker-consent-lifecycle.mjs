@@ -31,7 +31,8 @@ function mockDatabase(){
       }
       if(sql.includes('DELETE FROM subscriptions WHERE endpoint=')&&activeSubscription?.endpoint===values[0])activeSubscription=null;
       if(sql.includes("SET subscription_status='revoked'")&&devices.has(values[1]||'')){const d=devices.get(values[1]);d.subscription_status='revoked';d.permission_status='default';}
-      if(sql.includes('SET device_name=?')&&devices.has(values[2]))devices.get(values[2]).device_name=values[0];
+      if(sql.includes('DELETE FROM guardian_devices WHERE device_id=? AND guardian_hash=?'))devices.delete(values[0]);
+      if(sql.includes('UPDATE guardian_devices SET device_name=?')){const d=devices.get(values[2]);if(d&&d.guardian_hash===values[3])d.device_name=values[0];else changes=0;}
       if(sql.includes("SET delivery_confirmed_at=?")&&firstNotificationRow){firstNotificationRow.navigation_result=values[1];}
       return{meta:{changes}};
     },
@@ -128,6 +129,9 @@ assert.equal(resubscribe.status,201,'an active guardian receipt permits resubscr
 const deviceList=await request('/v1/guardian/devices',{locale:'en-GB',consentReceipt:validReceipt});
 assert.equal(deviceList.status,200);
 assert.deepEqual(deviceList.body.devices.map(x=>x.device_id),[testDevice.deviceId],'a guardian sees only registered devices they own');
+const renameDevice=await request('/v1/guardian/device/rename',{deviceId:testDevice.deviceId,deviceName:'Aaria QA phone',locale:'en-GB',consentReceipt:validReceipt});
+assert.equal(renameDevice.status,200,'a guardian can update the assigned device label');
+assert.equal((await request('/v1/guardian/devices',{locale:'en-GB',consentReceipt:validReceipt})).body.devices[0].device_name,'Aaria QA phone');
 const noManagementScope=await request('/v1/guardian/devices',{locale:'en-GB',consentReceipt:await receipt({deviceManagement:false})});
 assert.equal(noManagementScope.status,403,'device listing requires explicit guardian-management scope');
 const heartbeat=await request('/v1/device/heartbeat',{subscription:validSubscription,permissionStatus:'granted'});
@@ -176,4 +180,8 @@ delete globalThis.__testPushFailure;
 assert.equal(expiredTest.status,410,'expired push subscriptions are returned as expired');
 assert.equal(JSON.parse(globalThis.__testPushCalls.at(-1)[1]).title,'Notificação de teste Aaria','test copy follows the subscription locale');
 assert.ok(DB.writes.slice(beforeFailureWrites).some(x=>x.sql==='DELETE FROM subscriptions WHERE endpoint=?'),'expired test endpoint is removed');
+const removedDevice=await request('/v1/guardian/device/revoke',{deviceId:testDevice.deviceId,locale:'pt-BR',consentReceipt:testPt});
+assert.equal(removedDevice.status,200,'guardian removal deletes an expired registered device as well as its subscription');
+const afterRemoval=await request('/v1/guardian/devices',{locale:'pt-BR',consentReceipt:testPt});
+assert.deepEqual(afterRemoval.body.devices,[],'removed devices no longer appear in the guardian dashboard');
 console.log('PASS: fail-closed guardian consent, secret-free config, renewal/unsubscribe, localized test push, safe routes, cooldown and expired-endpoint cleanup.');

@@ -237,9 +237,9 @@ export default {async fetch(request,env){
     let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
     const consent=await validConsentReceipt(b?.consentReceipt,env,b?.locale);
     if(!consent?.deviceManagement||typeof b?.deviceId!=='string'||!env.DB)return json({error:'verified_guardian_management_required'},403,origin);
-    const device=await env.DB.prepare('SELECT endpoint_hash FROM guardian_devices WHERE device_id=? AND guardian_hash=? AND subscription_status=\'active\'').bind(b.deviceId,consent.guardianHash).first();
+    const device=await env.DB.prepare('SELECT endpoint_hash FROM guardian_devices WHERE device_id=? AND guardian_hash=?').bind(b.deviceId,consent.guardianHash).first();
     if(!device)return json({error:'device_not_found'},404,origin);
-    await env.DB.batch([env.DB.prepare("UPDATE guardian_devices SET subscription_status='revoked',permission_status='default',last_contact_at=? WHERE device_id=? AND guardian_hash=?").bind(Date.now(),b.deviceId,consent.guardianHash),env.DB.prepare('DELETE FROM subscriptions WHERE endpoint_hash=? AND guardian_hash=?').bind(device.endpoint_hash,consent.guardianHash)]);
+    await env.DB.batch([env.DB.prepare('DELETE FROM subscriptions WHERE endpoint_hash=? AND guardian_hash=?').bind(device.endpoint_hash,consent.guardianHash),env.DB.prepare('DELETE FROM guardian_devices WHERE device_id=? AND guardian_hash=?').bind(b.deviceId,consent.guardianHash)]);
     return json({ok:true},200,origin);
   }
   if(url.pathname==='/v1/guardian/device/first-magical'&&request.method==='POST'){
