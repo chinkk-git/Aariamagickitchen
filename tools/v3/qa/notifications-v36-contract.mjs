@@ -1,12 +1,16 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 const client=await readFile(new URL('../../../js/notifications-v36.js',import.meta.url),'utf8');
+const pushClient=await readFile(new URL('../../../js/notifications-push-v36.js',import.meta.url),'utf8');
 const sw=await readFile(new URL('../../../sw.js',import.meta.url),'utf8');
 const worker=await readFile(new URL('../../../notifications-worker/src/index.js',import.meta.url),'utf8');
 const html=await readFile(new URL('../../../index.html',import.meta.url),'utf8');
 assert.ok(client.includes('PushManager')&&client.includes('safeRoute')&&client.includes('consentNeeded'));
 assert.ok(client.includes('aaria:open-text-size')&&client.includes("window.goto('settings')"),'Text Size notification route must open Settings after Font Size integration');
-assert.ok(!client.includes('Notification.requestPermission'),'Do not prompt before consent integration');
+assert.ok(!client.includes('Notification.requestPermission'),'Inbox must not request permission');
+assert.ok(pushClient.includes('/v1/consent/verify')&&pushClient.indexOf('/v1/consent/verify')<pushClient.indexOf('Notification.requestPermission'),'Verify guardian consent before requesting OS permission');
+assert.ok(pushClient.includes('/v1/subscribe')&&pushClient.includes('/v1/unsubscribe')&&pushClient.includes('AARIA_PUSH_SUBSCRIPTION_REFRESH_REQUIRED'));
+assert.ok(pushClient.includes('requestConsentReceipt')&&!pushClient.includes('ADMIN_TOKEN')&&!pushClient.includes('/v1/publish'));
 assert.ok(!client.includes('/v1/publish'),'publisher endpoint must not be in public client code');
 assert.ok(client.includes('Instagram')&&client.includes('WhatsApp')&&client.includes('TikTok'));
 assert.ok(sw.includes("addEventListener('push'")&&sw.includes('notificationclick')&&sw.includes('AARIA_NOTIFICATION_OPEN'));
