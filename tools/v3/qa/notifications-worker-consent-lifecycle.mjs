@@ -38,6 +38,7 @@ function mockDatabase(){
     first:async()=>{
       if(sql.includes('SELECT endpoint,p256dh,auth,locale,consent_receipt_hash,last_test_at FROM subscriptions')&&activeSubscription)return{...activeSubscription};
       if(sql.includes('SELECT guardian_hash FROM subscriptions WHERE endpoint=')&&activeSubscription?.endpoint===values[0])return{guardian_hash:activeSubscription.guardian_hash};
+      if(sql.includes('SELECT endpoint_hash FROM subscriptions WHERE endpoint=? AND p256dh=? AND auth=?')&&activeSubscription?.endpoint===values[0]&&activeSubscription.p256dh===values[1]&&activeSubscription.auth===values[2])return{endpoint_hash:'a'.repeat(64)};
       if(sql.includes('SELECT guardian_hash FROM guardian_devices WHERE device_id=')&&devices.has(values[0]))return{guardian_hash:devices.get(values[0]).guardian_hash};
       if(sql.includes('SELECT d.device_id,d.guardian_hash')){
         const d=devices.get(values[0]);if(!d||!activeSubscription||d.device_id!==activeSubscription.device_id||d.guardian_hash!==activeSubscription.guardian_hash)return null;
@@ -129,6 +130,10 @@ assert.equal(deviceList.status,200);
 assert.deepEqual(deviceList.body.devices.map(x=>x.device_id),[testDevice.deviceId],'a guardian sees only registered devices they own');
 const noManagementScope=await request('/v1/guardian/devices',{locale:'en-GB',consentReceipt:await receipt({deviceManagement:false})});
 assert.equal(noManagementScope.status,403,'device listing requires explicit guardian-management scope');
+const heartbeat=await request('/v1/device/heartbeat',{subscription:validSubscription,permissionStatus:'granted'});
+assert.equal(heartbeat.status,200,'an active registered device can record a successful contact');
+const blockedHeartbeat=await request('/v1/device/heartbeat',{subscription:validSubscription,permissionStatus:'granted'},{PARENT_CONSENT_MODEL_APPROVED:'false'});
+assert.equal(blockedHeartbeat.status,503,'device heartbeat remains disabled while guardian-consent approval is false');
 const beforeFirst=globalThis.__testPushCalls.length;
 const firstMagic=await request('/v1/guardian/device/first-magical',{deviceId:testDevice.deviceId,locale:'en-GB',consentReceipt:validReceipt});
 assert.equal(firstMagic.status,202,'the first notification is sent to the selected authorized device');

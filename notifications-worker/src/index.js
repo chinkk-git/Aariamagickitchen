@@ -200,12 +200,14 @@ export default {async fetch(request,env){
     return json({ok:true,deviceId:device.deviceId,subscriptionStatus:'active',consentExpiresAt:consent.expiresAt},201,origin);
   }
   if(url.pathname==='/v1/device/heartbeat'&&request.method==='POST'){
+    if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return json({error:'guardian_consent_model_not_approved'},503,origin);
     let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
     const sub=b?.subscription,now=Date.now();
     if(!isPublicHttpsEndpoint(sub?.endpoint)||typeof sub?.keys?.p256dh!=='string'||typeof sub?.keys?.auth!=='string'||!['granted','denied','default','unsupported'].includes(b.permissionStatus)||!env.DB)return json({error:'invalid_subscription'},400,origin);
     const row=await env.DB.prepare('SELECT endpoint_hash FROM subscriptions WHERE endpoint=? AND p256dh=? AND auth=? AND consent_valid=1 AND consent_expires_at>?').bind(sub.endpoint,sub.keys.p256dh,sub.keys.auth,now).first();
     if(!row)return json({error:'active_subscription_required'},403,origin);
-    await env.DB.prepare("UPDATE guardian_devices SET last_contact_at=?,permission_status=? WHERE endpoint_hash=? AND subscription_status='active' AND consent_expires_at>?").bind(now,b.permissionStatus,row.endpoint_hash,now).run();
+    const updated=await env.DB.prepare("UPDATE guardian_devices SET last_contact_at=?,permission_status=? WHERE endpoint_hash=? AND subscription_status='active' AND consent_expires_at>?").bind(now,b.permissionStatus,row.endpoint_hash,now).run();
+    if(Number(updated?.meta?.changes)!==1)return json({error:'registered_device_required'},403,origin);
     return json({ok:true,lastContactAt:now},200,origin);
   }
   if(url.pathname==='/v1/unsubscribe'&&request.method==='POST'){
