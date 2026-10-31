@@ -17,7 +17,7 @@
   const style = document.createElement('style');
   style.id = STYLE_ID;
   style.textContent = [
-    '[' + SCALE_ATTR + '] {',
+    'html:not([data-aaria-text-size-measuring]) [' + SCALE_ATTR + '] {',
     '  font-size: calc(var(--aaria-base-font-size) * var(--aaria-text-scale, 1)) !important;',
     '  line-height: var(--aaria-scaled-line-height, normal) !important;',
     '  overflow-wrap: break-word;',
@@ -37,15 +37,21 @@
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
+      const root = document.documentElement;
       const current = scale;
-      document.querySelectorAll('[' + SCALE_ATTR + ']').forEach(element => {
-        element.removeAttribute(SCALE_ATTR);
-        element.removeAttribute('data-aaria-button');
-        element.style.removeProperty('--aaria-base-font-size');
-        element.style.removeProperty('--aaria-scaled-line-height');
-      });
-      document.documentElement.style.setProperty('--aaria-text-scale', '1');
-      markText(document.body);
+      root.dataset.aariaTextSizeMeasuring = 'true';
+      const pending = Array.from(document.querySelectorAll('[' + SCALE_ATTR + ']')).map(element => {
+        const computed = getComputedStyle(element);
+        const font = parseFloat(computed.fontSize);
+        const line = computed.lineHeight && computed.lineHeight !== 'normal' ? parseFloat(computed.lineHeight) : null;
+        return {element,font,line};
+      }).filter(item => Number.isFinite(item.font) && item.font > 0);
+      for (const {element,font,line} of pending) {
+        element.style.setProperty('--aaria-base-font-size', font + 'px');
+        if (Number.isFinite(line) && line > 0) element.style.setProperty('--aaria-scaled-line-height', 'calc(' + line + 'px * var(--aaria-text-scale, 1))');
+        else element.style.removeProperty('--aaria-scaled-line-height');
+      }
+      delete root.dataset.aariaTextSizeMeasuring;
       applyScale(Math.round(current * 100), false);
     }, 120);
   }, {passive: true});
