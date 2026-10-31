@@ -1,6 +1,6 @@
 name = "aaria-magical-notifications"
 main = "src/index.js"
-compatibility_date = "2026-10-30"
+compatibility_date = "2026-10-30"\ncompatibility_flags = ["nodejs_compat"]
 
 [[d1_databases]]
 binding = "DB"
