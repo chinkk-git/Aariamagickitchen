@@ -3,6 +3,7 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - "index.html"
       - "js/03-aaria-v3-layer.c2c6fc71d8ad.js"
       - "tools/v3/qa/v35-recipe-detail-recovery.mjs"
       - ".github/workflows/v35-recipe-detail-recovery.yml"
