@@ -25,7 +25,7 @@ try{
     localStorage.setItem('aariaPrivateKitchenV4',JSON.stringify(installedData));
     localStorage.setItem('aaria.accessibility.textSize.v1','175');
     localStorage.setItem('aaria.notifications.settings.v1',JSON.stringify({recipes:true,features:false,countries:true,updates:true,push:false}));
-    return{manifest,data:localStorage.getItem('aariaPrivateKitchenV4'),textSize:localStorage.getItem('aaria.accessibility.textSize.v1'),prefs:localStorage.getItem('aaria.notifications.settings.v1'),cacheNames:await caches.keys(),timeOrigin:performance.timeOrigin};
+    return{manifest,data:localStorage.getItem('aariaPrivateKitchenV4'),textSize:localStorage.getItem('aaria.accessibility.textSize.v1'),prefs:localStorage.getItem('aaria.notifications.settings.v1'),cacheNames:await caches.keys(),timeOrigin:performance.timeOrigin,url:location.href};
   });
   assert.equal(before.manifest.id,'./');assert.equal(before.manifest.scope,'./');assert.equal(before.manifest.start_url,'./index.html');
   currentRoot=latestRoot;
@@ -33,7 +33,7 @@ try{
   assert.equal(update,true);
   await page.waitForFunction(async()=>{const r=await navigator.serviceWorker.getRegistration();return r?.active?.scriptURL&&((await caches.keys()).includes('aaria-web-v3.5-85f537591449-r2'));},null,{timeout:20000});
   const afterActivation=await page.evaluate(()=>({url:location.href,timeOrigin:performance.timeOrigin,controller:navigator.serviceWorker.controller?.scriptURL}));
-  assert.equal(afterActivation.url,'http://127.0.0.1:4175/','activation does not navigate or open a second app window');
+  assert.equal(afterActivation.url,before.url,'activation does not navigate or open a second app window');
   assert.equal(afterActivation.timeOrigin,before.timeOrigin,'activation does not restart an open app automatically');
   await page.reload({waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>Boolean(document.querySelector('#notification-bell'))||Boolean(window.AariaNotifications),null,{timeout:15000});
