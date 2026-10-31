@@ -4,6 +4,7 @@ import {readFile} from 'node:fs/promises';
 const html = await readFile(new URL('../../index.html', import.meta.url), 'utf8');
 const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1];
 assert.ok(head, 'Metadata must be present in the initial HTML head');
+assert.ok(head.includes('<title>Aaria\'s Magical Kitchen</title>'), 'Initial HTML title must use the full official name');
 
 const tags = [...head.matchAll(/<meta\b[^>]*>/gi)].map(match => {
   const attrs = {};
@@ -32,6 +33,9 @@ const expected = {
   'name|twitter:description': 'Discover a magical world of cooking adventures!',
   'name|twitter:image': 'https://chinkk-git.github.io/Aariamagickitchen/aaria-pwa-icon-512.png'
 };
+assert.equal(content('name', 'application-name'), "Aaria's Magical Kitchen");
+assert.equal(content('name', 'apple-mobile-web-app-title'), "Aaria's Magical Kitchen");
+
 for (const [key, value] of Object.entries(expected)) {
   const [attribute, name] = key.split('|');
   assert.equal(content(attribute, name), value, `Incorrect ${name}`);
