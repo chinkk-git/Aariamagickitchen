@@ -22,6 +22,7 @@ assert.equal(manifest.short_name, officialName, 'Android PWA launch label must u
 assert.match(head, /og:image" content="https:\/\/chinkk-git\.github\.io\/Aariamagickitchen\/aaria-pwa-icon-512\.png"/);
 assert.ok(head.includes('install-link-gate.js'), 'Gate script must be loaded from the initial head before body/app startup');
 assert.ok(body.indexOf('id="install-link-gate"') < body.indexOf('id="v34-welcome-boot"'), 'Install screen must precede Palace Welcome');
+assert.ok(body.includes('js/01-inline-script-1.9718845f1331.js?rev=official-app-name-20261030'), 'Official-name runtime update must invalidate the cached app script');
 assert.ok(body.includes('<h1 id="install-link-title" data-original-source>Aaria\'s Magical Kitchen</h1>'), 'Install gate brand must be protected from locale text replacement');
 assert.match(body, /src="\.\/aaria-pwa-icon-512\.png"/);
 for (const label of ["Aaria's Magical Kitchen", 'Install App', 'Continue in Browser']) assert.ok(body.includes(label));
