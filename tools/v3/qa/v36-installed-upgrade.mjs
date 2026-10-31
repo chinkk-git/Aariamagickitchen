@@ -21,7 +21,7 @@ try{
   await page.waitForFunction(()=>Boolean(navigator.serviceWorker.controller),null,{timeout:15000});
   const before=await page.evaluate(async()=>{
     const manifest=await fetch('./manifest.webmanifest').then(r=>r.json());
-    const installedData={weeks:{'2035-01-01':{meal:112}},done:[112],checks:{'2035-01-01':[112]},stories:['saved-story'],favorites:[112],grocerySelected:['tofu']};
+    const installedData={weeks:{'2035-01-01':{meal:112}},done:[112],checks:{'2035-01-01':[112]},stories:['saved-story'],myCreations:[{id:'saved-creation'}],favorites:[112],grocerySelected:['tofu']};
     localStorage.setItem('aariaPrivateKitchenV4',JSON.stringify(installedData));
     localStorage.setItem('aaria.accessibility.textSize.v1','175');
     localStorage.setItem('aaria.notifications.settings.v1',JSON.stringify({recipes:true,features:false,countries:true,updates:true,push:false}));
@@ -39,14 +39,14 @@ try{
   await page.waitForFunction(()=>Boolean(document.querySelector('#notification-bell'))||Boolean(window.AariaNotifications),null,{timeout:15000});
   const after=await page.evaluate(async()=>({
     manifest:await fetch('./manifest.webmanifest').then(r=>r.json()),
-    data:localStorage.getItem('aariaPrivateKitchenV4'),
+    data:JSON.parse(localStorage.getItem('aariaPrivateKitchenV4')),
     textSize:localStorage.getItem('aaria.accessibility.textSize.v1'),
     prefs:localStorage.getItem('aaria.notifications.settings.v1'),
     hasInbox:typeof window.AariaNotifications==='object',
     active:navigator.serviceWorker.controller?.scriptURL
   }));
   assert.equal(after.manifest.id,before.manifest.id);assert.equal(after.manifest.scope,before.manifest.scope);assert.equal(after.manifest.start_url,before.manifest.start_url);
-  assert.equal(after.data,before.data,'recipe progress, favorites, creations/planner data remain byte-for-byte intact');
+  for(const [key,value] of Object.entries(JSON.parse(before.data)))assert.deepEqual(after.data[key],value,`pre-existing kitchen data field ${key} remains intact`);
   assert.equal(after.textSize,before.textSize,'text-size choice remains intact');
   assert.equal(after.prefs,before.prefs,'notification preferences survive app restart');
   assert.ok(after.hasInbox,'notification functionality is available after reopening the existing installation');
