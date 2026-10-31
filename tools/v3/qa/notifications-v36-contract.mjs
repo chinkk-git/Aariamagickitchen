@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 const client=await readFile(new URL('../../../js/notifications-v36.js',import.meta.url),'utf8');
 const pushClient=await readFile(new URL('../../../js/notifications-push-v36.js',import.meta.url),'utf8');
 const sw=await readFile(new URL('../../../sw.js',import.meta.url),'utf8');
+const manifest=JSON.parse(await readFile(new URL('../../../manifest.webmanifest',import.meta.url),'utf8'));
 const worker=await readFile(new URL('../../../notifications-worker/src/index.js',import.meta.url),'utf8');
 const html=await readFile(new URL('../../../index.html',import.meta.url),'utf8');
 const styles=await readFile(new URL('../../../notifications-v36.css',import.meta.url),'utf8');
@@ -22,6 +23,10 @@ for(const target of ['/notifications','/recipes/new/111,112,113,114,115,116','/s
 assert.ok(!client.includes('/v1/publish'),'publisher endpoint must not be in public client code');
 assert.ok(client.includes('Instagram')&&client.includes('WhatsApp')&&client.includes('TikTok'));
 assert.ok(sw.includes("addEventListener('push'")&&sw.includes('notificationclick')&&sw.includes('AARIA_NOTIFICATION_OPEN'));
+assert.ok(manifest.icons.some(icon=>icon.src==='./aaria-pwa-icon-192.png'&&icon.sizes==='192x192'),'official notification branding must match the canonical PWA icon in the manifest');
+assert.ok(sw.includes("icon:new URL('./aaria-pwa-icon-192.png',self.registration.scope).href"),'push notification uses the official Aaria app icon');
+assert.ok(sw.includes('"./aaria-pwa-icon-192.png"'),'the service worker cache keeps the official notification icon available offline');
+assert.ok(!sw.includes('badge:'),'do not use the full-colour PWA icon as a monochrome notification badge; no approved monochrome asset is present');
 assert.ok(sw.includes('./notifications-v36.css')&&sw.includes('./js/notifications-v36.js'));
 assert.ok(worker.includes('validConsentReceipt')&&worker.includes('CONSENT_SIGNING_SECRET'));
 assert.ok(worker.includes('PARENT_CONSENT_MODEL_APPROVED!==\'true\'')&&worker.includes('PARENT_CONSENT_MODEL_APPROVED===\'true\''),'Remote push and publishing must remain fail-closed until the guardian-consent model is approved');
