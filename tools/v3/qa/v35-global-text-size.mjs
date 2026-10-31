@@ -29,7 +29,7 @@ try{
  await page.locator('#languageSelect').selectOption('pt-BR');await page.getByText('Acessibilidade',{exact:true}).waitFor({state:'visible',timeout:4000});assert.ok((await page.locator('[data-aaria-text-size-panel]').innerText()).includes('Tamanho do texto'));
  await page.locator('#languageSelect').selectOption('en-GB');await page.getByText('Accessibility',{exact:true}).waitFor({state:'visible',timeout:4000});
  await check('critical screens and recipe detail at 200%; clipping at 175/200');
- await size(200);await nav('home');await text('#screen h1','Home',true);
+ await size(200);await nav('home');await text('#nav .tab[data-nav="home"]','Home navigation label',true);
  await nav('library');await text('#screen h1','Recipe library',true);
  await bounded('recipe route startup',()=>page.goto(base+'#aria/recipe/12/0',{waitUntil:'domcontentloaded',timeout:8000}),10000);await skipWelcome();
  await text('#screen .ref-title h1','Recipe title 200%',true);await text('#screen .ref-ingredients','Recipe ingredients 200%',true);await text('#screen .ref-tools','Recipe equipment 200%',true);await text('#screen .ref-step-grid','Recipe steps 200%',true);
