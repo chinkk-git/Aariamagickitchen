@@ -16,7 +16,7 @@ assert.match(head, /install-link-gate\.js/);
 assert.ok(head.includes('<title>Aaria\'s Magical Kitchen</title>'), 'Browser title must use the full official name');
 assert.ok(head.includes('<meta name="application-name" content="Aaria\'s Magical Kitchen">'));
 assert.ok(head.includes('<meta name="apple-mobile-web-app-title" content="Aaria\'s Magical Kitchen">'), 'iOS Home Screen name must use the full official name');
-assert.ok(appSource.includes('document.title="Aaria\\'s Magical Kitchen";'), 'Runtime browser title must retain the official app name in every locale');
+assert.ok(appSource.includes(`document.title="Aaria's Magical Kitchen";`), 'Runtime browser title must retain the official app name in every locale');
 assert.equal(manifest.name, officialName);
 assert.equal(manifest.short_name, officialName, 'Android PWA launch label must use the full official name');
 assert.match(head, /og:image" content="https:\/\/chinkk-git\.github\.io\/Aariamagickitchen\/aaria-pwa-icon-512\.png"/);
