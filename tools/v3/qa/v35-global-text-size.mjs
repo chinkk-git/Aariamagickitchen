@@ -63,7 +63,7 @@ try{
      }
    }
  }
- await page.locator('#languageSelect').selectOption('pt-BR');await page.getByText('Dica de segurança',{exact:false}).waitFor({state:'visible',timeout:4000});assert.equal((await page.locator('.ref-chef-tip span').innerText()).trim(),'🛡️ Dica de segurança');const ptTip=(await page.locator('.ref-chef-tip p').innerText()).trim();assert.equal(ptTip,(await page.locator('.ref-step-card.active .v32-step-safety').innerText()).replace(/^(Safety|Segurança):\s*/i,'').trim(),'PT-BR canonical safety preserved');
+ await page.locator('#languageSelect').selectOption('pt-BR');await page.locator('.ref-chef-tip span').waitFor({state:'visible',timeout:4000});assert.equal((await page.locator('.ref-chef-tip span').innerText()).trim(),'🛡️ Dica de segurança');const ptTip=(await page.locator('.ref-chef-tip p').innerText()).trim();assert.equal(ptTip,(await page.locator('.ref-step-card.active .v32-step-safety').innerText()).replace(/^(Safety|Segurança):\s*/i,'').trim(),'PT-BR canonical safety preserved');
  await check('recipe controls and safety copy verified across all responsive cases');
  assert.deepEqual(errors,[],'runtime errors '+errors.join(' | '));await check('PASS');
  console.log('PASS: five values and persistence; EN/PT; 116 recipe IDs; recipe step controls and canonical safety at 5 sizes × 4 phone/tablet orientations; navigation and existing critical screens.');
