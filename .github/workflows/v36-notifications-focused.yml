@@ -69,13 +69,6 @@ jobs:
           BASELINE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           test "${#BASELINE_SHA}" -eq 40
-      - name: Upgrade a pre-existing browser installation without reinstall or data clearing
-        env:
-          PLAYWRIGHT_MODULE: /tmp/aaria-notification-qa/node_modules/playwright
-          BASELINE_ROOT: /tmp/aaria-v36-production-baseline
-          LATEST_ROOT: ${{ github.workspace }}
-        run: node tools/v3/qa/v36-installed-upgrade.mjs
-
           git fetch --no-tags origin "$BASELINE_SHA"
           git worktree add --detach /tmp/aaria-v36-production-baseline "$BASELINE_SHA"
       - name: Upgrade a pre-existing browser installation without reinstall or data clearing
