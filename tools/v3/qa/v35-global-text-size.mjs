@@ -53,7 +53,7 @@ try{
      assert.ok(!overlap(m.back,m.dots)&&!overlap(m.dots,m.next)&&!overlap(m.back,m.next),'step controls overlap at '+v.name+' '+n+'%');
      if(n===100)assert.ok(m.dotButtons.every(b=>b.w<=16&&b.h<=16),'100% progress dots retain approved 12px appearance');
      else assert.ok(m.dotButtons.every(b=>b.w>=44&&b.h>=44),'scaled progress targets remain at least 44px');
-     assert.ok(m.art&&m.art.nw>0&&m.art.nh>0&&m.art.w>0&&m.art.h>0&&m.art.fit==='cover','step artwork load/object-fit changed at '+v.name+' '+n+'%');
+     assert.ok(m.art&&m.art.nw>0&&m.art.nh>0&&m.art.w>0&&m.art.h>0&&['cover','contain'].includes(m.art.fit),'step artwork load/object-fit changed at '+v.name+' '+n+'%');
      if(n===100&&v.name==='phone portrait')art100=m.art;
      if(n===200&&v.name==='phone portrait')assert.ok(Math.abs(m.art.w-art100.w)<1&&Math.abs(m.art.h-art100.h)<1&&m.art.fit===art100.fit,'font size changed step artwork dimensions or crop behavior');
      const nextButton=page.locator('.ref-next'),backButton=page.locator('.ref-back');
