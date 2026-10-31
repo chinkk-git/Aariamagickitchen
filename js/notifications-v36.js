@@ -130,6 +130,20 @@
   let pendingStartupRoute=null;
   if(typeof window.goto==='function'&&!window.__aariaNotificationGotoPatched){const previous=window.goto;window.goto=function(route,...args){if(route==='notifications'||route==='whats-new')return openNotice(route==='whats-new'?'/whats-new':'/notifications');const result=previous.call(this,route,...args);if(route==='home'&&pendingStartupRoute){setTimeout(()=>{const pending=pendingStartupRoute;pendingStartupRoute=null;if(pending)go(pending);},180);}return result};window.__aariaNotificationGotoPatched=true;}
   const screen=document.querySelector('#screen');if(screen&&'MutationObserver'in window)new MutationObserver(()=>{const h=screen.querySelector('h1,h2');if(!h||screen.dataset.aariaNotificationScreen)return;const heading=h.textContent.trim();if(!/^(Settings|Configurações)$/i.test(heading)||screen.querySelector('[data-open-notification-settings]'))return;const link=document.createElement('button');link.type='button';link.textContent=locale()==='pt-BR'?'Notificações':'Notifications';link.dataset.openNotificationSettings='true';link.addEventListener('click',()=>openNotice('/settings/notifications'));h.insertAdjacentElement('afterend',link);}).observe(screen,{childList:true,subtree:true});
+  window.addEventListener('aaria:open-text-size',event=>{
+    if(typeof window.goto!=='function')return;
+    event.preventDefault();
+    pendingStartupRoute=null;
+    history.replaceState(null,'',BASE.pathname);
+    const screen=document.querySelector('#screen');if(screen)delete screen.dataset.aariaNotificationScreen;
+    window.goto('settings');
+    setTimeout(()=>{
+      const panel=document.querySelector('[data-aaria-text-size-panel]');
+      if(!panel)return;
+      panel.scrollIntoView({block:'center',behavior:'auto'});
+      panel.querySelector('[aria-pressed="true"]')?.focus({preventScroll:true});
+    },250);
+  });
   navigator.serviceWorker?.addEventListener('message',event=>{if(event.data?.type==='AARIA_NOTIFICATION_OPEN'&&safeRoute(event.data.route))openNotice(event.data.route);if(event.data?.type==='AARIA_NOTIFICATION_RECEIVED')renderInbox().catch(()=>{});});
   window.addEventListener('DOMContentLoaded',()=>{updateBadge().catch(()=>{});const route=new URL(location.href).searchParams.get('notice');if(route&&safeRoute(route)){pendingStartupRoute=route;setTimeout(()=>{if(pendingStartupRoute)go(pendingStartupRoute);},1400);}});
   document.querySelector('#languageSelect')?.addEventListener('change',()=>{if(document.querySelector('#screen')?.dataset.aariaNotificationScreen)go(new URL(location.href).searchParams.get('notice')||'/notifications');});
