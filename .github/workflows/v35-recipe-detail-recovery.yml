@@ -28,5 +28,5 @@ jobs:
         run: node /tmp/aaria-recipe-qa/node_modules/playwright/cli.js install --with-deps chromium
       - name: Validate recipe detail routes and controls
         env:
-          PLAYWRIGHT_MODULE: /tmp/aaria-recipe-qa/node_modules
+          PLAYWRIGHT_MODULE: /tmp/aaria-recipe-qa/node_modules/playwright
         run: node tools/v3/qa/v35-recipe-detail-recovery.mjs
