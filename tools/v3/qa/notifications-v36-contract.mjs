@@ -7,6 +7,7 @@ const worker=await readFile(new URL('../../../notifications-worker/src/index.js'
 const html=await readFile(new URL('../../../index.html',import.meta.url),'utf8');
 const deliveryMigration=await readFile(new URL('../../../notifications-worker/migrations/0002_resumable_delivery.sql',import.meta.url),'utf8');
 const testMigration=await readFile(new URL('../../../notifications-worker/migrations/0003_guarded_test_notifications.sql',import.meta.url),'utf8');
+const deviceMigration=await readFile(new URL('../../../notifications-worker/migrations/0004_guardian_devices_first_notification.sql',import.meta.url),'utf8');
 const wrangler=await readFile(new URL('../../../notifications-worker/wrangler.toml',import.meta.url),'utf8');
 assert.ok(client.includes('PushManager')&&client.includes('safeRoute')&&client.includes('consentNeeded'));
 assert.ok(client.includes('aaria:open-text-size')&&client.includes("window.goto('settings')"),'Text Size notification route must open Settings after Font Size integration');
@@ -33,9 +34,17 @@ assert.ok(worker.includes('announcement_deliveries')&&worker.includes('endpointH
 assert.ok(worker.includes("batch.queue==='aaria-notification-dead-letter'")&&worker.includes('handleDeadLetter')&&worker.includes('fanout_errors'),'Dead-letter delivery and fanout failures must reach terminal delivery reporting');
 assert.ok(worker.includes('statusMatch=url.pathname.match')&&worker.includes('fanout_complete'),'Authenticated delivery status must expose final queue results');
 assert.ok(worker.includes("url.pathname==='/v1/test'")&&worker.includes('testCooldownMs')&&worker.includes('consent_receipt_hash')&&worker.includes('last_test_at')&&worker.includes('validConsentReceipt(b.consentReceipt,env,b.locale)'),'Test delivery must require a current signed guardian receipt and enforce a per-subscription cooldown');
+assert.ok(worker.includes('guardianVerified!==true')&&worker.includes('guardianId')&&worker.includes('deviceManagement===true'),'subscription and device management require a verified guardian identity and scoped consent');
+assert.ok(worker.includes("url.pathname==='/v1/guardian/devices'")&&worker.includes("url.pathname==='/v1/guardian/device/revoke'")&&worker.includes("url.pathname==='/v1/guardian/device/first-magical'"),'guardian device list, revocation and one-device first notification endpoints are present');
+assert.ok(worker.includes('notificationId=\'aaria-first-vietnam-tofu-pho-112-v1\'')&&worker.includes("'/recipe/112'"),'the first magical notification is fixed and deduplicated for recipe 112');
+assert.ok(worker.includes('✨ Aaria, a magical surprise for you!')&&worker.includes('Your special Tofu & Vegetable Phở recipe from Vietnam is ready! Tap to discover your new cooking adventure! 🌟'));
+assert.ok(worker.includes('✨ Aaria, uma surpresa mágica para você!')&&worker.includes('Sua receita especial de Phở de Tofu e Legumes do Vietnã está pronta!'));
+assert.ok(pushClient.includes('requestGuardianManagementReceipt')&&pushClient.includes("api('/v1/guardian/device/first-magical'")&&pushClient.includes('deviceId:row.device_id'),'the guardian dashboard requires a management receipt and selects one registered device');
+assert.ok(pushClient.includes('/v1/device/heartbeat'),'last-contact time is updated only by an active device subscription heartbeat');
+assert.ok(deviceMigration.includes('CREATE TABLE guardian_devices')&&deviceMigration.includes('CREATE TABLE first_magical_notification')&&deviceMigration.includes('navigation_result'));
 assert.ok(testMigration.includes('ALTER TABLE subscriptions ADD COLUMN last_test_at INTEGER'));
 assert.ok(deliveryMigration.includes('UNIQUE(announcement_id,endpoint_hash)')&&deliveryMigration.includes('error_code')&&deliveryMigration.includes('consent_expires_at')&&deliveryMigration.includes('subscriptions_active_expiry_endpoint_idx'));
 assert.ok(wrangler.includes('binding = "DELIVERY_QUEUE"')&&wrangler.includes('max_batch_size = 20')&&wrangler.includes('dead_letter_queue')&&wrangler.includes('queue = "aaria-notification-dead-letter"')&&wrangler.includes('crons = ["15 * * * *"]')&&wrangler.includes('PARENT_CONSENT_MODEL_APPROVED = "false"'));
 assert.ok(html.includes('notification-bell')&&html.includes('notifications-v36.js')&&html.includes('accessibility-text-size.js'));
-assert.ok(sw.includes('./aaria-accessibility-text-size.css')&&sw.includes('./js/accessibility-text-size.js')&&sw.includes("r3'"),'Service worker upgrade must cache the merged Text Size implementation');
+assert.ok(sw.includes('./aaria-accessibility-text-size.css')&&sw.includes('./js/accessibility-text-size.js')&&sw.includes("r2'"),'Service worker upgrade must cache the merged Text Size implementation under the installed adapter cache key');
 console.log('Notification support checks: safe routes, no automatic permission prompt, guardian receipt, server-only publisher, service-worker routing, and app entry point.');

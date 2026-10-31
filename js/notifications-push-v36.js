@@ -2,6 +2,7 @@
   'use strict';
 
   const SETTINGS_KEY = 'aaria.notifications.settings.v1';
+  const DEVICE_ID_KEY = 'aaria.notifications.device-id.v1';
   const locale = () => document.documentElement.lang === 'pt-BR' || document.querySelector('#languageSelect')?.value === 'pt-BR' ? 'pt-BR' : 'en-GB';
   const copy = {
     'en-GB': {
@@ -23,7 +24,7 @@
       failed:'Notifications could not be updated. Check your connection and try again.',
       retry:'Retry server removal',
       preferencesChanged:'Notification preferences changed. Push is paused until a parent or guardian reviews the updated choices.',
-      test:'Send test notification',testDestination:'Test destination',testInbox:'Notifications',testRecipes:'New recipes 111–116',testTextSize:'Accessibility · Text Size',testWhatsNew:'What’s New',testSent:'A test notification was sent to this device.',testCooldown:'Please wait before sending another test notification.'
+      test:'Send test notification',testDestination:'Test destination',testInbox:'Notifications',testRecipes:'New recipes 111–116',testTextSize:'Accessibility · Text Size',testWhatsNew:'What’s New',testSent:'A test notification was sent to this device.',testCooldown:'Please wait before sending another test notification.',deviceName:'Guardian-assigned device name',deviceNameHint:'Use a short label; do not include a child’s name.',deviceNameRequired:'Enter a short guardian-assigned device name before enabling notifications.',platform:'Platform',platformAndroid:'Android',platformIos:'iPhone or iPad',platformDesktop:'Desktop browser',platformOther:'Other',manageDevices:'Guardian device management',loadDevices:'Load authorized devices',firstMagical:'Send first magical notification to this device',recordResult:'Record observed result',opened112:'Received; recipe 112 opened',fallbackVnm:'Received; Vietnam list opened',notOpened:'Not received or did not open',deviceSaved:'Device registered with guardian consent.'
     },
     'pt-BR': {
       statusOff:'O push remoto fica desativado até que o serviço aprovado de consentimento dos responsáveis e o Worker sejam configurados.',
@@ -44,7 +45,7 @@
       failed:'Não foi possível atualizar as notificações. Verifique a conexão e tente novamente.',
       retry:'Tentar remover do servidor novamente',
       preferencesChanged:'As preferências mudaram. O push foi pausado até que um responsável revise as escolhas atualizadas.',
-      test:'Enviar notificação de teste',testDestination:'Destino do teste',testInbox:'Notificações',testRecipes:'Novas receitas 111–116',testTextSize:'Acessibilidade · Tamanho do texto',testWhatsNew:'Novidades',testSent:'Uma notificação de teste foi enviada para este dispositivo.',testCooldown:'Aguarde antes de enviar outra notificação de teste.'
+      test:'Enviar notificação de teste',testDestination:'Destino do teste',testInbox:'Notificações',testRecipes:'Novas receitas 111–116',testTextSize:'Acessibilidade · Tamanho do texto',testWhatsNew:'Novidades',testSent:'Uma notificação de teste foi enviada para este dispositivo.',testCooldown:'Aguarde antes de enviar outra notificação de teste.',deviceName:'Nome do dispositivo definido pelo responsável',deviceNameHint:'Use um nome curto; não inclua o nome da criança.',deviceNameRequired:'Informe um nome curto para o dispositivo antes de ativar as notificações.',platform:'Plataforma',platformAndroid:'Android',platformIos:'iPhone ou iPad',platformDesktop:'Navegador de computador',platformOther:'Outra',manageDevices:'Gerenciamento de dispositivos pelo responsável',loadDevices:'Carregar dispositivos autorizados',firstMagical:'Enviar a primeira notificação mágica para este dispositivo',recordResult:'Registrar resultado observado',opened112:'Recebida; receita 112 aberta',fallbackVnm:'Recebida; lista do Vietnã aberta',notOpened:'Não recebida ou não aberta',deviceSaved:'Dispositivo registrado com consentimento do responsável.'
     }
   };
   const t = key => copy[locale()][key] || copy['en-GB'][key];
@@ -105,10 +106,24 @@
     const prefs=settings();
     return ['recipes','features','countries','updates'].filter(key=>prefs[key]===true);
   }
+  function localDeviceId(){
+    try{let id=localStorage.getItem(DEVICE_ID_KEY);if(!/^[A-Za-z0-9_-]{20,80}$/.test(id||'')){id=crypto.randomUUID().replace(/-/g,'');localStorage.setItem(DEVICE_ID_KEY,id);}return id;}catch{return crypto.randomUUID().replace(/-/g,'');}
+  }
+  function deviceInfo(section){
+    const deviceName=section.querySelector('[data-device-name]')?.value.trim()||'';
+    const ua=navigator.userAgent;
+    const detected=/Android/i.test(ua)?'android':/iPhone|iPad|iPod/i.test(ua)?'ios':/Win|Mac|Linux/i.test(ua)?'desktop':'other';
+    const platform=section.querySelector('[data-device-platform]')?.value||detected;
+    return {deviceId:localDeviceId(),deviceName,platform,permissionStatus:Notification.permission};
+  }
   async function currentSubscription() {
     if(!supported())return null;
     const reg=await navigator.serviceWorker.ready;
     return reg.pushManager.getSubscription();
+  }
+  async function heartbeat(){
+    if(!runtime()||!settings().push)return;
+    try{const sub=await currentSubscription();if(sub)await api('/v1/device/heartbeat',{subscription:sub.toJSON(),permissionStatus:Notification.permission});}catch{}
   }
   async function render(section) {
     if(!section||section.dataset.pushLifecycleMounted==='true')return;
@@ -139,8 +154,16 @@
     testDestination.append(select);
     const test=document.createElement('button');
     test.type='button';test.dataset.pushLifecycle='test';test.textContent=t('test');test.hidden=true;test.disabled=true;
+    const deviceNameLabel=document.createElement('label');deviceNameLabel.textContent=t('deviceName');
+    const deviceName=document.createElement('input');deviceName.type='text';deviceName.maxLength=32;deviceName.required=true;deviceName.autocomplete='off';deviceName.dataset.deviceName='true';deviceName.value=localStorage.getItem(DEVICE_ID_KEY+'-name')||'';deviceNameLabel.append(deviceName);const deviceHint=document.createElement('small');deviceHint.textContent=t('deviceNameHint');deviceNameLabel.append(deviceHint);
+    const platformLabel=document.createElement('label');platformLabel.textContent=t('platform');
+    const platform=document.createElement('select');platform.dataset.devicePlatform='true';
+    const ua=navigator.userAgent;const detected=/Android/i.test(ua)?'android':/iPhone|iPad|iPod/i.test(ua)?'ios':/Win|Mac|Linux/i.test(ua)?'desktop':'other';
+    for(const [value,key] of [['android','platformAndroid'],['ios','platformIos'],['desktop','platformDesktop'],['other','platformOther']]){const option=document.createElement('option');option.value=value;option.textContent=t(key);platform.append(option);}platform.value=detected;platformLabel.append(platform);
+    const manage=document.createElement('button');manage.type='button';manage.textContent=t('manageDevices');manage.dataset.pushLifecycle='manage';manage.hidden=true;
+    const dashboard=document.createElement('div');dashboard.dataset.guardianDevices='true';dashboard.hidden=true;
     actions.append(consent,enable,disable,retry,testDestination,test);
-    section.append(status,actions);
+    section.append(status,deviceNameLabel,platformLabel,actions,manage,dashboard);
     await refresh(section);
   }
   async function refresh(section) {
@@ -152,6 +175,7 @@
     const retry=section.querySelector('[data-push-lifecycle="retry"]');
     const test=section.querySelector('[data-push-lifecycle="test"]');
     const testDestination=section.querySelector('[data-push-test-route]');
+    const manage=section.querySelector('[data-push-lifecycle="manage"]');
     const configured=runtime();
     if(!supported())status.textContent=t('statusUnsupported');
     else if(inApp())status.textContent=t('statusInApp');
@@ -160,12 +184,13 @@
     else if(settings().renewRequired||settings().push)status.textContent=t('refresh');
     else status.textContent=t('statusNeedConsent');
     consent.disabled=!configured||!supported()||inApp()||iosNeedsInstall()||busy;
-    enable.disabled=!configured||!verifiedReceipt||Date.now()-verifiedAt>5*60*1000||busy||Notification.permission==='denied';
+    enable.disabled=!configured||!supported()||!verifiedReceipt||Date.now()-verifiedAt>5*60*1000||busy||Notification.permission==='denied';
     disable.disabled=busy;
     retry.hidden=!pendingRemovalEndpoint;
     retry.disabled=busy||!configured;
     testDestination.hidden=!configured;
     test.hidden=!configured;
+    manage.hidden=!configured||typeof runtime()?.bridge.requestGuardianManagementReceipt!=='function';
     test.disabled=true;
     try {
       const sub=await currentSubscription();
@@ -199,15 +224,18 @@
     if(!verifiedReceipt||Date.now()-verifiedAt>5*60*1000)throw new Error('consent_expired');
     const selected=categories();
     if(!selected.length)throw new Error('no_categories');
+    const device=deviceInfo(section);
+    if(!device.deviceName||device.deviceName.length>32)throw new Error('device_name_required');
     if(Notification.permission==='denied')throw new Error('permission_denied');
     const permission=Notification.permission==='granted'?'granted':await Notification.requestPermission();
     if(permission!=='granted')throw new Error('permission_not_granted');
     const reg=await navigator.serviceWorker.ready;
+    localStorage.setItem(DEVICE_ID_KEY+'-name',device.deviceName);
     let sub=await reg.pushManager.getSubscription();
     const created=!sub;
     if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:decodeVapid(cachedVapidKey)});
     try {
-      await api('/v1/subscribe',{subscription:sub.toJSON(),locale:locale(),categories:selected,consentReceipt:verifiedReceipt});
+      await api('/v1/subscribe',{subscription:sub.toJSON(),locale:locale(),categories:selected,consentReceipt:verifiedReceipt,device});
     } catch(error) {
       if(created)await sub.unsubscribe().catch(()=>{});
       throw error;
@@ -226,11 +254,35 @@
     if(!categories().length)throw new Error('no_categories');
     await verifyConsent(section);
     if(!verifiedReceipt||Date.now()-verifiedAt>5*60*1000)throw new Error('consent_expired');
-    await api('/v1/subscribe',{subscription:sub.toJSON(),locale:locale(),categories:categories(),consentReceipt:verifiedReceipt});
+    const device=deviceInfo(section);if(!device.deviceName)throw new Error('device_name_required');
+    await api('/v1/subscribe',{subscription:sub.toJSON(),locale:locale(),categories:categories(),consentReceipt:verifiedReceipt,device});
     await api('/v1/test',{endpoint:sub.endpoint,locale:locale(),consentReceipt:verifiedReceipt,route});
     verifiedReceipt=null;verifiedAt=0;cachedVapidKey=null;
     const status=section.querySelector('#aaria-push-status');if(status)status.textContent=t('testSent');
     await refresh(section);
+  }
+  async function managementReceipt(){
+    const bridge=runtime()?.bridge;if(!bridge||typeof bridge.requestGuardianManagementReceipt!=='function')throw new Error('guardian_management_unavailable');
+    const result=await bridge.requestGuardianManagementReceipt({locale:locale(),purpose:'device-management'});
+    const consentReceipt=typeof result==='string'?result:result?.consentReceipt;
+    if(typeof consentReceipt!=='string'||consentReceipt.length>4096)throw new Error('consent_unavailable');
+    return consentReceipt;
+  }
+  async function loadDevices(section){
+    const consentReceipt=await managementReceipt();
+    const data=await api('/v1/guardian/devices',{locale:locale(),consentReceipt});
+    const dashboard=section.querySelector('[data-guardian-devices]');dashboard.replaceChildren();dashboard.hidden=false;
+    const heading=document.createElement('h3');heading.textContent=t('manageDevices');dashboard.append(heading);
+    for(const row of data.devices||[]){
+      const card=document.createElement('article');card.className='an-device';
+      const title=document.createElement('h4');title.textContent=row.device_name+' · '+row.platform;card.append(title);
+      const details=document.createElement('p');details.textContent=`${row.permission_status}; ${row.subscription_status}; consent expires ${new Date(row.consent_expires_at).toLocaleDateString(locale())}; last contact ${new Date(row.last_contact_at).toLocaleString(locale())}`;card.append(details);
+      const first=document.createElement('button');first.type='button';first.textContent=t('firstMagical');first.addEventListener('click',async()=>{const receipt=await managementReceipt();await api('/v1/guardian/device/first-magical',{deviceId:row.device_id,locale:locale(),consentReceipt:receipt});first.disabled=true;first.textContent=t('testSent');});card.append(first);
+      const resultLabel=document.createElement('label');resultLabel.textContent=t('recordResult');const result=document.createElement('select');
+      for(const [value,key] of [['opened_recipe_112','opened112'],['fallback_vietnam_list','fallbackVnm'],['did_not_open','notOpened']]){const option=document.createElement('option');option.value=value;option.textContent=t(key);result.append(option);}resultLabel.append(result);card.append(resultLabel);
+      const record=document.createElement('button');record.type='button';record.textContent=t('recordResult');record.addEventListener('click',async()=>{const receipt=await managementReceipt();await api('/v1/guardian/device/first-magical-result',{deviceId:row.device_id,locale:locale(),result:result.value,consentReceipt:receipt});record.disabled=true;});card.append(record);
+      const revoke=document.createElement('button');revoke.type='button';revoke.textContent=t('disable');revoke.addEventListener('click',async()=>{const receipt=await managementReceipt();await api('/v1/guardian/device/revoke',{deviceId:row.device_id,locale:locale(),consentReceipt:receipt});card.remove();});card.append(revoke);dashboard.append(card);
+    }
   }
   async function unsubscribe(section) {
     let sub=null;
@@ -262,7 +314,7 @@
     await refresh(section);
   }
   function showError(section,error) {
-    const key=error?.message==='permission_denied'?'denied':error?.message==='no_categories'?'noCategories':error?.message==='test_rate_limited'?'testCooldown':'failed';
+    const key=error?.message==='permission_denied'?'denied':error?.message==='no_categories'?'noCategories':error?.message==='test_rate_limited'?'testCooldown':error?.message==='device_name_required'?'deviceNameRequired':'failed';
     const status=section.querySelector('#aaria-push-status');if(status)status.textContent=t(key);
     refresh(section).catch(()=>{});
   }
@@ -280,6 +332,7 @@
       else if(button.dataset.pushLifecycle==='disable')await unsubscribe(section);
       else if(button.dataset.pushLifecycle==='retry')await retryRemoval(section);
       else if(button.dataset.pushLifecycle==='test')await sendTest(section);
+      else if(button.dataset.pushLifecycle==='manage')await loadDevices(section);
     } catch(error) { showError(section,error); }
     finally { busy=false;await refresh(section); }
   });
@@ -313,7 +366,8 @@
   if(screen&&'MutationObserver'in window) new MutationObserver(()=>{
     const section=screen.querySelector('.an-push');if(section)render(section).catch(()=>{});
   }).observe(screen,{childList:true,subtree:true});
-  document.addEventListener('DOMContentLoaded',()=>{const section=document.querySelector('#screen .an-push');if(section)render(section).catch(()=>{});});
+  document.addEventListener('DOMContentLoaded',()=>{const section=document.querySelector('#screen .an-push');if(section)render(section).catch(()=>{});heartbeat();});
+  window.addEventListener('online',heartbeat);
   navigator.serviceWorker?.addEventListener('message',event=>{
     if(event.data?.type!=='AARIA_PUSH_SUBSCRIPTION_REFRESH_REQUIRED')return;
     const prefs=settings();prefs.renewRequired=true;prefs.push=false;saveSettings(prefs);

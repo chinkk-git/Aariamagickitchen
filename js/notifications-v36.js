@@ -97,8 +97,18 @@
       showPage('<h1>'+title+'</h1><p>'+ids.length+' · '+(locale()==='pt-BR'?'receitas recém-publicadas':'newly published recipes')+'</p>'+(cards||'<p>'+t('noRoute')+'</p>')+button(t('back'),'back','class=\"an-back\"'));return;
     }
     if(safe.startsWith('/recipe/')){
+      const id=Number(safe.split('/')[2]);
+      const catalog=typeof RECIPES!=='undefined'?RECIPES:[];
+      if(!Number.isSafeInteger(id)||!catalog.some(recipe=>Number(recipe.id)===id)){
+        if(id===112){go('/world/VNM');return;}
+        showPage('<p role="status">'+t('noRoute')+'</p>');return;
+      }
       if(typeof window.goto==='function')window.goto('library');
-      setTimeout(()=>{if(safe.startsWith('/recipe/')&&typeof window.openRecipe==='function')window.openRecipe(Number(safe.split('/')[2]));},150);
+      setTimeout(()=>{
+        if(!safe.startsWith('/recipe/')||typeof window.openRecipe!=='function'){if(id===112)go('/world/VNM');return;}
+        try{window.openRecipe(id);}catch{if(id===112)go('/world/VNM');return;}
+        if(id===112)setTimeout(()=>{if(location.hash!=='#aria/recipe/112/0'&&location.hash!=='#aria/recipe/112/1'&&!location.hash.startsWith('#aria/recipe/112/'))go('/world/VNM');},250);
+      },150);
       return;
     }
     if(safe.startsWith('/world/')){
