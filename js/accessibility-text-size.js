@@ -96,7 +96,7 @@
   function installSettingsPanel() {
     const screen = document.querySelector('#screen');
     const page = screen?.querySelector('.home-subpage');
-    if (!page || page.querySelector('[data-aaria-text-size-panel]')) return;
+    if (!page) return;\n    const previous = page.querySelector('[data-aaria-text-size-panel]');\n    const pt = localeIsPortuguese();\n    if (previous && previous.dataset.aariaLocale === (pt ? 'pt-BR' : 'en-GB')) return;\n    previous?.remove();
     const heading = page.querySelector('h1');
     const headingText = (heading?.textContent || '').toLowerCase();
     if (!headingText.includes('settings') && !headingText.includes('configura')) return;
@@ -134,7 +134,7 @@
     applyScale(Math.round(scale * 100), false);
   }
 
-  document.addEventListener('click', event => {
+  document.addEventListener('change', event => {\n    if (event.target?.id === 'languageSelect') installSettingsPanel();\n  });\n\n  document.addEventListener('click', event => {
     const option = event.target.closest?.('[data-aaria-text-size-option]');
     if (option) {
       applyScale(Number(option.dataset.aariaTextSizeOption), true);
