@@ -9,7 +9,7 @@ PARENT_CONSENT_MODEL_APPROVED = "false"
 [[d1_databases]]
 binding = "DB"
 database_name = "aaria-notifications"
-database_id = "CONFIGURE_AFTER_OWNER_CREATES_FREE_CLOUDFLARE_RESOURCES"
+database_id = "a6e15229-e5e9-496f-be51-9697f556c095"
 migrations_dir = "migrations"
 
 [[queues.producers]]
