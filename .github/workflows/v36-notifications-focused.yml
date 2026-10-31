@@ -1,0 +1,79 @@
+name: V3.6 notifications focused contract checks
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/v36-notification-publish.yml"
+      - "js/notifications-v36.js"
+      - "js/notifications-push-v36.js"
+      - "notifications/**"
+      - "notifications-worker/**"
+      - "sw.js"
+      - "index.html"
+      - "tools/v3/qa/notifications-v36-contract.mjs"
+      - "tools/v3/qa/notifications-worker-validation.mjs"
+      - "tools/v3/qa/notifications-release-diff.mjs"
+      - ".github/workflows/v36-notifications-focused.yml"
+      - "tools/v3/qa/v36-notification-text-size-integration.mjs"
+      - "tools/v3/qa/notifications-worker-consent-lifecycle.mjs"
+      - "tools/v3/qa/web-push-test-loader.mjs"
+      - "tools/v3/qa/register-web-push-loader.mjs"
+      - "tools/v3/qa/v36-zero-reinstall-contract.mjs"
+      - "tools/v3/qa/v36-installed-upgrade.mjs"
+      - "browser-adapters.js"
+      - "manifest.webmanifest"
+permissions:
+  contents: read
+jobs:
+  notification-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check notification modules parse
+        run: |
+          node --check js/notifications-v36.js
+          node --check js/notifications-push-v36.js
+          node --check sw.js
+          node --check notifications-worker/src/index.js
+          node --check notifications-worker/src/validation.js
+          node --check notifications/generate-announcements.mjs
+          node --check js/accessibility-text-size.js
+          node --check tools/v3/qa/v36-notification-text-size-integration.mjs
+          node --check tools/v3/qa/notifications-worker-consent-lifecycle.mjs
+          node --check tools/v3/qa/web-push-test-loader.mjs
+          node --check tools/v3/qa/register-web-push-loader.mjs
+          node --check tools/v3/qa/v36-zero-reinstall-contract.mjs
+          node --check tools/v3/qa/v36-installed-upgrade.mjs
+      - name: Validate safety and route contracts
+        run: |
+          node tools/v3/qa/notifications-v36-contract.mjs
+          node tools/v3/qa/notifications-worker-validation.mjs
+          node tools/v3/qa/notifications-release-diff.mjs
+          node tools/v3/qa/v36-zero-reinstall-contract.mjs
+          node --import=./tools/v3/qa/register-web-push-loader.mjs tools/v3/qa/notifications-worker-consent-lifecycle.mjs
+      - name: Install isolated Playwright dependency
+        run: npm install --prefix /tmp/aaria-notification-qa playwright
+      - name: Install Chromium
+        run: node /tmp/aaria-notification-qa/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Validate Text Size notification deep link at all five sizes
+        env:
+          PLAYWRIGHT_MODULE: /tmp/aaria-notification-qa/node_modules/playwright
+        run: node tools/v3/qa/v36-notification-text-size-integration.mjs
+      - name: Check out the approved production baseline for zero-reinstall upgrade simulation
+        env:
+          BASELINE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          test "${#BASELINE_SHA}" -eq 40
+          git fetch --no-tags origin "$BASELINE_SHA"
+          git worktree add --detach /tmp/aaria-v36-production-baseline "$BASELINE_SHA"
+      - name: Upgrade a pre-existing browser installation without reinstall or data clearing
+        env:
+          PLAYWRIGHT_MODULE: /tmp/aaria-notification-qa/node_modules/playwright
+          BASELINE_ROOT: /tmp/aaria-v36-production-baseline
+          LATEST_ROOT: ${{ github.workspace }}
+        run: node tools/v3/qa/v36-installed-upgrade.mjs

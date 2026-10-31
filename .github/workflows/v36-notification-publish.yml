@@ -1,0 +1,78 @@
+name: V3.6 production notification publisher
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+  deployments: read
+
+jobs:
+  announce:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment_status.target_url != null &&
+      github.event.deployment.environment == 'github-pages' &&
+      startsWith(github.event.deployment_status.target_url, 'https://chinkk-git.github.io/Aariamagickitchen')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+          persist-credentials: false
+      - name: Compare this deployed manifest with the previous successful Pages deployment and publish eligible announcements
+        uses: actions/github-script@v7
+        env:
+          WORKER_URL: ${{ vars.AARIA_NOTIFICATION_WORKER_URL }}
+          PARENT_CONSENT_APPROVED: ${{ vars.AARIA_PARENT_CONSENT_MODEL_APPROVED }}
+          WORKER_TOKEN: ${{ secrets.AARIA_NOTIFICATION_PUBLISH_TOKEN }}
+        with:
+          script: |
+            const sha = context.payload.deployment.sha;
+            if (!/^[0-9a-f]{40}$/.test(sha)) throw new Error('Invalid deployment SHA');
+            const repo = context.repo;
+            const main = await github.rest.repos.getBranch({...repo, branch:'main'});
+            if (main.data.commit.sha !== sha) { core.notice('Deployment SHA is no longer current main; waiting for the latest deployment event.'); return; }
+            const deployments = await github.rest.repos.listDeployments({
+              ...repo, environment: 'github-pages', per_page: 100
+            });
+            let previousSha = null;
+            for (const d of deployments.data) {
+              if (d.sha === sha) continue;
+              const statuses = await github.rest.repos.listDeploymentStatuses({
+                ...repo, deployment_id: d.id, per_page: 1
+              });
+              if (statuses.data[0]?.state === 'success') { previousSha = d.sha; break; }
+            }
+            async function manifest(ref) {
+              try {
+                const r = await github.rest.repos.getContent({...repo, path:'manifest.json', ref});
+                return JSON.parse(Buffer.from(r.data.content, 'base64').toString('utf8'));
+              } catch (e) {
+                core.warning('No readable release manifest at '+ref+': '+e.message);
+                return {};
+              }
+            }
+            if (!previousSha) { core.warning('No earlier successful GitHub Pages deployment is available as a comparison baseline; no announcement sent.'); return; }
+            const current = await manifest(sha);
+            const previous = await manifest(previousSha);
+            const {generateAnnouncements} = await import(process.env.GITHUB_WORKSPACE + '/notifications/generate-announcements.mjs');
+            const items = generateAnnouncements(previous, current, sha);
+            if (!items.length) { core.notice('No new announcement-worthy production content.'); return; }
+            if (process.env.PARENT_CONSENT_APPROVED !== 'true' || !process.env.WORKER_URL || !process.env.WORKER_TOKEN) {
+              core.warning('Announcements drafted but not delivered: parent-consent approval or Worker credentials are not configured.');
+              core.summary.addHeading('V3.6 announcements held').addList(items.map(x => x.id)).addRaw('No push was sent.').write();
+              return;
+            }
+            const base = process.env.WORKER_URL.replace(/\/$/,'');
+            for (const item of items) {
+              const response = await fetch(base + '/v1/publish', {
+                method:'POST',
+                headers:{'Authorization':'Bearer '+process.env.WORKER_TOKEN,'Content-Type':'application/json'},
+                body:JSON.stringify({...item,confirmedProduction:true,approvedGuardianConsentModel:true})
+              });
+              if (response.status === 409) { core.notice('Duplicate announcement already recorded: '+item.id); continue; }
+              if (!response.ok) throw new Error('Worker publish failed for '+item.id+' with HTTP '+response.status);
+              const result = await response.json();
+              core.notice(item.id+': state='+result.status+'; queue acceptance='+Boolean(result.id)+'. Final accepted/failed/removed counts are available from the authenticated Worker status endpoint after queue processing completes.');
+            }
