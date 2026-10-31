@@ -1,0 +1,32 @@
+name: V3.5 recipe detail recovery focused validation
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "js/03-aaria-v3-layer.c2c6fc71d8ad.js"
+      - "tools/v3/qa/v35-recipe-detail-recovery.mjs"
+      - ".github/workflows/v35-recipe-detail-recovery.yml"
+  push:
+    branches: [fix/p0-recipe-detail-render-20261031]
+permissions:
+  contents: read
+jobs:
+  recipe-detail-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install isolated Playwright dependency
+        run: npm install --prefix /tmp/aaria-recipe-qa playwright
+      - name: Install Chromium
+        run: node /tmp/aaria-recipe-qa/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Validate recipe detail routes and controls
+        env:
+          PLAYWRIGHT_MODULE: /tmp/aaria-recipe-qa/node_modules/playwright
+        run: node tools/v3/qa/v35-recipe-detail-recovery.mjs

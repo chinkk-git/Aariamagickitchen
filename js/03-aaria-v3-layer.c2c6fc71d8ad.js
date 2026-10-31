@@ -1050,7 +1050,7 @@ settingsPage=function v3Settings(){
 const v3OriginalCookSection=cookShareSection;
 cookShareSection=function v3CookShareSection(r){
  const html=v3OriginalCookSection(r);
- const saveButton=`<button type="button" class="cook-post-share cook-post-save" data-action="save-cook-photo" data-recipe="${r.id}" ${sharePostBlobs[r.id]?'':'disabled'}>${t('💾 Save Photo','💾 Salvar foto')}</button>`;
+ const saveButton=`<button type="button" class="cook-post-share cook-post-save" data-action="save-cook-photo" data-recipe="${r.id}" ${sharePostBlobs[r.id]?'':'disabled'}>${state.language==='pt-BR'?'💾 Salvar foto':'💾 Save Photo'}</button>`;
  return html.replace(/<label class="cook-photo-pick">📸 Take a dish photo[\s\S]*?<\/label>/,`<button type="button" class="cook-photo-pick v3-photo-camera" data-action="take-dish-photo" data-recipe="${r.id}">📸 Take a dish photo</button><input class="v3-hidden-camera-input" type="file" accept="image/*" capture="environment" data-share-photo="${r.id}" aria-label="Take a dish photo">`).replace(/<label class="cook-photo-pick">🖼️ Choose a dish photo[\s\S]*?<\/label>/,'').replace('</section>',saveButton+'</section>');
 };
 
@@ -1064,7 +1064,7 @@ function v3SaveCookPhoto(id){
  const url=URL.createObjectURL(blob),a=document.createElement('a');
  a.href=url;a.download=`aaria-${slug}.${extension}`;document.body.append(a);a.click();a.remove();
  setTimeout(()=>URL.revokeObjectURL(url),0);
- notice(t('Photo saved to this device.','Foto salva neste dispositivo.'));
+ notice(state.language==='pt-BR'?'Foto salva neste dispositivo.':'Photo saved to this device.');
 }
 
 const v3OriginalShareCook=shareCook;
@@ -2058,6 +2058,27 @@ ${v34Style}
     }
   }
 
+  const v35EntryRecipeRoute = (() => {
+    const parts = location.hash.slice(6).split('/');
+    const id = parts[0] === 'recipe' ? Number(parts[1]) : NaN;
+    if (!Number.isSafeInteger(id) || id <= 0) return null;
+    const routeStep = Number(parts[2]);
+    return {id, step: Number.isSafeInteger(routeStep) && routeStep >= 0 ? routeStep : 0};
+  })();
+
+  function v35RestoreEntryRecipe() {
+    if (!v35EntryRecipeRoute) return false;
+    const recipe = find(v35EntryRecipeRoute.id);
+    if (!recipe) return false;
+    selected = recipe;
+    view = 'recipe';
+    step = Math.max(0, Math.min(Math.max(0, recipe.steps.length - 1), v35EntryRecipeRoute.step));
+    const route = `#aria/recipe/${recipe.id}/${step}`;
+    if (location.hash !== route) history.replaceState(null, '', route);
+    render();
+    return true;
+  }
+
   function v34FinishWelcome() {
     if (!welcomeOverlay) return;
     const overlay = welcomeOverlay;
@@ -2065,7 +2086,7 @@ ${v34Style}
     document.querySelector('.app')?.removeAttribute('inert');
     overlay.remove();
     v34SyncNavigation(homeStyle() === 'magical');
-    goto('home');
+    if (!v35RestoreEntryRecipe()) goto('home');
     document.querySelector('#nav [data-nav="home"]')?.focus({ preventScroll: true });
   }
 
@@ -2419,7 +2440,7 @@ function v35ShowPalaceWelcome() {
 
   const v34InitializeWelcome = () => {
     v34SyncNavigation(homeStyle() === 'magical');
-    goto('home');
+    if (!v35RestoreEntryRecipe()) goto('home');
     v35ShowPalaceWelcome();
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', v34InitializeWelcome, { once: true });
