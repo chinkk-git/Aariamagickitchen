@@ -46,8 +46,9 @@ jobs:
                 return {};
               }
             }
+            if (!previousSha) { core.warning('No earlier successful GitHub Pages deployment is available as a comparison baseline; no announcement sent.'); return; }
             const current = await manifest(sha);
-            const previous = previousSha ? await manifest(previousSha) : {};
+            const previous = await manifest(previousSha);
             const {generateAnnouncements} = await import(process.env.GITHUB_WORKSPACE + '/notifications/generate-announcements.mjs');
             const items = generateAnnouncements(previous, current, sha);
             if (!items.length) { core.notice('No new announcement-worthy production content.'); return; }
