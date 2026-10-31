@@ -36,9 +36,11 @@ try{
  await settings();await size(175);await bounded('recipe route at 175%',()=>page.goto(base+'#aria/recipe/12/0',{waitUntil:'domcontentloaded',timeout:8000}),10000);await skipWelcome();await text('#screen .ref-title h1','Recipe title 175%',true);await settings();await size(200);
  await nav('world');await text('#screen h1','World Adventure',true);await nav('week');await text('#screen .topbar h2','Planner',true);await nav('creations');await text('#screen h1','My Creations',true);
  await nav('home');await settings();await text('#screen .home-subpage h1','Settings 200%',true);
- await check('phone portrait and landscape');
+ await check('phone portrait/landscape and tablet portrait/landscape');
  await page.setViewportSize({width:844,height:390});await page.waitForTimeout(150);await size(175);await text('#screen .home-subpage h1','Phone landscape 175%',true);await size(200);await text('#screen .home-subpage h1','Phone landscape 200%',true);
  await page.setViewportSize({width:390,height:844});await page.waitForTimeout(150);
+ await page.setViewportSize({width:800,height:1280});await page.waitForTimeout(150);await size(175);await text('#screen .home-subpage h1','Tablet portrait 175%',true);await size(200);await text('#screen .home-subpage h1','Tablet portrait 200%',true);
+ await page.setViewportSize({width:1280,height:800});await page.waitForTimeout(150);await size(175);await text('#screen .home-subpage h1','Tablet landscape 175%',true);await size(200);await text('#screen .home-subpage h1','Tablet landscape 200%',true);
  assert.deepEqual(errors,[],'runtime errors '+errors.join(' | '));await check('PASS');
  console.log('PASS: five values, saved preference, EN/PT, Home/Recipes/Recipe/World/Planner/Creations/Settings, phone portrait/landscape, recipe clipping at 175%/200%.');
 }finally{await Promise.race([context.close(),new Promise(resolve=>setTimeout(resolve,5000))]).catch(()=>{});await Promise.race([browser.close(),new Promise(resolve=>setTimeout(resolve,5000))]).catch(()=>{});server.closeAllConnections?.();await new Promise(resolve=>{const timer=setTimeout(resolve,1000);timer.unref?.();server.close(()=>{clearTimeout(timer);resolve()})})}
