@@ -14,7 +14,7 @@ export function generateAnnouncements(previous={},current={},releaseSha=''){
  }
  const oldFeatures=new Set((previous.notificationFeatures||[]).map(x=>x.id));
  for(const f of (current.notificationFeatures||[]).filter(x=>x&&x.status==='approved'&&x.announcementReady===true&&!oldFeatures.has(x.id))){
-  if(!/^[a-z0-9][a-z0-9._-]{0,63}$/.test(f.id)||!validRoute(f.route)||!f.messages?.['en-GB']?.title||!f.messages?.['en-GB']?.body||!f.messages?.['pt-BR']?.title||!f.messages?.['pt-BR']?.body)continue;
+  if(!/^[a-z0-9][a-z0-9._-]{0,39}$/.test(f.id)||!validRoute(f.route)||!f.messages?.['en-GB']?.title||!f.messages?.['en-GB']?.body||!f.messages?.['pt-BR']?.title||!f.messages?.['pt-BR']?.body)continue;
   announcements.push({id:releaseSha+':feature:'+f.id,releaseSha,category:'features',route:f.route,messages:f.messages});
  }
  if(current.majorUpdate===true&&previous.majorUpdate!==true&&current.whatsNew?.['en-GB']?.body&&current.whatsNew?.['pt-BR']?.body){
