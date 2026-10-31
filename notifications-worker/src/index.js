@@ -114,8 +114,13 @@ async function processDelivery(message,env,queueMessage){
     if(current?.status==='sending')queueMessage.retry({delaySeconds:60});
     return;
   }
-  const row=await env.DB.prepare('SELECT d.announcement_id,d.endpoint_hash,d.category,d.attempts,a.payload,s.endpoint,s.p256dh,s.auth,s.locale,s.categories,s.consent_valid,s.consent_expires_at FROM announcement_deliveries d JOIN announcements a ON a.id=d.announcement_id LEFT JOIN subscriptions s ON s.endpoint_hash=d.endpoint_hash WHERE d.id=?').bind(message.deliveryId).first();
+  const row=await env.DB.prepare('SELECT d.announcement_id,d.endpoint_hash,d.category,d.attempts,a.payload,s.endpoint,s.p256dh,s.auth,s.locale,s.categories,s.consent_valid,s.consent_expires_at,g.permission_status AS device_permission_status,g.subscription_status AS device_subscription_status,g.consent_expires_at AS device_consent_expires_at FROM announcement_deliveries d JOIN announcements a ON a.id=d.announcement_id LEFT JOIN subscriptions s ON s.endpoint_hash=d.endpoint_hash LEFT JOIN guardian_devices g ON g.device_id=s.device_id AND g.guardian_hash=s.guardian_hash AND g.endpoint_hash=s.endpoint_hash WHERE d.id=?').bind(message.deliveryId).first();
   if(!row){await env.DB.prepare("UPDATE announcement_deliveries SET status='failed',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();return;}
+  if(env.PARENT_CONSENT_MODEL_APPROVED!=='true'||row.device_subscription_status!=='active'||row.device_permission_status!=='granted'||Number(row.device_consent_expires_at)<=Date.now()){
+    await env.DB.prepare("UPDATE announcement_deliveries SET status='skipped',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();
+    await finalizeAnnouncement(env,row.announcement_id);
+    return;
+  }
   if(!row.endpoint){await env.DB.prepare("UPDATE announcement_deliveries SET status='removed',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();await finalizeAnnouncement(env,row.announcement_id);return;}
   if(Number(row.consent_valid)!==1||Number(row.consent_expires_at)<=Date.now()){
     await env.DB.prepare('UPDATE subscriptions SET consent_valid=0,updated_at=? WHERE endpoint_hash=? AND consent_expires_at<=?').bind(Date.now(),row.endpoint_hash,Date.now()).run();
@@ -214,6 +219,13 @@ export default {async fetch(request,env){
     if(!isPublicHttpsEndpoint(sub?.endpoint)||typeof sub?.keys?.p256dh!=='string'||typeof sub?.keys?.auth!=='string'||!['granted','denied','default','unsupported'].includes(b.permissionStatus)||!env.DB)return json({error:'invalid_subscription'},400,origin);
     const row=await env.DB.prepare('SELECT endpoint_hash FROM subscriptions WHERE endpoint=? AND p256dh=? AND auth=? AND consent_valid=1 AND consent_expires_at>?').bind(sub.endpoint,sub.keys.p256dh,sub.keys.auth,now).first();
     if(!row)return json({error:'active_subscription_required'},403,origin);
+    if(b.permissionStatus!=='granted'){
+      await env.DB.batch([
+        env.DB.prepare('DELETE FROM subscriptions WHERE endpoint=?').bind(sub.endpoint),
+        env.DB.prepare("UPDATE guardian_devices SET subscription_status='revoked',permission_status=?,last_contact_at=? WHERE endpoint_hash=? AND subscription_status='active' AND consent_expires_at>?").bind(b.permissionStatus,now,row.endpoint_hash,now)
+      ]);
+      return json({ok:true,subscriptionStatus:'revoked'},200,origin);
+    }
     const updated=await env.DB.prepare("UPDATE guardian_devices SET last_contact_at=?,permission_status=? WHERE endpoint_hash=? AND subscription_status='active' AND consent_expires_at>?").bind(now,b.permissionStatus,row.endpoint_hash,now).run();
     if(Number(updated?.meta?.changes)!==1)return json({error:'registered_device_required'},403,origin);
     return json({ok:true,lastContactAt:now},200,origin);

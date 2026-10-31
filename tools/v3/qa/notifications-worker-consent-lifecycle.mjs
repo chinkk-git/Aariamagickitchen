@@ -142,6 +142,13 @@ const heartbeat=await request('/v1/device/heartbeat',{subscription:validSubscrip
 assert.equal(heartbeat.status,200,'an active registered device can record a successful contact');
 const blockedHeartbeat=await request('/v1/device/heartbeat',{subscription:validSubscription,permissionStatus:'granted'},{PARENT_CONSENT_MODEL_APPROVED:'false'});
 assert.equal(blockedHeartbeat.status,503,'device heartbeat remains disabled while guardian-consent approval is false');
+const writesBeforePermissionDenial=DB.writes.length;
+const deniedHeartbeat=await request('/v1/device/heartbeat',{subscription:validSubscription,permissionStatus:'denied'});
+assert.equal(deniedHeartbeat.status,200,'an operating-system permission denial revokes the server-side subscription');
+assert.equal(deniedHeartbeat.body.subscriptionStatus,'revoked');
+assert.ok(DB.writes.slice(writesBeforePermissionDenial).some(x=>x.sql==='DELETE FROM subscriptions WHERE endpoint=?'));
+const permissionRestored=await request('/v1/subscribe',subscribeBody);
+assert.equal(permissionRestored.status,201,'explicitly restored permission can be re-enrolled with guardian consent');
 const beforeFirst=globalThis.__testPushCalls.length;
 const firstMagic=await request('/v1/guardian/device/first-magical',{deviceId:testDevice.deviceId,locale:'en-GB',consentReceipt:validReceipt});
 assert.equal(firstMagic.status,202,'the first notification is sent to the selected authorized device');
