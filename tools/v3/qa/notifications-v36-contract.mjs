@@ -55,3 +55,5 @@ assert.ok(wrangler.includes('binding = "DELIVERY_QUEUE"')&&wrangler.includes('ma
 assert.ok(html.includes('notification-bell')&&html.includes('notifications-v36.js')&&html.includes('accessibility-text-size.js'));
 assert.ok(sw.includes('./aaria-accessibility-text-size.css')&&sw.includes('./js/accessibility-text-size.js')&&sw.includes("r2'"),'Service worker upgrade must cache the merged Text Size implementation under the installed adapter cache key');
 console.log('Notification support checks: safe routes, no automatic permission prompt, guardian receipt, server-only publisher, service-worker routing, and app entry point.');
+
+assert.ok(wrangler.includes('name = "NOTIFICATION_API_LIMITER"')&&worker.includes('env.NOTIFICATION_API_LIMITER.limit')&&worker.includes('rate_limited'),'the API has a fail-closed per-IP rate limit');

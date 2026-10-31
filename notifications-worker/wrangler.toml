@@ -30,5 +30,13 @@ max_batch_size = 20
 max_batch_timeout = 5
 max_retries = 100
 
+[[ratelimits]]
+name = "NOTIFICATION_API_LIMITER"
+namespace_id = "79007901"
+
+[ratelimits.simple]
+limit = 60
+period = 60
+
 [triggers]
 crons = ["15 * * * *"]

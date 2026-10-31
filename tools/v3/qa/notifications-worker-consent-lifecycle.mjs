@@ -57,10 +57,10 @@ const DB=mockDatabase();
 const env={
   DB,CONSENT_SIGNING_SECRET:secret,ADMIN_TOKEN:'test-only-admin-token',
   VAPID_PUBLIC_KEY:'test-public-key',VAPID_PRIVATE_KEY:'test-private-key',
-  VAPID_SUBJECT:'mailto:notifications@example.test',PARENT_CONSENT_MODEL_APPROVED:'true'
+  VAPID_SUBJECT:'mailto:notifications@example.test',PARENT_CONSENT_MODEL_APPROVED:'true',NOTIFICATION_API_LIMITER:{limit:async()=>({success:true})}
 };
 async function request(path,body,overrides={}){
-  const req=new Request('https://worker.example.test'+path,{method:body===undefined?'GET':'POST',headers:{Origin:'https://chinkk-git.github.io','Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
+  const req=new Request('https://worker.example.test'+path,{method:body===undefined?'GET':'POST',headers:{Origin:'https://chinkk-git.github.io','Content-Type':'application/json','CF-Connecting-IP':'203.0.113.1'},body:body===undefined?undefined:JSON.stringify(body)});
   const response=await worker.fetch(req,{...env,...overrides});
   return {status:response.status,body:await response.json()};
 }
@@ -75,6 +75,10 @@ assert.equal(disabled.status,503,'consent verification must fail closed before o
 const configDisabled=await request('/v1/config',undefined,{PARENT_CONSENT_MODEL_APPROVED:'false'});
 assert.equal(configDisabled.body.vapidPublicKey,null,'public VAPID key stays hidden while disabled');
 assert.ok(!JSON.stringify(configDisabled.body).includes('PRIVATE_KEY')&&!JSON.stringify(configDisabled.body).includes('ADMIN_TOKEN'));
+const deniedByLimiter=await request('/v1/consent/verify',{locale:'en-GB',consentReceipt:validReceipt},{NOTIFICATION_API_LIMITER:{limit:async()=>({success:false})}});
+assert.equal(deniedByLimiter.status,429,'over-limit API requests are rejected');
+const missingLimiter=await request('/v1/consent/verify',{locale:'en-GB',consentReceipt:validReceipt},{NOTIFICATION_API_LIMITER:null});
+assert.equal(missingLimiter.status,503,'API fails closed when rate-limit binding is absent');
 const configEnabled=await request('/v1/config');
 assert.equal(configEnabled.body.vapidPublicKey,env.VAPID_PUBLIC_KEY,'only the public VAPID key is exposed for browser subscription');
 for(const secretValue of [env.VAPID_PRIVATE_KEY,env.ADMIN_TOKEN,env.CONSENT_SIGNING_SECRET]) assert.ok(!JSON.stringify(configEnabled.body).includes(secretValue),'Worker secrets must never be exposed in public configuration');

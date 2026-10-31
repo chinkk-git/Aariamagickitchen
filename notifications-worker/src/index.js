@@ -170,6 +170,14 @@ export default {async fetch(request,env){
   const origin=request.headers.get('Origin')||'',url=new URL(request.url);
   if(request.method==='OPTIONS')return new Response(null,{headers:cors(origin)});
   if(origin&&origin!==allowedOrigin)return json({error:'origin_not_allowed'},403,origin);
+  if(url.pathname.startsWith('/v1/')&&!(request.method==='GET'&&url.pathname==='/v1/config')){
+    const clientKey=request.headers.get('CF-Connecting-IP');
+    if(!env.NOTIFICATION_API_LIMITER||!clientKey)return json({error:'rate_limiter_unavailable'},503,origin);
+    let rateLimit;
+    try{rateLimit=await env.NOTIFICATION_API_LIMITER.limit({key:clientKey});}
+    catch{console.error('notification API rate limiter failed');return json({error:'rate_limiter_unavailable'},503,origin);}
+    if(!rateLimit?.success)return json({error:'rate_limited'},429,origin);
+  }
   if(url.pathname==='/v1/config'&&request.method==='GET')return json({vapidPublicKey:env.PARENT_CONSENT_MODEL_APPROVED==='true'?env.VAPID_PUBLIC_KEY||null:null},200,origin);
   if(url.pathname==='/v1/consent/verify'&&request.method==='POST'){
     if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return json({error:'guardian_consent_model_not_approved'},503,origin);
