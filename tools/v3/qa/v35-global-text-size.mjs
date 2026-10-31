@@ -42,8 +42,8 @@ try{
        const d=await page.locator('.filters').evaluate(track=>{
          const box=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return{w:r.width,h:r.height,font:parseFloat(s.fontSize),whiteSpace:s.whiteSpace,flexShrink:s.flexShrink,scrollW:e.scrollWidth,clientW:e.clientWidth,scrollH:e.scrollHeight,clientH:e.clientHeight}};
          const chips=[...track.querySelectorAll(':scope > .chip')].map(box);
-         const sky=document.querySelector('.app:has(.filters) .enchanted-sky'),screen=document.querySelector('.app:has(.filters) #screen');
-         return{trackH:track.getBoundingClientRect().height,trackScrollW:track.scrollWidth,trackClientW:track.clientWidth,chips,skyZ:sky?getComputedStyle(sky).zIndex:null,skyPointer:sky?getComputedStyle(sky).pointerEvents:null,screenZ:screen?getComputedStyle(screen).zIndex:null};
+         const sky=document.querySelector('.app:has(.filters) .enchanted-sky'),ambient=document.querySelector('.app:has(.filters) .ambient'),screen=document.querySelector('.app:has(.filters) #screen');
+         return{trackH:track.getBoundingClientRect().height,trackScrollW:track.scrollWidth,trackClientW:track.clientWidth,chips,skyZ:sky?getComputedStyle(sky).zIndex:null,skyPointer:sky?getComputedStyle(sky).pointerEvents:null,skyVisibility:sky?getComputedStyle(sky).visibility:null,ambientVisibility:ambient?getComputedStyle(ambient).visibility:null,screenZ:screen?getComputedStyle(screen).zIndex:null};
        });
        assert.equal(d.chips.length,14,language+' filter count at '+n+'%');
        assert.ok(d.trackH<=150,v.name+' filter row grew too tall at '+language+' '+n+'%: '+JSON.stringify(d));
@@ -52,7 +52,7 @@ try{
        assert.ok(d.chips.every(c=>c.whiteSpace==='nowrap'&&c.flexShrink==='0'),v.name+' category label wraps or chip shrinks at '+language+' '+n+'%');
        assert.ok(d.chips.every(c=>c.scrollW<=c.clientW+2&&c.scrollH<=c.clientH+2),v.name+' category label is clipped at '+language+' '+n+'%');
        if(language==='en-GB'&&n===200&&v.name==='phone portrait'){
-         assert.equal(d.skyZ,'0','decorative layer must stay behind All Recipes content');assert.equal(d.skyPointer,'none','decorative artwork must not intercept taps');assert.equal(d.screenZ,'1','All Recipes content must paint above decoration');
+         assert.equal(d.skyZ,'0','decorative layer must stay behind All Recipes content');assert.equal(d.skyPointer,'none','decorative artwork must not intercept taps');assert.equal(d.skyVisibility,'hidden','floating artwork must not overlap All Recipes text or controls');assert.equal(d.ambientVisibility,'hidden','ambient artwork must not overlap All Recipes text or controls');assert.equal(d.screenZ,'1','All Recipes content must paint above decoration');
          const all=page.getByRole('button',{name:'All',exact:true}),breakfast=page.getByRole('button',{name:'Breakfast',exact:true});
          await breakfast.click({timeout:3000});let filtered=await page.locator('.recipe-card').count();assert.ok(filtered>0&&filtered<116,'category filter action failed');
          await all.click({timeout:3000});await page.locator('#search').fill('Banana',{timeout:3000});filtered=await page.locator('.recipe-card').count();assert.ok(filtered>0&&filtered<116,'recipe search failed');await page.locator('#search').fill('');
