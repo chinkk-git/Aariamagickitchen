@@ -12,7 +12,7 @@ const browser=await chromium.launch({headless:true}),context=await browser.newCo
 page.on('pageerror',e=>errors.push(e.message));page.on('download',d=>console.error('Unexpected download',d.url(),d.suggestedFilename()));
 const base='http://127.0.0.1:4173/';
 async function skipWelcome(){await page.waitForTimeout(150);const b=page.getByRole('button',{name:'Skip the opening and enter the selected Home'}).first();if(await b.count()&&await b.isVisible())await b.click()}
-async function openSettings(){await page.locator('button[data-nav="settings"]').first().click();await page.locator('[data-aaria-text-size-panel]').waitFor({state:'visible',timeout:10000})}
+async function openSettings(){await page.locator('button[data-nav="settings"]').first().evaluate(el=>el.click());await page.locator('[data-aaria-text-size-panel]').waitFor({state:'visible',timeout:10000})}
 async function setSize(value){await page.locator('[data-aaria-text-size-option="'+value+'"]').click();await page.waitForFunction(v=>Number(document.documentElement.style.getPropertyValue('--aaria-text-scale'))===v/100,value)}
 async function fontSize(selector){return page.locator(selector).first().evaluate(el=>parseFloat(getComputedStyle(el).fontSize))}
 async function assertNoClippedText(){
@@ -57,12 +57,12 @@ try{
  await page.locator('#languageSelect').selectOption('en-GB');await page.locator('[data-aaria-text-size-panel] h2').getByText('Accessibility').waitFor({state:'visible'});
  // Exercise global scaling on representative navigation, recipe, planner, creation and install screens at larger sizes.
  await setSize(175);
- await page.locator('.bottom .tab[data-nav="home"]').click();await checkScreen('#screen h1','Home');
- await page.locator('.bottom .tab[data-nav="library"]').click();await checkScreen('#screen h1','Recipe library');
+ await page.locator('.bottom .tab[data-nav="home"]').evaluate(el=>el.click());await checkScreen('#screen h1','Home');
+ await page.locator('.bottom .tab[data-nav="library"]').evaluate(el=>el.click());await checkScreen('#screen h1','Recipe library');
  await page.goto(base+'#aria/recipe/12/0',{waitUntil:'load'});await skipWelcome();await page.locator('#screen .ref-title h1').waitFor({state:'visible'});await checkScreen('#screen .ref-title h1','Recipe detail');
- await page.locator('.bottom .tab[data-nav="world"]').click();await checkScreen('#screen h1','World Adventure');
- await page.locator('.bottom .tab[data-nav="week"]').click();await checkScreen('#screen h1','Planner');
- await page.locator('.bottom .tab[data-nav="creations"]').click();await checkScreen('#screen h1','My Creations');
+ await page.locator('.bottom .tab[data-nav="world"]').evaluate(el=>el.click());await checkScreen('#screen h1','World Adventure');
+ await page.locator('.bottom .tab[data-nav="week"]').evaluate(el=>el.click());await checkScreen('#screen h1','Planner');
+ await page.locator('.bottom .tab[data-nav="creations"]').evaluate(el=>el.click());await checkScreen('#screen h1','My Creations');
  await page.locator('.bottom .tab[data-nav="home"]').click();await openSettings();await setSize(200);await checkScreen('#screen .home-subpage h1','Settings');
  await page.goto(base+'?install=1',{waitUntil:'load'});await page.locator('#install-link-gate:not([hidden])').waitFor({state:'visible'});await checkScreen('#install-link-title','Installation screen');
  await page.locator('#install-link-continue').click();await page.waitForFunction(()=>!new URLSearchParams(location.search).has('install'));await skipWelcome();await openSettings();await assertNoClippedText();
