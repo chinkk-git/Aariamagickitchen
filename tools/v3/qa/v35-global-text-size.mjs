@@ -30,17 +30,41 @@ try{
  await page.locator('#languageSelect').selectOption('en-GB');await page.getByText('Accessibility',{exact:true}).waitFor({state:'visible',timeout:4000});
  await check('critical screens and recipe detail at 200%; clipping at 175/200');
  await size(100);await nav('home');await page.locator('#foodWonderland').waitFor({state:'visible',timeout:4000});const artworkAt100=await page.locator('#foodWonderland .fw-scene-art img').evaluate(img=>{const r=img.getBoundingClientRect();return{width:r.width,height:r.height}});await settings();await size(200);await nav('home');await page.locator('#foodWonderland').waitFor({state:'visible',timeout:4000});const artworkAt200=await page.locator('#foodWonderland .fw-scene-art img').evaluate(img=>{const r=img.getBoundingClientRect();return{width:r.width,height:r.height}});assert.ok(Math.abs(artworkAt200.width-artworkAt100.width)<1&&Math.abs(artworkAt200.height-artworkAt100.height)<1,'Text scaling changed Food Wonderland artwork dimensions');await check('Home visible and scene artwork unchanged at 100%/200%');
- await nav('library');await text('#screen .topbar h2','Recipe library',true);
+ await nav('library');await text('#screen .topbar h2','Recipe library',true);const recipeIds=await page.locator('.recipe-card[data-open]').evaluateAll(nodes=>nodes.map(node=>Number(node.getAttribute('data-open'))));assert.equal(new Set(recipeIds).size,116,'canonical catalogue IDs');assert.equal(recipeIds.length,116,'recipe cards available');
  await bounded('recipe route startup',()=>page.goto(base+'#aria/recipe/12/0',{waitUntil:'domcontentloaded',timeout:8000}),10000);await skipWelcome();
  await text('#screen .ref-title h1','Recipe title 200%',true);await text('#screen .ref-ingredients','Recipe ingredients 200%',true);await text('#screen .ref-tools','Recipe equipment 200%',true);await text('#screen .ref-step-grid','Recipe steps 200%',true);
  await settings();await size(175);await bounded('recipe route at 175%',()=>page.goto(base+'#aria/recipe/12/0',{waitUntil:'domcontentloaded',timeout:8000}),10000);await skipWelcome();await text('#screen .ref-title h1','Recipe title 175%',true);await settings();await size(200);
  await nav('world');await text('#screen h1','World Adventure',true);await nav('week');await text('#screen .topbar h2','Planner',true);await nav('creations');await text('#screen h1','My Creations',true);
  await nav('home');await settings();await text('#screen .home-subpage h1','Settings 200%',true);
- await check('phone portrait/landscape and tablet portrait/landscape');
- await page.setViewportSize({width:844,height:390});await page.waitForTimeout(150);await size(175);await text('#screen .home-subpage h1','Phone landscape 175%',true);await size(200);await text('#screen .home-subpage h1','Phone landscape 200%',true);
- await page.setViewportSize({width:390,height:844});await page.waitForTimeout(150);
- await page.setViewportSize({width:800,height:1280});await page.waitForTimeout(150);await size(175);await text('#screen .home-subpage h1','Tablet portrait 175%',true);await size(200);await text('#screen .home-subpage h1','Tablet portrait 200%',true);
- await page.setViewportSize({width:1280,height:800});await page.waitForTimeout(150);await size(175);await text('#screen .home-subpage h1','Tablet landscape 175%',true);await size(200);await text('#screen .home-subpage h1','Tablet landscape 200%',true);
+ await check('recipe screen at five sizes across phone/tablet portrait and landscape');
+ const responsiveViewports=[{name:'phone portrait',width:390,height:844},{name:'phone landscape',width:844,height:390},{name:'tablet portrait',width:800,height:1280},{name:'tablet landscape',width:1280,height:800}];
+ let art100=null;
+ for(const n of [100,125,150,175,200]){
+   await settings();await size(n);
+   await bounded('recipe 105 route at '+n+'%',()=>page.goto(base+'#aria/recipe/105/0',{waitUntil:'domcontentloaded',timeout:8000}),10000);await skipWelcome();
+   const tipLabel=await page.locator('.ref-chef-tip span').innerText();const tipText=(await page.locator('.ref-chef-tip p').innerText()).trim();const canonical=(await page.locator('.ref-step-card.active .v32-step-safety').innerText()).replace(/^(Safety|Segurança):\s*/i,'').trim();
+   assert.equal(tipLabel,n===100?'🛡️ Safety tip':'🛡️ Safety tip','English canonical safety label');assert.equal(tipText,canonical,'Chef tip must equal unmodified canonical step safety');assert.ok(/An adult uses/.test(tipText),'adult safety instruction retained');assert.ok(/allergens and cross-contact/.test(tipText),'allergy warning retained');
+   for(const v of responsiveViewports){
+     await page.setViewportSize({width:v.width,height:v.height});await page.waitForTimeout(180);await page.locator('.ref-step-actions').evaluate(el=>el.scrollIntoView({block:'center'}));
+     const m=await page.locator('.ref-step-actions').evaluate(el=>{const box=n=>{const r=n.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom}};const parent=box(el),back=box(el.querySelector('.ref-back')),dots=box(el.querySelector('.ref-dots')),next=box(el.querySelector('.ref-next')),dotButtons=[...el.querySelectorAll('.ref-dot')].map(box),img=document.querySelector('.ref-step-card.active .ref-step-photo img'),ir=img?.getBoundingClientRect();return{parent,back,dots,next,dotButtons,art:ir?{w:ir.width,h:ir.height,nw:img.naturalWidth,nh:img.naturalHeight,fit:getComputedStyle(img).objectFit}:null}});
+     assert.ok(m.parent.x>=-1&&m.parent.right<=v.width+1,v.name+' actions outside viewport at '+n+'%: '+JSON.stringify(m.parent));
+     for(const [label,b] of [['Back',m.back],['progress',m.dots],['Next',m.next]])assert.ok(b.x>=m.parent.x-1&&b.right<=m.parent.right+1,label+' escapes action row at '+v.name+' '+n+'%');
+     const overlap=(a,b)=>a.x<b.right-2&&a.right>b.x+2&&a.y<b.bottom-2&&a.bottom>b.y+2;
+     assert.ok(!overlap(m.back,m.dots)&&!overlap(m.dots,m.next)&&!overlap(m.back,m.next),'step controls overlap at '+v.name+' '+n+'%');
+     if(n===100)assert.ok(m.dotButtons.every(b=>b.w<=16&&b.h<=16),'100% progress dots retain approved 12px appearance');
+     else assert.ok(m.dotButtons.every(b=>b.w>=44&&b.h>=44),'scaled progress targets remain at least 44px');
+     assert.ok(m.art&&m.art.nw>0&&m.art.nh>0&&m.art.w>0&&m.art.h>0&&['cover','contain'].includes(m.art.fit),'step artwork load/object-fit changed at '+v.name+' '+n+'%');
+     if(n===100&&v.name==='phone portrait')art100=m.art;
+     if(n===200&&v.name==='phone portrait')assert.ok(Math.abs(m.art.w-art100.w)<1&&Math.abs(m.art.h-art100.h)<1&&m.art.fit===art100.fit,'font size changed step artwork dimensions or crop behavior');
+     const nextButton=page.locator('.ref-next'),backButton=page.locator('.ref-back');
+     if(n===150&&v.name==='tablet landscape'){
+       await nextButton.click({timeout:3000});await page.waitForFunction(()=>document.querySelector('.ref-dots')?.getAttribute('aria-label')==='Step 2 of 5',null,{timeout:3000});
+       await backButton.click({timeout:3000});await page.waitForFunction(()=>document.querySelector('.ref-dots')?.getAttribute('aria-label')==='Step 1 of 5',null,{timeout:3000});
+     }
+   }
+ }
+ await page.locator('#languageSelect').selectOption('pt-BR');await page.locator('.ref-chef-tip span').waitFor({state:'visible',timeout:4000});assert.equal((await page.locator('.ref-chef-tip span').innerText()).trim(),'🛡️ Dica de segurança');const ptTip=(await page.locator('.ref-chef-tip p').innerText()).trim();assert.equal(ptTip,(await page.locator('.ref-step-card.active .v32-step-safety').innerText()).replace(/^(Safety|Segurança):\s*/i,'').trim(),'PT-BR canonical safety preserved');
+ await check('recipe controls and safety copy verified across all responsive cases');
  assert.deepEqual(errors,[],'runtime errors '+errors.join(' | '));await check('PASS');
- console.log('PASS: five values, saved preference, EN/PT, Home/Recipes/Recipe/World/Planner/Creations/Settings, phone portrait/landscape, recipe clipping at 175%/200%.');
+ console.log('PASS: five values and persistence; EN/PT; 116 recipe IDs; recipe step controls and canonical safety at 5 sizes × 4 phone/tablet orientations; navigation and existing critical screens.');
 }finally{await Promise.race([context.close(),new Promise(resolve=>setTimeout(resolve,5000))]).catch(()=>{});await Promise.race([browser.close(),new Promise(resolve=>setTimeout(resolve,5000))]).catch(()=>{});server.closeAllConnections?.();await new Promise(resolve=>{const timer=setTimeout(resolve,1000);timer.unref?.();server.close(()=>{clearTimeout(timer);resolve()})})}
