@@ -143,7 +143,7 @@ function createWorldAdventureHost({
     return Object.freeze({
       code: key,
       available,
-      reviewOnly: available && key !== 'IND',
+      reviewOnly: false,
       label: labels[locale],
       flag: labels.flag,
       recipes: Object.freeze([...recipes])
