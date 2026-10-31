@@ -33,7 +33,20 @@
     const value = Number(next);
     if (!SIZES.includes(value)) return;
     scale = value / 100;
-    let resizeTimer;
+  document.documentElement.style.setProperty('--aaria-text-scale', String(scale));
+    document.documentElement.dataset.aariaTextSizeActive = scale > 1 ? 'true' : 'false';
+    if (persist) {
+      try { localStorage.setItem(STORAGE_KEY, String(value)); } catch (_) {}
+    }
+    document.querySelectorAll('[data-aaria-text-size-option]').forEach(button => {
+      const selected = Number(button.dataset.aariaTextSizeOption) === value;
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    const valueNode = document.querySelector('[data-aaria-text-size-value]');
+    if (valueNode) valueNode.textContent = value + '%';
+  }
+
+  let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
@@ -55,19 +68,6 @@
       applyScale(Math.round(current * 100), false);
     }, 120);
   }, {passive: true});
-
-  document.documentElement.style.setProperty('--aaria-text-scale', String(scale));
-    document.documentElement.dataset.aariaTextSizeActive = scale > 1 ? 'true' : 'false';
-    if (persist) {
-      try { localStorage.setItem(STORAGE_KEY, String(value)); } catch (_) {}
-    }
-    document.querySelectorAll('[data-aaria-text-size-option]').forEach(button => {
-      const selected = Number(button.dataset.aariaTextSizeOption) === value;
-      button.setAttribute('aria-pressed', String(selected));
-    });
-    const valueNode = document.querySelector('[data-aaria-text-size-value]');
-    if (valueNode) valueNode.textContent = value + '%';
-  }
 
   function excluded(element) {
     return !element ||
