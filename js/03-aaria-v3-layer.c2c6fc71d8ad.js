@@ -2058,6 +2058,27 @@ ${v34Style}
     }
   }
 
+  const v35EntryRecipeRoute = (() => {
+    const parts = location.hash.split('/');
+    const id = parts[1] === 'aria' && parts[2] === 'recipe' ? Number(parts[3]) : NaN;
+    if (!Number.isSafeInteger(id) || id <= 0) return null;
+    const routeStep = Number(parts[4]);
+    return {id, step: Number.isSafeInteger(routeStep) && routeStep >= 0 ? routeStep : 0};
+  })();
+
+  function v35RestoreEntryRecipe() {
+    if (!v35EntryRecipeRoute) return false;
+    const recipe = find(v35EntryRecipeRoute.id);
+    if (!recipe) return false;
+    selected = recipe;
+    view = 'recipe';
+    step = Math.max(0, Math.min(Math.max(0, recipe.steps.length - 1), v35EntryRecipeRoute.step));
+    const route = `#aria/recipe/${recipe.id}/${step}`;
+    if (location.hash !== route) history.replaceState(null, '', route);
+    render();
+    return true;
+  }
+
   function v34FinishWelcome() {
     if (!welcomeOverlay) return;
     const overlay = welcomeOverlay;
@@ -2065,7 +2086,7 @@ ${v34Style}
     document.querySelector('.app')?.removeAttribute('inert');
     overlay.remove();
     v34SyncNavigation(homeStyle() === 'magical');
-    goto('home');
+    if (!v35RestoreEntryRecipe()) goto('home');
     document.querySelector('#nav [data-nav="home"]')?.focus({ preventScroll: true });
   }
 
@@ -2419,7 +2440,7 @@ function v35ShowPalaceWelcome() {
 
   const v34InitializeWelcome = () => {
     v34SyncNavigation(homeStyle() === 'magical');
-    goto('home');
+    if (!v35RestoreEntryRecipe()) goto('home');
     v35ShowPalaceWelcome();
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', v34InitializeWelcome, { once: true });
