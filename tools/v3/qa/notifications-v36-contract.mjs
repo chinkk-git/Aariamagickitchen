@@ -5,7 +5,7 @@ const sw=await readFile(new URL('../../../sw.js',import.meta.url),'utf8');
 const worker=await readFile(new URL('../../../notifications-worker/src/index.js',import.meta.url),'utf8');
 const html=await readFile(new URL('../../../index.html',import.meta.url),'utf8');
 assert.ok(client.includes('PushManager')&&client.includes('safeRoute')&&client.includes('consentNeeded'));
-assert.ok(client.includes('aaria:open-text-size'),'Text Size route hook must remain available for later integration');
+assert.ok(client.includes('aaria:open-text-size')&&client.includes("window.goto('settings')"),'Text Size notification route must open Settings after Font Size integration');
 assert.ok(!client.includes('Notification.requestPermission'),'Do not prompt before consent integration');
 assert.ok(!client.includes('/v1/publish'),'publisher endpoint must not be in public client code');
 assert.ok(client.includes('Instagram')&&client.includes('WhatsApp')&&client.includes('TikTok'));
