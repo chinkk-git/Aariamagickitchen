@@ -86,21 +86,23 @@
     const candidates = [];
     if (root.matches && root.matches('body *')) candidates.push(root);
     if (root.querySelectorAll) candidates.push(...root.querySelectorAll('body *'));
+
+    // Read computed values in a first pass, then mutate in a second pass. This
+    // avoids forcing style/layout recalculation for every text node in a screen.
+    const pending = [];
     for (const element of candidates) {
       if (element.hasAttribute(SCALE_ATTR) || !hasReadableText(element)) continue;
       const computed = getComputedStyle(element);
       const px = parseFloat(computed.fontSize);
       if (!Number.isFinite(px) || px <= 0) continue;
-      // New nodes may inherit an already-scaled parent. Divide out the current
-      // multiplier so each element retains its own baseline typography size.
-      const base = px / scale;
+      const inheritedScaledAncestor = Boolean(element.parentElement?.closest('[' + SCALE_ATTR + ']'));
+      const divisor = inheritedScaledAncestor ? scale : 1;
+      const line = computed.lineHeight && computed.lineHeight !== 'normal' ? parseFloat(computed.lineHeight) : null;
+      pending.push({element,base:px/divisor,line:Number.isFinite(line)&&line>0?line/divisor:null});
+    }
+    for (const {element,base,line} of pending) {
       element.style.setProperty('--aaria-base-font-size', base + 'px');
-      if (computed.lineHeight && computed.lineHeight !== 'normal') {
-        const line = parseFloat(computed.lineHeight);
-        if (Number.isFinite(line) && line > 0) {
-          element.style.setProperty('--aaria-scaled-line-height', 'calc(' + line / scale + 'px * var(--aaria-text-scale, 1))');
-        }
-      }
+      if (line) element.style.setProperty('--aaria-scaled-line-height', 'calc(' + line + 'px * var(--aaria-text-scale, 1))');
       if (element.tagName === 'BUTTON') element.dataset.aariaButton = 'true';
       element.setAttribute(SCALE_ATTR, '');
     }
