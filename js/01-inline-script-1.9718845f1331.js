@@ -320,7 +320,7 @@ function translateText(value,lang=state.language){
 }
 const languageOriginals=new WeakMap();
 function applyLanguage(root=document.body){
- document.documentElement.lang=state.language;document.title=state.language==='pt-BR'?'Cozinha mágica da Aaria':'Aaria’s Magical Kitchen';
+ document.documentElement.lang=state.language;document.title="Aaria's Magical Kitchen";
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
  while(n=walker.nextNode()){
   if(n.parentElement?.closest('script,style,#languageBar,[data-original-source]'))continue;
