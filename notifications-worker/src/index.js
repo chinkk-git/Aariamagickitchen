@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 5223)
-Total output lines: 237
-
 import webpush from 'web-push';
 import { isPublicHttpsEndpoint, isValidSubscriptionInput } from './validation.js';
 
@@ -114,7 +111,15 @@ async function processDelivery(message,env,queueMessage){
     return;
   }
   const row=await env.DB.prepare('SELECT d.announcement_id,d.endpoint_hash,d.category,d.attempts,a.payload,s.endpoint,s.p256dh,s.auth,s.locale,s.categories,s.consent_valid,s.consent_expires_at FROM announcement_deliveries d JOIN announcements a ON a.id=d.announcement_id LEFT JOIN subscriptions s ON s.endpoint_hash=d.endpoint_hash WHERE d.id=?').bind(message.deliveryId).first();
-  if(!row){await env.DB.prepare("UPDATE announcement_deliveries SET statu…223 tokens truncated…des(row.category)){
+  if(!row){await env.DB.prepare("UPDATE announcement_deliveries SET status='failed',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();return;}
+  if(!row.endpoint){await env.DB.prepare("UPDATE announcement_deliveries SET status='removed',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();await finalizeAnnouncement(env,row.announcement_id);return;}
+  if(Number(row.consent_valid)!==1||Number(row.consent_expires_at)<=Date.now()){
+    await env.DB.prepare('UPDATE subscriptions SET consent_valid=0,updated_at=? WHERE endpoint_hash=? AND consent_expires_at<=?').bind(Date.now(),row.endpoint_hash,Date.now()).run();
+    await env.DB.prepare("UPDATE announcement_deliveries SET status='skipped',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();
+    await finalizeAnnouncement(env,row.announcement_id);return;
+  }
+  let prefs=[];try{prefs=JSON.parse(row.categories)}catch{}
+  if(!Array.isArray(prefs)||!prefs.includes(row.category)){
     await env.DB.prepare("UPDATE announcement_deliveries SET status='skipped',updated_at=? WHERE id=?").bind(Date.now(),message.deliveryId).run();
     await finalizeAnnouncement(env,row.announcement_id);return;
   }
