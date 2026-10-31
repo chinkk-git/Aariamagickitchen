@@ -21,7 +21,8 @@
       serverDeleteFailed:'Device notifications are off, but server-side removal could not be confirmed. Retry while online.',
       refresh:'This subscription needs renewal. A parent or guardian must verify consent again.',
       failed:'Notifications could not be updated. Check your connection and try again.',
-      retry:'Retry server removal'
+      retry:'Retry server removal',
+      preferencesChanged:'Notification preferences changed. Push is paused until a parent or guardian reviews the updated choices.'
     },
     'pt-BR': {
       statusOff:'O push remoto fica desativado até que o serviço aprovado de consentimento dos responsáveis e o Worker sejam configurados.',
@@ -40,7 +41,8 @@
       serverDeleteFailed:'As notificações do dispositivo foram desativadas, mas não foi possível confirmar a remoção no servidor. Tente novamente quando estiver online.',
       refresh:'Esta assinatura precisa ser renovada. Um responsável precisa verificar o consentimento novamente.',
       failed:'Não foi possível atualizar as notificações. Verifique a conexão e tente novamente.',
-      retry:'Tentar remover do servidor novamente'
+      retry:'Tentar remover do servidor novamente',
+      preferencesChanged:'As preferências mudaram. O push foi pausado até que um responsável revise as escolhas atualizadas.'
     }
   };
   const t = key => copy[locale()][key] || copy['en-GB'][key];
@@ -243,15 +245,31 @@
     } catch(error) { showError(section,error); }
     finally { busy=false;await refresh(section); }
   });
+  async function pauseForPreferenceChange(section) {
+    let sub=null;
+    try { sub=await currentSubscription(); } catch {}
+    let removed=true;
+    if(sub) {
+      try {
+        await api('/v1/unsubscribe',{endpoint:sub.endpoint});
+        if(pendingRemovalEndpoint===sub.endpoint)pendingRemovalEndpoint=null;
+      } catch {
+        pendingRemovalEndpoint=sub.endpoint;
+        removed=false;
+      }
+      await sub.unsubscribe().catch(()=>{});
+    }
+    const prefs=settings();prefs.push=false;prefs.renewRequired=Boolean(sub);saveSettings(prefs);
+    verifiedReceipt=null;verifiedAt=0;cachedVapidKey=null;
+    const status=section?.querySelector('#aaria-push-status');
+    if(status)status.textContent=removed?t('preferencesChanged'):t('serverDeleteFailed');
+    await refresh(section);
+  }
   document.addEventListener('change',event=>{
     if(!event.target.matches?.('[data-pref]'))return;
     verifiedReceipt=null;verifiedAt=0;cachedVapidKey=null;
     const section=document.querySelector('.an-push');
-    if(section&&settings().push) {
-      const status=section.querySelector('#aaria-push-status');
-      if(status)status.textContent=t('statusNeedConsent');
-      refresh(section).catch(()=>{});
-    }
+    if(section&&settings().push)pauseForPreferenceChange(section).catch(error=>showError(section,error));
   });
   const screen=document.querySelector('#screen');
   if(screen&&'MutationObserver'in window) new MutationObserver(()=>{
