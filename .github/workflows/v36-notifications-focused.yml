@@ -1,0 +1,36 @@
+name: V3.6 notifications focused contract checks
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/v36-notification-publish.yml"
+      - "js/notifications-v36.js"
+      - "notifications/**"
+      - "notifications-worker/**"
+      - "sw.js"
+      - "index.html"
+      - "tools/v3/qa/notifications-v36-contract.mjs"
+      - "tools/v3/qa/notifications-release-diff.mjs"
+      - ".github/workflows/v36-notifications-focused.yml"
+permissions:
+  contents: read
+jobs:
+  notification-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check notification modules parse
+        run: |
+          node --check js/notifications-v36.js
+          node --check sw.js
+          node --check notifications-worker/src/index.js
+          node --check notifications/generate-announcements.mjs
+      - name: Validate safety and route contracts
+        run: |
+          node tools/v3/qa/notifications-v36-contract.mjs
+          node tools/v3/qa/notifications-release-diff.mjs
