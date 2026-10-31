@@ -48,6 +48,7 @@ try{
   assert.deepEqual(await recipeCards.evaluateAll(nodes=>nodes.map(node=>Number(node.dataset.open))),[111,112,113,114,115,116],'New Recipes deep link must show exactly the requested recipe IDs');
   assert.ok(!new URL(page.url()).searchParams.has('notice'),'New Recipes notification destination should be consumed');
   await openRoute('/whats-new');
+  await page.getByRole('heading',{name:'What’s New'}).waitFor({state:'visible',timeout:5000});
   assert.match(await page.locator('#screen').innerText(),/What.s New/,'What’s New notification destination should open the inbox');
   assert.ok(!new URL(page.url()).searchParams.has('notice'),'What’s New notification destination should be consumed');
   await openRoute('/recipe/112');
