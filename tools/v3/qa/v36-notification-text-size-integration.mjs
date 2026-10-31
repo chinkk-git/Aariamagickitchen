@@ -14,6 +14,12 @@ const context=await browser.newContext({viewport:{width:390,height:844},isMobile
 const page=await context.newPage(),errors=[];page.setDefaultTimeout(5000);page.on('pageerror',e=>errors.push(e.message));
 try{
   await page.goto('http://127.0.0.1:4174/?notice=%2Fsettings%2Faccessibility%2Ftext-size',{waitUntil:'domcontentloaded',timeout:10000});
+  const welcome=page.locator('#v35-palace-welcome');
+  if(await welcome.count()&&await welcome.isVisible()){
+    const skip=welcome.locator('.v35-skip');
+    if(await skip.count()&&await skip.isVisible())await skip.click({force:true,timeout:3000});
+    await welcome.waitFor({state:'detached',timeout:5000});
+  }
   await page.locator('[data-aaria-text-size-panel]').waitFor({state:'visible',timeout:10000});
   assert.match(await page.locator('#screen').innerText(),/Settings|Accessibility/);
   assert.ok(!new URL(page.url()).searchParams.has('notice'),'notification destination should be consumed during navigation');
