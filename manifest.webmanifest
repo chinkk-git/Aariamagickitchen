@@ -1,7 +1,7 @@
 {
   "id": "./",
   "name": "Aaria's Magical Kitchen",
-  "short_name": "Aaria",
+  "short_name": "Aaria's Magical Kitchen",
   "description": "Cook playful recipes with Aaria.",
   "start_url": "./index.html",
   "scope": "./",
