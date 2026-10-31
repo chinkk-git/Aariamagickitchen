@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {generateAnnouncements} from '../../../notifications/generate-announcements.mjs';
+const sha='0123456789abcdef0123456789abcdef01234567';
+const baseline={recipeIds:[1,2],countryRegistry:['IND'],notificationFeatures:[]};
+const next={recipeIds:[1,2,116,117],countryRegistry:['IND','JPN'],notificationFeatures:[]};
+const rows=generateAnnouncements(baseline,next,sha);
+assert.equal(rows.length,2);
+assert.equal(rows[0].route,'/recipes/new/116,117');
+assert.equal(rows[0].messages['pt-BR'].body,'Descubra 2 novas receitas com Aaria!');
+assert.equal(rows[1].route,'/world/JPN');
+assert.equal(generateAnnouncements(next,next,sha).length,0);
+const feature=generateAnnouncements({...next,notificationFeatures:[]},{...next,notificationFeatures:[{id:'large-text',status:'approved',announcementReady:true,route:'/settings/accessibility/text-size',messages:{'en-GB':{title:'Text size',body:'Adjust text size.'},'pt-BR':{title:'Tamanho do texto',body:'Ajuste o tamanho do texto.'}}}]},sha);
+assert.equal(feature.length,1);
+assert.equal(feature[0].route,'/settings/accessibility/text-size');
+console.log('Release diff drafts exact recipe and country routes, localized copy, feature gating and idempotent no-change behavior.');
