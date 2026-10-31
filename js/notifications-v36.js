@@ -37,6 +37,7 @@
   const safeRoute = route => {
     if(typeof route!=='string'||route.length>180)return null;
     if(/^\/notifications(?:\/new)?$/.test(route))return route;
+    if(/^\/recipes\/new\/(?:[1-9]\d{0,2})(?:,(?:[1-9]\d{0,2})){0,49}$/.test(route))return route;
     if(/^\/recipe\/(?:[1-9]\d{0,2})$/.test(route))return route;
     if(/^\/world\/(?:IND|ITA|CHN|JPN|MEX|VNM|BRA|USA|FRA|ESP|THA|GBR|MAR)$/.test(route))return route;
     if(route==='/settings/notifications'||route==='/settings/accessibility/text-size'||route==='/whats-new')return route;
@@ -74,7 +75,8 @@
     const ua=inAppBrowser()?'<p role="note">'+t('inApp')+'</p>':'';
     showPage('<h1>'+t('settings')+'</h1><p>'+esc(permissionText())+'</p>'+ua+'<fieldset><legend>'+t('title')+'</legend>'+rows+'</fieldset><section class="an-push"><h2>'+t('push')+'</h2><p>'+t(supported()?'unavailable':'unsupported')+'</p><p>'+t('consentNeeded')+'</p><button type="button" disabled aria-disabled="true">'+t('subscribe')+'</button></section>'+button(t('back'),'back','class="an-back"'));
   }
-  async function updateBadge(){const items=await list(),unread=items.filter(x=>!x.readAt).length,badge=document.querySelector('#notification-unread-count'),bell=document.querySelector('#notification-bell');if(badge)badge.textContent=unread?String(unread):'';if(bell)bell.setAttribute('aria-label',locale()==='pt-BR'?`Notificações, ${unread} não lidas`:`Notifications, ${unread} unread`);}\n  async function markRead(id) { const item=(await list()).find(x=>x.id===id); if(item){item.readAt=Date.now();await write(item);} }
+  async function updateBadge(){const items=await list(),unread=items.filter(x=>!x.readAt).length,badge=document.querySelector('#notification-unread-count'),bell=document.querySelector('#notification-bell');if(badge)badge.textContent=unread?String(unread):'';if(bell)bell.setAttribute('aria-label',locale()==='pt-BR'?`Notificações, ${unread} não lidas`:`Notifications, ${unread} unread`);}
+  async function markRead(id) { const item=(await list()).find(x=>x.id===id); if(item){item.readAt=Date.now();await write(item);} }
   async function go(route) {
     const safe=safeRoute(route); if(!safe){showPage('<p role="status">'+t('noRoute')+'</p>');return;}
     if(safe==='/notifications'||safe==='/notifications/new'||safe==='/whats-new'){await renderInbox();return;}
@@ -126,7 +128,8 @@
   function screenHome(){const screen=document.querySelector('#screen');if(screen)delete screen.dataset.aariaNotificationScreen;pendingStartupRoute=null;history.replaceState(null,'',BASE.pathname);if(typeof window.goto==='function')window.goto('home');}
   let pendingStartupRoute=null;
   if(typeof window.goto==='function'&&!window.__aariaNotificationGotoPatched){const previous=window.goto;window.goto=function(route,...args){if(route==='notifications'||route==='whats-new')return openNotice(route==='whats-new'?'/whats-new':'/notifications');const result=previous.call(this,route,...args);if(route==='home'&&pendingStartupRoute){setTimeout(()=>{const pending=pendingStartupRoute;pendingStartupRoute=null;if(pending)go(pending);},180);}return result};window.__aariaNotificationGotoPatched=true;}
-  const screen=document.querySelector('#screen');if(screen&&'MutationObserver'in window)new MutationObserver(()=>{const h=screen.querySelector('h1,h2');if(!h||screen.dataset.aariaNotificationScreen)return;const heading=h.textContent.trim();if(!/^(Settings|Configurações)$/i.test(heading)||screen.querySelector('[data-open-notification-settings]'))return;const link=document.createElement('button');link.type='button';link.textContent=locale()==='pt-BR'?'Notificações':'Notifications';link.dataset.openNotificationSettings='true';link.addEventListener('click',()=>openNotice('/settings/notifications'));h.insertAdjacentElement('afterend',link);}).observe(screen,{childList:true,subtree:true});\n  navigator.serviceWorker?.addEventListener('message',event=>{if(event.data?.type==='AARIA_NOTIFICATION_OPEN'&&safeRoute(event.data.route))openNotice(event.data.route);if(event.data?.type==='AARIA_NOTIFICATION_RECEIVED')renderInbox().catch(()=>{});});
+  const screen=document.querySelector('#screen');if(screen&&'MutationObserver'in window)new MutationObserver(()=>{const h=screen.querySelector('h1,h2');if(!h||screen.dataset.aariaNotificationScreen)return;const heading=h.textContent.trim();if(!/^(Settings|Configurações)$/i.test(heading)||screen.querySelector('[data-open-notification-settings]'))return;const link=document.createElement('button');link.type='button';link.textContent=locale()==='pt-BR'?'Notificações':'Notifications';link.dataset.openNotificationSettings='true';link.addEventListener('click',()=>openNotice('/settings/notifications'));h.insertAdjacentElement('afterend',link);}).observe(screen,{childList:true,subtree:true});
+  navigator.serviceWorker?.addEventListener('message',event=>{if(event.data?.type==='AARIA_NOTIFICATION_OPEN'&&safeRoute(event.data.route))openNotice(event.data.route);if(event.data?.type==='AARIA_NOTIFICATION_RECEIVED')renderInbox().catch(()=>{});});
   window.addEventListener('DOMContentLoaded',()=>{updateBadge().catch(()=>{});const route=new URL(location.href).searchParams.get('notice');if(route&&safeRoute(route)){pendingStartupRoute=route;setTimeout(()=>{if(pendingStartupRoute)go(pendingStartupRoute);},1400);}});
   document.querySelector('#languageSelect')?.addEventListener('change',()=>{if(document.querySelector('#screen')?.dataset.aariaNotificationScreen)go(new URL(location.href).searchParams.get('notice')||'/notifications');});
 })();
