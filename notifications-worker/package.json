@@ -1,0 +1,1 @@
+{"name":"aaria-v36-notifications-worker","private":true,"type":"module","scripts":{"dev":"wrangler dev","deploy":"wrangler deploy","db:init":"wrangler d1 execute aaria-notifications --file=./migrations/0001_schema.sql"},"dependencies":{"web-push":"^3.6.7"},"devDependencies":{"wrangler":"^4.40.0"}}
