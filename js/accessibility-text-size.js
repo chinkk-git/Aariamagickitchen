@@ -33,7 +33,24 @@
     const value = Number(next);
     if (!SIZES.includes(value)) return;
     scale = value / 100;
-    document.documentElement.style.setProperty('--aaria-text-scale', String(scale));
+    let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const current = scale;
+      document.querySelectorAll('[' + SCALE_ATTR + ']').forEach(element => {
+        element.removeAttribute(SCALE_ATTR);
+        element.removeAttribute('data-aaria-button');
+        element.style.removeProperty('--aaria-base-font-size');
+        element.style.removeProperty('--aaria-scaled-line-height');
+      });
+      document.documentElement.style.setProperty('--aaria-text-scale', '1');
+      markText(document.body);
+      applyScale(Math.round(current * 100), false);
+    }, 120);
+  }, {passive: true});
+
+  document.documentElement.style.setProperty('--aaria-text-scale', String(scale));
     document.documentElement.dataset.aariaTextSizeActive = scale > 1 ? 'true' : 'false';
     if (persist) {
       try { localStorage.setItem(STORAGE_KEY, String(value)); } catch (_) {}
