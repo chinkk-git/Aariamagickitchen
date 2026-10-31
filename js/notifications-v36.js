@@ -73,7 +73,7 @@
   function renderSettings() {
     const prefs=settings();
     const rows=[['recipes','recipes'],['features','features'],['countries','countries'],['updates','updates']].map(([key,label])=>'<label class="an-pref"><input type="checkbox" data-pref="'+key+'" '+(prefs[key]?'checked':'')+'><span>'+t(label)+'</span></label>').join('');
-    const ua=inAppBrowser()?'<p role="note">'+t('inApp')+'</p>':'';
+    const ios=/iPhone|iPad|iPod/i.test(navigator.userAgent);const standalone=navigator.standalone===true||matchMedia('(display-mode: standalone)').matches;const install=ios&&!standalone?'<p role="note">'+t('install')+'</p>':'';const ua=inAppBrowser()?'<p role="note">'+t('inApp')+'</p>':'';
     showPage('<h1>'+t('settings')+'</h1><p>'+esc(permissionText())+'</p>'+ua+'<fieldset><legend>'+t('title')+'</legend>'+rows+'</fieldset><section class="an-push"><h2>'+t('push')+'</h2><p>'+t(supported()?'unavailable':'unsupported')+'</p><p>'+t('consentNeeded')+'</p><button type="button" disabled aria-disabled="true">'+t('subscribe')+'</button></section>'+button(t('back'),'back','class="an-back"'));
   }
   async function updateBadge(){const items=await list(),unread=items.filter(x=>!x.readAt).length,badge=document.querySelector('#notification-unread-count'),bell=document.querySelector('#notification-bell');if(badge)badge.textContent=unread?String(unread):'';if(bell)bell.setAttribute('aria-label',locale()==='pt-BR'?`Notificações, ${unread} não lidas`:`Notifications, ${unread} unread`);}
