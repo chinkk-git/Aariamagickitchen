@@ -1,0 +1,9 @@
+name = "aaria-magical-notifications"
+main = "src/index.js"
+compatibility_date = "2026-10-30"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "aaria-notifications"
+database_id = "CONFIGURE_AFTER_OWNER_CREATES_FREE_CLOUDFLARE_RESOURCES"
+migrations_dir = "migrations"
