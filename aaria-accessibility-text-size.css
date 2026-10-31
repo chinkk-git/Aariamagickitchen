@@ -1,0 +1,71 @@
+.aaria-text-size-panel {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+  padding: 16px;
+  border: 2px solid #dfc9f2;
+  border-radius: 22px;
+  background: #fffafd;
+  color: #49225b;
+}
+.aaria-text-size-panel h2,
+.aaria-text-size-panel p {
+  margin: 0;
+}
+.aaria-text-size-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.aaria-text-size-fieldset legend {
+  margin-bottom: 8px;
+  font-size: 1.15em;
+  font-weight: 900;
+}
+.aaria-text-size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.aaria-text-size-option,
+.aaria-text-size-reset {
+  min-width: 64px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 2px solid #9b70c6;
+  border-radius: 16px;
+  background: #fff;
+  color: #49225b;
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+  white-space: normal;
+}
+.aaria-text-size-option[aria-pressed="true"] {
+  background: #70409a;
+  border-color: #70409a;
+  color: #fff;
+}
+.aaria-text-size-option:focus-visible,
+.aaria-text-size-reset:focus-visible {
+  outline: 3px solid #f0a52e;
+  outline-offset: 3px;
+}
+.aaria-text-size-preview {
+  padding: 12px;
+  border-radius: 14px;
+  background: #f5edfb;
+}
+.aaria-text-size-reset {
+  width: fit-content;
+  min-width: 0;
+  border-color: #b8a7c5;
+  background: #fffafd;
+}
+@media (max-width: 480px) {
+  .aaria-text-size-panel { padding: 12px; }
+  .aaria-text-size-options { gap: 6px; }
+  .aaria-text-size-option { min-width: 56px; padding: 8px; }
+}
