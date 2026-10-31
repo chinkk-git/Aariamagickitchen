@@ -102,6 +102,8 @@ const testDevice={deviceId:'syntheticdeviceid_000000000000000000000001',deviceNa
 const subscribeBody={subscription:validSubscription,locale:'en-GB',categories:['recipes'],consentReceipt:validReceipt,device:testDevice};
 const firstSubscribe=await request('/v1/subscribe',subscribeBody);
 assert.equal(firstSubscribe.status,201);
+const outOfScopeConsent=await request('/v1/subscribe',{...subscribeBody,consentReceipt:await receipt({deviceManagement:false})});
+assert.equal(outOfScopeConsent.status,403,'subscription enrollment requires a receipt explicitly scoped to guardian device management');
 let subscriptionWrite=DB.writes.findLast(x=>x.sql.includes('INSERT INTO subscriptions'));
 assert.match(subscriptionWrite.sql,/consent_expires_at/);
 assert.match(subscriptionWrite.sql,/ON CONFLICT\(endpoint\) DO UPDATE/,'repeat subscriptions update the existing endpoint');
@@ -125,6 +127,8 @@ assert.equal(resubscribe.status,201,'an active guardian receipt permits resubscr
 const deviceList=await request('/v1/guardian/devices',{locale:'en-GB',consentReceipt:validReceipt});
 assert.equal(deviceList.status,200);
 assert.deepEqual(deviceList.body.devices.map(x=>x.device_id),[testDevice.deviceId],'a guardian sees only registered devices they own');
+const noManagementScope=await request('/v1/guardian/devices',{locale:'en-GB',consentReceipt:await receipt({deviceManagement:false})});
+assert.equal(noManagementScope.status,403,'device listing requires explicit guardian-management scope');
 const beforeFirst=globalThis.__testPushCalls.length;
 const firstMagic=await request('/v1/guardian/device/first-magical',{deviceId:testDevice.deviceId,locale:'en-GB',consentReceipt:validReceipt});
 assert.equal(firstMagic.status,202,'the first notification is sent to the selected authorized device');
