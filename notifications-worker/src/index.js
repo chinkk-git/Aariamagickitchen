@@ -47,6 +47,11 @@ export default {async fetch(request,env){
   if(request.method==='OPTIONS')return new Response(null,{headers:cors(origin)});
   if(origin&&origin!==allowedOrigin)return json({error:'origin_not_allowed'},403,origin);
   if(url.pathname==='/v1/config'&&request.method==='GET')return json({vapidPublicKey:env.VAPID_PUBLIC_KEY||null},200,origin);
+  if(url.pathname==='/v1/consent/verify'&&request.method==='POST'){
+    let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
+    if(!['en-GB','pt-BR'].includes(b?.locale)||!await validConsentReceipt(b?.consentReceipt,env,b.locale))return json({error:'valid_parent_consent_required'},403,origin);
+    return json({valid:true},200,origin);
+  }
   if(url.pathname==='/v1/subscribe'&&request.method==='POST'){
     let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
     if(!isValidSubscriptionInput(b))return json({error:'invalid_subscription'},400,origin);

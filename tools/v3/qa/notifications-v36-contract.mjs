@@ -12,6 +12,7 @@ assert.ok(client.includes('Instagram')&&client.includes('WhatsApp')&&client.incl
 assert.ok(sw.includes("addEventListener('push'")&&sw.includes('notificationclick')&&sw.includes('AARIA_NOTIFICATION_OPEN'));
 assert.ok(sw.includes('./notifications-v36.css')&&sw.includes('./js/notifications-v36.js'));
 assert.ok(worker.includes('validConsentReceipt')&&worker.includes('CONSENT_SIGNING_SECRET'));
+assert.ok(worker.includes("'/v1/consent/verify'")&&worker.includes('valid_parent_consent_required'),'Guardian receipt must be server-verified before the browser permission flow');
 assert.ok(worker.includes('ADMIN_TOKEN')&&worker.includes('INSERT OR IGNORE INTO announcements'));
 assert.ok(html.includes('notification-bell')&&html.includes('notifications-v36.js'));
 console.log('Notification support checks: safe routes, no automatic permission prompt, guardian receipt, server-only publisher, service-worker routing, and app entry point.');
