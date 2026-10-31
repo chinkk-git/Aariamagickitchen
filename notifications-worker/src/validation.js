@@ -8,7 +8,7 @@ function isPublicHttpsEndpoint(value) {
     if (url.protocol !== 'https:' || url.username || url.password || url.hash) return false;
     if (url.port && url.port !== '443') return false;
     if (!host || host === 'localhost' || host.endsWith('.localhost') || host.endsWith('.local') || host.includes(':')) return false;
-    if (/^(?:\\d{1,3}\\.){3}\\d{1,3}$/.test(host)) return false;
+    if (/^(?:\d{1,3}\.){3}\d{1,3}$/.test(host)) return false;
     if (!host.includes('.') || host.length > 253) return false;
     return host.split('.').every(label => label.length > 0 && label.length <= 63 && /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(label));
   } catch {
