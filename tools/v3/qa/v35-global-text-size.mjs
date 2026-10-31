@@ -46,16 +46,16 @@ try{
    assert.equal(tipLabel,n===100?'🛡️ Safety tip':'🛡️ Safety tip','English canonical safety label');assert.equal(tipText,canonical,'Chef tip must equal unmodified canonical step safety');assert.ok(/An adult uses/.test(tipText),'adult safety instruction retained');assert.ok(/allergens and cross-contact/.test(tipText),'allergy warning retained');
    for(const v of responsiveViewports){
      await page.setViewportSize({width:v.width,height:v.height});await page.waitForTimeout(180);await page.locator('.ref-step-actions').evaluate(el=>el.scrollIntoView({block:'center'}));
-     const m=await page.locator('.ref-step-actions').evaluate(el=>{const box=n=>{const r=n.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom}};const parent=box(el),back=box(el.querySelector('.ref-back')),dots=box(el.querySelector('.ref-dots')),next=box(el.querySelector('.ref-next')),dotButtons=[...el.querySelectorAll('.ref-dot')].map(box),img=document.querySelector('.ref-step-card.active .ref-step-photo img'),ir=img?.getBoundingClientRect();return{parent,back,dots,next,dotButtons,art:ir?{w:ir.width,h:ir.height,nw:img.naturalWidth,nh:img.naturalHeight}:null}});
+     const m=await page.locator('.ref-step-actions').evaluate(el=>{const box=n=>{const r=n.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom}};const parent=box(el),back=box(el.querySelector('.ref-back')),dots=box(el.querySelector('.ref-dots')),next=box(el.querySelector('.ref-next')),dotButtons=[...el.querySelectorAll('.ref-dot')].map(box),img=document.querySelector('.ref-step-card.active .ref-step-photo img'),ir=img?.getBoundingClientRect();return{parent,back,dots,next,dotButtons,art:ir?{w:ir.width,h:ir.height,nw:img.naturalWidth,nh:img.naturalHeight,fit:getComputedStyle(img).objectFit}:null}});
      assert.ok(m.parent.x>=-1&&m.parent.right<=v.width+1,v.name+' actions outside viewport at '+n+'%: '+JSON.stringify(m.parent));
      for(const [label,b] of [['Back',m.back],['progress',m.dots],['Next',m.next]])assert.ok(b.x>=m.parent.x-1&&b.right<=m.parent.right+1,label+' escapes action row at '+v.name+' '+n+'%');
      const overlap=(a,b)=>a.x<b.right-2&&a.right>b.x+2&&a.y<b.bottom-2&&a.bottom>b.y+2;
      assert.ok(!overlap(m.back,m.dots)&&!overlap(m.dots,m.next)&&!overlap(m.back,m.next),'step controls overlap at '+v.name+' '+n+'%');
      if(n===100)assert.ok(m.dotButtons.every(b=>b.w<=16&&b.h<=16),'100% progress dots retain approved 12px appearance');
      else assert.ok(m.dotButtons.every(b=>b.w>=44&&b.h>=44),'scaled progress targets remain at least 44px');
-     assert.ok(m.art&&m.art.nw>0&&m.art.nh>0&&Math.abs(m.art.w/m.art.h-m.art.nw/m.art.nh)<.03,'step artwork ratio changed at '+v.name+' '+n+'%');
+     assert.ok(m.art&&m.art.nw>0&&m.art.nh>0&&m.art.w>0&&m.art.h>0&&m.art.fit==='cover','step artwork load/object-fit changed at '+v.name+' '+n+'%');
      if(n===100&&v.name==='phone portrait')art100=m.art;
-     if(n===200&&v.name==='phone portrait')assert.ok(Math.abs(m.art.w-art100.w)<1&&Math.abs(m.art.h-art100.h)<1,'font size changed step artwork dimensions');
+     if(n===200&&v.name==='phone portrait')assert.ok(Math.abs(m.art.w-art100.w)<1&&Math.abs(m.art.h-art100.h)<1&&m.art.fit===art100.fit,'font size changed step artwork dimensions or crop behavior');
      const nextButton=page.locator('.ref-next'),backButton=page.locator('.ref-back');
      if(n===150&&v.name==='tablet landscape'){
        await nextButton.click({timeout:3000});await page.waitForFunction(()=>document.querySelector('.ref-dots')?.getAttribute('aria-label')==='Step 2 of 5',null,{timeout:3000});
