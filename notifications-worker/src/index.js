@@ -68,9 +68,7 @@ async function processFanout(message,env){
   if(cursor!==a.fanout_cursor)return;
   const payload=JSON.parse(a.payload);
   const now=Date.now();
-  const expired=await env.DB.prepare('SELECT endpoint FROM subscriptions WHERE consent_valid=1 AND consent_expires_at<=? ORDER BY endpoint LIMIT ?').bind(now,fanoutPageSize).all();
-  if(expired.results?.length)await env.DB.batch(expired.results.map(s=>env.DB.prepare('UPDATE subscriptions SET consent_valid=0,updated_at=? WHERE endpoint=? AND consent_expires_at<=?').bind(now,s.endpoint,now)));
-  const page=await env.DB.prepare('SELECT endpoint,p256dh,auth,locale,categories,endpoint_hash FROM subscriptions WHERE consent_valid=1 AND consent_expires_at>? AND endpoint>? ORDER BY endpoint LIMIT ?').bind(now,cursor,fanoutPageSize).all();
+  const page=await env.DB.prepare('SELECT rowid AS row_id,endpoint,p256dh,auth,locale,categories,endpoint_hash FROM subscriptions WHERE consent_valid=1 AND consent_expires_at>? AND rowid>? ORDER BY rowid LIMIT ?').bind(now,Number(cursor)||0,fanoutPageSize).all();
   const eligible=[];
   for(const s of page.results||[]){
     let prefs=[];try{prefs=JSON.parse(s.categories)}catch{}
@@ -82,7 +80,7 @@ async function processFanout(message,env){
     const delivery=await env.DB.prepare('SELECT status FROM announcement_deliveries WHERE id=?').bind(id).first();
     if(delivery?.status==='pending')eligible.push({body:{kind:'deliver',deliveryId:id}});
   }
-  const nextCursor=page.results?.length?page.results[page.results.length-1].endpoint:cursor;
+  const nextCursor=page.results?.length?String(page.results[page.results.length-1].row_id):cursor;
   const hasMore=(page.results?.length||0)===fanoutPageSize;
   const messages=[...eligible];
   if(hasMore)messages.push({body:{kind:'fanout',announcementId:payload.id,cursor:nextCursor}});
@@ -92,6 +90,16 @@ async function processFanout(message,env){
   }
   await env.DB.prepare('UPDATE announcements SET fanout_cursor=?,fanout_complete=? WHERE id=? AND fanout_cursor=?').bind(nextCursor,hasMore?0:1,payload.id,cursor).run();
   if(!hasMore)await finalizeAnnouncement(env,payload.id);
+}
+async function processConsentCleanup(message,env){
+  const now=Date.now(),cursor=Number(message.cursor)||0;
+  const expired=await env.DB.prepare('SELECT rowid AS row_id,endpoint FROM subscriptions WHERE consent_valid=1 AND consent_expires_at<=? AND rowid>? ORDER BY rowid LIMIT ?').bind(now,cursor,fanoutPageSize).all();
+  const endpoints=expired.results||[];
+  if(!endpoints.length)return;
+  await env.DB.batch(endpoints.map(s=>env.DB.prepare('DELETE FROM subscriptions WHERE endpoint=? AND consent_valid=1 AND consent_expires_at<=?').bind(s.endpoint,now)));
+  if(endpoints.length===fanoutPageSize){
+    await env.DELIVERY_QUEUE.send({kind:'consent-cleanup',cursor:String(endpoints[endpoints.length-1].row_id)});
+  }
 }
 async function processDelivery(message,env,queueMessage){
   const now=Date.now();
@@ -138,6 +146,7 @@ async function handleQueueMessage(message,env){
   const value=message.body;
   if(value?.kind==='fanout')return processFanout(value,env);
   if(value?.kind==='deliver')return processDelivery(value,env,message);
+  if(value?.kind==='consent-cleanup')return processConsentCleanup(value,env);
   message.ack();
 }
 export default {async fetch(request,env){
@@ -193,6 +202,11 @@ export default {async fetch(request,env){
     return json(row,200,origin);
   }
   return json({error:'not_found'},404,origin);
+},async scheduled(_event,env,ctx){
+  if(!env.DB||!env.DELIVERY_QUEUE)return;
+  ctx.waitUntil(env.DELIVERY_QUEUE.send({kind:'consent-cleanup',cursor:''}).catch(error=>{
+    console.error('expired-consent cleanup enqueue failed',{errorCode:Number(error?.statusCode)||0});
+  }));
 },async queue(batch,env){
   for(const message of batch.messages){
     try{await handleQueueMessage(message,env);}
