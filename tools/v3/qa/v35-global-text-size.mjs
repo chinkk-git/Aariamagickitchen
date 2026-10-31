@@ -33,7 +33,7 @@ try{
  await nav('library');await text('#screen .topbar h2','Recipe library',true);
  await bounded('recipe route startup',()=>page.goto(base+'#aria/recipe/12/0',{waitUntil:'domcontentloaded',timeout:8000}),10000);await skipWelcome();
  await text('#screen .ref-title h1','Recipe title 200%',true);await text('#screen .ref-ingredients','Recipe ingredients 200%',true);await text('#screen .ref-tools','Recipe equipment 200%',true);await text('#screen .ref-step-grid','Recipe steps 200%',true);
- await size(175);await text('#screen .ref-title h1','Recipe title 175%',true);await size(200);
+ await settings();await size(175);await bounded('recipe route at 175%',()=>page.goto(base+'#aria/recipe/12/0',{waitUntil:'domcontentloaded',timeout:8000}),10000);await skipWelcome();await text('#screen .ref-title h1','Recipe title 175%',true);await settings();await size(200);
  await nav('world');await text('#screen h1','World Adventure',true);await nav('week');await text('#screen .topbar h2','Planner',true);await nav('creations');await text('#screen h1','My Creations',true);
  await nav('home');await settings();await text('#screen .home-subpage h1','Settings 200%',true);
  await check('phone portrait and landscape');
