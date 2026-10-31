@@ -1,4 +1,5 @@
 import webpush from 'web-push';
+import { isPublicHttpsEndpoint, isValidSubscriptionInput } from './validation.js';
 
 const allowedOrigin = 'https://chinkk-git.github.io';
 const maxBody = 12_000;
@@ -25,6 +26,7 @@ async function validConsentReceipt(token,env,locale){
 }
 async function sendAnnouncement(request,env,a){
   if(!await auth(request,env))return {status:401};
+  if(!env.DB||!env.VAPID_PUBLIC_KEY||!env.VAPID_PRIVATE_KEY||!env.VAPID_SUBJECT)return {status:503};
   if(!a||!/^[A-Za-z0-9._:-]{1,100}$/.test(a.id)||!/^[0-9a-f]{40}$/.test(a.releaseSha)||!categories.has(a.category)||!validRoute(a.route)||a.confirmedProduction!==true||a.approvedGuardianConsentModel!==true)return {status:400};
   const claimed=await env.DB.prepare('INSERT OR IGNORE INTO announcements(id,release_sha,status,created_at) VALUES(?,?,?,?)').bind(a.id,a.releaseSha,'sending',Date.now()).run();
   if(!claimed.meta?.changes)return {status:409};
@@ -47,7 +49,8 @@ export default {async fetch(request,env){
   if(url.pathname==='/v1/config'&&request.method==='GET')return json({vapidPublicKey:env.VAPID_PUBLIC_KEY||null},200,origin);
   if(url.pathname==='/v1/subscribe'&&request.method==='POST'){
     let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
-    if(!b?.subscription?.endpoint||!/^https:\/\//.test(b.subscription.endpoint)||!b.subscription.keys?.p256dh||!b.subscription.keys?.auth||!['en-GB','pt-BR'].includes(b.locale)||!Array.isArray(b.categories)||b.categories.length>4||b.categories.some(c=>!categories.has(c)))return json({error:'invalid_subscription'},400,origin);
+    if(!isValidSubscriptionInput(b))return json({error:'invalid_subscription'},400,origin);
+    if(!env.DB||!env.VAPID_PUBLIC_KEY||!env.VAPID_PRIVATE_KEY||!env.VAPID_SUBJECT)return json({error:'push_service_unavailable'},503,origin);
     const receiptHash=await validConsentReceipt(b.consentReceipt,env,b.locale);if(!receiptHash)return json({error:'valid_parent_consent_required'},403,origin);
     const now=Date.now();
     await env.DB.prepare('INSERT INTO subscriptions(endpoint,p256dh,auth,locale,categories,consent_valid,consent_receipt_hash,created_at,updated_at) VALUES(?,?,?,?,?,1,?,?,?) ON CONFLICT(endpoint) DO UPDATE SET p256dh=excluded.p256dh,auth=excluded.auth,locale=excluded.locale,categories=excluded.categories,consent_valid=1,consent_receipt_hash=excluded.consent_receipt_hash,updated_at=excluded.updated_at').bind(b.subscription.endpoint,b.subscription.keys.p256dh,b.subscription.keys.auth,b.locale,JSON.stringify(b.categories),receiptHash,now,now).run();
@@ -55,13 +58,15 @@ export default {async fetch(request,env){
   }
   if(url.pathname==='/v1/unsubscribe'&&request.method==='POST'){
     let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
-    if(!b?.endpoint||typeof b.endpoint!=='string'||b.endpoint.length>2048)return json({error:'invalid_endpoint'},400,origin);
+    if(!isPublicHttpsEndpoint(b?.endpoint))return json({error:'invalid_endpoint'},400,origin);
+    if(!env.DB)return json({error:'storage_unavailable'},503,origin);
     await env.DB.prepare('DELETE FROM subscriptions WHERE endpoint=?').bind(b.endpoint).run();return json({ok:true},200,origin);
   }
   if(url.pathname==='/v1/test'&&request.method==='POST'){
     if(!await auth(request,env))return json({error:'unauthorized'},401,origin);
     let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
-    if(!b?.endpoint)return json({error:'invalid_endpoint'},400,origin);
+    if(!isPublicHttpsEndpoint(b?.endpoint))return json({error:'invalid_endpoint'},400,origin);
+    if(!env.DB||!env.VAPID_PUBLIC_KEY||!env.VAPID_PRIVATE_KEY||!env.VAPID_SUBJECT)return json({error:'push_service_unavailable'},503,origin);
     const s=await env.DB.prepare('SELECT endpoint,p256dh,auth FROM subscriptions WHERE endpoint=? AND consent_valid=1').bind(b.endpoint).first();if(!s)return json({error:'not_found'},404,origin);
     await webpush.sendNotification({endpoint:s.endpoint,keys:{p256dh:s.p256dh,auth:s.auth}},JSON.stringify({title:'Aaria test',body:'Push delivery is connected.',data:{route:'/notifications'}}),{vapidDetails:{subject:env.VAPID_SUBJECT,publicKey:env.VAPID_PUBLIC_KEY,privateKey:env.VAPID_PRIVATE_KEY},TTL:60});
     return json({ok:true},200,origin);

@@ -10,6 +10,7 @@ on:
       - "sw.js"
       - "index.html"
       - "tools/v3/qa/notifications-v36-contract.mjs"
+      - "tools/v3/qa/notifications-worker-validation.mjs"
       - "tools/v3/qa/notifications-release-diff.mjs"
       - ".github/workflows/v36-notifications-focused.yml"
 permissions:
@@ -29,8 +30,10 @@ jobs:
           node --check js/notifications-v36.js
           node --check sw.js
           node --check notifications-worker/src/index.js
+          node --check notifications-worker/src/validation.js
           node --check notifications/generate-announcements.mjs
       - name: Validate safety and route contracts
         run: |
           node tools/v3/qa/notifications-v36-contract.mjs
+          node tools/v3/qa/notifications-worker-validation.mjs
           node tools/v3/qa/notifications-release-diff.mjs
