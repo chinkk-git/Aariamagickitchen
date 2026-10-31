@@ -11,7 +11,7 @@
   const locale = () => document.documentElement.lang === 'pt-BR' || document.querySelector('#languageSelect')?.value === 'pt-BR' ? 'pt-BR' : 'en-GB';
   const t = key => labels[locale()][key] || labels['en-GB'][key] || key;
   const supported = () => 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
-  const inAppBrowser = () => /FBAN|FBAV|Instagram|WhatsApp|Line\//i.test(navigator.userAgent);
+  const inAppBrowser = () => /FBAN|FBAV|FB_IAB|Instagram|WhatsApp|Line\/|Twitter|LinkedInApp|TikTok|; wv/i.test(navigator.userAgent);
   let dbPromise;
   function db() {
     if (!('indexedDB' in window)) return Promise.resolve(null);
