@@ -133,6 +133,7 @@
     const section = document.createElement('section');
     section.className = 'aaria-text-size-panel';
     section.dataset.aariaTextSizePanel = '';
+    section.dataset.aariaLocale = pt ? 'pt-BR' : 'en-GB';
     section.setAttribute('aria-labelledby', 'aaria-text-size-heading');
 
     const title = pt ? 'Acessibilidade' : 'Accessibility';
