@@ -5,6 +5,7 @@ const pushClient=await readFile(new URL('../../../js/notifications-push-v36.js',
 const sw=await readFile(new URL('../../../sw.js',import.meta.url),'utf8');
 const worker=await readFile(new URL('../../../notifications-worker/src/index.js',import.meta.url),'utf8');
 const html=await readFile(new URL('../../../index.html',import.meta.url),'utf8');
+const styles=await readFile(new URL('../../../notifications-v36.css',import.meta.url),'utf8');
 const deliveryMigration=await readFile(new URL('../../../notifications-worker/migrations/0002_resumable_delivery.sql',import.meta.url),'utf8');
 const testMigration=await readFile(new URL('../../../notifications-worker/migrations/0003_guarded_test_notifications.sql',import.meta.url),'utf8');
 const deviceMigration=await readFile(new URL('../../../notifications-worker/migrations/0004_guardian_devices_first_notification.sql',import.meta.url),'utf8');
@@ -41,6 +42,7 @@ assert.ok(worker.includes('✨ Aaria, a magical surprise for you!')&&worker.incl
 assert.ok(worker.includes('✨ Aaria, uma surpresa mágica para você!')&&worker.includes('Sua receita especial de Phở de Tofu e Legumes do Vietnã está pronta!'));
 assert.ok(pushClient.includes('requestGuardianManagementReceipt')&&pushClient.includes("api('/v1/guardian/device/first-magical'")&&pushClient.includes('deviceId:row.device_id'),'the guardian dashboard requires a management receipt and selects one registered device');
 assert.ok(pushClient.includes('/v1/device/heartbeat'),'last-contact time is updated only by an active device subscription heartbeat');
+assert.ok(styles.includes('.an-push label[hidden]'),'unconfigured push must not visibly collect device labels');
 assert.ok(deviceMigration.includes('CREATE TABLE guardian_devices')&&deviceMigration.includes('CREATE TABLE first_magical_notification')&&deviceMigration.includes('navigation_result'));
 assert.ok(testMigration.includes('ALTER TABLE subscriptions ADD COLUMN last_test_at INTEGER'));
 assert.ok(deliveryMigration.includes('UNIQUE(announcement_id,endpoint_hash)')&&deliveryMigration.includes('error_code')&&deliveryMigration.includes('consent_expires_at')&&deliveryMigration.includes('subscriptions_active_expiry_endpoint_idx'));
