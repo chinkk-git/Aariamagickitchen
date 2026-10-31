@@ -14,6 +14,7 @@ on:
       - "tools/v3/qa/notifications-worker-validation.mjs"
       - "tools/v3/qa/notifications-release-diff.mjs"
       - ".github/workflows/v36-notifications-focused.yml"
+      - "tools/v3/qa/v36-notification-text-size-integration.mjs"
 permissions:
   contents: read
 jobs:
@@ -34,8 +35,18 @@ jobs:
           node --check notifications-worker/src/index.js
           node --check notifications-worker/src/validation.js
           node --check notifications/generate-announcements.mjs
+          node --check js/accessibility-text-size.js
+          node --check tools/v3/qa/v36-notification-text-size-integration.mjs
       - name: Validate safety and route contracts
         run: |
           node tools/v3/qa/notifications-v36-contract.mjs
           node tools/v3/qa/notifications-worker-validation.mjs
           node tools/v3/qa/notifications-release-diff.mjs
+      - name: Install isolated Playwright dependency
+        run: npm install --prefix /tmp/aaria-notification-qa playwright
+      - name: Install Chromium
+        run: node /tmp/aaria-notification-qa/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Validate Text Size notification deep link at all five sizes
+        env:
+          PLAYWRIGHT_MODULE: /tmp/aaria-notification-qa/node_modules/playwright
+        run: node tools/v3/qa/v36-notification-text-size-integration.mjs

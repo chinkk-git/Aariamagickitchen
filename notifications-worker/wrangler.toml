@@ -8,3 +8,15 @@ binding = "DB"
 database_name = "aaria-notifications"
 database_id = "CONFIGURE_AFTER_OWNER_CREATES_FREE_CLOUDFLARE_RESOURCES"
 migrations_dir = "migrations"
+
+[[queues.producers]]
+binding = "DELIVERY_QUEUE"
+queue = "aaria-notification-delivery"
+
+[[queues.consumers]]
+queue = "aaria-notification-delivery"
+max_batch_size = 20
+max_batch_timeout = 5
+max_retries = 5
+dead_letter_queue = "aaria-notification-dead-letter"
+max_concurrency = 1

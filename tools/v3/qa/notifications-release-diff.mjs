@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
 import {generateAnnouncements} from '../../../notifications/generate-announcements.mjs';
 const sha='0123456789abcdef0123456789abcdef01234567';
 const baseline={recipeIds:[1,2],countryRegistry:['IND'],notificationFeatures:[]};
@@ -12,4 +13,9 @@ assert.equal(generateAnnouncements(next,next,sha).length,0);
 const feature=generateAnnouncements({...next,notificationFeatures:[]},{...next,notificationFeatures:[{id:'large-text',status:'approved',announcementReady:true,route:'/settings/accessibility/text-size',messages:{'en-GB':{title:'Text size',body:'Adjust text size.'},'pt-BR':{title:'Tamanho do texto',body:'Ajuste o tamanho do texto.'}}}]},sha);
 assert.equal(feature.length,1);
 assert.equal(feature[0].route,'/settings/accessibility/text-size');
+assert.equal(generateAnnouncements({...next,notificationFeatures:[]},{...next,notificationFeatures:[{id:'not-ready',status:'draft',announcementReady:false,route:'/settings/accessibility/text-size',messages:{'en-GB':{title:'Text size',body:'Not ready'},'pt-BR':{title:'Tamanho',body:'Ainda não'}}}]},sha).length,0,'Unapproved or unshipped features must not be announced');
+const manifest=JSON.parse(await readFile(new URL('../../../manifest.json',import.meta.url),'utf8'));
+assert.equal(manifest.recipeIds.length,116,'V3.6 release metadata must preserve all 116 canonical recipe IDs');
+const featureDelta=generateAnnouncements({...manifest,notificationFeatures:[]},manifest,sha).find(x=>x.id.endsWith(':feature:large-text'));
+assert.equal(featureDelta?.route,'/settings/accessibility/text-size','Deployed Text Size feature must produce the guarded deep-link announcement');
 console.log('Release diff drafts exact recipe and country routes, localized copy, feature gating and idempotent no-change behavior.');

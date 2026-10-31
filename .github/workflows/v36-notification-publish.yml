@@ -74,5 +74,5 @@ jobs:
               if (response.status === 409) { core.notice('Duplicate announcement already recorded: '+item.id); continue; }
               if (!response.ok) throw new Error('Worker publish failed for '+item.id+' with HTTP '+response.status);
               const result = await response.json();
-              core.notice(item.id+': sent='+result.sent+', failed='+result.failed+', removed='+result.removed);
+              core.notice(item.id+': state='+result.status+'; queue acceptance='+Boolean(result.id)+'. Final accepted/failed/removed counts are available from the authenticated Worker status endpoint after queue processing completes.');
             }

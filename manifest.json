@@ -187,6 +187,24 @@
     "GBR",
     "MAR"
   ],
+  "notificationFeatures": [
+    {
+      "id": "large-text",
+      "status": "approved",
+      "announcementReady": true,
+      "route": "/settings/accessibility/text-size",
+      "messages": {
+        "en-GB": {
+          "title": "✨ Something magical is new!",
+          "body": "You can now make recipe text bigger in Settings → Accessibility → Text Size."
+        },
+        "pt-BR": {
+          "title": "✨ Uma novidade mágica!",
+          "body": "Agora você pode aumentar o texto das receitas em Configurações → Acessibilidade → Tamanho do texto."
+        }
+      }
+    }
+  ],
   "recipeArtworkFileCount": 232,
   "homeExperience": {
     "default": "food-wonderland",

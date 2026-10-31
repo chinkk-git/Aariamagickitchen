@@ -5,6 +5,8 @@ const pushClient=await readFile(new URL('../../../js/notifications-push-v36.js',
 const sw=await readFile(new URL('../../../sw.js',import.meta.url),'utf8');
 const worker=await readFile(new URL('../../../notifications-worker/src/index.js',import.meta.url),'utf8');
 const html=await readFile(new URL('../../../index.html',import.meta.url),'utf8');
+const deliveryMigration=await readFile(new URL('../../../notifications-worker/migrations/0002_resumable_delivery.sql',import.meta.url),'utf8');
+const wrangler=await readFile(new URL('../../../notifications-worker/wrangler.toml',import.meta.url),'utf8');
 assert.ok(client.includes('PushManager')&&client.includes('safeRoute')&&client.includes('consentNeeded'));
 assert.ok(client.includes('aaria:open-text-size')&&client.includes("window.goto('settings')"),'Text Size notification route must open Settings after Font Size integration');
 assert.ok(!client.includes('Notification.requestPermission'),'Inbox must not request permission');
@@ -16,7 +18,15 @@ assert.ok(client.includes('Instagram')&&client.includes('WhatsApp')&&client.incl
 assert.ok(sw.includes("addEventListener('push'")&&sw.includes('notificationclick')&&sw.includes('AARIA_NOTIFICATION_OPEN'));
 assert.ok(sw.includes('./notifications-v36.css')&&sw.includes('./js/notifications-v36.js'));
 assert.ok(worker.includes('validConsentReceipt')&&worker.includes('CONSENT_SIGNING_SECRET'));
+assert.ok(worker.includes('PARENT_CONSENT_MODEL_APPROVED!==\'true\'')&&worker.includes('PARENT_CONSENT_MODEL_APPROVED===\'true\''),'Remote push and publishing must remain fail-closed until the guardian-consent model is approved');
+assert.ok(worker.includes('consent_expires_at>?')&&worker.includes('consent_expires_at<=?')&&worker.includes('expiresAt:payload.exp*1000'),'Consent expiry must be persisted, filtered during fanout and rechecked immediately before delivery');
 assert.ok(worker.includes("'/v1/consent/verify'")&&worker.includes('valid_parent_consent_required'),'Guardian receipt must be server-verified before the browser permission flow');
 assert.ok(worker.includes('ADMIN_TOKEN')&&worker.includes('INSERT OR IGNORE INTO announcements'));
-assert.ok(html.includes('notification-bell')&&html.includes('notifications-v36.js'));
+assert.ok(worker.includes('DELIVERY_QUEUE')&&worker.includes('fanoutPageSize = 50'),'Announcements must use bounded queue fanout');
+assert.ok(worker.includes('announcement_deliveries')&&worker.includes('endpointHash')&&worker.includes('maxDeliveryAttempts'),'Queue delivery must be resumable, per-recipient deduplicated and retry bounded');
+assert.ok(worker.includes('statusMatch=url.pathname.match')&&worker.includes('fanout_complete'),'Authenticated delivery status must expose final queue results');
+assert.ok(deliveryMigration.includes('UNIQUE(announcement_id,endpoint_hash)')&&deliveryMigration.includes('error_code')&&deliveryMigration.includes('consent_expires_at')&&deliveryMigration.includes('subscriptions_active_expiry_endpoint_idx'));
+assert.ok(wrangler.includes('binding = "DELIVERY_QUEUE"')&&wrangler.includes('max_batch_size = 20')&&wrangler.includes('dead_letter_queue'));
+assert.ok(html.includes('notification-bell')&&html.includes('notifications-v36.js')&&html.includes('accessibility-text-size.js'));
+assert.ok(sw.includes('./aaria-accessibility-text-size.css')&&sw.includes('./js/accessibility-text-size.js')&&sw.includes("r3'"),'Service worker upgrade must cache the merged Text Size implementation');
 console.log('Notification support checks: safe routes, no automatic permission prompt, guardian receipt, server-only publisher, service-worker routing, and app entry point.');
