@@ -2059,10 +2059,10 @@ ${v34Style}
   }
 
   const v35EntryRecipeRoute = (() => {
-    const parts = location.hash.split('/');
-    const id = parts[1] === 'aria' && parts[2] === 'recipe' ? Number(parts[3]) : NaN;
+    const parts = location.hash.slice(6).split('/');
+    const id = parts[0] === 'recipe' ? Number(parts[1]) : NaN;
     if (!Number.isSafeInteger(id) || id <= 0) return null;
-    const routeStep = Number(parts[4]);
+    const routeStep = Number(parts[2]);
     return {id, step: Number.isSafeInteger(routeStep) && routeStep >= 0 ? routeStep : 0};
   })();
 
