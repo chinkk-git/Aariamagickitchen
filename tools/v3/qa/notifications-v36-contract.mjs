@@ -28,7 +28,7 @@ assert.ok(worker.includes('DELIVERY_QUEUE')&&worker.includes('fanoutPageSize = 5
 assert.ok(worker.includes('announcement_deliveries')&&worker.includes('endpointHash')&&worker.includes('maxDeliveryAttempts'),'Queue delivery must be resumable, per-recipient deduplicated and retry bounded');
 assert.ok(worker.includes('statusMatch=url.pathname.match')&&worker.includes('fanout_complete'),'Authenticated delivery status must expose final queue results');
 assert.ok(deliveryMigration.includes('UNIQUE(announcement_id,endpoint_hash)')&&deliveryMigration.includes('error_code')&&deliveryMigration.includes('consent_expires_at')&&deliveryMigration.includes('subscriptions_active_expiry_endpoint_idx'));
-assert.ok(wrangler.includes('binding = "DELIVERY_QUEUE"')&&wrangler.includes('max_batch_size = 20')&&wrangler.includes('dead_letter_queue')&&wrangler.includes('crons = ["15 * * * *"]'));
+assert.ok(wrangler.includes('binding = "DELIVERY_QUEUE"')&&wrangler.includes('max_batch_size = 20')&&wrangler.includes('dead_letter_queue')&&wrangler.includes('crons = ["15 * * * *"]')&&wrangler.includes('PARENT_CONSENT_MODEL_APPROVED = "false"'));
 assert.ok(html.includes('notification-bell')&&html.includes('notifications-v36.js')&&html.includes('accessibility-text-size.js'));
 assert.ok(sw.includes('./aaria-accessibility-text-size.css')&&sw.includes('./js/accessibility-text-size.js')&&sw.includes("r3'"),'Service worker upgrade must cache the merged Text Size implementation');
 console.log('Notification support checks: safe routes, no automatic permission prompt, guardian receipt, server-only publisher, service-worker routing, and app entry point.');

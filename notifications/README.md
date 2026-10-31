@@ -2,7 +2,7 @@
 
 ## Branch and release boundary
 
-This work is isolated on `feature/v3.6-magical-notifications`. It now includes the deployed Font Size baseline `d9a5f491516e6dd67a4d3a9d6e1f4282145ffcf0`; production has not received the notifications feature. Push is fail-closed: the Worker requires `PARENT_CONSENT_MODEL_APPROVED=true` before it exposes the public VAPID key, verifies consent, accepts subscriptions, permits test sends or publishes announcements.
+This work is isolated on `feature/v3.6-magical-notifications`. It now includes the deployed Font Size baseline `d9a5f491516e6dd67a4d3a9d6e1f4282145ffcf0`; production has not received the notifications feature. Wrangler config explicitly sets `PARENT_CONSENT_MODEL_APPROVED=false`. Push remains fail-closed until an owner/privacy-approved protected change sets it to `true`; otherwise the Worker does not expose the public VAPID key, verify consent, accept subscriptions, permit test sends or publish announcements.
 
 ## Proposed service architecture
 
@@ -46,11 +46,11 @@ The following uses Cloudflare's Free plan only. The owner creates the account/re
 2. Create the database: `npx wrangler d1 create aaria-notifications`. Copy the returned database ID directly into `d1_databases[0].database_id` in `wrangler.toml`; do not commit the ID as a secret (it is a resource identifier).
 3. Apply both D1 migrations once with `npx wrangler d1 migrations apply aaria-notifications --remote`.
 4. Create the free Queue resources: `npx wrangler queues create aaria-notification-delivery` and `npx wrangler queues create aaria-notification-dead-letter`. The Wrangler config binds the first as producer/consumer and routes messages exhausted after five retries to the dead-letter queue.
-5. Generate one VAPID key pair with `npx web-push generate-vapid-keys`. Keep the private key in a password manager or other owner-controlled secret store. Set Worker variables `VAPID_PUBLIC_KEY`, `VAPID_SUBJECT` (an owner-approved contact URI), and `PARENT_CONSENT_MODEL_APPROVED=false`. Set Worker secrets `VAPID_PRIVATE_KEY`, `ADMIN_TOKEN`, and `CONSENT_SIGNING_SECRET` using Cloudflare's Worker secrets UI or `npx wrangler secret put <NAME>`. The public key remains hidden by `/v1/config` while consent approval is false; private keys and administrative/signing tokens must remain secret.
+5. Generate one VAPID key pair with `npx web-push generate-vapid-keys`. Keep the private key in a password manager or other owner-controlled secret store. Set Worker variables `VAPID_PUBLIC_KEY` and `VAPID_SUBJECT` (an owner-approved contact URI). Wrangler config sets `PARENT_CONSENT_MODEL_APPROVED=false`; do not change it until owner/privacy approval and protected review authorize enabling the service. Set Worker secrets `VAPID_PRIVATE_KEY`, `ADMIN_TOKEN`, and `CONSENT_SIGNING_SECRET` using Cloudflare's Worker secrets UI or `npx wrangler secret put <NAME>`. The public key remains hidden by `/v1/config` while consent approval is false; private keys and administrative/signing tokens must remain secret.
 6. Deploy from `notifications-worker/` with `npx wrangler deploy`; record the exact Worker URL. Confirm `GET <Worker URL>/v1/config` returns a null public key and that consent, subscription, test-send and publish endpoints fail closed while approval is false. Do not enable client enrollment at this stage.
 7. In GitHub repository **Settings → Secrets and variables → Actions**, configure:
    - **Variable** `AARIA_NOTIFICATION_WORKER_URL`: exact deployed Worker base URL.
-   - **Variable** `AARIA_PARENT_CONSENT_MODEL_APPROVED`: leave unset/false until the actual consent workflow and privacy notice are approved. The same value must be explicitly set to `true` in Worker variables only after approval; otherwise the Worker remains disabled.
+   - **Variable** `AARIA_PARENT_CONSENT_MODEL_APPROVED`: leave unset/false until the actual consent workflow and privacy notice are approved. It is not a substitute for the Worker-side protected approval flag.
    - **Secret** `AARIA_NOTIFICATION_PUBLISH_TOKEN`: the same high-entropy value entered as Worker `ADMIN_TOKEN`.
    Set the exact Worker origin in the app's `connect-src` CSP only when a reviewed client subscription integration is deployed.
 

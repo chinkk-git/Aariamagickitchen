@@ -3,6 +3,9 @@ main = "src/index.js"
 compatibility_date = "2026-10-30"
 compatibility_flags = ["nodejs_compat"]
 
+[vars]
+PARENT_CONSENT_MODEL_APPROVED = "false"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "aaria-notifications"
