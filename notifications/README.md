@@ -41,19 +41,13 @@ The deployed Text Size feature is eligible for a bilingual announcement draft, b
 
 ## Owner setup runbook — do not perform until approved
 
-The following uses Cloudflare's Free plan only. The owner creates the account/resources and enters secrets directly into Cloudflare/GitHub; never paste secret values into a commit, issue, chat, or the public Pages app.
+The following uses only the already configured Cloudflare Free resources. Do not create duplicate Worker, D1, or Queue resources. The separately approved D1 migration workflow remains isolated; this notification simplification does not apply migrations.
 
-1. In a trusted terminal, from `notifications-worker/`, install the declared package dependencies with `npm install`.
-2. Create the database: `npx wrangler d1 create aaria-notifications`. Copy the returned database ID directly into `d1_databases[0].database_id` in `wrangler.toml`; do not commit the ID as a secret (it is a resource identifier).
-3. Apply all four D1 migrations once with `npx wrangler d1 migrations apply aaria-notifications --remote`.
-4. Create the free Queue resources: `npx wrangler queues create aaria-notification-delivery` and `npx wrangler queues create aaria-notification-dead-letter`. Wrangler config binds the delivery queue as producer/consumer, routes messages exhausted after two attempts to the dead-letter queue, and adds a single-attempt dead-letter consumer that records terminal delivery/fan-out errors.
-5. Generate one VAPID key pair with `npx web-push generate-vapid-keys`. Keep the private key in a password manager or other owner-controlled secret store. Set Worker variables `VAPID_PUBLIC_KEY` and `VAPID_SUBJECT` (an owner-approved contact URI). Wrangler config sets `PARENT_CONSENT_MODEL_APPROVED=false`; do not change it until owner/privacy approval and protected review authorize enabling the service. Set Worker secrets `VAPID_PRIVATE_KEY`, `ADMIN_TOKEN`, and `CONSENT_SIGNING_SECRET` using Cloudflare's Worker secrets UI or `npx wrangler secret put <NAME>`. The public key remains hidden by `/v1/config` while consent approval is false; private keys and administrative/signing tokens must remain secret.
-6. Deploy from `notifications-worker/` with `npx wrangler deploy`; record the exact Worker URL. Confirm `GET <Worker URL>/v1/config` returns a null public key and that consent, subscription, test-send and publish endpoints fail closed while approval is false. Do not enable client enrollment at this stage.
-7. In GitHub repository **Settings → Secrets and variables → Actions**, configure:
-   - **Variable** `AARIA_NOTIFICATION_WORKER_URL`: exact deployed Worker base URL.
-   - **Variable** `AARIA_PARENT_CONSENT_MODEL_APPROVED`: leave unset/false until the actual consent workflow and privacy notice are approved. It is not a substitute for the Worker-side protected approval flag.
-   - **Secret** `AARIA_NOTIFICATION_PUBLISH_TOKEN`: the same high-entropy value entered as Worker `ADMIN_TOKEN`.
-   Set the exact Worker origin in the app's `connect-src` CSP only when a reviewed client subscription integration is deployed.
+1. Use the existing Workers Builds project and its feature branch connection for code uploads. Its upload-only command does not activate a version. Do not promote a version or deploy from this README.
+2. Reuse D1 binding `DB` for `aaria-notifications`. When a migration is needed, use only the separately approved manual GitHub Actions workflow with preview and protected apply approval; do not run migrations from this feature setup.
+3. Reuse `aaria-notification-delivery` and `aaria-notification-dead-letter`. The delivery consumer is bounded to two attempts, and the DLQ consumer gets one attempt to record terminal failures.
+4. Keep `PARENT_CONSENT_MODEL_APPROVED=false`. Once guardian/privacy approval exists, the owner provisions Worker variable `VAPID_PUBLIC_KEY`, `VAPID_SUBJECT` and secrets `VAPID_PRIVATE_KEY`, `ADMIN_TOKEN`, `CONSENT_SIGNING_SECRET) through Cloudflare's secret UI. Never put secret values in GitHub comments, commits, chat, or public client code.
+5. In GitHub repository **Settings → Secrets and variables → Actions**, configure `AARIA_NOTIFICATION_WORKER_URL` and the owner publish token secret `AARIA_NOTIFICATION_PUBLISH_TOKEN` only when the owner-controlled publish path is approved. Leave `AARIA_PARENT_CONSENT_MODEL_APPROVED` unset/false. Add the exact Worker origin to the app's `connect-src` CSP only when a reviewed client subscription integration is deployed.
 
 ### Guardian-consent issuer contract and privacy sign-off
 
