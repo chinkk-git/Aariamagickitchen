@@ -211,22 +211,17 @@ try {
   await assertNoReloadLoop(launch.page, launch.navigationCount);
 
   // A deployed update is picked up when the installed app returns to the foreground.
-  await launch.page.waitForLoadState('domcontentloaded'); // Let the activation refresh finish before observing the next foreground event.
-  await launch.page.waitForTimeout(5200); // Let the launch check's short throttle elapse.
+  await launch.page.waitForTimeout(6000); // Let the launch check's short throttle elapse.
   const foregroundBefore = launch.navigationCount();
-  const coveringPage = await launch.context.newPage();
-  await coveringPage.goto('about:blank');
   release = 'next';
   await launch.page.evaluate(() => {
-    setTimeout(() => {
-      window.dispatchEvent(new Event('focus'));
-      document.dispatchEvent(new Event('visibilitychange'));
-    }, 0);
+    window.dispatchEvent(new Event('blur'));
+    window.dispatchEvent(new Event('focus'));
+    document.dispatchEvent(new Event('visibilitychange'));
     return true;
   });
   await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
-  await coveringPage.close();
   await assertNoReloadLoop(launch.page, launch.navigationCount);
   assert.ok(launch.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
 
