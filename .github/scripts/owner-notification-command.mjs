@@ -31,12 +31,13 @@ export function parseOwnerNotificationCommand(event,ownerLogin,manifest){
     const approved=releasedFeatureRoutes.has(request.route)||(manifest?.notificationFeatures||[]).some(feature=>feature?.route===request.route&&feature.status==='approved'&&feature.announcementReady===true);
     if(!approved)fail('feature_destination_not_approved');
   }else if(request.route!=='/whats-new')fail('update_destination_not_allowed');
-  const locales=['en-GB','pt-BR'];
+  const locales=Object.keys(request.messages||{}).sort();
+  if(!locales.length||locales.some(locale=>!['en-GB','pt-BR'].includes(locale)))fail('invalid_localized_message');
   for(const locale of locales){
-    const message=request.messages?.[locale];
+    const message=request.messages[locale];
     if(!message||typeof message.title!=='string'||!message.title.trim()||message.title.length>100||typeof message.body!=='string'||!message.body.trim()||message.body.length>240)fail('invalid_localized_message');
   }
-  return {id:request.id,category:request.category,route:request.route,messages:{'en-GB':request.messages['en-GB'],'pt-BR':request.messages['pt-BR']}};
+  return {id:request.id,category:request.category,route:request.route,messages:Object.fromEntries(locales.map(locale=>[locale,request.messages[locale]]))};
 }
 
 async function main(){
