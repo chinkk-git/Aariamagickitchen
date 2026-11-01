@@ -37,8 +37,10 @@ async function validConsentReceipt(token,env,locale){
 const validDeviceInput=device=>Boolean(device&&/^[A-Za-z0-9_-]{20,80}$/.test(device.deviceId)&&typeof device.deviceName==='string'&&device.deviceName.trim().length>=1&&device.deviceName.trim().length<=32&&['android','ios','desktop','other'].includes(device.platform)&&device.permissionStatus==='granted');
 function validAnnouncement(a){
   if(!a||!/^[A-Za-z0-9._:-]{1,100}$/.test(a.id)||!/^[0-9a-f]{40}$/.test(a.releaseSha)||!categories.has(a.category)||!validRoute(a.route)||a.confirmedProduction!==true||a.approvedGuardianConsentModel!==true)return false;
-  return ['en-GB','pt-BR'].every(locale=>{
-    const m=a.messages?.[locale];return Boolean(m&&typeof m.title==='string'&&m.title.trim()&&m.title.length<=100&&typeof m.body==='string'&&m.body.trim()&&m.body.length<=240);
+  const locales=Object.keys(a.messages||{});
+  if(!locales.length||locales.some(locale=>!['en-GB','pt-BR'].includes(locale)))return false;
+  return locales.every(locale=>{
+    const m=a.messages[locale];return Boolean(m&&typeof m.title==='string'&&m.title.trim()&&m.title.length<=100&&typeof m.body==='string'&&m.body.trim()&&m.body.length<=240);
   });
 }
 async function publishAnnouncement(request,env,a){
