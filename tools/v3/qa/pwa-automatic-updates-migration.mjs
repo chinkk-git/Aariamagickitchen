@@ -185,8 +185,8 @@ try {
   await assertNoReloadLoop(launch.page, launch.navigationCount);
 
   // A deployed update is picked up when the installed app returns to the foreground.
-  await launch.page.waitForTimeout(5200); // Let the launch check's short throttle elapse.
   await launch.page.waitForLoadState('domcontentloaded'); // Let the activation refresh finish before observing the next foreground event.
+  await launch.page.waitForTimeout(5200); // Let the launch check's short throttle elapse.
   const foregroundBefore = launch.navigationCount();
   const coveringPage = await launch.context.newPage();
   await coveringPage.goto('about:blank');
