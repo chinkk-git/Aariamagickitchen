@@ -1,0 +1,120 @@
+name: Owner-controlled monthly notification
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  deployments: read
+  issues: read
+
+concurrency:
+  group: aaria-owner-notification-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    if: >-
+      github.event.issue.number == 51 &&
+      github.event.comment.user.login == github.repository_owner &&
+      startsWith(github.event.comment.body, '/aaria-notify ')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate owner command and show exact bilingual preview
+        run: node .github/scripts/owner-notification-command.mjs --preview
+      - name: Confirm this exact commit is the successful GitHub Pages release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const repo = context.repo;
+            const main = await github.rest.repos.getBranch({...repo, branch: 'main'});
+            if (main.data.commit.sha !== context.sha) throw new Error('main_advanced_after_owner_request');
+            const deployments = await github.rest.repos.listDeployments({...repo, environment: 'github-pages', per_page: 100});
+            let deployed = false;
+            for (const item of deployments.data) {
+              if (item.sha !== context.sha) continue;
+              const statuses = await github.rest.repos.listDeploymentStatuses({...repo, deployment_id: item.id, per_page: 1});
+              if (statuses.data[0]?.state === 'success') { deployed = true; break; }
+            }
+            if (!deployed) throw new Error('current_main_has_no_successful_pages_deployment');
+            core.notice('Destination and current successful Pages release verified. The send job still requires notification-send environment approval.');
+
+  send:
+    needs: preview
+    if: >-
+      github.event.issue.number == 51 &&
+      github.event.comment.user.login == github.repository_owner &&
+      startsWith(github.event.comment.body, '/aaria-notify ')
+    runs-on: ubuntu-latest
+    environment:
+      name: notification-send
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Recheck current production release after approval
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const repo = context.repo;
+            const main = await github.rest.repos.getBranch({...repo, branch: 'main'});
+            if (main.data.commit.sha !== context.sha) throw new Error('main_advanced_while_waiting_for_approval');
+            const deployments = await github.rest.repos.listDeployments({...repo, environment: 'github-pages', per_page: 100});
+            let deployed = false;
+            for (const item of deployments.data) {
+              if (item.sha !== context.sha) continue;
+              const statuses = await github.rest.repos.listDeploymentStatuses({...repo, deployment_id: item.id, per_page: 1});
+              if (statuses.data[0]?.state === 'success') { deployed = true; break; }
+            }
+            if (!deployed) throw new Error('current_main_has_no_successful_pages_deployment');
+      - name: Send once and report delivery state
+        env:
+          AARIA_NOTIFICATION_WORKER_URL: ${{ vars.AARIA_NOTIFICATION_WORKER_URL }}
+          AARIA_PARENT_CONSENT_MODEL_APPROVED: ${{ vars.AARIA_PARENT_CONSENT_MODEL_APPROVED }}
+          AARIA_NOTIFICATION_PUBLISH_TOKEN: ${{ secrets.AARIA_NOTIFICATION_PUBLISH_TOKEN }}
+        run: |
+          node .github/scripts/owner-notification-command.mjs --json > "$RUNNER_TEMP/announcement.json"
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          if (process.env.AARIA_PARENT_CONSENT_MODEL_APPROVED !== 'true') throw new Error('guardian_consent_model_not_approved');
+          if (!process.env.AARIA_NOTIFICATION_WORKER_URL || !process.env.AARIA_NOTIFICATION_PUBLISH_TOKEN) throw new Error('notification_worker_configuration_missing');
+          const base = new URL(process.env.AARIA_NOTIFICATION_WORKER_URL);
+          if (base.protocol !== 'https:') throw new Error('worker_url_must_use_https');
+          const announcement = JSON.parse(await readFile(process.env.RUNNER_TEMP + '/announcement.json','utf8'));
+          const payload = {...announcement, releaseSha:process.env.GITHUB_SHA, confirmedProduction:true, approvedGuardianConsentModel:true};
+          const headers = {'Authorization':'Bearer '+process.env.AARIA_NOTIFICATION_PUBLISH_TOKEN,'Content-Type':'application/json'};
+          const response = await fetch(new URL('/v1/publish',base),{method:'POST',headers,body:JSON.stringify(payload)});
+          let result={}; try { result=await response.json(); } catch {}
+          if (response.status===429) throw new Error('monthly_broadcast_limit_reached');
+          if (!response.ok) throw new Error('worker_publish_failed_http_'+response.status+'_'+(result.error||'unknown'));
+          if (!result.id) throw new Error('worker_did_not_confirm_announcement');
+          console.log('Owner announcement accepted: '+result.id+'; queue state: '+result.status+'.');
+          if (result.status==='sent'||result.status==='partial') {
+            console.log('Final result: sent='+result.sent+' failed='+result.failed+' removed='+result.removed+' skipped='+result.skipped+'.');
+            process.exit(0);
+          }
+          const statusUrl=new URL('/v1/status/'+encodeURIComponent(result.id),base);
+          for(let attempt=0;attempt<24;attempt++){
+            await new Promise(resolve=>setTimeout(resolve,5000));
+            const statusResponse=await fetch(statusUrl,{headers:{'Authorization':'Bearer '+process.env.AARIA_NOTIFICATION_PUBLISH_TOKEN}});
+            let status={}; try { status=await statusResponse.json(); } catch {}
+            if(!statusResponse.ok)throw new Error('worker_status_failed_http_'+statusResponse.status);
+            if(status.status==='sent'||status.status==='partial'){
+              console.log('Final result: state='+status.status+' sent='+status.sent+' failed='+status.failed+' removed='+status.removed+' skipped='+status.skipped+'.');
+              process.exit(0);
+            }
+          }
+          console.log('Delivery is still queued after two minutes; query the authenticated Worker status route for announcement '+result.id+'.');
+          NODE
