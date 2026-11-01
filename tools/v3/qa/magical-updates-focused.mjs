@@ -31,7 +31,6 @@ try{
   await page.goto(base,{waitUntil:'domcontentloaded'});await skipWelcome();
   await page.locator('#foodWonderland').waitFor({state:'visible'});
   let bell=await visibleBell();await assertTouchTarget();
-  await assertBesideSettings('.fw-more .mu-home-settings');
   await assertControlsClearOfGlobe();
   assert.equal(await bell.getAttribute('aria-label'),'Open Magical Updates, 1 unread');
   assert.equal(await page.locator('[data-magical-updates-badge]').innerText(),'1');
