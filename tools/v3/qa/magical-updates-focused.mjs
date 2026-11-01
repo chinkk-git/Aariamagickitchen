@@ -40,10 +40,15 @@ try{
   assert.equal(await page.locator('.mu-page-mark').getAttribute('src'),'./aaria-pwa-icon-192.png');
   await page.locator('[data-mu-action="toggle-read"]').click();
   assert.equal(await page.locator('[data-mu-read-state]').innerText(),'Read');
-  assert.equal(await page.locator('[data-magical-updates-badge]').count(),0,'badge must be hidden once read');
   assert.equal(await page.evaluate(()=>localStorage.getItem('aaria.magicalUpdates.read.v1')),'["vietnam-pho-recipe-112"]');
+  await goHome();
+  assert.equal(await page.locator('[data-magical-updates-badge]').count(),0,'badge must be hidden once read');
+  await openUpdates();
   await page.locator('[data-mu-action="toggle-read"]').click();
+  assert.equal(await page.locator('[data-mu-read-state]').innerText(),'Unread');
+  await goHome();
   assert.equal(await page.locator('[data-magical-updates-badge]').innerText(),'1','unread state updates immediately');
+  await openUpdates();
   await page.locator('[data-mu-action="open-recipe"]').click();
   await page.waitForFunction(()=>location.hash==='#aria/recipe/112/0');
   await page.getByText('Tofu & Vegetable Phở',{exact:true}).first().waitFor({state:'visible'});
@@ -73,3 +78,4 @@ try{
   assert.deepEqual(errors,[],'no browser runtime errors');
   console.log('PASS: Magical Updates bell, both Homes, shared unread count, local persistence, official app icon, exact content, responsive touch targets and Recipe #112 navigation.');
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
+e203c702e185c84f2037a96095b0ad8643a2890c
