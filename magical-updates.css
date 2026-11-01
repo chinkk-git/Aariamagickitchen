@@ -1,5 +1,9 @@
+Warning: truncated output (original token count: 1275)
+Total output lines: 34
+
 .mu-bell-button{position:relative;display:inline-grid;place-items:center;flex:0 0 48px;width:48px;height:48px;min-width:48px;min-height:48px;padding:0;border:2px solid #fff5d7;border-radius:50%;background:linear-gradient(145deg,#fff8e9f2,#f5dbfff2);color:#57325c;box-shadow:0 3px 0 #7a4a91,0 5px 14px #24153f55;touch-action:manipulation;cursor:pointer;line-height:1}
 .fw-more .mu-bell-button{display:grid;width:46px;height:46px;min-width:46px;min-height:46px;padding:0;border:2px solid #fff5d7;border-radius:50%;background:linear-gradient(145deg,#fff8e9f2,#f5dbfff2);color:#57325c;font-size:21px;box-shadow:0 3px 0 #7a4a91,0 5px 14px #24153f55}
+.app.food-wonderland-active .fw-more{flex-direction:column;align-items:flex-end}
 .mu-bell-button svg{width:23px;height:23px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .mu-unread-badge{position:absolute;top:-5px;right:-5px;display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border:2px solid #fff;border-radius:999px;background:#d94883;color:#fff;font:800 11px/1 system-ui,sans-serif;box-shadow:0 1px 4px #25133a55}
 .mu-unread-badge[hidden]{display:none}
@@ -7,15 +11,7 @@
 .fw-more .mu-home-settings{display:grid;place-items:center;flex:0 0 46px;width:46px;height:46px;min-width:46px;min-height:46px;padding:0;border:2px solid #fff5d7;border-radius:50%;background:linear-gradient(145deg,#fff8e9f2,#f5dbfff2);color:#57325c;font-size:21px;font-weight:900;box-shadow:0 3px 0 #7a4a91,0 5px 14px #24153f55;touch-action:manipulation;cursor:pointer}
 .app.v34-magical .v34-home-utility{display:flex!important;flex-direction:row;align-items:center;justify-content:flex-end;gap:8px;width:max-content;max-width:calc(100% - 16px);white-space:nowrap}
 .v31-approved-header .mu-bell-button{margin-left:8px}
-.app.magical-updates-screen #screen{box-sizing:border-box;width:min(100% - 24px,900px);max-width:900px;margin:12px auto;padding:0 0 calc(104px + env(safe-area-inset-bottom));overflow-x:hidden}
-.mu-page{box-sizing:border-box;width:100%;min-height:min(70dvh,760px);margin:0 auto;padding:clamp(14px,3vw,28px);border:1px solid #eadcf1;border-radius:24px;background:linear-gradient(160deg,#fffdf8,#fff7fb 62%,#f6f1ff);color:#35203f;font:inherit;line-height:1.5;box-shadow:0 8px 28px #3920441a}
-.mu-page *{box-sizing:border-box}
-.mu-page-header{display:flex;align-items:center;gap:12px;margin:0 0 22px}
-.mu-back{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;min-height:48px;border:1px solid #e1cce9;border-radius:16px;background:#fff;color:#57325c;font:inherit;font-size:25px;line-height:1;cursor:pointer}
-.mu-page-mark{width:48px;height:48px;flex:0 0 48px;border-radius:14px;object-fit:cover}
-.mu-page-title{min-width:0;margin:0;color:#54316c;font-size:clamp(1.35rem,4vw,2rem);line-height:1.15;overflow-wrap:anywhere}
-.mu-page-subtitle{margin:3px 0 0;color:#684b76;font-size:1rem}
-.mu-announcement{display:grid;grid-template-columns:1fr;gap:16px;padding:clamp(16px,4vw,24px);border:1px solid #e9d8eb;border-radius:20px;background:#fff;box-shadow:0 5px 18px #49255812}
+.app.magical-updates-screen #screen{box-sizing:border-box;width:min(100% - 24px,900px);max-width:900px;margin…275 tokens truncated…d #e9d8eb;border-radius:20px;background:#fff;box-shadow:0 5px 18px #49255812}
 .mu-announcement-top{display:flex;align-items:flex-start;gap:14px}
 .mu-announcement-icon{width:56px;height:56px;flex:0 0 56px;border-radius:16px;object-fit:cover}
 .mu-announcement-copy{min-width:0;flex:1}
