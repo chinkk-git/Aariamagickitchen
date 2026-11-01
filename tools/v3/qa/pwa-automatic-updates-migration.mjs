@@ -14,9 +14,14 @@ const mime = {
   '.webmanifest': 'application/manifest+json', '.png': 'image/png',
   '.webp': 'image/webp', '.svg': 'image/svg+xml'
 };
-const [currentHtml, currentWorker] = await Promise.all([
-  readFile(join(root, 'index.html'), 'utf8'), readFile(join(root, 'sw.js'), 'utf8')
+const [currentHtml, currentWorker, currentAdapter] = await Promise.all([
+  readFile(join(root, 'index.html'), 'utf8'),
+  readFile(join(root, 'sw.js'), 'utf8'),
+  readFile(join(root, 'browser-adapters.js'), 'utf8')
 ]);
+assert.ok(currentAdapter.includes("window.addEventListener('focus', checkForUpdates)"), 'foreground focus uses the production updater');
+assert.ok(currentAdapter.includes("window.addEventListener('pageshow', checkForUpdates)"), 'app resume uses the production updater');
+assert.ok(currentAdapter.includes("window.addEventListener('online', checkForUpdates)"), 'reconnect uses the production updater');
 const coreMatch = currentWorker.match(/const CORE_FILES = (\[[^\n]+\]);/);
 assert.ok(coreMatch, 'service worker declares its offline app-shell cache');
 const coreFiles = new Set(JSON.parse(coreMatch[1]));
@@ -30,9 +35,15 @@ for (const reference of shellReferences) {
 }
 let release = 'previous';
 let nextCacheRevision = 'r4';
+const serviceWorkerRequests = [];
+const updateSignals = [];
+let appNavigationRequests = 0;
 const server = createServer(async (req, res) => {
   try {
-    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    const requestUrl = new URL(req.url, 'http://localhost');
+    const pathname = decodeURIComponent(requestUrl.pathname);
+    if (req.method === 'GET' && ['/', '/index.html'].includes(pathname)) appNavigationRequests++;
+    if (pathname === '/sw.js') serviceWorkerRequests.push({release, at: Date.now()});
     const rel = normalize(pathname.startsWith('/') ? pathname.slice(1) : pathname);
     if (rel.startsWith('..') || rel.includes(`${sep}..${sep}`)) throw new Error('path escaped');
     let file = resolve(root, rel || 'index.html');
@@ -41,8 +52,29 @@ const server = createServer(async (req, res) => {
     }
     if ((await stat(file)).isDirectory()) file = join(file, 'index.html');
     let body = await readFile(file);
-    if (release === 'next' && rel === 'sw.js') {
-      body = Buffer.from(body.toString('utf8').replace('85f537591449-r3', `85f537591449-${nextCacheRevision}`));
+    if (release !== 'previous' && rel === 'browser-adapters.js') {
+      let adapterSource = body.toString('utf8');
+      adapterSource = adapterSource
+        .replace('async function checkForUpdates() {', "async function checkForUpdates() { console.log('__AARIA_PWA_CHECK__:entered');")
+        .replace("registrationPromise = navigator.serviceWorker.register('./sw.js',", "console.log('__AARIA_PWA_CHECK__:register-start'); registrationPromise = navigator.serviceWorker.register('./sw.js',")
+        .replace('}).then(activeRegistration => {', "}).then(activeRegistration => { console.log('__AARIA_PWA_CHECK__:register-resolved');")
+        .replace('}).catch(() => null);', "}).catch(error => { console.log('__AARIA_PWA_CHECK__:register-error:' + error.name); return null; });")
+        .replace('if (!navigator.onLine) return;', "if (!navigator.onLine) { console.log('__AARIA_PWA_CHECK__:offline'); return; }")
+        .replace('if (inFlightUpdateCheck) return inFlightUpdateCheck;', "if (inFlightUpdateCheck) { console.log('__AARIA_PWA_CHECK__:in-flight'); return inFlightUpdateCheck; }")
+        .replace('if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) return;', "if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) { console.log('__AARIA_PWA_CHECK__:throttled'); return; }")
+        .replace('await activeRegistration?.update();', "console.log(activeRegistration ? '__AARIA_PWA_CHECK__:calling-update' : '__AARIA_PWA_CHECK__:no-registration'); await activeRegistration?.update(); console.log('__AARIA_PWA_CHECK__:settled');")
+        .replace('} catch {}', "} catch { console.log('__AARIA_PWA_CHECK__:update-error'); }");
+      assert.ok(adapterSource.includes('__AARIA_PWA_CHECK__:entered'), 'test instrumentation found the production update checker');
+      body = Buffer.from(adapterSource);
+    }
+    if (release !== 'previous' && rel === 'sw.js') {
+      let workerSource = body.toString('utf8');
+      if (release === 'next') workerSource = workerSource.replace('85f537591449-r3', `85f537591449-${nextCacheRevision}`);
+      workerSource = workerSource.replace(
+        "self.addEventListener('install'",
+        "self.addEventListener('message', event => { if (event.data === '__aaria_test_cache_name__') event.ports[0]?.postMessage(CACHE_NAME); });\nself.addEventListener('install'"
+      );
+      body = Buffer.from(workerSource);
     }
     res.writeHead(200, {
       'content-type': mime[extname(file)] || 'application/octet-stream',
@@ -60,20 +92,78 @@ const base = `http://127.0.0.1:${port}/`;
 const browser = await chromium.launch({headless: true, timeout: 15000});
 
 async function waitForCache(page, suffix) {
-  await page.waitForFunction(async suffix => {
+  try {
+    await page.waitForFunction(async suffix => {
     const names = await caches.keys();
     const name = names.find(key => key.endsWith(suffix));
     if (!name) return false;
     if (names.some(key => key.startsWith('aaria-web-v3.5-') && !key.endsWith(suffix))) return false;
     const response = await (await caches.open(name)).match('./index.html');
     if (!response) return false;
-    return (await response.text()).includes('id="aaria-magical-updates"') &&
-      navigator.serviceWorker.controller?.state === 'activated';
-  }, suffix, {timeout: 20000});
+    const activeCacheName = await new Promise(resolve => {
+      const controller = navigator.serviceWorker.controller;
+      if (!controller || controller.state !== 'activated') return resolve(null);
+      const channel = new MessageChannel();
+      const timer = setTimeout(() => {
+        channel.port1.close();
+        resolve(null);
+      }, 300);
+      channel.port1.onmessage = event => {
+        clearTimeout(timer);
+        channel.port1.close();
+        resolve(event.data);
+      };
+      try {
+        controller.postMessage('__aaria_test_cache_name__', [channel.port2]);
+      } catch {
+        clearTimeout(timer);
+        channel.port1.close();
+        resolve(null);
+      }
+    });
+    return activeCacheName === name &&
+      (await response.text()).includes('id="aaria-magical-updates"');
+    }, suffix, {timeout: 20000});
+  } catch (error) {
+    const workerState = await page.evaluate(async () => {
+      const registration = await navigator.serviceWorker.getRegistration();
+      return {
+        cacheNames: await caches.keys(),
+        controller: navigator.serviceWorker.controller?.scriptURL || null,
+        active: registration?.active && {scriptURL: registration.active.scriptURL, state: registration.active.state},
+        installing: registration?.installing && {scriptURL: registration.installing.scriptURL, state: registration.installing.state},
+        waiting: registration?.waiting && {scriptURL: registration.waiting.scriptURL, state: registration.waiting.state},
+        visible: document.visibilityState
+      };
+    }).catch(stateError => ({inspectionError: stateError.message}));
+    throw new Error(`${error.message}; target=${suffix}; worker=${JSON.stringify(workerState)}; swRequests=${JSON.stringify(serviceWorkerRequests)}`);
+  }
+}
+
+async function waitForUpdateSignal(expectedEvent, expectedRelease, startAt = 0, timeout = 15000) {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    if (updateSignals.slice(startAt).some(signal => signal.event === expectedEvent && signal.release === expectedRelease)) return;
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  assert.fail(`registration.update() ${expectedEvent} signal for ${expectedRelease} was not observed: ${JSON.stringify(updateSignals)}`);
+}
+
+async function waitForWorkerRequest(expectedRelease, timeout = 15000) {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    if (serviceWorkerRequests.some(request => request.release === expectedRelease)) return;
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  assert.fail(`service worker update check for release ${expectedRelease} never reached the fixture server: ${JSON.stringify(serviceWorkerRequests)}`);
 }
 
 async function openPage(context) {
   const page = await context.newPage();
+  page.on('console', message => {
+    const match = message.text().match(/^__AARIA_PWA_CHECK__:([a-z-]+)(?::(.*))?$/);
+    if (match) updateSignals.push({event: match[1], detail: match[2] || '', release, at: Date.now()});
+  });
   let navigations = 0;
   page.on('framenavigated', frame => { if (frame.parentFrame() === null) navigations++; });
   await page.goto(base, {waitUntil: 'domcontentloaded'});
@@ -185,18 +275,20 @@ try {
   await assertNoReloadLoop(launch.page, launch.navigationCount);
 
   // A deployed update is picked up when the installed app returns to the foreground.
-  await launch.page.waitForTimeout(5200); // Let the launch check's short throttle elapse.
-  await launch.page.waitForLoadState('domcontentloaded'); // Let the activation refresh finish before observing the next foreground event.
-  const foregroundBefore = launch.navigationCount();
+  await launch.page.waitForTimeout(6000); // Let the launch check's short throttle elapse.
+  await waitForUpdateSignal('settled', 'current');
+  const foregroundBefore = appNavigationRequests;
   const coveringPage = await launch.context.newPage();
   await coveringPage.goto('about:blank');
+  const signalCountBeforeForeground = updateSignals.length;
   release = 'next';
   await coveringPage.close();
   await launch.page.bringToFront();
-  await launch.page.evaluate(() => window.dispatchEvent(new Event('focus')));
+  await waitForUpdateSignal('calling-update', 'next', signalCountBeforeForeground);
+  await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
   await assertNoReloadLoop(launch.page, launch.navigationCount);
-  assert.ok(launch.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
+  assert.ok(appNavigationRequests > foregroundBefore, 'foreground update reloads the app document');
 
   // An offline app shell remains available, then updates promptly after connectivity returns.
   await launch.page.waitForTimeout(5200);
