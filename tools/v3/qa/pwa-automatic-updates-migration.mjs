@@ -38,12 +38,6 @@ const server = createServer(async (req, res) => {
     const requestUrl = new URL(req.url, 'http://localhost');
     const pathname = decodeURIComponent(requestUrl.pathname);
     if (req.method === 'GET' && ['/', '/index.html'].includes(pathname)) appNavigationRequests++;
-    if (pathname === '/__qa_update_signal') {
-      updateSignals.push({event: requestUrl.searchParams.get('event'), release, at: Date.now()});
-      res.writeHead(204, {'cache-control': 'no-store'});
-      res.end();
-      return;
-    }
     if (pathname === '/sw.js') serviceWorkerRequests.push({release, at: Date.now()});
     const rel = normalize(pathname.startsWith('/') ? pathname.slice(1) : pathname);
     if (rel.startsWith('..') || rel.includes(`${sep}..${sep}`)) throw new Error('path escaped');
@@ -146,12 +140,14 @@ async function waitForWorkerRequest(expectedRelease, timeout = 15000) {
 
 async function openPage(context) {
   const page = await context.newPage();
+  page.on('console', message => {
+    const match = message.text().match(/^__AARIA_PWA_UPDATE__(started|settled|threw)$/);
+    if (match) updateSignals.push({event: match[1], release, at: Date.now()});
+  });
   await page.addInitScript(() => {
     const originalUpdate = ServiceWorkerRegistration.prototype.update;
     ServiceWorkerRegistration.prototype.update = function (...args) {
-      const signal = event => fetch(`./__qa_update_signal?event=${event}`, {
-        method: 'POST', cache: 'no-store', keepalive: true
-      }).catch(() => {});
+      const signal = event => console.log(`__AARIA_PWA_UPDATE__${event}`);
       signal('started');
       let update;
       try {
