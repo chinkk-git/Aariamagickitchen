@@ -9,7 +9,10 @@ const valid={id:'v36-feature-2026-11',category:'features',route:'/settings/acces
 }};
 const makeEvent=(value,login='chinkk-git',issue=51)=>({issue:{number:issue},comment:{user:{login},body:OWNER_COMMAND_PREFIX+JSON.stringify(value)}});
 const parsed=parseOwnerNotificationCommand(makeEvent(valid),'chinkk-git',manifest);
-assert.deepEqual(parsed,valid,'the approved feature route and both localized messages are preserved');
+assert.deepEqual(parsed,valid,'the approved feature route and bilingual messages are preserved');
+const englishOnly={...valid,id:'recipe-112-en-only',category:'recipes',route:'/recipe/112',messages:{'en-GB':{title:'A Magical Trip to Vietnam! 🇻🇳🍜',body:'Ready for a tasty adventure? Discover the new Tofu & Vegetable Phở recipe! ✨'}}};
+assert.deepEqual(parseOwnerNotificationCommand(makeEvent(englishOnly),'chinkk-git',manifest),englishOnly,'an explicitly English-only owner campaign is accepted without adding Portuguese copy');
+assert.throws(()=>parseOwnerNotificationCommand(makeEvent({...englishOnly,messages:{'fr-FR':{title:'Title',body:'Body'}}}),'chinkk-git',manifest),/invalid_localized_message/);
 assert.equal('confirmedProduction' in parsed,false,'the owner cannot assert deployment verification in comment data');
 const recipes={...valid,id:'new-recipes-nov',category:'recipes',route:'/recipes/new/111,112'};
 assert.equal(parseOwnerNotificationCommand(makeEvent(recipes),'chinkk-git',manifest).route,recipes.route);
