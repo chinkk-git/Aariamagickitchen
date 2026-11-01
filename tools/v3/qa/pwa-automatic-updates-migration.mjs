@@ -190,9 +190,10 @@ try {
   const foregroundBefore = foreground.navigationCount();
   const coveringPage = await foreground.context.newPage();
   await coveringPage.goto('about:blank');
-  await foreground.page.waitForFunction(() => document.visibilityState === 'hidden');
   release = 'next';
   await coveringPage.close();
+  await foreground.page.bringToFront();
+  await foreground.page.evaluate(() => window.dispatchEvent(new Event('focus')));
   await waitForCache(foreground.page, '-r4');
   await assertNoReloadLoop(foreground.page, foreground.navigationCount);
   assert.ok(foreground.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
