@@ -20,7 +20,7 @@ queue = "aaria-notification-delivery"
 queue = "aaria-notification-delivery"
 max_batch_size = 20
 max_batch_timeout = 5
-max_retries = 5
+max_retries = 2
 dead_letter_queue = "aaria-notification-dead-letter"
 max_concurrency = 1
 
@@ -28,7 +28,7 @@ max_concurrency = 1
 queue = "aaria-notification-dead-letter"
 max_batch_size = 20
 max_batch_timeout = 5
-max_retries = 100
+max_retries = 1
 
 [[ratelimits]]
 name = "NOTIFICATION_API_LIMITER"
@@ -39,4 +39,4 @@ limit = 60
 period = 60
 
 [triggers]
-crons = ["15 * * * *"]
+crons = ["0 3 * * *"]

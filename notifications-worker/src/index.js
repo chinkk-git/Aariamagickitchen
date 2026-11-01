@@ -8,7 +8,7 @@ const json = (data,status=200,origin='') => new Response(JSON.stringify(data),{s
 const validRoute = route => typeof route==='string' && (/^\/notifications(?:\/new)?$/.test(route)||/^\/recipes\/new\/(?:[1-9]\d{0,2})(?:,(?:[1-9]\d{0,2})){0,49}$/.test(route)||/^\/recipe\/(?:[1-9]\d{0,2})$/.test(route)||/^\/world\/(?:IND|ITA|CHN|JPN|MEX|VNM|BRA|USA|FRA|ESP|THA|GBR|MAR)$/.test(route)||['/settings/notifications','/settings/accessibility/text-size','/whats-new'].includes(route));
 const categories = new Set(['recipes','features','countries','updates']);
 const fanoutPageSize = 50;
-const maxDeliveryAttempts = 5;
+const maxDeliveryAttempts = 2;
 const testCooldownMs = 60_000;
 async function body(request){const raw=await request.text();if(raw.length>maxBody)throw new Error('payload too large');return JSON.parse(raw);}
 async function auth(request,env){return Boolean(env.ADMIN_TOKEN&&request.headers.get('Authorization')==='Bearer '+env.ADMIN_TOKEN);}
@@ -244,14 +244,6 @@ export default {async fetch(request,env){
     const result=await env.DB.prepare('SELECT device_id,device_name,platform,permission_status,subscription_status,consent_expires_at,created_at,last_contact_at FROM guardian_devices WHERE guardian_hash=? ORDER BY created_at DESC LIMIT 50').bind(consent.guardianHash).all();
     return json({devices:result.results||[]},200,origin);
   }
-  if(url.pathname==='/v1/guardian/device/rename'&&request.method==='POST'){
-    if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return json({error:'guardian_consent_model_not_approved'},503,origin);
-    let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
-    const consent=await validConsentReceipt(b?.consentReceipt,env,b?.locale);
-    if(!consent?.deviceManagement||typeof b?.deviceId!=='string'||typeof b?.deviceName!=='string'||b.deviceName.trim().length<1||b.deviceName.trim().length>32)return json({error:'verified_guardian_management_required'},403,origin);
-    const result=await env.DB.prepare('UPDATE guardian_devices SET device_name=?,last_contact_at=? WHERE device_id=? AND guardian_hash=? AND subscription_status=\'active\'').bind(b.deviceName.trim(),Date.now(),b.deviceId,consent.guardianHash).run();
-    return Number(result?.meta?.changes)===1?json({ok:true},200,origin):json({error:'device_not_found'},404,origin);
-  }
   if(url.pathname==='/v1/guardian/device/revoke'&&request.method==='POST'){
     if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return json({error:'guardian_consent_model_not_approved'},503,origin);
     let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
@@ -261,39 +253,6 @@ export default {async fetch(request,env){
     if(!device)return json({error:'device_not_found'},404,origin);
     await env.DB.batch([env.DB.prepare('DELETE FROM subscriptions WHERE endpoint_hash=? AND guardian_hash=?').bind(device.endpoint_hash,consent.guardianHash),env.DB.prepare('DELETE FROM guardian_devices WHERE device_id=? AND guardian_hash=?').bind(b.deviceId,consent.guardianHash)]);
     return json({ok:true},200,origin);
-  }
-  if(url.pathname==='/v1/guardian/device/first-magical'&&request.method==='POST'){
-    if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return json({error:'guardian_consent_model_not_approved'},503,origin);
-    let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
-    const consent=await validConsentReceipt(b?.consentReceipt,env,b?.locale);
-    if(!consent?.deviceManagement||!['en-GB','pt-BR'].includes(b?.locale)||typeof b?.deviceId!=='string')return json({error:'verified_guardian_management_required'},403,origin);
-    if(!env.DB||!env.VAPID_PUBLIC_KEY||!env.VAPID_PRIVATE_KEY||!env.VAPID_SUBJECT)return json({error:'push_service_unavailable'},503,origin);
-    const device=await env.DB.prepare("SELECT d.device_id,d.guardian_hash,d.consent_expires_at,d.permission_status,s.endpoint,s.p256dh,s.auth,s.locale,s.categories,s.consent_valid,s.consent_expires_at AS sub_expires FROM guardian_devices d JOIN subscriptions s ON s.device_id=d.device_id AND s.guardian_hash=d.guardian_hash WHERE d.device_id=? AND d.guardian_hash=? AND d.subscription_status='active'").bind(b.deviceId,consent.guardianHash).first();
-    const now=Date.now();
-    let selectedCategories=[];try{selectedCategories=JSON.parse(device?.categories||'[]')}catch{}
-    if(!device||device.permission_status!=='granted'||Number(device.consent_expires_at)<=now||Number(device.sub_expires)<=now||Number(device.consent_valid)!==1||device.locale!==b.locale||!selectedCategories.includes('recipes'))return json({error:'active_consented_device_required'},403,origin);
-    const notificationId='aaria-first-vietnam-tofu-pho-112-v1';
-    const claimed=await env.DB.prepare("INSERT OR IGNORE INTO first_magical_notification(notification_id,device_id,guardian_hash,locale,route,status,attempted_at) VALUES(?,?,?,?,'/recipe/112','sending',?)").bind(notificationId,b.deviceId,consent.guardianHash,b.locale,now).run();
-    if(Number(claimed?.meta?.changes)!==1)return json({error:'first_notification_already_attempted'},409,origin);
-    const message=b.locale==='pt-BR'?{title:'✨ Aaria, uma surpresa mágica para você!',body:'🍜 Sua receita especial de Phở de Tofu e Legumes do Vietnã está pronta! Toque para descobrir sua nova aventura culinária! 🌟'}:{title:'✨ Aaria, a magical surprise for you!',body:'🍜 Your special Tofu & Vegetable Phở recipe from Vietnam is ready! Tap to discover your new cooking adventure! 🌟'};
-    try{
-      await webpush.sendNotification({endpoint:device.endpoint,keys:{p256dh:device.p256dh,auth:device.auth}},JSON.stringify({...message,tag:notificationId,data:{route:'/recipe/112',announcementId:notificationId}}),{vapidDetails:{subject:env.VAPID_SUBJECT,publicKey:env.VAPID_PUBLIC_KEY,privateKey:env.VAPID_PRIVATE_KEY},TTL:60});
-      await env.DB.prepare("UPDATE first_magical_notification SET status='accepted',accepted_at=? WHERE notification_id=? AND device_id=?").bind(Date.now(),notificationId,b.deviceId).run();
-      return json({ok:true,notificationId,status:'accepted_by_push_service',deviceId:b.deviceId,route:'/recipe/112'},202,origin);
-    }catch(error){
-      const expired=error.statusCode===404||error.statusCode===410;
-      await env.DB.batch([env.DB.prepare("UPDATE first_magical_notification SET status='failed',error_code=? WHERE notification_id=? AND device_id=?").bind(Number(error.statusCode)||502,notificationId,b.deviceId),...(expired?[env.DB.prepare('DELETE FROM subscriptions WHERE endpoint=?').bind(device.endpoint),env.DB.prepare("UPDATE guardian_devices SET subscription_status='expired',last_contact_at=? WHERE device_id=?").bind(Date.now(),b.deviceId)]:[])]);
-      return json({error:'first_notification_send_failed',expired},Number(error.statusCode)||502,origin);
-    }
-  }
-  if(url.pathname==='/v1/guardian/device/first-magical-result'&&request.method==='POST'){
-    if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return json({error:'guardian_consent_model_not_approved'},503,origin);
-    let b;try{b=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
-    const consent=await validConsentReceipt(b?.consentReceipt,env,b?.locale);
-    const resultValue=b?.result;
-    if(!consent?.deviceManagement||!['opened_recipe_112','fallback_vietnam_list','did_not_open'].includes(resultValue)||typeof b?.deviceId!=='string')return json({error:'verified_guardian_management_required'},403,origin);
-    const status=await env.DB.prepare("UPDATE first_magical_notification SET delivery_confirmed_at=?,navigation_result=?,confirmed_at=? WHERE notification_id='aaria-first-vietnam-tofu-pho-112-v1' AND device_id=? AND guardian_hash=? AND status='accepted'").bind(resultValue==='did_not_open'?null:Date.now(),resultValue,Date.now(),b.deviceId,consent.guardianHash).run();
-    return Number(status?.meta?.changes)===1?json({ok:true,recorded:true,result:resultValue},200,origin):json({error:'accepted_notification_not_found'},404,origin);
   }
   if(url.pathname==='/v1/test'&&request.method==='POST'){
     if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return json({error:'guardian_consent_model_not_approved'},503,origin);
