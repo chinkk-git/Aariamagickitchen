@@ -32,8 +32,8 @@ const db={
 };
 const env={ADMIN_TOKEN:'test-owner-token',PARENT_CONSENT_MODEL_APPROVED:'true',DB:db,DELIVERY_QUEUE:{send:async value=>queued.push(value)},VAPID_PUBLIC_KEY:'public',VAPID_PRIVATE_KEY:'private',VAPID_SUBJECT:'mailto:test@example.invalid',NOTIFICATION_API_LIMITER:{limit:async()=>({success:true})}};
 const base={category:'features',route:'/settings/accessibility/text-size',releaseSha:'a'.repeat(40),confirmedProduction:true,approvedGuardianConsentModel:true,messages:{'en-GB':{title:'Aaria update',body:'A new accessible feature is ready.'},'pt-BR':{title:'Novidade Aaria',body:'Um novo recurso acessível está disponível.'}}};
-async function post(id,token='test-owner-token'){
-  const body=JSON.stringify({...base,id});
+async function post(id,token='test-owner-token',messages=base.messages){
+  const body=JSON.stringify({...base,id,messages});
   return worker.fetch(new Request('https://worker.example/v1/publish',{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json','CF-Connecting-IP':'192.0.2.20'},body}),env);
 }
 
