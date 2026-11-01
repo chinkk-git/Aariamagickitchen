@@ -74,7 +74,7 @@ async function waitForCache(page, suffix) {
 async function openPage(context) {
   const page = await context.newPage();
   let navigations = 0;
-  page.on('framenavigated', frame => { if (frame === page.mainFrame()) navigations++; });
+  page.on('framenavigated', frame => { if (frame.parentFrame() === null) navigations++; });
   await page.goto(base, {waitUntil: 'domcontentloaded'});
   await page.evaluate(() => navigator.serviceWorker.ready.then(() => true));
   return {context, page, navigationCount: () => navigations};
@@ -190,6 +190,7 @@ try {
   await waitForCache(foreground.page, '-r3');
   await foreground.page.waitForTimeout(5200); // Let the launch check's short throttle elapse.
   const foregroundBefore = foreground.navigationCount();
+  const foregroundTimeOrigin = await foreground.page.evaluate(() => performance.timeOrigin);
   const coveringPage = await foreground.context.newPage();
   await coveringPage.goto('about:blank');
   release = 'next';
@@ -197,6 +198,7 @@ try {
   await foreground.page.bringToFront();
   await foreground.page.evaluate(() => window.dispatchEvent(new Event('focus')));
   await waitForCache(foreground.page, '-r4');
+  await foreground.page.waitForFunction(origin => performance.timeOrigin !== origin, foregroundTimeOrigin, {timeout: 15000});
   await assertNoReloadLoop(foreground.page, foreground.navigationCount);
   assert.ok(foreground.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
   await foreground.context.close();
