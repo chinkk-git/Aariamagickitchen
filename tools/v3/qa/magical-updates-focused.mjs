@@ -58,7 +58,7 @@ try{
   await openUpdates();
   await page.locator('[data-mu-action="open-recipe"]').click();
   await page.waitForFunction(()=>location.hash==='#aria/recipe/112/0');
-  await page.getByText('Tofu & Vegetable Phở',{exact:true}).first().waitFor({state:'visible'});
+  const recipeTitle=page.locator('#screen strong[data-aaria-text-size]:visible').filter({hasText:'Tofu & Vegetable Phở'}).first();await recipeTitle.waitFor({state:'visible'});assert.equal((await recipeTitle.innerText()).trim(),'Tofu & Vegetable Phở','Recipe #112 title is visible in the active detail screen');
   assert.equal(await page.evaluate(()=>localStorage.getItem('aaria.magicalUpdates.read.v1')),'["vietnam-pho-recipe-112"]','opening the recipe marks its announcement read');
 
   await page.evaluate(()=>{localStorage.setItem('aaria.v35.homeExperience','magical');location.hash='#aria/home';});
