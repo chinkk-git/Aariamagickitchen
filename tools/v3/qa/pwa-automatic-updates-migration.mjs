@@ -60,8 +60,10 @@ const browser = await chromium.launch({headless: true, timeout: 15000});
 
 async function waitForCache(page, suffix) {
   await page.waitForFunction(async suffix => {
-    const name = (await caches.keys()).find(key => key.endsWith(suffix));
+    const names = await caches.keys();
+    const name = names.find(key => key.endsWith(suffix));
     if (!name) return false;
+    if (names.some(key => key.startsWith('aaria-web-v3.5-') && !key.endsWith(suffix))) return false;
     const response = await (await caches.open(name)).match('./index.html');
     if (!response) return false;
     return (await response.text()).includes('id="aaria-magical-updates"') &&
