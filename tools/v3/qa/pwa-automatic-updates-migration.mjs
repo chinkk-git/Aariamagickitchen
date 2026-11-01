@@ -30,9 +30,11 @@ for (const reference of shellReferences) {
 }
 let release = 'previous';
 let nextCacheRevision = 'r4';
+const serviceWorkerRequests = [];
 const server = createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    if (pathname === '/sw.js') serviceWorkerRequests.push({release, at: Date.now()});
     const rel = normalize(pathname.startsWith('/') ? pathname.slice(1) : pathname);
     if (rel.startsWith('..') || rel.includes(`${sep}..${sep}`)) throw new Error('path escaped');
     let file = resolve(root, rel || 'index.html');
@@ -60,7 +62,8 @@ const base = `http://127.0.0.1:${port}/`;
 const browser = await chromium.launch({headless: true, timeout: 15000});
 
 async function waitForCache(page, suffix) {
-  await page.waitForFunction(async suffix => {
+  try {
+    await page.waitForFunction(async suffix => {
     const names = await caches.keys();
     const name = names.find(key => key.endsWith(suffix));
     if (!name) return false;
@@ -69,7 +72,21 @@ async function waitForCache(page, suffix) {
     if (!response) return false;
     return (await response.text()).includes('id="aaria-magical-updates"') &&
       navigator.serviceWorker.controller?.state === 'activated';
-  }, suffix, {timeout: 20000});
+    }, suffix, {timeout: 20000});
+  } catch (error) {
+    const workerState = await page.evaluate(async () => {
+      const registration = await navigator.serviceWorker.getRegistration();
+      return {
+        cacheNames: await caches.keys(),
+        controller: navigator.serviceWorker.controller?.scriptURL || null,
+        active: registration?.active && {scriptURL: registration.active.scriptURL, state: registration.active.state},
+        installing: registration?.installing && {scriptURL: registration.installing.scriptURL, state: registration.installing.state},
+        waiting: registration?.waiting && {scriptURL: registration.waiting.scriptURL, state: registration.waiting.state},
+        visible: document.visibilityState
+      };
+    }).catch(stateError => ({inspectionError: stateError.message}));
+    throw new Error(`${error.message}; target=${suffix}; worker=${JSON.stringify(workerState)}; swRequests=${JSON.stringify(serviceWorkerRequests)}`);
+  }
 }
 
 async function openPage(context) {
