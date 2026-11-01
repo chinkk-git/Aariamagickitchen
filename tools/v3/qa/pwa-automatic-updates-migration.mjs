@@ -54,7 +54,8 @@ const server = createServer(async (req, res) => {
         .replace('if (!navigator.onLine) return;', "if (!navigator.onLine) { console.log('__AARIA_PWA_CHECK__:offline'); return; }")
         .replace('if (inFlightUpdateCheck) return inFlightUpdateCheck;', "if (inFlightUpdateCheck) { console.log('__AARIA_PWA_CHECK__:in-flight'); return inFlightUpdateCheck; }")
         .replace('if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) return;', "if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) { console.log('__AARIA_PWA_CHECK__:throttled'); return; }")
-        .replace('await activeRegistration?.update();', "await activeRegistration?.update(); console.log('__AARIA_PWA_CHECK__:settled');");
+        .replace('await activeRegistration?.update();', "console.log(activeRegistration ? '__AARIA_PWA_CHECK__:calling-update' : '__AARIA_PWA_CHECK__:no-registration'); await activeRegistration?.update(); console.log('__AARIA_PWA_CHECK__:settled');")
+        .replace('} catch {}', "} catch { console.log('__AARIA_PWA_CHECK__:update-error'); }");
       assert.ok(adapterSource.includes('__AARIA_PWA_CHECK__:entered'), 'test instrumentation found the production update checker');
       body = Buffer.from(adapterSource);
     }
@@ -279,7 +280,7 @@ try {
     }, 0);
     return true;
   }).catch(() => {});
-  await waitForUpdateSignal('started', 'next', signalCountBeforeForeground);
+  await waitForUpdateSignal('calling-update', 'next', signalCountBeforeForeground);
   await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
   await assertNoReloadLoop(launch.page, launch.navigationCount);
