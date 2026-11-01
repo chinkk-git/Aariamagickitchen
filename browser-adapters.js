@@ -1,7 +1,7 @@
 (() => {
   if (location.protocol === 'file:' || !('serviceWorker' in navigator)) return;
 
-  const UPDATE_CHECK_INTERVAL_MS = 15000;
+  const UPDATE_CHECK_INTERVAL_MS = 5000;
   let registration;
   let registrationPromise;
   let lastUpdateCheck = 0;
