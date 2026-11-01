@@ -214,12 +214,14 @@ try {
   await launch.page.waitForTimeout(6000); // Let the launch check's short throttle elapse.
   const foregroundBefore = launch.navigationCount();
   release = 'next';
-  await launch.page.evaluate(() => {
+  void launch.page.evaluate(() => {
     window.dispatchEvent(new Event('blur'));
-    window.dispatchEvent(new Event('focus'));
-    document.dispatchEvent(new Event('visibilitychange'));
+    setTimeout(() => {
+      window.dispatchEvent(new Event('focus'));
+      document.dispatchEvent(new Event('visibilitychange'));
+    }, 0);
     return true;
-  });
+  }).catch(() => {});
   await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
   await assertNoReloadLoop(launch.page, launch.navigationCount);
