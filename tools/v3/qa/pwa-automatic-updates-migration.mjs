@@ -193,6 +193,7 @@ try {
   release = 'next';
   await coveringPage.close();
   await launch.page.bringToFront();
+  await launch.page.evaluate(() => window.dispatchEvent(new Event('focus')));
   await waitForCache(launch.page, '-r4');
   await assertNoReloadLoop(launch.page, launch.navigationCount);
   assert.ok(launch.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
