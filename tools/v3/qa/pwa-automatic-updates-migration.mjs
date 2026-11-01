@@ -89,16 +89,17 @@ async function waitForCache(page, suffix) {
   }
 }
 
+async function waitForWorkerRequest(expectedRelease, timeout = 15000) {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    if (serviceWorkerRequests.some(request => request.release === expectedRelease)) return;
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  assert.fail(`service worker update check for release ${expectedRelease} never reached the fixture server: ${JSON.stringify(serviceWorkerRequests)}`);
+}
+
 async function openPage(context) {
   const page = await context.newPage();
-  await page.addInitScript(() => {
-    const originalUpdate = ServiceWorkerRegistration.prototype.update;
-    ServiceWorkerRegistration.prototype.update = function (...args) {
-      const key = '__aariaPwaUpdateChecks';
-      sessionStorage.setItem(key, String(Number(sessionStorage.getItem(key) || 0) + 1));
-      return originalUpdate.apply(this, args);
-    };
-  });
   let navigations = 0;
   page.on('framenavigated', frame => { if (frame.parentFrame() === null) navigations++; });
   await page.goto(base, {waitUntil: 'domcontentloaded'});
@@ -213,24 +214,11 @@ try {
   await launch.page.waitForLoadState('domcontentloaded'); // Let the activation refresh finish before observing the next foreground event.
   await launch.page.waitForTimeout(5200); // Let the launch check's short throttle elapse.
   const foregroundBefore = launch.navigationCount();
-  const updateChecksBefore = await launch.page.evaluate(() => Number(sessionStorage.getItem('__aariaPwaUpdateChecks') || 0));
   const coveringPage = await launch.context.newPage();
   await coveringPage.goto('about:blank');
   release = 'next';
-  await coveringPage.close();
-  await launch.page.bringToFront();
-  await launch.page.evaluate(() => {
-    setTimeout(() => {
-      window.dispatchEvent(new Event('focus'));
-      document.dispatchEvent(new Event('visibilitychange'));
-    }, 0);
-    return true;
-  });
-  await launch.page.waitForFunction(
-    before => Number(sessionStorage.getItem('__aariaPwaUpdateChecks') || 0) > before,
-    updateChecksBefore,
-    {timeout: 15000}
-  );
+  await coveringPage.close(); // Returning the installed app to the foreground fires its real focus/visibility events.
+  await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
   await assertNoReloadLoop(launch.page, launch.navigationCount);
   assert.ok(launch.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
