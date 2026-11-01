@@ -56,7 +56,6 @@ const server = createServer(async (req, res) => {
       let adapterSource = body.toString('utf8');
       adapterSource = adapterSource
         .replace('async function checkForUpdates() {', "async function checkForUpdates() { console.log('__AARIA_PWA_CHECK__:entered');")
-        .replace('registrationPromise = navigator.serviceWorker.register', "window.__AARIA_PWA_TEST_CHECK__ = checkForUpdates; registrationPromise = navigator.serviceWorker.register")
         .replace("registrationPromise = navigator.serviceWorker.register('./sw.js',", "console.log('__AARIA_PWA_CHECK__:register-start'); registrationPromise = navigator.serviceWorker.register('./sw.js',")
         .replace('}).then(activeRegistration => {', "}).then(activeRegistration => { console.log('__AARIA_PWA_CHECK__:register-resolved');")
         .replace('}).catch(() => null);', "}).catch(error => { console.log('__AARIA_PWA_CHECK__:register-error:' + error.name); return null; });")
@@ -279,12 +278,12 @@ try {
   await launch.page.waitForTimeout(6000); // Let the launch check's short throttle elapse.
   await waitForUpdateSignal('settled', 'current');
   const foregroundBefore = appNavigationRequests;
+  const coveringPage = await launch.context.newPage();
+  await coveringPage.goto('about:blank');
   const signalCountBeforeForeground = updateSignals.length;
   release = 'next';
-  void launch.page.evaluate(() => {
-    setTimeout(() => window.__AARIA_PWA_TEST_CHECK__?.(), 0);
-    return true;
-  }).catch(() => {});
+  await coveringPage.close();
+  await launch.page.bringToFront();
   await waitForUpdateSignal('calling-update', 'next', signalCountBeforeForeground);
   await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
