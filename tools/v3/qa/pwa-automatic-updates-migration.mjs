@@ -47,6 +47,17 @@ const server = createServer(async (req, res) => {
     }
     if ((await stat(file)).isDirectory()) file = join(file, 'index.html');
     let body = await readFile(file);
+    if (release !== 'previous' && rel === 'browser-adapters.js') {
+      let adapterSource = body.toString('utf8');
+      adapterSource = adapterSource
+        .replace('async function checkForUpdates() {', "async function checkForUpdates() { console.log('__AARIA_PWA_CHECK__:entered');")
+        .replace('if (!navigator.onLine) return;', "if (!navigator.onLine) { console.log('__AARIA_PWA_CHECK__:offline'); return; }")
+        .replace('if (inFlightUpdateCheck) return inFlightUpdateCheck;', "if (inFlightUpdateCheck) { console.log('__AARIA_PWA_CHECK__:in-flight'); return inFlightUpdateCheck; }")
+        .replace('if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) return;', "if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) { console.log('__AARIA_PWA_CHECK__:throttled'); return; }")
+        .replace('await activeRegistration?.update();', "await activeRegistration?.update(); console.log('__AARIA_PWA_CHECK__:settled');");
+      assert.ok(adapterSource.includes('__AARIA_PWA_CHECK__:entered'), 'test instrumentation found the production update checker');
+      body = Buffer.from(adapterSource);
+    }
     if (release !== 'previous' && rel === 'sw.js') {
       let workerSource = body.toString('utf8');
       if (release === 'next') workerSource = workerSource.replace('85f537591449-r3', `85f537591449-${nextCacheRevision}`);
@@ -141,23 +152,8 @@ async function waitForWorkerRequest(expectedRelease, timeout = 15000) {
 async function openPage(context) {
   const page = await context.newPage();
   page.on('console', message => {
-    const match = message.text().match(/^__AARIA_PWA_UPDATE__(started|settled|threw)$/);
+    const match = message.text().match(/^__AARIA_PWA_CHECK__:([a-z-]+)$/);
     if (match) updateSignals.push({event: match[1], release, at: Date.now()});
-  });
-  await page.addInitScript(() => {
-    const originalUpdate = ServiceWorkerRegistration.prototype.update;
-    ServiceWorkerRegistration.prototype.update = function (...args) {
-      const signal = event => console.log(`__AARIA_PWA_UPDATE__${event}`);
-      signal('started');
-      let update;
-      try {
-        update = originalUpdate.apply(this, args);
-      } catch (error) {
-        signal('threw');
-        throw error;
-      }
-      return Promise.resolve(update).finally(() => signal('settled'));
-    };
   });
   let navigations = 0;
   page.on('framenavigated', frame => { if (frame.parentFrame() === null) navigations++; });
