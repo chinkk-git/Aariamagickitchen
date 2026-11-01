@@ -12,7 +12,7 @@ const testMigration=await readFile(new URL('../../../notifications-worker/migrat
 const deviceMigration=await readFile(new URL('../../../notifications-worker/migrations/0004_guardian_devices_first_notification.sql',import.meta.url),'utf8');
 const wrangler=await readFile(new URL('../../../notifications-worker/wrangler.toml',import.meta.url),'utf8');
 const ownerWorkflow=await readFile(new URL('../../../.github/workflows/v36-owner-notification.yml',import.meta.url),'utf8');
-const ownerCommand=await readFile(new URL('../../../notifications/owner-notification-command.mjs',import.meta.url),'utf8');
+const ownerCommand=await readFile(new URL('../../../.github/scripts/owner-notification-command.mjs',import.meta.url),'utf8');
 await assert.rejects(access(new URL('../../../.github/workflows/v36-notification-publish.yml',import.meta.url)),'deployment-triggered announcement publishing must be removed');
 assert.ok(client.includes('PushManager')&&client.includes('safeRoute')&&client.includes('consentNeeded'));
 assert.ok(client.includes('aaria:open-text-size')&&client.includes("window.goto('settings')"),'Text Size notification route must open Settings after Font Size integration');
