@@ -1,16 +1,39 @@
 (() => {
   if (location.protocol === 'file:' || !('serviceWorker' in navigator)) return;
-  const currentCache = 'aaria-web-v3.5-85f537591449-r1';
-  const retireOldCaches = async () => {
-    if (!('caches' in window)) return;
-    const keys = await caches.keys();
-    const obsolete = keys.filter(key => key.startsWith('aaria-web-v3.5-') && key !== currentCache);
-    await Promise.all(obsolete.map(key => caches.delete(key)));
-  };
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    retireOldCaches().catch(() => {});
+
+  const UPDATE_CHECK_INTERVAL_MS = 5000;
+  let registration;
+  let registrationPromise;
+  let lastUpdateCheck = 0;
+  let inFlightUpdateCheck;
+  async function checkForUpdates() {
+    if (!navigator.onLine) return;
+    if (inFlightUpdateCheck) return inFlightUpdateCheck;
+    if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) return;
+
+    lastUpdateCheck = Date.now();
+    inFlightUpdateCheck = (async () => {
+      try {
+        const activeRegistration = registration || await registrationPromise;
+        await activeRegistration?.update();
+      } catch {}
+    })().finally(() => { inFlightUpdateCheck = null; });
+    return inFlightUpdateCheck;
+  }
+
+  registrationPromise = navigator.serviceWorker.register('./sw.js', {
+    scope: './',
+    updateViaCache: 'none'
+  }).then(activeRegistration => {
+    registration = activeRegistration;
+    checkForUpdates();
+    return activeRegistration;
+  }).catch(() => null);
+
+  window.addEventListener('online', checkForUpdates);
+  window.addEventListener('focus', checkForUpdates);
+  window.addEventListener('pageshow', checkForUpdates);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkForUpdates();
   });
-  navigator.serviceWorker.register('./sw.js', { scope: './' }).then(() => {
-    retireOldCaches().catch(() => {});
-  }).catch(() => {});
 })();

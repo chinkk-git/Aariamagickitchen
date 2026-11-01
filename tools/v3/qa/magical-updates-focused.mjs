@@ -21,8 +21,9 @@ async function skipWelcome(){
   if(await legacy.count()&&await legacy.isVisible())await legacy.click({force:true});
 }
 async function visibleBell(){const bell=page.locator('[data-magical-updates-open]').first();await bell.waitFor({state:'visible'});return bell;}
-async function assertTouchTarget(){const box=await (await visibleBell()).boundingBox();assert.ok(box&&box.width>=44&&box.height>=44,'bell touch target is below 44 CSS pixels');assert.ok(box.x>=0&&box.y>=0&&box.x+box.width<=page.viewportSize().width+1,'bell lies outside the viewport');}
+async function assertTouchTarget(){const box=await (await visibleBell()).boundingBox();assert.ok(box&&box.width>=44&&box.height>=44,`bell touch target is below 44 CSS pixels: ${JSON.stringify({box,viewport:page.viewportSize()})}`);assert.ok(box.x>=0&&box.y>=0&&box.x+box.width<=page.viewportSize().width+1,`bell lies outside the viewport: ${JSON.stringify({box,viewport:page.viewportSize()})}`);}
 async function assertBesideSettings(selector){const boxes=await page.evaluate(s=>{const a=document.querySelector(s),b=document.querySelector('[data-magical-updates-open]');if(!a||!b)return null;const x=a.getBoundingClientRect(),y=b.getBoundingClientRect();return{gear:{x:x.x,y:x.y,right:x.right,width:x.width,height:x.height},bell:{x:y.x,y:y.y,right:y.right,width:y.width,height:y.height}}},selector);assert.ok(boxes,`settings gear and bell exist: ${selector}`);assert.ok(boxes.bell.x>=boxes.gear.right-2,`bell must sit directly beside the Settings gear: ${JSON.stringify(boxes)}`);assert.ok(Math.abs(boxes.bell.y-boxes.gear.y)<12,'bell and Settings gear should share the same header row');}
+async function assertControlsClearOfGlobe(){const layout=await page.evaluate(()=>{const globe=document.querySelector('.fw-globe-frame, .v34-hero-globe');if(!globe)return null;const rect=e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,right:r.right,bottom:r.bottom,width:r.width,height:r.height}};const controls=[...document.querySelectorAll('.fw-more > button, .v34-home-utility > button')].filter(e=>e.getClientRects().length);return{globe:rect(globe),controls:controls.map(rect)}});assert.ok(layout?.controls.length>=2,`Home update and Settings controls are present: ${JSON.stringify(layout)}`);for(const control of layout.controls){const overlaps=control.x<layout.globe.right&&control.right>layout.globe.x&&control.y<layout.globe.bottom&&control.bottom>layout.globe.y;assert.ok(!overlaps,`Home update/Settings control overlaps the globe: ${JSON.stringify({control,globe:layout.globe})}`);}}
 async function openUpdates(){await (await visibleBell()).click();await page.locator('#screen .mu-page').waitFor({state:'visible'});}
 async function goHome(){await page.locator('[data-mu-action="home"]').click();await page.locator('#screen .mu-page').waitFor({state:'detached'});}
 
@@ -30,7 +31,7 @@ try{
   await page.goto(base,{waitUntil:'domcontentloaded'});await skipWelcome();
   await page.locator('#foodWonderland').waitFor({state:'visible'});
   let bell=await visibleBell();await assertTouchTarget();
-  await assertBesideSettings('.fw-more .mu-home-settings');
+  await assertControlsClearOfGlobe();
   assert.equal(await bell.getAttribute('aria-label'),'Open Magical Updates, 1 unread');
   assert.equal(await page.locator('[data-magical-updates-badge]').innerText(),'1');
   await page.locator('.fw-more .mu-home-settings').click();
@@ -39,7 +40,7 @@ try{
   await page.locator('#foodWonderland').waitFor({state:'visible'});
   await visibleBell();
 
-  await page.setViewportSize({width:844,height:390});await assertTouchTarget();
+  await page.setViewportSize({width:844,height:390});await assertTouchTarget();await assertControlsClearOfGlobe();
   await page.setViewportSize({width:390,height:844});
   await openUpdates();
   assert.equal(await page.locator('.mu-announcement-title').innerText(),'A Magical Trip to Vietnam! 🇻🇳🍜');
@@ -66,7 +67,8 @@ try{
   await page.locator('.v34-home').waitFor({state:'visible'});
   bell=await visibleBell();await assertTouchTarget();
   await assertBesideSettings('.v34-home-utility .v34-settings');
-  await page.setViewportSize({width:844,height:390});await assertTouchTarget();await assertBesideSettings('.v34-home-utility .v34-settings');
+  await assertControlsClearOfGlobe();
+  await page.setViewportSize({width:844,height:390});await assertTouchTarget();await assertBesideSettings('.v34-home-utility .v34-settings');await assertControlsClearOfGlobe();
   await page.setViewportSize({width:390,height:844});
   assert.ok(await page.locator('[data-magical-updates-badge]').isHidden(),'read state persists across restart and Home change');
   await page.locator('.v34-home-utility .v34-settings').click();
