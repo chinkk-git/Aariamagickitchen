@@ -29,6 +29,7 @@ for (const reference of shellReferences) {
   await stat(join(root, decodeURIComponent(reference.split('?')[0].slice(2))));
 }
 let release = 'previous';
+let nextCacheRevision = 'r4';
 const server = createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
@@ -41,7 +42,7 @@ const server = createServer(async (req, res) => {
     if ((await stat(file)).isDirectory()) file = join(file, 'index.html');
     let body = await readFile(file);
     if (release === 'next' && rel === 'sw.js') {
-      body = Buffer.from(body.toString('utf8').replace('85f537591449-r3', '85f537591449-r4'));
+      body = Buffer.from(body.toString('utf8').replace('85f537591449-r3', `85f537591449-${nextCacheRevision}`));
     }
     res.writeHead(200, {
       'content-type': mime[extname(file)] || 'application/octet-stream',
@@ -182,43 +183,36 @@ try {
   await launch.page.waitForFunction(() => navigator.serviceWorker.controller?.state === 'activated');
   await assertDataPreserved(launch.page);
   await assertNoReloadLoop(launch.page, launch.navigationCount);
-  await upgrade.context.close();
 
   // A deployed update is picked up when the installed app returns to the foreground.
-  release = 'current';
-  const foreground = await startPage();
-  await waitForCache(foreground.page, '-r3');
-  await foreground.page.waitForTimeout(5200); // Let the launch check's short throttle elapse.
-  const foregroundBefore = foreground.navigationCount();
-  const foregroundTimeOrigin = await foreground.page.evaluate(() => performance.timeOrigin);
-  const coveringPage = await foreground.context.newPage();
+  await launch.page.waitForTimeout(5200); // Let the launch check's short throttle elapse.
+  const foregroundBefore = launch.navigationCount();
+  const foregroundTimeOrigin = await launch.page.evaluate(() => performance.timeOrigin);
+  const coveringPage = await launch.context.newPage();
   await coveringPage.goto('about:blank');
   release = 'next';
   await coveringPage.close();
-  await foreground.page.bringToFront();
-  await foreground.page.evaluate(() => window.dispatchEvent(new Event('focus')));
-  await waitForCache(foreground.page, '-r4');
-  await foreground.page.waitForFunction(origin => performance.timeOrigin !== origin, foregroundTimeOrigin, {timeout: 15000});
-  await assertNoReloadLoop(foreground.page, foreground.navigationCount);
-  assert.ok(foreground.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
-  await foreground.context.close();
+  await launch.page.bringToFront();
+  await launch.page.evaluate(() => window.dispatchEvent(new Event('focus')));
+  await waitForCache(launch.page, '-r4');
+  await launch.page.waitForFunction(origin => performance.timeOrigin !== origin, foregroundTimeOrigin, {timeout: 15000});
+  await assertNoReloadLoop(launch.page, launch.navigationCount);
+  assert.ok(launch.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
 
   // An offline app shell remains available, then updates promptly after connectivity returns.
-  release = 'current';
-  const reconnect = await startPage();
-  await waitForCache(reconnect.page, '-r3');
-  await reconnect.page.waitForTimeout(5200);
-  await reconnect.context.setOffline(true);
-  await reconnect.page.reload({waitUntil: 'domcontentloaded'});
-  await reconnect.page.locator('#screen').waitFor({state: 'visible'});
-  assert.equal(await reconnect.page.evaluate(() => navigator.onLine), false, 'test is genuinely offline');
-  assert.equal(await reconnect.page.title(), "Aaria's Magical Kitchen", 'the installed PWA shell still opens offline');
+  await launch.page.waitForTimeout(5200);
+  await launch.context.setOffline(true);
+  await launch.page.reload({waitUntil: 'domcontentloaded'});
+  await launch.page.locator('#screen').waitFor({state: 'visible'});
+  assert.equal(await launch.page.evaluate(() => navigator.onLine), false, 'test is genuinely offline');
+  assert.equal(await launch.page.title(), "Aaria's Magical Kitchen", 'the installed PWA shell still opens offline');
+  nextCacheRevision = 'r5';
   release = 'next';
-  await reconnect.context.setOffline(false);
-  await waitForCache(reconnect.page, '-r4');
-  assert.equal(await reconnect.page.evaluate(() => navigator.onLine), true, 'connectivity is restored');
-  await assertNoReloadLoop(reconnect.page, reconnect.navigationCount);
-  await reconnect.context.close();
+  await launch.context.setOffline(false);
+  await waitForCache(launch.page, '-r5');
+  assert.equal(await launch.page.evaluate(() => navigator.onLine), true, 'connectivity is restored');
+  await assertNoReloadLoop(launch.page, launch.navigationCount);
+  await launch.context.close();
 
   console.log('PASS: previous-production upgrade on launch; foreground and reconnect updates; bounded reloads; offline app shell; Favorites, Planner, My Creations, Settings, Magical Updates state, IndexedDB photos, and compatibility caches preserved.');
 } finally {
