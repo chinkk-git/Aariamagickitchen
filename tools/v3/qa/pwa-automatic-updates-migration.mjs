@@ -53,8 +53,14 @@ const server = createServer(async (req, res) => {
     }
     if ((await stat(file)).isDirectory()) file = join(file, 'index.html');
     let body = await readFile(file);
-    if (release === 'next' && rel === 'sw.js') {
-      body = Buffer.from(body.toString('utf8').replace('85f537591449-r3', `85f537591449-${nextCacheRevision}`));
+    if (release !== 'previous' && rel === 'sw.js') {
+      let workerSource = body.toString('utf8');
+      if (release === 'next') workerSource = workerSource.replace('85f537591449-r3', `85f537591449-${nextCacheRevision}`);
+      workerSource = workerSource.replace(
+        "self.addEventListener('install'",
+        "self.addEventListener('message', event => { if (event.data === '__aaria_test_cache_name__') event.ports[0]?.postMessage(CACHE_NAME); });\\nself.addEventListener('install'"
+      );
+      body = Buffer.from(workerSource);
     }
     res.writeHead(200, {
       'content-type': mime[extname(file)] || 'application/octet-stream',
@@ -80,8 +86,29 @@ async function waitForCache(page, suffix) {
     if (names.some(key => key.startsWith('aaria-web-v3.5-') && !key.endsWith(suffix))) return false;
     const response = await (await caches.open(name)).match('./index.html');
     if (!response) return false;
-    return (await response.text()).includes('id="aaria-magical-updates"') &&
-      navigator.serviceWorker.controller?.state === 'activated';
+    const activeCacheName = await new Promise(resolve => {
+      const controller = navigator.serviceWorker.controller;
+      if (!controller || controller.state !== 'activated') return resolve(null);
+      const channel = new MessageChannel();
+      const timer = setTimeout(() => {
+        channel.port1.close();
+        resolve(null);
+      }, 300);
+      channel.port1.onmessage = event => {
+        clearTimeout(timer);
+        channel.port1.close();
+        resolve(event.data);
+      };
+      try {
+        controller.postMessage('__aaria_test_cache_name__', [channel.port2]);
+      } catch {
+        clearTimeout(timer);
+        channel.port1.close();
+        resolve(null);
+      }
+    });
+    return activeCacheName === name &&
+      (await response.text()).includes('id="aaria-magical-updates"');
     }, suffix, {timeout: 20000});
   } catch (error) {
     const workerState = await page.evaluate(async () => {
