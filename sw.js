@@ -8,12 +8,10 @@ self.addEventListener('activate', event => event.waitUntil((async () => {
   const keys = await caches.keys();
   const obsolete = keys.filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME);
   await Promise.all(obsolete.map(key => caches.delete(key)));
-  await self.clients.claim();
   const clients = await self.clients.matchAll({type:'window', includeUncontrolled:true});
-  await Promise.all(clients.map(client => client.postMessage({
-    type:'AARIA_APP_UPDATED',
-    cacheName:CACHE_NAME
-  })));
+  await Promise.all(clients.map(client =>
+    typeof client.navigate === 'function' ? client.navigate(client.url).catch(() => {}) : Promise.resolve()
+  ));
 })()));
 self.addEventListener('fetch', event => {
   const request = event.request, url = new URL(request.url);
