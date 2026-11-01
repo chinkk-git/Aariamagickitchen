@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: 20
       - name: Validate owner command and show exact bilingual preview
-        run: node notifications/owner-notification-command.mjs --preview
+        run: node .github/scripts/owner-notification-command.mjs --preview
       - name: Confirm this exact commit is the successful GitHub Pages release
         uses: actions/github-script@v7
         with:
@@ -85,7 +85,7 @@ jobs:
           AARIA_PARENT_CONSENT_MODEL_APPROVED: ${{ vars.AARIA_PARENT_CONSENT_MODEL_APPROVED }}
           AARIA_NOTIFICATION_PUBLISH_TOKEN: ${{ secrets.AARIA_NOTIFICATION_PUBLISH_TOKEN }}
         run: |
-          node notifications/owner-notification-command.mjs --json > "$RUNNER_TEMP/announcement.json"
+          node .github/scripts/owner-notification-command.mjs --json > "$RUNNER_TEMP/announcement.json"
           node --input-type=module <<'NODE'
           import {readFile} from 'node:fs/promises';
           if (process.env.AARIA_PARENT_CONSENT_MODEL_APPROVED !== 'true') throw new Error('guardian_consent_model_not_approved');
