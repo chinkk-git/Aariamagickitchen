@@ -1,0 +1,2 @@
+
+(()=>{let lastY=window.scrollY||0;let hidden=false;const setHidden=value=>{hidden=value;document.body.classList.toggle('bottom-nav-hidden',value)};window.addEventListener('scroll',()=>{const y=window.scrollY||document.documentElement.scrollTop||0;const delta=y-lastY;if(delta>7&&y>100)setHidden(true);else if(delta< -7)setHidden(false);else if(y<45)setHidden(false);lastY=y},{passive:true});document.getElementById('navReopen')?.addEventListener('click',()=>setHidden(false));})();

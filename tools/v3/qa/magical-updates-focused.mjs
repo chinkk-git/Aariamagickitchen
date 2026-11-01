@@ -78,4 +78,3 @@ try{
   assert.deepEqual(errors,[],'no browser runtime errors');
   console.log('PASS: Magical Updates bell, both Homes, shared unread count, local persistence, official app icon, exact content, responsive touch targets and Recipe #112 navigation.');
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
-e203c702e185c84f2037a96095b0ad8643a2890c

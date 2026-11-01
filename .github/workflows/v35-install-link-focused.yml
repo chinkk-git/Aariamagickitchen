@@ -1,0 +1,22 @@
+name: V3.5 installation-link focused validation
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "install-link-gate.css"
+      - "js/install-link-gate.js"
+      - "tools/v3/test-install-link-gate.mjs"
+      - ".github/workflows/v35-install-link-focused.yml"
+  push:
+    branches:
+      - fix/install-link-gate-20261030
+jobs:
+  install-link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate install gate and browser-specific behavior
+        run: node tools/v3/test-install-link-gate.mjs

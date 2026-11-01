@@ -1,0 +1,578 @@
+{
+  "schema": "w01-artwork-remediation-batch-v1",
+  "status": "draft-only; excluded from production runtime; independent review required",
+  "batch": "04",
+  "recipeIds": [
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    52,
+    53,
+    54
+  ],
+  "sourceArchive": "v31-step-atlas-drafts-recipes-11-65.zip",
+  "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+  "panelsPerAtlas": 6,
+  "changes": [
+    "Adds localized, visible adult-only wording to panels the source manifest marks adultOnlyCue.",
+    "Adds per-panel SVG title and description tied to the unchanged source step text.",
+    "Original illustration paths and project cartoon character assets remain unchanged."
+  ],
+  "androidDebugReview": {
+    "route": "/artwork-review/index.html",
+    "sourceSet": "src/debug/assets only",
+    "purpose": "Offline reviewer preview only; not the production cooking route."
+  },
+  "approval": {
+    "A08": "PENDING independent review",
+    "A09": "PENDING independent review",
+    "artworkRights": "UNRESOLVED; source authorship/rights not established by checksums",
+    "runtime": "NOT INTEGRATED"
+  },
+  "recipes": [
+    {
+      "id": 44,
+      "title": "Pizza Egg Muffins",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-44-step-atlas-draft.svg",
+      "sourceSha256": "1b1f2f2e3ac463f0b6c48eb57d218920f57cfbd505dd02ced4be7535f77e80f8",
+      "outputPath": "atlases/recipe-44-draft.svg",
+      "outputSha256": "b72ab6681f0efa2f3d27b470c36363d8fecbae363b3455064f289887750a03f4",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Whisk eggs and mix in vegetables, cheese and oregano.",
+          "adultOnlyCue": false,
+          "originalSha256": "1b1f2f2e3ac463f0b6c48eb57d218920f57cfbd505dd02ced4be7535f77e80f8"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Whisk eggs and mix in vegetables, cheese and oregano.",
+          "adultOnlyCue": false,
+          "originalSha256": "1b1f2f2e3ac463f0b6c48eb57d218920f57cfbd505dd02ced4be7535f77e80f8"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Fill silicone muffin cups.",
+          "adultOnlyCue": false,
+          "originalSha256": "1b1f2f2e3ac463f0b6c48eb57d218920f57cfbd505dd02ced4be7535f77e80f8"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult cooks until centers are completely set.",
+          "adultOnlyCue": true,
+          "originalSha256": "1b1f2f2e3ac463f0b6c48eb57d218920f57cfbd505dd02ced4be7535f77e80f8"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult cooks until centers are completely set.",
+          "adultOnlyCue": true,
+          "originalSha256": "1b1f2f2e3ac463f0b6c48eb57d218920f57cfbd505dd02ced4be7535f77e80f8"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult cooks until centers are completely set.",
+          "adultOnlyCue": false,
+          "originalSha256": "1b1f2f2e3ac463f0b6c48eb57d218920f57cfbd505dd02ced4be7535f77e80f8"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 45,
+      "title": "Banana Oat Cookies",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-45-step-atlas-draft.svg",
+      "sourceSha256": "d7dabb60e410197ffbc561ac40b901a7ba3812176f92172c6eaf1b460ce8a99d",
+      "outputPath": "atlases/recipe-45-draft.svg",
+      "outputSha256": "6b8d4f20da1fc398c80749999c469e468b1616a110f8c4cd0c4c75599e9da05d",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mash banana and mix with oats and cinnamon.",
+          "adultOnlyCue": false,
+          "originalSha256": "d7dabb60e410197ffbc561ac40b901a7ba3812176f92172c6eaf1b460ce8a99d"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mash banana and mix with oats and cinnamon.",
+          "adultOnlyCue": false,
+          "originalSha256": "d7dabb60e410197ffbc561ac40b901a7ba3812176f92172c6eaf1b460ce8a99d"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Shape small flat cookies and add optional chips.",
+          "adultOnlyCue": true,
+          "originalSha256": "d7dabb60e410197ffbc561ac40b901a7ba3812176f92172c6eaf1b460ce8a99d"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Shape small flat cookies and add optional chips.",
+          "adultOnlyCue": false,
+          "originalSha256": "d7dabb60e410197ffbc561ac40b901a7ba3812176f92172c6eaf1b460ce8a99d"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until firm and lightly browned.",
+          "adultOnlyCue": true,
+          "originalSha256": "d7dabb60e410197ffbc561ac40b901a7ba3812176f92172c6eaf1b460ce8a99d"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until firm and lightly browned.",
+          "adultOnlyCue": false,
+          "originalSha256": "d7dabb60e410197ffbc561ac40b901a7ba3812176f92172c6eaf1b460ce8a99d"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 46,
+      "title": "Nugget Treasure Pockets",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-46-step-atlas-draft.svg",
+      "sourceSha256": "4fb3fd68f52ab128b08ff99c19a7dc453dcab42040c91b685aa05a5ddd0b668c",
+      "outputPath": "atlases/recipe-46-draft.svg",
+      "outputSha256": "4d7ede2db290aa1897bdcded52f4c02549e05ae1124ce2a0d452ab877a012425",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cooks nuggets per package and chops them.",
+          "adultOnlyCue": true,
+          "originalSha256": "4fb3fd68f52ab128b08ff99c19a7dc453dcab42040c91b685aa05a5ddd0b668c"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cooks nuggets per package and chops them.",
+          "adultOnlyCue": true,
+          "originalSha256": "4fb3fd68f52ab128b08ff99c19a7dc453dcab42040c91b685aa05a5ddd0b668c"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Add nuggets, sauce and cheese to tortilla halves.",
+          "adultOnlyCue": false,
+          "originalSha256": "4fb3fd68f52ab128b08ff99c19a7dc453dcab42040c91b685aa05a5ddd0b668c"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Add nuggets, sauce and cheese to tortilla halves.",
+          "adultOnlyCue": false,
+          "originalSha256": "4fb3fd68f52ab128b08ff99c19a7dc453dcab42040c91b685aa05a5ddd0b668c"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Fold closed; adult air-fries until hot and crisp.",
+          "adultOnlyCue": true,
+          "originalSha256": "4fb3fd68f52ab128b08ff99c19a7dc453dcab42040c91b685aa05a5ddd0b668c"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Fold closed; adult air-fries until hot and crisp.",
+          "adultOnlyCue": false,
+          "originalSha256": "4fb3fd68f52ab128b08ff99c19a7dc453dcab42040c91b685aa05a5ddd0b668c"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 47,
+      "title": "Sunshine Mango Smoothie",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/30-47/recipe-47-step-atlas-draft.svg",
+      "sourceSha256": "8538da54545875cce1fa279bff89b69465e45d9ba36ee2b45bef8ca7ae985f14",
+      "outputPath": "atlases/recipe-47-draft.svg",
+      "outputSha256": "9c936cf52338efe8d8984c6a30ef92530b3dacdea60351d155c1c6cf7f515fc8",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Wash and prepare fruit with adult help.",
+          "adultOnlyCue": false,
+          "originalSha256": "8538da54545875cce1fa279bff89b69465e45d9ba36ee2b45bef8ca7ae985f14"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Wash and prepare fruit with adult help.",
+          "adultOnlyCue": true,
+          "originalSha256": "8538da54545875cce1fa279bff89b69465e45d9ba36ee2b45bef8ca7ae985f14"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult blends everything until smooth.",
+          "adultOnlyCue": true,
+          "originalSha256": "8538da54545875cce1fa279bff89b69465e45d9ba36ee2b45bef8ca7ae985f14"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult blends everything until smooth.",
+          "adultOnlyCue": true,
+          "originalSha256": "8538da54545875cce1fa279bff89b69465e45d9ba36ee2b45bef8ca7ae985f14"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Pour into cups and enjoy cold.",
+          "adultOnlyCue": false,
+          "originalSha256": "8538da54545875cce1fa279bff89b69465e45d9ba36ee2b45bef8ca7ae985f14"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Pour into cups and enjoy cold.",
+          "adultOnlyCue": false,
+          "originalSha256": "8538da54545875cce1fa279bff89b69465e45d9ba36ee2b45bef8ca7ae985f14"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 48,
+      "title": "Carrot Cheese Fritters",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-48-step-atlas-draft.svg",
+      "sourceSha256": "20f75e68aad73e53f0fb3bef0f9a9ce321bc45ea835fb4e4d06d942ba879a5ac",
+      "outputPath": "atlases/recipe-48-draft.svg",
+      "outputSha256": "618ffff03d03646a864a5519819be103fe7b83f928fee24dee4adf24702e122b",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix carrot, egg, flour and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "20f75e68aad73e53f0fb3bef0f9a9ce321bc45ea835fb4e4d06d942ba879a5ac"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mix carrot, egg, flour and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "20f75e68aad73e53f0fb3bef0f9a9ce321bc45ea835fb4e4d06d942ba879a5ac"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small spoonfuls on lightly oiled nonstick pan until browned and fully cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "20f75e68aad73e53f0fb3bef0f9a9ce321bc45ea835fb4e4d06d942ba879a5ac"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small spoonfuls on lightly oiled nonstick pan until browned and fully cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "20f75e68aad73e53f0fb3bef0f9a9ce321bc45ea835fb4e4d06d942ba879a5ac"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small spoonfuls on lightly oiled nonstick pan until browned and fully cooked.",
+          "adultOnlyCue": true,
+          "originalSha256": "20f75e68aad73e53f0fb3bef0f9a9ce321bc45ea835fb4e4d06d942ba879a5ac"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "20f75e68aad73e53f0fb3bef0f9a9ce321bc45ea835fb4e4d06d942ba879a5ac"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 49,
+      "title": "Strawberry Banana Crunch Cups",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-49-step-atlas-draft.svg",
+      "sourceSha256": "ad77f9ebdae48c034930ace99c58287d9c7c7db039d11f9a44b198118c411281",
+      "outputPath": "atlases/recipe-49-draft.svg",
+      "outputSha256": "43751f5c21e0838c59747b78fba7ddc645d2e3ae679b77e3c85dd3de5435d3fd",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Wash fruit and ask adult to slice.",
+          "adultOnlyCue": false,
+          "originalSha256": "ad77f9ebdae48c034930ace99c58287d9c7c7db039d11f9a44b198118c411281"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Wash fruit and ask adult to slice.",
+          "adultOnlyCue": true,
+          "originalSha256": "ad77f9ebdae48c034930ace99c58287d9c7c7db039d11f9a44b198118c411281"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Layer yogurt, banana, strawberries and granola in cups.",
+          "adultOnlyCue": false,
+          "originalSha256": "ad77f9ebdae48c034930ace99c58287d9c7c7db039d11f9a44b198118c411281"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Layer yogurt, banana, strawberries and granola in cups.",
+          "adultOnlyCue": false,
+          "originalSha256": "ad77f9ebdae48c034930ace99c58287d9c7c7db039d11f9a44b198118c411281"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Eat while crunchy.",
+          "adultOnlyCue": false,
+          "originalSha256": "ad77f9ebdae48c034930ace99c58287d9c7c7db039d11f9a44b198118c411281"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "ad77f9ebdae48c034930ace99c58287d9c7c7db039d11f9a44b198118c411281"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 50,
+      "title": "Aaria's Superstar Chicken Pizzas",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-50-step-atlas-draft.svg",
+      "sourceSha256": "3bce0f951f134542b1550bdd31c4e437fffc07d1cf5c3591544dc95c1325b25f",
+      "outputPath": "atlases/recipe-50-draft.svg",
+      "outputSha256": "d3b3980d783a895e202b18d1f78597d107a2e70a56b4fa2b6580aadb313861b7",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cuts bread into stars if desired.",
+          "adultOnlyCue": true,
+          "originalSha256": "3bce0f951f134542b1550bdd31c4e437fffc07d1cf5c3591544dc95c1325b25f"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Spread sauce and add cooked chicken, corn and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "3bce0f951f134542b1550bdd31c4e437fffc07d1cf5c3591544dc95c1325b25f"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Spread sauce and add cooked chicken, corn and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "3bce0f951f134542b1550bdd31c4e437fffc07d1cf5c3591544dc95c1325b25f"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until hot and melted.",
+          "adultOnlyCue": true,
+          "originalSha256": "3bce0f951f134542b1550bdd31c4e437fffc07d1cf5c3591544dc95c1325b25f"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until hot and melted.",
+          "adultOnlyCue": true,
+          "originalSha256": "3bce0f951f134542b1550bdd31c4e437fffc07d1cf5c3591544dc95c1325b25f"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "3bce0f951f134542b1550bdd31c4e437fffc07d1cf5c3591544dc95c1325b25f"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 52,
+      "title": "Mini Paneer Tikka Cubes",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-52-step-atlas-draft.svg",
+      "sourceSha256": "3a305ee3ebb527b7619b9283fd9b580e32a2b7eeda417fcc45f39d8a996d77d6",
+      "outputPath": "atlases/recipe-52-draft.svg",
+      "outputSha256": "911eae082e8c5076842b0a5d8b4a2597fe14f257f296b50c2b74dd2704ee4f43",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cuts paneer and pepper.",
+          "adultOnlyCue": true,
+          "originalSha256": "3a305ee3ebb527b7619b9283fd9b580e32a2b7eeda417fcc45f39d8a996d77d6"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Coat with yogurt, mild spice and oil.",
+          "adultOnlyCue": false,
+          "originalSha256": "3a305ee3ebb527b7619b9283fd9b580e32a2b7eeda417fcc45f39d8a996d77d6"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Coat with yogurt, mild spice and oil.",
+          "adultOnlyCue": false,
+          "originalSha256": "3a305ee3ebb527b7619b9283fd9b580e32a2b7eeda417fcc45f39d8a996d77d6"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until heated through and lightly browned.",
+          "adultOnlyCue": true,
+          "originalSha256": "3a305ee3ebb527b7619b9283fd9b580e32a2b7eeda417fcc45f39d8a996d77d6"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until heated through and lightly browned.",
+          "adultOnlyCue": true,
+          "originalSha256": "3a305ee3ebb527b7619b9283fd9b580e32a2b7eeda417fcc45f39d8a996d77d6"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "3a305ee3ebb527b7619b9283fd9b580e32a2b7eeda417fcc45f39d8a996d77d6"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 53,
+      "title": "Aloo Cheese Sandwich",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-53-step-atlas-draft.svg",
+      "sourceSha256": "58622601a469981293501e6dbd1a8316ad24d1bf9771f4c7f3b4266c480fa86a",
+      "outputPath": "atlases/recipe-53-draft.svg",
+      "outputSha256": "b8c42d68c10e3c11e5b033b5784f7cfbc1d2464657f1ea50ed7cc692ce970a77",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix cooked potato, cheese and cumin.",
+          "adultOnlyCue": false,
+          "originalSha256": "58622601a469981293501e6dbd1a8316ad24d1bf9771f4c7f3b4266c480fa86a"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Spread between bread slices.",
+          "adultOnlyCue": false,
+          "originalSha256": "58622601a469981293501e6dbd1a8316ad24d1bf9771f4c7f3b4266c480fa86a"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 3,
+          "sourceStepText": "Adult toasts in lightly buttered pan until both sides golden.",
+          "adultOnlyCue": true,
+          "originalSha256": "58622601a469981293501e6dbd1a8316ad24d1bf9771f4c7f3b4266c480fa86a"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult toasts in lightly buttered pan until both sides golden.",
+          "adultOnlyCue": true,
+          "originalSha256": "58622601a469981293501e6dbd1a8316ad24d1bf9771f4c7f3b4266c480fa86a"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult toasts in lightly buttered pan until both sides golden.",
+          "adultOnlyCue": true,
+          "originalSha256": "58622601a469981293501e6dbd1a8316ad24d1bf9771f4c7f3b4266c480fa86a"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "58622601a469981293501e6dbd1a8316ad24d1bf9771f4c7f3b4266c480fa86a"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 54,
+      "title": "Paneer Pizza Bites",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/48-65/recipe-54-step-atlas-draft.svg",
+      "sourceSha256": "e92aa8bbac1f25dc04c8f14f2a1599d572c5c5550a0a5008c034652986689b49",
+      "outputPath": "atlases/recipe-54-draft.svg",
+      "outputSha256": "acc531bb34ee37c2104f51e19a91cb06d036b87afbb2dfd396de29c5c44c4637",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Spread sauce on bread.",
+          "adultOnlyCue": false,
+          "originalSha256": "e92aa8bbac1f25dc04c8f14f2a1599d572c5c5550a0a5008c034652986689b49"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 2,
+          "sourceStepText": "Top with paneer, corn and mozzarella.",
+          "adultOnlyCue": false,
+          "originalSha256": "e92aa8bbac1f25dc04c8f14f2a1599d572c5c5550a0a5008c034652986689b49"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Top with paneer, corn and mozzarella.",
+          "adultOnlyCue": false,
+          "originalSha256": "e92aa8bbac1f25dc04c8f14f2a1599d572c5c5550a0a5008c034652986689b49"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until hot and cheese melts.",
+          "adultOnlyCue": true,
+          "originalSha256": "e92aa8bbac1f25dc04c8f14f2a1599d572c5c5550a0a5008c034652986689b49"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until hot and cheese melts.",
+          "adultOnlyCue": true,
+          "originalSha256": "e92aa8bbac1f25dc04c8f14f2a1599d572c5c5550a0a5008c034652986689b49"
+        },
+        {
+          "panel": 6,
+          "sourceStep": null,
+          "sourceStepText": "Finished dish presentation, using only listed ingredients.",
+          "adultOnlyCue": false,
+          "originalSha256": "e92aa8bbac1f25dc04c8f14f2a1599d572c5c5550a0a5008c034652986689b49"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    }
+  ]
+}

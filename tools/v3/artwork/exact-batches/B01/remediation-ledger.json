@@ -1,0 +1,91 @@
+{
+  "batch": "B01",
+  "status": "REMEDIATED_PENDING_INDEPENDENT_REREVIEW",
+  "sourceReviewArtifactId": 12302803813,
+  "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+  "findings": [
+    {
+      "reviewer": "A08",
+      "severity": "high",
+      "finding": "R15 p5–6 both air-fryer scenes; one lacked adult cue. R15 p3–4 raw egg/crumb handling cues differed.",
+      "remediation": "R15 panels 5 and 6 are distinct air-fryer load/check-and-cool scenes, both ADULT ONLY. Panel 3 adult prepares raw egg/crumb station; panel 4 uses fork with adult beside child; both cues explicitly recorded.",
+      "panels": [
+        "R15-P03",
+        "R15-P04",
+        "R15-P05",
+        "R15-P06"
+      ],
+      "status": "IMPLEMENTED_PENDING_REREVIEW"
+    },
+    {
+      "reviewer": "A08",
+      "severity": "high",
+      "finding": "R14 p3–4 topping cues differed; R13 p5–6 cooling/decorating cues differed; R11 p1 washing image conflicted with shared cucumber-cutting wording.",
+      "remediation": "R14 panels 3–4 both show ADULT HELP while a grown-up prepares peppers and Aaria adds toppings; panels 5–6 are both ADULT ONLY for fryer loading/removal. R13 separates adult toast removal and topping preparation from child decoration after full cooling with adult help. R11 panel 1 washes all vegetables; panel 2 alone shows Mommy cutting cucumber with ADULT ONLY cue. Original shared step text remains preserved as source metadata; the displayed micro-action instructions separate those actions.",
+      "panels": [
+        "R11-P01",
+        "R11-P02",
+        "R13-P03",
+        "R13-P04",
+        "R13-P05",
+        "R13-P06",
+        "R14-P01",
+        "R14-P02",
+        "R14-P03",
+        "R14-P04",
+        "R14-P05",
+        "R14-P06"
+      ],
+      "status": "IMPLEMENTED_PENDING_REREVIEW"
+    },
+    {
+      "reviewer": "A09",
+      "severity": "high",
+      "finding": "Repeated/abstract panels did not show clear action progression, including R12 mixing/cooking and R14 toppings.",
+      "remediation": "All 30 panels now have distinct action keys and ordered micro-actions: mix, warm, spoon, flip, check/cool for R12; sauce, corn, peppers/cheese, fryer load, fryer remove/cool for R14. Each panel has a step number and a recipe-specific scene.",
+      "panels": [
+        "R11-P01..P06",
+        "R12-P01..P06",
+        "R13-P01..P06",
+        "R14-P01..P06",
+        "R15-P01..P06"
+      ],
+      "status": "IMPLEMENTED_PENDING_REREVIEW"
+    },
+    {
+      "reviewer": "A09",
+      "severity": "medium",
+      "finding": "Original cartoon characters were absent.",
+      "remediation": "Reused the existing repository character assets Aaria, Mommy and Daddy in appropriate child/adult panels. Their source files remain unchanged; their SHA-256 values and repository paths are recorded. Rights remain unresolved.",
+      "panels": [
+        "all 30 panels"
+      ],
+      "status": "IMPLEMENTED_PENDING_REREVIEW"
+    },
+    {
+      "reviewer": "A09",
+      "severity": "medium",
+      "finding": "Source wording and SVG descriptions were English-only.",
+      "remediation": "Added concise child-facing British English and Português-BR instructions, language tags, bilingual adult cues, and panel-specific English/Portuguese SVG accessible descriptions while preserving original source-step text in provenance metadata.",
+      "panels": [
+        "all 30 panels"
+      ],
+      "status": "IMPLEMENTED_PENDING_REREVIEW"
+    },
+    {
+      "reviewer": "A08/A09",
+      "severity": "external_gate",
+      "finding": "Artwork reuse rights are unresolved.",
+      "remediation": "Retained provenance paths and source/character hashes; no rights approval is claimed. Keep B01 and release status on HOLD until rights are documented.",
+      "panels": [
+        "all 30 panels"
+      ],
+      "status": "BLOCKED_UNRESOLVED_RIGHTS"
+    }
+  ],
+  "formalApprovals": {
+    "A08": "PENDING_INDEPENDENT_REREVIEW",
+    "A09": "PENDING_INDEPENDENT_REREVIEW",
+    "artworkRights": "UNRESOLVED"
+  }
+}

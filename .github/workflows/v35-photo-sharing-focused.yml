@@ -1,0 +1,21 @@
+name: V3.5 photo sharing focused validation
+on:
+  pull_request:
+    paths:
+      - "js/03-aaria-v3-layer.c2c6fc71d8ad.js"
+      - "tools/v3/runtime.js"
+      - "tools/v3/test-photo-share-approval.mjs"
+      - ".github/workflows/v35-photo-sharing-focused.yml"
+  push:
+    branches:
+      - fix/native-photo-share-20261030
+jobs:
+  focused-photo-sharing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate image sharing, cancellation, explicit save and Android bridge
+        run: node tools/v3/test-photo-share-approval.mjs

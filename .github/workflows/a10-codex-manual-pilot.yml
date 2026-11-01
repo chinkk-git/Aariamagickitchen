@@ -1,0 +1,68 @@
+name: A10 Codex Isolated Manual Pilot
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: a10-codex-manual-pilot
+  cancel-in-progress: false
+jobs:
+  pilot:
+    if: github.ref == 'refs/heads/feature/a10-autonomous-recovery'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify API key configured
+        env:
+          KEY_PRESENT: ${{ secrets.OPENAI_API_KEY != '' }}
+        run: |
+          if [ "$KEY_PRESENT" != "true" ]; then
+            echo "::error::OPENAI_API_KEY repository secret unavailable"
+            exit 1
+          fi
+          echo "Required secret is available (value not printed)."
+      - name: Run Codex isolated workspace pilot
+        id: codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          permission-profile: ":workspace"
+          safety-strategy: drop-sudo
+          output-file: a10-codex-result.txt
+          prompt: |
+            A10 isolated activation pilot. Modify ONLY scripts/a10_offline_pilot.py
+            in this temporary checkout to add one deterministic assertion that
+            validates stale writers cannot overwrite a newer task state.
+            Do not change the task's external behavior, do not read secrets,
+            do not access the network, do not push, commit, merge or release.
+            Do not edit any W01/W02 files or branches. Summarize the change.
+      - name: Collect evidence and test
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p a10-pilot-evidence
+          git status --short > a10-pilot-evidence/status.txt
+          git diff -- scripts/a10_offline_pilot.py > a10-pilot-evidence/pilot.patch
+          if git diff --name-only | grep -v '^scripts/a10_offline_pilot.py$' | grep -q .; then
+            echo "Unexpected tracked file change" > a10-pilot-evidence/verification.txt
+            exit 1
+          fi
+          if [ -f a10-codex-result.txt ]; then
+            cp a10-codex-result.txt a10-pilot-evidence/result.txt
+          fi
+          python3 -m unittest discover -s tests -p 'test_a10_*.py' -v > a10-pilot-evidence/tests.txt 2>&1
+          python3 -m scripts.a10_offline_pilot >> a10-pilot-evidence/tests.txt 2>&1
+          python3 -m compileall -q scripts tests
+          test -s a10-pilot-evidence/pilot.patch
+          echo "PASS: isolated local patch and A10 tests" > a10-pilot-evidence/verification.txt
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a10-codex-manual-pilot
+          path: a10-pilot-evidence/
+          if-no-files-found: warn
+          retention-days: 7

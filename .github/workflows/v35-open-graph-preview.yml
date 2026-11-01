@@ -1,0 +1,20 @@
+name: V3.5 shared-link preview metadata
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "tools/v3/test-open-graph-preview.mjs"
+      - ".github/workflows/v35-open-graph-preview.yml"
+  push:
+    branches:
+      - fix/official-share-preview-icon-20261030
+jobs:
+  preview-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate server HTML metadata and public official icon
+        run: node tools/v3/test-open-graph-preview.mjs

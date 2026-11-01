@@ -1,0 +1,27 @@
+{
+  "style_guide_version": "1.0",
+  "status": "LOCKED_OWNER_APPROVED_REFERENCE",
+  "approval": {
+    "issue": 50,
+    "comment_id": 6367104240,
+    "decision": "APPROVED",
+    "reference_path": "content/international/countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "reference_sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec"
+  },
+  "visual_rules": [
+    "Warm polished 3D storybook illustration.",
+    "Keep Aaria's dark curly hair, pink flower, white chef jacket and orange apron consistent with the approved sample.",
+    "Show the exact recipe ingredient and cooking action; no text rendered into the art.",
+    "Show child-safe distance from knives, hot oil, hob, steam and boiling water; adult performs hazardous actions.",
+    "Use clear square compositions that remain legible when cropped on phone portrait and tablet landscape.",
+    "Asset provenance and rights clearance remain pending independent review."
+  ],
+  "approved_preview_paths": [
+    "content/international/previews/tomato-basil-step-phone-portrait.png",
+    "content/international/previews/tomato-basil-step-tablet-landscape.png"
+  ],
+  "approved_preview_hashes": {
+    "content/international/previews/tomato-basil-step-phone-portrait.png": "229065536d2d6d0104d286dddf55d7183d561523d2bae5ea23c410be0ab92f8f",
+    "content/international/previews/tomato-basil-step-tablet-landscape.png": "6a25fd6092b5a41186bd53b747b6ea6bea26a84cbd061c3d240975276202ac2e"
+  }
+}

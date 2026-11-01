@@ -1,0 +1,30 @@
+name: Control Tower executable task
+description: Structured task for V3, V3.1 or integration workers
+title: "[CT] "
+body:
+  - type: dropdown
+    id: owner
+    attributes:
+      label: Task owner
+      options: [v3, v31, integration]
+    validations:
+      required: true
+  - type: input
+    id: branch
+    attributes:
+      label: Target branch
+      description: Exact branch name, never a wildcard
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Concrete testable outcomes; include safety and review gates
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and evidence
+      description: Links to source SHAs, CI, review results and blocking issues

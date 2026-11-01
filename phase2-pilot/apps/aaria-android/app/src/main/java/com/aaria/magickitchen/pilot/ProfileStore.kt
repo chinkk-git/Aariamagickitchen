@@ -1,0 +1,210 @@
+package com.aaria.magickitchen.pilot
+
+import android.content.ContentValues
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import org.json.JSONArray
+import org.json.JSONObject
+import org.json.JSONTokener
+import java.util.UUID
+
+/** App-private profile and progress storage. All mutations are transactionally scoped to one profile. */
+class ProfileStore(context: Context) : SQLiteOpenHelper(context.applicationContext, DB_NAME, null, DB_VERSION) {
+    override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL("CREATE TABLE profiles (id TEXT PRIMARY KEY NOT NULL, name TEXT NOT NULL, chef_id TEXT NOT NULL, created_at INTEGER NOT NULL)")
+        db.execSQL("CREATE TABLE profile_state (profile_id TEXT PRIMARY KEY NOT NULL REFERENCES profiles(id) ON DELETE CASCADE, snapshot TEXT NOT NULL, updated_at INTEGER NOT NULL)")
+        db.execSQL("CREATE TABLE app_meta (key TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        // Future migrations must be additive and tested. This database has no released schema yet.
+        if (oldVersion < 2) db.execSQL("CREATE TABLE IF NOT EXISTS app_meta (key TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
+    }
+
+    @Synchronized
+    fun initialize(legacyJson: String): JSONObject {
+        val legacy = LegacyProfileMigration.parseSnapshot(legacyJson)
+        val db = writableDatabase
+        db.beginTransaction()
+        try {
+            val migrationComplete = meta(db, MIGRATION_KEY) == "1"
+            if (!migrationComplete) {
+                if (countProfiles(db) == 0L && LegacyProfileMigration.hasUserData(legacy)) {
+                    insertProfile(db, LEGACY_PROFILE_ID, "Aaria", LEGACY_CHEF_ID, legacy)
+                }
+                putMeta(db, MIGRATION_KEY, "1")
+            }
+            if (meta(db, ACTIVE_PROFILE_KEY).isNullOrBlank()) {
+                queryFirstProfile(db)?.let { putMeta(db, ACTIVE_PROFILE_KEY, it) }
+            }
+            db.setTransactionSuccessful()
+        } finally {
+            db.endTransaction()
+        }
+        return current(db)
+    }
+
+    @Synchronized
+    fun createProfile(nameInput: String, chefIdInput: String, initialSnapshot: String): JSONObject {
+        val name = ProfilePolicy.normalizedName(nameInput) ?: throw IllegalArgumentException("Enter a name of 1–24 characters")
+        val chefId = ProfilePolicy.normalizedChefId(chefIdInput) ?: throw IllegalArgumentException("Choose one of the two kitchen avatars")
+                val snapshot = LegacyProfileMigration.parseSnapshot(initialSnapshot)
+        val id = UUID.randomUUID().toString()
+        val db = writableDatabase
+        db.beginTransaction()
+        try {
+            if (countProfiles(db) >= MAX_PROFILES) throw IllegalStateException("The kitchen supports up to $MAX_PROFILES profiles")
+            insertProfile(db, id, name, chefId, snapshot)
+            putMeta(db, ACTIVE_PROFILE_KEY, id)
+            db.setTransactionSuccessful()
+        } finally {
+            db.endTransaction()
+        }
+        return current(db)
+    }
+
+    @Synchronized
+    fun activateProfile(id: String): JSONObject {
+        val db = writableDatabase
+        db.beginTransaction()
+        try {
+            check(profileExists(db, id)) { "Profile not found" }
+            putMeta(db, ACTIVE_PROFILE_KEY, id)
+            db.setTransactionSuccessful()
+        } finally {
+            db.endTransaction()
+        }
+        return current(db)
+    }
+
+    @Synchronized
+    fun saveSnapshot(id: String, snapshotJson: String): Boolean {
+                val snapshot = runCatching { LegacyProfileMigration.parseSnapshot(snapshotJson) }.getOrNull() ?: return false
+        val db = writableDatabase
+        db.beginTransaction()
+        try {
+            if (meta(db, ACTIVE_PROFILE_KEY) != id || !profileExists(db, id)) return false
+            val values = ContentValues().apply {
+                put("snapshot", snapshot.toString())
+                put("updated_at", System.currentTimeMillis())
+            }
+            check(db.update("profile_state", values, "profile_id=?", arrayOf(id)) == 1) { "Profile state missing" }
+            db.setTransactionSuccessful()
+            return true
+        } finally {
+            db.endTransaction()
+        }
+    }
+
+    @Synchronized
+    fun chooseChef(id: String, chefIdInput: String): Boolean {
+        val chefId = ProfilePolicy.normalizedChefId(chefIdInput) ?: return false
+        val db = writableDatabase
+        db.beginTransaction()
+        try {
+            if (meta(db, ACTIVE_PROFILE_KEY) != id || !profileExists(db, id)) return false
+            val values = ContentValues().apply { put("chef_id", chefId) }
+            val updated = db.update("profiles", values, "id=?", arrayOf(id)) == 1
+            if (updated) db.setTransactionSuccessful()
+            return updated
+        } finally {
+            db.endTransaction()
+        }
+    }
+
+    private fun current(db: SQLiteDatabase): JSONObject {
+        val activeId = meta(db, ACTIVE_PROFILE_KEY)
+        val profiles = JSONArray()
+        db.rawQuery("SELECT id,name,chef_id FROM profiles ORDER BY created_at,id", null).use { c ->
+            while (c.moveToNext()) {
+                profiles.put(JSONObject().put("id", c.getString(0)).put("name", c.getString(1)).put("chefId", c.getString(2)))
+            }
+        }
+        val snapshot = if (activeId.isNullOrBlank()) JSONObject() else db.rawQuery(
+            "SELECT snapshot FROM profile_state WHERE profile_id=?", arrayOf(activeId)
+        ).use { c -> if (c.moveToFirst()) runCatching { JSONObject(c.getString(0)) }.getOrDefault(JSONObject()) else JSONObject() }
+        return JSONObject().put("profiles", profiles).put("activeId", activeId ?: JSONObject.NULL).put("snapshot", snapshot)
+    }
+
+    private fun insertProfile(db: SQLiteDatabase, id: String, name: String, chefId: String, snapshot: JSONObject) {
+        db.insertOrThrow("profiles", null, ContentValues().apply {
+            put("id", id); put("name", name); put("chef_id", chefId); put("created_at", System.currentTimeMillis())
+        })
+        db.insertOrThrow("profile_state", null, ContentValues().apply {
+            put("profile_id", id); put("snapshot", snapshot.toString()); put("updated_at", System.currentTimeMillis())
+        })
+    }
+
+    private fun countProfiles(db: SQLiteDatabase) = db.rawQuery("SELECT COUNT(*) FROM profiles", null).use { c -> c.moveToFirst(); c.getLong(0) }
+    private fun queryFirstProfile(db: SQLiteDatabase) = db.rawQuery("SELECT id FROM profiles ORDER BY created_at,id LIMIT 1", null).use { c -> if (c.moveToFirst()) c.getString(0) else null }
+    private fun profileExists(db: SQLiteDatabase, id: String) = db.rawQuery("SELECT 1 FROM profiles WHERE id=?", arrayOf(id)).use { it.moveToFirst() }
+    private fun meta(db: SQLiteDatabase, key: String): String? = db.rawQuery("SELECT value FROM app_meta WHERE key=?", arrayOf(key)).use { if (it.moveToFirst()) it.getString(0) else null }
+    private fun putMeta(db: SQLiteDatabase, key: String, value: String) { db.insertWithOnConflict("app_meta", null, ContentValues().apply { put("key", key); put("value", value) }, SQLiteDatabase.CONFLICT_REPLACE) }
+
+    companion object {
+        const val MAX_PROFILES = 8
+        private const val DB_NAME = "my_magical_kitchen_v3.db"
+        private const val DB_VERSION = 1
+        private const val LEGACY_PROFILE_ID = "legacy-aaria-v4"
+        private const val LEGACY_CHEF_ID = "LEGACY_AARIA"
+        private const val MIGRATION_KEY = "legacy_v4_migration_complete"
+        private const val ACTIVE_PROFILE_KEY = "active_profile_id"
+    }
+}
+
+internal object LegacyProfileMigration {
+    const val MAX_SNAPSHOT_CHARS = 5_000_000
+
+    fun parseSnapshot(source: String): JSONObject {
+        require(source.length <= MAX_SNAPSHOT_CHARS) { "Profile snapshot is too large" }
+        val tokener = JSONTokener(source)
+        val parsed = try {
+            tokener.nextValue()
+        } catch (error: Exception) {
+            throw IllegalArgumentException("Profile snapshot is malformed", error)
+        }
+        require(parsed is JSONObject) { "Profile snapshot must be a JSON object" }
+        require(tokener.nextClean() == 0.toChar()) { "Profile snapshot has trailing data" }
+        return parsed
+    }
+
+    fun hasUserData(state: JSONObject): Boolean = state.keys().asSequence().any { key ->
+        when (val value = state.opt(key)) {
+            is JSONArray -> value.length() > 0
+            is JSONObject -> value.length() > 0
+            is String -> value.isNotBlank()
+            is Number -> value.toDouble() != 0.0
+            is Boolean -> value
+            else -> false
+        }
+    }
+}
+
+internal object NativeBridgeInputPolicy {
+    const val MAX_SHARED_IMAGE_BYTES = 15 * 1024 * 1024
+    const val MAX_SHARED_TITLE_CHARS = 240
+    private const val PNG_PREFIX = "data:image/png;base64,"
+    private const val JPEG_PREFIX = "data:image/jpeg;base64,"
+
+    fun isSharePostWithinLimits(dataUrl: String, title: String): Boolean {
+        val prefix = when {
+            dataUrl.startsWith(PNG_PREFIX) -> PNG_PREFIX
+            dataUrl.startsWith(JPEG_PREFIX) -> JPEG_PREFIX
+            else -> return false
+        }
+        val maxEncodedLength = ((MAX_SHARED_IMAGE_BYTES + 2) / 3) * 4 + prefix.length
+        return dataUrl.length <= maxEncodedLength && title.length <= MAX_SHARED_TITLE_CHARS
+    }
+
+    fun maxEncodedShareDataUrlLength(prefixLength: Int): Int =
+        ((MAX_SHARED_IMAGE_BYTES + 2) / 3) * 4 + prefixLength
+}
+
+internal object ProfilePolicy {
+    fun normalizedName(input: String): String? {
+        val value = input.trim().replace(Regex("[\\u0000-\\u001f\\u007f]"), "")
+        return value.takeIf { it.isNotEmpty() && it.length <= 24 }
+    }
+    fun normalizedChefId(input: String): String? = input.trim().uppercase().takeIf { it == "CHEF_A" || it == "CHEF_B" }
+}

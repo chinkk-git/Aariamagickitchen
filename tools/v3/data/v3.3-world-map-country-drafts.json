@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "status": "draft-review-only",
+  "runtimeEligible": false,
+  "canonicalCatalogMutation": false,
+  "locales": ["en-GB", "pt-BR"],
+  "countries": [
+    {
+      "iso3166Alpha3": "ITA",
+      "name": { "en-GB": "Italy", "pt-BR": "Itália" },
+      "recipeConcept": { "en-GB": "Tomato Basil Pasta", "pt-BR": "Massa de tomate e manjericão" },
+      "canonicalRecipeIds": [],
+      "review": { "geography": "pending", "culturalAssociation": "pending", "duplicate": "pending", "nutrition": "pending", "allergens": "pending", "a08ChildSafety": "pending", "a09ChildExperience": "pending", "artworkRights": "pending" }
+    },
+    {
+      "iso3166Alpha3": "CHN",
+      "name": { "en-GB": "China", "pt-BR": "China" },
+      "recipeConcept": { "en-GB": "Vegetable Fried Rice", "pt-BR": "Arroz frito com legumes" },
+      "canonicalRecipeIds": [],
+      "review": { "geography": "pending", "culturalAssociation": "pending", "duplicate": "pending", "nutrition": "pending", "allergens": "pending", "a08ChildSafety": "pending", "a09ChildExperience": "pending", "artworkRights": "pending" }
+    },
+    {
+      "iso3166Alpha3": "JPN",
+      "name": { "en-GB": "Japan", "pt-BR": "Japão" },
+      "recipeConcept": { "en-GB": "Veggie Sushi Rolls", "pt-BR": "Rolinhos de sushi de legumes" },
+      "canonicalRecipeIds": [],
+      "review": { "geography": "pending", "culturalAssociation": "pending", "duplicate": "pending", "nutrition": "pending", "allergens": "pending", "a08ChildSafety": "pending", "a09ChildExperience": "pending", "artworkRights": "pending" }
+    },
+    {
+      "iso3166Alpha3": "MEX",
+      "name": { "en-GB": "Mexico", "pt-BR": "México" },
+      "recipeConcept": { "en-GB": "Rainbow Veggie Tacos", "pt-BR": "Tacos arco-íris de legumes" },
+      "canonicalRecipeIds": [],
+      "review": { "geography": "pending", "culturalAssociation": "pending", "duplicate": "pending", "nutrition": "pending", "allergens": "pending", "a08ChildSafety": "pending", "a09ChildExperience": "pending", "artworkRights": "pending" }
+    },
+    {
+      "iso3166Alpha3": "VNM",
+      "name": { "en-GB": "Vietnam", "pt-BR": "Vietnã" },
+      "recipeConcept": { "en-GB": "Fresh Spring Rolls", "pt-BR": "Rolinhos primavera frescos" },
+      "canonicalRecipeIds": [],
+      "review": { "geography": "pending", "culturalAssociation": "pending", "duplicate": "pending", "nutrition": "pending", "allergens": "pending", "a08ChildSafety": "pending", "a09ChildExperience": "pending", "artworkRights": "pending" }
+    }
+  ],
+  "artworkConcept": "docs/design/references/v3.3/drafts/FIVE_COUNTRY_WORLD_ADVENTURE_CONCEPT_DRAFT.png",
+  "artworkStatus": "generated draft concept; owner approval and rights review pending; not approved map reference or runtime artwork"
+}

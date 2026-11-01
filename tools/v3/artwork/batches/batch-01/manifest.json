@@ -1,0 +1,578 @@
+{
+  "schema": "w01-artwork-remediation-batch-v1",
+  "status": "draft-only; excluded from production runtime; independent review required",
+  "batch": "01",
+  "recipeIds": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "sourceArchive": "v31-step-atlas-drafts-recipes-11-65.zip",
+  "sourceArchiveSha256": "30dcd8d741e9e990302342eb78fcb5bfb0154f6f26b6ff72b94cee85552fc8ab",
+  "panelsPerAtlas": 6,
+  "changes": [
+    "Adds localized, visible adult-only wording to panels the source manifest marks adultOnlyCue.",
+    "Adds per-panel SVG title and description tied to the unchanged source step text.",
+    "Original illustration paths and project cartoon character assets remain unchanged."
+  ],
+  "androidDebugReview": {
+    "route": "/artwork-review/index.html",
+    "sourceSet": "src/debug/assets only",
+    "purpose": "Offline reviewer preview only; not the production cooking route."
+  },
+  "approval": {
+    "A08": "PENDING independent review",
+    "A09": "PENDING independent review",
+    "artworkRights": "UNRESOLVED; source authorship/rights not established by checksums",
+    "runtime": "NOT INTEGRATED"
+  },
+  "recipes": [
+    {
+      "id": 11,
+      "title": "Rainbow Veggie Roll-Ups",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-11-rainbow-veggie-roll-ups-a09-draft.svg",
+      "sourceSha256": "badeb8fc8487e27c734253267c578b5948170fb3e692824527e3f860bae7c2f4",
+      "outputPath": "atlases/recipe-11-draft.svg",
+      "outputSha256": "7ffc636778d7bc02957e086af5d419a47fdab610132b1bd1099cd376520e560f",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Wash all vegetables well. Ask an adult to cut the cucumber.",
+          "adultOnlyCue": false,
+          "originalSha256": "badeb8fc8487e27c734253267c578b5948170fb3e692824527e3f860bae7c2f4"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Wash all vegetables well. Ask an adult to cut the cucumber.",
+          "adultOnlyCue": true,
+          "originalSha256": "badeb8fc8487e27c734253267c578b5948170fb3e692824527e3f860bae7c2f4"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Spread cream cheese over each tortilla.",
+          "adultOnlyCue": false,
+          "originalSha256": "badeb8fc8487e27c734253267c578b5948170fb3e692824527e3f860bae7c2f4"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "Add lettuce, grated carrot, cucumber and optional tomato in a thin layer.",
+          "adultOnlyCue": false,
+          "originalSha256": "badeb8fc8487e27c734253267c578b5948170fb3e692824527e3f860bae7c2f4"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Add lettuce, grated carrot, cucumber and optional tomato in a thin layer.",
+          "adultOnlyCue": false,
+          "originalSha256": "badeb8fc8487e27c734253267c578b5948170fb3e692824527e3f860bae7c2f4"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 4,
+          "sourceStepText": "Roll each tortilla tightly into a log. Ask an adult to cut into bite-size pinwheels.",
+          "adultOnlyCue": true,
+          "originalSha256": "badeb8fc8487e27c734253267c578b5948170fb3e692824527e3f860bae7c2f4"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 12,
+      "title": "Cheesy Corn Pancakes",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-12-cheesy-corn-pancakes-a09-draft.svg",
+      "sourceSha256": "27c46c1ee6c0e4a5f1b52f4a48be0df0ce6ee5bdc2e5874d239c90af90d7f933",
+      "outputPath": "atlases/recipe-12-draft.svg",
+      "outputSha256": "8cd93908f427184fe6119ec36ece0dcd6ed098b50f7c9615ac4fd1c6bde4efd8",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mix corn, egg, flour, cheese and milk into a thick spoonable batter.",
+          "adultOnlyCue": false,
+          "originalSha256": "27c46c1ee6c0e4a5f1b52f4a48be0df0ce6ee5bdc2e5874d239c90af90d7f933"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mix corn, egg, flour, cheese and milk into a thick spoonable batter.",
+          "adultOnlyCue": false,
+          "originalSha256": "27c46c1ee6c0e4a5f1b52f4a48be0df0ce6ee5bdc2e5874d239c90af90d7f933"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Ask an adult to warm a nonstick pan with a little oil over medium-low heat.",
+          "adultOnlyCue": true,
+          "originalSha256": "27c46c1ee6c0e4a5f1b52f4a48be0df0ce6ee5bdc2e5874d239c90af90d7f933"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 3,
+          "sourceStepText": "An adult adds small spoonfuls and cooks about 2–3 minutes per side.",
+          "adultOnlyCue": true,
+          "originalSha256": "27c46c1ee6c0e4a5f1b52f4a48be0df0ce6ee5bdc2e5874d239c90af90d7f933"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "An adult adds small spoonfuls and cooks about 2–3 minutes per side.",
+          "adultOnlyCue": true,
+          "originalSha256": "27c46c1ee6c0e4a5f1b52f4a48be0df0ce6ee5bdc2e5874d239c90af90d7f933"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 4,
+          "sourceStepText": "Check the centers are fully cooked and golden. Cool before eating.",
+          "adultOnlyCue": false,
+          "originalSha256": "27c46c1ee6c0e4a5f1b52f4a48be0df0ce6ee5bdc2e5874d239c90af90d7f933"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 13,
+      "title": "Teddy Bear Cheese Toast",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-13-teddy-bear-cheese-toast-a09-draft.svg",
+      "sourceSha256": "42500edebf0e9c5fdee78b075b4b3f93ae0beb7cca3ce508af9b5f77716e0232",
+      "outputPath": "atlases/recipe-13-draft.svg",
+      "outputSha256": "4f92d054f40e2f80644a74b1ced8786a1bb4c9e1441189f99d3e901fbf39027f",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Lay cheese on bread.",
+          "adultOnlyCue": false,
+          "originalSha256": "42500edebf0e9c5fdee78b075b4b3f93ae0beb7cca3ce508af9b5f77716e0232"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Lay cheese on bread.",
+          "adultOnlyCue": false,
+          "originalSha256": "42500edebf0e9c5fdee78b075b4b3f93ae0beb7cca3ce508af9b5f77716e0232"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Ask an adult to toast until cheese melts.",
+          "adultOnlyCue": true,
+          "originalSha256": "42500edebf0e9c5fdee78b075b4b3f93ae0beb7cca3ce508af9b5f77716e0232"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Ask an adult to toast until cheese melts.",
+          "adultOnlyCue": true,
+          "originalSha256": "42500edebf0e9c5fdee78b075b4b3f93ae0beb7cca3ce508af9b5f77716e0232"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Cool slightly; add cucumber ears and halved tomatoes for noses.",
+          "adultOnlyCue": true,
+          "originalSha256": "42500edebf0e9c5fdee78b075b4b3f93ae0beb7cca3ce508af9b5f77716e0232"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Cool slightly; add cucumber ears and halved tomatoes for noses.",
+          "adultOnlyCue": false,
+          "originalSha256": "42500edebf0e9c5fdee78b075b4b3f93ae0beb7cca3ce508af9b5f77716e0232"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 14,
+      "title": "Mini Pizza Bagels",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-14-mini-pizza-bagels-a09-draft.svg",
+      "sourceSha256": "5518301fee006a603f53d7f5eb92475e07be4424af83070e337dab4f457ba056",
+      "outputPath": "atlases/recipe-14-draft.svg",
+      "outputSha256": "5699d249df56b6085d14db14cf10ab9aabe308643a7d024a6d18025ec111837c",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Spread sauce on bagel halves.",
+          "adultOnlyCue": false,
+          "originalSha256": "5518301fee006a603f53d7f5eb92475e07be4424af83070e337dab4f457ba056"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Spread sauce on bagel halves.",
+          "adultOnlyCue": false,
+          "originalSha256": "5518301fee006a603f53d7f5eb92475e07be4424af83070e337dab4f457ba056"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Add corn, peppers and cheese.",
+          "adultOnlyCue": true,
+          "originalSha256": "5518301fee006a603f53d7f5eb92475e07be4424af83070e337dab4f457ba056"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Add corn, peppers and cheese.",
+          "adultOnlyCue": false,
+          "originalSha256": "5518301fee006a603f53d7f5eb92475e07be4424af83070e337dab4f457ba056"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until cheese melts; cool.",
+          "adultOnlyCue": true,
+          "originalSha256": "5518301fee006a603f53d7f5eb92475e07be4424af83070e337dab4f457ba056"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until cheese melts; cool.",
+          "adultOnlyCue": true,
+          "originalSha256": "5518301fee006a603f53d7f5eb92475e07be4424af83070e337dab4f457ba056"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 15,
+      "title": "Crunchy Zucchini Fries",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-15-crunchy-zucchini-fries-a09-draft.svg",
+      "sourceSha256": "9dc2d9db698e9dfda9790e2ec2fcd34ed6b72e0aa1bfdaf6836a9f2b966b7b7d",
+      "outputPath": "atlases/recipe-15-draft.svg",
+      "outputSha256": "036b275de31d8d538446455e43211afa0015804d622d283af6055557843c3fd9",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cuts zucchini into sticks.",
+          "adultOnlyCue": true,
+          "originalSha256": "9dc2d9db698e9dfda9790e2ec2fcd34ed6b72e0aa1bfdaf6836a9f2b966b7b7d"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cuts zucchini into sticks.",
+          "adultOnlyCue": false,
+          "originalSha256": "9dc2d9db698e9dfda9790e2ec2fcd34ed6b72e0aa1bfdaf6836a9f2b966b7b7d"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Dip in beaten egg, then crumbs mixed with Parmesan.",
+          "adultOnlyCue": false,
+          "originalSha256": "9dc2d9db698e9dfda9790e2ec2fcd34ed6b72e0aa1bfdaf6836a9f2b966b7b7d"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Dip in beaten egg, then crumbs mixed with Parmesan.",
+          "adultOnlyCue": true,
+          "originalSha256": "9dc2d9db698e9dfda9790e2ec2fcd34ed6b72e0aa1bfdaf6836a9f2b966b7b7d"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries in one layer until golden and zucchini is tender.",
+          "adultOnlyCue": true,
+          "originalSha256": "9dc2d9db698e9dfda9790e2ec2fcd34ed6b72e0aa1bfdaf6836a9f2b966b7b7d"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries in one layer until golden and zucchini is tender.",
+          "adultOnlyCue": false,
+          "originalSha256": "9dc2d9db698e9dfda9790e2ec2fcd34ed6b72e0aa1bfdaf6836a9f2b966b7b7d"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 16,
+      "title": "Cheesy Rainbow Quesadillas",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-16-cheesy-rainbow-quesadillas-a09-draft.svg",
+      "sourceSha256": "4d56522ad33e7303391a964919c059e1d5d2c6b3ecb0bfd2d48f26562c0229b8",
+      "outputPath": "atlases/recipe-16-draft.svg",
+      "outputSha256": "0acf6d76bcd2bec4395787741c954a9356d6d1cd3535ddcc23f7593e38a7f118",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Spread cheese and vegetables over half of each tortilla.",
+          "adultOnlyCue": false,
+          "originalSha256": "4d56522ad33e7303391a964919c059e1d5d2c6b3ecb0bfd2d48f26562c0229b8"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Spread cheese and vegetables over half of each tortilla.",
+          "adultOnlyCue": false,
+          "originalSha256": "4d56522ad33e7303391a964919c059e1d5d2c6b3ecb0bfd2d48f26562c0229b8"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Fold closed and press lightly.",
+          "adultOnlyCue": false,
+          "originalSha256": "4d56522ad33e7303391a964919c059e1d5d2c6b3ecb0bfd2d48f26562c0229b8"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Fold closed and press lightly.",
+          "adultOnlyCue": true,
+          "originalSha256": "4d56522ad33e7303391a964919c059e1d5d2c6b3ecb0bfd2d48f26562c0229b8"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until crisp and cheese melts.",
+          "adultOnlyCue": false,
+          "originalSha256": "4d56522ad33e7303391a964919c059e1d5d2c6b3ecb0bfd2d48f26562c0229b8"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until crisp and cheese melts.",
+          "adultOnlyCue": true,
+          "originalSha256": "4d56522ad33e7303391a964919c059e1d5d2c6b3ecb0bfd2d48f26562c0229b8"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 17,
+      "title": "Banana Pancake Faces",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-17-banana-pancake-faces-a09-draft.svg",
+      "sourceSha256": "a2309a590461b14b73b38410335081a82fadb3ea8326c922a6d9f2d0837217b9",
+      "outputPath": "atlases/recipe-17-draft.svg",
+      "outputSha256": "612edf6042cc59e350e549e2353284843064d9c1fd563585501248260cf6a132",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Mash banana; stir in egg and oats.",
+          "adultOnlyCue": false,
+          "originalSha256": "a2309a590461b14b73b38410335081a82fadb3ea8326c922a6d9f2d0837217b9"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Mash banana; stir in egg and oats.",
+          "adultOnlyCue": false,
+          "originalSha256": "a2309a590461b14b73b38410335081a82fadb3ea8326c922a6d9f2d0837217b9"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small pancakes on a lightly oiled pan until fully set.",
+          "adultOnlyCue": true,
+          "originalSha256": "a2309a590461b14b73b38410335081a82fadb3ea8326c922a6d9f2d0837217b9"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Adult cooks small pancakes on a lightly oiled pan until fully set.",
+          "adultOnlyCue": true,
+          "originalSha256": "a2309a590461b14b73b38410335081a82fadb3ea8326c922a6d9f2d0837217b9"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Decorate cooled pancakes with adult-cut strawberries.",
+          "adultOnlyCue": false,
+          "originalSha256": "a2309a590461b14b73b38410335081a82fadb3ea8326c922a6d9f2d0837217b9"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Decorate cooled pancakes with adult-cut strawberries.",
+          "adultOnlyCue": true,
+          "originalSha256": "a2309a590461b14b73b38410335081a82fadb3ea8326c922a6d9f2d0837217b9"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 18,
+      "title": "Rainbow Fruit Wands",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-18-rainbow-fruit-wands-a09-draft.svg",
+      "sourceSha256": "e11b8968f2359e4f5824f8b6f7f0b43d497f87b4a4e94ef5497dcc2d8ac876dd",
+      "outputPath": "atlases/recipe-18-draft.svg",
+      "outputSha256": "9a7445f822094e9b2aac78b58f4c231404ada780f44f055fb44b4c51510bd709",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Wash fruit; adult peels and cuts it into bite-size pieces.",
+          "adultOnlyCue": false,
+          "originalSha256": "e11b8968f2359e4f5824f8b6f7f0b43d497f87b4a4e94ef5497dcc2d8ac876dd"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Wash fruit; adult peels and cuts it into bite-size pieces.",
+          "adultOnlyCue": true,
+          "originalSha256": "e11b8968f2359e4f5824f8b6f7f0b43d497f87b4a4e94ef5497dcc2d8ac876dd"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 1,
+          "sourceStepText": "Wash fruit; adult peels and cuts it into bite-size pieces.",
+          "adultOnlyCue": false,
+          "originalSha256": "e11b8968f2359e4f5824f8b6f7f0b43d497f87b4a4e94ef5497dcc2d8ac876dd"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Arrange colors in rainbow order on a plate or blunt food-safe sticks.",
+          "adultOnlyCue": false,
+          "originalSha256": "e11b8968f2359e4f5824f8b6f7f0b43d497f87b4a4e94ef5497dcc2d8ac876dd"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Arrange colors in rainbow order on a plate or blunt food-safe sticks.",
+          "adultOnlyCue": false,
+          "originalSha256": "e11b8968f2359e4f5824f8b6f7f0b43d497f87b4a4e94ef5497dcc2d8ac876dd"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 2,
+          "sourceStepText": "Arrange colors in rainbow order on a plate or blunt food-safe sticks.",
+          "adultOnlyCue": false,
+          "originalSha256": "e11b8968f2359e4f5824f8b6f7f0b43d497f87b4a4e94ef5497dcc2d8ac876dd"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 19,
+      "title": "Cinnamon Apple Donuts",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-19-cinnamon-apple-donuts-a09-draft.svg",
+      "sourceSha256": "53a5edebd09c86f53d453b16e81bc825a2862dfe6521d3b28b21b16492928553",
+      "outputPath": "atlases/recipe-19-draft.svg",
+      "outputSha256": "05fad556f647a509715e73d7b9b4420b81efe10d294803986a696819d8d116b9",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cores apples and cuts thick rings.",
+          "adultOnlyCue": true,
+          "originalSha256": "53a5edebd09c86f53d453b16e81bc825a2862dfe6521d3b28b21b16492928553"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Adult cores apples and cuts thick rings.",
+          "adultOnlyCue": false,
+          "originalSha256": "53a5edebd09c86f53d453b16e81bc825a2862dfe6521d3b28b21b16492928553"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 2,
+          "sourceStepText": "Brush lightly with butter and sprinkle cinnamon.",
+          "adultOnlyCue": false,
+          "originalSha256": "53a5edebd09c86f53d453b16e81bc825a2862dfe6521d3b28b21b16492928553"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Brush lightly with butter and sprinkle cinnamon.",
+          "adultOnlyCue": true,
+          "originalSha256": "53a5edebd09c86f53d453b16e81bc825a2862dfe6521d3b28b21b16492928553"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until tender; let cool.",
+          "adultOnlyCue": true,
+          "originalSha256": "53a5edebd09c86f53d453b16e81bc825a2862dfe6521d3b28b21b16492928553"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 3,
+          "sourceStepText": "Adult air-fries until tender; let cool.",
+          "adultOnlyCue": false,
+          "originalSha256": "53a5edebd09c86f53d453b16e81bc825a2862dfe6521d3b28b21b16492928553"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    },
+    {
+      "id": 20,
+      "title": "Strawberry Yogurt Pops",
+      "sourcePath": "tools/v3/artwork/step-atlas-staging/11-29/recipe-20-strawberry-yogurt-pops-a09-draft.svg",
+      "sourceSha256": "43df135fe618b659568831cc8665b439b3628f73221cba9ff006b59daceb0900",
+      "outputPath": "atlases/recipe-20-draft.svg",
+      "outputSha256": "6e08a20139b513d065c273a95fab98aea010d66169793bc087bb04357a9dfb45",
+      "dimensions": "1536x1024",
+      "panels": [
+        {
+          "panel": 1,
+          "sourceStep": 1,
+          "sourceStepText": "Wash strawberries; adult blends fruit with yogurt.",
+          "adultOnlyCue": false,
+          "originalSha256": "43df135fe618b659568831cc8665b439b3628f73221cba9ff006b59daceb0900"
+        },
+        {
+          "panel": 2,
+          "sourceStep": 1,
+          "sourceStepText": "Wash strawberries; adult blends fruit with yogurt.",
+          "adultOnlyCue": true,
+          "originalSha256": "43df135fe618b659568831cc8665b439b3628f73221cba9ff006b59daceb0900"
+        },
+        {
+          "panel": 3,
+          "sourceStep": 1,
+          "sourceStepText": "Wash strawberries; adult blends fruit with yogurt.",
+          "adultOnlyCue": false,
+          "originalSha256": "43df135fe618b659568831cc8665b439b3628f73221cba9ff006b59daceb0900"
+        },
+        {
+          "panel": 4,
+          "sourceStep": 2,
+          "sourceStepText": "Pour into popsicle molds and freeze until solid.",
+          "adultOnlyCue": false,
+          "originalSha256": "43df135fe618b659568831cc8665b439b3628f73221cba9ff006b59daceb0900"
+        },
+        {
+          "panel": 5,
+          "sourceStep": 2,
+          "sourceStepText": "Pour into popsicle molds and freeze until solid.",
+          "adultOnlyCue": false,
+          "originalSha256": "43df135fe618b659568831cc8665b439b3628f73221cba9ff006b59daceb0900"
+        },
+        {
+          "panel": 6,
+          "sourceStep": 2,
+          "sourceStepText": "Pour into popsicle molds and freeze until solid.",
+          "adultOnlyCue": false,
+          "originalSha256": "43df135fe618b659568831cc8665b439b3628f73221cba9ff006b59daceb0900"
+        }
+      ],
+      "reviewStatus": "DRAFT ONLY; NOT APPROVED; NOT IN RUNTIME"
+    }
+  ]
+}

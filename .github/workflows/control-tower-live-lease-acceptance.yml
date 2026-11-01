@@ -1,0 +1,58 @@
+name: Control Tower live lease acceptance
+on:
+  issues:
+    types: [labeled]
+permissions:
+  actions: write
+  issues: write
+  contents: read
+jobs:
+  live-lease:
+    if: github.event.issue.number == 11 && github.event.label.name == 'ct:lease-acceptance'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const {owner,repo}=context.repo;
+            const workflow_id='control-tower-lease.yml';
+            const ref='control-tower/lease-acceptance-20261019';
+            const task_id='CT-TEST-LEASE';
+            const token='cttest-20261019-claim-a';
+            const start=Date.now();
+            const dispatch=async (operation,lease_token)=>github.rest.actions.createWorkflowDispatch({owner,repo,workflow_id,ref,inputs:{task_id,worker:'v3',operation,lease_token}});
+            const runs=async()=>github.paginate(github.rest.actions.listWorkflowRuns,{owner,repo,workflow_id,branch:ref,per_page:100});
+            const before=new Set((await runs()).map(x=>x.id));
+            await dispatch('claim',token);
+            await dispatch('claim','cttest-20261019-claim-b');
+            const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+            let pair=[];
+            for(let i=0;i<55;i++){
+              await sleep(5000);
+              const all=await runs();
+              pair=all.filter(x=>!before.has(x.id)&&x.created_at>=new Date(start-30000).toISOString());
+              if(pair.length>=2&&pair.every(x=>x.status==='completed')) break;
+            }
+            if(pair.length!==2||pair.some(x=>x.status!=='completed')) throw Error('Two live claim runs did not complete');
+            const successes=pair.filter(x=>x.conclusion==='success'),failures=pair.filter(x=>x.conclusion==='failure');
+            if(successes.length!==1||failures.length!==1) throw Error('Expected exactly one successful and one rejected claim: '+JSON.stringify(pair.map(x=>({id:x.id,conclusion:x.conclusion}))));
+            const success=successes[0];
+            const jobs=await github.rest.actions.listJobsForWorkflowRun({owner,repo,run_id:success.id});
+            core.info('Exclusive lease claim verified. Success '+success.html_url+'; rejected '+failures[0].html_url);
+            const preRelease=new Set((await runs()).map(x=>x.id));
+            await dispatch('release',token);
+            let release;
+            for(let i=0;i<40;i++){
+              await sleep(5000);
+              release=(await runs()).find(x=>!preRelease.has(x.id));
+              if(release?.status==='completed') break;
+            }
+            if(release?.conclusion!=='success') throw Error('Release failed: '+JSON.stringify(release&&{id:release.id,status:release.status,conclusion:release.conclusion}));
+            const {data:file}=await github.rest.repos.getContent({owner,repo,path:'control-tower/tasks.json',ref});
+            const doc=JSON.parse(Buffer.from(file.content,'base64').toString('utf8'));
+            const task=doc.tasks.find(t=>t.id===task_id);
+            if(task?.status!=='READY'||task.lease!==null) throw Error('Release did not restore READY and clear lease');
+            const body='<!-- ct-lease-acceptance -->\n**LIVE PASS:** two competing GitHub Actions lease claims: exactly one success and one rejection; owner-token release succeeded; isolated task returned READY. Claim: '+success.html_url+'; rejected claim: '+failures[0].html_url+'; release: '+release.html_url+'. No production branch or app source changed.';
+            await github.rest.issues.createComment({owner,repo,issue_number:11,body});
+            core.summary.addRaw(body).write();

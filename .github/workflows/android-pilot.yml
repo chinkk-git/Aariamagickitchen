@@ -1,0 +1,206 @@
+name: Aaria V3 Android APK and HTML
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/platform-v3
+      - codex/v3-webview-hardening-20261017
+      - codex/v3-completion-core-20261017
+      - feature/w01-97-recipe-mainline
+    paths:
+      - 'index.html'
+      - '.github/workflows/android-pilot.yml'
+      - 'phase2-pilot/apps/aaria-android/**'
+      - 'tools/v3/**'
+
+permissions:
+  contents: read
+
+jobs:
+  build-v3:
+    if: github.ref_name != 'feature/w01-97-recipe-mainline'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out V3 app source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.10.2'
+
+      - name: Build V3 HTML from production and validate all recipes
+        run: |
+          node --check tools/v3/transform-production.mjs
+          node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_V3.html
+          node tools/v3/validate-v3.mjs dist/Aaria_Magical_Kitchen_V3.html
+          node tools/v3/test-approved-chef-art.mjs dist/Aaria_Magical_Kitchen_V3.html
+
+      - name: Validate Android adapters
+        run: |
+          node --check tools/v3/runtime.js
+          node tools/v3/test-csp-policy.mjs
+          node tools/v3/test-profile-isolation.mjs
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/avatar-adapter.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/quiz-adapter.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/mobile-fixes.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/share-polyfill.js
+          node --check phase2-pilot/apps/aaria-android/app/src/main/assets/grocery-whatsapp.js
+
+      - name: Package V3 HTML into offline Android assets
+        run: |
+          mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
+          cp dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          sha256sum dist/Aaria_Magical_Kitchen_V3.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+
+      - name: Test WebView asset origin policy
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest
+
+      - name: Assemble installable APK
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleDebug
+      - name: Verify unsigned release builds are refused
+        shell: bash
+        run: |
+          set +e
+          gradle --no-daemon -p phase2-pilot/apps/aaria-android assembleRelease > "$RUNNER_TEMP/release-signing-guard.log" 2>&1
+          result=$?
+          set -e
+          if [[ "$result" -eq 0 ]]; then
+            echo "::error::assembleRelease unexpectedly succeeded without trusted signing inputs."
+            exit 1
+          fi
+          if ! grep -Fq "Refusing to build an unsigned release APK; configure the existing trusted signing key." "$RUNNER_TEMP/release-signing-guard.log"; then
+            cat "$RUNNER_TEMP/release-signing-guard.log"
+            echo "::error::assembleRelease failed for a reason other than the expected signing guard."
+            exit 1
+          fi
+
+
+      - name: Upload installable V3 APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3-apk
+          path: phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload replaceable V3 HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-magical-kitchen-v3-html
+          path: dist/Aaria_Magical_Kitchen_V3.html
+          if-no-files-found: error
+          retention-days: 30
+
+  build-integration-apk:
+    if: github.ref == 'refs/heads/feature/w01-97-recipe-mainline'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    env:
+      W01_OWNER_REVIEW_BUILD_SUFFIX: ${{ github.run_number }}
+    steps:
+      - name: Check out exact pushed commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Record and verify exact source SHA
+        run: |
+          mkdir -p artifacts/w01-exact-head dist
+          printf '%s\\n' "$GITHUB_SHA" | tee artifacts/w01-exact-head/source-head.txt
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.9'
+
+      - name: Stage approved international package and render integrated app
+        run: |
+          set -euo pipefail
+          node --check tools/v3/runtime.js
+          node tools/v3/artwork/build-international-review.mjs
+          mkdir -p phase2-pilot/apps/aaria-android/app/src/main/assets
+          V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_Magical_Kitchen_97.html
+          cp dist/Aaria_Magical_Kitchen_97.html phase2-pilot/apps/aaria-android/app/src/main/assets/index.html
+          grep -Fq 'Não prove a massa com ovo cru. Cozinhe-a completamente antes de comer.' dist/Aaria_Magical_Kitchen_97.html
+          grep -Fq 'Um adulto deve usar o fogão e manusear a frigideira quente.' dist/Aaria_Magical_Kitchen_97.html
+          grep -Fq 'Do not taste batter containing raw egg. Cook it fully before eating.' dist/Aaria_Magical_Kitchen_97.html
+          grep -Fq 'An adult operates the hob and handles the hot pan.' dist/Aaria_Magical_Kitchen_97.html
+
+      - name: Run Android unit tests and assemble exact-head review APK
+        run: gradle --no-daemon -p phase2-pilot/apps/aaria-android testDebugUnitTest assembleDebug
+
+      - name: Verify package, signature and APK SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk=phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+          test -s "$apk"
+          aapt="$(find "$ANDROID_HOME/build-tools" -type f -name aapt | sort -V | tail -n 1)"
+          apksigner="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          test -x "$aapt"
+          test -x "$apksigner"
+          "$aapt" dump badging "$apk" > artifacts/w01-exact-head/apk-badging.txt
+          expected="com.aaria.magickitchen.pilot.w01review${GITHUB_RUN_NUMBER}"
+          actual="$(sed -n "s/^package: name='\\([^']*\\)'.*/\\1/p" artifacts/w01-exact-head/apk-badging.txt | head -n 1)"
+          test "$actual" = "$expected"
+          "$apksigner" verify --print-certs "$apk" > artifacts/w01-exact-head/apk-signer.txt
+          signer="$(sed -n 's/.*certificate SHA-256 digest: //p' artifacts/w01-exact-head/apk-signer.txt | head -n 1)"
+          test -n "$signer"
+          apk_sha="$(sha256sum "$apk" | awk '{print $1}')"
+          {
+            printf 'source_sha=%s\\n' "$GITHUB_SHA"
+            printf 'package_id=%s\\n' "$actual"
+            printf 'apk_sha256=%s\\n' "$apk_sha"
+            printf 'debug_signer_certificate_sha256=%s\\n' "$signer"
+          } | tee artifacts/w01-exact-head/build-metadata.txt
+          {
+            echo "## Exact-head APK"
+            echo "- Source SHA: $GITHUB_SHA"
+            echo "- Package ID: $actual"
+            echo "- APK SHA-256: $apk_sha"
+            echo "- Debug signer certificate SHA-256: $signer"
+            echo "- Full G3: owner-waived; not run"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload exact-head review APK and metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-97-recipe-exact-head-apk-${{ github.run_number }}
+          path: |
+            phase2-pilot/apps/aaria-android/app/build/outputs/apk/debug/app-debug.apk
+            artifacts/w01-exact-head/
+          if-no-files-found: error
+          retention-days: 30

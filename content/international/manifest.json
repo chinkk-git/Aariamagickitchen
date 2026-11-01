@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "source_issue": 50,
+  "owner_approved_candidate_names": true,
+  "production_artwork_approved": true,
+  "canonical_existing_recipe_count": 95,
+  "india_mapping_status": "PENDING_REVALIDATION",
+  "id_assignment": "96–110 verified collision-free against canonical 1–95; draft IDs remain hidden until app integration and review",
+  "recipes": [
+    {
+      "proposed_id": 96,
+      "country": "italy",
+      "title": "Tomato Basil Pasta",
+      "status": "READY_FOR_INTEGRATION",
+      "recipe_md": "countries/italy/096-tomato-basil-pasta/recipe.md",
+      "recipe_json": "countries/italy/096-tomato-basil-pasta/recipe.json",
+      "artwork_ready": true,
+      "independent_reviews": "PENDING_SEPARATE_GATES",
+      "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
+      "canonical_id_verified": true
+    },
+    {
+      "proposed_id": 97,
+      "country": "italy",
+      "title": "Mini Caprese Skewers",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 98,
+      "country": "italy",
+      "title": "Air-Fryer Courgette Bites",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 99,
+      "country": "china",
+      "title": "Vegetable Fried Rice",
+      "status": "READY_FOR_INTEGRATION",
+      "recipe_md": "countries/china/099-vegetable-fried-rice/recipe.md",
+      "recipe_json": "countries/china/099-vegetable-fried-rice/recipe.json",
+      "artwork_ready": true,
+      "independent_reviews": "PENDING_SEPARATE_GATES",
+      "artwork_status": "COMPLETE_RIGHTS_REVIEW_PENDING",
+      "canonical_id_verified": true
+    },
+    {
+      "proposed_id": 100,
+      "country": "china",
+      "title": "Rainbow Vegetable Noodles",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 101,
+      "country": "china",
+      "title": "Cucumber Sesame Salad",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 102,
+      "country": "japan",
+      "title": "Veggie Sushi Rolls",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 103,
+      "country": "japan",
+      "title": "Onigiri Rice Balls",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 104,
+      "country": "japan",
+      "title": "Japanese Cucumber Salad",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 105,
+      "country": "mexico",
+      "title": "Rainbow Veggie Tacos",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 106,
+      "country": "mexico",
+      "title": "Black Bean Quesadillas",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 107,
+      "country": "mexico",
+      "title": "Mexican Sweetcorn Cups",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 108,
+      "country": "vietnam",
+      "title": "Fresh Spring Rolls",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 109,
+      "country": "vietnam",
+      "title": "Rice Noodle Salad",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    },
+    {
+      "proposed_id": 110,
+      "country": "vietnam",
+      "title": "Vietnamese Mango Salad",
+      "status": "DRAFT_CONTENT_NOT_YET_AUTHORED",
+      "recipe_md": null,
+      "recipe_json": null,
+      "artwork_ready": false,
+      "independent_reviews": "PENDING"
+    }
+  ],
+  "canonical_catalogue": {
+    "source": "index.html RECIPES array on main",
+    "source_commit": "4e8e629c80c68d64c28b7dbc8f07d0f40fc40344",
+    "index_blob_sha": "ece8232e8b76e24ac0e46a0e02df4b86577c6c28",
+    "verified_record_count": 95,
+    "ids": "unique contiguous integers 1–95",
+    "collision_checks": {
+      "96": false,
+      "99": false
+    },
+    "evidence": "Parsed the canonical JSON RECIPES array from index.html; 95 records, 95 unique IDs, min 1, max 95, no missing IDs."
+  },
+  "renderer_schema": {
+    "source": "index.html RECIPES records; fields id,title,emoji,category,method,time,yieldText,ingredients,steps,extras,fact,safety",
+    "translations_source": "PT_RECIPES id-keyed map; recipe bundles carry pt-BR object for the adapter",
+    "schema_file": "schema/recipe.schema.json",
+    "status": "MAPPED_DRAFT; W01/W02 adapter consumption not yet tested"
+  },
+  "production_artwork_gate": {
+    "status": "APPROVED_STYLE_REFERENCE",
+    "issue": 50,
+    "comment_id": 6367104240,
+    "asset": "countries/italy/096-tomato-basil-pasta/artwork/steps/step-02.png",
+    "asset_sha256": "7cbeaf3b4d148558e07e9988a0316fdc75b57444c83cdd2977acead19a2d43ec",
+    "further_artwork": "AUTHORIZED_UNDER_LOCKED_STYLE_REFERENCE"
+  }
+}

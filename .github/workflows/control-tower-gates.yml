@@ -1,0 +1,32 @@
+name: Control Tower deterministic gates
+on:
+  push:
+    paths:
+      - 'control-tower/**'
+      - '.github/workflows/control-tower-gates.yml'
+  pull_request:
+    paths:
+      - 'control-tower/**'
+      - '.github/workflows/control-tower-gates.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: control-tower-gates-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate task and release manifest
+        run: |
+          python3 control-tower/validate.py
+          python3 control-tower/test_orchestration.py
+          python3 control-tower/test_release_gates.py
+      - name: Publish summary
+        if: always()
+        run: |
+          echo '## Control Tower manifest validation' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Validation is deterministic. It does not prove Work session liveness, visual approval, child-safety review or physical-device signing.' >> "$GITHUB_STEP_SUMMARY"
