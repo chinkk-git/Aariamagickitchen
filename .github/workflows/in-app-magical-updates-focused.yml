@@ -1,0 +1,36 @@
+name: In-app Magical Updates focused checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "sw.js"
+      - "magical-updates.css"
+      - "js/magical-updates.js"
+      - "tools/v3/qa/magical-updates-focused.mjs"
+      - ".github/workflows/in-app-magical-updates-focused.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  magical-updates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install isolated Playwright dependency
+        run: npm install --prefix /tmp/aaria-magical-updates-qa playwright
+      - name: Install Chromium
+        run: node /tmp/aaria-magical-updates-qa/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Validate both Homes and Magical Updates
+        timeout-minutes: 4
+        env:
+          PLAYWRIGHT_MODULE: /tmp/aaria-magical-updates-qa/node_modules/playwright
+        run: timeout --signal=TERM --kill-after=10s 210s node tools/v3/qa/magical-updates-focused.mjs
