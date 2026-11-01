@@ -80,8 +80,8 @@
         settings.setAttribute('aria-label', locale() === 'pt-BR' ? 'Configurações' : 'Settings');
         settings.title = locale() === 'pt-BR' ? 'Configurações' : 'Settings';
         settings.textContent = '⚙️';
-        toggle.insertAdjacentElement('beforebegin', settings);
         toggle.insertAdjacentHTML('afterend', buttonMarkup);
+        toggle.nextElementSibling?.insertAdjacentElement('beforebegin', settings);
       }
       return;
     }

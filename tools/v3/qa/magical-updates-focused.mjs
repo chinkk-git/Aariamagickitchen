@@ -22,6 +22,7 @@ async function skipWelcome(){
 }
 async function visibleBell(){const bell=page.locator('[data-magical-updates-open]').first();await bell.waitFor({state:'visible'});return bell;}
 async function assertTouchTarget(){const box=await (await visibleBell()).boundingBox();assert.ok(box&&box.width>=44&&box.height>=44,'bell touch target is below 44 CSS pixels');assert.ok(box.x>=0&&box.y>=0&&box.x+box.width<=page.viewportSize().width+1,'bell lies outside the viewport');}
+async function assertBesideSettings(selector){const boxes=await page.evaluate(s=>{const a=document.querySelector(s),b=document.querySelector('[data-magical-updates-open]');if(!a||!b)return null;const x=a.getBoundingClientRect(),y=b.getBoundingClientRect();return{gear:{x:x.x,y:x.y,right:x.right,width:x.width,height:x.height},bell:{x:y.x,y:y.y,right:y.right,width:y.width,height:y.height}}},selector);assert.ok(boxes,`settings gear and bell exist: ${selector}`);assert.ok(boxes.bell.x>=boxes.gear.right-2,'bell must sit directly beside the Settings gear');assert.ok(Math.abs(boxes.bell.y-boxes.gear.y)<12,'bell and Settings gear should share the same header row');}
 async function openUpdates(){await (await visibleBell()).click();await page.locator('#screen .mu-page').waitFor({state:'visible'});}
 async function goHome(){await page.locator('[data-mu-action="home"]').click();await page.locator('#screen .mu-page').waitFor({state:'detached'});}
 
@@ -29,8 +30,14 @@ try{
   await page.goto(base,{waitUntil:'domcontentloaded'});await skipWelcome();
   await page.locator('#foodWonderland').waitFor({state:'visible'});
   let bell=await visibleBell();await assertTouchTarget();
+  await assertBesideSettings('.fw-more .mu-home-settings');
   assert.equal(await bell.getAttribute('aria-label'),'Open Magical Updates, 1 unread');
   assert.equal(await page.locator('[data-magical-updates-badge]').innerText(),'1');
+  await page.locator('.fw-more .mu-home-settings').click();
+  await page.waitForFunction(()=>location.hash==='#aria/settings');
+  await page.evaluate(()=>location.hash='#aria/home');
+  await page.locator('#foodWonderland').waitFor({state:'visible'});
+  await visibleBell();
 
   await page.setViewportSize({width:844,height:390});await assertTouchTarget();
   await page.setViewportSize({width:390,height:844});
@@ -58,7 +65,15 @@ try{
   await page.reload({waitUntil:'domcontentloaded'});await skipWelcome();
   await page.locator('.v34-home').waitFor({state:'visible'});
   bell=await visibleBell();await assertTouchTarget();
+  await assertBesideSettings('.v34-home-utility .v34-settings');
+  await page.setViewportSize({width:844,height:390});await assertTouchTarget();await assertBesideSettings('.v34-home-utility .v34-settings');
+  await page.setViewportSize({width:390,height:844});
   assert.equal(await page.locator('[data-magical-updates-badge]').count(),0,'read state persists across restart and Home change');
+  await page.locator('.v34-home-utility .v34-settings').click();
+  await page.waitForFunction(()=>location.hash==='#aria/settings');
+  await page.evaluate(()=>location.hash='#aria/home');
+  await page.locator('.v34-home').waitFor({state:'visible'});
+  await visibleBell();
 
   await openUpdates();
   assert.equal(await page.locator('[data-mu-read-state]').innerText(),'Read');
