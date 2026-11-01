@@ -32,10 +32,12 @@ let release = 'previous';
 let nextCacheRevision = 'r4';
 const serviceWorkerRequests = [];
 const updateSignals = [];
+let appNavigationRequests = 0;
 const server = createServer(async (req, res) => {
   try {
     const requestUrl = new URL(req.url, 'http://localhost');
     const pathname = decodeURIComponent(requestUrl.pathname);
+    if (req.method === 'GET' && ['/', '/index.html'].includes(pathname)) appNavigationRequests++;
     if (pathname === '/__qa_update_signal') {
       updateSignals.push({event: requestUrl.searchParams.get('event'), release, at: Date.now()});
       res.writeHead(204, {'cache-control': 'no-store'});
@@ -246,8 +248,8 @@ try {
 
   // A deployed update is picked up when the installed app returns to the foreground.
   await launch.page.waitForTimeout(6000); // Let the launch check's short throttle elapse.
-  const foregroundBefore = launch.navigationCount();
   await waitForUpdateSignal('settled', 'current');
+  const foregroundBefore = appNavigationRequests;
   const signalCountBeforeForeground = updateSignals.length;
   release = 'next';
   void launch.page.evaluate(() => {
@@ -262,7 +264,7 @@ try {
   await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
   await assertNoReloadLoop(launch.page, launch.navigationCount);
-  assert.ok(launch.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
+  assert.ok(appNavigationRequests > foregroundBefore, 'foreground update reloads the app document');
 
   // An offline app shell remains available, then updates promptly after connectivity returns.
   await launch.page.waitForTimeout(5200);
