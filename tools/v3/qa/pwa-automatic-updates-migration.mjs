@@ -217,9 +217,16 @@ try {
   const coveringPage = await launch.context.newPage();
   await coveringPage.goto('about:blank');
   release = 'next';
-  await coveringPage.close(); // Returning the installed app to the foreground fires its real focus/visibility events.
+  await launch.page.evaluate(() => {
+    setTimeout(() => {
+      window.dispatchEvent(new Event('focus'));
+      document.dispatchEvent(new Event('visibilitychange'));
+    }, 0);
+    return true;
+  });
   await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
+  await coveringPage.close();
   await assertNoReloadLoop(launch.page, launch.navigationCount);
   assert.ok(launch.navigationCount() > foregroundBefore, 'foreground update activates and refreshes the page');
 
