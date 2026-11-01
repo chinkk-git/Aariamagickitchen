@@ -22,6 +22,6 @@ assert.ok(!adapter.includes('localStorage.clear')&&!sw.includes('localStorage.cl
 assert.ok(client.includes("safe.startsWith('/recipe/')")&&client.includes("go('/world/VNM')"),'recipe 112 has the Vietnam fallback');
 assert.ok(push.includes('DEVICE_ID_KEY')&&push.includes('localStorage.setItem(DEVICE_ID_KEY'),'the existing install receives a stable device ID without resetting other preferences');
 assert.ok(worker.includes('guardianVerified!==true')&&worker.includes('guardianId')&&worker.includes('deviceManagement===true'),'device management requires a signed verified-guardian claim');
-assert.ok(worker.includes("url.pathname==='/v1/guardian/device/first-magical'")&&worker.includes("'/recipe/112'"),'first notification is a selected-device message to canonical recipe 112');
-assert.ok(migration.includes('CREATE TABLE guardian_devices')&&migration.includes('CREATE TABLE first_magical_notification'));
-console.log('PASS: stable PWA identity/scope/start URL, compatible in-place service-worker cache, no data clearing or forced restart, guardian device registration, recipe 112 destination and Vietnam fallback.');
+assert.ok(worker.includes('/^\\/recipe\\/(?:[1-9]\\d{0,2})$/')&&worker.includes('validRoute(a.route)')&&sw.includes('notificationclick'),'manual announcements retain allowlisted recipe deep links handled by the existing service worker');
+assert.ok(migration.includes('CREATE TABLE guardian_devices'),'existing guardian device records remain supported; legacy unused recipe-specific schema is not changed');
+console.log('PASS: stable PWA identity/scope/start URL, compatible in-place service-worker cache, no data clearing or forced restart, guardian device registration, allowlisted notification routing and guardian device registration.');
