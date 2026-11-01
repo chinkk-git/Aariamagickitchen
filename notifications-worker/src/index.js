@@ -83,6 +83,7 @@ async function processFanout(message,env){
   for(const s of page.results||[]){
     let prefs=[];try{prefs=JSON.parse(s.categories)}catch{}
     if(!Array.isArray(prefs)||!prefs.includes(payload.category))continue;
+    if(!payload.messages?.[s.locale])continue;
     const hash=s.endpoint_hash||await endpointHash(s.endpoint);
     if(!s.endpoint_hash)await env.DB.prepare('UPDATE subscriptions SET endpoint_hash=? WHERE endpoint=? AND endpoint_hash IS NULL').bind(hash,s.endpoint).run();
     const id=payload.id+':'+hash;
