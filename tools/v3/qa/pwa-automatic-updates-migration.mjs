@@ -51,6 +51,9 @@ const server = createServer(async (req, res) => {
       let adapterSource = body.toString('utf8');
       adapterSource = adapterSource
         .replace('async function checkForUpdates() {', "async function checkForUpdates() { console.log('__AARIA_PWA_CHECK__:entered');")
+        .replace("registrationPromise = navigator.serviceWorker.register('./sw.js',", "console.log('__AARIA_PWA_CHECK__:register-start'); registrationPromise = navigator.serviceWorker.register('./sw.js',")
+        .replace('}).then(activeRegistration => {', "}).then(activeRegistration => { console.log('__AARIA_PWA_CHECK__:register-resolved');")
+        .replace('}).catch(() => null);', "}).catch(error => { console.log('__AARIA_PWA_CHECK__:register-error:' + error.name); return null; });")
         .replace('if (!navigator.onLine) return;', "if (!navigator.onLine) { console.log('__AARIA_PWA_CHECK__:offline'); return; }")
         .replace('if (inFlightUpdateCheck) return inFlightUpdateCheck;', "if (inFlightUpdateCheck) { console.log('__AARIA_PWA_CHECK__:in-flight'); return inFlightUpdateCheck; }")
         .replace('if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) return;', "if (Date.now() - lastUpdateCheck < UPDATE_CHECK_INTERVAL_MS) { console.log('__AARIA_PWA_CHECK__:throttled'); return; }")
@@ -153,8 +156,8 @@ async function waitForWorkerRequest(expectedRelease, timeout = 15000) {
 async function openPage(context) {
   const page = await context.newPage();
   page.on('console', message => {
-    const match = message.text().match(/^__AARIA_PWA_CHECK__:([a-z-]+)$/);
-    if (match) updateSignals.push({event: match[1], release, at: Date.now()});
+    const match = message.text().match(/^__AARIA_PWA_CHECK__:([a-z-]+)(?::(.*))?$/);
+    if (match) updateSignals.push({event: match[1], detail: match[2] || '', release, at: Date.now()});
   });
   let navigations = 0;
   page.on('framenavigated', frame => { if (frame.parentFrame() === null) navigations++; });
