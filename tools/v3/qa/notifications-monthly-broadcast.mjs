@@ -60,5 +60,9 @@ try{
   const nextMonth=await post('monthly-2026-12-a');
   assert.equal(nextMonth.status,202,'a new UTC calendar month permits one new approved broadcast');
   assert.equal(queued.length,2);
-  console.log('PASS: one authenticated owner broadcast per UTC calendar month, same-ID idempotency, consent gate, and no enqueue on rejection.');
+  Date.now=()=>Date.UTC(2027,0,1,0,0,0);
+  const englishOnly=await post('monthly-2027-01-en','test-owner-token',{'en-GB':{title:'A Magical Trip to Vietnam! 🇻🇳🍜',body:'Ready for a tasty adventure? Discover the new Tofu & Vegetable Phở recipe! ✨'}});
+  assert.equal(englishOnly.status,202,'the approved English-only campaign is accepted without a Portuguese translation');
+  assert.equal(queued.length,3);
+  console.log('PASS: one authenticated owner broadcast per UTC calendar month, same-ID idempotency, consent gate, English-only campaign acceptance, and no enqueue on rejection.');
 }finally{Date.now=originalNow;}
