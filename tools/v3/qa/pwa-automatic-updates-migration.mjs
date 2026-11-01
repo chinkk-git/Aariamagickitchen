@@ -100,6 +100,14 @@ async function waitForWorkerRequest(expectedRelease, timeout = 15000) {
 
 async function openPage(context) {
   const page = await context.newPage();
+  await page.addInitScript(() => {
+    const originalUpdate = ServiceWorkerRegistration.prototype.update;
+    ServiceWorkerRegistration.prototype.update = function (...args) {
+      const key = '__aariaPwaUpdateChecks';
+      sessionStorage.setItem(key, String(Number(sessionStorage.getItem(key) || 0) + 1));
+      return originalUpdate.apply(this, args);
+    };
+  });
   let navigations = 0;
   page.on('framenavigated', frame => { if (frame.parentFrame() === null) navigations++; });
   await page.goto(base, {waitUntil: 'domcontentloaded'});
@@ -213,6 +221,7 @@ try {
   // A deployed update is picked up when the installed app returns to the foreground.
   await launch.page.waitForTimeout(6000); // Let the launch check's short throttle elapse.
   const foregroundBefore = launch.navigationCount();
+  const updateChecksBefore = await launch.page.evaluate(() => Number(sessionStorage.getItem('__aariaPwaUpdateChecks') || 0));
   release = 'next';
   void launch.page.evaluate(() => {
     window.dispatchEvent(new Event('blur'));
@@ -222,6 +231,11 @@ try {
     }, 0);
     return true;
   }).catch(() => {});
+  await launch.page.waitForFunction(
+    before => Number(sessionStorage.getItem('__aariaPwaUpdateChecks') || 0) > before,
+    updateChecksBefore,
+    {timeout: 10000}
+  );
   await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
   await assertNoReloadLoop(launch.page, launch.navigationCount);
