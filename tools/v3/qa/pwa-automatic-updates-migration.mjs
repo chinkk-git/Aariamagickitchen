@@ -67,7 +67,7 @@ const server = createServer(async (req, res) => {
       if (release === 'next') workerSource = workerSource.replace('85f537591449-r3', `85f537591449-${nextCacheRevision}`);
       workerSource = workerSource.replace(
         "self.addEventListener('install'",
-        "self.addEventListener('message', event => { if (event.data === '__aaria_test_cache_name__') event.ports[0]?.postMessage(CACHE_NAME); });\\nself.addEventListener('install'"
+        "self.addEventListener('message', event => { if (event.data === '__aaria_test_cache_name__') event.ports[0]?.postMessage(CACHE_NAME); });\nself.addEventListener('install'"
       );
       body = Buffer.from(workerSource);
     }
