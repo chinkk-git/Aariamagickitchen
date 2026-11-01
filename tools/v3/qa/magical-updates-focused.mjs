@@ -49,7 +49,7 @@ try{
   assert.equal(await page.locator('[data-mu-read-state]').innerText(),'Read');
   assert.equal(await page.evaluate(()=>localStorage.getItem('aaria.magicalUpdates.read.v1')),'["vietnam-pho-recipe-112"]');
   await goHome();
-  assert.equal(await page.locator('[data-magical-updates-badge]').count(),0,'badge must be hidden once read');
+  assert.ok(await page.locator('[data-magical-updates-badge]').isHidden(),'badge must be hidden once read');
   await openUpdates();
   await page.locator('[data-mu-action="toggle-read"]').click();
   assert.equal(await page.locator('[data-mu-read-state]').innerText(),'Unread');
@@ -68,7 +68,7 @@ try{
   await assertBesideSettings('.v34-home-utility .v34-settings');
   await page.setViewportSize({width:844,height:390});await assertTouchTarget();await assertBesideSettings('.v34-home-utility .v34-settings');
   await page.setViewportSize({width:390,height:844});
-  assert.equal(await page.locator('[data-magical-updates-badge]').count(),0,'read state persists across restart and Home change');
+  assert.ok(await page.locator('[data-magical-updates-badge]').isHidden(),'read state persists across restart and Home change');
   await page.locator('.v34-home-utility .v34-settings').click();
   await page.waitForFunction(()=>location.hash==='#aria/settings');
   await page.evaluate(()=>location.hash='#aria/home');
@@ -89,7 +89,7 @@ try{
   await openUpdates();await page.locator('[data-mu-action="toggle-read"]').click();
   assert.equal(await page.locator('[data-mu-read-state]').innerText(),'Read');
   await goHome();
-  assert.equal(await page.locator('[data-magical-updates-badge]').count(),0,'read action hides unread count');
+  assert.ok(await page.locator('[data-magical-updates-badge]').isHidden(),'read action hides unread count');
   assert.deepEqual(errors,[],'no browser runtime errors');
   console.log('PASS: Magical Updates bell, both Homes, shared unread count, local persistence, official app icon, exact content, responsive touch targets and Recipe #112 navigation.');
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
