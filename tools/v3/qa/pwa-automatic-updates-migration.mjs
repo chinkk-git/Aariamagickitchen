@@ -31,9 +31,17 @@ for (const reference of shellReferences) {
 let release = 'previous';
 let nextCacheRevision = 'r4';
 const serviceWorkerRequests = [];
+const updateSignals = [];
 const server = createServer(async (req, res) => {
   try {
-    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    const requestUrl = new URL(req.url, 'http://localhost');
+    const pathname = decodeURIComponent(requestUrl.pathname);
+    if (pathname === '/__qa_update_signal') {
+      updateSignals.push({event: requestUrl.searchParams.get('event'), release, at: Date.now()});
+      res.writeHead(204, {'cache-control': 'no-store'});
+      res.end();
+      return;
+    }
     if (pathname === '/sw.js') serviceWorkerRequests.push({release, at: Date.now()});
     const rel = normalize(pathname.startsWith('/') ? pathname.slice(1) : pathname);
     if (rel.startsWith('..') || rel.includes(`${sep}..${sep}`)) throw new Error('path escaped');
@@ -89,6 +97,15 @@ async function waitForCache(page, suffix) {
   }
 }
 
+async function waitForUpdateSignal(expectedEvent, expectedRelease, startAt = 0, timeout = 15000) {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    if (updateSignals.slice(startAt).some(signal => signal.event === expectedEvent && signal.release === expectedRelease)) return;
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  assert.fail(`registration.update() ${expectedEvent} signal for ${expectedRelease} was not observed: ${JSON.stringify(updateSignals)}`);
+}
+
 async function waitForWorkerRequest(expectedRelease, timeout = 15000) {
   const deadline = Date.now() + timeout;
   while (Date.now() < deadline) {
@@ -103,9 +120,18 @@ async function openPage(context) {
   await page.addInitScript(() => {
     const originalUpdate = ServiceWorkerRegistration.prototype.update;
     ServiceWorkerRegistration.prototype.update = function (...args) {
-      const key = '__aariaPwaUpdateChecks';
-      sessionStorage.setItem(key, String(Number(sessionStorage.getItem(key) || 0) + 1));
-      return originalUpdate.apply(this, args);
+      const signal = event => fetch(`./__qa_update_signal?event=${event}`, {
+        method: 'POST', cache: 'no-store', keepalive: true
+      }).catch(() => {});
+      signal('started');
+      let update;
+      try {
+        update = originalUpdate.apply(this, args);
+      } catch (error) {
+        signal('threw');
+        throw error;
+      }
+      return Promise.resolve(update).finally(() => signal('settled'));
     };
   });
   let navigations = 0;
@@ -221,7 +247,8 @@ try {
   // A deployed update is picked up when the installed app returns to the foreground.
   await launch.page.waitForTimeout(6000); // Let the launch check's short throttle elapse.
   const foregroundBefore = launch.navigationCount();
-  const updateChecksBefore = await launch.page.evaluate(() => Number(sessionStorage.getItem('__aariaPwaUpdateChecks') || 0));
+  await waitForUpdateSignal('settled', 'current');
+  const signalCountBeforeForeground = updateSignals.length;
   release = 'next';
   void launch.page.evaluate(() => {
     window.dispatchEvent(new Event('blur'));
@@ -231,11 +258,7 @@ try {
     }, 0);
     return true;
   }).catch(() => {});
-  await launch.page.waitForFunction(
-    before => Number(sessionStorage.getItem('__aariaPwaUpdateChecks') || 0) > before,
-    updateChecksBefore,
-    {timeout: 10000}
-  );
+  await waitForUpdateSignal('started', 'next', signalCountBeforeForeground);
   await waitForWorkerRequest('next');
   await waitForCache(launch.page, '-r4');
   await assertNoReloadLoop(launch.page, launch.navigationCount);
