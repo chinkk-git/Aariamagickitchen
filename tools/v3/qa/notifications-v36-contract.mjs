@@ -11,6 +11,8 @@ const deliveryMigration=await readFile(new URL('../../../notifications-worker/mi
 const testMigration=await readFile(new URL('../../../notifications-worker/migrations/0003_guarded_test_notifications.sql',import.meta.url),'utf8');
 const deviceMigration=await readFile(new URL('../../../notifications-worker/migrations/0004_guardian_devices_first_notification.sql',import.meta.url),'utf8');
 const wrangler=await readFile(new URL('../../../notifications-worker/wrangler.toml',import.meta.url),'utf8');
+const ownerWorkflow=await readFile(new URL('../../../.github/workflows/v36-owner-notification.yml',import.meta.url),'utf8');
+const ownerCommand=await readFile(new URL('../../../notifications/owner-notification-command.mjs',import.meta.url),'utf8');
 await assert.rejects(access(new URL('../../../.github/workflows/v36-notification-publish.yml',import.meta.url)),'deployment-triggered announcement publishing must be removed');
 assert.ok(client.includes('PushManager')&&client.includes('safeRoute')&&client.includes('consentNeeded'));
 assert.ok(client.includes('aaria:open-text-size')&&client.includes("window.goto('settings')"),'Text Size notification route must open Settings after Font Size integration');
@@ -38,6 +40,9 @@ assert.ok(worker.includes("'/v1/consent/verify'")&&worker.includes('valid_parent
 assert.ok(worker.includes('ADMIN_TOKEN')&&worker.includes('INSERT OR IGNORE INTO announcements'));
 assert.ok(worker.includes('DELIVERY_QUEUE')&&worker.includes('fanoutPageSize = 50'),'Announcements must use bounded queue fanout');
 assert.ok(worker.includes('announcement_deliveries')&&worker.includes('endpointHash')&&worker.includes('maxDeliveryAttempts = 2'),'Queue delivery remains resumable and deduplicated, with only one retry after an initial failure');
+assert.ok(worker.includes('monthly_broadcast_limit_reached')&&worker.includes('WHERE created_at>=? AND created_at<?')&&worker.includes('Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),1)'),'The Worker enforces one owner broadcast per UTC calendar month using the existing announcement ledger, without a new migration');
+assert.ok(ownerWorkflow.includes('issue_comment:')&&ownerWorkflow.includes('notification-send')&&ownerWorkflow.includes('AARIA_NOTIFICATION_PUBLISH_TOKEN')&&ownerWorkflow.includes('github.repository_owner')&&!ownerWorkflow.includes('schedule:')&&!ownerWorkflow.includes('deployment_status'),'Sending can only be owner-triggered from the Control Tower through the protected manual workflow');
+assert.ok(ownerCommand.includes('OWNER_COMMAND_PREFIX')&&ownerCommand.includes('feature_destination_not_approved')&&ownerCommand.includes('recipe_destination_not_in_release_manifest'),'Owner command validates requested destination against the published release manifest');
 assert.ok(!worker.includes('first-magical')&&!worker.includes('device/rename')&&!pushClient.includes('first-magical')&&!pushClient.includes('device/rename'),'No one-off campaign or device renaming endpoints remain');
 assert.ok(worker.includes("batch.queue==='aaria-notification-dead-letter'")&&worker.includes('handleDeadLetter')&&worker.includes('fanout_errors'),'Dead-letter delivery and fanout failures must reach terminal delivery reporting');
 assert.ok(worker.includes('statusMatch=url.pathname.match')&&worker.includes('fanout_complete'),'Authenticated delivery status must expose final queue results');

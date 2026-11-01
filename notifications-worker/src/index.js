@@ -42,21 +42,24 @@ function validAnnouncement(a){
   });
 }
 async function publishAnnouncement(request,env,a){
-  if(!await auth(request,env))return {status:401};
-  if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return {status:503,error:'guardian_consent_model_not_approved'};
-  if(!env.DB||!env.DELIVERY_QUEUE||!env.VAPID_PUBLIC_KEY||!env.VAPID_PRIVATE_KEY||!env.VAPID_SUBJECT)return {status:503};
-  if(!validAnnouncement(a))return {status:400};
-  const now=Date.now();
-  await env.DB.prepare('INSERT OR IGNORE INTO announcements(id,release_sha,status,payload,fanout_cursor,fanout_complete,created_at) VALUES(?,?,?,?,?,0,?)').bind(a.id,a.releaseSha,'pending',JSON.stringify({id:a.id,category:a.category,route:a.route,messages:a.messages}),'',now).run();
+  if(!await auth(request,env))return {httpStatus:401};
+  if(env.PARENT_CONSENT_MODEL_APPROVED!=='true')return {httpStatus:503,error:'guardian_consent_model_not_approved'};
+  if(!env.DB||!env.DELIVERY_QUEUE||!env.VAPID_PUBLIC_KEY||!env.VAPID_PRIVATE_KEY||!env.VAPID_SUBJECT)return {httpStatus:503};
+  if(!validAnnouncement(a))return {httpStatus:400};
+  const now=Date.now(),date=new Date(now);
+  const monthStart=Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),1);
+  const monthEnd=Date.UTC(date.getUTCFullYear(),date.getUTCMonth()+1,1);
+  await env.DB.prepare('INSERT OR IGNORE INTO announcements(id,release_sha,status,payload,fanout_cursor,fanout_complete,created_at) SELECT ?,?,?,?,?,0,? WHERE NOT EXISTS (SELECT 1 FROM announcements WHERE created_at>=? AND created_at<?)').bind(a.id,a.releaseSha,'pending',JSON.stringify({id:a.id,category:a.category,route:a.route,messages:a.messages}),'',now,monthStart,monthEnd).run();
   const row=await env.DB.prepare('SELECT release_sha,status,fanout_cursor,fanout_complete FROM announcements WHERE id=?').bind(a.id).first();
-  if(!row||row.release_sha!==a.releaseSha)return {status:409,error:'announcement_id_conflict'};
-  if(['sent','partial'].includes(row.status))return {status:200,id:a.id,status:row.status,duplicate:true};
+  if(!row)return {httpStatus:429,error:'monthly_broadcast_limit_reached',nextAllowedAt:new Date(monthEnd).toISOString()};
+  if(row.release_sha!==a.releaseSha)return {httpStatus:409,error:'announcement_id_conflict'};
+  if(['sent','partial'].includes(row.status))return {httpStatus:200,id:a.id,status:row.status,duplicate:true};
   if(row.status==='pending'){
     try{await env.DELIVERY_QUEUE.send({kind:'fanout',announcementId:a.id,cursor:''});}
-    catch{return {status:503,error:'delivery_queue_unavailable'};}
+    catch{return {httpStatus:503,error:'delivery_queue_unavailable'};}
     await env.DB.prepare("UPDATE announcements SET status='queued' WHERE id=? AND status='pending'").bind(a.id).run();
   }
-  return {status:202,id:a.id,status:'queued',duplicate:row.status!=='pending'};
+  return {httpStatus:202,id:a.id,status:'queued',duplicate:row.status!=='pending'};
 }
 async function finalizeAnnouncement(env,id){
   const announcement=await env.DB.prepare('SELECT fanout_complete,fanout_errors FROM announcements WHERE id=?').bind(id).first();
@@ -273,7 +276,7 @@ export default {async fetch(request,env){
   }
   if(url.pathname==='/v1/publish'&&request.method==='POST'){
     let a;try{a=await body(request)}catch{return json({error:'invalid_body'},400,origin)}
-    const result=await publishAnnouncement(request,env,a);return json(result,result.status,origin);
+    const result=await publishAnnouncement(request,env,a);const {httpStatus=200,...response}=result;return json(response,httpStatus,origin);
   }
   const statusMatch=url.pathname.match(/^\/v1\/status\/([A-Za-z0-9._:-]{1,100})$/);
   if(statusMatch&&request.method==='GET'){
