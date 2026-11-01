@@ -1,0 +1,104 @@
+name: Non-delivering Worker security preflight
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: aaria-worker-security-preflight
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    if: >-
+      github.event.issue.number == 51 &&
+      github.event.comment.user.login == github.repository_owner &&
+      github.event.comment.body == '/aaria-notification-security-check'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    environment:
+      name: notification-send
+    steps:
+      - name: Check public configuration and fail-closed authorization
+        id: check
+        env:
+          WORKER_URL: ${{ vars.AARIA_NOTIFICATION_WORKER_URL }}
+          CONSENT_APPROVED: ${{ vars.AARIA_PARENT_CONSENT_MODEL_APPROVED }}
+          PUBLISH_TOKEN: ${{ secrets.AARIA_NOTIFICATION_PUBLISH_TOKEN }}
+        run: |
+          node --input-type=module <<'NODE'
+          const fail = (reason) => { console.error('Preflight failed: ' + reason); process.exit(1); };
+          if (process.env.CONSENT_APPROVED !== 'false') fail('consent_setting_must_remain_false');
+          if (!process.env.WORKER_URL || !process.env.PUBLISH_TOKEN) fail('environment_configuration_missing');
+
+          let base;
+          try { base = new URL(process.env.WORKER_URL); } catch { fail('worker_url_invalid'); }
+          if (base.protocol !== 'https:' || !base.hostname.endsWith('.workers.dev') ||
+              base.username || base.password || base.pathname !== '/' || base.search || base.hash) {
+            fail('worker_url_must_be_workers_dev_https_origin');
+          }
+
+          const get = async (path, options = {}) => {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 10000);
+            try {
+              return await fetch(new URL(path, base), { ...options, redirect: 'manual', signal: controller.signal });
+            } catch {
+              fail('worker_https_request_failed');
+            } finally {
+              clearTimeout(timer);
+            }
+          };
+
+          const config = await get('/v1/config');
+          if (config.status !== 200) fail('public_config_http_' + config.status);
+          let configBody;
+          try { configBody = await config.json(); } catch { fail('public_config_invalid_json'); }
+          if (configBody?.vapidPublicKey !== null) fail('public_config_not_fail_closed');
+          console.log('PUBLIC_CONFIG=200; VAPID_KEY_WITHHELD=true');
+
+          const payload = JSON.stringify({});
+          const unauth = await get('/v1/publish', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: payload
+          });
+          if (unauth.status !== 401) fail('unauthenticated_publish_http_' + unauth.status);
+          console.log('UNAUTHENTICATED_PUBLISH=401');
+
+          const authenticated = await get('/v1/publish', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              'authorization': 'Bearer ' + process.env.PUBLISH_TOKEN
+            },
+            body: payload
+          });
+          let authBody;
+          try { authBody = await authenticated.json(); } catch { fail('authenticated_probe_invalid_json'); }
+          if (authenticated.status !== 503 || authBody?.error !== 'guardian_consent_model_not_approved') {
+            fail('admin_token_or_worker_consent_guard_mismatch_http_' + authenticated.status);
+          }
+          console.log('ADMIN_TOKEN_MATCH=verified; CONSENT_GUARD=503; DELIVERY=not_attempted');
+          console.log('result=HTTPS_OK,CONFIG_OK,UNAUTH_REJECTED,ADMIN_TOKEN_MATCH,CONSENT_DISABLED');
+          NODE
+      - name: Record sanitized result
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          RESULT: ${{ steps.check.outcome }}
+        with:
+          script: |
+            const result = process.env.RESULT === 'success' ? 'passed' : 'failed';
+            const body = result === 'passed'
+              ? 'Non-delivering Worker security preflight passed: HTTPS/config reachable, public VAPID key withheld, unauthenticated publish rejected, GitHub publisher token matched Worker ADMIN_TOKEN, and the consent guard remained disabled. The probe used an empty invalid announcement and did not write to D1 or enqueue/send a notification.'
+              : 'Non-delivering Worker security preflight failed. Review the sanitized Actions log for the failed check; no secret values or Worker URL are logged.';
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              body
+            });
