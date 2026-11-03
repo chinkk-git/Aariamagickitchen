@@ -199,6 +199,7 @@ const tourStart = runtime.indexOf('function v3WhatsNewCopy(index,pt){');
 const tourEnd = runtime.indexOf('\nlet v3WhatsNewOpener', tourStart);
 assert(tourStart >= 0 && tourEnd > tourStart, 'V3 tour copy helper must exist');
 const tourContext = vm.createContext({});
+tourContext.RECIPES = Array.from({ length: 95 }, (_, index) => ({ id: index + 1 }));
 vm.runInContext(runtime.slice(tourStart, tourEnd), tourContext);
 const englishTour = vm.runInContext('[0,1,2].map(index=>v3WhatsNewCopy(index,false))', tourContext);
 const portugueseTour = vm.runInContext('[0,1,2].map(index=>v3WhatsNewCopy(index,true))', tourContext);

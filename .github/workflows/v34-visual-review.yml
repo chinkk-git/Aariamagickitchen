@@ -1,0 +1,94 @@
+name: V3.4 Android visual review (no APK)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aaria-v34-visual-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out the exact visual-review source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Transform the offline page and attach V3.4
+        run: |
+          set -euo pipefail
+          node tools/v3/artwork/build-international-review.mjs
+          node tools/v3/artwork/batches/batch-01/build-android-review.mjs
+          mkdir -p dist artifacts/v34-visual-review
+          V32_REVIEW_FEATURED_IDS=12 node tools/v3/transform-production.mjs index.html dist/Aaria_V3_4_Visual.html
+          node tools/v3/attach-v34-dual-home.mjs dist/Aaria_V3_4_Visual.html dist/Aaria_V3_4_Visual.html
+          node .github/scripts/v34-prepare-visual-page.mjs dist/Aaria_V3_4_Visual.html
+          cp -R phase2-pilot/apps/aaria-android/app/src/main/assets/international-wave-1 dist/international-wave-1
+          node --check tools/v3/v34-dual-home.js
+          python3 -m http.server 8765 --directory dist > /tmp/aaria-v34-visual-http.log 2>&1 &
+          echo $! > /tmp/aaria-v34-visual-http.pid
+          for attempt in $(seq 1 20); do
+            if python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/Aaria_V3_4_Visual.html', timeout=2).read(16)"; then break; fi
+            sleep 1
+          done
+      - name: Enable Android emulator KVM access
+        run: |
+          if test -e /dev/kvm; then
+            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+            sudo udevadm control --reload-rules
+            sudo udevadm trigger --name-match=kvm
+            ls -l /dev/kvm
+          else
+            echo 'This runner does not expose /dev/kvm; Android emulator boot will use the configured fallback.'
+          fi
+      - name: Capture genuine Android portrait screenshots (no APK build)
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_3a
+          cores: 4
+          ram-size: 4096M
+          heap-size: 512M
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: node .github/scripts/v34-android-visual-capture.mjs
+      - name: Capture genuine Android tablet landscape screenshots (no APK build)
+        uses: reactivecircus/android-emulator-runner@v2
+        env:
+          V34_CAPTURE_DEVICE: tablet-landscape
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_tablet
+          cores: 4
+          ram-size: 4096M
+          heap-size: 512M
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          script: node .github/scripts/v34-android-visual-capture.mjs
+      - name: Assemble side-by-side reference and screenshot review
+        if: always()
+        run: |
+          mkdir -p artifacts/v34-visual-review/design/v3.4
+          cp docs/design/v3.4/magical-adventure-home-approved.png artifacts/v34-visual-review/design/v3.4/
+          if test -f artifacts/v34-visual-review/02-magical-home-portrait.png; then node .github/scripts/v34-visual-comparison.mjs; fi
+          echo "$GITHUB_SHA" > artifacts/v34-visual-review/source-head.txt
+      - name: Upload screenshots and visual comparison only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aaria-v34-magical-home-visual-review
+          path: artifacts/v34-visual-review/**
+          if-no-files-found: warn
+          retention-days: 30
+
