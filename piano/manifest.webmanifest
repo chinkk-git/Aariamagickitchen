@@ -1,0 +1,19 @@
+{
+  "name": "Aaria's Magical Piano Kingdom",
+  "short_name": "Aaria Piano",
+  "description": "Dalmatian Cradle Song practice — provisional score",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#15112c",
+  "theme_color": "#15112c",
+  "icons": [
+    {
+      "src": "./icon-draft.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
