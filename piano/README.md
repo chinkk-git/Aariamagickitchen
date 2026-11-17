@@ -22,3 +22,8 @@ Parent song imports/publishing and child sheet-photo capture/OMR.
 
 ## Preview locally
 Serve repository root using a local HTTP server and open `/piano/`. Service workers require localhost or HTTPS.
+
+## Review-package status (2026-11-17)
+The user approved the princess-and-piano icon artwork. A local review ZIP has been prepared with 192px and 512px PNGs, a 512px maskable PNG, a 180px Apple touch icon, and an install UI. **Those binary PNG assets are not yet committed to this PR**; the GitHub branch still uses the temporary SVG. Do not merge until the approved assets are uploaded and verified in GitHub, and the app manifest is updated to reference them.
+
+The local package passed a JavaScript syntax check only; this is not evidence of functioning audio, accurate notes, or successful device installation.
